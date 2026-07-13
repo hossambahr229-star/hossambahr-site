@@ -31,7 +31,7 @@ const trust=document.createElement('section');trust.className='section legal-tru
 document.querySelector('.request').parentNode.insertBefore(trust,document.querySelector('.request'));
 
 // إزالة الأرقام والآراء التجريبية قبل النشر حفاظًا على المصداقية.
-document.querySelector('.hero-proof').innerHTML='<div><b>7 إمارات</b><span>نطاق خدمة شامل</span></div><div><b>وضوح</b><span>متطلبات وتكاليف مفصلة</span></div><div><b>متابعة</b><span>من الطلب حتى الإنجاز</span></div>';
+document.querySelector('.hero-proof').innerHTML='<div><b>7</b><span>إمارات ضمن نطاق الخدمة</span></div><div><b>+140</b><span>خدمة ومعاملة متخصصة</span></div><div><b>360°</b><span>متابعة من الطلب إلى الإنجاز</span></div>';
 document.querySelector('.testimonials')?.remove();
 document.querySelector('.request form').insertAdjacentHTML('beforeend','<label class="consent"><input type="checkbox" required> أوافق على <a href="privacy.html" target="_blank">سياسة الخصوصية</a> ومعالجة بياناتي لغرض تنفيذ الطلب.</label>');
 
