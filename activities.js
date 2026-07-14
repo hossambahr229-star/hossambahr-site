@@ -1,3 +1,5 @@
+(function loadAnalytics(){if(!document.querySelector('script[data-hb-analytics]')){const s=document.createElement('script');s.src='analytics.js';s.defer=true;s.dataset.hbAnalytics='true';document.head.appendChild(s)}})();
+
 (() => {
   const state = { all: [], filtered: [], visible: 24 };
   const els = {
