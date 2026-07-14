@@ -130,7 +130,7 @@ window.HB_DIRECTORIES={
       ["الدينية والخيرية","ترخيص نشاط ديني أو خيري","IACAD / دائرة الشؤون الإسلامية والعمل الخيري","موافقات مراكز تحفيظ القرآن والجمعيات والأنشطة الدينية والخيرية.","IACAD"],
       ["المناطق الخاصة","موافقات المنطقة الحرة أو المنطقة التطويرية","سلطة المنطقة المختصة","الرخص والموافقات داخل المناطق الحرة والتطويرية تخضع لسلطة المنطقة وقد تتطلب جهة خارجية إضافية.","سلطة المنطقة المعنية"]
     ],
-    source:"https://app.invest.dubai.ae/",
+    source:"https://www.investindubai.gov.ae/en/business-setup/business-setup-services",
     extra:"https://rta.ae/wps/portal/rta/ae/corporate-services"
   }
 };
