@@ -48,8 +48,8 @@
     if (type === 'portal') return 'بوابة رسمية';
     return 'دليل وتجهيز';
   }
-  const searchStops=new Set(['اريد','ابغي','احتاج','ممكن','لو','سمحت','كيف','ما','هي','هو','من','في','الي','على','عن','مع','لي','لدي','خدمه','معامله','القيام','عمل']);
-  const aliasGroups=[['موظف','عامل','عمال'],['رخصه','ترخيص'],['شركه','منشاه','مؤسسه'],['الغاء','شطب','تصفية'],['رسوم','تكلفه','سعر'],['مده','وقت','كم'],['اقامه','فيزا','تاشيره'],['تعديل','تغيير'],['كفاله','ضم','استقدام']];
+  const searchStops=new Set(['اريد','عايز','ابغي','احتاج','حاب','حابب','بدي','ممكن','لو','سمحت','يرجى','كيف','ما','هي','هو','من','في','الى','الي','على','عن','مع','لي','لدي','خدمه','معامله','القيام','اقوم','عمل','اجراء','اجراءات']);
+  const aliasGroups=[['موظف','موظفين','موظفي','عامل','عمال'],['رخصه','ترخيص','رخص'],['شركه','شركات','منشاه','منشات','مؤسسه'],['الغاء','شطب','تصفية','اغلاق'],['رسوم','تكلفه','سعر','مبلغ'],['مده','وقت','كم'],['اقامه','فيزا','تاشيره','اذن'],['تعديل','تغيير','تحديث'],['كفاله','ضم','استقدام','اسره'],['نقل','انتقال','تحويل'],['اصدار','استخراج','فتح','جديد']];
   const queryTokens=value=>normalize(value).split(' ').map(token=>token.startsWith('ال')&&token.length>4?token.slice(2):token).filter(token=>token.length>1&&!searchStops.has(token));
   function searchText(item){
     const categoryHints={
@@ -76,7 +76,7 @@
     if(!tokens.length)return haystack.includes(q)?1:-1;
     let matched=0;
     tokens.forEach(token=>{if(tokenVariants(token).some(variant=>haystack.includes(variant)))matched+=1;});
-    const needed=tokens.length<3?tokens.length:Math.ceil(tokens.length*.67);
+    const needed=tokens.length===1?1:Math.max(1,Math.ceil(tokens.length*.5));
     if(matched<needed)return -1;
     const title=normalize(item.title);
     return matched*10+(haystack.includes(q)?15:0)+(title.includes(q)?20:0)+(title===q?50:0);
@@ -110,12 +110,20 @@
   }
   function render() {
     const q = normalize(query.value);
-    const serviceList = data.services.map(item=>({item,score:queryScore(item,q)})).filter(entry => entry.score>=0 && (!emirate.value || entry.item.emirate === emirate.value) && (!category.value || entry.item.category === category.value)).sort((a,b)=>b.score-a.score).map(entry=>entry.item);
+    const emirateMatches = item => !emirate.value || item.emirate === emirate.value || item.emirate === 'اتحادي';
+    const categoryMatches = item => !category.value || item.category === category.value;
+    const serviceList = data.services.map(item=>({item,score:queryScore(item,q)})).filter(entry => entry.score>=0 && emirateMatches(entry.item) && categoryMatches(entry.item)).sort((a,b)=>b.score-a.score).map(entry=>entry.item);
     const extra = q && !emirate.value && !category.value ? knowledgeItems.map(item=>({item,score:queryScore({...item,emirate:'الإمارات',country:'الإمارات',category:item.kind},q)})).filter(entry=>entry.score>=0).sort((a,b)=>b.score-a.score).map(entry=>entry.item) : [];
-    const list = [...serviceList,...extra];
-    label.textContent = q || emirate.value || category.value ? 'نتائج تناسب هدفك' : 'المسارات الأكثر طلباً';
-    count.textContent = `${list.length} نتيجة موحدة · مراجعة ${data.reviewed}`;
-    results.innerHTML = list.slice(0, limit).map(item => {
+    const exactList = [...serviceList,...extra];
+    const hasExactResults = exactList.length > 0;
+    const scopedFallback = data.services.filter(item=>emirateMatches(item) && categoryMatches(item)).slice(0,6);
+    const fallbackList = hasExactResults ? [] : (scopedFallback.length ? scopedFallback : data.services.slice(0,6));
+    const list = hasExactResults ? exactList : fallbackList;
+    label.textContent = hasExactResults ? (q || emirate.value || category.value ? 'نتائج تناسب هدفك' : 'المسارات الأكثر طلباً') : 'اقتراحات قريبة تساعدك على البدء';
+    count.textContent = hasExactResults ? `${list.length} نتيجة موحدة · مراجعة ${data.reviewed}` : `لم يظهر تطابق دقيق · ${list.length} مسارات مقترحة`;
+    const rescueMessage = encodeURIComponent(`مرحباً، لم أجد الخدمة في البحث. هدفي: ${query.value || 'غير محدد'} — الإمارة: ${emirate.value || 'غير محددة'} — الفئة: ${category.value || 'غير محددة'}`);
+    const rescue = hasExactResults ? '' : `<article class="search-rescue"><div><span>لم نتركك دون مسار</span><h3>هذه أقرب خدمات متاحة لهدفك</h3><p>يمكنك إزالة عوامل التصفية، استخدام محدد الخدمة في 3 أسئلة، أو إرسال وصفك كما كتبته لفريقنا.</p></div><div><button type="button" data-reset-search>عرض جميع الخدمات</button><a href="platform-tools.html#selector">استخدم محدد الخدمة</a><a href="https://wa.me/971503780460?text=${rescueMessage}" target="_blank" rel="noopener">أرسل هدفك عبر واتساب</a></div></article>`;
+    results.innerHTML = rescue + list.slice(0, limit).map(item => {
       if (item._knowledge) return `<article class="service-result knowledge-result"><div class="result-top"><span>مركز المعرفة</span><i class="service-status">${escapeHtml(item.kind)}</i></div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p><div class="result-bottom"><small>${escapeHtml(item.authority)}</small><div><a class="journey-start link-button" href="${escapeHtml(item.url)}">افتح الإجابة أو الحل</a><a class="team-shortcut" href="${teamUrl({...item,emirate:'الإمارات'})}" target="_blank" rel="noopener">اسأل فريقنا</a></div></div></article>`;
       const index = data.services.indexOf(item);
       return `<article class="service-result">
@@ -125,8 +133,8 @@
         ${item.duration || item.fee ? `<div class="result-facts">${item.duration ? `<span><b>المدة المنشورة</b>${escapeHtml(item.duration)}</span>` : ''}${item.fee ? `<span><b>الرسوم المنشورة</b>${escapeHtml(item.fee)}</span>` : ''}</div>` : ''}
         <small class="service-updated">آخر مراجعة: ${escapeHtml(item.updated || data.reviewed)}</small><div class="result-bottom"><small>${escapeHtml(item.authority)}</small><div><button class="journey-start" data-journey="${index}">التفاصيل والمتطلبات</button><a class="team-shortcut" href="${teamUrl(item)}" target="_blank" rel="noopener">اطلبها من فريقنا</a><a class="official-shortcut" href="${escapeHtml(item.url)}" ${item.url.startsWith('http') ? 'target="_blank" rel="noopener nofollow"' : ''}>المسار الرسمي <b>↗</b></a></div></div>
       </article>`;
-    }).join('') || '<p class="no-results">لم نجد نتيجة مطابقة بعد. جرّب وصف الهدف بكلمة أبسط، أو تواصل معنا لتحديد الجهة المناسبة.</p>';
-    more.hidden = list.length <= limit;
+    }).join('');
+    more.hidden = !hasExactResults || list.length <= limit;
   }
   function openJourney(item) {
     activeService = item;
@@ -153,6 +161,8 @@
     dialog.showModal();
   }
   results.addEventListener('click', event => {
+    const reset = event.target.closest('[data-reset-search]');
+    if (reset) { query.value='';emirate.value='';category.value='';limit=8;render();query.focus();return; }
     const button = event.target.closest('[data-journey]');
     if (button) openJourney(data.services[Number(button.dataset.journey)]);
   });
