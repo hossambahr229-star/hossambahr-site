@@ -91,6 +91,9 @@
         <p>ابحث بالكلمات التي تعرفها. سنعرض الدليل المناسب والجهة المختصة ونوع الرابط قبل أن تغادر المنصة.</p>
       </div>
       <div class="finder-shell">
+        <div class="journey-promise" aria-label="طريقة استخدام مسار الإنجاز">
+          <b>من الهدف إلى الإنجاز</b><span><i>1</i> حدّد معاملتك</span><span><i>2</i> جهّز أوراقك</span><span><i>3</i> قدّم رسميًا</span><span><i>4</i> ادفع وتابع</span>
+        </div>
         <div class="finder-controls">
           <label class="search-field"><span>⌕</span><input id="serviceQuery" placeholder="اكتب: تجديد رخصة، إقامة مستثمر، عقد عمل..." autocomplete="off"></label>
           <select id="emirateFilter" aria-label="تصفية حسب الإمارة"><option value="">كل الإمارات</option><option>دبي</option><option>أبوظبي</option><option>الشارقة</option><option>عجمان</option><option>رأس الخيمة</option><option>أم القيوين</option><option>الفجيرة</option><option>اتحادي</option></select>
@@ -190,6 +193,17 @@
       <div><p>تواصل للحصول على مراجعة أولية للجهة والمتطلبات قبل بدء الإجراء.</p><a class="btn btn-gold" href="https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9" target="_blank" rel="noopener">ابدأ عبر واتساب <span>←</span></a></div>
     </section>
   </main>
+
+  <dialog class="journey-dialog" id="journeyDialog" aria-labelledby="journeyTitle">
+    <div class="journey-layout">
+      <header><div><span id="journeyAuthority"></span><h2 id="journeyTitle"></h2><p id="journeyDescription"></p></div><button id="closeJourney" type="button" aria-label="إغلاق">×</button></header>
+      <div class="journey-progress"><span class="active">تحديد المسار</span><span>تجهيز الأوراق</span><span>التقديم</span><span>الدفع والمتابعة</span></div>
+      <section class="journey-summary"><div><small>الجهة المختصة</small><b id="journeyEntity"></b></div><div><small>المدة المنشورة</small><b id="journeyDuration"></b></div><div><small>الرسوم المنشورة</small><b id="journeyFee"></b></div></section>
+      <section class="journey-body"><div><span class="journey-kicker">قبل أن تبدأ</span><h3>قائمة التجهيز</h3><p>علّم ما أصبح جاهزًا. تُحفظ العلامات على جهازك.</p><div class="journey-checklist" id="journeyChecklist"></div></div><div><span class="journey-kicker">خطوة بخطوة</span><h3>مسار التنفيذ</h3><ol id="journeySteps"></ol></div></section>
+      <aside class="journey-notice">لن نطلب منك رفع جواز أو هوية في هذه الصفحة. رفع المستندات وسداد الرسوم يتمان داخل بوابة الجهة الرسمية الآمنة.</aside>
+      <footer><button id="saveJourney" type="button">حفظ في مركز القيادة</button><a id="secondaryJourneyLink" hidden></a><a id="officialJourneyLink" target="_blank" rel="noopener nofollow">ابدأ التقديم الرسمي <b>↗</b></a></footer>
+    </div>
+  </dialog>
 
   <footer>
     <div class="footer-brand"><span class="brand-mark">HB</span><div><b>منصة حسام بحر</b><p>المعرفة والتوجيه وإدارة الأعمال في دولة الإمارات.</p></div></div>
