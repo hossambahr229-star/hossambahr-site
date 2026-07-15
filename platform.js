@@ -25,7 +25,8 @@
   document.querySelector('#emiratesGrid').innerHTML = data.emirates.map((item, index) => `
     <article><div><b>${item.code}</b><span>${String(index + 1).padStart(2, '0')}</span></div>
       <h3>${item.name}</h3><p>${item.authority}</p><small>${item.note}</small>
-      <a href="${item.url}" target="_blank" rel="noopener nofollow">فتح ${item.type === 'direct' ? 'المسار الرسمي' : 'البوابة الرسمية'} <i>↗</i></a>
+      <a href="${item.guideUrl}">افتح دليل ${item.name} <i>←</i></a>
+      <a href="${item.url}" target="_blank" rel="noopener nofollow">${item.type === 'direct' ? 'المسار الرسمي' : 'البوابة الرسمية'} <i>↗</i></a>
     </article>`).join('');
 
   const results = document.querySelector('#serviceResults');
