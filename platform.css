@@ -7,3 +7,4 @@ html:not(.motion-ready) .section-heading,html:not(.motion-ready) .journey-grid>a
 html,body{max-width:100%;overflow-x:hidden}
 .legacy-anchor{display:block;height:0;position:relative;top:-82px;visibility:hidden}
 @media(max-width:560px){.hero,.hero-copy,.command-card,.site-header{min-width:0;max-width:100%}.hero h1{font-size:38px;letter-spacing:-1px;overflow-wrap:anywhere}.eyebrow{flex-wrap:wrap}.hero-actions .btn{width:100%}.brand{min-width:0}.brand>span:last-child{min-width:0}.brand small{white-space:nowrap}.status-bar p{max-width:100%}}
+.result-facts{margin:12px 0 0;padding:9px 0;border-top:1px dashed var(--line);display:grid;gap:5px}.result-facts span{display:grid;grid-template-columns:78px 1fr;gap:6px;font-size:7px;color:var(--muted)}.result-facts b{color:var(--green);font-size:7px}.service-result:has(.result-facts){min-height:285px}

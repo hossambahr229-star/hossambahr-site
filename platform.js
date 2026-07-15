@@ -50,6 +50,7 @@
       <article class="service-result">
         <div class="result-top"><span>${escapeHtml(item.emirate)}</span><i class="type-${item.type}">${typeLabel(item.type)}</i></div>
         <h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p>
+        ${item.duration || item.fee ? `<div class="result-facts">${item.duration ? `<span><b>المدة المنشورة</b>${escapeHtml(item.duration)}</span>` : ''}${item.fee ? `<span><b>الرسوم المنشورة</b>${escapeHtml(item.fee)}</span>` : ''}</div>` : ''}
         <div class="result-bottom"><small>${escapeHtml(item.authority)}</small><a href="${escapeHtml(item.url)}" ${item.url.startsWith('http') ? 'target="_blank" rel="noopener nofollow"' : ''}>${item.type === 'guide' ? 'فتح الدليل' : 'الانتقال إلى الجهة'} <b>←</b></a></div>
       </article>`).join('') || '<p class="no-results">لم نجد نتيجة مطابقة بعد. جرّب وصف الهدف بكلمة أبسط، أو تواصل معنا لتحديد الجهة المناسبة.</p>';
     more.hidden = list.length <= limit;
