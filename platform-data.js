@@ -1,0 +1,43 @@
+window.HB_PLATFORM = {
+  reviewed: "2026-07-15",
+  emirates: [
+    {name:"دبي",code:"DXB",authority:"اقتصادية دبي (DET)",url:"https://www.investindubai.gov.ae/en/business-setup/business-setup-services",type:"direct",note:"تأسيس وترخيص الأعمال"},
+    {name:"أبوظبي",code:"AUH",authority:"منصة تم (TAMM)",url:"https://www.tamm.abudhabi/journeys/start-a-business/",type:"direct",note:"رحلة بدء الأعمال"},
+    {name:"الشارقة",code:"SHJ",authority:"دائرة التنمية الاقتصادية",url:"https://sedd.ae/en/web/sedd/",type:"portal",note:"دليل خدمات الأعمال"},
+    {name:"عجمان",code:"AJM",authority:"دائرة التنمية الاقتصادية",url:"https://www.ajmanded.ae/en/services",type:"portal",note:"دليل الخدمات الرسمي"},
+    {name:"رأس الخيمة",code:"RAK",authority:"دائرة التنمية الاقتصادية",url:"https://ded.rak.ae/",type:"portal",note:"الخدمات الاقتصادية"},
+    {name:"أم القيوين",code:"UAQ",authority:"دائرة التنمية الاقتصادية",url:"https://uaqded.gov.ae/",type:"portal",note:"الخدمات الاقتصادية"},
+    {name:"الفجيرة",code:"FUJ",authority:"حكومة الفجيرة الرقمية",url:"https://digital.fujairah.ae/public/portal/",type:"portal",note:"دليل الخدمات الرقمية"}
+  ],
+  services: [
+    {title:"تأسيس شركة في دبي",emirate:"دبي",category:"تأسيس الشركات",authority:"اقتصادية دبي (DET)",url:"https://www.investindubai.gov.ae/en/business-setup/business-setup-services",type:"direct",description:"رحلة تأسيس الأعمال وخيارات الرخص في دبي."},
+    {title:"البحث عن نشاط اقتصادي في دبي",emirate:"دبي",category:"تأسيس الشركات",authority:"اقتصادية دبي (DET)",url:"https://app.invest.dubai.ae/search-business-activities",type:"direct",description:"البحث الرسمي عن الأنشطة والرموز الاقتصادية."},
+    {title:"حجز اسم تجاري في دبي",emirate:"دبي",category:"تأسيس الشركات",authority:"اقتصادية دبي (DET)",url:"https://www.investindubai.gov.ae/en/business-setup/business-setup-services",type:"portal",description:"الوصول إلى خدمات الاسم التجاري ضمن بوابة تأسيس الأعمال."},
+    {title:"الموافقة المبدئية في دبي",emirate:"دبي",category:"تأسيس الشركات",authority:"اقتصادية دبي (DET)",url:"https://www.investindubai.gov.ae/en/business-setup/business-setup-services",type:"portal",description:"خدمات الموافقة والترخيص ضمن رحلة تأسيس الشركة."},
+    {title:"تعديل رخصة تجارية في دبي",emirate:"دبي",category:"تعديل الشركات",authority:"اقتصادية دبي (DET)",url:"https://www.investindubai.gov.ae/en/business-setup/business-setup-services",type:"portal",description:"تعديل النشاط أو الشركاء أو بيانات الرخصة."},
+    {title:"تجديد رخصة تجارية في دبي",emirate:"دبي",category:"التجديد والإلغاء",authority:"اقتصادية دبي (DET)",url:"https://www.investindubai.gov.ae/en/business-setup/business-setup-services",type:"portal",description:"الوصول إلى خدمات تجديد الرخصة الاقتصادية."},
+    {title:"إلغاء رخصة أو تصفية شركة في دبي",emirate:"دبي",category:"التجديد والإلغاء",authority:"اقتصادية دبي (DET)",url:"https://www.investindubai.gov.ae/en/business-setup/business-setup-services",type:"portal",description:"مسار الإلغاء بحسب الشكل القانوني والتزامات الشركة."},
+    {title:"بدء شركة في أبوظبي",emirate:"أبوظبي",category:"تأسيس الشركات",authority:"منصة تم (TAMM)",url:"https://www.tamm.abudhabi/journeys/start-a-business/",type:"direct",description:"رحلة رقمية موحدة لبدء نشاط تجاري أو صناعي."},
+    {title:"خدمات الرخص الاقتصادية في أبوظبي",emirate:"أبوظبي",category:"التجديد والإلغاء",authority:"منصة تم (TAMM)",url:"https://www.tamm.abudhabi/",type:"portal",description:"البحث في خدمات الأعمال والرخص على منصة تم."},
+    {title:"تأسيس شركة في الشارقة",emirate:"الشارقة",category:"تأسيس الشركات",authority:"دائرة التنمية الاقتصادية",url:"https://sedd.ae/en/web/sedd/",type:"portal",description:"خدمات الإصدار والاسم التجاري والترخيص في الشارقة."},
+    {title:"تجديد رخصة في الشارقة",emirate:"الشارقة",category:"التجديد والإلغاء",authority:"دائرة التنمية الاقتصادية",url:"https://sedd.ae/en/web/sedd/",type:"portal",description:"دليل خدمات التجديد والخدمات الاقتصادية."},
+    {title:"تأسيس منشأة جديدة في عجمان",emirate:"عجمان",category:"تأسيس الشركات",authority:"دائرة التنمية الاقتصادية",url:"https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",type:"direct",description:"تسجيل الدخول إلى خدمة المنشأة الجديدة الرسمية."},
+    {title:"خدمات الرخص في عجمان",emirate:"عجمان",category:"التجديد والإلغاء",authority:"دائرة التنمية الاقتصادية",url:"https://www.ajmanded.ae/en/services",type:"portal",description:"دليل خدمات المستثمرين والرخص الاقتصادية."},
+    {title:"خدمات الأعمال في رأس الخيمة",emirate:"رأس الخيمة",category:"تأسيس الشركات",authority:"دائرة التنمية الاقتصادية",url:"https://ded.rak.ae/",type:"portal",description:"بوابة الخدمات الاقتصادية الرسمية في رأس الخيمة."},
+    {title:"خدمات الأعمال في أم القيوين",emirate:"أم القيوين",category:"تأسيس الشركات",authority:"دائرة التنمية الاقتصادية",url:"https://uaqded.gov.ae/",type:"portal",description:"بوابة الخدمات الاقتصادية الرسمية في أم القيوين."},
+    {title:"الخدمات الرقمية للأعمال في الفجيرة",emirate:"الفجيرة",category:"تأسيس الشركات",authority:"حكومة الفجيرة الرقمية",url:"https://digital.fujairah.ae/public/portal/",type:"portal",description:"دليل الخدمات الرقمية والجهات المحلية في الفجيرة."},
+    {title:"تأسيس شركة في المنطقة الحرة بالفجيرة",emirate:"الفجيرة",category:"تأسيس الشركات",authority:"هيئة المنطقة الحرة بالفجيرة",url:"https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",type:"direct",description:"طلب تسجيل الرخصة التجارية في المنطقة الحرة."},
+    {title:"إصدار تصريح عمل جديد",emirate:"اتحادي",category:"العمل والموظفون",authority:"وزارة الموارد البشرية والتوطين",url:"mohre-services-dubai.html",type:"guide",description:"المتطلبات والقنوات الرسمية لتصاريح العمل."},
+    {title:"تجديد تصريح وعقد العمل",emirate:"اتحادي",category:"العمل والموظفون",authority:"وزارة الموارد البشرية والتوطين",url:"mohre-services-dubai.html",type:"guide",description:"الوصول إلى دليل التجديد وعقود العمل."},
+    {title:"إلغاء تصريح وعقد العمل",emirate:"اتحادي",category:"العمل والموظفون",authority:"وزارة الموارد البشرية والتوطين",url:"mohre-services-dubai.html",type:"guide",description:"ترتيب إلغاء العمل قبل إجراءات الإقامة."},
+    {title:"حماية الأجور WPS",emirate:"اتحادي",category:"العمل والموظفون",authority:"وزارة الموارد البشرية والتوطين",url:"mohre-services-dubai.html",type:"guide",description:"دليل التسجيل والمتابعة في نظام حماية الأجور."},
+    {title:"إصدار أو تجديد الهوية الإماراتية",emirate:"اتحادي",category:"الإقامة والهوية",authority:"الهيئة الاتحادية للهوية والجنسية",url:"residency-identity-dubai.html",type:"guide",description:"دليل الهوية والقنوات الرسمية المرتبطة بها."},
+    {title:"إقامة مستثمر أو شريك",emirate:"اتحادي",category:"الإقامة والهوية",authority:"ICP / GDRFA Dubai",url:"investor-residency-uae.html",type:"guide",description:"الأهلية والمتطلبات الأولية ومسار الجهة المختصة."},
+    {title:"الإقامة الذهبية",emirate:"اتحادي",category:"الإقامة والهوية",authority:"ICP / GDRFA Dubai",url:"golden-residency-uae.html",type:"guide",description:"الفئات والمتطلبات وروابط الجهات الرسمية."},
+    {title:"كفالة الزوجة والأبناء",emirate:"اتحادي",category:"الإقامة والهوية",authority:"ICP / GDRFA Dubai",url:"family-sponsorship-uae.html",type:"guide",description:"متطلبات إقامة الأسرة بحسب الإمارة والحالة."},
+    {title:"التسجيل في ضريبة الشركات",emirate:"اتحادي",category:"الضرائب والامتثال",authority:"الهيئة الاتحادية للضرائب",url:"corporate-tax-registration-uae.html",type:"guide",description:"دليل التسجيل والوصول إلى منصة إمارات تاكس."},
+    {title:"التسجيل في ضريبة القيمة المضافة",emirate:"اتحادي",category:"الضرائب والامتثال",authority:"الهيئة الاتحادية للضرائب",url:"vat-registration-uae.html",type:"guide",description:"حدود التسجيل والمستندات والخطوات الأولية."},
+    {title:"تصديق المستندات في الإمارات",emirate:"اتحادي",category:"التصديقات",authority:"وزارة الخارجية",url:"https://www.mofa.gov.ae/en/services/attestation",type:"direct",description:"خدمة تصديق الوثائق والمستندات الرسمية."},
+    {title:"الموافقات الخارجية للأنشطة في دبي",emirate:"دبي",category:"تأسيس الشركات",authority:"الجهات المنظمة",url:"government-approvals-dubai.html",type:"guide",description:"دليل RTA وSIRA وDHA والبلدية وغيرها."}
+  ]
+};
