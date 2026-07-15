@@ -1,9 +1,16 @@
 (function () {
   const data = window.HB_PLATFORM;
+  const knowledge = window.HB_KNOWLEDGE;
   const menu = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#mainNav');
   const normalize = value => (value || '').toLowerCase().normalize('NFKD').replace(/[ًٌٍَُِّْـ]/g, '').trim();
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+  const teamUrl = item => `https://wa.me/971503780460?text=${encodeURIComponent(`مرحباً، أريد من فريق حسام بحر تجهيز وتنفيذ خدمة: ${item.title} — الجهة: ${item.authority} — الإمارة: ${item.emirate}`)}`;
+  const knowledgeItems = knowledge ? [
+    ...knowledge.updates.map(x => ({title:x.title,description:x.summary,authority:x.authority,keywords:x.impact,kind:'تحديث رسمي'})),
+    ...knowledge.faqs.map(x => ({title:x.q,description:x.a,authority:x.topic,keywords:'سؤال استفسار',kind:'سؤال وجواب'})),
+    ...knowledge.problems.map(x => ({title:x.problem,description:`${x.cause} ${x.solution}`,authority:'مركز حلول المشكلات',keywords:x.keywords,kind:'حل مشكلة'}))
+  ].map(x => ({...x,_knowledge:true,url:`knowledge-hub.html?q=${encodeURIComponent(x.title)}#searchResults`})) : [];
 
   menu.addEventListener('click', () => {
     const open = menu.getAttribute('aria-expanded') === 'true';
@@ -54,6 +61,8 @@
     if (item.category === 'التجديد والإلغاء') return ['الرخصة التجارية الحالية','عقد المقر أو إيجاري ساري','موافقات الجهات المنظمة عند انطباقها','تسوية المخالفات والالتزامات','وثائق الشركاء والمخول بالتوقيع'];
     if (item.category === 'الضرائب والامتثال') return ['الرخصة ووثائق التأسيس','بيانات الملاك والمخولين بالتوقيع','بيانات الفترة المالية','العقود والفواتير أو إثبات الإيرادات','بيانات الحساب البنكي عند طلبها'];
     if (item.category === 'التصديقات') return ['أصل المستند أو النسخة الإلكترونية المقبولة','تصديقات بلد الإصدار السابقة عند انطباقها','ترجمة قانونية معتمدة إذا كانت مطلوبة','هوية مقدم الطلب وبيانات التوصيل'];
+    if (item.category === 'التوثيق الدولي') return ['المستند الأصلي بالعربية أو الإنجليزية أو ترجمة قانونية','تصديقات بلد الإصدار والجهات المختصة','تحديد بلد الاستخدام النهائي','المستند غير مغلف حراريًا','UAE PASS وبيانات التوصيل'];
+    if (item.category === 'معادلة الشهادات') return ['الشهادة النهائية وكشوف الدرجات المطلوبة','تصديقات الجهات المختصة ووزارة الخارجية عند انطباقها','جواز السفر والهوية','ترجمة قانونية لغير العربية والإنجليزية','متطلبات الدولة والتخصص التي تولدها خدمة الوزارة'];
     return ['هوية مقدم الطلب','المستند الأساسي للخدمة','موافقة الجهة المنظمة عند انطباقها','وسيلة دفع إلكترونية صالحة'];
   }
   function steps(item) {
@@ -68,20 +77,23 @@
   }
   function render() {
     const q = normalize(query.value);
-    const list = data.services.filter(item => {
-      const haystack = normalize([item.title,item.description,item.authority,item.emirate,item.category,'تعديل وضع موظف نقل عامل اوراق رسوم تقديم دفع'].join(' '));
+    const serviceList = data.services.filter(item => {
+      const haystack = normalize([item.title,item.description,item.authority,item.emirate,item.country,item.category,'مشكلة رفض نواقص مرفقات متطلبات رسوم مدة دفع تقديم توثيق معادلة شهادة دولة تعديل وضع موظف نقل عامل'].join(' '));
       return (!q || haystack.includes(q)) && (!emirate.value || item.emirate === emirate.value) && (!category.value || item.category === category.value);
     });
+    const extra = q && !emirate.value && !category.value ? knowledgeItems.filter(item => normalize([item.title,item.description,item.authority,item.keywords].join(' ')).includes(q)) : [];
+    const list = [...serviceList,...extra];
     label.textContent = q || emirate.value || category.value ? 'نتائج تناسب هدفك' : 'المسارات الأكثر طلباً';
-    count.textContent = `${list.length} مسار إنجاز · مراجعة ${data.reviewed}`;
+    count.textContent = `${list.length} نتيجة موحدة · مراجعة ${data.reviewed}`;
     results.innerHTML = list.slice(0, limit).map(item => {
+      if (item._knowledge) return `<article class="service-result knowledge-result"><div class="result-top"><span>مركز المعرفة</span><i class="service-status">${escapeHtml(item.kind)}</i></div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p><div class="result-bottom"><small>${escapeHtml(item.authority)}</small><div><a class="journey-start link-button" href="${escapeHtml(item.url)}">افتح الإجابة أو الحل</a><a class="team-shortcut" href="${teamUrl({...item,emirate:'الإمارات'})}" target="_blank" rel="noopener">اسأل فريقنا</a></div></div></article>`;
       const index = data.services.indexOf(item);
       return `<article class="service-result">
-        <div class="result-top"><span>${escapeHtml(item.emirate)}</span><i class="type-${item.type}">${typeLabel(item.type)}</i></div>
+        <div class="result-top"><span>${escapeHtml(item.country || item.emirate)}</span><i class="service-status">${escapeHtml(item.status || 'متاحة')}</i><i class="type-${item.type}">${typeLabel(item.type)}</i></div>
         <h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p>
         <div class="readiness"><span>${requirements(item).length} عناصر للتجهيز</span><span>${steps(item).length} خطوات واضحة</span></div>
         ${item.duration || item.fee ? `<div class="result-facts">${item.duration ? `<span><b>المدة المنشورة</b>${escapeHtml(item.duration)}</span>` : ''}${item.fee ? `<span><b>الرسوم المنشورة</b>${escapeHtml(item.fee)}</span>` : ''}</div>` : ''}
-        <div class="result-bottom"><small>${escapeHtml(item.authority)}</small><div><button class="journey-start" data-journey="${index}">ابدأ مسار الإنجاز</button><a class="official-shortcut" href="${escapeHtml(item.url)}" ${item.url.startsWith('http') ? 'target="_blank" rel="noopener nofollow"' : ''}>الرابط الرسمي <b>↗</b></a></div></div>
+        <small class="service-updated">آخر مراجعة: ${escapeHtml(item.updated || data.reviewed)}</small><div class="result-bottom"><small>${escapeHtml(item.authority)}</small><div><button class="journey-start" data-journey="${index}">التفاصيل والمتطلبات</button><a class="team-shortcut" href="${teamUrl(item)}" target="_blank" rel="noopener">اطلبها من فريقنا</a><a class="official-shortcut" href="${escapeHtml(item.url)}" ${item.url.startsWith('http') ? 'target="_blank" rel="noopener nofollow"' : ''}>المسار الرسمي <b>↗</b></a></div></div>
       </article>`;
     }).join('') || '<p class="no-results">لم نجد نتيجة مطابقة بعد. جرّب وصف الهدف بكلمة أبسط، أو تواصل معنا لتحديد الجهة المناسبة.</p>';
     more.hidden = list.length <= limit;
@@ -106,6 +118,8 @@
     const secondary = document.querySelector('#secondaryJourneyLink');
     secondary.hidden = !item.secondaryUrl;
     if (item.secondaryUrl) { secondary.href = item.secondaryUrl; secondary.textContent = `${item.secondaryLabel || 'المسار المرتبط'} ←`; }
+    const team = document.querySelector('#teamJourneyLink');
+    team.href = teamUrl(item);
     dialog.showModal();
   }
   results.addEventListener('click', event => {
