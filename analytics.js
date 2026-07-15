@@ -76,6 +76,21 @@
     banner.querySelector('.reject').addEventListener('click', function () { setConsent('denied'); });
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showConsentBanner);
-  else showConsentBanner();
+  function addWhatsappShortcut() {
+    if (document.querySelector('.floating-contact,.hb-whatsapp')) return;
+    var style = document.createElement('style');
+    style.textContent = '.hb-whatsapp{position:fixed;z-index:9990;left:18px;bottom:18px;min-height:48px;display:flex;align-items:center;gap:8px;padding:10px 17px;border-radius:999px;background:#159a5b;color:#fff!important;box-shadow:0 12px 35px #08291e40;font:700 13px/1.2 inherit;text-decoration:none}.hb-whatsapp i{font-style:normal;font-size:18px}@media(max-width:600px){.hb-whatsapp{left:12px;bottom:14px;width:48px;padding:0;justify-content:center}.hb-whatsapp span{display:none}}';
+    document.head.appendChild(style);
+    var link = document.createElement('a');
+    link.className = 'hb-whatsapp';
+    link.href = 'https://wa.me/971503780460?text=' + encodeURIComponent('مرحباً، أحتاج مساعدة في تحديد أو تنفيذ معاملة');
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.setAttribute('aria-label', 'تواصل مع فريق حسام بحر عبر واتساب');
+    link.innerHTML = '<i>◉</i><span>واتساب</span>';
+    document.body.appendChild(link);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ showConsentBanner(); addWhatsappShortcut(); });
+  else { showConsentBanner(); addWhatsappShortcut(); }
 })();
