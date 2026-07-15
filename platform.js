@@ -3,7 +3,7 @@
   const knowledge = window.HB_KNOWLEDGE;
   const menu = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#mainNav');
-  const normalize = value => (value || '').toLowerCase().normalize('NFKD').replace(/[ًٌٍَُِّْـ]/g, '').trim();
+  const normalize = value => (value || '').toLowerCase().normalize('NFKD').replace(/[ًٌٍَُِّْـ]/g, '').replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/[^\p{L}\p{N}\s]/gu,' ').replace(/\s+/g,' ').trim();
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
   const teamUrl = item => `https://wa.me/971503780460?text=${encodeURIComponent(`مرحباً، أريد من فريق حسام بحر تجهيز وتنفيذ خدمة: ${item.title} — الجهة: ${item.authority} — الإمارة: ${item.emirate}`)}`;
   const knowledgeItems = knowledge ? [
@@ -48,6 +48,39 @@
     if (type === 'portal') return 'بوابة رسمية';
     return 'دليل وتجهيز';
   }
+  const searchStops=new Set(['اريد','ابغي','احتاج','ممكن','لو','سمحت','كيف','ما','هي','هو','من','في','الي','على','عن','مع','لي','لدي','خدمه','معامله','القيام','عمل']);
+  const aliasGroups=[['موظف','عامل','عمال'],['رخصه','ترخيص'],['شركه','منشاه','مؤسسه'],['الغاء','شطب','تصفية'],['رسوم','تكلفه','سعر'],['مده','وقت','كم'],['اقامه','فيزا','تاشيره'],['تعديل','تغيير'],['كفاله','ضم','استقدام']];
+  const queryTokens=value=>normalize(value).split(' ').map(token=>token.startsWith('ال')&&token.length>4?token.slice(2):token).filter(token=>token.length>1&&!searchStops.has(token));
+  function searchText(item){
+    const categoryHints={
+      'العمل والموظفون':'موظف عامل تصريح عمل عقد عمل تعديل وضع نقل عامل تغيير مهنه راتب',
+      'الإقامة والهوية':'اقامه فيزا تاشيره هويه كفاله اسره مستثمر تغيير وضع',
+      'تأسيس الشركات':'شركه منشاه مؤسسه رخصه ترخيص اسم تجاري بدء مشروع',
+      'تعديل الشركات':'شركه شريك مدير ملكيه نشاط تعديل تغيير تنازل',
+      'التجديد والإلغاء':'تجديد رخصه الغاء شطب تصفيه انتهاء',
+      'الضرائب والامتثال':'ضريبه تسجيل ضريبي vat trn شركات امتثال',
+      'التوثيق الدولي':'توثيق تصديق مستند دوله سفاره خارجيه',
+      'معادلة الشهادات':'معادله شهاده تعليم جامعه مدرسه مؤهل'
+    };
+    return normalize([item.title,item.description,item.authority,item.emirate,item.country,item.category,categoryHints[item.category]||''].join(' '));
+  }
+  function tokenVariants(token){
+    const group=aliasGroups.find(items=>items.includes(token));
+    return group||[token];
+  }
+  function queryScore(item,value){
+    const q=normalize(value);
+    if(!q)return 0;
+    const haystack=searchText(item);
+    const tokens=queryTokens(q);
+    if(!tokens.length)return haystack.includes(q)?1:-1;
+    let matched=0;
+    tokens.forEach(token=>{if(tokenVariants(token).some(variant=>haystack.includes(variant)))matched+=1;});
+    const needed=tokens.length<3?tokens.length:Math.ceil(tokens.length*.67);
+    if(matched<needed)return -1;
+    const title=normalize(item.title);
+    return matched*10+(haystack.includes(q)?15:0)+(title.includes(q)?20:0)+(title===q?50:0);
+  }
   function requirements(item) {
     const title = normalize(item.title);
     if (item.category === 'العمل والموظفون') {
@@ -77,11 +110,8 @@
   }
   function render() {
     const q = normalize(query.value);
-    const serviceList = data.services.filter(item => {
-      const haystack = normalize([item.title,item.description,item.authority,item.emirate,item.country,item.category,'مشكلة رفض نواقص مرفقات متطلبات رسوم مدة دفع تقديم توثيق معادلة شهادة دولة تعديل وضع موظف نقل عامل'].join(' '));
-      return (!q || haystack.includes(q)) && (!emirate.value || item.emirate === emirate.value) && (!category.value || item.category === category.value);
-    });
-    const extra = q && !emirate.value && !category.value ? knowledgeItems.filter(item => normalize([item.title,item.description,item.authority,item.keywords].join(' ')).includes(q)) : [];
+    const serviceList = data.services.map(item=>({item,score:queryScore(item,q)})).filter(entry => entry.score>=0 && (!emirate.value || entry.item.emirate === emirate.value) && (!category.value || entry.item.category === category.value)).sort((a,b)=>b.score-a.score).map(entry=>entry.item);
+    const extra = q && !emirate.value && !category.value ? knowledgeItems.map(item=>({item,score:queryScore({...item,emirate:'الإمارات',country:'الإمارات',category:item.kind},q)})).filter(entry=>entry.score>=0).sort((a,b)=>b.score-a.score).map(entry=>entry.item) : [];
     const list = [...serviceList,...extra];
     label.textContent = q || emirate.value || category.value ? 'نتائج تناسب هدفك' : 'المسارات الأكثر طلباً';
     count.textContent = `${list.length} نتيجة موحدة · مراجعة ${data.reviewed}`;
