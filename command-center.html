@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071d1b">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>مركز قيادة الشركة | منصة حسام بحر</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="command-center.css">
+</head>
+<body>
+  <div class="security-bar">🔒 بيانات المركز تُشفّر وتبقى على هذا الجهاز فقط <a href="#security">اعرف الحدود المهمة</a></div>
+  <header class="cc-header">
+    <a class="cc-brand" href="index.html"><i>HB</i><span><b>مركز القيادة</b><small>HOSSAM BAHR OS</small></span></a>
+    <div class="cc-actions"><span id="saveState" aria-live="polite"></span><button id="lockBtn" class="quiet" type="button" hidden>قفل المركز</button><a href="index.html">الموقع الرئيسي</a></div>
+  </header>
+
+  <main>
+    <section id="gate" class="gate" aria-labelledby="gateTitle">
+      <div class="gate-copy"><span>مساحة الشركة الخاصة</span><h1 id="gateTitle">إدارة التواريخ والمعاملات<br>من لوحة واحدة.</h1><p>أنشئ خزنة محلية مشفّرة، أو افتح خزنتك الحالية. كلمة المرور لا تُرسل ولا تُحفظ، لذلك احتفظ بها وبنسخة احتياطية.</p><ul><li>مؤشر صحة وتنبيهات انتهاء</li><li>ملف الشركة والموظفون</li><li>المعاملات والالتزامات</li></ul></div>
+      <div class="gate-card">
+        <div id="newVault">
+          <span class="step">بدء الاستخدام</span><h2>أنشئ مركز شركتك</h2>
+          <form id="createForm">
+            <label>اسم الشركة<input name="company" maxlength="100" required autocomplete="organization"></label>
+            <label>الإمارة<select name="emirate" required><option value="">اختر الإمارة</option><option>دبي</option><option>أبوظبي</option><option>الشارقة</option><option>عجمان</option><option>رأس الخيمة</option><option>أم القيوين</option><option>الفجيرة</option></select></label>
+            <label>كلمة مرور الخزنة<input name="password" type="password" minlength="10" required autocomplete="new-password" aria-describedby="passwordHelp"></label>
+            <small id="passwordHelp">10 أحرف على الأقل. لا يمكننا استعادتها إذا فُقدت.</small>
+            <label>تأكيد كلمة المرور<input name="confirm" type="password" minlength="10" required autocomplete="new-password"></label>
+            <label class="check"><input name="understood" type="checkbox" required> أفهم أن البيانات محفوظة على هذا الجهاز وأن النسخة الاحتياطية مسؤوليتي.</label>
+            <button class="primary" type="submit">إنشاء المركز المشفّر</button>
+          </form>
+        </div>
+        <div id="openVault" hidden>
+          <span class="step">مرحبًا بعودتك</span><h2>افتح مركز الشركة</h2><p id="vaultHint"></p>
+          <form id="unlockForm"><label>كلمة مرور الخزنة<input name="password" type="password" required autocomplete="current-password"></label><button class="primary" type="submit">فتح المركز</button></form>
+          <div class="gate-tools"><button id="importAtGate" type="button">استعادة نسخة احتياطية</button><button id="resetAtGate" class="danger-link" type="button">حذف الخزنة من الجهاز</button></div>
+        </div>
+        <p class="form-message" id="gateMessage" role="alert"></p>
+      </div>
+    </section>
+
+    <section id="workspace" class="workspace" hidden>
+      <aside class="sidebar">
+        <div class="company-mini"><span id="companyInitial">ش</span><div><b id="companySideName"></b><small id="companySideEmirate"></small></div></div>
+        <nav aria-label="أقسام مركز القيادة">
+          <button class="active" data-view="overview">نظرة عامة</button><button data-view="documents">المستندات والالتزامات</button><button data-view="employees">الموظفون</button><button data-view="transactions">المعاملات</button><button data-view="company">بيانات الشركة</button><button data-view="backup">الأمان والنسخ</button>
+        </nav>
+      </aside>
+      <div class="content">
+        <section class="view active" data-panel="overview">
+          <div class="view-head"><div><span id="todayLabel"></span><h1>حالة شركتك اليوم</h1></div><button class="primary small" data-open="document">+ إضافة التزام</button></div>
+          <div class="stats"><article><span>مؤشر الصحة</span><b id="healthScore">100%</b><small id="healthText">ابدأ بإضافة التزامات الشركة</small></article><article><span>تنبيهات قريبة</span><b id="alertCount">0</b><small>خلال 90 يومًا</small></article><article><span>الموظفون</span><b id="employeeCount">0</b><small>ملفات مسجلة</small></article><article><span>معاملات مفتوحة</span><b id="transactionCount">0</b><small>قيد المتابعة</small></article></div>
+          <div class="overview-grid"><article class="panel"><div class="panel-head"><h2>التنبيهات القادمة</h2><button data-view-jump="documents">عرض الكل</button></div><div id="alertsList" class="list"></div></article><article class="panel"><div class="panel-head"><h2>المعاملات الحالية</h2><button data-view-jump="transactions">عرض الكل</button></div><div id="recentTransactions" class="list"></div></article></div>
+        </section>
+
+        <section class="view" data-panel="documents"><div class="view-head"><div><span>متابعة الصلاحية</span><h1>المستندات والالتزامات</h1></div><button class="primary small" data-open="document">+ إضافة</button></div><div class="toolbar"><input id="documentSearch" placeholder="ابحث بالاسم أو النوع"><select id="documentStatus"><option value="">كل الحالات</option><option value="expired">منتهي</option><option value="soon">يقترب</option><option value="valid">ساري</option></select></div><div id="documentsTable" class="data-list"></div></section>
+        <section class="view" data-panel="employees"><div class="view-head"><div><span>فريق العمل</span><h1>ملفات الموظفين</h1></div><button class="primary small" data-open="employee">+ إضافة موظف</button></div><div id="employeesTable" class="data-list"></div></section>
+        <section class="view" data-panel="transactions"><div class="view-head"><div><span>سجل التنفيذ</span><h1>المعاملات</h1></div><button class="primary small" data-open="transaction">+ إضافة معاملة</button></div><div id="transactionsTable" class="data-list"></div></section>
+        <section class="view" data-panel="company"><div class="view-head"><div><span>الملف الموحد</span><h1>بيانات الشركة</h1></div></div><form id="companyForm" class="edit-grid"><label>اسم الشركة<input name="name" maxlength="100" required></label><label>الإمارة<select name="emirate"><option>دبي</option><option>أبوظبي</option><option>الشارقة</option><option>عجمان</option><option>رأس الخيمة</option><option>أم القيوين</option><option>الفجيرة</option></select></label><label>رقم الرخصة<input name="license" maxlength="60"></label><label>جهة الترخيص<input name="authority" maxlength="100"></label><label>الشكل القانوني<input name="legalForm" maxlength="100"></label><label>البريد الإداري<input name="email" type="email" maxlength="150"></label><label>الهاتف<input name="phone" type="tel" maxlength="30"></label><label>ملاحظات<textarea name="notes" maxlength="1000"></textarea></label><button class="primary" type="submit">حفظ بيانات الشركة</button></form></section>
+        <section class="view" data-panel="backup" id="security"><div class="view-head"><div><span>الخصوصية والاستمرارية</span><h1>الأمان والنسخ الاحتياطي</h1></div></div><div class="security-grid"><article><h2>نسخة احتياطية مشفّرة</h2><p>نزّل ملفًا مشفّرًا لاستعادة المركز عند تغيير الجهاز أو مسح المتصفح. لا يمكن فتحه دون كلمة المرور.</p><button id="exportBtn" class="primary">تنزيل النسخة</button><button id="importBtn">استعادة نسخة</button></article><article><h2>حدود هذه النسخة</h2><ul><li>البيانات على هذا المتصفح والجهاز فقط.</li><li>لا يوجد تزامن سحابي أو مستخدمون متعددون حاليًا.</li><li>نحفظ بيانات المتابعة فقط؛ لا ترفع ملفات الجوازات أو الهويات.</li><li>مسح بيانات المتصفح يحذف الخزنة ما لم تحتفظ بنسخة.</li></ul></article><article class="danger-zone"><h2>حذف بيانات المركز</h2><p>يحذف الخزنة نهائيًا من هذا الجهاز.</p><button id="deleteVaultBtn">حذف الخزنة</button></article></div></section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="itemDialog"><form id="itemForm"><div class="dialog-head"><h2 id="dialogTitle"></h2><button type="button" data-close aria-label="إغلاق">×</button></div><input type="hidden" name="kind"><input type="hidden" name="id"><div id="dialogFields"></div><p class="form-message" id="dialogMessage" role="alert"></p><div class="dialog-actions"><button type="button" data-close>إلغاء</button><button class="primary" type="submit">حفظ</button></div></form></dialog>
+  <input id="backupFile" type="file" accept="application/json,.json" hidden>
+  <script src="command-center.js"></script>
+</body>
+</html>
