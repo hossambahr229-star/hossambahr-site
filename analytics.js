@@ -1,4 +1,9 @@
 (function () {
+  document.querySelectorAll('a[target="_blank"]').forEach(function (link) {
+    var rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+    rel.add('noopener');
+    link.setAttribute('rel', Array.from(rel).join(' '));
+  });
   'use strict';
 
   var measurementId = 'G-KW740N68KN';
