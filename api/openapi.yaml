@@ -1,0 +1,488 @@
+openapi: 3.1.0
+info:
+  title: Hossam Bahr Business Platform API
+  version: 1.0.0
+  description: Contract for authenticated company profiles, service requests, private documents, status events, and hosted payments.
+servers:
+  - url: https://api.hossambahr.com/v1
+    description: Production (enabled only after security and legal release gates pass)
+security:
+  - bearerAuth: []
+tags:
+  - name: Public
+  - name: Profile
+  - name: Companies
+  - name: Requests
+  - name: Documents
+  - name: Payments
+paths:
+  /health:
+    get:
+      tags: [Public]
+      security: []
+      operationId: health
+      responses:
+        '200':
+          description: Service is ready
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status, time]
+                properties:
+                  status: { const: ok }
+                  time: { type: string, format: date-time }
+  /services:
+    get:
+      tags: [Public]
+      security: []
+      operationId: listServices
+      parameters:
+        - in: query
+          name: emirate
+          schema: { type: string }
+        - in: query
+          name: query
+          schema: { type: string, maxLength: 120 }
+      responses:
+        '200':
+          description: Current reviewed service versions
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Service' }
+  /me:
+    get:
+      tags: [Profile]
+      operationId: getProfile
+      responses:
+        '200':
+          description: Current user profile
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Profile' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+    patch:
+      tags: [Profile]
+      operationId: updateProfile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                displayName: { type: string, minLength: 2, maxLength: 100 }
+                phone: { type: string, pattern: '^\\+[1-9][0-9]{7,14}$' }
+                locale: { enum: [ar-AE, en-AE] }
+      responses:
+        '200':
+          description: Updated profile
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Profile' }
+        '400': { $ref: '#/components/responses/Problem' }
+  /companies:
+    get:
+      tags: [Companies]
+      operationId: listCompanies
+      responses:
+        '200':
+          description: Companies visible to the signed-in user
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Company' }
+    post:
+      tags: [Companies]
+      operationId: createCompany
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [legalName, emirate]
+              properties:
+                legalName: { type: string, minLength: 2, maxLength: 160 }
+                emirate: { $ref: '#/components/schemas/Emirate' }
+      responses:
+        '201':
+          description: Company created and caller assigned as owner
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Company' }
+        '400': { $ref: '#/components/responses/Problem' }
+  /companies/{companyId}:
+    get:
+      tags: [Companies]
+      operationId: getCompany
+      parameters:
+        - $ref: '#/components/parameters/CompanyId'
+      responses:
+        '200':
+          description: Company visible to current member
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Company' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /requests:
+    get:
+      tags: [Requests]
+      operationId: listRequests
+      parameters:
+        - in: query
+          name: companyId
+          schema: { type: string, format: uuid }
+        - in: query
+          name: status
+          schema: { $ref: '#/components/schemas/RequestStatus' }
+      responses:
+        '200':
+          description: Requests authorized for the current user
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Request' }
+    post:
+      tags: [Requests]
+      operationId: createRequest
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [serviceVersionId]
+              properties:
+                serviceVersionId: { type: string, format: uuid }
+                companyId: { type: string, format: uuid }
+                note: { type: string, maxLength: 1000 }
+      responses:
+        '201':
+          description: Draft request created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Request' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /requests/{requestId}:
+    get:
+      tags: [Requests]
+      operationId: getRequest
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Request and customer-visible status
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Request' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      tags: [Requests]
+      operationId: updateDraftRequest
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - in: header
+          name: If-Match
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                note: { type: string, maxLength: 1000 }
+      responses:
+        '200':
+          description: Draft updated
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Request' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /requests/{requestId}/submit:
+    post:
+      tags: [Requests]
+      operationId: submitRequest
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '200':
+          description: Request validated and submitted
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Request' }
+        '422': { $ref: '#/components/responses/Problem' }
+  /requests/{requestId}/events:
+    get:
+      tags: [Requests]
+      operationId: listCustomerVisibleEvents
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+      responses:
+        '200':
+          description: Customer-visible immutable timeline
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/RequestEvent' }
+  /requests/{requestId}/documents/upload-session:
+    post:
+      tags: [Documents]
+      operationId: createDocumentUploadSession
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [fileName, mediaType, sizeBytes]
+              properties:
+                fileName: { type: string, minLength: 1, maxLength: 180 }
+                mediaType: { enum: [application/pdf, image/jpeg, image/png] }
+                sizeBytes: { type: integer, minimum: 1, maximum: 26214400 }
+      responses:
+        '201':
+          description: Short-lived direct-to-private-storage upload session
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [documentId, uploadUrl, expiresAt]
+                properties:
+                  documentId: { type: string, format: uuid }
+                  uploadUrl: { type: string, format: uri, writeOnly: true }
+                  expiresAt: { type: string, format: date-time }
+        '413': { $ref: '#/components/responses/Problem' }
+  /documents/{documentId}/complete:
+    post:
+      tags: [Documents]
+      operationId: completeDocumentUpload
+      parameters:
+        - $ref: '#/components/parameters/DocumentId'
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [sha256]
+              properties:
+                sha256: { type: string, pattern: '^[a-f0-9]{64}$' }
+      responses:
+        '202':
+          description: File quarantined pending malware and content checks
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Document' }
+  /documents/{documentId}/download-session:
+    post:
+      tags: [Documents]
+      operationId: createDocumentDownloadSession
+      parameters:
+        - $ref: '#/components/parameters/DocumentId'
+      responses:
+        '201':
+          description: Authorized short-lived download URL; access is audited
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [downloadUrl, expiresAt]
+                properties:
+                  downloadUrl: { type: string, format: uri, writeOnly: true }
+                  expiresAt: { type: string, format: date-time }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /requests/{requestId}/payment-session:
+    post:
+      tags: [Payments]
+      operationId: createHostedPaymentSession
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '201':
+          description: Hosted checkout session; card details never enter the platform
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [paymentId, checkoutUrl, governmentFeeMinor, platformFeeMinor, currency]
+                properties:
+                  paymentId: { type: string, format: uuid }
+                  checkoutUrl: { type: string, format: uri, writeOnly: true }
+                  governmentFeeMinor: { type: integer, minimum: 0 }
+                  platformFeeMinor: { type: integer, minimum: 0 }
+                  currency: { const: AED }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /webhooks/payments/{provider}:
+    post:
+      tags: [Payments]
+      security: []
+      operationId: receivePaymentWebhook
+      parameters:
+        - in: path
+          name: provider
+          required: true
+          schema: { type: string, pattern: '^[a-z0-9-]{2,30}$' }
+        - in: header
+          name: X-Webhook-Signature
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        '204': { description: Signature verified and event accepted idempotently }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    CompanyId:
+      in: path
+      name: companyId
+      required: true
+      schema: { type: string, format: uuid }
+    RequestId:
+      in: path
+      name: requestId
+      required: true
+      schema: { type: string, format: uuid }
+    DocumentId:
+      in: path
+      name: documentId
+      required: true
+      schema: { type: string, format: uuid }
+    IdempotencyKey:
+      in: header
+      name: Idempotency-Key
+      required: true
+      schema: { type: string, minLength: 16, maxLength: 100 }
+  schemas:
+    Emirate:
+      enum: [dubai, abu_dhabi, sharjah, ajman, ras_al_khaimah, umm_al_quwain, fujairah]
+    RequestStatus:
+      enum: [draft, submitted, under_review, awaiting_documents, ready_for_payment, in_progress, awaiting_authority, completed, cancelled, rejected]
+    Profile:
+      type: object
+      required: [id, displayName, locale]
+      properties:
+        id: { type: string, format: uuid, readOnly: true }
+        displayName: { type: string }
+        phone: { type: string }
+        email: { type: string, format: email }
+        locale: { enum: [ar-AE, en-AE] }
+    Company:
+      type: object
+      required: [id, legalName, emirate, roles]
+      properties:
+        id: { type: string, format: uuid, readOnly: true }
+        legalName: { type: string }
+        emirate: { $ref: '#/components/schemas/Emirate' }
+        roles:
+          type: array
+          items: { enum: [owner, manager, operator, reviewer, accountant, auditor] }
+    Service:
+      type: object
+      required: [id, versionId, slug, titleAr, emirate, authority, officialUrl, sourceCheckedAt, platformFeeMinor, currency]
+      properties:
+        id: { type: string, format: uuid }
+        versionId: { type: string, format: uuid }
+        slug: { type: string }
+        titleAr: { type: string }
+        emirate: { type: string }
+        authority: { type: string }
+        officialUrl: { type: string, format: uri }
+        sourceCheckedAt: { type: string, format: date-time }
+        requirements: { type: array, items: { type: string } }
+        governmentFeeMinor: { type: [integer, 'null'], minimum: 0 }
+        platformFeeMinor: { type: integer, minimum: 0 }
+        currency: { const: AED }
+        durationTextAr: { type: [string, 'null'] }
+    Request:
+      type: object
+      required: [id, reference, serviceVersionId, status, createdAt, updatedAt]
+      properties:
+        id: { type: string, format: uuid, readOnly: true }
+        reference: { type: string, pattern: '^HB-[A-Z0-9]{10,20}$', readOnly: true }
+        companyId: { type: [string, 'null'], format: uuid }
+        serviceVersionId: { type: string, format: uuid }
+        status: { $ref: '#/components/schemas/RequestStatus' }
+        note: { type: [string, 'null'] }
+        createdAt: { type: string, format: date-time, readOnly: true }
+        updatedAt: { type: string, format: date-time, readOnly: true }
+        etag: { type: string, readOnly: true }
+    RequestEvent:
+      type: object
+      required: [id, type, createdAt]
+      properties:
+        id: { type: integer, readOnly: true }
+        type: { type: string }
+        fromStatus: { oneOf: [{ $ref: '#/components/schemas/RequestStatus' }, { type: 'null' }] }
+        toStatus: { oneOf: [{ $ref: '#/components/schemas/RequestStatus' }, { type: 'null' }] }
+        note: { type: [string, 'null'] }
+        createdAt: { type: string, format: date-time, readOnly: true }
+    Document:
+      type: object
+      required: [id, mediaType, sizeBytes, status, createdAt]
+      properties:
+        id: { type: string, format: uuid, readOnly: true }
+        mediaType: { type: string }
+        sizeBytes: { type: integer }
+        status: { enum: [pending_upload, quarantined, available, rejected, deleted] }
+        createdAt: { type: string, format: date-time, readOnly: true }
+    Problem:
+      type: object
+      required: [type, title, status, requestId]
+      properties:
+        type: { type: string, format: uri-reference }
+        title: { type: string }
+        status: { type: integer }
+        detail: { type: string }
+        requestId: { type: string }
+  responses:
+    Problem:
+      description: Validation or business rule failure
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
+    Unauthorized:
+      description: Authentication or webhook signature failed
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
+    NotFound:
+      description: Resource does not exist or is not visible to the caller
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
+    Conflict:
+      description: Idempotency, concurrency, or state conflict
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
