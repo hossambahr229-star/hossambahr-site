@@ -54,8 +54,6 @@ for item in items:
         errors.append(f"sitemap missing: {relative}")
     if expected not in service_sitemap:
         errors.append(f"service sitemap missing: {relative}")
-    if f'href="{relative.as_posix()}"' not in homepage:
-        errors.append(f"homepage contextual link missing: {relative}")
     if f'href="services/{item["slug"]}.html"' not in hub:
         errors.append(f"hub link missing: {relative}")
     blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.I | re.S)
@@ -83,6 +81,8 @@ if generated != declared:
     errors.append(f"generated/data mismatch: generated={len(generated)} declared={len(declared)}")
 if "https://hossambahr.com/service-guides.html" not in sitemap:
     errors.append("guide hub missing from sitemap")
+if 'href="service-guides.html"' not in homepage:
+    errors.append("homepage must link to the service guide hub")
 if "Sitemap: https://hossambahr.com/sitemap-services.xml" not in robots:
     errors.append("service sitemap missing from robots.txt")
 for xml_name in ["sitemap-services.xml", "feed.xml"]:

@@ -42,15 +42,34 @@
     var link = event.target.closest('a');
     if (!link) return;
     var href = link.getAttribute('href') || '';
-    if (/wa\.me|whatsapp/i.test(href)) sendEvent('whatsapp_click', { page_path: location.pathname });
-    else if (href.indexOf('tel:') === 0) sendEvent('phone_click', { page_path: location.pathname });
-    else if (href.indexOf('mailto:') === 0) sendEvent('email_click', { page_path: location.pathname });
+    var trackedAs = link.getAttribute('data-track') || '';
+    var label = (link.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 100);
+    if (/wa\.me|whatsapp/i.test(href)) {
+      sendEvent('whatsapp_click', { page_path: location.pathname, link_text: label });
+      if (trackedAs === 'service-request' || /اطلب|تنفيذ|تجهيز|مراجعة/.test(label)) {
+        sendEvent('service_request_click', { page_path: location.pathname, link_text: label });
+      }
+    } else if (href.indexOf('tel:') === 0) {
+      sendEvent('phone_click', { page_path: location.pathname });
+    } else if (href.indexOf('mailto:') === 0) {
+      sendEvent('email_click', { page_path: location.pathname });
+    }
+    if (trackedAs === 'official-service' || (/^https?:/i.test(href) && /nofollow/.test(link.rel || ''))) {
+      sendEvent('official_service_click', { page_path: location.pathname, link_url: href, link_text: label });
+    }
   });
 
   document.addEventListener('submit', function (event) {
-    if (event.target && (event.target.id === 'requestForm' || event.target.classList.contains('lead-form'))) {
+    if (!event.target) return;
+    var formId = event.target.id || '';
+    if (formId === 'requestForm' || event.target.classList.contains('lead-form')) {
       sendEvent('generate_lead', { lead_source: 'website_form', page_path: location.pathname });
     }
+    if (formId === 'heroFinder') sendEvent('service_search', { search_location: 'homepage_hero', page_path: location.pathname });
+    if (formId === 'serviceSelector') sendEvent('selector_complete', { page_path: location.pathname });
+    if (formId === 'readinessForm') sendEvent('readiness_complete', { page_path: location.pathname });
+    if (formId === 'calculatorForm' || formId === 'feeCalculator') sendEvent('calculator_complete', { page_path: location.pathname });
+    if (formId === 'trackingForm') sendEvent('track_request_attempt', { page_path: location.pathname });
   });
 
   function setConsent(value) {
@@ -70,7 +89,7 @@
     banner.className = 'hb-cookie';
     banner.setAttribute('role', 'dialog');
     banner.setAttribute('aria-label', 'إعدادات الخصوصية');
-    banner.innerHTML = '<p>نستخدم ملفات تعريف الارتباط لقياس زيارات الموقع وتحسين الخدمة. <a href="privacy.html">سياسة الخصوصية</a></p><div><button class="accept" type="button">السماح بالقياس</button><button class="reject" type="button">رفض</button></div>';
+    banner.innerHTML = '<p>نستخدم ملفات تعريف الارتباط لقياس زيارات الموقع وتحسين الخدمة. <a href="/privacy.html">سياسة الخصوصية</a></p><div><button class="accept" type="button">السماح بالقياس</button><button class="reject" type="button">رفض</button></div>';
     document.body.appendChild(banner);
     banner.querySelector('.accept').addEventListener('click', function () { setConsent('granted'); });
     banner.querySelector('.reject').addEventListener('click', function () { setConsent('denied'); });
