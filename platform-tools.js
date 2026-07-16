@@ -15,6 +15,8 @@
     education:{category:'معادلة الشهادات',label:'معادلة أو اعتراف بشهادة',page:'knowledge-hub.html#education',official:'https://moe.gov.ae/en/eservices/pages/default.aspx',requirements:['الشهادة النهائية','كشف الدرجات','التصديقات والترجمة عند الحاجة']}
   };
   var selector=document.querySelector('#serviceSelector');
+  var presetGoal=new URLSearchParams(location.search).get('goal');
+  if(presetGoal&&goalMap[presetGoal]){var goalControl=document.querySelector('#serviceGoal');if(goalControl)goalControl.value=presetGoal}
   selector&&selector.addEventListener('submit',function(event){
     event.preventDefault();
     var type=document.querySelector('#customerType').value,goal=document.querySelector('#serviceGoal').value,emirate=document.querySelector('#serviceEmirate').value,stage=document.querySelector('#journeyStage').value,config=goalMap[goal];
