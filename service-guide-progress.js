@@ -1,4 +1,14 @@
 (function () {
+  var serviceTitle = (document.querySelector('h1') || {}).textContent || document.title.split('|')[0];
+  var heroMeta = ((document.querySelector('.generated-hero>div>span') || {}).textContent || '').split('·');
+  var emirate = heroMeta.length > 1 ? heroMeta[heroMeta.length - 1].trim() : '';
+  var requestUrl = '../start-request.html?service=' + encodeURIComponent(serviceTitle.trim()) + '&emirate=' + encodeURIComponent(emirate);
+  document.querySelectorAll('[data-track="service-request"]').forEach(function (link) {
+    link.href = requestUrl;
+    link.removeAttribute('target');
+    link.removeAttribute('rel');
+    if (link.classList.contains('floating-guide-wa')) link.textContent = 'ابدأ الطلب';
+  });
   var card = document.querySelector('.prep-card');
   if (!card) return;
   var checks = Array.from(card.querySelectorAll('input[type="checkbox"]'));

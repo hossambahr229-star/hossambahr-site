@@ -24,9 +24,9 @@
   function categoryMatches(item){return !category.value||item.category===category.value;}
   function queryMatches(item,value){var words=tokens(value);if(!words.length)return true;var text=norm([item.title,item.description,item.authority,item.category,item.emirate,item.country].join(' '));var matched=words.filter(function(word){return text.indexOf(word)!==-1;}).length;return matched>=Math.max(1,Math.ceil(words.length*.5));}
   function card(item){
-    var team='https://wa.me/971503780460?text='+encodeURIComponent('مرحباً، أريد تجهيز خدمة: '+item.title+' — '+item.emirate);
+    var team='start-request.html?service='+encodeURIComponent(item.title)+'&emirate='+encodeURIComponent(item.emirate);
     var primaryLabel=item.type==='guide'?'التفاصيل والمتطلبات':'المسار الرسمي ↗';
-    return '<article class="national-card"><div><span>'+item.emirate+'</span><i>'+item.category+'</i></div><h2>'+item.title+'</h2><p>'+item.description+'</p><dl><div><dt>الجهة</dt><dd>'+item.authority+'</dd></div>'+(item.duration?'<div><dt>المدة المنشورة</dt><dd>'+item.duration+'</dd></div>':'')+(item.fee?'<div><dt>الرسوم المنشورة</dt><dd>'+item.fee+'</dd></div>':'')+'</dl><small>آخر مراجعة: '+(item.updated||data.reviewed)+'</small><footer><a href="'+item.url+'" '+(item.url.indexOf('http')===0?'target="_blank" rel="noopener nofollow"':'')+'>'+primaryLabel+'</a><a href="'+team+'" target="_blank" rel="noopener">اطلب التنفيذ</a></footer></article>';
+    return '<article class="national-card"><div><span>'+item.emirate+'</span><i>'+item.category+'</i></div><h2>'+item.title+'</h2><p>'+item.description+'</p><dl><div><dt>الجهة</dt><dd>'+item.authority+'</dd></div>'+(item.duration?'<div><dt>المدة المنشورة</dt><dd>'+item.duration+'</dd></div>':'')+(item.fee?'<div><dt>الرسوم المنشورة</dt><dd>'+item.fee+'</dd></div>':'')+'</dl><small>آخر مراجعة: '+(item.updated||data.reviewed)+'</small><footer><a href="'+item.url+'" '+(item.url.indexOf('http')===0?'target="_blank" rel="noopener nofollow"':'')+'>'+primaryLabel+'</a><a href="'+team+'">ابدأ الطلب</a></footer></article>';
   }
   function draw(){
     var list=data.services.filter(function(item){return emirateMatches(item)&&categoryMatches(item)&&queryMatches(item,query.value);});
