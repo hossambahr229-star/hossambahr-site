@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="command-center.css">
 </head>
 <body>
-  <div class="security-bar">🔒 بيانات المركز تُشفّر وتبقى على هذا الجهاز فقط <a href="#security">اعرف الحدود المهمة</a></div>
+  <div class="security-bar">نسخة محلية تجريبية · البيانات تُشفّر وتبقى على هذا الجهاز فقط <a href="#security">اعرف الحدود المهمة</a></div>
   <header class="cc-header">
     <a class="cc-brand" href="index.html"><i>HB</i><span><b>مركز القيادة</b><small>HOSSAM BAHR OS</small></span></a>
     <div class="cc-actions"><span id="saveState" aria-live="polite"></span><button id="lockBtn" class="quiet" type="button" hidden>قفل المركز</button><a href="platform-tools.html#selector">محدد الخدمة</a><a href="track-request.html">متابعة طلب</a><a href="index.html">الموقع الرئيسي</a></div>
@@ -71,5 +71,5 @@
   <dialog id="itemDialog"><form id="itemForm"><div class="dialog-head"><h2 id="dialogTitle"></h2><button type="button" data-close aria-label="إغلاق">×</button></div><input type="hidden" name="kind"><input type="hidden" name="id"><div id="dialogFields"></div><p class="form-message" id="dialogMessage" role="alert"></p><div class="dialog-actions"><button type="button" data-close>إلغاء</button><button class="primary" type="submit">حفظ</button></div></form></dialog>
   <input id="backupFile" type="file" accept="application/json,.json" aria-label="اختيار ملف النسخة الاحتياطية" hidden>
   <script src="command-center.js"></script>
-</body>
+<script src="analytics.js"></script></body>
 </html>

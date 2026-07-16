@@ -1,0 +1,9 @@
+body{font-family:Alexandria,Tahoma,Arial,sans-serif}
+a,button,input,select{font-family:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #d5b66f;outline-offset:3px}
+.header{background:#fbfaf6}.brand small{letter-spacing:1.2px}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.trust-grid article{padding:22px;border:1px solid #dce4e2;border-radius:14px;background:#fff}
+.trust-grid b,.trust-grid span{display:block}.trust-grid b{color:#0b443b;font-size:16px}.trust-grid span{margin-top:7px;color:#65756f;font-size:12px;line-height:1.75}
+@media(max-width:760px){.hero h1{font-size:clamp(32px,10vw,46px)}.trust-grid{grid-template-columns:1fr 1fr}.header{padding-inline:18px}.section{padding-inline:20px}}
+@media(max-width:480px){.trust-grid{grid-template-columns:1fr}}
