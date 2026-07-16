@@ -8,6 +8,9 @@ ROOT = Path(__file__).resolve().parents[1]
 items = json.loads((ROOT / "content" / "service-guides.json").read_text(encoding="utf-8"))
 hub = (ROOT / "service-guides.html").read_text(encoding="utf-8")
 sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+service_sitemap = (ROOT / "sitemap-services.xml").read_text(encoding="utf-8")
+homepage = (ROOT / "index.html").read_text(encoding="utf-8")
+robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
 errors = []
 titles = set()
 descriptions = set()
@@ -49,6 +52,10 @@ for item in items:
             errors.append(f"missing required phrase in {relative}: {phrase}")
     if expected not in sitemap:
         errors.append(f"sitemap missing: {relative}")
+    if expected not in service_sitemap:
+        errors.append(f"service sitemap missing: {relative}")
+    if f'href="{relative.as_posix()}"' not in homepage:
+        errors.append(f"homepage contextual link missing: {relative}")
     if f'href="services/{item["slug"]}.html"' not in hub:
         errors.append(f"hub link missing: {relative}")
     blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.I | re.S)
@@ -59,6 +66,8 @@ for item in items:
             json.loads(block)
         except json.JSONDecodeError:
             errors.append(f"invalid JSON-LD: {relative}")
+    if 'property="og:title"' not in html or '"@type":"WebPage"' not in html:
+        errors.append(f"discovery metadata missing: {relative}")
     for target in re.findall(r'(?:href|src)="([^"]+)"', html, re.I):
         if target.startswith(("http:", "https:", "mailto:", "tel:", "#", "data:")):
             continue
@@ -74,6 +83,14 @@ if generated != declared:
     errors.append(f"generated/data mismatch: generated={len(generated)} declared={len(declared)}")
 if "https://hossambahr.com/service-guides.html" not in sitemap:
     errors.append("guide hub missing from sitemap")
+if "Sitemap: https://hossambahr.com/sitemap-services.xml" not in robots:
+    errors.append("service sitemap missing from robots.txt")
+for xml_name in ["sitemap-services.xml", "feed.xml"]:
+    try:
+        import xml.etree.ElementTree as ET
+        ET.parse(ROOT / xml_name)
+    except (ET.ParseError, OSError) as exc:
+        errors.append(f"invalid {xml_name}: {exc}")
 
 if errors:
     print(f"Service guide validation failed with {len(errors)} errors")
