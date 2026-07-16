@@ -13,6 +13,7 @@ OUTPUT = ROOT / "services"
 BASE = "https://hossambahr.com"
 PHONE = "971503780460"
 TODAY = date.today().isoformat()
+PUBLISHED = "2026-07-16"
 
 
 def text(value: str) -> str:
@@ -62,6 +63,40 @@ def json_ld(item: dict) -> str:
     return json.dumps(graph, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
 
+def discovery_markup(item: dict) -> str:
+    canonical = f"{BASE}/services/{item['slug']}.html"
+    title = f"{item['title']} | دليل حسام بحر"
+    description = f"دليل {item['title']}: المتطلبات والخطوات والرسوم والمدة والمشكلات الشائعة، مع الرابط الحكومي وخيار تجهيز الملف."
+    web_page = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": canonical + "#webpage",
+        "url": canonical,
+        "name": item["title"],
+        "description": description,
+        "inLanguage": "ar-AE",
+        "datePublished": PUBLISHED,
+        "dateModified": TODAY,
+        "isPartOf": {"@type": "WebSite", "@id": BASE + "/#website", "name": "منصة حسام بحر"},
+        "about": {"@type": "Thing", "name": item["category"]},
+    }
+    structured = json.dumps(web_page, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    return f'<meta property="og:type" content="article"><meta property="og:locale" content="ar_AE"><meta property="og:site_name" content="منصة حسام بحر"><meta property="og:title" content="{text(title)}"><meta property="og:description" content="{text(description)}"><meta property="og:url" content="{canonical}"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="{text(title)}"><meta name="twitter:description" content="{text(description)}"><meta property="article:published_time" content="{PUBLISHED}"><meta property="article:modified_time" content="{TODAY}"><script type="application/ld+json">{structured}</script>'
+
+
+def enhance_page_html(html: str, item: dict) -> str:
+    return html.replace("</head>", discovery_markup(item) + "</head>", 1)
+
+
+def enhance_hub_html(html: str) -> str:
+    title = "خدمات الشركات والعمل والإقامة في الإمارات | حسام بحر"
+    description = "أدلة معاملات الشركات والعمل والإقامة في الإمارات: المستندات والخطوات والرسوم والمدة والرابط الحكومي وخيار تجهيز وتنفيذ الخدمة."
+    html = html.replace("أدلة معاملات الإمارات خطوة بخطوة | حسام بحر", title, 1)
+    html = html.replace("أدلة مستقلة لأهم معاملات الشركات والعمل والإقامة في الإمارات، تعرض المستندات والخطوات والرسوم والمدة والرابط الحكومي وخيار تنفيذ الخدمة.", description, 1)
+    social = f'<meta property="og:type" content="website"><meta property="og:locale" content="ar_AE"><meta property="og:site_name" content="منصة حسام بحر"><meta property="og:title" content="{text(title)}"><meta property="og:description" content="{text(description)}"><meta property="og:url" content="{BASE}/service-guides.html"><meta name="twitter:card" content="summary"><link rel="alternate" type="application/rss+xml" title="أحدث أدلة خدمات حسام بحر" href="{BASE}/feed.xml">'
+    return html.replace("</head>", social + "</head>", 1)
+
+
 def page(item: dict, related: list[dict]) -> str:
     title = text(item["title"])
     canonical = f"{BASE}/services/{item['slug']}.html"
@@ -86,10 +121,21 @@ def update_sitemap(items: list[dict]) -> None:
     current = path.read_text(encoding="utf-8")
     current = re.sub(r"\n  <url><loc>https://hossambahr\.com/service-guides\.html</loc>.*?</url>", "", current)
     current = re.sub(r"\n  <url><loc>https://hossambahr\.com/services/[^<]+</loc>.*?</url>", "", current)
+    current = re.sub(r"\s*</urlset>\s*$", "\n</urlset>\n", current)
     entries = [f"  <url><loc>{BASE}/service-guides.html</loc><lastmod>{TODAY}</lastmod></url>"]
     entries.extend(f"  <url><loc>{BASE}/services/{item['slug']}.html</loc><lastmod>{TODAY}</lastmod></url>" for item in items)
-    current = current.replace("</urlset>", "\n" + "\n".join(entries) + "\n</urlset>")
+    current = current.replace("</urlset>", "\n".join(entries) + "\n</urlset>")
     path.write_text(current, encoding="utf-8", newline="\n")
+
+
+def write_discovery_feeds(items: list[dict]) -> None:
+    urls = [f"{BASE}/service-guides.html"] + [f"{BASE}/services/{item['slug']}.html" for item in items]
+    entries = "\n".join(f"  <url><loc>{url}</loc><lastmod>{TODAY}</lastmod></url>" for url in urls)
+    service_sitemap = f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{entries}\n</urlset>\n'
+    (ROOT / "sitemap-services.xml").write_text(service_sitemap, encoding="utf-8", newline="\n")
+    feed_items = "".join(f'<item><title>{text(item["title"])}</title><link>{BASE}/services/{item["slug"]}.html</link><guid isPermaLink="true">{BASE}/services/{item["slug"]}.html</guid><description>{text(item["summary"])}</description><pubDate>Thu, 16 Jul 2026 00:00:00 +0400</pubDate></item>' for item in items)
+    feed = f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>أدلة خدمات حسام بحر</title><link>{BASE}/service-guides.html</link><description>أحدث أدلة معاملات الشركات والعمل والإقامة في الإمارات</description><language>ar-AE</language><lastBuildDate>Thu, 16 Jul 2026 00:00:00 +0400</lastBuildDate>{feed_items}</channel></rss>\n'
+    (ROOT / "feed.xml").write_text(feed, encoding="utf-8", newline="\n")
 
 
 def main() -> None:
@@ -104,12 +150,14 @@ def main() -> None:
         related = [row for row in items if row["slug"] != item["slug"] and row["category"] == item["category"]][:2]
         if len(related) < 2:
             related.extend(row for row in items if row["slug"] != item["slug"] and row not in related)
-        (OUTPUT / f"{item['slug']}.html").write_text(page(item, related[:2]), encoding="utf-8", newline="\n")
+        rendered = enhance_page_html(page(item, related[:2]), item)
+        (OUTPUT / f"{item['slug']}.html").write_text(rendered, encoding="utf-8", newline="\n")
     for stale in OUTPUT.glob("*.html"):
         if stale.name not in expected:
             stale.unlink()
-    (ROOT / "service-guides.html").write_text(hub(items), encoding="utf-8", newline="\n")
+    (ROOT / "service-guides.html").write_text(enhance_hub_html(hub(items)), encoding="utf-8", newline="\n")
     update_sitemap(items)
+    write_discovery_feeds(items)
     print(f"Generated {len(items)} service guides and hub")
 
 
