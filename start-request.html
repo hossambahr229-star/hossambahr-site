@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071f33">
+  <meta name="description" content="ابدأ طلب خدمة أعمال أو معاملة حكومية في الإمارات: حدد الخدمة، افحص الجاهزية، أنشئ رقم طلب، ثم أرسل الملخص المنظم لفريق حسام بحر.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://hossambahr.com/start-request.html">
+  <meta property="og:type" content="website"><meta property="og:locale" content="ar_AE"><meta property="og:site_name" content="منصة حسام بحر"><meta property="og:title" content="ابدأ طلبك | منصة حسام بحر"><meta property="og:description" content="مسار منظم وآمن لتجهيز الطلب قبل إرسال المستندات أو دفع أي رسوم.">
+  <title>ابدأ طلب خدمة في الإمارات | منصة حسام بحر</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="request-intake.css">
+</head>
+<body>
+  <a class="skip" href="#requestWizard">انتقل إلى نموذج الطلب</a>
+  <div class="request-top"><span>بوابة بدء الطلب · لا ترفع مستندات حساسة هنا</span><a href="tel:+971503780460" dir="ltr">0503780460</a></div>
+  <header><a class="request-brand" href="index.html"><i>HB</i><span><b>حسام بحر</b><small>BUSINESS EXECUTION DESK</small></span></a><nav><a href="uae-service-catalog.html">كل الخدمات</a><a href="platform-tools.html#readiness">فحص الجاهزية</a><a href="#savedRequests">طلباتي</a><a href="command-center.html">مركز القيادة</a></nav><a class="header-action" href="#requestWizard">ابدأ الطلب</a></header>
+
+  <main>
+    <section class="request-hero"><div><span>من الاختيار إلى طلب قابل للتنفيذ</span><h1>ابدأ معاملتك<br><em>بملف منظم.</em></h1><p>نحوّل اختيارك إلى رقم طلب وقائمة تجهيز وملخص واضح. تحفظ البيانات على جهازك، ثم تقرر إرسال الطلب إلى فريقنا أو إضافته إلى مركز القيادة.</p><div class="hero-points"><b>بدون تسجيل</b><b>بدون رفع جوازات</b><b>بدون دفع قبل عرض مكتوب</b></div></div><aside><strong>4 خطوات</strong><ol><li><i>1</i>حدد الخدمة</li><li><i>2</i>افحص التجهيز</li><li><i>3</i>راجع الرسوم</li><li><i>4</i>أنشئ الطلب وأرسله</li></ol></aside></section>
+
+    <section class="request-shell" id="requestWizard">
+      <div class="request-progress" aria-label="تقدم الطلب"><button type="button" class="active" data-step-jump="1"><i>1</i><span>الخدمة</span></button><button type="button" data-step-jump="2"><i>2</i><span>الجاهزية</span></button><button type="button" data-step-jump="3"><i>3</i><span>الرسوم</span></button><button type="button" data-step-jump="4"><i>4</i><span>التأكيد</span></button></div>
+      <form id="requestForm" novalidate>
+        <section class="request-step active" data-step="1"><div class="step-copy"><span>الخطوة الأولى</span><h2>ما الخدمة التي تريد تنفيذها؟</h2><p>اختر الإمارة والخدمة. إذا وصلت من دليل خدمة فسنملأها تلقائيًا.</p></div><div class="step-card"><label>الإمارة<select id="requestEmirate" required><option value="">اختر الإمارة</option><option>دبي</option><option>أبوظبي</option><option>الشارقة</option><option>عجمان</option><option>رأس الخيمة</option><option>أم القيوين</option><option>الفجيرة</option><option>اتحادي</option></select></label><label>الخدمة<select id="requestService" required><option value="">اختر الخدمة</option></select></label><label>صفة مقدم الطلب<select id="requestParty"><option>شركة قائمة</option><option>مستثمر أو شريك</option><option>فرد</option><option>صاحب عمل أو مفوض</option></select></label><label>الأولوية<select id="requestPriority"><option>عادية</option><option>قريبة — خلال 7 أيام</option><option>عاجلة — تحتاج مراجعة اليوم</option></select></label><label class="wide">اشرح الحالة باختصار<textarea id="requestNote" maxlength="500" placeholder="مثال: الرخصة سارية وأريد إضافة نشاط جديد. لا تكتب رقم هوية أو جواز."></textarea><small><b id="noteCount">0</b>/500 · لا تدخل بيانات حساسة.</small></label></div><p class="step-error" id="stepOneError"></p><div class="step-actions"><a href="platform-tools.html#selector">لست متأكدًا من الخدمة</a><button type="button" data-next="2">التالي: فحص الجاهزية ←</button></div></section>
+
+        <section class="request-step" data-step="2" hidden><div class="step-copy"><span>الخطوة الثانية</span><h2>ماذا أصبح جاهزًا؟</h2><p>علّم المعلومات المتوفرة فقط. لا ترفع الملفات في هذه الصفحة.</p></div><div class="readiness-card"><div class="readiness-score"><strong id="requestReadinessScore">0%</strong><span>جاهزية أولية</span><i><b id="requestReadinessBar"></b></i></div><div class="request-checklist" id="requestChecklist"></div></div><div class="safe-notice"><b>قناة آمنة أولًا</b><span>بعد مراجعة الطلب سيحدد الفريق طريقة آمنة لاستلام الوثائق المطلوبة. لا ترسل جوازًا أو هوية في رسالة عامة.</span></div><div class="step-actions"><button type="button" class="back" data-back="1">رجوع</button><button type="button" data-next="3">التالي: مراجعة الرسوم ←</button></div></section>
+
+        <section class="request-step" data-step="3" hidden><div class="step-copy"><span>الخطوة الثالثة</span><h2>شفافية قبل أي دفع</h2><p>نعرض ما هو معروف ونترك الرسوم المتغيرة للمراجعة والعرض المكتوب.</p></div><div class="fees-review"><article><span>الرسوم الحكومية</span><b id="requestGovernmentFee">تُراجع رسميًا</b><small id="requestFeeSource">بحسب الجهة والحالة</small></article><article><span>أتعاب حسام بحر</span><b>تُحدد في عرض مكتوب</b><small>بعد مراجعة النطاق والنواقص</small></article><article class="total"><span>الإجمالي</span><b>لا يعتمد قبل العرض</b><small>لن نطلب سدادًا من هذه الصفحة.</small></article></div><label class="fee-consent"><input id="requestConsent" type="checkbox" required><span><b>أفهم أن إنشاء الطلب لا يعني بدء التنفيذ أو استحقاق رسوم.</b><small>يبدأ العمل فقط بعد تأكيد النطاق والرسوم وقناة المستندات كتابةً.</small></span></label><p class="step-error" id="stepThreeError"></p><div class="step-actions"><button type="button" class="back" data-back="2">رجوع</button><button type="button" data-next="4">التالي: مراجعة الطلب ←</button></div></section>
+
+        <section class="request-step" data-step="4" hidden><div class="step-copy"><span>الخطوة الرابعة</span><h2>راجع الملخص وأنشئ رقم الطلب</h2><p>لا يتضمن الملخص مستندات أو أرقام هوية أو بيانات دفع.</p></div><div class="request-summary" id="requestSummary"></div><div class="step-actions"><button type="button" class="back" data-back="3">رجوع</button><button type="submit">إنشاء رقم الطلب وحفظه ←</button></div></section>
+      </form>
+
+      <section class="request-receipt" id="requestReceipt" hidden aria-live="polite"><div class="receipt-head"><div><span>تم إنشاء الطلب على جهازك</span><h2 id="receiptId"></h2></div><b>جاهز للإرسال</b></div><p>الطلب لم يصل إلى الفريق تلقائيًا. اضغط «إرسال عبر واتساب» ثم أرسل الرسالة داخل التطبيق.</p><ol><li class="done">تم إنشاء الملخص</li><li>إرسال الطلب للفريق</li><li>مراجعة النواقص</li><li>إصدار عرض مكتوب</li><li>بدء التنفيذ بعد الموافقة</li></ol><div class="receipt-actions"><a id="receiptWhatsapp" target="_blank" rel="noopener">إرسال الطلب عبر واتساب ←</a><a id="receiptCommand">إضافته إلى مركز القيادة</a><button id="copyRequest" type="button">نسخ الملخص</button><button id="downloadRequest" type="button">تنزيل نسخة</button></div><small>احتفظ برقم الطلب واستخدمه عند المتابعة على 0503780460.</small></section>
+    </section>
+
+    <section class="saved-requests" id="savedRequests"><div class="saved-head"><div><span>محفوظة على هذا الجهاز فقط</span><h2>طلباتك المحلية</h2></div><button id="clearCompleted" type="button">حذف الطلبات الملغاة</button></div><div id="savedRequestList"></div></section>
+    <section class="execution-boundary"><div><span>ما أصبح ممكنًا الآن</span><h2>طلب منظم، رقم مرجعي، تجهيز ومتابعة محلية.</h2></div><div><span>المرحلة الحالية</span><b>إنشاء الطلب وحفظه وإرساله</b><span>المرحلة التالية بعد البنية الخلفية</span><b>حسابات آمنة، رفع مشفر، دفع وحالة حية</b></div></section>
+  </main>
+  <footer><div><b>منصة حسام بحر</b><span>منصة خاصة وليست جهة حكومية.</span></div><div><a href="privacy.html">الخصوصية</a><a href="terms.html">الشروط</a><a href="contact.html">التواصل</a></div><p>© 2026 · لا يتم إرسال أي بيانات من نموذج الطلب دون اختيار المستخدم.</p></footer>
+  <script src="platform-data.js"></script><script src="request-intake.js"></script><script src="analytics.js"></script>
+</body>
+</html>

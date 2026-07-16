@@ -9,7 +9,9 @@
   const nav = document.querySelector('#mainNav');
   const normalize = value => (value || '').toLowerCase().normalize('NFKD').replace(/[ًٌٍَُِّْـ]/g, '').replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/[^\p{L}\p{N}\s]/gu,' ').replace(/\s+/g,' ').trim();
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
-  const teamUrl = item => `https://wa.me/971503780460?text=${encodeURIComponent(`مرحباً، أريد من فريق حسام بحر تجهيز وتنفيذ خدمة: ${item.title} — الجهة: ${item.authority} — الإمارة: ${item.emirate}`)}`;
+  const teamUrl = item => item._knowledge
+    ? `https://wa.me/971503780460?text=${encodeURIComponent(`مرحباً، أحتاج مساعدة بخصوص: ${item.title}`)}`
+    : `start-request.html?service=${encodeURIComponent(item.title)}&emirate=${encodeURIComponent(item.emirate || '')}`;
   const knowledgeItems = knowledge ? [
     ...knowledge.updates.map(x => ({title:x.title,description:x.summary,authority:x.authority,keywords:x.impact,kind:'تحديث رسمي'})),
     ...knowledge.faqs.map(x => ({title:x.q,description:x.a,authority:x.topic,keywords:'سؤال استفسار',kind:'سؤال وجواب'})),
@@ -136,7 +138,7 @@
         <h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p>
         <div class="readiness"><span>${requirements(item).length} عناصر للتجهيز</span><span>${steps(item).length} خطوات واضحة</span></div>
         ${item.duration || item.fee ? `<div class="result-facts">${item.duration ? `<span><b>المدة المنشورة</b>${escapeHtml(item.duration)}</span>` : ''}${item.fee ? `<span><b>الرسوم المنشورة</b>${escapeHtml(item.fee)}</span>` : ''}</div>` : ''}
-        <small class="service-updated">آخر مراجعة: ${escapeHtml(item.updated || data.reviewed)}</small><div class="result-bottom"><small>${escapeHtml(item.authority)}</small><div><button class="journey-start" data-journey="${index}">التفاصيل والمتطلبات</button><a class="team-shortcut" href="${teamUrl(item)}" target="_blank" rel="noopener">اطلبها من فريقنا</a><a class="official-shortcut" href="${escapeHtml(item.url)}" ${item.url.startsWith('http') ? 'target="_blank" rel="noopener nofollow"' : ''}>المسار الرسمي <b>↗</b></a></div></div>
+        <small class="service-updated">آخر مراجعة: ${escapeHtml(item.updated || data.reviewed)}</small><div class="result-bottom"><small>${escapeHtml(item.authority)}</small><div><button class="journey-start" data-journey="${index}">التفاصيل والمتطلبات</button><a class="team-shortcut" href="${teamUrl(item)}">ابدأ طلب التنفيذ</a><a class="official-shortcut" href="${escapeHtml(item.url)}" ${item.url.startsWith('http') ? 'target="_blank" rel="noopener nofollow"' : ''}>المسار الرسمي <b>↗</b></a></div></div>
       </article>`;
     }).join('');
     more.hidden = !hasExactResults || list.length <= limit;
