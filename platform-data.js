@@ -11,7 +11,7 @@ window.HB_PLATFORM = {
   ],
   services: [
     {title:"تأسيس شركة في دبي",emirate:"دبي",category:"تأسيس الشركات",authority:"اقتصادية دبي (DET)",url:"business-services-dubai.html",type:"guide",description:"دليل محلي للتأسيس يحفظ مسار التجهيز ورابط البوابة الرسمية معًا."},
-    {title:"البحث عن نشاط اقتصادي في دبي",emirate:"دبي",category:"تأسيس الشركات",authority:"اقتصادية دبي (DET)",url:"https://app.invest.dubai.ae/search-business-activities",type:"direct",description:"البحث الرسمي عن الأنشطة والرموز الاقتصادية."},
+    {title:"اختيار النشاط الاقتصادي المناسب",emirate:"دبي",category:"تأسيس الشركات",authority:"بيانات دبي المفتوحة / اقتصادية دبي (DET)",url:"dubai-business-activities.html#activityAdvisor",type:"guide",description:"صف فكرة مشروعك بلغة بسيطة لتحصل على أنشطة مقترحة، ثم تحقق من الرمز والوصف في البوابة الرسمية."},
     {title:"حجز اسم تجاري في دبي",emirate:"دبي",category:"تأسيس الشركات",authority:"اقتصادية دبي (DET)",url:"services/reserve-trade-name-dubai.html",type:"guide",description:"افحص الاسم والقيود والبدائل ثم انتقل إلى خدمة الحجز الرسمية."},
     {title:"الموافقة المبدئية في دبي",emirate:"دبي",category:"تأسيس الشركات",authority:"اقتصادية دبي (DET)",url:"services/initial-approval-dubai.html",type:"guide",description:"دليل النشاط والأطراف والموافقات قبل التقديم الرسمي."},
     {title:"تعديل رخصة تجارية في دبي",emirate:"دبي",category:"تعديل الشركات",authority:"اقتصادية دبي (DET)",url:"services/amend-business-license-dubai.html",type:"guide",description:"حدد نوع التعديل ووثائقه والملفات المتأثرة قبل بدء الطلب."},

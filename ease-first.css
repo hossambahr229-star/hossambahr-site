@@ -19,3 +19,21 @@
   .hero-metrics b{font-size:21px}
   .hero-metrics span{font-size:7px;line-height:1.5}
 }
+
+/* The card grid must never collapse into unreadable narrow columns, even when a
+   phone is using zoom or desktop-style viewport settings. */
+.service-results{grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))!important}
+.service-result,.service-result h3,.service-result p,.result-bottom{min-width:0;overflow-wrap:break-word;word-break:normal}
+@media(max-width:760px){
+  .service-results{grid-template-columns:minmax(0,1fr)!important;gap:12px!important}
+  .service-result{min-height:0!important;padding:18px!important;border-radius:14px!important}
+  .service-result h3{margin:14px 0 7px!important;font-size:18px!important;line-height:1.55!important}
+  .service-result>p{font-size:12px!important;line-height:1.75!important}
+  .result-top{align-items:flex-start;flex-wrap:wrap}
+  .result-bottom{gap:12px;padding-top:14px!important}
+  .result-bottom>small{max-width:100%!important;font-size:9px!important}
+  .result-bottom>div{display:grid!important;grid-template-columns:1fr 1fr;width:100%;gap:8px!important}
+  .journey-start,.team-shortcut,.official-shortcut{display:flex!important;min-height:44px;align-items:center;justify-content:center;text-align:center;white-space:normal!important}
+  .journey-start{grid-column:1/-1}
+  .floating-wa{left:12px!important;bottom:12px!important;width:48px!important;height:48px!important;padding:0!important}
+}
