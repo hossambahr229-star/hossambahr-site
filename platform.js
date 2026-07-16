@@ -1,5 +1,9 @@
 (function () {
   const data = window.HB_PLATFORM;
+  const toolsGrid = document.querySelector('.platform-entry-grid');
+  if (toolsGrid && !toolsGrid.querySelector('a[href="service-guides.html"]')) {
+    toolsGrid.insertAdjacentHTML('beforeend', '<a href="service-guides.html"><i>07</i><b>أدلة الخطوات</b><span>المستندات والخطوات والمشكلات لكل معاملة</span><strong>اختر دليلك ←</strong></a>');
+  }
   const knowledge = window.HB_KNOWLEDGE;
   const menu = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#mainNav');

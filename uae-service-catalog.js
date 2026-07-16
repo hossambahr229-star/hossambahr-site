@@ -1,6 +1,10 @@
 (function(){
   'use strict';
   if(!document.querySelector('link[href="search-fixes.css"]'))document.head.insertAdjacentHTML('beforeend','<link rel="stylesheet" href="search-fixes.css">');
+  var catalogNav=document.querySelector('header nav');
+  if(catalogNav&&!catalogNav.querySelector('a[href="service-guides.html"]'))catalogNav.insertAdjacentHTML('beforeend','<a href="service-guides.html">أدلة الخطوات</a>');
+  var selectorNote=document.querySelector('.security-next p');
+  if(selectorNote&&selectorNote.textContent.indexOf('ثلاثة أسئلة')>-1)selectorNote.textContent=selectorNote.textContent.replace('ثلاثة أسئلة','أربعة أسئلة');
   var data=window.HB_PLATFORM||{services:[]};
   var query=document.querySelector('#catalogQuery');
   var emirate=document.querySelector('#catalogEmirate');
