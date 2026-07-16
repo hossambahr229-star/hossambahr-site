@@ -1,0 +1,117 @@
+from __future__ import annotations
+
+from datetime import date
+from html import escape
+from pathlib import Path
+from urllib.parse import quote
+import json
+import re
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "content" / "service-guides.json"
+OUTPUT = ROOT / "services"
+BASE = "https://hossambahr.com"
+PHONE = "971503780460"
+TODAY = date.today().isoformat()
+
+
+def text(value: str) -> str:
+    return escape(value, quote=True)
+
+
+def list_items(values: list[str], ordered: bool = False) -> str:
+    tag = "ol" if ordered else "ul"
+    return f"<{tag}>" + "".join(f"<li>{text(value)}</li>" for value in values) + f"</{tag}>"
+
+
+def json_ld(item: dict) -> str:
+    canonical = f"{BASE}/services/{item['slug']}.html"
+    graph = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Service",
+                "name": item["title"],
+                "description": item["summary"],
+                "url": canonical,
+                "areaServed": {"@type": "Country", "name": "United Arab Emirates"},
+                "provider": {"@type": "Organization", "name": "Hossam Bahr Business Services", "url": BASE},
+                "serviceType": item["category"],
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": question,
+                        "acceptedAnswer": {"@type": "Answer", "text": answer},
+                    }
+                    for question, answer in item["faq"]
+                ],
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": BASE + "/"},
+                    {"@type": "ListItem", "position": 2, "name": "أدلة الخدمات", "item": BASE + "/service-guides.html"},
+                    {"@type": "ListItem", "position": 3, "name": item["title"], "item": canonical},
+                ],
+            },
+        ],
+    }
+    return json.dumps(graph, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
+def page(item: dict, related: list[dict]) -> str:
+    title = text(item["title"])
+    canonical = f"{BASE}/services/{item['slug']}.html"
+    description = text(f"دليل {item['title']}: شرح مبسط للمتطلبات والخطوات والرسوم والمدة والمشكلات الشائعة، مع الرابط الحكومي وطلب تجهيز الملف.")
+    message = quote(f"مرحباً، أريد مراجعة وتجهيز ملف خدمة: {item['title']}")
+    related_html = "".join(f'<a href="{text(row["slug"])}.html">{text(row["title"])} ←</a>' for row in related)
+    faq_html = "".join(f"<article><h3>{text(q)}</h3><p>{text(a)}</p></article>" for q, a in item["faq"])
+    return f'''<!doctype html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071f33"><title>{title} | دليل حسام بحر</title><meta name="description" content="{description}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="{canonical}"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../service-page.css"><link rel="stylesheet" href="../generated-service.css"><script type="application/ld+json">{json_ld(item)}</script></head><body><a class="skip-link" href="#main">تجاوز إلى المحتوى</a><div class="top"><span>دليل معاملات الإمارات · آخر مراجعة {TODAY}</span><a href="tel:+971503780460" dir="ltr">0503780460</a></div><header class="header"><a class="brand" href="../index.html">حسام بحر<small>BUSINESS SERVICES</small></a><nav><a href="../service-guides.html">أدلة الخدمات</a><a href="../uae-service-catalog.html">كل المعاملات</a><a href="../platform-tools.html#selector">حدد خدمتك</a></nav><a href="https://wa.me/{PHONE}" target="_blank" rel="noopener">واتساب</a></header><div class="breadcrumb"><a href="../index.html">الرئيسية</a> ← <a href="../service-guides.html">أدلة الخدمات</a> ← {title}</div><main id="main"><section class="hero-service generated-hero"><div><span>{text(item['category'])} · {text(item['emirate'])}</span><h1>{title}</h1><p>{text(item['summary'])}</p><div class="hero-actions"><a class="cta" href="#routes">اختر طريقة التنفيذ ←</a><a class="soft-cta" href="#requirements">راجع المستندات</a></div></div><div class="quick-card"><b>الخلاصة السريعة</b><dl><div><dt>الجهة</dt><dd>{text(item['authority'])}</dd></div><div><dt>الرسوم</dt><dd>{text(item['fee'])}</dd></div><div><dt>المدة</dt><dd>{text(item['duration'])}</dd></div></dl></div></section><div class="content"><article><section><span class="section-label">بشرح بسيط</span><h2>ما الخدمة ولماذا تحتاجها؟</h2><p>{text(item['why'])}</p></section><section id="requirements"><span class="section-label">قبل أن تبدأ</span><h2>المستندات والمعلومات الأساسية</h2>{list_items(item['requirements'])}<p class="source-note">قد تطلب الجهة مستندات إضافية حسب الشكل القانوني أو حالة الأطراف أو النشاط. لا ترفع وثائقك داخل هذا الموقع العام.</p></section><section><span class="section-label">خطوة بخطوة</span><h2>مسار الإنجاز المقترح</h2>{list_items(item['steps'], ordered=True)}</section><section class="problem-box"><span class="section-label">تجنب التعطل</span><h2>المشكلة الأكثر شيوعاً</h2><p>{text(item['problem'])}</p></section><section class="faq"><span class="section-label">إجابات سريعة</span><h2>الأسئلة الشائعة</h2>{faq_html}</section></article><aside class="prep-card"><span>فحص جاهزيتك</span><h3>هل جهزت الأساسيات؟</h3>{''.join(f'<label><input type="checkbox"><span>{text(req)}</span></label>' for req in item['requirements'])}<a href="https://wa.me/{PHONE}?text={message}" target="_blank" rel="noopener">اطلب مراجعة الملف ←</a><small>لا ترسل جوازاً أو هوية قبل الاتفاق على قناة آمنة.</small></aside></div><section class="choice-center" id="routes" aria-labelledby="routesTitle"><div class="choice-heading"><span>مساران محفوظان دائماً</span><h2 id="routesTitle">اختر طريقة إنجاز المعاملة</h2><p>جهّز الملف أولاً، ثم قدّم بنفسك أو اطلب من فريقنا مراجعته ومتابعة خطواته.</p></div><div class="choice-grid"><article class="official-choice"><i>01</i><span>المسار الحكومي</span><h3>التقديم بنفسك</h3><p>تنتقل إلى المصدر الرسمي وتراجع المتطلبات الحالية ثم ترفع وتدفع داخل بوابة الجهة فقط.</p><a class="route-button" href="{text(item['official'])}" target="_blank" rel="noopener nofollow">افتح الخدمة الرسمية ↗</a><small>الجهة الرسمية هي المرجع النهائي للشروط والرسوم.</small></article><article class="team-choice"><i>02</i><span>مسار حسام بحر</span><h3>تجهيز ومراجعة الملف</h3><p>نحدد النواقص والجهة والخطوة التالية قبل دخول البوابة الرسمية.</p><a href="https://wa.me/{PHONE}?text={message}" target="_blank" rel="noopener">اطلب تنفيذ الخدمة ←</a><small>التواصل على الرقم الموحد 0503780460.</small></article></div><footer>آخر مراجعة: {TODAY} · المعلومات إرشادية وقد تتغير لدى الجهة المختصة.</footer></section><section class="related"><span class="section-label">خدمات مرتبطة</span><h2>تابع رحلتك</h2><div class="related-grid">{related_html}<a href="../platform-tools.html#selector">حدد معاملة أخرى ←</a></div></section></main><div class="disclaimer">منصة خاصة وليست جهة حكومية. التقديم والسداد الرسميان يتمان داخل بوابة الجهة المختصة.</div><footer><span>© 2026 Hossam Bahr Business Services</span><a href="../privacy.html">سياسة الخصوصية</a><a href="../terms.html">الشروط</a></footer><a class="floating-guide-wa" href="https://wa.me/{PHONE}?text={message}" target="_blank" rel="noopener" aria-label="اطلب مراجعة الخدمة عبر واتساب">واتساب</a><script src="../analytics.js"></script></body></html>'''
+
+
+def hub(items: list[dict]) -> str:
+    cards = "".join(
+        f'<article><span>{text(item["category"])} · {text(item["emirate"])}</span><h2><a href="services/{text(item["slug"])}.html">{text(item["title"])}</a></h2><p>{text(item["summary"])}</p><footer><small>{text(item["authority"])}</small><a href="services/{text(item["slug"])}.html">افتح الدليل ←</a></footer></article>'
+        for item in items
+    )
+    schema = json.dumps({"@context":"https://schema.org","@type":"CollectionPage","name":"أدلة معاملات الإمارات","url":BASE+"/service-guides.html","mainEntity":{"@type":"ItemList","numberOfItems":len(items),"itemListElement":[{"@type":"ListItem","position":i+1,"url":f"{BASE}/services/{item['slug']}.html","name":item["title"]} for i,item in enumerate(items)]}}, ensure_ascii=False, separators=(",", ":"))
+    return f'''<!doctype html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071f33"><title>أدلة معاملات الإمارات خطوة بخطوة | حسام بحر</title><meta name="description" content="أدلة مستقلة لأهم معاملات الشركات والعمل والإقامة في الإمارات، تعرض المستندات والخطوات والرسوم والمدة والرابط الحكومي وخيار تنفيذ الخدمة."><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="{BASE}/service-guides.html"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="service-guides.css"><script type="application/ld+json">{schema}</script></head><body><a class="skip-link" href="#main">تجاوز إلى المحتوى</a><div class="guide-top"><span>قاعدة معرفة عملية · الإمارات</span><a href="tel:+971503780460" dir="ltr">0503780460</a></div><header><a class="guide-brand" href="index.html"><i>HB</i><span><b>حسام بحر</b><small>BUSINESS GUIDES</small></span></a><nav><a href="uae-service-catalog.html">كل المعاملات</a><a href="platform-tools.html#selector">حدد خدمتك</a><a href="knowledge-hub.html">مركز المعرفة</a></nav><a class="outline" href="https://wa.me/{PHONE}" target="_blank" rel="noopener">تواصل معنا</a></header><main id="main"><section class="guide-hero"><div><span>لا تبدأ المعاملة وأنت غير متأكد</span><h1>أدلة معاملات الإمارات<br><em>خطوة بخطوة.</em></h1><p>اختر معاملتك لتعرف ما هي، لماذا تحتاجها، ماذا تجهز، وأين تقدم — مع الاحتفاظ دائماً بالمسار الرسمي ومسار فريقنا.</p></div><aside><b>{len(items)}</b><span>دليلاً متخصصاً الآن</span><small>ويستمر التوسع بالمصادر الرسمية.</small></aside></section><section class="guide-filter"><label for="guideSearch">ابحث داخل الأدلة</label><input id="guideSearch" type="search" placeholder="مثال: نقل موظف، شريك، تجديد إقامة" autocomplete="off"><p id="guideCount">{len(items)} دليلاً متاحاً</p></section><section class="guide-grid" id="guideGrid">{cards}</section><section class="guide-rescue" id="guideRescue" hidden><h2>لم تجد معاملتك؟</h2><p>استخدم محدد الخدمة لاقتراح أقرب مسار، أو اكتب هدفك لفريقنا.</p><a href="platform-tools.html#selector">استخدم محدد الخدمة ←</a><a href="https://wa.me/{PHONE}" target="_blank" rel="noopener">تواصل عبر واتساب</a></section></main><footer><div><b>منصة حسام بحر</b><span>دليل مستقل وليست جهة حكومية.</span></div><div><a href="privacy.html">الخصوصية</a><a href="terms.html">الشروط</a></div><p>© 2026</p></footer><script src="service-guides.js"></script><script src="analytics.js"></script></body></html>'''
+
+
+def update_sitemap(items: list[dict]) -> None:
+    path = ROOT / "sitemap.xml"
+    current = path.read_text(encoding="utf-8")
+    current = re.sub(r"\n  <url><loc>https://hossambahr\.com/service-guides\.html</loc>.*?</url>", "", current)
+    current = re.sub(r"\n  <url><loc>https://hossambahr\.com/services/[^<]+</loc>.*?</url>", "", current)
+    entries = [f"  <url><loc>{BASE}/service-guides.html</loc><lastmod>{TODAY}</lastmod></url>"]
+    entries.extend(f"  <url><loc>{BASE}/services/{item['slug']}.html</loc><lastmod>{TODAY}</lastmod></url>" for item in items)
+    current = current.replace("</urlset>", "\n" + "\n".join(entries) + "\n</urlset>")
+    path.write_text(current, encoding="utf-8", newline="\n")
+
+
+def main() -> None:
+    items = json.loads(DATA.read_text(encoding="utf-8"))
+    slugs = [item["slug"] for item in items]
+    if len(slugs) != len(set(slugs)):
+        raise SystemExit("Duplicate service guide slug")
+    OUTPUT.mkdir(exist_ok=True)
+    expected = set()
+    for item in items:
+        expected.add(f"{item['slug']}.html")
+        related = [row for row in items if row["slug"] != item["slug"] and row["category"] == item["category"]][:2]
+        if len(related) < 2:
+            related.extend(row for row in items if row["slug"] != item["slug"] and row not in related)
+        (OUTPUT / f"{item['slug']}.html").write_text(page(item, related[:2]), encoding="utf-8", newline="\n")
+    for stale in OUTPUT.glob("*.html"):
+        if stale.name not in expected:
+            stale.unlink()
+    (ROOT / "service-guides.html").write_text(hub(items), encoding="utf-8", newline="\n")
+    update_sitemap(items)
+    print(f"Generated {len(items)} service guides and hub")
+
+
+if __name__ == "__main__":
+    main()
