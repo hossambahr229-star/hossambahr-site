@@ -12,6 +12,7 @@ DATA = ROOT / "content" / "service-guides.json"
 OUTPUT = ROOT / "services"
 BASE = "https://hossambahr.com"
 PHONE = "971503780460"
+SOCIAL_IMAGE = f"{BASE}/assets/images/hossam-bahr-social-card.png"
 TODAY = date.today().isoformat()
 PUBLISHED = "2026-07-16"
 
@@ -81,7 +82,7 @@ def discovery_markup(item: dict) -> str:
         "about": {"@type": "Thing", "name": item["category"]},
     }
     structured = json.dumps(web_page, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-    return f'<meta property="og:type" content="article"><meta property="og:locale" content="ar_AE"><meta property="og:site_name" content="منصة حسام بحر"><meta property="og:title" content="{text(title)}"><meta property="og:description" content="{text(description)}"><meta property="og:url" content="{canonical}"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="{text(title)}"><meta name="twitter:description" content="{text(description)}"><meta property="article:published_time" content="{PUBLISHED}"><meta property="article:modified_time" content="{TODAY}"><script type="application/ld+json">{structured}</script>'
+    return f'<meta property="og:type" content="article"><meta property="og:locale" content="ar_AE"><meta property="og:site_name" content="منصة حسام بحر"><meta property="og:title" content="{text(title)}"><meta property="og:description" content="{text(description)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{SOCIAL_IMAGE}"><meta property="og:image:secure_url" content="{SOCIAL_IMAGE}"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="منصة حسام بحر لخدمات الأعمال والمعاملات في الإمارات"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{text(title)}"><meta name="twitter:description" content="{text(description)}"><meta name="twitter:image" content="{SOCIAL_IMAGE}"><meta name="twitter:image:alt" content="منصة حسام بحر لخدمات الأعمال والمعاملات في الإمارات"><meta property="article:published_time" content="{PUBLISHED}"><meta property="article:modified_time" content="{TODAY}"><script type="application/ld+json">{structured}</script>'
 
 
 def enhance_page_html(html: str, item: dict) -> str:
@@ -93,7 +94,7 @@ def enhance_hub_html(html: str) -> str:
     description = "أدلة معاملات الشركات والعمل والإقامة في الإمارات: المستندات والخطوات والرسوم والمدة والرابط الحكومي وخيار تجهيز وتنفيذ الخدمة."
     html = html.replace("أدلة معاملات الإمارات خطوة بخطوة | حسام بحر", title, 1)
     html = html.replace("أدلة مستقلة لأهم معاملات الشركات والعمل والإقامة في الإمارات، تعرض المستندات والخطوات والرسوم والمدة والرابط الحكومي وخيار تنفيذ الخدمة.", description, 1)
-    social = f'<meta property="og:type" content="website"><meta property="og:locale" content="ar_AE"><meta property="og:site_name" content="منصة حسام بحر"><meta property="og:title" content="{text(title)}"><meta property="og:description" content="{text(description)}"><meta property="og:url" content="{BASE}/service-guides.html"><meta name="twitter:card" content="summary"><link rel="alternate" type="application/rss+xml" title="أحدث أدلة خدمات حسام بحر" href="{BASE}/feed.xml">'
+    social = f'<meta property="og:type" content="website"><meta property="og:locale" content="ar_AE"><meta property="og:site_name" content="منصة حسام بحر"><meta property="og:title" content="{text(title)}"><meta property="og:description" content="{text(description)}"><meta property="og:url" content="{BASE}/service-guides.html"><meta property="og:image" content="{SOCIAL_IMAGE}"><meta property="og:image:secure_url" content="{SOCIAL_IMAGE}"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="منصة حسام بحر لخدمات الأعمال والمعاملات في الإمارات"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{SOCIAL_IMAGE}"><link rel="alternate" type="application/rss+xml" title="أحدث أدلة خدمات حسام بحر" href="{BASE}/feed.xml">'
     return html.replace("</head>", social + "</head>", 1)
 
 
