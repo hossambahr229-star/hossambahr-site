@@ -112,4 +112,13 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ showConsentBanner(); addWhatsappShortcut(); });
   else { showConsentBanner(); addWhatsappShortcut(); }
+
+  // The shared search loader adds the compact header search to public pages.
+  // Search analytics continue to respect the consent state configured above.
+  if (!window.HBSearch && !document.querySelector('script[src$="site-search-loader.js"]')) {
+    var searchLoader = document.createElement('script');
+    searchLoader.src = (location.pathname.indexOf('/services/') !== -1 ? '../' : '') + 'site-search-loader.js';
+    searchLoader.defer = true;
+    document.head.appendChild(searchLoader);
+  }
 })();

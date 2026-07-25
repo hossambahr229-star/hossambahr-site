@@ -66,6 +66,8 @@ def json_ld(item: dict) -> str:
 
 def discovery_markup(item: dict) -> str:
     canonical = f"{BASE}/services/{item['slug']}.html"
+    social_image = f"{BASE}/assets/images/social/services/{item['slug']}.png"
+    social_alt = f"دليل {item['title']} - منصة حسام بحر"
     title = f"{item['title']} | دليل حسام بحر"
     description = f"دليل {item['title']}: المتطلبات والخطوات والرسوم والمدة والمشكلات الشائعة، مع الرابط الحكومي وخيار تجهيز الملف."
     web_page = {
@@ -82,7 +84,7 @@ def discovery_markup(item: dict) -> str:
         "about": {"@type": "Thing", "name": item["category"]},
     }
     structured = json.dumps(web_page, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-    return f'<meta property="og:type" content="article"><meta property="og:locale" content="ar_AE"><meta property="og:site_name" content="منصة حسام بحر"><meta property="og:title" content="{text(title)}"><meta property="og:description" content="{text(description)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{SOCIAL_IMAGE}"><meta property="og:image:secure_url" content="{SOCIAL_IMAGE}"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="منصة حسام بحر لخدمات الأعمال والمعاملات في الإمارات"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{text(title)}"><meta name="twitter:description" content="{text(description)}"><meta name="twitter:image" content="{SOCIAL_IMAGE}"><meta name="twitter:image:alt" content="منصة حسام بحر لخدمات الأعمال والمعاملات في الإمارات"><meta property="article:published_time" content="{PUBLISHED}"><meta property="article:modified_time" content="{TODAY}"><script type="application/ld+json">{structured}</script>'
+    return f'<meta property="og:type" content="article"><meta property="og:locale" content="ar_AE"><meta property="og:site_name" content="منصة حسام بحر"><meta property="og:title" content="{text(title)}"><meta property="og:description" content="{text(description)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{social_image}"><meta property="og:image:secure_url" content="{social_image}"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{text(social_alt)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{text(title)}"><meta name="twitter:description" content="{text(description)}"><meta name="twitter:image" content="{social_image}"><meta name="twitter:image:alt" content="{text(social_alt)}"><meta property="article:published_time" content="{PUBLISHED}"><meta property="article:modified_time" content="{TODAY}"><script type="application/ld+json">{structured}</script>'
 
 
 def enhance_page_html(html: str, item: dict) -> str:
