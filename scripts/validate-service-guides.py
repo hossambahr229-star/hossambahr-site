@@ -2,6 +2,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 import json
 import re
+import struct
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -14,6 +15,18 @@ robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
 errors = []
 titles = set()
 descriptions = set()
+social_image = ROOT / "assets" / "images" / "hossam-bahr-social-card.png"
+
+if not social_image.is_file():
+    errors.append("social preview image is missing")
+else:
+    png = social_image.read_bytes()
+    if not png.startswith(b"\x89PNG\r\n\x1a\n") or len(png) < 24:
+        errors.append("social preview image is not a valid PNG")
+    else:
+        width, height = struct.unpack(">II", png[16:24])
+        if (width, height) != (1200, 630):
+            errors.append(f"social preview image must be 1200x630, got {width}x{height}")
 
 
 def attr(html: str, pattern: str) -> str:
@@ -66,6 +79,15 @@ for item in items:
             errors.append(f"invalid JSON-LD: {relative}")
     if 'property="og:title"' not in html or '"@type":"WebPage"' not in html:
         errors.append(f"discovery metadata missing: {relative}")
+    for social_marker in [
+        'property="og:image"',
+        'property="og:image:width" content="1200"',
+        'property="og:image:height" content="630"',
+        'name="twitter:card" content="summary_large_image"',
+        'name="twitter:image"',
+    ]:
+        if social_marker not in html:
+            errors.append(f"social preview metadata missing in {relative}: {social_marker}")
     for target in re.findall(r'(?:href|src)="([^"]+)"', html, re.I):
         if target.startswith(("http:", "https:", "mailto:", "tel:", "#", "data:")):
             continue

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071d1b">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="ابحث في خدمات ومعاملات وأدلة منصة حسام بحر، وصفِّ النتائج حسب الإمارة ونوع الخدمة والجهة المختصة.">
+  <title>نتائج البحث | منصة حسام بحر</title>
+  <link rel="canonical" href="https://hossambahr.com/search-results.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="search.css">
+  <link rel="stylesheet" href="search-results.css">
+</head>
+<body class="search-results-page">
+  <a class="skip-link" href="#searchResults">انتقل إلى نتائج البحث</a>
+  <header class="search-page-header">
+    <a class="search-brand" href="index.html" aria-label="منصة حسام بحر — الرئيسية"><i>HB</i><span><b>حسام بحر</b><small>BUSINESS PLATFORM · UAE</small></span></a>
+    <nav aria-label="التنقل الرئيسي"><a href="index.html">الرئيسية</a><a href="service-guides.html">أدلة الخدمات</a><a href="uae-emirates.html">الإمارات السبع</a><a href="knowledge-hub.html">مركز المعرفة</a></nav>
+    <a class="search-help" href="contact.html">تواصل معنا</a>
+  </header>
+
+  <main>
+    <section class="search-intro" aria-labelledby="searchPageTitle">
+      <span>بحث موحد في خدمات المنصة ومعرفتها</span>
+      <h1 id="searchPageTitle">ابحث عن المعاملة<br><em>بالطريقة التي تصفها بها.</em></h1>
+      <p>نبحث في أسماء الخدمات ووصفها ومتطلباتها والجهات الحكومية والأسئلة الشائعة والتحديثات، مع دعم المرادفات والأخطاء البسيطة.</p>
+      <div id="resultsSearchMount"></div>
+    </section>
+
+    <section class="results-layout" aria-label="نتائج البحث ومرشحاته">
+      <button class="mobile-filter-toggle" id="mobileFilterToggle" type="button" aria-expanded="false" aria-controls="searchFilters">تصفية النتائج <span>☷</span></button>
+      <aside class="search-filters" id="searchFilters" aria-label="تصفية النتائج">
+        <div class="filter-heading"><div><span>تضييق النتائج</span><h2>المرشحات</h2></div><button id="clearFilters" type="button">مسح الكل</button></div>
+        <label>الإمارة<select id="filterEmirate"><option value="">كل الإمارات</option></select></label>
+        <label>نوع الخدمة<select id="filterCategory"><option value="">كل الأنواع</option></select></label>
+        <label>الجهة الحكومية<select id="filterAuthority"><option value="">كل الجهات</option></select></label>
+        <label>المستفيد<select id="filterAudience"><option value="">الجميع</option><option value="الشركات">خدمات الشركات</option><option value="الأفراد">خدمات الأفراد</option></select></label>
+        <label>الرسوم<select id="filterPayment"><option value="">الكل</option><option value="مجانية">مجانية</option><option value="مدفوعة">مدفوعة</option><option value="غير محدد">غير محدد</option></select></label>
+      </aside>
+
+      <div class="results-main">
+        <header class="results-summary">
+          <div><span id="resultEyebrow">نتائج البحث</span><h2 id="resultTitle">كل الخدمات المتاحة</h2></div>
+          <p id="resultCount" role="status" aria-live="polite"></p>
+        </header>
+        <div class="active-filters" id="activeFilters" aria-label="المرشحات النشطة"></div>
+        <div class="search-results-list" id="searchResults"></div>
+        <button class="results-more" id="resultsMore" type="button">عرض المزيد</button>
+      </div>
+    </section>
+  </main>
+
+  <footer><div><b>منصة حسام بحر</b><p>منصة خاصة للتوجيه والتجهيز وليست جهة حكومية.</p></div><div><a href="privacy.html">الخصوصية</a><a href="terms.html">الشروط</a><a href="contact.html">التواصل</a></div></footer>
+
+  <script src="platform-data.js"></script>
+  <script src="knowledge-data.js"></script>
+  <script src="search-content-data.js"></script>
+  <script src="search-engine.js"></script>
+  <script src="site-search.js"></script>
+  <script src="search-results.js"></script>
+  <script src="analytics.js"></script>
+</body>
+</html>

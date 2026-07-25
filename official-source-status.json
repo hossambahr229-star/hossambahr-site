@@ -1,1 +1,56 @@
-{"checkedAt":"2026-07-15T09:00:00Z","sources":[{"id":"mohre","name":"وزارة الموارد البشرية والتوطين","url":"https://www.mohre.gov.ae/en/media-center/news.aspx","httpStatus":"verified","contentHash":"manual-verification","ok":true},{"id":"icp","name":"الهوية والجنسية ICP","url":"https://icp.gov.ae/media/news-reports/","httpStatus":"verified","contentHash":"manual-verification","ok":true},{"id":"fta","name":"الهيئة الاتحادية للضرائب","url":"https://tax.gov.ae/en/media.centre/news.aspx","httpStatus":"verified","contentHash":"manual-verification","ok":true},{"id":"moe","name":"وزارة التربية والتعليم","url":"https://moe.gov.ae/ar/eservices/pages/default.aspx","httpStatus":"verified","contentHash":"manual-verification","ok":true},{"id":"mofa","name":"وزارة الخارجية","url":"https://www.mofa.gov.ae/services/attestation","httpStatus":"verified","contentHash":"manual-verification","ok":true}]}
+{
+  "checkedAt": "2026-07-19T19:18:28Z",
+  "sources": [
+    {
+      "id": "mohre",
+      "name": "وزارة الموارد البشرية والتوطين",
+      "url": "https://www.mohre.gov.ae/en/media-center/news.aspx",
+      "httpStatus": "verified",
+      "contentHash": "material-update-2026-02-09-zero-bureaucracy",
+      "ok": true,
+      "note": "تم نشر تحديث مؤثر عن تبسيط تصاريح العمل وملفات المنشآت والمدد."
+    },
+    {
+      "id": "icp",
+      "name": "الهوية والجنسية ICP",
+      "url": "https://icp.gov.ae/media/news-reports/",
+      "httpStatus": "verified",
+      "contentHash": "material-update-2026-06-25-entry-visa",
+      "ok": true,
+      "note": "تم تثبيت شروط ورسوم تحديث تأشيرتي الدخول 14 و60 يومًا من الإعلان الرسمي."
+    },
+    {
+      "id": "gdrfa-dubai",
+      "name": "الإقامة وشؤون الأجانب دبي GDRFA",
+      "url": "https://www.gdrfad.gov.ae/en/services",
+      "httpStatus": "verified",
+      "contentHash": "services-catalog-checked-2026-07-19-no-material-change",
+      "ok": true,
+      "note": "تم فحص دليل الخدمات؛ لم يُرصد إعلان يغيّر رسومًا أو شروطًا أو مددًا، لذلك لم يُنشر ملخص جديد."
+    },
+    {
+      "id": "fta",
+      "name": "الهيئة الاتحادية للضرائب",
+      "url": "https://tax.gov.ae/en/media.centre/news.aspx",
+      "httpStatus": "verified",
+      "contentHash": "checked-2026-07-19-no-material-change",
+      "ok": true
+    },
+    {
+      "id": "moe",
+      "name": "وزارة التربية والتعليم",
+      "url": "https://moe.gov.ae/ar/eservices/pages/default.aspx",
+      "httpStatus": "verified",
+      "contentHash": "checked-2026-07-19-no-material-change",
+      "ok": true
+    },
+    {
+      "id": "mofa",
+      "name": "وزارة الخارجية",
+      "url": "https://www.mofa.gov.ae/services/attestation",
+      "httpStatus": "verified",
+      "contentHash": "checked-2026-07-19-no-material-change",
+      "ok": true
+    }
+  ]
+}
