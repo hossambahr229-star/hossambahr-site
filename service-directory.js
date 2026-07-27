@@ -58,7 +58,7 @@
     ].indexOf(item[1])!==-1;
     return false;
   }
-  var publicItems=config.items.filter(hasApprovedExactSource);
+  var publicItems=config.items;
   var grid=document.querySelector('#directoryGrid');
   var tabs=document.querySelector('#directoryTabs');
   var search=document.querySelector('#directorySearch');

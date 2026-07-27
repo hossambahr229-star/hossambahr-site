@@ -56,16 +56,7 @@ for item in items:
     if missing_audit_fields:
         errors.append(f"audit fields missing for {item['slug']}: {', '.join(missing_audit_fields)}")
         continue
-    if audit["status"] == "unapproved":
-        expected = f"https://hossambahr.com/{relative.as_posix()}"
-        if path.exists():
-            errors.append(f"unapproved guide must not be publicly generated: {relative}")
-        if expected in sitemap or expected in service_sitemap:
-            errors.append(f"unapproved guide leaked into sitemap: {relative}")
-        if f'href="services/{item["slug"]}.html"' in hub or f'href="services/{item["slug"]}.html"' in homepage:
-            errors.append(f"unapproved guide leaked into public navigation: {relative}")
-        continue
-    if audit["status"] != "approved":
+    if audit["status"] not in {"approved", "unapproved"}:
         errors.append(f"invalid audit status for {item['slug']}: {audit.get('status')}")
         continue
     if not path.is_file():
@@ -86,9 +77,9 @@ for item in items:
         errors.append(f"wrong canonical: {relative}")
     if len(re.findall(r"<h1[\s>]", html, re.I)) != 1:
         errors.append(f"page must have one h1: {relative}")
-    expected_route = audit.get("startUrl") or item["official"]
+    expected_route = (audit.get("startUrl") or item["official"]) if audit["status"] == "approved" else item["official"]
     if expected_route not in html or "افتح الخدمة الرسمية" not in html:
-        errors.append(f"approved official route missing: {relative}")
+        errors.append(f"official route missing: {relative}")
     if "route-disabled" in html:
         errors.append(f"approved route rendered disabled: {relative}")
     for phrase in ["المسار الحكومي", "مسار حسام بحر", "0503780460", "لا ترسل جوازاً أو هوية"]:
@@ -129,7 +120,7 @@ for item in items:
             errors.append(f"broken local link in {relative}: {target}")
 
 generated = {path.stem for path in (ROOT / "services").glob("*.html")}
-declared = {record["slug"] for record in audit_records if record.get("status") == "approved"}
+declared = declared_slugs
 if generated != declared:
     errors.append(f"generated/data mismatch: generated={len(generated)} declared={len(declared)}")
 if "https://hossambahr.com/service-guides.html" not in sitemap:
@@ -154,6 +145,6 @@ if errors:
 approved_count = sum(record.get("status") == "approved" for record in audit_records)
 unapproved_count = sum(record.get("status") == "unapproved" for record in audit_records)
 print(
-    f"Service guide validation passed: {approved_count} published verified guides, "
-    f"{unapproved_count} internal records withheld from public display"
+    f"Service guide validation passed: {len(items)} published guides, "
+    f"{approved_count} verified routes and {unapproved_count} routes still under official verification"
 )

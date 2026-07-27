@@ -6,7 +6,7 @@
   var selectorNote=document.querySelector('.security-next p');
   if(selectorNote&&selectorNote.textContent.indexOf('ثلاثة أسئلة')>-1)selectorNote.textContent=selectorNote.textContent.replace('ثلاثة أسئلة','أربعة أسئلة');
   var data=window.HB_PLATFORM||{services:[]};
-  var publicServices=data.services.filter(function(item){return item.type!=='blocked';});
+  var publicServices=data.services;
   var query=document.querySelector('#catalogQuery');
   var emirate=document.querySelector('#catalogEmirate');
   var category=document.querySelector('#catalogCategory');

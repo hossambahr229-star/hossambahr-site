@@ -17,22 +17,7 @@ const serviceRoutes={
 
 const serviceFile=location.pathname.split('/').pop();
 const routeCandidate=serviceRoutes[serviceFile];
-const unapprovedGovernmentRoutes=new Set([
-  'https://www.investindubai.gov.ae/ar/business-setup/business-setup-services',
-  'https://www.investindubai.gov.ae/en/business-setup/business-setup-services',
-  'https://www.tamm.abudhabi/',
-  'https://sedd.ae/en/web/sedd/',
-  'https://www.ajmanded.ae/en/services',
-  'https://ded.rak.ae/',
-  'https://ded.uaq.ae/',
-  'https://digital.fujairah.ae/public/portal/',
-  'https://mohre.gov.ae/en/services/services-directory',
-  'https://www.gdrfad.gov.ae/en/services',
-  'https://icp.gov.ae/services/golden-residency/',
-  'https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64',
-  'https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60'
-]);
-const route=routeCandidate&&routeCandidate.links.some(([,url])=>!unapprovedGovernmentRoutes.has(url))?routeCandidate:null;
+const route=routeCandidate;
 const serviceTitle=document.querySelector('h1')?.textContent.replace(/\s+/g,' ').trim()||'هذه الخدمة';
 const teamRequest=`start-request.html?service=${encodeURIComponent(serviceTitle)}`;
 
@@ -42,7 +27,7 @@ if(serviceFile==='al-dhafra-business-services.html'){
 }
 
 if(route){
-  const links=route.links.filter(([,url])=>!unapprovedGovernmentRoutes.has(url)).map(([label,url])=>
+  const links=route.links.map(([label,url])=>
     `<a href="${url}" target="_blank" rel="noopener nofollow">${label} <b>↗</b></a>`).join('');
   document.querySelector('.hero-service')?.insertAdjacentHTML('afterend',`<section class="choice-center" id="official-route" aria-labelledby="choiceTitle"><div class="choice-heading"><span>ابدأ من هنا · مساران واضحان</span><h2 id="choiceTitle">اختر كيف تريد إنجاز المعاملة</h2><p>يمكنك التقديم بنفسك داخل الموقع الحكومي، أو إنشاء طلب منظم لتجهيز الملف ومراجعته من فريق حسام بحر.</p></div><div class="choice-grid"><article class="official-choice"><i>01</i><span>المسار الحكومي</span><h3>أنجزها بنفسك</h3><p>جهّز المستندات من القائمة في هذه الصفحة، ثم افتح الرابط الرسمي وارفع الأوراق وادفع داخل بوابة الجهة فقط.</p><dl><div><dt>الجهة</dt><dd>${route.authority}</dd></div><div><dt>الرسوم</dt><dd>${route.fee}</dd></div><div><dt>المدة</dt><dd>${route.duration}</dd></div></dl><div class="official-links">${links}</div><small>${route.note}</small></article><article class="team-choice"><i>02</i><span>مسار حسام بحر</span><h3>ابدأ طلبًا منظمًا</h3><p>أنشئ رقم طلب، افحص الجاهزية، واحفظ ملخصًا واضحًا قبل إرسال أي مستند.</p><ul><li>تحديد الخدمة والجهة</li><li>مراجعة المستندات والنواقص</li><li>فصل الرسوم قبل البدء</li><li>حفظ الطلب في مركز القيادة</li></ul><a href="${teamRequest}">ابدأ طلب التنفيذ ←</a><small>لا ترسل جوازات أو هويات قبل الاتفاق على قناة آمنة لمعالجة المستندات.</small></article></div><footer>آخر تحقق من الروابط والمعلومات الرسمية: 27 يوليو 2026 · المصدر الرسمي هو المرجع النهائي عند تغير الرسوم أو الشروط.</footer></section>`);
   const heroCta=document.querySelector('.hero-service .cta');
