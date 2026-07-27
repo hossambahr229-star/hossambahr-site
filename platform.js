@@ -1,5 +1,6 @@
 (function () {
   const data = window.HB_PLATFORM;
+  const publicServices = data.services.filter(item => item.type !== 'blocked');
   const toolsGrid = document.querySelector('.platform-entry-grid');
   if (toolsGrid && !toolsGrid.querySelector('a[href="service-guides.html"]')) {
     toolsGrid.insertAdjacentHTML('beforeend', '<a href="service-guides.html"><i>08</i><b>أدلة الخطوات</b><span>المستندات والخطوات والمشكلات لكل معاملة</span><strong>اختر دليلك ←</strong></a>');
@@ -53,6 +54,7 @@
   function typeLabel(type) {
     if (type === 'direct') return 'تقديم رسمي مباشر';
     if (type === 'portal') return 'بوابة رسمية';
+    if (type === 'blocked') return 'غير معتمد';
     return 'دليل وتجهيز';
   }
   const searchStops=new Set(['اريد','عايز','ابغي','احتاج','حاب','حابب','بدي','ممكن','لو','سمحت','يرجى','كيف','ما','هي','هو','من','في','الى','الي','على','عن','مع','لي','لدي','خدمه','معامله','القيام','اقوم','عمل','اجراء','اجراءات']);
@@ -119,12 +121,12 @@
     const q = normalize(query.value);
     const emirateMatches = item => !emirate.value || item.emirate === emirate.value || item.emirate === 'اتحادي';
     const categoryMatches = item => !category.value || item.category === category.value;
-    const serviceList = data.services.map(item=>({item,score:queryScore(item,q)})).filter(entry => entry.score>=0 && emirateMatches(entry.item) && categoryMatches(entry.item)).sort((a,b)=>b.score-a.score).map(entry=>entry.item);
+    const serviceList = publicServices.map(item=>({item,score:queryScore(item,q)})).filter(entry => entry.score>=0 && emirateMatches(entry.item) && categoryMatches(entry.item)).sort((a,b)=>b.score-a.score).map(entry=>entry.item);
     const extra = q && !emirate.value && !category.value ? knowledgeItems.map(item=>({item,score:queryScore({...item,emirate:'الإمارات',country:'الإمارات',category:item.kind},q)})).filter(entry=>entry.score>=0).sort((a,b)=>b.score-a.score).map(entry=>entry.item) : [];
     const exactList = [...serviceList,...extra];
     const hasExactResults = exactList.length > 0;
-    const scopedFallback = data.services.filter(item=>emirateMatches(item) && categoryMatches(item)).slice(0,6);
-    const fallbackList = hasExactResults ? [] : (scopedFallback.length ? scopedFallback : data.services.slice(0,6));
+    const scopedFallback = publicServices.filter(item=>emirateMatches(item) && categoryMatches(item)).slice(0,6);
+    const fallbackList = hasExactResults ? [] : (scopedFallback.length ? scopedFallback : publicServices.slice(0,6));
     const list = hasExactResults ? exactList : fallbackList;
     label.textContent = hasExactResults ? (q || emirate.value || category.value ? 'نتائج تناسب هدفك' : 'المسارات الأكثر طلباً') : 'اقتراحات قريبة تساعدك على البدء';
     count.textContent = hasExactResults ? `${list.length} نتيجة موحدة · مراجعة ${data.reviewed}` : `لم يظهر تطابق دقيق · ${list.length} مسارات مقترحة`;
@@ -133,12 +135,13 @@
     results.innerHTML = rescue + list.slice(0, limit).map(item => {
       if (item._knowledge) return `<article class="service-result knowledge-result"><div class="result-top"><span>مركز المعرفة</span><i class="service-status">${escapeHtml(item.kind)}</i></div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p><div class="result-bottom"><small>${escapeHtml(item.authority)}</small><div><a class="journey-start link-button" href="${escapeHtml(item.url)}">افتح الإجابة أو الحل</a><a class="team-shortcut" href="${teamUrl({...item,emirate:'الإمارات'})}" target="_blank" rel="noopener">اسأل فريقنا</a></div></div></article>`;
       const index = data.services.indexOf(item);
+      const officialAction = `<a class="official-shortcut" href="${escapeHtml(item.url)}" ${item.url.startsWith('http') ? 'target="_blank" rel="noopener nofollow"' : ''}>المسار الرسمي <b>↗</b></a>`;
       return `<article class="service-result">
         <div class="result-top"><span>${escapeHtml(item.country || item.emirate)}</span><i class="service-status">${escapeHtml(item.status || 'متاحة')}</i><i class="type-${item.type}">${typeLabel(item.type)}</i></div>
         <h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p>
         <div class="readiness"><span>${requirements(item).length} عناصر للتجهيز</span><span>${steps(item).length} خطوات واضحة</span></div>
         ${item.duration || item.fee ? `<div class="result-facts">${item.duration ? `<span><b>المدة المنشورة</b>${escapeHtml(item.duration)}</span>` : ''}${item.fee ? `<span><b>الرسوم المنشورة</b>${escapeHtml(item.fee)}</span>` : ''}</div>` : ''}
-        <small class="service-updated">آخر مراجعة: ${escapeHtml(item.updated || data.reviewed)}</small><div class="result-bottom"><small>${escapeHtml(item.authority)}</small><div><button class="journey-start" data-journey="${index}">التفاصيل والمتطلبات</button><a class="team-shortcut" href="${teamUrl(item)}">ابدأ طلب التنفيذ</a><a class="official-shortcut" href="${escapeHtml(item.url)}" ${item.url.startsWith('http') ? 'target="_blank" rel="noopener nofollow"' : ''}>المسار الرسمي <b>↗</b></a></div></div>
+        <small class="service-updated">آخر مراجعة: ${escapeHtml(item.updated || data.reviewed)}</small><div class="result-bottom"><small>${escapeHtml(item.authority)}</small><div><button class="journey-start" data-journey="${index}">التفاصيل والمتطلبات</button><a class="team-shortcut" href="${teamUrl(item)}">ابدأ طلب التنفيذ</a>${officialAction}</div></div>
       </article>`;
     }).join('');
     more.hidden = !hasExactResults || list.length <= limit;
@@ -158,6 +161,7 @@
     document.querySelector('#journeySteps').innerHTML = steps(item).map(step => `<li>${step}</li>`).join('');
     const link = document.querySelector('#officialJourneyLink');
     link.href = item.url;
+    link.removeAttribute('aria-disabled');
     link.textContent = item.type === 'guide' ? 'افتح الدليل وحدد الجهة ↗' : 'ابدأ التقديم الرسمي ↗';
     if (!item.url.startsWith('http')) { link.removeAttribute('target'); link.removeAttribute('rel'); } else { link.target = '_blank'; link.rel = 'noopener nofollow'; }
     const secondary = document.querySelector('#secondaryJourneyLink');
@@ -189,7 +193,7 @@
   [query,emirate,category].forEach(control => control.addEventListener(control.tagName === 'INPUT' ? 'input' : 'change', () => { limit = 8; render(); }));
   more.addEventListener('click', () => { limit += 8; render(); });
   render();
-  if (Number.isInteger(initialJourney) && initialJourney >= 0 && data.services[initialJourney]) openJourney(data.services[initialJourney]);
+  if (Number.isInteger(initialJourney) && initialJourney >= 0 && data.services[initialJourney] && data.services[initialJourney].type !== 'blocked') openJourney(data.services[initialJourney]);
   document.querySelectorAll('[data-preset]').forEach(link => link.addEventListener('click', () => { query.value = link.dataset.preset;emirate.value = '';category.value = '';limit = 8;render(); }));
   const heroFinder = document.querySelector('#heroFinder');
   if (heroFinder) heroFinder.addEventListener('submit', event => {

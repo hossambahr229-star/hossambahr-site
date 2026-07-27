@@ -6,6 +6,7 @@
   var selectorNote=document.querySelector('.security-next p');
   if(selectorNote&&selectorNote.textContent.indexOf('ثلاثة أسئلة')>-1)selectorNote.textContent=selectorNote.textContent.replace('ثلاثة أسئلة','أربعة أسئلة');
   var data=window.HB_PLATFORM||{services:[]};
+  var publicServices=data.services.filter(function(item){return item.type!=='blocked';});
   var query=document.querySelector('#catalogQuery');
   var emirate=document.querySelector('#catalogEmirate');
   var category=document.querySelector('#catalogCategory');
@@ -14,7 +15,7 @@
   var more=document.querySelector('#catalogMore');
   var limit=18;
   var stops=['اريد','احتاج','ابغي','عايز','كيف','خدمه','معامله','عمل','في','من','على','عن','لي'];
-  document.querySelector('#catalogTotal').textContent=data.services.length;
+  document.querySelector('#catalogTotal').textContent=publicServices.length;
   var incomingQuery=new URLSearchParams(location.search).get('q');
   if(incomingQuery)query.value=incomingQuery;
 
@@ -26,13 +27,14 @@
   function card(item){
     var team='start-request.html?service='+encodeURIComponent(item.title)+'&emirate='+encodeURIComponent(item.emirate);
     var primaryLabel=item.type==='guide'?'التفاصيل والمتطلبات':'المسار الرسمي ↗';
-    return '<article class="national-card"><div><span>'+item.emirate+'</span><i>'+item.category+'</i></div><h2>'+item.title+'</h2><p>'+item.description+'</p><dl><div><dt>الجهة</dt><dd>'+item.authority+'</dd></div>'+(item.duration?'<div><dt>المدة المنشورة</dt><dd>'+item.duration+'</dd></div>':'')+(item.fee?'<div><dt>الرسوم المنشورة</dt><dd>'+item.fee+'</dd></div>':'')+'</dl><small>آخر مراجعة: '+(item.updated||data.reviewed)+'</small><footer><a href="'+item.url+'" '+(item.url.indexOf('http')===0?'target="_blank" rel="noopener nofollow"':'')+'>'+primaryLabel+'</a><a href="'+team+'">ابدأ الطلب</a></footer></article>';
+    var primary='<a href="'+item.url+'" '+(item.url.indexOf('http')===0?'target="_blank" rel="noopener nofollow"':'')+'>'+primaryLabel+'</a>';
+    return '<article class="national-card"><div><span>'+item.emirate+'</span><i>'+item.category+'</i></div><h2>'+item.title+'</h2><p>'+item.description+'</p><dl><div><dt>الجهة</dt><dd>'+item.authority+'</dd></div>'+(item.duration?'<div><dt>المدة المنشورة</dt><dd>'+item.duration+'</dd></div>':'')+(item.fee?'<div><dt>الرسوم المنشورة</dt><dd>'+item.fee+'</dd></div>':'')+'</dl><small>آخر مراجعة: '+(item.updated||data.reviewed)+'</small><footer>'+primary+'<a href="'+team+'">ابدأ الطلب</a></footer></article>';
   }
   function draw(){
-    var list=data.services.filter(function(item){return emirateMatches(item)&&categoryMatches(item)&&queryMatches(item,query.value);});
+    var list=publicServices.filter(function(item){return emirateMatches(item)&&categoryMatches(item)&&queryMatches(item,query.value);});
     var exact=list.length>0;
-    var suggestions=exact?list:data.services.filter(function(item){return emirateMatches(item)&&categoryMatches(item);}).slice(0,6);
-    if(!suggestions.length)suggestions=data.services.slice(0,6);
+    var suggestions=exact?list:publicServices.filter(function(item){return emirateMatches(item)&&categoryMatches(item);}).slice(0,6);
+    if(!suggestions.length)suggestions=publicServices.slice(0,6);
     count.textContent=exact?list.length+' خدمة مطابقة':'لا يوجد تطابق دقيق · هذه أقرب المسارات';
     var message=encodeURIComponent('مرحباً، أبحث عن خدمة: '+(query.value||'غير محددة')+' — الإمارة: '+(emirate.value||'غير محددة')+' — المجال: '+(category.value||'غير محدد'));
     var rescue=exact?'':'<article class="catalog-rescue"><h2>سنوصلك إلى الخدمة حتى لو اختلف اسمها</h2><p>راجع المسارات المقترحة، أزل التصفية، أو أرسل هدفك مباشرة إلى الفريق.</p><div><button type="button" data-catalog-reset>عرض جميع الخدمات</button><a href="platform-tools.html#selector">محدد الخدمة الذكي</a><a href="https://wa.me/971503780460?text='+message+'" target="_blank" rel="noopener">أرسل هدفك عبر واتساب</a></div></article>';
