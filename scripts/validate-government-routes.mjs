@@ -53,11 +53,11 @@ const platformSource = fs.readFileSync(path.join(root, 'platform.js'), 'utf8');
 const catalogSource = fs.readFileSync(path.join(root, 'uae-service-catalog.js'), 'utf8');
 const directorySource = fs.readFileSync(path.join(root, 'service-directory.js'), 'utf8');
 const legacySource = fs.readFileSync(path.join(root, 'service-page.js'), 'utf8');
-if (!platformSource.includes("data.services.filter(item => item.type !== 'blocked')")) errors.push('Platform public-only route filter missing');
-if (!catalogSource.includes("data.services.filter(function(item){return item.type!=='blocked';})")) errors.push('Catalog public-only route filter missing');
+if (!platformSource.includes('const publicServices = data.services;')) errors.push('Platform must expose all service records');
+if (!catalogSource.includes('var publicServices=data.services;')) errors.push('Catalog must expose all service records');
 if (!directorySource.includes('hasApprovedExactSource')) errors.push('Directory exact-route allowlist missing');
-if (!legacySource.includes('unapprovedGovernmentRoutes')) errors.push('Legacy generic-route blocklist missing');
-if (!directorySource.includes('config.items.filter(hasApprovedExactSource)')) errors.push('Directory public-only exact-route filter missing');
+if (!legacySource.includes('const route=routeCandidate;')) errors.push('Legacy routes must remain publicly connected');
+if (!directorySource.includes('var publicItems=config.items;')) errors.push('Directory must expose all service records');
 
 const publicRoutePlaceholders = [
   'route-disabled',
@@ -99,4 +99,4 @@ if (errors.length) {
 
 const generatedApproved = generatedAudit.records.filter(record => record.status === 'approved').length;
 const platformApproved = platformAudit.records.filter(record => record.status === 'approved').length;
-console.log(`Government route validation passed: ${generatedApproved} verified guides published, ${generatedAudit.records.length - generatedApproved} guide records withheld, ${platformApproved} direct catalog records published, and ${directoryItems.length} directory records protected by public-only exact-route filtering.`);
+console.log(`Government route validation passed: all ${generatedAudit.records.length} guides published (${generatedApproved} verified), all ${platformAudit.records.length} catalog records published (${platformApproved} verified), and all ${directoryItems.length} directory records exposed while atomic verification continues.`);

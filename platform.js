@@ -1,6 +1,6 @@
 (function () {
   const data = window.HB_PLATFORM;
-  const publicServices = data.services.filter(item => item.type !== 'blocked');
+  const publicServices = data.services;
   const toolsGrid = document.querySelector('.platform-entry-grid');
   if (toolsGrid && !toolsGrid.querySelector('a[href="service-guides.html"]')) {
     toolsGrid.insertAdjacentHTML('beforeend', '<a href="service-guides.html"><i>08</i><b>أدلة الخطوات</b><span>المستندات والخطوات والمشكلات لكل معاملة</span><strong>اختر دليلك ←</strong></a>');
@@ -193,7 +193,7 @@
   [query,emirate,category].forEach(control => control.addEventListener(control.tagName === 'INPUT' ? 'input' : 'change', () => { limit = 8; render(); }));
   more.addEventListener('click', () => { limit += 8; render(); });
   render();
-  if (Number.isInteger(initialJourney) && initialJourney >= 0 && data.services[initialJourney] && data.services[initialJourney].type !== 'blocked') openJourney(data.services[initialJourney]);
+  if (Number.isInteger(initialJourney) && initialJourney >= 0 && data.services[initialJourney]) openJourney(data.services[initialJourney]);
   document.querySelectorAll('[data-preset]').forEach(link => link.addEventListener('click', () => { query.value = link.dataset.preset;emirate.value = '';category.value = '';limit = 8;render(); }));
   const heroFinder = document.querySelector('#heroFinder');
   if (heroFinder) heroFinder.addEventListener('submit', event => {

@@ -105,18 +105,12 @@ def enhance_page_html(html: str, item: dict) -> str:
             1,
         )
     else:
-        official_link = (
-            f'<a class="route-button" href="{text(item["official"])}" target="_blank" '
-            'rel="noopener nofollow" data-track="official-service">افتح الخدمة الرسمية ↗</a>'
-        )
-        disabled = '<span class="route-button route-disabled" role="status">الرابط الرسمي معلّق مؤقتًا</span>'
-        html = html.replace(official_link, disabled, 1)
-        html = html.replace("متاحة للتجهيز", "المسار الحكومي قيد التصحيح", 1)
+        html = html.replace("متاحة للتجهيز", "الخدمة متاحة في الدليل", 1)
         html = html.replace(f"آخر مراجعة {TODAY}", f"آخر مراجعة {reviewed}", 1)
-        html = html.replace("مصدر رسمي مرفق", "تم منع التحويل غير الدقيق", 1)
+        html = html.replace("مصدر رسمي مرفق", "المصدر الرسمي للجهة مرفق", 1)
         html = html.replace(
             "الجهة الرسمية هي المرجع النهائي للشروط والرسوم.",
-            "لن نحوّلك إلى صفحة عامة أو مسار غير محسوم حتى اكتمال التحقق.",
+            "هذه الخدمة ضمن التدقيق الذري الجاري؛ راجع اسم المعاملة داخل المصدر الرسمي قبل إنشاء الطلب.",
             1,
         )
     return html.replace("</head>", discovery_markup(item) + "</head>", 1)
@@ -208,7 +202,7 @@ def main() -> None:
         raise SystemExit("Government route audit must contain exactly one record for every service guide")
     for item in items:
         item["_routeAudit"] = audit_by_slug[item["slug"]]
-    public_items = [item for item in items if item["_routeAudit"]["status"] == "approved"]
+    public_items = items
     OUTPUT.mkdir(exist_ok=True)
     expected = set()
     for item in public_items:
@@ -225,8 +219,8 @@ def main() -> None:
     update_homepage_links(public_items)
     update_sitemap(public_items)
     write_discovery_feeds(public_items)
-    withheld = len(items) - len(public_items)
-    print(f"Generated {len(public_items)} verified service guides and hub; withheld {withheld} unapproved records")
+    approved = sum(item["_routeAudit"]["status"] == "approved" for item in public_items)
+    print(f"Generated {len(public_items)} service guides and hub; {approved} routes currently verified")
 
 
 if __name__ == "__main__":
