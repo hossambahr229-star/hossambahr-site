@@ -9,6 +9,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "content" / "service-guides.json"
+AUDIT_DATA = ROOT / "content" / "government-service-route-audit.json"
 OUTPUT = ROOT / "services"
 BASE = "https://hossambahr.com"
 PHONE = "971503780460"
@@ -88,6 +89,36 @@ def discovery_markup(item: dict) -> str:
 
 
 def enhance_page_html(html: str, item: dict) -> str:
+    audit = item["_routeAudit"]
+    reviewed = text(audit["reviewedAt"])
+    if audit["status"] == "approved":
+        route_url = audit.get("startUrl") or item["official"]
+        if route_url != item["official"]:
+            html = html.replace(text(item["official"]), text(route_url), 1)
+        html = html.replace("متاحة للتجهيز", "مسار حكومي متحقق", 1)
+        html = html.replace(f"آخر مراجعة {TODAY}", f"آخر مراجعة {reviewed}", 1)
+        html = html.replace("مصدر رسمي مرفق", "تم التحقق من تطابق الخدمة", 1)
+        official_name = text(audit["officialServiceName"])
+        html = html.replace(
+            "الجهة الرسمية هي المرجع النهائي للشروط والرسوم.",
+            f"تم التحقق في {reviewed} · اسم الخدمة الرسمي: {official_name}.",
+            1,
+        )
+    else:
+        official_link = (
+            f'<a class="route-button" href="{text(item["official"])}" target="_blank" '
+            'rel="noopener nofollow" data-track="official-service">افتح الخدمة الرسمية ↗</a>'
+        )
+        disabled = '<span class="route-button route-disabled" role="status">الرابط الرسمي معلّق مؤقتًا</span>'
+        html = html.replace(official_link, disabled, 1)
+        html = html.replace("متاحة للتجهيز", "المسار الحكومي قيد التصحيح", 1)
+        html = html.replace(f"آخر مراجعة {TODAY}", f"آخر مراجعة {reviewed}", 1)
+        html = html.replace("مصدر رسمي مرفق", "تم منع التحويل غير الدقيق", 1)
+        html = html.replace(
+            "الجهة الرسمية هي المرجع النهائي للشروط والرسوم.",
+            "لن نحوّلك إلى صفحة عامة أو مسار غير محسوم حتى اكتمال التحقق.",
+            1,
+        )
     return html.replace("</head>", discovery_markup(item) + "</head>", 1)
 
 
@@ -168,26 +199,34 @@ def update_homepage_links(items: list[dict]) -> None:
 
 def main() -> None:
     items = json.loads(DATA.read_text(encoding="utf-8"))
+    audit_document = json.loads(AUDIT_DATA.read_text(encoding="utf-8"))
+    audit_by_slug = {record["slug"]: record for record in audit_document["records"]}
     slugs = [item["slug"] for item in items]
     if len(slugs) != len(set(slugs)):
         raise SystemExit("Duplicate service guide slug")
+    if set(slugs) != set(audit_by_slug):
+        raise SystemExit("Government route audit must contain exactly one record for every service guide")
+    for item in items:
+        item["_routeAudit"] = audit_by_slug[item["slug"]]
+    public_items = [item for item in items if item["_routeAudit"]["status"] == "approved"]
     OUTPUT.mkdir(exist_ok=True)
     expected = set()
-    for item in items:
+    for item in public_items:
         expected.add(f"{item['slug']}.html")
-        related = [row for row in items if row["slug"] != item["slug"] and row["category"] == item["category"]][:2]
+        related = [row for row in public_items if row["slug"] != item["slug"] and row["category"] == item["category"]][:2]
         if len(related) < 2:
-            related.extend(row for row in items if row["slug"] != item["slug"] and row not in related)
+            related.extend(row for row in public_items if row["slug"] != item["slug"] and row not in related)
         rendered = enhance_page_html(page(item, related[:2]), item)
         (OUTPUT / f"{item['slug']}.html").write_text(rendered, encoding="utf-8", newline="\n")
     for stale in OUTPUT.glob("*.html"):
         if stale.name not in expected:
             stale.unlink()
-    (ROOT / "service-guides.html").write_text(enhance_hub_html(hub(items)), encoding="utf-8", newline="\n")
-    update_homepage_links(items)
-    update_sitemap(items)
-    write_discovery_feeds(items)
-    print(f"Generated {len(items)} service guides and hub")
+    (ROOT / "service-guides.html").write_text(enhance_hub_html(hub(public_items)), encoding="utf-8", newline="\n")
+    update_homepage_links(public_items)
+    update_sitemap(public_items)
+    write_discovery_feeds(public_items)
+    withheld = len(items) - len(public_items)
+    print(f"Generated {len(public_items)} verified service guides and hub; withheld {withheld} unapproved records")
 
 
 if __name__ == "__main__":

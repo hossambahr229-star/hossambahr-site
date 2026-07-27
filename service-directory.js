@@ -40,6 +40,25 @@
     }
     return config.source;
   }
+  function hasApprovedExactSource(item){
+    if(!item[5])return false;
+    if(key==='mohre')return true;
+    if(key==='residency')return [
+      'إصدار هوية جديدة',
+      'تجديد الهوية الإماراتية',
+      'بدل فاقد أو تالف للهوية',
+      'تحديث بيانات الهوية',
+      'الإعفاء من غرامة تأخير الهوية',
+      'استرداد رسوم إصدار الهوية غير المكتمل',
+      'إلغاء جميع أنواع تصاريح الإقامة الصادرة من دبي',
+      'إصدار إقامة لأفراد الأسرة في دبي',
+      'تجديد إقامة أفراد الأسرة في دبي',
+      'إصدار الإقامة الذهبية للمستثمرين في دبي',
+      'تجديد إقامة موظف في القطاع الخاص في دبي'
+    ].indexOf(item[1])!==-1;
+    return false;
+  }
+  var publicItems=config.items.filter(hasApprovedExactSource);
   var grid=document.querySelector('#directoryGrid');
   var tabs=document.querySelector('#directoryTabs');
   var search=document.querySelector('#directorySearch');
@@ -51,22 +70,23 @@
   var searchStops=['اريد','احتاج','ابغي','عايز','كيف','خدمه','معامله','اجراء','غير','معروف','معروفه','في','من','على','عن','لي'];
   function matchesQuery(item,value){var tokens=normalize(value).split(' ').filter(function(x){return x.length>1&&searchStops.indexOf(x)===-1;});var text=normalize(item.join(' '));if(!tokens.length)return!normalize(value);var matched=tokens.filter(function(token){return text.indexOf(token)!==-1;}).length;return matched>=Math.max(1,Math.ceil(tokens.length*.5));}
   var groups=['الكل'];
-  config.items.forEach(function(item){if(groups.indexOf(item[0])===-1)groups.push(item[0]);});
+  publicItems.forEach(function(item){if(groups.indexOf(item[0])===-1)groups.push(item[0]);});
   function drawTabs(){
     tabs.innerHTML=groups.map(function(name){return '<button class="'+(name===group?'active':'')+'" data-group="'+name+'">'+name+'</button>';}).join('');
     Array.prototype.forEach.call(tabs.querySelectorAll('button'),function(button){button.onclick=function(){group=button.getAttribute('data-group');drawTabs();draw();};});
   }
   function draw(){
     var query=search.value.trim();
-    var list=config.items.filter(function(item){return (group==='الكل'||item[0]===group)&&matchesQuery(item,query);});
+    var list=publicItems.filter(function(item){return (group==='الكل'||item[0]===group)&&matchesQuery(item,query);});
     var exact=list.length>0;
-    var suggestions=exact?list:config.items.filter(function(item){return group==='الكل'||item[0]===group;}).slice(0,6);
+    var suggestions=exact?list:publicItems.filter(function(item){return group==='الكل'||item[0]===group;}).slice(0,6);
     count.textContent=exact?list.length+' خدمة ومعاملة':'اقتراحات قريبة لمساعدتك';
     var rescue=exact?'':'<article class="directory-rescue"><h2>لم نتركك دون نتيجة</h2><p>اعرض كل المعاملات أو أرسل وصف هدفك لنحدد الجهة والخدمة الصحيحة.</p><div><button type="button" data-directory-reset>عرض جميع المعاملات</button><a href="https://wa.me/971503780460?text='+encodeURIComponent('مرحباً، أبحث عن معاملة: '+query)+'" target="_blank" rel="noopener">أرسل هدفك عبر واتساب</a></div></article>';
     grid.innerHTML=rescue+suggestions.map(function(item){
       var message=encodeURIComponent('مرحباً، أود الاستفسار عن خدمة: '+item[1]+' ('+item[2]+')');
       var source=officialSource(item);
-      return '<article class="directory-card"><small>'+item[0]+'</small><h2>'+item[1]+'</h2><p>'+item[3]+'</p><div class="directory-meta"><span><b>الجهة:</b> '+item[2]+'</span><span><b>القناة المعتادة:</b> '+item[4]+'</span></div><div class="directory-actions"><a href="https://wa.me/971503780460?text='+message+'" target="_blank" rel="noopener">اطلب مراجعة المتطلبات ←</a><a href="'+source+'" target="_blank" rel="noopener nofollow">المصدر الرسمي ↗</a></div></article>';
+      var officialAction='<a href="'+source+'" target="_blank" rel="noopener nofollow">المسار الرسمي الدقيق ↗</a>';
+      return '<article class="directory-card"><small>'+item[0]+'</small><h2>'+item[1]+'</h2><p>'+item[3]+'</p><div class="directory-meta"><span><b>الجهة:</b> '+item[2]+'</span><span><b>القناة المعتادة:</b> '+item[4]+'</span></div><div class="directory-actions"><a href="https://wa.me/971503780460?text='+message+'" target="_blank" rel="noopener">اطلب مراجعة المتطلبات ←</a>'+officialAction+'</div></article>';
     }).join('');
   }
   search.oninput=draw;

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-27",
+  "entries": [
+    {
+      "reviewedAt": "2026-07-27",
+      "reviewer": "Codex government-route audit",
+      "scope": "Generated atomic service guides",
+      "recordCount": 31,
+      "approved": 18,
+      "unapproved": 13,
+      "testResult": "passed_public_only_verified",
+      "notes": "نُشرت الأدلة الثمانية عشر التي اجتازت التحقق فقط، وحُجبت السجلات الثلاثة عشر غير المعتمدة كليًا عن صفحات الموقع وخرائطه وتغذيته مع بقائها في سجل التدقيق الداخلي."
+    },
+    {
+      "reviewedAt": "2026-07-27",
+      "reviewer": "Codex government-route audit",
+      "scope": "HB_PLATFORM non-guide government transactions",
+      "recordCount": 18,
+      "approved": 14,
+      "unapproved": 4,
+      "testResult": "passed_public_only_verified",
+      "notes": "يُعرض في البحث والكتالوج العام أربعة عشر مسارًا مباشرًا معتمدًا فقط، وتُحجب السجلات الأربعة غير المعتمدة من الواجهة العامة. أضيفت eDAS 2.0 كخدمة مستقلة."
+    },
+    {
+      "reviewedAt": "2026-07-27",
+      "reviewer": "Codex government-route audit",
+      "scope": "Legacy service-page government links",
+      "recordCount": 13,
+      "approved": 0,
+      "unapproved": 13,
+      "testResult": "passed_public_only_verified",
+      "notes": "تُعرض الروابط الحكومية الدقيقة فقط داخل الصفحات القديمة. إذا لم يوجد مسار ذري معتمد فلا تُنشأ بطاقة حكومية أو رسالة تعليق للمستخدم."
+    },
+    {
+      "reviewedAt": "2026-07-27",
+      "reviewer": "Codex government-route audit",
+      "scope": "MOHRE, residency and Dubai approvals directories",
+      "recordCount": 118,
+      "approved": 29,
+      "unapproved": 89,
+      "testResult": "passed_public_only_verified",
+      "notes": "تعرض أدلة الجهات السجلات التي تحمل رابطًا ذريًا معتمدًا فقط. صُححت سبعة مسارات MOHRE إضافية: بطاقة المنشأة، تحديث ملف المنشأة، تصريح الحدث، تدريب وعمل الطالب، تعديل التصاريح والعقود، بلاغ الانقطاع وإلغاؤه، وإلغاء تصريح العامل صاحب القضية. بقية السجلات تبقى في مخزون التدقيق الداخلي ولا تظهر كبطاقات عامة."
+    }
+  ]
+}

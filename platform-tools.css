@@ -10,4 +10,5 @@
 .national-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}
 .national-card,.national-card h2,.national-card p,.national-card footer{min-width:0;overflow-wrap:break-word;word-break:normal}
 @media(max-width:700px){.national-grid{grid-template-columns:minmax(0,1fr)!important}.national-card{padding:18px}.national-card h2{font-size:19px}.national-card footer{grid-template-columns:1fr}.catalog-shell{overflow:hidden}}
+.catalog-route-blocked{min-height:42px;display:flex;align-items:center;justify-content:center;border:1px solid #e8bbb6;border-radius:8px;background:#f8e4e1;color:#963d36;font-size:11px;font-weight:700;text-align:center}
 .readiness-result .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.readiness-result .actions a{min-height:44px;display:flex;align-items:center;justify-content:center;padding:9px 14px;border-radius:9px;background:#efa36e;color:var(--navy);font-size:12px;font-weight:800}.readiness-result .actions a:last-child{background:transparent;color:#fff;border:1px solid #ffffff45}
