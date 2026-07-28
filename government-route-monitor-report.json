@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-07-28T07:46:57.728Z",
-  "approvedServiceRecords": 196,
-  "uniqueUrls": 93,
-  "healthy": 93,
+  "checkedAt": "2026-07-28T08:45:12.900Z",
+  "approvedServiceRecords": 198,
+  "uniqueUrls": 94,
+  "healthy": 94,
   "failed": 0,
   "checks": [
     {
@@ -861,6 +861,17 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+      "services": [
+        "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP",
+        "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
       "semanticNotFound": false
     },
     {
