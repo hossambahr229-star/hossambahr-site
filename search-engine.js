@@ -3,6 +3,7 @@
 
   var platform = window.HB_PLATFORM || { services: [], reviewed: '' };
   var knowledge = window.HB_KNOWLEDGE || { updates: [], faqs: [], problems: [] };
+  var directories = window.HB_DIRECTORIES || {};
   var fullTextData = window.HB_SEARCH_CONTENT || { pages: [] };
   var fullTextByUrl = new Map((fullTextData.pages || []).map(function (page) { return [page.url, page]; }));
 
@@ -11,6 +12,9 @@
     ['شركة', 'شركه', 'مؤسسة', 'مؤسسه', 'منشأة', 'منشاه', 'company', 'business'],
     ['إلغاء', 'الغاء', 'شطب', 'تصفية', 'تصفيه', 'إغلاق', 'اغلاق', 'cancel', 'liquidation'],
     ['إقامة', 'اقامة', 'اقامه', 'فيزا', 'تأشيرة', 'تاشيره', 'visa', 'residency'],
+    ['زيارة', 'زياره', 'زائر', 'visit'],
+    ['قريب', 'أقارب', 'اقارب', 'قرابة', 'قرابه', 'relative'],
+    ['صديق', 'أصدقاء', 'اصدقاء', 'friend'],
     ['الهوية', 'هويه', 'بطاقة هوية', 'emirates id', 'id'],
     ['عمل', 'موظف', 'عامل', 'عمال', 'employment', 'work'],
     ['عقد', 'عقود', 'contract'],
@@ -33,7 +37,7 @@
     ['أم القيوين', 'ام القيوين', 'uaq']
   ];
 
-  var stopWords = new Set(['اريد', 'أريد', 'عايز', 'ابغي', 'أبغي', 'احتاج', 'أحتاج', 'كيف', 'ما', 'هي', 'هو', 'من', 'في', 'الى', 'إلى', 'على', 'عن', 'مع', 'خدمة', 'خدمه', 'معاملة', 'معامله', 'القيام', 'عمل']);
+  var stopWords = new Set(['اريد', 'أريد', 'عايز', 'ابغي', 'أبغي', 'احتاج', 'أحتاج', 'كيف', 'ما', 'هي', 'هو', 'من', 'في', 'الى', 'إلى', 'على', 'عن', 'مع', 'أو', 'او', 'خدمة', 'خدمه', 'معاملة', 'معامله', 'القيام', 'عمل']);
 
   var categoryHints = {
     'العمل والموظفون': 'عمل موظف عامل تصريح عقد حماية الأجور ملف منشأة بطاقة منشأة mohre employment wages establishment',
@@ -112,6 +116,44 @@
   }
 
   var services = (platform.services || []).map(serviceEntry);
+  var directoryMeta = {
+    mohre: { category: 'العمل والموظفون', emirate: 'اتحادي', page: 'mohre-services-dubai.html' },
+    residency: { category: 'الإقامة والهوية', emirate: 'اتحادي', page: 'residency-identity-dubai.html' },
+    approvals: { category: 'الموافقات الحكومية', emirate: 'دبي', page: 'government-approvals-dubai.html' }
+  };
+  var directoryEntries = Object.keys(directories).reduce(function (entries, key) {
+    var config = directories[key] || {};
+    var meta = directoryMeta[key] || { category: 'الخدمات الحكومية', emirate: 'اتحادي', page: 'uae-service-catalog.html' };
+    (config.items || []).forEach(function (item, index) {
+      var title = item[1] || '';
+      var authority = item[2] || 'الجهة الحكومية المختصة';
+      var exactUrl = item[5] || '';
+      var emirate = meta.emirate;
+      if (key === 'residency' && /دبي|GDRFA/i.test(title + ' ' + authority)) emirate = 'دبي';
+      if (key === 'residency' && /خارج دبي|ICP/i.test(title + ' ' + authority)) emirate = 'الإمارات الخاضعة لمسار ICP (خارج دبي)';
+      entries.push({
+        id: 'directory-' + key + '-' + index,
+        title: title,
+        aliases: aliasesFor({ title: title, description: item[3] || '', category: meta.category }),
+        keywords: unique([item[0] || '', item[4] || '', authority, key]),
+        description: item[3] || '',
+        detailedDescription: [item[3] || '', item[4] || ''].join(' '),
+        requirements: [],
+        emirate: emirate,
+        authority: authority,
+        category: meta.category,
+        audience: 'الأفراد والشركات حسب فئة الخدمة',
+        payment: 'غير محدد',
+        url: exactUrl || (meta.page + '?q=' + encodeURIComponent(title)),
+        officialUrl: exactUrl,
+        status: exactUrl ? 'مسار حكومي متاح' : 'متاحة في دليل المنصة',
+        updated: '2026-07-28',
+        source: authority,
+        kind: 'خدمة'
+      });
+    });
+    return entries;
+  }, []);
   var serviceUrls = new Set(services.map(function (item) { return String(item.url || '').split('#')[0]; }));
   var knowledgeEntries = []
     .concat((knowledge.updates || []).map(function (item, index) {
@@ -148,7 +190,7 @@
     };
   });
 
-  var index = services.concat(knowledgeEntries, pageEntries, additionalContent);
+  var index = services.concat(directoryEntries, knowledgeEntries, pageEntries, additionalContent);
 
   function tokens(value) {
     var seenConcepts = new Set();
@@ -214,7 +256,9 @@
         else if (entry._words.includes(variant)) best = Math.max(best, 28);
         else if (variant.length >= 3 && entry._searchable.includes(variant)) best = Math.max(best, 24);
         else if (variant.length >= 4 && entry._words.some(function (word) { return word.length >= 4 && (word.startsWith(variant) || variant.startsWith(word)); })) best = Math.max(best, 15);
-        else if (variant.length >= 4 && entry._words.some(function (word) { return Math.abs(word.length - variant.length) <= 1 && editDistance(word, variant) <= 1; })) best = Math.max(best, 10);
+        else if (variant.length >= 4 && entry._words.some(function (word) {
+          return word[0] === variant[0] && Math.abs(word.length - variant.length) <= 1 && editDistance(word, variant) <= 1;
+        })) best = Math.max(best, 10);
       });
       if (best) { matched += 1; total += best; }
     });
@@ -268,6 +312,6 @@
     search: search,
     facets: facets,
     track: track,
-    reviewed: platform.reviewed || knowledge.reviewed || ''
+    reviewed: directoryEntries.length ? '2026-07-28' : (platform.reviewed || knowledge.reviewed || '')
   };
 })();
