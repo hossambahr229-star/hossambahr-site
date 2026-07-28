@@ -4,9 +4,9 @@
   "hierarchy": "emirate > authority > sector > service > audience > requestType > officialUrl",
   "policy": "Null officialUrl means navigation is suspended until the exact official transaction passes double verification.",
   "summary": {
-    "totalCanonicalRecords": 158,
-    "approved": 80,
-    "suspended": 78
+    "totalCanonicalRecords": 168,
+    "approved": 101,
+    "suspended": 67
   },
   "services": [
     {
@@ -2183,77 +2183,101 @@
     {
       "id": "directory:residency:13",
       "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
-      "emirate": "دبي/اتحادي — يلزم الفصل",
-      "authority": "GDRFA Dubai / ICP",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "دبي",
+      "authority": "GDRFA Dubai",
       "sector": "الإقامة",
-      "serviceName": "تغيير الوضع داخل الدولة",
-      "platformTitle": "تغيير الوضع داخل الدولة",
+      "serviceName": "تعديل الوضع داخل الدولة في دبي",
+      "platformTitle": "تعديل الوضع داخل الدولة في دبي",
       "audience": "غير موثق بعد",
       "requestType": "الإقامة",
-      "description": "استكمال تحويل حالة الدخول إلى إقامة مؤهلة دون مغادرة الدولة عند السماح.",
+      "description": "تعديل وضع المكفول داخل الدولة بعد إلغاء الإقامة السابقة وصدور تأشيرة جديدة دون مغادرة الدولة.",
       "requirements": [],
       "fees": "غير موثق بعد",
       "duration": "غير موثق بعد",
       "conditions": "غير موثق بعد",
-      "specialCases": "GDRFA Dubai / ICP",
+      "specialCases": "GDRFA Dubai",
       "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
+      "officialUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+      "evidenceUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
       "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
+      "reviewResult": "approved_for_user_navigation"
     },
     {
       "id": "directory:residency:14",
       "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
+      "status": "approved",
+      "finding": "exact_service_card",
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": "ICP",
       "sector": "الإقامة",
-      "serviceName": "تصريح بقاء خارج الدولة لأكثر من 6 أشهر",
-      "platformTitle": "تصريح بقاء خارج الدولة لأكثر من 6 أشهر",
+      "serviceName": "تغيير الوضع عبر ICP ضمن إصدار الإقامة (خارج دبي)",
+      "platformTitle": "تغيير الوضع عبر ICP ضمن إصدار الإقامة (خارج دبي)",
       "audience": "غير موثق بعد",
       "requestType": "الإقامة",
-      "description": "طلب تصريح عودة للمقيم خارج الدولة أكثر من ستة أشهر عند توافر سبب مقبول.",
+      "description": "استكمال تغيير الوضع داخل الدولة ضمن معاملة إصدار الإقامة بعد إلغاء الإقامة السابقة وصدور تأشيرة جديدة.",
       "requirements": [],
       "fees": "غير موثق بعد",
       "duration": "غير موثق بعد",
       "conditions": "غير موثق بعد",
       "specialCases": "ICP",
       "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
       "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
+      "reviewResult": "approved_for_user_navigation"
     },
     {
       "id": "directory:residency:15",
       "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
+      "status": "approved",
+      "finding": "exact_service_card",
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": "ICP",
       "sector": "الإقامة",
-      "serviceName": "تقرير تفاصيل الإقامة",
-      "platformTitle": "تقرير تفاصيل الإقامة",
+      "serviceName": "تصريح بقاء خارج الدولة لأكثر من 6 أشهر عبر ICP",
+      "platformTitle": "تصريح بقاء خارج الدولة لأكثر من 6 أشهر عبر ICP",
       "audience": "غير موثق بعد",
       "requestType": "الإقامة",
-      "description": "استخراج تقرير يبين بيانات الإقامة والملف.",
+      "description": "إصدار تصريح للمقيم الذي بقي خارج الدولة أكثر من ستة أشهر بسبب مقبول، ولا يشمل المقيمين في دبي.",
       "requirements": [],
       "fees": "غير موثق بعد",
       "duration": "غير موثق بعد",
       "conditions": "غير موثق بعد",
       "specialCases": "ICP",
       "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
       "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
+      "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:17",
+      "id": "directory:residency:16",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "authority": "ICP",
+      "sector": "الإقامة",
+      "serviceName": "تقرير تفاصيل الإقامة عبر ICP",
+      "platformTitle": "تقرير تفاصيل الإقامة عبر ICP",
+      "audience": "غير موثق بعد",
+      "requestType": "الإقامة",
+      "description": "استخراج تقرير رسمي يبين بيانات الإقامة ومعلومات الملف النشط.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "ICP",
+      "relatedServices": [],
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:18",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2277,55 +2301,103 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:18",
-      "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
-      "emirate": "دبي/اتحادي — يلزم الفصل",
-      "authority": "GDRFA Dubai / ICP",
-      "sector": "إقامة الأسرة",
-      "serviceName": "كفالة الوالدين",
-      "platformTitle": "كفالة الوالدين",
-      "audience": "غير موثق بعد",
-      "requestType": "إقامة الأسرة",
-      "description": "طلب إقامة الوالدين وفق متطلبات الدخل والسكن والتأمين والضمان عند طلبه.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "GDRFA Dubai / ICP",
-      "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
-      "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
-    },
-    {
       "id": "directory:residency:19",
       "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
-      "emirate": "دبي/اتحادي — يلزم الفصل",
-      "authority": "GDRFA Dubai / ICP",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "دبي",
+      "authority": "GDRFA Dubai",
       "sector": "إقامة الأسرة",
-      "serviceName": "إقامة مولود جديد",
-      "platformTitle": "إقامة مولود جديد",
+      "serviceName": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+      "platformTitle": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
       "audience": "غير موثق بعد",
       "requestType": "إقامة الأسرة",
-      "description": "إضافة المولود وإصدار الإقامة والهوية ضمن المهلة النظامية.",
+      "description": "إصدار إقامة للوالدين لمدة سنة قابلة للتجديد بعد دراسة الحالة واستيفاء متطلبات الدخل والسكن والضمان.",
       "requirements": [],
       "fees": "غير موثق بعد",
       "duration": "غير موثق بعد",
       "conditions": "غير موثق بعد",
-      "specialCases": "GDRFA Dubai / ICP",
+      "specialCases": "GDRFA Dubai",
       "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
+      "officialUrl": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+      "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
       "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
+      "reviewResult": "approved_for_user_navigation"
     },
     {
       "id": "directory:residency:20",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "authority": "ICP",
+      "sector": "إقامة الأسرة",
+      "serviceName": "إصدار إقامة للوالدين عبر ICP (خارج دبي)",
+      "platformTitle": "إصدار إقامة للوالدين عبر ICP (خارج دبي)",
+      "audience": "غير موثق بعد",
+      "requestType": "إقامة الأسرة",
+      "description": "إصدار إقامة للوالدين عبر فئة أفراد أسرة المقيم وإثبات القرابة داخل بطاقة إصدار الإقامة الرسمية.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "ICP",
+      "relatedServices": [],
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:21",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "دبي",
+      "authority": "GDRFA Dubai",
+      "sector": "إقامة الأسرة",
+      "serviceName": "إصدار إقامة لمولود جديد في دبي",
+      "platformTitle": "إصدار إقامة لمولود جديد في دبي",
+      "audience": "غير موثق بعد",
+      "requestType": "إقامة الأسرة",
+      "description": "إصدار إقامة للمولود ضمن مسار إصدار إقامة أفراد الأسرة المرتبط بملف كفيل صادر من دبي.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "GDRFA Dubai",
+      "relatedServices": [],
+      "officialUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+      "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:22",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "authority": "ICP",
+      "sector": "إقامة الأسرة",
+      "serviceName": "إصدار إقامة لمولود جديد عبر ICP (خارج دبي)",
+      "platformTitle": "إصدار إقامة لمولود جديد عبر ICP (خارج دبي)",
+      "audience": "غير موثق بعد",
+      "requestType": "إقامة الأسرة",
+      "description": "إصدار إقامة للمولود عبر فئة أفراد أسرة المقيم مع شهادة الميلاد داخل بطاقة إصدار الإقامة الرسمية.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "ICP",
+      "relatedServices": [],
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:23",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2349,7 +2421,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:23",
+      "id": "directory:residency:26",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2373,7 +2445,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:24",
+      "id": "directory:residency:27",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2397,7 +2469,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:25",
+      "id": "directory:residency:28",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2421,7 +2493,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:26",
+      "id": "directory:residency:29",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2445,7 +2517,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:27",
+      "id": "directory:residency:30",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2469,7 +2541,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:28",
+      "id": "directory:residency:31",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2493,7 +2565,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:29",
+      "id": "directory:residency:32",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2517,7 +2589,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:30",
+      "id": "directory:residency:33",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2541,7 +2613,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:31",
+      "id": "directory:residency:34",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2565,7 +2637,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:32",
+      "id": "directory:residency:35",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2589,7 +2661,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:33",
+      "id": "directory:residency:36",
       "sourceLayer": "directory-residency",
       "status": "unapproved",
       "finding": "generic_fallback_only",
@@ -2613,7 +2685,7 @@
       "reviewResult": "suspended_pending_exact_route"
     },
     {
-      "id": "directory:residency:35",
+      "id": "directory:residency:38",
       "sourceLayer": "directory-residency",
       "status": "unapproved",
       "finding": "generic_fallback_only",
@@ -2637,7 +2709,7 @@
       "reviewResult": "suspended_pending_exact_route"
     },
     {
-      "id": "directory:residency:36",
+      "id": "directory:residency:39",
       "sourceLayer": "directory-residency",
       "status": "unapproved",
       "finding": "generic_fallback_only",
@@ -2661,7 +2733,7 @@
       "reviewResult": "suspended_pending_exact_route"
     },
     {
-      "id": "directory:residency:37",
+      "id": "directory:residency:40",
       "sourceLayer": "directory-residency",
       "status": "unapproved",
       "finding": "generic_fallback_only",
@@ -2685,7 +2757,7 @@
       "reviewResult": "suspended_pending_exact_route"
     },
     {
-      "id": "directory:residency:38",
+      "id": "directory:residency:41",
       "sourceLayer": "directory-residency",
       "status": "unapproved",
       "finding": "generic_fallback_only",
@@ -2709,7 +2781,7 @@
       "reviewResult": "suspended_pending_exact_route"
     },
     {
-      "id": "directory:residency:39",
+      "id": "directory:residency:42",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2733,148 +2805,316 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:40",
-      "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
-      "emirate": "دبي/اتحادي — يلزم الفصل",
-      "authority": "GDRFA Dubai / ICP",
-      "sector": "المنشآت",
-      "serviceName": "إصدار بطاقة منشأة هجرة",
-      "platformTitle": "إصدار بطاقة منشأة هجرة",
-      "audience": "غير موثق بعد",
-      "requestType": "المنشآت",
-      "description": "تسجيل المنشأة لإدارة معاملات الموظفين والمكفولين وأذونات الدخول.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "GDRFA Dubai / ICP",
-      "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
-      "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
-    },
-    {
-      "id": "directory:residency:41",
-      "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
-      "emirate": "دبي/اتحادي — يلزم الفصل",
-      "authority": "GDRFA Dubai / ICP",
-      "sector": "المنشآت",
-      "serviceName": "تجديد بطاقة المنشأة",
-      "platformTitle": "تجديد بطاقة المنشأة",
-      "audience": "غير موثق بعد",
-      "requestType": "المنشآت",
-      "description": "تجديد البطاقة بعد التأكد من الرخصة والبيانات والالتزامات.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "GDRFA Dubai / ICP",
-      "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
-      "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
-    },
-    {
-      "id": "directory:residency:42",
-      "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
-      "emirate": "دبي/اتحادي — يلزم الفصل",
-      "authority": "GDRFA Dubai / ICP",
-      "sector": "المنشآت",
-      "serviceName": "تعديل أو إضافة بيانات بطاقة المنشأة",
-      "platformTitle": "تعديل أو إضافة بيانات بطاقة المنشأة",
-      "audience": "غير موثق بعد",
-      "requestType": "المنشآت",
-      "description": "تعديل الاسم أو الملاك أو الشركاء أو البيانات المرتبطة بالرخصة.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "GDRFA Dubai / ICP",
-      "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
-      "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
-    },
-    {
       "id": "directory:residency:43",
       "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
-      "emirate": "دبي/اتحادي — يلزم الفصل",
-      "authority": "GDRFA Dubai / ICP",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "دبي",
+      "authority": "GDRFA Dubai",
       "sector": "المنشآت",
-      "serviceName": "إلغاء بطاقة المنشأة",
-      "platformTitle": "إلغاء بطاقة المنشأة",
+      "serviceName": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي",
+      "platformTitle": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي",
       "audience": "غير موثق بعد",
       "requestType": "المنشآت",
-      "description": "إغلاق البطاقة بعد تسوية المكفولين والطلبات والقيود.",
+      "description": "إصدار بطاقة منشأة تتضمن بيانات منشأة القطاع الخاص أو المنطقة الحرة في دبي.",
       "requirements": [],
       "fees": "غير موثق بعد",
       "duration": "غير موثق بعد",
       "conditions": "غير موثق بعد",
-      "specialCases": "GDRFA Dubai / ICP",
+      "specialCases": "GDRFA Dubai",
       "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
+      "officialUrl": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+      "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
       "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
+      "reviewResult": "approved_for_user_navigation"
     },
     {
       "id": "directory:residency:44",
       "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
-      "emirate": "دبي/اتحادي — يلزم الفصل",
-      "authority": "GDRFA Dubai / ICP",
-      "sector": "الغرامات والتقارير",
-      "serviceName": "الاستعلام عن الغرامات وتسويتها",
-      "platformTitle": "الاستعلام عن الغرامات وتسويتها",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "authority": "ICP",
+      "sector": "المنشآت",
+      "serviceName": "إصدار بطاقة منشأة عبر ICP (خارج دبي)",
+      "platformTitle": "إصدار بطاقة منشأة عبر ICP (خارج دبي)",
       "audience": "غير موثق بعد",
-      "requestType": "الغرامات والتقارير",
-      "description": "فحص الغرامات وحالة الملف وخيارات السداد أو طلب الإعفاء عند توفر المسار.",
+      "requestType": "المنشآت",
+      "description": "إصدار بطاقة المنشأة الإلكترونية التي تتضمن الاسم التجاري والرخصة والشركاء والنشاط.",
       "requirements": [],
       "fees": "غير موثق بعد",
       "duration": "غير موثق بعد",
       "conditions": "غير موثق بعد",
-      "specialCases": "GDRFA Dubai / ICP",
+      "specialCases": "ICP",
       "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
       "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
+      "reviewResult": "approved_for_user_navigation"
     },
     {
       "id": "directory:residency:45",
       "sourceLayer": "directory-residency",
-      "status": "unapproved",
-      "finding": "generic_fallback_only",
-      "emirate": "دبي/اتحادي — يلزم الفصل",
-      "authority": "GDRFA Dubai / ICP",
-      "sector": "الغرامات والتقارير",
-      "serviceName": "متابعة حالة الطلب أو الملف",
-      "platformTitle": "متابعة حالة الطلب أو الملف",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "دبي",
+      "authority": "GDRFA Dubai",
+      "sector": "المنشآت",
+      "serviceName": "تجديد بطاقة المنشأة في دبي لجميع الفئات",
+      "platformTitle": "تجديد بطاقة المنشأة في دبي لجميع الفئات",
       "audience": "غير موثق بعد",
-      "requestType": "الغرامات والتقارير",
-      "description": "تتبع الطلب برقم المعاملة أو المرجع عبر القناة الرسمية.",
+      "requestType": "المنشآت",
+      "description": "تجديد بطاقة المنشأة الحكومية أو الخاصة أو المنطقة الحرة أو الشركة الوطنية في دبي.",
       "requirements": [],
       "fees": "غير موثق بعد",
       "duration": "غير موثق بعد",
       "conditions": "غير موثق بعد",
-      "specialCases": "الموقع الذكي للجهة",
+      "specialCases": "GDRFA Dubai",
       "relatedServices": [],
-      "officialUrl": null,
-      "evidenceUrl": null,
+      "officialUrl": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+      "evidenceUrl": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
       "lastReviewed": "2026-07-27",
-      "reviewResult": "suspended_pending_exact_route"
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:46",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "authority": "ICP",
+      "sector": "المنشآت",
+      "serviceName": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
+      "platformTitle": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
+      "audience": "غير موثق بعد",
+      "requestType": "المنشآت",
+      "description": "تجديد بطاقة المنشأة الإلكترونية بعد التحقق من الرخصة والغرامات والمتطلبات.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "ICP",
+      "relatedServices": [],
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:47",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "دبي",
+      "authority": "GDRFA Dubai",
+      "sector": "المنشآت",
+      "serviceName": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات",
+      "platformTitle": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات",
+      "audience": "غير موثق بعد",
+      "requestType": "المنشآت",
+      "description": "تعديل الاسم التجاري أو التنازل أو الشركاء أو بيانات بطاقة المنشأة في دبي.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "GDRFA Dubai",
+      "relatedServices": [],
+      "officialUrl": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+      "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:48",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "authority": "ICP",
+      "sector": "المنشآت",
+      "serviceName": "تعديل أو إضافة بيانات بطاقة المنشأة عبر ICP (خارج دبي)",
+      "platformTitle": "تعديل أو إضافة بيانات بطاقة المنشأة عبر ICP (خارج دبي)",
+      "audience": "غير موثق بعد",
+      "requestType": "المنشآت",
+      "description": "تعديل اسم المنشأة أو الملكية أو الشركاء أو إضافة امتيازات الخدمة في بطاقة المنشأة.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "ICP",
+      "relatedServices": [],
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:49",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "دبي",
+      "authority": "GDRFA Dubai",
+      "sector": "المنشآت",
+      "serviceName": "إلغاء بطاقة المنشأة في دبي لجميع الفئات",
+      "platformTitle": "إلغاء بطاقة المنشأة في دبي لجميع الفئات",
+      "audience": "غير موثق بعد",
+      "requestType": "المنشآت",
+      "description": "إلغاء بطاقة المنشأة في دبي بعد خلوها من المكفولين واستيفاء الشروط.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "GDRFA Dubai",
+      "relatedServices": [],
+      "officialUrl": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "evidenceUrl": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:50",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "authority": "ICP",
+      "sector": "المنشآت",
+      "serviceName": "إلغاء بطاقة المنشأة عبر ICP (خارج دبي)",
+      "platformTitle": "إلغاء بطاقة المنشأة عبر ICP (خارج دبي)",
+      "audience": "غير موثق بعد",
+      "requestType": "المنشآت",
+      "description": "إلغاء بطاقة المنشأة الحكومية أو الخاصة أو العاملة في منطقة حرة بعد إلغاء الرخصة وتسوية العمال والغرامات.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "ICP",
+      "relatedServices": [],
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:51",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "دبي",
+      "authority": "GDRFA Dubai",
+      "sector": "الغرامات والتقارير",
+      "serviceName": "الاستعلام عن غرامات ملف أو مكفول في دبي",
+      "platformTitle": "الاستعلام عن غرامات ملف أو مكفول في دبي",
+      "audience": "غير موثق بعد",
+      "requestType": "الغرامات والتقارير",
+      "description": "الاستعلام عن الغرامات المرتبطة بالملف الشخصي أو المكفولين باستخدام رقم الملف أو الهوية أو الجواز أو الرقم الموحد.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "GDRFA Dubai",
+      "relatedServices": [],
+      "officialUrl": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+      "evidenceUrl": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:52",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "دبي",
+      "authority": "GDRFA Dubai",
+      "sector": "الغرامات والتقارير",
+      "serviceName": "سداد غرامات مخالفي قانون الإقامة في دبي",
+      "platformTitle": "سداد غرامات مخالفي قانون الإقامة في دبي",
+      "audience": "غير موثق بعد",
+      "requestType": "الغرامات والتقارير",
+      "description": "سداد الغرامة المالية المستحقة على مخالف قانون دخول وإقامة الأجانب في دبي.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "GDRFA Dubai",
+      "relatedServices": [],
+      "officialUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:53",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "authority": "ICP",
+      "sector": "الغرامات والتقارير",
+      "serviceName": "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي)",
+      "platformTitle": "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي)",
+      "audience": "غير موثق بعد",
+      "requestType": "الغرامات والتقارير",
+      "description": "سداد الغرامات المفروضة على مخالفي التأشيرات أو الإقامة ضمن اختصاص ICP.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "ICP",
+      "relatedServices": [],
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:54",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "دبي",
+      "authority": "GDRFA Dubai",
+      "sector": "الغرامات والتقارير",
+      "serviceName": "متابعة حالة طلب أو ملف لدى GDRFA دبي",
+      "platformTitle": "متابعة حالة طلب أو ملف لدى GDRFA دبي",
+      "audience": "غير موثق بعد",
+      "requestType": "الغرامات والتقارير",
+      "description": "تتبع طلب أو ملف أو خدمة كاونتر أو منشأة أو طلب إعادة نظر باستخدام بيانات المعاملة الرسمية.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "GDRFA Dubai",
+      "relatedServices": [],
+      "officialUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
+      "evidenceUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:55",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
+      "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "authority": "ICP",
+      "sector": "الغرامات والتقارير",
+      "serviceName": "متابعة حالة طلب تأشيرة لدى ICP (خارج دبي)",
+      "platformTitle": "متابعة حالة طلب تأشيرة لدى ICP (خارج دبي)",
+      "audience": "غير موثق بعد",
+      "requestType": "الغرامات والتقارير",
+      "description": "تتبع طلب التأشيرة برقم الطلب عبر خيار Application Tracking في منصة الخدمات الذكية.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "ICP",
+      "relatedServices": [],
+      "officialUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
+      "evidenceUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
     },
     {
       "id": "directory:approvals:1",
@@ -4104,7 +4344,15 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:39",
+            "id": "directory:residency:13",
+            "serviceName": "تعديل الوضع داخل الدولة في دبي",
+            "audience": "غير موثق بعد",
+            "requestType": "الإقامة",
+            "officialUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:42",
             "serviceName": "تجديد إقامة موظف في القطاع الخاص في دبي",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة",
@@ -4114,17 +4362,33 @@
         ],
         "إقامة الأسرة": [
           {
-            "id": "directory:residency:17",
+            "id": "directory:residency:18",
             "serviceName": "تجديد إقامة أفراد الأسرة في دبي",
             "audience": "غير موثق بعد",
             "requestType": "إقامة الأسرة",
             "officialUrl": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
             "status": "approved"
+          },
+          {
+            "id": "directory:residency:19",
+            "serviceName": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+            "audience": "غير موثق بعد",
+            "requestType": "إقامة الأسرة",
+            "officialUrl": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:21",
+            "serviceName": "إصدار إقامة لمولود جديد في دبي",
+            "audience": "غير موثق بعد",
+            "requestType": "إقامة الأسرة",
+            "officialUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+            "status": "approved"
           }
         ],
         "تأشيرات الدخول": [
           {
-            "id": "directory:residency:24",
+            "id": "directory:residency:27",
             "serviceName": "إلغاء إذن دخول أو تأشيرة صادرة من دبي",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -4132,7 +4396,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:25",
+            "id": "directory:residency:28",
             "serviceName": "تأشيرة زيارة قريب أو صديق لدخول واحد في دبي",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -4140,7 +4404,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:27",
+            "id": "directory:residency:30",
             "serviceName": "تأشيرة سياحية لدخول واحد في دبي",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -4148,7 +4412,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:29",
+            "id": "directory:residency:32",
             "serviceName": "تأشيرة استكشاف فرص عمل في دبي",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -4156,11 +4420,71 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:31",
+            "id": "directory:residency:34",
             "serviceName": "تأشيرة استكشاف فرص تأسيس الأعمال في دبي",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
             "officialUrl": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
+            "status": "approved"
+          }
+        ],
+        "المنشآت": [
+          {
+            "id": "directory:residency:43",
+            "serviceName": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي",
+            "audience": "غير موثق بعد",
+            "requestType": "المنشآت",
+            "officialUrl": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:45",
+            "serviceName": "تجديد بطاقة المنشأة في دبي لجميع الفئات",
+            "audience": "غير موثق بعد",
+            "requestType": "المنشآت",
+            "officialUrl": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:47",
+            "serviceName": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات",
+            "audience": "غير موثق بعد",
+            "requestType": "المنشآت",
+            "officialUrl": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:49",
+            "serviceName": "إلغاء بطاقة المنشأة في دبي لجميع الفئات",
+            "audience": "غير موثق بعد",
+            "requestType": "المنشآت",
+            "officialUrl": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+            "status": "approved"
+          }
+        ],
+        "الغرامات والتقارير": [
+          {
+            "id": "directory:residency:51",
+            "serviceName": "الاستعلام عن غرامات ملف أو مكفول في دبي",
+            "audience": "غير موثق بعد",
+            "requestType": "الغرامات والتقارير",
+            "officialUrl": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:52",
+            "serviceName": "سداد غرامات مخالفي قانون الإقامة في دبي",
+            "audience": "غير موثق بعد",
+            "requestType": "الغرامات والتقارير",
+            "officialUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:54",
+            "serviceName": "متابعة حالة طلب أو ملف لدى GDRFA دبي",
+            "audience": "غير موثق بعد",
+            "requestType": "الغرامات والتقارير",
+            "officialUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
             "status": "approved"
           }
         ]
@@ -5299,24 +5623,50 @@
           },
           {
             "id": "directory:residency:14",
-            "serviceName": "تصريح بقاء خارج الدولة لأكثر من 6 أشهر",
+            "serviceName": "تغيير الوضع عبر ICP ضمن إصدار الإقامة (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة",
-            "officialUrl": null,
-            "status": "unapproved"
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+            "status": "approved"
           },
           {
             "id": "directory:residency:15",
-            "serviceName": "تقرير تفاصيل الإقامة",
+            "serviceName": "تصريح بقاء خارج الدولة لأكثر من 6 أشهر عبر ICP",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة",
-            "officialUrl": null,
-            "status": "unapproved"
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:16",
+            "serviceName": "تقرير تفاصيل الإقامة عبر ICP",
+            "audience": "غير موثق بعد",
+            "requestType": "الإقامة",
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+            "status": "approved"
+          }
+        ],
+        "إقامة الأسرة": [
+          {
+            "id": "directory:residency:20",
+            "serviceName": "إصدار إقامة للوالدين عبر ICP (خارج دبي)",
+            "audience": "غير موثق بعد",
+            "requestType": "إقامة الأسرة",
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:22",
+            "serviceName": "إصدار إقامة لمولود جديد عبر ICP (خارج دبي)",
+            "audience": "غير موثق بعد",
+            "requestType": "إقامة الأسرة",
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+            "status": "approved"
           }
         ],
         "تأشيرات الدخول": [
           {
-            "id": "directory:residency:20",
+            "id": "directory:residency:23",
             "serviceName": "إصدار تأشيرة عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -5324,7 +5674,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:23",
+            "id": "directory:residency:26",
             "serviceName": "إلغاء تأشيرة عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -5332,7 +5682,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:26",
+            "id": "directory:residency:29",
             "serviceName": "تأشيرة زيارة قريب أو صديق عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -5340,7 +5690,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:28",
+            "id": "directory:residency:31",
             "serviceName": "تأشيرة سياحية عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -5348,7 +5698,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:30",
+            "id": "directory:residency:33",
             "serviceName": "تأشيرة استكشاف فرص عمل عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -5356,11 +5706,63 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:32",
+            "id": "directory:residency:35",
             "serviceName": "تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
             "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+            "status": "approved"
+          }
+        ],
+        "المنشآت": [
+          {
+            "id": "directory:residency:44",
+            "serviceName": "إصدار بطاقة منشأة عبر ICP (خارج دبي)",
+            "audience": "غير موثق بعد",
+            "requestType": "المنشآت",
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:46",
+            "serviceName": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
+            "audience": "غير موثق بعد",
+            "requestType": "المنشآت",
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:48",
+            "serviceName": "تعديل أو إضافة بيانات بطاقة المنشأة عبر ICP (خارج دبي)",
+            "audience": "غير موثق بعد",
+            "requestType": "المنشآت",
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:50",
+            "serviceName": "إلغاء بطاقة المنشأة عبر ICP (خارج دبي)",
+            "audience": "غير موثق بعد",
+            "requestType": "المنشآت",
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
+            "status": "approved"
+          }
+        ],
+        "الغرامات والتقارير": [
+          {
+            "id": "directory:residency:53",
+            "serviceName": "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي)",
+            "audience": "غير موثق بعد",
+            "requestType": "الغرامات والتقارير",
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:55",
+            "serviceName": "متابعة حالة طلب تأشيرة لدى ICP (خارج دبي)",
+            "audience": "غير موثق بعد",
+            "requestType": "الغرامات والتقارير",
+            "officialUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
             "status": "approved"
           }
         ]
@@ -5368,92 +5770,12 @@
     },
     "دبي/اتحادي — يلزم الفصل": {
       "GDRFA Dubai / ICP": {
-        "الإقامة": [
-          {
-            "id": "directory:residency:13",
-            "serviceName": "تغيير الوضع داخل الدولة",
-            "audience": "غير موثق بعد",
-            "requestType": "الإقامة",
-            "officialUrl": null,
-            "status": "unapproved"
-          }
-        ],
-        "إقامة الأسرة": [
-          {
-            "id": "directory:residency:18",
-            "serviceName": "كفالة الوالدين",
-            "audience": "غير موثق بعد",
-            "requestType": "إقامة الأسرة",
-            "officialUrl": null,
-            "status": "unapproved"
-          },
-          {
-            "id": "directory:residency:19",
-            "serviceName": "إقامة مولود جديد",
-            "audience": "غير موثق بعد",
-            "requestType": "إقامة الأسرة",
-            "officialUrl": null,
-            "status": "unapproved"
-          }
-        ],
         "تأشيرات الدخول": [
           {
-            "id": "directory:residency:33",
+            "id": "directory:residency:36",
             "serviceName": "تأشيرة علاج أو دراسة أو مهمة",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
-            "officialUrl": null,
-            "status": "unapproved"
-          }
-        ],
-        "المنشآت": [
-          {
-            "id": "directory:residency:40",
-            "serviceName": "إصدار بطاقة منشأة هجرة",
-            "audience": "غير موثق بعد",
-            "requestType": "المنشآت",
-            "officialUrl": null,
-            "status": "unapproved"
-          },
-          {
-            "id": "directory:residency:41",
-            "serviceName": "تجديد بطاقة المنشأة",
-            "audience": "غير موثق بعد",
-            "requestType": "المنشآت",
-            "officialUrl": null,
-            "status": "unapproved"
-          },
-          {
-            "id": "directory:residency:42",
-            "serviceName": "تعديل أو إضافة بيانات بطاقة المنشأة",
-            "audience": "غير موثق بعد",
-            "requestType": "المنشآت",
-            "officialUrl": null,
-            "status": "unapproved"
-          },
-          {
-            "id": "directory:residency:43",
-            "serviceName": "إلغاء بطاقة المنشأة",
-            "audience": "غير موثق بعد",
-            "requestType": "المنشآت",
-            "officialUrl": null,
-            "status": "unapproved"
-          }
-        ],
-        "الغرامات والتقارير": [
-          {
-            "id": "directory:residency:44",
-            "serviceName": "الاستعلام عن الغرامات وتسويتها",
-            "audience": "غير موثق بعد",
-            "requestType": "الغرامات والتقارير",
-            "officialUrl": null,
-            "status": "unapproved"
-          },
-          {
-            "id": "directory:residency:45",
-            "serviceName": "متابعة حالة الطلب أو الملف",
-            "audience": "غير موثق بعد",
-            "requestType": "الغرامات والتقارير",
             "officialUrl": null,
             "status": "unapproved"
           }
@@ -5462,7 +5784,7 @@
       "DLD / GDRFA Dubai / ICP": {
         "الإقامة الذهبية": [
           {
-            "id": "directory:residency:35",
+            "id": "directory:residency:38",
             "serviceName": "إقامة مستثمر عقاري",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة الذهبية",
@@ -5474,7 +5796,7 @@
       "ICP / GDRFA Dubai": {
         "الإقامة الذهبية": [
           {
-            "id": "directory:residency:36",
+            "id": "directory:residency:39",
             "serviceName": "إقامة رائد أعمال",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة الذهبية",
@@ -5482,7 +5804,7 @@
             "status": "unapproved"
           },
           {
-            "id": "directory:residency:37",
+            "id": "directory:residency:40",
             "serviceName": "إقامة أصحاب المواهب والتخصصات",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة الذهبية",
@@ -5492,7 +5814,7 @@
         ],
         "الإقامة الخضراء": [
           {
-            "id": "directory:residency:38",
+            "id": "directory:residency:41",
             "serviceName": "إقامة العمل الحر أو المهاري",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة الخضراء",
