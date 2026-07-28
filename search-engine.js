@@ -4,6 +4,7 @@
   var platform = window.HB_PLATFORM || { services: [], reviewed: '' };
   var knowledge = window.HB_KNOWLEDGE || { updates: [], faqs: [], problems: [] };
   var directories = window.HB_DIRECTORIES || {};
+  var governmentGraph = window.HB_GOVERNMENT_KNOWLEDGE_GRAPH || { nodes: [], intents: [], edges: [], concepts: {} };
   var fullTextData = window.HB_SEARCH_CONTENT || { pages: [] };
   var fullTextByUrl = new Map((fullTextData.pages || []).map(function (page) { return [page.url, page]; }));
 
@@ -51,6 +52,7 @@
   };
 
   var pageEntries = [
+    { id: 'page-selector', title: 'محدد الخدمة الحكومية الذكي', aliases: ['لا أعرف اسم الخدمة', 'ساعدني أختار المعاملة'], keywords: ['تحديد نية سؤال توضيحي إمارة جهة حكومية'], description: 'أجب عن أسئلة قصيرة لتحديد الإمارة والجهة ونوع المعاملة عندما لا يكون وصف الطلب كافيًا لاختيار خدمة دقيقة.', emirate: 'كل الإمارات', authority: 'منصة حسام بحر', category: 'مساعدة ذكية', url: 'platform-tools.html#selector', status: 'متاح', updated: '2026-07-28', source: 'محتوى المنصة', kind: 'مساعدة' },
     { id: 'page-emirates', title: 'دليل الخدمات في الإمارات السبع', aliases: ['صفحات الإمارات', 'جهات الترخيص'], keywords: ['دبي', 'أبوظبي', 'الشارقة', 'عجمان', 'رأس الخيمة', 'أم القيوين', 'الفجيرة'], description: 'اختر الإمارة للوصول إلى جهة الترخيص والخدمات المحلية.', emirate: 'كل الإمارات', authority: 'الجهات المحلية والاتحادية', category: 'أدلة الإمارات', url: 'uae-emirates.html', status: 'متاح', updated: platform.reviewed, source: 'محتوى المنصة', kind: 'دليل' },
     { id: 'page-activities', title: 'البحث في الأنشطة الاقتصادية في دبي', aliases: ['اختيار النشاط', 'كود النشاط'], keywords: ['نشاط', 'أنشطة', 'ترخيص', 'موافقات'], description: 'ابحث داخل الأنشطة الاقتصادية ووصفها ورموزها.', emirate: 'دبي', authority: 'بيانات دبي المفتوحة / اقتصادية دبي', category: 'تأسيس الشركات', url: 'dubai-business-activities.html#activityAdvisor', status: 'متاح', updated: platform.reviewed, source: 'محتوى المنصة', kind: 'أداة' },
     { id: 'page-command', title: 'مركز القيادة وإدارة تنبيهات الشركة', aliases: ['تنبيه انتهاء الرخصة', 'إدارة الشركة'], keywords: ['تنبيه', 'انتهاء', 'رخصة', 'إقامة', 'موظفين', 'التزامات', 'مستندات'], description: 'تابع تواريخ الانتهاء والالتزامات والطلبات المحفوظة محليًا على جهازك.', emirate: 'اتحادي', authority: 'منصة حسام بحر', category: 'إدارة الشركة', url: 'command-center.html', status: 'متاح', updated: platform.reviewed, source: 'محتوى المنصة', kind: 'أداة' }
@@ -60,13 +62,17 @@
     return String(value || '')
       .toLowerCase()
       .normalize('NFKD')
-      .replace(/[ًٌٍَُِّْـ]/g, '')
+      .replace(/\p{M}/gu, '')
+      .replace(/ـ/g, '')
       .replace(/[أإآٱ]/g, 'ا')
       .replace(/ة/g, 'ه')
       .replace(/ى/g, 'ي')
+      .replace(/[٠١٢٣٤٥٦٧٨٩]/g, function (digit) { return String('٠١٢٣٤٥٦٧٨٩'.indexOf(digit)); })
       .replace(/[^\p{L}\p{N}\s]/gu, ' ')
       .replace(/\s+/g, ' ')
       .replace(/\bتجدبد\b/g, 'تجديد')
+      .replace(/\bفيزه\b/g, 'فيزا')
+      .replace(/\bتاشيرا\b/g, 'تاشيره')
       .replace(/\bتاشبره\b/g, 'تاشيره')
       .replace(/\bهويةه\b/g, 'هويه')
       .trim();
@@ -190,7 +196,30 @@
     };
   });
 
+  var graphNodeByTitle = new Map();
+  (governmentGraph.nodes || []).forEach(function (node) {
+    unique([node.platformTitle, node.officialNameAr].concat(node.searchTitles || [])).forEach(function (title) {
+      graphNodeByTitle.set(normalize(title), node);
+    });
+  });
+  var graphNodeById = new Map((governmentGraph.nodes || []).map(function (node) { return [node.id, node]; }));
+  var graphEdgesFrom = new Map();
+  (governmentGraph.edges || []).forEach(function (edge) {
+    var current = graphEdgesFrom.get(edge.from) || [];
+    current.push(edge);
+    graphEdgesFrom.set(edge.from, current);
+  });
+
   var index = services.concat(directoryEntries, knowledgeEntries, pageEntries, additionalContent);
+  index.forEach(function (entry) {
+    var node = graphNodeByTitle.get(normalize(entry.title));
+    if (!node) return;
+    entry.graphId = node.id;
+    entry.graphConcepts = node.concepts || [];
+    entry.aliases = unique([].concat(entry.aliases || [], node.synonyms || []));
+    entry.officialUrl = node.officialUrl || entry.officialUrl || '';
+    if (node.linkStatus === 'verified') entry.status = 'مسار حكومي موثق';
+  });
 
   function tokens(value) {
     var seenConcepts = new Set();
@@ -240,13 +269,67 @@
     entry._words = unique(entry._searchable.split(' '));
   });
 
-  function score(entry, query) {
+  function semanticContext(query) {
+    var normalizedQuery = normalize(query);
+    var normalizedQueryTokens = normalizedQuery.split(' ').filter(Boolean);
+    var queryConcepts = [];
+    var matchedIntents = [];
+    Object.keys(governmentGraph.concepts || {}).forEach(function (concept) {
+      var terms = governmentGraph.concepts[concept] || [];
+      if (terms.some(function (term) {
+        var normalizedTerm = normalize(term);
+        if (!normalizedTerm) return false;
+        if (normalizedTerm.indexOf(' ') !== -1) return normalizedQuery.includes(normalizedTerm);
+        return normalizedQueryTokens.includes(normalizedTerm);
+      })) queryConcepts.push(concept);
+    });
+
+    var targetWeights = new Map();
+    (governmentGraph.intents || []).forEach(function (intent) {
+      var best = 0;
+      (intent.phrasesNormalized || intent.phrases || []).forEach(function (phrase) {
+        var normalizedPhrase = normalize(phrase);
+        if (!normalizedPhrase) return;
+        if (normalizedQuery === normalizedPhrase) best = Math.max(best, 320);
+        else if (normalizedQuery.includes(normalizedPhrase)) best = Math.max(best, 270);
+        else {
+          var phraseTokens = normalizedPhrase.split(' ').filter(Boolean);
+          var queryTokens = normalizedQuery.split(' ').filter(Boolean);
+          var overlap = phraseTokens.filter(function (token) { return queryTokens.includes(token); }).length;
+          if (phraseTokens.length && overlap / phraseTokens.length >= 0.75) best = Math.max(best, 210);
+        }
+      });
+      if (!best && (intent.concepts || []).length) {
+        var conceptOverlap = intent.concepts.filter(function (concept) { return queryConcepts.includes(concept); }).length;
+        if (conceptOverlap >= Math.min(2, intent.concepts.length)) best = 130 + (conceptOverlap * 20);
+      }
+      if (!best) return;
+      matchedIntents.push({ id: intent.id, confidence: Math.min(1, best / 320) });
+      (intent.targetServiceIds || []).forEach(function (serviceId) {
+        targetWeights.set(serviceId, Math.max(targetWeights.get(serviceId) || 0, best));
+        (graphEdgesFrom.get(serviceId) || []).forEach(function (edge) {
+          var relationshipWeight = edge.type.indexOf('alternative') !== -1 ? 90 : 35;
+          targetWeights.set(edge.to, Math.max(targetWeights.get(edge.to) || 0, relationshipWeight));
+        });
+      });
+    });
+    matchedIntents.sort(function (a, b) { return b.confidence - a.confidence; });
+    return {
+      normalizedQuery: normalizedQuery,
+      queryConcepts: queryConcepts,
+      targetWeights: targetWeights,
+      matchedIntents: matchedIntents
+    };
+  }
+
+  function score(entry, query, semantic) {
     var q = normalize(query);
     if (!q) return 1;
     var queryTokens = tokens(q);
     if (!queryTokens.length) return -1;
     var total = 0;
     var matched = 0;
+    var intentBoost = entry.graphId ? (semantic.targetWeights.get(entry.graphId) || 0) : 0;
     queryTokens.forEach(function (token) {
       var variants = expandedTerms(token);
       var best = 0;
@@ -263,16 +346,22 @@
       if (best) { matched += 1; total += best; }
     });
     var required = queryTokens.length <= 3 ? queryTokens.length : Math.ceil(queryTokens.length * 0.75);
-    if (matched < required) return -1;
+    if (matched < required && !intentBoost) return -1;
     if (entry._searchable.includes(q)) total += 35;
     if (entry._titleNormalized.includes(q)) total += 55;
+    var conceptMatches = (entry.graphConcepts || []).filter(function (concept) {
+      return semantic.queryConcepts.includes(concept);
+    }).length;
+    total += intentBoost + (conceptMatches * 36);
+    if (entry.status === 'مسار حكومي موثق') total += 8;
     return total + (matched * 5);
   }
 
   function search(query, filters) {
     filters = filters || {};
-    return index
-      .map(function (entry) { return { entry: entry, score: score(entry, query) }; })
+    var semantic = semanticContext(query);
+    var results = index
+      .map(function (entry) { return { entry: entry, score: score(entry, query, semantic) }; })
       .filter(function (result) {
         var item = result.entry;
         if (result.score < 0) return false;
@@ -285,6 +374,9 @@
       })
       .sort(function (a, b) { return b.score - a.score || a.entry.title.localeCompare(b.entry.title, 'ar'); })
       .map(function (result) { return result.entry; });
+    if (results.length || !String(query || '').trim()) return results;
+    var selector = index.find(function (entry) { return entry.id === 'page-selector'; });
+    return selector ? [selector] : [];
   }
 
   function facets(name) {
@@ -311,6 +403,7 @@
     normalize: normalize,
     search: search,
     facets: facets,
+    detectIntent: semanticContext,
     track: track,
     reviewed: directoryEntries.length ? '2026-07-28' : (platform.reviewed || knowledge.reviewed || '')
   };

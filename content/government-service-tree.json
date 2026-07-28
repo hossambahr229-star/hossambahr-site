@@ -4,8 +4,8 @@
   "hierarchy": "emirate > authority > sector > service > audience > requestType > officialUrl",
   "policy": "Null officialUrl means navigation is suspended until the exact official transaction passes double verification.",
   "summary": {
-    "totalCanonicalRecords": 168,
-    "approved": 101,
+    "totalCanonicalRecords": 169,
+    "approved": 102,
     "suspended": 67
   },
   "services": [
@@ -2569,6 +2569,30 @@
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
+      "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "authority": "ICP",
+      "sector": "تأشيرات الدخول",
+      "serviceName": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP",
+      "platformTitle": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP",
+      "audience": "غير موثق بعد",
+      "requestType": "تأشيرات الدخول",
+      "description": "إصدار تأشيرة سياحية طويلة الأمد متعددة الدخول لمدة خمس سنوات من بطاقة الخدمة الرسمية المستقلة لدى ICP.",
+      "requirements": [],
+      "fees": "غير موثق بعد",
+      "duration": "غير موثق بعد",
+      "conditions": "غير موثق بعد",
+      "specialCases": "ICP",
+      "relatedServices": [],
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+      "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+      "lastReviewed": "2026-07-27",
+      "reviewResult": "approved_for_user_navigation"
+    },
+    {
+      "id": "directory:residency:33",
+      "sourceLayer": "directory-residency",
+      "status": "approved",
+      "finding": "exact_service_card",
       "emirate": "دبي",
       "authority": "GDRFA Dubai",
       "sector": "تأشيرات الدخول",
@@ -2589,7 +2613,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:33",
+      "id": "directory:residency:34",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2613,7 +2637,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:34",
+      "id": "directory:residency:35",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2637,7 +2661,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:35",
+      "id": "directory:residency:36",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2661,7 +2685,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:36",
+      "id": "directory:residency:37",
       "sourceLayer": "directory-residency",
       "status": "unapproved",
       "finding": "generic_fallback_only",
@@ -2685,7 +2709,7 @@
       "reviewResult": "suspended_pending_exact_route"
     },
     {
-      "id": "directory:residency:38",
+      "id": "directory:residency:39",
       "sourceLayer": "directory-residency",
       "status": "unapproved",
       "finding": "generic_fallback_only",
@@ -2709,7 +2733,7 @@
       "reviewResult": "suspended_pending_exact_route"
     },
     {
-      "id": "directory:residency:39",
+      "id": "directory:residency:40",
       "sourceLayer": "directory-residency",
       "status": "unapproved",
       "finding": "generic_fallback_only",
@@ -2733,7 +2757,7 @@
       "reviewResult": "suspended_pending_exact_route"
     },
     {
-      "id": "directory:residency:40",
+      "id": "directory:residency:41",
       "sourceLayer": "directory-residency",
       "status": "unapproved",
       "finding": "generic_fallback_only",
@@ -2757,7 +2781,7 @@
       "reviewResult": "suspended_pending_exact_route"
     },
     {
-      "id": "directory:residency:41",
+      "id": "directory:residency:42",
       "sourceLayer": "directory-residency",
       "status": "unapproved",
       "finding": "generic_fallback_only",
@@ -2781,7 +2805,7 @@
       "reviewResult": "suspended_pending_exact_route"
     },
     {
-      "id": "directory:residency:42",
+      "id": "directory:residency:43",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2805,7 +2829,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:43",
+      "id": "directory:residency:44",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2829,7 +2853,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:44",
+      "id": "directory:residency:45",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2853,7 +2877,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:45",
+      "id": "directory:residency:46",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2877,7 +2901,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:46",
+      "id": "directory:residency:47",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2901,7 +2925,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:47",
+      "id": "directory:residency:48",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2925,7 +2949,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:48",
+      "id": "directory:residency:49",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2949,7 +2973,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:49",
+      "id": "directory:residency:50",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2973,7 +2997,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:50",
+      "id": "directory:residency:51",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -2997,7 +3021,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:51",
+      "id": "directory:residency:52",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -3021,7 +3045,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:52",
+      "id": "directory:residency:53",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -3045,7 +3069,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:53",
+      "id": "directory:residency:54",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -3069,7 +3093,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:54",
+      "id": "directory:residency:55",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -3093,7 +3117,7 @@
       "reviewResult": "approved_for_user_navigation"
     },
     {
-      "id": "directory:residency:55",
+      "id": "directory:residency:56",
       "sourceLayer": "directory-residency",
       "status": "approved",
       "finding": "exact_service_card",
@@ -4352,7 +4376,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:42",
+            "id": "directory:residency:43",
             "serviceName": "تجديد إقامة موظف في القطاع الخاص في دبي",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة",
@@ -4412,7 +4436,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:32",
+            "id": "directory:residency:33",
             "serviceName": "تأشيرة استكشاف فرص عمل في دبي",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -4420,7 +4444,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:34",
+            "id": "directory:residency:35",
             "serviceName": "تأشيرة استكشاف فرص تأسيس الأعمال في دبي",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -4430,7 +4454,7 @@
         ],
         "المنشآت": [
           {
-            "id": "directory:residency:43",
+            "id": "directory:residency:44",
             "serviceName": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي",
             "audience": "غير موثق بعد",
             "requestType": "المنشآت",
@@ -4438,7 +4462,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:45",
+            "id": "directory:residency:46",
             "serviceName": "تجديد بطاقة المنشأة في دبي لجميع الفئات",
             "audience": "غير موثق بعد",
             "requestType": "المنشآت",
@@ -4446,7 +4470,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:47",
+            "id": "directory:residency:48",
             "serviceName": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات",
             "audience": "غير موثق بعد",
             "requestType": "المنشآت",
@@ -4454,7 +4478,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:49",
+            "id": "directory:residency:50",
             "serviceName": "إلغاء بطاقة المنشأة في دبي لجميع الفئات",
             "audience": "غير موثق بعد",
             "requestType": "المنشآت",
@@ -4464,7 +4488,7 @@
         ],
         "الغرامات والتقارير": [
           {
-            "id": "directory:residency:51",
+            "id": "directory:residency:52",
             "serviceName": "الاستعلام عن غرامات ملف أو مكفول في دبي",
             "audience": "غير موثق بعد",
             "requestType": "الغرامات والتقارير",
@@ -4472,7 +4496,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:52",
+            "id": "directory:residency:53",
             "serviceName": "سداد غرامات مخالفي قانون الإقامة في دبي",
             "audience": "غير موثق بعد",
             "requestType": "الغرامات والتقارير",
@@ -4480,7 +4504,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:54",
+            "id": "directory:residency:55",
             "serviceName": "متابعة حالة طلب أو ملف لدى GDRFA دبي",
             "audience": "غير موثق بعد",
             "requestType": "الغرامات والتقارير",
@@ -5698,7 +5722,15 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:33",
+            "id": "directory:residency:32",
+            "serviceName": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP",
+            "audience": "غير موثق بعد",
+            "requestType": "تأشيرات الدخول",
+            "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+            "status": "approved"
+          },
+          {
+            "id": "directory:residency:34",
             "serviceName": "تأشيرة استكشاف فرص عمل عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -5706,7 +5738,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:35",
+            "id": "directory:residency:36",
             "serviceName": "تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -5716,7 +5748,7 @@
         ],
         "المنشآت": [
           {
-            "id": "directory:residency:44",
+            "id": "directory:residency:45",
             "serviceName": "إصدار بطاقة منشأة عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "المنشآت",
@@ -5724,7 +5756,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:46",
+            "id": "directory:residency:47",
             "serviceName": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "المنشآت",
@@ -5732,7 +5764,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:48",
+            "id": "directory:residency:49",
             "serviceName": "تعديل أو إضافة بيانات بطاقة المنشأة عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "المنشآت",
@@ -5740,7 +5772,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:50",
+            "id": "directory:residency:51",
             "serviceName": "إلغاء بطاقة المنشأة عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "المنشآت",
@@ -5750,7 +5782,7 @@
         ],
         "الغرامات والتقارير": [
           {
-            "id": "directory:residency:53",
+            "id": "directory:residency:54",
             "serviceName": "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "الغرامات والتقارير",
@@ -5758,7 +5790,7 @@
             "status": "approved"
           },
           {
-            "id": "directory:residency:55",
+            "id": "directory:residency:56",
             "serviceName": "متابعة حالة طلب تأشيرة لدى ICP (خارج دبي)",
             "audience": "غير موثق بعد",
             "requestType": "الغرامات والتقارير",
@@ -5772,7 +5804,7 @@
       "GDRFA Dubai / ICP": {
         "تأشيرات الدخول": [
           {
-            "id": "directory:residency:36",
+            "id": "directory:residency:37",
             "serviceName": "تأشيرة علاج أو دراسة أو مهمة",
             "audience": "غير موثق بعد",
             "requestType": "تأشيرات الدخول",
@@ -5784,7 +5816,7 @@
       "DLD / GDRFA Dubai / ICP": {
         "الإقامة الذهبية": [
           {
-            "id": "directory:residency:38",
+            "id": "directory:residency:39",
             "serviceName": "إقامة مستثمر عقاري",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة الذهبية",
@@ -5796,7 +5828,7 @@
       "ICP / GDRFA Dubai": {
         "الإقامة الذهبية": [
           {
-            "id": "directory:residency:39",
+            "id": "directory:residency:40",
             "serviceName": "إقامة رائد أعمال",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة الذهبية",
@@ -5804,7 +5836,7 @@
             "status": "unapproved"
           },
           {
-            "id": "directory:residency:40",
+            "id": "directory:residency:41",
             "serviceName": "إقامة أصحاب المواهب والتخصصات",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة الذهبية",
@@ -5814,7 +5846,7 @@
         ],
         "الإقامة الخضراء": [
           {
-            "id": "directory:residency:41",
+            "id": "directory:residency:42",
             "serviceName": "إقامة العمل الحر أو المهاري",
             "audience": "غير موثق بعد",
             "requestType": "الإقامة الخضراء",
