@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-07-28T07:06:27.346Z",
-  "approvedServiceRecords": 121,
-  "uniqueUrls": 65,
-  "healthy": 65,
+  "checkedAt": "2026-07-28T07:28:40.687Z",
+  "approvedServiceRecords": 154,
+  "uniqueUrls": 76,
+  "healthy": 76,
   "failed": 0,
   "checks": [
     {
@@ -262,7 +262,8 @@
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
       "services": [
         "تعديل بيانات تصريح الإقامة",
-        "Amendment of Residency Permit Data"
+        "Amendment of Residency Permit Data",
+        "تعديل بيانات تصريح إقامة عبر ICP (خارج دبي)"
       ],
       "ok": true,
       "status": 200,
@@ -273,7 +274,8 @@
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
       "services": [
         "تعديل بيانات التأشيرة",
-        "Amendment of Visa Data"
+        "Amendment of Visa Data",
+        "تعديل بيانات تأشيرة عبر ICP (خارج دبي)"
       ],
       "ok": true,
       "status": 200,
@@ -284,7 +286,8 @@
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
       "services": [
         "تمديد التأشيرة أو إذن الدخول",
-        "Visa Extension"
+        "Visa Extension",
+        "تمديد تأشيرة عبر ICP (خارج دبي)"
       ],
       "ok": true,
       "status": 200,
@@ -692,6 +695,50 @@
       "semanticNotFound": false
     },
     {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "services": [
+        "إصدار تصريح إقامة عبر ICP (خارج دبي)",
+        "إصدار تصريح إقامة عبر ICP (خارج دبي)"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+      "services": [
+        "إصدار إقامة موظف في القطاع الخاص في دبي",
+        "إصدار إقامة موظف في القطاع الخاص في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+      "services": [
+        "تجديد تصريح إقامة عبر ICP (خارج دبي)",
+        "تجديد تصريح إقامة عبر ICP (خارج دبي)"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+      "services": [
+        "تعديل بيانات جميع أنواع الإقامة في دبي",
+        "تعديل بيانات جميع أنواع الإقامة في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+      "semanticNotFound": false
+    },
+    {
       "url": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
       "services": [
         "تجديد إقامة أفراد الأسرة في دبي"
@@ -699,6 +746,91 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "services": [
+        "إصدار تأشيرة عبر ICP (خارج دبي)",
+        "تأشيرة زيارة قريب أو صديق عبر ICP (خارج دبي)",
+        "تأشيرة سياحية عبر ICP (خارج دبي)",
+        "تأشيرة استكشاف فرص عمل عبر ICP (خارج دبي)",
+        "تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)",
+        "إصدار تأشيرة عبر ICP (خارج دبي)",
+        "تأشيرة زيارة قريب أو صديق عبر ICP (خارج دبي)",
+        "تأشيرة سياحية عبر ICP (خارج دبي)",
+        "تأشيرة استكشاف فرص عمل عبر ICP (خارج دبي)",
+        "تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63",
+      "services": [
+        "إلغاء تأشيرة عبر ICP (خارج دبي)",
+        "إلغاء تأشيرة عبر ICP (خارج دبي)"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
+      "services": [
+        "إلغاء إذن دخول أو تأشيرة صادرة من دبي",
+        "إلغاء إذن دخول أو تأشيرة صادرة من دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
+      "services": [
+        "تأشيرة زيارة قريب أو صديق لدخول واحد في دبي",
+        "تأشيرة زيارة قريب أو صديق لدخول واحد في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
+      "services": [
+        "تأشيرة سياحية لدخول واحد في دبي",
+        "تأشيرة سياحية لدخول واحد في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
+      "services": [
+        "تأشيرة استكشاف فرص عمل في دبي",
+        "تأشيرة استكشاف فرص عمل في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
+      "services": [
+        "تأشيرة استكشاف فرص تأسيس الأعمال في دبي",
+        "تأشيرة استكشاف فرص تأسيس الأعمال في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
       "semanticNotFound": false
     },
     {

@@ -85,7 +85,17 @@ for (const [directoryKey, directory] of Object.entries(context.window.HB_DIRECTO
   for (let index = 0; index < directory.items.length; index += 1) {
     const item = directory.items[index];
     const explicitUrl = item[5] || null;
-    if (explicitUrl && approvedUrls.has(explicitUrl)) continue;
+    const sharedIcpCategoryRouteTitles = new Set([
+      'تأشيرة زيارة قريب أو صديق عبر ICP (خارج دبي)',
+      'تأشيرة سياحية عبر ICP (خارج دبي)',
+      'تأشيرة استكشاف فرص عمل عبر ICP (خارج دبي)',
+      'تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)'
+    ]);
+    if (
+      explicitUrl &&
+      approvedUrls.has(explicitUrl) &&
+      !sharedIcpCategoryRouteTitles.has(item[1])
+    ) continue;
     const approvedResidencyTitles = [
       'إصدار هوية جديدة',
       'تجديد الهوية الإماراتية',
@@ -93,7 +103,25 @@ for (const [directoryKey, directory] of Object.entries(context.window.HB_DIRECTO
       'تحديث بيانات الهوية',
       'الإعفاء من غرامة تأخير الهوية',
       'استرداد رسوم إصدار الهوية غير المكتمل',
+      'إصدار تصريح إقامة عبر ICP (خارج دبي)',
+      'إصدار إقامة موظف في القطاع الخاص في دبي',
+      'تجديد تصريح إقامة عبر ICP (خارج دبي)',
+      'تعديل بيانات تصريح إقامة عبر ICP (خارج دبي)',
+      'تعديل بيانات جميع أنواع الإقامة في دبي',
       'إلغاء جميع أنواع تصاريح الإقامة الصادرة من دبي',
+      'إصدار تأشيرة عبر ICP (خارج دبي)',
+      'تعديل بيانات تأشيرة عبر ICP (خارج دبي)',
+      'تمديد تأشيرة عبر ICP (خارج دبي)',
+      'إلغاء تأشيرة عبر ICP (خارج دبي)',
+      'إلغاء إذن دخول أو تأشيرة صادرة من دبي',
+      'تأشيرة زيارة قريب أو صديق لدخول واحد في دبي',
+      'تأشيرة زيارة قريب أو صديق عبر ICP (خارج دبي)',
+      'تأشيرة سياحية لدخول واحد في دبي',
+      'تأشيرة سياحية عبر ICP (خارج دبي)',
+      'تأشيرة استكشاف فرص عمل في دبي',
+      'تأشيرة استكشاف فرص عمل عبر ICP (خارج دبي)',
+      'تأشيرة استكشاف فرص تأسيس الأعمال في دبي',
+      'تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)',
       'إصدار إقامة لأفراد الأسرة في دبي',
       'تجديد إقامة أفراد الأسرة في دبي',
       'إصدار الإقامة الذهبية للمستثمرين في دبي',
@@ -108,7 +136,15 @@ for (const [directoryKey, directory] of Object.entries(context.window.HB_DIRECTO
       sourceLayer: `directory-${directoryKey}`,
       status: approved ? 'approved' : 'unapproved',
       finding: approved ? 'exact_service_card' : explicitUrl ? 'authority_or_category_requires_split' : 'generic_fallback_only',
-      emirate: directoryKey === 'approvals' ? 'دبي' : directoryKey === 'residency' ? 'دبي/اتحادي — يلزم الفصل' : 'اتحادي',
+      emirate: directoryKey === 'approvals'
+        ? 'دبي'
+        : directoryKey === 'residency'
+          ? item[2] === 'GDRFA Dubai'
+            ? 'دبي'
+            : item[2] === 'ICP'
+              ? 'الإمارات الخاضعة لمسار ICP (خارج دبي)'
+              : 'دبي/اتحادي — يلزم الفصل'
+          : 'اتحادي',
       authority: item[2],
       sector: item[0],
       serviceName: item[1],
