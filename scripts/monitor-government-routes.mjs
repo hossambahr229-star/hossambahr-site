@@ -7,10 +7,22 @@ const outputPath = path.join(root, 'government-route-monitor-report.json');
 const readJson = relative => JSON.parse(fs.readFileSync(path.join(root, relative), 'utf8'));
 const registries = [
   readJson('content/government-service-route-audit.json').records,
-  readJson('content/platform-government-route-audit.json').records
+  readJson('content/platform-government-route-audit.json').records,
+  readJson('content/government-service-tree.json').services.map(record => ({
+    ...record,
+    startUrl: record.officialUrl,
+    title: record.serviceName
+  })),
+  readJson('content/government-route-evidence.json').records.map(record => ({
+    ...record,
+    startUrl: record.informationUrl,
+    title: record.platformService
+  }))
 ];
 
-const approved = registries.flat().filter(record => record.status === 'approved');
+const approved = registries
+  .flat()
+  .filter(record => String(record.status || '').startsWith('approved') && (record.startUrl || record.evidenceUrl));
 const unique = new Map();
 for (const record of approved) {
   const url = record.startUrl || record.evidenceUrl;
@@ -27,10 +39,16 @@ async function check(url) {
       signal: controller.signal,
       headers: {'user-agent': 'HossamBahr-Government-Route-Monitor/1.0'}
     });
+    const body = response.status === 401 || response.status === 403 ? '' : await response.text();
+    const semanticNotFound =
+      /\/page-not-found(?:\.aspx)?(?:$|[?#])/i.test(response.url) ||
+      /<title[^>]*>\s*(?:page not found|404 error)/i.test(body) ||
+      /<h1[^>]*>\s*(?:page not found|404 error)/i.test(body);
     return {
-      ok: (response.status >= 200 && response.status < 400) || response.status === 401 || response.status === 403,
+      ok: !semanticNotFound && ((response.status >= 200 && response.status < 400) || response.status === 401 || response.status === 403),
       status: response.status,
-      finalUrl: response.url
+      finalUrl: response.url,
+      semanticNotFound
     };
   } catch (error) {
     return {ok: false, status: 0, finalUrl: url, error: error.message};
