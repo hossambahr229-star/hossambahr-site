@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-07-28T07:28:40.687Z",
-  "approvedServiceRecords": 154,
-  "uniqueUrls": 76,
-  "healthy": 76,
+  "checkedAt": "2026-07-28T07:46:57.728Z",
+  "approvedServiceRecords": 196,
+  "uniqueUrls": 93,
+  "healthy": 93,
   "failed": 0,
   "checks": [
     {
@@ -163,7 +163,9 @@
       "url": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
       "services": [
         "family-residency-uae",
-        "Issuance of a residence permit for foreign family members"
+        "Issuance of a residence permit for foreign family members",
+        "إصدار إقامة لمولود جديد في دبي",
+        "إصدار إقامة لمولود جديد في دبي"
       ],
       "ok": true,
       "status": 200,
@@ -698,7 +700,13 @@
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
       "services": [
         "إصدار تصريح إقامة عبر ICP (خارج دبي)",
-        "إصدار تصريح إقامة عبر ICP (خارج دبي)"
+        "تغيير الوضع عبر ICP ضمن إصدار الإقامة (خارج دبي)",
+        "إصدار إقامة للوالدين عبر ICP (خارج دبي)",
+        "إصدار إقامة لمولود جديد عبر ICP (خارج دبي)",
+        "إصدار تصريح إقامة عبر ICP (خارج دبي)",
+        "تغيير الوضع عبر ICP ضمن إصدار الإقامة (خارج دبي)",
+        "إصدار إقامة للوالدين عبر ICP (خارج دبي)",
+        "إصدار إقامة لمولود جديد عبر ICP (خارج دبي)"
       ],
       "ok": true,
       "status": 200,
@@ -739,6 +747,39 @@
       "semanticNotFound": false
     },
     {
+      "url": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+      "services": [
+        "تعديل الوضع داخل الدولة في دبي",
+        "تعديل الوضع داخل الدولة في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
+      "services": [
+        "تصريح بقاء خارج الدولة لأكثر من 6 أشهر عبر ICP",
+        "تصريح بقاء خارج الدولة لأكثر من 6 أشهر عبر ICP"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "services": [
+        "تقرير تفاصيل الإقامة عبر ICP",
+        "تقرير تفاصيل الإقامة عبر ICP"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "semanticNotFound": false
+    },
+    {
       "url": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
       "services": [
         "تجديد إقامة أفراد الأسرة في دبي"
@@ -746,6 +787,17 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+      "services": [
+        "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+        "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
       "semanticNotFound": false
     },
     {
@@ -841,6 +893,149 @@
       "ok": true,
       "status": 200,
       "finalUrl": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+      "services": [
+        "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي",
+        "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
+      "services": [
+        "إصدار بطاقة منشأة عبر ICP (خارج دبي)",
+        "إصدار بطاقة منشأة عبر ICP (خارج دبي)"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+      "services": [
+        "تجديد بطاقة المنشأة في دبي لجميع الفئات",
+        "تجديد بطاقة المنشأة في دبي لجميع الفئات"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+      "services": [
+        "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
+        "تجديد بطاقة المنشأة عبر ICP (خارج دبي)"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+      "services": [
+        "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات",
+        "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
+      "services": [
+        "تعديل أو إضافة بيانات بطاقة المنشأة عبر ICP (خارج دبي)",
+        "تعديل أو إضافة بيانات بطاقة المنشأة عبر ICP (خارج دبي)"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "services": [
+        "إلغاء بطاقة المنشأة في دبي لجميع الفئات",
+        "إلغاء بطاقة المنشأة في دبي لجميع الفئات"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
+      "services": [
+        "إلغاء بطاقة المنشأة عبر ICP (خارج دبي)",
+        "إلغاء بطاقة المنشأة عبر ICP (خارج دبي)"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+      "services": [
+        "الاستعلام عن غرامات ملف أو مكفول في دبي",
+        "الاستعلام عن غرامات ملف أو مكفول في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "services": [
+        "سداد غرامات مخالفي قانون الإقامة في دبي",
+        "سداد غرامات مخالفي قانون الإقامة في دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "services": [
+        "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي)",
+        "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي)"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
+      "services": [
+        "متابعة حالة طلب أو ملف لدى GDRFA دبي",
+        "متابعة حالة طلب أو ملف لدى GDRFA دبي"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
+      "semanticNotFound": false
+    },
+    {
+      "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
+      "services": [
+        "متابعة حالة طلب تأشيرة لدى ICP (خارج دبي)",
+        "متابعة حالة طلب تأشيرة لدى ICP (خارج دبي)"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html",
       "semanticNotFound": false
     }
   ]
