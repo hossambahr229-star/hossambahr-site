@@ -107,10 +107,30 @@ def enhance_page_html(html: str, item: dict) -> str:
     else:
         html = html.replace("متاحة للتجهيز", "الخدمة متاحة في الدليل", 1)
         html = html.replace(f"آخر مراجعة {TODAY}", f"آخر مراجعة {reviewed}", 1)
-        html = html.replace("مصدر رسمي مرفق", "المصدر الرسمي للجهة مرفق", 1)
+        html = html.replace("مصدر رسمي مرفق", "مرجع الجهة مرفق · ليس رابط بدء", 1)
+        html = html.replace(
+            '<article class="official-choice">',
+            '<article class="official-choice route-under-review" data-route-status="review">',
+            1,
+        )
+        html = html.replace(
+            "<span>المسار الحكومي</span><h3>التقديم بنفسك</h3>",
+            "<span>مرجع الجهة</span><h3>تحقق من اسم المعاملة أولاً</h3>",
+            1,
+        )
+        html = html.replace(
+            "تنتقل إلى المصدر الرسمي وتراجع المتطلبات الحالية ثم ترفع وتدفع داخل بوابة الجهة فقط.",
+            "يفتح الرابط مرجع الجهة الرسمي العام، لكنه لا يبدأ هذه المعاملة مباشرة. طابق اسم الخدمة وفئتك وإمارتك داخل البوابة قبل إنشاء الطلب أو السداد.",
+            1,
+        )
+        html = html.replace(
+            'data-track="official-service">افتح الخدمة الرسمية ↗</a>',
+            'data-track="official-source-review">راجع مرجع الجهة الرسمي ↗</a>',
+            1,
+        )
         html = html.replace(
             "الجهة الرسمية هي المرجع النهائي للشروط والرسوم.",
-            "هذه الخدمة ضمن التدقيق الذري الجاري؛ راجع اسم المعاملة داخل المصدر الرسمي قبل إنشاء الطلب.",
+            "حالة الرابط: مرجع رسمي للجهة، وليس مسار بدء مباشرًا. يحتاج اختيار المعاملة المطابقة داخل البوابة.",
             1,
         )
     return html.replace("</head>", discovery_markup(item) + "</head>", 1)

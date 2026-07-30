@@ -78,11 +78,20 @@ for item in items:
     if len(re.findall(r"<h1[\s>]", html, re.I)) != 1:
         errors.append(f"page must have one h1: {relative}")
     expected_route = (audit.get("startUrl") or item["official"]) if audit["status"] == "approved" else item["official"]
-    if expected_route not in html or "افتح الخدمة الرسمية" not in html:
-        errors.append(f"official route missing: {relative}")
+    if expected_route not in html:
+        errors.append(f"official source missing: {relative}")
+    if audit["status"] == "approved":
+        if "افتح الخدمة الرسمية" not in html or 'data-route-status="review"' in html:
+            errors.append(f"verified route is not rendered as a direct official action: {relative}")
+    else:
+        if "راجع مرجع الجهة الرسمي" not in html or 'data-route-status="review"' not in html:
+            errors.append(f"unverified route is not rendered in review state: {relative}")
+        if "افتح الخدمة الرسمية" in html:
+            errors.append(f"unverified route is mislabeled as a direct official service: {relative}")
     if "route-disabled" in html:
         errors.append(f"approved route rendered disabled: {relative}")
-    for phrase in ["المسار الحكومي", "مسار حسام بحر", "0503780460", "لا ترسل جوازاً أو هوية"]:
+    route_phrase = "المسار الحكومي" if audit["status"] == "approved" else "مرجع الجهة"
+    for phrase in [route_phrase, "مسار حسام بحر", "0503780460", "لا ترسل جوازاً أو هوية"]:
         if phrase not in html:
             errors.append(f"missing required phrase in {relative}: {phrase}")
     if expected not in sitemap:

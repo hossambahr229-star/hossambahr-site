@@ -1,0 +1,1161 @@
+{
+  "generatedAt": "2026-07-30T09:49:15.248Z",
+  "visualReference": "e0596a2",
+  "summary": {
+    "routes": 75,
+    "staticRoutes": 44,
+    "dynamicServiceRoutes": 31,
+    "scannedLinks": 1946,
+    "brokenInternalLinks": 0,
+    "placeholderLinks": 0,
+    "uniqueExternalLinks": 116,
+    "orphanRoutes": 0,
+    "pagesWithLegacyIdentity": 75
+  },
+  "routes": [
+    {
+      "route": "/404.html",
+      "file": "404.html",
+      "type": "static",
+      "title": "الصفحة غير موجودة | حسام بحر",
+      "incomingLinks": 0,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/about.html",
+      "file": "about.html",
+      "type": "static",
+      "title": "عن منصة حسام بحر لخدمات الأعمال في الإمارات",
+      "incomingLinks": 5,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/admin.html",
+      "file": "admin.html",
+      "type": "static",
+      "title": "انتقال إلى مركز القيادة",
+      "incomingLinks": 0,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/al-dhafra-business-services.html",
+      "file": "al-dhafra-business-services.html",
+      "type": "static",
+      "title": "خدمات الشركات والإقامة في منطقة الظفرة | حسام بحر",
+      "incomingLinks": 4,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/business-marketplace.html",
+      "file": "business-marketplace.html",
+      "type": "static",
+      "title": "سوق خدمات الأعمال في الإمارات | منصة حسام بحر",
+      "incomingLinks": 6,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/business-services-abu-dhabi.html",
+      "file": "business-services-abu-dhabi.html",
+      "type": "static",
+      "title": "خدمات تأسيس وتجديد الشركات في أبوظبي | دليل TAMM",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/business-services-ajman.html",
+      "file": "business-services-ajman.html",
+      "type": "static",
+      "title": "خدمات تأسيس وتجديد الشركات في عجمان | دليل المعاملات",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/business-services-dubai.html",
+      "file": "business-services-dubai.html",
+      "type": "static",
+      "title": "خدمات تأسيس وتجديد الشركات في دبي | دليل المعاملات",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/business-services-fujairah.html",
+      "file": "business-services-fujairah.html",
+      "type": "static",
+      "title": "خدمات تأسيس وتجديد الشركات في الفجيرة",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/business-services-ras-al-khaimah.html",
+      "file": "business-services-ras-al-khaimah.html",
+      "type": "static",
+      "title": "خدمات تأسيس وتجديد الشركات في رأس الخيمة",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/business-services-sharjah.html",
+      "file": "business-services-sharjah.html",
+      "type": "static",
+      "title": "خدمات تأسيس وتجديد الشركات في الشارقة | دليل SEDD",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/business-services-umm-al-quwain.html",
+      "file": "business-services-umm-al-quwain.html",
+      "type": "static",
+      "title": "خدمات تأسيس وتجديد الشركات في أم القيوين",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/command-center.html",
+      "file": "command-center.html",
+      "type": "static",
+      "title": "مركز قيادة الشركة | منصة حسام بحر",
+      "incomingLinks": 18,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/company-formation-dubai.html",
+      "file": "company-formation-dubai.html",
+      "type": "static",
+      "title": "تأسيس شركة في دبي | الخطوات والمتطلبات | حسام بحر",
+      "incomingLinks": 9,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/company-health-check.html",
+      "file": "company-health-check.html",
+      "type": "static",
+      "title": "فحص صحة الشركة والرخصة في الإمارات | حسام بحر",
+      "incomingLinks": 7,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/company-liquidation-uae.html",
+      "file": "company-liquidation-uae.html",
+      "type": "static",
+      "title": "تصفية وإلغاء شركة في الإمارات | الخطوات والمتطلبات | حسام بحر",
+      "incomingLinks": 9,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/contact.html",
+      "file": "contact.html",
+      "type": "static",
+      "title": "تواصل مع حسام بحر لخدمات الأعمال | الإمارات",
+      "incomingLinks": 16,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/corporate-tax-registration-uae.html",
+      "file": "corporate-tax-registration-uae.html",
+      "type": "static",
+      "title": "التسجيل في ضريبة الشركات الإمارات | EmaraTax | حسام بحر",
+      "incomingLinks": 7,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/dubai-business-activities.html",
+      "file": "dubai-business-activities.html",
+      "type": "static",
+      "title": "اختيار النشاط الاقتصادي في دبي | مساعد الأنشطة والرموز 2026",
+      "incomingLinks": 9,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/emirates-id-uae.html",
+      "file": "emirates-id-uae.html",
+      "type": "static",
+      "title": "إصدار وتجديد الهوية الإماراتية | ICP | حسام بحر",
+      "incomingLinks": 8,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/emirati-minimum-wage-private-sector-2026.html",
+      "file": "emirati-minimum-wage-private-sector-2026.html",
+      "type": "static",
+      "title": "الحد الأدنى لأجور المواطنين 6000 درهم | حسام بحر",
+      "incomingLinks": 2,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/family-sponsorship-uae.html",
+      "file": "family-sponsorship-uae.html",
+      "type": "static",
+      "title": "كفالة الزوجة والأبناء في الإمارات | إقامة الأسرة | حسام بحر",
+      "incomingLinks": 5,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/free-zone-company-uae.html",
+      "file": "free-zone-company-uae.html",
+      "type": "static",
+      "title": "تأسيس شركة منطقة حرة في الإمارات | مقارنة واختيار | حسام بحر",
+      "incomingLinks": 2,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/golden-residency-uae.html",
+      "file": "golden-residency-uae.html",
+      "type": "static",
+      "title": "الإقامة الذهبية في الإمارات | تقييم الأهلية والمتطلبات | حسام بحر",
+      "incomingLinks": 4,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/government-approvals-dubai.html",
+      "file": "government-approvals-dubai.html",
+      "type": "static",
+      "title": "دليل الموافقات الحكومية للأنشطة في دبي 2026 | RTA وSIRA وDHA",
+      "incomingLinks": 4,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/",
+      "file": "index.html",
+      "type": "static",
+      "title": "منصة حسام بحر | نظام الأعمال والمعاملات في الإمارات",
+      "incomingLinks": 169,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/investor-residency-uae.html",
+      "file": "investor-residency-uae.html",
+      "type": "static",
+      "title": "إقامة المستثمر في الإمارات | المتطلبات والخطوات | حسام بحر",
+      "incomingLinks": 7,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/knowledge-hub.html",
+      "file": "knowledge-hub.html",
+      "type": "static",
+      "title": "مركز المعرفة والتحديثات الرسمية | منصة حسام بحر",
+      "incomingLinks": 13,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/license-renewal-uae.html",
+      "file": "license-renewal-uae.html",
+      "type": "static",
+      "title": "تجديد الرخصة التجارية في الإمارات السبع | حسام بحر",
+      "incomingLinks": 9,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/mohre-services-dubai.html",
+      "file": "mohre-services-dubai.html",
+      "type": "static",
+      "title": "دليل خدمات وزارة العمل MOHRE في دبي 2026 | حسام بحر",
+      "incomingLinks": 11,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/plans.html",
+      "file": "plans.html",
+      "type": "static",
+      "title": "باقات إدارة الشركات والتنبيهات في الإمارات | حسام بحر",
+      "incomingLinks": 6,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/platform-tools.html",
+      "file": "platform-tools.html",
+      "type": "static",
+      "title": "محدد الخدمة وحاسبة الرسوم | منصة حسام بحر الإمارات",
+      "incomingLinks": 101,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/privacy.html",
+      "file": "privacy.html",
+      "type": "static",
+      "title": "سياسة الخصوصية | حسام بحر لخدمات الأعمال",
+      "incomingLinks": 68,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/residency-identity-dubai.html",
+      "file": "residency-identity-dubai.html",
+      "type": "static",
+      "title": "دليل الإقامة والهوية والتأشيرات في دبي 2026 | GDRFA وICP",
+      "incomingLinks": 7,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/search-results.html",
+      "file": "search-results.html",
+      "type": "static",
+      "title": "نتائج البحث | منصة حسام بحر",
+      "incomingLinks": 2,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/service-guides.html",
+      "file": "service-guides.html",
+      "type": "static",
+      "title": "خدمات الشركات والعمل والإقامة في الإمارات | حسام بحر",
+      "incomingLinks": 68,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/add-business-activity-dubai.html",
+      "file": "services/add-business-activity-dubai.html",
+      "type": "dynamic-service",
+      "title": "إضافة أو حذف نشاط تجاري في دبي | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/add-remove-partner-dubai.html",
+      "file": "services/add-remove-partner-dubai.html",
+      "type": "dynamic-service",
+      "title": "إضافة أو انسحاب شريك في شركة بدبي | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/amend-business-license-dubai.html",
+      "file": "services/amend-business-license-dubai.html",
+      "type": "dynamic-service",
+      "title": "تعديل رخصة تجارية في دبي | دليل حسام بحر",
+      "incomingLinks": 5,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/cancel-business-license-dubai.html",
+      "file": "services/cancel-business-license-dubai.html",
+      "type": "dynamic-service",
+      "title": "إلغاء رخصة أو تصفية شركة في دبي | دليل حسام بحر",
+      "incomingLinks": 7,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/cancel-residency-permit-uae.html",
+      "file": "services/cancel-residency-permit-uae.html",
+      "type": "dynamic-service",
+      "title": "إلغاء تصريح الإقامة الصادر من دبي | دليل حسام بحر",
+      "incomingLinks": 10,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/cancel-work-permit-uae.html",
+      "file": "services/cancel-work-permit-uae.html",
+      "type": "dynamic-service",
+      "title": "إلغاء تصريح وعقد عمل في الإمارات | دليل حسام بحر",
+      "incomingLinks": 5,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/change-company-manager-dubai.html",
+      "file": "services/change-company-manager-dubai.html",
+      "type": "dynamic-service",
+      "title": "تعديل مدير شركة في دبي | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/corporate-tax-registration-uae.html",
+      "file": "services/corporate-tax-registration-uae.html",
+      "type": "dynamic-service",
+      "title": "التسجيل في ضريبة الشركات بالإمارات | دليل حسام بحر",
+      "incomingLinks": 5,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/employment-contract-uae.html",
+      "file": "services/employment-contract-uae.html",
+      "type": "dynamic-service",
+      "title": "إصدار أو تجديد عقد عمل في الإمارات | دليل حسام بحر",
+      "incomingLinks": 13,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/establishment-card-mohre-uae.html",
+      "file": "services/establishment-card-mohre-uae.html",
+      "type": "dynamic-service",
+      "title": "إصدار سجل منشأة لدى وزارة الموارد البشرية | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/family-residency-uae.html",
+      "file": "services/family-residency-uae.html",
+      "type": "dynamic-service",
+      "title": "إصدار إقامة لأفراد الأسرة في دبي | دليل حسام بحر",
+      "incomingLinks": 4,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/family-sponsored-work-permit-uae.html",
+      "file": "services/family-sponsored-work-permit-uae.html",
+      "type": "dynamic-service",
+      "title": "تصريح عمل لمقيم على كفالة ذويه | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/golden-residency-uae.html",
+      "file": "services/golden-residency-uae.html",
+      "type": "dynamic-service",
+      "title": "إصدار الإقامة الذهبية للمستثمرين في دبي | دليل حسام بحر",
+      "incomingLinks": 4,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/initial-approval-dubai.html",
+      "file": "services/initial-approval-dubai.html",
+      "type": "dynamic-service",
+      "title": "الموافقة المبدئية لتأسيس شركة في دبي | دليل حسام بحر",
+      "incomingLinks": 9,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/investor-residency-dubai.html",
+      "file": "services/investor-residency-dubai.html",
+      "type": "dynamic-service",
+      "title": "إقامة شريك أو مستثمر في دبي | دليل حسام بحر",
+      "incomingLinks": 4,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/issue-emirates-id-uae.html",
+      "file": "services/issue-emirates-id-uae.html",
+      "type": "dynamic-service",
+      "title": "إصدار الهوية الإماراتية لأول مرة | دليل حسام بحر",
+      "incomingLinks": 5,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/new-work-permit-overseas-uae.html",
+      "file": "services/new-work-permit-overseas-uae.html",
+      "type": "dynamic-service",
+      "title": "إصدار تصريح عمل جديد من خارج الإمارات | دليل حسام بحر",
+      "incomingLinks": 4,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/part-time-work-permit-uae.html",
+      "file": "services/part-time-work-permit-uae.html",
+      "type": "dynamic-service",
+      "title": "إصدار تصريح عمل جزئي في الإمارات | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/renew-business-license-abu-dhabi.html",
+      "file": "services/renew-business-license-abu-dhabi.html",
+      "type": "dynamic-service",
+      "title": "تجديد رخصة اقتصادية في أبوظبي | دليل حسام بحر",
+      "incomingLinks": 6,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/renew-business-license-ajman.html",
+      "file": "services/renew-business-license-ajman.html",
+      "type": "dynamic-service",
+      "title": "تجديد رخصة اقتصادية في عجمان | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/renew-business-license-dubai.html",
+      "file": "services/renew-business-license-dubai.html",
+      "type": "dynamic-service",
+      "title": "تجديد رخصة تجارية في دبي | دليل حسام بحر",
+      "incomingLinks": 8,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/renew-business-license-sharjah.html",
+      "file": "services/renew-business-license-sharjah.html",
+      "type": "dynamic-service",
+      "title": "تجديد رخصة تجارية في الشارقة | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/renew-emirates-id-uae.html",
+      "file": "services/renew-emirates-id-uae.html",
+      "type": "dynamic-service",
+      "title": "تجديد الهوية الإماراتية | دليل حسام بحر",
+      "incomingLinks": 4,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/renew-residency-permit-uae.html",
+      "file": "services/renew-residency-permit-uae.html",
+      "type": "dynamic-service",
+      "title": "تجديد تصريح الإقامة في الإمارات | دليل حسام بحر",
+      "incomingLinks": 11,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/reserve-trade-name-dubai.html",
+      "file": "services/reserve-trade-name-dubai.html",
+      "type": "dynamic-service",
+      "title": "حجز اسم تجاري في دبي | دليل حسام بحر",
+      "incomingLinks": 11,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/temporary-work-permit-uae.html",
+      "file": "services/temporary-work-permit-uae.html",
+      "type": "dynamic-service",
+      "title": "إصدار تصريح عمل مؤقت في الإمارات | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/transfer-company-ownership-dubai.html",
+      "file": "services/transfer-company-ownership-dubai.html",
+      "type": "dynamic-service",
+      "title": "نقل ملكية أو بيع شركة في دبي | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/transfer-work-permit-uae.html",
+      "file": "services/transfer-work-permit-uae.html",
+      "type": "dynamic-service",
+      "title": "نقل تصريح عمل موظف إلى منشأة جديدة | دليل حسام بحر",
+      "incomingLinks": 12,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/update-establishment-file-mohre-uae.html",
+      "file": "services/update-establishment-file-mohre-uae.html",
+      "type": "dynamic-service",
+      "title": "تحديث سجل المنشأة لدى وزارة الموارد البشرية | دليل حسام بحر",
+      "incomingLinks": 4,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/vat-registration-uae.html",
+      "file": "services/vat-registration-uae.html",
+      "type": "dynamic-service",
+      "title": "التسجيل في ضريبة القيمة المضافة بالإمارات | دليل حسام بحر",
+      "incomingLinks": 5,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/services/visit-visa-uae.html",
+      "file": "services/visit-visa-uae.html",
+      "type": "dynamic-service",
+      "title": "إصدار تأشيرة زيارة أو سياحة للإمارات | دليل حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/start-request.html",
+      "file": "start-request.html",
+      "type": "static",
+      "title": "ابدأ طلب خدمة في الإمارات | منصة حسام بحر",
+      "incomingLinks": 9,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/terms.html",
+      "file": "terms.html",
+      "type": "static",
+      "title": "الشروط والأحكام | حسام بحر لخدمات الأعمال",
+      "incomingLinks": 45,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/track-request.html",
+      "file": "track-request.html",
+      "type": "static",
+      "title": "متابعة الطلب | منصة حسام بحر",
+      "incomingLinks": 2,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/uae-emirates.html",
+      "file": "uae-emirates.html",
+      "type": "static",
+      "title": "دليل خدمات الأعمال في الإمارات السبع | حسام بحر",
+      "incomingLinks": 28,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/uae-service-catalog.html",
+      "file": "uae-service-catalog.html",
+      "type": "static",
+      "title": "دليل خدمات الإمارات السبع | منصة حسام بحر",
+      "incomingLinks": 50,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/vat-registration-uae.html",
+      "file": "vat-registration-uae.html",
+      "type": "static",
+      "title": "التسجيل في ضريبة القيمة المضافة VAT الإمارات | TRN | حسام بحر",
+      "incomingLinks": 3,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/visit-visa-uae.html",
+      "file": "visit-visa-uae.html",
+      "type": "static",
+      "title": "تأشيرات الزيارة والسياحة في الإمارات | ICP وGDRFA | حسام بحر",
+      "incomingLinks": 2,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    },
+    {
+      "route": "/work-permit-uae.html",
+      "file": "work-permit-uae.html",
+      "type": "static",
+      "title": "تصاريح وعقود العمل في الإمارات | MOHRE | حسام بحر",
+      "incomingLinks": 9,
+      "hasLegacyIdentity": true,
+      "status": "present"
+    }
+  ],
+  "broken": [],
+  "placeholders": [],
+  "external": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap",
+      "references": 24
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B9%D8%B1%D9%81%D8%A9%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460",
+      "references": 50
+    },
+    {
+      "url": "https://fonts.googleapis.com/",
+      "references": 46
+    },
+    {
+      "url": "https://fonts.gstatic.com/",
+      "references": 46
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap",
+      "references": 43
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%85%20%D9%83%D9%85%D8%B2%D9%88%D8%AF%20%D8%AE%D8%AF%D9%85%D8%A9%20%D9%81%D9%8A%20%D8%B3%D9%88%D9%82%20%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9:%20%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A%0A%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9:%20%0A%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9:%20",
+      "references": 1
+    },
+    {
+      "url": "https://www.tamm.abudhabi/journeys/start-a-business/",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%AE%D8%AF%D9%85%D8%A9%20%D9%81%D9%8A%20%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%B9%D8%AC%D9%85%D8%A7%D9%86",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9:%20%D8%B9%D8%AC%D9%85%D8%A7%D9%86%0A%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9:%20",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%AE%D8%AF%D9%85%D8%A9%20%D9%81%D9%8A%20%D8%B9%D8%AC%D9%85%D8%A7%D9%86",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9:%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9:%20",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%AE%D8%AF%D9%85%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%81%D8%AC%D9%8A%D8%B1%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9:%20%D8%A7%D9%84%D9%81%D8%AC%D9%8A%D8%B1%D8%A9%0A%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9:%20",
+      "references": 1
+    },
+    {
+      "url": "https://fujairah.ae/",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%AE%D8%AF%D9%85%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%81%D8%AC%D9%8A%D8%B1%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%B1%D8%A3%D8%B3%20%D8%A7%D9%84%D8%AE%D9%8A%D9%85%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9:%20%D8%B1%D8%A3%D8%B3%20%D8%A7%D9%84%D8%AE%D9%8A%D9%85%D8%A9%0A%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9:%20",
+      "references": 1
+    },
+    {
+      "url": "https://www.rak.ae/wps/portal/rak/government-entities/department-of-economic-development",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%AE%D8%AF%D9%85%D8%A9%20%D9%81%D9%8A%20%D8%B1%D8%A3%D8%B3%20%D8%A7%D9%84%D8%AE%D9%8A%D9%85%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9:%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9%0A%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9:%20",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%AE%D8%AF%D9%85%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D9%81%D9%8A%20%D8%A3%D9%85%20%D8%A7%D9%84%D9%82%D9%8A%D9%88%D9%8A%D9%86",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9:%20%D8%A3%D9%85%20%D8%A7%D9%84%D9%82%D9%8A%D9%88%D9%8A%D9%86%0A%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9:%20",
+      "references": 1
+    },
+    {
+      "url": "https://ded.uaq.ae/",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%AE%D8%AF%D9%85%D8%A9%20%D9%81%D9%8A%20%D8%A3%D9%85%20%D8%A7%D9%84%D9%82%D9%8A%D9%88%D9%8A%D9%86",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9:%20%0A%D9%86%D9%88%D8%B9%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9:%20%0A%D8%A7%D9%84%D9%87%D8%AF%D9%81:%20",
+      "references": 1
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1%20%D8%A7%D9%84%D9%86%D8%B4%D8%A7%D8%B7%20%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://app.invest.dubai.ae/search-business-activities",
+      "references": 3
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1%20%D9%86%D8%B4%D8%A7%D8%B7%20%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D8%B9%D9%82%D9%88%D8%AF%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B7%D9%86%D9%8A%D9%86%20%D9%81%D9%8A%20%D9%85%D9%86%D8%B4%D8%A3%D8%AA%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://www.mohre.gov.ae/en/media-center/news/31/12/2025/mohre-raises-minimum-wage-for-emiratis-in-the-private-sector-to-aed-6000-per-month-effective-1",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D8%B9%D9%82%D9%88%D8%AF%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B7%D9%86%D9%8A%D9%86%20%D9%88%D8%A7%D9%84%D8%AD%D8%AF%20%D8%A7%D9%84%D8%A3%D8%AF%D9%86%D9%89%20%D9%84%D9%84%D8%A3%D8%AC%D8%B1",
+      "references": 1
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&display=swap",
+      "references": 3
+    },
+    {
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services",
+      "references": 9
+    },
+    {
+      "url": "https://rta.ae/wps/portal/rta/ae/corporate-services",
+      "references": 1
+    },
+    {
+      "url": "https://www.sira.gov.ae/en/services/noc-security-license",
+      "references": 1
+    },
+    {
+      "url": "https://dha.gov.ae/en/dubai-health-licensing-system-shreyan",
+      "references": 1
+    },
+    {
+      "url": "https://web.khda.gov.ae/en/Services",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%AA%D8%AD%D8%AF%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%81%D9%82%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D8%B7%D9%84%D9%88%D8%A8%D8%A9%20%D9%84%D9%86%D8%B4%D8%A7%D8%B7%D9%8A%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D8%AD%D8%AF%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A8%D8%AF%D8%A1%20%D9%81%D9%8A%20%D8%AE%D8%AF%D9%85%D8%A9%20%D9%84%D8%B4%D8%B1%D9%83%D8%AA%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://u.ae/",
+      "references": 1
+    },
+    {
+      "url": "https://icp.gov.ae/en/services/interactive-services/",
+      "references": 2
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%AA%D8%AD%D8%AF%D9%8A%D8%AF%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://mohre.gov.ae/en/",
+      "references": 1
+    },
+    {
+      "url": "https://mohre.gov.ae/en/guidance-and-awareness-portal-new/work-bundle",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D9%81%D9%8A%20%D9%88%D8%B2%D8%A7%D8%B1%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D9%8B%D8%A7%20%D9%84%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%D9%8B%D8%A7%20%D9%85%D8%AE%D8%B5%D8%B5%D9%8B%D8%A7%20%D9%84%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9%20%D8%B4%D8%B1%D9%83%D8%AA%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap",
+      "references": 2
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%A3%D9%88%20%D9%87%D9%88%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D8%A3%D9%88%20%D8%AD%D8%B0%D9%81%20%D9%86%D8%B4%D8%A7%D8%B7%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D8%A3%D9%88%20%D8%A7%D9%86%D8%B3%D8%AD%D8%A7%D8%A8%20%D8%B4%D8%B1%D9%8A%D9%83%20%D9%81%D9%8A%20%D8%B4%D8%B1%D9%83%D8%A9%20%D8%A8%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A3%D9%88%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%A7%D9%84%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%A7%D9%84%D8%B5%D8%A7%D8%AF%D8%B1%20%D9%85%D9%86%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D9%88%D8%B9%D9%82%D8%AF%20%D8%B9%D9%85%D9%84%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA",
+      "references": 3
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%20%D9%85%D8%AF%D9%8A%D8%B1%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A7%D9%84%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%20%D9%81%D9%8A%20%D8%B6%D8%B1%D9%8A%D8%A8%D8%A9%20%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A7%D8%AA%20%D8%A8%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA",
+      "references": 3
+    },
+    {
+      "url": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%A3%D9%88%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%B9%D9%82%D8%AF%20%D8%B9%D9%85%D9%84%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA",
+      "references": 3
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%B3%D8%AC%D9%84%20%D9%85%D9%86%D8%B4%D8%A3%D8%A9%20%D9%84%D8%AF%D9%89%20%D9%88%D8%B2%D8%A7%D8%B1%D8%A9%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B1%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A%D8%A9",
+      "references": 3
+    },
+    {
+      "url": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D9%84%D8%A3%D9%81%D8%B1%D8%A7%D8%AF%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%B9%D9%85%D9%84%20%D9%84%D9%85%D9%82%D9%8A%D9%85%20%D8%B9%D9%84%D9%89%20%D9%83%D9%81%D8%A7%D9%84%D8%A9%20%D8%B0%D9%88%D9%8A%D9%87",
+      "references": 3
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%A7%D9%84%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%A7%D9%84%D8%B0%D9%87%D8%A8%D9%8A%D8%A9%20%D9%84%D9%84%D9%85%D8%B3%D8%AA%D8%AB%D9%85%D8%B1%D9%8A%D9%86%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%81%D9%82%D8%A9%20%D8%A7%D9%84%D9%85%D8%A8%D8%AF%D8%A6%D9%8A%D8%A9%20%D9%84%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%B4%D8%B1%D9%8A%D9%83%20%D8%A3%D9%88%20%D9%85%D8%B3%D8%AA%D8%AB%D9%85%D8%B1%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%D9%8A%D8%A9%20%D9%84%D8%A3%D9%88%D9%84%20%D9%85%D8%B1%D8%A9",
+      "references": 3
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%B9%D9%85%D9%84%20%D8%AC%D8%AF%D9%8A%D8%AF%20%D9%85%D9%86%20%D8%AE%D8%A7%D8%B1%D8%AC%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA",
+      "references": 3
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%B9%D9%85%D9%84%20%D8%AC%D8%B2%D8%A6%D9%8A%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA",
+      "references": 3
+    },
+    {
+      "url": "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://www.tamm.abudhabi/",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%B9%D8%AC%D9%85%D8%A7%D9%86",
+      "references": 3
+    },
+    {
+      "url": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
+      "references": 3
+    },
+    {
+      "url": "https://digital.sedd.gov.ae/digital/license/renew-license/license-details-step",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%D9%8A%D8%A9",
+      "references": 3
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%A7%D9%84%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA",
+      "references": 3
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AD%D8%AC%D8%B2%20%D8%A7%D8%B3%D9%85%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%B9%D9%85%D9%84%20%D9%85%D8%A4%D9%82%D8%AA%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA",
+      "references": 3
+    },
+    {
+      "url": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D9%86%D9%82%D9%84%20%D9%85%D9%84%D9%83%D9%8A%D8%A9%20%D8%A3%D9%88%20%D8%A8%D9%8A%D8%B9%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A",
+      "references": 3
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D9%86%D9%82%D9%84%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%B9%D9%85%D9%84%20%D9%85%D9%88%D8%B8%D9%81%20%D8%A5%D9%84%D9%89%20%D9%85%D9%86%D8%B4%D8%A3%D8%A9%20%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9",
+      "references": 3
+    },
+    {
+      "url": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%AD%D8%AF%D9%8A%D8%AB%20%D8%B3%D8%AC%D9%84%20%D8%A7%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9%20%D9%84%D8%AF%D9%89%20%D9%88%D8%B2%D8%A7%D8%B1%D8%A9%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B1%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A%D8%A9",
+      "references": 3
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A7%D9%84%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%20%D9%81%D9%8A%20%D8%B6%D8%B1%D9%8A%D8%A8%D8%A9%20%D8%A7%D9%84%D9%82%D9%8A%D9%85%D8%A9%20%D8%A7%D9%84%D9%85%D8%B6%D8%A7%D9%81%D8%A9%20%D8%A8%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA",
+      "references": 3
+    },
+    {
+      "url": "https://tax.gov.ae/ar/services/vat.registration.aspx",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D9%84%D9%81%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9%20%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9%20%D8%A3%D9%88%20%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9%20%D9%84%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA",
+      "references": 3
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D8%AD%D8%AF%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A9",
+      "references": 1
+    },
+    {
+      "url": "https://wa.me/971503780460?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AE%D8%AF%D9%85%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%85%D8%A7%D8%B1%D8%A9",
+      "references": 1
+    }
+  ],
+  "orphanRoutes": []
+}
