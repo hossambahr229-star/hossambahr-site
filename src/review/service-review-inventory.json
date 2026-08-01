@@ -5,8 +5,10 @@
     "serviceMatrix": "service-matrix.json"
   },
   "policy": {
-    "purpose": "migration-staging-only",
+    "purpose": "progressive-review-inventory-only",
     "canonicalRegistryMutation": false,
+    "bulkApprovalAllowed": false,
+    "serviceEntityAllowedBeforeApproval": false,
     "publishableByDefault": false,
     "legacyApprovalImportedAsVerification": false
   },
@@ -59,8 +61,8 @@
         "categoryLabel": "تصاريح العمل",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "mohre-private-tutor-permit",
-      "proposedSlug": "mohre-private-tutor-permit",
+      "candidateId": "mohre-private-tutor-permit",
+      "candidateSlug": "mohre-private-tutor-permit",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -262,8 +264,8 @@
         "categoryLabel": "تصاريح العمل",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "mohre-uae-nationals-gcc-work-permit",
-      "proposedSlug": "mohre-uae-nationals-gcc-work-permit",
+      "candidateId": "mohre-uae-nationals-gcc-work-permit",
+      "candidateSlug": "mohre-uae-nationals-gcc-work-permit",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -465,8 +467,8 @@
         "categoryLabel": "تصاريح العمل",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "mohre-uae-national-trainee-work-permit",
-      "proposedSlug": "mohre-uae-national-trainee-work-permit",
+      "candidateId": "mohre-uae-national-trainee-work-permit",
+      "candidateSlug": "mohre-uae-national-trainee-work-permit",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -668,8 +670,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "reserve-trade-name-dubai",
-      "proposedSlug": "reserve-trade-name-dubai",
+      "candidateId": "reserve-trade-name-dubai",
+      "candidateSlug": "reserve-trade-name-dubai",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -710,7 +712,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -874,8 +876,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "initial-approval-dubai",
-      "proposedSlug": "initial-approval-dubai",
+      "candidateId": "initial-approval-dubai",
+      "candidateSlug": "initial-approval-dubai",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -916,7 +918,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -1080,8 +1082,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "amend-business-license-dubai",
-      "proposedSlug": "amend-business-license-dubai",
+      "candidateId": "amend-business-license-dubai",
+      "candidateSlug": "amend-business-license-dubai",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -1122,7 +1124,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -1286,8 +1288,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "add-business-activity-dubai",
-      "proposedSlug": "add-business-activity-dubai",
+      "candidateId": "add-business-activity-dubai",
+      "candidateSlug": "add-business-activity-dubai",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -1328,7 +1330,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -1492,8 +1494,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "add-remove-partner-dubai",
-      "proposedSlug": "add-remove-partner-dubai",
+      "candidateId": "add-remove-partner-dubai",
+      "candidateSlug": "add-remove-partner-dubai",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -1534,7 +1536,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -1698,8 +1700,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "transfer-company-ownership-dubai",
-      "proposedSlug": "transfer-company-ownership-dubai",
+      "candidateId": "transfer-company-ownership-dubai",
+      "candidateSlug": "transfer-company-ownership-dubai",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -1740,7 +1742,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -1904,8 +1906,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "cancel-business-license-dubai",
-      "proposedSlug": "cancel-business-license-dubai",
+      "candidateId": "cancel-business-license-dubai",
+      "candidateSlug": "cancel-business-license-dubai",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -1946,7 +1948,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -2110,8 +2112,8 @@
         "categoryLabel": "عمال المنشآت",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "transfer-work-permit-uae",
-      "proposedSlug": "transfer-work-permit-uae",
+      "candidateId": "transfer-work-permit-uae",
+      "candidateSlug": "transfer-work-permit-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -2313,8 +2315,8 @@
         "categoryLabel": "عمال المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "employment-contract-uae",
-      "proposedSlug": "employment-contract-uae",
+      "candidateId": "employment-contract-uae",
+      "candidateSlug": "employment-contract-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -2516,8 +2518,8 @@
         "categoryLabel": "عمال المنشآت",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "cancel-work-permit-uae",
-      "proposedSlug": "cancel-work-permit-uae",
+      "candidateId": "cancel-work-permit-uae",
+      "candidateSlug": "cancel-work-permit-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -2719,8 +2721,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير محسوم — الإقامة"
       },
-      "proposedId": "renew-residency-permit-uae",
-      "proposedSlug": "renew-residency-permit-uae",
+      "candidateId": "renew-residency-permit-uae",
+      "candidateSlug": "renew-residency-permit-uae",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -2761,7 +2763,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -2925,8 +2927,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "cancel-residency-permit-uae",
-      "proposedSlug": "cancel-residency-permit-uae",
+      "candidateId": "cancel-residency-permit-uae",
+      "candidateSlug": "cancel-residency-permit-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -3128,8 +3130,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "renew-business-license-dubai",
-      "proposedSlug": "renew-business-license-dubai",
+      "candidateId": "renew-business-license-dubai",
+      "candidateSlug": "renew-business-license-dubai",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -3170,7 +3172,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -3334,8 +3336,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "renew-business-license-abu-dhabi",
-      "proposedSlug": "renew-business-license-abu-dhabi",
+      "candidateId": "renew-business-license-abu-dhabi",
+      "candidateSlug": "renew-business-license-abu-dhabi",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -3376,7 +3378,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -3540,8 +3542,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "renew-business-license-sharjah",
-      "proposedSlug": "renew-business-license-sharjah",
+      "candidateId": "renew-business-license-sharjah",
+      "candidateSlug": "renew-business-license-sharjah",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -3743,8 +3745,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "renew-business-license-ajman",
-      "proposedSlug": "renew-business-license-ajman",
+      "candidateId": "renew-business-license-ajman",
+      "candidateSlug": "renew-business-license-ajman",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -3946,8 +3948,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "change-company-manager-dubai",
-      "proposedSlug": "change-company-manager-dubai",
+      "candidateId": "change-company-manager-dubai",
+      "candidateSlug": "change-company-manager-dubai",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -3988,7 +3990,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -4152,8 +4154,8 @@
         "categoryLabel": "ملفات المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "establishment-card-mohre-uae",
-      "proposedSlug": "establishment-card-mohre-uae",
+      "candidateId": "establishment-card-mohre-uae",
+      "candidateSlug": "establishment-card-mohre-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -4355,8 +4357,8 @@
         "categoryLabel": "ملفات المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "update-establishment-file-mohre-uae",
-      "proposedSlug": "update-establishment-file-mohre-uae",
+      "candidateId": "update-establishment-file-mohre-uae",
+      "candidateSlug": "update-establishment-file-mohre-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -4558,8 +4560,8 @@
         "categoryLabel": "عمال المنشآت",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "new-work-permit-overseas-uae",
-      "proposedSlug": "new-work-permit-overseas-uae",
+      "candidateId": "new-work-permit-overseas-uae",
+      "candidateSlug": "new-work-permit-overseas-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -4761,8 +4763,8 @@
         "categoryLabel": "عمال المنشآت",
         "categoryGroup": "غير معتمد — family-sponsorship"
       },
-      "proposedId": "family-sponsored-work-permit-uae",
-      "proposedSlug": "family-sponsored-work-permit-uae",
+      "candidateId": "family-sponsored-work-permit-uae",
+      "candidateSlug": "family-sponsored-work-permit-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -4964,8 +4966,8 @@
         "categoryLabel": "عمال المنشآت",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "temporary-work-permit-uae",
-      "proposedSlug": "temporary-work-permit-uae",
+      "candidateId": "temporary-work-permit-uae",
+      "candidateSlug": "temporary-work-permit-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -5167,8 +5169,8 @@
         "categoryLabel": "عمال المنشآت",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "part-time-work-permit-uae",
-      "proposedSlug": "part-time-work-permit-uae",
+      "candidateId": "part-time-work-permit-uae",
+      "candidateSlug": "part-time-work-permit-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -5370,8 +5372,8 @@
         "categoryLabel": "بطاقة الهوية",
         "categoryGroup": "غير معتمد — identity-citizenship"
       },
-      "proposedId": "issue-emirates-id-uae",
-      "proposedSlug": "issue-emirates-id-uae",
+      "candidateId": "issue-emirates-id-uae",
+      "candidateSlug": "issue-emirates-id-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -5573,8 +5575,8 @@
         "categoryLabel": "بطاقة الهوية",
         "categoryGroup": "غير معتمد — identity-citizenship"
       },
-      "proposedId": "renew-emirates-id-uae",
-      "proposedSlug": "renew-emirates-id-uae",
+      "candidateId": "renew-emirates-id-uae",
+      "candidateSlug": "renew-emirates-id-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -5776,8 +5778,8 @@
         "categoryLabel": "الإقامة الخضراء",
         "categoryGroup": "غير محسوم — الإقامة الخضراء"
       },
-      "proposedId": "investor-residency-dubai",
-      "proposedSlug": "investor-residency-dubai",
+      "candidateId": "investor-residency-dubai",
+      "candidateSlug": "investor-residency-dubai",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -5818,7 +5820,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -5982,8 +5984,8 @@
         "categoryLabel": "إقامة الأسرة",
         "categoryGroup": "غير معتمد — family-sponsorship"
       },
-      "proposedId": "family-residency-uae",
-      "proposedSlug": "family-residency-uae",
+      "candidateId": "family-residency-uae",
+      "candidateSlug": "family-residency-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -6185,8 +6187,8 @@
         "categoryLabel": "الإقامة الذهبية",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "golden-residency-uae",
-      "proposedSlug": "golden-residency-uae",
+      "candidateId": "golden-residency-uae",
+      "candidateSlug": "golden-residency-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -6388,8 +6390,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير محسوم — تأشيرات الدخول"
       },
-      "proposedId": "visit-visa-uae",
-      "proposedSlug": "visit-visa-uae",
+      "candidateId": "visit-visa-uae",
+      "candidateSlug": "visit-visa-uae",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -6430,7 +6432,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -6594,8 +6596,8 @@
         "categoryLabel": "ضريبة الشركات",
         "categoryGroup": "غير معتمد — financial-business"
       },
-      "proposedId": "corporate-tax-registration-uae",
-      "proposedSlug": "corporate-tax-registration-uae",
+      "candidateId": "corporate-tax-registration-uae",
+      "candidateSlug": "corporate-tax-registration-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -6797,8 +6799,8 @@
         "categoryLabel": "ضريبة القيمة المضافة",
         "categoryGroup": "غير معتمد — financial-business"
       },
-      "proposedId": "vat-registration-uae",
-      "proposedSlug": "vat-registration-uae",
+      "candidateId": "vat-registration-uae",
+      "candidateSlug": "vat-registration-uae",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -7000,8 +7002,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "legacy-service-67abe5ccf3",
-      "proposedSlug": "legacy-service-67abe5ccf3",
+      "candidateId": "legacy-service-67abe5ccf3",
+      "candidateSlug": "legacy-service-67abe5ccf3",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -7042,7 +7044,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -7206,8 +7208,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "تأسيس-منشأة-جديدة-في-عجمان",
-      "proposedSlug": "تأسيس-منشأة-جديدة-في-عجمان",
+      "candidateId": "تأسيس-منشأة-جديدة-في-عجمان",
+      "candidateSlug": "تأسيس-منشأة-جديدة-في-عجمان",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -7409,8 +7411,8 @@
         "categoryLabel": "المناطق الحرة",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة",
-      "proposedSlug": "تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة",
+      "candidateId": "تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة",
+      "candidateSlug": "تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -7612,8 +7614,8 @@
         "categoryLabel": "تصاريح العمل",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "issuance-of-a-new-work-permit-mission-work-permit",
-      "proposedSlug": "issuance-of-a-new-work-permit-mission-work-permit",
+      "candidateId": "issuance-of-a-new-work-permit-mission-work-permit",
+      "candidateSlug": "issuance-of-a-new-work-permit-mission-work-permit",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -7815,8 +7817,8 @@
         "categoryLabel": "تصاريح العمل",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "issuance-of-a-new-work-permit-golden-visa-holders",
-      "proposedSlug": "issuance-of-a-new-work-permit-golden-visa-holders",
+      "candidateId": "issuance-of-a-new-work-permit-golden-visa-holders",
+      "candidateSlug": "issuance-of-a-new-work-permit-golden-visa-holders",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -8018,8 +8020,8 @@
         "categoryLabel": "علاقات العمل",
         "categoryGroup": "غير معتمد — justice-police"
       },
-      "proposedId": "register-labour-complaints-private-sector-employees",
-      "proposedSlug": "register-labour-complaints-private-sector-employees",
+      "candidateId": "register-labour-complaints-private-sector-employees",
+      "candidateSlug": "register-labour-complaints-private-sector-employees",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -8221,8 +8223,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير محسوم — الإقامة"
       },
-      "proposedId": "legacy-issuing-residency-permit-e8786d4eaa",
-      "proposedSlug": "legacy-issuing-residency-permit-e8786d4eaa",
+      "candidateId": "legacy-issuing-residency-permit-e8786d4eaa",
+      "candidateSlug": "legacy-issuing-residency-permit-e8786d4eaa",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -8263,7 +8265,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -8427,8 +8429,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "amendment-of-residency-permit-data",
-      "proposedSlug": "amendment-of-residency-permit-data",
+      "candidateId": "amendment-of-residency-permit-data",
+      "candidateSlug": "amendment-of-residency-permit-data",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -8630,8 +8632,8 @@
         "categoryLabel": "التأشيرات وأذونات الدخول",
         "categoryGroup": "غير محسوم — التأشيرات وأذونات الدخول"
       },
-      "proposedId": "legacy-issuance-of-a-visa-166d38e822",
-      "proposedSlug": "legacy-issuance-of-a-visa-166d38e822",
+      "candidateId": "legacy-issuance-of-a-visa-166d38e822",
+      "candidateSlug": "legacy-issuance-of-a-visa-166d38e822",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -8672,7 +8674,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -8836,8 +8838,8 @@
         "categoryLabel": "التأشيرات وأذونات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "amendment-of-visa-data",
-      "proposedSlug": "amendment-of-visa-data",
+      "candidateId": "amendment-of-visa-data",
+      "candidateSlug": "amendment-of-visa-data",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -9039,8 +9041,8 @@
         "categoryLabel": "التأشيرات وأذونات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تمديد-التأشيرة-أو-إذن-الدخول",
-      "proposedSlug": "تمديد-التأشيرة-أو-إذن-الدخول",
+      "candidateId": "تمديد-التأشيرة-أو-إذن-الدخول",
+      "candidateSlug": "تمديد-التأشيرة-أو-إذن-الدخول",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -9242,8 +9244,8 @@
         "categoryLabel": "تصديق المستندات",
         "categoryGroup": "غير معتمد — contracts-notarization"
       },
-      "proposedId": "تصديق-مستند-شخصي-داخل-الإمارات",
-      "proposedSlug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "candidateId": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "candidateSlug": "تصديق-مستند-شخصي-داخل-الإمارات",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -9445,8 +9447,8 @@
         "categoryLabel": "تصديق المستندات",
         "categoryGroup": "غير معتمد — contracts-notarization"
       },
-      "proposedId": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
-      "proposedSlug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "candidateId": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "candidateSlug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -9648,8 +9650,8 @@
         "categoryLabel": "تصديق المستندات التجارية",
         "categoryGroup": "غير معتمد — contracts-notarization"
       },
-      "proposedId": "attestation-of-commercial-invoices-via-edas-2-0",
-      "proposedSlug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "candidateId": "attestation-of-commercial-invoices-via-edas-2-0",
+      "candidateSlug": "attestation-of-commercial-invoices-via-edas-2-0",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -9851,8 +9853,8 @@
         "categoryLabel": "معادلة شهادات التعليم العام",
         "categoryGroup": "غير معتمد — education-certificates"
       },
-      "proposedId": "equivalency-of-general-education-certificate-from-abroad-grade-12",
-      "proposedSlug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "candidateId": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "candidateSlug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -10054,8 +10056,8 @@
         "categoryLabel": "معادلة شهادات التعليم العام",
         "categoryGroup": "غير معتمد — education-certificates"
       },
-      "proposedId": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
-      "proposedSlug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "candidateId": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "candidateSlug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -10257,8 +10259,8 @@
         "categoryLabel": "الاعتراف بالمؤهلات الجامعية",
         "categoryGroup": "غير محسوم — الاعتراف بالمؤهلات الجامعية"
       },
-      "proposedId": "legacy-recognition-of-university-certificates-issued-from-outside-the-uae-7286aeae76",
-      "proposedSlug": "legacy-recognition-of-university-certificates-issued-from-outside-the-uae-7286aeae76",
+      "candidateId": "legacy-recognition-of-university-certificates-issued-from-outside-the-uae-7286aeae76",
+      "candidateSlug": "legacy-recognition-of-university-certificates-issued-from-outside-the-uae-7286aeae76",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -10299,7 +10301,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -10463,8 +10465,8 @@
         "categoryLabel": "التحقق من وثائق المعادلة",
         "categoryGroup": "غير معتمد — education-certificates"
       },
-      "proposedId": "confirming-the-authenticity-of-equivalency",
-      "proposedSlug": "confirming-the-authenticity-of-equivalency",
+      "candidateId": "confirming-the-authenticity-of-equivalency",
+      "candidateSlug": "confirming-the-authenticity-of-equivalency",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -10666,8 +10668,8 @@
         "categoryLabel": "ملفات المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
-      "proposedSlug": "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
+      "candidateId": "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
+      "candidateSlug": "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -10869,8 +10871,8 @@
         "categoryLabel": "ملفات المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني",
-      "proposedSlug": "التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني",
+      "candidateId": "التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني",
+      "candidateSlug": "التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -11072,8 +11074,8 @@
         "categoryLabel": "ملفات المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "حصة-تصاريح-العمل-للمنشأة",
-      "proposedSlug": "حصة-تصاريح-العمل-للمنشأة",
+      "candidateId": "حصة-تصاريح-العمل-للمنشأة",
+      "candidateSlug": "حصة-تصاريح-العمل-للمنشأة",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -11275,8 +11277,8 @@
         "categoryLabel": "ملفات المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "تقرير-تقييم-المنشأة",
-      "proposedSlug": "تقرير-تقييم-المنشأة",
+      "candidateId": "تقرير-تقييم-المنشأة",
+      "candidateSlug": "تقرير-تقييم-المنشأة",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -11478,8 +11480,8 @@
         "categoryLabel": "ملفات المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "تصنيف-المنشأة",
-      "proposedSlug": "تصنيف-المنشأة",
+      "candidateId": "تصنيف-المنشأة",
+      "candidateSlug": "تصنيف-المنشأة",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -11681,8 +11683,8 @@
         "categoryLabel": "ملفات المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "إلغاء-ملف-أو-بطاقة-المنشأة",
-      "proposedSlug": "إلغاء-ملف-أو-بطاقة-المنشأة",
+      "candidateId": "إلغاء-ملف-أو-بطاقة-المنشأة",
+      "candidateSlug": "إلغاء-ملف-أو-بطاقة-المنشأة",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -11884,8 +11886,8 @@
         "categoryLabel": "تصاريح العمل",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "تصريح-عمل-جزئي",
-      "proposedSlug": "تصريح-عمل-جزئي",
+      "candidateId": "تصريح-عمل-جزئي",
+      "candidateSlug": "تصريح-عمل-جزئي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -12087,8 +12089,8 @@
         "categoryLabel": "تصاريح العمل",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "تصريح-عمل-حدث",
-      "proposedSlug": "تصريح-عمل-حدث",
+      "candidateId": "تصريح-عمل-حدث",
+      "candidateSlug": "تصريح-عمل-حدث",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -12290,8 +12292,8 @@
         "categoryLabel": "تصاريح العمل",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "تصريح-تدريب-وعمل-طالب",
-      "proposedSlug": "تصريح-تدريب-وعمل-طالب",
+      "candidateId": "تصريح-تدريب-وعمل-طالب",
+      "candidateSlug": "تصريح-تدريب-وعمل-طالب",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -12493,8 +12495,8 @@
         "categoryLabel": "تصاريح العمل",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "تجديد-تصريح-العمل",
-      "proposedSlug": "تجديد-تصريح-العمل",
+      "candidateId": "تجديد-تصريح-العمل",
+      "candidateSlug": "تجديد-تصريح-العمل",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -12696,8 +12698,8 @@
         "categoryLabel": "تصاريح العمل",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "تعديل-تصاريح-وعقود-العمل",
-      "proposedSlug": "تعديل-تصاريح-وعقود-العمل",
+      "candidateId": "تعديل-تصاريح-وعقود-العمل",
+      "candidateSlug": "تعديل-تصاريح-وعقود-العمل",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -12899,8 +12901,8 @@
         "categoryLabel": "العقود",
         "categoryGroup": "غير معتمد — contracts-notarization"
       },
-      "proposedId": "إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل",
-      "proposedSlug": "إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل",
+      "candidateId": "إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل",
+      "candidateSlug": "إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -13102,8 +13104,8 @@
         "categoryLabel": "الأجور والتوطين",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "التسجيل-والمتابعة-في-wps",
-      "proposedSlug": "التسجيل-والمتابعة-في-wps",
+      "candidateId": "التسجيل-والمتابعة-في-wps",
+      "candidateSlug": "التسجيل-والمتابعة-في-wps",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -13305,8 +13307,8 @@
         "categoryLabel": "الأجور والتوطين",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "خدمات-نافس-للمنشآت",
-      "proposedSlug": "خدمات-نافس-للمنشآت",
+      "candidateId": "خدمات-نافس-للمنشآت",
+      "candidateSlug": "خدمات-نافس-للمنشآت",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -13508,8 +13510,8 @@
         "categoryLabel": "الأجور والتوطين",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "ضمان-أو-تأمين-العامل",
-      "proposedSlug": "ضمان-أو-تأمين-العامل",
+      "candidateId": "ضمان-أو-تأمين-العامل",
+      "candidateSlug": "ضمان-أو-تأمين-العامل",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -13711,8 +13713,8 @@
         "categoryLabel": "الشكاوى والتسويات",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "بلاغ-انقطاع-عن-العمل",
-      "proposedSlug": "بلاغ-انقطاع-عن-العمل",
+      "candidateId": "بلاغ-انقطاع-عن-العمل",
+      "candidateSlug": "بلاغ-انقطاع-عن-العمل",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -13914,8 +13916,8 @@
         "categoryLabel": "الشكاوى والتسويات",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "إلغاء-بلاغ-انقطاع-عن-العمل",
-      "proposedSlug": "إلغاء-بلاغ-انقطاع-عن-العمل",
+      "candidateId": "إلغاء-بلاغ-انقطاع-عن-العمل",
+      "candidateSlug": "إلغاء-بلاغ-انقطاع-عن-العمل",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -14117,8 +14119,8 @@
         "categoryLabel": "الشكاوى والتسويات",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "إلغاء-تصريح-لعامل-لديه-قضية-عمالية",
-      "proposedSlug": "إلغاء-تصريح-لعامل-لديه-قضية-عمالية",
+      "candidateId": "إلغاء-تصريح-لعامل-لديه-قضية-عمالية",
+      "candidateSlug": "إلغاء-تصريح-لعامل-لديه-قضية-عمالية",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -14320,8 +14322,8 @@
         "categoryLabel": "العمالة المساعدة",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "إصدار-تصريح-عمل-جديد-لعامل-مساعد",
-      "proposedSlug": "إصدار-تصريح-عمل-جديد-لعامل-مساعد",
+      "candidateId": "إصدار-تصريح-عمل-جديد-لعامل-مساعد",
+      "candidateSlug": "إصدار-تصريح-عمل-جديد-لعامل-مساعد",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -14523,8 +14525,8 @@
         "categoryLabel": "العمالة المساعدة",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "إصدار-عقد-عمل-جديد-لعامل-مساعد",
-      "proposedSlug": "إصدار-عقد-عمل-جديد-لعامل-مساعد",
+      "candidateId": "إصدار-عقد-عمل-جديد-لعامل-مساعد",
+      "candidateSlug": "إصدار-عقد-عمل-جديد-لعامل-مساعد",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -14726,8 +14728,8 @@
         "categoryLabel": "العمالة المساعدة",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "تجديد-عقد-عمل-عامل-مساعد",
-      "proposedSlug": "تجديد-عقد-عمل-عامل-مساعد",
+      "candidateId": "تجديد-عقد-عمل-عامل-مساعد",
+      "candidateSlug": "تجديد-عقد-عمل-عامل-مساعد",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -14929,8 +14931,8 @@
         "categoryLabel": "العمالة المساعدة",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "تعديل-عقد-وتصريح-عمل-عامل-مساعد",
-      "proposedSlug": "تعديل-عقد-وتصريح-عمل-عامل-مساعد",
+      "candidateId": "تعديل-عقد-وتصريح-عمل-عامل-مساعد",
+      "candidateSlug": "تعديل-عقد-وتصريح-عمل-عامل-مساعد",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -15132,8 +15134,8 @@
         "categoryLabel": "العمالة المساعدة",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "إلغاء-عقد-عمل-عامل-مساعد",
-      "proposedSlug": "إلغاء-عقد-عمل-عامل-مساعد",
+      "candidateId": "إلغاء-عقد-عمل-عامل-مساعد",
+      "candidateSlug": "إلغاء-عقد-عمل-عامل-مساعد",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -15335,8 +15337,8 @@
         "categoryLabel": "العمالة المساعدة",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "إلغاء-تصريح-عمل-عامل-مساعد",
-      "proposedSlug": "إلغاء-تصريح-عمل-عامل-مساعد",
+      "candidateId": "إلغاء-تصريح-عمل-عامل-مساعد",
+      "candidateSlug": "إلغاء-تصريح-عمل-عامل-مساعد",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -15538,8 +15540,8 @@
         "categoryLabel": "العمالة المساعدة",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "بلاغ-انقطاع-عامل-مساعد",
-      "proposedSlug": "بلاغ-انقطاع-عامل-مساعد",
+      "candidateId": "بلاغ-انقطاع-عامل-مساعد",
+      "candidateSlug": "بلاغ-انقطاع-عامل-مساعد",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -15741,8 +15743,8 @@
         "categoryLabel": "العمالة المساعدة",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل",
-      "proposedSlug": "سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل",
+      "candidateId": "سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل",
+      "candidateSlug": "سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -15944,8 +15946,8 @@
         "categoryLabel": "العمالة المساعدة",
         "categoryGroup": "غير معتمد — work-employees"
       },
-      "proposedId": "سحب-بلاغ-انقطاع-بطلب-العامل-المساعد",
-      "proposedSlug": "سحب-بلاغ-انقطاع-بطلب-العامل-المساعد",
+      "candidateId": "سحب-بلاغ-انقطاع-بطلب-العامل-المساعد",
+      "candidateSlug": "سحب-بلاغ-انقطاع-بطلب-العامل-المساعد",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -16147,8 +16149,8 @@
         "categoryLabel": "هوية إماراتية",
         "categoryGroup": "غير معتمد — identity-citizenship"
       },
-      "proposedId": "بدل-فاقد-أو-تالف-للهوية",
-      "proposedSlug": "بدل-فاقد-أو-تالف-للهوية",
+      "candidateId": "بدل-فاقد-أو-تالف-للهوية",
+      "candidateSlug": "بدل-فاقد-أو-تالف-للهوية",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -16350,8 +16352,8 @@
         "categoryLabel": "هوية إماراتية",
         "categoryGroup": "غير معتمد — identity-citizenship"
       },
-      "proposedId": "تحديث-بيانات-الهوية",
-      "proposedSlug": "تحديث-بيانات-الهوية",
+      "candidateId": "تحديث-بيانات-الهوية",
+      "candidateSlug": "تحديث-بيانات-الهوية",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -16553,8 +16555,8 @@
         "categoryLabel": "هوية إماراتية",
         "categoryGroup": "غير معتمد — identity-citizenship"
       },
-      "proposedId": "الإعفاء-من-غرامة-تأخير-الهوية",
-      "proposedSlug": "الإعفاء-من-غرامة-تأخير-الهوية",
+      "candidateId": "الإعفاء-من-غرامة-تأخير-الهوية",
+      "candidateSlug": "الإعفاء-من-غرامة-تأخير-الهوية",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -16756,8 +16758,8 @@
         "categoryLabel": "هوية إماراتية",
         "categoryGroup": "غير معتمد — identity-citizenship"
       },
-      "proposedId": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
-      "proposedSlug": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+      "candidateId": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+      "candidateSlug": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -16959,8 +16961,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "إصدار-تصريح-إقامة-عبر-icp-خارج-دبي",
-      "proposedSlug": "إصدار-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "candidateId": "إصدار-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "candidateSlug": "إصدار-تصريح-إقامة-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -17162,8 +17164,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
-      "proposedSlug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "candidateId": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "candidateSlug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -17365,8 +17367,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
-      "proposedSlug": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "candidateId": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "candidateSlug": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -17568,8 +17570,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
-      "proposedSlug": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+      "candidateId": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+      "candidateSlug": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -17771,8 +17773,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تعديل-الوضع-داخل-الدولة-في-دبي",
-      "proposedSlug": "تعديل-الوضع-داخل-الدولة-في-دبي",
+      "candidateId": "تعديل-الوضع-داخل-الدولة-في-دبي",
+      "candidateSlug": "تعديل-الوضع-داخل-الدولة-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -17974,8 +17976,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي",
-      "proposedSlug": "تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي",
+      "candidateId": "تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي",
+      "candidateSlug": "تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -18177,8 +18179,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp",
-      "proposedSlug": "تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp",
+      "candidateId": "تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp",
+      "candidateSlug": "تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -18380,8 +18382,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — justice-police"
       },
-      "proposedId": "تقرير-تفاصيل-الإقامة-عبر-icp",
-      "proposedSlug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "candidateId": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "candidateSlug": "تقرير-تفاصيل-الإقامة-عبر-icp",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -18583,8 +18585,8 @@
         "categoryLabel": "إقامة الأسرة",
         "categoryGroup": "غير معتمد — family-sponsorship"
       },
-      "proposedId": "تجديد-إقامة-أفراد-الأسرة-في-دبي",
-      "proposedSlug": "تجديد-إقامة-أفراد-الأسرة-في-دبي",
+      "candidateId": "تجديد-إقامة-أفراد-الأسرة-في-دبي",
+      "candidateSlug": "تجديد-إقامة-أفراد-الأسرة-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -18786,8 +18788,8 @@
         "categoryLabel": "إقامة الأسرة",
         "categoryGroup": "غير معتمد — family-sponsorship"
       },
-      "proposedId": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
-      "proposedSlug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+      "candidateId": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+      "candidateSlug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -18989,8 +18991,8 @@
         "categoryLabel": "إقامة الأسرة",
         "categoryGroup": "غير معتمد — family-sponsorship"
       },
-      "proposedId": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
-      "proposedSlug": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+      "candidateId": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+      "candidateSlug": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -19192,8 +19194,8 @@
         "categoryLabel": "إقامة الأسرة",
         "categoryGroup": "غير معتمد — family-sponsorship"
       },
-      "proposedId": "إصدار-إقامة-لمولود-جديد-في-دبي",
-      "proposedSlug": "إصدار-إقامة-لمولود-جديد-في-دبي",
+      "candidateId": "إصدار-إقامة-لمولود-جديد-في-دبي",
+      "candidateSlug": "إصدار-إقامة-لمولود-جديد-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -19395,8 +19397,8 @@
         "categoryLabel": "إقامة الأسرة",
         "categoryGroup": "غير معتمد — family-sponsorship"
       },
-      "proposedId": "إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي",
-      "proposedSlug": "إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي",
+      "candidateId": "إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي",
+      "candidateSlug": "إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -19598,8 +19600,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "إصدار-تأشيرة-عبر-icp-خارج-دبي",
-      "proposedSlug": "إصدار-تأشيرة-عبر-icp-خارج-دبي",
+      "candidateId": "إصدار-تأشيرة-عبر-icp-خارج-دبي",
+      "candidateSlug": "إصدار-تأشيرة-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -19801,8 +19803,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "إلغاء-تأشيرة-عبر-icp-خارج-دبي",
-      "proposedSlug": "إلغاء-تأشيرة-عبر-icp-خارج-دبي",
+      "candidateId": "إلغاء-تأشيرة-عبر-icp-خارج-دبي",
+      "candidateSlug": "إلغاء-تأشيرة-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -20004,8 +20006,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
-      "proposedSlug": "إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+      "candidateId": "إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+      "candidateSlug": "إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -20207,8 +20209,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
-      "proposedSlug": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+      "candidateId": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+      "candidateSlug": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -20410,8 +20412,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي",
-      "proposedSlug": "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي",
+      "candidateId": "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي",
+      "candidateSlug": "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -20613,8 +20615,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تأشيرة-سياحية-لدخول-واحد-في-دبي",
-      "proposedSlug": "تأشيرة-سياحية-لدخول-واحد-في-دبي",
+      "candidateId": "تأشيرة-سياحية-لدخول-واحد-في-دبي",
+      "candidateSlug": "تأشيرة-سياحية-لدخول-واحد-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -20816,8 +20818,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تأشيرة-سياحية-عبر-icp-خارج-دبي",
-      "proposedSlug": "تأشيرة-سياحية-عبر-icp-خارج-دبي",
+      "candidateId": "تأشيرة-سياحية-عبر-icp-خارج-دبي",
+      "candidateSlug": "تأشيرة-سياحية-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -21019,8 +21021,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
-      "proposedSlug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+      "candidateId": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+      "candidateSlug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -21222,8 +21224,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
-      "proposedSlug": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "candidateId": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "candidateSlug": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -21425,8 +21427,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
-      "proposedSlug": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "candidateId": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "candidateSlug": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -21628,8 +21630,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
-      "proposedSlug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "candidateId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "candidateSlug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -21831,8 +21833,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
-      "proposedSlug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "candidateId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "candidateSlug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -22034,8 +22036,8 @@
         "categoryLabel": "تأشيرات الدخول",
         "categoryGroup": "غير محسوم — تأشيرات الدخول"
       },
-      "proposedId": "legacy-service-b8d1020699",
-      "proposedSlug": "legacy-service-b8d1020699",
+      "candidateId": "legacy-service-b8d1020699",
+      "candidateSlug": "legacy-service-b8d1020699",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -22076,7 +22078,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -22240,8 +22242,8 @@
         "categoryLabel": "الإقامة الذهبية",
         "categoryGroup": "غير محسوم — الإقامة الذهبية"
       },
-      "proposedId": "legacy-service-bd44139900",
-      "proposedSlug": "legacy-service-bd44139900",
+      "candidateId": "legacy-service-bd44139900",
+      "candidateSlug": "legacy-service-bd44139900",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -22282,7 +22284,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -22446,8 +22448,8 @@
         "categoryLabel": "الإقامة الذهبية",
         "categoryGroup": "غير محسوم — الإقامة الذهبية"
       },
-      "proposedId": "legacy-service-3303c4d68c",
-      "proposedSlug": "legacy-service-3303c4d68c",
+      "candidateId": "legacy-service-3303c4d68c",
+      "candidateSlug": "legacy-service-3303c4d68c",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -22488,7 +22490,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -22652,8 +22654,8 @@
         "categoryLabel": "الإقامة الذهبية",
         "categoryGroup": "غير محسوم — الإقامة الذهبية"
       },
-      "proposedId": "legacy-service-f2499c9dde",
-      "proposedSlug": "legacy-service-f2499c9dde",
+      "candidateId": "legacy-service-f2499c9dde",
+      "candidateSlug": "legacy-service-f2499c9dde",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -22694,7 +22696,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -22858,8 +22860,8 @@
         "categoryLabel": "الإقامة الخضراء",
         "categoryGroup": "غير محسوم — الإقامة الخضراء"
       },
-      "proposedId": "legacy-service-b50e30cabc",
-      "proposedSlug": "legacy-service-b50e30cabc",
+      "candidateId": "legacy-service-b50e30cabc",
+      "candidateSlug": "legacy-service-b50e30cabc",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -22900,7 +22902,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -23064,8 +23066,8 @@
         "categoryLabel": "الإقامة",
         "categoryGroup": "غير معتمد — residency-visas"
       },
-      "proposedId": "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
-      "proposedSlug": "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "candidateId": "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "candidateSlug": "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -23267,8 +23269,8 @@
         "categoryLabel": "المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
-      "proposedSlug": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+      "candidateId": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+      "candidateSlug": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -23470,8 +23472,8 @@
         "categoryLabel": "المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي",
-      "proposedSlug": "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي",
+      "candidateId": "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي",
+      "candidateSlug": "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -23673,8 +23675,8 @@
         "categoryLabel": "المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
-      "proposedSlug": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "candidateId": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "candidateSlug": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -23876,8 +23878,8 @@
         "categoryLabel": "المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
-      "proposedSlug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "candidateId": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "candidateSlug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -24079,8 +24081,8 @@
         "categoryLabel": "المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
-      "proposedSlug": "تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "candidateId": "تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "candidateSlug": "تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -24282,8 +24284,8 @@
         "categoryLabel": "المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي",
-      "proposedSlug": "تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "candidateId": "تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "candidateSlug": "تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -24485,8 +24487,8 @@
         "categoryLabel": "المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
-      "proposedSlug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "candidateId": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "candidateSlug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -24688,8 +24690,8 @@
         "categoryLabel": "المنشآت",
         "categoryGroup": "غير معتمد — companies-establishments"
       },
-      "proposedId": "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
-      "proposedSlug": "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "candidateId": "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "candidateSlug": "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -24891,8 +24893,8 @@
         "categoryLabel": "الغرامات والتقارير",
         "categoryGroup": "غير معتمد — justice-police"
       },
-      "proposedId": "الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي",
-      "proposedSlug": "الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي",
+      "candidateId": "الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي",
+      "candidateSlug": "الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -25094,8 +25096,8 @@
         "categoryLabel": "الغرامات والتقارير",
         "categoryGroup": "غير معتمد — justice-police"
       },
-      "proposedId": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
-      "proposedSlug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+      "candidateId": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+      "candidateSlug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -25297,8 +25299,8 @@
         "categoryLabel": "الغرامات والتقارير",
         "categoryGroup": "غير معتمد — justice-police"
       },
-      "proposedId": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
-      "proposedSlug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "candidateId": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "candidateSlug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -25500,8 +25502,8 @@
         "categoryLabel": "الغرامات والتقارير",
         "categoryGroup": "غير معتمد — justice-police"
       },
-      "proposedId": "متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي",
-      "proposedSlug": "متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي",
+      "candidateId": "متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي",
+      "candidateSlug": "متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -25703,8 +25705,8 @@
         "categoryLabel": "الغرامات والتقارير",
         "categoryGroup": "غير معتمد — justice-police"
       },
-      "proposedId": "متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي",
-      "proposedSlug": "متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي",
+      "candidateId": "متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي",
+      "candidateSlug": "متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي",
       "legacyStatus": "approved",
       "presentInServiceMatrix": true,
       "publishable": false,
@@ -25906,8 +25908,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "legacy-service-e619a9e547",
-      "proposedSlug": "legacy-service-e619a9e547",
+      "candidateId": "legacy-service-e619a9e547",
+      "candidateSlug": "legacy-service-e619a9e547",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -25948,7 +25950,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -26112,8 +26114,8 @@
         "categoryLabel": "التراخيص الاقتصادية",
         "categoryGroup": "غير محسوم — التراخيص الاقتصادية"
       },
-      "proposedId": "legacy-service-85a10469d8",
-      "proposedSlug": "legacy-service-85a10469d8",
+      "candidateId": "legacy-service-85a10469d8",
+      "candidateSlug": "legacy-service-85a10469d8",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -26154,7 +26156,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -26318,8 +26320,8 @@
         "categoryLabel": "النقل والمركبات",
         "categoryGroup": "غير محسوم — النقل والمركبات"
       },
-      "proposedId": "legacy-service-98ad714012",
-      "proposedSlug": "legacy-service-98ad714012",
+      "candidateId": "legacy-service-98ad714012",
+      "candidateSlug": "legacy-service-98ad714012",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -26360,7 +26362,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -26524,8 +26526,8 @@
         "categoryLabel": "النقل والمركبات",
         "categoryGroup": "غير محسوم — النقل والمركبات"
       },
-      "proposedId": "legacy-service-a4a58055b1",
-      "proposedSlug": "legacy-service-a4a58055b1",
+      "candidateId": "legacy-service-a4a58055b1",
+      "candidateSlug": "legacy-service-a4a58055b1",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -26566,7 +26568,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -26730,8 +26732,8 @@
         "categoryLabel": "النقل والمركبات",
         "categoryGroup": "غير محسوم — النقل والمركبات"
       },
-      "proposedId": "legacy-service-6a2a806ca0",
-      "proposedSlug": "legacy-service-6a2a806ca0",
+      "candidateId": "legacy-service-6a2a806ca0",
+      "candidateSlug": "legacy-service-6a2a806ca0",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -26772,7 +26774,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -26936,8 +26938,8 @@
         "categoryLabel": "الأمن والسلامة",
         "categoryGroup": "غير محسوم — الأمن والسلامة"
       },
-      "proposedId": "legacy-service-4a2d66fdd9",
-      "proposedSlug": "legacy-service-4a2d66fdd9",
+      "candidateId": "legacy-service-4a2d66fdd9",
+      "candidateSlug": "legacy-service-4a2d66fdd9",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -26978,7 +26980,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -27142,8 +27144,8 @@
         "categoryLabel": "الأمن والسلامة",
         "categoryGroup": "غير محسوم — الأمن والسلامة"
       },
-      "proposedId": "legacy-service-a336fc8c43",
-      "proposedSlug": "legacy-service-a336fc8c43",
+      "candidateId": "legacy-service-a336fc8c43",
+      "candidateSlug": "legacy-service-a336fc8c43",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -27184,7 +27186,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -27348,8 +27350,8 @@
         "categoryLabel": "الأمن والسلامة",
         "categoryGroup": "غير محسوم — الأمن والسلامة"
       },
-      "proposedId": "legacy-service-fb2d3e890d",
-      "proposedSlug": "legacy-service-fb2d3e890d",
+      "candidateId": "legacy-service-fb2d3e890d",
+      "candidateSlug": "legacy-service-fb2d3e890d",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -27390,7 +27392,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -27554,8 +27556,8 @@
         "categoryLabel": "الدفاع المدني",
         "categoryGroup": "غير محسوم — الدفاع المدني"
       },
-      "proposedId": "legacy-service-103cb9c161",
-      "proposedSlug": "legacy-service-103cb9c161",
+      "candidateId": "legacy-service-103cb9c161",
+      "candidateSlug": "legacy-service-103cb9c161",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -27596,7 +27598,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -27760,8 +27762,8 @@
         "categoryLabel": "الدفاع المدني",
         "categoryGroup": "غير محسوم — الدفاع المدني"
       },
-      "proposedId": "legacy-service-d43eb2fe41",
-      "proposedSlug": "legacy-service-d43eb2fe41",
+      "candidateId": "legacy-service-d43eb2fe41",
+      "candidateSlug": "legacy-service-d43eb2fe41",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -27802,7 +27804,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -27966,8 +27968,8 @@
         "categoryLabel": "الدفاع المدني",
         "categoryGroup": "غير محسوم — الدفاع المدني"
       },
-      "proposedId": "legacy-service-fdfe503938",
-      "proposedSlug": "legacy-service-fdfe503938",
+      "candidateId": "legacy-service-fdfe503938",
+      "candidateSlug": "legacy-service-fdfe503938",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -28008,7 +28010,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -28172,8 +28174,8 @@
         "categoryLabel": "البلدية والغذاء",
         "categoryGroup": "غير محسوم — البلدية والغذاء"
       },
-      "proposedId": "legacy-service-47337e973c",
-      "proposedSlug": "legacy-service-47337e973c",
+      "candidateId": "legacy-service-47337e973c",
+      "candidateSlug": "legacy-service-47337e973c",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -28214,7 +28216,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -28378,8 +28380,8 @@
         "categoryLabel": "البلدية والغذاء",
         "categoryGroup": "غير محسوم — البلدية والغذاء"
       },
-      "proposedId": "legacy-service-88124bacf0",
-      "proposedSlug": "legacy-service-88124bacf0",
+      "candidateId": "legacy-service-88124bacf0",
+      "candidateSlug": "legacy-service-88124bacf0",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -28420,7 +28422,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -28584,8 +28586,8 @@
         "categoryLabel": "البلدية والغذاء",
         "categoryGroup": "غير محسوم — البلدية والغذاء"
       },
-      "proposedId": "legacy-service-9c96cb90e2",
-      "proposedSlug": "legacy-service-9c96cb90e2",
+      "candidateId": "legacy-service-9c96cb90e2",
+      "candidateSlug": "legacy-service-9c96cb90e2",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -28626,7 +28628,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -28790,8 +28792,8 @@
         "categoryLabel": "البلدية والغذاء",
         "categoryGroup": "غير محسوم — البلدية والغذاء"
       },
-      "proposedId": "legacy-service-d24ce91853",
-      "proposedSlug": "legacy-service-d24ce91853",
+      "candidateId": "legacy-service-d24ce91853",
+      "candidateSlug": "legacy-service-d24ce91853",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -28832,7 +28834,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -28996,8 +28998,8 @@
         "categoryLabel": "البلدية والغذاء",
         "categoryGroup": "غير محسوم — البلدية والغذاء"
       },
-      "proposedId": "legacy-service-e8dd466107",
-      "proposedSlug": "legacy-service-e8dd466107",
+      "candidateId": "legacy-service-e8dd466107",
+      "candidateSlug": "legacy-service-e8dd466107",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -29038,7 +29040,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -29202,8 +29204,8 @@
         "categoryLabel": "البناء والبيئة",
         "categoryGroup": "غير محسوم — البناء والبيئة"
       },
-      "proposedId": "legacy-service-a979ab8a48",
-      "proposedSlug": "legacy-service-a979ab8a48",
+      "candidateId": "legacy-service-a979ab8a48",
+      "candidateSlug": "legacy-service-a979ab8a48",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -29244,7 +29246,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -29408,8 +29410,8 @@
         "categoryLabel": "البناء والبيئة",
         "categoryGroup": "غير محسوم — البناء والبيئة"
       },
-      "proposedId": "legacy-service-5f670c79f9",
-      "proposedSlug": "legacy-service-5f670c79f9",
+      "candidateId": "legacy-service-5f670c79f9",
+      "candidateSlug": "legacy-service-5f670c79f9",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -29450,7 +29452,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -29614,8 +29616,8 @@
         "categoryLabel": "البناء والبيئة",
         "categoryGroup": "غير محسوم — البناء والبيئة"
       },
-      "proposedId": "legacy-service-7ba47a3099",
-      "proposedSlug": "legacy-service-7ba47a3099",
+      "candidateId": "legacy-service-7ba47a3099",
+      "candidateSlug": "legacy-service-7ba47a3099",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -29656,7 +29658,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -29820,8 +29822,8 @@
         "categoryLabel": "الصحة",
         "categoryGroup": "غير محسوم — الصحة"
       },
-      "proposedId": "legacy-service-2907c2d93e",
-      "proposedSlug": "legacy-service-2907c2d93e",
+      "candidateId": "legacy-service-2907c2d93e",
+      "candidateSlug": "legacy-service-2907c2d93e",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -29862,7 +29864,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -30026,8 +30028,8 @@
         "categoryLabel": "الصحة",
         "categoryGroup": "غير محسوم — الصحة"
       },
-      "proposedId": "legacy-service-f9cd59c164",
-      "proposedSlug": "legacy-service-f9cd59c164",
+      "candidateId": "legacy-service-f9cd59c164",
+      "candidateSlug": "legacy-service-f9cd59c164",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -30068,7 +30070,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -30232,8 +30234,8 @@
         "categoryLabel": "الصحة",
         "categoryGroup": "غير محسوم — الصحة"
       },
-      "proposedId": "legacy-service-0a3bc4aa58",
-      "proposedSlug": "legacy-service-0a3bc4aa58",
+      "candidateId": "legacy-service-0a3bc4aa58",
+      "candidateSlug": "legacy-service-0a3bc4aa58",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -30274,7 +30276,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -30438,8 +30440,8 @@
         "categoryLabel": "التعليم",
         "categoryGroup": "غير محسوم — التعليم"
       },
-      "proposedId": "legacy-service-93f18baf28",
-      "proposedSlug": "legacy-service-93f18baf28",
+      "candidateId": "legacy-service-93f18baf28",
+      "candidateSlug": "legacy-service-93f18baf28",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -30480,7 +30482,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -30644,8 +30646,8 @@
         "categoryLabel": "التعليم",
         "categoryGroup": "غير محسوم — التعليم"
       },
-      "proposedId": "legacy-service-b22482db2b",
-      "proposedSlug": "legacy-service-b22482db2b",
+      "candidateId": "legacy-service-b22482db2b",
+      "candidateSlug": "legacy-service-b22482db2b",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -30686,7 +30688,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -30850,8 +30852,8 @@
         "categoryLabel": "التعليم",
         "categoryGroup": "غير محسوم — التعليم"
       },
-      "proposedId": "legacy-service-9c34f1a21b",
-      "proposedSlug": "legacy-service-9c34f1a21b",
+      "candidateId": "legacy-service-9c34f1a21b",
+      "candidateSlug": "legacy-service-9c34f1a21b",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -30892,7 +30894,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -31056,8 +31058,8 @@
         "categoryLabel": "التعليم",
         "categoryGroup": "غير محسوم — التعليم"
       },
-      "proposedId": "legacy-service-235a2c628e",
-      "proposedSlug": "legacy-service-235a2c628e",
+      "candidateId": "legacy-service-235a2c628e",
+      "candidateSlug": "legacy-service-235a2c628e",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -31098,7 +31100,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -31262,8 +31264,8 @@
         "categoryLabel": "العقارات",
         "categoryGroup": "غير محسوم — العقارات"
       },
-      "proposedId": "legacy-service-874e54389e",
-      "proposedSlug": "legacy-service-874e54389e",
+      "candidateId": "legacy-service-874e54389e",
+      "candidateSlug": "legacy-service-874e54389e",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -31304,7 +31306,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -31468,8 +31470,8 @@
         "categoryLabel": "العقارات",
         "categoryGroup": "غير محسوم — العقارات"
       },
-      "proposedId": "legacy-service-b5fd38a89d",
-      "proposedSlug": "legacy-service-b5fd38a89d",
+      "candidateId": "legacy-service-b5fd38a89d",
+      "candidateSlug": "legacy-service-b5fd38a89d",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -31510,7 +31512,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -31674,8 +31676,8 @@
         "categoryLabel": "العقارات",
         "categoryGroup": "غير محسوم — العقارات"
       },
-      "proposedId": "legacy-service-b7d4e9bae1",
-      "proposedSlug": "legacy-service-b7d4e9bae1",
+      "candidateId": "legacy-service-b7d4e9bae1",
+      "candidateSlug": "legacy-service-b7d4e9bae1",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -31716,7 +31718,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -31880,8 +31882,8 @@
         "categoryLabel": "السياحة والفعاليات",
         "categoryGroup": "غير محسوم — السياحة والفعاليات"
       },
-      "proposedId": "legacy-service-e7f35a06d9",
-      "proposedSlug": "legacy-service-e7f35a06d9",
+      "candidateId": "legacy-service-e7f35a06d9",
+      "candidateSlug": "legacy-service-e7f35a06d9",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -31922,7 +31924,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -32086,8 +32088,8 @@
         "categoryLabel": "السياحة والفعاليات",
         "categoryGroup": "غير محسوم — السياحة والفعاليات"
       },
-      "proposedId": "legacy-service-f6481e594b",
-      "proposedSlug": "legacy-service-f6481e594b",
+      "candidateId": "legacy-service-f6481e594b",
+      "candidateSlug": "legacy-service-f6481e594b",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -32128,7 +32130,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -32292,8 +32294,8 @@
         "categoryLabel": "السياحة والفعاليات",
         "categoryGroup": "غير محسوم — السياحة والفعاليات"
       },
-      "proposedId": "legacy-service-6f3bee6661",
-      "proposedSlug": "legacy-service-6f3bee6661",
+      "candidateId": "legacy-service-6f3bee6661",
+      "candidateSlug": "legacy-service-6f3bee6661",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -32334,7 +32336,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -32498,8 +32500,8 @@
         "categoryLabel": "الطيران والدرون",
         "categoryGroup": "غير محسوم — الطيران والدرون"
       },
-      "proposedId": "legacy-service-d171fcd05a",
-      "proposedSlug": "legacy-service-d171fcd05a",
+      "candidateId": "legacy-service-d171fcd05a",
+      "candidateSlug": "legacy-service-d171fcd05a",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -32540,7 +32542,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -32704,8 +32706,8 @@
         "categoryLabel": "الطيران والدرون",
         "categoryGroup": "غير محسوم — الطيران والدرون"
       },
-      "proposedId": "legacy-service-b68296dc6b",
-      "proposedSlug": "legacy-service-b68296dc6b",
+      "candidateId": "legacy-service-b68296dc6b",
+      "candidateSlug": "legacy-service-b68296dc6b",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -32746,7 +32748,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -32910,8 +32912,8 @@
         "categoryLabel": "الاتصالات والتقنية",
         "categoryGroup": "غير محسوم — الاتصالات والتقنية"
       },
-      "proposedId": "legacy-service-4311529490",
-      "proposedSlug": "legacy-service-4311529490",
+      "candidateId": "legacy-service-4311529490",
+      "candidateSlug": "legacy-service-4311529490",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -32952,7 +32954,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -33116,8 +33118,8 @@
         "categoryLabel": "الاتصالات والتقنية",
         "categoryGroup": "غير محسوم — الاتصالات والتقنية"
       },
-      "proposedId": "legacy-service-cf075d24f2",
-      "proposedSlug": "legacy-service-cf075d24f2",
+      "candidateId": "legacy-service-cf075d24f2",
+      "candidateSlug": "legacy-service-cf075d24f2",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -33158,7 +33160,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -33322,8 +33324,8 @@
         "categoryLabel": "الجمارك والموانئ",
         "categoryGroup": "غير محسوم — الجمارك والموانئ"
       },
-      "proposedId": "legacy-service-7636ea276d",
-      "proposedSlug": "legacy-service-7636ea276d",
+      "candidateId": "legacy-service-7636ea276d",
+      "candidateSlug": "legacy-service-7636ea276d",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -33364,7 +33366,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -33528,8 +33530,8 @@
         "categoryLabel": "الجمارك والموانئ",
         "categoryGroup": "غير محسوم — الجمارك والموانئ"
       },
-      "proposedId": "legacy-service-32c20e419e",
-      "proposedSlug": "legacy-service-32c20e419e",
+      "candidateId": "legacy-service-32c20e419e",
+      "candidateSlug": "legacy-service-32c20e419e",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -33570,7 +33572,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -33734,8 +33736,8 @@
         "categoryLabel": "الصناعة والمنتجات",
         "categoryGroup": "غير محسوم — الصناعة والمنتجات"
       },
-      "proposedId": "legacy-service-8a342b8353",
-      "proposedSlug": "legacy-service-8a342b8353",
+      "candidateId": "legacy-service-8a342b8353",
+      "candidateSlug": "legacy-service-8a342b8353",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -33776,7 +33778,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -33940,8 +33942,8 @@
         "categoryLabel": "المجتمع والرياضة",
         "categoryGroup": "غير محسوم — المجتمع والرياضة"
       },
-      "proposedId": "legacy-service-12a14c930a",
-      "proposedSlug": "legacy-service-12a14c930a",
+      "candidateId": "legacy-service-12a14c930a",
+      "candidateSlug": "legacy-service-12a14c930a",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -33982,7 +33984,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -34146,8 +34148,8 @@
         "categoryLabel": "المجتمع والرياضة",
         "categoryGroup": "غير محسوم — المجتمع والرياضة"
       },
-      "proposedId": "legacy-service-134490983c",
-      "proposedSlug": "legacy-service-134490983c",
+      "candidateId": "legacy-service-134490983c",
+      "candidateSlug": "legacy-service-134490983c",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -34188,7 +34190,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -34352,8 +34354,8 @@
         "categoryLabel": "الثقافة والإعلام",
         "categoryGroup": "غير محسوم — الثقافة والإعلام"
       },
-      "proposedId": "legacy-service-c177b2a859",
-      "proposedSlug": "legacy-service-c177b2a859",
+      "candidateId": "legacy-service-c177b2a859",
+      "candidateSlug": "legacy-service-c177b2a859",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -34394,7 +34396,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -34558,8 +34560,8 @@
         "categoryLabel": "الثقافة والإعلام",
         "categoryGroup": "غير محسوم — الثقافة والإعلام"
       },
-      "proposedId": "legacy-service-1a41492d39",
-      "proposedSlug": "legacy-service-1a41492d39",
+      "candidateId": "legacy-service-1a41492d39",
+      "candidateSlug": "legacy-service-1a41492d39",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -34600,7 +34602,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -34764,8 +34766,8 @@
         "categoryLabel": "الدينية والخيرية",
         "categoryGroup": "غير محسوم — الدينية والخيرية"
       },
-      "proposedId": "legacy-service-8ebbde9646",
-      "proposedSlug": "legacy-service-8ebbde9646",
+      "candidateId": "legacy-service-8ebbde9646",
+      "candidateSlug": "legacy-service-8ebbde9646",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -34806,7 +34808,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",
@@ -34970,8 +34972,8 @@
         "categoryLabel": "المناطق الخاصة",
         "categoryGroup": "غير محسوم — المناطق الخاصة"
       },
-      "proposedId": "legacy-service-8fca952adb",
-      "proposedSlug": "legacy-service-8fca952adb",
+      "candidateId": "legacy-service-8fca952adb",
+      "candidateSlug": "legacy-service-8fca952adb",
       "legacyStatus": "unapproved",
       "presentInServiceMatrix": false,
       "publishable": false,
@@ -35012,7 +35014,7 @@
         "slug": {
           "state": "needs-information",
           "source": "government-service-tree.id",
-          "note": "Derived for migration tracking only; not publishable."
+          "note": "Derived for review tracking only; not publishable."
         },
         "nameAr": {
           "state": "candidate",

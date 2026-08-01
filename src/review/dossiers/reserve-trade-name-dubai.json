@@ -1,0 +1,59 @@
+{
+  "legacyId": "guide:reserve-trade-name-dubai",
+  "candidateId": "reserve-trade-name-dubai",
+  "targetServiceId": "reserve-trade-name-dubai",
+  "authorityId": "det",
+  "status": "in-review",
+  "checks": [
+    {
+      "order": 1,
+      "id": "service-data",
+      "status": "passed",
+      "reviewedAt": "2026-08-01T12:00:00+04:00",
+      "notes": "Official bilingual titles confirmed: طلب حجز الاسم التجاري / Request to book a trade name. The official description states that the service issues a government document confirming the project's trade name for use in contracts and official documents.",
+      "evidence": [
+        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:00:00+04:00" },
+        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:00:00+04:00" }
+      ]
+    },
+    {
+      "order": 2,
+      "id": "government-authority",
+      "status": "passed",
+      "reviewedAt": "2026-08-01T12:05:00+04:00",
+      "notes": "The service is provided through Invest in Dubai, maintained by Dubai Department of Economy and Tourism (DET). Authority ID confirmed as det and official domains are already controlled in the authority catalog.",
+      "evidence": [
+        { "type": "official-source", "value": "https://www.dubaidet.gov.ae/en/about-det", "capturedAt": "2026-08-01T12:05:00+04:00" },
+        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:05:00+04:00" }
+      ]
+    },
+    {
+      "order": 3,
+      "id": "emirate",
+      "status": "passed",
+      "reviewedAt": "2026-08-01T12:10:00+04:00",
+      "notes": "The transaction reserves a trade name for a project registered in Dubai. Controlled jurisdiction ID confirmed as dubai; this is not a federal or free-zone transaction.",
+      "evidence": [
+        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:10:00+04:00" }
+      ]
+    },
+    { "order": 4, "id": "main-subcategory", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 5, "id": "license-or-activity", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 6, "id": "keywords", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 7, "id": "content", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 8, "id": "faq", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 9, "id": "documents", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 10, "id": "fees", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 11, "id": "completion-time", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 12, "id": "related-services", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 13, "id": "government-link", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 14, "id": "government-link-live-test", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 15, "id": "search", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 16, "id": "all-category-access", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 17, "id": "homepage-access", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 18, "id": "related-service-access", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 19, "id": "user-experience", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 20, "id": "final-approval", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] }
+  ],
+  "finalDecision": { "approvedAt": null, "approvedBy": null, "notes": "", "evidence": [] }
+}

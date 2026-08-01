@@ -51,24 +51,26 @@ Its CSS and homepage blobs plus a rendered screenshot are the regression baselin
 The later `heritage-identity.css` overlay is documented as a divergence, not silently
 treated as the historical source.
 
-## Migration order
+## Progressive approval order
 
 1. Verify and freeze the historical identity reference.
 2. Normalize authority, emirate, and category catalogs.
-3. Convert each legacy record into the entity contract without publishing it.
-4. Review official sources and attach link/service evidence.
-5. Change the entity to `verified` only after manual journey verification.
-6. Generate pages, search, navigation, and audit artifacts solely from the registry.
+3. Select one authority as the only active review scope.
+4. Review one service through every business criterion and retain evidence.
+5. Approve the service dossier only after all checks pass.
+6. Create its Service Entity only after dossier approval.
+7. Finish every service for the active authority before unlocking the next authority.
+8. Generate pages, search, navigation, and audit artifacts solely from the registry.
 
-## Legacy staging
+## Review inventory
 
-`src/migration/legacy-candidates.json` is a quarantine manifest, not a second service
-registry. It preserves one pointer for every legacy record and states exactly which
-canonical fields are missing, unstructured, or untested. A candidate cannot be
-rendered or searched and cannot enter the canonical registry until its blockers are
-resolved.
+`src/review/service-review-inventory.json` is a read-only work inventory, not a
+migration staging area and not a second service registry. It preserves one pointer
+for every legacy record and states exactly which business criteria are missing,
+unstructured, or untested. Inventory records cannot be rendered, searched, approved
+in bulk, or converted into Service Entities before an individual dossier passes.
 
-`src/migration/legacy-reference-candidates.json` applies the same quarantine rule to
+`src/review/reference-review-inventory.json` applies the same quarantine rule to
 legacy authority, emirate, and sector labels. Composite values such as two authorities
 or two routing jurisdictions are decisions to split or model explicitly; they are not
 silently accepted as canonical catalog entries.

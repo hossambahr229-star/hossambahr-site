@@ -48,3 +48,11 @@ canonical Service Entity and every entity passes page, content, classification,
 discovery, official-link, manual-test, journey, and historical-identity regression
 criteria. Build, route, test, file, and commit counts are evidence only and never
 change the business decision by themselves.
+
+## Progressive review lock
+
+Only one authority and one service may be active. The service dossier must pass the
+20 business checks in their prescribed order. Later checks, later services, and later
+authorities remain locked. A full Service Entity may be added to the canonical
+registry only after the dossier is approved; advancing to the next service also
+requires the approved entity to be registered and business-accepted.

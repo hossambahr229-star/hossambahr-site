@@ -5,7 +5,8 @@
   "scripts": {
     "registry:validate": "node src/core/validate-registry.mjs",
     "registry:validate:publish": "node src/core/validate-registry.mjs --publish",
-    "migration:build-candidates": "node src/migration/build-legacy-candidates.mjs",
+    "review:build-inventory": "node src/review/build-service-review-inventory.mjs",
+    "review:validate-progress": "node src/review/validate-progressive-review.mjs",
     "business:report": "node src/business/generate-business-report.mjs",
     "test:architecture": "node --test test/architecture/*.test.mjs"
   },

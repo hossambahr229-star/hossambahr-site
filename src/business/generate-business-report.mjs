@@ -1,15 +1,24 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { loadRegistry } from '../core/service-registry.mjs';
 import { evaluateRegistryBusinessAcceptance } from './business-acceptance.mjs';
+import { validateProgressiveReview } from '../review/progressive-review-validator.mjs';
 
 const outputFlagIndex = process.argv.indexOf('--output-dir');
 const outputDirectory = resolve(outputFlagIndex >= 0 ? process.argv[outputFlagIndex + 1] : 'reports');
-const migrationRoot = new URL('../migration/', import.meta.url);
-const candidates = JSON.parse(await readFile(new URL('legacy-candidates.json', migrationRoot), 'utf8'));
-const referenceCandidates = JSON.parse(await readFile(new URL('legacy-reference-candidates.json', migrationRoot), 'utf8'));
+const reviewRoot = new URL('../review/', import.meta.url);
+const candidates = JSON.parse(await readFile(new URL('service-review-inventory.json', reviewRoot), 'utf8'));
+const referenceCandidates = JSON.parse(await readFile(new URL('reference-review-inventory.json', reviewRoot), 'utf8'));
 const data = await loadRegistry();
 const evaluation = evaluateRegistryBusinessAcceptance(data);
+const reviewState = JSON.parse(await readFile(new URL('progressive-review-state.json', reviewRoot), 'utf8'));
+const dossierRoot = new URL('dossiers/', reviewRoot);
+const dossierFiles = (await readdir(dossierRoot)).filter((name) => name.endsWith('.json')).sort();
+const dossiers = await Promise.all(dossierFiles.map(async (name) => JSON.parse(await readFile(new URL(name, dossierRoot), 'utf8'))));
+const progressiveReview = validateProgressiveReview({ state: reviewState, inventory: candidates, dossiers, registry: data.registry, businessEvaluation: evaluation });
+const activeDossier = dossiers.find((dossier) => dossier.legacyId === progressiveReview.activeServiceLegacyId) ?? null;
+const activePassedChecks = activeDossier?.checks.filter((check) => check.status === 'passed').length ?? 0;
+const activeNextCheck = activeDossier?.checks.find((check) => check.status !== 'passed')?.id ?? null;
 const resultById = new Map(evaluation.serviceResults.map((result) => [result.id, result]));
 const serviceByLegacyId = new Map();
 for (const service of data.registry.services) {
@@ -67,13 +76,19 @@ const problems = Object.entries(candidates.summary.blockingFieldCounts)
 problems.push(
   {
     priority: 'P0',
+    code: 'active-authority-incomplete',
+    affectedServices: progressiveReview.activeAuthorityExpectedServices - progressiveReview.activeAuthorityRegisteredServices,
+    message: `الجهة النشطة ${progressiveReview.activeAuthorityId} لم تكتمل: المعتمد ${progressiveReview.activeAuthorityApprovedServices} والمسجل ${progressiveReview.activeAuthorityRegisteredServices} من أصل ${progressiveReview.activeAuthorityExpectedServices}.`
+  },
+  {
+    priority: 'P0',
     code: 'taxonomy-not-approved',
     affectedServices: candidates.summary.sourceRecords,
     message: `لم يُعتمد Taxonomy نهائي؛ توجد ${referenceCandidates.summary.sectorsWithAmbiguousMainCategories} قطاعات متعارضة و${referenceCandidates.summary.sectorsWithoutObservedMainCategory} قطاعًا بلا تصنيف رئيسي.`
   },
   {
     priority: 'P0',
-    code: 'legacy-services-not-migrated',
+    code: 'services-not-approved-and-registered',
     affectedServices: candidates.candidates.filter((candidate) => !serviceByLegacyId.has(candidate.legacyId)).length,
     message: 'خدمات قديمة لم تُمثّل بعد داخل Service Entity مركزي.'
   },
@@ -98,6 +113,22 @@ const report = {
     manuallyTestedServices: evaluation.manuallyTestedServices,
     servicesNeedingReview: candidates.summary.sourceRecords - evaluation.acceptedServices,
     overallAcceptancePercent: Math.round((evaluation.acceptedServices / candidates.summary.sourceRecords) * 1000) / 10
+  },
+  progressiveReview: {
+    mode: progressiveReview.mode,
+    gateValid: progressiveReview.valid,
+    activeAuthorityId: progressiveReview.activeAuthorityId,
+    activeServiceLegacyId: progressiveReview.activeServiceLegacyId,
+    activeServiceReviewStatus: activeDossier?.status ?? 'not-started',
+    activeServicePassedChecks: activePassedChecks,
+    activeServiceTotalChecks: 20,
+    activeServiceNextCheck: activeNextCheck,
+    expectedServices: progressiveReview.activeAuthorityExpectedServices,
+    approvedServices: progressiveReview.activeAuthorityApprovedServices,
+    registeredServices: progressiveReview.activeAuthorityRegisteredServices,
+    lockedAuthorities: progressiveReview.lockedAuthorities,
+    bulkReviewAllowed: reviewState.bulkReviewAllowed,
+    bulkRegistryInsertionAllowed: reviewState.bulkRegistryInsertionAllowed
   },
   completionByAuthority: dimensions('authorityGroup'),
   completionByEmirate: dimensions('emirateGroup'),
@@ -126,6 +157,20 @@ const markdown = `# تقرير القبول التجاري لمنصة HossamBahr
 - الخدمات المختبرة يدويًا: ${report.summary.manuallyTestedServices}
 - الخدمات التي ما زالت تحتاج مراجعة: ${report.summary.servicesNeedingReview}
 - نسبة القبول التجاري الإجمالية: ${report.summary.overallAcceptancePercent}%
+
+## تقدم المراجعة التدريجية
+
+- الجهة النشطة الوحيدة: ${report.progressiveReview.activeAuthorityId}
+- الخدمة النشطة الوحيدة: ${report.progressiveReview.activeServiceLegacyId}
+- حالة مراجعة الخدمة النشطة: ${report.progressiveReview.activeServiceReviewStatus}
+- الخطوات المجتازة: ${report.progressiveReview.activeServicePassedChecks} من ${report.progressiveReview.activeServiceTotalChecks}
+- الخطوة التالية: ${report.progressiveReview.activeServiceNextCheck ?? 'لا توجد'}
+- خدمات الجهة المطلوب إنهاؤها: ${report.progressiveReview.expectedServices}
+- الخدمات المعتمدة: ${report.progressiveReview.approvedServices}
+- الخدمات المدخلة إلى Service Registry بعد الاعتماد: ${report.progressiveReview.registeredServices}
+- الجهات المقفلة: ${report.progressiveReview.lockedAuthorities}
+- Bulk Review: ${report.progressiveReview.bulkReviewAllowed ? 'مسموح' : 'ممنوع'}
+- Bulk Registry Insertion: ${report.progressiveReview.bulkRegistryInsertionAllowed ? 'مسموح' : 'ممنوع'}
 
 ## نسبة الاكتمال حسب الجهة الحكومية
 

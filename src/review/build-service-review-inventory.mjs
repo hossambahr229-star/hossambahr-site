@@ -2,8 +2,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 
 const ROOT = new URL('../../', import.meta.url);
-const OUTPUT = new URL('./legacy-candidates.json', import.meta.url);
-const REFERENCE_OUTPUT = new URL('./legacy-reference-candidates.json', import.meta.url);
+const OUTPUT = new URL('./service-review-inventory.json', import.meta.url);
+const REFERENCE_OUTPUT = new URL('./reference-review-inventory.json', import.meta.url);
 
 async function json(relativePath) {
   return JSON.parse(await readFile(new URL(relativePath, ROOT), 'utf8'));
@@ -75,10 +75,10 @@ function authorityGroup(legacy, current) {
 
 const candidates = tree.services.map((legacy, sourceIndex) => {
   const current = matrixById.get(legacy.id) ?? null;
-  const proposedSlug = proposedIdentifier(legacy, current);
+  const candidateSlug = proposedIdentifier(legacy, current);
   const mapping = {
     id: field('candidate', 'government-service-tree.id', 'Stable only after collision and meaning review.'),
-    slug: field(current ? 'candidate' : 'needs-information', current ? 'service-matrix.slug' : 'government-service-tree.id', current ? 'Existing generated slug; route semantics still require review.' : 'Derived for migration tracking only; not publishable.'),
+    slug: field(current ? 'candidate' : 'needs-information', current ? 'service-matrix.slug' : 'government-service-tree.id', current ? 'Existing generated slug; route semantics still require review.' : 'Derived for review tracking only; not publishable.'),
     nameAr: field(hasText(legacy.platformTitle) ? 'candidate' : 'missing', 'government-service-tree.platformTitle', 'Arabic title requires official-source comparison.'),
     nameEn: field(hasText(legacy.serviceName) ? 'candidate' : 'missing', 'government-service-tree.serviceName', 'English title requires official-source comparison.'),
     description: field(hasText(legacy.description) ? 'arabic-only-candidate' : 'missing', 'government-service-tree.description', 'Requires official comparison and an English value.'),
@@ -125,8 +125,8 @@ const candidates = tree.services.map((legacy, sourceIndex) => {
       categoryLabel: legacy.sector,
       categoryGroup: current?.category ? `غير معتمد — ${current.category}` : `غير محسوم — ${legacy.sector}`
     },
-    proposedId: proposedIdentifier(legacy, current),
-    proposedSlug,
+    candidateId: proposedIdentifier(legacy, current),
+    candidateSlug,
     legacyStatus: legacy.status,
     presentInServiceMatrix: Boolean(current),
     publishable: false,
@@ -181,8 +181,8 @@ function makeReferenceCandidates(field, extra = () => ({})) {
     .sort((left, right) => right.occurrences - left.occurrences || left.legacyLabel.localeCompare(right.legacyLabel, 'ar'));
 }
 
-const candidateIds = candidates.map((candidate) => candidate.proposedId);
-const candidateSlugs = candidates.map((candidate) => candidate.proposedSlug);
+const candidateIds = candidates.map((candidate) => candidate.candidateId);
+const candidateSlugs = candidates.map((candidate) => candidate.candidateSlug);
 const duplicateIds = [...new Set(candidateIds.filter((id, index) => candidateIds.indexOf(id) !== index))];
 const duplicateSlugs = [...new Set(candidateSlugs.filter((slug, index) => candidateSlugs.indexOf(slug) !== index))];
 const blockingFieldCounts = {};
@@ -197,8 +197,10 @@ const output = {
     serviceMatrix: 'service-matrix.json'
   },
   policy: {
-    purpose: 'migration-staging-only',
+    purpose: 'progressive-review-inventory-only',
     canonicalRegistryMutation: false,
+    bulkApprovalAllowed: false,
+    serviceEntityAllowedBeforeApproval: false,
     publishableByDefault: false,
     legacyApprovalImportedAsVerification: false
   },

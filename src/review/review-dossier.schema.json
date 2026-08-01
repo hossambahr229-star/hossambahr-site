@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hossambahr.com/schemas/service-review-dossier.schema.json",
+  "title": "Progressive Service Review Dossier",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["legacyId", "candidateId", "targetServiceId", "authorityId", "status", "checks", "finalDecision"],
+  "properties": {
+    "legacyId": { "type": "string", "minLength": 1 },
+    "candidateId": { "type": "string", "minLength": 1 },
+    "targetServiceId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "authorityId": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["pending", "in-review", "approved", "rejected"] },
+    "checks": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": { "$ref": "#/$defs/check" }
+    },
+    "finalDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approvedAt", "approvedBy", "notes", "evidence"],
+      "properties": {
+        "approvedAt": { "type": ["string", "null"], "format": "date-time" },
+        "approvedBy": { "type": ["string", "null"] },
+        "notes": { "type": "string" },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } }
+      }
+    }
+  },
+  "$defs": {
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order", "id", "status", "reviewedAt", "notes", "evidence"],
+      "properties": {
+        "order": { "type": "integer", "minimum": 1, "maximum": 20 },
+        "id": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["pending", "passed", "failed"] },
+        "reviewedAt": { "type": ["string", "null"], "format": "date-time" },
+        "notes": { "type": "string" },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "value", "capturedAt"],
+      "properties": {
+        "type": { "type": "string", "enum": ["official-source", "screenshot", "http-log", "manual-log", "search-log", "journey-log"] },
+        "value": { "type": "string", "minLength": 1 },
+        "capturedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

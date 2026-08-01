@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "mode": "progressive-authority-atomic",
+  "activeAuthorityId": "det",
+  "activeServiceLegacyId": "guide:reserve-trade-name-dubai",
+  "bulkReviewAllowed": false,
+  "bulkRegistryInsertionAllowed": false,
+  "authorityQueueComplete": false,
+  "authorityQueue": [
+    {
+      "order": 1,
+      "authorityId": "det",
+      "status": "in-review",
+      "startedAt": "2026-08-01T00:00:00+04:00",
+      "completedAt": null,
+      "serviceReviewOrder": [
+        "guide:reserve-trade-name-dubai",
+        "guide:initial-approval-dubai",
+        "guide:amend-business-license-dubai",
+        "guide:add-business-activity-dubai",
+        "guide:add-remove-partner-dubai",
+        "guide:transfer-company-ownership-dubai",
+        "guide:cancel-business-license-dubai",
+        "guide:renew-business-license-dubai",
+        "guide:change-company-manager-dubai",
+        "catalog:تغيير الشكل القانوني لشركة في دبي",
+        "directory:approvals:1",
+        "directory:approvals:2",
+        "directory:approvals:30",
+        "directory:approvals:31",
+        "directory:approvals:32"
+      ]
+    },
+    { "order": 2, "authorityId": "mohre", "status": "locked", "startedAt": null, "completedAt": null },
+    { "order": 3, "authorityId": "icp", "status": "locked", "startedAt": null, "completedAt": null },
+    { "order": 4, "authorityId": "gdrfa-dubai", "status": "locked", "startedAt": null, "completedAt": null },
+    { "order": 5, "authorityId": "fta", "status": "locked", "startedAt": null, "completedAt": null },
+    { "order": 6, "authorityId": "mofa", "status": "locked", "startedAt": null, "completedAt": null },
+    { "order": 7, "authorityId": "moe", "status": "locked", "startedAt": null, "completedAt": null },
+    { "order": 8, "authorityId": "ajman-ded", "status": "locked", "startedAt": null, "completedAt": null },
+    { "order": 9, "authorityId": "fujairah-free-zone", "status": "locked", "startedAt": null, "completedAt": null }
+  ],
+  "unresolvedAuthorityLabelsRemainLocked": true,
+  "transitionRule": "The next authority may be unlocked only after every inventoried service of the active authority has an approved dossier, an accepted Service Entity, and retained evidence."
+}
