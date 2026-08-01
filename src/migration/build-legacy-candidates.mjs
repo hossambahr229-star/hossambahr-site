@@ -164,6 +164,39 @@ const output = {
   candidates
 };
 
+function observedMatrixValues(records, selector) {
+  const values = new Set();
+  for (const record of records) {
+    const matrixRecord = matrixById.get(record.id);
+    const value = matrixRecord ? selector(matrixRecord) : null;
+    if (value) values.add(value);
+  }
+  return [...values].sort();
+}
+
+const authorityReferences = makeReferenceCandidates('authority', observedRecords => {
+  const observedAuthorityIds = observedMatrixValues(observedRecords, record => record.authority?.slug);
+  return {
+    observedAuthorityIds,
+    normalizationState: observedAuthorityIds.length === 1 ? 'single-observed-id' : observedAuthorityIds.length > 1 ? 'ambiguous-observed-ids' : 'unmapped',
+    observedDomains: observedDomains(observedRecords),
+    requiredDecision: 'Map to one canonical authority, or split the service when multiple authorities own different transactions.'
+  };
+});
+
+const emirateReferences = makeReferenceCandidates('emirate', () => ({
+  requiredDecision: 'Map to one controlled emirate ID, federal, or split the service when routing differs.'
+}));
+
+const sectorReferences = makeReferenceCandidates('sector', observedRecords => {
+  const observedMainCategoryIds = observedMatrixValues(observedRecords, record => record.category);
+  return {
+    observedMainCategoryIds,
+    taxonomyState: observedMainCategoryIds.length === 1 ? 'single-observed-main-category' : observedMainCategoryIds.length > 1 ? 'ambiguous-observed-main-categories' : 'unmapped',
+    requiredDecision: 'Map to one canonical main/subcategory pair after taxonomy review.'
+  };
+});
+
 const referenceOutput = {
   schemaVersion: '1.0.0',
   policy: {
@@ -174,18 +207,16 @@ const referenceOutput = {
   summary: {
     legacyAuthorityLabels: occurrencesBy('authority').size,
     legacyEmirateLabels: occurrencesBy('emirate').size,
-    legacySectorLabels: occurrencesBy('sector').size
+    legacySectorLabels: occurrencesBy('sector').size,
+    authorityLabelsWithOneObservedId: authorityReferences.filter((item) => item.normalizationState === 'single-observed-id').length,
+    authorityLabelsWithoutObservedId: authorityReferences.filter((item) => item.normalizationState === 'unmapped').length,
+    sectorsWithOneObservedMainCategory: sectorReferences.filter((item) => item.taxonomyState === 'single-observed-main-category').length,
+    sectorsWithAmbiguousMainCategories: sectorReferences.filter((item) => item.taxonomyState === 'ambiguous-observed-main-categories').length,
+    sectorsWithoutObservedMainCategory: sectorReferences.filter((item) => item.taxonomyState === 'unmapped').length
   },
-  authorities: makeReferenceCandidates('authority', observedRecords => ({
-    observedDomains: observedDomains(observedRecords),
-    requiredDecision: 'Map to one canonical authority, or split the service when multiple authorities own different transactions.'
-  })),
-  emirates: makeReferenceCandidates('emirate', () => ({
-    requiredDecision: 'Map to one controlled emirate ID, federal, or split the service when routing differs.'
-  })),
-  sectors: makeReferenceCandidates('sector', () => ({
-    requiredDecision: 'Map to one canonical main/subcategory pair after taxonomy review.'
-  }))
+  authorities: authorityReferences,
+  emirates: emirateReferences,
+  sectors: sectorReferences
 };
 
 await mkdir(new URL('./', OUTPUT), { recursive: true });

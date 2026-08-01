@@ -28,6 +28,8 @@ test('legacy reference labels are quarantined instead of becoming canonical cata
   assert.equal(references.summary.legacyAuthorityLabels, 49);
   assert.equal(references.summary.legacyEmirateLabels, 11);
   assert.equal(references.summary.legacySectorLabels, 44);
+  assert.equal(references.summary.sectorsWithAmbiguousMainCategories > 0, true);
+  assert.equal(references.summary.sectorsWithoutObservedMainCategory > 0, true);
   assert.equal(references.authorities.every((item) => item.publishable === false), true);
   assert.equal(references.emirates.every((item) => item.publishable === false), true);
   assert.equal(references.sectors.every((item) => item.publishable === false), true);

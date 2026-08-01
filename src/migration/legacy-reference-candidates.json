@@ -8,7 +8,12 @@
   "summary": {
     "legacyAuthorityLabels": 49,
     "legacyEmirateLabels": 11,
-    "legacySectorLabels": 44
+    "legacySectorLabels": 44,
+    "authorityLabelsWithOneObservedId": 15,
+    "authorityLabelsWithoutObservedId": 34,
+    "sectorsWithOneObservedMainCategory": 22,
+    "sectorsWithAmbiguousMainCategories": 3,
+    "sectorsWithoutObservedMainCategory": 19
   },
   "authorities": [
     {
@@ -16,6 +21,10 @@
       "occurrences": 24,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "icp"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "icp.gov.ae",
         "smartservices.icp.gov.ae"
@@ -27,6 +36,10 @@
       "occurrences": 23,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "mohre"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "mohre.gov.ae",
         "www.mohre.gov.ae"
@@ -38,6 +51,10 @@
       "occurrences": 19,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "gdrfa-dubai"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "gdrfad.gov.ae",
         "smart.gdrfad.gov.ae",
@@ -50,6 +67,10 @@
       "occurrences": 15,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "mohre"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "mohre.gov.ae",
         "www.mohre.gov.ae"
@@ -61,6 +82,8 @@
       "occurrences": 10,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [
         "app.invest.dubai.ae",
         "www.investindubai.gov.ae"
@@ -72,6 +95,10 @@
       "occurrences": 7,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "icp"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "icp.gov.ae"
       ],
@@ -82,6 +109,8 @@
       "occurrences": 6,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -90,6 +119,10 @@
       "occurrences": 4,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "gdrfa-dubai"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "gdrfad.gov.ae",
         "www.gdrfad.gov.ae"
@@ -101,6 +134,10 @@
       "occurrences": 4,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "moe"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "moe.gov.ae"
       ],
@@ -111,6 +148,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -119,6 +158,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -127,6 +168,10 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "mofa"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "www.mofa.gov.ae"
       ],
@@ -137,6 +182,8 @@
       "occurrences": 3,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -145,6 +192,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -153,6 +202,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -161,6 +212,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -169,6 +222,10 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "fta"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "tax.gov.ae"
       ],
@@ -179,6 +236,10 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "ajman-ded"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "eservices.ajmanded.ae"
       ],
@@ -189,6 +250,8 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -197,6 +260,8 @@
       "occurrences": 2,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -205,6 +270,8 @@
       "occurrences": 2,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [
         "icp.gov.ae"
       ],
@@ -215,6 +282,10 @@
       "occurrences": 2,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [
+        "mohre"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "mohre.gov.ae",
         "www.mohre.gov.ae"
@@ -226,6 +297,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -234,6 +307,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -242,6 +317,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -250,6 +327,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -258,6 +337,10 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "sharjah-ded"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "digital.sedd.gov.ae",
         "sedd.ae"
@@ -269,6 +352,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [
         "added.gov.ae"
       ],
@@ -279,6 +364,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -287,6 +374,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -295,6 +384,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -303,6 +394,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -311,6 +404,10 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [
+        "mohre"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "nafis.gov.ae"
       ],
@@ -321,6 +418,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -329,6 +428,10 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [
+        "fujairah-free-zone"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "digital.fujairah.ae"
       ],
@@ -339,6 +442,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -347,6 +452,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -355,6 +462,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -363,6 +472,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -371,6 +482,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -379,6 +492,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -387,6 +502,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -395,6 +512,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -403,6 +522,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -411,6 +532,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -419,6 +542,8 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -427,6 +552,10 @@
       "occurrences": 1,
       "state": "needs-split-or-policy-decision",
       "publishable": false,
+      "observedAuthorityIds": [
+        "mohre"
+      ],
+      "normalizationState": "single-observed-id",
       "observedDomains": [
         "mohre.gov.ae"
       ],
@@ -437,6 +566,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     },
@@ -445,6 +576,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedAuthorityIds": [],
+      "normalizationState": "unmapped",
       "observedDomains": [],
       "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
     }
@@ -534,6 +667,10 @@
       "occurrences": 16,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "companies-establishments"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -541,6 +678,10 @@
       "occurrences": 14,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "residency-visas"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -548,6 +689,11 @@
       "occurrences": 13,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "justice-police",
+        "residency-visas"
+      ],
+      "taxonomyState": "ambiguous-observed-main-categories",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -555,6 +701,11 @@
       "occurrences": 10,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "residency-visas",
+        "work-employees"
+      ],
+      "taxonomyState": "ambiguous-observed-main-categories",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -562,6 +713,10 @@
       "occurrences": 9,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "work-employees"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -569,6 +724,10 @@
       "occurrences": 8,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "companies-establishments"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -576,6 +735,10 @@
       "occurrences": 8,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "companies-establishments"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -583,6 +746,12 @@
       "occurrences": 7,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "companies-establishments",
+        "family-sponsorship",
+        "work-employees"
+      ],
+      "taxonomyState": "ambiguous-observed-main-categories",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -590,6 +759,10 @@
       "occurrences": 6,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "family-sponsorship"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -597,6 +770,8 @@
       "occurrences": 5,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -604,6 +779,10 @@
       "occurrences": 5,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "justice-police"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -611,6 +790,10 @@
       "occurrences": 4,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "residency-visas"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -618,6 +801,8 @@
       "occurrences": 4,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -625,6 +810,10 @@
       "occurrences": 4,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "identity-citizenship"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -632,6 +821,10 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "work-employees"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -639,6 +832,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -646,6 +841,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -653,6 +850,10 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "residency-visas"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -660,6 +861,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -667,6 +870,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -674,6 +879,10 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "work-employees"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -681,6 +890,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -688,6 +899,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -695,6 +908,8 @@
       "occurrences": 3,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -702,6 +917,8 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -709,6 +926,8 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -716,6 +935,8 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -723,6 +944,8 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -730,6 +953,8 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -737,6 +962,8 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -744,6 +971,10 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "identity-citizenship"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -751,6 +982,10 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "contracts-notarization"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -758,6 +993,10 @@
       "occurrences": 2,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "education-certificates"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -765,6 +1004,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -772,6 +1013,10 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "education-certificates"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -779,6 +1024,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -786,6 +1033,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -793,6 +1042,10 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "contracts-notarization"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -800,6 +1053,10 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "companies-establishments"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -807,6 +1064,8 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [],
+      "taxonomyState": "unmapped",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -814,6 +1073,10 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "contracts-notarization"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -821,6 +1084,10 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "financial-business"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -828,6 +1095,10 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "financial-business"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     },
     {
@@ -835,6 +1106,10 @@
       "occurrences": 1,
       "state": "needs-normalization",
       "publishable": false,
+      "observedMainCategoryIds": [
+        "justice-police"
+      ],
+      "taxonomyState": "single-observed-main-category",
       "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
     }
   ]
