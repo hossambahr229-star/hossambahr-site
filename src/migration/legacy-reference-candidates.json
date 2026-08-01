@@ -1,0 +1,841 @@
+{
+  "schemaVersion": "1.0.0",
+  "policy": {
+    "purpose": "reference-normalization-staging-only",
+    "canonicalCatalogMutation": false,
+    "publishableByDefault": false
+  },
+  "summary": {
+    "legacyAuthorityLabels": 49,
+    "legacyEmirateLabels": 11,
+    "legacySectorLabels": 44
+  },
+  "authorities": [
+    {
+      "legacyLabel": "ICP",
+      "occurrences": 24,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "icp.gov.ae",
+        "smartservices.icp.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "MOHRE",
+      "occurrences": 23,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "mohre.gov.ae",
+        "www.mohre.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "GDRFA Dubai",
+      "occurrences": 19,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "gdrfad.gov.ae",
+        "smart.gdrfad.gov.ae",
+        "www.gdrfad.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "وزارة الموارد البشرية والتوطين (MOHRE)",
+      "occurrences": 15,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "mohre.gov.ae",
+        "www.mohre.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "دائرة الاقتصاد والسياحة في دبي (DET)",
+      "occurrences": 10,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "app.invest.dubai.ae",
+        "www.investindubai.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+      "occurrences": 7,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "icp.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "بلدية دبي",
+      "occurrences": 6,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA)",
+      "occurrences": 4,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "gdrfad.gov.ae",
+        "www.gdrfad.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "وزارة التربية والتعليم",
+      "occurrences": 4,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "moe.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "دفاع مدني دبي DCD",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "هيئة الصحة بدبي DHA",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "وزارة الخارجية",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "www.mofa.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "ICP / GDRFA Dubai",
+      "occurrences": 3,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "KHDA",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "RTA",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "SIRA",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "الهيئة الاتحادية للضرائب (FTA)",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "tax.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "دائرة التنمية الاقتصادية في عجمان",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "eservices.ajmanded.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "DET - قطاع السياحة",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "DLD / RERA",
+      "occurrences": 2,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "ICP أو GDRFA Dubai",
+      "occurrences": 2,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [
+        "icp.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "MOHRE / حزمة العمل",
+      "occurrences": 2,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [
+        "mohre.gov.ae",
+        "www.mohre.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "بلدية دبي / MOCCAE",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "جمارك دبي",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "دائرة الأراضي والأملاك / RERA",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "دائرة الاقتصاد والسياحة DET",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "دائرة التنمية الاقتصادية بالشارقة (SEDD)",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "digital.sedd.gov.ae",
+        "sedd.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "سلطة أبوظبي للتسجيل بالتكامل مع TAMM",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [
+        "added.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "سلطة المنطقة المختصة",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "سلطة دبي البحرية / PCFC",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "مجلس الإمارات للإعلام / الجهة المحلية",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "مجلس دبي الرياضي",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "نافس / MOHRE",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [
+        "nafis.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "هيئة الثقافة والفنون في دبي",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "هيئة المنطقة الحرة بالفجيرة",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [
+        "digital.fujairah.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "وزارة الصناعة والتكنولوجيا المتقدمة MoIAT",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "CDA / KHDA",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "DCAA / GCAA",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "DCAA / GCAA / جهات أمنية",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "DET",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "DET / نظام الفعاليات",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "DEWA / RTA / بلدية دبي",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "DLD / GDRFA Dubai / ICP",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "GDRFA Dubai / ICP",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "IACAD / دائرة الشؤون الإسلامية والعمل الخيري",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "KHDA / وزارة التعليم",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "MOHRE / تقييم",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "observedDomains": [
+        "mohre.gov.ae"
+      ],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "TDRA",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    },
+    {
+      "legacyLabel": "VARA",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "observedDomains": [],
+      "requiredDecision": "Map to one canonical authority, or split the service when multiple authorities own different transactions."
+    }
+  ],
+  "emirates": [
+    {
+      "legacyLabel": "دبي",
+      "occurrences": 78,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    },
+    {
+      "legacyLabel": "اتحادي",
+      "occurrences": 52,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    },
+    {
+      "legacyLabel": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
+      "occurrences": 24,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    },
+    {
+      "legacyLabel": "الإمارات عدا دبي",
+      "occurrences": 5,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    },
+    {
+      "legacyLabel": "دبي/اتحادي — يلزم الفصل",
+      "occurrences": 5,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    },
+    {
+      "legacyLabel": "اتحادي/دبي",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    },
+    {
+      "legacyLabel": "عجمان",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    },
+    {
+      "legacyLabel": "أبوظبي",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    },
+    {
+      "legacyLabel": "اتحادي مع استثناءات الجهات التعليمية المحلية المنشورة",
+      "occurrences": 1,
+      "state": "needs-split-or-policy-decision",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    },
+    {
+      "legacyLabel": "الشارقة",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    },
+    {
+      "legacyLabel": "الفجيرة",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one controlled emirate ID, federal, or split the service when routing differs."
+    }
+  ],
+  "sectors": [
+    {
+      "legacyLabel": "التراخيص الاقتصادية",
+      "occurrences": 16,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "تأشيرات الدخول",
+      "occurrences": 14,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الإقامة",
+      "occurrences": 13,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "تصاريح العمل",
+      "occurrences": 10,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "العمالة المساعدة",
+      "occurrences": 9,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "المنشآت",
+      "occurrences": 8,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "ملفات المنشآت",
+      "occurrences": 8,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "عمال المنشآت",
+      "occurrences": 7,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "إقامة الأسرة",
+      "occurrences": 6,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "البلدية والغذاء",
+      "occurrences": 5,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الغرامات والتقارير",
+      "occurrences": 5,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الإقامة الذهبية",
+      "occurrences": 4,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "التعليم",
+      "occurrences": 4,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "هوية إماراتية",
+      "occurrences": 4,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الأجور والتوطين",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الأمن والسلامة",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "البناء والبيئة",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "التأشيرات وأذونات الدخول",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الدفاع المدني",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "السياحة والفعاليات",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الشكاوى والتسويات",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الصحة",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "العقارات",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "النقل والمركبات",
+      "occurrences": 3,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الاتصالات والتقنية",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الإقامة الخضراء",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الثقافة والإعلام",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الجمارك والموانئ",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الطيران والدرون",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "المجتمع والرياضة",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "بطاقة الهوية",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "تصديق المستندات",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "معادلة شهادات التعليم العام",
+      "occurrences": 2,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الاعتراف بالمؤهلات الجامعية",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "التحقق من وثائق المعادلة",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الدينية والخيرية",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "الصناعة والمنتجات",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "العقود",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "المناطق الحرة",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "المناطق الخاصة",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "تصديق المستندات التجارية",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "ضريبة الشركات",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "ضريبة القيمة المضافة",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    },
+    {
+      "legacyLabel": "علاقات العمل",
+      "occurrences": 1,
+      "state": "needs-normalization",
+      "publishable": false,
+      "requiredDecision": "Map to one canonical main/subcategory pair after taxonomy review."
+    }
+  ]
+}

@@ -27,7 +27,8 @@ A published service must:
 - reference a known emirate, authority, main category, and subcategory;
 - have a unique stable ID and slug;
 - expose a dedicated `/services/{slug}/` route;
-- include Arabic and English identity, keywords, steps, and exact official execution links;
+- include bilingual identity, description, audiences, request type, eligibility,
+  exceptions, duration, keywords, steps, and exact official execution links;
 - attach checked official sources whose domains belong to the selected authority;
 - record a tested-at timestamp and evidence for every execution link;
 - have `verified` status, review metadata, and evidence;
@@ -60,3 +61,8 @@ registry. It preserves one pointer for every legacy record and states exactly wh
 canonical fields are missing, unstructured, or untested. A candidate cannot be
 rendered or searched and cannot enter the canonical registry until its blockers are
 resolved.
+
+`src/migration/legacy-reference-candidates.json` applies the same quarantine rule to
+legacy authority, emirate, and sector labels. Composite values such as two authorities
+or two routing jurisdictions are decisions to split or model explicitly; they are not
+silently accepted as canonical catalog entries.

@@ -23,6 +23,11 @@ export function buildSearchIndex(services) {
       searchText: normalize([
         service.name.ar,
         service.name.en,
+        service.description.ar,
+        service.description.en,
+        ...service.audiences.flatMap((audience) => [audience.ar, audience.en]),
+        service.requestType.ar,
+        service.requestType.en,
         ...service.keywords.ar,
         ...service.keywords.en,
         service.authorityId,

@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 
 const ROOT = new URL('../../', import.meta.url);
 const OUTPUT = new URL('./legacy-candidates.json', import.meta.url);
+const REFERENCE_OUTPUT = new URL('./legacy-reference-candidates.json', import.meta.url);
 
 async function json(relativePath) {
   return JSON.parse(await readFile(new URL(relativePath, ROOT), 'utf8'));
@@ -41,6 +42,9 @@ const candidates = tree.services.map((legacy, sourceIndex) => {
     slug: field(current ? 'candidate' : 'needs-information', current ? 'service-matrix.slug' : 'government-service-tree.id', current ? 'Existing generated slug; route semantics still require review.' : 'Derived for migration tracking only; not publishable.'),
     nameAr: field(hasText(legacy.platformTitle) ? 'candidate' : 'missing', 'government-service-tree.platformTitle', 'Arabic title requires official-source comparison.'),
     nameEn: field(hasText(legacy.serviceName) ? 'candidate' : 'missing', 'government-service-tree.serviceName', 'English title requires official-source comparison.'),
+    description: field(hasText(legacy.description) ? 'arabic-only-candidate' : 'missing', 'government-service-tree.description', 'Requires official comparison and an English value.'),
+    audiences: field(hasText(legacy.audience) ? 'unstructured' : 'missing', 'government-service-tree.audience', 'Free text requires bilingual structured normalization.'),
+    requestType: field(hasText(legacy.requestType) ? 'arabic-only-candidate' : 'missing', 'government-service-tree.requestType', 'Requires official comparison and an English value.'),
     emirateId: field('needs-normalization', 'government-service-tree.emirate', 'Legacy free text must reference the controlled emirate catalog.'),
     authorityId: field(current?.authority?.slug ? 'candidate' : 'needs-normalization', current ? 'service-matrix.authority.slug' : 'government-service-tree.authority', 'Authority and official domains must be verified.'),
     mainCategory: field(current?.category ? 'candidate' : 'needs-normalization', current ? 'service-matrix.category' : 'government-service-tree.sector', 'Must reference the controlled main-category catalog.'),
@@ -49,6 +53,9 @@ const candidates = tree.services.map((legacy, sourceIndex) => {
     documents: field((legacy.requirements ?? []).length ? 'unstructured' : 'missing', 'government-service-tree.requirements', 'Legacy requirements cannot be assumed to be an exact document list.'),
     fees: field(hasText(legacy.fees) ? 'unstructured' : 'missing', 'government-service-tree.fees', 'Amount, currency, and fee components are not structured.'),
     conditions: field(hasText(legacy.conditions) ? 'unstructured' : 'missing', 'government-service-tree.conditions', 'Conditions require bilingual structured review.'),
+    eligibility: field('missing', null, 'Eligibility is not separated from generic requirements and conditions.'),
+    exceptions: field(hasText(legacy.specialCases) ? 'unstructured' : 'missing', 'government-service-tree.specialCases', 'Special cases require bilingual structured review.'),
+    duration: field(hasText(legacy.duration) ? 'arabic-only-candidate' : 'missing', 'government-service-tree.duration', 'Requires official comparison and an English value.'),
     steps: field('missing', null, 'Execution steps are absent.'),
     executionLinks: field(current?.executionUrl ? 'untested-candidate' : 'missing', current ? 'service-matrix.executionUrl' : 'government-service-tree.officialUrl', current ? 'Existing URL has no retained live-test evidence in the source record.' : 'Only a service/source URL is present; exact execution destination is unresolved.'),
     officialSources: field(hasText(legacy.evidenceUrl) ? 'untested-candidate' : 'missing', 'government-service-tree.evidenceUrl', 'Source must be re-opened and captured with evidence.'),
@@ -80,6 +87,48 @@ const candidates = tree.services.map((legacy, sourceIndex) => {
     }
   };
 });
+
+function occurrencesBy(field) {
+  const grouped = new Map();
+  for (const service of tree.services) {
+    const records = grouped.get(service[field]) ?? [];
+    records.push(service);
+    grouped.set(service[field], records);
+  }
+  return grouped;
+}
+
+function referenceState(label) {
+  return /\s\/\s|\sأو\s|بالتكامل|استثناءات|يلزم الفصل/.test(label)
+    ? 'needs-split-or-policy-decision'
+    : 'needs-normalization';
+}
+
+function observedDomains(records) {
+  const domains = new Set();
+  for (const service of records) {
+    for (const value of [service.officialUrl, service.evidenceUrl]) {
+      try {
+        domains.add(new URL(value).hostname);
+      } catch {
+        // Missing or non-absolute legacy URLs remain explicit blockers.
+      }
+    }
+  }
+  return [...domains].sort();
+}
+
+function makeReferenceCandidates(field, extra = () => ({})) {
+  return [...occurrencesBy(field)]
+    .map(([label, records]) => ({
+      legacyLabel: label,
+      occurrences: records.length,
+      state: referenceState(label),
+      publishable: false,
+      ...extra(records)
+    }))
+    .sort((left, right) => right.occurrences - left.occurrences || left.legacyLabel.localeCompare(right.legacyLabel, 'ar'));
+}
 
 const candidateIds = candidates.map((candidate) => candidate.proposedId);
 const candidateSlugs = candidates.map((candidate) => candidate.proposedSlug);
@@ -115,6 +164,32 @@ const output = {
   candidates
 };
 
+const referenceOutput = {
+  schemaVersion: '1.0.0',
+  policy: {
+    purpose: 'reference-normalization-staging-only',
+    canonicalCatalogMutation: false,
+    publishableByDefault: false
+  },
+  summary: {
+    legacyAuthorityLabels: occurrencesBy('authority').size,
+    legacyEmirateLabels: occurrencesBy('emirate').size,
+    legacySectorLabels: occurrencesBy('sector').size
+  },
+  authorities: makeReferenceCandidates('authority', observedRecords => ({
+    observedDomains: observedDomains(observedRecords),
+    requiredDecision: 'Map to one canonical authority, or split the service when multiple authorities own different transactions.'
+  })),
+  emirates: makeReferenceCandidates('emirate', () => ({
+    requiredDecision: 'Map to one controlled emirate ID, federal, or split the service when routing differs.'
+  })),
+  sectors: makeReferenceCandidates('sector', () => ({
+    requiredDecision: 'Map to one canonical main/subcategory pair after taxonomy review.'
+  }))
+};
+
 await mkdir(new URL('./', OUTPUT), { recursive: true });
 await writeFile(OUTPUT, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
+await writeFile(REFERENCE_OUTPUT, `${JSON.stringify(referenceOutput, null, 2)}\n`, 'utf8');
 console.log(JSON.stringify(output.summary, null, 2));
+console.log(JSON.stringify(referenceOutput.summary, null, 2));

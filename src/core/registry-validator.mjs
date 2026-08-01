@@ -5,8 +5,9 @@ const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const VERIFICATION_STATUSES = new Set(['draft', 'needs-information', 'verified', 'suspended']);
 const EXECUTION_TARGETS = new Set(['exact-transaction', 'exact-login', 'exact-service-card']);
 const REQUIRED_KEYS = [
-  'id', 'slug', 'name', 'emirateId', 'authorityId', 'category', 'keywords', 'documents',
-  'fees', 'conditions', 'steps', 'executionLinks', 'officialSources', 'relatedServiceIds',
+  'id', 'slug', 'name', 'description', 'audiences', 'requestType', 'emirateId', 'authorityId',
+  'category', 'keywords', 'documents', 'fees', 'conditions', 'eligibility', 'exceptions',
+  'duration', 'steps', 'executionLinks', 'officialSources', 'relatedServiceIds',
   'alternativeServiceIds', 'faq', 'lastUpdated', 'verification'
 ];
 const ALLOWED_KEYS = new Set(REQUIRED_KEYS);
@@ -65,6 +66,9 @@ export function validateRegistry({ registry, authorities, categories, emirates }
     if (!SLUG.test(service.id ?? '')) add(errors, `${base}.id`, 'must be a stable kebab-case ID');
     if (!SLUG.test(service.slug ?? '')) add(errors, `${base}.slug`, 'must be a kebab-case slug');
     requireLocalized(errors, service.name, `${base}.name`);
+    requireLocalized(errors, service.description, `${base}.description`);
+    requireLocalized(errors, service.requestType, `${base}.requestType`);
+    requireLocalized(errors, service.duration, `${base}.duration`);
 
     if (!authorityIds.has(service.authorityId)) add(errors, `${base}.authorityId`, 'unknown authority reference');
     if (!emirateIds.has(service.emirateId)) add(errors, `${base}.emirateId`, 'unknown emirate reference');
@@ -74,8 +78,13 @@ export function validateRegistry({ registry, authorities, categories, emirates }
       add(errors, `${base}.category`, 'subcategory does not belong to the selected main category');
     }
 
-    for (const field of ['documents', 'fees', 'conditions', 'steps', 'executionLinks', 'officialSources', 'relatedServiceIds', 'alternativeServiceIds', 'faq']) {
+    for (const field of ['audiences', 'documents', 'fees', 'conditions', 'eligibility', 'exceptions', 'steps', 'executionLinks', 'officialSources', 'relatedServiceIds', 'alternativeServiceIds', 'faq']) {
       if (!Array.isArray(service[field])) add(errors, `${base}.${field}`, 'must be an array');
+    }
+    if (Array.isArray(service.audiences) && service.audiences.length === 0) add(errors, `${base}.audiences`, 'at least one audience is required');
+    if (Array.isArray(service.eligibility) && service.eligibility.length === 0) add(errors, `${base}.eligibility`, 'at least one eligibility rule is required');
+    for (const field of ['audiences', 'conditions', 'eligibility', 'exceptions']) {
+      for (const [itemIndex, item] of (service[field] ?? []).entries()) requireLocalized(errors, item, `${base}.${field}[${itemIndex}]`);
     }
     if (!service.keywords || !Array.isArray(service.keywords.ar) || !Array.isArray(service.keywords.en)) {
       add(errors, `${base}.keywords`, 'Arabic and English keyword arrays are required');
