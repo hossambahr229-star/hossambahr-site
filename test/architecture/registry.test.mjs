@@ -3,6 +3,7 @@ import test from 'node:test';
 import { assertPageLinkPolicy, serviceRoute } from '../../src/core/route-policy.mjs';
 import { buildSearchIndex, search } from '../../src/core/search-index.mjs';
 import { validateRegistry } from '../../src/core/registry-validator.mjs';
+import { readFile } from 'node:fs/promises';
 
 function evidence(type = 'manual-log') {
   return { type, value: 'evidence/test.log', capturedAt: '2026-08-01T10:00:00.000Z' };
@@ -59,12 +60,24 @@ function fixture() {
 function data(service = fixture()) {
   return {
     registry: { schemaVersion: '1.0.0', services: [service] },
-    authorities: { authorities: [{ id: 'test-authority', officialDomains: ['government.example'] }] },
+    authorities: { authorities: [{
+      id: 'test-authority',
+      name: { ar: 'جهة اختبار', en: 'Test authority' },
+      abbreviation: 'TEST',
+      governmentLevel: 'federal',
+      emirateId: 'federal',
+      officialDomains: ['government.example'],
+      verification: {
+        status: 'official-source-confirmed',
+        checkedAt: '2026-08-01T10:00:00.000Z',
+        sourceUrls: ['https://government.example/about']
+      }
+    }] },
     categories: {
-      mainCategories: [{ id: 'test-category' }],
-      subCategories: [{ id: 'test-subcategory', mainId: 'test-category' }]
+      mainCategories: [{ id: 'test-category', name: { ar: 'تصنيف', en: 'Category' } }],
+      subCategories: [{ id: 'test-subcategory', mainId: 'test-category', name: { ar: 'فرعي', en: 'Subcategory' } }]
     },
-    emirates: { emirates: [{ id: 'federal' }] }
+    emirates: { emirates: [{ id: 'federal', name: { ar: 'اتحادي', en: 'Federal' } }] }
   };
 }
 
@@ -103,4 +116,21 @@ test('search index is derived only from verified registry entities', () => {
   const index = buildSearchIndex([fixture()]);
   assert.equal(index.length, 1);
   assert.equal(search(index, 'اختبار')[0].route, '/services/test-service/');
+});
+
+test('controlled jurisdiction catalog contains federal scope and all seven emirates', async () => {
+  const catalog = JSON.parse(await readFile(new URL('../../src/registry/emirates.json', import.meta.url), 'utf8'));
+  assert.equal(catalog.emirates.length, 8);
+  assert.equal(new Set(catalog.emirates.map((item) => item.id)).size, 8);
+  assert.equal(catalog.emirates.filter((item) => item.scope === 'federal').length, 1);
+  assert.equal(catalog.emirates.filter((item) => item.scope === 'emirate').length, 7);
+  assert.equal(catalog.emirates.every((item) => item.name.ar && item.name.en), true);
+});
+
+test('normalized authority catalog retains official-source evidence and unique domains', async () => {
+  const catalog = JSON.parse(await readFile(new URL('../../src/registry/authorities.json', import.meta.url), 'utf8'));
+  assert.equal(catalog.authorities.length, 9);
+  assert.equal(new Set(catalog.authorities.map((item) => item.id)).size, 9);
+  assert.equal(catalog.authorities.every((item) => item.verification.status === 'official-source-confirmed'), true);
+  assert.equal(catalog.authorities.every((item) => item.verification.sourceUrls.length > 0), true);
 });

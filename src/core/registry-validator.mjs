@@ -4,6 +4,7 @@ const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const VERIFICATION_STATUSES = new Set(['draft', 'needs-information', 'verified', 'suspended']);
 const EXECUTION_TARGETS = new Set(['exact-transaction', 'exact-login', 'exact-service-card']);
+const GOVERNMENT_LEVELS = new Set(['federal', 'emirate', 'municipal', 'free-zone']);
 const REQUIRED_KEYS = [
   'id', 'slug', 'name', 'description', 'audiences', 'requestType', 'emirateId', 'authorityId',
   'category', 'keywords', 'documents', 'fees', 'conditions', 'eligibility', 'exceptions',
@@ -50,6 +51,44 @@ export function validateRegistry({ registry, authorities, categories, emirates }
   const serviceIds = new Set(services.map((service) => service.id));
   const ids = services.map((service) => service.id);
   const slugs = services.map((service) => service.slug);
+
+  const authorityRecords = authorities.authorities ?? [];
+  const emirateRecords = emirates.emirates ?? [];
+  const mainCategoryRecords = categories.mainCategories ?? [];
+  const subCategoryRecords = categories.subCategories ?? [];
+  for (const [path, records] of [
+    ['authorities', authorityRecords],
+    ['emirates', emirateRecords],
+    ['mainCategories', mainCategoryRecords],
+    ['subCategories', subCategoryRecords]
+  ]) {
+    const recordIds = records.map((record) => record.id);
+    if (!unique(recordIds)) add(errors, path, 'catalog IDs must be unique');
+    for (const [recordIndex, record] of records.entries()) {
+      if (!SLUG.test(record.id ?? '')) add(errors, `${path}[${recordIndex}].id`, 'must be a kebab-case ID');
+      requireLocalized(errors, record.name, `${path}[${recordIndex}].name`);
+    }
+  }
+
+  for (const [authorityIndex, authority] of authorityRecords.entries()) {
+    const base = `authorities[${authorityIndex}]`;
+    if (!GOVERNMENT_LEVELS.has(authority.governmentLevel)) add(errors, `${base}.governmentLevel`, 'invalid government level');
+    if (!emirateIds.has(authority.emirateId)) add(errors, `${base}.emirateId`, 'unknown jurisdiction reference');
+    if (!Array.isArray(authority.officialDomains) || !authority.officialDomains.length) add(errors, `${base}.officialDomains`, 'at least one official domain is required');
+    if (!unique(authority.officialDomains ?? [])) add(errors, `${base}.officialDomains`, 'official domains must be unique');
+    for (const domain of authority.officialDomains ?? []) {
+      if (!/^[a-z0-9.-]+$/.test(domain) || domain.includes('/') || domain.startsWith('.') || domain.endsWith('.')) {
+        add(errors, `${base}.officialDomains`, `invalid hostname: ${domain}`);
+      }
+    }
+    if (authority.verification?.status !== 'official-source-confirmed') add(errors, `${base}.verification.status`, 'authority must be confirmed by an official source');
+    if (!isValidTimestamp(authority.verification?.checkedAt)) add(errors, `${base}.verification.checkedAt`, 'must be an ISO date-time');
+    if (!Array.isArray(authority.verification?.sourceUrls) || !authority.verification.sourceUrls.length) add(errors, `${base}.verification.sourceUrls`, 'official source evidence is required');
+  }
+
+  for (const [subIndex, subcategory] of subCategoryRecords.entries()) {
+    if (!mainCategoryIds.has(subcategory.mainId)) add(errors, `subCategories[${subIndex}].mainId`, 'unknown main category reference');
+  }
 
   if (options.publish && services.length === 0) add(errors, 'services', 'publish validation requires at least one service');
   if (!unique(ids)) add(errors, 'services', 'service IDs must be unique');

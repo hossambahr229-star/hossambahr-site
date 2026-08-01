@@ -1,8 +1,49 @@
 {
   "schemaVersion": "1.0.0",
-  "emirates": [],
+  "emirates": [
+    {
+      "id": "federal",
+      "scope": "federal",
+      "name": { "ar": "اتحادي", "en": "Federal" }
+    },
+    {
+      "id": "abu-dhabi",
+      "scope": "emirate",
+      "name": { "ar": "أبوظبي", "en": "Abu Dhabi" }
+    },
+    {
+      "id": "dubai",
+      "scope": "emirate",
+      "name": { "ar": "دبي", "en": "Dubai" }
+    },
+    {
+      "id": "sharjah",
+      "scope": "emirate",
+      "name": { "ar": "الشارقة", "en": "Sharjah" }
+    },
+    {
+      "id": "ajman",
+      "scope": "emirate",
+      "name": { "ar": "عجمان", "en": "Ajman" }
+    },
+    {
+      "id": "umm-al-quwain",
+      "scope": "emirate",
+      "name": { "ar": "أم القيوين", "en": "Umm Al Quwain" }
+    },
+    {
+      "id": "ras-al-khaimah",
+      "scope": "emirate",
+      "name": { "ar": "رأس الخيمة", "en": "Ras Al Khaimah" }
+    },
+    {
+      "id": "fujairah",
+      "scope": "emirate",
+      "name": { "ar": "الفجيرة", "en": "Fujairah" }
+    }
+  ],
   "recordContract": {
-    "required": ["id", "name"],
+    "required": ["id", "scope", "name"],
     "federalId": "federal"
   }
 }

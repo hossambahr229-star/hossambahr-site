@@ -1,8 +1,126 @@
 {
   "schemaVersion": "1.0.0",
-  "authorities": [],
+  "authorities": [
+    {
+      "id": "mohre",
+      "name": { "ar": "وزارة الموارد البشرية والتوطين", "en": "Ministry of Human Resources and Emiratisation" },
+      "abbreviation": "MOHRE",
+      "governmentLevel": "federal",
+      "emirateId": "federal",
+      "officialDomains": ["mohre.gov.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-01T00:00:00+04:00",
+        "sourceUrls": ["https://mohre.gov.ae/en/"]
+      }
+    },
+    {
+      "id": "icp",
+      "name": { "ar": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ", "en": "Federal Authority for Identity, Citizenship, Customs and Port Security" },
+      "abbreviation": "ICP",
+      "governmentLevel": "federal",
+      "emirateId": "federal",
+      "officialDomains": ["icp.gov.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-01T00:00:00+04:00",
+        "sourceUrls": ["https://icp.gov.ae/en/about-icp/overview-en/"]
+      }
+    },
+    {
+      "id": "gdrfa-dubai",
+      "name": { "ar": "الإدارة العامة للهوية وشؤون الأجانب - دبي", "en": "General Directorate of Identity and Foreigners Affairs - Dubai" },
+      "abbreviation": "GDRFA Dubai",
+      "governmentLevel": "emirate",
+      "emirateId": "dubai",
+      "officialDomains": ["gdrfad.gov.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-01T00:00:00+04:00",
+        "sourceUrls": ["https://www.gdrfad.gov.ae/en/overview"]
+      }
+    },
+    {
+      "id": "det",
+      "name": { "ar": "دائرة الاقتصاد والسياحة بدبي", "en": "Dubai Department of Economy and Tourism" },
+      "abbreviation": "DET",
+      "governmentLevel": "emirate",
+      "emirateId": "dubai",
+      "officialDomains": ["dubaidet.gov.ae", "investindubai.gov.ae", "invest.dubai.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-01T00:00:00+04:00",
+        "sourceUrls": ["https://www.dubaidet.gov.ae/en/about-det", "https://www.investindubai.gov.ae/en/"]
+      }
+    },
+    {
+      "id": "fta",
+      "name": { "ar": "الهيئة الاتحادية للضرائب", "en": "Federal Tax Authority" },
+      "abbreviation": "FTA",
+      "governmentLevel": "federal",
+      "emirateId": "federal",
+      "officialDomains": ["tax.gov.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-01T00:00:00+04:00",
+        "sourceUrls": ["https://tax.gov.ae/en/about.fta.aspx"]
+      }
+    },
+    {
+      "id": "mofa",
+      "name": { "ar": "وزارة الخارجية", "en": "Ministry of Foreign Affairs" },
+      "abbreviation": "MOFA",
+      "governmentLevel": "federal",
+      "emirateId": "federal",
+      "officialDomains": ["mofa.gov.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-01T00:00:00+04:00",
+        "sourceUrls": ["https://www.mofa.gov.ae/en/about-us"]
+      }
+    },
+    {
+      "id": "moe",
+      "name": { "ar": "وزارة التربية والتعليم", "en": "Ministry of Education" },
+      "abbreviation": "MOE",
+      "governmentLevel": "federal",
+      "emirateId": "federal",
+      "officialDomains": ["moe.gov.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-01T00:00:00+04:00",
+        "sourceUrls": ["https://www.moe.gov.ae/en/about-us/pages/about-ministry.aspx"]
+      }
+    },
+    {
+      "id": "ajman-ded",
+      "name": { "ar": "دائرة التنمية الاقتصادية - عجمان", "en": "Department of Economic Development - Ajman" },
+      "abbreviation": "Ajman DED",
+      "governmentLevel": "emirate",
+      "emirateId": "ajman",
+      "officialDomains": ["ajmanded.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-01T00:00:00+04:00",
+        "sourceUrls": ["https://www.ajmanded.ae/en/"]
+      }
+    },
+    {
+      "id": "fujairah-free-zone",
+      "name": { "ar": "هيئة المنطقة الحرة بالفجيرة", "en": "Fujairah Free Zone Authority" },
+      "abbreviation": "FFZA",
+      "governmentLevel": "free-zone",
+      "emirateId": "fujairah",
+      "officialDomains": ["freezone.fujairah.ae", "fujairah.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-01T00:00:00+04:00",
+        "sourceUrls": ["https://freezone.fujairah.ae/en/about-us/about-fujairah-freezone", "https://fujairah.ae/en/Pages/SettingBusinessFFZA.aspx"]
+      }
+    }
+  ],
   "recordContract": {
-    "required": ["id", "name", "governmentLevel", "officialDomains"],
+    "required": ["id", "name", "abbreviation", "governmentLevel", "emirateId", "officialDomains", "verification"],
     "governmentLevels": ["federal", "emirate", "municipal", "free-zone"]
   }
 }
