@@ -6,17 +6,21 @@ const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "
 const audit = JSON.parse(await readFile(resolve(root, "zero-defect-audit.json"), "utf8"));
 const routes = JSON.parse(await readFile(resolve(root, "route-audit.json"), "utf8"));
 const smoke = JSON.parse(await readFile(resolve(root, "zero-defect-smoke.json"), "utf8"));
+const legacyAliases = JSON.parse(await readFile(resolve(root, "content/legacy-service-aliases.json"), "utf8"));
+const routeModes = Object.groupBy(matrix.services, (service) => service.officialRouteMode);
 
 const discovered = [
+  ["بطاقات خدمات ICP كانت تعرض زر تقديم يقود عدة خدمات إلى بطاقة خدمة أم واحدة", "الخلط بين صفحة معلومات الخدمة وفئتها داخل البطاقة الأم ورابط بدء المعاملة", "جعل كل بطاقة تفتح مسار المنصة المستقل أولاً، وتصنيف الرابط الرسمي إلى تنفيذ مباشر أو بطاقة مستقلة أو فئة داخل خدمة أم مع تعليمات اختيار صريحة"],
+  ["مسارات قديمة موازية كانت تعرض روابط تنفيذ مختلفة عن المصفوفة الجديدة", "وجود مصدرين للمسارات بعد إعادة البناء", `ترقية 3 خدمات صحيحة إلى مصدر الحقيقة وتحويل ${Object.keys(legacyAliases.aliases).length} عنواناً قديماً إلى المسار القانوني المقابل`],
   ["ثلاثة أزرار خدمات في الصفحة الرئيسية كانت تنقل إلى نتائج البحث", "استخدام البحث كاختصار بدلاً من بناء مسار متخصص", "إنشاء شجرة تجديد الإقامة ومساري تعديل وإلغاء الشركة، وتصحيح الروابط بعد اكتمال Hydration"],
-  ["الدليل المنشور كان يعرض 24 خدمة فقط رغم وجود 102 خدمة معتمدة في سجل المراجعة", "التصدير الحالي بُني من مجموعة جزئية ولم يستهلك سجل الخدمات التاريخي", "إنشاء service-matrix.json وتوليد صفحات مستقلة لكل خدمة معتمدة"],
-  ["العدادات كانت 24 خدمة و3 جهات في مواضع متعددة", "قيم ثابتة موزعة بلا مصدر موحد", "ربط عدادات الصفحة الرئيسية والتذييل بمصفوفة واحدة: 102 خدمة و9 جهات"],
+  ["الدليل المنشور كان يعرض مجموعة جزئية من الخدمات", "التصدير السابق لم يستهلك كل الخدمات المتحققة والمسارات القديمة", `إنشاء service-matrix.json وتوليد ${matrix.services.length} صفحة خدمة قانونية مستقلة`],
+  ["العدادات كانت قيماً ثابتة في مواضع متعددة", "قيم ثابتة موزعة بلا مصدر موحد", `ربط عدادات الصفحة الرئيسية والتذييل بمصفوفة واحدة: ${matrix.services.length} خدمة و${matrix.authorities.length} جهات`],
   ["ستة تصنيفات بلا خدمات كانت ظاهرة كأنها متاحة", "عرض جميع تصنيفات النطاق بصرف النظر عن توفر خدمات موثقة", "إخفاؤها من واجهة الاكتشاف والإبقاء على صفحة توضح قيد التحقق عند الوصول المباشر"],
   ["فئة مستخدم بلا خدمات موثقة كانت ظاهرة", "عدادات الجمهور مشتقة من قائمة جزئية", "اشتقاق الجمهور من المصفوفة وإخفاء الفئة الفارغة"],
   ["صفحات التصنيف والجمهور والجهات لم تكن شاملة", "الاعتماد على 24 صفحة خدمة فقط", "إعادة توليد 15 تصنيفاً و11 جمهوراً و9 جهات من المصفوفة"],
   ["لم توجد قاعدة بيانات موحدة لحقول الخدمة والتنقل المتسلسل", "المعلومات موزعة داخل HTML وبيانات التصدير", "توحيد الاسم والنوع والإمارة والجهة والروابط والمتطلبات والرسوم والمدة والأسئلة والخدمات المرتبطة"],
   ["67 سجلاً تاريخياً تحمل روابط عامة أو خدمات ملتبسة", "غياب رابط عميق مستقر أو دمج أكثر من خدمة", "إبقاؤها موقوفة خارج الكتالوج؛ واستخدام صفحات وسيطة معلنة فقط لمساري تعديل وإلغاء الشركة"],
-  ["تقرير المسارات السابق أصبح قديماً بعد التوسعة", "كان يوثق الإصدار السابق فقط", "إعادة توليده ليغطي 198 صفحة و195 مساراً عاماً"],
+  ["تقرير المسارات السابق أصبح قديماً بعد التوسعة", "كان يوثق الإصدار السابق فقط", `إعادة توليده ليغطي ${routes.summary.routes} صفحة و${routes.summary.sitemapRoutes} مساراً عاماً`],
 ];
 
 const changedRouteGroups = [
@@ -29,8 +33,11 @@ const changedRouteGroups = [
 
 const uniqueOfficial = new Map();
 for (const service of matrix.services) {
-  if (!uniqueOfficial.has(service.officialUrl)) uniqueOfficial.set(service.officialUrl, []);
-  uniqueOfficial.get(service.officialUrl).push(service.name);
+  for (const [kind, url] of [["بطاقة", service.officialCardUrl], ["تنفيذ", service.executionUrl]]) {
+    if (!url) continue;
+    if (!uniqueOfficial.has(url)) uniqueOfficial.set(url, []);
+    uniqueOfficial.get(url).push(`${kind}: ${service.name}`);
+  }
 }
 
 const markdown = `# التقرير التنفيذي النهائي — Zero Defect Routing & Service Architecture
@@ -43,6 +50,7 @@ const markdown = `# التقرير التنفيذي النهائي — Zero Defe
 - الجهات الموحّدة: **${matrix.summary.authorities}**.
 - التصنيفات: **${matrix.categories.length}**، منها **${matrix.summary.categoriesWithServices}** تحتوي خدمات موثقة و${matrix.categories.length - matrix.summary.categoriesWithServices} مخفية من واجهة الاكتشاف.
 - السجلات الموقوفة وغير المنشورة: **${matrix.summary.suspendedSourceRecords}**.
+- مسارات التنفيذ المباشر: **${routeModes["direct-execution"]?.length || 0}**، بطاقات خدمة مستقلة: **${routeModes["official-service-card"]?.length || 0}**، فئات معلنة داخل خدمة أم: **${routeModes["official-bundle-selector"]?.length || 0}**.
 - صفحات HTML المفحوصة: **${audit.summary.htmlRoutes}**.
 - الروابط والعناصر المفحوصة: **${audit.summary.linksScanned}**.
 - الروابط الحكومية الفريدة المفحوصة حياً: **${audit.summary.officialUrlsChecked}**، السليمة: **${audit.summary.officialUrlsHealthy}**.
@@ -63,7 +71,7 @@ ${changedRouteGroups.map(([title, items]) => `### ${title}\n\n${items.map((item)
 
 ${matrix.services.map((service) => `- \`${service.internalUrl}\` — ${service.name} — ${service.authority.name}`).join("\n")}
 
-تم الاحتفاظ بـ **${routes.summary.retainedLegacyServiceRoutes}** رابط خدمة قديم كصفحات متخصصة صالحة كي لا تنكسر الروابط السابقة، لكنها ليست جزءاً من عداد الخدمات القانونية في مصدر الحقيقة.
+تم الاحتفاظ بـ **${Object.keys(legacyAliases.aliases).length}** عنوان خدمة قديم كتحويلات قانونية إلى المسار المحدث، وترقية 3 خدمات قديمة صحيحة إلى مصدر الحقيقة؛ لذلك لا يبقى مسار قديم منافس أو رابط متضارب.
 
 ## الروابط الحكومية التي تم التحقق منها
 
@@ -80,14 +88,18 @@ ${smoke.results.map((result) => `- **${result.name}**: استجابة ${result.s
 - الصفحات اليتيمة: ${routes.summary.orphanRoutes}.
 - الصفحات المرتبطة بالهوية التراثية: ${routes.summary.pagesWithHeritageIdentity} من ${routes.summary.routes}.
 - المسارات العامة في sitemap: ${routes.summary.sitemapRoutes}.
-- الصفحات الخدمية: ${routes.summary.dynamicServiceRoutes} = ${routes.summary.canonicalServices} خدمة قانونية + ${routes.summary.retainedLegacyServiceRoutes} رابطاً قديماً محتفظاً به.
+- الصفحات الخدمية: ${routes.summary.dynamicServiceRoutes} = ${routes.summary.canonicalServices} خدمة قانونية + ${routes.summary.retainedLegacyServiceRoutes} عنواناً قديماً محولاً للمسار الصحيح.
 - كل بطاقة في الكتالوج تفتح صفحة خدمة مخصصة، وليس الصفحة الرئيسية أو بحثاً عاماً.
+- كل بطاقات ICP لها ${matrix.services.filter((service) => service.authority.slug === "icp").length} مساراً داخلياً فريداً، ولا تحتوي بطاقات الجهة أي رابط خارجي يتجاوز صفحة الخدمة المخصصة.
+- روابط بطاقة المعلومات وروابط بدء المعاملة منفصلة؛ لا يُسمى رابط عام أو بطاقة أم رابط تنفيذ مباشر.
 - الروابط الثلاثة المخالفة في الصفحة الرئيسية صُححت إلى مسارات مخصصة.
 - العدادات، التصنيفات، الجهات والجمهور مشتقة من service-matrix.json.
 
 ## الملفات التشغيلية
 
 - \`service-matrix.json\`: مصدر الحقيقة.
+- \`content/execution-route-overrides.json\`: تصنيف بطاقة الخدمة ورابط التنفيذ لكل خدمة.
+- \`content/legacy-service-aliases.json\`: خريطة العناوين القديمة إلى المسارات القانونية.
 - \`build-zero-defect.mjs\`: مولّد الصفحات والمصفوفة وخريطة الموقع.
 - \`zero-defect-audit.mjs\`: بوابة QA المحلية والحية.
 - \`zero-defect-smoke.mjs\`: اختبار المتصفح والهاتف وسطح المكتب.

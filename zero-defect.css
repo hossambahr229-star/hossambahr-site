@@ -122,6 +122,13 @@
 .official-source-panel { max-width: 1140px; margin: 1.2rem auto 3rem; background: var(--zd-green); color: #fff; }
 .official-source-panel h2 { color: #fff; }
 .official-source-panel a { background: var(--zd-gold); border-color: var(--zd-gold); color: #17251f; }
+.official-route-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1rem 0; }
+.official-route-actions a:not(.route-primary) { background: transparent; border-color: rgba(255,255,255,.5); color: #fff; }
+.route-warning, .route-note, .route-success { padding: 1rem; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.08); }
+.route-warning ol { margin: .75rem 0 0; padding-right: 1.25rem; }
+.route-warning li { margin: .4rem 0; }
+.route-warning strong { color: #ffe7a6; }
+.route-note p, .route-success p { margin-bottom: 0; }
 .official-workflow-link { display: inline-flex; padding: .7rem 1rem; background: var(--zd-green); color: #fff; font-weight: 800; }
 .workflow-grid { margin: 1rem 0 0; padding: 0; max-width: none; }
 
@@ -141,4 +148,5 @@
   .service-card .actions { display: grid; }
   .sequence-actions { align-items: stretch; }
   .sequence-actions a { flex: 1; }
+  .official-route-actions { display: grid; }
 }

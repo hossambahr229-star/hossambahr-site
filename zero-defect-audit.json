@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-08-01T08:04:18.978Z",
+  "generatedAt": "2026-08-01T08:38:32.942Z",
   "mode": "local-and-live",
   "summary": {
-    "htmlRoutes": 198,
-    "linksScanned": 10411,
-    "canonicalServices": 102,
+    "htmlRoutes": 200,
+    "linksScanned": 9774,
+    "canonicalServices": 105,
     "authorities": 9,
     "categories": 15,
     "categoriesWithServices": 9,
     "suspendedSourceRecords": 67,
-    "officialUrlsChecked": 94,
-    "officialUrlsHealthy": 94,
+    "officialUrlsChecked": 120,
+    "officialUrlsHealthy": 120,
     "failures": 0,
     "warnings": 0
   },
@@ -18,7 +18,83 @@
   "warnings": [],
   "liveChecks": [
     {
+      "url": "https://www.mohre.gov.ae/en/services/private-tutor-licensing",
+      "kinds": [
+        "official-card"
+      ],
+      "services": [
+        "guide:mohre-private-tutor-permit"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/private-tutor-licensing"
+    },
+    {
+      "url": "https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:mohre-private-tutor-permit"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit"
+    },
+    {
+      "url": "https://www.mohre.gov.ae/en/services/uae-nationalsgcc-citizens-work-permit-2022",
+      "kinds": [
+        "official-card"
+      ],
+      "services": [
+        "guide:mohre-uae-nationals-gcc-work-permit"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/uae-nationalsgcc-citizens-work-permit-2022"
+    },
+    {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/75",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:mohre-uae-nationals-gcc-work-permit"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F75"
+    },
+    {
+      "url": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022",
+      "kinds": [
+        "official-card"
+      ],
+      "services": [
+        "guide:mohre-uae-national-trainee-work-permit"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022"
+    },
+    {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/232",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:mohre-uae-national-trainee-work-permit",
+        "directory:mohre:16"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F232"
+    },
+    {
       "url": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:transfer-work-permit-uae"
       ],
@@ -27,7 +103,23 @@
       "finalUrl": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/309",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:transfer-work-permit-uae",
+        "guide:new-work-permit-overseas-uae"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F309"
+    },
+    {
       "url": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:employment-contract-uae"
       ],
@@ -36,7 +128,23 @@
       "finalUrl": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/70",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:employment-contract-uae",
+        "directory:mohre:18"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F70"
+    },
+    {
       "url": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:cancel-work-permit-uae"
       ],
@@ -46,6 +154,9 @@
     },
     {
       "url": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:cancel-residency-permit-uae"
       ],
@@ -55,7 +166,12 @@
     },
     {
       "url": "https://digital.sedd.gov.ae/digital/license/renew-license/license-details-step",
+      "kinds": [
+        "official-card",
+        "execution"
+      ],
       "services": [
+        "guide:renew-business-license-sharjah",
         "guide:renew-business-license-sharjah"
       ],
       "ok": true,
@@ -64,7 +180,12 @@
     },
     {
       "url": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit",
+      "kinds": [
+        "official-card",
+        "execution"
+      ],
       "services": [
+        "guide:renew-business-license-ajman",
         "guide:renew-business-license-ajman"
       ],
       "ok": true,
@@ -73,6 +194,9 @@
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:establishment-card-mohre-uae"
       ],
@@ -81,7 +205,22 @@
       "finalUrl": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/330",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:establishment-card-mohre-uae"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F330"
+    },
+    {
       "url": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:update-establishment-file-mohre-uae"
       ],
@@ -90,7 +229,22 @@
       "finalUrl": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/331",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:update-establishment-file-mohre-uae"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F331"
+    },
+    {
       "url": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:new-work-permit-overseas-uae"
       ],
@@ -100,6 +254,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:family-sponsored-work-permit-uae"
       ],
@@ -108,7 +265,22 @@
       "finalUrl": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/186",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:family-sponsored-work-permit-uae"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F186"
+    },
+    {
       "url": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:temporary-work-permit-uae"
       ],
@@ -117,7 +289,22 @@
       "finalUrl": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/81",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:temporary-work-permit-uae"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F81"
+    },
+    {
       "url": "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:part-time-work-permit-uae"
       ],
@@ -126,7 +313,23 @@
       "finalUrl": "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/184",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:part-time-work-permit-uae",
+        "directory:mohre:14"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F184"
+    },
+    {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:issue-emirates-id-uae"
       ],
@@ -136,6 +339,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:renew-emirates-id-uae"
       ],
@@ -145,6 +351,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:family-residency-uae",
         "directory:residency:21"
@@ -154,7 +363,23 @@
       "finalUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8"
     },
     {
+      "url": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=14aefa78-624c-4f8a-aee9-c6876fcc8b1a&Lang=ar-AE",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:family-residency-uae",
+        "directory:residency:21"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx"
+    },
+    {
       "url": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:golden-residency-uae"
       ],
@@ -163,7 +388,22 @@
       "finalUrl": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8"
     },
     {
+      "url": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=256a91d9-23d7-469f-a054-ffee6c0fc4c7&Lang=ar-AE",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "guide:golden-residency-uae"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx"
+    },
+    {
       "url": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:corporate-tax-registration-uae"
       ],
@@ -173,6 +413,9 @@
     },
     {
       "url": "https://tax.gov.ae/ar/services/vat.registration.aspx",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "guide:vat-registration-uae"
       ],
@@ -181,8 +424,25 @@
       "finalUrl": "https://tax.gov.ae/ar/services/vat.registration.aspx"
     },
     {
-      "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
+      "url": "https://eservices.tax.gov.ae/sap/bc/ui5_ui5/sap/zmcf_fmca/index.html?saml2=disabled&sap-client=100&sap-language=AR&serviceId=6001&sCode=396-02-001-000",
+      "kinds": [
+        "execution"
+      ],
       "services": [
+        "guide:vat-registration-uae"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.tax.gov.ae/sap/bc/ui5_ui5/sap/zmcf_fmca/index.html?saml2=disabled&sap-client=100&sap-language=AR&serviceId=6001&sCode=396-02-001-000"
+    },
+    {
+      "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
+      "kinds": [
+        "official-card",
+        "execution"
+      ],
+      "services": [
+        "catalog:تأسيس منشأة جديدة في عجمان",
         "catalog:تأسيس منشأة جديدة في عجمان"
       ],
       "ok": true,
@@ -191,7 +451,12 @@
     },
     {
       "url": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "kinds": [
+        "official-card",
+        "execution"
+      ],
       "services": [
+        "catalog:تأسيس شركة في المنطقة الحرة بالفجيرة",
         "catalog:تأسيس شركة في المنطقة الحرة بالفجيرة"
       ],
       "ok": true,
@@ -200,6 +465,9 @@
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:تصريح عمل لمهمة"
       ],
@@ -208,7 +476,22 @@
       "finalUrl": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/54",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "catalog:تصريح عمل لمهمة"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F54"
+    },
+    {
       "url": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:تصريح عمل لحامل الإقامة الذهبية"
       ],
@@ -218,6 +501,9 @@
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:تسجيل شكوى عمالية للقطاع الخاص"
       ],
@@ -226,7 +512,23 @@
       "finalUrl": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022"
     },
     {
+      "url": "https://backoffice.mohre.gov.ae/mohre.complaints.app/TwafouqAnonymous2/CallerVerification?lang=en",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+        "directory:mohre:30"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://backoffice.mohre.gov.ae/mohre.complaints.app/TwafouqAnonymous2/CallerVerification?lang=en"
+    },
+    {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:تعديل بيانات تصريح الإقامة"
       ],
@@ -236,6 +538,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:تعديل بيانات التأشيرة"
       ],
@@ -245,6 +550,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:تمديد التأشيرة أو إذن الدخول"
       ],
@@ -254,7 +562,12 @@
     },
     {
       "url": "https://www.mofa.gov.ae/Account/Login?returnUrl=%2Far-ae%2FServices%2FForms%2Fattestation",
+      "kinds": [
+        "official-card",
+        "execution"
+      ],
       "services": [
+        "catalog:تصديق مستند شخصي داخل الإمارات",
         "catalog:تصديق مستند شخصي داخل الإمارات"
       ],
       "ok": true,
@@ -263,6 +576,9 @@
     },
     {
       "url": "https://www.mofa.gov.ae/services/attestation",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)"
       ],
@@ -272,6 +588,9 @@
     },
     {
       "url": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0"
       ],
@@ -281,6 +600,9 @@
     },
     {
       "url": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:معادلة شهادة الثانوية من خارج الإمارات"
       ],
@@ -290,6 +612,9 @@
     },
     {
       "url": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات"
       ],
@@ -299,6 +624,9 @@
     },
     {
       "url": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "catalog:التحقق من صحة المعادلة أو التصديق"
       ],
@@ -308,6 +636,9 @@
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:3"
       ],
@@ -316,7 +647,22 @@
       "finalUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/239",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "directory:mohre:3"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F239"
+    },
+    {
       "url": "https://www.mohre.gov.ae/en/media-center/news/9/2/2026/mohre-launches-range-of-services-eliminating-most-required-documents-in-person-visits-and",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:4"
       ],
@@ -326,6 +672,9 @@
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:5"
       ],
@@ -334,7 +683,22 @@
       "finalUrl": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/319",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "directory:mohre:5"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F319"
+    },
+    {
       "url": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:6"
       ],
@@ -344,6 +708,9 @@
     },
     {
       "url": "https://www.mohre.gov.ae/assets/download/9414d544/Awareness%20Guide%20for%20New%20Employers%20Companies%20-%20EN_639011571513592816.pdf.aspx",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:7"
       ],
@@ -353,6 +720,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:8"
       ],
@@ -362,6 +732,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/part-time-work-permit-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:14"
       ],
@@ -371,6 +744,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:15"
       ],
@@ -379,7 +755,22 @@
       "finalUrl": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/185",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "directory:mohre:15"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F185"
+    },
+    {
       "url": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:16"
       ],
@@ -389,6 +780,9 @@
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:18"
       ],
@@ -398,6 +792,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:19"
       ],
@@ -406,7 +803,22 @@
       "finalUrl": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022"
     },
     {
+      "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/85",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "directory:mohre:19"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F85"
+    },
+    {
       "url": "https://mohre.gov.ae/en/guidance-and-awareness-portal-new/work-bundle",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:21"
       ],
@@ -416,6 +828,9 @@
     },
     {
       "url": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:24"
       ],
@@ -425,6 +840,9 @@
     },
     {
       "url": "https://nafis.gov.ae/employer",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:27"
       ],
@@ -434,6 +852,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/media-center/news/9/8/2022/ministry-of-human-resources-and-emiratisation-issues-resolution-on-bank-guarantees-and-employees-pro",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:28"
       ],
@@ -443,6 +864,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:30"
       ],
@@ -452,6 +876,9 @@
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:31"
       ],
@@ -461,6 +888,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:32"
       ],
@@ -470,6 +900,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:34"
       ],
@@ -479,6 +912,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:35"
       ],
@@ -488,6 +924,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:36"
       ],
@@ -497,6 +936,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:37"
       ],
@@ -506,6 +948,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:38"
       ],
@@ -515,6 +960,9 @@
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:39"
       ],
@@ -524,6 +972,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:40"
       ],
@@ -533,6 +984,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:41"
       ],
@@ -542,6 +996,9 @@
     },
     {
       "url": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:mohre:42"
       ],
@@ -551,6 +1008,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:3"
       ],
@@ -560,6 +1020,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:4"
       ],
@@ -569,6 +1032,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:5"
       ],
@@ -578,6 +1044,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:6"
       ],
@@ -586,7 +1055,22 @@
       "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e"
     },
     {
+      "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/depositRefund/376/request/step1?administrativeRegionId=1&withException=false",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "directory:residency:6"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+    },
+    {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:7",
         "directory:residency:14",
@@ -599,6 +1083,9 @@
     },
     {
       "url": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:8"
       ],
@@ -608,6 +1095,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:9"
       ],
@@ -617,6 +1107,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:11"
       ],
@@ -626,6 +1119,9 @@
     },
     {
       "url": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:13"
       ],
@@ -635,6 +1131,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:15"
       ],
@@ -643,7 +1142,22 @@
       "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc"
     },
     {
+      "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/serviceCards/1040?administrativeRegionId=1",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "directory:residency:15"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+    },
+    {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:16"
       ],
@@ -652,7 +1166,22 @@
       "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413"
     },
     {
+      "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/others/guestRequestDetails/447/step1?administrativeRegionId=1&withException=false",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "directory:residency:16"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+    },
+    {
       "url": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:18"
       ],
@@ -662,6 +1191,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:19"
       ],
@@ -671,6 +1203,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:23",
         "directory:residency:29",
@@ -684,6 +1219,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:26"
       ],
@@ -693,6 +1231,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:27"
       ],
@@ -702,6 +1243,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:28"
       ],
@@ -711,6 +1255,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:30"
       ],
@@ -720,6 +1267,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:32"
       ],
@@ -728,7 +1278,22 @@
       "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd"
     },
     {
+      "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/783/step1?administrativeRegionId=1&withException=false",
+      "kinds": [
+        "execution"
+      ],
+      "services": [
+        "directory:residency:32"
+      ],
+      "ok": true,
+      "status": 200,
+      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+    },
+    {
       "url": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:33"
       ],
@@ -738,6 +1303,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:35"
       ],
@@ -747,6 +1315,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:43"
       ],
@@ -756,6 +1327,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:44"
       ],
@@ -765,6 +1339,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:45"
       ],
@@ -774,6 +1351,9 @@
     },
     {
       "url": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:46"
       ],
@@ -783,6 +1363,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:47"
       ],
@@ -792,6 +1375,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:48"
       ],
@@ -801,6 +1387,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:49"
       ],
@@ -810,6 +1399,9 @@
     },
     {
       "url": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:50"
       ],
@@ -819,6 +1411,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:51"
       ],
@@ -828,6 +1423,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:52"
       ],
@@ -837,6 +1435,9 @@
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:53"
       ],
@@ -846,6 +1447,9 @@
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:54"
       ],
@@ -855,6 +1459,9 @@
     },
     {
       "url": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:55"
       ],
@@ -864,6 +1471,9 @@
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
+      "kinds": [
+        "official-card"
+      ],
       "services": [
         "directory:residency:56"
       ],

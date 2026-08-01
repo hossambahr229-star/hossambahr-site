@@ -4,6 +4,9 @@ import { createRequire } from "node:module";
 import { extname, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname);
+const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "utf8"));
+const expectedIcpServices = matrix.services.filter((service) => service.authority.slug === "icp").length;
+const directExecutionService = matrix.services.find((service) => service.officialRouteMode === "direct-execution");
 const output = resolve(process.env.HB_OUTPUT_DIR || "zero-defect-smoke");
 const packageRoot = process.env.HB_NODE_MODULES;
 const require = packageRoot ? createRequire(resolve(packageRoot, "_runtime.js")) : createRequire(import.meta.url);
@@ -60,7 +63,7 @@ await scenario("catalog-desktop", { width: 1440, height: 1000 }, async (page) =>
   const firstHref = await page.locator("[data-service-card]:visible h3 a").first().getAttribute("href");
   await page.locator("[data-service-card]:visible h3 a").first().click();
   await page.waitForLoadState("networkidle");
-  return { status: response?.status(), initialCards, filteredCards, directServiceUrl: page.url().includes("/services/") && !page.url().includes("?q="), hasOfficialCta: await page.locator('.official-source-panel a[href^="https://"]').count() === 1, firstHref };
+  return { status: response?.status(), initialCards, filteredCards, directServiceUrl: page.url().includes("/services/") && !page.url().includes("?q="), hasOfficialCta: await page.locator('.official-source-panel a[href^="https://"]').count() >= 1, routeMode: await page.locator(".service-detail").getAttribute("data-official-route-mode"), firstHref };
 });
 
 await scenario("catalog-mobile", { width: 390, height: 844 }, async (page) => {
@@ -77,6 +80,23 @@ await scenario("decision-tree", { width: 1280, height: 900 }, async (page) => {
   return { status: response?.status(), options, directServiceUrl: Boolean(href?.startsWith("/services/")) && !href.includes("?q=") };
 });
 
+await scenario("icp-distinct-routes", { width: 1440, height: 1000 }, async (page) => {
+  const response = await page.goto(`${baseUrl}/authorities/icp/`, { waitUntil: "networkidle" });
+  const routes = await page.locator("[data-service-card]").evaluateAll((cards) => cards.map((card) => ({
+    expected: card.getAttribute("data-service-url"),
+    hrefs: [...card.querySelectorAll("a")].map((anchor) => anchor.getAttribute("href")),
+  })));
+  const uniqueTargets = new Set(routes.map((route) => route.expected));
+  const wrongCardLinks = routes.flatMap((route) => route.hrefs.filter((href) => !href?.startsWith(route.expected)).map((href) => ({ expected: route.expected, href })));
+  return { status: response?.status(), icpCards: routes.length, uniqueIcpTargets: uniqueTargets.size, wrongCardLinks, externalCardLinks: routes.flatMap((route) => route.hrefs).filter((href) => /^https?:/i.test(href || "")).length };
+});
+
+await scenario("direct-execution-route", { width: 1280, height: 900 }, async (page) => {
+  const response = await page.goto(`${baseUrl}${directExecutionService.internalUrl}`, { waitUntil: "networkidle" });
+  const hrefs = await page.locator('#official-route a[href^="https://"]').evaluateAll((anchors) => anchors.map((anchor) => anchor.getAttribute("href")));
+  return { status: response?.status(), directRouteMode: await page.locator(".service-detail").getAttribute("data-official-route-mode"), officialRouteLinks: hrefs.length, uniqueOfficialRouteLinks: new Set(hrefs).size };
+});
+
 await scenario("homepage-alignment", { width: 1440, height: 1000 }, async (page) => {
   const response = await page.goto(`${baseUrl}/`, { waitUntil: "networkidle" });
   await page.waitForTimeout(2300);
@@ -86,7 +106,7 @@ await scenario("homepage-alignment", { width: 1440, height: 1000 }, async (page)
 await browser.close();
 await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
-const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.initialCards && result.initialCards !== 102 || result.cards && result.cards !== 102 || result.hasOfficialCta === false || result.directServiceUrl === false || result.options === 0 || result.serviceMetric && result.serviceMetric !== "102" || result.authorityMetric && result.authorityMetric !== "9" || result.footerScope && !result.footerScope.includes("102 خدمة موثقة · 9 جهة مغطاة") || result.hiddenEmptyCategories !== undefined && result.hiddenEmptyCategories !== 6 || result.hiddenEmptyAudiences !== undefined && result.hiddenEmptyAudiences !== 1);
+const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.initialCards && result.initialCards !== matrix.services.length || result.cards && result.cards !== matrix.services.length || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.serviceMetric && result.serviceMetric !== String(matrix.services.length) || result.authorityMetric && result.authorityMetric !== String(matrix.authorities.length) || result.footerScope && !result.footerScope.includes(`${matrix.services.length} خدمة موثقة · ${matrix.authorities.length} جهة مغطاة`) || result.hiddenEmptyCategories !== undefined && result.hiddenEmptyCategories !== 6 || result.hiddenEmptyAudiences !== undefined && result.hiddenEmptyAudiences !== 1);
 const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scenarios: results.length, passed: results.length - failed.length, failed: failed.length }, results };
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));
