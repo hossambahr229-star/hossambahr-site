@@ -6,6 +6,7 @@ import { extname, resolve } from "node:path";
 const root = resolve(import.meta.dirname);
 const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "utf8"));
 const expectedIcpServices = matrix.services.filter((service) => service.authority.slug === "icp").length;
+const expectedIcpChoiceServices = matrix.services.filter((service) => service.authority.slug === "icp" && service.officialRouteMode !== "direct-execution").length;
 const directExecutionService = matrix.services.find((service) => service.officialRouteMode === "direct-execution");
 const output = resolve(process.env.HB_OUTPUT_DIR || "zero-defect-smoke");
 const packageRoot = process.env.HB_NODE_MODULES;
@@ -91,6 +92,17 @@ await scenario("icp-distinct-routes", { width: 1440, height: 1000 }, async (page
   return { status: response?.status(), icpCards: routes.length, uniqueIcpTargets: uniqueTargets.size, wrongCardLinks, externalCardLinks: routes.flatMap((route) => route.hrefs).filter((href) => /^https?:/i.test(href || "")).length };
 });
 
+await scenario("icp-exact-execution-choices", { width: 1280, height: 1000 }, async (page) => {
+  const choiceServices = matrix.services.filter((service) => service.authority.slug === "icp" && service.executionChoices.length);
+  const checks = [];
+  for (const service of choiceServices) {
+    const response = await page.goto(`${baseUrl}${service.internalUrl}`, { waitUntil: "networkidle" });
+    const hrefs = await page.locator("[data-exact-route-choices] .route-choice").evaluateAll((anchors) => anchors.map((anchor) => anchor.getAttribute("href")));
+    checks.push({ service: service.id, status: response?.status(), expected: service.executionChoices.length, actual: hrefs.length, genericLogin: hrefs.some((href) => /#\/login(?:$|\?)/i.test(href || "")), unique: new Set(hrefs).size });
+  }
+  return { status: 200, expectedIcpChoiceServices, checkedIcpChoiceServices: checks.length, choiceFailures: checks.filter((check) => check.status !== 200 || check.expected !== check.actual || check.genericLogin || check.unique !== check.actual) };
+});
+
 await scenario("direct-execution-route", { width: 1280, height: 900 }, async (page) => {
   const response = await page.goto(`${baseUrl}${directExecutionService.internalUrl}`, { waitUntil: "networkidle" });
   const hrefs = await page.locator('#official-route a[href^="https://"]').evaluateAll((anchors) => anchors.map((anchor) => anchor.getAttribute("href")));
@@ -106,7 +118,7 @@ await scenario("homepage-alignment", { width: 1440, height: 1000 }, async (page)
 await browser.close();
 await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
-const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.initialCards && result.initialCards !== matrix.services.length || result.cards && result.cards !== matrix.services.length || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.serviceMetric && result.serviceMetric !== String(matrix.services.length) || result.authorityMetric && result.authorityMetric !== String(matrix.authorities.length) || result.footerScope && !result.footerScope.includes(`${matrix.services.length} خدمة موثقة · ${matrix.authorities.length} جهة مغطاة`) || result.hiddenEmptyCategories !== undefined && result.hiddenEmptyCategories !== 6 || result.hiddenEmptyAudiences !== undefined && result.hiddenEmptyAudiences !== 1);
+const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.initialCards && result.initialCards !== matrix.services.length || result.cards && result.cards !== matrix.services.length || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.serviceMetric && result.serviceMetric !== String(matrix.services.length) || result.authorityMetric && result.authorityMetric !== String(matrix.authorities.length) || result.footerScope && !result.footerScope.includes(`${matrix.services.length} خدمة موثقة · ${matrix.authorities.length} جهة مغطاة`) || result.hiddenEmptyCategories !== undefined && result.hiddenEmptyCategories !== 6 || result.hiddenEmptyAudiences !== undefined && result.hiddenEmptyAudiences !== 1);
 const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scenarios: results.length, passed: results.length - failed.length, failed: failed.length }, results };
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));
