@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-08-01T08:02:54.209Z",
+  "generatedAt": "2026-08-01T08:34:22.244Z",
   "sourceReviewDate": "2026-07-27",
   "policy": "Only records previously approved for exact official navigation are published.",
   "summary": {
-    "services": 102,
+    "services": 105,
     "authorities": 9,
     "categoriesWithServices": 9,
     "suspendedSourceRecords": 67
@@ -32,7 +32,7 @@
       "slug": "work-employees",
       "title": "العمل والموظفون",
       "description": "تصاريح العمل والعلاقات العمالية والأجور والتوطين.",
-      "count": 26
+      "count": 29
     },
     {
       "slug": "companies-establishments",
@@ -105,12 +105,12 @@
     {
       "slug": "individual",
       "title": "فرد",
-      "count": 4
+      "count": 7
     },
     {
       "slug": "citizen",
       "title": "مواطن",
-      "count": 1
+      "count": 3
     },
     {
       "slug": "resident",
@@ -140,12 +140,12 @@
     {
       "slug": "business-owner",
       "title": "صاحب شركة",
-      "count": 18
+      "count": 20
     },
     {
       "slug": "establishment-representative",
       "title": "ممثل منشأة",
-      "count": 13
+      "count": 15
     },
     {
       "slug": "family",
@@ -162,7 +162,7 @@
     {
       "slug": "mohre",
       "name": "وزارة الموارد البشرية والتوطين (MOHRE)",
-      "count": 39
+      "count": 42
     },
     {
       "slug": "icp",
@@ -207,6 +207,204 @@
   ],
   "services": [
     {
+      "id": "guide:mohre-private-tutor-permit",
+      "slug": "mohre-private-tutor-permit",
+      "name": "تصريح عمل مدرس خصوصي",
+      "officialName": "Private Tutor Licensing",
+      "type": "إصدار تصريح",
+      "emirate": "اتحادي",
+      "authority": {
+        "slug": "mohre",
+        "name": "وزارة الموارد البشرية والتوطين (MOHRE)"
+      },
+      "category": "work-employees",
+      "internalUrl": "/services/mohre-private-tutor-permit/",
+      "officialUrl": "https://www.mohre.gov.ae/en/services/private-tutor-licensing",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/private-tutor-licensing",
+      "executionUrl": "https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تصريح عمل مدرس خصوصي",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
+      "evidenceUrl": "https://www.mohre.gov.ae/en/services/private-tutor-licensing",
+      "status": "verified",
+      "description": "إصدار تصريح رسمي لمزاولة التدريس الخصوصي للفئات المؤهلة وفق شروط وزارة الموارد البشرية والتوطين.",
+      "requirements": [
+        "هوية إماراتية سارية",
+        "المؤهل أو إثبات الصفة التعليمية عند الطلب",
+        "الموافقات المطلوبة بحسب فئة مقدم الطلب"
+      ],
+      "fees": "راجع بطاقة الخدمة الرسمية قبل الإرسال؛ قد تختلف المتطلبات بحسب فئة مقدم الطلب.",
+      "duration": "تحددها الوزارة بعد اكتمال البيانات والموافقات.",
+      "conditions": "يجب اختيار فئة مقدم الطلب الصحيحة وإرفاق الموافقات الخاصة بها.",
+      "specialCases": "لا تستخدم مسار تصاريح المنشآت لهذه الخدمة؛ لها بوابة تقديم مستقلة.",
+      "lastReviewed": "2026-08-01",
+      "reviewResult": "approved_for_user_navigation",
+      "functionalFinding": "exact_service_card_and_execution_route",
+      "loginRequired": false,
+      "previousService": null,
+      "nextService": "/services/mohre-uae-nationals-gcc-work-permit/",
+      "relatedServices": [
+        {
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
+        },
+        {
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
+        },
+        {
+          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
+          "internalUrl": "/services/transfer-work-permit-uae/"
+        }
+      ],
+      "faq": [
+        {
+          "question": "ما الرسوم؟",
+          "answer": "راجع بطاقة الخدمة الرسمية قبل الإرسال؛ قد تختلف المتطلبات بحسب فئة مقدم الطلب."
+        },
+        {
+          "question": "كم تستغرق المعاملة؟",
+          "answer": "تحددها الوزارة بعد اكتمال البيانات والموافقات."
+        },
+        {
+          "question": "ما القناة الرسمية؟",
+          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+        }
+      ]
+    },
+    {
+      "id": "guide:mohre-uae-nationals-gcc-work-permit",
+      "slug": "mohre-uae-nationals-gcc-work-permit",
+      "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+      "officialName": "UAE Nationals/GCC Citizens Work Permit",
+      "type": "إصدار تصريح",
+      "emirate": "اتحادي",
+      "authority": {
+        "slug": "mohre",
+        "name": "وزارة الموارد البشرية والتوطين (MOHRE)"
+      },
+      "category": "work-employees",
+      "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/",
+      "officialUrl": "https://www.mohre.gov.ae/en/services/uae-nationalsgcc-citizens-work-permit-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/uae-nationalsgcc-citizens-work-permit-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/75",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
+      "evidenceUrl": "https://www.mohre.gov.ae/en/services/uae-nationalsgcc-citizens-work-permit-2022",
+      "status": "verified",
+      "description": "إصدار تصريح عمل لمواطن إماراتي أو مواطن من دول مجلس التعاون لدى منشأة مسجلة.",
+      "requirements": [
+        "بيانات العامل والهوية",
+        "بيانات المنشأة",
+        "عرض أو عقد العمل المعتمد"
+      ],
+      "fees": "تعرض الوزارة الرسوم في بطاقة الخدمة وقبل السداد.",
+      "duration": "تحددها الوزارة بعد اكتمال الطلب.",
+      "conditions": "يقدم الطلب من المنشأة عبر مسار تصريح العمل المخصص لهذه الفئة.",
+      "specialCases": "اختيار فئة تصريح أخرى يغيّر المتطلبات وقد يوقف الطلب.",
+      "lastReviewed": "2026-08-01",
+      "reviewResult": "approved_for_user_navigation",
+      "functionalFinding": "exact_service_card_and_execution_route",
+      "loginRequired": true,
+      "previousService": "/services/mohre-private-tutor-permit/",
+      "nextService": "/services/mohre-uae-national-trainee-work-permit/",
+      "relatedServices": [
+        {
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
+        },
+        {
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
+        },
+        {
+          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
+          "internalUrl": "/services/transfer-work-permit-uae/"
+        }
+      ],
+      "faq": [
+        {
+          "question": "ما الرسوم؟",
+          "answer": "تعرض الوزارة الرسوم في بطاقة الخدمة وقبل السداد."
+        },
+        {
+          "question": "كم تستغرق المعاملة؟",
+          "answer": "تحددها الوزارة بعد اكتمال الطلب."
+        },
+        {
+          "question": "ما القناة الرسمية؟",
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
+        }
+      ]
+    },
+    {
+      "id": "guide:mohre-uae-national-trainee-work-permit",
+      "slug": "mohre-uae-national-trainee-work-permit",
+      "name": "تصريح عمل لتدريب مواطن إماراتي",
+      "officialName": "Work Permit for UAE National Trainees",
+      "type": "إصدار تصريح تدريب",
+      "emirate": "اتحادي",
+      "authority": {
+        "slug": "mohre",
+        "name": "وزارة الموارد البشرية والتوطين (MOHRE)"
+      },
+      "category": "work-employees",
+      "internalUrl": "/services/mohre-uae-national-trainee-work-permit/",
+      "officialUrl": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/232",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تصريح عمل لتدريب مواطن إماراتي",
+      "officialRouteNote": "رابط بدء المعاملة مشترك تقنياً مع تصاريح التدريب؛ اختر فئة المتدرب المواطن داخل المعاملة.",
+      "evidenceUrl": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022",
+      "status": "verified",
+      "description": "إصدار تصريح لتدريب مواطن إماراتي لدى منشأة مسجلة خلال مدة التدريب المعتمدة.",
+      "requirements": [
+        "هوية المتدرب",
+        "بيانات المنشأة",
+        "برنامج أو اتفاق التدريب"
+      ],
+      "fees": "تعرض الوزارة الرسوم في بطاقة الخدمة وقبل السداد.",
+      "duration": "تحددها الوزارة بعد اكتمال الطلب.",
+      "conditions": "يجب أن يطابق الطلب غرض التدريب وفئته ولا يستخدم كبديل لتصريح توظيف عادي.",
+      "specialCases": "مسار التنفيذ قد يشترك تقنياً مع تدريب الطلبة؛ يجب اختيار فئة المتدرب المواطن داخل المعاملة.",
+      "lastReviewed": "2026-08-01",
+      "reviewResult": "approved_for_user_navigation",
+      "functionalFinding": "exact_service_card_and_execution_route",
+      "loginRequired": true,
+      "previousService": "/services/mohre-uae-nationals-gcc-work-permit/",
+      "nextService": "/services/transfer-work-permit-uae/",
+      "relatedServices": [
+        {
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
+        },
+        {
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
+        },
+        {
+          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
+          "internalUrl": "/services/transfer-work-permit-uae/"
+        }
+      ],
+      "faq": [
+        {
+          "question": "ما الرسوم؟",
+          "answer": "تعرض الوزارة الرسوم في بطاقة الخدمة وقبل السداد."
+        },
+        {
+          "question": "كم تستغرق المعاملة؟",
+          "answer": "تحددها الوزارة بعد اكتمال الطلب."
+        },
+        {
+          "question": "ما القناة الرسمية؟",
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
+        }
+      ]
+    },
+    {
       "id": "guide:transfer-work-permit-uae",
       "slug": "transfer-work-permit-uae",
       "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
@@ -220,6 +418,11 @@
       "category": "work-employees",
       "internalUrl": "/services/transfer-work-permit-uae/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/309",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "نقل تصريح عمل موظف إلى منشأة جديدة",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",
       "status": "verified",
       "description": "انقل الموظف بين منشأتين عبر تصريح العمل الصحيح ثم نسّق تعديل أو إصدار الإقامة لدى جهة الهجرة.",
@@ -236,21 +439,21 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
-      "previousService": null,
+      "loginRequired": true,
+      "previousService": "/services/mohre-uae-national-trainee-work-permit/",
       "nextService": "/services/cancel-work-permit-uae/",
       "relatedServices": [
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل مؤقت في الإمارات",
-          "internalUrl": "/services/temporary-work-permit-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -264,7 +467,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -282,6 +485,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/employment-contract-uae/",
       "officialUrl": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/70",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "إصدار أو تجديد عقد عمل في الإمارات",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
       "status": "verified",
       "description": "أصدر أو جدد عقد العمل والتصريح المرتبط به مع مطابقة عرض العمل والأجر والمسمى وبيانات الطرفين.",
@@ -298,7 +506,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_official_combined_service",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": null,
       "nextService": "/services/renew-business-license-sharjah/",
       "relatedServices": [
@@ -326,7 +534,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -344,6 +552,11 @@
       "category": "work-employees",
       "internalUrl": "/services/cancel-work-permit-uae/",
       "officialUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء تصريح وعقد عمل في الإمارات",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022",
       "status": "verified",
       "description": "ألغ علاقة العمل بعد تسوية المستحقات والتوقيعات ثم استكمل إلغاء أو تعديل الإقامة بصورة منفصلة.",
@@ -365,16 +578,16 @@
       "nextService": "/services/new-work-permit-overseas-uae/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل مؤقت في الإمارات",
-          "internalUrl": "/services/temporary-work-permit-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -406,6 +619,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/cancel-residency-permit-uae/",
       "officialUrl": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء تصريح الإقامة الصادر من دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "ألغِ تصريح الإقامة الصادر من دبي بعد ترتيب العمل أو الكفالة ثم تحقق من مهلة البقاء والخطوة التالية.",
@@ -468,6 +686,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/renew-business-license-sharjah/",
       "officialUrl": "https://digital.sedd.gov.ae/digital/license/renew-license/license-details-step",
+      "officialCardUrl": "https://digital.sedd.gov.ae/digital/license/renew-license/license-details-step",
+      "executionUrl": "https://digital.sedd.gov.ae/digital/license/renew-license/license-details-step",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تجديد رخصة تجارية في الشارقة",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://sedd.ae/ar/w/renew-license",
       "status": "verified",
       "description": "حدد خدمة التجديد في دائرة التنمية الاقتصادية وراجع عقد المقر والموافقات قبل تقديم الطلب.",
@@ -517,6 +740,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/renew-business-license-ajman/",
       "officialUrl": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit",
+      "officialCardUrl": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit",
+      "executionUrl": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تجديد رخصة اقتصادية في عجمان",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit",
       "status": "verified",
       "description": "انتقل إلى خدمات دائرة عجمان بعد التأكد من الرخصة والمقر والموافقات والقيود المسجلة.",
@@ -571,6 +799,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/establishment-card-mohre-uae/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/330",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "إصدار سجل منشأة لدى وزارة الموارد البشرية",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022",
       "status": "verified",
       "description": "سجل بيانات المنشأة والملاك والمخولين لدى الوزارة لبدء خدمات تصاريح وعقود العمل.",
@@ -587,7 +820,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/renew-business-license-ajman/",
       "nextService": "/services/update-establishment-file-mohre-uae/",
       "relatedServices": [
@@ -615,7 +848,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -633,6 +866,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/update-establishment-file-mohre-uae/",
       "officialUrl": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/331",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تحديث سجل المنشأة لدى وزارة الموارد البشرية",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022",
       "status": "verified",
       "description": "حدّث بيانات الرخصة أو الملاك أو المفوضين في ملف المنشأة بعد أي تغيير رسمي.",
@@ -649,7 +887,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/establishment-card-mohre-uae/",
       "nextService": "/services/تأسيس-منشأة-جديدة-في-عجمان/",
       "relatedServices": [
@@ -677,7 +915,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -695,6 +933,11 @@
       "category": "work-employees",
       "internalUrl": "/services/new-work-permit-overseas-uae/",
       "officialUrl": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/309",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "إصدار تصريح عمل جديد من خارج الإمارات",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
       "status": "verified",
       "description": "استقدم موظفاً من خارج الدولة عبر عرض العمل والتصريح ثم أكمل الدخول والإقامة والهوية.",
@@ -711,21 +954,21 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/cancel-work-permit-uae/",
       "nextService": "/services/temporary-work-permit-uae/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل مؤقت في الإمارات",
-          "internalUrl": "/services/temporary-work-permit-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -739,7 +982,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -757,6 +1000,11 @@
       "category": "family-sponsorship",
       "internalUrl": "/services/family-sponsored-work-permit-uae/",
       "officialUrl": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/186",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تصريح عمل لمقيم على كفالة ذويه",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
       "status": "verified",
       "description": "استخرج تصريح عمل لمقيم يحتفظ بإقامته الأسرية ويعمل لدى منشأة مسجلة.",
@@ -773,7 +1021,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": null,
       "nextService": "/services/family-residency-uae/",
       "relatedServices": [],
@@ -788,7 +1036,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -806,6 +1054,11 @@
       "category": "work-employees",
       "internalUrl": "/services/temporary-work-permit-uae/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/81",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "إصدار تصريح عمل مؤقت في الإمارات",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
       "status": "verified",
       "description": "استخدم تصريحاً مؤقتاً عندما تكون طبيعة العمل محددة المدة وتنطبق شروط الوزارة على العامل والمنشأة.",
@@ -822,21 +1075,21 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/new-work-permit-overseas-uae/",
       "nextService": "/services/part-time-work-permit-uae/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -850,7 +1103,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -868,6 +1121,11 @@
       "category": "work-employees",
       "internalUrl": "/services/part-time-work-permit-uae/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/184",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "إصدار تصريح عمل جزئي في الإمارات",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022",
       "status": "verified",
       "description": "نظّم العمل بساعات أو أيام أقل من الدوام الكامل من خلال التصريح الجزئي المناسب.",
@@ -884,21 +1142,21 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/temporary-work-permit-uae/",
       "nextService": "/services/issuance-of-a-new-work-permit-mission-work-permit/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -912,7 +1170,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -930,6 +1188,11 @@
       "category": "identity-citizenship",
       "internalUrl": "/services/issue-emirates-id-uae/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إصدار الهوية الإماراتية لأول مرة",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
       "status": "verified",
       "description": "ابدأ طلب الهوية ضمن رحلة الإقامة وأكمل البصمة والبيانات المطلوبة لدى ICP.",
@@ -992,6 +1255,11 @@
       "category": "identity-citizenship",
       "internalUrl": "/services/renew-emirates-id-uae/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تجديد الهوية الإماراتية",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
       "status": "verified",
       "description": "جدّد الهوية ضمن مسار الإقامة المرتبط وتأكد من تحديث البيانات والعنوان قبل السداد.",
@@ -1054,6 +1322,11 @@
       "category": "family-sponsorship",
       "internalUrl": "/services/family-residency-uae/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+      "executionUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=14aefa78-624c-4f8a-aee9-c6876fcc8b1a&Lang=ar-AE",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "إصدار إقامة لأفراد الأسرة في دبي",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "جهّز صلة القرابة والسكن والدخل والتأمين لإصدار إقامة أفراد الأسرة عبر GDRFA دبي.",
@@ -1116,6 +1389,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/golden-residency-uae/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
+      "executionUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=256a91d9-23d7-469f-a054-ffee6c0fc4c7&Lang=ar-AE",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "إصدار الإقامة الذهبية للمستثمرين في دبي",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
       "status": "verified",
       "description": "تحقق من أهلية فئة المستثمرين ثم جهّز إثبات الاستثمار قبل طلب الإقامة الذهبية عبر GDRFA دبي.",
@@ -1178,6 +1456,11 @@
       "category": "financial-business",
       "internalUrl": "/services/corporate-tax-registration-uae/",
       "officialUrl": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
+      "officialCardUrl": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "التسجيل في ضريبة الشركات بالإمارات",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
       "status": "verified",
       "description": "حدد الشخص الخاضع وجهز الرخص والوثائق ثم سجل عبر إمارات تاكس ضمن الموعد المطبق.",
@@ -1232,6 +1515,11 @@
       "category": "financial-business",
       "internalUrl": "/services/vat-registration-uae/",
       "officialUrl": "https://tax.gov.ae/ar/services/vat.registration.aspx",
+      "officialCardUrl": "https://tax.gov.ae/ar/services/vat.registration.aspx",
+      "executionUrl": "https://eservices.tax.gov.ae/sap/bc/ui5_ui5/sap/zmcf_fmca/index.html?saml2=disabled&sap-client=100&sap-language=AR&serviceId=6001&sCode=396-02-001-000",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "التسجيل في ضريبة القيمة المضافة بالإمارات",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://tax.gov.ae/ar/services/vat.registration.aspx",
       "status": "verified",
       "description": "تحقق من حد التسجيل وجهز إثباتات التوريدات والمصروفات قبل تقديم طلب VAT عبر إمارات تاكس.",
@@ -1248,7 +1536,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/corporate-tax-registration-uae/",
       "nextService": null,
       "relatedServices": [
@@ -1268,7 +1556,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -1286,6 +1574,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/تأسيس-منشأة-جديدة-في-عجمان/",
       "officialUrl": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
+      "officialCardUrl": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
+      "executionUrl": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تأسيس منشأة جديدة في عجمان",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://eservices.ajmanded.ae/en/",
       "status": "verified",
       "description": "تسجيل الدخول إلى خدمة المنشأة الجديدة الرسمية.",
@@ -1335,6 +1628,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة/",
       "officialUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "officialCardUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "executionUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تأسيس شركة في المنطقة الحرة بالفجيرة",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
       "status": "verified",
       "description": "طلب تسجيل الرخصة التجارية في المنطقة الحرة.",
@@ -1379,6 +1677,11 @@
       "category": "work-employees",
       "internalUrl": "/services/issuance-of-a-new-work-permit-mission-work-permit/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/54",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تصريح عمل لمهمة",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
       "status": "verified",
       "description": "استقدام عامل لعمل قصير المدى مرتبط بمشروع أو مهمة.",
@@ -1390,21 +1693,21 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/part-time-work-permit-uae/",
       "nextService": "/services/تصريح-عمل-جزئي/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -1418,7 +1721,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -1436,6 +1739,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
       "officialUrl": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تصريح عمل لحامل الإقامة الذهبية",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
       "status": "verified",
       "description": "تصريح عمل لحامل الإقامة الذهبية دون نقل كفالة الإقامة.",
@@ -1480,6 +1788,11 @@
       "category": "justice-police",
       "internalUrl": "/services/register-labour-complaints-private-sector-employees/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
+      "executionUrl": "https://backoffice.mohre.gov.ae/mohre.complaints.app/TwafouqAnonymous2/CallerVerification?lang=en",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تسجيل شكوى عمالية للقطاع الخاص",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
       "status": "verified",
       "description": "تسجيل المطالبات عند إخلال أحد طرفي العلاقة بالتزاماته.",
@@ -1524,6 +1837,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/amendment-of-residency-permit-data/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تعديل بيانات تصريح الإقامة",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
       "status": "verified",
       "description": "تعديل البيانات المسموح بها في تصريح الإقامة الصادر.",
@@ -1581,6 +1899,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/amendment-of-visa-data/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تعديل بيانات التأشيرة",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
       "status": "verified",
       "description": "تعديل البيانات المسموح بها في إذن الدخول الصادر.",
@@ -1638,6 +1961,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تمديد-التأشيرة-أو-إذن-الدخول/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تمديد التأشيرة أو إذن الدخول",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
       "status": "verified",
       "description": "تمديد الفئات المؤهلة وفق نوع إذن الدخول ومدته.",
@@ -1695,6 +2023,11 @@
       "category": "contracts-notarization",
       "internalUrl": "/services/تصديق-مستند-شخصي-داخل-الإمارات/",
       "officialUrl": "https://www.mofa.gov.ae/Account/Login?returnUrl=%2Far-ae%2FServices%2FForms%2Fattestation",
+      "officialCardUrl": "https://www.mofa.gov.ae/Account/Login?returnUrl=%2Far-ae%2FServices%2FForms%2Fattestation",
+      "executionUrl": "https://www.mofa.gov.ae/Account/Login?returnUrl=%2Far-ae%2FServices%2FForms%2Fattestation",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تصديق مستند شخصي داخل الإمارات",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.mofa.gov.ae/services/attestation",
       "status": "verified",
       "description": "تصديق الشهادات والوثائق الشخصية ورقيًا عبر التوصيل أو رقميًا للمستند المؤهل.",
@@ -1748,6 +2081,11 @@
       "category": "contracts-notarization",
       "internalUrl": "/services/تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ/",
       "officialUrl": "https://www.mofa.gov.ae/services/attestation",
+      "officialCardUrl": "https://www.mofa.gov.ae/services/attestation",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.mofa.gov.ae/services/attestation",
       "status": "verified",
       "description": "تصديق العقود والتراخيص والقرارات والوثائق التجارية؛ أما الفواتير التجارية وشهادات المنشأ فلها خدمة eDAS 2.0 مستقلة.",
@@ -1801,6 +2139,11 @@
       "category": "contracts-notarization",
       "internalUrl": "/services/attestation-of-commercial-invoices-via-edas-2-0/",
       "officialUrl": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+      "officialCardUrl": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.mofa.gov.ae/services/edas-attestation-v2",
       "status": "verified",
       "description": "الخدمة الرقمية المستقلة لتصديق الفواتير التجارية وشهادات المنشأ الصادرة داخل الدولة أو خارجها.",
@@ -1854,6 +2197,11 @@
       "category": "education-certificates",
       "internalUrl": "/services/equivalency-of-general-education-certificate-from-abroad-grade-12/",
       "officialUrl": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
+      "officialCardUrl": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "معادلة شهادة الثانوية من خارج الإمارات",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
       "status": "verified",
       "description": "معادلة الصف الثاني عشر الصادر من خارج الدولة بعد التحقق والتصديقات المطلوبة.",
@@ -1907,6 +2255,11 @@
       "category": "education-certificates",
       "internalUrl": "/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/",
       "officialUrl": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
+      "officialCardUrl": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
       "status": "verified",
       "description": "معادلة الصف الثاني عشر من مدرسة خاصة تطبق منهاجًا أجنبيًا داخل الدولة.",
@@ -1960,6 +2313,11 @@
       "category": "education-certificates",
       "internalUrl": "/services/confirming-the-authenticity-of-equivalency/",
       "officialUrl": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
+      "officialCardUrl": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "التحقق من صحة المعادلة أو التصديق",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
       "status": "verified",
       "description": "تحقق فوري باستخدام رقم التحقق ورقم المستند في الوثيقة الإلكترونية.",
@@ -2013,6 +2371,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/إصدار-بطاقة-مندوب-علاقات-عامة-pro/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/239",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "إصدار بطاقة مندوب علاقات عامة PRO",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
       "status": "verified",
       "description": "إصدار بطاقة اختيارية لمندوب المنشأة المخول بمتابعة معاملاتها.",
@@ -2024,7 +2387,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة/",
       "nextService": "/services/التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني/",
       "relatedServices": [
@@ -2052,7 +2415,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -2070,6 +2433,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني/",
       "officialUrl": "https://www.mohre.gov.ae/en/media-center/news/9/2/2026/mohre-launches-range-of-services-eliminating-most-required-documents-in-person-visits-and",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/media-center/news/9/2/2026/mohre-launches-range-of-services-eliminating-most-required-documents-in-person-visits-and",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "التفويض الإلكتروني للمنشأة (بديل بطاقة التوقيع الإلكتروني)",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/media-center/news/9/2/2026/mohre-launches-range-of-services-eliminating-most-required-documents-in-person-visits-and",
       "status": "verified",
       "description": "خدمة تفويض إلكتروني مجانية عبر تطبيق MOHRE استبدلت بطاقة التوقيع الإلكتروني، وفق تحديث الوزارة لعام 2026.",
@@ -2127,6 +2495,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/حصة-تصاريح-العمل-للمنشأة/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/319",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "حصة تصاريح العمل للمنشأة",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
       "status": "verified",
       "description": "طلب أو متابعة الحصة الإلكترونية وفق الرخصة والنشاط وحجم العمل وتقرير تقييم عند طلبه.",
@@ -2138,7 +2511,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني/",
       "nextService": "/services/تقرير-تقييم-المنشأة/",
       "relatedServices": [
@@ -2166,7 +2539,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -2184,6 +2557,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/تقرير-تقييم-المنشأة/",
       "officialUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تقرير تقييم المنشأة",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
       "status": "verified",
       "description": "طلب زيارة تقييم لإثبات حجم العمل أو بيانات المنشأة؛ يبدأ عبر تسهيل أو تطبيق MOHRE ثم يُحال إلكترونياً إلى مزود تقييم المعتمد.",
@@ -2241,6 +2619,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/تصنيف-المنشأة/",
       "officialUrl": "https://www.mohre.gov.ae/assets/download/9414d544/Awareness%20Guide%20for%20New%20Employers%20Companies%20-%20EN_639011571513592816.pdf.aspx",
+      "officialCardUrl": "https://www.mohre.gov.ae/assets/download/9414d544/Awareness%20Guide%20for%20New%20Employers%20Companies%20-%20EN_639011571513592816.pdf.aspx",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تصنيف المنشأة",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.mohre.gov.ae/assets/download/9414d544/Awareness%20Guide%20for%20New%20Employers%20Companies%20-%20EN_639011571513592816.pdf.aspx",
       "status": "verified",
       "description": "مراجعة فئة المنشأة والالتزامات المؤثرة في الرسوم والخدمات. التصنيف تنظيمي ويُحدّثه نظام الوزارة وفق معايير الامتثال، وليس طلب إصدار مستقلًا.",
@@ -2298,6 +2681,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/إلغاء-ملف-أو-بطاقة-المنشأة/",
       "officialUrl": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers",
+      "officialCardUrl": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء ملف أو بطاقة المنشأة",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers",
       "status": "verified",
       "description": "بعد إلغاء تصاريح وعقود العمال وتسوية الالتزامات وإلغاء الرخصة الاقتصادية، يُطلب بيان إلغاء نشاط المنشأة عبر مركز MOHRE على 600590000 لاستكمال إغلاق الملف.",
@@ -2355,6 +2743,11 @@
       "category": "work-employees",
       "internalUrl": "/services/تصريح-عمل-جزئي/",
       "officialUrl": "https://mohre.gov.ae/en/services/part-time-work-permit-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/part-time-work-permit-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/184",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تصريح عمل جزئي",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/part-time-work-permit-2022",
       "status": "verified",
       "description": "تنظيم عمل الموظف لدى منشأة بنظام الدوام الجزئي وفق الشروط.",
@@ -2366,21 +2759,21 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/issuance-of-a-new-work-permit-mission-work-permit/",
       "nextService": "/services/تصريح-عمل-حدث/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -2394,7 +2787,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -2412,6 +2805,11 @@
       "category": "work-employees",
       "internalUrl": "/services/تصريح-عمل-حدث/",
       "officialUrl": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/185",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تصريح عمل حدث",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
       "status": "verified",
       "description": "تصريح عمل لمن أتم الخامسة عشرة ولم يتجاوز الثامنة عشرة وفق الشروط والموافقات المطلوبة.",
@@ -2423,21 +2821,21 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/تصريح-عمل-جزئي/",
       "nextService": "/services/تصريح-تدريب-وعمل-طالب/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -2451,7 +2849,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -2469,6 +2867,11 @@
       "category": "work-employees",
       "internalUrl": "/services/تصريح-تدريب-وعمل-طالب/",
       "officialUrl": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/232",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تصريح تدريب وعمل طالب",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022",
       "status": "verified",
       "description": "تصريح تدريب أو عمل طالب داخل منشأة مسجلة وفق الشروط والموافقات المطلوبة.",
@@ -2480,21 +2883,21 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/تصريح-عمل-حدث/",
       "nextService": "/services/تجديد-تصريح-العمل/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -2508,7 +2911,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -2526,6 +2929,11 @@
       "category": "work-employees",
       "internalUrl": "/services/تجديد-تصريح-العمل/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/70",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تجديد تصريح العمل",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
       "status": "verified",
       "description": "تجديد التصريح والعقد قبل الانتهاء بعد استكمال المتطلبات.",
@@ -2537,21 +2945,21 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/تصريح-تدريب-وعمل-طالب/",
       "nextService": "/services/تعديل-تصاريح-وعقود-العمل/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -2565,7 +2973,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -2583,6 +2991,11 @@
       "category": "work-employees",
       "internalUrl": "/services/تعديل-تصاريح-وعقود-العمل/",
       "officialUrl": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
+      "executionUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/85",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تعديل تصاريح وعقود العمل",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
       "status": "verified",
       "description": "تعديل بيانات تصريح أو عقد العمل وفق نوع التغيير والموافقات التي تحددها بطاقة الخدمة.",
@@ -2594,21 +3007,21 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/تجديد-تصريح-العمل/",
       "nextService": "/services/التسجيل-والمتابعة-في-wps/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -2622,7 +3035,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -2640,6 +3053,11 @@
       "category": "contracts-notarization",
       "internalUrl": "/services/إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل/",
       "officialUrl": "https://mohre.gov.ae/en/guidance-and-awareness-portal-new/work-bundle",
+      "officialCardUrl": "https://mohre.gov.ae/en/guidance-and-awareness-portal-new/work-bundle",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إصدار عرض العمل ضمن طلب تصريح العمل",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/guidance-and-awareness-portal-new/work-bundle",
       "status": "verified",
       "description": "إعداد عرض العمل المعتمد وتوقيعه ضمن رحلة إصدار تصريح العمل للموظف؛ ليس طلباً حكومياً مستقلاً عن نوع التصريح.",
@@ -2684,6 +3102,11 @@
       "category": "work-employees",
       "internalUrl": "/services/التسجيل-والمتابعة-في-wps/",
       "officialUrl": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "التسجيل والمتابعة في WPS",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
       "status": "verified",
       "description": "تهيئة المنشأة لنظام حماية الأجور عبر التعاقد مع بنك أو مؤسسة مالية أو صرافة معتمدة، ثم متابعة الالتزام.",
@@ -2700,16 +3123,16 @@
       "nextService": "/services/خدمات-نافس-للمنشآت/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -2741,6 +3164,11 @@
       "category": "work-employees",
       "internalUrl": "/services/خدمات-نافس-للمنشآت/",
       "officialUrl": "https://nafis.gov.ae/employer",
+      "officialCardUrl": "https://nafis.gov.ae/employer",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "خدمات نافس للمنشآت",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://nafis.gov.ae/employer",
       "status": "verified",
       "description": "تسجيل المنشأة والوصول إلى برامج الشركاء والبحث عن الكفاءات الوطنية عبر مسار أصحاب العمل في نافس.",
@@ -2757,16 +3185,16 @@
       "nextService": "/services/ضمان-أو-تأمين-العامل/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -2798,6 +3226,11 @@
       "category": "work-employees",
       "internalUrl": "/services/ضمان-أو-تأمين-العامل/",
       "officialUrl": "https://mohre.gov.ae/en/media-center/news/9/8/2022/ministry-of-human-resources-and-emiratisation-issues-resolution-on-bank-guarantees-and-employees-pro",
+      "officialCardUrl": "https://mohre.gov.ae/en/media-center/news/9/8/2022/ministry-of-human-resources-and-emiratisation-issues-resolution-on-bank-guarantees-and-employees-pro",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "ضمان أو تأمين العامل",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/media-center/news/9/8/2022/ministry-of-human-resources-and-emiratisation-issues-resolution-on-bank-guarantees-and-employees-pro",
       "status": "verified",
       "description": "اختيار الضمان المصرفي أو وثيقة التأمين البديلة ضمن معاملة تصريح العمل عند انطباقها؛ لا تُعامل كطلب مستقل.",
@@ -2814,16 +3247,16 @@
       "nextService": "/services/بلاغ-انقطاع-عن-العمل/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -2855,6 +3288,11 @@
       "category": "work-employees",
       "internalUrl": "/services/بلاغ-انقطاع-عن-العمل/",
       "officialUrl": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
+      "executionUrl": "https://backoffice.mohre.gov.ae/mohre.complaints.app/TwafouqAnonymous2/CallerVerification?lang=en",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "بلاغ انقطاع عن العمل",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
       "status": "verified",
       "description": "تقديم أو متابعة بلاغ الانقطاع وفق الشروط والأدلة المعتمدة.",
@@ -2871,16 +3309,16 @@
       "nextService": "/services/إلغاء-بلاغ-انقطاع-عن-العمل/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -2912,6 +3350,11 @@
       "category": "work-employees",
       "internalUrl": "/services/إلغاء-بلاغ-انقطاع-عن-العمل/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء بلاغ انقطاع عن العمل",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
       "status": "verified",
       "description": "طلب سحب أو إلغاء البلاغ من الطرف المخول عند توافر المبررات.",
@@ -2928,16 +3371,16 @@
       "nextService": "/services/إلغاء-تصريح-لعامل-لديه-قضية-عمالية/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -2969,6 +3412,11 @@
       "category": "work-employees",
       "internalUrl": "/services/إلغاء-تصريح-لعامل-لديه-قضية-عمالية/",
       "officialUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء تصريح لعامل لديه قضية عمالية",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
       "status": "verified",
       "description": "إجراء مخصص للحالات المرتبطة بقضية عمالية وفق قرار الوزارة أو المحكمة.",
@@ -2985,16 +3433,16 @@
       "nextService": "/services/إصدار-تصريح-عمل-جديد-لعامل-مساعد/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -3026,6 +3474,11 @@
       "category": "work-employees",
       "internalUrl": "/services/إصدار-تصريح-عمل-جديد-لعامل-مساعد/",
       "officialUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إصدار تصريح عمل جديد لعامل مساعد",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
       "status": "verified",
       "description": "إصدار تصريح عمل جديد لعامل مساعد من داخل الدولة أو خارجها.",
@@ -3042,16 +3495,16 @@
       "nextService": "/services/إصدار-عقد-عمل-جديد-لعامل-مساعد/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -3083,6 +3536,11 @@
       "category": "work-employees",
       "internalUrl": "/services/إصدار-عقد-عمل-جديد-لعامل-مساعد/",
       "officialUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إصدار عقد عمل جديد لعامل مساعد",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
       "status": "verified",
       "description": "إصدار عقد العمل الجديد للعامل المساعد بعد استكمال المتطلبات الرسمية.",
@@ -3099,16 +3557,16 @@
       "nextService": "/services/تجديد-عقد-عمل-عامل-مساعد/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -3140,6 +3598,11 @@
       "category": "work-employees",
       "internalUrl": "/services/تجديد-عقد-عمل-عامل-مساعد/",
       "officialUrl": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تجديد عقد عمل عامل مساعد",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
       "status": "verified",
       "description": "تجديد عقد عمل العامل المساعد وفق مدة التصريح وصفة صاحب العمل.",
@@ -3156,16 +3619,16 @@
       "nextService": "/services/تعديل-عقد-وتصريح-عمل-عامل-مساعد/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -3197,6 +3660,11 @@
       "category": "work-employees",
       "internalUrl": "/services/تعديل-عقد-وتصريح-عمل-عامل-مساعد/",
       "officialUrl": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تعديل عقد وتصريح عمل عامل مساعد",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
       "status": "verified",
       "description": "تعديل بيانات عقد العمل وتصريح العامل المساعد وفق نوع التعديل.",
@@ -3213,16 +3681,16 @@
       "nextService": "/services/إلغاء-عقد-عمل-عامل-مساعد/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -3254,6 +3722,11 @@
       "category": "work-employees",
       "internalUrl": "/services/إلغاء-عقد-عمل-عامل-مساعد/",
       "officialUrl": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء عقد عمل عامل مساعد",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
       "status": "verified",
       "description": "إلغاء عقد عمل العامل المساعد داخل الدولة أو خارجها.",
@@ -3270,16 +3743,16 @@
       "nextService": "/services/إلغاء-تصريح-عمل-عامل-مساعد/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -3311,6 +3784,11 @@
       "category": "work-employees",
       "internalUrl": "/services/إلغاء-تصريح-عمل-عامل-مساعد/",
       "officialUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
+      "officialCardUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء تصريح عمل عامل مساعد",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
       "status": "verified",
       "description": "إلغاء تصريح عمل العامل المساعد داخل الدولة أو خارجها.",
@@ -3327,16 +3805,16 @@
       "nextService": "/services/بلاغ-انقطاع-عامل-مساعد/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -3368,6 +3846,11 @@
       "category": "work-employees",
       "internalUrl": "/services/بلاغ-انقطاع-عامل-مساعد/",
       "officialUrl": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "بلاغ انقطاع عامل مساعد",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
       "status": "verified",
       "description": "تقديم بلاغ انقطاع العامل المساعد؛ أما سحب البلاغ فله خدمة مستقلة مرتبطة بهذه الصفحة.",
@@ -3384,16 +3867,16 @@
       "nextService": "/services/سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -3425,6 +3908,11 @@
       "category": "work-employees",
       "internalUrl": "/services/سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل/",
       "officialUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "سحب بلاغ انقطاع عامل مساعد من صاحب العمل",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
       "status": "verified",
       "description": "سحب بلاغ الانقطاع بناءً على طلب صاحب العمل وفق شروط وزارة الموارد البشرية والتوطين.",
@@ -3441,16 +3929,16 @@
       "nextService": "/services/سحب-بلاغ-انقطاع-بطلب-العامل-المساعد/",
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -3482,6 +3970,11 @@
       "category": "work-employees",
       "internalUrl": "/services/سحب-بلاغ-انقطاع-بطلب-العامل-المساعد/",
       "officialUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
+      "officialCardUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "سحب بلاغ انقطاع بطلب العامل المساعد",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
       "status": "verified",
       "description": "طلب العامل المساعد سحب بلاغ الانقطاع والتحقق من صحة البلاغ لدى الوزارة.",
@@ -3498,16 +3991,16 @@
       "nextService": null,
       "relatedServices": [
         {
-          "name": "نقل تصريح عمل موظف إلى منشأة جديدة",
-          "internalUrl": "/services/transfer-work-permit-uae/"
+          "name": "تصريح عمل مدرس خصوصي",
+          "internalUrl": "/services/mohre-private-tutor-permit/"
         },
         {
-          "name": "إلغاء تصريح وعقد عمل في الإمارات",
-          "internalUrl": "/services/cancel-work-permit-uae/"
+          "name": "تصريح عمل لمواطني الإمارات ودول مجلس التعاون",
+          "internalUrl": "/services/mohre-uae-nationals-gcc-work-permit/"
         },
         {
-          "name": "إصدار تصريح عمل جديد من خارج الإمارات",
-          "internalUrl": "/services/new-work-permit-overseas-uae/"
+          "name": "تصريح عمل لتدريب مواطن إماراتي",
+          "internalUrl": "/services/mohre-uae-national-trainee-work-permit/"
         }
       ],
       "faq": [
@@ -3539,6 +4032,11 @@
       "category": "identity-citizenship",
       "internalUrl": "/services/بدل-فاقد-أو-تالف-للهوية/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "بدل فاقد أو تالف للهوية",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
       "status": "verified",
       "description": "إصدار بطاقة بديلة بنفس مدة صلاحية البطاقة الأصلية.",
@@ -3596,6 +4094,11 @@
       "category": "identity-citizenship",
       "internalUrl": "/services/تحديث-بيانات-الهوية/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تحديث بيانات الهوية",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
       "status": "verified",
       "description": "تحديث الهاتف أو البريد الإلكتروني أو العنوان والبيانات غير الأساسية.",
@@ -3653,6 +4156,11 @@
       "category": "identity-citizenship",
       "internalUrl": "/services/الإعفاء-من-غرامة-تأخير-الهوية/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "الإعفاء من غرامة تأخير الهوية",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
       "status": "verified",
       "description": "طلب إعفاء من رسوم التأخير المرتبطة بالهوية للحالات التي تنطبق عليها قرارات الإعفاء.",
@@ -3710,6 +4218,11 @@
       "category": "identity-citizenship",
       "internalUrl": "/services/استرداد-رسوم-إصدار-الهوية-غير-المكتمل/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
+      "executionUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/depositRefund/376/request/step1?administrativeRegionId=1&withException=false",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "استرداد رسوم إصدار الهوية غير المكتمل",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
       "status": "verified",
       "description": "طلب استرداد رسوم الإصدار عند عدم اكتمال الخدمة وفق قواعد الهيئة.",
@@ -3721,7 +4234,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/الإعفاء-من-غرامة-تأخير-الهوية/",
       "nextService": null,
       "relatedServices": [
@@ -3749,7 +4262,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -3767,6 +4280,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/إصدار-تصريح-إقامة-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "executionUrl": null,
+      "officialRouteMode": "official-bundle-selector",
+      "officialSelectorLabel": "إصدار تصريح إقامة عبر ICP (خارج دبي)",
+      "officialRouteNote": "تنشر الجهة هذه المعاملة كفئة داخل خدمة أم واحدة؛ افتح البطاقة الرسمية ثم اختر اسم هذه الفئة حرفياً.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
       "status": "verified",
       "description": "إصدار تصريح إقامة جديد للملفات التابعة للهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ خارج دبي.",
@@ -3824,6 +4342,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
       "officialUrl": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إصدار إقامة موظف في القطاع الخاص في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "إصدار تصريح إقامة لمدة سنتين قابلة للتجديد لموظف قطاع خاص يكون ملفه تابعًا لدبي.",
@@ -3881,6 +4404,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تجديد تصريح إقامة عبر ICP (خارج دبي)",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
       "status": "verified",
       "description": "تجديد تصريح الإقامة للملفات التابعة للهيئة الاتحادية خارج دبي وفق شروط الإصدار الأصلية.",
@@ -3938,6 +4466,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تعديل بيانات جميع أنواع الإقامة في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
       "status": "verified",
       "description": "تعديل البيانات المسجلة على تصريح إقامة صادر من دبي وفق المستند المؤيد لنوع التعديل.",
@@ -3995,6 +4528,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تعديل-الوضع-داخل-الدولة-في-دبي/",
       "officialUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تعديل الوضع داخل الدولة في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "تعديل وضع المكفول داخل الدولة بعد إلغاء الإقامة السابقة وصدور تأشيرة جديدة دون مغادرة الدولة.",
@@ -4052,6 +4590,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "executionUrl": null,
+      "officialRouteMode": "official-bundle-selector",
+      "officialSelectorLabel": "تغيير الوضع عبر ICP ضمن إصدار الإقامة (خارج دبي)",
+      "officialRouteNote": "تنشر الجهة هذه المعاملة كفئة داخل خدمة أم واحدة؛ افتح البطاقة الرسمية ثم اختر اسم هذه الفئة حرفياً.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
       "status": "verified",
       "description": "استكمال تغيير الوضع داخل الدولة ضمن معاملة إصدار الإقامة بعد إلغاء الإقامة السابقة وصدور تأشيرة جديدة.",
@@ -4109,6 +4652,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
+      "executionUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/serviceCards/1040?administrativeRegionId=1",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تصريح بقاء خارج الدولة لأكثر من 6 أشهر عبر ICP",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
       "status": "verified",
       "description": "إصدار تصريح للمقيم الذي بقي خارج الدولة أكثر من ستة أشهر بسبب مقبول، ولا يشمل المقيمين في دبي.",
@@ -4120,7 +4668,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي/",
       "nextService": "/services/إصدار-تأشيرة-عبر-icp-خارج-دبي/",
       "relatedServices": [
@@ -4148,7 +4696,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -4166,6 +4714,11 @@
       "category": "justice-police",
       "internalUrl": "/services/تقرير-تفاصيل-الإقامة-عبر-icp/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "executionUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/others/guestRequestDetails/447/step1?administrativeRegionId=1&withException=false",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "تقرير تفاصيل الإقامة عبر ICP",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
       "status": "verified",
       "description": "استخراج تقرير رسمي يبين بيانات الإقامة ومعلومات الملف النشط.",
@@ -4177,7 +4730,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/register-labour-complaints-private-sector-employees/",
       "nextService": "/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
       "relatedServices": [
@@ -4201,7 +4754,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -4219,6 +4772,11 @@
       "category": "family-sponsorship",
       "internalUrl": "/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تجديد إقامة أفراد الأسرة في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "تجديد إقامة أفراد الأسرة المرتبطة بملف كفيل صادر من دبي.",
@@ -4276,6 +4834,11 @@
       "category": "family-sponsorship",
       "internalUrl": "/services/إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
       "status": "verified",
       "description": "إصدار إقامة للوالدين لمدة سنة قابلة للتجديد بعد دراسة الحالة واستيفاء متطلبات الدخل والسكن والضمان.",
@@ -4333,6 +4896,11 @@
       "category": "family-sponsorship",
       "internalUrl": "/services/إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "executionUrl": null,
+      "officialRouteMode": "official-bundle-selector",
+      "officialSelectorLabel": "إصدار إقامة للوالدين عبر ICP (خارج دبي)",
+      "officialRouteNote": "تنشر الجهة هذه المعاملة كفئة داخل خدمة أم واحدة؛ افتح البطاقة الرسمية ثم اختر اسم هذه الفئة حرفياً.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
       "status": "verified",
       "description": "إصدار إقامة للوالدين عبر فئة أفراد أسرة المقيم وإثبات القرابة داخل بطاقة إصدار الإقامة الرسمية.",
@@ -4382,6 +4950,11 @@
       "category": "family-sponsorship",
       "internalUrl": "/services/إصدار-إقامة-لمولود-جديد-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+      "executionUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=14aefa78-624c-4f8a-aee9-c6876fcc8b1a&Lang=ar-AE",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "إصدار إقامة لمولود جديد في دبي",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "إصدار إقامة للمولود ضمن مسار إصدار إقامة أفراد الأسرة المرتبط بملف كفيل صادر من دبي.",
@@ -4439,6 +5012,11 @@
       "category": "family-sponsorship",
       "internalUrl": "/services/إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "executionUrl": null,
+      "officialRouteMode": "official-bundle-selector",
+      "officialSelectorLabel": "إصدار إقامة لمولود جديد عبر ICP (خارج دبي)",
+      "officialRouteNote": "تنشر الجهة هذه المعاملة كفئة داخل خدمة أم واحدة؛ افتح البطاقة الرسمية ثم اختر اسم هذه الفئة حرفياً.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
       "status": "verified",
       "description": "إصدار إقامة للمولود عبر فئة أفراد أسرة المقيم مع شهادة الميلاد داخل بطاقة إصدار الإقامة الرسمية.",
@@ -4488,6 +5066,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/إصدار-تأشيرة-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "executionUrl": null,
+      "officialRouteMode": "official-bundle-selector",
+      "officialSelectorLabel": "إصدار تأشيرة عبر ICP (خارج دبي)",
+      "officialRouteNote": "تنشر الجهة هذه المعاملة كفئة داخل خدمة أم واحدة؛ افتح البطاقة الرسمية ثم اختر اسم هذه الفئة حرفياً.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
       "status": "verified",
       "description": "إصدار تأشيرة دخول عبر بطاقة ICP الرسمية، مع اختيار الفئة والغرض الصحيحين داخل المعاملة.",
@@ -4545,6 +5128,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/إلغاء-تأشيرة-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء تأشيرة عبر ICP (خارج دبي)",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63",
       "status": "verified",
       "description": "إلغاء إذن دخول صادر من ICP قبل انتهاء صلاحيته ووفق شروط الدخول المنشورة.",
@@ -4602,6 +5190,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء إذن دخول أو تأشيرة صادرة من دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "إلغاء إذن الدخول أو التأشيرة الصادرة من دبي وفق الشروط المنشورة.",
@@ -4659,6 +5252,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تأشيرة زيارة قريب أو صديق لدخول واحد في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "إصدار تأشيرة زيارة لدخول واحد لمدة 30 أو 60 أو 90 يومًا لزيارة قريب أو صديق.",
@@ -4716,6 +5314,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "executionUrl": null,
+      "officialRouteMode": "official-bundle-selector",
+      "officialSelectorLabel": "تأشيرة زيارة قريب أو صديق عبر ICP (خارج دبي)",
+      "officialRouteNote": "تنشر الجهة هذه المعاملة كفئة داخل خدمة أم واحدة؛ افتح البطاقة الرسمية ثم اختر اسم هذه الفئة حرفياً.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
       "status": "verified",
       "description": "إصدار تأشيرة زيارة لقريب أو صديق عبر مسار ICP مع اختيار فئة الزيارة ومدة الإقامة داخل المعاملة.",
@@ -4773,6 +5376,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تأشيرة-سياحية-لدخول-واحد-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تأشيرة سياحية لدخول واحد في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
       "status": "verified",
       "description": "إصدار تأشيرة سياحية لدخول واحد لمدة 30 أو 60 يومًا عبر منشأة سياحية معتمدة في دبي.",
@@ -4830,6 +5438,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تأشيرة-سياحية-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "executionUrl": null,
+      "officialRouteMode": "official-bundle-selector",
+      "officialSelectorLabel": "تأشيرة سياحية عبر ICP (خارج دبي)",
+      "officialRouteNote": "تنشر الجهة هذه المعاملة كفئة داخل خدمة أم واحدة؛ افتح البطاقة الرسمية ثم اختر اسم هذه الفئة حرفياً.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
       "status": "verified",
       "description": "إصدار تأشيرة سياحية عبر مسار ICP مع اختيار فئة السياحة والمدة داخل المعاملة.",
@@ -4887,6 +5500,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+      "executionUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/783/step1?administrativeRegionId=1&withException=false",
+      "officialRouteMode": "direct-execution",
+      "officialSelectorLabel": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP",
+      "officialRouteNote": "رابط بدء معاملة منفصل ومتحقق منه.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
       "status": "verified",
       "description": "إصدار تأشيرة سياحية طويلة الأمد متعددة الدخول لمدة خمس سنوات من بطاقة الخدمة الرسمية المستقلة لدى ICP.",
@@ -4898,7 +5516,7 @@
       "lastReviewed": "2026-07-27",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/تأشيرة-سياحية-عبر-icp-خارج-دبي/",
       "nextService": "/services/تأشيرة-استكشاف-فرص-عمل-في-دبي/",
       "relatedServices": [
@@ -4926,7 +5544,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
       ]
     },
@@ -4944,6 +5562,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تأشيرة-استكشاف-فرص-عمل-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تأشيرة استكشاف فرص عمل في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
       "status": "verified",
       "description": "إصدار تأشيرة زيارة لاستكشاف فرص العمل لدخول واحد أو عدة دخولات دون كفيل أو مستضيف داخل الدولة.",
@@ -5001,6 +5624,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "executionUrl": null,
+      "officialRouteMode": "official-bundle-selector",
+      "officialSelectorLabel": "تأشيرة استكشاف فرص عمل عبر ICP (خارج دبي)",
+      "officialRouteNote": "تنشر الجهة هذه المعاملة كفئة داخل خدمة أم واحدة؛ افتح البطاقة الرسمية ثم اختر اسم هذه الفئة حرفياً.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
       "status": "verified",
       "description": "إصدار تأشيرة لاستكشاف فرص العمل عبر ICP مع اختيار الفئة داخل المعاملة.",
@@ -5058,6 +5686,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تأشيرة استكشاف فرص تأسيس الأعمال في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
       "status": "verified",
       "description": "إصدار تأشيرة زيارة لاستكشاف فرص تأسيس الأعمال لدخول واحد أو عدة دخولات دون كفيل أو مستضيف.",
@@ -5115,6 +5748,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "executionUrl": null,
+      "officialRouteMode": "official-bundle-selector",
+      "officialSelectorLabel": "تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)",
+      "officialRouteNote": "تنشر الجهة هذه المعاملة كفئة داخل خدمة أم واحدة؛ افتح البطاقة الرسمية ثم اختر اسم هذه الفئة حرفياً.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
       "status": "verified",
       "description": "إصدار تأشيرة لاستكشاف فرص تأسيس الأعمال عبر ICP مع اختيار الفئة داخل المعاملة.",
@@ -5172,6 +5810,11 @@
       "category": "residency-visas",
       "internalUrl": "/services/تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تجديد إقامة موظف في القطاع الخاص في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "تجديد تصريح إقامة موظف القطاع الخاص الصادر من دبي.",
@@ -5229,6 +5872,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "إصدار بطاقة منشأة تتضمن بيانات منشأة القطاع الخاص أو المنطقة الحرة في دبي.",
@@ -5286,6 +5934,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إصدار بطاقة منشأة عبر ICP (خارج دبي)",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
       "status": "verified",
       "description": "إصدار بطاقة المنشأة الإلكترونية التي تتضمن الاسم التجاري والرخصة والشركاء والنشاط.",
@@ -5343,6 +5996,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
       "officialUrl": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تجديد بطاقة المنشأة في دبي لجميع الفئات",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "تجديد بطاقة المنشأة الحكومية أو الخاصة أو المنطقة الحرة أو الشركة الوطنية في دبي.",
@@ -5400,6 +6058,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
       "status": "verified",
       "description": "تجديد بطاقة المنشأة الإلكترونية بعد التحقق من الرخصة والغرامات والمتطلبات.",
@@ -5457,6 +6120,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "تعديل الاسم التجاري أو التنازل أو الشركاء أو بيانات بطاقة المنشأة في دبي.",
@@ -5514,6 +6182,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "تعديل أو إضافة بيانات بطاقة المنشأة عبر ICP (خارج دبي)",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
       "status": "verified",
       "description": "تعديل اسم المنشأة أو الملكية أو الشركاء أو إضافة امتيازات الخدمة في بطاقة المنشأة.",
@@ -5571,6 +6244,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
       "officialUrl": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء بطاقة المنشأة في دبي لجميع الفئات",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "إلغاء بطاقة المنشأة في دبي بعد خلوها من المكفولين واستيفاء الشروط.",
@@ -5628,6 +6306,11 @@
       "category": "companies-establishments",
       "internalUrl": "/services/إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إلغاء بطاقة المنشأة عبر ICP (خارج دبي)",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
       "status": "verified",
       "description": "إلغاء بطاقة المنشأة الحكومية أو الخاصة أو العاملة في منطقة حرة بعد إلغاء الرخصة وتسوية العمال والغرامات.",
@@ -5685,6 +6368,11 @@
       "category": "justice-police",
       "internalUrl": "/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "الاستعلام عن غرامات ملف أو مكفول في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
       "status": "verified",
       "description": "الاستعلام عن الغرامات المرتبطة بالملف الشخصي أو المكفولين باستخدام رقم الملف أو الهوية أو الجواز أو الرقم الموحد.",
@@ -5738,6 +6426,11 @@
       "category": "justice-police",
       "internalUrl": "/services/سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي/",
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "سداد غرامات مخالفي قانون الإقامة في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
       "status": "verified",
       "description": "سداد الغرامة المالية المستحقة على مخالف قانون دخول وإقامة الأجانب في دبي.",
@@ -5791,6 +6484,11 @@
       "category": "justice-police",
       "internalUrl": "/services/سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي/",
       "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي)",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
       "status": "verified",
       "description": "سداد الغرامات المفروضة على مخالفي التأشيرات أو الإقامة ضمن اختصاص ICP.",
@@ -5844,6 +6542,11 @@
       "category": "justice-police",
       "internalUrl": "/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
       "officialUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
+      "officialCardUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "متابعة حالة طلب أو ملف لدى GDRFA دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
       "status": "verified",
       "description": "تتبع طلب أو ملف أو خدمة كاونتر أو منشأة أو طلب إعادة نظر باستخدام بيانات المعاملة الرسمية.",
@@ -5897,6 +6600,11 @@
       "category": "justice-police",
       "internalUrl": "/services/متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي/",
       "officialUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
+      "officialCardUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
+      "executionUrl": null,
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "متابعة حالة طلب تأشيرة لدى ICP (خارج دبي)",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
       "evidenceUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
       "status": "verified",
       "description": "تتبع طلب التأشيرة برقم الطلب عبر خيار Application Tracking في منصة الخدمات الذكية.",

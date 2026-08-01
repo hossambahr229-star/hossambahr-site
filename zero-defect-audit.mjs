@@ -4,6 +4,7 @@ import { dirname, extname, relative, resolve, sep } from "node:path";
 const root = resolve(import.meta.dirname);
 const live = process.argv.includes("--live");
 const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "utf8"));
+const legacyAliases = JSON.parse(await readFile(resolve(root, "content/legacy-service-aliases.json"), "utf8"));
 const failures = [];
 const warnings = [];
 
@@ -55,7 +56,7 @@ for (const [file, html] of htmlCache) {
   }
 }
 
-const requiredFields = ["id", "name", "officialName", "type", "emirate", "authority", "category", "internalUrl", "officialUrl", "status", "requirements", "fees", "duration", "faq", "relatedServices", "previousService", "nextService"];
+const requiredFields = ["id", "name", "officialName", "type", "emirate", "authority", "category", "internalUrl", "officialUrl", "officialCardUrl", "executionUrl", "officialRouteMode", "officialSelectorLabel", "officialRouteNote", "status", "requirements", "fees", "duration", "faq", "relatedServices", "previousService", "nextService"];
 const ids = new Set();
 const internalUrls = new Set();
 for (const service of matrix.services) {
@@ -65,7 +66,10 @@ for (const service of matrix.services) {
   ids.add(service.id);
   internalUrls.add(service.internalUrl);
   if (service.status !== "verified") failures.push({ type: "unverified-service-published", service: service.id });
-  if (!/^https:\/\//i.test(service.officialUrl)) failures.push({ type: "non-https-official-link", service: service.id, value: service.officialUrl });
+  if (!/^https:\/\//i.test(service.officialCardUrl)) failures.push({ type: "non-https-official-card-link", service: service.id, value: service.officialCardUrl });
+  if (!["direct-execution", "official-bundle-selector", "official-service-card"].includes(service.officialRouteMode)) failures.push({ type: "invalid-official-route-mode", service: service.id, value: service.officialRouteMode });
+  if (service.officialRouteMode === "direct-execution" && !/^https:\/\//i.test(service.executionUrl || "")) failures.push({ type: "direct-execution-link-missing", service: service.id });
+  if (service.officialRouteMode !== "direct-execution" && service.executionUrl) failures.push({ type: "non-direct-route-claims-execution-link", service: service.id, value: service.executionUrl });
   if (!/exact_|approved/i.test(`${service.functionalFinding} ${service.reviewResult}`)) failures.push({ type: "official-route-not-semantically-approved", service: service.id, finding: service.functionalFinding, result: service.reviewResult });
   const file = resolve(root, service.internalUrl.replace(/^\/+/, ""), "index.html");
   if (!existing.has(file.toLowerCase())) {
@@ -73,7 +77,9 @@ for (const service of matrix.services) {
     continue;
   }
   const html = htmlCache.get(file) || "";
-  if (!html.includes(service.officialUrl.replaceAll("&", "&amp;")) && !html.includes(service.officialUrl)) failures.push({ type: "wrong-official-cta", service: service.id, value: service.officialUrl });
+  if (!html.includes(service.officialCardUrl.replaceAll("&", "&amp;")) && !html.includes(service.officialCardUrl)) failures.push({ type: "wrong-official-card-cta", service: service.id, value: service.officialCardUrl });
+  if (service.executionUrl && !html.includes(service.executionUrl.replaceAll("&", "&amp;")) && !html.includes(service.executionUrl)) failures.push({ type: "wrong-execution-cta", service: service.id, value: service.executionUrl });
+  if (!html.includes(`data-official-route-mode="${service.officialRouteMode}"`)) failures.push({ type: "route-mode-not-rendered", service: service.id, value: service.officialRouteMode });
   if (!html.includes(service.name) || !html.includes(service.officialName)) failures.push({ type: "service-name-content-mismatch", service: service.id });
   if (/href=["']\/services\/?\?q=/i.test(html)) failures.push({ type: "service-page-fake-route", service: service.id });
 }
@@ -96,17 +102,42 @@ for (const link of catalogLinks) {
   if (/[?]q=/.test(link) || link === "/") failures.push({ type: "catalog-card-generic-target", value: link });
 }
 
+for (const [file, html] of htmlCache) {
+  for (const cardMatch of html.matchAll(/<article class="service-card"[\s\S]*?<\/article>/g)) {
+    const card = cardMatch[0];
+    const expected = (card.match(/data-service-url="([^"]+)"/) || [])[1];
+    const hrefs = [...card.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
+    if (!expected || !internalUrls.has(expected)) failures.push({ type: "service-card-missing-exact-route", source: relative(root, file).split(sep).join("/"), expected });
+    for (const href of hrefs) if (!href.startsWith(expected)) failures.push({ type: "service-card-bypasses-dedicated-page", source: relative(root, file).split(sep).join("/"), expected, value: href });
+  }
+}
+
+for (const [alias, target] of Object.entries(legacyAliases.aliases || {})) {
+  const file = resolve(root, "services", alias, "index.html");
+  const html = htmlCache.get(file) || "";
+  if (!html) failures.push({ type: "missing-legacy-service-alias", alias, target });
+  else if (!html.includes(`location.replace(${JSON.stringify(target)})`)) failures.push({ type: "legacy-service-alias-not-redirected", alias, target });
+}
+
 const matrixServiceCount = matrix.services.length;
 if (matrix.summary.services !== matrixServiceCount) failures.push({ type: "summary-service-count-mismatch", expected: matrixServiceCount, actual: matrix.summary.services });
 if (matrix.summary.authorities !== matrix.authorities.length) failures.push({ type: "summary-authority-count-mismatch", expected: matrix.authorities.length, actual: matrix.summary.authorities });
 
 let liveChecks = [];
 if (live) {
-  const unique = [...new Map(matrix.services.map((service) => [service.officialUrl, { url: service.officialUrl, services: [] }])).values()];
-  for (const service of matrix.services) unique.find((entry) => entry.url === service.officialUrl).services.push(service.id);
+  const uniqueMap = new Map();
+  for (const service of matrix.services) {
+    for (const [kind, url] of [["official-card", service.officialCardUrl], ["execution", service.executionUrl]]) {
+      if (!url) continue;
+      if (!uniqueMap.has(url)) uniqueMap.set(url, { url, kinds: new Set(), services: [] });
+      uniqueMap.get(url).kinds.add(kind);
+      uniqueMap.get(url).services.push(service.id);
+    }
+  }
+  const unique = [...uniqueMap.values()].map((entry) => ({ ...entry, kinds: [...entry.kinds] }));
   async function inspect(entry) {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 25_000);
+    const timer = setTimeout(() => controller.abort(), 15_000);
     try {
       const response = await fetch(entry.url, { method: "GET", redirect: "follow", signal: controller.signal, headers: { "user-agent": "HossamBahr-Zero-Defect-Audit/1.0" } });
       return { ...entry, ok: (response.status >= 200 && response.status < 400) || [401, 403].includes(response.status), status: response.status, finalUrl: response.url };
@@ -116,7 +147,7 @@ if (live) {
       clearTimeout(timer);
     }
   }
-  for (let index = 0; index < unique.length; index += 6) liveChecks.push(...await Promise.all(unique.slice(index, index + 6).map(inspect)));
+  for (let index = 0; index < unique.length; index += 16) liveChecks.push(...await Promise.all(unique.slice(index, index + 16).map(inspect)));
   for (const check of liveChecks.filter((item) => !item.ok)) failures.push({ type: "official-link-unreachable", url: check.url, status: check.status, error: check.error, services: check.services });
 }
 
