@@ -52,3 +52,11 @@ reference; current generated CSS is not silently treated as that reference.
 4. Review official sources and attach link/service evidence.
 5. Change the entity to `verified` only after manual journey verification.
 6. Generate pages, search, navigation, and audit artifacts solely from the registry.
+
+## Legacy staging
+
+`src/migration/legacy-candidates.json` is a quarantine manifest, not a second service
+registry. It preserves one pointer for every legacy record and states exactly which
+canonical fields are missing, unstructured, or untested. A candidate cannot be
+rendered or searched and cannot enter the canonical registry until its blockers are
+resolved.
