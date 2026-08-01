@@ -4,6 +4,24 @@
   "targetServiceId": "reserve-trade-name-dubai",
   "authorityId": "det",
   "status": "in-review",
+  "reviewedData": {
+    "name": { "ar": "طلب حجز الاسم التجاري", "en": "Request to book a trade name" },
+    "description": {
+      "ar": "خدمة لإصدار وثيقة حكومية رسمية تؤكد الاسم التجاري للمشروع لاستخدامه في العقود والمستندات والمعاملات الرسمية.",
+      "en": "A service that issues an official government document confirming a project's trade name for use in contracts, official documents and transactions."
+    },
+    "audiences": [
+      { "ar": "متعاملو تأسيس الشركات الجديدة", "en": "New-business applicants" }
+    ],
+    "requestType": { "ar": "حجز", "en": "Reservation" },
+    "authorityId": "det",
+    "emirateId": "dubai",
+    "category": { "mainId": "business-setup", "subId": "trade-name-services" },
+    "customerTypeIds": ["investor"],
+    "activityIds": ["new-business-economic-activity"],
+    "licenseTypeIds": ["pre-trade-licence"],
+    "classificationNumbers": []
+  },
   "checks": [
     {
       "order": 1,
@@ -37,8 +55,30 @@
         { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:10:00+04:00" }
       ]
     },
-    { "order": 4, "id": "main-subcategory", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
-    { "order": 5, "id": "license-or-activity", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    {
+      "order": 4,
+      "id": "main-subcategory",
+      "status": "passed",
+      "reviewedAt": "2026-08-01T12:20:00+04:00",
+      "notes": "Controlled mapping approved as business-setup > trade-name-services. The official portal places the transaction under Business set-up > Business set-up services. The narrower subcategory is an explicit platform-controlled transaction-subject classification, not a claim that the government portal publishes that exact subcategory label.",
+      "evidence": [
+        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:20:00+04:00" },
+        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:20:00+04:00" },
+        { "type": "manual-log", "value": "controlled-taxonomy:business-setup/trade-name-services", "capturedAt": "2026-08-01T12:20:00+04:00" }
+      ]
+    },
+    {
+      "order": 5,
+      "id": "license-or-activity",
+      "status": "passed",
+      "reviewedAt": "2026-08-01T12:35:00+04:00",
+      "notes": "Approved controlled dimensions: activity=new-business-economic-activity and licence-type=pre-trade-licence. The official service identifies trade-name reservation as a service for new businesses and lists trade-licence issuance as a separate related next service. Its naming rules require the proposed name to reflect the selected business activity. No specific licence type or official classification number is claimed.",
+      "evidence": [
+        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:35:00+04:00" },
+        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:35:00+04:00" },
+        { "type": "manual-log", "value": "controlled-dimensions:activity=new-business-economic-activity;licence-type=pre-trade-licence", "capturedAt": "2026-08-01T12:35:00+04:00" }
+      ]
+    },
     { "order": 6, "id": "keywords", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
     { "order": 7, "id": "content", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
     { "order": 8, "id": "faq", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },

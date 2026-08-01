@@ -29,6 +29,30 @@ function authorityCandidates(inventory, authorityId) {
   return inventory.candidates.filter((candidate) => candidate.businessDimensions.authorityGroup.startsWith(`${authorityId} `));
 }
 
+const REQUIRED_REVIEWED_DATA = Object.freeze({
+  'service-data': ['name', 'description', 'audiences', 'requestType'],
+  'government-authority': ['authorityId'],
+  emirate: ['emirateId'],
+  'main-subcategory': ['category'],
+  'license-or-activity': ['customerTypeIds', 'activityIds', 'licenseTypeIds', 'classificationNumbers'],
+  keywords: ['keywords'],
+  content: ['content'],
+  faq: ['faq'],
+  documents: ['documents'],
+  fees: ['fees'],
+  'completion-time': ['duration'],
+  'related-services': ['relatedServiceIds', 'alternativeServiceIds'],
+  'government-link': ['executionLinks']
+});
+
+function hasReviewedValue(value) {
+  if (value === null || value === undefined) return false;
+  if (typeof value === 'string') return value.trim().length > 0;
+  if (Array.isArray(value)) return true;
+  if (typeof value === 'object') return Object.keys(value).length > 0;
+  return true;
+}
+
 export function validateProgressiveReview({ state, inventory, dossiers, registry, businessEvaluation }) {
   const errors = [];
   const queue = state.authorityQueue ?? [];
@@ -98,6 +122,11 @@ export function validateProgressiveReview({ state, inventory, dossiers, registry
       if (check.status === 'passed' && !priorCheckPassed) issue(errors, `${base}.checks[${checkIndex}]`, 'review checks must pass strictly in order');
       if (check.status === 'passed' && (!check.reviewedAt || !(check.evidence ?? []).length)) issue(errors, `${base}.checks[${checkIndex}]`, 'passed check requires review time and evidence');
       if (check.status === 'pending' && (check.reviewedAt || (check.evidence ?? []).length)) issue(errors, `${base}.checks[${checkIndex}]`, 'pending check cannot contain approval evidence');
+      if (check.status === 'passed') {
+        for (const field of REQUIRED_REVIEWED_DATA[check.id] ?? []) {
+          if (!hasReviewedValue(dossier.reviewedData?.[field])) issue(errors, `${base}.reviewedData.${field}`, `passed ${check.id} check requires an explicit reviewed value`);
+        }
+      }
       if (check.status !== 'passed') priorCheckPassed = false;
     }
     if (dossier.status === 'approved') {

@@ -10,10 +10,34 @@
     { "id": "government-entity", "name": { "ar": "جهة حكومية", "en": "Government entity" } }
   ],
   "activities": [
-    { "id": "non-economic-government-service", "name": { "ar": "خدمة حكومية غير مرتبطة بنشاط اقتصادي", "en": "Non-economic government service" } }
+    { "id": "non-economic-government-service", "name": { "ar": "خدمة حكومية غير مرتبطة بنشاط اقتصادي", "en": "Non-economic government service" } },
+    {
+      "id": "new-business-economic-activity",
+      "name": { "ar": "نشاط اقتصادي لشركة جديدة", "en": "Economic activity for a new business" },
+      "scopeNote": {
+        "ar": "يُختار النشاط الاقتصادي عند حجز الاسم، ويجب أن يعكس الاسم طبيعة النشاط. لا تمثل هذه القيمة قائمة الأنشطة المعتمدة أو استثناءاتها.",
+        "en": "The economic activity is selected when reserving the name, and the name must reflect that activity. This value does not represent the approved activity list or its exceptions."
+      },
+      "evidence": [
+        "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name"
+      ]
+    }
   ],
   "licenseTypes": [
-    { "id": "license-not-required", "name": { "ar": "لا تتطلب رخصة", "en": "No licence required" } }
+    { "id": "license-not-required", "name": { "ar": "لا تتطلب رخصة", "en": "No licence required" } },
+    {
+      "id": "pre-trade-licence",
+      "name": { "ar": "إجراء سابق لإصدار الرخصة التجارية", "en": "Pre-trade-licence procedure" },
+      "scopeNote": {
+        "ar": "حجز الاسم خدمة للشركات الجديدة تسبق خدمة إصدار الرخصة، وليست نوع رخصة مستقلًا.",
+        "en": "Trade-name reservation is a new-business service preceding licence issuance; it is not a standalone licence type."
+      },
+      "evidence": [
+        "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name"
+      ]
+    }
   ],
   "classifications": []
 }

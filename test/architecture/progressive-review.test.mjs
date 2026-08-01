@@ -7,6 +7,7 @@ const candidates = JSON.parse(await readFile(new URL('../../src/review/service-r
 const references = JSON.parse(await readFile(new URL('../../src/review/reference-review-inventory.json', import.meta.url), 'utf8'));
 const state = JSON.parse(await readFile(new URL('../../src/review/progressive-review-state.json', import.meta.url), 'utf8'));
 const dossierTemplate = JSON.parse(await readFile(new URL('../../src/review/templates/service-review-dossier.json', import.meta.url), 'utf8'));
+const activeDossier = JSON.parse(await readFile(new URL('../../src/review/dossiers/reserve-trade-name-dubai.json', import.meta.url), 'utf8'));
 
 function validate(overrides = {}) {
   return validateProgressiveReview({
@@ -103,6 +104,14 @@ test('review checks cannot pass out of order', () => {
   const result = validate({ dossiers: [dossier] });
   assert.equal(result.valid, false);
   assert.equal(result.errors.some((error) => error.message.includes('strictly in order')), true);
+});
+
+test('a passed review check must preserve its approved structured values', () => {
+  const dossier = structuredClone(activeDossier);
+  delete dossier.reviewedData.category;
+  const result = validate({ dossiers: [dossier] });
+  assert.equal(result.valid, false);
+  assert.equal(result.errors.some((error) => error.path.endsWith('reviewedData.category')), true);
 });
 
 test('active service cannot advance before the previous service is registered and accepted', () => {

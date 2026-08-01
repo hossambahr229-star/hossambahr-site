@@ -1,7 +1,27 @@
 {
   "schemaVersion": "1.0.0",
-  "mainCategories": [],
-  "subCategories": [],
+  "mainCategories": [
+    {
+      "id": "business-setup",
+      "name": { "ar": "تأسيس الشركات", "en": "Business set-up" },
+      "evidence": [
+        "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services",
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services"
+      ]
+    }
+  ],
+  "subCategories": [
+    {
+      "id": "trade-name-services",
+      "mainId": "business-setup",
+      "name": { "ar": "خدمات الاسم التجاري", "en": "Trade name services" },
+      "classificationBasis": "platform-controlled transaction subject; not represented as an official government label",
+      "evidence": [
+        "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name"
+      ]
+    }
+  ],
   "recordContract": {
     "mainCategoryRequired": ["id", "name"],
     "subCategoryRequired": ["id", "mainId", "name"]
