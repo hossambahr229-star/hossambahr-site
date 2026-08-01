@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hossambahr.com/schemas/service.schema.json",
+  "title": "HossamBahr Government Service",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "emirateId",
+    "authorityId",
+    "category",
+    "keywords",
+    "documents",
+    "fees",
+    "conditions",
+    "steps",
+    "executionLinks",
+    "officialSources",
+    "relatedServiceIds",
+    "alternativeServiceIds",
+    "faq",
+    "lastUpdated",
+    "verification"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "name": { "$ref": "#/$defs/localizedRequired" },
+    "emirateId": { "type": "string", "minLength": 1 },
+    "authorityId": { "type": "string", "minLength": 1 },
+    "category": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mainId", "subId"],
+      "properties": {
+        "mainId": { "type": "string", "minLength": 1 },
+        "subId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "keywords": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ar", "en"],
+      "properties": {
+        "ar": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+        "en": { "$ref": "#/$defs/nonEmptyUniqueStrings" }
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/document" }
+    },
+    "fees": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/fee" }
+    },
+    "conditions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/localizedRequired" }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/step" }
+    },
+    "executionLinks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/executionLink" }
+    },
+    "officialSources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/officialSource" }
+    },
+    "relatedServiceIds": { "$ref": "#/$defs/uniqueIds" },
+    "alternativeServiceIds": { "$ref": "#/$defs/uniqueIds" },
+    "faq": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/faq" }
+    },
+    "lastUpdated": { "type": "string", "format": "date" },
+    "verification": { "$ref": "#/$defs/verification" }
+  },
+  "$defs": {
+    "localizedRequired": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ar", "en"],
+      "properties": {
+        "ar": { "type": "string", "minLength": 1 },
+        "en": { "type": "string", "minLength": 1 }
+      }
+    },
+    "nonEmptyUniqueStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "uniqueIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "required", "notes"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "name": { "$ref": "#/$defs/localizedRequired" },
+        "required": { "type": "boolean" },
+        "notes": { "$ref": "#/$defs/localizedRequired" }
+      }
+    },
+    "fee": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "amount", "currency", "notes"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "$ref": "#/$defs/localizedRequired" },
+        "amount": { "type": ["number", "null"], "minimum": 0 },
+        "currency": { "type": "string", "enum": ["AED", "VARIABLE", "NOT_APPLICABLE"] },
+        "notes": { "$ref": "#/$defs/localizedRequired" }
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order", "title", "description"],
+      "properties": {
+        "order": { "type": "integer", "minimum": 1 },
+        "title": { "$ref": "#/$defs/localizedRequired" },
+        "description": { "$ref": "#/$defs/localizedRequired" }
+      }
+    },
+    "executionLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "url", "channel", "target", "official", "lastTestedAt", "testEvidence"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "$ref": "#/$defs/localizedRequired" },
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "channel": { "type": "string", "enum": ["web", "mobile-app", "service-center"] },
+        "target": { "type": "string", "enum": ["exact-transaction", "exact-login", "exact-service-card"] },
+        "official": { "const": true },
+        "lastTestedAt": { "type": ["string", "null"], "format": "date-time" },
+        "testEvidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidence" }
+        }
+      }
+    },
+    "officialSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "title", "checkedAt"],
+      "properties": {
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "title": { "$ref": "#/$defs/localizedRequired" },
+        "checkedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "faq": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question", "answer"],
+      "properties": {
+        "question": { "$ref": "#/$defs/localizedRequired" },
+        "answer": { "$ref": "#/$defs/localizedRequired" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "value", "capturedAt"],
+      "properties": {
+        "type": { "type": "string", "enum": ["screenshot", "http-log", "manual-log", "official-source"] },
+        "value": { "type": "string", "minLength": 1 },
+        "capturedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewedAt", "reviewer", "evidence", "notes"],
+      "properties": {
+        "status": { "type": "string", "enum": ["draft", "needs-information", "verified", "suspended"] },
+        "reviewedAt": { "type": ["string", "null"], "format": "date-time" },
+        "reviewer": { "type": ["string", "null"] },
+        "evidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidence" }
+        },
+        "notes": { "$ref": "#/$defs/localizedRequired" }
+      }
+    }
+  }
+}

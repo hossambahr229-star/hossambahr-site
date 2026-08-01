@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0.0",
+  "mainCategories": [],
+  "subCategories": [],
+  "recordContract": {
+    "mainCategoryRequired": ["id", "name"],
+    "subCategoryRequired": ["id", "mainId", "name"]
+  }
+}

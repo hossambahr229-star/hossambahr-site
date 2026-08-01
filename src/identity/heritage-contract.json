@@ -1,0 +1,21 @@
+{
+  "contractVersion": "1.0.0",
+  "status": "pending-historical-verification",
+  "rule": "No visual token or layout may be declared canonical until matched against the approved historical identity reference.",
+  "lockedAreas": [
+    "colors",
+    "typography",
+    "page-layout",
+    "cards",
+    "buttons",
+    "header",
+    "footer",
+    "home-page",
+    "service-pages",
+    "dashboard",
+    "search"
+  ],
+  "candidateLegacyAssets": [
+    "heritage-identity.css"
+  ]
+}

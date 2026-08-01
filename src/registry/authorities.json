@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1.0.0",
+  "authorities": [],
+  "recordContract": {
+    "required": ["id", "name", "governmentLevel", "officialDomains"],
+    "governmentLevels": ["federal", "emirate", "municipal", "free-zone"]
+  }
+}
