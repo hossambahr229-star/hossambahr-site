@@ -56,7 +56,7 @@ for (const [file, html] of htmlCache) {
   }
 }
 
-const requiredFields = ["id", "name", "officialName", "type", "emirate", "authority", "category", "internalUrl", "officialUrl", "officialCardUrl", "executionUrl", "officialRouteMode", "officialSelectorLabel", "officialRouteNote", "status", "requirements", "fees", "duration", "faq", "relatedServices", "previousService", "nextService"];
+const requiredFields = ["id", "name", "officialName", "type", "emirate", "authority", "category", "internalUrl", "officialUrl", "officialCardUrl", "executionUrl", "executionChoices", "officialRouteMode", "officialSelectorLabel", "officialRouteNote", "status", "requirements", "fees", "duration", "faq", "relatedServices", "previousService", "nextService"];
 const ids = new Set();
 const internalUrls = new Set();
 for (const service of matrix.services) {
@@ -70,6 +70,20 @@ for (const service of matrix.services) {
   if (!["direct-execution", "official-bundle-selector", "official-service-card"].includes(service.officialRouteMode)) failures.push({ type: "invalid-official-route-mode", service: service.id, value: service.officialRouteMode });
   if (service.officialRouteMode === "direct-execution" && !/^https:\/\//i.test(service.executionUrl || "")) failures.push({ type: "direct-execution-link-missing", service: service.id });
   if (service.officialRouteMode !== "direct-execution" && service.executionUrl) failures.push({ type: "non-direct-route-claims-execution-link", service: service.id, value: service.executionUrl });
+  const choiceUrls = new Set();
+  const choiceTransactionIds = new Set();
+  for (const choice of service.executionChoices || []) {
+    if (!choice.label || !/^https:\/\//i.test(choice.url || "")) failures.push({ type: "invalid-execution-choice", service: service.id, choice });
+    if (/#[/]login(?:$|[?])/i.test(choice.url || "")) failures.push({ type: "generic-login-used-as-execution-choice", service: service.id, choice });
+    if (choiceUrls.has(choice.url)) failures.push({ type: "duplicate-execution-choice-url", service: service.id, value: choice.url });
+    choiceUrls.add(choice.url);
+    if (choice.transactionId !== null) {
+      if (!String(choice.url).includes(String(choice.transactionId))) failures.push({ type: "transaction-id-url-mismatch", service: service.id, choice });
+      if (choiceTransactionIds.has(choice.transactionId)) failures.push({ type: "duplicate-execution-choice-transaction", service: service.id, value: choice.transactionId });
+      choiceTransactionIds.add(choice.transactionId);
+    }
+  }
+  if (service.authority.slug === "icp" && service.officialRouteMode !== "direct-execution" && !service.executionChoices?.length) failures.push({ type: "icp-service-still-ends-at-general-card", service: service.id });
   if (!/exact_|approved/i.test(`${service.functionalFinding} ${service.reviewResult}`)) failures.push({ type: "official-route-not-semantically-approved", service: service.id, finding: service.functionalFinding, result: service.reviewResult });
   const file = resolve(root, service.internalUrl.replace(/^\/+/, ""), "index.html");
   if (!existing.has(file.toLowerCase())) {
@@ -79,6 +93,7 @@ for (const service of matrix.services) {
   const html = htmlCache.get(file) || "";
   if (!html.includes(service.officialCardUrl.replaceAll("&", "&amp;")) && !html.includes(service.officialCardUrl)) failures.push({ type: "wrong-official-card-cta", service: service.id, value: service.officialCardUrl });
   if (service.executionUrl && !html.includes(service.executionUrl.replaceAll("&", "&amp;")) && !html.includes(service.executionUrl)) failures.push({ type: "wrong-execution-cta", service: service.id, value: service.executionUrl });
+  for (const choice of service.executionChoices || []) if (!html.includes(choice.url.replaceAll("&", "&amp;")) && !html.includes(choice.url)) failures.push({ type: "execution-choice-not-rendered", service: service.id, value: choice.url });
   if (!html.includes(`data-official-route-mode="${service.officialRouteMode}"`)) failures.push({ type: "route-mode-not-rendered", service: service.id, value: service.officialRouteMode });
   if (!html.includes(service.name) || !html.includes(service.officialName)) failures.push({ type: "service-name-content-mismatch", service: service.id });
   if (/href=["']\/services\/?\?q=/i.test(html)) failures.push({ type: "service-page-fake-route", service: service.id });
@@ -127,7 +142,8 @@ let liveChecks = [];
 if (live) {
   const uniqueMap = new Map();
   for (const service of matrix.services) {
-    for (const [kind, url] of [["official-card", service.officialCardUrl], ["execution", service.executionUrl]]) {
+    const endpoints = [["official-card", service.officialCardUrl], ["execution", service.executionUrl], ...(service.executionChoices || []).map((choice) => ["execution-choice", choice.url])];
+    for (const [kind, url] of endpoints) {
       if (!url) continue;
       if (!uniqueMap.has(url)) uniqueMap.set(url, { url, kinds: new Set(), services: [] });
       uniqueMap.get(url).kinds.add(kind);

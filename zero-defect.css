@@ -124,6 +124,10 @@
 .official-source-panel a { background: var(--zd-gold); border-color: var(--zd-gold); color: #17251f; }
 .official-route-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1rem 0; }
 .official-route-actions a:not(.route-primary) { background: transparent; border-color: rgba(255,255,255,.5); color: #fff; }
+.exact-route-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; width: 100%; }
+.official-route-actions .route-choice { display: grid; justify-content: start; gap: .25rem; min-height: 78px; text-align: right; background: var(--zd-gold); border-color: var(--zd-gold); color: #17251f; }
+.official-route-actions .route-choice span { font-size: .78rem; font-weight: 600; opacity: .78; }
+.official-route-actions .official-card-reference { width: 100%; background: transparent; border-color: rgba(255,255,255,.5); color: #fff; }
 .route-warning, .route-note, .route-success { padding: 1rem; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.08); }
 .route-warning ol { margin: .75rem 0 0; padding-right: 1.25rem; }
 .route-warning li { margin: .4rem 0; }
@@ -148,5 +152,5 @@
   .service-card .actions { display: grid; }
   .sequence-actions { align-items: stretch; }
   .sequence-actions a { flex: 1; }
-  .official-route-actions { display: grid; }
+  .official-route-actions, .exact-route-choices { display: grid; grid-template-columns: 1fr; }
 }

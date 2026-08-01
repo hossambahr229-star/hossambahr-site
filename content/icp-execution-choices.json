@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1.0.0",
+  "reviewedAt": "2026-08-01",
+  "source": "https://smartservices.icp.gov.ae/echannels/web/client/lookups.js",
+  "services": {
+    "issue-emirates-id-uae": [
+      { "label": "مواطن إماراتي – إصدار الهوية لأول مرة", "transactionId": 584, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/584?administrativeRegionId=1" },
+      { "label": "مواطن خليجي – إصدار الهوية لأول مرة", "transactionId": 573, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/573?administrativeRegionId=1" },
+      { "label": "مقيم يعمل في القطاع الخاص أو المنطقة الحرة – إصدار الإقامة والهوية", "transactionId": 498, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/498?administrativeRegionId=1" }
+    ],
+    "renew-emirates-id-uae": [
+      { "label": "مواطن إماراتي – تجديد الهوية", "transactionId": 559, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/559?administrativeRegionId=1" },
+      { "label": "مواطن خليجي – تجديد الهوية", "transactionId": 574, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/574?administrativeRegionId=1" },
+      { "label": "مقيم يعمل في القطاع الخاص أو المنطقة الحرة – تجديد الإقامة والهوية", "transactionId": 499, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/499?administrativeRegionId=1" }
+    ],
+    "amendment-of-residency-permit-data": [
+      { "label": "بدء تعديل بيانات تصريح الإقامة", "transactionId": 401, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/401?administrativeRegionId=1" }
+    ],
+    "amendment-of-visa-data": [
+      { "label": "بدء تعديل بيانات التأشيرة", "transactionId": 413, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/413?administrativeRegionId=1" }
+    ],
+    "تمديد-التأشيرة-أو-إذن-الدخول": [
+      { "label": "تمديد إذن الدخول قبل دخول الدولة", "transactionId": 996, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/996?administrativeRegionId=1" },
+      { "label": "تمديد تأشيرة استكشاف فرص عمل – 60 يوماً", "transactionId": 997, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/997?administrativeRegionId=1" },
+      { "label": "تمديد تأشيرة استكشاف فرص عمل – 90 يوماً", "transactionId": 998, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/998?administrativeRegionId=1" },
+      { "label": "تمديد تأشيرة استكشاف فرص عمل – 120 يوماً", "transactionId": 999, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/999?administrativeRegionId=1" },
+      { "label": "تمديد التأشيرة السياحية متعددة الدخول لخمس سنوات", "transactionId": 785, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/785?administrativeRegionId=1" }
+    ],
+    "بدل-فاقد-أو-تالف-للهوية": [
+      { "label": "مواطن إماراتي – بدل فاقد أو تالف", "transactionId": 561, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/561?administrativeRegionId=1" },
+      { "label": "مواطن خليجي – بدل فاقد أو تالف", "transactionId": 575, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/575?administrativeRegionId=1" }
+    ],
+    "تحديث-بيانات-الهوية": [
+      { "label": "بدء تعديل بيانات الهوية الإماراتية", "transactionId": 1058, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/1058?administrativeRegionId=1" }
+    ],
+    "الإعفاء-من-غرامة-تأخير-الهوية": [
+      { "label": "بدء طلب الإعفاء من غرامة تأخير الهوية", "transactionId": 566, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/566?administrativeRegionId=1" }
+    ],
+    "إصدار-تصريح-إقامة-عبر-icp-خارج-دبي": [
+      { "label": "إقامة عمل – القطاع الخاص أو المنطقة الحرة", "transactionId": 61, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/61?administrativeRegionId=1" },
+      { "label": "إقامة أسرة – الكفيل يعمل في القطاع الحكومي", "transactionId": 37, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/37?administrativeRegionId=1" },
+      { "label": "إقامة أسرة – الكفيل يعمل في القطاع الخاص أو المنطقة الحرة", "transactionId": 38, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/38?administrativeRegionId=1" }
+    ],
+    "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي": [
+      { "label": "تجديد إقامة عمل – القطاع الحكومي", "transactionId": 123, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/123?administrativeRegionId=1" },
+      { "label": "تجديد إقامة عمل – القطاع الخاص أو المنطقة الحرة", "transactionId": 124, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/124?administrativeRegionId=1" }
+    ],
+    "تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي": [
+      { "label": "بدء معاملة تغيير الوضع داخل الدولة", "transactionId": 400, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/400?administrativeRegionId=1" }
+    ],
+    "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي": [
+      { "label": "الوالدان – الكفيل يعمل في القطاع الحكومي", "transactionId": 37, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/37?administrativeRegionId=1" },
+      { "label": "الوالدان – الكفيل يعمل في القطاع الخاص أو المنطقة الحرة", "transactionId": 38, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/38?administrativeRegionId=1" }
+    ],
+    "إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي": [
+      { "label": "مولود جديد – إقامة عامة", "transactionId": 71, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/71?administrativeRegionId=1" },
+      { "label": "مولود جديد – كفيل يعمل في القطاع الحكومي", "transactionId": 70, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/70?administrativeRegionId=1" },
+      { "label": "مولود جديد – كفيل مستثمر", "transactionId": 69, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/69?administrativeRegionId=1" }
+    ],
+    "إصدار-تأشيرة-عبر-icp-خارج-دبي": [
+      { "label": "تأشيرة زيارة قريب أو صديق", "transactionId": 39, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/39?administrativeRegionId=1" },
+      { "label": "تأشيرة سياحية – 60 يوماً – دخول واحد", "transactionId": 919, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/919/step1?administrativeRegionId=1&withException=false" },
+      { "label": "استكشاف فرص عمل – 60 يوماً", "transactionId": 939, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/939/step1?administrativeRegionId=1&withException=false" },
+      { "label": "استكشاف فرص تأسيس أعمال – 60 يوماً", "transactionId": 944, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/944/step1?administrativeRegionId=1&withException=false" }
+    ],
+    "إلغاء-تأشيرة-عبر-icp-خارج-دبي": [
+      { "label": "بدء إلغاء التأشيرة أو إذن الدخول", "transactionId": 414, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/414?administrativeRegionId=1" }
+    ],
+    "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي": [
+      { "label": "بدء تأشيرة زيارة قريب أو صديق", "transactionId": 39, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/39?administrativeRegionId=1" }
+    ],
+    "تأشيرة-سياحية-عبر-icp-خارج-دبي": [
+      { "label": "سياحية – 60 يوماً – دخول واحد", "transactionId": 919, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/919/step1?administrativeRegionId=1&withException=false" },
+      { "label": "سياحية – 60 يوماً – دخول متعدد", "transactionId": 949, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/949/step1?administrativeRegionId=1&withException=false" }
+    ],
+    "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي": [
+      { "label": "استكشاف فرص عمل – 60 يوماً", "transactionId": 939, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/939/step1?administrativeRegionId=1&withException=false" },
+      { "label": "استكشاف فرص عمل – 90 يوماً", "transactionId": 941, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/941/step1?administrativeRegionId=1&withException=false" },
+      { "label": "استكشاف فرص عمل – 120 يوماً", "transactionId": 942, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/942/step1?administrativeRegionId=1&withException=false" }
+    ],
+    "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي": [
+      { "label": "استكشاف فرص تأسيس أعمال – 60 يوماً", "transactionId": 944, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/944/step1?administrativeRegionId=1&withException=false" },
+      { "label": "استكشاف فرص تأسيس أعمال – 90 يوماً", "transactionId": 945, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/945/step1?administrativeRegionId=1&withException=false" },
+      { "label": "استكشاف فرص تأسيس أعمال – 120 يوماً", "transactionId": 946, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/946/step1?administrativeRegionId=1&withException=false" }
+    ],
+    "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي": [
+      { "label": "منشأة حكومية – إصدار بطاقة", "transactionId": 139, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/139?administrativeRegionId=1" },
+      { "label": "قطاع خاص أو منطقة حرة – إصدار بطاقة", "transactionId": 140, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/140?administrativeRegionId=1" },
+      { "label": "مشروع صغير – إصدار بطاقة", "transactionId": 141, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/141?administrativeRegionId=1" }
+    ],
+    "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي": [
+      { "label": "قطاع خاص أو منطقة حرة – تجديد البطاقة", "transactionId": 157, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/157?administrativeRegionId=1" },
+      { "label": "منشأة حكومية – تجديد البطاقة", "transactionId": 158, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/158?administrativeRegionId=1" }
+    ],
+    "تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي": [
+      { "label": "بدء تعديل بيانات بطاقة المنشأة", "transactionId": 160, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/160?administrativeRegionId=1" }
+    ],
+    "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي": [
+      { "label": "بدء إلغاء بطاقة المنشأة", "transactionId": 162, "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/162?administrativeRegionId=1" }
+    ],
+    "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي": [
+      { "label": "فتح معاملة سداد غرامة التأشيرة أو الإقامة", "transactionId": 407, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/fines/407/step1?administrativeRegionId=1&withException=false" }
+    ],
+    "متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي": [
+      { "label": "فتح متابعة حالة الطلب مباشرة", "transactionId": null, "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking" }
+    ]
+  }
+}

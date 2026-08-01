@@ -6,6 +6,7 @@ const sourcePath = resolve(root, "content/government-service-tree.json");
 const source = JSON.parse(await readFile(sourcePath, "utf8"));
 const executionRoutes = JSON.parse(await readFile(resolve(root, "content/execution-route-overrides.json"), "utf8"));
 const legacyAliases = JSON.parse(await readFile(resolve(root, "content/legacy-service-aliases.json"), "utf8"));
+const icpExecutionChoices = JSON.parse(await readFile(resolve(root, "content/icp-execution-choices.json"), "utf8"));
 
 const categories = [
   ["residency-visas", "الإقامة والتأشيرات", "الإقامة، أذونات الدخول، التأشيرات، التجديد، الإلغاء وتعديل الوضع."],
@@ -133,6 +134,11 @@ const services = approved.map((record, index) => {
     officialUrl: record.officialUrl,
     officialCardUrl: route.officialCardUrl || record.officialUrl,
     executionUrl: route.executionUrl || null,
+    executionChoices: (icpExecutionChoices.services?.[slug] || []).map((choice) => ({
+      label: normalize(choice.label),
+      transactionId: choice.transactionId ?? null,
+      url: choice.url,
+    })),
     officialRouteMode: route.mode,
     officialSelectorLabel: route.selectorLabel || normalize(record.platformTitle || record.serviceName),
     officialRouteNote: route.note,
@@ -242,16 +248,25 @@ function servicePage(service) {
   const faq = service.faq.map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join("");
   const category = categoryMap.get(service.category);
   const directExecution = service.officialRouteMode === "direct-execution" && service.executionUrl;
+  const exactExecutionChoices = service.executionChoices || [];
+  const hasExactExecutionChoices = exactExecutionChoices.length > 0;
+  const executionChoiceLinks = exactExecutionChoices.map((choice) => `<a class="route-choice" data-transaction-id="${choice.transactionId ?? "tracking"}" href="${escapeHtml(choice.url)}" rel="noopener noreferrer"><b>${escapeHtml(choice.label)}</b><span>فتح المعاملة المحددة لدى ICP ↗</span></a>`).join("");
   const primaryAction = directExecution
     ? `<a href="${escapeHtml(service.executionUrl)}" rel="noopener noreferrer">بدء المعاملة الرسمية ↗</a><a class="secondary" href="${escapeHtml(service.officialCardUrl)}" rel="noopener noreferrer">بطاقة الخدمة الرسمية ↗</a>`
+    : hasExactExecutionChoices
+      ? `<a href="#official-route">اختر مسار التنفيذ الدقيق</a><a class="secondary" href="${escapeHtml(service.officialCardUrl)}" rel="noopener noreferrer">بطاقة المعلومات الرسمية ↗</a>`
     : `<a href="#official-route">اعرض خطوات الوصول الصحيحة</a><a class="secondary" href="#requirements">راجع المتطلبات</a>`;
-  const routeInstructions = service.officialRouteMode === "official-bundle-selector"
+  const routeInstructions = hasExactExecutionChoices
+    ? `<div class="route-success"><b>تم فصل المعاملات الفعلية عن صفحة الدخول العامة.</b><p>اختر صفة المتعامل أو نوع المعاملة أو المدة، وسيفتح الرابط بطاقة المعاملة أو نموذجها المعرّف برقمها داخل بوابة ICP. قد يظهر تسجيل الدخول، لكن معرّف المعاملة يبقى داخل الرابط ولا يعيدك إلى صفحة عامة.</p></div>`
+    : service.officialRouteMode === "official-bundle-selector"
     ? `<div class="route-warning"><b>هذه فئة داخل خدمة أم لدى الجهة وليست رابط تنفيذ مستقلًا.</b><ol><li>افتح بطاقة الخدمة الرسمية من الرابط أدناه.</li><li>اختر الفئة باسم: <strong>${escapeHtml(service.officialSelectorLabel)}</strong>.</li><li>راجع الشروط التي تظهر لهذه الفئة وحدها.</li><li>اضغط بدء الخدمة وسجّل الدخول عند الطلب.</li></ol></div>`
     : service.officialRouteMode === "official-service-card"
       ? `<div class="route-note"><b>بطاقة رسمية خاصة بهذه الخدمة.</b><p>افتح البطاقة ثم استخدم زر بدء الخدمة داخل موقع الجهة. لا نعرض صفحة الجهة العامة على أنها رابط تنفيذ.</p></div>`
       : `<div class="route-success"><b>رابط التنفيذ المباشر متاح.</b><p>فُصل رابط بدء المعاملة عن بطاقة المعلومات الرسمية، ويمكنك مراجعة كليهما أدناه.</p></div>`;
   const routeLinks = directExecution
     ? `<a class="route-primary" href="${escapeHtml(service.executionUrl)}" rel="noopener noreferrer">بدء المعاملة الرسمية ↗</a><a href="${escapeHtml(service.officialCardUrl)}" rel="noopener noreferrer">فتح بطاقة الخدمة الرسمية ↗</a>`
+    : hasExactExecutionChoices
+      ? `<div class="exact-route-choices" data-exact-route-choices>${executionChoiceLinks}</div><a class="official-card-reference" href="${escapeHtml(service.officialCardUrl)}" rel="noopener noreferrer">بطاقة المعلومات الرسمية لدى الجهة ↗</a>`
     : `<a class="route-primary" href="${escapeHtml(service.officialCardUrl)}" rel="noopener noreferrer">فتح بطاقة الخدمة الرسمية واختيار الفئة ↗</a>`;
   const schema = { "@context": "https://schema.org", "@type": "GovernmentService", name: service.name, serviceType: service.officialName, areaServed: service.emirate, provider: { "@type": "GovernmentOrganization", name: service.authority.name }, url: `https://hossambahr.com${service.internalUrl}`, sameAs: service.officialCardUrl };
   return document({
