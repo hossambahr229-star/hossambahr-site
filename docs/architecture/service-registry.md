@@ -38,6 +38,10 @@ A published service must:
 The homepage may link only to internal discovery routes. Government execution links
 are restricted to the relevant service-detail page.
 
+Publication also requires the business acceptance record defined in
+`docs/business-acceptance.md`; architecture validation alone can never authorize
+delivery or publication.
+
 ## Identity boundary
 
 The architecture does not redefine the visual system. The old identity is a locked

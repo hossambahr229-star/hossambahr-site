@@ -6,10 +6,11 @@ const VERIFICATION_STATUSES = new Set(['draft', 'needs-information', 'verified',
 const EXECUTION_TARGETS = new Set(['exact-transaction', 'exact-login', 'exact-service-card']);
 const GOVERNMENT_LEVELS = new Set(['federal', 'emirate', 'municipal', 'free-zone']);
 const REQUIRED_KEYS = [
-  'id', 'slug', 'name', 'description', 'audiences', 'requestType', 'emirateId', 'authorityId',
-  'category', 'keywords', 'documents', 'fees', 'conditions', 'eligibility', 'exceptions',
+  'id', 'sourceLegacyIds', 'slug', 'name', 'description', 'audiences', 'requestType', 'emirateId', 'authorityId',
+  'category', 'customerTypeIds', 'activityIds', 'licenseTypeIds', 'classificationNumbers',
+  'keywords', 'documents', 'fees', 'conditions', 'eligibility', 'exceptions',
   'duration', 'steps', 'executionLinks', 'officialSources', 'relatedServiceIds',
-  'alternativeServiceIds', 'faq', 'lastUpdated', 'verification'
+  'alternativeServiceIds', 'faq', 'lastUpdated', 'verification', 'acceptance'
 ];
 const ALLOWED_KEYS = new Set(REQUIRED_KEYS);
 
@@ -39,7 +40,7 @@ function hostnameMatches(hostname, allowedDomain) {
   return hostname === allowedDomain || hostname.endsWith(`.${allowedDomain}`);
 }
 
-export function validateRegistry({ registry, authorities, categories, emirates }, options = {}) {
+export function validateRegistry({ registry, authorities, categories, emirates, businessDimensions = {} }, options = {}) {
   const errors = [];
   const services = registry.services ?? [];
   const authorityIds = referenceIds(authorities, 'authorities');
@@ -48,6 +49,10 @@ export function validateRegistry({ registry, authorities, categories, emirates }
   const mainCategoryIds = referenceIds(categories, 'mainCategories');
   const subCategoryIds = referenceIds(categories, 'subCategories');
   const subCategoryById = new Map((categories.subCategories ?? []).map((item) => [item.id, item]));
+  const customerTypeIds = referenceIds(businessDimensions, 'customerTypes');
+  const activityIds = referenceIds(businessDimensions, 'activities');
+  const licenseTypeIds = referenceIds(businessDimensions, 'licenseTypes');
+  const classificationIds = referenceIds(businessDimensions, 'classifications');
   const serviceIds = new Set(services.map((service) => service.id));
   const ids = services.map((service) => service.id);
   const slugs = services.map((service) => service.slug);
@@ -60,7 +65,10 @@ export function validateRegistry({ registry, authorities, categories, emirates }
     ['authorities', authorityRecords],
     ['emirates', emirateRecords],
     ['mainCategories', mainCategoryRecords],
-    ['subCategories', subCategoryRecords]
+    ['subCategories', subCategoryRecords],
+    ['customerTypes', businessDimensions.customerTypes ?? []],
+    ['activities', businessDimensions.activities ?? []],
+    ['licenseTypes', businessDimensions.licenseTypes ?? []]
   ]) {
     const recordIds = records.map((record) => record.id);
     if (!unique(recordIds)) add(errors, path, 'catalog IDs must be unique');
@@ -68,6 +76,13 @@ export function validateRegistry({ registry, authorities, categories, emirates }
       if (!SLUG.test(record.id ?? '')) add(errors, `${path}[${recordIndex}].id`, 'must be a kebab-case ID');
       requireLocalized(errors, record.name, `${path}[${recordIndex}].name`);
     }
+  }
+
+  const classificationRecords = businessDimensions.classifications ?? [];
+  if (!unique(classificationRecords.map((record) => record.id))) add(errors, 'classifications', 'classification numbers must be unique');
+  for (const [recordIndex, record] of classificationRecords.entries()) {
+    if (!String(record.id ?? '').trim()) add(errors, `classifications[${recordIndex}].id`, 'classification number is required');
+    requireLocalized(errors, record.name, `classifications[${recordIndex}].name`);
   }
 
   for (const [authorityIndex, authority] of authorityRecords.entries()) {
@@ -117,7 +132,7 @@ export function validateRegistry({ registry, authorities, categories, emirates }
       add(errors, `${base}.category`, 'subcategory does not belong to the selected main category');
     }
 
-    for (const field of ['audiences', 'documents', 'fees', 'conditions', 'eligibility', 'exceptions', 'steps', 'executionLinks', 'officialSources', 'relatedServiceIds', 'alternativeServiceIds', 'faq']) {
+    for (const field of ['sourceLegacyIds', 'audiences', 'customerTypeIds', 'activityIds', 'licenseTypeIds', 'classificationNumbers', 'conditions', 'eligibility', 'exceptions', 'steps', 'executionLinks', 'officialSources', 'relatedServiceIds', 'alternativeServiceIds', 'faq']) {
       if (!Array.isArray(service[field])) add(errors, `${base}.${field}`, 'must be an array');
     }
     if (Array.isArray(service.audiences) && service.audiences.length === 0) add(errors, `${base}.audiences`, 'at least one audience is required');
@@ -125,6 +140,30 @@ export function validateRegistry({ registry, authorities, categories, emirates }
     for (const field of ['audiences', 'conditions', 'eligibility', 'exceptions']) {
       for (const [itemIndex, item] of (service[field] ?? []).entries()) requireLocalized(errors, item, `${base}.${field}[${itemIndex}]`);
     }
+    if (Array.isArray(service.customerTypeIds) && service.customerTypeIds.length === 0) add(errors, `${base}.customerTypeIds`, 'at least one customer type is required');
+    if (Array.isArray(service.activityIds) && service.activityIds.length === 0) add(errors, `${base}.activityIds`, 'at least one activity is required for business discovery');
+    if (Array.isArray(service.licenseTypeIds) && service.licenseTypeIds.length === 0) add(errors, `${base}.licenseTypeIds`, 'at least one license type or explicit not-applicable type is required');
+    if (Array.isArray(service.classificationNumbers) && service.classificationNumbers.length === 0) add(errors, `${base}.classificationNumbers`, 'at least one classification number is required');
+    for (const id of service.customerTypeIds ?? []) if (!customerTypeIds.has(id)) add(errors, `${base}.customerTypeIds`, `unknown customer type: ${id}`);
+    for (const id of service.activityIds ?? []) if (!activityIds.has(id)) add(errors, `${base}.activityIds`, `unknown activity: ${id}`);
+    for (const id of service.licenseTypeIds ?? []) if (!licenseTypeIds.has(id)) add(errors, `${base}.licenseTypeIds`, `unknown license type: ${id}`);
+    for (const number of service.classificationNumbers ?? []) if (!classificationIds.has(number)) add(errors, `${base}.classificationNumbers`, `unknown classification number: ${number}`);
+
+    if (!service.documents || !['required', 'not-required'].includes(service.documents.status) || !Array.isArray(service.documents.items)) {
+      add(errors, `${base}.documents`, 'must explicitly state required or not-required and provide an items array');
+    } else {
+      requireLocalized(errors, service.documents.notes, `${base}.documents.notes`);
+      if (service.documents.status === 'required' && service.documents.items.length === 0) add(errors, `${base}.documents.items`, 'required documents cannot be empty');
+      if (service.documents.status === 'not-required' && service.documents.items.length > 0) add(errors, `${base}.documents.items`, 'not-required documents must be empty');
+    }
+    if (!service.fees || !['paid', 'free', 'variable'].includes(service.fees.status) || !Array.isArray(service.fees.items)) {
+      add(errors, `${base}.fees`, 'must explicitly state paid, free, or variable and provide an items array');
+    } else {
+      requireLocalized(errors, service.fees.notes, `${base}.fees.notes`);
+      if (service.fees.status === 'paid' && service.fees.items.length === 0) add(errors, `${base}.fees.items`, 'paid fees cannot be empty');
+      if (service.fees.status === 'free' && service.fees.items.length > 0) add(errors, `${base}.fees.items`, 'free service fees must be empty');
+    }
+    if (Array.isArray(service.faq) && service.faq.length === 0) add(errors, `${base}.faq`, 'at least one FAQ is required');
     if (!service.keywords || !Array.isArray(service.keywords.ar) || !Array.isArray(service.keywords.en)) {
       add(errors, `${base}.keywords`, 'Arabic and English keyword arrays are required');
     } else {
@@ -196,6 +235,19 @@ export function validateRegistry({ registry, authorities, categories, emirates }
           add(errors, `${base}.executionLinks[${linkIndex}]`, 'verified execution link requires test time and evidence');
         }
       }
+    }
+
+    const requiredSearchMethods = ['name', 'keywords', 'authority', 'emirate', 'activity', 'license-type', 'classification-number', 'related-service'];
+    if (options.publish) {
+      if (service.acceptance?.status !== 'passed') add(errors, `${base}.acceptance.status`, 'business acceptance must pass before publish');
+      if (service.acceptance?.servicePage?.httpStatus !== 200 || service.acceptance?.servicePage?.nonEmpty !== true) add(errors, `${base}.acceptance.servicePage`, 'service page must return 200 and be non-empty');
+      if (!isValidTimestamp(service.acceptance?.servicePage?.testedAt) || !(service.acceptance?.servicePage?.evidence ?? []).length) add(errors, `${base}.acceptance.servicePage`, 'service page requires current test evidence');
+      const methods = service.acceptance?.search?.methodsVerified ?? [];
+      for (const method of requiredSearchMethods) if (!methods.includes(method)) add(errors, `${base}.acceptance.search.methodsVerified`, `missing search method: ${method}`);
+      if (!isValidTimestamp(service.acceptance?.search?.testedAt) || !(service.acceptance?.search?.evidence ?? []).length) add(errors, `${base}.acceptance.search`, 'search acceptance requires test evidence');
+      if (!Number.isInteger(service.acceptance?.journey?.homeToExecutionClicks) || service.acceptance.journey.homeToExecutionClicks > 2) add(errors, `${base}.acceptance.journey.homeToExecutionClicks`, 'transaction must be reachable in fewer than 3 clicks');
+      if (!isValidTimestamp(service.acceptance?.journey?.testedAt) || !(service.acceptance?.journey?.evidence ?? []).length) add(errors, `${base}.acceptance.journey`, 'journey acceptance requires test evidence');
+      if (service.acceptance?.manualTest?.result !== 'passed' || !isValidTimestamp(service.acceptance?.manualTest?.testedAt) || !(service.acceptance?.manualTest?.evidence ?? []).length) add(errors, `${base}.acceptance.manualTest`, 'manual business test must pass with evidence');
     }
 
     if (options.publish && service.verification?.status !== 'verified') {

@@ -13,7 +13,8 @@ export async function loadRegistry(options = {}) {
     registry: await readJson('registry.json'),
     authorities: await readJson('authorities.json'),
     categories: await readJson('categories.json'),
-    emirates: await readJson('emirates.json')
+    emirates: await readJson('emirates.json'),
+    businessDimensions: await readJson('business-dimensions.json')
   };
   const validation = validateRegistry(data, options);
   if (!validation.valid) {

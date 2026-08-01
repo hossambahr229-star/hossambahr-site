@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0.0",
+  "customerTypes": [
+    { "id": "individual", "name": { "ar": "فرد", "en": "Individual" } },
+    { "id": "employee", "name": { "ar": "موظف", "en": "Employee" } },
+    { "id": "employer", "name": { "ar": "صاحب عمل", "en": "Employer" } },
+    { "id": "business", "name": { "ar": "منشأة أو شركة", "en": "Business" } },
+    { "id": "investor", "name": { "ar": "مستثمر", "en": "Investor" } },
+    { "id": "professional", "name": { "ar": "مهني", "en": "Professional" } },
+    { "id": "government-entity", "name": { "ar": "جهة حكومية", "en": "Government entity" } }
+  ],
+  "activities": [
+    { "id": "non-economic-government-service", "name": { "ar": "خدمة حكومية غير مرتبطة بنشاط اقتصادي", "en": "Non-economic government service" } }
+  ],
+  "licenseTypes": [
+    { "id": "license-not-required", "name": { "ar": "لا تتطلب رخصة", "en": "No licence required" } }
+  ],
+  "classifications": []
+}

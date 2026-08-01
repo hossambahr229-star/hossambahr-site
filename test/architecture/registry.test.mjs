@@ -3,6 +3,7 @@ import test from 'node:test';
 import { assertPageLinkPolicy, serviceRoute } from '../../src/core/route-policy.mjs';
 import { buildSearchIndex, search } from '../../src/core/search-index.mjs';
 import { validateRegistry } from '../../src/core/registry-validator.mjs';
+import { evaluateServiceBusinessAcceptance } from '../../src/business/business-acceptance.mjs';
 import { readFile } from 'node:fs/promises';
 
 function evidence(type = 'manual-log') {
@@ -12,6 +13,7 @@ function evidence(type = 'manual-log') {
 function fixture() {
   return {
     id: 'test-service',
+    sourceLegacyIds: ['guide:test-service'],
     slug: 'test-service',
     name: { ar: 'خدمة اختبار', en: 'Test service' },
     description: { ar: 'وصف الخدمة', en: 'Service description' },
@@ -20,9 +22,21 @@ function fixture() {
     emirateId: 'federal',
     authorityId: 'test-authority',
     category: { mainId: 'test-category', subId: 'test-subcategory' },
+    customerTypeIds: ['individual'],
+    activityIds: ['test-activity'],
+    licenseTypeIds: ['test-license'],
+    classificationNumbers: ['TEST-001'],
     keywords: { ar: ['اختبار'], en: ['test'] },
-    documents: [],
-    fees: [],
+    documents: {
+      status: 'not-required',
+      items: [],
+      notes: { ar: 'لا توجد مستندات', en: 'No documents required' }
+    },
+    fees: {
+      status: 'free',
+      items: [],
+      notes: { ar: 'الخدمة مجانية', en: 'The service is free' }
+    },
     conditions: [],
     eligibility: [{ ar: 'المؤهلون', en: 'Eligible applicants' }],
     exceptions: [],
@@ -45,7 +59,7 @@ function fixture() {
     }],
     relatedServiceIds: [],
     alternativeServiceIds: [],
-    faq: [],
+    faq: [{ question: { ar: 'كيف أبدأ؟', en: 'How do I start?' }, answer: { ar: 'من زر التنفيذ', en: 'Use the execution button' } }],
     lastUpdated: '2026-08-01',
     verification: {
       status: 'verified',
@@ -53,6 +67,20 @@ function fixture() {
       reviewer: 'architecture-test',
       evidence: [evidence()],
       notes: { ar: 'موثق', en: 'Verified' }
+    },
+    acceptance: {
+      status: 'passed',
+      servicePage: { testedAt: '2026-08-01T10:00:00.000Z', httpStatus: 200, nonEmpty: true, evidence: [evidence('screenshot')] },
+      search: {
+        testedAt: '2026-08-01T10:00:00.000Z',
+        methodsVerified: ['name', 'keywords', 'authority', 'emirate', 'activity', 'license-type', 'classification-number', 'related-service'],
+        evidence: [evidence('manual-log')]
+      },
+      journey: { testedAt: '2026-08-01T10:00:00.000Z', homeToExecutionClicks: 2, evidence: [evidence('manual-log')] },
+      manualTest: {
+        testedAt: '2026-08-01T10:00:00.000Z', result: 'passed', tester: 'architecture-test', evidence: [evidence('manual-log')],
+        notes: { ar: 'ناجح', en: 'Passed' }
+      }
     }
   };
 }
@@ -77,7 +105,13 @@ function data(service = fixture()) {
       mainCategories: [{ id: 'test-category', name: { ar: 'تصنيف', en: 'Category' } }],
       subCategories: [{ id: 'test-subcategory', mainId: 'test-category', name: { ar: 'فرعي', en: 'Subcategory' } }]
     },
-    emirates: { emirates: [{ id: 'federal', name: { ar: 'اتحادي', en: 'Federal' } }] }
+    emirates: { emirates: [{ id: 'federal', name: { ar: 'اتحادي', en: 'Federal' } }] },
+    businessDimensions: {
+      customerTypes: [{ id: 'individual', name: { ar: 'فرد', en: 'Individual' } }],
+      activities: [{ id: 'test-activity', name: { ar: 'نشاط', en: 'Activity' } }],
+      licenseTypes: [{ id: 'test-license', name: { ar: 'رخصة', en: 'License' } }],
+      classifications: [{ id: 'TEST-001', name: { ar: 'تصنيف', en: 'Classification' } }]
+    }
   };
 }
 
@@ -105,6 +139,45 @@ test('execution URL must belong to the selected authority', () => {
   assert.equal(validateRegistry(data(service), { publish: true }).valid, false);
 });
 
+test('business acceptance blocks implicit empty documents and fees', () => {
+  const service = fixture();
+  service.documents.status = 'required';
+  service.fees.status = 'paid';
+  const result = validateRegistry(data(service), { publish: true });
+  assert.equal(result.valid, false);
+  assert.equal(result.errors.some((error) => error.path.endsWith('documents.items')), true);
+  assert.equal(result.errors.some((error) => error.path.endsWith('fees.items')), true);
+});
+
+test('business acceptance verifies all discovery methods and a two-click journey', () => {
+  const first = fixture();
+  const second = structuredClone(fixture());
+  second.id = 'related-service';
+  second.slug = 'related-service';
+  second.sourceLegacyIds = ['guide:related-service'];
+  second.name = { ar: 'خدمة مرتبطة', en: 'Related service' };
+  second.executionLinks[0].url = 'https://government.example/transactions/related';
+  first.relatedServiceIds = [second.id];
+  second.relatedServiceIds = [first.id];
+  const context = data(first);
+  context.registry.services = [first, second];
+  const result = evaluateServiceBusinessAcceptance(first, { ...context, services: context.registry.services });
+  assert.equal(result.searchChecks.name, true);
+  assert.equal(result.searchChecks['license-type'], true);
+  assert.equal(result.searchChecks['classification-number'], true);
+  assert.equal(result.searchChecks['related-service'], true);
+  assert.equal(result.checks.underThreeClicks, true);
+  assert.equal(result.accepted, true);
+});
+
+test('three clicks fails the business journey criterion', () => {
+  const service = fixture();
+  service.acceptance.journey.homeToExecutionClicks = 3;
+  const validation = validateRegistry(data(service), { publish: true });
+  assert.equal(validation.valid, false);
+  assert.equal(validation.errors.some((error) => error.path.endsWith('homeToExecutionClicks')), true);
+});
+
 test('homepage cannot contain a government execution link', () => {
   assert.throws(() => assertPageLinkPolicy({
     pageType: 'home',
@@ -116,6 +189,8 @@ test('search index is derived only from verified registry entities', () => {
   const index = buildSearchIndex([fixture()]);
   assert.equal(index.length, 1);
   assert.equal(search(index, 'اختبار')[0].route, '/services/test-service/');
+  assert.equal(search(index, 'TEST-001')[0].route, '/services/test-service/');
+  assert.equal(search(index, 'test-license')[0].route, '/services/test-service/');
 });
 
 test('controlled jurisdiction catalog contains federal scope and all seven emirates', async () => {

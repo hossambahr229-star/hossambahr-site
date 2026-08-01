@@ -22,6 +22,35 @@ function proposedIdentifier(legacy, current) {
   return `legacy-${readable}-${stableSuffix}`;
 }
 
+const SIMPLE_EMIRATE_IDS = new Map([
+  ['اتحادي', 'federal'],
+  ['أبوظبي', 'abu-dhabi'],
+  ['دبي', 'dubai'],
+  ['الشارقة', 'sharjah'],
+  ['عجمان', 'ajman'],
+  ['أم القيوين', 'umm-al-quwain'],
+  ['رأس الخيمة', 'ras-al-khaimah'],
+  ['الفجيرة', 'fujairah']
+]);
+const KNOWN_AUTHORITY_IDS = new Map([
+  ['وزارة الموارد البشرية والتوطين (MOHRE)', 'mohre'],
+  ['MOHRE', 'mohre'],
+  ['الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)', 'icp'],
+  ['ICP', 'icp'],
+  ['الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA)', 'gdrfa-dubai'],
+  ['GDRFA Dubai', 'gdrfa-dubai'],
+  ['دائرة الاقتصاد والسياحة في دبي (DET)', 'det'],
+  ['دائرة الاقتصاد والسياحة DET', 'det'],
+  ['DET', 'det'],
+  ['DET - قطاع السياحة', 'det'],
+  ['DET / نظام الفعاليات', 'det'],
+  ['الهيئة الاتحادية للضرائب (FTA)', 'fta'],
+  ['وزارة الخارجية', 'mofa'],
+  ['وزارة التربية والتعليم', 'moe'],
+  ['دائرة التنمية الاقتصادية في عجمان', 'ajman-ded'],
+  ['هيئة المنطقة الحرة بالفجيرة', 'fujairah-free-zone']
+]);
+
 function hasText(value) {
   return typeof value === 'string' && value.trim().length > 0;
 }
@@ -32,7 +61,17 @@ function field(state, source, note) {
 
 const tree = await json('content/government-service-tree.json');
 const matrix = await json('service-matrix.json');
+const authorityCatalog = await json('src/registry/authorities.json');
 const matrixById = new Map(matrix.services.map((service) => [service.id, service]));
+const authorityById = new Map(authorityCatalog.authorities.map((authority) => [authority.id, authority]));
+
+function authorityGroup(legacy, current) {
+  const candidateId = authorityById.has(current?.authority?.slug)
+    ? current.authority.slug
+    : KNOWN_AUTHORITY_IDS.get(legacy.authority);
+  const authority = authorityById.get(candidateId);
+  return authority ? `${authority.id} — ${authority.name.ar}` : `غير محسوم — ${legacy.authority}`;
+}
 
 const candidates = tree.services.map((legacy, sourceIndex) => {
   const current = matrixById.get(legacy.id) ?? null;
@@ -49,6 +88,10 @@ const candidates = tree.services.map((legacy, sourceIndex) => {
     authorityId: field(current?.authority?.slug ? 'candidate' : 'needs-normalization', current ? 'service-matrix.authority.slug' : 'government-service-tree.authority', 'Authority and official domains must be verified.'),
     mainCategory: field(current?.category ? 'candidate' : 'needs-normalization', current ? 'service-matrix.category' : 'government-service-tree.sector', 'Must reference the controlled main-category catalog.'),
     subCategory: field('missing', null, 'No canonical subcategory exists in the legacy data.'),
+    customerTypeIds: field('needs-normalization', 'government-service-tree.audience', 'Legacy audience text must map to one or more controlled customer types.'),
+    activityIds: field('missing', null, 'Economic or regulated activity identifiers are absent.'),
+    licenseTypeIds: field('missing', null, 'Applicable license types are not modeled.'),
+    classificationNumbers: field('missing', null, 'Official or platform classification numbers are absent.'),
     keywords: field('missing', null, 'Arabic and English search keywords are absent.'),
     documents: field((legacy.requirements ?? []).length ? 'unstructured' : 'missing', 'government-service-tree.requirements', 'Legacy requirements cannot be assumed to be an exact document list.'),
     fees: field(hasText(legacy.fees) ? 'unstructured' : 'missing', 'government-service-tree.fees', 'Amount, currency, and fee components are not structured.'),
@@ -74,6 +117,14 @@ const candidates = tree.services.map((legacy, sourceIndex) => {
   return {
     sourceIndex,
     legacyId: legacy.id,
+    businessDimensions: {
+      authorityLabel: legacy.authority,
+      authorityGroup: authorityGroup(legacy, current),
+      emirateLabel: legacy.emirate,
+      emirateGroup: SIMPLE_EMIRATE_IDS.has(legacy.emirate) ? `${SIMPLE_EMIRATE_IDS.get(legacy.emirate)} — ${legacy.emirate}` : `غير محسوم — ${legacy.emirate}`,
+      categoryLabel: legacy.sector,
+      categoryGroup: current?.category ? `غير معتمد — ${current.category}` : `غير محسوم — ${legacy.sector}`
+    },
     proposedId: proposedIdentifier(legacy, current),
     proposedSlug,
     legacyStatus: legacy.status,

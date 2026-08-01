@@ -6,6 +6,7 @@
     "registry:validate": "node src/core/validate-registry.mjs",
     "registry:validate:publish": "node src/core/validate-registry.mjs --publish",
     "migration:build-candidates": "node src/migration/build-legacy-candidates.mjs",
+    "business:report": "node src/business/generate-business-report.mjs",
     "test:architecture": "node --test test/architecture/*.test.mjs"
   },
   "engines": {
