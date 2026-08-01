@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-07-28",
+  "policy": "Intent rules route only to canonical platform records. An intent never creates or guesses a government URL.",
+  "intents": [
+    {
+      "id": "visit_friend_or_relative",
+      "labelAr": "زيارة قريب أو صديق",
+      "labelEn": "Visit a friend or relative",
+      "concepts": ["issue", "visit_visa", "friend_or_relative"],
+      "phrases": ["زيارة صديق", "زيارة قريب", "زيارة عائلية", "فيزا صديق", "فيزا قريب", "visit friend", "visit relative", "family visit visa"],
+      "targetTitles": ["تأشيرة زيارة قريب أو صديق لدخول واحد في دبي", "تأشيرة زيارة قريب أو صديق عبر ICP (خارج دبي)"]
+    },
+    {
+      "id": "five_year_tourist_visa",
+      "labelAr": "تأشيرة سياحية متعددة الدخول لمدة خمس سنوات",
+      "labelEn": "Five-year multiple-entry tourist visa",
+      "concepts": ["issue", "tourist_visa", "multiple_entry", "five_years"],
+      "phrases": ["زيارة خمس سنوات", "زيارة ٥ سنوات", "زيارة 5 سنوات", "فيزا خمس سنوات", "فيزا ٥ سنوات", "فيزا 5 سنوات", "تأشيرة خمس سنوات", "تأشيرة متعددة", "زيارة متعددة السفرات", "multiple entry visa", "5 year visa", "5 years visa", "five year tourist visa"],
+      "targetTitles": ["إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP"]
+    },
+    {
+      "id": "tourist_visa",
+      "labelAr": "تأشيرة سياحية",
+      "labelEn": "Tourist visa",
+      "concepts": ["issue", "tourist_visa"],
+      "phrases": ["فيزا سياحة", "فيزا سياحية", "تأشيرة سياحية", "سياحه الامارات", "tourist visa", "tourism visa"],
+      "targetTitles": ["تأشيرة سياحية لدخول واحد في دبي", "تأشيرة سياحية عبر ICP (خارج دبي)", "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP"]
+    },
+    {
+      "id": "sponsor_mother_or_father",
+      "labelAr": "إقامة الوالدين",
+      "labelEn": "Parents residence sponsorship",
+      "concepts": ["issue", "family_residency", "parent"],
+      "phrases": ["أريد أجيب أمي", "اريد اجيب امي", "ابغى اجيب امي", "أجيب أبوي", "اقامة الام", "إقامة الوالدين", "كفالة الأم", "كفالة الاب", "sponsor my mother", "sponsor parents"],
+      "targetTitles": ["إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي", "إصدار إقامة للوالدين عبر ICP (خارج دبي)"]
+    },
+    {
+      "id": "sponsor_wife_or_children",
+      "labelAr": "إقامة الزوجة والأبناء",
+      "labelEn": "Wife and children residence sponsorship",
+      "concepts": ["issue", "family_residency", "wife_children"],
+      "phrases": ["أبغى أجيب زوجتي", "اريد اجيب زوجتي", "كفالة الزوجة", "إقامة زوجتي", "إقامة الأبناء", "كفالة العائلة", "sponsor my wife", "family sponsorship", "wife residence"],
+      "targetTitles": ["إصدار إقامة لأفراد الأسرة في دبي"]
+    },
+    {
+      "id": "company_formation",
+      "labelAr": "تأسيس شركة أو منشأة",
+      "labelEn": "Company formation",
+      "concepts": ["establish", "company"],
+      "phrases": ["أريد أفتح شركة", "اريد افتح شركة", "أفتح مؤسسة", "ابغى شركة", "تأسيس شركة", "إنشاء شركة", "فتح رخصة", "company setup", "start a company", "business formation"],
+      "targetTitles": ["الموافقة المبدئية لتأسيس شركة في دبي", "تأسيس منشأة جديدة في عجمان", "تأسيس شركة في المنطقة الحرة بالفجيرة"]
+    },
+    {
+      "id": "renew_business_license",
+      "labelAr": "تجديد الرخصة",
+      "labelEn": "Business license renewal",
+      "concepts": ["renew", "business_license"],
+      "phrases": ["أريد أجدد شركتي", "اجدد الرخصة", "تجديد الرخصه", "الرخصة انتهت", "renew license", "license renewal"],
+      "targetTitles": ["تجديد رخصة تجارية في دبي", "تجديد رخصة اقتصادية في أبوظبي", "تجديد رخصة تجارية في الشارقة", "تجديد رخصة اقتصادية في عجمان"]
+    },
+    {
+      "id": "amend_business_license",
+      "labelAr": "تعديل الرخصة",
+      "labelEn": "Business license amendment",
+      "concepts": ["amend", "business_license"],
+      "phrases": ["تعديل الرخصة", "تغيير بيانات الرخصة", "عدل الرخصة", "amend license", "change license"],
+      "targetTitles": ["تعديل رخصة تجارية في دبي"]
+    },
+    {
+      "id": "cancel_business_license",
+      "labelAr": "إلغاء الرخصة أو تصفية الشركة",
+      "labelEn": "License cancellation or company liquidation",
+      "concepts": ["cancel", "business_license", "company"],
+      "phrases": ["ألغي الرخصة", "الغاء الرخصه", "شطب الرخصة", "تصفية شركة", "اقفل الشركة", "cancel license", "company liquidation", "close company"],
+      "targetTitles": ["إلغاء رخصة أو تصفية شركة في دبي"]
+    },
+    {
+      "id": "change_business_activity",
+      "labelAr": "إضافة أو حذف نشاط",
+      "labelEn": "Add or remove business activity",
+      "concepts": ["amend", "business_activity"],
+      "phrases": ["أريد أغير النشاط", "تغيير النشاط", "إضافة نشاط", "حذف نشاط", "اضيف نشاط", "اشيل نشاط", "change activity", "add activity", "remove activity"],
+      "targetTitles": ["إضافة أو حذف نشاط تجاري في دبي"]
+    },
+    {
+      "id": "add_or_remove_partner",
+      "labelAr": "إضافة أو انسحاب شريك",
+      "labelEn": "Add or remove a partner",
+      "concepts": ["amend", "partner"],
+      "phrases": ["أضيف شريك", "اضافة شريك", "حذف شريك", "انسحاب شريك", "إخراج شريك", "add partner", "remove partner"],
+      "targetTitles": ["إضافة أو انسحاب شريك في شركة بدبي"]
+    },
+    {
+      "id": "transfer_company_ownership",
+      "labelAr": "نقل ملكية الشركة",
+      "labelEn": "Transfer company ownership",
+      "concepts": ["transfer", "ownership"],
+      "phrases": ["نقل ملكية", "بيع الشركة", "تنازل عن الرخصة", "تحويل الملكية", "transfer ownership", "sell company"],
+      "targetTitles": ["نقل ملكية أو بيع شركة في دبي"]
+    },
+    {
+      "id": "issue_work_permit",
+      "labelAr": "إصدار تصريح عمل",
+      "labelEn": "Issue a work permit",
+      "concepts": ["issue", "work_permit"],
+      "phrases": ["تصريح عمل", "فيزا عمل", "استقدام موظف", "اشغل موظف", "work permit", "employment permit"],
+      "targetTitles": ["إصدار تصريح عمل جديد من خارج الإمارات"]
+    },
+    {
+      "id": "transfer_work_permit",
+      "labelAr": "نقل تصريح العمل",
+      "labelEn": "Transfer work permit",
+      "concepts": ["transfer", "work_permit"],
+      "phrases": ["نقل موظف", "نقل تصريح عمل", "انتقال عامل", "transfer employee", "transfer work permit"],
+      "targetTitles": ["نقل تصريح عمل موظف إلى منشأة جديدة"]
+    },
+    {
+      "id": "employment_contract",
+      "labelAr": "عقد العمل",
+      "labelEn": "Employment contract",
+      "concepts": ["issue", "employment_contract"],
+      "phrases": ["عقد عمل", "تجديد عقد الموظف", "اصدار عقد", "employment contract", "labour contract"],
+      "targetTitles": ["إصدار أو تجديد عقد عمل في الإمارات"]
+    },
+    {
+      "id": "establishment_card",
+      "labelAr": "بطاقة أو ملف المنشأة",
+      "labelEn": "Establishment card or file",
+      "concepts": ["issue", "establishment_card"],
+      "phrases": ["بطاقة منشأة", "فتح ملف منشأة", "ملف وزارة العمل", "سجل منشأة", "establishment card", "establishment file"],
+      "targetTitles": ["إصدار سجل منشأة لدى وزارة الموارد البشرية", "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي", "إصدار بطاقة منشأة عبر ICP (خارج دبي)"]
+    },
+    {
+      "id": "issue_residency",
+      "labelAr": "إصدار إقامة",
+      "labelEn": "Issue residence permit",
+      "concepts": ["issue", "residency"],
+      "phrases": ["أطلع إقامة", "اطلع اقامه", "إصدار إقامة", "اقامة جديدة", "residence permit", "issue residency"],
+      "targetTitles": ["إصدار تصريح إقامة عبر ICP (خارج دبي)", "إصدار إقامة موظف في القطاع الخاص في دبي"]
+    },
+    {
+      "id": "renew_residency",
+      "labelAr": "تجديد الإقامة",
+      "labelEn": "Renew residence permit",
+      "concepts": ["renew", "residency"],
+      "phrases": ["تجديد الإقامة", "اجدد الاقامه", "الإقامة انتهت", "renew residency", "residence renewal"],
+      "targetTitles": ["تجديد تصريح إقامة عبر ICP (خارج دبي)", "تجديد إقامة موظف في القطاع الخاص في دبي", "تجديد إقامة أفراد الأسرة في دبي"]
+    },
+    {
+      "id": "cancel_residency",
+      "labelAr": "إلغاء الإقامة",
+      "labelEn": "Cancel residence permit",
+      "concepts": ["cancel", "residency"],
+      "phrases": ["إلغاء الإقامة", "الغاء اقامه", "cancel residency", "residence cancellation"],
+      "targetTitles": ["إلغاء تصريح الإقامة الصادر من دبي"]
+    },
+    {
+      "id": "emirates_id",
+      "labelAr": "الهوية الإماراتية",
+      "labelEn": "Emirates ID",
+      "concepts": ["emirates_id"],
+      "phrases": ["هوية إماراتية", "بطاقة الهوية", "اصدار هوية", "تجديد الهوية", "emirates id", "uae id"],
+      "targetTitles": ["إصدار الهوية الإماراتية لأول مرة", "تجديد الهوية الإماراتية", "بدل فاقد أو تالف للهوية", "تحديث بيانات الهوية"]
+    },
+    {
+      "id": "golden_residency",
+      "labelAr": "الإقامة الذهبية",
+      "labelEn": "Golden residence",
+      "concepts": ["issue", "golden_residency"],
+      "phrases": ["إقامة ذهبية", "اقامه ذهبى", "الفيزا الذهبية", "golden visa", "golden residency", "golden"],
+      "targetTitles": ["إصدار الإقامة الذهبية للمستثمرين في دبي"]
+    },
+    {
+      "id": "investor_residency",
+      "labelAr": "إقامة مستثمر أو شريك",
+      "labelEn": "Investor or partner residence",
+      "concepts": ["issue", "investor_residency"],
+      "phrases": ["إقامة مستثمر", "إقامة شريك", "فيزا مستثمر", "investor visa", "partner residency"],
+      "targetTitles": ["إقامة شريك أو مستثمر في دبي", "إقامة مستثمر عقاري"]
+    },
+    {
+      "id": "corporate_tax",
+      "labelAr": "التسجيل في ضريبة الشركات",
+      "labelEn": "Corporate tax registration",
+      "concepts": ["register", "corporate_tax"],
+      "phrases": ["ضريبة الشركات", "تسجيل ضريبة شركة", "corporate tax", "corporate tax registration"],
+      "targetTitles": ["التسجيل في ضريبة الشركات بالإمارات"]
+    },
+    {
+      "id": "vat_registration",
+      "labelAr": "التسجيل في ضريبة القيمة المضافة",
+      "labelEn": "VAT registration",
+      "concepts": ["register", "vat"],
+      "phrases": ["ضريبة القيمة المضافة", "تسجيل فات", "استخراج trn", "vat registration", "value added tax"],
+      "targetTitles": ["التسجيل في ضريبة القيمة المضافة بالإمارات"]
+    },
+    {
+      "id": "document_attestation",
+      "labelAr": "تصديق المستندات",
+      "labelEn": "Document attestation",
+      "concepts": ["attest", "document"],
+      "phrases": ["تصديق مستند", "تصديق شهادة", "توثيق ورقة", "ختم الخارجية", "document attestation", "certificate attestation"],
+      "targetTitles": ["تصديق مستند شخصي داخل الإمارات", "تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)", "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0"]
+    },
+    {
+      "id": "certificate_equivalency",
+      "labelAr": "معادلة الشهادة",
+      "labelEn": "Certificate equivalency",
+      "concepts": ["equivalency", "certificate"],
+      "phrases": ["معادلة شهادة", "اعتراف الشهادة", "معادلة الثانوية", "معادلة الجامعة", "certificate equivalency", "degree recognition"],
+      "targetTitles": ["معادلة شهادة الثانوية من خارج الإمارات", "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات", "الاعتراف بالشهادة الجامعية الصادرة من الخارج"]
+    },
+    {
+      "id": "track_visa_application",
+      "labelAr": "متابعة طلب التأشيرة أو الإقامة",
+      "labelEn": "Track visa or residence application",
+      "concepts": ["track", "visa_application"],
+      "phrases": ["متابعة التأشيرة", "حالة الطلب", "وين وصل الطلب", "تتبع الفيزا", "track visa", "application status"],
+      "targetTitles": ["متابعة حالة طلب أو ملف لدى GDRFA دبي", "متابعة حالة طلب تأشيرة لدى ICP (خارج دبي)"]
+    },
+    {
+      "id": "pay_residency_fine",
+      "labelAr": "سداد غرامة التأشيرة أو الإقامة",
+      "labelEn": "Pay visa or residence fine",
+      "concepts": ["pay", "residency_fine"],
+      "phrases": ["غرامة إقامة", "غرامة فيزا", "مخالفة إقامة", "دفع الغرامة", "visa fine", "overstay fine"],
+      "targetTitles": ["سداد غرامات مخالفي قانون الإقامة في دبي", "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي)"]
+    }
+  ]
+}

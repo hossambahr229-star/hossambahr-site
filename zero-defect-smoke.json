@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-08-01T08:03:14.358Z",
+  "baseUrl": "http://127.0.0.1:57306",
+  "summary": {
+    "scenarios": 4,
+    "passed": 4,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "catalog-desktop",
+      "status": 200,
+      "initialCards": 102,
+      "filteredCards": 32,
+      "directServiceUrl": true,
+      "hasOfficialCta": true,
+      "firstHref": "/services/cancel-residency-permit-uae/",
+      "overflow": false,
+      "identity": true,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "name": "catalog-mobile",
+      "status": 200,
+      "cards": 102,
+      "searchVisible": true,
+      "overflow": false,
+      "identity": true,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "name": "decision-tree",
+      "status": 200,
+      "options": 3,
+      "directServiceUrl": true,
+      "overflow": false,
+      "identity": true,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "name": "homepage-alignment",
+      "status": 200,
+      "routingViolations": 0,
+      "violationDetails": [],
+      "serviceMetric": "102",
+      "authorityMetric": "9",
+      "hiddenEmptyCategories": 6,
+      "hiddenEmptyAudiences": 1,
+      "footerScope": "102 خدمة موثقة · 9 جهة مغطاة",
+      "overflow": false,
+      "identity": true,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": []
+    }
+  ]
+}
