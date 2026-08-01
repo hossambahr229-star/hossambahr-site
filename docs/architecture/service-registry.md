@@ -41,9 +41,11 @@ are restricted to the relevant service-detail page.
 ## Identity boundary
 
 The architecture does not redefine the visual system. The old identity is a locked
-external constraint recorded in `src/identity/heritage-contract.json`. Its canonical
-tokens and layouts remain pending until they are compared with an approved historical
-reference; current generated CSS is not silently treated as that reference.
+external constraint recorded in `src/identity/heritage-contract.json`. Git history
+identifies commit `f0de873` as the direct parent of the explicit homepage redesign.
+Its CSS and homepage blobs plus a rendered screenshot are the regression baseline.
+The later `heritage-identity.css` overlay is documented as a divergence, not silently
+treated as the historical source.
 
 ## Migration order
 
