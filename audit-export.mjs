@@ -129,6 +129,7 @@ for (const route of routes) {
 }
 
 const sitemap = await readFile(resolve(root, "sitemap.xml"), "utf8");
+const serviceMatrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "utf8"));
 const sitemapRoutes = new Set([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => {
   const pathname = new URL(match[1]).pathname || "/";
   return pathname === "/" ? "/" : `${pathname.replace(/\/+$/, "")}/`;
@@ -154,7 +155,9 @@ const report = {
     uniqueExternalLinks: external.size,
     orphanRoutes: orphanRoutes.length,
     pagesWithHeritageIdentity: routes.filter((route) => route.hasHeritageIdentity).length,
-    sitemapRoutes: sitemapRoutes.size
+    sitemapRoutes: sitemapRoutes.size,
+    canonicalServices: serviceMatrix.summary.services,
+    retainedLegacyServiceRoutes: routes.filter((route) => route.type === "dynamic-service").length - serviceMatrix.summary.services
   },
   routes,
   broken,
@@ -177,6 +180,8 @@ Visual identity reference: \`e0596a2\` (heritage green, gold, and cream system).
 - Exported pages: ${report.summary.routes}
 - Static routes: ${report.summary.staticRoutes}
 - Generated service routes: ${report.summary.dynamicServiceRoutes}
+- Canonical services in the single source of truth: ${report.summary.canonicalServices}
+- Retained legacy service URLs: ${report.summary.retainedLegacyServiceRoutes}
 - Links scanned: ${report.summary.scannedLinks}
 - Broken internal links: ${report.summary.brokenInternalLinks}
 - Empty or placeholder links: ${report.summary.placeholderLinks}
