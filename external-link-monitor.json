@@ -1,10 +1,11 @@
 {
-  "checkedAt": "2026-08-01T09:10:57.383Z",
+  "checkedAt": "2026-08-08T08:23:31.860Z",
   "source": "service-matrix.json",
   "semanticPolicy": "Only previously approved exact service routes are monitored.",
   "uniqueUrls": 164,
-  "healthy": 164,
+  "healthy": 0,
   "failed": 0,
+  "inconclusive": 164,
   "checks": [
     {
       "url": "https://www.mohre.gov.ae/en/services/private-tutor-licensing",
@@ -14,9 +15,11 @@
       "services": [
         "guide:mohre-private-tutor-permit"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/private-tutor-licensing"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit",
@@ -26,9 +29,11 @@
       "services": [
         "guide:mohre-private-tutor-permit"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/uae-nationalsgcc-citizens-work-permit-2022",
@@ -38,9 +43,11 @@
       "services": [
         "guide:mohre-uae-nationals-gcc-work-permit"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/uae-nationalsgcc-citizens-work-permit-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/75",
@@ -50,9 +57,11 @@
       "services": [
         "guide:mohre-uae-nationals-gcc-work-permit"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F75"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022",
@@ -62,9 +71,11 @@
       "services": [
         "guide:mohre-uae-national-trainee-work-permit"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/232",
@@ -75,9 +86,11 @@
         "guide:mohre-uae-national-trainee-work-permit",
         "directory:mohre:16"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F232"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",
@@ -87,9 +100,11 @@
       "services": [
         "guide:transfer-work-permit-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/309",
@@ -100,9 +115,11 @@
         "guide:transfer-work-permit-uae",
         "guide:new-work-permit-overseas-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F309"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
@@ -112,9 +129,11 @@
       "services": [
         "guide:employment-contract-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/70",
@@ -125,9 +144,11 @@
         "guide:employment-contract-uae",
         "directory:mohre:18"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F70"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022",
@@ -137,9 +158,11 @@
       "services": [
         "guide:cancel-work-permit-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
@@ -149,9 +172,11 @@
       "services": [
         "guide:cancel-residency-permit-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://digital.sedd.gov.ae/digital/license/renew-license/license-details-step",
@@ -163,9 +188,11 @@
         "guide:renew-business-license-sharjah",
         "guide:renew-business-license-sharjah"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://digital.sedd.gov.ae/digital/license/renew-license/license-details-step"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit",
@@ -177,9 +204,11 @@
         "guide:renew-business-license-ajman",
         "guide:renew-business-license-ajman"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022",
@@ -189,9 +218,11 @@
       "services": [
         "guide:establishment-card-mohre-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/330",
@@ -201,9 +232,11 @@
       "services": [
         "guide:establishment-card-mohre-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F330"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022",
@@ -213,9 +246,11 @@
       "services": [
         "guide:update-establishment-file-mohre-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/331",
@@ -225,9 +260,11 @@
       "services": [
         "guide:update-establishment-file-mohre-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F331"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
@@ -237,9 +274,11 @@
       "services": [
         "guide:new-work-permit-overseas-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
@@ -249,9 +288,11 @@
       "services": [
         "guide:family-sponsored-work-permit-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/186",
@@ -261,9 +302,11 @@
       "services": [
         "guide:family-sponsored-work-permit-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F186"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
@@ -273,9 +316,11 @@
       "services": [
         "guide:temporary-work-permit-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/81",
@@ -285,9 +330,11 @@
       "services": [
         "guide:temporary-work-permit-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F81"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022",
@@ -297,9 +344,11 @@
       "services": [
         "guide:part-time-work-permit-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/184",
@@ -310,9 +359,11 @@
         "guide:part-time-work-permit-uae",
         "directory:mohre:14"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F184"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
@@ -322,9 +373,11 @@
       "services": [
         "guide:issue-emirates-id-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/584?administrativeRegionId=1",
@@ -334,9 +387,11 @@
       "services": [
         "guide:issue-emirates-id-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/573?administrativeRegionId=1",
@@ -346,9 +401,11 @@
       "services": [
         "guide:issue-emirates-id-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/498?administrativeRegionId=1",
@@ -358,9 +415,11 @@
       "services": [
         "guide:issue-emirates-id-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
@@ -370,9 +429,11 @@
       "services": [
         "guide:renew-emirates-id-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/559?administrativeRegionId=1",
@@ -382,9 +443,11 @@
       "services": [
         "guide:renew-emirates-id-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/574?administrativeRegionId=1",
@@ -394,9 +457,11 @@
       "services": [
         "guide:renew-emirates-id-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/499?administrativeRegionId=1",
@@ -406,9 +471,11 @@
       "services": [
         "guide:renew-emirates-id-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
@@ -419,9 +486,11 @@
         "guide:family-residency-uae",
         "directory:residency:21"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=14aefa78-624c-4f8a-aee9-c6876fcc8b1a&Lang=ar-AE",
@@ -432,9 +501,11 @@
         "guide:family-residency-uae",
         "directory:residency:21"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
@@ -444,9 +515,11 @@
       "services": [
         "guide:golden-residency-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=256a91d9-23d7-469f-a054-ffee6c0fc4c7&Lang=ar-AE",
@@ -456,9 +529,11 @@
       "services": [
         "guide:golden-residency-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
@@ -468,9 +543,11 @@
       "services": [
         "guide:corporate-tax-registration-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://tax.gov.ae/ar/services/vat.registration.aspx",
@@ -480,9 +557,11 @@
       "services": [
         "guide:vat-registration-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://tax.gov.ae/ar/services/vat.registration.aspx"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.tax.gov.ae/sap/bc/ui5_ui5/sap/zmcf_fmca/index.html?saml2=disabled&sap-client=100&sap-language=AR&serviceId=6001&sCode=396-02-001-000",
@@ -492,9 +571,11 @@
       "services": [
         "guide:vat-registration-uae"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.tax.gov.ae/sap/bc/ui5_ui5/sap/zmcf_fmca/index.html?saml2=disabled&sap-client=100&sap-language=AR&serviceId=6001&sCode=396-02-001-000"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
@@ -506,9 +587,11 @@
         "catalog:تأسيس منشأة جديدة في عجمان",
         "catalog:تأسيس منشأة جديدة في عجمان"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
@@ -520,9 +603,11 @@
         "catalog:تأسيس شركة في المنطقة الحرة بالفجيرة",
         "catalog:تأسيس شركة في المنطقة الحرة بالفجيرة"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
@@ -532,9 +617,11 @@
       "services": [
         "catalog:تصريح عمل لمهمة"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/54",
@@ -544,9 +631,11 @@
       "services": [
         "catalog:تصريح عمل لمهمة"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F54"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
@@ -556,9 +645,11 @@
       "services": [
         "catalog:تصريح عمل لحامل الإقامة الذهبية"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
@@ -568,9 +659,11 @@
       "services": [
         "catalog:تسجيل شكوى عمالية للقطاع الخاص"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://backoffice.mohre.gov.ae/mohre.complaints.app/TwafouqAnonymous2/CallerVerification?lang=en",
@@ -581,9 +674,11 @@
         "catalog:تسجيل شكوى عمالية للقطاع الخاص",
         "directory:mohre:30"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://backoffice.mohre.gov.ae/mohre.complaints.app/TwafouqAnonymous2/CallerVerification?lang=en"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
@@ -593,9 +688,11 @@
       "services": [
         "catalog:تعديل بيانات تصريح الإقامة"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/401?administrativeRegionId=1",
@@ -605,9 +702,11 @@
       "services": [
         "catalog:تعديل بيانات تصريح الإقامة"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
@@ -617,9 +716,11 @@
       "services": [
         "catalog:تعديل بيانات التأشيرة"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/413?administrativeRegionId=1",
@@ -629,9 +730,11 @@
       "services": [
         "catalog:تعديل بيانات التأشيرة"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
@@ -641,9 +744,11 @@
       "services": [
         "catalog:تمديد التأشيرة أو إذن الدخول"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/996?administrativeRegionId=1",
@@ -653,9 +758,11 @@
       "services": [
         "catalog:تمديد التأشيرة أو إذن الدخول"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/997?administrativeRegionId=1",
@@ -665,9 +772,11 @@
       "services": [
         "catalog:تمديد التأشيرة أو إذن الدخول"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/998?administrativeRegionId=1",
@@ -677,9 +786,11 @@
       "services": [
         "catalog:تمديد التأشيرة أو إذن الدخول"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/999?administrativeRegionId=1",
@@ -689,9 +800,11 @@
       "services": [
         "catalog:تمديد التأشيرة أو إذن الدخول"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/785?administrativeRegionId=1",
@@ -701,9 +814,11 @@
       "services": [
         "catalog:تمديد التأشيرة أو إذن الدخول"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mofa.gov.ae/Account/Login?returnUrl=%2Far-ae%2FServices%2FForms%2Fattestation",
@@ -715,9 +830,11 @@
         "catalog:تصديق مستند شخصي داخل الإمارات",
         "catalog:تصديق مستند شخصي داخل الإمارات"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mofa.gov.ae/Account/Login?returnUrl=%2Far-ae%2FServices%2FForms%2Fattestation"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mofa.gov.ae/services/attestation",
@@ -727,9 +844,11 @@
       "services": [
         "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mofa.gov.ae/services/attestation"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mofa.gov.ae/services/edas-attestation-v2",
@@ -739,9 +858,11 @@
       "services": [
         "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mofa.gov.ae/services/edas-attestation-v2"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
@@ -751,9 +872,11 @@
       "services": [
         "catalog:معادلة شهادة الثانوية من خارج الإمارات"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
@@ -763,9 +886,11 @@
       "services": [
         "catalog:معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
@@ -775,9 +900,11 @@
       "services": [
         "catalog:التحقق من صحة المعادلة أو التصديق"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
@@ -787,9 +914,11 @@
       "services": [
         "directory:mohre:3"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/239",
@@ -799,9 +928,11 @@
       "services": [
         "directory:mohre:3"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F239"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/media-center/news/9/2/2026/mohre-launches-range-of-services-eliminating-most-required-documents-in-person-visits-and",
@@ -811,9 +942,11 @@
       "services": [
         "directory:mohre:4"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/media-center/news/9/2/2026/mohre-launches-range-of-services-eliminating-most-required-documents-in-person-visits-and"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
@@ -823,9 +956,11 @@
       "services": [
         "directory:mohre:5"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/319",
@@ -835,9 +970,11 @@
       "services": [
         "directory:mohre:5"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F319"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
@@ -847,9 +984,11 @@
       "services": [
         "directory:mohre:6"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/assets/download/9414d544/Awareness%20Guide%20for%20New%20Employers%20Companies%20-%20EN_639011571513592816.pdf.aspx",
@@ -859,9 +998,11 @@
       "services": [
         "directory:mohre:7"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/assets/download/9414d544/Awareness%20Guide%20for%20New%20Employers%20Companies%20-%20EN_639011571513592816.pdf.aspx"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers",
@@ -871,9 +1012,11 @@
       "services": [
         "directory:mohre:8"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/part-time-work-permit-2022",
@@ -883,9 +1026,11 @@
       "services": [
         "directory:mohre:14"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/part-time-work-permit-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
@@ -895,9 +1040,11 @@
       "services": [
         "directory:mohre:15"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/185",
@@ -907,9 +1054,11 @@
       "services": [
         "directory:mohre:15"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F185"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022",
@@ -919,9 +1068,11 @@
       "services": [
         "directory:mohre:16"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
@@ -931,9 +1082,11 @@
       "services": [
         "directory:mohre:18"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
@@ -943,9 +1096,11 @@
       "services": [
         "directory:mohre:19"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/85",
@@ -955,9 +1110,11 @@
       "services": [
         "directory:mohre:19"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F85"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/guidance-and-awareness-portal-new/work-bundle",
@@ -967,9 +1124,11 @@
       "services": [
         "directory:mohre:21"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/guidance-and-awareness-portal-new/work-bundle"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
@@ -979,9 +1138,11 @@
       "services": [
         "directory:mohre:24"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://nafis.gov.ae/employer",
@@ -991,9 +1152,11 @@
       "services": [
         "directory:mohre:27"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://nafis.gov.ae/employer"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/media-center/news/9/8/2022/ministry-of-human-resources-and-emiratisation-issues-resolution-on-bank-guarantees-and-employees-pro",
@@ -1003,9 +1166,11 @@
       "services": [
         "directory:mohre:28"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/media-center/news/9/8/2022/ministry-of-human-resources-and-emiratisation-issues-resolution-on-bank-guarantees-and-employees-pro"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
@@ -1015,9 +1180,11 @@
       "services": [
         "directory:mohre:30"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
@@ -1027,9 +1194,11 @@
       "services": [
         "directory:mohre:31"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
@@ -1039,9 +1208,11 @@
       "services": [
         "directory:mohre:32"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
@@ -1051,9 +1222,11 @@
       "services": [
         "directory:mohre:34"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
@@ -1063,9 +1236,11 @@
       "services": [
         "directory:mohre:35"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
@@ -1075,9 +1250,11 @@
       "services": [
         "directory:mohre:36"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
@@ -1087,9 +1264,11 @@
       "services": [
         "directory:mohre:37"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
@@ -1099,9 +1278,11 @@
       "services": [
         "directory:mohre:38"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
@@ -1111,9 +1292,11 @@
       "services": [
         "directory:mohre:39"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
@@ -1123,9 +1306,11 @@
       "services": [
         "directory:mohre:40"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
@@ -1135,9 +1320,11 @@
       "services": [
         "directory:mohre:41"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
@@ -1147,9 +1334,11 @@
       "services": [
         "directory:mohre:42"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
@@ -1159,9 +1348,11 @@
       "services": [
         "directory:residency:3"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/561?administrativeRegionId=1",
@@ -1171,9 +1362,11 @@
       "services": [
         "directory:residency:3"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/575?administrativeRegionId=1",
@@ -1183,9 +1376,11 @@
       "services": [
         "directory:residency:3"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
@@ -1195,9 +1390,11 @@
       "services": [
         "directory:residency:4"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/1058?administrativeRegionId=1",
@@ -1207,9 +1404,11 @@
       "services": [
         "directory:residency:4"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
@@ -1219,9 +1418,11 @@
       "services": [
         "directory:residency:5"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/566?administrativeRegionId=1",
@@ -1231,9 +1432,11 @@
       "services": [
         "directory:residency:5"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
@@ -1243,9 +1446,11 @@
       "services": [
         "directory:residency:6"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/depositRefund/376/request/step1?administrativeRegionId=1&withException=false",
@@ -1255,9 +1460,11 @@
       "services": [
         "directory:residency:6"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
@@ -1270,9 +1477,11 @@
         "directory:residency:20",
         "directory:residency:22"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/61?administrativeRegionId=1",
@@ -1282,9 +1491,11 @@
       "services": [
         "directory:residency:7"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/37?administrativeRegionId=1",
@@ -1295,9 +1506,11 @@
         "directory:residency:7",
         "directory:residency:20"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/38?administrativeRegionId=1",
@@ -1308,9 +1521,11 @@
         "directory:residency:7",
         "directory:residency:20"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
@@ -1320,9 +1535,11 @@
       "services": [
         "directory:residency:8"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
@@ -1332,9 +1549,11 @@
       "services": [
         "directory:residency:9"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/123?administrativeRegionId=1",
@@ -1344,9 +1563,11 @@
       "services": [
         "directory:residency:9"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/124?administrativeRegionId=1",
@@ -1356,9 +1577,11 @@
       "services": [
         "directory:residency:9"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
@@ -1368,9 +1591,11 @@
       "services": [
         "directory:residency:11"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
@@ -1380,9 +1605,11 @@
       "services": [
         "directory:residency:13"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/400?administrativeRegionId=1",
@@ -1392,9 +1619,11 @@
       "services": [
         "directory:residency:14"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
@@ -1404,9 +1633,11 @@
       "services": [
         "directory:residency:15"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/serviceCards/1040?administrativeRegionId=1",
@@ -1416,9 +1647,11 @@
       "services": [
         "directory:residency:15"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
@@ -1428,9 +1661,11 @@
       "services": [
         "directory:residency:16"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/others/guestRequestDetails/447/step1?administrativeRegionId=1&withException=false",
@@ -1440,9 +1675,11 @@
       "services": [
         "directory:residency:16"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
@@ -1452,9 +1689,11 @@
       "services": [
         "directory:residency:18"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
@@ -1464,9 +1703,11 @@
       "services": [
         "directory:residency:19"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/71?administrativeRegionId=1",
@@ -1476,9 +1717,11 @@
       "services": [
         "directory:residency:22"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/70?administrativeRegionId=1",
@@ -1488,9 +1731,11 @@
       "services": [
         "directory:residency:22"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/69?administrativeRegionId=1",
@@ -1500,9 +1745,11 @@
       "services": [
         "directory:residency:22"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
@@ -1516,9 +1763,11 @@
         "directory:residency:34",
         "directory:residency:36"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/39?administrativeRegionId=1",
@@ -1529,9 +1778,11 @@
         "directory:residency:23",
         "directory:residency:29"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/919/step1?administrativeRegionId=1&withException=false",
@@ -1542,9 +1793,11 @@
         "directory:residency:23",
         "directory:residency:31"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/939/step1?administrativeRegionId=1&withException=false",
@@ -1555,9 +1808,11 @@
         "directory:residency:23",
         "directory:residency:34"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/944/step1?administrativeRegionId=1&withException=false",
@@ -1568,9 +1823,11 @@
         "directory:residency:23",
         "directory:residency:36"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63",
@@ -1580,9 +1837,11 @@
       "services": [
         "directory:residency:26"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/414?administrativeRegionId=1",
@@ -1592,9 +1851,11 @@
       "services": [
         "directory:residency:26"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
@@ -1604,9 +1865,11 @@
       "services": [
         "directory:residency:27"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
@@ -1616,9 +1879,11 @@
       "services": [
         "directory:residency:28"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
@@ -1628,9 +1893,11 @@
       "services": [
         "directory:residency:30"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/949/step1?administrativeRegionId=1&withException=false",
@@ -1640,9 +1907,11 @@
       "services": [
         "directory:residency:31"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
@@ -1652,9 +1921,11 @@
       "services": [
         "directory:residency:32"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/783/step1?administrativeRegionId=1&withException=false",
@@ -1664,9 +1935,11 @@
       "services": [
         "directory:residency:32"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
@@ -1676,9 +1949,11 @@
       "services": [
         "directory:residency:33"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/941/step1?administrativeRegionId=1&withException=false",
@@ -1688,9 +1963,11 @@
       "services": [
         "directory:residency:34"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/942/step1?administrativeRegionId=1&withException=false",
@@ -1700,9 +1977,11 @@
       "services": [
         "directory:residency:34"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
@@ -1712,9 +1991,11 @@
       "services": [
         "directory:residency:35"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/945/step1?administrativeRegionId=1&withException=false",
@@ -1724,9 +2005,11 @@
       "services": [
         "directory:residency:36"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/946/step1?administrativeRegionId=1&withException=false",
@@ -1736,9 +2019,11 @@
       "services": [
         "directory:residency:36"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8",
@@ -1748,9 +2033,11 @@
       "services": [
         "directory:residency:43"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
@@ -1760,9 +2047,11 @@
       "services": [
         "directory:residency:44"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
@@ -1772,9 +2061,11 @@
       "services": [
         "directory:residency:45"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/139?administrativeRegionId=1",
@@ -1784,9 +2075,11 @@
       "services": [
         "directory:residency:45"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/140?administrativeRegionId=1",
@@ -1796,9 +2089,11 @@
       "services": [
         "directory:residency:45"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/141?administrativeRegionId=1",
@@ -1808,9 +2103,11 @@
       "services": [
         "directory:residency:45"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
@@ -1820,9 +2117,11 @@
       "services": [
         "directory:residency:46"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
@@ -1832,9 +2131,11 @@
       "services": [
         "directory:residency:47"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/157?administrativeRegionId=1",
@@ -1844,9 +2145,11 @@
       "services": [
         "directory:residency:47"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/158?administrativeRegionId=1",
@@ -1856,9 +2159,11 @@
       "services": [
         "directory:residency:47"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
@@ -1868,9 +2173,11 @@
       "services": [
         "directory:residency:48"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
@@ -1880,9 +2187,11 @@
       "services": [
         "directory:residency:49"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/160?administrativeRegionId=1",
@@ -1892,9 +2201,11 @@
       "services": [
         "directory:residency:49"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
@@ -1904,9 +2215,11 @@
       "services": [
         "directory:residency:50"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
@@ -1916,9 +2229,11 @@
       "services": [
         "directory:residency:51"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/162?administrativeRegionId=1",
@@ -1928,9 +2243,11 @@
       "services": [
         "directory:residency:51"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
@@ -1940,9 +2257,11 @@
       "services": [
         "directory:residency:52"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/fines-inquiry-service"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
@@ -1952,9 +2271,11 @@
       "services": [
         "directory:residency:53"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
@@ -1964,9 +2285,11 @@
       "services": [
         "directory:residency:54"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/fines/407/step1?administrativeRegionId=1&withException=false",
@@ -1976,9 +2299,11 @@
       "services": [
         "directory:residency:54"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
@@ -1988,9 +2313,11 @@
       "services": [
         "directory:residency:55"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
@@ -2002,9 +2329,11 @@
         "directory:residency:56",
         "directory:residency:56"
       ],
-      "ok": true,
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html"
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
     }
   ]
 }

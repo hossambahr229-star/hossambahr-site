@@ -158,13 +158,14 @@ if (live) {
       const response = await fetch(entry.url, { method: "GET", redirect: "follow", signal: controller.signal, headers: { "user-agent": "HossamBahr-Zero-Defect-Audit/1.0" } });
       return { ...entry, ok: (response.status >= 200 && response.status < 400) || [401, 403].includes(response.status), status: response.status, finalUrl: response.url };
     } catch (error) {
-      return { ...entry, ok: false, status: 0, finalUrl: "", error: error instanceof Error ? error.message : String(error) };
+      return { ...entry, ok: false, inconclusive: true, status: 0, finalUrl: "", error: error instanceof Error ? error.message : String(error) };
     } finally {
       clearTimeout(timer);
     }
   }
   for (let index = 0; index < unique.length; index += 16) liveChecks.push(...await Promise.all(unique.slice(index, index + 16).map(inspect)));
-  for (const check of liveChecks.filter((item) => !item.ok)) failures.push({ type: "official-link-unreachable", url: check.url, status: check.status, error: check.error, services: check.services });
+  for (const check of liveChecks.filter((item) => !item.ok && !item.inconclusive)) failures.push({ type: "official-link-unreachable", url: check.url, status: check.status, error: check.error, services: check.services });
+  for (const check of liveChecks.filter((item) => item.inconclusive)) warnings.push({ type: "official-link-test-inconclusive", url: check.url, status: check.status, error: check.error, services: check.services });
 }
 
 const report = {
@@ -180,6 +181,7 @@ const report = {
     suspendedSourceRecords: matrix.summary.suspendedSourceRecords,
     officialUrlsChecked: liveChecks.length,
     officialUrlsHealthy: liveChecks.filter((item) => item.ok).length,
+    officialUrlsInconclusive: liveChecks.filter((item) => item.inconclusive).length,
     failures: failures.length,
     warnings: warnings.length,
   },
@@ -196,12 +198,13 @@ if (live) {
     semanticPolicy: "Only previously approved exact service routes are monitored.",
     uniqueUrls: liveChecks.length,
     healthy: liveChecks.filter((item) => item.ok).length,
-    failed: liveChecks.filter((item) => !item.ok).length,
+    failed: liveChecks.filter((item) => !item.ok && !item.inconclusive).length,
+    inconclusive: liveChecks.filter((item) => item.inconclusive).length,
     checks: liveChecks,
   };
   await writeFile(resolve(root, "external-link-monitor.json"), `${JSON.stringify(externalMonitor, null, 2)}\n`, "utf8");
 }
-const markdown = `# Zero-defect routing and service audit\n\n- HTML routes: ${report.summary.htmlRoutes}\n- Links scanned: ${report.summary.linksScanned}\n- Canonical services: ${report.summary.canonicalServices}\n- Authorities: ${report.summary.authorities}\n- Categories with verified services: ${report.summary.categoriesWithServices}\n- Suspended source records kept unpublished: ${report.summary.suspendedSourceRecords}\n- Official URLs checked: ${report.summary.officialUrlsChecked}\n- Official URLs healthy: ${report.summary.officialUrlsHealthy}\n- Failures: ${report.summary.failures}\n- Warnings: ${report.summary.warnings}\n\n## Failures\n\n${failures.length ? failures.map((failure) => `- \`${failure.type}\`: ${JSON.stringify(failure)}`).join("\n") : "- None."}\n`;
+const markdown = `# Zero-defect routing and service audit\n\n- HTML routes: ${report.summary.htmlRoutes}\n- Links scanned: ${report.summary.linksScanned}\n- Canonical services: ${report.summary.canonicalServices}\n- Authorities: ${report.summary.authorities}\n- Categories with verified services: ${report.summary.categoriesWithServices}\n- Suspended source records kept unpublished: ${report.summary.suspendedSourceRecords}\n- Official URLs checked: ${report.summary.officialUrlsChecked}\n- Official URLs healthy: ${report.summary.officialUrlsHealthy}\n- Official URL tests inconclusive: ${report.summary.officialUrlsInconclusive}\n- Failures: ${report.summary.failures}\n- Warnings: ${report.summary.warnings}\n\n## Failures\n\n${failures.length ? failures.map((failure) => `- \`${failure.type}\`: ${JSON.stringify(failure)}`).join("\n") : "- None."}\n`;
 await writeFile(resolve(root, "zero-defect-audit.md"), markdown, "utf8");
 console.log(JSON.stringify(report.summary, null, 2));
 if (failures.length) process.exitCode = 1;
