@@ -39,6 +39,20 @@
       "evidence": ["https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496"]
     },
     {
+      "id": "modify-trade-license-noc",
+      "mainId": "business-licensing",
+      "name": { "ar": "عدم ممانعة لتعديل رخصة تجارية", "en": "Trade licence modification NOC" },
+      "classificationBasis": "Exact RTA transaction subject.",
+      "evidence": ["https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534"]
+    },
+    {
+      "id": "renew-trade-license-noc",
+      "mainId": "business-licensing",
+      "name": { "ar": "عدم ممانعة لتجديد رخصة تجارية", "en": "Trade licence renewal NOC" },
+      "classificationBasis": "Exact RTA transaction subject.",
+      "evidence": ["https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438"]
+    },
+    {
       "id": "real-estate-advertising-permits",
       "mainId": "real-estate-services",
       "name": { "ar": "تصاريح الإعلان العقاري", "en": "Real estate advertising permits" },

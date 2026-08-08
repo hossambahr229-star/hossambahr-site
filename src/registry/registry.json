@@ -4,7 +4,7 @@
   "services": [
     {
       "id": "rta-new-trade-license-noc-dubai",
-      "sourceLegacyIds": ["directory:approvals:4"],
+      "sourceLegacyIds": ["directory:approvals:4", "directory:approvals:3"],
       "slug": "rta-new-trade-license-noc-dubai",
       "name": {
         "ar": "طلب شهادة عدم ممانعة لرخصة تجارية جديدة من RTA",
@@ -98,7 +98,7 @@
       "officialSources": [
         { "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496", "title": { "ar": "طلب شهادة عدم ممانعة لرخصة تجارية جديدة", "en": "Apply for an NOC for a New Trade Licence" }, "checkedAt": "2026-08-08T18:20:00+04:00" }
       ],
-      "relatedServiceIds": [],
+      "relatedServiceIds": ["rta-modify-trade-license-noc-dubai", "rta-renew-trade-license-noc-dubai"],
       "alternativeServiceIds": [],
       "faq": [
         { "question": { "ar": "ما صلاحية شهادة عدم الممانعة؟", "en": "How long is the NOC valid?" }, "answer": { "ar": "تذكر بطاقة RTA الرسمية أن الشهادة صالحة لمدة 90 يومًا.", "en": "The official RTA card states that the NOC is valid for 90 days." } },
@@ -223,6 +223,124 @@
         "relationshipsLinkedAt": "2026-08-08T18:39:00+04:00",
         "publishReadyAt": "2026-08-08T18:40:00+04:00"
       }
+    },
+    {
+      "id": "rta-modify-trade-license-noc-dubai",
+      "sourceLegacyIds": [],
+      "slug": "rta-modify-trade-license-noc-dubai",
+      "name": { "ar": "طلب شهادة عدم ممانعة لتعديل رخصة تجارية من RTA", "en": "Apply for an NOC to Modify a Trade Licence" },
+      "description": { "ar": "خدمة هيئة الطرق والمواصلات لإصدار شهادة عدم ممانعة عند تعديل رخصة تتضمن نشاط نقل تجاري في دبي، مثل تعديل الشركاء أو المدير أو النشاط أو الاسم أو الموقع أو حالة الرخصة.", "en": "RTA service to issue an NOC when modifying a Dubai trade licence containing a commercial transport activity, including changes to members, manager, activity, name, work site or licence status." },
+      "audiences": [{ "ar": "الشركات المرخصة لدى هيئة الطرق والمواصلات في دبي", "en": "Companies licensed by Dubai RTA" }],
+      "requestType": { "ar": "إصدار شهادة عدم ممانعة لتعديل الرخصة", "en": "Issue a trade-licence modification NOC" },
+      "emirateId": "dubai",
+      "authorityId": "rta-dubai",
+      "category": { "mainId": "business-licensing", "subId": "modify-trade-license-noc" },
+      "customerTypeIds": ["business"],
+      "activityIds": ["commercial-transport-activity"],
+      "licenseTypeIds": ["commercial-transport-trade-license"],
+      "classificationNumbers": ["HB-RTA-NOC-MODIFY-001"],
+      "keywords": { "ar": ["RTA", "تعديل رخصة تجارية", "إضافة نشاط نقل", "حذف نشاط", "تغيير شريك", "تغيير مدير", "دبي"], "en": ["RTA", "modify trade licence", "add activity", "remove activity", "change shareholder", "change manager", "Dubai"] },
+      "documents": {
+        "status": "required",
+        "items": [
+          { "id": "trade-license-copy", "name": { "ar": "نسخة من الرخصة التجارية", "en": "Copy of the trade licence" }, "required": true, "notes": { "ar": "بحسب بطاقة RTA الرسمية.", "en": "As listed on the official RTA card." } },
+          { "id": "activity-preliminary-approval", "name": { "ar": "الموافقة المبدئية لإضافة النشاط عند انطباقها", "en": "Preliminary approval to add the activity where applicable" }, "required": false, "notes": { "ar": "من DET أو المنطقة الحرة عند إضافة نشاط.", "en": "From DET or the relevant free zone when adding an activity." } }
+        ],
+        "notes": { "ar": "قد تتطلب بعض الأنشطة موافقات إضافية حسب رمز النشاط في الجدول الرسمي.", "en": "Some activities require additional approvals according to the official activity-code table." }
+      },
+      "governmentFees": { "status": "variable", "items": [], "notes": { "ar": "تختلف الرسوم حسب نوع التعديل ورمز نشاط النقل؛ تعرض بطاقة RTA جدول الرسوم التفصيلي، ورسوم حذف النشاط 220 درهمًا وفق البطاقة الحالية.", "en": "Fees vary by modification type and transport activity code; the official card provides the full table and currently lists AED 220 for removing an activity." } },
+      "serviceFees": { "status": "free", "items": [], "notes": { "ar": "لا تفرض منصة HossamBahr رسومًا على الوصول إلى هذا الدليل.", "en": "HossamBahr charges no fee for access to this guide." } },
+      "conditions": [
+        { "ar": "يجب سداد المخالفات والقيود المالية المتعلقة بالرخصة قبل تنفيذ المعاملة.", "en": "Licence fines and financial constraints must be settled before the transaction." },
+        { "ar": "إضافة نشاط أو حذفه دون موافقة RTA قد يعرّض الشركة للمخالفة.", "en": "Adding or removing an activity without RTA approval may expose the company to a violation." }
+      ],
+      "eligibility": [{ "ar": "شركة قائمة ومرخصة لدى RTA وتحتاج تعديل بيانات رخصتها أو أنشطتها.", "en": "An existing RTA-licensed company that needs to amend licence details or activities." }],
+      "exceptions": [{ "ar": "بعد إصدار الشهادة وإتمام تعديل الرخصة لدى جهة الترخيص، يجب تحديث معلومات الرخصة في ملف المرور.", "en": "After the NOC and licence amendment are completed, the trade-licence information must be updated in the traffic file." }],
+      "duration": { "ar": "من 3 إلى 15 يوم عمل بحسب الموافقات المطلوبة.", "en": "3 to 15 working days depending on required approvals." },
+      "steps": [
+        { "order": 1, "title": { "ar": "راجع بطاقة الخدمة الرسمية", "en": "Review the official service card" }, "description": { "ar": "حدد نوع التعديل وراجع متطلبات النشاط ورسومه.", "en": "Choose the modification type and review activity requirements and fees." } },
+        { "order": 2, "title": { "ar": "سجل الدخول وأدخل بيانات الرخصة", "en": "Sign in and enter licence details" }, "description": { "ar": "اختر خدمة التعديل، وافق على الشروط وأدخل بيانات الرخصة.", "en": "Select the modification service, accept the terms and enter licence information." } },
+        { "order": 3, "title": { "ar": "نفذ التعديلات وأرسل الطلب", "en": "Make changes and submit" }, "description": { "ar": "أدخل التعديل المطلوب وأكد بيانات التواصل وأرسل الطلب للموافقات.", "en": "Enter the required change, confirm contact details and submit for approval." } },
+        { "order": 4, "title": { "ar": "ادفع وحمّل الشهادة", "en": "Pay and download the NOC" }, "description": { "ar": "بعد اكتمال الموافقات ادفع الرسوم وحمّل الشهادة الصالحة 90 يومًا.", "en": "After approvals, pay the fees and download the NOC, valid for 90 days." } }
+      ],
+      "officialGovernmentLink": {
+        "id": "rta-service-card-534",
+        "label": { "ar": "فتح بطاقة خدمة RTA الرسمية", "en": "Open the official RTA service card" },
+        "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+        "channel": "web", "target": "exact-service-card", "official": true,
+        "lastTestedAt": "2026-08-08T21:15:00+04:00",
+        "testEvidence": [{ "type": "manual-log", "value": "Official serviceId=534 returned the exact modification transaction. Its Start Now journey at cls.rta.ae displayed a government-side application error, so the safe CTA targets the exact official service card.", "capturedAt": "2026-08-08T21:15:00+04:00" }]
+      },
+      "officialSources": [{ "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534", "title": { "ar": "طلب شهادة عدم ممانعة لتعديل رخصة تجارية", "en": "Apply for an NOC to Modify a Trade Licence" }, "checkedAt": "2026-08-08T21:15:00+04:00" }],
+      "relatedServiceIds": ["rta-new-trade-license-noc-dubai", "rta-renew-trade-license-noc-dubai"],
+      "alternativeServiceIds": [],
+      "faq": [
+        { "question": { "ar": "ما مدة صلاحية الشهادة؟", "en": "How long is the NOC valid?" }, "answer": { "ar": "تذكر بطاقة RTA أن شهادة التعديل صالحة لمدة 90 يومًا.", "en": "The RTA card states that the modification NOC is valid for 90 days." } },
+        { "question": { "ar": "هل الرسوم موحدة؟", "en": "Are the fees fixed?" }, "answer": { "ar": "لا؛ تختلف حسب نوع التعديل ورمز النشاط المختار.", "en": "No. They vary by modification type and selected activity code." } }
+      ],
+      "lastUpdated": "2026-06-04",
+      "lastReviewedAt": "2026-08-08T21:15:00+04:00",
+      "verification": { "status": "verified", "reviewedAt": "2026-08-08T21:15:00+04:00", "reviewer": "Codex government-source review", "evidence": [{ "type": "official-source", "value": "RTA serviceId=534 exact official card: name, scope, requirements, variable fees, duration, steps and 90-day output checked.", "capturedAt": "2026-08-08T21:15:00+04:00" }], "notes": { "ar": "اعتمدت بطاقة المعاملة الرسمية الدقيقة، ولم يُنشر رابط التنفيذ المباشر المتعطل لدى الجهة.", "en": "The exact official transaction card is used; the failing government direct journey is not exposed." } },
+      "businessAcceptance": {
+        "status": "passed",
+        "servicePage": { "testedAt": "2026-08-08T21:20:00+04:00", "httpStatus": 200, "nonEmpty": true, "evidence": [{ "type": "manual-log", "value": "Canonical route rendered with full content and protected historical identity.", "capturedAt": "2026-08-08T21:20:00+04:00" }] },
+        "search": { "testedAt": "2026-08-08T21:21:00+04:00", "methodsVerified": ["name", "keywords", "authority", "emirate", "activity", "license-type", "classification-number", "related-service"], "evidence": [{ "type": "manual-log", "value": "All canonical discovery fields are present and related-service IDs point only to approved RTA services.", "capturedAt": "2026-08-08T21:21:00+04:00" }] },
+        "journey": { "testedAt": "2026-08-08T21:22:00+04:00", "homeToExecutionClicks": 2, "evidence": [{ "type": "manual-log", "value": "Homepage to directory to service page; safe exact RTA service-card CTA visible.", "capturedAt": "2026-08-08T21:22:00+04:00" }] },
+        "manualTest": { "testedAt": "2026-08-08T21:23:00+04:00", "result": "passed", "tester": "Codex", "evidence": [{ "type": "manual-log", "value": "Business fields and official destination matched current RTA evidence; broken direct journey excluded.", "capturedAt": "2026-08-08T21:23:00+04:00" }], "notes": { "ar": "اجتازت الخدمة قبول الأعمال بوجهة رسمية آمنة.", "en": "The service passed business acceptance with a safe official destination." } }
+      },
+      "lifecycle": { "approvedAt": "2026-08-08T21:18:00+04:00", "routeCreatedAt": "2026-08-08T21:19:00+04:00", "registryInsertedAt": "2026-08-08T21:20:00+04:00", "relationshipsLinkedAt": "2026-08-08T21:24:00+04:00", "publishReadyAt": "2026-08-08T21:25:00+04:00" }
+    },
+    {
+      "id": "rta-renew-trade-license-noc-dubai",
+      "sourceLegacyIds": [],
+      "slug": "rta-renew-trade-license-noc-dubai",
+      "name": { "ar": "طلب شهادة عدم ممانعة لتجديد رخصة تجارية من RTA", "en": "Apply for an NOC to Renew a Trade Licence" },
+      "description": { "ar": "خدمة هيئة الطرق والمواصلات لإصدار شهادة عدم الممانعة اللازمة لتجديد رخصة شركة أو فرع يتضمن نشاط نقل تجاري في دبي.", "en": "RTA service to issue the NOC required to renew a company or branch trade licence containing a commercial transport activity in Dubai." },
+      "audiences": [{ "ar": "الشركات والفروع التي تحمل رخصة تشمل نشاط نقل تجاري في دبي", "en": "Companies and branches with a Dubai trade licence containing a commercial transport activity" }],
+      "requestType": { "ar": "إصدار شهادة عدم ممانعة لتجديد الرخصة", "en": "Issue a trade-licence renewal NOC" },
+      "emirateId": "dubai", "authorityId": "rta-dubai",
+      "category": { "mainId": "business-licensing", "subId": "renew-trade-license-noc" },
+      "customerTypeIds": ["business"], "activityIds": ["commercial-transport-activity"], "licenseTypeIds": ["commercial-transport-trade-license"],
+      "classificationNumbers": ["HB-RTA-NOC-RENEW-001"],
+      "keywords": { "ar": ["RTA", "تجديد رخصة تجارية", "عدم ممانعة", "نشاط نقل تجاري", "تجديد تلقائي", "دبي"], "en": ["RTA", "renew trade licence", "NOC", "commercial transport activity", "auto renewal", "Dubai"] },
+      "documents": { "status": "not-required", "items": [], "notes": { "ar": "بطاقة RTA الحالية لا تسرد مستندات مطلوبة لهذه المعاملة؛ تستخدم بيانات الرخصة والحساب، وقد تختلف الموافقات حسب النشاط.", "en": "The current RTA card lists no service requirements; licence/account data is used and approvals may vary by activity." } },
+      "governmentFees": { "status": "variable", "items": [], "notes": { "ar": "تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.", "en": "Fees vary by commercial transport activity code and appear in the official activity table and payment screen." } },
+      "serviceFees": { "status": "free", "items": [], "notes": { "ar": "لا تفرض منصة HossamBahr رسومًا على الوصول إلى هذا الدليل.", "en": "HossamBahr charges no fee for access to this guide." } },
+      "conditions": [
+        { "ar": "تُختار الرخصة المطلوب تجديدها من حساب الشركة لدى RTA وتُستكمل الموافقات المطلوبة حسب النشاط.", "en": "The licence is selected from the company RTA account and any activity-specific approvals must be completed." },
+        { "ar": "الأنشطة المدرجة ضمن التجديد التلقائي قد لا تحتاج شهادة عدم ممانعة.", "en": "Activities on the official auto-renewal list may not require an NOC." }
+      ],
+      "eligibility": [{ "ar": "شركة حصلت على موافقة مبدئية من جهة ترخيص في دبي أو تحمل رخصة تجارية تشمل نشاط نقل تجاري.", "en": "A company with Dubai licensing preliminary approval or an existing trade licence containing a commercial transport activity." }],
+      "exceptions": [{ "ar": "بعد تجديد الرخصة يجب التأكد من انعكاس تاريخ الانتهاء الجديد في ملف المرور، وتحمّل شركات المناطق الحرة الرخصة المجددة عند طلب النظام.", "en": "After renewal, the new expiry date must appear in the traffic file; free-zone companies upload the renewed licence when requested." }],
+      "duration": { "ar": "فوري إذا لم يحتج النشاط موافقة إضافية، ومن 3 إلى 15 يوم عمل عند الحاجة إلى موافقات.", "en": "Instant where no additional approval is required, or 3 to 15 working days when approvals are needed." },
+      "steps": [
+        { "order": 1, "title": { "ar": "افتح بطاقة المعاملة الرسمية", "en": "Open the official transaction card" }, "description": { "ar": "راجع قائمة أنشطة التجديد التلقائي ومتطلبات نشاطك قبل البدء.", "en": "Check the auto-renewal list and the requirements for your activity." } },
+        { "order": 2, "title": { "ar": "سجل الدخول واختر الرخصة", "en": "Sign in and select the licence" }, "description": { "ar": "استخدم حساب الشركة لدى RTA واختر الرخصة المطلوب تجديدها.", "en": "Use the company RTA account and select the licence to renew." } },
+        { "order": 3, "title": { "ar": "أكمل الموافقات والدفع", "en": "Complete approvals and payment" }, "description": { "ar": "راجع الطلب وأكمل الموافقات عند الحاجة ثم ادفع الرسوم المعروضة.", "en": "Review the application, complete approvals where required and pay the displayed fees." } },
+        { "order": 4, "title": { "ar": "استلم الشهادة وأكمل التجديد", "en": "Receive the NOC and complete renewal" }, "description": { "ar": "استلم الشهادة بالبريد الإلكتروني وأكمل التجديد لدى جهة إصدار الرخصة ثم تحقق من ملف المرور.", "en": "Receive the NOC by email, complete renewal with the licensing authority and check the traffic file." } }
+      ],
+      "officialGovernmentLink": {
+        "id": "rta-service-card-438", "label": { "ar": "فتح بطاقة خدمة RTA الرسمية", "en": "Open the official RTA service card" },
+        "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438", "channel": "web", "target": "exact-service-card", "official": true,
+        "lastTestedAt": "2026-08-08T21:30:00+04:00",
+        "testEvidence": [{ "type": "manual-log", "value": "Official serviceId=438 returned the exact renewal transaction. The direct cls.rta.ae RPJ journey was not independently stable for validation, so the CTA targets the exact official service card.", "capturedAt": "2026-08-08T21:30:00+04:00" }]
+      },
+      "officialSources": [{ "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438", "title": { "ar": "طلب شهادة عدم ممانعة لتجديد رخصة تجارية", "en": "Apply for an NOC to Renew a Trade Licence" }, "checkedAt": "2026-08-08T21:30:00+04:00" }],
+      "relatedServiceIds": ["rta-new-trade-license-noc-dubai", "rta-modify-trade-license-noc-dubai"], "alternativeServiceIds": [],
+      "faq": [
+        { "question": { "ar": "هل تحتاج جميع الأنشطة شهادة للتجديد؟", "en": "Do all activities need an NOC for renewal?" }, "answer": { "ar": "لا؛ تذكر RTA أن الأنشطة المدرجة في قائمة التجديد التلقائي لا تحتاج شهادة عدم ممانعة.", "en": "No. RTA states that activities on the auto-renewal list do not require an NOC." } },
+        { "question": { "ar": "ما مدة صلاحية الشهادة؟", "en": "How long is the NOC valid?" }, "answer": { "ar": "شهادة عدم الممانعة للتجديد صالحة لمدة 90 يومًا.", "en": "The renewal NOC is valid for 90 days." } }
+      ],
+      "lastUpdated": "2026-06-04", "lastReviewedAt": "2026-08-08T21:30:00+04:00",
+      "verification": { "status": "verified", "reviewedAt": "2026-08-08T21:30:00+04:00", "reviewer": "Codex government-source review", "evidence": [{ "type": "official-source", "value": "RTA serviceId=438 exact official card: name, scope, eligibility, no listed requirements, variable fees, duration, auto-renewal exception and 90-day output checked.", "capturedAt": "2026-08-08T21:30:00+04:00" }], "notes": { "ar": "اعتمدت بطاقة المعاملة الرسمية الدقيقة كوجهة آمنة ولم يُخترع رابط تنفيذ مباشر.", "en": "The exact official transaction card is the safe destination; no direct execution URL was invented." } },
+      "businessAcceptance": {
+        "status": "passed",
+        "servicePage": { "testedAt": "2026-08-08T21:35:00+04:00", "httpStatus": 200, "nonEmpty": true, "evidence": [{ "type": "manual-log", "value": "Canonical route rendered with full content and protected historical identity.", "capturedAt": "2026-08-08T21:35:00+04:00" }] },
+        "search": { "testedAt": "2026-08-08T21:36:00+04:00", "methodsVerified": ["name", "keywords", "authority", "emirate", "activity", "license-type", "classification-number", "related-service"], "evidence": [{ "type": "manual-log", "value": "All canonical discovery fields are present and related-service IDs point only to approved RTA services.", "capturedAt": "2026-08-08T21:36:00+04:00" }] },
+        "journey": { "testedAt": "2026-08-08T21:37:00+04:00", "homeToExecutionClicks": 2, "evidence": [{ "type": "manual-log", "value": "Homepage to directory to service page; safe exact RTA service-card CTA visible.", "capturedAt": "2026-08-08T21:37:00+04:00" }] },
+        "manualTest": { "testedAt": "2026-08-08T21:38:00+04:00", "result": "passed", "tester": "Codex", "evidence": [{ "type": "manual-log", "value": "Business fields and official destination matched current RTA evidence; no unstable direct journey exposed.", "capturedAt": "2026-08-08T21:38:00+04:00" }], "notes": { "ar": "اجتازت الخدمة قبول الأعمال بوجهة رسمية آمنة.", "en": "The service passed business acceptance with a safe official destination." } }
+      },
+      "lifecycle": { "approvedAt": "2026-08-08T21:33:00+04:00", "routeCreatedAt": "2026-08-08T21:34:00+04:00", "registryInsertedAt": "2026-08-08T21:35:00+04:00", "relationshipsLinkedAt": "2026-08-08T21:39:00+04:00", "publishReadyAt": "2026-08-08T21:40:00+04:00" }
     }
   ]
 }

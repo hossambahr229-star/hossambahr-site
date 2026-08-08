@@ -54,25 +54,48 @@ function serviceState(candidate, dossiers, registryByLegacyId, publishedLegacyId
   };
 }
 
+function canonicalAuthorityBucket(service, templateIds) {
+  const explicit = { 'rta-dubai': 'rta', 'dld-rera': 'rera' }[service.authorityId] ?? service.authorityId;
+  return templateIds.includes(explicit) ? explicit : 'other-authorities';
+}
+
+function canonicalBusinessArea(service) {
+  return {
+    'business-setup': 'company-setup',
+    'business-licensing': 'licenses',
+    'real-estate-services': 'real-estate'
+  }[service.category?.mainId] ?? null;
+}
+
+function canonicalState(service) {
+  const approved = service.verification?.status === 'verified' && service.businessAcceptance?.status === 'passed';
+  return { approved, publishReady: approved && Boolean(service.lifecycle?.publishReadyAt) };
+}
+
 export function buildDashboardData({ inventory, dossiers, registry, authorityTemplates, publishedLegacyIds = new Set() }) {
   const templateIds = authorityTemplates.templates.map((item) => item.authorityId);
   const registryByLegacyId = new Map();
   for (const service of registry.services ?? []) for (const legacyId of service.sourceLegacyIds ?? []) registryByLegacyId.set(legacyId, service);
+  const unmappedCanonical = (registry.services ?? []).filter((service) => (service.sourceLegacyIds ?? []).length === 0);
   const authorityRows = authorityTemplates.templates.map((template) => {
     const candidates = inventory.candidates.filter((candidate) => authorityBucket(candidate, templateIds) === template.authorityId);
     const states = candidates.map((candidate) => serviceState(candidate, dossiers, registryByLegacyId, publishedLegacyIds));
+    const canonicalStates = unmappedCanonical
+      .filter((service) => canonicalAuthorityBucket(service, templateIds) === template.authorityId)
+      .map(canonicalState);
     const underReview = states.filter((state) => state.inReview).length;
-    const approved = states.filter((state) => state.approved).length;
-    const readyToPublish = states.filter((state) => state.publishReady).length;
+    const approved = states.filter((state) => state.approved).length + canonicalStates.filter((state) => state.approved).length;
+    const readyToPublish = states.filter((state) => state.publishReady).length + canonicalStates.filter((state) => state.publishReady).length;
+    const totalServices = candidates.length + canonicalStates.length;
     return {
       authorityId: template.authorityId,
       authority: template.label,
-      totalServices: candidates.length,
+      totalServices,
       underReview,
       approved,
       readyToPublish,
-      remaining: candidates.length - readyToPublish,
-      completionPercent: percentage(readyToPublish, candidates.length)
+      remaining: totalServices - readyToPublish,
+      completionPercent: percentage(readyToPublish, totalServices)
     };
   });
 
@@ -82,20 +105,24 @@ export function buildDashboardData({ inventory, dossiers, registry, authorityTem
       return area.terms.some((term) => category.includes(term.toLowerCase()));
     });
     const ready = candidates.filter((candidate) => serviceState(candidate, dossiers, registryByLegacyId, publishedLegacyIds).publishReady).length;
+    const canonicalServices = unmappedCanonical.filter((service) => canonicalBusinessArea(service) === area.id);
+    const canonicalReady = canonicalServices.filter((service) => canonicalState(service).publishReady).length;
+    const totalServices = candidates.length + canonicalServices.length;
+    const readyToPublish = ready + canonicalReady;
     return {
       areaId: area.id,
       area: area.nameAr,
-      totalServices: candidates.length,
-      readyToPublish: ready,
-      remaining: candidates.length - ready,
-      completionPercent: percentage(ready, candidates.length),
-      taxonomyCoverageKnown: candidates.length > 0
+      totalServices,
+      readyToPublish,
+      remaining: totalServices - readyToPublish,
+      completionPercent: percentage(readyToPublish, totalServices),
+      taxonomyCoverageKnown: totalServices > 0
     };
   });
 
   return {
     generatedAt: new Date().toISOString(),
-    decision: authorityRows.every((row) => row.totalServices === row.readyToPublish) && inventory.candidates.length > 0 ? 'ACCEPT' : 'REJECT',
+    decision: authorityRows.every((row) => row.totalServices === row.readyToPublish) && inventory.candidates.length + unmappedCanonical.length > 0 ? 'ACCEPT' : 'REJECT',
     policy: { frameworkFirst: true, progressiveMigration: true, bulkMigrationAllowed: false, routesBeforeApprovalAllowed: false },
     project: authorityRows,
     businessAcceptance: { authorities: authorityRows, businessAreas: businessAreaRows }

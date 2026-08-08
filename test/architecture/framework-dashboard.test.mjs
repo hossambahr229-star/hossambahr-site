@@ -18,9 +18,10 @@ test('framework provides all required authority templates without creating route
   assert.equal(templates.templates.every((item) => item.createsRoutes === false), true);
 });
 
-test('project dashboard accounts for all 172 services exactly once', () => {
+test('project dashboard accounts for inventory and newly verified missing services exactly once', () => {
   const dashboard = buildDashboardData({ inventory, dossiers, registry, authorityTemplates: templates });
-  assert.equal(dashboard.project.reduce((sum, row) => sum + row.totalServices, 0), 172);
+  const unmappedCanonical = registry.services.filter((service) => service.sourceLegacyIds.length === 0).length;
+  assert.equal(dashboard.project.reduce((sum, row) => sum + row.totalServices, 0), 172 + unmappedCanonical);
   const det = dashboard.project.find((row) => row.authorityId === 'det');
   assert.deepEqual({ total: det.totalServices, review: det.underReview, approved: det.approved, ready: det.readyToPublish }, { total: 15, review: 1, approved: 1, ready: 0 });
   assert.equal(dashboard.decision, 'REJECT');
@@ -31,5 +32,6 @@ test('business dashboard exposes every mandated business area', () => {
   assert.deepEqual(dashboard.businessAcceptance.businessAreas.map((item) => item.areaId), BUSINESS_AREAS.map((item) => item.id));
   const realEstate = dashboard.businessAcceptance.businessAreas.find((item) => item.areaId === 'real-estate');
   assert.deepEqual({ ready: realEstate.readyToPublish, remaining: realEstate.remaining, completion: realEstate.completionPercent }, { ready: 1, remaining: 2, completion: 33.3 });
-  assert.equal(dashboard.businessAcceptance.businessAreas.filter((item) => item.areaId !== 'real-estate').every((item) => item.completionPercent === 0), true);
+  const licenses = dashboard.businessAcceptance.businessAreas.find((item) => item.areaId === 'licenses');
+  assert.equal(licenses.readyToPublish, 2);
 });
