@@ -1,0 +1,16 @@
+{
+  "templateVersion": "2.0.0",
+  "purpose": "review-only; cannot create a route or registry record",
+  "requiredFields": [
+    "id", "sourceLegacyIds", "slug", "name", "description", "audiences", "requestType",
+    "authorityId", "emirateId", "category", "activityIds", "licenseTypeIds", "customerTypeIds",
+    "classificationNumbers", "keywords", "documents", "governmentFees", "serviceFees", "conditions",
+    "eligibility", "exceptions", "duration", "steps", "faq", "relatedServiceIds", "alternativeServiceIds",
+    "lastUpdated", "lastReviewedAt", "verification", "officialGovernmentLink", "officialSources",
+    "businessAcceptance", "lifecycle"
+  ],
+  "routeCreationAllowed": false,
+  "registryInsertionAllowed": false,
+  "publishAllowed": false,
+  "activationRule": "A concrete service record may be produced only from an individually approved 21-stage dossier."
+}

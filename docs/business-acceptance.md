@@ -6,7 +6,7 @@ business evaluator returns no failed criterion.
 ## Service acceptance
 
 Each service must have a dedicated non-empty page, bilingual accurate description,
-explicit document and fee status, completion duration, government authority,
+explicit document status, separate government-fee and platform-service-fee status, completion duration, government authority,
 jurisdiction, keywords, reviewed relations, FAQ, and a tested exact official
 execution or service-card link.
 
@@ -51,8 +51,11 @@ change the business decision by themselves.
 
 ## Progressive review lock
 
-Only one authority and one service may be active. The service dossier must pass the
-20 business checks in their prescribed order. Later checks, later services, and later
-authorities remain locked. A full Service Entity may be added to the canonical
-registry only after the dossier is approved; advancing to the next service also
-requires the approved entity to be registered and business-accepted.
+Only one authority and one service dossier may be active. The dossier must pass the
+21 business checks in their prescribed order. Later checks and later services remain
+locked until the active dossier is approved. Approval permits review of the next
+service within the same authority, but it does not create a route or registry record.
+Routes, registry insertion, relationship materialization, and publish readiness are
+separate ordered lifecycle gates. Every other authority remains locked until all
+services of the active authority are approved, tested, linked, registered,
+business-accepted, and publish-ready.

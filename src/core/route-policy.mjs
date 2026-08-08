@@ -5,7 +5,9 @@ export const STATIC_ROUTES = Object.freeze([
   '/search/',
   '/services/',
   '/authorities/',
-  '/categories/'
+  '/categories/',
+  '/dashboard/project/',
+  '/dashboard/business/'
 ]);
 
 export function serviceRoute(serviceOrSlug) {
@@ -21,7 +23,38 @@ export function categoryRoute(categoryId) {
   return `/categories/${categoryId}/`;
 }
 
+export function routeEligibilityViolations(service, services = []) {
+  const violations = [];
+  const byId = new Map(services.map((item) => [item.id, item]));
+  const link = service.officialGovernmentLink;
+  const visibleText = [service.name?.ar, service.name?.en, service.description?.ar, service.description?.en].filter(Boolean).join(' ');
+  if (!service.lifecycle?.approvedAt) violations.push('service is not approved');
+  if (service.verification?.status !== 'verified') violations.push('service verification is not complete');
+  if (service.businessAcceptance?.status !== 'passed') violations.push('business acceptance has not passed');
+  if (!service.category?.mainId || !service.category?.subId) violations.push('classification is incomplete');
+  if (!link?.lastTestedAt || !(link?.testEvidence ?? []).length) violations.push('official government link is not tested');
+  if (service.businessAcceptance?.servicePage?.nonEmpty !== true) violations.push('service page is incomplete');
+  if (!(service.businessAcceptance?.search?.methodsVerified ?? []).length) violations.push('search is not verified');
+  if (/\b(?:todo|tbd|placeholder|coming soon)\b|قيد الإعداد|قريب/iu.test(visibleText)) violations.push('placeholder content is forbidden');
+  for (const relatedId of service.relatedServiceIds ?? []) {
+    const related = byId.get(relatedId);
+    if (!related || !related.lifecycle?.approvedAt || related.businessAcceptance?.status !== 'passed') {
+      violations.push(`related service is not approved: ${relatedId}`);
+    }
+  }
+  return violations;
+}
+
+export function assertServiceRouteEligibility(service, services = []) {
+  const violations = routeEligibilityViolations(service, services);
+  if (violations.length) throw new Error(`Route forbidden for ${service.id}: ${violations.join('; ')}`);
+}
+
 export function buildRouteManifest({ services, authorities, categories }) {
+  for (const service of services) {
+    assertServiceRouteEligibility(service, services);
+    if (!service.lifecycle?.routeCreatedAt) throw new Error(`Route record is missing for approved service: ${service.id}`);
+  }
   const routes = [
     ...STATIC_ROUTES,
     ...services.map(serviceRoute),

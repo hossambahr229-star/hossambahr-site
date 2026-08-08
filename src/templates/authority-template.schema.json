@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hossambahr.com/schemas/authority-template.schema.json",
+  "title": "Authority Service Template Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["authorityId", "label", "scope", "serviceTemplate", "officialLinkPolicy", "status", "createsRoutes"],
+  "properties": {
+    "authorityId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "label": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string", "enum": ["single-authority", "authority-family", "remaining-authorities"] },
+    "serviceTemplate": { "const": "./service.template.json" },
+    "officialLinkPolicy": { "const": "authority-domain-and-exact-service-required" },
+    "status": { "const": "framework-template" },
+    "createsRoutes": { "const": false }
+  }
+}

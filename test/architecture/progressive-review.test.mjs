@@ -114,12 +114,12 @@ test('a passed review check must preserve its approved structured values', () =>
   assert.equal(result.errors.some((error) => error.path.endsWith('reviewedData.category')), true);
 });
 
-test('active service cannot advance before the previous service is registered and accepted', () => {
+test('active service cannot advance before the previous service dossier is approved', () => {
   const invalidState = structuredClone(state);
   invalidState.activeServiceLegacyId = 'guide:initial-approval-dubai';
   const result = validate({ state: invalidState });
   assert.equal(result.valid, false);
-  assert.equal(result.errors.some((error) => error.message.includes('cannot advance to the next service')), true);
+  assert.equal(result.errors.some((error) => error.message.includes('previous service dossier is approved')), true);
 });
 
 test('a Service Entity cannot enter the registry before individual approval', () => {

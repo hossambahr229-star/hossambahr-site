@@ -1,4 +1,4 @@
-import { isInternalUrl, serviceRoute } from './route-policy.mjs';
+import { isInternalUrl, routeEligibilityViolations, serviceRoute } from './route-policy.mjs';
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -8,9 +8,9 @@ const GOVERNMENT_LEVELS = new Set(['federal', 'emirate', 'municipal', 'free-zone
 const REQUIRED_KEYS = [
   'id', 'sourceLegacyIds', 'slug', 'name', 'description', 'audiences', 'requestType', 'emirateId', 'authorityId',
   'category', 'customerTypeIds', 'activityIds', 'licenseTypeIds', 'classificationNumbers',
-  'keywords', 'documents', 'fees', 'conditions', 'eligibility', 'exceptions',
-  'duration', 'steps', 'executionLinks', 'officialSources', 'relatedServiceIds',
-  'alternativeServiceIds', 'faq', 'lastUpdated', 'verification', 'acceptance'
+  'keywords', 'documents', 'governmentFees', 'serviceFees', 'conditions', 'eligibility', 'exceptions',
+  'duration', 'steps', 'officialGovernmentLink', 'officialSources', 'relatedServiceIds',
+  'alternativeServiceIds', 'faq', 'lastUpdated', 'lastReviewedAt', 'verification', 'businessAcceptance', 'lifecycle'
 ];
 const ALLOWED_KEYS = new Set(REQUIRED_KEYS);
 
@@ -132,7 +132,7 @@ export function validateRegistry({ registry, authorities, categories, emirates, 
       add(errors, `${base}.category`, 'subcategory does not belong to the selected main category');
     }
 
-    for (const field of ['sourceLegacyIds', 'audiences', 'customerTypeIds', 'activityIds', 'licenseTypeIds', 'classificationNumbers', 'conditions', 'eligibility', 'exceptions', 'steps', 'executionLinks', 'officialSources', 'relatedServiceIds', 'alternativeServiceIds', 'faq']) {
+    for (const field of ['sourceLegacyIds', 'audiences', 'customerTypeIds', 'activityIds', 'licenseTypeIds', 'classificationNumbers', 'conditions', 'eligibility', 'exceptions', 'steps', 'officialSources', 'relatedServiceIds', 'alternativeServiceIds', 'faq']) {
       if (!Array.isArray(service[field])) add(errors, `${base}.${field}`, 'must be an array');
     }
     if (Array.isArray(service.audiences) && service.audiences.length === 0) add(errors, `${base}.audiences`, 'at least one audience is required');
@@ -156,12 +156,15 @@ export function validateRegistry({ registry, authorities, categories, emirates, 
       if (service.documents.status === 'required' && service.documents.items.length === 0) add(errors, `${base}.documents.items`, 'required documents cannot be empty');
       if (service.documents.status === 'not-required' && service.documents.items.length > 0) add(errors, `${base}.documents.items`, 'not-required documents must be empty');
     }
-    if (!service.fees || !['paid', 'free', 'variable'].includes(service.fees.status) || !Array.isArray(service.fees.items)) {
-      add(errors, `${base}.fees`, 'must explicitly state paid, free, or variable and provide an items array');
-    } else {
-      requireLocalized(errors, service.fees.notes, `${base}.fees.notes`);
-      if (service.fees.status === 'paid' && service.fees.items.length === 0) add(errors, `${base}.fees.items`, 'paid fees cannot be empty');
-      if (service.fees.status === 'free' && service.fees.items.length > 0) add(errors, `${base}.fees.items`, 'free service fees must be empty');
+    for (const feeField of ['governmentFees', 'serviceFees']) {
+      const feeSection = service[feeField];
+      if (!feeSection || !['paid', 'free', 'variable'].includes(feeSection.status) || !Array.isArray(feeSection.items)) {
+        add(errors, `${base}.${feeField}`, 'must explicitly state paid, free, or variable and provide an items array');
+      } else {
+        requireLocalized(errors, feeSection.notes, `${base}.${feeField}.notes`);
+        if (feeSection.status === 'paid' && feeSection.items.length === 0) add(errors, `${base}.${feeField}.items`, 'paid fees cannot be empty');
+        if (feeSection.status === 'free' && feeSection.items.length > 0) add(errors, `${base}.${feeField}.items`, 'free fees must have an empty items list');
+      }
     }
     if (Array.isArray(service.faq) && service.faq.length === 0) add(errors, `${base}.faq`, 'at least one FAQ is required');
     if (!service.keywords || !Array.isArray(service.keywords.ar) || !Array.isArray(service.keywords.en)) {
@@ -174,7 +177,19 @@ export function validateRegistry({ registry, authorities, categories, emirates, 
     if (!ISO_DATE.test(service.lastUpdated ?? '') || Number.isNaN(Date.parse(`${service.lastUpdated}T00:00:00Z`))) {
       add(errors, `${base}.lastUpdated`, 'must be a valid date using YYYY-MM-DD');
     }
+    if (!isValidTimestamp(service.lastReviewedAt)) add(errors, `${base}.lastReviewedAt`, 'must be an ISO date-time');
     if (!VERIFICATION_STATUSES.has(service.verification?.status)) add(errors, `${base}.verification.status`, 'invalid verification status');
+
+    const lifecycleTimes = ['approvedAt', 'routeCreatedAt', 'registryInsertedAt'];
+    for (const field of lifecycleTimes) if (!isValidTimestamp(service.lifecycle?.[field])) add(errors, `${base}.lifecycle.${field}`, 'must be an ISO date-time');
+    const orderedLifecycle = ['approvedAt', 'routeCreatedAt', 'registryInsertedAt', 'relationshipsLinkedAt', 'publishReadyAt']
+      .map((field) => [field, service.lifecycle?.[field]])
+      .filter(([, value]) => value !== null && value !== undefined);
+    for (let lifecycleIndex = 1; lifecycleIndex < orderedLifecycle.length; lifecycleIndex += 1) {
+      const [field, value] = orderedLifecycle[lifecycleIndex];
+      const [, previous] = orderedLifecycle[lifecycleIndex - 1];
+      if (!isValidTimestamp(value) || Date.parse(value) < Date.parse(previous)) add(errors, `${base}.lifecycle.${field}`, 'lifecycle timestamps must follow approval → route → registry → relationships → publish order');
+    }
 
     const related = service.relatedServiceIds ?? [];
     const alternatives = service.alternativeServiceIds ?? [];
@@ -186,26 +201,26 @@ export function validateRegistry({ registry, authorities, categories, emirates, 
       }
     }
 
-    const executionUrls = [];
     const allowedDomains = authorityById.get(service.authorityId)?.officialDomains ?? [];
-    for (const [linkIndex, link] of (service.executionLinks ?? []).entries()) {
-      const path = `${base}.executionLinks[${linkIndex}]`;
+    const link = service.officialGovernmentLink;
+    const linkPath = `${base}.officialGovernmentLink`;
+    if (!link || typeof link !== 'object') {
+      add(errors, linkPath, 'one official government link is required');
+    } else {
       try {
         const url = new URL(link.url);
-        if (url.protocol !== 'https:') add(errors, `${path}.url`, 'must use HTTPS');
-        if (isInternalUrl(link.url)) add(errors, `${path}.url`, 'execution link must be an official external destination');
+        if (url.protocol !== 'https:') add(errors, `${linkPath}.url`, 'must use HTTPS');
+        if (isInternalUrl(link.url)) add(errors, `${linkPath}.url`, 'execution link must be an official external destination');
         if (!allowedDomains.some((domain) => hostnameMatches(url.hostname, domain))) {
-          add(errors, `${path}.url`, 'hostname is not registered for the selected authority');
+          add(errors, `${linkPath}.url`, 'hostname is not registered for the selected authority');
         }
       } catch {
-        add(errors, `${path}.url`, 'must be an absolute URL');
+        add(errors, `${linkPath}.url`, 'must be an absolute URL');
       }
-      executionUrls.push(link.url);
-      if (link.official !== true) add(errors, `${path}.official`, 'must be explicitly official');
-      if (!EXECUTION_TARGETS.has(link.target)) add(errors, `${path}.target`, 'must target the exact transaction, login, or service card');
-      requireLocalized(errors, link.label, `${path}.label`);
+      if (link.official !== true) add(errors, `${linkPath}.official`, 'must be explicitly official');
+      if (!EXECUTION_TARGETS.has(link.target)) add(errors, `${linkPath}.target`, 'must target the exact transaction, login, or service card');
+      requireLocalized(errors, link.label, `${linkPath}.label`);
     }
-    if (!unique(executionUrls)) add(errors, `${base}.executionLinks`, 'execution URLs must be unique within the service');
 
     for (const [sourceIndex, source] of (service.officialSources ?? []).entries()) {
       const path = `${base}.officialSources[${sourceIndex}]`;
@@ -227,44 +242,47 @@ export function validateRegistry({ registry, authorities, categories, emirates, 
     if (orders.join(',') !== expectedOrders.join(',')) add(errors, `${base}.steps`, 'step order must be contiguous and start at 1');
 
     if (service.verification?.status === 'verified') {
-      if (!(service.executionLinks ?? []).length) add(errors, `${base}.executionLinks`, 'verified service requires an execution link');
       if (!(service.verification.evidence ?? []).length) add(errors, `${base}.verification.evidence`, 'verified service requires evidence');
       if (!service.verification.reviewedAt) add(errors, `${base}.verification.reviewedAt`, 'verified service requires review time');
-      for (const [linkIndex, link] of (service.executionLinks ?? []).entries()) {
-        if (!link.lastTestedAt || !(link.testEvidence ?? []).length) {
-          add(errors, `${base}.executionLinks[${linkIndex}]`, 'verified execution link requires test time and evidence');
-        }
+      if (!link?.lastTestedAt || !(link?.testEvidence ?? []).length) {
+        add(errors, linkPath, 'verified government link requires test time and evidence');
       }
     }
 
     const requiredSearchMethods = ['name', 'keywords', 'authority', 'emirate', 'activity', 'license-type', 'classification-number', 'related-service'];
     if (options.publish) {
-      if (service.acceptance?.status !== 'passed') add(errors, `${base}.acceptance.status`, 'business acceptance must pass before publish');
-      if (service.acceptance?.servicePage?.httpStatus !== 200 || service.acceptance?.servicePage?.nonEmpty !== true) add(errors, `${base}.acceptance.servicePage`, 'service page must return 200 and be non-empty');
-      if (!isValidTimestamp(service.acceptance?.servicePage?.testedAt) || !(service.acceptance?.servicePage?.evidence ?? []).length) add(errors, `${base}.acceptance.servicePage`, 'service page requires current test evidence');
-      const methods = service.acceptance?.search?.methodsVerified ?? [];
-      for (const method of requiredSearchMethods) if (!methods.includes(method)) add(errors, `${base}.acceptance.search.methodsVerified`, `missing search method: ${method}`);
-      if (!isValidTimestamp(service.acceptance?.search?.testedAt) || !(service.acceptance?.search?.evidence ?? []).length) add(errors, `${base}.acceptance.search`, 'search acceptance requires test evidence');
-      if (!Number.isInteger(service.acceptance?.journey?.homeToExecutionClicks) || service.acceptance.journey.homeToExecutionClicks > 2) add(errors, `${base}.acceptance.journey.homeToExecutionClicks`, 'transaction must be reachable in fewer than 3 clicks');
-      if (!isValidTimestamp(service.acceptance?.journey?.testedAt) || !(service.acceptance?.journey?.evidence ?? []).length) add(errors, `${base}.acceptance.journey`, 'journey acceptance requires test evidence');
-      if (service.acceptance?.manualTest?.result !== 'passed' || !isValidTimestamp(service.acceptance?.manualTest?.testedAt) || !(service.acceptance?.manualTest?.evidence ?? []).length) add(errors, `${base}.acceptance.manualTest`, 'manual business test must pass with evidence');
+      if (service.businessAcceptance?.status !== 'passed') add(errors, `${base}.businessAcceptance.status`, 'business acceptance must pass before publish');
+      if (service.businessAcceptance?.servicePage?.httpStatus !== 200 || service.businessAcceptance?.servicePage?.nonEmpty !== true) add(errors, `${base}.businessAcceptance.servicePage`, 'service page must return 200 and be non-empty');
+      if (!isValidTimestamp(service.businessAcceptance?.servicePage?.testedAt) || !(service.businessAcceptance?.servicePage?.evidence ?? []).length) add(errors, `${base}.businessAcceptance.servicePage`, 'service page requires current test evidence');
+      const methods = service.businessAcceptance?.search?.methodsVerified ?? [];
+      for (const method of requiredSearchMethods) if (!methods.includes(method)) add(errors, `${base}.businessAcceptance.search.methodsVerified`, `missing search method: ${method}`);
+      if (!isValidTimestamp(service.businessAcceptance?.search?.testedAt) || !(service.businessAcceptance?.search?.evidence ?? []).length) add(errors, `${base}.businessAcceptance.search`, 'search acceptance requires test evidence');
+      if (!Number.isInteger(service.businessAcceptance?.journey?.homeToExecutionClicks) || service.businessAcceptance.journey.homeToExecutionClicks > 2) add(errors, `${base}.businessAcceptance.journey.homeToExecutionClicks`, 'transaction must be reachable in fewer than 3 clicks');
+      if (!isValidTimestamp(service.businessAcceptance?.journey?.testedAt) || !(service.businessAcceptance?.journey?.evidence ?? []).length) add(errors, `${base}.businessAcceptance.journey`, 'journey acceptance requires test evidence');
+      if (service.businessAcceptance?.manualTest?.result !== 'passed' || !isValidTimestamp(service.businessAcceptance?.manualTest?.testedAt) || !(service.businessAcceptance?.manualTest?.evidence ?? []).length) add(errors, `${base}.businessAcceptance.manualTest`, 'manual business test must pass with evidence');
+      if (!isValidTimestamp(service.lifecycle?.approvedAt)) add(errors, `${base}.lifecycle.approvedAt`, 'approval must precede route creation');
+      if (!isValidTimestamp(service.lifecycle?.routeCreatedAt)) add(errors, `${base}.lifecycle.routeCreatedAt`, 'route must be created after approval');
+      if (!isValidTimestamp(service.lifecycle?.registryInsertedAt)) add(errors, `${base}.lifecycle.registryInsertedAt`, 'registry insertion must follow route creation');
+      if (!isValidTimestamp(service.lifecycle?.relationshipsLinkedAt)) add(errors, `${base}.lifecycle.relationshipsLinkedAt`, 'relationships must be linked before publish');
+      if (!isValidTimestamp(service.lifecycle?.publishReadyAt)) add(errors, `${base}.lifecycle.publishReadyAt`, 'publish-ready timestamp is required');
     }
 
     if (options.publish && service.verification?.status !== 'verified') {
       add(errors, `${base}.verification.status`, 'publish validation allows verified services only');
     }
 
+    for (const violation of routeEligibilityViolations(service, services)) add(errors, `${base}.route`, violation);
+
     if (serviceRoute(service) !== `/services/${service.slug}/`) add(errors, `${base}.slug`, 'route derivation failed');
   });
 
   const exactDestinations = new Map();
   for (const service of services) {
-    for (const link of service.executionLinks ?? []) {
-      if (link.target === 'exact-login') continue;
-      const owners = exactDestinations.get(link.url) ?? [];
-      owners.push(service.id);
-      exactDestinations.set(link.url, owners);
-    }
+    const link = service.officialGovernmentLink;
+    if (!link || link.target === 'exact-login') continue;
+    const owners = exactDestinations.get(link.url) ?? [];
+    owners.push(service.id);
+    exactDestinations.set(link.url, owners);
   }
   for (const [url, owners] of exactDestinations) {
     if (owners.length > 1) add(errors, 'services.executionLinks', `exact destination is shared by multiple services (${owners.join(', ')}): ${url}`);

@@ -6,7 +6,8 @@
     "registry:validate": "node src/core/validate-registry.mjs",
     "registry:validate:publish": "node src/core/validate-registry.mjs --publish",
     "review:build-inventory": "node src/review/build-service-review-inventory.mjs",
-    "review:validate-progress": "node src/review/validate-progressive-review.mjs",
+    "review:validate-progress": "node src/review/validate-progressive-review.mjs && node src/dashboard/generate-dashboards.mjs",
+    "dashboard:generate": "node src/dashboard/generate-dashboards.mjs",
     "business:report": "node src/business/generate-business-report.mjs",
     "test:architecture": "node --test test/architecture/*.test.mjs"
   },

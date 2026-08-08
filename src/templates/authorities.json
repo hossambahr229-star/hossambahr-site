@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "policy": {
+    "frameworkFirst": true,
+    "progressiveMigration": true,
+    "bulkMigrationAllowed": false,
+    "templateCreatesService": false,
+    "templateCreatesRoute": false
+  },
+  "templates": [
+    { "authorityId": "det", "label": "DET", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "mohre", "label": "MOHRE", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "icp", "label": "ICP", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "gdrfa-dubai", "label": "GDRFA", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "fta", "label": "FTA", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "mofa", "label": "MOFA", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "moe", "label": "MOE", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "rta", "label": "RTA", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "municipalities", "label": "Municipalities", "scope": "authority-family", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "rera", "label": "RERA", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "sera", "label": "SERA", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "dha", "label": "DHA", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "doh", "label": "DOH", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "customs", "label": "Customs", "scope": "authority-family", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "police", "label": "Police", "scope": "authority-family", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "notary", "label": "Notary", "scope": "authority-family", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "ejari", "label": "Ejari", "scope": "single-authority", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false },
+    { "authorityId": "other-authorities", "label": "Other authorities", "scope": "remaining-authorities", "serviceTemplate": "./service.template.json", "officialLinkPolicy": "authority-domain-and-exact-service-required", "status": "framework-template", "createsRoutes": false }
+  ]
+}

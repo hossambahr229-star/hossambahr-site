@@ -1,22 +1,23 @@
 export const REQUIRED_REVIEW_CHECKS = Object.freeze([
-  'service-data',
-  'government-authority',
+  'name',
+  'classification',
   'emirate',
-  'main-subcategory',
-  'license-or-activity',
-  'keywords',
+  'government-authority',
+  'economic-activity',
+  'license-type',
+  'customer-type',
   'content',
-  'faq',
   'documents',
   'fees',
   'completion-time',
+  'faq',
+  'keywords',
   'related-services',
-  'government-link',
+  'alternative-services',
   'government-link-live-test',
   'search',
-  'all-category-access',
+  'category-access',
   'homepage-access',
-  'related-service-access',
   'user-experience',
   'final-approval'
 ]);
@@ -30,19 +31,22 @@ function authorityCandidates(inventory, authorityId) {
 }
 
 const REQUIRED_REVIEWED_DATA = Object.freeze({
-  'service-data': ['name', 'description', 'audiences', 'requestType'],
-  'government-authority': ['authorityId'],
+  name: ['name'],
+  classification: ['category'],
   emirate: ['emirateId'],
-  'main-subcategory': ['category'],
-  'license-or-activity': ['customerTypeIds', 'activityIds', 'licenseTypeIds', 'classificationNumbers'],
-  keywords: ['keywords'],
+  'government-authority': ['authorityId'],
+  'economic-activity': ['activityIds'],
+  'license-type': ['licenseTypeIds'],
+  'customer-type': ['customerTypeIds'],
   content: ['content'],
-  faq: ['faq'],
   documents: ['documents'],
-  fees: ['fees'],
+  fees: ['governmentFees', 'serviceFees'],
   'completion-time': ['duration'],
-  'related-services': ['relatedServiceIds', 'alternativeServiceIds'],
-  'government-link': ['executionLinks']
+  faq: ['faq'],
+  keywords: ['keywords'],
+  'related-services': ['relatedServiceIds'],
+  'alternative-services': ['alternativeServiceIds'],
+  'government-link-live-test': ['officialGovernmentLink']
 });
 
 function hasReviewedValue(value) {
@@ -111,12 +115,12 @@ export function validateProgressiveReview({ state, inventory, dossiers, registry
 
     if (dossier.authorityId === state.activeAuthorityId) {
       const dossierServiceIndex = activeServiceOrder.indexOf(dossier.legacyId);
-      if (dossierServiceIndex > activeServiceIndex) issue(errors, `${base}.legacyId`, 'later services are locked until the active service is approved and registered');
+      if (dossierServiceIndex > activeServiceIndex) issue(errors, `${base}.legacyId`, 'later services are locked until the active service dossier is approved');
       if (dossierServiceIndex < activeServiceIndex && dossier.status !== 'approved') issue(errors, `${base}.status`, 'earlier service must already be approved');
     }
 
     const checkIds = (dossier.checks ?? []).map((check) => check.id);
-    if (checkIds.join('|') !== REQUIRED_REVIEW_CHECKS.join('|')) issue(errors, `${base}.checks`, 'all 20 checks must exist in the required order');
+    if (checkIds.join('|') !== REQUIRED_REVIEW_CHECKS.join('|')) issue(errors, `${base}.checks`, 'all 21 checks must exist in the required order');
     let priorCheckPassed = true;
     for (const [checkIndex, check] of (dossier.checks ?? []).entries()) {
       if (check.status === 'passed' && !priorCheckPassed) issue(errors, `${base}.checks[${checkIndex}]`, 'review checks must pass strictly in order');
@@ -154,8 +158,8 @@ export function validateProgressiveReview({ state, inventory, dossiers, registry
 
   for (const legacyId of activeServiceOrder.slice(0, Math.max(activeServiceIndex, 0))) {
     const dossier = dossierByLegacyId.get(legacyId);
-    if (!dossier || dossier.status !== 'approved' || !serviceById.has(dossier.targetServiceId) || !acceptedServiceIds.has(dossier.targetServiceId)) {
-      issue(errors, 'activeServiceLegacyId', 'cannot advance to the next service before the previous service is approved, registered, and business-accepted');
+    if (!dossier || dossier.status !== 'approved') {
+      issue(errors, 'activeServiceLegacyId', 'cannot advance to the next service before the previous service dossier is approved');
     }
   }
 

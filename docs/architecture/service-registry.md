@@ -28,7 +28,9 @@ A published service must:
 - have a unique stable ID and slug;
 - expose a dedicated `/services/{slug}/` route;
 - include bilingual identity, description, audiences, request type, eligibility,
-  exceptions, duration, keywords, steps, and exact official execution links;
+  exceptions, duration, keywords, steps, and one exact official government link;
+- separate government fees from platform service fees, including an explicit free state;
+- record both the source update date and the timestamp of the last platform review;
 - attach checked official sources whose domains belong to the selected authority;
 - record a tested-at timestamp and evidence for every execution link;
 - have `verified` status, review metadata, and evidence;
@@ -56,11 +58,26 @@ treated as the historical source.
 1. Verify and freeze the historical identity reference.
 2. Normalize authority, emirate, and category catalogs.
 3. Select one authority as the only active review scope.
-4. Review one service through every business criterion and retain evidence.
-5. Approve the service dossier only after all checks pass.
-6. Create its Service Entity only after dossier approval.
-7. Finish every service for the active authority before unlocking the next authority.
-8. Generate pages, search, navigation, and audit artifacts solely from the registry.
+4. Review one service through the 21 ordered business criteria and retain evidence.
+5. Approve the service dossier only after all checks pass; only then may the next service dossier in the same authority become active.
+6. Create a service route only after approval, exact-link testing, search/page acceptance, complete classification, and approval of all related-service dossiers.
+7. Insert the entity into the registry only after its route is recorded.
+8. Materialize related and alternative links only after registry insertion.
+9. Mark the service publish-ready only after all relationships and manual business tests pass.
+10. Finish every service for the active authority before unlocking the next authority.
+11. Generate pages, search, navigation, dashboards, and audit artifacts solely from the central framework.
+
+Lifecycle timestamps enforce this order: `approvedAt` → `routeCreatedAt` →
+`registryInsertedAt` → `relationshipsLinkedAt` → `publishReadyAt`.
+
+## Framework templates and dashboards
+
+`src/templates/service.template.json` is the single mandatory field contract.
+`src/templates/authorities.json` configures authority-specific use of that contract;
+templates never create services or routes. `src/dashboard/` derives the project and
+business-acceptance dashboards from the inventory, dossiers, and registry after each
+progress validation. Dashboard figures are reporting evidence only and cannot approve
+or publish a service.
 
 ## Review inventory
 

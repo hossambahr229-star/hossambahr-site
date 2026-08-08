@@ -52,16 +52,16 @@ function dimensions(field) {
 }
 
 const blockerPriority = {
-  executionLinks: 'P0', verificationEvidence: 'P0', verificationStatus: 'P0', authorityId: 'P0', emirateId: 'P0',
+  executionLinks: 'P0', officialGovernmentLink: 'P0', verificationEvidence: 'P0', verificationStatus: 'P0', authorityId: 'P0', emirateId: 'P0',
   mainCategory: 'P0', subCategory: 'P0', customerTypeIds: 'P0', activityIds: 'P0', licenseTypeIds: 'P0',
-  classificationNumbers: 'P0', documents: 'P0', fees: 'P0', steps: 'P1', keywords: 'P1', faq: 'P1',
+  classificationNumbers: 'P0', documents: 'P0', fees: 'P0', governmentFees: 'P0', serviceFees: 'P0', steps: 'P1', keywords: 'P1', faq: 'P1',
   description: 'P1', conditions: 'P1', eligibility: 'P1', exceptions: 'P1', duration: 'P1'
 };
 const fieldLabels = {
   description: 'الوصف الدقيق ثنائي اللغة', audiences: 'جمهور الخدمة', requestType: 'نوع الطلب', emirateId: 'الإمارة',
   authorityId: 'الجهة الحكومية', mainCategory: 'التصنيف الرئيسي', subCategory: 'التصنيف الفرعي', customerTypeIds: 'نوع العميل',
   activityIds: 'النشاط', licenseTypeIds: 'نوع الرخصة', classificationNumbers: 'رقم التصنيف', keywords: 'الكلمات المفتاحية',
-  documents: 'المستندات', fees: 'الرسوم', conditions: 'الشروط', eligibility: 'الأهلية', exceptions: 'الاستثناءات',
+  documents: 'المستندات', fees: 'الرسوم', governmentFees: 'الرسوم الحكومية', serviceFees: 'رسوم الخدمة', conditions: 'الشروط', eligibility: 'الأهلية', exceptions: 'الاستثناءات',
   duration: 'مدة الإنجاز', steps: 'خطوات التنفيذ', executionLinks: 'رابط التنفيذ الحكومي', officialSources: 'المصادر الرسمية',
   alternativeServices: 'الخدمات البديلة', faq: 'الأسئلة الشائعة', verificationStatus: 'حالة التحقق', verificationEvidence: 'أدلة التحقق',
   slug: 'المسار الداخلي'
@@ -74,6 +74,12 @@ const problems = Object.entries(candidates.summary.blockingFieldCounts)
     message: `${affectedServices} خدمة ما زالت لا تحقق متطلب «${fieldLabels[field] ?? field}».`
   }));
 problems.push(
+  {
+    priority: 'P0',
+    code: 'service-fees-not-reviewed',
+    affectedServices: candidates.summary.sourceRecords,
+    message: 'رسوم خدمة المنصة منفصلة عن الرسوم الحكومية ولم تُعتمد بعد لكل خدمة.'
+  },
   {
     priority: 'P0',
     code: 'active-authority-incomplete',
@@ -121,7 +127,7 @@ const report = {
     activeServiceLegacyId: progressiveReview.activeServiceLegacyId,
     activeServiceReviewStatus: activeDossier?.status ?? 'not-started',
     activeServicePassedChecks: activePassedChecks,
-    activeServiceTotalChecks: 20,
+    activeServiceTotalChecks: activeDossier?.checks.length ?? 21,
     activeServiceNextCheck: activeNextCheck,
     expectedServices: progressiveReview.activeAuthorityExpectedServices,
     approvedServices: progressiveReview.activeAuthorityApprovedServices,

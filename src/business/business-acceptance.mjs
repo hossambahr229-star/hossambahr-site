@@ -58,15 +58,16 @@ export function evaluateServiceBusinessAcceptance(service, context) {
   const emirateIds = new Set((emirates.emirates ?? []).map((item) => item.id));
   const mainCategoryIds = new Set((categories.mainCategories ?? []).map((item) => item.id));
   const subCategoryIds = new Set((categories.subCategories ?? []).map((item) => item.id));
-  const executionLinksPass = service.executionLinks.length > 0 && service.executionLinks.every((link) =>
-    link.official === true && link.lastTestedAt && link.testEvidence.length > 0 && ['exact-transaction', 'exact-service-card'].includes(link.target)
-  );
+  const governmentLink = service.officialGovernmentLink;
+  const executionLinksPass = Boolean(governmentLink?.official === true && governmentLink.lastTestedAt && governmentLink.testEvidence?.length > 0
+    && ['exact-transaction', 'exact-service-card'].includes(governmentLink.target));
 
   const checks = {
-    dedicatedPage: service.acceptance.servicePage.httpStatus === 200 && service.acceptance.servicePage.nonEmpty === true && service.acceptance.servicePage.evidence.length > 0,
+    dedicatedPage: service.businessAcceptance.servicePage.httpStatus === 200 && service.businessAcceptance.servicePage.nonEmpty === true && service.businessAcceptance.servicePage.evidence.length > 0,
     description: hasLocalized(service.description),
     documents: ['required', 'not-required'].includes(service.documents.status) && hasLocalized(service.documents.notes) && (service.documents.status === 'not-required' || service.documents.items.length > 0),
-    fees: ['paid', 'free', 'variable'].includes(service.fees.status) && hasLocalized(service.fees.notes) && (service.fees.status !== 'paid' || service.fees.items.length > 0),
+    governmentFees: ['paid', 'free', 'variable'].includes(service.governmentFees.status) && hasLocalized(service.governmentFees.notes) && (service.governmentFees.status !== 'paid' || service.governmentFees.items.length > 0),
+    serviceFees: ['paid', 'free', 'variable'].includes(service.serviceFees.status) && hasLocalized(service.serviceFees.notes) && (service.serviceFees.status !== 'paid' || service.serviceFees.items.length > 0),
     duration: hasLocalized(service.duration),
     authority: authorityIds.has(service.authorityId),
     emirate: emirateIds.has(service.emirateId),
@@ -81,9 +82,10 @@ export function evaluateServiceBusinessAcceptance(service, context) {
     licenseType: service.licenseTypeIds.length > 0,
     classificationNumber: service.classificationNumbers.length > 0,
     searchByAllMethods: Object.values(searchChecks).every(Boolean),
-    underThreeClicks: Number.isInteger(service.acceptance.journey.homeToExecutionClicks) && service.acceptance.journey.homeToExecutionClicks <= 2 && service.acceptance.journey.evidence.length > 0,
-    manualTest: service.acceptance.manualTest.result === 'passed' && service.acceptance.manualTest.evidence.length > 0,
-    finalAcceptanceStatus: service.acceptance.status === 'passed' && service.verification.status === 'verified'
+    underThreeClicks: Number.isInteger(service.businessAcceptance.journey.homeToExecutionClicks) && service.businessAcceptance.journey.homeToExecutionClicks <= 2 && service.businessAcceptance.journey.evidence.length > 0,
+    manualTest: service.businessAcceptance.manualTest.result === 'passed' && service.businessAcceptance.manualTest.evidence.length > 0,
+    finalAcceptanceStatus: service.businessAcceptance.status === 'passed' && service.verification.status === 'verified',
+    publishLifecycle: Boolean(service.lifecycle?.approvedAt && service.lifecycle?.routeCreatedAt && service.lifecycle?.registryInsertedAt && service.lifecycle?.relationshipsLinkedAt && service.lifecycle?.publishReadyAt)
   };
   const failedChecks = Object.entries(checks).filter(([, passed]) => !passed).map(([name]) => name);
 
@@ -105,7 +107,7 @@ export function evaluateRegistryBusinessAcceptance(data) {
     accepted: services.length > 0 && serviceResults.every((result) => result.accepted),
     totalServices: services.length,
     acceptedServices: serviceResults.filter((result) => result.accepted).length,
-    manuallyTestedServices: services.filter((service) => service.acceptance?.manualTest?.result === 'passed').length,
+    manuallyTestedServices: services.filter((service) => service.businessAcceptance?.manualTest?.result === 'passed').length,
     serviceResults
   };
 }

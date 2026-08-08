@@ -5,21 +5,39 @@
   "authorityId": "det",
   "status": "in-review",
   "reviewedData": {
-    "name": { "ar": "طلب حجز الاسم التجاري", "en": "Request to book a trade name" },
+    "name": {
+      "ar": "طلب حجز الاسم التجاري",
+      "en": "Request to book a trade name"
+    },
     "description": {
       "ar": "خدمة لإصدار وثيقة حكومية رسمية تؤكد الاسم التجاري للمشروع لاستخدامه في العقود والمستندات والمعاملات الرسمية.",
       "en": "A service that issues an official government document confirming a project's trade name for use in contracts, official documents and transactions."
     },
     "audiences": [
-      { "ar": "متعاملو تأسيس الشركات الجديدة", "en": "New-business applicants" }
+      {
+        "ar": "متعاملو تأسيس الشركات الجديدة",
+        "en": "New-business applicants"
+      }
     ],
-    "requestType": { "ar": "حجز", "en": "Reservation" },
+    "requestType": {
+      "ar": "حجز",
+      "en": "Reservation"
+    },
     "authorityId": "det",
     "emirateId": "dubai",
-    "category": { "mainId": "business-setup", "subId": "trade-name-services" },
-    "customerTypeIds": ["investor"],
-    "activityIds": ["new-business-economic-activity"],
-    "licenseTypeIds": ["pre-trade-licence"],
+    "category": {
+      "mainId": "business-setup",
+      "subId": "trade-name-services"
+    },
+    "customerTypeIds": [
+      "investor"
+    ],
+    "activityIds": [
+      "new-business-economic-activity"
+    ],
+    "licenseTypeIds": [
+      "pre-trade-licence"
+    ],
     "classificationNumbers": [],
     "keywords": {
       "ar": [
@@ -51,44 +69,141 @@
         }
       ],
       "conditions": [
-        { "ar": "أن يكون الاسم لائقًا وألا يتضمن ألفاظًا مسيئة أو مخالفة للآداب العامة.", "en": "The name must be appropriate and must not contain obscene, indecent or publicly offensive wording." },
-        { "ar": "ألا يتضمن الاسم لفظ الجلالة أو كلمة God أو الصفات الإلهية.", "en": "The name must not include Allah's name, the word God, or divine attributes." },
-        { "ar": "ألا تُستخدم أسماء العائلات أو القبائل أو أسماء أشخاص آخرين، إلا إذا كان الاسم يخص صاحب الرخصة.", "en": "Family, tribe or other personal names may not be used unless the name belongs to the licensee." },
-        { "ar": "أن يكون الاسم مميزًا وألا يتشابه مع علامات قائمة في دبي أو مشاريع حكومية أو علامات عالمية.", "en": "The name must be distinct and not similar to existing Dubai brands, government projects or international brands." },
-        { "ar": "تُكتب الأسماء كتابةً حرفية ولا تُترجم بين اللغتين.", "en": "Names must be transliterated literally rather than translated between languages." },
-        { "ar": "أن يكون الاسم منطقيًا ويعكس النشاط التجاري المختار.", "en": "The name must be logical and reflect the selected business activity." },
-        { "ar": "ألا يتضمن الاسم أسماء محظورة، بما فيها أسماء منظمات سياسية عالمية أو منظمات طائفية دينية.", "en": "The name must not use restricted names, including global political or religious sectarian organisations." },
-        { "ar": "تحتفظ دائرة الاقتصاد والسياحة بحق إلغاء الاسم أو تغييره إذا تبين وجود اسم مشابه سابق.", "en": "DET may cancel or change the name if it finds that a similar name already exists." }
+        {
+          "ar": "أن يكون الاسم لائقًا وألا يتضمن ألفاظًا مسيئة أو مخالفة للآداب العامة.",
+          "en": "The name must be appropriate and must not contain obscene, indecent or publicly offensive wording."
+        },
+        {
+          "ar": "ألا يتضمن الاسم لفظ الجلالة أو كلمة God أو الصفات الإلهية.",
+          "en": "The name must not include Allah's name, the word God, or divine attributes."
+        },
+        {
+          "ar": "ألا تُستخدم أسماء العائلات أو القبائل أو أسماء أشخاص آخرين، إلا إذا كان الاسم يخص صاحب الرخصة.",
+          "en": "Family, tribe or other personal names may not be used unless the name belongs to the licensee."
+        },
+        {
+          "ar": "أن يكون الاسم مميزًا وألا يتشابه مع علامات قائمة في دبي أو مشاريع حكومية أو علامات عالمية.",
+          "en": "The name must be distinct and not similar to existing Dubai brands, government projects or international brands."
+        },
+        {
+          "ar": "تُكتب الأسماء كتابةً حرفية ولا تُترجم بين اللغتين.",
+          "en": "Names must be transliterated literally rather than translated between languages."
+        },
+        {
+          "ar": "أن يكون الاسم منطقيًا ويعكس النشاط التجاري المختار.",
+          "en": "The name must be logical and reflect the selected business activity."
+        },
+        {
+          "ar": "ألا يتضمن الاسم أسماء محظورة، بما فيها أسماء منظمات سياسية عالمية أو منظمات طائفية دينية.",
+          "en": "The name must not use restricted names, including global political or religious sectarian organisations."
+        },
+        {
+          "ar": "تحتفظ دائرة الاقتصاد والسياحة بحق إلغاء الاسم أو تغييره إذا تبين وجود اسم مشابه سابق.",
+          "en": "DET may cancel or change the name if it finds that a similar name already exists."
+        }
       ],
       "exceptions": [],
       "steps": [
-        { "order": 1, "title": { "ar": "اختيار الاسم", "en": "Choose the name" }, "description": { "ar": "اختر اسمًا يلتزم بضوابط الاسم التجاري ويعكس النشاط الاقتصادي.", "en": "Choose a name that follows the trade-name rules and reflects the economic activity." } },
-        { "order": 2, "title": { "ar": "التحقق من التوفر", "en": "Check availability" }, "description": { "ar": "تحقق من توفر الاسم عبر بوابة استثمر في دبي.", "en": "Check the name's availability through the Invest in Dubai portal." } },
-        { "order": 3, "title": { "ar": "تقديم الطلب", "en": "Submit the request" }, "description": { "ar": "قدّم الطلب إلكترونيًا من الحساب الموثّق أو عبر أحد مراكز الخدمة المتاحة.", "en": "Apply online from the verified account or through an available service centre." } },
-        { "order": 4, "title": { "ar": "استلام الحجز", "en": "Receive the reservation" }, "description": { "ar": "بعد قبول الطلب وسداد الرسوم، استلم وثيقة حجز الاسم التجاري.", "en": "After approval and fee payment, receive the trade-name reservation document." } }
+        {
+          "order": 1,
+          "title": {
+            "ar": "اختيار الاسم",
+            "en": "Choose the name"
+          },
+          "description": {
+            "ar": "اختر اسمًا يلتزم بضوابط الاسم التجاري ويعكس النشاط الاقتصادي.",
+            "en": "Choose a name that follows the trade-name rules and reflects the economic activity."
+          }
+        },
+        {
+          "order": 2,
+          "title": {
+            "ar": "التحقق من التوفر",
+            "en": "Check availability"
+          },
+          "description": {
+            "ar": "تحقق من توفر الاسم عبر بوابة استثمر في دبي.",
+            "en": "Check the name's availability through the Invest in Dubai portal."
+          }
+        },
+        {
+          "order": 3,
+          "title": {
+            "ar": "تقديم الطلب",
+            "en": "Submit the request"
+          },
+          "description": {
+            "ar": "قدّم الطلب إلكترونيًا من الحساب الموثّق أو عبر أحد مراكز الخدمة المتاحة.",
+            "en": "Apply online from the verified account or through an available service centre."
+          }
+        },
+        {
+          "order": 4,
+          "title": {
+            "ar": "استلام الحجز",
+            "en": "Receive the reservation"
+          },
+          "description": {
+            "ar": "بعد قبول الطلب وسداد الرسوم، استلم وثيقة حجز الاسم التجاري.",
+            "en": "After approval and fee payment, receive the trade-name reservation document."
+          }
+        }
       ],
-      "applicationChannels": ["online", "service-centre"]
+      "applicationChannels": [
+        "online",
+        "service-centre"
+      ]
     },
     "faq": [
       {
-        "question": { "ar": "ما الغرض من حجز الاسم التجاري؟", "en": "What is the purpose of reserving a trade name?" },
-        "answer": { "ar": "الحصول على وثيقة حكومية تؤكد اسم المشروع لاستخدامه في العقود والمستندات والمعاملات الرسمية.", "en": "It provides a government document confirming the project's name for contracts, official documents and transactions." }
+        "question": {
+          "ar": "ما الغرض من حجز الاسم التجاري؟",
+          "en": "What is the purpose of reserving a trade name?"
+        },
+        "answer": {
+          "ar": "الحصول على وثيقة حكومية تؤكد اسم المشروع لاستخدامه في العقود والمستندات والمعاملات الرسمية.",
+          "en": "It provides a government document confirming the project's name for contracts, official documents and transactions."
+        }
       },
       {
-        "question": { "ar": "هل يجب أن يعكس الاسم النشاط التجاري؟", "en": "Must the name reflect the business activity?" },
-        "answer": { "ar": "نعم. يجب أن يكون الاسم منطقيًا وأن يدل على النشاط المختار؛ فلا يجوز مثلًا استخدام اسم يوحي بالمقاولات لرخصة تجارة مواد البناء.", "en": "Yes. The name must logically indicate the selected activity; for example, a contracting name cannot be used for a building-materials trading licence." }
+        "question": {
+          "ar": "هل يجب أن يعكس الاسم النشاط التجاري؟",
+          "en": "Must the name reflect the business activity?"
+        },
+        "answer": {
+          "ar": "نعم. يجب أن يكون الاسم منطقيًا وأن يدل على النشاط المختار؛ فلا يجوز مثلًا استخدام اسم يوحي بالمقاولات لرخصة تجارة مواد البناء.",
+          "en": "Yes. The name must logically indicate the selected activity; for example, a contracting name cannot be used for a building-materials trading licence."
+        }
       },
       {
-        "question": { "ar": "هل يمكن ترجمة الاسم بين العربية والإنجليزية؟", "en": "Can the name be translated between Arabic and English?" },
-        "answer": { "ar": "لا. تنص الإرشادات على كتابة الاسم كتابةً حرفية بدل ترجمته.", "en": "No. The guidelines require literal transliteration rather than translation." }
+        "question": {
+          "ar": "هل يمكن ترجمة الاسم بين العربية والإنجليزية؟",
+          "en": "Can the name be translated between Arabic and English?"
+        },
+        "answer": {
+          "ar": "لا. تنص الإرشادات على كتابة الاسم كتابةً حرفية بدل ترجمته.",
+          "en": "No. The guidelines require literal transliteration rather than translation."
+        }
       },
       {
-        "question": { "ar": "كيف أتحقق من توفر الاسم؟", "en": "How can I check whether the name is available?" },
-        "answer": { "ar": "يمكن التحقق من توفر اسم المشروع عبر بوابة استثمر في دبي قبل تقديم طلب الحجز.", "en": "Use the Invest in Dubai portal to check the business name's availability before submitting the reservation request." }
+        "question": {
+          "ar": "كيف أتحقق من توفر الاسم؟",
+          "en": "How can I check whether the name is available?"
+        },
+        "answer": {
+          "ar": "يمكن التحقق من توفر اسم المشروع عبر بوابة استثمر في دبي قبل تقديم طلب الحجز.",
+          "en": "Use the Invest in Dubai portal to check the business name's availability before submitting the reservation request."
+        }
       },
       {
-        "question": { "ar": "هل يمكن لدائرة الاقتصاد والسياحة تغيير اسم محجوز؟", "en": "Can DET change a reserved name?" },
-        "answer": { "ar": "نعم، تحتفظ الدائرة بحق إلغاء الاسم أو تغييره إذا تبين أن اسمًا مشابهًا موجود بالفعل.", "en": "Yes. DET may cancel or change the name if it finds that a similar name already exists." }
+        "question": {
+          "ar": "هل يمكن لدائرة الاقتصاد والسياحة تغيير اسم محجوز؟",
+          "en": "Can DET change a reserved name?"
+        },
+        "answer": {
+          "ar": "نعم، تحتفظ الدائرة بحق إلغاء الاسم أو تغييره إذا تبين أن اسمًا مشابهًا موجود بالفعل.",
+          "en": "Yes. DET may cancel or change the name if it finds that a similar name already exists."
+        }
       }
     ],
     "documents": {
@@ -99,15 +214,25 @@
         "en": "No documents are required. Only a verified Invest in Dubai portal account is needed."
       }
     },
-    "fees": {
+    "duration": {
+      "ar": "10 دقائق",
+      "en": "10 minutes"
+    },
+    "governmentFees": {
       "status": "paid",
       "items": [
         {
           "id": "trade-name-reservation-total",
-          "label": { "ar": "إجمالي رسوم إصدار الاسم التجاري", "en": "Total trade-name issuance fee" },
+          "label": {
+            "ar": "إجمالي رسوم إصدار الاسم التجاري",
+            "en": "Total trade-name issuance fee"
+          },
           "amount": 620,
           "currency": "AED",
-          "notes": { "ar": "الإجمالي المنشور في صفحة الخدمة الرسمية.", "en": "Total published on the official service page." }
+          "notes": {
+            "ar": "الإجمالي المنشور في صفحة الخدمة الرسمية.",
+            "en": "Total published on the official service page."
+          }
         }
       ],
       "notes": {
@@ -115,32 +240,57 @@
         "en": "The official service page states a total trade-name issuance cost of AED 620."
       }
     },
-    "duration": {
-      "ar": "10 دقائق",
-      "en": "10 minutes"
+    "serviceFees": {
+      "status": "needs-information",
+      "items": [],
+      "notes": {
+        "ar": "???? ???? ?????? ??? ????? ???? ????? ?? ???? ?????? ????? ??????.",
+        "en": "The platform service fee is not yet defined, so the fee review cannot be approved."
+      }
     }
   },
   "checks": [
     {
       "order": 1,
-      "id": "service-data",
+      "id": "name",
       "status": "passed",
       "reviewedAt": "2026-08-01T12:00:00+04:00",
       "notes": "Official bilingual titles confirmed: طلب حجز الاسم التجاري / Request to book a trade name. The official description states that the service issues a government document confirming the project's trade name for use in contracts and official documents.",
       "evidence": [
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:00:00+04:00" },
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:00:00+04:00" }
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:00:00+04:00"
+        },
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:00:00+04:00"
+        }
       ]
     },
     {
       "order": 2,
-      "id": "government-authority",
+      "id": "classification",
       "status": "passed",
-      "reviewedAt": "2026-08-01T12:05:00+04:00",
-      "notes": "The service is provided through Invest in Dubai, maintained by Dubai Department of Economy and Tourism (DET). Authority ID confirmed as det and official domains are already controlled in the authority catalog.",
+      "reviewedAt": "2026-08-01T12:20:00+04:00",
+      "notes": "Controlled mapping approved as business-setup > trade-name-services. The official portal places the transaction under Business set-up > Business set-up services. The narrower subcategory is an explicit platform-controlled transaction-subject classification, not a claim that the government portal publishes that exact subcategory label.",
       "evidence": [
-        { "type": "official-source", "value": "https://www.dubaidet.gov.ae/en/about-det", "capturedAt": "2026-08-01T12:05:00+04:00" },
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:05:00+04:00" }
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:20:00+04:00"
+        },
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:20:00+04:00"
+        },
+        {
+          "type": "manual-log",
+          "value": "controlled-taxonomy:business-setup/trade-name-services",
+          "capturedAt": "2026-08-01T12:20:00+04:00"
+        }
       ]
     },
     {
@@ -150,67 +300,126 @@
       "reviewedAt": "2026-08-01T12:10:00+04:00",
       "notes": "The transaction reserves a trade name for a project registered in Dubai. Controlled jurisdiction ID confirmed as dubai; this is not a federal or free-zone transaction.",
       "evidence": [
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:10:00+04:00" }
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:10:00+04:00"
+        }
       ]
     },
     {
       "order": 4,
-      "id": "main-subcategory",
+      "id": "government-authority",
       "status": "passed",
-      "reviewedAt": "2026-08-01T12:20:00+04:00",
-      "notes": "Controlled mapping approved as business-setup > trade-name-services. The official portal places the transaction under Business set-up > Business set-up services. The narrower subcategory is an explicit platform-controlled transaction-subject classification, not a claim that the government portal publishes that exact subcategory label.",
+      "reviewedAt": "2026-08-01T12:05:00+04:00",
+      "notes": "The service is provided through Invest in Dubai, maintained by Dubai Department of Economy and Tourism (DET). Authority ID confirmed as det and official domains are already controlled in the authority catalog.",
       "evidence": [
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:20:00+04:00" },
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:20:00+04:00" },
-        { "type": "manual-log", "value": "controlled-taxonomy:business-setup/trade-name-services", "capturedAt": "2026-08-01T12:20:00+04:00" }
+        {
+          "type": "official-source",
+          "value": "https://www.dubaidet.gov.ae/en/about-det",
+          "capturedAt": "2026-08-01T12:05:00+04:00"
+        },
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:05:00+04:00"
+        }
       ]
     },
     {
       "order": 5,
-      "id": "license-or-activity",
+      "id": "economic-activity",
       "status": "passed",
       "reviewedAt": "2026-08-01T12:35:00+04:00",
-      "notes": "Approved controlled dimensions: activity=new-business-economic-activity and licence-type=pre-trade-licence. The official service identifies trade-name reservation as a service for new businesses and lists trade-licence issuance as a separate related next service. Its naming rules require the proposed name to reflect the selected business activity. No specific licence type or official classification number is claimed.",
+      "notes": "Economic-activity review: Approved controlled dimensions: activity=new-business-economic-activity and licence-type=pre-trade-licence. The official service identifies trade-name reservation as a service for new businesses and lists trade-licence issuance as a separate related next service. Its naming rules require the proposed name to reflect the selected business activity. No specific licence type or official classification number is claimed.",
       "evidence": [
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:35:00+04:00" },
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:35:00+04:00" },
-        { "type": "manual-log", "value": "controlled-dimensions:activity=new-business-economic-activity;licence-type=pre-trade-licence", "capturedAt": "2026-08-01T12:35:00+04:00" }
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:35:00+04:00"
+        },
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:35:00+04:00"
+        },
+        {
+          "type": "manual-log",
+          "value": "controlled-dimensions:activity=new-business-economic-activity;licence-type=pre-trade-licence",
+          "capturedAt": "2026-08-01T12:35:00+04:00"
+        }
       ]
     },
     {
       "order": 6,
-      "id": "keywords",
+      "id": "license-type",
       "status": "passed",
-      "reviewedAt": "2026-08-01T12:50:00+04:00",
-      "notes": "Six unique Arabic and six unique English discovery phrases approved. They cover the official transaction name, common reserve/book wording, Dubai scope, new-company intent and the official availability-check action. No unrelated authority or service terms were added.",
+      "reviewedAt": "2026-08-01T12:35:00+04:00",
+      "notes": "Licence-type review: Approved controlled dimensions: activity=new-business-economic-activity and licence-type=pre-trade-licence. The official service identifies trade-name reservation as a service for new businesses and lists trade-licence issuance as a separate related next service. Its naming rules require the proposed name to reflect the selected business activity. No specific licence type or official classification number is claimed.",
       "evidence": [
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:50:00+04:00" },
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T12:50:00+04:00" },
-        { "type": "manual-log", "value": "keyword-review:6-ar;6-en;unique=true;unrelated-terms=0", "capturedAt": "2026-08-01T12:50:00+04:00" }
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:35:00+04:00"
+        },
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:35:00+04:00"
+        },
+        {
+          "type": "manual-log",
+          "value": "controlled-dimensions:activity=new-business-economic-activity;licence-type=pre-trade-licence",
+          "capturedAt": "2026-08-01T12:35:00+04:00"
+        }
       ]
     },
     {
       "order": 7,
+      "id": "customer-type",
+      "status": "passed",
+      "reviewedAt": "2026-08-01T12:35:00+04:00",
+      "notes": "Customer-type review: Approved controlled dimensions: activity=new-business-economic-activity and licence-type=pre-trade-licence. The official service identifies trade-name reservation as a service for new businesses and lists trade-licence issuance as a separate related next service. Its naming rules require the proposed name to reflect the selected business activity. No specific licence type or official classification number is claimed.",
+      "evidence": [
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:35:00+04:00"
+        },
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T12:35:00+04:00"
+        },
+        {
+          "type": "manual-log",
+          "value": "controlled-dimensions:activity=new-business-economic-activity;licence-type=pre-trade-licence",
+          "capturedAt": "2026-08-01T12:35:00+04:00"
+        }
+      ]
+    },
+    {
+      "order": 8,
       "id": "content",
       "status": "passed",
       "reviewedAt": "2026-08-01T13:10:00+04:00",
       "notes": "Bilingual purpose, eligibility, all eight published trade-name rules, four user steps and both published application channels were reviewed against the official service page. Documents, fees and completion time remain intentionally outside this passed check until their required later stages.",
       "evidence": [
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T13:10:00+04:00" },
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T13:10:00+04:00" },
-        { "type": "manual-log", "value": "content-review:purpose=1;eligibility=1;conditions=8;steps=4;channels=2", "capturedAt": "2026-08-01T13:10:00+04:00" }
-      ]
-    },
-    {
-      "order": 8,
-      "id": "faq",
-      "status": "passed",
-      "reviewedAt": "2026-08-01T13:25:00+04:00",
-      "notes": "Five bilingual platform FAQs were derived only from the official service instructions. They are explicitly treated as user-help wording, not as a claim that the government page publishes an FAQ section. Fees, documents and duration were excluded pending their later checks.",
-      "evidence": [
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T13:25:00+04:00" },
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T13:25:00+04:00" },
-        { "type": "manual-log", "value": "faq-review:platform-derived=5;official-faq-claim=false", "capturedAt": "2026-08-01T13:25:00+04:00" }
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T13:10:00+04:00"
+        },
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T13:10:00+04:00"
+        },
+        {
+          "type": "manual-log",
+          "value": "content-review:purpose=1;eligibility=1;conditions=8;steps=4;channels=2",
+          "capturedAt": "2026-08-01T13:10:00+04:00"
+        }
       ]
     },
     {
@@ -220,44 +429,124 @@
       "reviewedAt": "2026-08-01T13:35:00+04:00",
       "notes": "Official page explicitly states that no documents are required and only a verified Invest in Dubai account is needed. Approved as documents.status=not-required with an empty items list; the verified-account requirement remains an eligibility condition, not a fabricated document.",
       "evidence": [
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T13:35:00+04:00" },
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T13:35:00+04:00" },
-        { "type": "manual-log", "value": "documents-review:status=not-required;items=0;verified-account=eligibility", "capturedAt": "2026-08-01T13:35:00+04:00" }
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T13:35:00+04:00"
+        },
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-01T13:35:00+04:00"
+        },
+        {
+          "type": "manual-log",
+          "value": "documents-review:status=not-required;items=0;verified-account=eligibility",
+          "capturedAt": "2026-08-01T13:35:00+04:00"
+        }
       ]
     },
     {
       "order": 10,
       "id": "fees",
-      "status": "passed",
-      "reviewedAt": "2026-08-01T13:45:00+04:00",
-      "notes": "The official bilingual service page publishes a total cost of AED 620. Approved as one paid fee item; no unpublished component breakdown or potentially stale bank list was promoted into the canonical fee data.",
-      "evidence": [
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T13:45:00+04:00" },
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T13:45:00+04:00" },
-        { "type": "manual-log", "value": "fees-review:status=paid;amount=620;currency=AED;breakdown=not-published", "capturedAt": "2026-08-01T13:45:00+04:00" }
-      ]
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "Government fee AED 620 is documented, but the platform service fee is not yet defined; this stage remains pending.",
+      "evidence": []
     },
     {
       "order": 11,
       "id": "completion-time",
-      "status": "passed",
-      "reviewedAt": "2026-08-01T13:55:00+04:00",
-      "notes": "The official service page states that the service is completed within 10 minutes. Approved bilingually as 10 minutes without converting it into a guarantee beyond the published statement.",
-      "evidence": [
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T13:55:00+04:00" },
-        { "type": "official-source", "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name", "capturedAt": "2026-08-01T13:55:00+04:00" },
-        { "type": "manual-log", "value": "duration-review:published=10-minutes", "capturedAt": "2026-08-01T13:55:00+04:00" }
-      ]
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "Reviewed value retained as draft, but approval is sequenced after the unresolved fee stage.",
+      "evidence": []
     },
-    { "order": 12, "id": "related-services", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
-    { "order": 13, "id": "government-link", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
-    { "order": 14, "id": "government-link-live-test", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
-    { "order": 15, "id": "search", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
-    { "order": 16, "id": "all-category-access", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
-    { "order": 17, "id": "homepage-access", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
-    { "order": 18, "id": "related-service-access", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
-    { "order": 19, "id": "user-experience", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
-    { "order": 20, "id": "final-approval", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] }
+    {
+      "order": 12,
+      "id": "faq",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "Reviewed FAQ data retained as draft, but approval is sequenced after the unresolved fee stage.",
+      "evidence": []
+    },
+    {
+      "order": 13,
+      "id": "keywords",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "Reviewed keyword data retained as draft, but approval is sequenced after the unresolved fee stage.",
+      "evidence": []
+    },
+    {
+      "order": 14,
+      "id": "related-services",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "",
+      "evidence": []
+    },
+    {
+      "order": 15,
+      "id": "alternative-services",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "",
+      "evidence": []
+    },
+    {
+      "order": 16,
+      "id": "government-link-live-test",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "",
+      "evidence": []
+    },
+    {
+      "order": 17,
+      "id": "search",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "",
+      "evidence": []
+    },
+    {
+      "order": 18,
+      "id": "category-access",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "",
+      "evidence": []
+    },
+    {
+      "order": 19,
+      "id": "homepage-access",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "",
+      "evidence": []
+    },
+    {
+      "order": 20,
+      "id": "user-experience",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "",
+      "evidence": []
+    },
+    {
+      "order": 21,
+      "id": "final-approval",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "",
+      "evidence": []
+    }
   ],
-  "finalDecision": { "approvedAt": null, "approvedBy": null, "notes": "", "evidence": [] }
+  "finalDecision": {
+    "approvedAt": null,
+    "approvedBy": null,
+    "notes": "",
+    "evidence": []
+  }
 }

@@ -41,5 +41,6 @@
     { "order": 9, "authorityId": "fujairah-free-zone", "status": "locked", "startedAt": null, "completedAt": null }
   ],
   "unresolvedAuthorityLabelsRemainLocked": true,
-  "transitionRule": "The next authority may be unlocked only after every inventoried service of the active authority has an approved dossier, an accepted Service Entity, and retained evidence."
+  "serviceTransitionRule": "Within the active authority, advance only after the current service dossier is individually approved. Route creation and registry insertion remain separate later lifecycle gates.",
+  "authorityTransitionRule": "The next authority may be unlocked only after every inventoried service of the active authority is approved, tested, linked, registered, business-accepted, and publish-ready with retained evidence."
 }

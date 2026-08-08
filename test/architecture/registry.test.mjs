@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { assertPageLinkPolicy, serviceRoute } from '../../src/core/route-policy.mjs';
+import { assertPageLinkPolicy, assertServiceRouteEligibility, serviceRoute } from '../../src/core/route-policy.mjs';
 import { buildSearchIndex, search } from '../../src/core/search-index.mjs';
 import { validateRegistry } from '../../src/core/registry-validator.mjs';
 import { evaluateServiceBusinessAcceptance } from '../../src/business/business-acceptance.mjs';
@@ -32,17 +32,22 @@ function fixture() {
       items: [],
       notes: { ar: 'لا توجد مستندات', en: 'No documents required' }
     },
-    fees: {
+    governmentFees: {
       status: 'free',
       items: [],
-      notes: { ar: 'الخدمة مجانية', en: 'The service is free' }
+      notes: { ar: 'الرسوم الحكومية مجانية', en: 'Government fees are free' }
+    },
+    serviceFees: {
+      status: 'free',
+      items: [],
+      notes: { ar: 'لا توجد رسوم خدمة', en: 'No service fee' }
     },
     conditions: [],
     eligibility: [{ ar: 'المؤهلون', en: 'Eligible applicants' }],
     exceptions: [],
     duration: { ar: 'يوم عمل', en: 'One business day' },
     steps: [{ order: 1, title: { ar: 'ابدأ', en: 'Start' }, description: { ar: 'نفذ', en: 'Execute' } }],
-    executionLinks: [{
+    officialGovernmentLink: {
       id: 'web',
       label: { ar: 'تنفيذ', en: 'Execute' },
       url: 'https://government.example/transactions/test',
@@ -51,7 +56,7 @@ function fixture() {
       official: true,
       lastTestedAt: '2026-08-01T10:00:00.000Z',
       testEvidence: [evidence('http-log')]
-    }],
+    },
     officialSources: [{
       url: 'https://government.example/services/test',
       title: { ar: 'المصدر الرسمي', en: 'Official source' },
@@ -61,6 +66,7 @@ function fixture() {
     alternativeServiceIds: [],
     faq: [{ question: { ar: 'كيف أبدأ؟', en: 'How do I start?' }, answer: { ar: 'من زر التنفيذ', en: 'Use the execution button' } }],
     lastUpdated: '2026-08-01',
+    lastReviewedAt: '2026-08-01T10:00:00.000Z',
     verification: {
       status: 'verified',
       reviewedAt: '2026-08-01T10:00:00.000Z',
@@ -68,7 +74,7 @@ function fixture() {
       evidence: [evidence()],
       notes: { ar: 'موثق', en: 'Verified' }
     },
-    acceptance: {
+    businessAcceptance: {
       status: 'passed',
       servicePage: { testedAt: '2026-08-01T10:00:00.000Z', httpStatus: 200, nonEmpty: true, evidence: [evidence('screenshot')] },
       search: {
@@ -81,6 +87,13 @@ function fixture() {
         testedAt: '2026-08-01T10:00:00.000Z', result: 'passed', tester: 'architecture-test', evidence: [evidence('manual-log')],
         notes: { ar: 'ناجح', en: 'Passed' }
       }
+    },
+    lifecycle: {
+      approvedAt: '2026-08-01T09:00:00.000Z',
+      routeCreatedAt: '2026-08-01T09:10:00.000Z',
+      registryInsertedAt: '2026-08-01T09:20:00.000Z',
+      relationshipsLinkedAt: '2026-08-01T09:30:00.000Z',
+      publishReadyAt: '2026-08-01T10:00:00.000Z'
     }
   };
 }
@@ -123,7 +136,7 @@ test('one entity validates and owns its derived route', () => {
 
 test('verified service without link evidence cannot pass', () => {
   const service = fixture();
-  service.executionLinks[0].testEvidence = [];
+  service.officialGovernmentLink.testEvidence = [];
   assert.equal(validateRegistry(data(service), { publish: true }).valid, false);
 });
 
@@ -135,18 +148,18 @@ test('publish mode blocks draft records', () => {
 
 test('execution URL must belong to the selected authority', () => {
   const service = fixture();
-  service.executionLinks[0].url = 'https://wrong.example/transaction';
+  service.officialGovernmentLink.url = 'https://wrong.example/transaction';
   assert.equal(validateRegistry(data(service), { publish: true }).valid, false);
 });
 
 test('business acceptance blocks implicit empty documents and fees', () => {
   const service = fixture();
   service.documents.status = 'required';
-  service.fees.status = 'paid';
+  service.governmentFees.status = 'paid';
   const result = validateRegistry(data(service), { publish: true });
   assert.equal(result.valid, false);
   assert.equal(result.errors.some((error) => error.path.endsWith('documents.items')), true);
-  assert.equal(result.errors.some((error) => error.path.endsWith('fees.items')), true);
+  assert.equal(result.errors.some((error) => error.path.endsWith('governmentFees.items')), true);
 });
 
 test('business acceptance verifies all discovery methods and a two-click journey', () => {
@@ -156,7 +169,7 @@ test('business acceptance verifies all discovery methods and a two-click journey
   second.slug = 'related-service';
   second.sourceLegacyIds = ['guide:related-service'];
   second.name = { ar: 'خدمة مرتبطة', en: 'Related service' };
-  second.executionLinks[0].url = 'https://government.example/transactions/related';
+  second.officialGovernmentLink.url = 'https://government.example/transactions/related';
   first.relatedServiceIds = [second.id];
   second.relatedServiceIds = [first.id];
   const context = data(first);
@@ -172,7 +185,7 @@ test('business acceptance verifies all discovery methods and a two-click journey
 
 test('three clicks fails the business journey criterion', () => {
   const service = fixture();
-  service.acceptance.journey.homeToExecutionClicks = 3;
+  service.businessAcceptance.journey.homeToExecutionClicks = 3;
   const validation = validateRegistry(data(service), { publish: true });
   assert.equal(validation.valid, false);
   assert.equal(validation.errors.some((error) => error.path.endsWith('homeToExecutionClicks')), true);
@@ -183,6 +196,24 @@ test('homepage cannot contain a government execution link', () => {
     pageType: 'home',
     links: [{ kind: 'government-execution', href: 'https://government.example/transactions/test' }]
   }));
+});
+
+test('route creation is forbidden before business approval', () => {
+  const service = fixture();
+  service.businessAcceptance.status = 'pending';
+  assert.throws(() => assertServiceRouteEligibility(service, [service]), /business acceptance has not passed/);
+});
+
+test('route creation is forbidden while a related service is unapproved', () => {
+  const service = fixture();
+  service.relatedServiceIds = ['future-related-service'];
+  assert.throws(() => assertServiceRouteEligibility(service, [service]), /related service is not approved/);
+});
+
+test('placeholder service content can never receive a route', () => {
+  const service = fixture();
+  service.description.en = 'Coming soon';
+  assert.throws(() => assertServiceRouteEligibility(service, [service]), /placeholder content is forbidden/);
 });
 
 test('search index is derived only from verified registry entities', () => {

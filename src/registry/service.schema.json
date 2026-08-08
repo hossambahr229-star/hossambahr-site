@@ -21,20 +21,23 @@
     "classificationNumbers",
     "keywords",
     "documents",
-    "fees",
+    "governmentFees",
+    "serviceFees",
     "conditions",
     "eligibility",
     "exceptions",
     "duration",
     "steps",
-    "executionLinks",
+    "officialGovernmentLink",
     "officialSources",
     "relatedServiceIds",
     "alternativeServiceIds",
     "faq",
     "lastUpdated",
+    "lastReviewedAt",
     "verification",
-    "acceptance"
+    "businessAcceptance",
+    "lifecycle"
   ],
   "properties": {
     "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
@@ -87,7 +90,8 @@
       }
     },
     "documents": { "$ref": "#/$defs/documentsSection" },
-    "fees": { "$ref": "#/$defs/feesSection" },
+    "governmentFees": { "$ref": "#/$defs/feesSection" },
+    "serviceFees": { "$ref": "#/$defs/feesSection" },
     "conditions": {
       "type": "array",
       "items": { "$ref": "#/$defs/localizedRequired" }
@@ -107,11 +111,7 @@
       "minItems": 1,
       "items": { "$ref": "#/$defs/step" }
     },
-    "executionLinks": {
-      "type": "array",
-      "minItems": 1,
-      "items": { "$ref": "#/$defs/executionLink" }
-    },
+    "officialGovernmentLink": { "$ref": "#/$defs/executionLink" },
     "officialSources": {
       "type": "array",
       "minItems": 1,
@@ -125,8 +125,10 @@
       "items": { "$ref": "#/$defs/faq" }
     },
     "lastUpdated": { "type": "string", "format": "date" },
+    "lastReviewedAt": { "type": "string", "format": "date-time" },
     "verification": { "$ref": "#/$defs/verification" },
-    "acceptance": { "$ref": "#/$defs/acceptance" }
+    "businessAcceptance": { "$ref": "#/$defs/acceptance" },
+    "lifecycle": { "$ref": "#/$defs/lifecycle" }
   },
   "$defs": {
     "localizedRequired": {
@@ -268,6 +270,18 @@
           "items": { "$ref": "#/$defs/evidence" }
         },
         "notes": { "$ref": "#/$defs/localizedRequired" }
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approvedAt", "routeCreatedAt", "registryInsertedAt", "relationshipsLinkedAt", "publishReadyAt"],
+      "properties": {
+        "approvedAt": { "type": "string", "format": "date-time" },
+        "routeCreatedAt": { "type": "string", "format": "date-time" },
+        "registryInsertedAt": { "type": "string", "format": "date-time" },
+        "relationshipsLinkedAt": { "type": ["string", "null"], "format": "date-time" },
+        "publishReadyAt": { "type": ["string", "null"], "format": "date-time" }
       }
     },
     "acceptance": {
