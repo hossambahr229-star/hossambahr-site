@@ -1,6 +1,6 @@
 {
   "contractVersion": "1.0.0",
-  "status": "historical-baseline-identified",
+  "status": "home-page-baseline-restored",
   "rule": "The generated platform must match the historical baseline before later improvements are layered on top.",
   "lockedAreas": [
     "colors",
@@ -43,7 +43,22 @@
     }
   },
   "acceptance": {
-    "status": "pending-component-extraction-and-visual-regression",
+    "status": "home-page-exact-service-search-dashboard-pending",
+    "homePageEvidence": {
+      "restoredBlob": "82427fca08b3236199e113743035af322a213ba8",
+      "desktopScreenshot": "identity-restoration/historical-restored-home-desktop.png",
+      "referenceScreenshot": "identity-historical-f0de873.png",
+      "referenceSha256": "2523CEB7B4DB311B1B69A6380FDB899928C0D21C68643B978AB4A3D9BA5F0F86",
+      "restoredSha256": "2523CEB7B4DB311B1B69A6380FDB899928C0D21C68643B978AB4A3D9BA5F0F86",
+      "pixelExact": true,
+      "smokeChecks": {
+        "successfulResponses": 6,
+        "horizontalOverflow": 0,
+        "consoleErrors": 0,
+        "pageErrors": 0,
+        "failedRequests": 0
+      }
+    },
     "required": [
       "extract historical design tokens and component geometry",
       "apply them to registry-generated pages without overlay CSS",
