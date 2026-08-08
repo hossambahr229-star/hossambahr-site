@@ -1,0 +1,44 @@
+{
+  "legacyId": "guide:initial-approval-dubai",
+  "candidateId": "initial-approval-dubai",
+  "targetServiceId": "initial-approval-dubai",
+  "authorityId": "det",
+  "status": "in-review",
+  "reviewedData": {},
+  "checks": [
+    {
+      "order": 1,
+      "id": "name",
+      "status": "pending",
+      "reviewedAt": null,
+      "notes": "PENDING VERIFICATION: Dubai.ae identifies the transaction as Request for initial approval, but its official Invest in Dubai deep link currently redirects to the generic Business set-up services page, which reports no services available. The title cannot be approved independently of a current exact service card. Evidence: reports/review/initial-approval-dubai-link-finding.json",
+      "evidence": []
+    },
+    { "order": 2, "id": "classification", "status": "pending", "reviewedAt": null, "notes": "Blocked by the unresolved exact official service card.", "evidence": [] },
+    { "order": 3, "id": "emirate", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 4, "id": "government-authority", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 5, "id": "economic-activity", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 6, "id": "license-type", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 7, "id": "customer-type", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 8, "id": "content", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 9, "id": "documents", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 10, "id": "fees", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 11, "id": "completion-time", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 12, "id": "faq", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 13, "id": "keywords", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 14, "id": "related-services", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 15, "id": "alternative-services", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 16, "id": "government-link-live-test", "status": "pending", "reviewedAt": null, "notes": "The prior deep link is proven unsuitable and no replacement will be invented.", "evidence": [] },
+    { "order": 17, "id": "search", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 18, "id": "category-access", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 19, "id": "homepage-access", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 20, "id": "user-experience", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] },
+    { "order": 21, "id": "final-approval", "status": "pending", "reviewedAt": null, "notes": "", "evidence": [] }
+  ],
+  "finalDecision": {
+    "approvedAt": null,
+    "approvedBy": null,
+    "notes": "PENDING VERIFICATION because the former official deep link now resolves to a generic empty service directory.",
+    "evidence": []
+  }
+}

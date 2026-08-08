@@ -13,7 +13,7 @@ function validate(overrides = {}) {
   return validateProgressiveReview({
     state: structuredClone(state),
     inventory: candidates,
-    dossiers: [],
+    dossiers: [structuredClone(activeDossier)],
     registry: { services: [] },
     businessEvaluation: { serviceResults: [] },
     ...overrides
@@ -57,7 +57,7 @@ test('DET is the only active authority and its full 15-service scope is fixed', 
   assert.equal(result.valid, true);
   assert.equal(result.activeAuthorityId, 'det');
   assert.equal(result.activeAuthorityExpectedServices, 15);
-  assert.equal(result.activeAuthorityApprovedServices, 0);
+  assert.equal(result.activeAuthorityApprovedServices, 1);
   assert.equal(result.activeAuthorityRegisteredServices, 0);
   assert.equal(result.lockedAuthorities, 8);
 });
@@ -81,7 +81,7 @@ test('bulk review cannot be enabled', () => {
 });
 
 test('a later DET service cannot be reviewed before the active service', () => {
-  const laterCandidate = candidates.candidates.find((candidate) => candidate.legacyId === 'guide:initial-approval-dubai');
+  const laterCandidate = candidates.candidates.find((candidate) => candidate.legacyId === 'guide:amend-business-license-dubai');
   const dossier = structuredClone(dossierTemplate);
   dossier.legacyId = laterCandidate.legacyId;
   dossier.candidateId = laterCandidate.candidateId;
@@ -116,14 +116,14 @@ test('a passed review check must preserve its approved structured values', () =>
 
 test('active service cannot advance before the previous service dossier is approved', () => {
   const invalidState = structuredClone(state);
-  invalidState.activeServiceLegacyId = 'guide:initial-approval-dubai';
+  invalidState.activeServiceLegacyId = 'guide:amend-business-license-dubai';
   const result = validate({ state: invalidState });
   assert.equal(result.valid, false);
   assert.equal(result.errors.some((error) => error.message.includes('previous service dossier is approved')), true);
 });
 
 test('a Service Entity cannot enter the registry before individual approval', () => {
-  const detCandidate = candidates.candidates.find((candidate) => candidate.businessDimensions.authorityGroup.startsWith('det '));
+  const detCandidate = candidates.candidates.find((candidate) => candidate.legacyId === 'guide:initial-approval-dubai');
   const result = validate({
     registry: { services: [{ id: detCandidate.candidateId, authorityId: 'det', sourceLegacyIds: [detCandidate.legacyId] }] }
   });

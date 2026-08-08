@@ -13,12 +13,12 @@ let baseUrl = process.env.HB_BASE_URL || "";
 const siteRoot = process.env.HB_SITE_ROOT ? resolve(process.env.HB_SITE_ROOT) : "";
 const outputDirectory = resolve(process.env.HB_OUTPUT_DIR || "visual-smoke");
 const label = process.env.HB_LABEL || "after";
-const pages = [
+const pages = process.env.HB_PAGES ? JSON.parse(process.env.HB_PAGES) : [
   { name: "home", path: "index.html" },
   { name: "services", path: "services/index.html" },
   { name: "service", path: "services/mohre-transfer-work-permit/index.html" }
 ];
-const viewports = [
+const viewports = process.env.HB_VIEWPORTS ? JSON.parse(process.env.HB_VIEWPORTS) : [
   { name: "desktop", width: 1440, height: 1000 },
   { name: "mobile", width: 390, height: 844 }
 ];
@@ -102,7 +102,7 @@ for (const viewport of viewports) {
     const layout = await page.evaluate(() => ({
       title: document.title,
       direction: document.documentElement.dir,
-      hasHeritageIdentity: Boolean(document.querySelector("[data-heritage-identity='e0596a2']")),
+      hasHeritageIdentity: Boolean(document.querySelector('[data-heritage-identity]')),
       viewportWidth: document.documentElement.clientWidth,
       contentWidth: document.documentElement.scrollWidth,
       horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1

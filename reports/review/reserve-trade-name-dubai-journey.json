@@ -1,0 +1,78 @@
+{
+  "testedAt": "2026-08-08T08:42:39.398Z",
+  "previewOnly": true,
+  "productionRouteCreated": false,
+  "homeToOfficialClicks": 2,
+  "passed": true,
+  "checks": [
+    {
+      "name": "homepage-access",
+      "status": 200,
+      "linkVisible": true,
+      "arrived": true,
+      "passed": true
+    },
+    {
+      "name": "category-access",
+      "status": 200,
+      "linkVisible": true,
+      "arrived": true,
+      "passed": true
+    },
+    {
+      "name": "search",
+      "query": "طلب حجز الاسم التجاري",
+      "visible": true,
+      "passed": true
+    },
+    {
+      "name": "search",
+      "query": "trade name reservation",
+      "visible": true,
+      "passed": true
+    },
+    {
+      "name": "search",
+      "query": "det",
+      "visible": true,
+      "passed": true
+    },
+    {
+      "name": "search",
+      "query": "dubai",
+      "visible": true,
+      "passed": true
+    },
+    {
+      "name": "search",
+      "query": "new-business-economic-activity",
+      "visible": true,
+      "passed": true
+    },
+    {
+      "name": "search",
+      "query": "pre-trade-licence",
+      "visible": true,
+      "passed": true
+    },
+    {
+      "name": "search",
+      "query": "HB-DET-TRADE-NAME-001",
+      "visible": true,
+      "passed": true
+    },
+    {
+      "name": "search",
+      "query": "initial-approval-dubai",
+      "visible": true,
+      "passed": true
+    },
+    {
+      "name": "service-page",
+      "executionHref": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+      "breadcrumbHome": true,
+      "breadcrumbCategory": true,
+      "passed": true
+    }
+  ]
+}

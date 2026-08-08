@@ -22,7 +22,7 @@ test('project dashboard accounts for all 172 services exactly once', () => {
   const dashboard = buildDashboardData({ inventory, dossiers, registry, authorityTemplates: templates });
   assert.equal(dashboard.project.reduce((sum, row) => sum + row.totalServices, 0), 172);
   const det = dashboard.project.find((row) => row.authorityId === 'det');
-  assert.deepEqual({ total: det.totalServices, review: det.underReview, approved: det.approved, ready: det.readyToPublish }, { total: 15, review: 1, approved: 0, ready: 0 });
+  assert.deepEqual({ total: det.totalServices, review: det.underReview, approved: det.approved, ready: det.readyToPublish }, { total: 15, review: 1, approved: 1, ready: 0 });
   assert.equal(dashboard.decision, 'REJECT');
 });
 

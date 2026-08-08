@@ -3,7 +3,7 @@
   "candidateId": "reserve-trade-name-dubai",
   "targetServiceId": "reserve-trade-name-dubai",
   "authorityId": "det",
-  "status": "in-review",
+  "status": "approved",
   "reviewedData": {
     "name": {
       "ar": "طلب حجز الاسم التجاري",
@@ -38,7 +38,9 @@
     "licenseTypeIds": [
       "pre-trade-licence"
     ],
-    "classificationNumbers": [],
+    "classificationNumbers": [
+      "HB-DET-TRADE-NAME-001"
+    ],
     "keywords": {
       "ar": [
         "حجز الاسم التجاري",
@@ -241,12 +243,38 @@
       }
     },
     "serviceFees": {
-      "status": "needs-information",
+      "status": "free",
       "items": [],
       "notes": {
-        "ar": "???? ???? ?????? ??? ????? ???? ????? ?? ???? ?????? ????? ??????.",
-        "en": "The platform service fee is not yet defined, so the fee review cannot be approved."
+        "ar": "لا تفرض منصة HossamBahr رسماً مقابل عرض هذا الدليل أو الانتقال إلى القناة الحكومية الرسمية.",
+        "en": "HossamBahr charges no fee for this guide or for navigation to the official government channel."
       }
+    },
+    "relatedServiceIds": [
+      "initial-approval-dubai",
+      "amend-business-license-dubai",
+      "cancel-business-license-dubai",
+      "renew-business-license-dubai"
+    ],
+    "alternativeServiceIds": [],
+    "officialGovernmentLink": {
+      "id": "det-trade-name-service-card",
+      "label": {
+        "ar": "فتح صفحة حجز الاسم التجاري الرسمية",
+        "en": "Open the official trade-name reservation service"
+      },
+      "url": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+      "channel": "web",
+      "target": "exact-service-card",
+      "official": true,
+      "lastTestedAt": "2026-08-08T11:00:00+04:00",
+      "testEvidence": [
+        {
+          "type": "web-open",
+          "value": "official-page:http-200;semantic-title=طلب حجز الاسم التجاري",
+          "capturedAt": "2026-08-08T11:00:00+04:00"
+        }
+      ]
     }
   },
   "checks": [
@@ -449,104 +477,212 @@
     {
       "order": 10,
       "id": "fees",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "Government fee AED 620 is documented, but the platform service fee is not yet defined; this stage remains pending.",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T10:20:00+04:00",
+      "notes": "The current official service page confirms AED 620 as the total government cost. HossamBahr is an independent navigation guide and charges no platform service fee for this page.",
+      "evidence": [
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-08T10:20:00+04:00"
+        },
+        {
+          "type": "manual-log",
+          "value": "platform-fee-policy:informational-guide=no-charge",
+          "capturedAt": "2026-08-08T10:20:00+04:00"
+        }
+      ]
     },
     {
       "order": 11,
       "id": "completion-time",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "Reviewed value retained as draft, but approval is sequenced after the unresolved fee stage.",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T10:25:00+04:00",
+      "notes": "The official service page states that the service is completed within 10 minutes.",
+      "evidence": [
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-08T10:25:00+04:00"
+        }
+      ]
     },
     {
       "order": 12,
       "id": "faq",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "Reviewed FAQ data retained as draft, but approval is sequenced after the unresolved fee stage.",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T10:30:00+04:00",
+      "notes": "Five bilingual FAQs were checked against the official purpose, naming rules, availability check, and DET cancellation rule.",
+      "evidence": [
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-08T10:30:00+04:00"
+        }
+      ]
     },
     {
       "order": 13,
       "id": "keywords",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "Reviewed keyword data retained as draft, but approval is sequenced after the unresolved fee stage.",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T10:35:00+04:00",
+      "notes": "Arabic and English keywords cover the official title, common user intent, Dubai jurisdiction, business-name availability, and reservation wording without unrelated terms.",
+      "evidence": [
+        {
+          "type": "manual-log",
+          "value": "keyword-review:ar=6;en=6;official-title-and-intent-covered",
+          "capturedAt": "2026-08-08T10:35:00+04:00"
+        }
+      ]
     },
     {
       "order": 14,
       "id": "related-services",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T10:40:00+04:00",
+      "notes": "Related registry candidates are limited to the adjacent DET company-setup and licence lifecycle: initial approval, amendment, cancellation, and renewal. They remain non-publishable until their own reviews pass.",
+      "evidence": [
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-08T10:40:00+04:00"
+        }
+      ]
     },
     {
       "order": 15,
       "id": "alternative-services",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T10:45:00+04:00",
+      "notes": "No equivalent DET transaction was identified. Name availability checking is a preparatory action within the same official flow, not an alternative government service.",
+      "evidence": [
+        {
+          "type": "official-source",
+          "value": "https://app.invest.dubai.ae/wip/",
+          "capturedAt": "2026-08-08T10:45:00+04:00"
+        }
+      ]
     },
     {
       "order": 16,
       "id": "government-link-live-test",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T11:00:00+04:00",
+      "notes": "The Arabic official URL opened successfully and its semantic title is the exact transaction 'طلب حجز الاسم التجاري'. It is recorded as an exact service card, not falsely labelled as a direct execution endpoint.",
+      "evidence": [
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-08T11:00:00+04:00"
+        },
+        {
+          "type": "web-open",
+          "value": "official-page:http-200;semantic-title=طلب حجز الاسم التجاري",
+          "capturedAt": "2026-08-08T11:00:00+04:00"
+        }
+      ]
     },
     {
       "order": 17,
       "id": "search",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T11:15:00+04:00",
+      "notes": "The non-publishable review index returned this service for Arabic and English names, keywords, authority, emirate, activity, licence type, platform classification number, and a related-service ID.",
+      "evidence": [
+        {
+          "type": "manual-log",
+          "value": "reports/review/reserve-trade-name-dubai-discovery.json",
+          "capturedAt": "2026-08-08T11:15:00+04:00"
+        }
+      ]
     },
     {
       "order": 18,
       "id": "category-access",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T11:20:00+04:00",
+      "notes": "The private business-acceptance preview category returned HTTP 200, exposed a visible service link, and opened the reviewed service page. No production route was created.",
+      "evidence": [
+        {
+          "type": "manual-log",
+          "value": "reports/review/reserve-trade-name-dubai-journey.json#category-access",
+          "capturedAt": "2026-08-08T11:20:00+04:00"
+        }
+      ]
     },
     {
       "order": 19,
       "id": "homepage-access",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T11:25:00+04:00",
+      "notes": "The private business-acceptance preview homepage returned HTTP 200, exposed a visible internal service link, and opened the reviewed service page without placing a government URL on the homepage.",
+      "evidence": [
+        {
+          "type": "manual-log",
+          "value": "reports/review/reserve-trade-name-dubai-journey.json#homepage-access",
+          "capturedAt": "2026-08-08T11:25:00+04:00"
+        }
+      ]
     },
     {
       "order": 20,
       "id": "user-experience",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T11:30:00+04:00",
+      "notes": "The preview journey reaches the official service card in two clicks. Desktop and mobile visual checks passed for home, search, category, and service pages with no overflow, console errors, page errors, or failed requests.",
+      "evidence": [
+        {
+          "type": "manual-log",
+          "value": "reports/review/reserve-trade-name-dubai-journey.json",
+          "capturedAt": "2026-08-08T11:30:00+04:00"
+        },
+        {
+          "type": "screenshot",
+          "value": "outputs/det-trade-name-review/review-final-review-service-desktop.png",
+          "capturedAt": "2026-08-08T11:30:00+04:00"
+        },
+        {
+          "type": "screenshot",
+          "value": "outputs/det-trade-name-review/review-final-review-service-mobile.png",
+          "capturedAt": "2026-08-08T11:30:00+04:00"
+        }
+      ]
     },
     {
       "order": 21,
       "id": "final-approval",
-      "status": "pending",
-      "reviewedAt": null,
-      "notes": "",
-      "evidence": []
+      "status": "passed",
+      "reviewedAt": "2026-08-08T11:35:00+04:00",
+      "notes": "All 21 progressive review checks passed with evidence. Approval authorizes the later route/entity workflow but does not authorize publication; linked DET services must complete first.",
+      "evidence": [
+        {
+          "type": "manual-log",
+          "value": "reports/review/reserve-trade-name-dubai-journey.json",
+          "capturedAt": "2026-08-08T11:35:00+04:00"
+        },
+        {
+          "type": "official-source",
+          "value": "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
+          "capturedAt": "2026-08-08T11:35:00+04:00"
+        }
+      ]
     }
   ],
   "finalDecision": {
-    "approvedAt": null,
-    "approvedBy": null,
-    "notes": "",
-    "evidence": []
+    "approvedAt": "2026-08-08T11:35:00+04:00",
+    "approvedBy": "Codex business-acceptance review",
+    "notes": "Approved for progressive migration workflow. Production route remains withheld until all declared related DET services are approved and linked.",
+    "evidence": [
+      {
+        "type": "manual-log",
+        "value": "reports/review/reserve-trade-name-dubai-journey.json",
+        "capturedAt": "2026-08-08T11:35:00+04:00"
+      },
+      {
+        "type": "manual-log",
+        "value": "reports/review/reserve-trade-name-dubai-discovery.json",
+        "capturedAt": "2026-08-08T11:35:00+04:00"
+      }
+    ]
   }
 }

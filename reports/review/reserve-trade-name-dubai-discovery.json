@@ -1,0 +1,89 @@
+{
+  "testedAt": "2026-08-08T08:37:58.086Z",
+  "serviceId": "reserve-trade-name-dubai",
+  "expectedRoute": "/services/reserve-trade-name-dubai/",
+  "indexRecords": 1,
+  "passed": true,
+  "cases": [
+    {
+      "method": "name-ar",
+      "query": "طلب حجز الاسم التجاري",
+      "matchedTarget": true,
+      "resultIds": [
+        "reserve-trade-name-dubai"
+      ]
+    },
+    {
+      "method": "name-en",
+      "query": "Request to book a trade name",
+      "matchedTarget": true,
+      "resultIds": [
+        "reserve-trade-name-dubai"
+      ]
+    },
+    {
+      "method": "keyword-ar",
+      "query": "حجز الاسم التجاري",
+      "matchedTarget": true,
+      "resultIds": [
+        "reserve-trade-name-dubai"
+      ]
+    },
+    {
+      "method": "keyword-en",
+      "query": "trade name reservation",
+      "matchedTarget": true,
+      "resultIds": [
+        "reserve-trade-name-dubai"
+      ]
+    },
+    {
+      "method": "authority",
+      "query": "det",
+      "matchedTarget": true,
+      "resultIds": [
+        "reserve-trade-name-dubai"
+      ]
+    },
+    {
+      "method": "emirate",
+      "query": "dubai",
+      "matchedTarget": true,
+      "resultIds": [
+        "reserve-trade-name-dubai"
+      ]
+    },
+    {
+      "method": "activity",
+      "query": "new-business-economic-activity",
+      "matchedTarget": true,
+      "resultIds": [
+        "reserve-trade-name-dubai"
+      ]
+    },
+    {
+      "method": "license-type",
+      "query": "pre-trade-licence",
+      "matchedTarget": true,
+      "resultIds": [
+        "reserve-trade-name-dubai"
+      ]
+    },
+    {
+      "method": "classification-number",
+      "query": "HB-DET-TRADE-NAME-001",
+      "matchedTarget": true,
+      "resultIds": [
+        "reserve-trade-name-dubai"
+      ]
+    },
+    {
+      "method": "related-service",
+      "query": "initial-approval-dubai",
+      "matchedTarget": true,
+      "resultIds": [
+        "reserve-trade-name-dubai"
+      ]
+    }
+  ]
+}
