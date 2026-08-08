@@ -13,7 +13,7 @@ test('DET publication layer classifies exactly 15 services', () => {
 
 test('only verified services may have an active official URL', () => {
   for (const service of publication.services) {
-    if (service.classification === 'VERIFIED') assert.match(service.officialUrl, /^https:\/\/(?:www\.)?investindubai\.gov\.ae\//);
+    if (service.classification === 'VERIFIED') assert.match(service.officialUrl, /^https:\/\/(?:www\.)?(?:investindubai|dubaidet)\.gov\.ae\//);
     else assert.equal(service.officialUrl, null);
   }
 });

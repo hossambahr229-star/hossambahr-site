@@ -15,7 +15,7 @@ for (const service of registry.services) {
   active += activeLinks.length;
   if (service.classification === 'VERIFIED') {
     if (!service.officialUrl || activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: verified CTA mismatch`);
-    if (!/^https:\/\/(?:www\.)?investindubai\.gov\.ae\//.test(service.officialUrl ?? '')) errors.push(`${service.slug}: active CTA is outside the official DET domain`);
+    if (!/^https:\/\/(?:www\.)?(?:investindubai|dubaidet)\.gov\.ae\//.test(service.officialUrl ?? '')) errors.push(`${service.slug}: active CTA is outside an official DET domain`);
   } else {
     if (service.officialUrl !== null) errors.push(`${service.slug}: unverified service must not retain an official URL`);
     if (activeLinks.length) errors.push(`${service.slug}: unverified service exposes an active CTA`);
