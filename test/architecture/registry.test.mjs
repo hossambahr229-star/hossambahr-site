@@ -235,8 +235,8 @@ test('controlled jurisdiction catalog contains federal scope and all seven emira
 
 test('normalized authority catalog retains official-source evidence and unique domains', async () => {
   const catalog = JSON.parse(await readFile(new URL('../../src/registry/authorities.json', import.meta.url), 'utf8'));
-  assert.equal(catalog.authorities.length, 9);
-  assert.equal(new Set(catalog.authorities.map((item) => item.id)).size, 9);
+  assert.equal(catalog.authorities.length, 11);
+  assert.equal(new Set(catalog.authorities.map((item) => item.id)).size, 11);
   assert.equal(catalog.authorities.every((item) => item.verification.status === 'official-source-confirmed'), true);
   assert.equal(catalog.authorities.every((item) => item.verification.sourceUrls.length > 0), true);
 });

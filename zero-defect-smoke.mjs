@@ -6,6 +6,7 @@ import { extname, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname);
 const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "utf8"));
+const canonicalRegistry = JSON.parse(await readFile(resolve(root, "src/registry/registry.json"), "utf8"));
 const expectedIcpServices = matrix.services.filter((service) => service.authority.slug === "icp").length;
 const expectedIcpChoiceServices = matrix.services.filter((service) => service.authority.slug === "icp" && service.officialRouteMode !== "direct-execution").length;
 const directExecutionService = matrix.services.find((service) => service.officialRouteMode === "direct-execution");
@@ -73,6 +74,32 @@ await scenario("catalog-mobile", { width: 390, height: 844 }, async (page) => {
   return { status: response?.status(), cards: await page.locator("[data-directory-card]").count(), searchVisible: await page.locator("#det-search").isVisible() };
 });
 
+await scenario("canonical-services-desktop", { width: 1440, height: 1000 }, async (page) => {
+  const checks = [];
+  for (const service of canonicalRegistry.services) {
+    const response = await page.goto(`${baseUrl}/services/${service.slug}/`, { waitUntil: "networkidle" });
+    checks.push({
+      service: service.id,
+      status: response?.status(),
+      canonicalMarker: await page.locator(`[data-canonical-service-id="${service.id}"]`).count(),
+      cta: await page.locator('[data-government-cta="verified"]').getAttribute("href"),
+      fullContent: await page.locator('.detail-section').count() >= 6,
+    });
+  }
+  return { status: 200, canonicalFailures: checks.filter((check) => check.status !== 200 || check.canonicalMarker !== 1 || check.cta !== canonicalRegistry.services.find((service) => service.id === check.service).officialGovernmentLink.url || !check.fullContent) };
+});
+
+await scenario("canonical-discovery-mobile", { width: 390, height: 844 }, async (page) => {
+  const checks = [];
+  for (const service of canonicalRegistry.services) {
+    await page.goto(`${baseUrl}/services/`, { waitUntil: "networkidle" });
+    await page.locator('#det-search').fill(service.classificationNumbers[0]);
+    const visible = page.locator('[data-directory-card]:visible');
+    checks.push({ service: service.id, results: await visible.count(), href: await visible.locator('h3 a').first().getAttribute('href') });
+  }
+  return { status: 200, canonicalDiscoveryFailures: checks.filter((check) => check.results !== 1 || check.href !== `/services/${canonicalRegistry.services.find((service) => service.id === check.service).slug}/`) };
+});
+
 await scenario("decision-tree", { width: 1280, height: 900 }, async (page) => {
   const response = await page.goto(`${baseUrl}/goals/family-residence/`, { waitUntil: "networkidle" });
   const options = await page.locator(".decision-options a").count();
@@ -118,8 +145,8 @@ await scenario("homepage-alignment", { width: 1440, height: 1000 }, async (page)
 await browser.close();
 await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
-const expectedDirectoryCards = matrix.services.length + 15;
-const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2);
+const expectedDirectoryCards = matrix.services.length + 15 + canonicalRegistry.services.length;
+const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2);
 const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scenarios: results.length, passed: results.length - failed.length, failed: failed.length }, results };
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));

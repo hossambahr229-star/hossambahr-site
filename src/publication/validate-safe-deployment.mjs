@@ -3,6 +3,9 @@ import { resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '../..');
 const registry = JSON.parse(await readFile(resolve(root, 'src/publication/det-publication-registry.json'), 'utf8'));
+const canonical = JSON.parse(await readFile(resolve(root, 'src/registry/registry.json'), 'utf8'));
+const authorities = JSON.parse(await readFile(resolve(root, 'src/registry/authorities.json'), 'utf8'));
+const authorityById = new Map(authorities.authorities.map((authority) => [authority.id, authority]));
 const errors = [];
 let active = 0;
 for (const service of registry.services) {
@@ -23,11 +26,27 @@ for (const service of registry.services) {
   }
   if (service.rejectedUrl && html.includes(service.rejectedUrl)) errors.push(`${service.slug}: rejected URL leaked into HTML`);
 }
+for (const service of canonical.services) {
+  const path = resolve(root, 'services', service.slug, 'index.html');
+  try { await access(path); } catch { errors.push(`${service.slug}: missing canonical internal route`); continue; }
+  const html = await readFile(path, 'utf8');
+  if (!html.includes('data-heritage-identity="f0de873"')) errors.push(`${service.slug}: historical identity marker missing`);
+  if (!html.includes(`data-canonical-service-id="${service.id}"`)) errors.push(`${service.slug}: canonical service marker missing`);
+  const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
+  active += activeLinks.length;
+  if (activeLinks.length !== 1 || activeLinks[0] !== service.officialGovernmentLink.url) errors.push(`${service.slug}: canonical verified CTA mismatch`);
+  const allowedDomains = authorityById.get(service.authorityId)?.officialDomains ?? [];
+  try {
+    const hostname = new URL(service.officialGovernmentLink.url).hostname;
+    if (!allowedDomains.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))) errors.push(`${service.slug}: canonical CTA is outside the authority domains`);
+  } catch { errors.push(`${service.slug}: canonical CTA is not an absolute URL`); }
+}
 if (registry.services.length !== 15) errors.push(`DET gate requires 15 classified services; found ${registry.services.length}`);
 const summary = {
   passed: errors.length === 0,
   authority: 'DET',
   total: registry.services.length,
+  canonicalVerified: canonical.services.length,
   verified: registry.services.filter((item) => item.classification === 'VERIFIED').length,
   pendingVerification: registry.services.filter((item) => item.classification === 'PENDING_VERIFICATION').length,
   broken: registry.services.filter((item) => item.classification === 'BROKEN').length,

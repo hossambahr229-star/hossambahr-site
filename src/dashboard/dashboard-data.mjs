@@ -43,23 +43,24 @@ function percentage(value, total) {
   return total ? Math.round((value / total) * 1000) / 10 : 0;
 }
 
-function serviceState(candidate, dossiers, registryByLegacyId) {
+function serviceState(candidate, dossiers, registryByLegacyId, publishedLegacyIds) {
   const dossier = dossiers.find((item) => item.legacyId === candidate.legacyId);
   const service = registryByLegacyId.get(candidate.legacyId);
+  const published = publishedLegacyIds.has(candidate.legacyId);
   return {
     inReview: dossier?.status === 'in-review',
-    approved: dossier?.status === 'approved',
-    publishReady: Boolean(service?.lifecycle?.publishReadyAt && service?.businessAcceptance?.status === 'passed')
+    approved: dossier?.status === 'approved' || published,
+    publishReady: published || Boolean(service?.lifecycle?.publishReadyAt && service?.businessAcceptance?.status === 'passed')
   };
 }
 
-export function buildDashboardData({ inventory, dossiers, registry, authorityTemplates }) {
+export function buildDashboardData({ inventory, dossiers, registry, authorityTemplates, publishedLegacyIds = new Set() }) {
   const templateIds = authorityTemplates.templates.map((item) => item.authorityId);
   const registryByLegacyId = new Map();
   for (const service of registry.services ?? []) for (const legacyId of service.sourceLegacyIds ?? []) registryByLegacyId.set(legacyId, service);
   const authorityRows = authorityTemplates.templates.map((template) => {
     const candidates = inventory.candidates.filter((candidate) => authorityBucket(candidate, templateIds) === template.authorityId);
-    const states = candidates.map((candidate) => serviceState(candidate, dossiers, registryByLegacyId));
+    const states = candidates.map((candidate) => serviceState(candidate, dossiers, registryByLegacyId, publishedLegacyIds));
     const underReview = states.filter((state) => state.inReview).length;
     const approved = states.filter((state) => state.approved).length;
     const readyToPublish = states.filter((state) => state.publishReady).length;
@@ -80,7 +81,7 @@ export function buildDashboardData({ inventory, dossiers, registry, authorityTem
       const category = candidate.businessDimensions.categoryGroup.toLowerCase();
       return area.terms.some((term) => category.includes(term.toLowerCase()));
     });
-    const ready = candidates.filter((candidate) => serviceState(candidate, dossiers, registryByLegacyId).publishReady).length;
+    const ready = candidates.filter((candidate) => serviceState(candidate, dossiers, registryByLegacyId, publishedLegacyIds).publishReady).length;
     return {
       areaId: area.id,
       area: area.nameAr,

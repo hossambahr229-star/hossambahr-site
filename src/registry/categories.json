@@ -8,6 +8,16 @@
         "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services",
         "https://www.investindubai.gov.ae/en/business-setup/business-setup-services"
       ]
+    },
+    {
+      "id": "business-licensing",
+      "name": { "ar": "تراخيص وموافقات الأعمال", "en": "Business licensing and approvals" },
+      "evidence": ["https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496"]
+    },
+    {
+      "id": "real-estate-services",
+      "name": { "ar": "الخدمات العقارية", "en": "Real estate services" },
+      "evidence": ["https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/"]
     }
   ],
   "subCategories": [
@@ -20,6 +30,20 @@
         "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
         "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name"
       ]
+    },
+    {
+      "id": "new-trade-license-noc",
+      "mainId": "business-licensing",
+      "name": { "ar": "عدم ممانعة لرخصة تجارية جديدة", "en": "New trade licence NOC" },
+      "classificationBasis": "Exact RTA transaction subject.",
+      "evidence": ["https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496"]
+    },
+    {
+      "id": "real-estate-advertising-permits",
+      "mainId": "real-estate-services",
+      "name": { "ar": "تصاريح الإعلان العقاري", "en": "Real estate advertising permits" },
+      "classificationBasis": "Exact DLD transaction subject.",
+      "evidence": ["https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/"]
     }
   ],
   "recordContract": {

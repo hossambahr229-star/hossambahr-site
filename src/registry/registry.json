@@ -1,5 +1,228 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": null,
-  "services": []
+  "generatedAt": "2026-08-08T18:40:00+04:00",
+  "services": [
+    {
+      "id": "rta-new-trade-license-noc-dubai",
+      "sourceLegacyIds": ["directory:approvals:4"],
+      "slug": "rta-new-trade-license-noc-dubai",
+      "name": {
+        "ar": "طلب شهادة عدم ممانعة لرخصة تجارية جديدة من RTA",
+        "en": "Apply for an NOC for a New Trade Licence"
+      },
+      "description": {
+        "ar": "خدمة هيئة الطرق والمواصلات لإصدار شهادة عدم ممانعة لازمة قبل إصدار رخصة تجارية جديدة أو تأسيس فرع يتضمن نشاط نقل تجاري في دبي.",
+        "en": "RTA service to issue the NOC required before obtaining a new trade licence or opening a branch containing a commercial transport activity in Dubai."
+      },
+      "audiences": [
+        { "ar": "الشركات الجديدة والفروع والمنشآت التي تحتاج نشاط نقل تجاري في دبي", "en": "New companies, branches and businesses requiring a commercial transport activity in Dubai" }
+      ],
+      "requestType": { "ar": "إصدار شهادة عدم ممانعة", "en": "Issue a no-objection certificate" },
+      "emirateId": "dubai",
+      "authorityId": "rta-dubai",
+      "category": { "mainId": "business-licensing", "subId": "new-trade-license-noc" },
+      "customerTypeIds": ["business", "investor"],
+      "activityIds": ["commercial-transport-activity"],
+      "licenseTypeIds": ["commercial-transport-trade-license"],
+      "classificationNumbers": ["HB-RTA-NOC-NEW-001"],
+      "keywords": {
+        "ar": ["RTA", "عدم ممانعة", "رخصة تجارية جديدة", "نشاط نقل تجاري", "ملف مروري", "دبي"],
+        "en": ["RTA", "NOC", "new trade licence", "commercial transport activity", "traffic file", "Dubai"]
+      },
+      "documents": {
+        "status": "required",
+        "items": [
+          {
+            "id": "preliminary-approval",
+            "name": { "ar": "الموافقة المبدئية من جهة إصدار الرخصة", "en": "Preliminary approval from the trade-licence authority" },
+            "required": true,
+            "notes": { "ar": "للرخص الصادرة من DET أو المناطق الحرة في دبي.", "en": "For licences issued by DET or Dubai free zones." }
+          },
+          {
+            "id": "member-identity",
+            "name": { "ar": "جواز سفر أو هوية سارية للمالك والشركاء", "en": "Valid passport or Emirates ID for the owner and partners" },
+            "required": true,
+            "notes": { "ar": "تضاف الإقامة أو التأشيرة السارية للشريك غير الإماراتي وخطاب عدم ممانعة الكفيل لغير مواطني دول الخليج عند انطباقه.", "en": "A valid residence or visa and sponsor NOC may also apply to non-Emirati or non-GCC partners." }
+          }
+        ],
+        "notes": {
+          "ar": "قد تطلب RTA موافقات ومستندات إضافية بحسب رمز النشاط؛ يجب اختيار النشاط في الجدول الرسمي قبل التقديم.",
+          "en": "RTA may require additional approvals and documents according to the selected activity code; check the official activity table before applying."
+        }
+      },
+      "governmentFees": {
+        "status": "variable",
+        "items": [],
+        "notes": {
+          "ar": "الرسوم تختلف باختلاف نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية؛ لا يوجد رسم موحد لجميع الأنشطة.",
+          "en": "Fees vary by commercial transport activity and are shown in the official activity table and payment screen; there is no single universal fee."
+        }
+      },
+      "serviceFees": {
+        "status": "free",
+        "items": [],
+        "notes": { "ar": "لا تفرض منصة HossamBahr رسومًا على الوصول إلى هذا الدليل.", "en": "HossamBahr charges no fee for access to this guide." }
+      },
+      "conditions": [
+        { "ar": "يجب أن تتطابق بيانات الموافقة المبدئية والمالك والشركاء والنشاط مع البيانات المدخلة في طلب RTA.", "en": "Preliminary approval, owner, partner and activity data must match the RTA application." },
+        { "ar": "بعض الأنشطة تتطلب موافقات إضافية من وحدات RTA أو جهات حكومية أخرى.", "en": "Some activities require additional approval from RTA units or other government entities." }
+      ],
+      "eligibility": [
+        { "ar": "شركة حصلت على موافقة مبدئية من DET أو منطقة حرة في دبي وتحتاج نشاط نقل تجاري واحدًا أو أكثر.", "en": "A company holding preliminary approval from DET or a Dubai free zone and requiring one or more commercial transport activities." }
+      ],
+      "exceptions": [
+        { "ar": "الخدمة مخصصة للشركات الجديدة والفروع أو الشركات التي لا تملك ملفًا مروريًا بعد؛ الشركات القائمة تستخدم خدمة التعديل المناسبة.", "en": "This service is for new companies, branches or companies without a traffic file; existing companies use the appropriate modification service." }
+      ],
+      "duration": {
+        "ar": "فوري للأنشطة التي لا تحتاج موافقات إضافية، ومن 3 إلى 15 يومًا للأنشطة التي تحتاج موافقات.",
+        "en": "Instant for activities not requiring further approvals, and 3 to 15 days where approvals are required."
+      },
+      "steps": [
+        { "order": 1, "title": { "ar": "افتح بطاقة الخدمة الرسمية", "en": "Open the official service card" }, "description": { "ar": "راجع نشاط النقل المطلوب ومتطلباته ورسومه في بطاقة RTA الرسمية.", "en": "Review the chosen transport activity, requirements and fees on the official RTA service card." } },
+        { "order": 2, "title": { "ar": "سجل الدخول", "en": "Sign in" }, "description": { "ar": "ابدأ من زر Start Now في بطاقة RTA ثم اختر حساب الشركة أو الحساب الفردي عبر UAE Pass بحسب حالتك.", "en": "Use Start Now on the RTA card, then select the company account or individual UAE Pass flow as applicable." } },
+        { "order": 3, "title": { "ar": "أدخل بيانات الموافقة المبدئية", "en": "Enter preliminary-approval data" }, "description": { "ar": "أدخل بيانات الشركة والنشاط والأعضاء وارفع الموافقات الإضافية المطلوبة.", "en": "Enter company, activity and member details and upload any additional approvals." } },
+        { "order": 4, "title": { "ar": "ادفع واستلم الشهادة", "en": "Pay and receive the NOC" }, "description": { "ar": "بعد الموافقة ادفع الرسوم الظاهرة واستلم شهادة عدم الممانعة الصالحة لمدة 90 يومًا.", "en": "After approval, pay the displayed fees and receive the NOC, valid for 90 days." } }
+      ],
+      "officialGovernmentLink": {
+        "id": "rta-service-card-496",
+        "label": { "ar": "فتح بطاقة خدمة RTA الرسمية", "en": "Open the official RTA service card" },
+        "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496",
+        "channel": "web",
+        "target": "exact-service-card",
+        "official": true,
+        "lastTestedAt": "2026-08-08T18:20:00+04:00",
+        "testEvidence": [
+          { "type": "manual-log", "value": "Official card returned the exact title Apply for an NOC for a New Trade Licence and exposed requirements, activity-specific fees, duration and Start Now. The current cls.rta.ae direct journey showed a government-side application error, so the safe CTA targets the exact official service card.", "capturedAt": "2026-08-08T18:20:00+04:00" }
+        ]
+      },
+      "officialSources": [
+        { "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496", "title": { "ar": "طلب شهادة عدم ممانعة لرخصة تجارية جديدة", "en": "Apply for an NOC for a New Trade Licence" }, "checkedAt": "2026-08-08T18:20:00+04:00" }
+      ],
+      "relatedServiceIds": [],
+      "alternativeServiceIds": [],
+      "faq": [
+        { "question": { "ar": "ما صلاحية شهادة عدم الممانعة؟", "en": "How long is the NOC valid?" }, "answer": { "ar": "تذكر بطاقة RTA الرسمية أن الشهادة صالحة لمدة 90 يومًا.", "en": "The official RTA card states that the NOC is valid for 90 days." } },
+        { "question": { "ar": "هل الرسوم ثابتة؟", "en": "Are the fees fixed?" }, "answer": { "ar": "لا؛ تختلف الرسوم والمتطلبات باختلاف رمز نشاط النقل التجاري المختار.", "en": "No. Fees and requirements vary according to the selected commercial transport activity code." } }
+      ],
+      "lastUpdated": "2026-06-04",
+      "lastReviewedAt": "2026-08-08T18:20:00+04:00",
+      "verification": {
+        "status": "verified",
+        "reviewedAt": "2026-08-08T18:20:00+04:00",
+        "reviewer": "Codex government-source review",
+        "evidence": [{ "type": "official-source", "value": "RTA serviceId=496 exact official service card, updated 04-June-2026.", "capturedAt": "2026-08-08T18:20:00+04:00" }],
+        "notes": { "ar": "تم اعتماد بطاقة الخدمة الرسمية كوجهة آمنة؛ رابط التنفيذ المباشر لم يُستخدم بسبب خطأ تقني ظاهر في نظام RTA وقت الاختبار.", "en": "The exact official service card is the safe destination; the direct execution journey was not used because it displayed an RTA-side technical error during testing." }
+      },
+      "businessAcceptance": {
+        "status": "passed",
+        "servicePage": { "testedAt": "2026-08-08T18:35:00+04:00", "httpStatus": 200, "nonEmpty": true, "evidence": [{ "type": "manual-log", "value": "Generated route opened locally with full content and historical identity marker.", "capturedAt": "2026-08-08T18:35:00+04:00" }] },
+        "search": { "testedAt": "2026-08-08T18:36:00+04:00", "methodsVerified": ["name", "keywords", "authority", "emirate", "activity", "license-type", "classification-number", "related-service"], "evidence": [{ "type": "manual-log", "value": "Directory search index contains all canonical discovery fields; no false related-service relation is published.", "capturedAt": "2026-08-08T18:36:00+04:00" }] },
+        "journey": { "testedAt": "2026-08-08T18:37:00+04:00", "homeToExecutionClicks": 2, "evidence": [{ "type": "manual-log", "value": "Homepage to services directory to service page; government CTA is then visible.", "capturedAt": "2026-08-08T18:37:00+04:00" }] },
+        "manualTest": { "testedAt": "2026-08-08T18:38:00+04:00", "result": "passed", "tester": "Codex", "evidence": [{ "type": "manual-log", "value": "Name, authority, category, documents, variable fees, duration, steps and safe official destination checked against the current RTA card.", "capturedAt": "2026-08-08T18:38:00+04:00" }], "notes": { "ar": "اجتازت الخدمة قبول الأعمال دون تفعيل رابط التنفيذ المباشر المتعطل لدى الجهة.", "en": "The service passed business acceptance without exposing the currently failing government direct-journey URL." } }
+      },
+      "lifecycle": {
+        "approvedAt": "2026-08-08T18:30:00+04:00",
+        "routeCreatedAt": "2026-08-08T18:32:00+04:00",
+        "registryInsertedAt": "2026-08-08T18:33:00+04:00",
+        "relationshipsLinkedAt": "2026-08-08T18:39:00+04:00",
+        "publishReadyAt": "2026-08-08T18:40:00+04:00"
+      }
+    },
+    {
+      "id": "dld-real-estate-ad-permit-dubai",
+      "sourceLegacyIds": ["directory:approvals:29"],
+      "slug": "dld-real-estate-ad-permit-dubai",
+      "name": { "ar": "تصريح إعلان عقاري", "en": "Real Estate Ad Permit" },
+      "description": {
+        "ar": "خدمة دائرة الأراضي والأملاك في دبي لإصدار تصريح إعلاني للعقارات، وتشمل الإعلانات المطبوعة والإلكترونية واللوحات والحملات والمعارض وإطلاق المشاريع والمنصات والندوات العقارية.",
+        "en": "Dubai Land Department service for real estate advertising permits, including printed and electronic ads, billboards, campaigns, exhibitions, project launches, platforms and seminars."
+      },
+      "audiences": [{ "ar": "الشركات والوسطاء والجهات المرخصة لممارسة نشاط عقاري في دبي", "en": "Companies, brokers and entities licensed to conduct real estate activity in Dubai" }],
+      "requestType": { "ar": "إصدار تصريح إعلان عقاري", "en": "Issue a real estate advertising permit" },
+      "emirateId": "dubai",
+      "authorityId": "dld-rera",
+      "category": { "mainId": "real-estate-services", "subId": "real-estate-advertising-permits" },
+      "customerTypeIds": ["business", "professional"],
+      "activityIds": ["real-estate-advertising"],
+      "licenseTypeIds": ["real-estate-activity-license"],
+      "classificationNumbers": ["HB-DLD-AD-PERMIT-001"],
+      "keywords": {
+        "ar": ["DLD", "RERA", "تراخيصي", "تصريح إعلان عقاري", "معرض عقاري", "إطلاق مشروع", "إعلان إلكتروني", "دبي"],
+        "en": ["DLD", "RERA", "Trakheesi", "real estate ad permit", "property exhibition", "project launch", "online advertisement", "Dubai"]
+      },
+      "documents": {
+        "status": "required",
+        "items": [
+          { "id": "advertisement-form", "name": { "ar": "نسخة من نموذج الإعلان", "en": "Copy of the advertisement form" }, "required": true, "notes": { "ar": "للإعلانات واللوحات والحملات الترويجية.", "en": "For advertisements, billboards and promotional campaigns." } },
+          { "id": "event-site-evidence", "name": { "ar": "مستند موقع الفعالية عند انطباقه", "en": "Event-site evidence where applicable" }, "required": false, "notes": { "ar": "عقد إيجار موقع المعرض أو إطلاق المشروع، أو خطاب عدم ممانعة من الفندق، بحسب نوع التصريح.", "en": "Site tenancy contract or hotel NOC depending on the permit type." } },
+          { "id": "platform-or-seminar-documents", "name": { "ar": "تصميم المنصة أو مستندات الندوة عند انطباقها", "en": "Platform design or seminar documents where applicable" }, "required": false, "notes": { "ar": "يشمل تصميم المنصة وعقد الموقع، أو حجز القاعة وخطاب موضوعات الندوة.", "en": "Includes platform design and site tenancy, or room booking and a letter describing seminar topics." } }
+        ],
+        "notes": { "ar": "تختلف المستندات باختلاف نوع الإعلان؛ تعرض بطاقة DLD الرسمية القائمة الدقيقة لكل نوع.", "en": "Documents vary by advertisement type; the official DLD card lists the exact requirements for each type." }
+      },
+      "governmentFees": {
+        "status": "paid",
+        "items": [
+          { "id": "project-launch-permit", "label": { "ar": "تصريح إطلاق مشروع", "en": "Project launch event permit" }, "amount": 5000, "currency": "AED", "notes": { "ar": "وفق بطاقة الخدمة الرسمية.", "en": "As stated on the official service card." } },
+          { "id": "other-ad-permits", "label": { "ar": "التصاريح الأخرى", "en": "Other permits" }, "amount": 1000, "currency": "AED", "notes": { "ar": "يضاف 20 درهمًا رسم معرفة وابتكار.", "en": "An AED 20 Knowledge and Innovation fee is added." } }
+        ],
+        "notes": { "ar": "للمعارض حجز مبدئي غير مسترد بقيمة 10,200 درهم ورسوم مشاركة 1,020 درهم لكل عارض؛ يُخصم رسم الحجز من الرسم النهائي.", "en": "Exhibitions have a non-refundable AED 10,200 preliminary booking fee and AED 1,020 per exhibitor; the booking fee is deducted from the final permit fee." }
+      },
+      "serviceFees": { "status": "free", "items": [], "notes": { "ar": "لا تفرض منصة HossamBahr رسومًا على الوصول إلى هذا الدليل.", "en": "HossamBahr charges no fee for access to this guide." } },
+      "conditions": [
+        { "ar": "إذا كان مقدم الطلب وسيطًا عقاريًا، يلزم عقد تسويق مع مالك العقار لأنواع الإعلان المحددة في بطاقة الخدمة.", "en": "If the applicant is a real estate broker, a marketing contract with the property owner is required for the ad types listed on the official card." },
+        { "ar": "يجب تقديم مستندات المعرض قبل موعده بشهر على الأقل، ولا يسمح بالبيع أثناء المعرض بل بالحجوزات المبدئية فقط.", "en": "Exhibition documents must be submitted at least one month in advance, and sales are prohibited during the exhibition; only preliminary reservations are allowed." }
+      ],
+      "eligibility": [{ "ar": "شركة أو جهة تحمل ترخيص نشاط عقاري مناسب في دبي.", "en": "A company or entity holding the appropriate real estate activity licence in Dubai." }],
+      "exceptions": [{ "ar": "لا يجوز عرض عقارات على الخارطة في دبي غير مسجلة لدى إدارة حساب الضمان خلال المعارض.", "en": "Dubai off-plan properties not registered with the Escrow Account Department may not be displayed at exhibitions." }],
+      "duration": { "ar": "يوم عمل واحد.", "en": "One working day." },
+      "steps": [
+        { "order": 1, "title": { "ar": "سجل الدخول إلى تراخيصي", "en": "Sign in to Trakheesi" }, "description": { "ar": "استخدم رابط الوصول الرسمي وسجل الدخول إلى نظام تراخيصي.", "en": "Use the official access link and sign in to the Trakheesi system." } },
+        { "order": 2, "title": { "ar": "اختر الخدمة وأدخل البيانات", "en": "Select the service and enter details" }, "description": { "ar": "اختر تصريح الإعلان المناسب وأكمل البيانات وارفع المستندات المطلوبة.", "en": "Choose the applicable ad permit, complete the information and upload the required documents." } },
+        { "order": 3, "title": { "ar": "انتظر المراجعة", "en": "Wait for review" }, "description": { "ar": "يراجع موظف DLD الطلب ويعتمده عند اكتماله.", "en": "A DLD employee reviews and approves the complete request." } },
+        { "order": 4, "title": { "ar": "ادفع واستلم التصريح", "en": "Pay and receive the permit" }, "description": { "ar": "اختر وسيلة الدفع ثم استلم شهادة التصريح الإلكترونية.", "en": "Choose the payment method and receive the electronic permit certificate." } }
+      ],
+      "officialGovernmentLink": {
+        "id": "dld-trakheesi-login",
+        "label": { "ar": "بدء الخدمة عبر نظام تراخيصي الرسمي", "en": "Start through the official Trakheesi system" },
+        "url": "https://backoffice.dubailand.gov.ae/en/MyDLD/#/login",
+        "channel": "web",
+        "target": "exact-login",
+        "official": true,
+        "lastTestedAt": "2026-08-08T18:25:00+04:00",
+        "testEvidence": [{ "type": "manual-log", "value": "The Access this Service link on the exact DLD Real Estate Ad Permit card redirected to the official MyDLD/Trakheesi login.", "capturedAt": "2026-08-08T18:25:00+04:00" }]
+      },
+      "officialSources": [
+        { "url": "https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/", "title": { "ar": "تصريح إعلان عقاري", "en": "Real Estate Ad Permit" }, "checkedAt": "2026-08-08T18:25:00+04:00" }
+      ],
+      "relatedServiceIds": [],
+      "alternativeServiceIds": [],
+      "faq": [
+        { "question": { "ar": "كم تستغرق الخدمة؟", "en": "How long does the service take?" }, "answer": { "ar": "تحدد بطاقة DLD الرسمية مدة الإنجاز بيوم عمل واحد.", "en": "The official DLD card states a service time of one working day." } },
+        { "question": { "ar": "ما أنواع الإعلانات المشمولة؟", "en": "Which advertising types are covered?" }, "answer": { "ar": "تشمل الإعلانات الصحفية والرسائل والخارجية وعلى المركبات والمطبوعة والإلكترونية واللوحات والحملات والبيوت المفتوحة والمعارض وإطلاق المشاريع والمنصات والندوات.", "en": "It covers newspaper, SMS, outdoor, vehicle, print, electronic, billboard and campaign ads, open houses, exhibitions, project launches, platforms and seminars." } }
+      ],
+      "lastUpdated": "2026-08-05",
+      "lastReviewedAt": "2026-08-08T18:25:00+04:00",
+      "verification": {
+        "status": "verified",
+        "reviewedAt": "2026-08-08T18:25:00+04:00",
+        "reviewer": "Codex government-source review",
+        "evidence": [{ "type": "official-source", "value": "Exact official DLD Real Estate Ad Permit card and its Access this Service link to MyDLD/Trakheesi.", "capturedAt": "2026-08-08T18:25:00+04:00" }],
+        "notes": { "ar": "طابقت الوجهة الرسمية اسم المعاملة ومحتواها، وانتقل زر الوصول إلى تسجيل الدخول الرسمي.", "en": "The official destination matched the exact transaction and its access link reached the official login." }
+      },
+      "businessAcceptance": {
+        "status": "passed",
+        "servicePage": { "testedAt": "2026-08-08T18:35:00+04:00", "httpStatus": 200, "nonEmpty": true, "evidence": [{ "type": "manual-log", "value": "Generated route opened locally with full content and historical identity marker.", "capturedAt": "2026-08-08T18:35:00+04:00" }] },
+        "search": { "testedAt": "2026-08-08T18:36:00+04:00", "methodsVerified": ["name", "keywords", "authority", "emirate", "activity", "license-type", "classification-number", "related-service"], "evidence": [{ "type": "manual-log", "value": "Directory search index contains all canonical discovery fields; no false related-service relation is published.", "capturedAt": "2026-08-08T18:36:00+04:00" }] },
+        "journey": { "testedAt": "2026-08-08T18:37:00+04:00", "homeToExecutionClicks": 2, "evidence": [{ "type": "manual-log", "value": "Homepage to services directory to service page; official Trakheesi CTA is then visible.", "capturedAt": "2026-08-08T18:37:00+04:00" }] },
+        "manualTest": { "testedAt": "2026-08-08T18:38:00+04:00", "result": "passed", "tester": "Codex", "evidence": [{ "type": "manual-log", "value": "Name, authority, category, documents, fees, duration, steps and official login checked against the current DLD card.", "capturedAt": "2026-08-08T18:38:00+04:00" }], "notes": { "ar": "اجتازت الخدمة قبول الأعمال وربطت بنظام تراخيصي الرسمي.", "en": "The service passed business acceptance and links to the official Trakheesi system." } }
+      },
+      "lifecycle": {
+        "approvedAt": "2026-08-08T18:30:00+04:00",
+        "routeCreatedAt": "2026-08-08T18:32:00+04:00",
+        "registryInsertedAt": "2026-08-08T18:33:00+04:00",
+        "relationshipsLinkedAt": "2026-08-08T18:39:00+04:00",
+        "publishReadyAt": "2026-08-08T18:40:00+04:00"
+      }
+    }
+  ]
 }

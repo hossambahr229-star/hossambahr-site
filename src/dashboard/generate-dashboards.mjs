@@ -6,11 +6,18 @@ const root = new URL('../', import.meta.url);
 const readJson = async (url) => JSON.parse(await readFile(url, 'utf8'));
 const inventory = await readJson(new URL('review/service-review-inventory.json', root));
 const registry = await readJson(new URL('registry/registry.json', root));
+const matrix = await readJson(new URL('../service-matrix.json', root));
+const detPublication = await readJson(new URL('publication/det-publication-registry.json', root));
 const authorityTemplates = await readJson(new URL('templates/authorities.json', root));
 const dossierRoot = new URL('review/dossiers/', root);
 const dossierFiles = (await readdir(dossierRoot)).filter((name) => name.endsWith('.json')).sort();
 const dossiers = await Promise.all(dossierFiles.map((name) => readJson(new URL(name, dossierRoot))));
-const data = buildDashboardData({ inventory, dossiers, registry, authorityTemplates });
+const publishedLegacyIds = new Set([
+  ...matrix.services.map((service) => service.id),
+  ...detPublication.services.filter((service) => service.classification === 'VERIFIED').map((service) => service.sourceId),
+  ...registry.services.flatMap((service) => service.sourceLegacyIds)
+]);
+const data = buildDashboardData({ inventory, dossiers, registry, authorityTemplates, publishedLegacyIds });
 const outputRoot = resolve(process.argv[2] ?? 'dashboard');
 
 function rows(items, business = false) {

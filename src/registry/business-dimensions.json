@@ -22,6 +22,14 @@
         "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
         "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name"
       ]
+    },
+    {
+      "id": "commercial-transport-activity",
+      "name": { "ar": "نشاط نقل تجاري خاضع لموافقة RTA", "en": "Commercial transport activity subject to RTA approval" }
+    },
+    {
+      "id": "real-estate-advertising",
+      "name": { "ar": "الإعلان والتسويق العقاري", "en": "Real estate advertising and marketing" }
     }
   ],
   "licenseTypes": [
@@ -37,6 +45,14 @@
         "https://www.investindubai.gov.ae/ar/business-setup/business-setup-services/request-to-book-a-trade-name",
         "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name"
       ]
+    },
+    {
+      "id": "commercial-transport-trade-license",
+      "name": { "ar": "رخصة تجارية تشمل نشاط نقل تجاري", "en": "Trade licence containing a commercial transport activity" }
+    },
+    {
+      "id": "real-estate-activity-license",
+      "name": { "ar": "رخصة نشاط عقاري", "en": "Real estate activity licence" }
     }
   ],
   "classifications": [
@@ -46,6 +62,18 @@
         "ar": "تصنيف المنصة: حجز الاسم التجاري في دبي",
         "en": "Platform classification: Dubai trade-name reservation"
       },
+      "namespace": "hossambahr-platform",
+      "officialGovernmentCode": false
+    },
+    {
+      "id": "HB-RTA-NOC-NEW-001",
+      "name": { "ar": "تصنيف المنصة: عدم ممانعة RTA لرخصة جديدة", "en": "Platform classification: RTA NOC for a new trade licence" },
+      "namespace": "hossambahr-platform",
+      "officialGovernmentCode": false
+    },
+    {
+      "id": "HB-DLD-AD-PERMIT-001",
+      "name": { "ar": "تصنيف المنصة: تصريح إعلان عقاري", "en": "Platform classification: real estate ad permit" },
       "namespace": "hossambahr-platform",
       "officialGovernmentCode": false
     }

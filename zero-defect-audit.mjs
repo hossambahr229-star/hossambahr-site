@@ -4,6 +4,8 @@ import { dirname, extname, relative, resolve, sep } from "node:path";
 const root = resolve(import.meta.dirname);
 const live = process.argv.includes("--live");
 const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "utf8"));
+const canonicalRegistry = JSON.parse(await readFile(resolve(root, "src/registry/registry.json"), "utf8"));
+const authorityCatalog = JSON.parse(await readFile(resolve(root, "src/registry/authorities.json"), "utf8"));
 const legacyAliases = JSON.parse(await readFile(resolve(root, "content/legacy-service-aliases.json"), "utf8"));
 const failures = [];
 const warnings = [];
@@ -98,20 +100,34 @@ for (const service of matrix.services) {
   if (!html.includes(service.name) || !html.includes(service.officialName)) failures.push({ type: "service-name-content-mismatch", service: service.id });
   if (/href=["']\/services\/?\?q=/i.test(html)) failures.push({ type: "service-page-fake-route", service: service.id });
 }
+for (const service of canonicalRegistry.services) {
+  const internalUrl = `/services/${service.slug}/`;
+  if (ids.has(service.id)) failures.push({ type: "duplicate-service-id", service: service.id });
+  if (internalUrls.has(internalUrl)) failures.push({ type: "duplicate-internal-url", service: service.id, value: internalUrl });
+  ids.add(service.id);
+  internalUrls.add(internalUrl);
+  const file = resolve(root, "services", service.slug, "index.html");
+  const html = htmlCache.get(file) || "";
+  if (!html) failures.push({ type: "missing-dedicated-service-page", service: service.id, value: internalUrl });
+  if (!html.includes(`data-canonical-service-id="${service.id}"`)) failures.push({ type: "canonical-service-marker-missing", service: service.id });
+  if (!html.includes(service.officialGovernmentLink.url.replaceAll("&", "&amp;")) && !html.includes(service.officialGovernmentLink.url)) failures.push({ type: "wrong-official-card-cta", service: service.id, value: service.officialGovernmentLink.url });
+}
 
 for (const category of matrix.categories) {
-  const expected = matrix.services.filter((service) => service.category === category.slug).length;
-  if (expected !== category.count) failures.push({ type: "category-count-mismatch", category: category.slug, expected, actual: category.count });
+  const legacyExpected = matrix.services.filter((service) => service.category === category.slug).length;
+  const canonicalExpected = canonicalRegistry.services.filter((service) => (service.authorityId === "rta-dubai" ? "vehicles-transport" : service.authorityId === "dld-rera" ? "property-rentals" : "") === category.slug).length;
+  const expected = legacyExpected + canonicalExpected;
+  if (legacyExpected !== category.count) failures.push({ type: "category-count-mismatch", category: category.slug, expected: legacyExpected, actual: category.count });
   const file = resolve(root, "categories", category.slug, "index.html");
   const html = htmlCache.get(file) || "";
-  const cards = [...html.matchAll(/data-service-card\b/g)].length;
+  const cards = [...html.matchAll(/data-service-card\b|data-directory-card\b/g)].length;
   if (cards !== expected) failures.push({ type: "category-card-mismatch", category: category.slug, expected, actual: cards });
   if (expected === 0 && !/قيد التحقق/.test(html)) failures.push({ type: "empty-category-implies-availability", category: category.slug });
 }
 
 const serviceIndex = htmlCache.get(resolve(root, "services", "index.html")) || "";
 const catalogLinks = [...serviceIndex.matchAll(/<h3><a href="([^"]+)"/g)].map((match) => match[1]);
-if (catalogLinks.length !== matrix.services.length) failures.push({ type: "catalog-count-mismatch", expected: matrix.services.length, actual: catalogLinks.length });
+if (catalogLinks.length !== matrix.services.length + canonicalRegistry.services.length) failures.push({ type: "catalog-count-mismatch", expected: matrix.services.length + canonicalRegistry.services.length, actual: catalogLinks.length });
 for (const link of catalogLinks) {
   if (!internalUrls.has(link)) failures.push({ type: "catalog-card-wrong-service", value: link });
   if (/[?]q=/.test(link) || link === "/") failures.push({ type: "catalog-card-generic-target", value: link });
@@ -150,6 +166,14 @@ if (live) {
       uniqueMap.get(url).services.push(service.id);
     }
   }
+  for (const service of canonicalRegistry.services) {
+    const endpoints = [["official-destination", service.officialGovernmentLink.url], ...service.officialSources.map((source) => ["official-source", source.url])];
+    for (const [kind, url] of endpoints) {
+      if (!uniqueMap.has(url)) uniqueMap.set(url, { url, kinds: new Set(), services: [] });
+      uniqueMap.get(url).kinds.add(kind);
+      uniqueMap.get(url).services.push(service.id);
+    }
+  }
   const unique = [...uniqueMap.values()].map((entry) => ({ ...entry, kinds: [...entry.kinds] }));
   async function inspect(entry) {
     const controller = new AbortController();
@@ -174,10 +198,10 @@ const report = {
   summary: {
     htmlRoutes: htmlFiles.length,
     linksScanned,
-    canonicalServices: matrix.services.length,
-    authorities: matrix.authorities.length,
+    canonicalServices: matrix.services.length + canonicalRegistry.services.length,
+    authorities: authorityCatalog.authorities.length,
     categories: matrix.categories.length,
-    categoriesWithServices: matrix.categories.filter((category) => category.count > 0).length,
+    categoriesWithServices: matrix.categories.filter((category) => category.count > 0 || ["vehicles-transport", "property-rentals"].includes(category.slug)).length,
     suspendedSourceRecords: matrix.summary.suspendedSourceRecords,
     officialUrlsChecked: liveChecks.length,
     officialUrlsHealthy: liveChecks.filter((item) => item.ok).length,

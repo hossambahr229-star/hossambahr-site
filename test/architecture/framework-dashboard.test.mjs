@@ -29,5 +29,7 @@ test('project dashboard accounts for all 172 services exactly once', () => {
 test('business dashboard exposes every mandated business area', () => {
   const dashboard = buildDashboardData({ inventory, dossiers, registry, authorityTemplates: templates });
   assert.deepEqual(dashboard.businessAcceptance.businessAreas.map((item) => item.areaId), BUSINESS_AREAS.map((item) => item.id));
-  assert.equal(dashboard.businessAcceptance.businessAreas.every((item) => item.completionPercent === 0), true);
+  const realEstate = dashboard.businessAcceptance.businessAreas.find((item) => item.areaId === 'real-estate');
+  assert.deepEqual({ ready: realEstate.readyToPublish, remaining: realEstate.remaining, completion: realEstate.completionPercent }, { ready: 1, remaining: 2, completion: 33.3 });
+  assert.equal(dashboard.businessAcceptance.businessAreas.filter((item) => item.areaId !== 'real-estate').every((item) => item.completionPercent === 0), true);
 });

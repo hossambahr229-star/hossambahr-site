@@ -117,6 +117,32 @@
         "checkedAt": "2026-08-01T00:00:00+04:00",
         "sourceUrls": ["https://freezone.fujairah.ae/en/about-us/about-fujairah-freezone", "https://fujairah.ae/en/Pages/SettingBusinessFFZA.aspx"]
       }
+    },
+    {
+      "id": "rta-dubai",
+      "name": { "ar": "هيئة الطرق والمواصلات في دبي", "en": "Roads and Transport Authority Dubai" },
+      "abbreviation": "RTA Dubai",
+      "governmentLevel": "emirate",
+      "emirateId": "dubai",
+      "officialDomains": ["rta.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-08T18:10:00+04:00",
+        "sourceUrls": ["https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496"]
+      }
+    },
+    {
+      "id": "dld-rera",
+      "name": { "ar": "دائرة الأراضي والأملاك في دبي / مؤسسة التنظيم العقاري", "en": "Dubai Land Department / Real Estate Regulatory Agency" },
+      "abbreviation": "DLD / RERA",
+      "governmentLevel": "emirate",
+      "emirateId": "dubai",
+      "officialDomains": ["dubailand.gov.ae"],
+      "verification": {
+        "status": "official-source-confirmed",
+        "checkedAt": "2026-08-08T18:15:00+04:00",
+        "sourceUrls": ["https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/"]
+      }
     }
   ],
   "recordContract": {
