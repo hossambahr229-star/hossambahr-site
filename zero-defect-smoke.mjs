@@ -1,3 +1,4 @@
+
 import { createServer } from "node:http";
 import { readFile, stat, writeFile, mkdir } from "node:fs/promises";
 import { createRequire } from "node:module";
@@ -51,25 +52,25 @@ async function scenario(name, viewport, run) {
   try { assertions = await run(page); }
   catch (error) { assertions = { error: error instanceof Error ? error.message : String(error) }; }
   await page.screenshot({ path: resolve(output, `${name}.png`), fullPage: true });
-  const layout = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1, identity: Boolean(document.querySelector('[data-heritage-identity="e0596a2"]')) }));
+  const layout = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1, identity: Boolean(document.querySelector('[data-heritage-identity="f0de873"], [data-heritage-identity="e0596a2"], link[href="/_next/static/chunks/31fdelqs9pqq6.css"]')) }));
   results.push({ name, ...assertions, ...layout, consoleErrors, pageErrors, failedRequests });
   await context.close();
 }
 
 await scenario("catalog-desktop", { width: 1440, height: 1000 }, async (page) => {
   const response = await page.goto(`${baseUrl}/services/`, { waitUntil: "networkidle" });
-  const initialCards = await page.locator("[data-service-card]").count();
-  await page.locator("[data-service-filter]").fill("إقامة");
-  const filteredCards = await page.locator("[data-service-card]:visible").count();
-  const firstHref = await page.locator("[data-service-card]:visible h3 a").first().getAttribute("href");
-  await page.locator("[data-service-card]:visible h3 a").first().click();
+  const initialCards = await page.locator("[data-directory-card]").count();
+  await page.locator("#det-search").fill("تصريح عمل مدرس خصوصي");
+  const filteredCards = await page.locator("[data-directory-card]:visible").count();
+  const firstHref = await page.locator("[data-directory-card]:visible h3 a").first().getAttribute("href");
+  await page.locator("[data-directory-card]:visible h3 a").first().click();
   await page.waitForLoadState("networkidle");
   return { status: response?.status(), initialCards, filteredCards, directServiceUrl: page.url().includes("/services/") && !page.url().includes("?q="), hasOfficialCta: await page.locator('.official-source-panel a[href^="https://"]').count() >= 1, routeMode: await page.locator(".service-detail").getAttribute("data-official-route-mode"), firstHref };
 });
 
 await scenario("catalog-mobile", { width: 390, height: 844 }, async (page) => {
   const response = await page.goto(`${baseUrl}/services/`, { waitUntil: "networkidle" });
-  return { status: response?.status(), cards: await page.locator("[data-service-card]").count(), searchVisible: await page.locator("[data-service-filter]").isVisible() };
+  return { status: response?.status(), cards: await page.locator("[data-directory-card]").count(), searchVisible: await page.locator("#det-search").isVisible() };
 });
 
 await scenario("decision-tree", { width: 1280, height: 900 }, async (page) => {
@@ -111,14 +112,14 @@ await scenario("direct-execution-route", { width: 1280, height: 900 }, async (pa
 
 await scenario("homepage-alignment", { width: 1440, height: 1000 }, async (page) => {
   const response = await page.goto(`${baseUrl}/`, { waitUntil: "networkidle" });
-  await page.waitForTimeout(2300);
-  return { status: response?.status(), routingViolations: await page.locator('[data-routing-violation="true"]').count(), violationDetails: await page.locator('[data-routing-violation="true"]').evaluateAll((nodes) => nodes.map((node) => ({ text: node.textContent?.trim(), href: node.getAttribute("href"), className: node.className }))), serviceMetric: await page.locator('.heritage-metrics > div').filter({ hasText: "خدمة" }).locator("b").textContent(), authorityMetric: await page.locator('.heritage-metrics > div').filter({ hasText: "جهة" }).locator("b").textContent(), hiddenEmptyCategories: await page.locator('.category-directory-grid a[hidden], .category-grid a[hidden], .category-list-grid a[hidden]').count(), hiddenEmptyAudiences: await page.locator('.audience-grid a[hidden]').count(), footerScope: await page.locator('.footer-intro > span').textContent() };
+  return { status: response?.status(), routingViolations: await page.locator('[data-routing-violation="true"]').count(), unsafeDetLinksOnHomepage: await page.locator('a[href*="investindubai.gov.ae"]').count(), hasServicesEntry: await page.locator('a[href="/services/"]').count() > 0 };
 });
 
 await browser.close();
 await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
-const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.initialCards && result.initialCards !== matrix.services.length || result.cards && result.cards !== matrix.services.length || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.serviceMetric && result.serviceMetric !== String(matrix.services.length) || result.authorityMetric && result.authorityMetric !== String(matrix.authorities.length) || result.footerScope && !result.footerScope.includes(`${matrix.services.length} خدمة موثقة · ${matrix.authorities.length} جهة مغطاة`) || result.hiddenEmptyCategories !== undefined && result.hiddenEmptyCategories !== 6 || result.hiddenEmptyAudiences !== undefined && result.hiddenEmptyAudiences !== 1);
+const expectedDirectoryCards = matrix.services.length + 15;
+const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2);
 const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scenarios: results.length, passed: results.length - failed.length, failed: failed.length }, results };
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "authorityId": "det",
+  "reviewedAt": "2026-08-08T12:00:00+04:00",
+  "policy": "A pending or broken government destination never becomes an active link. The internal service page remains available.",
+  "services": [
+    {"sourceId":"guide:reserve-trade-name-dubai","slug":"reserve-trade-name-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name","evidence":"Official DET service card: Request to book a trade name; reviewed 2026-08-08."},
+    {"sourceId":"guide:initial-approval-dubai","slug":"initial-approval-dubai","classification":"PENDING_VERIFICATION","officialUrl":null,"rejectedUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-initial-approval","evidence":"Former deep link redirects to the generic service directory, which does not expose the transaction."},
+    {"sourceId":"guide:amend-business-license-dubai","slug":"amend-business-license-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence","evidence":"Official DET service card: Request to amend a trade licence; reviewed 2026-08-08."},
+    {"sourceId":"guide:add-business-activity-dubai","slug":"add-business-activity-dubai","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"The available activity search is not the exact add/remove activity transaction."},
+    {"sourceId":"guide:add-remove-partner-dubai","slug":"add-remove-partner-dubai","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"No separate exact official transaction card has been confirmed."},
+    {"sourceId":"guide:transfer-company-ownership-dubai","slug":"transfer-company-ownership-dubai","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"No exact current official transaction card has been confirmed."},
+    {"sourceId":"guide:cancel-business-license-dubai","slug":"cancel-business-license-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence","evidence":"Official DET service card: Request for cancellation of trade licence; reviewed 2026-08-08."},
+    {"sourceId":"guide:renew-business-license-dubai","slug":"renew-business-license-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence","evidence":"Official DET service card: Request to renew trade licence; reviewed 2026-08-08."},
+    {"sourceId":"guide:change-company-manager-dubai","slug":"change-company-manager-dubai","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"The general amendment card does not prove a distinct manager-change transaction."},
+    {"sourceId":"catalog:تغيير الشكل القانوني لشركة في دبي","slug":"legacy-service-67abe5ccf3","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"The general amendment card does not prove a distinct legal-form-change transaction."},
+    {"sourceId":"directory:approvals:1","slug":"legacy-service-e619a9e547","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"Bundled legacy concept; no single exact official transaction exists for the combined title."},
+    {"sourceId":"directory:approvals:2","slug":"legacy-service-85a10469d8","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-commercial-permit","evidence":"Official DET service card: Request to issue commercial permit; reviewed 2026-08-08."},
+    {"sourceId":"directory:approvals:30","slug":"legacy-service-e7f35a06d9","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"No exact DET transaction card confirmed for the combined hotel/holiday-home title."},
+    {"sourceId":"directory:approvals:31","slug":"legacy-service-f6481e594b","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"No exact DET transaction card confirmed for the combined travel/tour-operator title."},
+    {"sourceId":"directory:approvals:32","slug":"legacy-service-6f3bee6661","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"No exact DET transaction card confirmed for the combined event/tour-guide title."}
+  ]
+}

@@ -15,6 +15,18 @@ export function serviceRoute(serviceOrSlug) {
   return `/services/${slug}/`;
 }
 
+export const PUBLICATION_STATES = Object.freeze(['VERIFIED', 'PENDING_VERIFICATION', 'BROKEN']);
+
+export function governmentCtaPolicy(service) {
+  if (!PUBLICATION_STATES.includes(service.classification)) throw new Error(`Unknown publication state: ${service.classification}`);
+  if (service.classification === 'VERIFIED') {
+    if (!service.officialUrl) throw new Error(`Verified service has no official URL: ${service.slug}`);
+    return { enabled: true, href: service.officialUrl };
+  }
+  if (service.officialUrl) throw new Error(`Unverified service retains an active URL: ${service.slug}`);
+  return { enabled: false, href: null };
+}
+
 export function authorityRoute(authorityId) {
   return `/authorities/${authorityId}/`;
 }
