@@ -99,6 +99,16 @@
   }
 
   function exposeActivitySearch() {
+    const allowed = ['/', '/services/', '/categories/companies-establishments/'];
+    if (allowed.includes(location.pathname)) {
+      const nav = document.querySelector('.desktop-nav');
+      if (nav && !nav.querySelector('a[href="/dubai-business-activities.html"]')) {
+        const navLink = document.createElement('a');
+        navLink.href = '/dubai-business-activities.html';
+        navLink.textContent = 'الأنشطة والرموز';
+        nav.appendChild(navLink);
+      }
+    }
     const actions = document.querySelector('.hero-actions');
     if (!actions || actions.querySelector('a[href="/dubai-business-activities.html"]')) return;
     const link = document.createElement('a');

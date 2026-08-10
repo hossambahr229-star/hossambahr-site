@@ -17,6 +17,7 @@
     "review:validate-progress": "node src/review/validate-progressive-review.mjs && node src/dashboard/generate-dashboards.mjs",
     "dashboard:generate": "node src/dashboard/generate-dashboards.mjs",
     "business:report": "node src/business/generate-business-report.mjs",
+    "activities:audit:dubai": "node src/activities/audit-dubai-activities.mjs",
     "test:architecture": "node --test test/architecture/*.test.mjs"
   },
   "engines": {

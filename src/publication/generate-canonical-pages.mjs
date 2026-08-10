@@ -97,4 +97,10 @@ for (const route of routes) {
 }
 await writeFile(sitemapPath, sitemap, 'utf8');
 
+const homePath = resolve(root, 'index.html');
+let home = await readFile(homePath, 'utf8');
+home = home.replace('<div class="hero-actions"><a href="/dubai-business-activities.html">ابحث عن نشاط ورمزه</a>', '<div class="hero-actions">');
+if (!home.includes('src="/zero-defect-routing.js"')) home = home.replace('</head>', '<script src="/zero-defect-routing.js" defer></script></head>');
+await writeFile(homePath, home, 'utf8');
+
 console.log(JSON.stringify({ generated: registry.services.length, authorities: 2, categories: 2 }, null, 2));

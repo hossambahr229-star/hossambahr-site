@@ -121,6 +121,11 @@
     const description = normalize(`${activity.descAr} ${activity.descEn}`);
     const fullQuery = normalize(value);
     let score = 0;
+    const compactQuery = fullQuery.replace(/\s/g, '');
+    if (activity.code === compactQuery) score += 1000;
+    else if (compactQuery.length >= 3 && activity.code.startsWith(compactQuery)) score += 240;
+    if (activity.isic === compactQuery) score += 800;
+    else if (compactQuery.length >= 3 && activity.isic.startsWith(compactQuery)) score += 180;
     if (fullQuery.length > 3 && name.includes(fullQuery)) score += 70;
     terms.forEach(term => {
       if (name.includes(term)) score += 18;
@@ -156,7 +161,7 @@
   }
 
   function activityCard(activity, index) {
-    return `<article class="activity-card"><div class="activity-card-head"><span class="activity-code">${escapeHtml(activity.code)}</span><span class="activity-category">${escapeHtml(activity.categoryAr)}</span></div><h3>${escapeHtml(activity.nameAr)}</h3><div class="activity-name-en" lang="en">${escapeHtml(activity.nameEn)}</div><div class="activity-license-count${activity.active ? '' : ' empty'}"><span>${activity.active ? 'سجل ارتباط فعال' : 'لا تتوفر بيانات ارتباط'}</span><b>${activity.active ? activity.active.toLocaleString('ar-AE') : '—'}</b></div><p>${escapeHtml(activity.descAr || 'لا يتوفر وصف عربي لهذا النشاط في مجموعة البيانات.')}</p><div class="activity-group">المجموعة: ${escapeHtml(activity.groupAr || 'غير محددة')}</div><button type="button" data-directory-index="${index}">عرض التفاصيل ←</button></article>`;
+    return `<article class="activity-card"><div class="activity-card-head"><span class="activity-code">${escapeHtml(activity.code)}</span><span class="activity-category">${escapeHtml(activity.categoryAr)}</span></div><h3>${escapeHtml(activity.nameAr)}</h3><div class="activity-name-en" lang="en">${escapeHtml(activity.nameEn)}</div><div class="activity-license-count${activity.active ? '' : ' empty'}"><span>${activity.active ? 'سجل ارتباط فعال' : 'لا تتوفر بيانات ارتباط'}</span><b>${activity.active ? activity.active.toLocaleString('ar-AE') : '—'}</b></div><p>${escapeHtml(activity.descAr || 'لا يتوفر وصف عربي لهذا النشاط في مجموعة البيانات.')}</p><div class="activity-group">الجهة: DET — الإمارة: دبي<br>الفئة: ${escapeHtml(activity.categoryAr || 'غير محددة')}<br>المجموعة: ${escapeHtml(activity.groupAr || 'غير محددة')}</div><button type="button" data-directory-index="${index}">عرض التفاصيل ←</button></article>`;
   }
   function renderDirectory() {
     const visible = state.filtered.slice(0, state.visible);
