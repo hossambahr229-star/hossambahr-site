@@ -90,7 +90,7 @@ if (municipalityAudit && municipalityRow) Object.assign(municipalityRow, {
   remaining: municipalityAudit.summary.realServices - municipalityAudit.summary.verifiedRealServices,
   completionPercent: Number(((municipalityAudit.summary.verifiedRealServices / municipalityAudit.summary.realServices) * 100).toFixed(1))
 });
-for (const [auditId, dashboardAuthority] of [['dubai-courts-notary', 'Notary'], ['dubai-customs', 'Customs']]) {
+for (const [auditId, dashboardAuthority] of [['dubai-courts-notary', 'Notary'], ['dubai-customs', 'Customs'], ['dha-dubai', 'DHA']]) {
   const authorityAudit = dubaiCoverage.authorities.find((authority) => authority.id === auditId);
   const authorityRow = data.project.find((row) => row.authority === dashboardAuthority);
   if (authorityAudit && authorityRow) Object.assign(authorityRow, {
