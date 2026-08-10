@@ -5,6 +5,7 @@ const root = resolve(import.meta.dirname);
 const live = process.argv.includes("--live");
 const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "utf8"));
 const canonicalRegistry = JSON.parse(await readFile(resolve(root, "src/registry/registry.json"), "utf8"));
+const publishedRegistry = JSON.parse(await readFile(resolve(root, "src/registry/published-services.json"), "utf8"));
 const authorityCatalog = JSON.parse(await readFile(resolve(root, "src/registry/authorities.json"), "utf8"));
 const legacyAliases = JSON.parse(await readFile(resolve(root, "content/legacy-service-aliases.json"), "utf8"));
 const mohreAudit = JSON.parse(await readFile(resolve(root, "content/mohre-deep-audit.json"), "utf8"));
@@ -148,7 +149,10 @@ for (const route of detRoutes) internalUrls.add(route);
 const catalogLinks = [...serviceIndex.matchAll(/<article\b[^>]*data-directory-card[^>]*>[\s\S]*?<h[23]><a href="([^"]+)"/g)].map((match) => match[1]);
 const expectedCatalogLinks = matrix.services.length + canonicalRegistry.services.length + supplementalRoutes.length + detRoutes.length;
 const normalizedHistoricalRecords = normalizedMohreIds.size + (detPublication.services.length - detRoutes.length) + gdrfaAudit.summary.normalizedHistoricalRecords;
+const normalizedPublishedRecords = normalizedMohreIds.size + gdrfaAudit.summary.normalizedHistoricalRecords;
 const pendingVerification = detPublication.services.filter((service) => !service.normalization?.excludeFromRealTotal && service.classification === 'PENDING_VERIFICATION').length;
+if (publishedRegistry.summary.services + normalizedPublishedRecords !== expectedCatalogLinks) failures.push({ type: "published-registry-count-mismatch", expected: expectedCatalogLinks - normalizedPublishedRecords, actual: publishedRegistry.summary.services });
+if (publishedRegistry.summary.pendingVerification !== pendingVerification) failures.push({ type: "published-registry-pending-mismatch", expected: pendingVerification, actual: publishedRegistry.summary.pendingVerification });
 if (catalogLinks.length !== expectedCatalogLinks) failures.push({ type: "catalog-count-mismatch", expected: expectedCatalogLinks, actual: catalogLinks.length });
 for (const link of catalogLinks) {
   if (!internalUrls.has(link)) failures.push({ type: "catalog-card-wrong-service", value: link });
@@ -234,8 +238,8 @@ const report = {
     htmlRoutes: htmlFiles.length,
     linksScanned,
     publishedServiceRecords: expectedCatalogLinks,
-    realServices: expectedCatalogLinks - normalizedHistoricalRecords,
-    verifiedServices: expectedCatalogLinks - normalizedHistoricalRecords - pendingVerification,
+    realServices: publishedRegistry.summary.services,
+    verifiedServices: publishedRegistry.summary.verified,
     pendingVerification,
     legacyMatrixRecords: matrix.services.length,
     normalizedHistoricalRecords,

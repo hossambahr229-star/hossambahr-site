@@ -107,9 +107,13 @@ const emirateCoverage = [...new Set(dubaiCoverage.authorities.map((authority) =>
   const authorities = dubaiCoverage.authorities.filter((authority) => authority.emirate === emirate);
   const documentedServices = authorities.reduce((sum, authority) => sum + authority.summary.realServices, 0);
   const approved = authorities.reduce((sum, authority) => sum + authority.summary.verifiedRealServices, 0);
-  const totalServices = Math.max(documentedServices, 10);
+  // No official authority publishes a stable, exhaustive denominator for every
+  // emirate. Using an invented minimum made the dashboard look quantitative but
+  // was not a defensible business metric. This denominator is explicitly the
+  // individually audited inventory currently owned by the registry.
+  const totalServices = documentedServices;
   const remaining = totalServices - approved;
-  return { authority: emirate, basis: 'minimum-core-service-baseline', documentedServices, totalServices, underReview: remaining, approved, readyToPublish: approved, remaining, completionPercent: totalServices ? Number(((approved / totalServices) * 100).toFixed(1)) : 0 };
+  return { authority: emirate, basis: 'audited-published-inventory', universeComplete: false, documentedServices, totalServices, underReview: remaining, approved, readyToPublish: approved, remaining, completionPercent: totalServices ? Number(((approved / totalServices) * 100).toFixed(1)) : 0 };
 });
 
 function rows(items, business = false) {

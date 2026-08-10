@@ -122,11 +122,13 @@ for (const authority of dubaiCoverage.authorities) {
   if (canonicalCount !== authority.summary.canonicalServices) errors.push(`${authority.id}: canonical service count mismatch`);
   for (const service of authority.newVerifiedServices) {
     const path = resolve(root, 'services', service.slug, 'index.html');
-    try { await access(path); } catch { errors.push(`${service.slug}: missing Dubai authority route`); continue; }
+    try { await access(path); } catch { errors.push(`${service.slug}: missing government authority route`); continue; }
     const html = await readFile(path, 'utf8');
     const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1].replaceAll('&amp;', '&'));
-    if (!html.includes('data-heritage-identity=')) errors.push(`${service.slug}: Dubai historical identity marker missing`);
-    if (activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: Dubai authority CTA mismatch`);
+    if (!html.includes('data-heritage-identity=')) errors.push(`${service.slug}: historical identity marker missing`);
+    if (activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: government authority CTA mismatch`);
+    const expectedKind = service.destinationKind === 'OFFICIAL_GUIDANCE' ? 'OFFICIAL_GUIDANCE' : 'DIRECT_SERVICE';
+    if (!html.includes(`data-destination-kind="${expectedKind}"`)) errors.push(`${service.slug}: destination kind is not disclosed`);
     try {
       const hostname = new URL(service.officialUrl).hostname;
       if (!authority.officialDomains.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))) errors.push(`${service.slug}: CTA outside ${authority.id} official domains`);

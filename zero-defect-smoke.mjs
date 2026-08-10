@@ -258,7 +258,9 @@ await scenario("dubai-authority-expansion-desktop", { width: 1440, height: 1000 
     for (const service of authority.newVerifiedServices) {
       const response = await page.goto(`${baseUrl}/services/${service.slug}/`, { waitUntil: 'networkidle' });
       const cta = await page.locator('[data-government-cta="verified"]').getAttribute('href');
-      if (response?.status() !== 200 || cta !== service.officialUrl || await page.locator('.detail-section').count() < 6) failures.push({ service: service.slug, status: response?.status(), cta, expected: service.officialUrl });
+      const destinationKind = await page.locator('main').getAttribute('data-destination-kind');
+      const expectedKind = service.destinationKind === 'OFFICIAL_GUIDANCE' ? 'OFFICIAL_GUIDANCE' : 'DIRECT_SERVICE';
+      if (response?.status() !== 200 || cta !== service.officialUrl || destinationKind !== expectedKind || await page.locator('.detail-section').count() < 6) failures.push({ service: service.slug, status: response?.status(), cta, expected: service.officialUrl, destinationKind, expectedKind });
     }
   }
   return { status: 200, dubaiAuthorityFailures: failures };
