@@ -1,8 +1,8 @@
 # Zero-defect routing and service audit
 
-- HTML routes: 291
-- Links scanned: 9883
-- Published service records: 178
+- HTML routes: 292
+- Links scanned: 9900
+- Published service records: 179
 - Authorities: 11
 - Categories with verified services: 11
 - Suspended source records kept unpublished: 67
