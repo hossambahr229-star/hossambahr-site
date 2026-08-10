@@ -30,6 +30,9 @@ const historicalSet = new Set(historicalPages);
 const addedPages = currentPages.filter((path) => !historicalSet.has(path));
 const activityData = JSON.parse(await readFile(resolve(root, 'reports/activity-quality/dubai-activities.json'), 'utf8'));
 const servicesIndex = await readFile(resolve(root, 'services/index.html'), 'utf8');
+const home = await readFile(resolve(root, 'index.html'), 'utf8');
+const routingEnhancement = await readFile(resolve(root, 'zero-defect-routing.js'), 'utf8');
+const activitySearchLinkedFromHome = home.includes('src="/zero-defect-routing.js"') && routingEnhancement.includes('function exposeActivitySearch()');
 const report = {
   schemaVersion: '1.0.0',
   generatedAt: new Date().toISOString(),
@@ -43,9 +46,10 @@ const report = {
     deletedHistoricalPages: missingPages.length,
     serviceSearchPresent: servicesIndex.includes('data-directory-card'),
     activitySearchPresent: currentFiles.includes('dubai-business-activities.html'),
+    activitySearchLinkedFromHome,
     activityDatasetRecords: Array.isArray(activityData) ? activityData.length : activityData.dataset?.records ?? activityData.records?.length ?? 0
   },
-  passed: missingPages.length === 0 && servicesIndex.includes('data-directory-card') && currentFiles.includes('dubai-business-activities.html') && activityData.dataset?.records === 2610
+  passed: missingPages.length === 0 && servicesIndex.includes('data-directory-card') && currentFiles.includes('dubai-business-activities.html') && activitySearchLinkedFromHome && activityData.dataset?.records === 2610
 };
 await writeFile(resolve(root, 'content/historical-gap-audit.json'), `${JSON.stringify(report, null, 2)}\n`, 'utf8');
 console.log(JSON.stringify(report, null, 2));
