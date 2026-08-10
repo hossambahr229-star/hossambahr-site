@@ -1,11 +1,11 @@
 {
-  "checkedAt": "2026-08-10T11:40:54.897Z",
+  "checkedAt": "2026-08-10T12:36:18.387Z",
   "source": "service-matrix.json",
   "semanticPolicy": "Only previously approved exact service routes are monitored.",
-  "uniqueUrls": 241,
+  "uniqueUrls": 255,
   "healthy": 0,
   "failed": 0,
-  "inconclusive": 241,
+  "inconclusive": 255,
   "checks": [
     {
       "url": "https://www.mohre.gov.ae/en/services/private-tutor-licensing",
@@ -3124,7 +3124,22 @@
         "official-guidance"
       ],
       "services": [
+        "added:initial-approval-guide",
         "added:business-establishment-guide"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "added:mortgage-economic-license-guide"
       ],
       "ok": false,
       "inconclusive": true,
@@ -3138,7 +3153,25 @@
         "official-guidance"
       ],
       "services": [
-        "added:licensing-requirements"
+        "added:licensing-requirements",
+        "added:reserve-trade-name",
+        "added:renew-economic-license",
+        "added:amend-economic-license",
+        "added:cancel-economic-license"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.tamm.abudhabi/journeys/start-a-business?lang=ar",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "added:issue-economic-license"
       ],
       "ok": false,
       "inconclusive": true,
@@ -3195,6 +3228,76 @@
       ],
       "services": [
         "sedd:issue-trade-name"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://sedd.ae/web/sedd/w/license-issuance",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "sedd:license-issuance"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://sedd.ae/w/renew-license",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "sedd:license-renewal"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://sedd.ae/ar/amendment-services",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "sedd:license-amendment"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://sedd.ae/ar/other-services",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "sedd:license-cancellation"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://eservices.ajmanded.ae/en/activitiesapprovalsinquiry",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "ajman:business-activity-inquiry"
       ],
       "ok": false,
       "inconclusive": true,
@@ -3273,12 +3376,14 @@
       "error": "fetch failed"
     },
     {
-      "url": "https://www.rak.ae/wps/portal/rak/e-services/govt/ded/license-issuance",
+      "url": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees",
       "kinds": [
-        "official-service"
+        "official-guidance"
       ],
       "services": [
-        "rak:license-issuance"
+        "rak:trade-name-reservation",
+        "rak:initial-license-approval",
+        "rak:economic-licensing-fees"
       ],
       "ok": false,
       "inconclusive": true,
@@ -3287,12 +3392,12 @@
       "error": "fetch failed"
     },
     {
-      "url": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees",
+      "url": "https://www.rak.ae/wps/portal/rak/e-services/govt/ded/license-issuance",
       "kinds": [
-        "official-guidance"
+        "official-service"
       ],
       "services": [
-        "rak:economic-licensing-fees"
+        "rak:license-issuance"
       ],
       "ok": false,
       "inconclusive": true,
@@ -3349,6 +3454,34 @@
       ],
       "services": [
         "rak:change-activities"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://u.ae/en/information-and-services/business/important-digital-services/inquire-about-licences-names-and-activities",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "uaq:trade-name-official-path"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://u.ae/en/information-and-services/business/doing-business-on-the-mainland/steps-to-start-a-business-on-the-mainland",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "uaq:mainland-licensing-official-path"
       ],
       "ok": false,
       "inconclusive": true,
@@ -3419,6 +3552,76 @@
       ],
       "services": [
         "fujairah:trade-name-reservation"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=201",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "fujairah:initial-approval"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "fujairah:license-issuance"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/services.aspx?RK=License&packid=13",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "fujairah:license-renewal"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=166",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "fujairah:license-amendment"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=163",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "fujairah:license-cancellation"
       ],
       "ok": false,
       "inconclusive": true,
