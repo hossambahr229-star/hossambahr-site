@@ -196,6 +196,19 @@ if (live) {
       uniqueMap.get(url).services.push(service.id);
     }
   }
+  const supplementalServices = [
+    ...detPublication.services.filter((service) => service.classification === 'VERIFIED' && service.officialUrl),
+    ...mohreAudit.newVerifiedServices,
+    ...icpAudit.newVerifiedServices,
+    ...governmentCoverage.authorities.flatMap((authority) => authority.newVerifiedServices),
+  ];
+  for (const service of supplementalServices) {
+    const url = service.officialUrl;
+    if (!url) continue;
+    if (!uniqueMap.has(url)) uniqueMap.set(url, { url, kinds: new Set(), services: [] });
+    uniqueMap.get(url).kinds.add(service.destinationKind === 'OFFICIAL_GUIDANCE' ? 'official-guidance' : 'official-service');
+    uniqueMap.get(url).services.push(service.id);
+  }
   const unique = [...uniqueMap.values()].map((entry) => ({ ...entry, kinds: [...entry.kinds] }));
   async function inspect(entry) {
     const controller = new AbortController();

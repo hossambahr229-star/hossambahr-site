@@ -1,11 +1,11 @@
 {
-  "checkedAt": "2026-08-08T08:50:08.172Z",
+  "checkedAt": "2026-08-10T11:40:54.897Z",
   "source": "service-matrix.json",
   "semanticPolicy": "Only previously approved exact service routes are monitored.",
-  "uniqueUrls": 164,
+  "uniqueUrls": 241,
   "healthy": 0,
   "failed": 0,
-  "inconclusive": 164,
+  "inconclusive": 241,
   "checks": [
     {
       "url": "https://www.mohre.gov.ae/en/services/private-tutor-licensing",
@@ -2328,6 +2328,1097 @@
       "services": [
         "directory:residency:56",
         "directory:residency:56"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
+      "kinds": [
+        "official-card"
+      ],
+      "services": [
+        "gdrfa:green-residence-partner-investor-dubai"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496",
+      "kinds": [
+        "official-destination",
+        "official-source"
+      ],
+      "services": [
+        "rta-new-trade-license-noc-dubai",
+        "rta-new-trade-license-noc-dubai"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/",
+      "kinds": [
+        "official-destination",
+        "official-source"
+      ],
+      "services": [
+        "dld-real-estate-ad-permit-dubai",
+        "dld-real-estate-ad-permit-dubai"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+      "kinds": [
+        "official-destination",
+        "official-source"
+      ],
+      "services": [
+        "rta-modify-trade-license-noc-dubai",
+        "rta-modify-trade-license-noc-dubai"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438",
+      "kinds": [
+        "official-destination",
+        "official-source"
+      ],
+      "services": [
+        "rta-renew-trade-license-noc-dubai",
+        "rta-renew-trade-license-noc-dubai"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        null
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        null
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        null
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-commercial-permit",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        null
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        null
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        null
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-an-event-permit",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        null
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-tour-guide-training",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        null
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.mohre.gov.ae/en/services/open-farmestate-sponsorship-file-for-domestic-sponsor",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "mohre:open-farm-ranch-file"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-license-for-temporary-employment-and-mediation-agency-2022",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "mohre:employment-agency-license-new"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/renewal-of-recruitmenttemporary-employment-and-mediation-agency-license-2022",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "mohre:employment-agency-license-renew"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/amendments-to-a-recruitmenttemporary-employment-or-mediation-agencys-license-details-2022",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "mohre:employment-agency-license-amend"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/issuance-a-branch-of-the-recruitment-temporary-employment-and-mediation-agency-2022",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "mohre:employment-agency-branch"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "mohre:employment-agency-license-cancel"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/payment-of-the-bank-guarantee-amount-of-employment-agency-2022",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "mohre:employment-agency-guarantee-payment"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.mohre.gov.ae/en/services/employment-agencys-bank-guarantee-refund-2022",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "mohre:employment-agency-guarantee-refund"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://mohre.gov.ae/en/services/register-a-labor-complaint-domestic-workers",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "mohre:domestic-worker-labour-complaint"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e68",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "icp:cancel-residency"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e79",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "icp:new-passport"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7a",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "icp:renew-passport"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7b",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "icp:replace-passport"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7c",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "icp:replace-lost-damaged-passport"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7d",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "icp:renew-passport-abroad"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e76",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "icp:issue-family-data"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e77",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "icp:amend-family-data"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7e",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "icp:departure-permit"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7f",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "icp:cancel-departure-permit"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dld:ejari-register-renew"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dld:professional-card"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://dubailand.gov.ae/en/eservices/property-valuation",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dld:property-valuation"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dld:title-transfer"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=618",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "rta:renew-driving-license"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "rta:renew-vehicle-ownership"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rta.ae/wps/portal/rta/ae/driver-and-carowner/parking/pay-parking-fines",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "rta:pay-public-parking-fines"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3398",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dm:new-building-permit"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=4191",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dm:building-completion"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=2975",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dm:food-activity-permit"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=2976",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dm:food-layout-approval"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3170",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dm:veterinary-activity-noc"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3485",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dm:industrial-environmental-clearance"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=G4&lang=en",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dc:poa-ratification"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=G5&lang=en",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dc:legal-notice"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=H1&lang=en",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dc:marriage-contract"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "customs:business-registration"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "customs:declaration"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "customs:vehicle-clearance"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dha:new-facility-license"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dha:activate-facility-license"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "dha:health-professional-registration"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://added.gov.ae/en/set-up/establish-your-business",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "added:business-establishment-guide"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "added:licensing-requirements"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://sedd.ae/w/trade-name-availability-inquiry",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "sedd:trade-name-inquiry"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://sedd.ae/en/home",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "sedd:business-licensing-guide"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://sedd.ae/w/trade-name-renewal",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "sedd:trade-name-renewal"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://sedd.ae/w/issue-trade-name-1",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "sedd:issue-trade-name"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.ajmanded.ae/en/services/services-directory/future-investor/trade-name-reservation",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "ajman:trade-name-reservation"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.ajmanded.ae/en/services/services-directory/future-investor/issue-trade-license",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "ajman:trade-license-issuance"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/renew-trade-license",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "ajman:trade-license-renewal"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "ajman:trade-license-amendment"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "ajman:trade-license-cancellation"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rak.ae/wps/portal/rak/e-services/govt/ded/license-issuance",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "rak:license-issuance"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "rak:economic-licensing-fees"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-renewal",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "rak:license-renewal"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-cancellation",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "rak:license-cancellation"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/adding-or-removing-a-partner",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "rak:add-remove-partner"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/change-addition-or-removal-of-activities",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "rak:change-activities"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://portal.uaq.ae/",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "uaq:local-services-portal"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://uaqftz.gov.ae/ar",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "uaq:free-zone-licensing"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://fujairah.ae/en/Pages/settingupbusinessinfujairah.aspx",
+      "kinds": [
+        "official-guidance"
+      ],
+      "services": [
+        "fujairah:mainland-business-guide"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://freezone.fujairah.ae/ar/registration-process",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "fujairah:free-zone-registration"
+      ],
+      "ok": false,
+      "inconclusive": true,
+      "status": 0,
+      "finalUrl": "",
+      "error": "fetch failed"
+    },
+    {
+      "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=200",
+      "kinds": [
+        "official-service"
+      ],
+      "services": [
+        "fujairah:trade-name-reservation"
       ],
       "ok": false,
       "inconclusive": true,
