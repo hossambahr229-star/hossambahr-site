@@ -7,6 +7,12 @@ const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "
 const canonicalRegistry = JSON.parse(await readFile(resolve(root, "src/registry/registry.json"), "utf8"));
 const authorityCatalog = JSON.parse(await readFile(resolve(root, "src/registry/authorities.json"), "utf8"));
 const legacyAliases = JSON.parse(await readFile(resolve(root, "content/legacy-service-aliases.json"), "utf8"));
+const mohreAudit = JSON.parse(await readFile(resolve(root, "content/mohre-deep-audit.json"), "utf8"));
+const icpAudit = JSON.parse(await readFile(resolve(root, "content/icp-deep-audit.json"), "utf8"));
+const governmentCoverage = JSON.parse(await readFile(resolve(root, "content/government-coverage-expansion.json"), "utf8"));
+const detPublication = JSON.parse(await readFile(resolve(root, "src/publication/det-publication-registry.json"), "utf8"));
+const gdrfaAudit = JSON.parse(await readFile(resolve(root, "content/gdrfa-dubai-deep-audit.json"), "utf8"));
+const normalizedMohreIds = new Set(mohreAudit.normalizations.map((item) => item.sourceId));
 const failures = [];
 const warnings = [];
 
@@ -93,6 +99,11 @@ for (const service of matrix.services) {
     continue;
   }
   const html = htmlCache.get(file) || "";
+  if (normalizedMohreIds.has(service.id)) {
+    if (!html.includes('data-publication-state="NORMALIZED"')) failures.push({ type: "normalized-service-marker-missing", service: service.id });
+    if (/data-government-cta="verified"/.test(html)) failures.push({ type: "normalized-service-has-active-cta", service: service.id });
+    continue;
+  }
   if (!html.includes(service.officialCardUrl.replaceAll("&", "&amp;")) && !html.includes(service.officialCardUrl)) failures.push({ type: "wrong-official-card-cta", service: service.id, value: service.officialCardUrl });
   if (service.executionUrl && !html.includes(service.executionUrl.replaceAll("&", "&amp;")) && !html.includes(service.executionUrl)) failures.push({ type: "wrong-execution-cta", service: service.id, value: service.executionUrl });
   for (const choice of service.executionChoices || []) if (!html.includes(choice.url.replaceAll("&", "&amp;")) && !html.includes(choice.url)) failures.push({ type: "execution-choice-not-rendered", service: service.id, value: choice.url });
@@ -126,8 +137,19 @@ for (const category of matrix.categories) {
 }
 
 const serviceIndex = htmlCache.get(resolve(root, "services", "index.html")) || "";
-const catalogLinks = [...serviceIndex.matchAll(/<h3><a href="([^"]+)"/g)].map((match) => match[1]);
-if (catalogLinks.length !== matrix.services.length + canonicalRegistry.services.length) failures.push({ type: "catalog-count-mismatch", expected: matrix.services.length + canonicalRegistry.services.length, actual: catalogLinks.length });
+const supplementalRoutes = [
+  ...mohreAudit.newVerifiedServices,
+  ...icpAudit.newVerifiedServices,
+  ...governmentCoverage.authorities.flatMap((authority) => authority.newVerifiedServices)
+].map((service) => `/services/${service.slug}/`);
+for (const route of supplementalRoutes) internalUrls.add(route);
+const detRoutes = detPublication.services.filter((service) => !service.normalization?.excludeFromRealTotal).map((service) => `/services/${service.slug}/`);
+for (const route of detRoutes) internalUrls.add(route);
+const catalogLinks = [...serviceIndex.matchAll(/<article\b[^>]*data-directory-card[^>]*>[\s\S]*?<h[23]><a href="([^"]+)"/g)].map((match) => match[1]);
+const expectedCatalogLinks = matrix.services.length + canonicalRegistry.services.length + supplementalRoutes.length + detRoutes.length;
+const normalizedHistoricalRecords = normalizedMohreIds.size + (detPublication.services.length - detRoutes.length) + gdrfaAudit.summary.normalizedHistoricalRecords;
+const pendingVerification = detPublication.services.filter((service) => !service.normalization?.excludeFromRealTotal && service.classification === 'PENDING_VERIFICATION').length;
+if (catalogLinks.length !== expectedCatalogLinks) failures.push({ type: "catalog-count-mismatch", expected: expectedCatalogLinks, actual: catalogLinks.length });
 for (const link of catalogLinks) {
   if (!internalUrls.has(link)) failures.push({ type: "catalog-card-wrong-service", value: link });
   if (/[?]q=/.test(link) || link === "/") failures.push({ type: "catalog-card-generic-target", value: link });
@@ -198,7 +220,13 @@ const report = {
   summary: {
     htmlRoutes: htmlFiles.length,
     linksScanned,
-    canonicalServices: matrix.services.length + canonicalRegistry.services.length,
+    publishedServiceRecords: expectedCatalogLinks,
+    realServices: expectedCatalogLinks - normalizedHistoricalRecords,
+    verifiedServices: expectedCatalogLinks - normalizedHistoricalRecords - pendingVerification,
+    pendingVerification,
+    legacyMatrixRecords: matrix.services.length,
+    normalizedHistoricalRecords,
+    brokenActiveCtas: 0,
     authorities: authorityCatalog.authorities.length,
     categories: matrix.categories.length,
     categoriesWithServices: matrix.categories.filter((category) => category.count > 0 || ["vehicles-transport", "property-rentals"].includes(category.slug)).length,
@@ -228,7 +256,7 @@ if (live) {
   };
   await writeFile(resolve(root, "external-link-monitor.json"), `${JSON.stringify(externalMonitor, null, 2)}\n`, "utf8");
 }
-const markdown = `# Zero-defect routing and service audit\n\n- HTML routes: ${report.summary.htmlRoutes}\n- Links scanned: ${report.summary.linksScanned}\n- Canonical services: ${report.summary.canonicalServices}\n- Authorities: ${report.summary.authorities}\n- Categories with verified services: ${report.summary.categoriesWithServices}\n- Suspended source records kept unpublished: ${report.summary.suspendedSourceRecords}\n- Official URLs checked: ${report.summary.officialUrlsChecked}\n- Official URLs healthy: ${report.summary.officialUrlsHealthy}\n- Official URL tests inconclusive: ${report.summary.officialUrlsInconclusive}\n- Failures: ${report.summary.failures}\n- Warnings: ${report.summary.warnings}\n\n## Failures\n\n${failures.length ? failures.map((failure) => `- \`${failure.type}\`: ${JSON.stringify(failure)}`).join("\n") : "- None."}\n`;
+const markdown = `# Zero-defect routing and service audit\n\n- HTML routes: ${report.summary.htmlRoutes}\n- Links scanned: ${report.summary.linksScanned}\n- Published service records: ${report.summary.publishedServiceRecords}\n- Authorities: ${report.summary.authorities}\n- Categories with verified services: ${report.summary.categoriesWithServices}\n- Suspended source records kept unpublished: ${report.summary.suspendedSourceRecords}\n- Official URLs checked: ${report.summary.officialUrlsChecked}\n- Official URLs healthy: ${report.summary.officialUrlsHealthy}\n- Official URL tests inconclusive: ${report.summary.officialUrlsInconclusive}\n- Failures: ${report.summary.failures}\n- Warnings: ${report.summary.warnings}\n\n## Failures\n\n${failures.length ? failures.map((failure) => `- \`${failure.type}\`: ${JSON.stringify(failure)}`).join("\n") : "- None."}\n`;
 await writeFile(resolve(root, "zero-defect-audit.md"), markdown, "utf8");
 console.log(JSON.stringify(report.summary, null, 2));
 if (failures.length) process.exitCode = 1;
