@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0.0",
+  "authority": "MOHRE",
+  "reviewedAt": "2026-08-10T18:00:00+04:00",
+  "policy": "Only an exact current MOHRE service card is published as a verified government CTA. Duplicate, bundled, informational and wrong-authority historical records remain reachable internally without an independent MOHRE CTA.",
+  "summary": {
+    "legacyRecords": 42,
+    "normalizedHistoricalRecords": 7,
+    "verifiedLegacyServices": 35,
+    "newVerifiedServices": 9,
+    "realServices": 44,
+    "verifiedRealServices": 44,
+    "pendingVerification": 0,
+    "brokenActiveCtas": 0
+  },
+  "normalizations": [
+    {"sourceId":"directory:mohre:14","resolution":"DUPLICATE","resolvedInto":"guide:part-time-work-permit-uae","reason":"Both records resolve to the same official Part Time Work Permit card."},
+    {"sourceId":"directory:mohre:18","resolution":"SUB_SERVICE","resolvedInto":"guide:employment-contract-uae","reason":"MOHRE publishes issuance and renewal of employment contracts as one combined official service."},
+    {"sourceId":"directory:mohre:21","resolution":"SUB_SERVICE","resolvedInto":"guide:new-work-permit-overseas-uae","reason":"The job offer is a step in the Work Bundle and work-permit journey, not a standalone MOHRE transaction card."},
+    {"sourceId":"directory:mohre:7","resolution":"INFORMATIONAL","resolvedInto":"/authorities/mohre/","reason":"The retained source is an employer awareness guide, not an application service."},
+    {"sourceId":"directory:mohre:28","resolution":"GUIDANCE","resolvedInto":"/authorities/mohre/","reason":"The retained source explains worker bank-guarantee and insurance policy and is not a standalone transaction."},
+    {"sourceId":"directory:mohre:27","resolution":"WRONG_AUTHORITY","resolvedInto":"https://nafis.gov.ae/employer","reason":"Nafis employer services belong to the Emirati Talent Competitiveness Council platform, not the MOHRE service catalogue."},
+    {"sourceId":"directory:mohre:4","resolution":"GUIDANCE","resolvedInto":"guide:establishment-card-mohre-uae","reason":"Electronic establishment authorisation is a documented 2026 operating feature; no independent MOHRE service card was established."}
+  ],
+  "newVerifiedServices": [
+    {
+      "id":"mohre:open-farm-ranch-file","slug":"open-farm-ranch-file-mohre","nameAr":"فتح ملف مزرعة أو عزبة","nameEn":"Opening a Farm or Ranch File","category":"companies-establishments","type":"فتح ملف","description":"فتح ملف كفيل مواطن لطلب خدمات عمال الخدمة المساعدة المرتبطين بمزرعة أو عزبة خارج دبي.","requirements":["جواز سفر صاحب العمل","إثبات ملكية المزرعة أو العزبة"],"fees":"115 درهم رسوم اتحادية، إضافة إلى رسم مركز خدمة لا يتجاوز 72 درهمًا عند استخدام المركز؛ لا يطبق رسم المركز عند التقديم الإلكتروني.","duration":"يوم عمل واحد","conditions":"متاحة في جميع الإمارات باستثناء دبي وفق بطاقة الخدمة الرسمية.","officialUrl":"https://www.mohre.gov.ae/en/services/open-farmestate-sponsorship-file-for-domestic-sponsor"
+    },
+    {
+      "id":"mohre:employment-agency-license-new","slug":"employment-agency-license-new-mohre","nameAr":"إصدار ترخيص جديد لوكالة التوظيف المؤقت والتعهيد أو التوسط","nameEn":"Issuance of a New License for Temporary Employment and Mediation Agency","category":"companies-establishments","type":"إصدار ترخيص","description":"إصدار ترخيص اتحادي لمزاولة نشاط التوسط أو التوظيف المؤقت والتعهيد أو الجمع بينهما بعد استيفاء متطلبات الوزارة.","requirements":["الموافقة المبدئية والمستندات القانونية المطلوبة في بطاقة الخدمة","الضمان أو التأمين المقرر حسب نوع النشاط"],"fees":"25,000 درهم للتوسط، 50,000 درهم للتوظيف المؤقت والتعهيد، و75,000 درهم للجمع بين النشاطين.","duration":"10 أيام عمل","conditions":"تطبق شروط ترخيص وكالات التوظيف والضمانات الواردة في بطاقة الخدمة.","officialUrl":"https://mohre.gov.ae/en/services/issuance-of-a-new-license-for-temporary-employment-and-mediation-agency-2022"
+    },
+    {
+      "id":"mohre:employment-agency-license-renew","slug":"employment-agency-license-renewal-mohre","nameAr":"تجديد ترخيص وكالة التوظيف المؤقت والتعهيد أو التوسط","nameEn":"Renewal of Recruitment/Temporary Employment and Mediation Agency License","category":"companies-establishments","type":"تجديد ترخيص","description":"تجديد ترخيص وكالة التوسط أو التوظيف المؤقت والتعهيد أو الترخيص الجامع بينهما.","requirements":["رخصة الوكالة وبياناتها المحدثة","استمرار استيفاء متطلبات الضمان والترخيص"],"fees":"12,500 درهم للتوسط، 25,000 درهم للتوظيف المؤقت والتعهيد، و37,500 درهم للجمع بين النشاطين.","duration":"5 أيام عمل","conditions":"تخضع المعاملة للتحقق من استمرار استيفاء شروط الترخيص.","officialUrl":"https://mohre.gov.ae/en/services/renewal-of-recruitmenttemporary-employment-and-mediation-agency-license-2022"
+    },
+    {
+      "id":"mohre:employment-agency-license-amend","slug":"employment-agency-license-amendment-mohre","nameAr":"تعديل بيانات ترخيص وكالة التوظيف","nameEn":"Amendments to Recruitment/Temporary Employment or Mediation Agency License Details","category":"companies-establishments","type":"تعديل ترخيص","description":"تعديل بيانات ترخيص وكالة التوظيف المؤقت والتعهيد أو التوسط وفق البيانات والموافقات الرسمية.","requirements":["ترخيص الوكالة","المستندات المؤيدة للتعديل المطلوب"],"fees":"لا توجد رسوم اتحادية؛ قد يطبق مركز الخدمة رسمًا لا يتجاوز 72 درهمًا.","duration":"5 أيام عمل","conditions":"يجب أن يطابق التعديل المطلوب المستندات والترخيص الاقتصادي ذي الصلة.","officialUrl":"https://mohre.gov.ae/en/services/amendments-to-a-recruitmenttemporary-employment-or-mediation-agencys-license-details-2022"
+    },
+    {
+      "id":"mohre:employment-agency-branch","slug":"employment-agency-branch-mohre","nameAr":"إصدار فرع لوكالة التوظيف المؤقت والتعهيد أو التوسط","nameEn":"Issuance a Branch of Recruitment Temporary Employment and Mediation Agency","category":"companies-establishments","type":"إصدار فرع","description":"إصدار ترخيص فرع لوكالة توظيف مرخصة لمزاولة نشاط التوسط أو التوظيف المؤقت والتعهيد.","requirements":["ترخيص الوكالة الأم","مستندات وموافقات الفرع المطلوبة في بطاقة الخدمة"],"fees":"25,000 درهم للتوسط، 50,000 درهم للتوظيف المؤقت والتعهيد، و75,000 درهم للجمع بين النشاطين.","duration":"10 أيام عمل","conditions":"يخضع الفرع لشروط الترخيص والضمان حسب النشاط.","officialUrl":"https://mohre.gov.ae/en/services/issuance-a-branch-of-the-recruitment-temporary-employment-and-mediation-agency-2022"
+    },
+    {
+      "id":"mohre:employment-agency-license-cancel","slug":"employment-agency-license-cancellation-mohre","nameAr":"إلغاء ترخيص وكالة التوظيف المؤقت والتعهيد أو التوسط","nameEn":"Cancellation of Recruitment/Temporary Employment and Mediation Agency License","category":"companies-establishments","type":"إلغاء ترخيص","description":"إلغاء ترخيص وكالة التوظيف وإنهاء ملف المنشأة لدى الوزارة بعد استيفاء الالتزامات.","requirements":["استيفاء متطلبات الإلغاء وتسوية الالتزامات المبينة في بطاقة الخدمة"],"fees":"لا توجد رسوم اتحادية.","duration":"يوم عمل واحد","conditions":"لا يعتمد الإلغاء قبل تسوية الالتزامات القائمة على الوكالة.","officialUrl":"https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022"
+    },
+    {
+      "id":"mohre:employment-agency-guarantee-payment","slug":"employment-agency-bank-guarantee-payment-mohre","nameAr":"سداد مبلغ الضمان المصرفي لوكالة التوظيف","nameEn":"Payment of Bank Guarantee Amount of Employment Agency","category":"companies-establishments","type":"ضمان مصرفي","description":"استكمال إجراء سداد الضمان المصرفي المطلوب لترخيص وكالة التوظيف بعد صدور الموافقة المبدئية.","requirements":["مرجع الموافقة المبدئية"],"fees":"لا توجد رسوم خدمة اتحادية؛ مبلغ الضمان نفسه تحدده الموافقة ونوع الترخيص.","duration":"بحسب مدة إنجاز البنك","conditions":"يتم السداد بعد الموافقة المبدئية ووفق تعليمات الضمان الصادرة للطلب.","officialUrl":"https://mohre.gov.ae/en/services/payment-of-the-bank-guarantee-amount-of-employment-agency-2022"
+    },
+    {
+      "id":"mohre:employment-agency-guarantee-refund","slug":"employment-agency-bank-guarantee-refund-mohre","nameAr":"استرداد الضمان المصرفي لوكالة التوظيف","nameEn":"Employment Agency’s Bank Guarantee Refund","category":"companies-establishments","type":"استرداد ضمان","description":"طلب استرداد الضمان المصرفي لوكالة التوظيف بعد تحقق الوزارة من أهلية الاسترداد.","requirements":["لا توجد مستندات مذكورة في بطاقة الخدمة الرسمية"],"fees":"لا توجد رسوم اتحادية.","duration":"يوم عمل واحد","conditions":"يرتبط الاسترداد بحالة الترخيص والالتزامات المسجلة على الوكالة.","officialUrl":"https://www.mohre.gov.ae/en/services/employment-agencys-bank-guarantee-refund-2022"
+    },
+    {
+      "id":"mohre:domestic-worker-labour-complaint","slug":"domestic-worker-labour-complaint-mohre","nameAr":"تسجيل شكوى عمالية لعمال الخدمة المساعدة","nameEn":"Register Labor Complaint (Domestic Workers)","category":"justice-police","type":"تسجيل شكوى","description":"تسجيل نزاع عمالي بين صاحب العمل وعامل الخدمة المساعدة لمعالجته وفق إجراءات الوزارة.","requirements":["الرقم الموحد العمالي"],"fees":"لا تذكر بطاقة الخدمة رسومًا اتحادية للتسجيل.","duration":"14 يوم عمل","conditions":"لا توجد شروط إضافية منشورة في بطاقة الخدمة؛ تخضع الشكوى للاختصاص والإجراءات القانونية.","officialUrl":"https://mohre.gov.ae/en/services/register-a-labor-complaint-domestic-workers"
+    }
+  ]
+}

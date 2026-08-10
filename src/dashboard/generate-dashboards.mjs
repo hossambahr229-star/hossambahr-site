@@ -9,6 +9,7 @@ const registry = await readJson(new URL('registry/registry.json', root));
 const matrix = await readJson(new URL('../service-matrix.json', root));
 const detPublication = await readJson(new URL('publication/det-publication-registry.json', root));
 const gdrfaAudit = await readJson(new URL('../content/gdrfa-dubai-deep-audit.json', root));
+const mohreAudit = await readJson(new URL('../content/mohre-deep-audit.json', root));
 const authorityTemplates = await readJson(new URL('templates/authorities.json', root));
 const dossierRoot = new URL('review/dossiers/', root);
 const dossierFiles = (await readdir(dossierRoot)).filter((name) => name.endsWith('.json')).sort();
@@ -38,6 +39,15 @@ if (gdrfaRow) Object.assign(gdrfaRow, {
   readyToPublish: gdrfaAudit.summary.verifiedRealServices,
   remaining: gdrfaAudit.summary.realServices - gdrfaAudit.summary.verifiedRealServices,
   completionPercent: Number(((gdrfaAudit.summary.verifiedRealServices / gdrfaAudit.summary.realServices) * 100).toFixed(1))
+});
+const mohreRow = data.project.find((row) => row.authority === 'MOHRE');
+if (mohreRow) Object.assign(mohreRow, {
+  totalServices: mohreAudit.summary.realServices,
+  underReview: mohreAudit.summary.pendingVerification,
+  approved: mohreAudit.summary.verifiedRealServices,
+  readyToPublish: mohreAudit.summary.verifiedRealServices,
+  remaining: mohreAudit.summary.realServices - mohreAudit.summary.verifiedRealServices,
+  completionPercent: Number(((mohreAudit.summary.verifiedRealServices / mohreAudit.summary.realServices) * 100).toFixed(1))
 });
 const outputRoot = resolve(process.argv[2] ?? 'dashboard');
 

@@ -1,0 +1,12 @@
+{
+  "status": "DEPLOYMENT BLOCKER: GITHUB WRITE PERMISSION",
+  "recordedAt": "2026-08-10T14:00:00+04:00",
+  "developmentBlocked": false,
+  "deploymentBlocked": true,
+  "evidence": {
+    "directGit": "Network access to github.com:443 is blocked inside the sandbox.",
+    "githubCli": "The local GitHub CLI token is invalid and device refresh is blocked by sandbox networking.",
+    "githubApp": "Git write endpoints return 403 Resource not accessible by integration."
+  },
+  "retryPolicy": "Do not retry until all local audit batches are complete or connector permissions change."
+}

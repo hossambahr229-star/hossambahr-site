@@ -6,6 +6,7 @@ const registry = JSON.parse(await readFile(resolve(root, 'src/publication/det-pu
 const canonical = JSON.parse(await readFile(resolve(root, 'src/registry/registry.json'), 'utf8'));
 const matrix = JSON.parse(await readFile(resolve(root, 'service-matrix.json'), 'utf8'));
 const gdrfaAudit = JSON.parse(await readFile(resolve(root, 'content/gdrfa-dubai-deep-audit.json'), 'utf8'));
+const mohreAudit = JSON.parse(await readFile(resolve(root, 'content/mohre-deep-audit.json'), 'utf8'));
 const authorities = JSON.parse(await readFile(resolve(root, 'src/registry/authorities.json'), 'utf8'));
 const authorityById = new Map(authorities.authorities.map((authority) => [authority.id, authority]));
 const errors = [];
@@ -72,6 +73,33 @@ for (const service of gdrfaServices) {
 }
 const realGdrfaCount = gdrfaServices.length - normalizedGdrfaIds.size;
 if (realGdrfaCount !== gdrfaAudit.summary.realServices) errors.push(`GDRFA real-service denominator mismatch: ${realGdrfaCount}`);
+const normalizedMohreIds = new Set(mohreAudit.normalizations.map((record) => record.sourceId));
+const mohreLegacy = matrix.services.filter((service) => service.authority.slug === 'mohre');
+for (const service of mohreLegacy) {
+  const path = resolve(root, service.internalUrl.replace(/^\/+/, ''), 'index.html');
+  try { await access(path); } catch { errors.push(`${service.slug}: missing MOHRE internal route`); continue; }
+  const html = await readFile(path, 'utf8');
+  const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
+  if (!html.includes('data-heritage-identity=')) errors.push(`${service.slug}: MOHRE historical identity marker missing`);
+  if (normalizedMohreIds.has(service.id)) {
+    if (activeLinks.length) errors.push(`${service.slug}: normalized MOHRE record exposes an active CTA`);
+    if (!html.includes('data-publication-state="NORMALIZED"')) errors.push(`${service.slug}: MOHRE normalization marker missing`);
+  }
+}
+for (const service of mohreAudit.newVerifiedServices) {
+  const path = resolve(root, 'services', service.slug, 'index.html');
+  try { await access(path); } catch { errors.push(`${service.slug}: missing new MOHRE internal route`); continue; }
+  const html = await readFile(path, 'utf8');
+  const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
+  if (!html.includes('data-heritage-identity="f0de873"')) errors.push(`${service.slug}: MOHRE historical identity marker missing`);
+  if (activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: MOHRE verified CTA mismatch`);
+  try {
+    const hostname = new URL(service.officialUrl).hostname;
+    if (!(hostname === 'mohre.gov.ae' || hostname.endsWith('.mohre.gov.ae'))) errors.push(`${service.slug}: MOHRE CTA is outside the official domain`);
+  } catch { errors.push(`${service.slug}: MOHRE CTA is not an absolute URL`); }
+}
+const realMohreCount = mohreLegacy.length - normalizedMohreIds.size + mohreAudit.newVerifiedServices.length;
+if (realMohreCount !== mohreAudit.summary.realServices) errors.push(`MOHRE real-service denominator mismatch: ${realMohreCount}`);
 if (!activeRecords.length) errors.push('DET real-service registry is empty');
 const summary = {
   passed: errors.length === 0,
@@ -91,6 +119,14 @@ const summary = {
     verified: verifiedGdrfaIds.size,
     normalizedHistoricalRecords: normalizedGdrfaIds.size,
     pendingVerification: gdrfaAudit.summary.pendingVerification
+  },
+  mohre: {
+    records: mohreLegacy.length,
+    realServices: realMohreCount,
+    verified: mohreAudit.summary.verifiedRealServices,
+    normalizedHistoricalRecords: normalizedMohreIds.size,
+    additions: mohreAudit.newVerifiedServices.length,
+    pendingVerification: mohreAudit.summary.pendingVerification
   },
   errors
 };

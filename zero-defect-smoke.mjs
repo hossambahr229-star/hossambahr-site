@@ -9,6 +9,7 @@ const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "
 const canonicalRegistry = JSON.parse(await readFile(resolve(root, "src/registry/registry.json"), "utf8"));
 const detPublication = JSON.parse(await readFile(resolve(root, "src/publication/det-publication-registry.json"), "utf8"));
 const gdrfaAudit = JSON.parse(await readFile(resolve(root, "content/gdrfa-dubai-deep-audit.json"), "utf8"));
+const mohreAudit = JSON.parse(await readFile(resolve(root, "content/mohre-deep-audit.json"), "utf8"));
 const activeDetRecords = detPublication.services.filter((service) => !service.normalization?.excludeFromRealTotal);
 const expectedIcpServices = matrix.services.filter((service) => service.authority.slug === "icp").length;
 const expectedIcpChoiceServices = matrix.services.filter((service) => service.authority.slug === "icp" && service.officialRouteMode !== "direct-execution").length;
@@ -215,11 +216,31 @@ await scenario("gdrfa-normalization-and-authority-desktop", { width: 1440, heigh
   };
 });
 
+await scenario("mohre-normalization-and-authority-mobile", { width: 390, height: 844 }, async (page) => {
+  const authorityResponse = await page.goto(`${baseUrl}/authorities/mohre/`, { waitUntil: 'networkidle' });
+  const authorityCards = await page.locator('[data-directory-card]').count();
+  const addedChecks = [];
+  for (const service of mohreAudit.newVerifiedServices) {
+    const response = await page.goto(`${baseUrl}/services/${service.slug}/`, { waitUntil: 'networkidle' });
+    addedChecks.push({ slug: service.slug, status: response?.status(), cta: await page.locator('[data-government-cta="verified"]').getAttribute('href'), expected: service.officialUrl });
+  }
+  const normalized = matrix.services.find((service) => service.id === 'directory:mohre:14');
+  await page.goto(`${baseUrl}${normalized.internalUrl}`, { waitUntil: 'networkidle' });
+  return {
+    status: authorityResponse?.status(),
+    authorityCards,
+    expectedAuthorityCards: mohreAudit.summary.realServices,
+    mohreAddedFailures: addedChecks.filter((check) => check.status !== 200 || check.cta !== check.expected),
+    mohreNormalizedState: await page.locator('main').getAttribute('data-publication-state'),
+    mohreNormalizedActiveCtas: await page.locator('[data-government-cta="verified"]').count()
+  };
+});
+
 await browser.close();
 await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
-const expectedDirectoryCards = matrix.services.length + activeDetRecords.length + canonicalRegistry.services.length;
-const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.hasActivitySearchEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.activityArabic === false || result.activityEnglish === false || result.activityCode === false || result.partialResults === false || result.activityAuthority === false || result.detNormalizationFailures?.length > 0 || result.normalizedRecordFailures?.length > 0 || result.pendingIsolated === false || result.searchResults !== undefined && result.searchResults < 1 || result.gdrfaState !== undefined && result.gdrfaState !== 'VERIFIED' || result.governmentCta !== undefined && result.governmentCta !== result.expectedGovernmentCta || result.contentSections !== undefined && result.contentSections < 6 || result.authorityStatus !== undefined && result.authorityStatus !== 200 || result.authorityCards !== undefined && result.authorityCards !== result.expectedAuthorityCards || result.normalizedState !== undefined && result.normalizedState !== 'SUB_SERVICE' || result.normalizedActiveCtas > 0 || result.familyResolution !== undefined && result.familyResolution < 1);
+const expectedDirectoryCards = matrix.services.length + activeDetRecords.length + canonicalRegistry.services.length + mohreAudit.newVerifiedServices.length;
+const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.hasActivitySearchEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.activityArabic === false || result.activityEnglish === false || result.activityCode === false || result.partialResults === false || result.activityAuthority === false || result.detNormalizationFailures?.length > 0 || result.normalizedRecordFailures?.length > 0 || result.pendingIsolated === false || result.searchResults !== undefined && result.searchResults < 1 || result.gdrfaState !== undefined && result.gdrfaState !== 'VERIFIED' || result.governmentCta !== undefined && result.governmentCta !== result.expectedGovernmentCta || result.contentSections !== undefined && result.contentSections < 6 || result.authorityStatus !== undefined && result.authorityStatus !== 200 || result.authorityCards !== undefined && result.authorityCards !== result.expectedAuthorityCards || result.normalizedState !== undefined && result.normalizedState !== 'SUB_SERVICE' || result.normalizedActiveCtas > 0 || result.familyResolution !== undefined && result.familyResolution < 1 || result.mohreAddedFailures?.length > 0 || result.mohreNormalizedState !== undefined && result.mohreNormalizedState !== 'NORMALIZED' || result.mohreNormalizedActiveCtas > 0);
 const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scenarios: results.length, passed: results.length - failed.length, failed: failed.length }, results };
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));
