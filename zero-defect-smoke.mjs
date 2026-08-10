@@ -142,11 +142,31 @@ await scenario("homepage-alignment", { width: 1440, height: 1000 }, async (page)
   return { status: response?.status(), routingViolations: await page.locator('[data-routing-violation="true"]').count(), unsafeDetLinksOnHomepage: await page.locator('a[href*="investindubai.gov.ae"]').count(), hasServicesEntry: await page.locator('a[href="/services/"]').count() > 0 };
 });
 
+await scenario("dubai-activity-search", { width: 390, height: 844 }, async (page) => {
+  const response = await page.goto(`${baseUrl}/dubai-business-activities.html`, { waitUntil: "networkidle" });
+  const search = page.locator('#activitySearch');
+  const run = async (query) => {
+    await search.fill(query);
+    await page.waitForTimeout(250);
+    return page.locator('.activity-card');
+  };
+  const arabic = await run('تجارة مواد التعبئة');
+  const arabicMatch = await arabic.first().locator('h3').textContent();
+  const english = await run('Packing Packaging Materials');
+  const englishMatch = await english.first().locator('h3').textContent();
+  const code = await run('514929');
+  const codeMatch = await code.first().locator('.activity-code').textContent();
+  const partial = await run('تعبئة');
+  const partialResults = await partial.count();
+  await code.first().locator('button').click();
+  return { status: response?.status(), activityArabic: arabicMatch?.includes('التعبئة'), activityEnglish: englishMatch?.includes('التعبئة'), activityCode: codeMatch === '514929', partialResults: partialResults > 0, activityAuthority: await page.locator('.source-banner').textContent().then((text) => text.includes('Dubai Pulse')) };
+});
+
 await browser.close();
 await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
 const expectedDirectoryCards = matrix.services.length + 15 + canonicalRegistry.services.length;
-const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2);
+const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.activityArabic === false || result.activityEnglish === false || result.activityCode === false || result.partialResults === false || result.activityAuthority === false);
 const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scenarios: results.length, passed: results.length - failed.length, failed: failed.length }, results };
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));

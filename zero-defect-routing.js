@@ -98,9 +98,20 @@
     }
   }
 
+  function exposeActivitySearch() {
+    const actions = document.querySelector('.hero-actions');
+    if (!actions || actions.querySelector('a[href="/dubai-business-activities.html"]')) return;
+    const link = document.createElement('a');
+    link.href = '/dubai-business-activities.html';
+    link.textContent = 'ابحث عن نشاط ورمزه';
+    const secondary = actions.querySelector('.secondary');
+    actions.insertBefore(link, secondary || null);
+  }
+
   const start = () => {
     setupFilter();
     alignGlobalCounts();
+    exposeActivitySearch();
     correctKnownServiceTargets();
     rejectFakeServiceTargets();
   };
