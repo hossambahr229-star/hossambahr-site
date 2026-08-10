@@ -124,7 +124,7 @@ for (const authority of dubaiCoverage.authorities) {
     const path = resolve(root, 'services', service.slug, 'index.html');
     try { await access(path); } catch { errors.push(`${service.slug}: missing Dubai authority route`); continue; }
     const html = await readFile(path, 'utf8');
-    const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
+    const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1].replaceAll('&amp;', '&'));
     if (!html.includes('data-heritage-identity=')) errors.push(`${service.slug}: Dubai historical identity marker missing`);
     if (activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: Dubai authority CTA mismatch`);
     try {
