@@ -9,6 +9,8 @@ const canonical = JSON.parse(await readFile(resolve(root, 'src/registry/registry
 const authorityCatalog = JSON.parse(await readFile(resolve(root, 'src/registry/authorities.json'), 'utf8'));
 const authorityById = new Map(authorityCatalog.authorities.map((authority) => [authority.id, authority]));
 const sourceById = new Map(source.services.map((service) => [service.id, service]));
+const sourceFor = (record) => sourceById.get(record.sourceId) ?? record.serviceData;
+const activeRecords = publication.services.filter((record) => !record.normalization?.excludeFromRealTotal);
 
 const esc = (value) => String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const list = (items) => `<ul>${(items ?? []).map((item) => `<li>${esc(item)}</li>`).join('')}</ul>`;
@@ -19,30 +21,38 @@ function shell(title, body) {
 }
 
 function page(record, service) {
+  const normalized = record.normalization?.excludeFromRealTotal === true;
   const verified = record.classification === 'VERIFIED';
-  const cta = verified
+  const resolvedLinks = (record.normalization?.resolvedInto ?? []).map((slug) => slug === 'dubai-business-activities'
+    ? `<a href="/dubai-business-activities.html">بحث الأنشطة والرموز</a>`
+    : `<a href="/services/${esc(slug)}/">فتح المعاملة الفعلية</a>`).join('');
+  const cta = normalized
+    ? resolvedLinks
+    : verified
     ? `<a data-government-cta="verified" href="${esc(record.officialUrl)}" rel="noopener noreferrer">فتح صفحة الخدمة الحكومية الرسمية</a>`
     : `<button data-government-cta="${record.classification.toLowerCase()}" disabled aria-disabled="true">الرابط الرسمي قيد التحقق</button>`;
-  const notice = verified
+  const notice = normalized
+    ? `<div class="verification-pending" role="status"><b>تم تطبيع هذا السجل التاريخي:</b> ليس معاملة حكومية مفردة. احتفظنا بالصفحة للتوضيح وربطناها بالمعاملات الفعلية دون CTA حكومي مضلل.</div>`
+    : verified
     ? `<div class="legal-service-notice">تمت مطابقة اسم الخدمة مع بطاقة DET الرسمية. راجع البيانات الحكومية النهائية قبل الإرسال.</div>`
     : `<div class="verification-pending" role="status"><b>حمايةً لك:</b> صفحة الخدمة متاحة للمعلومات، لكن الانتقال الخارجي معطّل لأن الرابط المباشر لم يُثبت بعد. لا يوجد رابط عام أو تخميني قابل للنقر.</div>`;
-  return shell(service.platformTitle, `<main id="main-content" class="page-shell" data-publication-state="${record.classification}"><nav class="breadcrumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span>←</span><a href="/categories/companies-establishments/">تأسيس الشركات</a><span>←</span><span>${esc(service.platformTitle)}</span></nav><header class="page-hero"><span class="eyebrow">دائرة الاقتصاد والسياحة في دبي (DET)</span><h1>${esc(service.platformTitle)}</h1><p>${esc(service.description)}</p><div class="service-identity-row"><a href="/categories/companies-establishments/">خدمات تأسيس الشركات</a><a href="/services/?q=${encodeURIComponent(service.platformTitle)}">البحث عن الخدمة</a></div></header>${notice}<div class="detail-layout"><div class="detail-content"><section class="detail-section"><h2>المستندات والمتطلبات</h2>${list(service.requirements)}</section><section class="detail-section"><h2>الشروط</h2><p>${esc(service.conditions)}</p></section><section class="detail-section"><h2>الرسوم</h2><p>${esc(service.fees)}</p></section><section class="detail-section"><h2>مدة الإنجاز</h2><p>${esc(service.duration)}</p></section><section class="detail-section"><h2>حالات خاصة</h2><p>${esc(service.specialCases)}</p></section></div><aside class="service-aside"><span class="${verified ? 'status-good' : 'status-pending'}">${statusLabel(record.classification)}</span><dl><dt>الإمارة</dt><dd>دبي</dd><dt>الجهة</dt><dd>دائرة الاقتصاد والسياحة</dd><dt>نوع الطلب</dt><dd>${esc(service.requestType)}</dd><dt>حالة الرابط</dt><dd>${esc(record.classification)}</dd></dl><div class="actions">${cta}<a class="secondary" href="/services/">العودة إلى دليل الخدمات</a></div></aside></div></main>`);
+  return shell(service.platformTitle, `<main id="main-content" class="page-shell" data-publication-state="${record.classification}"${normalized ? ` data-normalization-resolution="${esc(record.normalization.resolution)}"` : ''}><nav class="breadcrumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span>←</span><a href="/categories/companies-establishments/">تأسيس الشركات</a><span>←</span><span>${esc(service.platformTitle)}</span></nav><header class="page-hero"><span class="eyebrow">دائرة الاقتصاد والسياحة في دبي (DET)</span><h1>${esc(service.platformTitle)}</h1><p>${esc(service.description)}</p><div class="service-identity-row"><a href="/categories/companies-establishments/">خدمات تأسيس الشركات</a><a href="/services/?q=${encodeURIComponent(service.platformTitle)}">البحث عن الخدمة</a></div></header>${notice}<div class="detail-layout"><div class="detail-content"><section class="detail-section"><h2>المستندات والمتطلبات</h2>${list(service.requirements)}</section><section class="detail-section"><h2>الشروط</h2><p>${esc(service.conditions)}</p></section><section class="detail-section"><h2>الرسوم</h2><p>${esc(service.fees)}</p></section><section class="detail-section"><h2>مدة الإنجاز</h2><p>${esc(service.duration)}</p></section><section class="detail-section"><h2>حالات خاصة</h2><p>${esc(service.specialCases)}</p></section></div><aside class="service-aside"><span class="${verified ? 'status-good' : 'status-pending'}">${normalized ? 'NORMALIZED' : statusLabel(record.classification)}</span><dl><dt>الإمارة</dt><dd>دبي</dd><dt>الجهة</dt><dd>دائرة الاقتصاد والسياحة</dd><dt>نوع الطلب</dt><dd>${esc(service.requestType)}</dd><dt>حالة الرابط</dt><dd>${normalized ? esc(record.normalization.resolution) : esc(record.classification)}</dd></dl><div class="actions">${cta}<a class="secondary" href="/services/">العودة إلى دليل الخدمات</a></div></aside></div></main>`);
 }
 
 for (const record of publication.services) {
-  const service = sourceById.get(record.sourceId);
+  const service = sourceFor(record);
   if (!service) throw new Error(`Missing source service: ${record.sourceId}`);
   const destination = resolve(root, 'services', record.slug, 'index.html');
   await mkdir(dirname(destination), { recursive: true });
   await writeFile(destination, `${page(record, service)}\n`, 'utf8');
 }
 
-const detCards = publication.services.map((record) => {
-  const service = sourceById.get(record.sourceId);
+const detCards = activeRecords.map((record) => {
+  const service = sourceFor(record);
   return `<article class="card" data-directory-card data-search="${esc([service.platformTitle, service.serviceName, service.authority, service.emirate, service.sector, service.requestType].join(' ').toLowerCase())}"><div class="card-meta"><span>DET · دبي</span><span>${statusLabel(record.classification)}</span></div><h2><a href="/services/${record.slug}/">${esc(service.platformTitle)}</a></h2><p>${esc(service.description)}</p><div class="actions"><a href="/services/${record.slug}/">عرض التفاصيل</a></div></article>`;
 }).join('');
 const verifiedCards = matrix.services.map((service) => `<article class="card" data-directory-card data-search="${esc([service.name, service.officialName, service.authority.name, service.emirate, service.category, service.type].join(' ').toLowerCase())}"><div class="card-meta"><span>${esc(service.authority.name)}</span><span>متحقق</span></div><h3><a href="${esc(service.internalUrl)}">${esc(service.name)}</a></h3><p>${esc(service.description)}</p><div class="actions"><a href="${esc(service.internalUrl)}">عرض التفاصيل</a></div></article>`).join('');
 const canonicalCards = canonical.services.map((service) => { const authority = authorityById.get(service.authorityId); return `<article class="card" data-directory-card data-search="${esc([service.name.ar, service.name.en, authority.name.ar, authority.abbreviation, 'دبي', ...service.keywords.ar, ...service.keywords.en, ...service.activityIds, ...service.licenseTypeIds, ...service.classificationNumbers].join(' ').toLowerCase())}"><div class="card-meta"><span>${esc(authority.abbreviation)}</span><span>متحقق</span></div><h3><a href="/services/${esc(service.slug)}/">${esc(service.name.ar)}</a></h3><p>${esc(service.description.ar)}</p><div class="actions"><a href="/services/${esc(service.slug)}/">عرض التفاصيل</a></div></article>`; }).join('');
 const directory = shell('دليل الخدمات', `<main id="main-content" class="page-shell"><nav class="breadcrumbs"><a href="/">الرئيسية</a><span>←</span><span>الخدمات</span></nav><header class="page-hero"><span class="eyebrow">دليل الخدمات الآمن</span><h1>الخدمات الحكومية</h1><p>يضم الدليل الخدمات المتحققة، إضافة إلى خدمات DET قيد التحقق بصفحات داخلية آمنة وأزرار حكومية معطّلة.</p></header><form class="search-shell" onsubmit="return false"><div class="search-row"><input id="det-search" aria-label="ابحث في الخدمات" placeholder="الاسم، الجهة، الإمارة، النشاط، نوع الرخصة أو رقم التصنيف"><button id="det-search-button" type="button">بحث</button></div></form><section class="content-section"><div id="det-results" class="cards">${verifiedCards}${canonicalCards}${detCards}</div><p id="det-empty" hidden>لا توجد نتيجة مطابقة.</p></section><script>const input=document.querySelector('#det-search'),cards=[...document.querySelectorAll('[data-directory-card]')],empty=document.querySelector('#det-empty');function run(){const q=input.value.trim().toLowerCase();let shown=0;cards.forEach(c=>{const ok=!q||c.dataset.search.includes(q);c.hidden=!ok;if(ok)shown++});empty.hidden=shown!==0}document.querySelector('#det-search-button').addEventListener('click',run);input.addEventListener('input',run);const q=new URLSearchParams(location.search).get('q');if(q){input.value=q;run()}</script></main>`);
 await writeFile(resolve(root, 'services/index.html'), `${directory}\n`, 'utf8');
-console.log(JSON.stringify({ generated: publication.services.length, verified: publication.services.filter((item) => item.classification === 'VERIFIED').length, pending: publication.services.filter((item) => item.classification === 'PENDING_VERIFICATION').length }, null, 2));
+console.log(JSON.stringify({ records: publication.services.length, realTotal: activeRecords.length, verified: activeRecords.filter((item) => item.classification === 'VERIFIED').length, pending: activeRecords.filter((item) => item.classification === 'PENDING_VERIFICATION').length, normalizedHistoricalRecords: publication.services.length - activeRecords.length }, null, 2));

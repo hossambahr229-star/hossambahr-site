@@ -7,6 +7,8 @@ import { extname, resolve } from "node:path";
 const root = resolve(import.meta.dirname);
 const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "utf8"));
 const canonicalRegistry = JSON.parse(await readFile(resolve(root, "src/registry/registry.json"), "utf8"));
+const detPublication = JSON.parse(await readFile(resolve(root, "src/publication/det-publication-registry.json"), "utf8"));
+const activeDetRecords = detPublication.services.filter((service) => !service.normalization?.excludeFromRealTotal);
 const expectedIcpServices = matrix.services.filter((service) => service.authority.slug === "icp").length;
 const expectedIcpChoiceServices = matrix.services.filter((service) => service.authority.slug === "icp" && service.officialRouteMode !== "direct-execution").length;
 const directExecutionService = matrix.services.find((service) => service.officialRouteMode === "direct-execution");
@@ -163,11 +165,29 @@ await scenario("dubai-activity-search", { width: 390, height: 844 }, async (page
   return { status: response?.status(), activityArabic: arabicMatch?.includes('التعبئة'), activityEnglish: englishMatch?.includes('التعبئة'), activityCode: codeMatch === '514929', partialResults: partialResults > 0, activityAuthority: await page.locator('.source-banner').textContent().then((text) => text.includes('Dubai Pulse')) };
 });
 
+await scenario("det-normalized-registry", { width: 1280, height: 900 }, async (page) => {
+  const verifiedSlugs = ['issue-trade-license-dubai', 'det-event-permit-dubai', 'det-tour-guide-licence-dubai'];
+  const verifiedChecks = [];
+  for (const slug of verifiedSlugs) {
+    const record = detPublication.services.find((service) => service.slug === slug);
+    const response = await page.goto(`${baseUrl}/services/${slug}/`, { waitUntil: 'networkidle' });
+    verifiedChecks.push({ slug, status: response?.status(), href: await page.locator('[data-government-cta="verified"]').getAttribute('href'), expected: record.officialUrl });
+  }
+  const normalizedChecks = [];
+  for (const record of detPublication.services.filter((service) => service.normalization?.excludeFromRealTotal)) {
+    const response = await page.goto(`${baseUrl}/services/${record.slug}/`, { waitUntil: 'networkidle' });
+    normalizedChecks.push({ slug: record.slug, status: response?.status(), resolution: await page.locator('main').getAttribute('data-normalization-resolution'), activeCtas: await page.locator('[data-government-cta="verified"]').count(), internalTargets: await page.locator('.service-aside .actions a[href^="/"]').count() });
+  }
+  await page.goto(`${baseUrl}/services/initial-approval-dubai/`, { waitUntil: 'networkidle' });
+  const pendingIsolated = await page.locator('button[data-government-cta="pending_verification"][disabled]').count() === 1 && await page.locator('[data-government-cta="verified"]').count() === 0;
+  return { status: 200, detNormalizationFailures: verifiedChecks.filter((check) => check.status !== 200 || check.href !== check.expected), normalizedRecordFailures: normalizedChecks.filter((check) => check.status !== 200 || !check.resolution || check.activeCtas !== 0 || check.internalTargets < 2), pendingIsolated };
+});
+
 await browser.close();
 await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
-const expectedDirectoryCards = matrix.services.length + 15 + canonicalRegistry.services.length;
-const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.hasActivitySearchEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.activityArabic === false || result.activityEnglish === false || result.activityCode === false || result.partialResults === false || result.activityAuthority === false);
+const expectedDirectoryCards = matrix.services.length + activeDetRecords.length + canonicalRegistry.services.length;
+const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.hasActivitySearchEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.activityArabic === false || result.activityEnglish === false || result.activityCode === false || result.partialResults === false || result.activityAuthority === false || result.detNormalizationFailures?.length > 0 || result.normalizedRecordFailures?.length > 0 || result.pendingIsolated === false);
 const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scenarios: results.length, passed: results.length - failed.length, failed: failed.length }, results };
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));

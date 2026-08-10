@@ -7,6 +7,7 @@ const canonical = JSON.parse(await readFile(resolve(root, 'src/registry/registry
 const authorities = JSON.parse(await readFile(resolve(root, 'src/registry/authorities.json'), 'utf8'));
 const authorityById = new Map(authorities.authorities.map((authority) => [authority.id, authority]));
 const errors = [];
+const activeRecords = registry.services.filter((service) => !service.normalization?.excludeFromRealTotal);
 let active = 0;
 for (const service of registry.services) {
   const path = resolve(root, 'services', service.slug, 'index.html');
@@ -16,7 +17,12 @@ for (const service of registry.services) {
   if (!html.includes(`data-publication-state="${service.classification}"`)) errors.push(`${service.slug}: classification not rendered`);
   const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
   active += activeLinks.length;
-  if (service.classification === 'VERIFIED') {
+  if (service.normalization?.excludeFromRealTotal) {
+    if (service.officialUrl !== null) errors.push(`${service.slug}: normalized historical record must not retain an official URL`);
+    if (activeLinks.length) errors.push(`${service.slug}: normalized historical record exposes an active CTA`);
+    if (!html.includes(`data-normalization-resolution="${service.normalization.resolution}"`)) errors.push(`${service.slug}: normalization resolution not rendered`);
+    if (!service.normalization.resolvedInto?.length) errors.push(`${service.slug}: normalization has no resolved targets`);
+  } else if (service.classification === 'VERIFIED') {
     if (!service.officialUrl || activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: verified CTA mismatch`);
     if (!/^https:\/\/(?:www\.)?(?:investindubai|dubaidet)\.gov\.ae\//.test(service.officialUrl ?? '')) errors.push(`${service.slug}: active CTA is outside an official DET domain`);
   } else {
@@ -41,15 +47,17 @@ for (const service of canonical.services) {
     if (!allowedDomains.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))) errors.push(`${service.slug}: canonical CTA is outside the authority domains`);
   } catch { errors.push(`${service.slug}: canonical CTA is not an absolute URL`); }
 }
-if (registry.services.length !== 15) errors.push(`DET gate requires 15 classified services; found ${registry.services.length}`);
+if (!activeRecords.length) errors.push('DET real-service registry is empty');
 const summary = {
   passed: errors.length === 0,
   authority: 'DET',
-  total: registry.services.length,
+  total: activeRecords.length,
+  records: registry.services.length,
+  normalizedHistoricalRecords: registry.services.length - activeRecords.length,
   canonicalVerified: canonical.services.length,
-  verified: registry.services.filter((item) => item.classification === 'VERIFIED').length,
-  pendingVerification: registry.services.filter((item) => item.classification === 'PENDING_VERIFICATION').length,
-  broken: registry.services.filter((item) => item.classification === 'BROKEN').length,
+  verified: activeRecords.filter((item) => item.classification === 'VERIFIED').length,
+  pendingVerification: activeRecords.filter((item) => item.classification === 'PENDING_VERIFICATION').length,
+  broken: activeRecords.filter((item) => item.classification === 'BROKEN').length,
   activeGovernmentCtas: active,
   brokenActiveCtas: errors.filter((error) => /CTA|rejected URL|official URL/.test(error)).length,
   errors

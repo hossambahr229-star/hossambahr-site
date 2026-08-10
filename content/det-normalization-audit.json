@@ -1,0 +1,57 @@
+{
+  "authority": "DET",
+  "reviewedAt": "2026-08-10",
+  "policy": "Historical records are retained for auditability but excluded from the real-service denominator when they are composite labels or guidance rather than one government transaction.",
+  "historicalRecordsReviewed": 4,
+  "decisions": [
+    {
+      "slug": "initial-approval-dubai",
+      "decision": "REAL_SERVICE_PENDING_VERIFICATION",
+      "countsTowardRealTotal": true,
+      "reason": "Initial approval remains a recognisable government setup transaction, but the former deep link redirects to an unusable generic directory. The page remains live with a disabled CTA."
+    },
+    {
+      "slug": "legacy-service-e619a9e547",
+      "decision": "SPLIT",
+      "countsTowardRealTotal": false,
+      "reason": "The historical label combines trade-name reservation, initial approval and licence issuance.",
+      "resolvedInto": ["reserve-trade-name-dubai", "initial-approval-dubai", "issue-trade-license-dubai"]
+    },
+    {
+      "slug": "legacy-service-f6481e594b",
+      "decision": "RECLASSIFIED_GUIDANCE",
+      "countsTowardRealTotal": false,
+      "reason": "Travel agency and tour operator are regulated economic activities, not one DET transaction. The record now guides users to activity-code search and licence issuance.",
+      "resolvedInto": ["dubai-business-activities", "issue-trade-license-dubai"]
+    },
+    {
+      "slug": "legacy-service-6f3bee6661",
+      "decision": "SPLIT",
+      "countsTowardRealTotal": false,
+      "reason": "Event permits and individual tour-guide licensing are separate official services with different audiences, documents and destinations.",
+      "resolvedInto": ["det-event-permit-dubai", "det-tour-guide-licence-dubai"]
+    }
+  ],
+  "newVerifiedRealServices": [
+    {
+      "slug": "issue-trade-license-dubai",
+      "officialSource": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence"
+    },
+    {
+      "slug": "det-event-permit-dubai",
+      "officialSource": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-an-event-permit"
+    },
+    {
+      "slug": "det-tour-guide-licence-dubai",
+      "officialSource": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-tour-guide-training"
+    }
+  ],
+  "denominator": {
+    "registryRecords": 18,
+    "normalizedHistoricalRecordsExcluded": 3,
+    "realServices": 15,
+    "verified": 14,
+    "pendingVerification": 1,
+    "brokenActiveCtas": 0
+  }
+}

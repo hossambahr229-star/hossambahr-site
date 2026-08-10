@@ -18,6 +18,17 @@ const publishedLegacyIds = new Set([
   ...registry.services.flatMap((service) => service.sourceLegacyIds)
 ]);
 const data = buildDashboardData({ inventory, dossiers, registry, authorityTemplates, publishedLegacyIds });
+const detActive = detPublication.services.filter((service) => !service.normalization?.excludeFromRealTotal);
+const detVerified = detActive.filter((service) => service.classification === 'VERIFIED').length;
+const detRow = data.project.find((row) => row.authority === 'DET');
+if (detRow) Object.assign(detRow, {
+  totalServices: detActive.length,
+  underReview: detActive.length - detVerified,
+  approved: detVerified,
+  readyToPublish: detVerified,
+  remaining: detActive.length - detVerified,
+  completionPercent: Number(((detVerified / detActive.length) * 100).toFixed(1))
+});
 const outputRoot = resolve(process.argv[2] ?? 'dashboard');
 
 function rows(items, business = false) {
