@@ -7,6 +7,7 @@ const canonical = JSON.parse(await readFile(resolve(root, 'src/registry/registry
 const matrix = JSON.parse(await readFile(resolve(root, 'service-matrix.json'), 'utf8'));
 const gdrfaAudit = JSON.parse(await readFile(resolve(root, 'content/gdrfa-dubai-deep-audit.json'), 'utf8'));
 const mohreAudit = JSON.parse(await readFile(resolve(root, 'content/mohre-deep-audit.json'), 'utf8'));
+const icpAudit = JSON.parse(await readFile(resolve(root, 'content/icp-deep-audit.json'), 'utf8'));
 const authorities = JSON.parse(await readFile(resolve(root, 'src/registry/authorities.json'), 'utf8'));
 const authorityById = new Map(authorities.authorities.map((authority) => [authority.id, authority]));
 const errors = [];
@@ -100,6 +101,21 @@ for (const service of mohreAudit.newVerifiedServices) {
 }
 const realMohreCount = mohreLegacy.length - normalizedMohreIds.size + mohreAudit.newVerifiedServices.length;
 if (realMohreCount !== mohreAudit.summary.realServices) errors.push(`MOHRE real-service denominator mismatch: ${realMohreCount}`);
+const icpLegacy = matrix.services.filter((service) => service.authority.slug === 'icp');
+for (const service of icpAudit.newVerifiedServices) {
+  const path = resolve(root, 'services', service.slug, 'index.html');
+  try { await access(path); } catch { errors.push(`${service.slug}: missing new ICP internal route`); continue; }
+  const html = await readFile(path, 'utf8');
+  const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
+  if (!html.includes('data-heritage-identity=')) errors.push(`${service.slug}: ICP historical identity marker missing`);
+  if (activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: ICP verified CTA mismatch`);
+  try {
+    const hostname = new URL(service.officialUrl).hostname;
+    if (!(hostname === 'icp.gov.ae' || hostname.endsWith('.icp.gov.ae'))) errors.push(`${service.slug}: ICP CTA is outside the official domain`);
+  } catch { errors.push(`${service.slug}: ICP CTA is not an absolute URL`); }
+}
+const realIcpCount = icpLegacy.length + icpAudit.newVerifiedServices.length;
+if (realIcpCount !== icpAudit.summary.realServices) errors.push(`ICP real-service denominator mismatch: ${realIcpCount}`);
 if (!activeRecords.length) errors.push('DET real-service registry is empty');
 const summary = {
   passed: errors.length === 0,
@@ -127,6 +143,13 @@ const summary = {
     normalizedHistoricalRecords: normalizedMohreIds.size,
     additions: mohreAudit.newVerifiedServices.length,
     pendingVerification: mohreAudit.summary.pendingVerification
+  },
+  icp: {
+    records: icpLegacy.length,
+    realServices: realIcpCount,
+    verified: icpAudit.summary.verifiedRealServices,
+    additions: icpAudit.newVerifiedServices.length,
+    pendingVerification: icpAudit.summary.pendingVerification
   },
   errors
 };
