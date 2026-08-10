@@ -80,6 +80,16 @@ if (rtaAudit && rtaRow) Object.assign(rtaRow, {
   remaining: rtaAudit.summary.realServices - rtaAudit.summary.verifiedRealServices,
   completionPercent: Number(((rtaAudit.summary.verifiedRealServices / rtaAudit.summary.realServices) * 100).toFixed(1))
 });
+const municipalityAudit = dubaiCoverage.authorities.find((authority) => authority.id === 'dubai-municipality');
+const municipalityRow = data.project.find((row) => row.authority === 'Municipalities');
+if (municipalityAudit && municipalityRow) Object.assign(municipalityRow, {
+  totalServices: municipalityAudit.summary.realServices,
+  underReview: municipalityAudit.summary.pendingVerification,
+  approved: municipalityAudit.summary.verifiedRealServices,
+  readyToPublish: municipalityAudit.summary.verifiedRealServices,
+  remaining: municipalityAudit.summary.realServices - municipalityAudit.summary.verifiedRealServices,
+  completionPercent: Number(((municipalityAudit.summary.verifiedRealServices / municipalityAudit.summary.realServices) * 100).toFixed(1))
+});
 const outputRoot = resolve(process.argv[2] ?? 'dashboard');
 
 function rows(items, business = false) {
