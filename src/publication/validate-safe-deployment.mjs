@@ -8,7 +8,7 @@ const matrix = JSON.parse(await readFile(resolve(root, 'service-matrix.json'), '
 const gdrfaAudit = JSON.parse(await readFile(resolve(root, 'content/gdrfa-dubai-deep-audit.json'), 'utf8'));
 const mohreAudit = JSON.parse(await readFile(resolve(root, 'content/mohre-deep-audit.json'), 'utf8'));
 const icpAudit = JSON.parse(await readFile(resolve(root, 'content/icp-deep-audit.json'), 'utf8'));
-const dubaiCoverage = JSON.parse(await readFile(resolve(root, 'content/dubai-coverage-expansion.json'), 'utf8'));
+const dubaiCoverage = JSON.parse(await readFile(resolve(root, 'content/government-coverage-expansion.json'), 'utf8'));
 const authorities = JSON.parse(await readFile(resolve(root, 'src/registry/authorities.json'), 'utf8'));
 const authorityById = new Map(authorities.authorities.map((authority) => [authority.id, authority]));
 const errors = [];

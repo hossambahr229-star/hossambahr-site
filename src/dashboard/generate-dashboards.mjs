@@ -11,7 +11,7 @@ const detPublication = await readJson(new URL('publication/det-publication-regis
 const gdrfaAudit = await readJson(new URL('../content/gdrfa-dubai-deep-audit.json', root));
 const mohreAudit = await readJson(new URL('../content/mohre-deep-audit.json', root));
 const icpAudit = await readJson(new URL('../content/icp-deep-audit.json', root));
-const dubaiCoverage = await readJson(new URL('../content/dubai-coverage-expansion.json', root));
+const dubaiCoverage = await readJson(new URL('../content/government-coverage-expansion.json', root));
 const authorityTemplates = await readJson(new URL('templates/authorities.json', root));
 const dossierRoot = new URL('review/dossiers/', root);
 const dossierFiles = (await readdir(dossierRoot)).filter((name) => name.endsWith('.json')).sort();
@@ -103,6 +103,14 @@ for (const [auditId, dashboardAuthority] of [['dubai-courts-notary', 'Notary'], 
   });
 }
 const outputRoot = resolve(process.argv[2] ?? 'dashboard');
+const emirateCoverage = [...new Set(dubaiCoverage.authorities.map((authority) => authority.emirate))].map((emirate) => {
+  const authorities = dubaiCoverage.authorities.filter((authority) => authority.emirate === emirate);
+  const documentedServices = authorities.reduce((sum, authority) => sum + authority.summary.realServices, 0);
+  const approved = authorities.reduce((sum, authority) => sum + authority.summary.verifiedRealServices, 0);
+  const totalServices = Math.max(documentedServices, 10);
+  const remaining = totalServices - approved;
+  return { authority: emirate, basis: 'minimum-core-service-baseline', documentedServices, totalServices, underReview: remaining, approved, readyToPublish: approved, remaining, completionPercent: totalServices ? Number(((approved / totalServices) * 100).toFixed(1)) : 0 };
+});
 
 function rows(items, business = false) {
   return items.map((item) => `<tr><td>${business ? item.area : item.authority}</td><td>${item.totalServices}</td><td>${business ? '—' : item.underReview}</td><td>${business ? '—' : item.approved}</td><td>${item.readyToPublish}</td><td>${item.remaining}</td><td>${item.completionPercent}%</td></tr>`).join('');
@@ -115,12 +123,15 @@ function page(title, items, business = false) {
 await Promise.all([
   mkdir(resolve(outputRoot, 'data'), { recursive: true }),
   mkdir(resolve(outputRoot, 'project'), { recursive: true }),
-  mkdir(resolve(outputRoot, 'business'), { recursive: true })
+  mkdir(resolve(outputRoot, 'business'), { recursive: true }),
+  mkdir(resolve(outputRoot, 'emirates'), { recursive: true })
 ]);
 await Promise.all([
   writeFile(resolve(outputRoot, 'data', 'project.json'), `${JSON.stringify(data.project, null, 2)}\n`, 'utf8'),
   writeFile(resolve(outputRoot, 'data', 'business-acceptance.json'), `${JSON.stringify(data.businessAcceptance, null, 2)}\n`, 'utf8'),
+  writeFile(resolve(outputRoot, 'data', 'emirate-coverage.json'), `${JSON.stringify(emirateCoverage, null, 2)}\n`, 'utf8'),
   writeFile(resolve(outputRoot, 'project', 'index.html'), page('لوحة تقدم إعادة بناء المنصة', data.project), 'utf8'),
-  writeFile(resolve(outputRoot, 'business', 'index.html'), page('لوحة قبول الأعمال', data.businessAcceptance.businessAreas, true), 'utf8')
+  writeFile(resolve(outputRoot, 'business', 'index.html'), page('لوحة قبول الأعمال', data.businessAcceptance.businessAreas, true), 'utf8'),
+  writeFile(resolve(outputRoot, 'emirates', 'index.html'), page('تغطية الإمارات السبع', emirateCoverage), 'utf8')
 ]);
 console.log(JSON.stringify({ decision: data.decision, authorities: data.project.length, businessAreas: data.businessAcceptance.businessAreas.length }, null, 2));

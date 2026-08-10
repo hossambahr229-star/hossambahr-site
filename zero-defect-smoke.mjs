@@ -11,7 +11,7 @@ const detPublication = JSON.parse(await readFile(resolve(root, "src/publication/
 const gdrfaAudit = JSON.parse(await readFile(resolve(root, "content/gdrfa-dubai-deep-audit.json"), "utf8"));
 const mohreAudit = JSON.parse(await readFile(resolve(root, "content/mohre-deep-audit.json"), "utf8"));
 const icpAudit = JSON.parse(await readFile(resolve(root, "content/icp-deep-audit.json"), "utf8"));
-const dubaiCoverage = JSON.parse(await readFile(resolve(root, "content/dubai-coverage-expansion.json"), "utf8"));
+const dubaiCoverage = JSON.parse(await readFile(resolve(root, "content/government-coverage-expansion.json"), "utf8"));
 const activeDetRecords = detPublication.services.filter((service) => !service.normalization?.excludeFromRealTotal);
 const expectedIcpServices = matrix.services.filter((service) => service.authority.slug === "icp").length + icpAudit.newVerifiedServices.length;
 const expectedIcpChoiceServices = matrix.services.filter((service) => service.authority.slug === "icp" && service.officialRouteMode !== "direct-execution").length;
