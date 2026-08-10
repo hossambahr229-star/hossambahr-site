@@ -4,6 +4,8 @@ import { resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '../..');
 const registry = JSON.parse(await readFile(resolve(root, 'src/publication/det-publication-registry.json'), 'utf8'));
 const canonical = JSON.parse(await readFile(resolve(root, 'src/registry/registry.json'), 'utf8'));
+const matrix = JSON.parse(await readFile(resolve(root, 'service-matrix.json'), 'utf8'));
+const gdrfaAudit = JSON.parse(await readFile(resolve(root, 'content/gdrfa-dubai-deep-audit.json'), 'utf8'));
 const authorities = JSON.parse(await readFile(resolve(root, 'src/registry/authorities.json'), 'utf8'));
 const authorityById = new Map(authorities.authorities.map((authority) => [authority.id, authority]));
 const errors = [];
@@ -47,6 +49,29 @@ for (const service of canonical.services) {
     if (!allowedDomains.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))) errors.push(`${service.slug}: canonical CTA is outside the authority domains`);
   } catch { errors.push(`${service.slug}: canonical CTA is not an absolute URL`); }
 }
+const normalizedGdrfaIds = new Set(gdrfaAudit.normalizations.map((record) => record.sourceId));
+const verifiedGdrfaIds = new Set(gdrfaAudit.verifiedRecords.map((record) => record.id));
+const gdrfaServices = matrix.services.filter((service) => service.authority.slug === 'gdrfa-dubai');
+for (const service of gdrfaServices) {
+  const path = resolve(root, service.internalUrl.replace(/^\/+/, ''), 'index.html');
+  try { await access(path); } catch { errors.push(`${service.slug}: missing GDRFA internal route`); continue; }
+  const html = await readFile(path, 'utf8');
+  const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
+  if (!html.includes('data-heritage-identity="f0de873"')) errors.push(`${service.slug}: GDRFA historical identity marker missing`);
+  if (normalizedGdrfaIds.has(service.id)) {
+    if (activeLinks.length) errors.push(`${service.slug}: normalized GDRFA sub-service exposes an active CTA`);
+    if (!html.includes('data-gdrfa-audit-state="SUB_SERVICE"')) errors.push(`${service.slug}: GDRFA sub-service normalization marker missing`);
+  } else {
+    if (!verifiedGdrfaIds.has(service.id)) errors.push(`${service.slug}: GDRFA service is absent from the official audit`);
+    if (activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: GDRFA verified CTA mismatch`);
+    try {
+      const hostname = new URL(service.officialUrl).hostname;
+      if (!(hostname === 'gdrfad.gov.ae' || hostname.endsWith('.gdrfad.gov.ae'))) errors.push(`${service.slug}: GDRFA CTA is outside the official domain`);
+    } catch { errors.push(`${service.slug}: GDRFA CTA is not an absolute URL`); }
+  }
+}
+const realGdrfaCount = gdrfaServices.length - normalizedGdrfaIds.size;
+if (realGdrfaCount !== gdrfaAudit.summary.realServices) errors.push(`GDRFA real-service denominator mismatch: ${realGdrfaCount}`);
 if (!activeRecords.length) errors.push('DET real-service registry is empty');
 const summary = {
   passed: errors.length === 0,
@@ -60,6 +85,13 @@ const summary = {
   broken: activeRecords.filter((item) => item.classification === 'BROKEN').length,
   activeGovernmentCtas: active,
   brokenActiveCtas: errors.filter((error) => /CTA|rejected URL|official URL/.test(error)).length,
+  gdrfa: {
+    records: gdrfaServices.length,
+    realServices: realGdrfaCount,
+    verified: verifiedGdrfaIds.size,
+    normalizedHistoricalRecords: normalizedGdrfaIds.size,
+    pendingVerification: gdrfaAudit.summary.pendingVerification
+  },
   errors
 };
 await writeFile(resolve(root, 'reports/det-safe-publication-gate.json'), `${JSON.stringify(summary, null, 2)}\n`, 'utf8');

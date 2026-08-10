@@ -8,6 +8,7 @@ const root = resolve(import.meta.dirname);
 const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "utf8"));
 const canonicalRegistry = JSON.parse(await readFile(resolve(root, "src/registry/registry.json"), "utf8"));
 const detPublication = JSON.parse(await readFile(resolve(root, "src/publication/det-publication-registry.json"), "utf8"));
+const gdrfaAudit = JSON.parse(await readFile(resolve(root, "content/gdrfa-dubai-deep-audit.json"), "utf8"));
 const activeDetRecords = detPublication.services.filter((service) => !service.normalization?.excludeFromRealTotal);
 const expectedIcpServices = matrix.services.filter((service) => service.authority.slug === "icp").length;
 const expectedIcpChoiceServices = matrix.services.filter((service) => service.authority.slug === "icp" && service.officialRouteMode !== "direct-execution").length;
@@ -183,11 +184,42 @@ await scenario("det-normalized-registry", { width: 1280, height: 900 }, async (p
   return { status: 200, detNormalizationFailures: verifiedChecks.filter((check) => check.status !== 200 || check.href !== check.expected), normalizedRecordFailures: normalizedChecks.filter((check) => check.status !== 200 || !check.resolution || check.activeCtas !== 0 || check.internalTargets < 2), pendingIsolated };
 });
 
+await scenario("gdrfa-investor-journey-mobile", { width: 390, height: 844 }, async (page) => {
+  await page.goto(`${baseUrl}/services/`, { waitUntil: 'networkidle' });
+  await page.locator('#det-search').fill('إقامة شريك مستثمر دبي');
+  await page.waitForTimeout(150);
+  const searchResults = await page.locator('[data-directory-card]:visible').count();
+  const response = await page.goto(`${baseUrl}/services/green-residence-partner-investor-dubai/`, { waitUntil: 'networkidle' });
+  return {
+    status: response?.status(),
+    searchResults,
+    gdrfaState: await page.locator('main').getAttribute('data-gdrfa-audit-state'),
+    governmentCta: await page.locator('[data-government-cta="verified"]').getAttribute('href'),
+    expectedGovernmentCta: 'https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936',
+    contentSections: await page.locator('.detail-section').count()
+  };
+});
+
+await scenario("gdrfa-normalization-and-authority-desktop", { width: 1440, height: 1000 }, async (page) => {
+  const authorityResponse = await page.goto(`${baseUrl}/authorities/gdrfa-dubai/`, { waitUntil: 'networkidle' });
+  const authorityCards = await page.locator('[data-directory-card]').count();
+  const normalizedResponse = await page.goto(`${baseUrl}/services/${encodeURIComponent('إصدار-إقامة-لمولود-جديد-في-دبي')}/`, { waitUntil: 'networkidle' });
+  return {
+    status: normalizedResponse?.status(),
+    authorityStatus: authorityResponse?.status(),
+    authorityCards,
+    expectedAuthorityCards: gdrfaAudit.summary.realServices,
+    normalizedState: await page.locator('main').getAttribute('data-gdrfa-audit-state'),
+    normalizedActiveCtas: await page.locator('[data-government-cta="verified"]').count(),
+    familyResolution: await page.locator('a[href="/services/family-residency-uae/"]').count()
+  };
+});
+
 await browser.close();
 await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
 const expectedDirectoryCards = matrix.services.length + activeDetRecords.length + canonicalRegistry.services.length;
-const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.hasActivitySearchEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.activityArabic === false || result.activityEnglish === false || result.activityCode === false || result.partialResults === false || result.activityAuthority === false || result.detNormalizationFailures?.length > 0 || result.normalizedRecordFailures?.length > 0 || result.pendingIsolated === false);
+const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.hasActivitySearchEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.activityArabic === false || result.activityEnglish === false || result.activityCode === false || result.partialResults === false || result.activityAuthority === false || result.detNormalizationFailures?.length > 0 || result.normalizedRecordFailures?.length > 0 || result.pendingIsolated === false || result.searchResults !== undefined && result.searchResults < 1 || result.gdrfaState !== undefined && result.gdrfaState !== 'VERIFIED' || result.governmentCta !== undefined && result.governmentCta !== result.expectedGovernmentCta || result.contentSections !== undefined && result.contentSections < 6 || result.authorityStatus !== undefined && result.authorityStatus !== 200 || result.authorityCards !== undefined && result.authorityCards !== result.expectedAuthorityCards || result.normalizedState !== undefined && result.normalizedState !== 'SUB_SERVICE' || result.normalizedActiveCtas > 0 || result.familyResolution !== undefined && result.familyResolution < 1);
 const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scenarios: results.length, passed: results.length - failed.length, failed: failed.length }, results };
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));

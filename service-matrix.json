@@ -4,7 +4,7 @@
   "sourceReviewDate": "2026-07-27",
   "policy": "Only records previously approved for exact official navigation are published.",
   "summary": {
-    "services": 105,
+    "services": 106,
     "authorities": 9,
     "categoriesWithServices": 9,
     "suspendedSourceRecords": 67
@@ -14,7 +14,7 @@
       "slug": "residency-visas",
       "title": "الإقامة والتأشيرات",
       "description": "الإقامة، أذونات الدخول، التأشيرات، التجديد، الإلغاء وتعديل الوضع.",
-      "count": 26
+      "count": 27
     },
     {
       "slug": "identity-citizenship",
@@ -7026,6 +7026,70 @@
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
+        }
+      ]
+    },
+    {
+      "id": "gdrfa:green-residence-partner-investor-dubai",
+      "slug": "green-residence-partner-investor-dubai",
+      "name": "إصدار الإقامة الخضراء لشريك أو مستثمر في دبي",
+      "officialName": "Issuing green residence permit (partner investor)",
+      "type": "إصدار",
+      "emirate": "دبي",
+      "authority": {
+        "slug": "gdrfa-dubai",
+        "name": "الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)"
+      },
+      "category": "residency-visas",
+      "internalUrl": "/services/green-residence-partner-investor-dubai/",
+      "officialUrl": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
+      "officialCardUrl": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
+      "executionUrl": null,
+      "executionChoices": [],
+      "officialRouteMode": "official-service-card",
+      "officialSelectorLabel": "إصدار الإقامة الخضراء لشريك أو مستثمر في دبي",
+      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية المطابقة لدى GDRFA Dubai ومنها يبدأ التنفيذ عبر القناة الذكية الرسمية.",
+      "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
+      "status": "verified",
+      "description": "إقامة خضراء لمدة تصل إلى خمس سنوات للشريك أو المستثمر في مشروع تجاري دون الحاجة إلى ضامن أو صاحب عمل، قابلة للتجديد وفق الشروط الرسمية.",
+      "requirements": [
+        "صورة شخصية",
+        "نسخة من جواز السفر بصلاحية لا تقل عن ستة أشهر",
+        "عقد شراكة أو عقد تأسيس أو عقد استثمار",
+        "الرخصة التجارية"
+      ],
+      "fees": "200 درهم رسم تصريح الإقامة، و10 دراهم معرفة، و10 دراهم ابتكار، و500 درهم عند التقديم من داخل الدولة، و20 درهمًا للتوصيل. يزداد رسم الإصدار 100 درهم عن كل سنة تزيد على سنتين وفق البطاقة الرسمية.",
+      "duration": "48 ساعة وفق بطاقة الخدمة الرسمية.",
+      "conditions": "مخصصة لشريك أو مستثمر في مشروع تجاري، وتتطلب مستند الشراكة أو الاستثمار والرخصة التجارية.",
+      "specialCases": "لا تُستخدم لإقامة المستثمر الذهبية أو لإقامة موظف قطاع خاص؛ لكل منهما خدمة رسمية مستقلة.",
+      "lastReviewed": "2026-08-10",
+      "reviewResult": "approved_for_user_navigation",
+      "functionalFinding": "exact_service_card",
+      "loginRequired": false,
+      "previousService": "/services/golden-residency-uae/",
+      "nextService": "/services/family-residency-uae/",
+      "relatedServices": [
+        {
+          "name": "إصدار الإقامة الذهبية للمستثمرين في دبي",
+          "internalUrl": "/services/golden-residency-uae/"
+        },
+        {
+          "name": "إصدار إقامة لأفراد الأسرة في دبي",
+          "internalUrl": "/services/family-residency-uae/"
+        }
+      ],
+      "faq": [
+        {
+          "question": "ما مدة الإقامة؟",
+          "answer": "تسمح الإقامة الخضراء للشريك أو المستثمر بالإقامة لمدة تصل إلى خمس سنوات، وتكون قابلة للتجديد وفق الشروط الرسمية."
+        },
+        {
+          "question": "كم تستغرق المعاملة؟",
+          "answer": "48 ساعة وفق بطاقة GDRFA Dubai الرسمية."
+        },
+        {
+          "question": "هل هذه هي الإقامة الذهبية؟",
+          "answer": "لا. هذه إقامة خضراء لشريك أو مستثمر، بينما الإقامة الذهبية للمستثمرين لها خدمة رسمية مستقلة."
         }
       ]
     }

@@ -8,6 +8,7 @@ const inventory = await readJson(new URL('review/service-review-inventory.json',
 const registry = await readJson(new URL('registry/registry.json', root));
 const matrix = await readJson(new URL('../service-matrix.json', root));
 const detPublication = await readJson(new URL('publication/det-publication-registry.json', root));
+const gdrfaAudit = await readJson(new URL('../content/gdrfa-dubai-deep-audit.json', root));
 const authorityTemplates = await readJson(new URL('templates/authorities.json', root));
 const dossierRoot = new URL('review/dossiers/', root);
 const dossierFiles = (await readdir(dossierRoot)).filter((name) => name.endsWith('.json')).sort();
@@ -28,6 +29,15 @@ if (detRow) Object.assign(detRow, {
   readyToPublish: detVerified,
   remaining: detActive.length - detVerified,
   completionPercent: Number(((detVerified / detActive.length) * 100).toFixed(1))
+});
+const gdrfaRow = data.project.find((row) => row.authority === 'GDRFA');
+if (gdrfaRow) Object.assign(gdrfaRow, {
+  totalServices: gdrfaAudit.summary.realServices,
+  underReview: gdrfaAudit.summary.pendingVerification,
+  approved: gdrfaAudit.summary.verifiedRealServices,
+  readyToPublish: gdrfaAudit.summary.verifiedRealServices,
+  remaining: gdrfaAudit.summary.realServices - gdrfaAudit.summary.verifiedRealServices,
+  completionPercent: Number(((gdrfaAudit.summary.verifiedRealServices / gdrfaAudit.summary.realServices) * 100).toFixed(1))
 });
 const outputRoot = resolve(process.argv[2] ?? 'dashboard');
 

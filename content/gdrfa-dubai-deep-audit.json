@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0.0",
+  "authority": "GDRFA Dubai",
+  "reviewedAt": "2026-08-10T12:00:00+04:00",
+  "policy": "A real service must resolve to an exact current GDRFA Dubai service card or an exact official inquiry surface. Historical sub-services remain reachable internally but expose no independent government CTA.",
+  "summary": {
+    "registryRecords": 23,
+    "realServices": 22,
+    "verifiedRealServices": 22,
+    "normalizedHistoricalRecords": 1,
+    "pendingVerification": 0,
+    "brokenActiveCtas": 0
+  },
+  "normalizations": [
+    {
+      "sourceId": "directory:residency:21",
+      "slug": "إصدار-إقامة-لمولود-جديد-في-دبي",
+      "resolution": "SUB_SERVICE",
+      "excludeFromRealTotal": true,
+      "reason": "The current official destination is the general GDRFA service for issuing residence permits to foreign family members; no separate official service card for a newborn residence permit was established.",
+      "resolvedInto": ["family-residency-uae"],
+      "rejectedAsIndependentCta": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8"
+    }
+  ],
+  "verifiedRecords": [
+    { "id": "guide:cancel-residency-permit-uae", "officialTitle": "Canceling all types of residence permits" },
+    { "id": "guide:family-residency-uae", "officialTitle": "Issuance of a residence permit for foreign family members" },
+    { "id": "guide:golden-residency-uae", "officialTitle": "Issuing a golden residence permit (investors)" },
+    { "id": "directory:residency:8", "officialTitle": "Issuance of a residence permit for the private sector" },
+    { "id": "directory:residency:11", "officialTitle": "Amendment of all types of residence permit data" },
+    { "id": "directory:residency:13", "officialTitle": "Status amendment" },
+    { "id": "directory:residency:18", "officialTitle": "Renewal of a residence permit for foreign family members" },
+    { "id": "directory:residency:19", "officialTitle": "Issuance of a residence permit for humanitarian cases" },
+    { "id": "directory:residency:27", "officialTitle": "Cancellation of entry permit/visa" },
+    { "id": "directory:residency:28", "officialTitle": "Issuing a visit visa for a relative or friend for one entry" },
+    { "id": "directory:residency:30", "officialTitle": "Issuing a single-entry tourist visa" },
+    { "id": "directory:residency:33", "officialTitle": "Issuing a visit visa to explore job opportunities" },
+    { "id": "directory:residency:35", "officialTitle": "Issuing a visit visa to explore business opportunities" },
+    { "id": "directory:residency:43", "officialTitle": "Renewal of a residence permit for the private sector" },
+    { "id": "directory:residency:44", "officialTitle": "Issuance of an establishment card for the private sector/free zone" },
+    { "id": "directory:residency:46", "officialTitle": "Renewal of Establishment Card - all categories" },
+    { "id": "directory:residency:48", "officialTitle": "Modify the establishment card data - all categories" },
+    { "id": "directory:residency:50", "officialTitle": "Cancellation of Establishment Card for all categories" },
+    { "id": "directory:residency:52", "officialTitle": "Fines Inquiry Service" },
+    { "id": "directory:residency:53", "officialTitle": "Fine Collection for Violators of Residency Law" },
+    { "id": "directory:residency:55", "officialTitle": "Application/file status inquiry" },
+    { "id": "gdrfa:green-residence-partner-investor-dubai", "officialTitle": "Issuing green residence permit (partner investor)" }
+  ]
+}
