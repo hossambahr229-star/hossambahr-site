@@ -8,6 +8,7 @@ const matrix = JSON.parse(await readFile(resolve(root, 'service-matrix.json'), '
 const gdrfaAudit = JSON.parse(await readFile(resolve(root, 'content/gdrfa-dubai-deep-audit.json'), 'utf8'));
 const mohreAudit = JSON.parse(await readFile(resolve(root, 'content/mohre-deep-audit.json'), 'utf8'));
 const icpAudit = JSON.parse(await readFile(resolve(root, 'content/icp-deep-audit.json'), 'utf8'));
+const dubaiCoverage = JSON.parse(await readFile(resolve(root, 'content/dubai-coverage-expansion.json'), 'utf8'));
 const authorities = JSON.parse(await readFile(resolve(root, 'src/registry/authorities.json'), 'utf8'));
 const authorityById = new Map(authorities.authorities.map((authority) => [authority.id, authority]));
 const errors = [];
@@ -116,6 +117,23 @@ for (const service of icpAudit.newVerifiedServices) {
 }
 const realIcpCount = icpLegacy.length + icpAudit.newVerifiedServices.length;
 if (realIcpCount !== icpAudit.summary.realServices) errors.push(`ICP real-service denominator mismatch: ${realIcpCount}`);
+for (const authority of dubaiCoverage.authorities) {
+  const canonicalCount = canonical.services.filter((service) => service.authorityId === authority.id).length;
+  if (canonicalCount !== authority.summary.canonicalServices) errors.push(`${authority.id}: canonical service count mismatch`);
+  for (const service of authority.newVerifiedServices) {
+    const path = resolve(root, 'services', service.slug, 'index.html');
+    try { await access(path); } catch { errors.push(`${service.slug}: missing Dubai authority route`); continue; }
+    const html = await readFile(path, 'utf8');
+    const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
+    if (!html.includes('data-heritage-identity=')) errors.push(`${service.slug}: Dubai historical identity marker missing`);
+    if (activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: Dubai authority CTA mismatch`);
+    try {
+      const hostname = new URL(service.officialUrl).hostname;
+      if (!authority.officialDomains.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))) errors.push(`${service.slug}: CTA outside ${authority.id} official domains`);
+    } catch { errors.push(`${service.slug}: Dubai authority CTA is not an absolute URL`); }
+  }
+  if (canonicalCount + authority.newVerifiedServices.length !== authority.summary.realServices) errors.push(`${authority.id}: real-service denominator mismatch`);
+}
 if (!activeRecords.length) errors.push('DET real-service registry is empty');
 const summary = {
   passed: errors.length === 0,
@@ -151,6 +169,7 @@ const summary = {
     additions: icpAudit.newVerifiedServices.length,
     pendingVerification: icpAudit.summary.pendingVerification
   },
+  dubaiCoverage: Object.fromEntries(dubaiCoverage.authorities.map((authority) => [authority.id, authority.summary])),
   errors
 };
 await writeFile(resolve(root, 'reports/det-safe-publication-gate.json'), `${JSON.stringify(summary, null, 2)}\n`, 'utf8');

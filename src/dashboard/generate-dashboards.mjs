@@ -11,6 +11,7 @@ const detPublication = await readJson(new URL('publication/det-publication-regis
 const gdrfaAudit = await readJson(new URL('../content/gdrfa-dubai-deep-audit.json', root));
 const mohreAudit = await readJson(new URL('../content/mohre-deep-audit.json', root));
 const icpAudit = await readJson(new URL('../content/icp-deep-audit.json', root));
+const dubaiCoverage = await readJson(new URL('../content/dubai-coverage-expansion.json', root));
 const authorityTemplates = await readJson(new URL('templates/authorities.json', root));
 const dossierRoot = new URL('review/dossiers/', root);
 const dossierFiles = (await readdir(dossierRoot)).filter((name) => name.endsWith('.json')).sort();
@@ -58,6 +59,26 @@ if (icpRow) Object.assign(icpRow, {
   readyToPublish: icpAudit.summary.verifiedRealServices,
   remaining: icpAudit.summary.realServices - icpAudit.summary.verifiedRealServices,
   completionPercent: Number(((icpAudit.summary.verifiedRealServices / icpAudit.summary.realServices) * 100).toFixed(1))
+});
+const dldAudit = dubaiCoverage.authorities.find((authority) => authority.id === 'dld-rera');
+const reraRow = data.project.find((row) => row.authority === 'RERA');
+if (dldAudit && reraRow) Object.assign(reraRow, {
+  totalServices: dldAudit.summary.realServices,
+  underReview: dldAudit.summary.pendingVerification,
+  approved: dldAudit.summary.verifiedRealServices,
+  readyToPublish: dldAudit.summary.verifiedRealServices,
+  remaining: dldAudit.summary.realServices - dldAudit.summary.verifiedRealServices,
+  completionPercent: Number(((dldAudit.summary.verifiedRealServices / dldAudit.summary.realServices) * 100).toFixed(1))
+});
+const rtaAudit = dubaiCoverage.authorities.find((authority) => authority.id === 'rta-dubai');
+const rtaRow = data.project.find((row) => row.authority === 'RTA');
+if (rtaAudit && rtaRow) Object.assign(rtaRow, {
+  totalServices: rtaAudit.summary.realServices,
+  underReview: rtaAudit.summary.pendingVerification,
+  approved: rtaAudit.summary.verifiedRealServices,
+  readyToPublish: rtaAudit.summary.verifiedRealServices,
+  remaining: rtaAudit.summary.realServices - rtaAudit.summary.verifiedRealServices,
+  completionPercent: Number(((rtaAudit.summary.verifiedRealServices / rtaAudit.summary.realServices) * 100).toFixed(1))
 });
 const outputRoot = resolve(process.argv[2] ?? 'dashboard');
 
