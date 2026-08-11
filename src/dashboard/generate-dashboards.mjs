@@ -6,6 +6,7 @@ const root = new URL('../', import.meta.url);
 const readJson = async (url) => JSON.parse(await readFile(url, 'utf8'));
 const inventory = await readJson(new URL('review/service-review-inventory.json', root));
 const registry = await readJson(new URL('registry/registry.json', root));
+const publishedRegistry = await readJson(new URL('registry/published-services.json', root));
 const matrix = await readJson(new URL('../service-matrix.json', root));
 const detPublication = await readJson(new URL('publication/det-publication-registry.json', root));
 const gdrfaAudit = await readJson(new URL('../content/gdrfa-dubai-deep-audit.json', root));
@@ -102,18 +103,73 @@ for (const [auditId, dashboardAuthority] of [['dubai-courts-notary', 'Notary'], 
     completionPercent: Number(((authorityAudit.summary.verifiedRealServices / authorityAudit.summary.realServices) * 100).toFixed(1))
   });
 }
+const publishedByAuthority = new Map();
+for (const service of publishedRegistry.services) {
+  const key = service.authority.id;
+  const row = publishedByAuthority.get(key) || {
+    authority: service.authority.ar,
+    authorityId: key,
+    totalServices: 0,
+    underReview: 0,
+    approved: 0,
+    readyToPublish: 0,
+    remaining: 0,
+    completionPercent: 0,
+  };
+  row.totalServices += 1;
+  if (service.verificationStatus === 'VERIFIED') {
+    row.approved += 1;
+    row.readyToPublish += 1;
+  } else {
+    row.underReview += 1;
+    row.remaining += 1;
+  }
+  publishedByAuthority.set(key, row);
+}
+data.project = [...publishedByAuthority.values()]
+  .map((row) => ({ ...row, completionPercent: Number(((row.approved / row.totalServices) * 100).toFixed(1)) }))
+  .sort((left, right) => right.totalServices - left.totalServices || left.authority.localeCompare(right.authority, 'ar'));
+
+const businessLabels = new Map([
+  ['business-licensing', 'تراخيص وموافقات الأعمال'],
+  ['companies-establishments', 'تأسيس وإدارة الشركات'],
+  ['identity-citizenship', 'الهوية والجنسية'],
+  ['residency-visas', 'الإقامة والتأشيرات'],
+  ['contracts-notarization', 'العقود والتوثيق'],
+  ['justice-police', 'القضاء والشرطة'],
+  ['work-employees', 'العمل والعمال'],
+  ['education-certificates', 'التعليم والشهادات'],
+  ['financial-business', 'الخدمات المالية والضريبية'],
+  ['real-estate-services', 'الخدمات العقارية'],
+  ['customs-trade', 'الجمارك والتجارة'],
+  ['family-sponsorship', 'الأسرة والكفالة'],
+  ['legal-notary', 'الكاتب العدل والخدمات القانونية'],
+  ['vehicles-transport', 'المركبات والمواصلات'],
+  ['property-rentals', 'العقارات والإيجارات'],
+]);
+const publishedByArea = new Map();
+for (const service of publishedRegistry.services) {
+  const key = service.classification.main;
+  const row = publishedByArea.get(key) || { area: businessLabels.get(key) || key, totalServices: 0, readyToPublish: 0, remaining: 0, completionPercent: 0 };
+  row.totalServices += 1;
+  if (service.verificationStatus === 'VERIFIED') row.readyToPublish += 1;
+  else row.remaining += 1;
+  publishedByArea.set(key, row);
+}
+data.businessAcceptance = {
+  businessAreas: [...publishedByArea.values()]
+    .map((row) => ({ ...row, completionPercent: Number(((row.readyToPublish / row.totalServices) * 100).toFixed(1)) }))
+    .sort((left, right) => right.totalServices - left.totalServices || left.area.localeCompare(right.area, 'ar')),
+};
+data.decision = publishedRegistry.summary.brokenActiveCtas === 0 ? 'SAFE_TO_PUBLISH' : 'REJECT';
+
 const outputRoot = resolve(process.argv[2] ?? 'dashboard');
-const emirateCoverage = [...new Set(dubaiCoverage.authorities.map((authority) => authority.emirate))].map((emirate) => {
-  const authorities = dubaiCoverage.authorities.filter((authority) => authority.emirate === emirate);
-  const documentedServices = authorities.reduce((sum, authority) => sum + authority.summary.realServices, 0);
-  const approved = authorities.reduce((sum, authority) => sum + authority.summary.verifiedRealServices, 0);
-  // No official authority publishes a stable, exhaustive denominator for every
-  // emirate. Using an invented minimum made the dashboard look quantitative but
-  // was not a defensible business metric. This denominator is explicitly the
-  // individually audited inventory currently owned by the registry.
-  const totalServices = documentedServices;
-  const remaining = totalServices - approved;
-  return { authority: emirate, basis: 'audited-published-inventory', universeComplete: false, documentedServices, totalServices, underReview: remaining, approved, readyToPublish: approved, remaining, completionPercent: totalServices ? Number(((approved / totalServices) * 100).toFixed(1)) : 0 };
+const emirateNames = ['دبي', 'أبوظبي', 'الشارقة', 'عجمان', 'رأس الخيمة', 'أم القيوين', 'الفجيرة'];
+const emirateCoverage = emirateNames.map((emirate) => {
+  const services = publishedRegistry.services.filter((service) => service.emirate === emirate);
+  const approved = services.filter((service) => service.verificationStatus === 'VERIFIED').length;
+  const remaining = services.length - approved;
+  return { authority: emirate, basis: 'audited-published-inventory', universeComplete: false, documentedServices: services.length, totalServices: services.length, underReview: remaining, approved, readyToPublish: approved, remaining, completionPercent: services.length ? Number(((approved / services.length) * 100).toFixed(1)) : 0 };
 });
 
 function rows(items, business = false) {

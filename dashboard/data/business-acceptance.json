@@ -1,276 +1,109 @@
 {
-  "authorities": [
-    {
-      "authorityId": "det",
-      "authority": "DET",
-      "totalServices": 15,
-      "underReview": 1,
-      "approved": 14,
-      "readyToPublish": 14,
-      "remaining": 1,
-      "completionPercent": 93.3
-    },
-    {
-      "authorityId": "mohre",
-      "authority": "MOHRE",
-      "totalServices": 44,
-      "underReview": 0,
-      "approved": 44,
-      "readyToPublish": 44,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "icp",
-      "authority": "ICP",
-      "totalServices": 39,
-      "underReview": 0,
-      "approved": 39,
-      "readyToPublish": 39,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "gdrfa-dubai",
-      "authority": "GDRFA",
-      "totalServices": 22,
-      "underReview": 0,
-      "approved": 22,
-      "readyToPublish": 22,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "fta",
-      "authority": "FTA",
-      "totalServices": 2,
-      "underReview": 0,
-      "approved": 2,
-      "readyToPublish": 2,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "mofa",
-      "authority": "MOFA",
-      "totalServices": 3,
-      "underReview": 0,
-      "approved": 3,
-      "readyToPublish": 3,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "moe",
-      "authority": "MOE",
-      "totalServices": 4,
-      "underReview": 0,
-      "approved": 3,
-      "readyToPublish": 3,
-      "remaining": 1,
-      "completionPercent": 75
-    },
-    {
-      "authorityId": "rta",
-      "authority": "RTA",
-      "totalServices": 6,
-      "underReview": 0,
-      "approved": 6,
-      "readyToPublish": 6,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "municipalities",
-      "authority": "Municipalities",
-      "totalServices": 6,
-      "underReview": 0,
-      "approved": 6,
-      "readyToPublish": 6,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "rera",
-      "authority": "RERA",
-      "totalServices": 5,
-      "underReview": 0,
-      "approved": 5,
-      "readyToPublish": 5,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "sera",
-      "authority": "SERA",
-      "totalServices": 0,
-      "underReview": 0,
-      "approved": 0,
-      "readyToPublish": 0,
-      "remaining": 0,
-      "completionPercent": 0
-    },
-    {
-      "authorityId": "dha",
-      "authority": "DHA",
-      "totalServices": 3,
-      "underReview": 0,
-      "approved": 3,
-      "readyToPublish": 3,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "doh",
-      "authority": "DOH",
-      "totalServices": 0,
-      "underReview": 0,
-      "approved": 0,
-      "readyToPublish": 0,
-      "remaining": 0,
-      "completionPercent": 0
-    },
-    {
-      "authorityId": "customs",
-      "authority": "Customs",
-      "totalServices": 3,
-      "underReview": 0,
-      "approved": 3,
-      "readyToPublish": 3,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "police",
-      "authority": "Police",
-      "totalServices": 0,
-      "underReview": 0,
-      "approved": 0,
-      "readyToPublish": 0,
-      "remaining": 0,
-      "completionPercent": 0
-    },
-    {
-      "authorityId": "notary",
-      "authority": "Notary",
-      "totalServices": 3,
-      "underReview": 0,
-      "approved": 3,
-      "readyToPublish": 3,
-      "remaining": 0,
-      "completionPercent": 100
-    },
-    {
-      "authorityId": "ejari",
-      "authority": "Ejari",
-      "totalServices": 0,
-      "underReview": 0,
-      "approved": 0,
-      "readyToPublish": 0,
-      "remaining": 0,
-      "completionPercent": 0
-    },
-    {
-      "authorityId": "other-authorities",
-      "authority": "Other authorities",
-      "totalServices": 27,
-      "underReview": 0,
-      "approved": 4,
-      "readyToPublish": 4,
-      "remaining": 23,
-      "completionPercent": 14.8
-    }
-  ],
   "businessAreas": [
     {
-      "areaId": "company-setup",
-      "area": "تأسيس الشركات",
-      "totalServices": 21,
-      "readyToPublish": 21,
+      "area": "تراخيص وموافقات الأعمال",
+      "totalServices": 55,
+      "readyToPublish": 55,
       "remaining": 0,
-      "completionPercent": 100,
-      "taxonomyCoverageKnown": true
+      "completionPercent": 100
     },
     {
-      "areaId": "work-labor",
+      "area": "تأسيس وإدارة الشركات",
+      "totalServices": 41,
+      "readyToPublish": 41,
+      "remaining": 0,
+      "completionPercent": 100
+    },
+    {
+      "area": "الإقامة والتأشيرات",
+      "totalServices": 28,
+      "readyToPublish": 28,
+      "remaining": 0,
+      "completionPercent": 100
+    },
+    {
       "area": "العمل والعمال",
-      "totalServices": 29,
-      "readyToPublish": 29,
+      "totalServices": 25,
+      "readyToPublish": 25,
       "remaining": 0,
-      "completionPercent": 100,
-      "taxonomyCoverageKnown": true
+      "completionPercent": 100
     },
     {
-      "areaId": "residency",
-      "area": "الإقامة",
-      "totalServices": 40,
-      "readyToPublish": 33,
-      "remaining": 7,
-      "completionPercent": 82.5,
-      "taxonomyCoverageKnown": true
-    },
-    {
-      "areaId": "visits",
-      "area": "الزيارات",
-      "totalServices": 3,
-      "readyToPublish": 0,
-      "remaining": 3,
-      "completionPercent": 0,
-      "taxonomyCoverageKnown": true
-    },
-    {
-      "areaId": "licenses",
-      "area": "الرخص",
-      "totalServices": 15,
-      "readyToPublish": 12,
-      "remaining": 3,
-      "completionPercent": 80,
-      "taxonomyCoverageKnown": true
-    },
-    {
-      "areaId": "economic-activities",
-      "area": "الأنشطة الاقتصادية",
-      "totalServices": 0,
-      "readyToPublish": 0,
+      "area": "الهوية والجنسية",
+      "totalServices": 13,
+      "readyToPublish": 13,
       "remaining": 0,
-      "completionPercent": 0,
-      "taxonomyCoverageKnown": false
+      "completionPercent": 100
     },
     {
-      "areaId": "identity-passports",
-      "area": "الهوية والجوازات",
+      "area": "القضاء والشرطة",
+      "totalServices": 10,
+      "readyToPublish": 10,
+      "remaining": 0,
+      "completionPercent": 100
+    },
+    {
+      "area": "الأسرة والكفالة",
       "totalServices": 6,
       "readyToPublish": 6,
       "remaining": 0,
-      "completionPercent": 100,
-      "taxonomyCoverageKnown": true
+      "completionPercent": 100
     },
     {
-      "areaId": "real-estate",
-      "area": "الخدمات العقارية",
-      "totalServices": 3,
-      "readyToPublish": 1,
-      "remaining": 2,
-      "completionPercent": 33.3,
-      "taxonomyCoverageKnown": true
-    },
-    {
-      "areaId": "notarization",
-      "area": "التوثيق",
+      "area": "العقارات والإيجارات",
       "totalServices": 4,
       "readyToPublish": 4,
       "remaining": 0,
-      "completionPercent": 100,
-      "taxonomyCoverageKnown": true
+      "completionPercent": 100
     },
     {
-      "areaId": "banking",
-      "area": "الخدمات البنكية",
+      "area": "التعليم والشهادات",
+      "totalServices": 3,
+      "readyToPublish": 3,
+      "remaining": 0,
+      "completionPercent": 100
+    },
+    {
+      "area": "الجمارك والتجارة",
+      "totalServices": 3,
+      "readyToPublish": 3,
+      "remaining": 0,
+      "completionPercent": 100
+    },
+    {
+      "area": "العقود والتوثيق",
+      "totalServices": 3,
+      "readyToPublish": 3,
+      "remaining": 0,
+      "completionPercent": 100
+    },
+    {
+      "area": "الكاتب العدل والخدمات القانونية",
+      "totalServices": 3,
+      "readyToPublish": 3,
+      "remaining": 0,
+      "completionPercent": 100
+    },
+    {
+      "area": "المركبات والمواصلات",
+      "totalServices": 3,
+      "readyToPublish": 3,
+      "remaining": 0,
+      "completionPercent": 100
+    },
+    {
+      "area": "الخدمات المالية والضريبية",
       "totalServices": 2,
       "readyToPublish": 2,
       "remaining": 0,
-      "completionPercent": 100,
-      "taxonomyCoverageKnown": true
+      "completionPercent": 100
+    },
+    {
+      "area": "الخدمات العقارية",
+      "totalServices": 1,
+      "readyToPublish": 1,
+      "remaining": 0,
+      "completionPercent": 100
     }
   ]
 }

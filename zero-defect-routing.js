@@ -40,13 +40,13 @@
 
   async function alignGlobalCounts() {
     try {
-      const response = await fetch("/service-matrix.json", { cache: "no-cache" });
+      const response = await fetch("/platform-summary.json", { cache: "no-cache" });
       if (!response.ok) return;
-      const matrix = await response.json();
-      const total = matrix.summary.services;
-      const authorities = matrix.summary.authorities;
-      const categoryCounts = new Map(matrix.categories.map((item) => [item.slug, item.count]));
-      const audienceCounts = new Map((matrix.audiences || []).map((item) => [item.slug, item.count]));
+      const summary = await response.json();
+      const total = summary.verified;
+      const authorities = summary.authorities;
+      const categoryCounts = new Map(Object.entries(summary.categoryCounts || {}));
+      const audienceCounts = new Map(Object.entries(summary.audienceCounts || {}));
 
       const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
       const nodes = [];
@@ -72,8 +72,22 @@
         if (/خدمة/.test(label)) value.textContent = String(total);
         if (/جهة/.test(label)) value.textContent = String(authorities);
       }
+      const liveValues = document.querySelectorAll(".live-stats dd");
+      if (liveValues.length >= 3) {
+        liveValues[0].textContent = String(total);
+        liveValues[1].textContent = String(authorities);
+        liveValues[2].textContent = String(total);
+      }
       const footerScope = document.querySelector(".footer-intro > span");
       if (footerScope) footerScope.textContent = `${total} خدمة موثقة · ${authorities} جهة مغطاة`;
+
+      const footerSections = document.querySelectorAll(".site-footer > div");
+      const footerStatus = footerSections[footerSections.length - 1]?.querySelector("p");
+      const footerTextNodes = footerStatus ? [...footerStatus.childNodes].filter((node) => node.nodeType === Node.TEXT_NODE) : [];
+      if (footerTextNodes.length >= 2) {
+        footerTextNodes[0].nodeValue = footerTextNodes[0].nodeValue.replace(/^\d+/, String(total));
+        footerTextNodes[1].nodeValue = footerTextNodes[1].nodeValue.replace(/^\d+/, String(authorities));
+      }
 
       for (const anchor of document.querySelectorAll('.audience-grid a[href^="/for/"]')) {
         const match = anchor.getAttribute("href")?.match(/^\/for\/([^/]+)\//);
@@ -133,14 +147,27 @@
     actions.insertBefore(link, secondary || null);
   }
 
+  function isolateHomepageGovernmentCtas() {
+    if (location.pathname !== '/') return;
+    for (const anchor of document.querySelectorAll('a[href^="https://"], a[href^="http://"]')) {
+      anchor.remove();
+    }
+  }
+
   const start = () => {
     loadHomepageIntentSearch();
     setupFilter();
     alignGlobalCounts();
+    isolateHomepageGovernmentCtas();
     exposeActivitySearch();
     correctKnownServiceTargets();
     rejectFakeServiceTargets();
   };
+  document.addEventListener('click', (event) => {
+    if (location.pathname !== '/') return;
+    const external = event.target.closest?.('a[href^="https://"], a[href^="http://"]');
+    if (external) event.preventDefault();
+  }, { capture: true });
   const boot = () => {
     const isHydratedExport = /platform-v\d+/i.test(document.body?.dataset.release || "");
     if (isHydratedExport) setTimeout(start, 1800);

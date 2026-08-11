@@ -12,7 +12,7 @@ test('DET publication layer derives its real total after documented normalizatio
   assert.ok(active.length > 0);
   assert.equal(new Set(publication.services.map((service) => service.slug)).size, publication.services.length);
   for (const service of normalized) {
-    assert.match(service.normalization.resolution, /^(SPLIT|MERGED|RECLASSIFIED_GUIDANCE|RETIRED)$/);
+    assert.match(service.normalization.resolution, /^(SPLIT|MERGED|SUB_SERVICE|RECLASSIFIED_GUIDANCE|RETIRED)$/);
     assert.ok(service.normalization.resolvedInto.length > 0);
     assert.equal(service.officialUrl, null);
   }
@@ -25,9 +25,12 @@ test('only verified services may have an active official URL', () => {
   }
 });
 
-test('known broken initial-approval redirect is rejected, not published', () => {
+test('known broken initial-approval redirect is isolated and normalized as a sub-service', () => {
   const service = publication.services.find((item) => item.slug === 'initial-approval-dubai');
   assert.equal(service.classification, 'PENDING_VERIFICATION');
   assert.equal(service.officialUrl, null);
   assert.match(service.rejectedUrl, /request-for-initial-approval/);
+  assert.equal(service.normalization.resolution, 'SUB_SERVICE');
+  assert.equal(service.normalization.excludeFromRealTotal, true);
+  assert.deepEqual(service.normalization.resolvedInto, ['issue-trade-license-dubai']);
 });

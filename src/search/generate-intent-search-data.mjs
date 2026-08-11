@@ -20,9 +20,30 @@ const services = registry.services.map((service) => ({
   v: service.verificationStatus === "VERIFIED" ? "VERIFIED" : "PENDING_VERIFICATION"
 }));
 
+const countBy = (values) => Object.fromEntries(
+  [...values.reduce((map, value) => map.set(value, (map.get(value) || 0) + 1), new Map())]
+    .sort(([left], [right]) => String(left).localeCompare(String(right), 'en'))
+);
+const summary = {
+  services: registry.summary.services,
+  verified: registry.summary.verified,
+  pendingVerification: registry.summary.pendingVerification,
+  authorities: registry.summary.authorities,
+  emirates: registry.summary.emirates,
+  brokenActiveCtas: registry.summary.brokenActiveCtas,
+  categoryCounts: countBy(registry.services.map((service) => service.classification.main)),
+  audienceCounts: countBy(registry.services.flatMap((service) => service.customerTypes || [])),
+};
+
 await writeFile(
   resolve(root, "intent-search-data.js"),
   `window.HB_INTENT_SERVICES=${JSON.stringify(services)};\n`,
+  "utf8"
+);
+
+await writeFile(
+  resolve(root, "platform-summary.json"),
+  `${JSON.stringify(summary, null, 2)}\n`,
   "utf8"
 );
 
