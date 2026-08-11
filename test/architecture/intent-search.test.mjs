@@ -1,0 +1,47 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { rankActivities, rankServices } from '../../intent-search.js';
+
+const root = resolve(import.meta.dirname, '../..');
+const registry = JSON.parse(await readFile(resolve(root, 'src/registry/published-services.json'), 'utf8'));
+const services = registry.services.map(service => ({
+  s: service.slug, u: service.internalRoute, a: service.name.ar, e: service.name.en,
+  m: service.emirate, i: service.authority.id, r: service.authority.ar, n: service.authority.en,
+  c: service.classification.main, b: service.classification.sub, k: service.keywords,
+  d: service.description, v: service.verificationStatus
+}));
+const activitySource = await readFile(resolve(root, 'dubai-activities-data.js'), 'utf8');
+const activities = JSON.parse(activitySource.slice(activitySource.indexOf('=') + 1).replace(/;\s*$/, ''));
+
+test('natural Arabic family intent resolves to Dubai family renewal', () => {
+  assert.equal(rankServices('أريد أجدد إقامة زوجتي في دبي', services)[0].s, 'تجديد-إقامة-أفراد-الأسرة-في-دبي');
+});
+
+test('inside-UAE hiring resolves to transfer work permit', () => {
+  assert.equal(rankServices('أريد أوظف شخص موجود داخل الإمارات', services)[0].s, 'transfer-work-permit-uae');
+});
+
+test('company setup respects the requested emirate', () => {
+  const result = rankServices('أريد أفتح شركة في أبوظبي', services)[0];
+  assert.match(result.m, /أبوظبي/);
+  assert.match(result.s, /abu-dhabi/);
+});
+
+test('English natural-language query resolves to overseas work permit', () => {
+  assert.equal(rankServices('hire an employee from outside UAE', services)[0].s, 'new-work-permit-overseas-uae');
+});
+
+test('business idea returns clothing activities and code search is exact', () => {
+  assert.match(rankActivities('أريد أفتح محل ملابس ولا أعرف النشاط', activities)[0].nameEn, /clothes|garment|fashion|textile/i);
+  assert.equal(rankActivities('514929', activities)[0].code, '514929');
+});
+
+test('Dubai cleaning-company intent combines licensing and activity discovery', () => {
+  const service = rankServices('أريد أفتح شركة تنظيف في دبي', services)[0];
+  const activity = rankActivities('أريد أفتح شركة تنظيف في دبي', activities)[0];
+  assert.match(service.m, /دبي|dubai/i);
+  assert.match(`${service.a} ${service.e}`, /رخص|ترخيص|licen/i);
+  assert.match(activity.nameEn, /clean|wash/i);
+});

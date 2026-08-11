@@ -149,6 +149,40 @@ await scenario("homepage-alignment", { width: 1440, height: 1000 }, async (page)
   return { status: response?.status(), routingViolations: await page.locator('[data-routing-violation="true"]').count(), unsafeDetLinksOnHomepage: await page.locator('a[href*="investindubai.gov.ae"]').count(), hasServicesEntry: await page.locator('a[href="/services/"]').count() > 0, hasActivitySearchEntry: await page.locator('a[href="/dubai-business-activities.html"]').count() > 0 };
 });
 
+await scenario("homepage-intent-search-desktop", { width: 1440, height: 1000 }, async (page) => {
+  const response = await page.goto(`${baseUrl}/`, { waitUntil: "networkidle" });
+  await page.waitForSelector('#government-search');
+  await page.waitForTimeout(2200);
+  await page.locator('#government-search').fill('أريد أجدد إقامة زوجتي في دبي');
+  await page.locator('form.primary-search').dispatchEvent('submit');
+  const first = page.locator('#search-results .intent-result-card').first();
+  const firstHref = await first.locator('a').getAttribute('href');
+  return {
+    status: response?.status(),
+    results: await page.locator('#search-results .intent-result-card').count(),
+    correctService: decodeURIComponent(firstHref || '') === '/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/',
+    verifiedLabel: await first.locator('.verified').count() === 1
+  };
+});
+
+await scenario("homepage-intent-search-mobile", { width: 390, height: 844 }, async (page) => {
+  const response = await page.goto(`${baseUrl}/`, { waitUntil: "networkidle" });
+  await page.waitForSelector('#government-search');
+  await page.waitForTimeout(2200);
+  await page.locator('#government-search').fill('أريد أفتح محل ملابس ولا أعرف النشاط');
+  await page.locator('form.primary-search').dispatchEvent('submit');
+  const activity = page.locator('#search-results .activity-intent-card').first();
+  const href = await activity.locator('a').getAttribute('href');
+  await activity.locator('a').click();
+  await page.waitForLoadState('networkidle');
+  return {
+    status: response?.status(),
+    activityResult: Boolean(href?.startsWith('/dubai-business-activities.html?q=')),
+    activitySearchPrefilled: await page.locator('#activitySearch').inputValue() !== '',
+    activityResults: await page.locator('.activity-card').count() > 0
+  };
+});
+
 await scenario("dubai-activity-search", { width: 390, height: 844 }, async (page) => {
   const response = await page.goto(`${baseUrl}/dubai-business-activities.html`, { waitUntil: "networkidle" });
   const search = page.locator('#activitySearch');
@@ -270,7 +304,7 @@ await browser.close();
 await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
 const expectedDirectoryCards = matrix.services.length + activeDetRecords.length + canonicalRegistry.services.length + mohreAudit.newVerifiedServices.length + icpAudit.newVerifiedServices.length + dubaiCoverage.authorities.reduce((sum, authority) => sum + authority.newVerifiedServices.length, 0);
-const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.hasActivitySearchEntry === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.activityArabic === false || result.activityEnglish === false || result.activityCode === false || result.partialResults === false || result.activityAuthority === false || result.detNormalizationFailures?.length > 0 || result.normalizedRecordFailures?.length > 0 || result.pendingIsolated === false || result.searchResults !== undefined && result.searchResults < 1 || result.gdrfaState !== undefined && result.gdrfaState !== 'VERIFIED' || result.governmentCta !== undefined && result.governmentCta !== result.expectedGovernmentCta || result.contentSections !== undefined && result.contentSections < 6 || result.authorityStatus !== undefined && result.authorityStatus !== 200 || result.authorityCards !== undefined && result.authorityCards !== result.expectedAuthorityCards || result.normalizedState !== undefined && result.normalizedState !== 'SUB_SERVICE' || result.normalizedActiveCtas > 0 || result.familyResolution !== undefined && result.familyResolution < 1 || result.mohreAddedFailures?.length > 0 || result.mohreNormalizedState !== undefined && result.mohreNormalizedState !== 'NORMALIZED' || result.mohreNormalizedActiveCtas > 0 || result.icpAddedFailures?.length > 0 || result.dubaiAuthorityFailures?.length > 0);
+const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.hasActivitySearchEntry === false || result.correctService === false || result.verifiedLabel === false || result.activityResult === false || result.activitySearchPrefilled === false || result.activityResults === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.activityArabic === false || result.activityEnglish === false || result.activityCode === false || result.partialResults === false || result.activityAuthority === false || result.detNormalizationFailures?.length > 0 || result.normalizedRecordFailures?.length > 0 || result.pendingIsolated === false || result.searchResults !== undefined && result.searchResults < 1 || result.gdrfaState !== undefined && result.gdrfaState !== 'VERIFIED' || result.governmentCta !== undefined && result.governmentCta !== result.expectedGovernmentCta || result.contentSections !== undefined && result.contentSections < 6 || result.authorityStatus !== undefined && result.authorityStatus !== 200 || result.authorityCards !== undefined && result.authorityCards !== result.expectedAuthorityCards || result.normalizedState !== undefined && result.normalizedState !== 'SUB_SERVICE' || result.normalizedActiveCtas > 0 || result.familyResolution !== undefined && result.familyResolution < 1 || result.mohreAddedFailures?.length > 0 || result.mohreNormalizedState !== undefined && result.mohreNormalizedState !== 'NORMALIZED' || result.mohreNormalizedActiveCtas > 0 || result.icpAddedFailures?.length > 0 || result.dubaiAuthorityFailures?.length > 0);
 const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scenarios: results.length, passed: results.length - failed.length, failed: failed.length }, results };
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));

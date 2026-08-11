@@ -1,4 +1,19 @@
 (() => {
+  function loadHomepageIntentSearch() {
+    if (!document.getElementById("government-search")) return;
+    const load = (source, module = false) => new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = source;
+      if (module) script.type = "module";
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.append(script);
+    });
+    Promise.all([load("/intent-search-data.js"), load("/dubai-activities-data.js")])
+      .then(() => load("/intent-search.js", true))
+      .catch(() => { document.getElementById("search-results")?.setAttribute("data-intent-search-error", "true"); });
+  }
+
   const normalize = (value) => String(value || "").normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
 
   function setupFilter() {
@@ -119,6 +134,7 @@
   }
 
   const start = () => {
+    loadHomepageIntentSearch();
     setupFilter();
     alignGlobalCounts();
     exposeActivitySearch();

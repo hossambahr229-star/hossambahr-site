@@ -230,6 +230,12 @@
       document.getElementById('heroCategoryCount').textContent = new Set(state.all.map(activity => activity.categoryAr)).size.toLocaleString('ar-AE');
       els.loading.hidden = true;
       renderDirectory();
+      const initialQuery = new URLSearchParams(window.location.search).get('q');
+      if (initialQuery) {
+        els.search.value = initialQuery;
+        applyFilters();
+        els.search.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     } catch (error) {
       els.loading.hidden = true; els.error.hidden = false; els.count.textContent = 'تعذر تحميل الأنشطة';
     }
