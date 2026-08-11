@@ -48,6 +48,19 @@ const ACTIVITY_SYNONYMS = [
   ['برمجه','تقنيه','software','technology'], ['صالون','تجميل','beauty','salon'], ['مقاولات','بناء','construction','contracting']
 ];
 
+const QUERY_SYNONYMS = [
+  ['فتح شركة','تأسيس شركة','بدء مشروع','open company','start business','establish company'],
+  ['تجديد رخصة','اجدد الرخصة','renew license','renew licence'],
+  ['الغاء رخصة','اقفل الشركة','تصفية شركة','cancel license','liquidate company'],
+  ['تعديل رخصة','تغيير نشاط','اضافة نشاط','amend license','add activity'],
+  ['اقامة الزوجة','اقامة الاسرة','كفالة العائلة','family residence','sponsor spouse'],
+  ['توظيف عامل','تصريح عمل','نقل عامل','hire employee','work permit','transfer worker'],
+  ['شكوى عمالية','راتب متأخر','مشكلة عمل','labour complaint','unpaid salary'],
+  ['مخالفة مرورية','غرامة مرور','traffic fine'],
+  ['عقد ايجار','ايجاري','ejari','tenancy contract'],
+  ['كاتب العدل','توكيل','تصديق عقد','notary','power of attorney'],
+];
+
 function words(input) {
   return normalizeIntent(input).split(' ').filter(word => word.length > 1 && !STOP_WORDS.has(word));
 }
@@ -69,7 +82,12 @@ function matchesEmirate(serviceEmirate, requestedEmirate) {
 
 export function rankServices(query, services = []) {
   const normalized = normalizeIntent(query);
-  const terms = words(query);
+  const terms = new Set(words(query));
+  for (const group of QUERY_SYNONYMS) {
+    if (group.some((alias) => normalized.includes(normalizeIntent(alias)))) {
+      group.flatMap(words).forEach((term) => terms.add(term));
+    }
+  }
   const emirate = queryEmirate(query);
   const insideUae = includesAny(normalized, ['داخل الامارات','inside uae','within uae']);
   const outsideUae = includesAny(normalized, ['خارج الامارات','outside uae','overseas']);
@@ -132,6 +150,9 @@ export function rankActivities(query, activities = []) {
     const name = normalizeIntent(`${activity.nameAr} ${activity.nameEn}`);
     const metadata = normalizeIntent(`${activity.categoryAr} ${activity.groupAr}`);
     let score = activity.code === compact ? 1000 : activity.isic === compact ? 900 : 0;
+    if (/^\d{3,}$/.test(compact) && activity.code.startsWith(compact)) score += 320;
+    else if (/^\d{3,}$/.test(compact) && activity.code.includes(compact)) score += 180;
+    if (/^\d{2,}$/.test(compact) && activity.isic.startsWith(compact)) score += 260;
     if (normalized.length > 2 && name.includes(normalized)) score += 120;
     for (const term of expanded) {
       if (name.includes(term)) score += 16;
@@ -154,6 +175,26 @@ function renderResults(container, query, services, activities) {
   const heading = element('div', 'intent-heading');
   heading.append(element('span', 'eyebrow', 'المسار المقترح'), element('h2', '', services.length || activities.length ? 'أقرب النتائج لما تريد إنجازه' : 'لم نجد تطابقًا واضحًا بعد'));
   container.append(heading);
+  const requestedEmirate = queryEmirate(query);
+  const availableEmirates = [...new Set(services.slice(0, 8).map((service) => repairText(service.m)).filter(Boolean))];
+  if (!requestedEmirate && availableEmirates.length > 1) {
+    const clarification = element('div', 'intent-clarification');
+    clarification.append(element('strong', '', 'في أي إمارة تريد إنجاز المعاملة؟'));
+    const choices = element('div', 'intent-clarification-options');
+    availableEmirates.slice(0, 7).forEach((emirate) => {
+      const button = element('button', '', emirate);
+      button.type = 'button';
+      button.addEventListener('click', () => {
+        const input = document.getElementById('government-search');
+        if (!input) return;
+        input.value = `${query} في ${emirate}`;
+        input.form?.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+      });
+      choices.append(button);
+    });
+    clarification.append(choices);
+    container.append(clarification);
+  }
   const grid = element('div', 'intent-results-grid');
   services.slice(0, 3).forEach(service => {
     const card = element('article', 'intent-result-card');
@@ -192,7 +233,7 @@ export function bootstrapIntentSearch() {
   const container = document.getElementById('search-results');
   if (!form || !input || !container) return;
   const style = document.createElement('style');
-  style.textContent = '.intent-heading{margin-bottom:1rem}.intent-results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}.intent-result-card{background:var(--surface,#fff);border:1px solid var(--border,#d8d2c6);border-radius:18px;padding:1.2rem;display:flex;flex-direction:column;gap:.75rem}.intent-result-card h3,.intent-result-card p{margin:0}.intent-result-meta{display:flex;justify-content:space-between;gap:.5rem;font-size:.82rem}.intent-result-meta .verified{color:#176b47}.intent-result-meta .pending{color:#8a5a00}.intent-result-card>a,.intent-more-actions a{font-weight:700;color:inherit}.intent-more-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem}.result:empty{display:none}@media(max-width:640px){.intent-results-grid{grid-template-columns:1fr}}';
+  style.textContent = '.intent-heading{margin-bottom:1rem}.intent-results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}.intent-result-card{background:var(--surface,#fff);border:1px solid var(--border,#d8d2c6);border-radius:18px;padding:1.2rem;display:flex;flex-direction:column;gap:.75rem}.intent-result-card h3,.intent-result-card p{margin:0}.intent-result-meta{display:flex;justify-content:space-between;gap:.5rem;font-size:.82rem}.intent-result-meta .verified{color:#176b47}.intent-result-meta .pending{color:#8a5a00}.intent-result-card>a,.intent-more-actions a{font-weight:700;color:inherit}.intent-more-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem}.intent-clarification{margin:0 0 1rem;padding:1rem;border:1px solid #d8c59d;border-radius:14px;background:#fff8e8}.intent-clarification-options{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.65rem}.intent-clarification button{min-height:40px;padding:.5rem .85rem;border:1px solid #bfa96f;background:#fff;color:#103d32;font:inherit;font-weight:700;cursor:pointer}.result:empty{display:none}@media(max-width:640px){.intent-results-grid{grid-template-columns:1fr}.intent-clarification-options{display:grid;grid-template-columns:1fr 1fr}}';
   document.head.append(style);
   const examples = ['أريد أفتح شركة تنظيف في دبي', 'أريد أجدد إقامة زوجتي', 'أريد أوظف شخص موجود داخل الإمارات', 'أريد أفتح محل ملابس ولا أعرف النشاط'];
   document.querySelectorAll('.examples button').forEach((button, index) => {

@@ -3,6 +3,8 @@ import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "../..");
 const registry = JSON.parse(await readFile(resolve(root, "src/registry/published-services.json"), "utf8"));
+const activitySource = await readFile(resolve(root, "dubai-activities-data.js"), "utf8");
+const activities = JSON.parse(activitySource.slice(activitySource.indexOf("=") + 1).replace(/;\s*$/, ""));
 
 const services = registry.services.map((service) => ({
   s: service.slug,
@@ -31,6 +33,13 @@ const summary = {
   authorities: registry.summary.authorities,
   emirates: registry.summary.emirates,
   brokenActiveCtas: registry.summary.brokenActiveCtas,
+  activities: activities.length,
+  coveredEmirates: 7,
+  lastOperationalReview: registry.services
+    .map((service) => service.lastReviewedAt)
+    .filter(Boolean)
+    .sort()
+    .at(-1) || null,
   categoryCounts: countBy(registry.services.map((service) => service.classification.main)),
   audienceCounts: countBy(registry.services.flatMap((service) => service.customerTypes || [])),
 };
