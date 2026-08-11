@@ -45,3 +45,19 @@ test('Dubai cleaning-company intent combines licensing and activity discovery', 
   assert.match(`${service.a} ${service.e}`, /رخص|ترخيص|licen/i);
   assert.match(activity.nameEn, /clean|wash/i);
 });
+
+test('beginner phrases stay discoverable without authority terminology', () => {
+  const scenarios = [
+    'أريد أجدد الرخصة',
+    'أريد أقفل الشركة',
+    'راتبي متأخر وأريد أشتكي',
+    'أريد أوثق توكيل',
+  ];
+  for (const query of scenarios) assert.ok(rankServices(query, services).length > 0, query);
+});
+
+test('partial activity code search returns the matching code family', () => {
+  const results = rankActivities('5149', activities);
+  assert.ok(results.length > 0);
+  assert.ok(results[0].code.startsWith('5149'));
+});

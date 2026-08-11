@@ -1,4 +1,12 @@
 (() => {
+  function loadIntentFirstStyles() {
+    if (document.querySelector('link[href="/intent-first.css"]')) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "/intent-first.css";
+    document.head.append(link);
+  }
+
   function loadHomepageIntentSearch() {
     if (!document.getElementById("government-search")) return;
     const load = (source, module = false) => new Promise((resolve, reject) => {
@@ -72,11 +80,23 @@
         if (/خدمة/.test(label)) value.textContent = String(total);
         if (/جهة/.test(label)) value.textContent = String(authorities);
       }
-      const liveValues = document.querySelectorAll(".live-stats dd");
-      if (liveValues.length >= 3) {
-        liveValues[0].textContent = String(total);
-        liveValues[1].textContent = String(authorities);
-        liveValues[2].textContent = String(total);
+      const liveItems = document.querySelectorAll(".live-stats dl > div");
+      const liveMetrics = [
+        ["خدمة موثقة منشورة", total],
+        ["جهة حكومية مغطاة", authorities],
+        ["نشاط اقتصادي في دليل دبي", summary.activities || 0],
+        ["إمارات مغطاة", summary.coveredEmirates || 7],
+      ];
+      liveMetrics.forEach(([label, value], index) => {
+        const item = liveItems[index];
+        if (!item) return;
+        const term = item.querySelector("dt");
+        const definition = item.querySelector("dd");
+        if (term) term.textContent = label;
+        if (definition) definition.textContent = String(value);
+      });
+      for (let index = liveMetrics.length; index < liveItems.length; index += 1) {
+        liveItems[index].hidden = true;
       }
       const footerScope = document.querySelector(".footer-intro > span");
       if (footerScope) footerScope.textContent = `${total} خدمة موثقة · ${authorities} جهة مغطاة`;
@@ -87,6 +107,11 @@
       if (footerTextNodes.length >= 2) {
         footerTextNodes[0].nodeValue = footerTextNodes[0].nodeValue.replace(/^\d+/, String(total));
         footerTextNodes[1].nodeValue = footerTextNodes[1].nodeValue.replace(/^\d+/, String(authorities));
+      }
+      const footerReview = document.querySelector(".footer-legal");
+      if (footerReview && summary.lastOperationalReview) {
+        const date = String(summary.lastOperationalReview).slice(0, 10);
+        footerReview.textContent = `آخر مراجعة تشغيلية موثقة: ${date}. لا تطلب المنصة بيانات شخصية ولا تنفذ المعاملة نيابة عن الجهة الحكومية.`;
       }
 
       for (const anchor of document.querySelectorAll('.audience-grid a[href^="/for/"]')) {
@@ -154,7 +179,81 @@
     }
   }
 
+  function simplifyHomepageByIntent() {
+    if (location.pathname !== "/" || document.body.dataset.intentFirstReady === "true") return;
+    document.body.dataset.intentFirstReady = "true";
+    document.documentElement.classList.add("intent-first-root");
+    const hero = document.querySelector(".platform-hero");
+    if (hero) {
+      const kicker = hero.querySelector(".hero-kicker");
+      const title = hero.querySelector("h1");
+      const intro = hero.querySelector(".hero-copy > p");
+      if (kicker) kicker.textContent = "ابدأ بما تريد إنجازه — وسنقودك إلى المعاملة الصحيحة";
+      if (title) title.textContent = "ما المعاملة التي تريد إنجازها؟";
+      if (intro) intro.textContent = "اكتب هدفك بطريقتك، مثل: أريد فتح شركة تنظيف في دبي. سنحدد الخدمة والجهة والإمارة، ثم نعرض المتطلبات قبل الانتقال الرسمي.";
+    }
+
+    const searchLabel = document.querySelector('label[for="government-search"]');
+    const input = document.getElementById("government-search");
+    if (searchLabel) searchLabel.textContent = "صف ما تريد إنجازه";
+    if (input) input.placeholder = "مثال: أريد أجدد إقامة زوجتي في دبي";
+    const advancedHeroLink = document.querySelector('.hero-actions a[href="/command-center/"]');
+    if (advancedHeroLink) advancedHeroLink.classList.add("ux-advanced-link");
+
+    const actionSection = document.querySelector(".action-section");
+    if (actionSection) {
+      const heading = actionSection.querySelector("h2");
+      if (heading) heading.textContent = "اختر هدفًا شائعًا أو اكتب طلبك أعلاه";
+      [...actionSection.querySelectorAll(".action-start-grid > a")].forEach((anchor, index) => {
+        if (index >= 8) anchor.classList.add("ux-hidden");
+      });
+    }
+
+    const capabilityHeading = document.querySelector(".capability-section h2");
+    if (capabilityHeading) capabilityHeading.textContent = "اختر نوع المعاملة بلغة بسيطة";
+    document.querySelectorAll(".capability-grid > a").forEach((anchor, index) => {
+      if (index >= 8) anchor.classList.add("ux-hidden");
+    });
+
+    const secondary = [
+      ".dual-service-section",
+      ".audience-section",
+      ".government-live-section",
+      ".command-promo",
+      ".content-section:has(.authority-grid)",
+    ].flatMap((selector) => [...document.querySelectorAll(selector)]);
+    const unique = [...new Set(secondary)].filter((node) => !node.closest(".ux-progressive-details"));
+    if (unique.length) {
+      const details = document.createElement("details");
+      details.className = "ux-progressive-details content-section";
+      const summary = document.createElement("summary");
+      summary.textContent = "خيارات وأدلة إضافية للمتخصصين";
+      const content = document.createElement("div");
+      content.className = "ux-progressive-content";
+      unique[0].parentNode.insertBefore(details, unique[0]);
+      details.append(summary, content);
+      unique.forEach((node) => content.append(node));
+    }
+  }
+
+  function enhanceVerifiedGovernmentHandoff() {
+    if (location.pathname === "/") return;
+    for (const anchor of document.querySelectorAll('[data-government-cta="verified"]')) {
+      if (anchor.dataset.handoffReady === "true") continue;
+      anchor.dataset.handoffReady = "true";
+      const guidance = anchor.closest("main")?.dataset.destinationKind === "OFFICIAL_GUIDANCE";
+      const note = document.createElement("p");
+      note.className = "official-handoff-note";
+      note.textContent = guidance
+        ? "ستنتقل إلى المصدر الحكومي الرسمي الذي يشرح هذه المعاملة. راجع الاختصاص قبل المتابعة."
+        : "ستنتقل الآن إلى الخدمة الحكومية الرسمية لإكمال الطلب. قد يُطلب تسجيل الدخول عبر UAE Pass.";
+      anchor.parentNode?.insertBefore(note, anchor);
+      anchor.textContent = guidance ? "افتح المصدر الرسمي ↗" : "ابدأ من الجهة الرسمية ↗";
+    }
+  }
+
   const start = () => {
+    loadIntentFirstStyles();
     loadHomepageIntentSearch();
     setupFilter();
     alignGlobalCounts();
@@ -162,6 +261,8 @@
     exposeActivitySearch();
     correctKnownServiceTargets();
     rejectFakeServiceTargets();
+    simplifyHomepageByIntent();
+    enhanceVerifiedGovernmentHandoff();
   };
   document.addEventListener('click', (event) => {
     if (location.pathname !== '/') return;
