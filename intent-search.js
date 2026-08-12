@@ -24,7 +24,7 @@ export function normalizeIntent(input) {
     .replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim();
 }
 
-const STOP_WORDS = new Set(['اريد','عايز','ابي','ابغي','احتاج','ممكن','كيف','ما','هي','هو','في','من','على','الى','عن','مع','لي','انا','ولا','لا','اعرف','خدمه','معامله','please','want','need','how','to','a','an','the','in','for','my']);
+const STOP_WORDS = new Set(['اريد','عايز','ابي','ابغي','احتاج','ممكن','كيف','ما','هي','هو','في','من','على','الى','عن','مع','لي','انا','ولا','لا','اعرف','غير','مفهوم','اطلاقا','خدمه','معامله','please','want','need','how','to','a','an','the','in','for','my']);
 const EMIRATES = [
   ['دبي', ['دبي','dubai']], ['أبوظبي', ['ابوظبي','ابو ظبي','abu dhabi']], ['الشارقة', ['الشارقه','sharjah']],
   ['عجمان', ['عجمان','ajman']], ['رأس الخيمة', ['راس الخيمه','rak','ras al khaimah']],
@@ -91,8 +91,20 @@ export function rankServices(query, services = []) {
   const emirate = queryEmirate(query);
   const insideUae = includesAny(normalized, ['داخل الامارات','inside uae','within uae']);
   const outsideUae = includesAny(normalized, ['خارج الامارات','outside uae','overseas']);
-  const spouseOrFamily = includesAny(normalized, ['زوج','زوجه','اسره','عائله','spouse','wife','husband','family']);
+  const spouseOrFamily = includesAny(normalized, ['زوج','زوجه','اسره','عائله','مراتي','مراته','spouse','wife','husband','family']);
   const company = includesAny(normalized, ['شركه','مشروع','محل','business','company','shop']);
+  const residence = includesAny(normalized, ['إقامة','اقامه','residence','residency']);
+  const employee = includesAny(normalized, ['عامل','موظف','employee','worker']);
+  const visitRelative = includesAny(normalized, ['زيارة','visit']) && includesAny(normalized, ['أخويا','اخويا','قريب','صديق','relative','friend']);
+  const openCompany = company && includesAny(normalized, ['أفتح','افتح','تأسيس','تاسيس','open','start','establish']);
+  const expiredOrRenewLicense = includesAny(normalized, ['الرخصة','رخصة','license','licence']) && includesAny(normalized, ['انتهت','منتهية','أجدد','اجدد','تجديد','expired','renew']);
+  const addActivity = includesAny(normalized, ['أضيف','اضيف','إضافة','اضافه','add']) && includesAny(normalized, ['نشاط','activity']);
+  const addPartner = includesAny(normalized, ['أضيف','اضيف','إضافة','اضافه','add']) && includesAny(normalized, ['شريك','partner']);
+  const cancelCompany = company && includesAny(normalized, ['ألغي','الغي','إلغاء','الغاء','تصفية','cancel','liquidat']);
+  const changeCompanyName = company && includesAny(normalized, ['أغير','اغير','تغيير','تعديل','change','amend']) && includesAny(normalized, ['اسم','name']);
+  const requestsNoc = includesAny(normalized, ['rta','noc','عدم ممانعة']);
+  const renewFamilyResidence = spouseOrFamily && residence && includesAny(normalized, ['تجديد','أجدد','اجدد','renew']);
+  const labourComplaint = includesAny(normalized, ['راتب','شكوى','أشتكي','اشتكي','salary','complaint']);
 
   return services.map(service => {
     const name = normalizeIntent(`${service.a || ''} ${service.e || ''}`);
@@ -121,7 +133,21 @@ export function rankServices(query, services = []) {
     if (company && (!emirate || matchesEmirate(service.m || '', emirate)) && includesAny(haystack, ['license','licence','رخصه','ترخيص']) && includesAny(haystack, ['issue','issuance','اصدار'])) score += 150;
     if (company && includesAny(name, ['تاشيره','visa']) && !includesAny(normalized, ['تاشيره','visa'])) score -= 120;
     if (includesAny(normalized, ['اقامه ذهبيه','golden visa','golden residence']) && service.s === 'issuance-of-a-new-work-permit-golden-visa-holders') score += includesAny(normalized, ['عمل','وظف','work']) ? 170 : 0;
-    if (service.v === 'VERIFIED') score += 2;
+    if (spouseOrFamily && residence && !renewFamilyResidence && includesAny(name, ['إصدار إقامة لأفراد الأسرة','family residence'])) score += 260;
+    if (visitRelative && includesAny(name, ['زيارة قريب','زيارة صديق','visit relative','visit friend'])) score += 260;
+    if (employee && residence && includesAny(name, ['إصدار إقامة موظف','إصدار تصريح إقامة','employee residence','issue residence permit'])) score += 260;
+    if (openCompany && emirate === 'دبي' && service.s === 'issue-trade-license-dubai') score += 420;
+    if (expiredOrRenewLicense && includesAny(name, ['تجديد رخصة','license renewal','renew license','renewal'])) score += 260;
+    if (expiredOrRenewLicense && !requestsNoc && includesAny(name, ['عدم ممانعة','noc'])) score -= 260;
+    if (addActivity && includesAny(name, ['إضافة أو حذف','تغيير نشاط','add activity','change license activities'])) score += 300;
+    if (addPartner && includesAny(name, ['إضافة أو انسحاب شريك','إضافة أو حذف شريك','add partner','remove partner'])) score += 300;
+    if (addPartner && includesAny(name, ['الإقامة الخضراء','green residence'])) score -= 180;
+    if (cancelCompany && includesAny(name, ['إلغاء رخصة','تصفية شركة','license cancellation','cancel business license'])) score += 320;
+    if (cancelCompany && includesAny(name, ['إصدار رخصة','license issuance'])) score -= 300;
+    if (changeCompanyName && includesAny(name, ['تعديل رخصة','license amendment'])) score += 300;
+    if (!requestsNoc && (openCompany || addActivity || addPartner || cancelCompany || changeCompanyName) && includesAny(name, ['عدم ممانعة','noc'])) score -= 380;
+    if (labourComplaint && includesAny(name, ['شكوى عمالية للقطاع الخاص','labour complaints private sector'])) score += 280;
+    if (score > 0 && service.v === 'VERIFIED') score += 2;
     return { ...service, score };
   }).filter(result => result.score > 0)
     .sort((left, right) => right.score - left.score || String(left.a).localeCompare(String(right.a), 'ar'));
@@ -188,6 +214,27 @@ function renderResults(container, query, services, activities) {
         const input = document.getElementById('government-search');
         if (!input) return;
         input.value = `${query} في ${emirate}`;
+        input.form?.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+      });
+      choices.append(button);
+    });
+    clarification.append(choices);
+    container.append(clarification);
+  }
+  const normalizedQuery = normalizeIntent(query);
+  const genericWorkPermit = includesAny(normalizedQuery, ['تصريح عمل','work permit'])
+    && !includesAny(normalizedQuery, ['داخل الامارات','خارج الامارات','inside uae','outside uae','overseas','نقل','transfer']);
+  if (genericWorkPermit) {
+    const clarification = element('div', 'intent-clarification');
+    clarification.append(element('strong', '', 'هل العامل داخل الإمارات أم خارجها؟'));
+    const choices = element('div', 'intent-clarification-options');
+    [['داخل الإمارات', 'داخل الإمارات'], ['خارج الإمارات', 'خارج الإمارات']].forEach(([label, suffix]) => {
+      const button = element('button', '', label);
+      button.type = 'button';
+      button.addEventListener('click', () => {
+        const input = document.getElementById('government-search');
+        if (!input) return;
+        input.value = `${query} ${suffix}`;
         input.form?.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
       });
       choices.append(button);
