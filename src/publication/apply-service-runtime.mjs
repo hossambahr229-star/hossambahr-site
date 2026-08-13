@@ -14,11 +14,6 @@ async function visit(directory) {
       continue;
     }
     if (!entry.isFile() || entry.name !== 'index.html') continue;
-    if (target === resolve(servicesRoot, 'index.html')) {
-      const directory = await readFile(target, 'utf8');
-      if (directory.includes(runtime)) await writeFile(target, directory.replace(runtime, ''), 'utf8');
-      continue;
-    }
     const html = await readFile(target, 'utf8');
     if (html.includes('/zero-defect-routing.js')) continue;
     if (!html.includes('</head>')) throw new Error(`Cannot attach service runtime: ${target}`);

@@ -17,6 +17,7 @@ const services = registry.services.map((service) => ({
   n: service.authority?.en || "",
   c: service.classification?.main || "",
   b: service.classification?.sub || "",
+  t: service.customerTypes || [],
   k: service.keywords || [],
   d: service.description || "",
   v: service.verificationStatus === "VERIFIED" ? "VERIFIED" : "PENDING_VERIFICATION"

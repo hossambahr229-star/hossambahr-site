@@ -130,9 +130,9 @@ body[data-intent-first-ready="true"] .capability-grid > a:hover { border-color: 
 /* Search-first service explorer: all records remain in the DOM, only the first useful batch is rendered. */
 body[data-directory-enhanced="true"] .page-hero { max-width: 760px; }
 body[data-directory-enhanced="true"] .search-shell { position: sticky; top: 76px; z-index: 20; border-radius: var(--ux-radius-lg); box-shadow: var(--ux-shadow-lg); }
-.directory-controls { display: grid; grid-template-columns: minmax(180px,1fr) minmax(180px,1fr) auto; gap: .75rem; align-items: center; max-width: var(--ux-content); margin: 1rem auto 1.5rem; padding: 1rem; border: 1px solid var(--ux-line); border-radius: var(--ux-radius-md); background: var(--ux-soft); }
+.directory-controls { display: grid; grid-template-columns: repeat(4,minmax(150px,1fr)); gap: .75rem; align-items: center; max-width: var(--ux-content); margin: 1rem auto 1.5rem; padding: 1rem; border: 1px solid var(--ux-line); border-radius: var(--ux-radius-md); background: var(--ux-soft); }
 .directory-controls select { min-height: 48px; padding-inline: .85rem; border: 1px solid #cbd8d3; border-radius: var(--ux-radius-sm); background: #fff; color: var(--ux-ink); font: inherit; }
-.directory-result-count { margin: 0; color: var(--ux-muted); font-size: .9rem; font-weight: 700; }
+.directory-result-count { grid-column: 1/-1; margin: 0; color: var(--ux-muted); font-size: .9rem; font-weight: 700; }
 body[data-directory-enhanced="true"] #det-results { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; align-items: stretch; }
 body[data-directory-enhanced="true"] #det-results .card { min-width: 0; height: 100%; padding: 1.25rem; border: 1px solid var(--ux-line); border-radius: var(--ux-radius-md); background: #fff; box-shadow: var(--ux-shadow-sm); }
 body[data-directory-enhanced="true"] #det-results .card:hover { border-color: var(--ux-gold-500); box-shadow: var(--ux-shadow-lg); transform: translateY(-2px); }
@@ -148,6 +148,15 @@ body[data-directory-enhanced="true"] #det-results .card p { color: var(--ux-mute
 .premium-service-detail .detail-section + .detail-section { margin-top: 1rem; }
 .premium-service-detail .primary-government-cta { min-height: 52px; padding-inline: 1.25rem; border-radius: var(--ux-radius-sm); background: var(--ux-brand-900); color: #fff; font-weight: 800; }
 .premium-service-detail .breadcrumbs { color: var(--ux-muted); font-size: .9rem; }
+.service-facts-bar { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; margin-top: 1.4rem; overflow: hidden; border: 1px solid rgba(255,255,255,.2); border-radius: var(--ux-radius-md); background: rgba(255,255,255,.15); }
+.service-facts-bar div { min-width: 0; padding: .9rem 1rem; background: rgba(5,37,31,.55); }
+.service-facts-bar span,.service-facts-bar b { display: block; }
+.service-facts-bar span { margin-bottom: .3rem; color: #d8c182; font-size: .78rem; font-weight: 800; }
+.service-facts-bar b { color: #fff; font-size: .9rem; line-height: 1.55; overflow-wrap: anywhere; }
+.service-secondary-actions { margin-top: 1rem; color: #fff; }
+.service-secondary-actions>summary { min-height: 44px; display: inline-flex; align-items: center; cursor: pointer; color: #e4d3a5; font-weight: 700; }
+.service-secondary-actions>div { display: flex; flex-wrap: wrap; gap: .7rem; padding-top: .5rem; }
+.service-secondary-actions a { min-height: 44px; display: inline-flex; align-items: center; padding: .65rem .9rem; border: 1px solid rgba(255,255,255,.35); border-radius: var(--ux-radius-sm); color: #fff; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
@@ -174,6 +183,8 @@ body[data-directory-enhanced="true"] #det-results .card p { color: var(--ux-mute
   body[data-directory-enhanced="true"] #det-results { grid-template-columns: 1fr; }
   body[data-directory-enhanced="true"] .search-shell { position: static; }
   .nav-more { display: none; }
+  .service-facts-bar { grid-template-columns: 1fr 1fr; }
+  .service-secondary-actions>div { display: grid; }
 }
 
 @media (min-width: 761px) and (max-width: 1100px) {
