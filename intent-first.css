@@ -45,7 +45,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .nav-more-menu { position: absolute; z-index: 50; inset-inline-end: 0; top: calc(100% + .5rem); min-width: 220px; padding: .55rem; border: 1px solid var(--ux-line); border-radius: var(--ux-radius-md); background: var(--ux-surface); box-shadow: var(--ux-shadow-lg); }
 .nav-more-menu a { display: flex; min-height: 44px; align-items: center; padding: .55rem .75rem; border-radius: 9px; white-space: nowrap; }
 .nav-more-menu a:hover { background: var(--ux-brand-100); }
-.content-section, .page-shell { max-width: var(--ux-content); margin-inline: auto; }
+.content-section, .page-shell { width: min(calc(100% - 48px), var(--ux-content)); max-width: none; margin-inline: auto; box-sizing: border-box; }
+.page-shell { min-height: 0; padding-block: clamp(2.25rem, 5vw, 4.5rem); }
+body:not(.premium-service-detail) .page-shell > .page-hero { width: 100%; max-width: none; box-sizing: border-box; }
 h1, h2, h3 { letter-spacing: -.025em; text-wrap: balance; }
 p { text-wrap: pretty; }
 
@@ -108,6 +110,7 @@ body[data-intent-first-ready="true"] .hero-actions a,
 
 .ux-progressive-details {
   margin-block: 1.5rem 3rem;
+  padding: 0;
   border: 1px solid rgba(16, 61, 50, .18);
   border-radius: var(--ux-radius-md);
   background: var(--ux-soft);
@@ -121,8 +124,10 @@ body[data-intent-first-ready="true"] .hero-actions a,
   list-style-position: inside;
 }
 
-.ux-progressive-content { padding: 0 1rem 1rem; }
-.ux-progressive-content > section { margin-inline: 0; }
+.ux-progressive-content { width: 100%; padding: 0 1rem 1rem; box-sizing: border-box; }
+.ux-progressive-content > section { width: 100%; max-width: none; margin-inline: 0; padding: clamp(1.5rem,3vw,2.5rem) clamp(1rem,3vw,2.5rem); box-sizing: border-box; }
+.ux-progressive-content .audience-grid,
+.ux-progressive-content .action-start-grid { width: 100%; }
 
 .official-handoff-note {
   margin: .75rem 0 .5rem;
@@ -137,6 +142,10 @@ body[data-intent-first-ready="true"] .hero-actions a,
 body[data-intent-first-ready="true"] .live-stats { max-width: var(--ux-content); margin-inline: auto; border-radius: var(--ux-radius-lg); }
 body[data-intent-first-ready="true"] .capability-section,
 body[data-intent-first-ready="true"] .action-section { padding-block: var(--ux-section-space); }
+body[data-intent-first-ready="true"] .action-section,
+body[data-intent-first-ready="true"] .audience-section { padding-inline: clamp(24px,4vw,56px); box-sizing: border-box; }
+body[data-intent-first-ready="true"] .action-start-grid { width: 100%; grid-template-columns: repeat(3,minmax(0,1fr)); }
+body[data-intent-first-ready="true"] .audience-grid { width: 100%; grid-template-columns: repeat(4,minmax(0,1fr)); }
 body[data-intent-first-ready="true"] .action-start-grid,
 body[data-intent-first-ready="true"] .capability-grid { gap: 1rem; }
 body[data-intent-first-ready="true"] .action-start-grid > a,
@@ -217,6 +226,7 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:first-child {
 }
 
 @media (max-width: 760px) {
+  .content-section, .page-shell { width: calc(100% - 32px); }
   .site-header { min-height: 66px; padding-inline: 16px; gap: .55rem; }
   .site-header .brand { min-width: 0; }
   .site-header .brand span { font-size: .9rem; }
@@ -244,6 +254,7 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:first-child {
   body[data-intent-first-ready="true"] .hero-proof { margin-top: .8rem; }
   body[data-intent-first-ready="true"] .action-start-grid,
   body[data-intent-first-ready="true"] .capability-grid { grid-template-columns: 1fr; }
+  body[data-intent-first-ready="true"] .audience-grid { grid-template-columns: 1fr; }
   .ux-progressive-details { margin-inline: 1rem; }
   .official-handoff-note + [data-government-cta="verified"] { width: 100%; }
   .directory-controls { grid-template-columns: 1fr; margin-inline: 1rem; }
@@ -268,6 +279,7 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:first-child {
 
 @media (min-width: 761px) and (max-width: 1100px) {
   body[data-directory-enhanced="true"] #det-results { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  body[data-intent-first-ready="true"] .audience-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 
 @media (max-width: 430px) {
