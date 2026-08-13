@@ -12,6 +12,19 @@ test('homepage keeps a focused six-item decision surface and progressive expert 
   assert.match(runtime, /enhancePrimaryNavigation\(\)/);
   assert.match(styles, /hero-copy h1[\s\S]*color: #fff !important/);
   assert.match(styles, /\.examples \{[^}]*flex-wrap: wrap/);
+  assert.match(styles, /\.ux-progressive-details \{[\s\S]*padding: 0/);
+  assert.match(styles, /\.ux-progressive-content > section \{[^}]*width: 100%[^}]*max-width: none/);
+  assert.match(styles, /\.action-section,[\s\S]*\.audience-section \{[^}]*padding-inline: clamp\(24px,4vw,56px\)/);
+  assert.match(styles, /\.action-start-grid \{[^}]*grid-template-columns: repeat\(3,minmax\(0,1fr\)\)/);
+  assert.match(styles, /\.audience-grid \{[^}]*grid-template-columns: repeat\(4,minmax\(0,1fr\)\)/);
+});
+
+test('shared page containers keep predictable width without viewport-relative collapse', async () => {
+  const styles = await read('intent-first.css');
+  assert.match(styles, /\.content-section, \.page-shell \{[^}]*width: min\(calc\(100% - 48px\), var\(--ux-content\)\)/);
+  assert.match(styles, /\.page-shell \{[^}]*min-height: 0/);
+  assert.match(styles, /body:not\(\.premium-service-detail\) \.page-shell > \.page-hero \{[^}]*width: 100%[^}]*max-width: none/);
+  assert.match(styles, /@media \(max-width: 760px\)[\s\S]*\.content-section, \.page-shell \{ width: calc\(100% - 32px\); \}/);
 });
 
 test('service explorer paginates without deleting registry cards', async () => {
