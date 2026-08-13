@@ -1,5 +1,5 @@
 (() => {
-  const state = { all: [], filtered: [], visible: 24, advisorMatches: [] };
+  const state = { all: [], filtered: [], visible: 12, advisorMatches: [] };
   const els = {
     search: document.getElementById('activitySearch'), category: document.getElementById('activityCategory'),
     group: document.getElementById('activityGroup'), sort: document.getElementById('activitySort'),
@@ -156,7 +156,7 @@
       if (terms.length) return scoreActivity(b, els.search.value) - scoreActivity(a, els.search.value);
       return a.nameAr.localeCompare(b.nameAr, 'ar');
     });
-    state.visible = 24;
+    state.visible = 12;
     renderDirectory();
   }
 
@@ -170,7 +170,7 @@
     const filters = [els.category.value, els.group.value, els.search.value && `بحث: ${els.search.value}`].filter(Boolean);
     els.summary.textContent = filters.join(' · ');
     els.more.hidden = state.visible >= state.filtered.length;
-    els.more.textContent = `عرض المزيد (${Math.min(24, Math.max(0, state.filtered.length - state.visible)).toLocaleString('ar-AE')})`;
+    els.more.textContent = `عرض المزيد (${Math.min(12, Math.max(0, state.filtered.length - state.visible)).toLocaleString('ar-AE')})`;
   }
 
   function reasonFor(activity, idea) {
@@ -261,7 +261,7 @@
   els.group.addEventListener('change', applyFilters);
   els.sort.addEventListener('change', applyFilters);
   els.clear.addEventListener('click', () => { els.search.value = ''; els.category.value = ''; updateGroups(); els.group.value = ''; els.sort.value = 'name'; applyFilters(); els.search.focus(); });
-  els.more.addEventListener('click', () => { state.visible += 24; renderDirectory(); });
+  els.more.addEventListener('click', () => { state.visible += 12; renderDirectory(); });
   els.grid.addEventListener('click', event => { const button = event.target.closest('[data-directory-index]'); if (button) openDialog(state.filtered[Number(button.dataset.directoryIndex)]); });
   els.advisorForm.addEventListener('submit', event => { event.preventDefault(); renderAdvisor(); });
   document.getElementById('advisorChoices').addEventListener('click', event => { const button = event.target.closest('[data-advisor-query]'); if (!button) return; els.idea.value = button.dataset.advisorQuery; renderAdvisor(); });

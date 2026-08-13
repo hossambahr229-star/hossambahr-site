@@ -25,10 +25,10 @@
 .activities-header .logo{display:grid;width:42px;height:42px;place-items:center;border-radius:50%;background:var(--green);color:#fff;font-weight:800}
 .activities-header .header-track{min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:var(--green);color:#fff;padding:8px 16px}
 .directory-status b{font-size:16px}.directory-status span,.directory-status small{font-size:10px;line-height:1.65}
-.activity-card{min-height:250px;border-radius:15px;padding:20px}
+.activity-card{min-height:215px;border-radius:15px;padding:18px}
 .activity-card h3{font-size:17px;line-height:1.55}
 .activity-name-en{font-size:11px;min-height:32px}
-.activity-card>p{font-size:11px}.activity-group,.activity-category{font-size:9px}.activity-card button{min-height:42px;font-size:11px}
+.activity-card>p{display:-webkit-box;overflow:hidden;font-size:11px;-webkit-box-orient:vertical;-webkit-line-clamp:2}.activity-group,.activity-category{font-size:9px}.activity-card button{min-height:42px;font-size:11px}
 .load-more{min-height:48px;border-radius:10px;font-size:12px}
 .guidance-grid article{padding:28px}.guidance-grid h3{font-size:16px}.guidance-grid p{font-size:12px;line-height:1.8}
 .activity-dialog h2{font-size:28px}.dialog-en,.activity-dialog>p,.activity-dialog details p{font-size:13px}.activity-dialog h3{font-size:14px}.activity-dialog dt{font-size:10px}.activity-dialog dd{font-size:13px}
@@ -38,4 +38,5 @@
   .activities-facts{grid-template-columns:1fr 1fr}.activities-facts article{min-height:95px;padding:17px}
   .activity-search-panel{position:static}.directory-status{display:grid}.directory-status small{text-align:right}
   .activity-advanced-content{grid-template-columns:1fr}.activities-header{min-height:64px}.activities-header .header-track{display:none}
+  .activity-card{min-height:0;padding:16px}
 }

@@ -228,6 +228,7 @@
     });
 
     const secondary = [
+      ".live-stats",
       ".dual-service-section",
       ".audience-section",
       ".government-live-section",
@@ -243,9 +244,11 @@
       summary.textContent = "خيارات وأدلة إضافية للمتخصصين";
       const content = document.createElement("div");
       content.className = "ux-progressive-content";
-      unique[0].parentNode.insertBefore(details, unique[0]);
       details.append(summary, content);
       unique.forEach((node) => content.append(node));
+      const anchor = document.querySelector(".capability-section") || actionSection;
+      if (anchor) anchor.insertAdjacentElement("afterend", details);
+      else document.querySelector("main")?.append(details);
     }
   }
 
@@ -302,6 +305,27 @@
       card.dataset.userTypes = (service.t || []).join(" ");
       const action = card.querySelector('.actions a');
       if (action) action.textContent = "ابدأ";
+      const title = card.querySelector("h3");
+      if (title && !card.querySelector(".directory-card-context")) {
+        const context = document.createElement("p");
+        context.className = "directory-card-context";
+        context.textContent = [service.r, service.m].filter(Boolean).join(" · ");
+        title.insertAdjacentElement("afterend", context);
+      }
+      [...card.querySelectorAll(".actions a")].slice(1).forEach((secondaryAction) => secondaryAction.hidden = true);
+    });
+    const quickGoals = document.createElement("div");
+    quickGoals.className = "directory-quick-goals";
+    quickGoals.setAttribute("aria-label", "أهداف شائعة");
+    const quickLabel = document.createElement("span");
+    quickLabel.textContent = "ابدأ بهدف شائع:";
+    quickGoals.append(quickLabel);
+    ["تأسيس شركة", "تجديد إقامة", "تصريح عمل", "تجديد رخصة", "نشاط تجاري"].forEach((goal) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = goal;
+      button.dataset.directoryGoal = goal;
+      quickGoals.append(button);
     });
     const controls = document.createElement("div");
     controls.className = "directory-controls";
@@ -337,14 +361,27 @@
     const count = document.createElement("p");
     count.className = "directory-result-count";
     count.setAttribute("aria-live", "polite");
-    controls.append(emirateSelect, categorySelect, authoritySelect, userSelect, count);
-    form?.insertAdjacentElement("afterend", controls);
+    const reset = document.createElement("button");
+    reset.type = "button";
+    reset.className = "directory-reset";
+    reset.textContent = "مسح الاختيارات";
+    controls.append(emirateSelect, categorySelect, authoritySelect, userSelect, reset);
+    const filterDrawer = document.createElement("details");
+    filterDrawer.className = "directory-filter-drawer";
+    const filterSummary = document.createElement("summary");
+    filterSummary.textContent = "أنا محترف — تصفية دقيقة بالجهة والإمارة";
+    filterDrawer.append(filterSummary, controls);
+    if (window.matchMedia("(min-width: 900px)").matches) filterDrawer.open = true;
+    const explorerTools = document.createElement("div");
+    explorerTools.className = "directory-explorer-tools";
+    explorerTools.append(quickGoals, filterDrawer, count);
+    form?.insertAdjacentElement("afterend", explorerTools);
     const more = document.createElement("button");
     more.type = "button";
     more.className = "directory-load-more";
     more.textContent = "عرض خدمات إضافية";
     grid.insertAdjacentElement("afterend", more);
-    let limit = 24;
+    let limit = 12;
     const apply = () => {
       const query = input.value.trim().toLowerCase();
       const emirate = emirateSelect.value;
@@ -364,13 +401,28 @@
       count.textContent = `${matches.length} خدمة مطابقة — يظهر ${Math.min(limit, matches.length)}`;
       more.hidden = matches.length <= limit;
     };
-    input.addEventListener("input", () => { limit = 24; requestAnimationFrame(apply); });
-    emirateSelect.addEventListener("change", () => { limit = 24; apply(); });
-    categorySelect.addEventListener("change", () => { limit = 24; apply(); });
-    authoritySelect.addEventListener("change", () => { limit = 24; apply(); });
-    userSelect.addEventListener("change", () => { limit = 24; apply(); });
+    input.addEventListener("input", () => { limit = 12; requestAnimationFrame(apply); });
+    emirateSelect.addEventListener("change", () => { limit = 12; apply(); });
+    categorySelect.addEventListener("change", () => { limit = 12; apply(); });
+    authoritySelect.addEventListener("change", () => { limit = 12; apply(); });
+    userSelect.addEventListener("change", () => { limit = 12; apply(); });
+    quickGoals.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-directory-goal]");
+      if (!button) return;
+      input.value = button.dataset.directoryGoal;
+      limit = 12;
+      apply();
+      grid.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    reset.addEventListener("click", () => {
+      input.value = "";
+      [emirateSelect, categorySelect, authoritySelect, userSelect].forEach((select) => select.value = "");
+      limit = 12;
+      apply();
+      input.focus();
+    });
     document.getElementById("det-search-button")?.addEventListener("click", apply);
-    more.addEventListener("click", () => { limit += 24; apply(); });
+    more.addEventListener("click", () => { limit += 12; apply(); });
     apply();
     };
     if (window.HB_INTENT_SERVICES) setupControls();
