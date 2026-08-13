@@ -95,9 +95,20 @@ jobs:
           print({'browserPages':11,'corrupted':failures})
           if failures: sys.exit(1)
           PY
+      - name: Full-page responsive production layout audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --ignore-scripts playwright@1.55.0
+          export HB_NODE_MODULES="$PWD/node_modules"
+          export HB_BROWSER_PATH="$(command -v chrome)"
+          export HB_BASE_URL="https://hossambahr.com"
+          node visual-layout-audit.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: production-browser-verification
-          path: production-browser
+          path: |
+            production-browser
+            visual-layout-audit
           retention-days: 14

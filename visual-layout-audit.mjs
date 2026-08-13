@@ -9,7 +9,8 @@ const { chromium } = require('playwright');
 const out = resolve(root, 'visual-layout-audit');
 await mkdir(out, { recursive: true });
 const mime = { '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.json':'application/json; charset=utf-8', '.svg':'image/svg+xml' };
-const server = createServer(async (request, response) => {
+const externalBase = process.env.HB_BASE_URL?.replace(/\/$/, '');
+const server = externalBase ? null : createServer(async (request, response) => {
   try {
     const path = decodeURIComponent(new URL(request.url, 'http://local').pathname);
     const candidate = path.endsWith('/') ? `${path}index.html` : path;
@@ -19,8 +20,8 @@ const server = createServer(async (request, response) => {
     response.writeHead(200, { 'content-type': mime[extname(target)] || 'application/octet-stream' }).end(body);
   } catch { response.writeHead(404).end('Not found'); }
 });
-await new Promise((done) => server.listen(0, '127.0.0.1', done));
-const base = `http://127.0.0.1:${server.address().port}`;
+if (server) await new Promise((done) => server.listen(0, '127.0.0.1', done));
+const base = externalBase || `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch({ headless:true, executablePath:process.env.HB_BROWSER_PATH });
 const pages = [
   ['home','/',false], ['home-expert','/',true], ['services','/services/',false],
@@ -68,7 +69,7 @@ for (const width of widths) {
   await context.close();
 }
 await browser.close();
-await new Promise((done) => server.close(done));
+if (server) await new Promise((done) => server.close(done));
 await writeFile(resolve(out,'report.json'),JSON.stringify(report,null,2));
 const failures=report.filter((item)=>item.status!==200||item.overflow||item.collapsed.length);
 console.log(JSON.stringify({checks:report.length,failures:failures.map(({width,name,status,overflow,collapsed})=>({width,name,status,overflow,collapsed}))},null,2));
