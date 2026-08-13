@@ -8,7 +8,8 @@
   }
 
   function loadHomepageIntentSearch() {
-    if (!document.getElementById("government-search")) return;
+    const input = document.getElementById("government-search");
+    if (!input) return;
     const load = (source, module = false) => new Promise((resolve, reject) => {
       const script = document.createElement("script");
       script.src = source;
@@ -17,7 +18,16 @@
       script.onerror = reject;
       document.head.append(script);
     });
-    Promise.all([load("/intent-search-data.js"), load("/dubai-activities-data.js")])
+    const activityData = () => {
+      if (window.DUBAI_ACTIVITIES) return Promise.resolve();
+      if (window.HB_ACTIVITY_DATA_READY) return window.HB_ACTIVITY_DATA_READY;
+      window.HB_ACTIVITY_DATA_READY = load("/dubai-activities-data.js").catch(() => {});
+      return window.HB_ACTIVITY_DATA_READY;
+    };
+    input.addEventListener("focus", activityData, { once: true });
+    input.addEventListener("input", activityData, { once: true });
+    if (new URLSearchParams(location.search).has("q")) activityData();
+    load("/intent-search-data.js")
       .then(() => load("/intent-search.js", true))
       .catch(() => { document.getElementById("search-results")?.setAttribute("data-intent-search-error", "true"); });
   }
@@ -207,14 +217,14 @@
       const heading = actionSection.querySelector("h2");
       if (heading) heading.textContent = "اختر هدفًا شائعًا أو اكتب طلبك أعلاه";
       [...actionSection.querySelectorAll(".action-start-grid > a")].forEach((anchor, index) => {
-        if (index >= 8) anchor.classList.add("ux-hidden");
+        if (index >= 6) anchor.classList.add("ux-hidden");
       });
     }
 
     const capabilityHeading = document.querySelector(".capability-section h2");
     if (capabilityHeading) capabilityHeading.textContent = "اختر نوع المعاملة بلغة بسيطة";
     document.querySelectorAll(".capability-grid > a").forEach((anchor, index) => {
-      if (index >= 8) anchor.classList.add("ux-hidden");
+      if (index >= 6) anchor.classList.add("ux-hidden");
     });
 
     const secondary = [
@@ -222,6 +232,7 @@
       ".audience-section",
       ".government-live-section",
       ".command-promo",
+      ".category-overview",
       ".content-section:has(.authority-grid)",
     ].flatMap((selector) => [...document.querySelectorAll(selector)]);
     const unique = [...new Set(secondary)].filter((node) => !node.closest(".ux-progressive-details"));
@@ -236,6 +247,112 @@
       details.append(summary, content);
       unique.forEach((node) => content.append(node));
     }
+  }
+
+  function enhancePrimaryNavigation() {
+    const nav = document.querySelector(".desktop-nav");
+    if (!nav || nav.dataset.premiumReady === "true") return;
+    nav.dataset.premiumReady = "true";
+    const preferred = [
+      "/services/",
+      "/dubai-business-activities.html",
+      "/categories/companies-establishments/",
+      "/for/resident/",
+      "/categories/work-employees/",
+      "/authorities/",
+    ];
+    const links = [...nav.querySelectorAll(":scope > a")];
+    links.sort((left, right) => {
+      const a = preferred.indexOf(left.getAttribute("href"));
+      const b = preferred.indexOf(right.getAttribute("href"));
+      return (a < 0 ? 99 : a) - (b < 0 ? 99 : b);
+    }).forEach((link) => nav.append(link));
+    const overflow = [...nav.querySelectorAll(":scope > a")].slice(5);
+    if (!overflow.length) return;
+    const details = document.createElement("details");
+    details.className = "nav-more";
+    const summary = document.createElement("summary");
+    summary.textContent = "المزيد";
+    const menu = document.createElement("div");
+    menu.className = "nav-more-menu";
+    overflow.forEach((link) => menu.append(link));
+    details.append(summary, menu);
+    nav.append(details);
+  }
+
+  function enhanceServiceDirectory() {
+    if (location.pathname !== "/services/" || document.body.dataset.directoryEnhanced === "true") return;
+    const grid = document.getElementById("det-results");
+    const input = document.getElementById("det-search");
+    const cards = grid ? [...grid.querySelectorAll("[data-directory-card]")] : [];
+    if (!grid || !input || !cards.length) return;
+    document.body.dataset.directoryEnhanced = "true";
+    const form = input.closest("form");
+    if (form) form.id = "directory-search";
+    const controls = document.createElement("div");
+    controls.className = "directory-controls";
+    controls.setAttribute("aria-label", "تصفية دليل الخدمات");
+    const emirates = ["كل الإمارات", "دبي", "أبوظبي", "الشارقة", "عجمان", "رأس الخيمة", "أم القيوين", "الفجيرة", "اتحادي"];
+    const emirateSelect = document.createElement("select");
+    emirateSelect.setAttribute("aria-label", "اختر الإمارة");
+    emirates.forEach((name) => {
+      const option = document.createElement("option");
+      option.value = name === "كل الإمارات" ? "" : name;
+      option.textContent = name;
+      emirateSelect.append(option);
+    });
+    const audienceSelect = document.createElement("select");
+    audienceSelect.setAttribute("aria-label", "اختر نوع المعاملة");
+    [["", "كل المعاملات"], ["companies-establishments", "الشركات والرخص"], ["work-employees", "العمل والموظفون"], ["residency-visas", "الإقامة والتأشيرات"], ["identity-citizenship", "الهوية والجنسية"], ["property-rentals", "العقارات والإيجارات"], ["contracts-notarization", "العقود والتوثيق"], ["financial-business", "الضرائب والأعمال"]].forEach(([value, label]) => {
+      const option = document.createElement("option");
+      option.value = value;
+      option.textContent = label;
+      audienceSelect.append(option);
+    });
+    const count = document.createElement("p");
+    count.className = "directory-result-count";
+    count.setAttribute("aria-live", "polite");
+    controls.append(emirateSelect, audienceSelect, count);
+    form?.insertAdjacentElement("afterend", controls);
+    const more = document.createElement("button");
+    more.type = "button";
+    more.className = "directory-load-more";
+    more.textContent = "عرض خدمات إضافية";
+    grid.insertAdjacentElement("afterend", more);
+    let limit = 24;
+    const apply = () => {
+      const query = input.value.trim().toLowerCase();
+      const emirate = emirateSelect.value;
+      const category = audienceSelect.value;
+      const matches = cards.filter((card) => {
+        const haystack = (card.dataset.search || card.textContent || "").toLowerCase();
+        return (!query || query.split(/\s+/).every((term) => haystack.includes(term)))
+          && (!emirate || haystack.includes(emirate.toLowerCase()))
+          && (!category || haystack.includes(category));
+      });
+      cards.forEach((card) => { card.hidden = true; });
+      matches.slice(0, limit).forEach((card) => { card.hidden = false; });
+      count.textContent = `${matches.length} خدمة مطابقة — يظهر ${Math.min(limit, matches.length)}`;
+      more.hidden = matches.length <= limit;
+    };
+    input.addEventListener("input", () => { limit = 24; requestAnimationFrame(apply); });
+    emirateSelect.addEventListener("change", () => { limit = 24; apply(); });
+    audienceSelect.addEventListener("change", () => { limit = 24; apply(); });
+    more.addEventListener("click", () => { limit += 24; apply(); });
+    apply();
+  }
+
+  function enhanceServiceDetail() {
+    if (!location.pathname.startsWith("/services/") || location.pathname === "/services/") return;
+    document.body.classList.add("premium-service-detail");
+    const main = document.querySelector("main");
+    if (!main) return;
+    const primary = main.querySelector('[data-government-cta="verified"]');
+    if (primary) primary.classList.add("primary-government-cta");
+    const sections = [...main.querySelectorAll(".detail-section")];
+    sections.forEach((section, index) => {
+      section.style.setProperty("--section-order", String(index + 1));
+    });
   }
 
   function enhanceVerifiedGovernmentHandoff() {
@@ -261,9 +378,12 @@
     alignGlobalCounts();
     isolateHomepageGovernmentCtas();
     exposeActivitySearch();
+    enhancePrimaryNavigation();
     correctKnownServiceTargets();
     rejectFakeServiceTargets();
     simplifyHomepageByIntent();
+    enhanceServiceDirectory();
+    enhanceServiceDetail();
     enhanceVerifiedGovernmentHandoff();
   };
   document.addEventListener('click', (event) => {

@@ -1,0 +1,32 @@
+/* Premium usability layer — preserves the historical green/gold identity. */
+.activities-hero{min-height:auto;padding:clamp(55px,7vw,88px) 8vw;gap:clamp(34px,6vw,80px)}
+.activities-hero:before{font-size:clamp(110px,15vw,190px);opacity:.55}
+.activities-hero h1{max-width:14ch;font-size:clamp(38px,4.7vw,66px);line-height:1.18}
+.activities-hero-copy>p{font-size:15px;line-height:1.9}
+.activities-facts{border-color:#ffffff30;border-radius:18px;overflow:hidden}
+.activities-facts article{min-height:112px;padding:24px}
+.activities-facts span{font-size:11px;line-height:1.6}
+.activity-advisor{padding-block:clamp(55px,7vw,85px);background:#f3f7f5}
+.advisor-card,.advisor-results{border-radius:18px}
+.advisor-heading p,.advisor-card>label{font-size:14px;line-height:1.8}
+.advisor-choices button{min-height:42px;font-size:12px}
+.activities-directory{padding-block:clamp(58px,7vw,88px)}
+.directory-intro{max-width:760px}
+.directory-intro p{font-size:14px;line-height:1.8}
+.activity-search-panel{position:sticky;top:76px;z-index:15;padding:16px;border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 45px #102f2712}
+.activity-search-panel label>span{font-size:10px}
+.activity-search-panel input,.activity-search-panel select,.activity-search-panel button{min-height:48px;border-radius:9px;font-size:12px}
+.directory-status b{font-size:16px}.directory-status span,.directory-status small{font-size:10px;line-height:1.65}
+.activity-card{min-height:250px;border-radius:15px;padding:20px}
+.activity-card h3{font-size:17px;line-height:1.55}
+.activity-name-en{font-size:11px;min-height:32px}
+.activity-card>p{font-size:11px}.activity-group,.activity-category{font-size:9px}.activity-card button{min-height:42px;font-size:11px}
+.load-more{min-height:48px;border-radius:10px;font-size:12px}
+.guidance-grid article{padding:28px}.guidance-grid h3{font-size:16px}.guidance-grid p{font-size:12px;line-height:1.8}
+.activity-dialog h2{font-size:28px}.dialog-en,.activity-dialog>p,.activity-dialog details p{font-size:13px}.activity-dialog h3{font-size:14px}.activity-dialog dt{font-size:10px}.activity-dialog dd{font-size:13px}
+.activity-dialog summary,.dialog-actions>a:last-child{font-size:12px}
+@media(max-width:720px){
+  .activities-hero{padding:46px 18px}.activities-hero h1{font-size:38px}.activities-hero-copy>p{font-size:14px}
+  .activities-facts{grid-template-columns:1fr 1fr}.activities-facts article{min-height:95px;padding:17px}
+  .activity-search-panel{position:static}.directory-status{display:grid}.directory-status small{text-align:right}
+}
