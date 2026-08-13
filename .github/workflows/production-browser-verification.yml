@@ -1,0 +1,103 @@
+name: Production browser verification
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: browser-actions/setup-chrome@v1
+      - name: Wait for the exact release marker
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="$(cat release-marker.txt)"
+          for attempt in {1..30}; do
+            actual="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/release-marker.txt?attempt=$attempt" || true)"
+            if [ "$actual" = "$expected" ]; then exit 0; fi
+            sleep 10
+          done
+          echo "Production never exposed expected marker: $expected" >&2
+          exit 1
+      - name: Scan every production HTML route for encoding corruption
+        shell: python
+        run: |
+          from pathlib import Path
+          from urllib.parse import quote
+          from urllib.request import Request, urlopen
+          import re, sys
+
+          root = Path('.')
+          routes = []
+          for path in root.rglob('*.html'):
+              if any(part in {'.git', 'node_modules', 'zero-defect-smoke'} for part in path.parts):
+                  continue
+              rel = path.as_posix()
+              route = '/' if rel == 'index.html' else '/' + rel[:-10] if rel.endswith('/index.html') else '/' + rel
+              routes.append(route)
+          if len(routes) != 322:
+              raise SystemExit(f'Expected 322 routes, found {len(routes)}')
+          bad = re.compile(r'\ufffd|[ØÙ][\u0080-\u00ffŒœŠšŸŽž–-™]|(?:Ã[\u0080-\u00ff]|Â[\u0080-\u00ff]|â€|ðŸ)')
+          failures = []
+          for route in sorted(routes):
+              url = 'https://hossambahr.com' + quote(route, safe='/%?=&')
+              try:
+                  req = Request(url + ('&' if '?' in url else '?') + 'utf8-audit=1', headers={'Cache-Control':'no-cache','User-Agent':'HossamBahr-Production-Audit/1.0'})
+                  raw = urlopen(req, timeout=25).read()
+                  text = raw.decode('utf-8', errors='strict')
+                  match = bad.search(text)
+                  if match: failures.append((route, 'mojibake', match.group(0)))
+              except Exception as exc:
+                  failures.append((route, 'fetch/decode', str(exc)))
+          print({'routes':len(routes), 'corrupted':len(failures), 'failures':failures[:20]})
+          if failures: sys.exit(1)
+      - name: Browser-render representative production journeys
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p production-browser
+          urls=(
+            "/"
+            "/services/"
+            "/dubai-business-activities.html"
+            "/categories/companies-establishments/"
+            "/categories/residency-visas/"
+            "/categories/work-employees/"
+            "/categories/property-rentals/"
+            "/services/mohre-private-tutor-permit/"
+            "/services/gdrfa-family-residence-renew/"
+            "/authorities/icp/"
+            "/authorities/rta-dubai/"
+          )
+          i=0
+          for route in "${urls[@]}"; do
+            i=$((i+1))
+            chrome --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=1440,1000 --virtual-time-budget=5000 --dump-dom "https://hossambahr.com${route}?browser-audit=$i" > "production-browser/$i-desktop.html"
+            chrome --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=390,844 --virtual-time-budget=5000 --screenshot="production-browser/$i-mobile.png" "https://hossambahr.com${route}?browser-audit=$i"
+          done
+          python - <<'PY'
+          from pathlib import Path
+          import re, sys
+          bad = re.compile(r'\ufffd|[ØÙ][\u0080-\u00ffŒœŠšŸŽž–-™]|(?:Ã[\u0080-\u00ff]|Â[\u0080-\u00ff]|â€|ðŸ)')
+          failures=[]
+          for path in Path('production-browser').glob('*-desktop.html'):
+              text=path.read_text('utf-8')
+              if bad.search(text): failures.append(str(path))
+              if '<html' not in text.lower() or len(text) < 1000: failures.append(str(path)+':empty')
+          print({'browserPages':11,'corrupted':failures})
+          if failures: sys.exit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: production-browser-verification
+          path: production-browser
+          retention-days: 14

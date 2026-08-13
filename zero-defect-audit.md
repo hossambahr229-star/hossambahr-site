@@ -1,7 +1,7 @@
 # Zero-defect routing and service audit
 
 - HTML routes: 322
-- Links scanned: 10546
+- Links scanned: 10548
 - Published service records: 208
 - Authorities: 11
 - Categories with verified services: 11

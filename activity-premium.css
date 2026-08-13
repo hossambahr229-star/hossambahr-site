@@ -16,6 +16,14 @@
 .activity-search-panel{position:sticky;top:76px;z-index:15;padding:16px;border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 45px #102f2712}
 .activity-search-panel label>span{font-size:10px}
 .activity-search-panel input,.activity-search-panel select,.activity-search-panel button{min-height:48px;border-radius:9px;font-size:12px}
+.activity-main-search{grid-column:1/-1}
+.activity-advanced-filters{grid-column:1/-1;border-top:1px solid var(--line);padding-top:10px}
+.activity-advanced-filters>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:var(--green);font-size:12px;font-weight:800}
+.activity-advanced-content{display:grid;grid-template-columns:1fr 1fr .85fr auto;gap:10px;align-items:end;padding-top:10px}
+.activities-header{min-height:74px;padding-inline:clamp(18px,5vw,70px);background:#fff;border-top:3px solid var(--green)}
+.activities-header .brand{color:var(--green)}
+.activities-header .logo{display:grid;width:42px;height:42px;place-items:center;border-radius:50%;background:var(--green);color:#fff;font-weight:800}
+.activities-header .header-track{min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:var(--green);color:#fff;padding:8px 16px}
 .directory-status b{font-size:16px}.directory-status span,.directory-status small{font-size:10px;line-height:1.65}
 .activity-card{min-height:250px;border-radius:15px;padding:20px}
 .activity-card h3{font-size:17px;line-height:1.55}
@@ -29,4 +37,5 @@
   .activities-hero{padding:46px 18px}.activities-hero h1{font-size:38px}.activities-hero-copy>p{font-size:14px}
   .activities-facts{grid-template-columns:1fr 1fr}.activities-facts article{min-height:95px;padding:17px}
   .activity-search-panel{position:static}.directory-status{display:grid}.directory-status small{text-align:right}
+  .activity-advanced-content{grid-template-columns:1fr}.activities-header{min-height:64px}.activities-header .header-track{display:none}
 }

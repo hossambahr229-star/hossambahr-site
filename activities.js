@@ -241,6 +241,20 @@
     }
   }
 
+  const panel = document.querySelector('.activity-search-panel');
+  if (panel && !panel.querySelector('.activity-advanced-filters')) {
+    const advanced = document.createElement('details');
+    advanced.className = 'activity-advanced-filters';
+    const summary = document.createElement('summary');
+    summary.textContent = 'بحث متقدم: التصنيف والمجموعة والترتيب';
+    const content = document.createElement('div');
+    content.className = 'activity-advanced-content';
+    [...panel.querySelectorAll('label:not(.activity-main-search)')].forEach((label) => content.append(label));
+    content.append(els.clear);
+    advanced.append(summary, content);
+    panel.append(advanced);
+  }
+
   let searchTimer;
   els.search.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(applyFilters, 160); });
   els.category.addEventListener('change', () => { updateGroups(); applyFilters(); });

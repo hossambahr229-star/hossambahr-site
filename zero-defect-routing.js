@@ -254,6 +254,7 @@
     if (!nav || nav.dataset.premiumReady === "true") return;
     nav.dataset.premiumReady = "true";
     const preferred = [
+      "/",
       "/services/",
       "/dubai-business-activities.html",
       "/categories/companies-establishments/",
@@ -289,6 +290,19 @@
     document.body.dataset.directoryEnhanced = "true";
     const form = input.closest("form");
     if (form) form.id = "directory-search";
+    const setupControls = () => {
+    const servicesByRoute = new Map((window.HB_INTENT_SERVICES || []).map((service) => [service.u, service]));
+    cards.forEach((card) => {
+      const route = card.querySelector('h3 a')?.getAttribute('href');
+      const service = servicesByRoute.get(route);
+      if (!service) return;
+      card.dataset.emirate = service.m || "";
+      card.dataset.authority = service.i || service.r || "";
+      card.dataset.category = service.c || "";
+      card.dataset.userTypes = (service.t || []).join(" ");
+      const action = card.querySelector('.actions a');
+      if (action) action.textContent = "ابدأ";
+    });
     const controls = document.createElement("div");
     controls.className = "directory-controls";
     controls.setAttribute("aria-label", "تصفية دليل الخدمات");
@@ -301,18 +315,29 @@
       option.textContent = name;
       emirateSelect.append(option);
     });
-    const audienceSelect = document.createElement("select");
-    audienceSelect.setAttribute("aria-label", "اختر نوع المعاملة");
+    const categorySelect = document.createElement("select");
+    categorySelect.setAttribute("aria-label", "اختر نوع المعاملة");
     [["", "كل المعاملات"], ["companies-establishments", "الشركات والرخص"], ["work-employees", "العمل والموظفون"], ["residency-visas", "الإقامة والتأشيرات"], ["identity-citizenship", "الهوية والجنسية"], ["property-rentals", "العقارات والإيجارات"], ["contracts-notarization", "العقود والتوثيق"], ["financial-business", "الضرائب والأعمال"]].forEach(([value, label]) => {
       const option = document.createElement("option");
       option.value = value;
       option.textContent = label;
-      audienceSelect.append(option);
+      categorySelect.append(option);
+    });
+    const authoritySelect = document.createElement("select");
+    authoritySelect.setAttribute("aria-label", "اختر الجهة الحكومية");
+    const authorityOptions = [["", "كل الجهات"], ...[...new Map((window.HB_INTENT_SERVICES || []).map((service) => [service.i || service.r, service.r])).entries()].filter(([value]) => value).sort((a, b) => String(a[1]).localeCompare(String(b[1]), "ar"))];
+    authorityOptions.forEach(([value, label]) => {
+      const option = document.createElement("option"); option.value = value; option.textContent = label; authoritySelect.append(option);
+    });
+    const userSelect = document.createElement("select");
+    userSelect.setAttribute("aria-label", "اختر نوع المستخدم");
+    [["", "كل المستخدمين"], ["فرد", "فرد"], ["مقيم", "مقيم"], ["مواطن", "مواطن"], ["زائر", "زائر"], ["موظف", "موظف"], ["مستثمر", "مستثمر"], ["صاحب شركة", "صاحب شركة"], ["ممثل منشأة", "ممثل منشأة"], ["أسرة", "أسرة"]].forEach(([value, label]) => {
+      const option = document.createElement("option"); option.value = value; option.textContent = label; userSelect.append(option);
     });
     const count = document.createElement("p");
     count.className = "directory-result-count";
     count.setAttribute("aria-live", "polite");
-    controls.append(emirateSelect, audienceSelect, count);
+    controls.append(emirateSelect, categorySelect, authoritySelect, userSelect, count);
     form?.insertAdjacentElement("afterend", controls);
     const more = document.createElement("button");
     more.type = "button";
@@ -323,12 +348,16 @@
     const apply = () => {
       const query = input.value.trim().toLowerCase();
       const emirate = emirateSelect.value;
-      const category = audienceSelect.value;
+      const category = categorySelect.value;
+      const authority = authoritySelect.value;
+      const userType = userSelect.value;
       const matches = cards.filter((card) => {
         const haystack = (card.dataset.search || card.textContent || "").toLowerCase();
         return (!query || query.split(/\s+/).every((term) => haystack.includes(term)))
-          && (!emirate || haystack.includes(emirate.toLowerCase()))
-          && (!category || haystack.includes(category));
+          && (!emirate || (card.dataset.emirate || haystack).toLowerCase().includes(emirate.toLowerCase()))
+          && (!category || card.dataset.category === category)
+          && (!authority || card.dataset.authority === authority)
+          && (!userType || (card.dataset.userTypes || "").includes(userType));
       });
       cards.forEach((card) => { card.hidden = true; });
       matches.slice(0, limit).forEach((card) => { card.hidden = false; });
@@ -337,9 +366,21 @@
     };
     input.addEventListener("input", () => { limit = 24; requestAnimationFrame(apply); });
     emirateSelect.addEventListener("change", () => { limit = 24; apply(); });
-    audienceSelect.addEventListener("change", () => { limit = 24; apply(); });
+    categorySelect.addEventListener("change", () => { limit = 24; apply(); });
+    authoritySelect.addEventListener("change", () => { limit = 24; apply(); });
+    userSelect.addEventListener("change", () => { limit = 24; apply(); });
+    document.getElementById("det-search-button")?.addEventListener("click", apply);
     more.addEventListener("click", () => { limit += 24; apply(); });
     apply();
+    };
+    if (window.HB_INTENT_SERVICES) setupControls();
+    else {
+      const data = document.createElement("script");
+      data.src = "/intent-search-data.js";
+      data.addEventListener("load", setupControls, { once: true });
+      data.addEventListener("error", setupControls, { once: true });
+      document.head.append(data);
+    }
   }
 
   function enhanceServiceDetail() {
@@ -347,9 +388,38 @@
     document.body.classList.add("premium-service-detail");
     const main = document.querySelector("main");
     if (!main) return;
-    const primary = main.querySelector('[data-government-cta="verified"]');
+    const primary = main.querySelector('[data-government-cta="verified"]') || main.querySelector('.service-hero .actions > a:first-child');
     if (primary) primary.classList.add("primary-government-cta");
-    const sections = [...main.querySelectorAll(".detail-section")];
+    const hero = main.querySelector('.service-hero');
+    if (hero && !hero.querySelector('.service-facts-bar')) {
+      const panels = [...main.querySelectorAll('.content-panel')];
+      const findPanel = (pattern) => panels.find((panel) => pattern.test(panel.querySelector('h2')?.textContent || ''));
+      const fees = findPanel(/الرسوم/);
+      const duration = findPanel(/المدة/);
+      const bar = document.createElement('div');
+      bar.className = 'service-facts-bar';
+      const authority = hero.querySelector('.eyebrow')?.textContent?.split('·') || [];
+      [["الجهة", authority[0]], ["الإمارة", authority[1]], ["الرسوم", fees?.querySelector('p')?.textContent], ["المدة", duration?.querySelector('p')?.textContent]].forEach(([label, value]) => {
+        if (!value) return;
+        const item = document.createElement('div');
+        const term = document.createElement('span'); term.textContent = label;
+        const detail = document.createElement('b'); detail.textContent = value.trim();
+        item.append(term, detail); bar.append(item);
+      });
+      hero.append(bar);
+      const actions = hero.querySelector('.actions');
+      const secondary = actions ? [...actions.querySelectorAll('a')].slice(1) : [];
+      if (secondary.length) {
+        const details = document.createElement('details'); details.className = 'service-secondary-actions';
+        const summary = document.createElement('summary'); summary.textContent = 'المعلومات والمصادر الإضافية';
+        const content = document.createElement('div'); secondary.forEach((link) => content.append(link));
+        details.append(summary, content); hero.append(details);
+      }
+      const conditions = findPanel(/الشروط|الأهلية/);
+      const conditionsHeading = conditions?.querySelector('h2');
+      if (conditionsHeading) conditionsHeading.textContent = 'هل هذه الخدمة مناسبة لي؟ — الشروط';
+    }
+    const sections = [...main.querySelectorAll(".detail-section, .content-panel")];
     sections.forEach((section, index) => {
       section.style.setProperty("--section-order", String(index + 1));
     });
