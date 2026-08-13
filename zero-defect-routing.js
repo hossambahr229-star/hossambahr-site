@@ -312,7 +312,7 @@
         context.textContent = [service.r, service.m].filter(Boolean).join(" · ");
         title.insertAdjacentElement("afterend", context);
       }
-      [...card.querySelectorAll(".actions a")].slice(1).forEach((secondaryAction) => secondaryAction.hidden = true);
+      [...card.querySelectorAll(".actions a")].slice(1).forEach((secondaryAction) => secondaryAction.classList.add("directory-secondary-action"));
     });
     const quickGoals = document.createElement("div");
     quickGoals.className = "directory-quick-goals";

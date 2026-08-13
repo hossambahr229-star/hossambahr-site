@@ -1,12 +1,13 @@
 /* Premium usability layer — preserves the historical green/gold identity. */
-.activities-hero{min-height:auto;padding:clamp(55px,7vw,88px) 8vw;gap:clamp(34px,6vw,80px)}
+.activities-hero{min-height:auto;padding:clamp(48px,6vw,76px) max(20px,calc((100vw - 1180px)/2));gap:clamp(30px,5vw,64px)}
 .activities-hero:before{font-size:clamp(110px,15vw,190px);opacity:.55}
 .activities-hero h1{max-width:14ch;font-size:clamp(38px,4.7vw,66px);line-height:1.18}
 .activities-hero-copy>p{font-size:15px;line-height:1.9}
 .activities-facts{border-color:#ffffff30;border-radius:18px;overflow:hidden}
 .activities-facts article{min-height:112px;padding:24px}
 .activities-facts span{font-size:11px;line-height:1.6}
-.activity-advisor{padding-block:clamp(55px,7vw,85px);background:#f3f7f5}
+.activity-advisor{padding-block:clamp(48px,6vw,72px);background:#f3f7f5}
+.activity-advisor>.advisor-heading,.activity-advisor>.advisor-card,.activity-advisor>.advisor-results{width:min(100%,860px);max-width:860px;margin-inline:auto}
 .advisor-card,.advisor-results{border-radius:18px}
 .advisor-heading p,.advisor-card>label{font-size:14px;line-height:1.8}
 .advisor-choices button{min-height:42px;font-size:12px}
@@ -25,7 +26,7 @@
 .activities-header .logo{display:grid;width:42px;height:42px;place-items:center;border-radius:50%;background:var(--green);color:#fff;font-weight:800}
 .activities-header .header-track{min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:var(--green);color:#fff;padding:8px 16px}
 .directory-status b{font-size:16px}.directory-status span,.directory-status small{font-size:10px;line-height:1.65}
-.activity-card{min-height:215px;border-radius:15px;padding:18px}
+.activity-card{min-height:190px;border-radius:14px;padding:16px;box-shadow:0 3px 14px #102f270d}
 .activity-card h3{font-size:17px;line-height:1.55}
 .activity-name-en{font-size:11px;min-height:32px}
 .activity-card>p{display:-webkit-box;overflow:hidden;font-size:11px;-webkit-box-orient:vertical;-webkit-line-clamp:2}.activity-group,.activity-category{font-size:9px}.activity-card button{min-height:42px;font-size:11px}
@@ -34,9 +35,11 @@
 .activity-dialog h2{font-size:28px}.dialog-en,.activity-dialog>p,.activity-dialog details p{font-size:13px}.activity-dialog h3{font-size:14px}.activity-dialog dt{font-size:10px}.activity-dialog dd{font-size:13px}
 .activity-dialog summary,.dialog-actions>a:last-child{font-size:12px}
 @media(max-width:720px){
-  .activities-hero{padding:46px 18px}.activities-hero h1{font-size:38px}.activities-hero-copy>p{font-size:14px}
+  .activities-hero{padding:36px 18px}.activities-hero h1{font-size:clamp(32px,10vw,38px)}.activities-hero-copy>p{font-size:14px}
   .activities-facts{grid-template-columns:1fr 1fr}.activities-facts article{min-height:95px;padding:17px}
   .activity-search-panel{position:static}.directory-status{display:grid}.directory-status small{text-align:right}
   .activity-advanced-content{grid-template-columns:1fr}.activities-header{min-height:64px}.activities-header .header-track{display:none}
-  .activity-card{min-height:0;padding:16px}
+  .activity-advisor{padding:40px 18px}.activity-advisor>.advisor-heading,.activity-advisor>.advisor-card,.activity-advisor>.advisor-results{width:100%;max-width:none}
+  .advisor-choices{display:flex;flex-wrap:wrap;overflow:visible}.advisor-choices button{flex:0 1 auto;white-space:normal}
+  .activity-card{min-height:0;padding:14px}.activity-card>p{-webkit-line-clamp:1}.activity-name-en{min-height:0}
 }
