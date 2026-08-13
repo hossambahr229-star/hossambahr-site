@@ -61,3 +61,28 @@ test('partial activity code search returns the matching code family', () => {
   assert.ok(results.length > 0);
   assert.ok(results[0].code.startsWith('5149'));
 });
+
+test('final beginner journeys resolve to the correct legal service family', () => {
+  const scenarios = [
+    ['عايز أعمل إقامة لمراتي', /family-residency/],
+    ['أريد إقامة لزوجتي', /family-residency/],
+    ['عايز أفتح شركة في دبي', /^issue-trade-license-dubai$/],
+    ['الرخصة انتهت', /renew.*license|license.*renew/],
+    ['عايز أجدد الرخصة', /renewal|renew.*license|license.*renew/],
+    ['عايز أجيب أخويا زيارة', /زيارة-قريب-أو-صديق/],
+    ['عايز أعمل إقامة لعامل', /إصدار-إقامة-موظف|issue.*residence/],
+    ['عايز أضيف نشاط', /activity|activities/],
+    ['عايز أضيف شريك', /add-remove-partner/],
+    ['عايز ألغي الشركة', /cancellation|cancel-business-license/],
+    ['عايز أغير اسم الشركة', /amendment|amend-business-license/],
+  ];
+  for (const [query, expected] of scenarios) {
+    const result = rankServices(query, services)[0];
+    assert.ok(result, query);
+    assert.match(result.s, expected, `${query} => ${result.s}`);
+  }
+});
+
+test('unmatched text does not return arbitrary verified services', () => {
+  assert.deepEqual(rankServices('zzzz qqqq غير مفهوم إطلاقًا', services), []);
+});

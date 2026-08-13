@@ -60,8 +60,8 @@
       const nodes = [];
       while (walker.nextNode()) nodes.push(walker.currentNode);
       for (const node of nodes) {
-        if (/24\s*(?:<!--.*?-->)?\s*خدمة|24 خدمة/.test(node.nodeValue || "")) node.nodeValue = node.nodeValue.replace(/24(?=\s*خدمة)/g, String(total));
-        if (/3\s*(?:جهة|جهات)\s*مغطاة/.test(node.nodeValue || "")) node.nodeValue = node.nodeValue.replace(/3(?=\s*(?:جهة|جهات))/g, String(authorities));
+        if (/(?:24|105|140)\s*(?:<!--.*?-->)?\s*خدمة/.test(node.nodeValue || "")) node.nodeValue = node.nodeValue.replace(/(?:24|105|140)(?=\s*خدمة)/g, String(total));
+        if (/(?:3|9|23)\s*(?:جهة|جهات)(?:\s*مغطاة|\s*في سجل النطاق)?/.test(node.nodeValue || "")) node.nodeValue = node.nodeValue.replace(/(?:3|9|23)(?=\s*(?:جهة|جهات))/g, String(authorities));
       }
 
       for (const anchor of document.querySelectorAll('a[href^="/categories/"]')) {
@@ -124,6 +124,8 @@
       }
     } catch {
       // The static page remains usable when the count enhancement is unavailable.
+    } finally {
+      document.documentElement.classList.remove("registry-counts-pending");
     }
   }
 
