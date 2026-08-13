@@ -6,9 +6,12 @@ const read = (path) => readFile(new URL(`../../${path}`, import.meta.url), 'utf8
 
 test('homepage keeps a focused six-item decision surface and progressive expert content', async () => {
   const runtime = await read('zero-defect-routing.js');
+  const styles = await read('intent-first.css');
   assert.match(runtime, /index >= 6/);
   assert.match(runtime, /ux-progressive-details/);
   assert.match(runtime, /enhancePrimaryNavigation\(\)/);
+  assert.match(styles, /hero-copy h1[\s\S]*color: #fff !important/);
+  assert.match(styles, /\.examples \{[^}]*flex-wrap: wrap/);
 });
 
 test('service explorer paginates without deleting registry cards', async () => {
@@ -23,6 +26,7 @@ test('service explorer paginates without deleting registry cards', async () => {
   assert.match(runtime, /directory-filter-drawer/);
   assert.match(runtime, /directory-quick-goals/);
   assert.match(runtime, /directory-reset/);
+  assert.match(runtime, /directory-secondary-action/);
 });
 
 test('the heavy activities dataset is deferred until search intent', async () => {
