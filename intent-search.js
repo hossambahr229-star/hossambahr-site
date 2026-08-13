@@ -286,9 +286,10 @@ export function bootstrapIntentSearch() {
   document.querySelectorAll('.examples button').forEach((button, index) => {
     if (examples[index]) button.textContent = examples[index];
   });
-  const submit = () => {
+  const submit = async () => {
     const query = input.value.trim();
     if (!query) { input.focus(); return; }
+    if (window.HB_ACTIVITY_DATA_READY) await window.HB_ACTIVITY_DATA_READY;
     const services = rankServices(query, window.HB_INTENT_SERVICES || []);
     const activities = rankActivities(query, window.DUBAI_ACTIVITIES || []);
     renderResults(container, query, services, activities);
