@@ -6,6 +6,8 @@ const ignored = new Set(['.git', 'node_modules', 'zero-defect-smoke']);
 const dataScripts = new Set(['intent-search-data.js', 'dubai-activities-data.js']);
 const failures = [];
 let htmlRoutes = 0;
+let productionRoutes = 0;
+let nonProductionPreviewRoutes = 0;
 let filesScanned = 0;
 
 const signatures = [
@@ -39,6 +41,9 @@ async function walk(directory) {
     if (!entry.isFile()) continue;
     if (entry.name.endsWith('.html')) {
       htmlRoutes += 1;
+      const normalized = relative(root, path).replaceAll('\\', '/');
+      if (normalized.startsWith('reports/review/preview-site/')) nonProductionPreviewRoutes += 1;
+      else productionRoutes += 1;
       inspect(path, await readFile(path, 'utf8'));
     } else if (entry.name.endsWith('.json') || dataScripts.has(entry.name)) {
       inspect(path, await readFile(path, 'utf8'));
@@ -49,7 +54,9 @@ async function walk(directory) {
 await walk(root);
 const expectedRoutes = 322;
 if (htmlRoutes !== expectedRoutes) failures.push({ path: '.', issue: `route count ${htmlRoutes} != ${expectedRoutes}` });
+if (productionRoutes !== 318) failures.push({ path: '.', issue: `production route count ${productionRoutes} != 318` });
+if (nonProductionPreviewRoutes !== 4) failures.push({ path: '.', issue: `preview route count ${nonProductionPreviewRoutes} != 4` });
 
-const report = { passed: failures.length === 0, htmlRoutes, filesScanned, corruptedStrings: failures.length, failures };
+const report = { passed: failures.length === 0, htmlRoutes, productionRoutes, nonProductionPreviewRoutes, filesScanned, corruptedStrings: failures.length, failures };
 console.log(JSON.stringify(report, null, 2));
 if (failures.length) process.exitCode = 1;
