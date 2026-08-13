@@ -61,6 +61,7 @@
       const response = await fetch("/platform-summary.json", { cache: "no-cache" });
       if (!response.ok) return;
       const summary = await response.json();
+      if (location.pathname === "/command-center/") setTimeout(() => enhanceCommandCenter(summary), 2400);
       const total = summary.verified;
       const authorities = summary.authorities;
       const categoryCounts = new Map(Object.entries(summary.categoryCounts || {}));
@@ -162,6 +163,50 @@
       const query = url.searchParams.get("q");
       if (query && corrections.has(query)) anchor.setAttribute("href", corrections.get(query));
     }
+  }
+
+  function enhanceCommandCenter(summary) {
+    if (location.pathname !== "/command-center/" || document.body.dataset.commandCenterEnhanced === "true") return;
+    document.body.dataset.commandCenterEnhanced = "true";
+    const main = document.querySelector("main");
+    const hero = main?.querySelector(".page-hero");
+    const legacyMetrics = main?.querySelector(".metric-grid");
+    const legacyStages = main?.querySelector(".coverage-stage-grid")?.closest("section");
+    if (!main || !hero || !legacyMetrics) return;
+
+    const metrics = [
+      [summary.verified, "خدمة منشورة من السجل الحي"],
+      [summary.activities, "نشاط اقتصادي في دليل دبي"],
+      [summary.coveredEmirates, "إمارات مغطاة"],
+      [summary.authorities, "جهة حكومية مغطاة"],
+    ];
+    legacyMetrics.replaceChildren(...metrics.map(([value, label]) => {
+      const item = document.createElement("div");
+      item.className = "metric";
+      const number = document.createElement("b");
+      const description = document.createElement("span");
+      number.textContent = String(value);
+      description.textContent = label;
+      item.append(number, description);
+      return item;
+    }));
+    legacyMetrics.setAttribute("aria-label", "مؤشرات محسوبة من سجل النشر الحالي");
+    legacyStages?.remove();
+
+    const actions = document.createElement("section");
+    actions.className = "detail-section command-center-actions";
+    actions.innerHTML = `<div class="section-heading compact-heading"><div><span class="eyebrow">إجراءات متاحة الآن</span><h2>ماذا تريد أن تفعل؟</h2></div></div>
+      <div class="command-action-grid">
+        <a href="/services/"><b>ابدأ معاملة</b><span>ابحث عن الخدمة والمتطلبات والمسار الصحيح.</span></a>
+        <a href="https://wa.me/971503780460?text=${encodeURIComponent("مرحباً، أريد مساعدة في تحديد وتجهيز معاملتي")}" target="_blank" rel="noopener noreferrer" data-commercial-cta="verified"><b>اطلب مساعدة حسام بحر</b><span>حدد المعاملة والنواقص قبل إرسال أي مستند حساس.</span></a>
+        <a href="/dubai-business-activities.html"><b>ابحث عن نشاط ورمزه</b><span>ابحث في 2,610 نشاطًا بالاسم أو الرمز.</span></a>
+        <a href="/services/#directory-search"><b>افتح المسار الحكومي</b><span>اختر الخدمة ثم انتقل إلى الجهة الرسمية الموثقة.</span></a>
+      </div>`;
+    legacyMetrics.insertAdjacentElement("afterend", actions);
+    const sourceNote = document.createElement("p");
+    sourceNote.className = "command-data-note";
+    sourceNote.textContent = "هذه المؤشرات محسوبة من سجل النشر الحالي. الحسابات، رفع المستندات، متابعة الطلبات والتنبيهات غير مفعّلة حاليًا كما هو موضح أدناه.";
+    actions.insertAdjacentElement("afterend", sourceNote);
   }
 
   function exposeActivitySearch() {
@@ -339,6 +384,17 @@
       option.textContent = name;
       emirateSelect.append(option);
     });
+    const emirateShortcuts = document.createElement("div");
+    emirateShortcuts.className = "directory-emirate-shortcuts";
+    emirateShortcuts.setAttribute("aria-label", "وصول سريع إلى الإمارات السبع");
+    emirates.slice(1, 8).forEach((name) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = name;
+      button.dataset.emirateShortcut = name;
+      if (name === "دبي") button.classList.add("is-primary-market");
+      emirateShortcuts.append(button);
+    });
     const categorySelect = document.createElement("select");
     categorySelect.setAttribute("aria-label", "اختر نوع المعاملة");
     [["", "كل المعاملات"], ["companies-establishments", "الشركات والرخص"], ["work-employees", "العمل والموظفون"], ["residency-visas", "الإقامة والتأشيرات"], ["identity-citizenship", "الهوية والجنسية"], ["property-rentals", "العقارات والإيجارات"], ["contracts-notarization", "العقود والتوثيق"], ["financial-business", "الضرائب والأعمال"]].forEach(([value, label]) => {
@@ -374,7 +430,7 @@
     if (window.matchMedia("(min-width: 900px)").matches) filterDrawer.open = true;
     const explorerTools = document.createElement("div");
     explorerTools.className = "directory-explorer-tools";
-    explorerTools.append(quickGoals, filterDrawer, count);
+    explorerTools.append(quickGoals, emirateShortcuts, filterDrawer, count);
     form?.insertAdjacentElement("afterend", explorerTools);
     const more = document.createElement("button");
     more.type = "button";
@@ -414,10 +470,20 @@
       apply();
       grid.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+    emirateShortcuts.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-emirate-shortcut]");
+      if (!button) return;
+      emirateSelect.value = button.dataset.emirateShortcut;
+      limit = 12;
+      apply();
+      [...emirateShortcuts.querySelectorAll("button")].forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      grid.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
     reset.addEventListener("click", () => {
       input.value = "";
       [emirateSelect, categorySelect, authoritySelect, userSelect].forEach((select) => select.value = "");
       limit = 12;
+      [...emirateShortcuts.querySelectorAll("button")].forEach((item) => item.setAttribute("aria-pressed", "false"));
       apply();
       input.focus();
     });
@@ -441,7 +507,33 @@
     const main = document.querySelector("main");
     if (!main) return;
     const primary = main.querySelector('[data-government-cta="verified"]') || main.querySelector('.service-hero .actions > a:first-child');
+    if (primary && /^https:\/\//i.test(primary.getAttribute("href") || "") && !main.matches('[data-publication-state="NORMALIZED"], [data-publication-state="PENDING_VERIFICATION"]')) primary.dataset.governmentCta = "verified";
     if (primary) primary.classList.add("primary-government-cta");
+    const publicationState = main.dataset.publicationState || main.querySelector('[data-publication-state]')?.dataset.publicationState;
+    const publishedService = publicationState === "VERIFIED" || primary?.dataset.governmentCta === "verified";
+    if (primary && publishedService && !main.querySelector('[data-commercial-cta="verified"]')) {
+      const serviceName = main.querySelector("h1")?.textContent?.trim() || "هذه المعاملة";
+      const commercial = document.createElement("a");
+      commercial.className = "execute-with-us-cta";
+      commercial.href = `https://wa.me/971503780460?text=${encodeURIComponent(`مرحباً، أريد طلب تنفيذ معاملة: ${serviceName}\nرابط الدليل: ${location.href}`)}`;
+      commercial.target = "_blank";
+      commercial.rel = "noopener noreferrer";
+      commercial.dataset.commercialCta = "verified";
+      commercial.textContent = "اطلب تنفيذ المعاملة مع حسام بحر";
+      const actions = primary.closest(".actions") || primary.parentElement;
+      if (actions) {
+        actions.classList.add("dual-execution-paths");
+        const commercialLabel = document.createElement("span");
+        commercialLabel.className = "execution-path-label commercial-path-label";
+        commercialLabel.textContent = "مسار حسام بحر";
+        const officialLabel = document.createElement("span");
+        officialLabel.className = "execution-path-label official-path-label";
+        officialLabel.textContent = "المسار الحكومي الرسمي";
+        actions.insertBefore(commercialLabel, primary);
+        actions.insertBefore(commercial, primary);
+        actions.insertBefore(officialLabel, primary);
+      }
+    }
     const hero = main.querySelector('.service-hero');
     if (hero && !hero.querySelector('.service-facts-bar')) {
       const panels = [...main.querySelectorAll('.content-panel')];

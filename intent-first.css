@@ -178,6 +178,11 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:not(:first-ch
 .directory-quick-goals > span { color: var(--ux-muted); font-size: .9rem; font-weight: 800; }
 .directory-quick-goals button { min-height: 42px; padding: .55rem .85rem; border: 1px solid #cfddd7; border-radius: 999px; background: #fff; color: var(--ux-brand-900); cursor: pointer; font: inherit; font-size: .88rem; font-weight: 800; }
 .directory-quick-goals button:hover { border-color: var(--ux-gold-500); background: var(--ux-gold-100); }
+.directory-emirate-shortcuts { display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; }
+.directory-emirate-shortcuts::before { content: "اختر الإمارة:"; color: var(--ux-muted); font-size: .84rem; font-weight: 800; }
+.directory-emirate-shortcuts button { min-height: 42px; padding: .5rem .8rem; border: 1px solid #cfddd7; border-radius: 999px; background: #fff; color: var(--ux-brand-900); cursor: pointer; font: inherit; font-size: .84rem; font-weight: 800; }
+.directory-emirate-shortcuts button:hover,.directory-emirate-shortcuts button[aria-pressed="true"] { border-color: var(--ux-gold-500); background: var(--ux-gold-100); }
+.directory-emirate-shortcuts .is-primary-market { border-color: var(--ux-gold-500); }
 .directory-filter-drawer { border: 1px solid var(--ux-line); border-radius: var(--ux-radius-md); background: var(--ux-soft); }
 .directory-filter-drawer > summary { min-height: 48px; display: flex; align-items: center; padding: .65rem 1rem; cursor: pointer; color: var(--ux-brand-900); font-weight: 800; }
 .directory-filter-drawer > summary::marker { color: var(--ux-gold-700); }
@@ -196,6 +201,23 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:first-child {
 .premium-service-detail .detail-section { position: relative; padding: clamp(1.1rem,2.5vw,1.75rem); border: 0; border-top: 1px solid var(--ux-line); border-radius: 0; background: transparent; box-shadow: none; }
 .premium-service-detail .detail-section + .detail-section { margin-top: 0; }
 .premium-service-detail .primary-government-cta { min-height: 52px; padding-inline: 1.25rem; border-radius: var(--ux-radius-sm); background: var(--ux-brand-900); color: #fff; font-weight: 800; }
+.dual-execution-paths { display: grid !important; grid-template-columns: 1fr 1fr; gap: .55rem .75rem !important; align-items: stretch !important; }
+.dual-execution-paths .execution-path-label { color: var(--ux-muted); font-size: .76rem; font-weight: 800; }
+.dual-execution-paths .execute-with-us-cta,.dual-execution-paths .primary-government-cta { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; padding: .7rem 1rem; border-radius: var(--ux-radius-sm); text-align: center; font-weight: 800; }
+.dual-execution-paths .execute-with-us-cta { grid-column: 1; background: var(--ux-brand-900); color: #fff; border: 1px solid var(--ux-brand-900); }
+.dual-execution-paths .primary-government-cta { grid-column: 2; background: #fff; color: var(--ux-brand-900); border: 1px solid #b9cbc4; }
+.commercial-path-label { grid-column: 1; grid-row: 1; }
+.official-path-label { grid-column: 2; grid-row: 1; }
+.command-center-actions { margin-top: 1.25rem; }
+.command-action-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .85rem; }
+.command-action-grid a { min-height: 112px; display: flex; flex-direction: column; justify-content: center; gap: .45rem; padding: 1rem 1.1rem; border: 1px solid var(--ux-line); border-top: 3px solid var(--ux-gold-500); border-radius: var(--ux-radius-md); background: #fff; color: var(--ux-brand-900); }
+.command-action-grid a:hover { box-shadow: var(--ux-shadow-sm); transform: translateY(-1px); }
+.command-action-grid span,.command-data-note { color: var(--ux-muted); font-size: .88rem; line-height: 1.7; }
+.command-data-note { max-width: var(--ux-content); margin: 1rem auto; padding: .85rem 1rem; border-inline-start: 3px solid var(--ux-gold-500); background: var(--ux-soft); }
+.account-readiness { display: grid; gap: .75rem; margin-block: 1rem 1.35rem; }
+.account-readiness > div { display: grid; grid-template-columns: minmax(190px,.7fr) minmax(0,1.3fr); gap: 1rem; align-items: start; padding: .9rem 1rem; border: 1px solid var(--ux-line); border-radius: var(--ux-radius-sm); background: var(--ux-soft); }
+.account-readiness b,.account-readiness span { display: block; line-height: 1.7; }
+.account-readiness span { color: var(--ux-muted); }
 .premium-service-detail .breadcrumbs { color: var(--ux-muted); font-size: .9rem; }
 .service-facts-bar { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; margin-top: 1.4rem; overflow: hidden; border: 1px solid rgba(255,255,255,.2); border-radius: var(--ux-radius-md); background: rgba(255,255,255,.15); }
 .service-facts-bar div { min-width: 0; padding: .9rem 1rem; background: rgba(5,37,31,.55); }
@@ -226,6 +248,7 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:first-child {
 }
 
 @media (max-width: 760px) {
+  .account-readiness > div { grid-template-columns: 1fr; gap: .25rem; }
   .content-section, .page-shell { width: calc(100% - 32px); }
   .site-header { min-height: 66px; padding-inline: 16px; gap: .55rem; }
   .site-header .brand { min-width: 0; }
@@ -271,6 +294,10 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:first-child {
   body[data-directory-enhanced="true"] .search-shell { position: static; }
   .nav-more { display: none; }
   .service-facts-bar { grid-template-columns: 1fr 1fr; }
+  .dual-execution-paths,.command-action-grid { grid-template-columns: 1fr; }
+  .dual-execution-paths .execute-with-us-cta,.dual-execution-paths .primary-government-cta,.commercial-path-label,.official-path-label { grid-column: 1; }
+  .commercial-path-label { grid-row: auto; }
+  .official-path-label { grid-row: auto; margin-top: .35rem; }
   .premium-service-detail .service-hero { margin-inline: 16px; padding: 1.1rem; }
   .premium-service-detail .page-hero h1 { font-size: clamp(1.85rem,8vw,2.5rem); }
   .premium-service-detail .detail-section { padding-inline: 16px; }

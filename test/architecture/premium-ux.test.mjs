@@ -40,6 +40,9 @@ test('service explorer paginates without deleting registry cards', async () => {
   assert.match(runtime, /directory-quick-goals/);
   assert.match(runtime, /directory-reset/);
   assert.match(runtime, /directory-secondary-action/);
+  assert.match(runtime, /directory-emirate-shortcuts/);
+  assert.match(runtime, /emirates\.slice\(1, 8\)/);
+  for (const emirate of ['دبي','أبوظبي','الشارقة','عجمان','رأس الخيمة','أم القيوين','الفجيرة']) assert.match(runtime, new RegExp(emirate));
 });
 
 test('the heavy activities dataset is deferred until search intent', async () => {
@@ -67,7 +70,20 @@ test('service pages expose verified summary facts and one primary hero action', 
   assert.match(runtime, /service-facts-bar/);
   assert.match(runtime, /service-secondary-actions/);
   assert.match(runtime, /هل هذه الخدمة مناسبة لي/);
+  assert.match(runtime, /dataset\.commercialCta = "verified"/);
+  assert.match(runtime, /طلب تنفيذ معاملة/);
+  assert.match(runtime, /مسار حسام بحر/);
+  assert.match(runtime, /المسار الحكومي الرسمي/);
   assert.match(styles, /\.service-facts-bar/);
   assert.match(styles, /\.premium-service-detail \.service-hero/);
   assert.match(styles, /background: #fbfaf6 !important/);
+});
+
+test('command center replaces legacy static metrics with live registry facts and real actions', async () => {
+  const runtime = await read('zero-defect-routing.js');
+  assert.match(runtime, /enhanceCommandCenter\(summary\)/);
+  assert.match(runtime, /خدمة منشورة من السجل الحي/);
+  assert.match(runtime, /هذه المؤشرات محسوبة من سجل النشر الحالي/);
+  assert.match(runtime, /الحسابات، رفع المستندات، متابعة الطلبات والتنبيهات غير مفعّلة حاليًا/);
+  assert.match(runtime, /data-commercial-cta="verified"/);
 });

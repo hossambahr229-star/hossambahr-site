@@ -68,12 +68,14 @@ jobs:
             "/"
             "/services/"
             "/dubai-business-activities.html"
+            "/command-center/"
             "/categories/companies-establishments/"
             "/categories/residency-visas/"
             "/categories/work-employees/"
             "/categories/property-rentals/"
             "/services/mohre-private-tutor-permit/"
             "/services/gdrfa-family-residence-renew/"
+            "/services/issue-trade-license-dubai/"
             "/authorities/icp/"
             "/authorities/rta-dubai/"
           )
@@ -92,9 +94,40 @@ jobs:
               text=path.read_text('utf-8')
               if bad.search(text): failures.append(str(path))
               if '<html' not in text.lower() or len(text) < 1000: failures.append(str(path)+':empty')
-          print({'browserPages':11,'corrupted':failures})
+          print({'browserPages':13,'corrupted':failures})
           if failures: sys.exit(1)
           PY
+      - name: Verify Dubai visibility and both execution paths in production
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --ignore-scripts playwright@1.55.0
+          node - <<'JS'
+          const { chromium } = require('playwright');
+          const { execFileSync } = require('child_process');
+          (async()=>{
+            const executablePath=execFileSync('which',['chrome'],{encoding:'utf8'}).trim();
+            const browser=await chromium.launch({headless:true,executablePath});
+            const page=await browser.newPage({viewport:{width:390,height:844}});
+            const errors=[]; page.on('pageerror',e=>errors.push(e.message));
+            await page.goto('https://hossambahr.com/services/?production-paths=1',{waitUntil:'networkidle'});
+            await page.waitForSelector('[data-emirate-shortcut="دبي"]');
+            await page.click('[data-emirate-shortcut="دبي"]');
+            const dubaiVisible=await page.locator('[data-directory-card]:visible').count();
+            const mismatches=await page.locator('[data-directory-card]:visible').evaluateAll(cards=>cards.filter(card=>!(card.dataset.emirate||'').includes('دبي')).length);
+            await page.goto('https://hossambahr.com/services/issue-trade-license-dubai/?production-paths=1',{waitUntil:'networkidle'});
+            const commercial=await page.locator('[data-commercial-cta="verified"][href^="https://wa.me/971503780460"]').count();
+            const official=await page.locator('[data-government-cta="verified"][href^="https://"]').count();
+            await page.goto('https://hossambahr.com/command-center/?production-paths=1',{waitUntil:'networkidle'});
+            const commandActions=await page.locator('.command-action-grid a').count();
+            const text=(await page.locator('.metric-grid').textContent()).replaceAll(',','');
+            const liveMetrics=['200','2610','7','20'].every(value=>text.includes(value));
+            const result={dubaiVisible,mismatches,commercial,official,commandActions,liveMetrics,errors};
+            console.log(result);
+            await browser.close();
+            if(dubaiVisible<1||mismatches||commercial!==1||official<1||commandActions!==4||!liveMetrics||errors.length)process.exit(1);
+          })();
+          JS
       - name: Full-page responsive production layout audit
         shell: bash
         run: |
