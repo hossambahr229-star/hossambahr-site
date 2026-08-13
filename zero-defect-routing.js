@@ -61,6 +61,7 @@
       const response = await fetch("/platform-summary.json", { cache: "no-cache" });
       if (!response.ok) return;
       const summary = await response.json();
+      if (location.pathname === "/command-center/") setTimeout(() => enhanceCommandCenter(summary), 2400);
       const total = summary.verified;
       const authorities = summary.authorities;
       const categoryCounts = new Map(Object.entries(summary.categoryCounts || {}));
@@ -164,6 +165,50 @@
     }
   }
 
+  function enhanceCommandCenter(summary) {
+    if (location.pathname !== "/command-center/" || document.body.dataset.commandCenterEnhanced === "true") return;
+    document.body.dataset.commandCenterEnhanced = "true";
+    const main = document.querySelector("main");
+    const hero = main?.querySelector(".page-hero");
+    const legacyMetrics = main?.querySelector(".metric-grid");
+    const legacyStages = main?.querySelector(".coverage-stage-grid")?.closest("section");
+    if (!main || !hero || !legacyMetrics) return;
+
+    const metrics = [
+      [summary.verified, "Ø®Ø¯Ù…Ø© Ù…Ù†Ø´ÙˆØ±Ø© Ù…Ù† Ø§Ù„Ø³Ø¬Ù„ Ø§Ù„Ø­ÙŠ"],
+      [summary.activities, "Ù†Ø´Ø§Ø· Ø§Ù‚ØªØµØ§Ø¯ÙŠ ÙÙŠ Ø¯Ù„ÙŠÙ„ Ø¯Ø¨ÙŠ"],
+      [summary.coveredEmirates, "Ø¥Ù…Ø§Ø±Ø§Øª Ù…ØºØ·Ø§Ø©"],
+      [summary.authorities, "Ø¬Ù‡Ø© Ø­ÙƒÙˆÙ…ÙŠØ© Ù…ØºØ·Ø§Ø©"],
+    ];
+    legacyMetrics.replaceChildren(...metrics.map(([value, label]) => {
+      const item = document.createElement("div");
+      item.className = "metric";
+      const number = document.createElement("b");
+      const description = document.createElement("span");
+      number.textContent = String(value);
+      description.textContent = label;
+      item.append(number, description);
+      return item;
+    }));
+    legacyMetrics.setAttribute("aria-label", "Ù…Ø¤Ø´Ø±Ø§Øª Ù…Ø­Ø³ÙˆØ¨Ø© Ù…Ù† Ø³Ø¬Ù„ Ø§Ù„Ù†Ø´Ø± Ø§Ù„Ø­Ø§Ù„ÙŠ");
+    legacyStages?.remove();
+
+    const actions = document.createElement("section");
+    actions.className = "detail-section command-center-actions";
+    actions.innerHTML = `<div class="section-heading compact-heading"><div><span class="eyebrow">Ø¥Ø¬Ø±Ø§Ø¡Ø§Øª Ù…ØªØ§Ø­Ø© Ø§Ù„Ø¢Ù†</span><h2>Ù…Ø§Ø°Ø§ ØªØ±ÙŠØ¯ Ø£Ù† ØªÙØ¹Ù„ØŸ</h2></div></div>
+      <div class="command-action-grid">
+        <a href="/services/"><b>Ø§Ø¨Ø¯Ø£ Ù…Ø¹Ø§Ù…Ù„Ø©</b><span>Ø§Ø¨Ø­Ø« Ø¹Ù† Ø§Ù„Ø®Ø¯Ù…Ø© ÙˆØ§Ù„Ù…ØªØ·Ù„Ø¨Ø§Øª ÙˆØ§Ù„Ù…Ø³Ø§Ø± Ø§Ù„ØµØ­ÙŠØ­.</span></a>
+        <a href="https://wa.me/971503780460?text=${encodeURIComponent("Ù…Ø±Ø­Ø¨Ø§Ù‹ØŒ Ø£Ø±ÙŠØ¯ Ù…Ø³Ø§Ø¹Ø¯Ø© ÙÙŠ ØªØ­Ø¯ÙŠØ¯ ÙˆØªØ¬Ù‡ÙŠØ² Ù…Ø¹Ø§Ù…Ù„ØªÙŠ")}" target="_blank" rel="noopener noreferrer" data-commercial-cta="verified"><b>Ø§Ø·Ù„Ø¨ Ù…Ø³Ø§Ø¹Ø¯Ø© Ø­Ø³Ø§Ù… Ø¨Ø­Ø±</b><span>Ø­Ø¯Ø¯ Ø§Ù„Ù…Ø¹Ø§Ù…Ù„Ø© ÙˆØ§Ù„Ù†ÙˆØ§Ù‚Øµ Ù‚Ø¨Ù„ Ø¥Ø±Ø³Ø§Ù„ Ø£ÙŠ Ù…Ø³ØªÙ†Ø¯ Ø­Ø³Ø§Ø³.</span></a>
+        <a href="/dubai-business-activities.html"><b>Ø§Ø¨Ø­Ø« Ø¹Ù† Ù†Ø´Ø§Ø· ÙˆØ±Ù…Ø²Ù‡</b><span>Ø§Ø¨Ø­Ø« ÙÙŠ 2,610 Ù†Ø´Ø§Ø·Ù‹Ø§ Ø¨Ø§Ù„Ø§Ø³Ù… Ø£Ùˆ Ø§Ù„Ø±Ù…Ø².</span></a>
+        <a href="/services/#directory-search"><b>Ø§ÙØªØ­ Ø§Ù„Ù…Ø³Ø§Ø± Ø§Ù„Ø­ÙƒÙˆÙ…ÙŠ</b><span>Ø§Ø®ØªØ± Ø§Ù„Ø®Ø¯Ù…Ø© Ø«Ù… Ø§Ù†ØªÙ‚Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ø¬Ù‡Ø© Ø§Ù„Ø±Ø³Ù…ÙŠØ© Ø§Ù„Ù…ÙˆØ«Ù‚Ø©.</span></a>
+      </div>`;
+    legacyMetrics.insertAdjacentElement("afterend", actions);
+    const sourceNote = document.createElement("p");
+    sourceNote.className = "command-data-note";
+    sourceNote.textContent = "Ù‡Ø°Ù‡ Ø§Ù„Ù…Ø¤Ø´Ø±Ø§Øª Ù…Ø­Ø³ÙˆØ¨Ø© Ù…Ù† Ø³Ø¬Ù„ Ø§Ù„Ù†Ø´Ø± Ø§Ù„Ø­Ø§Ù„ÙŠ. Ø§Ù„Ø­Ø³Ø§Ø¨Ø§ØªØŒ Ø±ÙØ¹ Ø§Ù„Ù…Ø³ØªÙ†Ø¯Ø§ØªØŒ Ù…ØªØ§Ø¨Ø¹Ø© Ø§Ù„Ø·Ù„Ø¨Ø§Øª ÙˆØ§Ù„ØªÙ†Ø¨ÙŠÙ‡Ø§Øª ØºÙŠØ± Ù…ÙØ¹Ù‘Ù„Ø© Ø­Ø§Ù„ÙŠÙ‹Ø§ ÙƒÙ…Ø§ Ù‡Ùˆ Ù…ÙˆØ¶Ø­ Ø£Ø¯Ù†Ø§Ù‡.";
+    actions.insertAdjacentElement("afterend", sourceNote);
+  }
+
   function exposeActivitySearch() {
     const allowed = ['/', '/services/', '/categories/companies-establishments/'];
     if (allowed.includes(location.pathname)) {
@@ -222,302 +267,5 @@
     }
 
     const capabilityHeading = document.querySelector(".capability-section h2");
-    if (capabilityHeading) capabilityHeading.textContent = "Ø§Ø®ØªØ± Ù†ÙˆØ¹ Ø§Ù„Ù…Ø¹Ø§Ù…Ù„Ø© Ø¨Ù„ØºØ© Ø¨Ø³ÙŠØ·Ø©";
-    document.querySelectorAll(".capability-grid > a").forEach((anchor, index) => {
-      if (index >= 6) anchor.classList.add("ux-hidden");
-    });
-
-    const secondary = [
-      ".live-stats",
-      ".dual-service-section",
-      ".audience-section",
-      ".government-live-section",
-      ".command-promo",
-      ".category-overview",
-      ".content-section:has(.authority-grid)",
-    ].flatMap((selector) => [...document.querySelectorAll(selector)]);
-    const unique = [...new Set(secondary)].filter((node) => !node.closest(".ux-progressive-details"));
-    if (unique.length) {
-      const details = document.createElement("details");
-      details.className = "ux-progressive-details content-section";
-      const summary = document.createElement("summary");
-      summary.textContent = "Ø®ÙŠØ§Ø±Ø§Øª ÙˆØ£Ø¯Ù„Ø© Ø¥Ø¶Ø§ÙÙŠØ© Ù„Ù„Ù…ØªØ®ØµØµÙŠÙ†";
-      const content = document.createElement("div");
-      content.className = "ux-progressive-content";
-      details.append(summary, content);
-      unique.forEach((node) => content.append(node));
-      const anchor = document.querySelector(".capability-section") || actionSection;
-      if (anchor) anchor.insertAdjacentElement("afterend", details);
-      else document.querySelector("main")?.append(details);
-    }
-  }
-
-  function enhancePrimaryNavigation() {
-    const nav = document.querySelector(".desktop-nav");
-    if (!nav || nav.dataset.premiumReady === "true") return;
-    nav.dataset.premiumReady = "true";
-    const preferred = [
-      "/",
-      "/services/",
-      "/dubai-business-activities.html",
-      "/categories/companies-establishments/",
-      "/for/resident/",
-      "/categories/work-employees/",
-      "/authorities/",
-    ];
-    const links = [...nav.querySelectorAll(":scope > a")];
-    links.sort((left, right) => {
-      const a = preferred.indexOf(left.getAttribute("href"));
-      const b = preferred.indexOf(right.getAttribute("href"));
-      return (a < 0 ? 99 : a) - (b < 0 ? 99 : b);
-    }).forEach((link) => nav.append(link));
-    const overflow = [...nav.querySelectorAll(":scope > a")].slice(5);
-    if (!overflow.length) return;
-    const details = document.createElement("details");
-    details.className = "nav-more";
-    const summary = document.createElement("summary");
-    summary.textContent = "Ø§Ù„Ù…Ø²ÙŠØ¯";
-    const menu = document.createElement("div");
-    menu.className = "nav-more-menu";
-    overflow.forEach((link) => menu.append(link));
-    details.append(summary, menu);
-    nav.append(details);
-  }
-
-  function enhanceServiceDirectory() {
-    if (location.pathname !== "/services/" || document.body.dataset.directoryEnhanced === "true") return;
-    const grid = document.getElementById("det-results");
-    const input = document.getElementById("det-search");
-    const cards = grid ? [...grid.querySelectorAll("[data-directory-card]")] : [];
-    if (!grid || !input || !cards.length) return;
-    document.body.dataset.directoryEnhanced = "true";
-    const form = input.closest("form");
-    if (form) form.id = "directory-search";
-    const setupControls = () => {
-    const servicesByRoute = new Map((window.HB_INTENT_SERVICES || []).map((service) => [service.u, service]));
-    cards.forEach((card) => {
-      const route = card.querySelector('h3 a')?.getAttribute('href');
-      const service = servicesByRoute.get(route);
-      if (!service) return;
-      card.dataset.emirate = service.m || "";
-      card.dataset.authority = service.i || service.r || "";
-      card.dataset.category = service.c || "";
-      card.dataset.userTypes = (service.t || []).join(" ");
-      const action = card.querySelector('.actions a');
-      if (action) action.textContent = "Ø§Ø¨Ø¯Ø£";
-      const title = card.querySelector("h3");
-      if (title && !card.querySelector(".directory-card-context")) {
-        const context = document.createElement("p");
-        context.className = "directory-card-context";
-        context.textContent = [service.r, service.m].filter(Boolean).join(" Â· ");
-        title.insertAdjacentElement("afterend", context);
-      }
-      [...card.querySelectorAll(".actions a")].slice(1).forEach((secondaryAction) => secondaryAction.classList.add("directory-secondary-action"));
-    });
-    const quickGoals = document.createElement("div");
-    quickGoals.className = "directory-quick-goals";
-    quickGoals.setAttribute("aria-label", "Ø£Ù‡Ø¯Ø§Ù Ø´Ø§Ø¦Ø¹Ø©");
-    const quickLabel = document.createElement("span");
-    quickLabel.textContent = "Ø§Ø¨Ø¯Ø£ Ø¨Ù‡Ø¯Ù Ø´Ø§Ø¦Ø¹:";
-    quickGoals.append(quickLabel);
-    ["ØªØ£Ø³ÙŠØ³ Ø´Ø±ÙƒØ©", "ØªØ¬Ø¯ÙŠØ¯ Ø¥Ù‚Ø§Ù…Ø©", "ØªØµØ±ÙŠØ­ Ø¹Ù…Ù„", "ØªØ¬Ø¯ÙŠØ¯ Ø±Ø®ØµØ©", "Ù†Ø´Ø§Ø· ØªØ¬Ø§Ø±ÙŠ"].forEach((goal) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.textContent = goal;
-      button.dataset.directoryGoal = goal;
-      quickGoals.append(button);
-    });
-    const controls = document.createElement("div");
-    controls.className = "directory-controls";
-    controls.setAttribute("aria-label", "ØªØµÙÙŠØ© Ø¯Ù„ÙŠÙ„ Ø§Ù„Ø®Ø¯Ù…Ø§Øª");
-    const emirates = ["ÙƒÙ„ Ø§Ù„Ø¥Ù…Ø§Ø±Ø§Øª", "Ø¯Ø¨ÙŠ", "Ø£Ø¨ÙˆØ¸Ø¨ÙŠ", "Ø§Ù„Ø´Ø§Ø±Ù‚Ø©", "Ø¹Ø¬Ù…Ø§Ù†", "Ø±Ø£Ø³ Ø§Ù„Ø®ÙŠÙ…Ø©", "Ø£Ù… Ø§Ù„Ù‚ÙŠÙˆÙŠÙ†", "Ø§Ù„ÙØ¬ÙŠØ±Ø©", "Ø§ØªØ­Ø§Ø¯ÙŠ"];
-    const emirateSelect = document.createElement("select");
-    emirateSelect.setAttribute("aria-label", "Ø§Ø®ØªØ± Ø§Ù„Ø¥Ù…Ø§Ø±Ø©");
-    emirates.forEach((name) => {
-      const option = document.createElement("option");
-      option.value = name === "ÙƒÙ„ Ø§Ù„Ø¥Ù…Ø§Ø±Ø§Øª" ? "" : name;
-      option.textContent = name;
-      emirateSelect.append(option);
-    });
-    const categorySelect = document.createElement("select");
-    categorySelect.setAttribute("aria-label", "Ø§Ø®ØªØ± Ù†ÙˆØ¹ Ø§Ù„Ù…Ø¹Ø§Ù…Ù„Ø©");
-    [["", "ÙƒÙ„ Ø§Ù„Ù…Ø¹Ø§Ù…Ù„Ø§Øª"], ["companies-establishments", "Ø§Ù„Ø´Ø±ÙƒØ§Øª ÙˆØ§Ù„Ø±Ø®Øµ"], ["work-employees", "Ø§Ù„Ø¹Ù…Ù„ ÙˆØ§Ù„Ù…ÙˆØ¸ÙÙˆÙ†"], ["residency-visas", "Ø§Ù„Ø¥Ù‚Ø§Ù…Ø© ÙˆØ§Ù„ØªØ£Ø´ÙŠØ±Ø§Øª"], ["identity-citizenship", "Ø§Ù„Ù‡ÙˆÙŠØ© ÙˆØ§Ù„Ø¬Ù†Ø³ÙŠØ©"], ["property-rentals", "Ø§Ù„Ø¹Ù‚Ø§Ø±Ø§Øª ÙˆØ§Ù„Ø¥ÙŠØ¬Ø§Ø±Ø§Øª"], ["contracts-notarization", "Ø§Ù„Ø¹Ù‚ÙˆØ¯ ÙˆØ§Ù„ØªÙˆØ«ÙŠÙ‚"], ["financial-business", "Ø§Ù„Ø¶Ø±Ø§Ø¦Ø¨ ÙˆØ§Ù„Ø£Ø¹Ù…Ø§Ù„"]].forEach(([value, label]) => {
-      const option = document.createElement("option");
-      option.value = value;
-      option.textContent = label;
-      categorySelect.append(option);
-    });
-    const authoritySelect = document.createElement("select");
-    authoritySelect.setAttribute("aria-label", "Ø§Ø®ØªØ± Ø§Ù„Ø¬Ù‡Ø© Ø§Ù„Ø­ÙƒÙˆÙ…ÙŠØ©");
-    const authorityOptions = [["", "ÙƒÙ„ Ø§Ù„Ø¬Ù‡Ø§Øª"], ...[...new Map((window.HB_INTENT_SERVICES || []).map((service) => [service.i || service.r, service.r])).entries()].filter(([value]) => value).sort((a, b) => String(a[1]).localeCompare(String(b[1]), "ar"))];
-    authorityOptions.forEach(([value, label]) => {
-      const option = document.createElement("option"); option.value = value; option.textContent = label; authoritySelect.append(option);
-    });
-    const userSelect = document.createElement("select");
-    userSelect.setAttribute("aria-label", "Ø§Ø®ØªØ± Ù†ÙˆØ¹ Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…");
-    [["", "ÙƒÙ„ Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…ÙŠÙ†"], ["ÙØ±Ø¯", "ÙØ±Ø¯"], ["Ù…Ù‚ÙŠÙ…", "Ù…Ù‚ÙŠÙ…"], ["Ù…ÙˆØ§Ø·Ù†", "Ù…ÙˆØ§Ø·Ù†"], ["Ø²Ø§Ø¦Ø±", "Ø²Ø§Ø¦Ø±"], ["Ù…ÙˆØ¸Ù", "Ù…ÙˆØ¸Ù"], ["Ù…Ø³ØªØ«Ù…Ø±", "Ù…Ø³ØªØ«Ù…Ø±"], ["ØµØ§Ø­Ø¨ Ø´Ø±ÙƒØ©", "ØµØ§Ø­Ø¨ Ø´Ø±ÙƒØ©"], ["Ù…Ù…Ø«Ù„ Ù…Ù†Ø´Ø£Ø©", "Ù…Ù…Ø«Ù„ Ù…Ù†Ø´Ø£Ø©"], ["Ø£Ø³Ø±Ø©", "Ø£Ø³Ø±Ø©"]].forEach(([value, label]) => {
-      const option = document.createElement("option"); option.value = value; option.textContent = label; userSelect.append(option);
-    });
-    const count = document.createElement("p");
-    count.className = "directory-result-count";
-    count.setAttribute("aria-live", "polite");
-    const reset = document.createElement("button");
-    reset.type = "button";
-    reset.className = "directory-reset";
-    reset.textContent = "Ù…Ø³Ø­ Ø§Ù„Ø§Ø®ØªÙŠØ§Ø±Ø§Øª";
-    controls.append(emirateSelect, categorySelect, authoritySelect, userSelect, reset);
-    const filterDrawer = document.createElement("details");
-    filterDrawer.className = "directory-filter-drawer";
-    const filterSummary = document.createElement("summary");
-    filterSummary.textContent = "Ø£Ù†Ø§ Ù…Ø­ØªØ±Ù â€” ØªØµÙÙŠØ© Ø¯Ù‚ÙŠÙ‚Ø© Ø¨Ø§Ù„Ø¬Ù‡Ø© ÙˆØ§Ù„Ø¥Ù…Ø§Ø±Ø©";
-    filterDrawer.append(filterSummary, controls);
-    if (window.matchMedia("(min-width: 900px)").matches) filterDrawer.open = true;
-    const explorerTools = document.createElement("div");
-    explorerTools.className = "directory-explorer-tools";
-    explorerTools.append(quickGoals, filterDrawer, count);
-    form?.insertAdjacentElement("afterend", explorerTools);
-    const more = document.createElement("button");
-    more.type = "button";
-    more.className = "directory-load-more";
-    more.textContent = "Ø¹Ø±Ø¶ Ø®Ø¯Ù…Ø§Øª Ø¥Ø¶Ø§ÙÙŠØ©";
-    grid.insertAdjacentElement("afterend", more);
-    let limit = 12;
-    const apply = () => {
-      const query = input.value.trim().toLowerCase();
-      const emirate = emirateSelect.value;
-      const category = categorySelect.value;
-      const authority = authoritySelect.value;
-      const userType = userSelect.value;
-      const matches = cards.filter((card) => {
-        const haystack = (card.dataset.search || card.textContent || "").toLowerCase();
-        return (!query || query.split(/\s+/).every((term) => haystack.includes(term)))
-          && (!emirate || (card.dataset.emirate || haystack).toLowerCase().includes(emirate.toLowerCase()))
-          && (!category || card.dataset.category === category)
-          && (!authority || card.dataset.authority === authority)
-          && (!userType || (card.dataset.userTypes || "").includes(userType));
-      });
-      cards.forEach((card) => { card.hidden = true; });
-      matches.slice(0, limit).forEach((card) => { card.hidden = false; });
-      count.textContent = `${matches.length} Ø®Ø¯Ù…Ø© Ù…Ø·Ø§Ø¨Ù‚Ø© â€” ÙŠØ¸Ù‡Ø± ${Math.min(limit, matches.length)}`;
-      more.hidden = matches.length <= limit;
-    };
-    input.addEventListener("input", () => { limit = 12; requestAnimationFrame(apply); });
-    emirateSelect.addEventListener("change", () => { limit = 12; apply(); });
-    categorySelect.addEventListener("change", () => { limit = 12; apply(); });
-    authoritySelect.addEventListener("change", () => { limit = 12; apply(); });
-    userSelect.addEventListener("change", () => { limit = 12; apply(); });
-    quickGoals.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-directory-goal]");
-      if (!button) return;
-      input.value = button.dataset.directoryGoal;
-      limit = 12;
-      apply();
-      grid.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-    reset.addEventListener("click", () => {
-      input.value = "";
-      [emirateSelect, categorySelect, authoritySelect, userSelect].forEach((select) => select.value = "");
-      limit = 12;
-      apply();
-      input.focus();
-    });
-    document.getElementById("det-search-button")?.addEventListener("click", apply);
-    more.addEventListener("click", () => { limit += 12; apply(); });
-    apply();
-    };
-    if (window.HB_INTENT_SERVICES) setupControls();
-    else {
-      const data = document.createElement("script");
-      data.src = "/intent-search-data.js";
-      data.addEventListener("load", setupControls, { once: true });
-      data.addEventListener("error", setupControls, { once: true });
-      document.head.append(data);
-    }
-  }
-
-  function enhanceServiceDetail() {
-    if (!location.pathname.startsWith("/services/") || location.pathname === "/services/") return;
-    document.body.classList.add("premium-service-detail");
-    const main = document.querySelector("main");
-    if (!main) return;
-    const primary = main.querySelector('[data-government-cta="verified"]') || main.querySelector('.service-hero .actions > a:first-child');
-    if (primary) primary.classList.add("primary-government-cta");
-    const hero = main.querySelector('.service-hero');
-    if (hero && !hero.querySelector('.service-facts-bar')) {
-      const panels = [...main.querySelectorAll('.content-panel')];
-      const findPanel = (pattern) => panels.find((panel) => pattern.test(panel.querySelector('h2')?.textContent || ''));
-      const fees = findPanel(/Ø§Ù„Ø±Ø³ÙˆÙ…/);
-      const duration = findPanel(/Ø§Ù„Ù…Ø¯Ø©/);
-      const bar = document.createElement('div');
-      bar.className = 'service-facts-bar';
-      const authority = hero.querySelector('.eyebrow')?.textContent?.split('Â·') || [];
-      [["Ø§Ù„Ø¬Ù‡Ø©", authority[0]], ["Ø§Ù„Ø¥Ù…Ø§Ø±Ø©", authority[1]], ["Ø§Ù„Ø±Ø³ÙˆÙ…", fees?.querySelector('p')?.textContent], ["Ø§Ù„Ù…Ø¯Ø©", duration?.querySelector('p')?.textContent]].forEach(([label, value]) => {
-        if (!value) return;
-        const item = document.createElement('div');
-        const term = document.createElement('span'); term.textContent = label;
-        const detail = document.createElement('b'); detail.textContent = value.trim();
-        item.append(term, detail); bar.append(item);
-      });
-      hero.append(bar);
-      const actions = hero.querySelector('.actions');
-      const secondary = actions ? [...actions.querySelectorAll('a')].slice(1) : [];
-      if (secondary.length) {
-        const details = document.createElement('details'); details.className = 'service-secondary-actions';
-        const summary = document.createElement('summary'); summary.textContent = 'Ø§Ù„Ù…Ø¹Ù„ÙˆÙ…Ø§Øª ÙˆØ§Ù„Ù…ØµØ§Ø¯Ø± Ø§Ù„Ø¥Ø¶Ø§ÙÙŠØ©';
-        const content = document.createElement('div'); secondary.forEach((link) => content.append(link));
-        details.append(summary, content); hero.append(details);
-      }
-      const conditions = findPanel(/Ø§Ù„Ø´Ø±ÙˆØ·|Ø§Ù„Ø£Ù‡Ù„ÙŠØ©/);
-      const conditionsHeading = conditions?.querySelector('h2');
-      if (conditionsHeading) conditionsHeading.textContent = 'Ù‡Ù„ Ù‡Ø°Ù‡ Ø§Ù„Ø®Ø¯Ù…Ø© Ù…Ù†Ø§Ø³Ø¨Ø© Ù„ÙŠØŸ â€” Ø§Ù„Ø´Ø±ÙˆØ·';
-    }
-    const sections = [...main.querySelectorAll(".detail-section, .content-panel")];
-    sections.forEach((section, index) => {
-      section.style.setProperty("--section-order", String(index + 1));
-    });
-  }
-
-  function enhanceVerifiedGovernmentHandoff() {
-    if (location.pathname === "/") return;
-    for (const anchor of document.querySelectorAll('[data-government-cta="verified"]')) {
-      if (anchor.dataset.handoffReady === "true") continue;
-      anchor.dataset.handoffReady = "true";
-      const guidance = anchor.closest("main")?.dataset.destinationKind === "OFFICIAL_GUIDANCE";
-      const note = document.createElement("p");
-      note.className = "official-handoff-note";
-      note.textContent = guidance
-        ? "Ø³ØªÙ†ØªÙ‚Ù„ Ø¥Ù„Ù‰ Ø§Ù„Ù…ØµØ¯Ø± Ø§Ù„Ø­ÙƒÙˆÙ…ÙŠ Ø§Ù„Ø±Ø³Ù…ÙŠ Ø§Ù„Ø°ÙŠ ÙŠØ´Ø±Ø­ Ù‡Ø°Ù‡ Ø§Ù„Ù…Ø¹Ø§Ù…Ù„Ø©. Ø±Ø§Ø¬Ø¹ Ø§Ù„Ø§Ø®ØªØµØ§Øµ Ù‚Ø¨Ù„ Ø§Ù„Ù…ØªØ§Ø¨Ø¹Ø©."
-        : "Ø³ØªÙ†ØªÙ‚Ù„ Ø§Ù„Ø¢Ù† Ø¥Ù„Ù‰ Ø§Ù„Ø®Ø¯Ù…Ø© Ø§Ù„Ø­ÙƒÙˆÙ…ÙŠØ© Ø§Ù„Ø±Ø³Ù…ÙŠØ© Ù„Ø¥ÙƒÙ…Ø§Ù„ Ø§Ù„Ø·Ù„Ø¨. Ù‚Ø¯ ÙŠÙØ·Ù„Ø¨ ØªØ³Ø¬ÙŠÙ„ Ø§Ù„Ø¯Ø®ÙˆÙ„ Ø¹Ø¨Ø± UAE Pass.";
-      anchor.parentNode?.insertBefore(note, anchor);
-      anchor.textContent = guidance ? "Ø§ÙØªØ­ Ø§Ù„Ù…ØµØ¯Ø± Ø§Ù„Ø±Ø³Ù…ÙŠ â†—" : "Ø§Ø¨Ø¯Ø£ Ù…Ù† Ø§Ù„Ø¬Ù‡Ø© Ø§Ù„Ø±Ø³Ù…ÙŠØ© â†—";
-    }
-  }
-
-  const start = () => {
-    loadIntentFirstStyles();
-    loadHomepageIntentSearch();
-    setupFilter();
-    alignGlobalCounts();
-    isolateHomepageGovernmentCtas();
-    exposeActivitySearch();
-    enhancePrimaryNavigation();
-    correctKnownServiceTargets();
-    rejectFakeServiceTargets();
-    simplifyHomepageByIntent();
-    enhanceServiceDirectory();
-    enhanceServiceDetail();
-    enhanceVerifiedGovernmentHandoff();
-  };
-  document.addEventListener('click', (event) => {
-    if (location.pathname !== '/') return;
-    const external = event.target.closest?.('a[href^="https://"], a[href^="http://"]');
-    if (external) event.preventDefault();
-  }, { capture: true });
-  const boot = () => {
-    const isHydratedExport = /platform-v\d+/i.test(document.body?.dataset.release || "");
-    if (isHydratedExport) setTimeout(start, 1800);
-    else start();
-  };
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot, { once: true });
-  else boot();
-})();
+    if (capabilityHeading) capabilityHeading.textContent = "Ø§Ø®ØªØ± Ù†ÙˆØ¹ Ø§Ù„Ù…Ø¹Ø§Ù×Žv¶‰žËkºwµçM­½…±Ì¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µ±…‰•°ˆ°€‹bfb¿bŸfƒbÓbŸb›bçb¤ˆ¤ì(€€€½¹ÍÐÅÕ¥­1…‰•°€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰ÍÁ…¸ˆ¤ì(€€€ÅÕ¥­1…‰•°¹Ñ•áÑ½¹Ñ•¹Ð€ô€‹bŸb£b¿bŒƒb£fb¿fƒbÓbŸb›bäèˆì(€€€ÅÕ¥­½…±Ì¹…ÁÁ•¹¡ÅÕ¥­1…‰•°¤ì(€€€l‹b«bbÏf+bÌƒbÓbÇfb¤ˆ°€‹b«b³b¿f+b¼ƒb—fbŸfb¤ˆ°€‹b«b×bÇf+b´ƒbçffˆ°€‹b«b³b¿f+b¼ƒbÇb»b×b¤ˆ°€‹fbÓbŸbÜƒb«b³bŸbÇf(‰t¹™½É…  ¡½…°¤€ôøì(€€€€€½¹ÍÐ‰ÕÑÑ½¸€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰‰ÕÑÑ½¸ˆ¤ì(€€€€€‰ÕÑÑ½¸¹ÑåÁ”€ô€‰‰ÕÑÑ½¸ˆì(€€€€€‰ÕÑÑ½¸¹Ñ•áÑ½¹Ñ•¹Ð€ô½…°ì(€€€€€‰ÕÑÑ½¸¹‘…Ñ…Í•Ð¹‘¥É•Ñ½Éå½…°€ô½…°ì(€€€€€ÅÕ¥­½…±Ì¹…ÁÁ•¹¡‰ÕÑÑ½¸¤ì(€€€ô¤ì(€€€½¹ÍÐ½¹ÑÉ½±Ì€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰‘¥Øˆ¤ì(€€€½¹ÑÉ½±Ì¹±…ÍÍ9…µ”€ô€‰‘¥É•Ñ½Éäµ½¹ÑÉ½±Ìˆì(€€€½¹ÑÉ½±Ì¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µ±…‰•°ˆ°€‹b«b×ff+b¤ƒb¿ff+fƒbŸfb»b¿fbŸb¨ˆ¤ì(€€€½¹ÍÐ•µ¥É…Ñ•Ì€ôl‹ffƒbŸfb—fbŸbÇbŸb¨ˆ°€‹b¿b£f(ˆ°€‹bb£f#bãb£f(ˆ°€‹bŸfbÓbŸbÇfb¤ˆ°€‹bçb³fbŸfˆ°€‹bÇbbÌƒbŸfb»f+fb¤ˆ°€‹bfƒbŸfff+f#f+fˆ°€‹bŸffb³f+bÇb¤ˆ°€‹bŸb«b·bŸb¿f(‰tì(€€€½¹ÍÐ•µ¥É…Ñ•M•±•Ð€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰Í•±•Ðˆ¤ì(€€€•µ¥É…Ñ•M•±•Ð¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µ±…‰•°ˆ°€‹bŸb»b«bÄƒbŸfb—fbŸbÇb¤ˆ¤ì(€€€•µ¥É…Ñ•Ì¹™½É…  ¡¹…µ”¤€ôøì(€€€€€½¹ÍÐ½ÁÑ¥½¸€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰½ÁÑ¥½¸ˆ¤ì(€€€€€½ÁÑ¥½¸¹Ù…±Õ”€ô¹…µ”€ôôô€‹ffƒbŸfb—fbŸbÇbŸb¨ˆ€ü€ˆˆ€è¹…µ”ì(€€€€€½ÁÑ¥½¸¹Ñ•áÑ½¹Ñ•¹Ð€ô¹…µ”ì(€€€€€•µ¥É…Ñ•M•±•Ð¹…ÁÁ•¹¡½ÁÑ¥½¸¤ì(€€€ô¤ì(€€€½¹ÍÐ•µ¥É…Ñ•M¡½ÉÑÕÑÌ€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰‘¥Øˆ¤ì(€€€•µ¥É…Ñ•M¡½ÉÑÕÑÌ¹±…ÍÍ9…µ”€ô€‰‘¥É•Ñ½Éäµ•µ¥É…Ñ”µÍ¡½ÉÑÕÑÌˆì(€€€•µ¥É…Ñ•M¡½ÉÑÕÑÌ¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µ±…‰•°ˆ°€‹f#b×f#fƒbÏbÇf+bäƒb—ff$ƒbŸfb—fbŸbÇbŸb¨ƒbŸfbÏb£bäˆ¤ì(€€€•µ¥É…Ñ•Ì¹Í±¥” Ä°€à¤¹™½É…  ¡¹…µ”¤€ôøì(€€€€€½¹ÍÐ‰ÕÑÑ½¸€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰‰ÕÑÑ½¸ˆ¤ì(€€€€€‰ÕÑÑ½¸¹ÑåÁ”€ô€‰‰ÕÑÑ½¸ˆì(€€€€€‰ÕÑÑ½¸¹Ñ•áÑ½¹Ñ•¹Ð€ô¹…µ”ì(€€€€€‰ÕÑÑ½¸¹‘…Ñ…Í•Ð¹•µ¥É…Ñ•M¡½ÉÑÕÐ€ô¹…µ”ì(€€€€€¥˜€¡¹…µ”€ôôô€‹b¿b£f(ˆ¤‰ÕÑÑ½¸¹±…ÍÍ1¥ÍÐ¹…‘ ‰¥ÌµÁÉ¥µ…Éäµµ…É­•Ðˆ¤ì(€€€€€•µ¥É…Ñ•M¡½ÉÑÕÑÌ¹…ÁÁ•¹¡‰ÕÑÑ½¸¤ì(€€€ô¤ì(€€€½¹ÍÐ…Ñ•½ÉåM•±•Ð€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰Í•±•Ðˆ¤ì(€€€…Ñ•½ÉåM•±•Ð¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µ±…‰•°ˆ°€‹bŸb»b«bÄƒff#bäƒbŸffbçbŸffb¤ˆ¤ì(€€€mlˆˆ°€‹ffƒbŸffbçbŸffbŸb¨‰t°l‰½µÁ…¹¥•Ìµ•ÍÑ…‰±¥Í¡µ•¹ÑÌˆ°€‹bŸfbÓbÇfbŸb¨ƒf#bŸfbÇb»bÔ‰t°l‰Ý½É¬µ•µÁ±½å••Ìˆ°€‹bŸfbçffƒf#bŸfff#bãff#f‰t°l‰É•Í¥‘•¹äµÙ¥Í…Ìˆ°€‹bŸfb—fbŸfb¤ƒf#bŸfb«bbÓf+bÇbŸb¨‰t°l‰¥‘•¹Ñ¥Ñäµ¥Ñ¥é•¹Í¡¥Àˆ°€‹bŸfff#f+b¤ƒf#bŸfb³fbÏf+b¤‰t°l‰ÁÉ½Á•ÉÑäµÉ•¹Ñ…±Ìˆ°€‹bŸfbçfbŸbÇbŸb¨ƒf#bŸfb—f+b³bŸbÇbŸb¨‰t°l‰½¹ÑÉ…ÑÌµ¹½Ñ…É¥é…Ñ¥½¸ˆ°€‹bŸfbçff#b¼ƒf#bŸfb«f#b¯f+f‰t°l‰™¥¹…¹¥…°µ‰ÕÍ¥¹•ÍÌˆ°€‹bŸfbÛbÇbŸb›b ƒf#bŸfbbçfbŸf‰ut¹™½É…  ¡mÙ…±Õ”°±…‰•±t¤€ôøì(€€€€€½¹ÍÐ½ÁÑ¥½¸€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰½ÁÑ¥½¸ˆ¤ì(€€€€€½ÁÑ¥½¸¹Ù…±Õ”€ôÙ…±Õ”ì(€€€€€½ÁÑ¥½¸¹Ñ•áÑ½¹Ñ•¹Ð€ô±…‰•°ì(€€€€€…Ñ•½ÉåM•±•Ð¹…ÁÁ•¹¡½ÁÑ¥½¸¤ì(€€€ô¤ì(€€€½¹ÍÐ…ÕÑ¡½É¥ÑåM•±•Ð€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰Í•±•Ðˆ¤ì(€€€…ÕÑ¡½É¥ÑåM•±•Ð¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µ±…‰•°ˆ°€‹bŸb»b«bÄƒbŸfb³fb¤ƒbŸfb·ff#ff+b¤ˆ¤ì(€€€½¹ÍÐ…ÕÑ¡½É¥Ñå=ÁÑ¥½¹Ì€ômlˆˆ°€‹ffƒbŸfb³fbŸb¨‰t°€¸¸¹l¸¸¹¹•Ü5…À ¡Ý¥¹‘½Ü¹!	}%9Q9Q}MIY%Lñðmt¤¹µ…À ¡Í•ÉÙ¥”¤€ôømÍ•ÉÙ¥”¹¤ñðÍ•ÉÙ¥”¹È°Í•ÉÙ¥”¹Ét¤¤¹•¹ÑÉ¥•Ì ¥t¹™¥±Ñ•È ¡mÙ…±Õ•t¤€ôøÙ…±Õ”¤¹Í½ÉÐ ¡„°ˆ¤€ôøMÑÉ¥¹œ¡…lÅt¤¹±½…±•½µÁ…É”¡MÑÉ¥¹œ¡‰lÅt¤°€‰…Èˆ¤¥tì(€€€…ÕÑ¡½É¥Ñå=ÁÑ¥½¹Ì¹™½É…  ¡mÙ…±Õ”°±…‰•±t¤€ôøì(€€€€€½¹ÍÐ½ÁÑ¥½¸€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰½ÁÑ¥½¸ˆ¤ì½ÁÑ¥½¸¹Ù…±Õ”€ôÙ…±Õ”ì½ÁÑ¥½¸¹Ñ•áÑ½¹Ñ•¹Ð€ô±…‰•°ì…ÕÑ¡½É¥ÑåM•±•Ð¹…ÁÁ•¹¡½ÁÑ¥½¸¤ì(€€€ô¤ì(€€€½¹ÍÐÕÍ•ÉM•±•Ð€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰Í•±•Ðˆ¤ì(€€€ÕÍ•ÉM•±•Ð¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µ±…‰•°ˆ°€‹bŸb»b«bÄƒff#bäƒbŸffbÏb«b»b¿fˆ¤ì(€€€mlˆˆ°€‹ffƒbŸffbÏb«b»b¿ff+f‰t°l‹fbÇb¼ˆ°€‹fbÇb¼‰t°l‹fff+fˆ°€‹fff+f‰t°l‹ff#bŸbßfˆ°€‹ff#bŸbßf‰t°l‹bËbŸb›bÄˆ°€‹bËbŸb›bÄ‰t°l‹ff#bãfˆ°€‹ff#bãf‰t°l‹fbÏb«b¯fbÄˆ°€‹fbÏb«b¯fbÄ‰t°l‹b×bŸb·b ƒbÓbÇfb¤ˆ°€‹b×bŸb·b ƒbÓbÇfb¤‰t°l‹ffb¯fƒffbÓbb¤ˆ°€‹ffb¯fƒffbÓbb¤‰t°l‹bbÏbÇb¤ˆ°€‹bbÏbÇb¤‰ut¹™½É…  ¡mÙ…±Õ”°±…‰•±t¤€ôøì(€€€€€½¹ÍÐ½ÁÑ¥½¸€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰½ÁÑ¥½¸ˆ¤ì½ÁÑ¥½¸¹Ù…±Õ”€ôÙ…±Õ”ì½ÁÑ¥½¸¹Ñ•áÑ½¹Ñ•¹Ð€ô±…‰•°ìÕÍ•ÉM•±•Ð¹…ÁÁ•¹¡½ÁÑ¥½¸¤ì(€€€ô¤ì(€€€½¹ÍÐ½Õ¹Ð€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰Àˆ¤ì(€€€½Õ¹Ð¹±…ÍÍ9…µ”€ô€‰‘¥É•Ñ½ÉäµÉ•ÍÕ±Ðµ½Õ¹Ðˆì(€€€½Õ¹Ð¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µ±¥Ù”ˆ°€‰Á½±¥Ñ”ˆ¤ì(€€€½¹ÍÐÉ•Í•Ð€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰‰ÕÑÑ½¸ˆ¤ì(€€€É•Í•Ð¹ÑåÁ”€ô€‰‰ÕÑÑ½¸ˆì(€€€É•Í•Ð¹±…ÍÍ9…µ”€ô€‰‘¥É•Ñ½ÉäµÉ•Í•Ðˆì(€€€É•Í•Ð¹Ñ•áÑ½¹Ñ•¹Ð€ô€‹fbÏb´ƒbŸfbŸb»b«f+bŸbÇbŸb¨ˆì(€€€½¹ÑÉ½±Ì¹…ÁÁ•¹¡•µ¥É…Ñ•M•±•Ð°…Ñ•½ÉåM•±•Ð°…ÕÑ¡½É¥ÑåM•±•Ð°ÕÍ•ÉM•±•Ð°É•Í•Ð¤ì(€€€½¹ÍÐ™¥±Ñ•ÉÉ…Ý•È€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰‘•Ñ…¥±Ìˆ¤ì(€€€™¥±Ñ•ÉÉ…Ý•È¹±…ÍÍ9…µ”€ô€‰‘¥É•Ñ½Éäµ™¥±Ñ•Èµ‘É…Ý•Èˆì(€€€½¹ÍÐ™¥±Ñ•ÉMÕµµ…Éä€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰ÍÕµµ…Éäˆ¤ì(€€€™¥±Ñ•ÉMÕµµ…Éä¹Ñ•áÑ½¹Ñ•¹Ð€ô€‹bfbœƒfb·b«bÇfƒŠPƒb«b×ff+b¤ƒb¿ff+fb¤ƒb£bŸfb³fb¤ƒf#bŸfb—fbŸbÇb¤ˆì(€€€™¥±Ñ•ÉÉ…Ý•È¹…ÁÁ•¹¡™¥±Ñ•ÉMÕµµ…Éä°½¹ÑÉ½±Ì¤ì(€€€¥˜€¡Ý¥¹‘½Ü¹µ…Ñ¡5•‘¥„ ˆ¡µ¥¸µÝ¥‘Ñ è€äÀÁÁà¤ˆ¤¹µ…Ñ¡•Ì¤™¥±Ñ•ÉÉ…Ý•È¹½Á•¸€ôÑÉÕ”ì(€€€½¹ÍÐ•áÁ±½É•ÉQ½½±Ì€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰‘¥Øˆ¤ì(€€€•áÁ±½É•ÉQ½½±Ì¹±…ÍÍ9…µ”€ô€‰‘¥É•Ñ½Éäµ•áÁ±½É•ÈµÑ½½±Ìˆì(€€€•áÁ±½É•ÉQ½½±Ì¹…ÁÁ•¹¡ÅÕ¥­½…±Ì°•µ¥É…Ñ•M¡½ÉÑÕÑÌ°™¥±Ñ•ÉÉ…Ý•È°½Õ¹Ð¤ì(€€€™½É´ü¹¥¹Í•ÉÑ‘©…•¹Ñ±•µ•¹Ð ‰…™Ñ•É•¹ˆ°•áÁ±½É•ÉQ½½±Ì¤ì(€€€½¹ÍÐµ½É”€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰‰ÕÑÑ½¸ˆ¤ì(€€€µ½É”¹ÑåÁ”€ô€‰‰ÕÑÑ½¸ˆì(€€€µ½É”¹±…ÍÍ9…µ”€ô€‰‘¥É•Ñ½Éäµ±½…µµ½É”ˆì(€€€µ½É”¹Ñ•áÑ½¹Ñ•¹Ð€ô€‹bçbÇbØƒb»b¿fbŸb¨ƒb—bÛbŸff+b¤ˆì(€€€É¥¹¥¹Í•ÉÑ‘©…•¹Ñ±•µ•¹Ð ‰…™Ñ•É•¹ˆ°µ½É”¤ì(€€€±•Ð±¥µ¥Ð€ô€ÄÈì(€€€½¹ÍÐ…ÁÁ±ä€ô€ ¤€ôøì(€€€€€½¹ÍÐÅÕ•Éä€ô¥¹ÁÕÐ¹Ù…±Õ”¹ÑÉ¥´ ¤¹Ñ½1½Ý•É…Í” ¤ì(€€€€€½¹ÍÐ•µ¥É…Ñ”€ô•µ¥É…Ñ•M•±•Ð¹Ù…±Õ”ì(€€€€€½¹ÍÐ…Ñ•½Éä€ô…Ñ•½ÉåM•±•Ð¹Ù…±Õ”ì(€€€€€½¹ÍÐ…ÕÑ¡½É¥Ñä€ô…ÕÑ¡½É¥ÑåM•±•Ð¹Ù…±Õ”ì(€€€€€½¹ÍÐÕÍ•ÉQåÁ”€ôÕÍ•ÉM•±•Ð¹Ù…±Õ”ì(€€€€€½¹ÍÐµ…Ñ¡•Ì€ô…É‘Ì¹™¥±Ñ•È ¡…É¤€ôøì(€€€€€€€½¹ÍÐ¡…åÍÑ…¬€ô€¡…É¹‘…Ñ…Í•Ð¹Í•…É ñð…É¹Ñ•áÑ½¹Ñ•¹Ðñð€ˆˆ¤¹Ñ½1½Ý•É…Í” ¤ì(€€€€€€€É•ÑÕÉ¸€ …ÅÕ•ÉäñðÅÕ•Éä¹ÍÁ±¥Ð ½qÌ¬¼¤¹•Ù•Éä ¡Ñ•É´¤€ôø¡…åÍÑ…¬¹¥¹±Õ‘•Ì¡Ñ•É´¤¤¤(€€€€€€€€€€˜˜€ …•µ¥É…Ñ”ñð€¡…É¹‘…Ñ…Í•Ð¹•µ¥É…Ñ”ñð¡…åÍÑ…¬¤¹Ñ½1½Ý•É…Í” ¤¹¥¹±Õ‘•Ì¡•µ¥É…Ñ”¹Ñ½1½Ý•É…Í” ¤¤¤(€€€€€€€€€€˜˜€ ……Ñ•½Éäñð…É¹‘…Ñ…Í•Ð¹…Ñ•½Éä€ôôô…Ñ•½Éä¤(€€€€€€€€€€˜˜€ ……ÕÑ¡½É¥Ñäñð…É¹‘…Ñ…Í•Ð¹…ÕÑ¡½É¥Ñä€ôôô…ÕÑ¡½É¥Ñä¤(€€€€€€€€€€˜˜€ …ÕÍ•ÉQåÁ”ñð€¡…É¹‘…Ñ…Í•Ð¹ÕÍ•ÉQåÁ•Ìñð€ˆˆ¤¹¥¹±Õ‘•Ì¡ÕÍ•ÉQåÁ”¤¤ì(€€€€€ô¤ì(€€€€€…É‘Ì¹™½É…  ¡…É¤€ôøì…É¹¡¥‘‘•¸€ôÑÉÕ”ìô¤ì(€€€€€µ…Ñ¡•Ì¹Í±¥” À°±¥µ¥Ð¤¹™½É…  ¡…É¤€ôøì…É¹¡¥‘‘•¸€ô™…±Í”ìô¤ì(€€€€€½Õ¹Ð¹Ñ•áÑ½¹Ñ•¹Ð€ô€‘íµ…Ñ¡•Ì¹±•¹Ñ¡ôƒb»b¿fb¤ƒfbßbŸb£fb¤ƒŠPƒf+bãfbÄ€‘í5…Ñ ¹µ¥¸¡±¥µ¥Ð°µ…Ñ¡•Ì¹±•¹Ñ ¥õ€ì(€€€€€µ½É”¹¡¥‘‘•¸€ôµ…Ñ¡•Ì¹±•¹Ñ €ðô±¥µ¥Ðì(€€€ôì(€€€¥¹ÁÕÐ¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰¥¹ÁÕÐˆ°€ ¤€ôøì±¥µ¥Ð€ô€ÄÈìÉ•ÅÕ•ÍÑ¹¥µ…Ñ¥½¹É…µ”¡…ÁÁ±ä¤ìô¤ì(€€€•µ¥É…Ñ•M•±•Ð¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰¡…¹”ˆ°€ ¤€ôøì±¥µ¥Ð€ô€ÄÈì…ÁÁ±ä ¤ìô¤ì(€€€…Ñ•½ÉåM•±•Ð¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰¡…¹”ˆ°€ ¤€ôøì±¥µ¥Ð€ô€ÄÈì…ÁÁ±ä ¤ìô¤ì(€€€…ÕÑ¡½É¥ÑåM•±•Ð¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰¡…¹”ˆ°€ ¤€ôøì±¥µ¥Ð€ô€ÄÈì…ÁÁ±ä ¤ìô¤ì(€€€ÕÍ•ÉM•±•Ð¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰¡…¹”ˆ°€ ¤€ôøì±¥µ¥Ð€ô€ÄÈì…ÁÁ±ä ¤ìô¤ì(€€€ÅÕ¥­½…±Ì¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰±¥¬ˆ°€¡•Ù•¹Ð¤€ôøì(€€€€€½¹ÍÐ‰ÕÑÑ½¸€ô•Ù•¹Ð¹Ñ…É•Ð¹±½Í•ÍÐ ‰m‘…Ñ„µ‘¥É•Ñ½Éäµ½…±tˆ¤ì(€€€€€¥˜€ …‰ÕÑÑ½¸¤É•ÑÕÉ¸ì(€€€€€¥¹ÁÕÐ¹Ù…±Õ”€ô‰ÕÑÑ½¸¹‘…Ñ…Í•Ð¹‘¥É•Ñ½Éå½…°ì(€€€€€±¥µ¥Ð€ô€ÄÈì(€€€€€…ÁÁ±ä ¤ì(€€€€€É¥¹ÍÉ½±±%¹Ñ½Y¥•Ü¡ì‰•¡…Ù¥½Èè€‰Íµ½½Ñ ˆ°‰±½¬è€‰ÍÑ…ÉÐˆô¤ì(€€€ô¤ì(€€€•µ¥É…Ñ•M¡½ÉÑÕÑÌ¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰±¥¬ˆ°€¡•Ù•¹Ð¤€ôøì(€€€€€½¹ÍÐ‰ÕÑÑ½¸€ô•Ù•¹Ð¹Ñ…É•Ð¹±½Í•ÍÐ ‰m‘…Ñ„µ•µ¥É…Ñ”µÍ¡½ÉÑÕÑtˆ¤ì(€€€€€¥˜€ …‰ÕÑÑ½¸¤É•ÑÕÉ¸ì(€€€€€•µ¥É…Ñ•M•±•Ð¹Ù…±Õ”€ô‰ÕÑÑ½¸¹‘…Ñ…Í•Ð¹•µ¥É…Ñ•M¡½ÉÑÕÐì(€€€€€±¥µ¥Ð€ô€ÄÈì(€€€€€…ÁÁ±ä ¤ì(€€€€€l¸¸¹•µ¥É…Ñ•M¡½ÉÑÕÑÌ¹ÅÕ•ÉåM•±•Ñ½É±° ‰‰ÕÑÑ½¸ˆ¥t¹™½É…  ¡¥Ñ•´¤€ôø¥Ñ•´¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µÁÉ•ÍÍ•ˆ°MÑÉ¥¹œ¡¥Ñ•´€ôôô‰ÕÑÑ½¸¤¤¤ì(€€€€€É¥¹ÍÉ½±±%¹Ñ½Y¥•Ü¡ì‰•¡…Ù¥½Èè€‰Íµ½½Ñ ˆ°‰±½¬è€‰ÍÑ…ÉÐˆô¤ì(€€€ô¤ì(€€€É•Í•Ð¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰±¥¬ˆ°€ ¤€ôøì(€€€€€¥¹ÁÕÐ¹Ù…±Õ”€ô€ˆˆì(€€€€€m•µ¥É…Ñ•M•±•Ð°…Ñ•½ÉåM•±•Ð°…ÕÑ¡½É¥ÑåM•±•Ð°ÕÍ•ÉM•±•Ñt¹™½É…  ¡Í•±•Ð¤€ôøÍ•±•Ð¹Ù…±Õ”€ô€ˆˆ¤ì(€€€€€±¥µ¥Ð€ô€ÄÈì(€€€€€l¸¸¹•µ¥É…Ñ•M¡½ÉÑÕÑÌ¹ÅÕ•ÉåM•±•Ñ½É±° ‰‰ÕÑÑ½¸ˆ¥t¹™½É…  ¡¥Ñ•´¤€ôø¥Ñ•´¹Í•ÑÑÑÉ¥‰ÕÑ” ‰…É¥„µÁÉ•ÍÍ•ˆ°€‰™…±Í”ˆ¤¤ì(€€€€€…ÁÁ±ä ¤ì(€€€€€¥¹ÁÕÐ¹™½ÕÌ ¤ì(€€€ô¤ì(€€€‘½Õµ•¹Ð¹•Ñ±•µ•¹Ñ	å% ‰‘•ÐµÍ•…É µ‰ÕÑÑ½¸ˆ¤ü¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰±¥¬ˆ°…ÁÁ±ä¤ì(€€€µ½É”¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰±¥¬ˆ°€ ¤€ôøì±¥µ¥Ð€¬ô€ÄÈì…ÁÁ±ä ¤ìô¤ì(€€€…ÁÁ±ä ¤ì(€€€ôì(€€€¥˜€¡Ý¥¹‘½Ü¹!	}%9Q9Q}MIY%L¤Í•ÑÕÁ½¹ÑÉ½±Ì ¤ì(€€€•±Í”ì(€€€€€½¹ÍÐ‘…Ñ„€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰ÍÉ¥ÁÐˆ¤ì(€€€€€‘…Ñ„¹ÍÉŒ€ô€ˆ½¥¹Ñ•¹ÐµÍ•…É µ‘…Ñ„¹©Ìˆì(€€€€€‘…Ñ„¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰±½…ˆ°Í•ÑÕÁ½¹ÑÉ½±Ì°ì½¹”èÑÉÕ”ô¤ì(€€€€€‘…Ñ„¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰•ÉÉ½Èˆ°Í•ÑÕÁ½¹ÑÉ½±Ì°ì½¹”èÑÉÕ”ô¤ì(€€€€€‘½Õµ•¹Ð¹¡•…¹…ÁÁ•¹¡‘…Ñ„¤ì(€€€ô(€ô((€™Õ¹Ñ¥½¸•¹¡…¹•M•ÉÙ¥••Ñ…¥° ¤ì(€€€¥˜€ …±½…Ñ¥½¸¹Á…Ñ¡¹…µ”¹ÍÑ…ÉÑÍ]¥Ñ  ˆ½Í•ÉÙ¥•Ì¼ˆ¤ñð±½…Ñ¥½¸¹Á…Ñ¡¹…µ”€ôôô€ˆ½Í•ÉÙ¥•Ì¼ˆ¤É•ÑÕÉ¸ì(€€€‘½Õµ•¹Ð¹‰½‘ä¹±…ÍÍ1¥ÍÐ¹…‘ ‰ÁÉ•µ¥Õ´µÍ•ÉÙ¥”µ‘•Ñ…¥°ˆ¤ì(€€€½¹ÍÐµ…¥¸€ô‘½Õµ•¹Ð¹ÅÕ•ÉåM•±•Ñ½È ‰µ…¥¸ˆ¤ì(€€€¥˜€ …µ…¥¸¤É•ÑÕÉ¸ì(€€€½¹ÍÐÁÉ¥µ…Éä€ôµ…¥¸¹ÅÕ•ÉåM•±•Ñ½È m‘…Ñ„µ½Ù•É¹µ•¹ÐµÑ„ô‰Ù•É¥™¥•‰tœ¤ñðµ…¥¸¹ÅÕ•ÉåM•±•Ñ½È œ¹Í•ÉÙ¥”µ¡•É¼€¹…Ñ¥½¹Ì€ø„é™¥ÉÍÐµ¡¥±œ¤ì(€€€¥˜€¡ÁÉ¥µ…Éä€˜˜€½y¡ÑÑÁÌép½p¼½¤¹Ñ•ÍÐ¡ÁÉ¥µ…Éä¹•ÑÑÑÉ¥‰ÕÑ” ‰¡É•˜ˆ¤ñð€ˆˆ¤€˜˜€…µ…¥¸¹µ…Ñ¡•Ì m‘…Ñ„µÁÕ‰±¥…Ñ¥½¸µÍÑ…Ñ”ô‰9=I51%i‰t°m‘…Ñ„µÁÕ‰±¥…Ñ¥½¸µÍÑ…Ñ”ô‰A9%9}YI%%Q%=8‰tœ¤¤ÁÉ¥µ…Éä¹‘…Ñ…Í•Ð¹½Ù•É¹µ•¹ÑÑ„€ô€‰Ù•É¥™¥•ˆì(€€€¥˜€¡ÁÉ¥µ…Éä¤ÁÉ¥µ…Éä¹±…ÍÍ1¥ÍÐ¹…‘ ‰ÁÉ¥µ…Éäµ½Ù•É¹µ•¹ÐµÑ„ˆ¤ì(€€€½¹ÍÐÁÕ‰±¥…Ñ¥½¹MÑ…Ñ”€ôµ…¥¸¹‘…Ñ…Í•Ð¹ÁÕ‰±¥…Ñ¥½¹MÑ…Ñ”ñðµ…¥¸¹ÅÕ•ÉåM•±•Ñ½È m‘…Ñ„µÁÕ‰±¥…Ñ¥½¸µÍÑ…Ñ•tœ¤ü¹‘…Ñ…Í•Ð¹ÁÕ‰±¥…Ñ¥½¹MÑ…Ñ”ì(€€€½¹ÍÐÁÕ‰±¥Í¡•‘M•ÉÙ¥”€ôÁÕ‰±¥…Ñ¥½¹MÑ…Ñ”€ôôô€‰YI%%ˆñðÁÉ¥µ…Éäü¹‘…Ñ…Í•Ð¹½Ù•É¹µ•¹ÑÑ„€ôôô€‰Ù•É¥™¥•ˆì(€€€¥˜€¡ÁÉ¥µ…Éä€˜˜ÁÕ‰±¥Í¡•‘M•ÉÙ¥”€˜˜€…µ…¥¸¹ÅÕ•ÉåM•±•Ñ½È m‘…Ñ„µ½µµ•É¥…°µÑ„ô‰Ù•É¥™¥•‰tœ¤¤ì(€€€€€½¹ÍÐÍ•ÉÙ¥•9…µ”€ôµ…¥¸¹ÅÕ•ÉåM•±•Ñ½È ‰ Äˆ¤ü¹Ñ•áÑ½¹Ñ•¹Ðü¹ÑÉ¥´ ¤ñð€‹fbÃfƒbŸffbçbŸffb¤ˆì(€€€€€½¹ÍÐ½µµ•É¥…°€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰„ˆ¤ì(€€€€€½µµ•É¥…°¹±…ÍÍ9…µ”€ô€‰•á•ÕÑ”µÝ¥Ñ µÕÌµÑ„ˆì(€€€€€½µµ•É¥…°¹¡É•˜€ô¡ÑÑÁÌè¼½Ý„¹µ”¼äÜÄÔÀÌÜàÀÐØÀýÑ•áÐô‘í•¹½‘•UI%½µÁ½¹•¹Ð¡ƒfbÇb·b£bŸf/b0ƒbbÇf+b¼ƒbßfb ƒb«fff+bÀƒfbçbŸffb¤è€‘íÍ•ÉÙ¥•9…µ•õq»bÇbŸb£bÜƒbŸfb¿ff+fè€‘í±½…Ñ¥½¸¹¡É•™õ€¥õ€ì(€€€€€½µµ•É¥…°¹Ñ…É•Ð€ô€‰}‰±…¹¬ˆì(€€€€€½µµ•É¥…°¹É•°€ô€‰¹½½Á•¹•È¹½É•™•ÉÉ•Èˆì(€€€€€½µµ•É¥…°¹‘…Ñ…Í•Ð¹½µµ•É¥…±Ñ„€ô€‰Ù•É¥™¥•ˆì(€€€€€½µµ•É¥…°¹Ñ•áÑ½¹Ñ•¹Ð€ô€‹bŸbßfb ƒb«fff+bÀƒbŸffbçbŸffb¤ƒfbäƒb·bÏbŸfƒb£b·bÄˆì(€€€€€½¹ÍÐ…Ñ¥½¹Ì€ôÁÉ¥µ…Éä¹±½Í•ÍÐ ˆ¹…Ñ¥½¹Ìˆ¤ñðÁÉ¥µ…Éä¹Á…É•¹Ñ±•µ•¹Ðì(€€€€€¥˜€¡…Ñ¥½¹Ì¤ì(€€€€€€€…Ñ¥½¹Ì¹±…ÍÍ1¥ÍÐ¹…‘ ‰‘Õ…°µ•á•ÕÑ¥½¸µÁ…Ñ¡Ìˆ¤ì(€€€€€€€½¹ÍÐ½µµ•É¥…±1…‰•°€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰ÍÁ…¸ˆ¤ì(€€€€€€€½µµ•É¥…±1…‰•°¹±…ÍÍ9…µ”€ô€‰•á•ÕÑ¥½¸µÁ…Ñ µ±…‰•°½µµ•É¥…°µÁ…Ñ µ±…‰•°ˆì(€€€€€€€½µµ•É¥…±1…‰•°¹Ñ•áÑ½¹Ñ•¹Ð€ô€‹fbÏbŸbÄƒb·bÏbŸfƒb£b·bÄˆì(€€€€€€€½¹ÍÐ½™™¥¥…±1…‰•°€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰ÍÁ…¸ˆ¤ì(€€€€€€€½™™¥¥…±1…‰•°¹±…ÍÍ9…µ”€ô€‰•á•ÕÑ¥½¸µÁ…Ñ µ±…‰•°½™™¥¥…°µÁ…Ñ µ±…‰•°ˆì(€€€€€€€½™™¥¥…±1…‰•°¹Ñ•áÑ½¹Ñ•¹Ð€ô€‹bŸffbÏbŸbÄƒbŸfb·ff#ff(ƒbŸfbÇbÏff(ˆì(€€€€€€€…Ñ¥½¹Ì¹¥¹Í•ÉÑ	•™½É”¡½µµ•É¥…±1…‰•°°ÁÉ¥µ…Éä¤ì(€€€€€€€…Ñ¥½¹Ì¹¥¹Í•ÉÑ	•™½É”¡½µµ•É¥…°°ÁÉ¥µ…Éä¤ì(€€€€€€€…Ñ¥½¹Ì¹¥¹Í•ÉÑ	•™½É”¡½™™¥¥…±1…‰•°°ÁÉ¥µ…Éä¤ì(€€€€€ô(€€€ô(€€€½¹ÍÐ¡•É¼€ôµ…¥¸¹ÅÕ•ÉåM•±•Ñ½È œ¹Í•ÉÙ¥”µ¡•É¼œ¤ì(€€€¥˜€¡¡•É¼€˜˜€…¡•É¼¹ÅÕ•ÉåM•±•Ñ½È œ¹Í•ÉÙ¥”µ™…ÑÌµ‰…Èœ¤¤ì(€€€€€½¹ÍÐÁ…¹•±Ì€ôl¸¸¹µ…¥¸¹ÅÕ•ÉåM•±•Ñ½É±° œ¹½¹Ñ•¹ÐµÁ…¹•°œ¥tì(€€€€€½¹ÍÐ™¥¹‘A…¹•°€ô€¡Á…ÑÑ•É¸¤€ôøÁ…¹•±Ì¹™¥¹ ¡Á…¹•°¤€ôøÁ…ÑÑ•É¸¹Ñ•ÍÐ¡Á…¹•°¹ÅÕ•ÉåM•±•Ñ½È  Èœ¤ü¹Ñ•áÑ½¹Ñ•¹Ðñð€œœ¤¤ì(€€€€€½¹ÍÐ™••Ì€ô™¥¹‘A…¹•° ¿bŸfbÇbÏf#f¼¤ì(€€€€€½¹ÍÐ‘ÕÉ…Ñ¥½¸€ô™¥¹‘A…¹•° ¿bŸffb¿b¤¼¤ì(€€€€€½¹ÍÐ‰…È€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‘¥Øœ¤ì(€€€€€‰…È¹±…ÍÍ9…µ”€ô€Í•ÉÙ¥”µ™…ÑÌµ‰…Èœì(€€€€€½¹ÍÐ…ÕÑ¡½É¥Ñä€ô¡•É¼¹ÅÕ•ÉåM•±•Ñ½È œ¹•å•‰É½Üœ¤ü¹Ñ•áÑ½¹Ñ•¹Ðü¹ÍÁ±¥Ð Ÿ
+Üœ¤ñðmtì(€€€€€ml‹bŸfb³fb¤ˆ°…ÕÑ¡½É¥ÑålÁut°l‹bŸfb—fbŸbÇb¤ˆ°…ÕÑ¡½É¥ÑålÅut°l‹bŸfbÇbÏf#fˆ°™••Ìü¹ÅÕ•ÉåM•±•Ñ½È Àœ¤ü¹Ñ•áÑ½¹Ñ•¹Ñt°l‹bŸffb¿b¤ˆ°‘ÕÉ…Ñ¥½¸ü¹ÅÕ•ÉåM•±•Ñ½È Àœ¤ü¹Ñ•áÑ½¹Ñ•¹Ñut¹™½É…  ¡m±…‰•°°Ù…±Õ•t¤€ôøì(€€€€€€€¥˜€ …Ù…±Õ”¤É•ÑÕÉ¸ì(€€€€€€€½¹ÍÐ¥Ñ•´€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‘¥Øœ¤ì(€€€€€€€½¹ÍÐÑ•É´€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ÍÁ…¸œ¤ìÑ•É´¹Ñ•áÑ½¹Ñ•¹Ð€ô±…‰•°ì(€€€€€€€½¹ÍÐ‘•Ñ…¥°€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ˆœ¤ì‘•Ñ…¥°¹Ñ•áÑ½¹Ñ•¹Ð€ôÙ…±Õ”¹ÑÉ¥´ ¤ì(€€€€€€€¥Ñ•´¹…ÁÁ•¹¡Ñ•É´°‘•Ñ…¥°¤ì‰…È¹…ÁÁ•¹¡¥Ñ•´¤ì(€€€€€ô¤ì(€€€€€¡•É¼¹…ÁÁ•¹¡‰…È¤ì(€€€€€½¹ÍÐ…Ñ¥½¹Ì€ô¡•É¼¹ÅÕ•ÉåM•±•Ñ½È œ¹…Ñ¥½¹Ìœ¤ì(€€€€€½¹ÍÐÍ•½¹‘…Éä€ô…Ñ¥½¹Ì€ül¸¸¹…Ñ¥½¹Ì¹ÅÕ•ÉåM•±•Ñ½É±° „œ¥t¹Í±¥” Ä¤€èmtì(€€€€€¥˜€¡Í•½¹‘…Éä¹±•¹Ñ ¤ì(€€€€€€€½¹ÍÐ‘•Ñ…¥±Ì€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‘•Ñ…¥±Ìœ¤ì‘•Ñ…¥±Ì¹±…ÍÍ9…µ”€ô€Í•ÉÙ¥”µÍ•½¹‘…Éäµ…Ñ¥½¹Ìœì(€€€€€€€½¹ÍÐÍÕµµ…Éä€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ÍÕµµ…Éäœ¤ìÍÕµµ…Éä¹Ñ•áÑ½¹Ñ•¹Ð€ô€ŸbŸffbçff#fbŸb¨ƒf#bŸffb×bŸb¿bÄƒbŸfb—bÛbŸff+b¤œì(€€€€€€€½¹ÍÐ½¹Ñ•¹Ð€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‘¥Øœ¤ìÍ•½¹‘…Éä¹™½É…  ¡±¥¹¬¤€ôø½¹Ñ•¹Ð¹…ÁÁ•¹¡±¥¹¬¤¤ì(€€€€€€€‘•Ñ…¥±Ì¹…ÁÁ•¹¡ÍÕµµ…Éä°½¹Ñ•¹Ð¤ì¡•É¼¹…ÁÁ•¹¡‘•Ñ…¥±Ì¤ì(€€€€€ô(€€€€€½¹ÍÐ½¹‘¥Ñ¥½¹Ì€ô™¥¹‘A…¹•° ¿bŸfbÓbÇf#bÝóbŸfbfff+b¤¼¤ì(€€€€€½¹ÍÐ½¹‘¥Ñ¥½¹Í!•…‘¥¹œ€ô½¹‘¥Ñ¥½¹Ìü¹ÅÕ•ÉåM•±•Ñ½È  Èœ¤ì(€€€€€¥˜€¡½¹‘¥Ñ¥½¹Í!•…‘¥¹œ¤½¹‘¥Ñ¥½¹Í!•…‘¥¹œ¹Ñ•áÑ½¹Ñ•¹Ð€ô€ŸffƒfbÃfƒbŸfb»b¿fb¤ƒffbŸbÏb£b¤ƒff+b|ƒŠPƒbŸfbÓbÇf#bÜœì(€€€ô(€€€½¹ÍÐÍ•Ñ¥½¹Ì€ôl¸¸¹µ…¥¸¹ÅÕ•ÉåM•±•Ñ½É±° ˆ¹‘•Ñ…¥°µÍ•Ñ¥½¸°€¹½¹Ñ•¹ÐµÁ…¹•°ˆ¥tì(€€€Í•Ñ¥½¹Ì¹™½É…  ¡Í•Ñ¥½¸°¥¹‘•à¤€ôøì(€€€€€Í•Ñ¥½¸¹ÍÑå±”¹Í•ÑAÉ½Á•ÉÑä ˆ´µÍ•Ñ¥½¸µ½É‘•Èˆ°MÑÉ¥¹œ¡¥¹‘•à€¬€Ä¤¤ì(€€€ô¤ì(€ô((€™Õ¹Ñ¥½¸•¹¡…¹•Y•É¥™¥•‘½Ù•É¹µ•¹Ñ!…¹‘½™˜ ¤ì(€€€¥˜€¡±½…Ñ¥½¸¹Á…Ñ¡¹…µ”€ôôô€ˆ¼ˆ¤É•ÑÕÉ¸ì(€€€™½È€¡½¹ÍÐ…¹¡½È½˜‘½Õµ•¹Ð¹ÅÕ•ÉåM•±•Ñ½É±° m‘…Ñ„µ½Ù•É¹µ•¹ÐµÑ„ô‰Ù•É¥™¥•‰tœ¤¤ì(€€€€€¥˜€¡…¹¡½È¹‘…Ñ…Í•Ð¹¡…¹‘½™™I•…‘ä€ôôô€‰ÑÉÕ”ˆ¤½¹Ñ¥¹Õ”ì(€€€€€…¹¡½È¹‘…Ñ…Í•Ð¹¡…¹‘½™™I•…‘ä€ô€‰ÑÉÕ”ˆì(€€€€€½¹ÍÐÕ¥‘…¹”€ô…¹¡½È¹±½Í•ÍÐ ‰µ…¥¸ˆ¤ü¹‘…Ñ…Í•Ð¹‘•ÍÑ¥¹…Ñ¥½¹-¥¹€ôôô€‰=%%1}U%9ˆì(€€€€€½¹ÍÐ¹½Ñ”€ô‘½Õµ•¹Ð¹É•…Ñ•±•µ•¹Ð ‰Àˆ¤ì(€€€€€¹½Ñ”¹±…ÍÍ9…µ”€ô€‰½™™¥¥…°µ¡…¹‘½™˜µ¹½Ñ”ˆì(€€€€€¹½Ñ”¹Ñ•áÑ½¹Ñ•¹Ð€ôÕ¥‘…¹”(€€€€€€€€ü€‹bÏb«fb«ffƒb—ff$ƒbŸffb×b¿bÄƒbŸfb·ff#ff(ƒbŸfbÇbÏff(ƒbŸfbÃf(ƒf+bÓbÇb´ƒfbÃfƒbŸffbçbŸffb¤¸ƒbÇbŸb³bäƒbŸfbŸb»b«b×bŸbÔƒfb£fƒbŸffb«bŸb£bçb¤¸ˆ(€€€€€€€€è€‹bÏb«fb«ffƒbŸfb‹fƒb—ff$ƒbŸfb»b¿fb¤ƒbŸfb·ff#ff+b¤ƒbŸfbÇbÏff+b¤ƒfb—ffbŸfƒbŸfbßfb ¸ƒfb¼ƒf+f?bßfb ƒb«bÏb³f+fƒbŸfb¿b»f#fƒbçb£bÄUA…ÍÌ¸ˆì(€€€€€…¹¡½È¹Á…É•¹Ñ9½‘”ü¹¥¹Í•ÉÑ	•™½É”¡¹½Ñ”°…¹¡½È¤ì(€€€€€…¹¡½È¹Ñ•áÑ½¹Ñ•¹Ð€ôÕ¥‘…¹”€ü€‹bŸfb«b´ƒbŸffb×b¿bÄƒbŸfbÇbÏff(ƒŠ\ˆ€è€‹bŸb£b¿bŒƒffƒbŸfb³fb¤ƒbŸfbÇbÏff+b¤ƒŠ\ˆì(€€€ô(€ô(4(€½¹ÍÐÍÑ…ÉÐ€ô€ ¤€ôøì(€€€±½…‘%¹Ñ•¹Ñ¥ÉÍÑMÑå±•Ì ¤ì(€€€±½…‘!½µ•Á…•%¹Ñ•¹ÑM•…É  ¤ì(€€€Í•ÑÕÁ¥±Ñ•È ¤ì(€€€…±¥¹±½‰…±½Õ¹ÑÌ ¤ì(€€€¥Í½±…Ñ•!½µ•Á…•½Ù•É¹µ•¹ÑÑ…Ì ¤ì(€€€•áÁ½Í•Ñ¥Ù¥ÑåM•…É  ¤ì(€€€•¹¡…¹•AÉ¥µ…Éå9…Ù¥…Ñ¥½¸ ¤ì(€€€½ÉÉ•Ñ-¹½Ý¹M•ÉÙ¥•Q…É•ÑÌ ¤ì(€€€É•©•Ñ…­•M•ÉÙ¥•Q…É•ÑÌ ¤ì(€€€Í¥µÁ±¥™å!½µ•Á…•	å%¹Ñ•¹Ð ¤ì(€€€•¹¡…¹•M•ÉÙ¥•¥É•Ñ½Éä ¤ì(€€€•¹¡…¹•M•ÉÙ¥••Ñ…¥° ¤ì(€€€•¹¡…¹•Y•É¥™¥•‘½Ù•É¹µ•¹Ñ!…¹‘½™˜ ¤ì(€ôì(€‘½Õµ•¹Ð¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ±¥¬œ°€¡•Ù•¹Ð¤€ôøì(€€€¥˜€¡±½…Ñ¥½¸¹Á…Ñ¡¹…µ”€„ôô€œ¼œ¤É•ÑÕÉ¸ì(€€€½¹ÍÐ•áÑ•É¹…°€ô•Ù•¹Ð¹Ñ…É•Ð¹±½Í•ÍÐü¸ …m¡É•™xô‰¡ÑÑÁÌè¼¼‰t°…m¡É•™xô‰¡ÑÑÀè¼¼‰tœ¤ì(€€€¥˜€¡•áÑ•É¹…°¤•Ù•¹Ð¹ÁÉ•Ù•¹Ñ•™…Õ±Ð ¤ì(€ô°ì…ÁÑÕÉ”èÑÉÕ”ô¤ì(€½¹ÍÐ‰½½Ð€ô€ ¤€ôøì(€€€½¹ÍÐ¥Í!å‘É…Ñ•‘áÁ½ÉÐ€ô€½Á±…Ñ™½É´µÙq¬½¤¹Ñ•ÍÐ¡‘½Õµ•¹Ð¹‰½‘äü¹‘…Ñ…Í•Ð¹É•±•…Í”ñð€ˆˆ¤ì4(€€€¥˜€¡¥Í!å‘É…Ñ•‘áÁ½ÉÐ¤Í•ÑQ¥µ•½ÕÐ¡ÍÑ…ÉÐ°€ÄàÀÀ¤ì4(€€€•±Í”ÍÑ…ÉÐ ¤ì4(€ôì4(€¥˜€¡‘½Õµ•¹Ð¹É•…‘åMÑ…Ñ”€ôôô€‰±½…‘¥¹œˆ¤‘½Õµ•¹Ð¹…‘‘Ù•¹Ñ1¥ÍÑ•¹•È ‰=5½¹Ñ•¹Ñ1½…‘•ˆ°‰½½Ð°ì½¹”èÑÉÕ”ô¤ì4(€•±Í”‰½½Ð ¤ì4)ô¤ ¤ì4

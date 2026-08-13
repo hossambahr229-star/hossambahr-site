@@ -26,7 +26,9 @@ const browser = await chromium.launch({ headless:true, executablePath:process.en
 const pages = [
   ['home','/',false], ['home-expert','/',true], ['services','/services/',false],
   ['activities','/dubai-business-activities.html',false], ['resident','/for/resident/',false],
-  ['service','/services/gdrfa-family-residence-renew/',false]
+  ['service','/services/gdrfa-family-residence-renew/',false],
+  ['command-center','/command-center/',false],
+  ['dubai-company','/services/issue-trade-license-dubai/',false]
 ];
 const widths = [320,360,375,390,412,430,768,1024,1280,1440,1920];
 const report = [];
