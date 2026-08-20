@@ -109,7 +109,7 @@ async function homeJourney(query) {
 async function clickedExternal(slug,kind) {
   const {context,page}=await newPage({width:390,height:844});
   await goto(page,'/services/'+slug+'/');
-  const selector=kind==='commercial'?'[data-commercial-cta="verified"]':'[data-government-cta="verified"]';
+  const selector=kind==='commercial'?'[data-commercial-cta="verified"]':'[data-government-cta="verified"]:visible, .official-route-actions .route-primary:visible, .service-hero .actions > a:first-child:visible';
   const link=page.locator(selector).first();
   // Runtime routing enhances and reveals the verified CTA after deferred scripts execute.
   await page.waitForTimeout(2500);
