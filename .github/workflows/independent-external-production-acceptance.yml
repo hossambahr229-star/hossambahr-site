@@ -1,0 +1,58 @@
+name: Independent external production acceptance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "qa/external-production-acceptance.mjs"
+      - ".github/workflows/independent-external-production-acceptance.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: independent-external-production-acceptance
+  cancel-in-progress: false
+
+jobs:
+  external-production-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: browser-actions/setup-chrome@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install browser test runtime
+        run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - name: Run real Production browser acceptance
+        id: acceptance
+        continue-on-error: true
+        run: node qa/external-production-acceptance.mjs
+      - name: Upload screenshots and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: independent-external-production-acceptance
+          path: external-production-artifacts
+          retention-days: 14
+      - name: Persist machine-readable acceptance result
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f external-production-artifacts/external-production-report.json
+          cp external-production-artifacts/external-production-report.json qa/external-production-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- qa/external-production-result.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Record independent Production acceptance [skip ci]"
+          git push origin HEAD:main
+      - name: Enforce external acceptance
+        if: steps.acceptance.outcome != 'success'
+        run: exit 1
