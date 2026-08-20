@@ -1,0 +1,485 @@
+{
+  "generatedAt": "2026-08-20T07:44:40.266Z",
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "inline": [
+        {
+          "index": 10,
+          "bytes": 174,
+          "syntax": "PASS"
+        },
+        {
+          "index": 13,
+          "bytes": 65,
+          "syntax": "PASS"
+        },
+        {
+          "index": 14,
+          "bytes": 289,
+          "syntax": "FAIL"
+        },
+        {
+          "index": 15,
+          "bytes": 57,
+          "syntax": "PASS"
+        },
+        {
+          "index": 17,
+          "bytes": 845,
+          "syntax": "PASS"
+        },
+        {
+          "index": 18,
+          "bytes": 43,
+          "syntax": "PASS"
+        },
+        {
+          "index": 19,
+          "bytes": 867,
+          "syntax": "PASS"
+        },
+        {
+          "index": 20,
+          "bytes": 5747,
+          "syntax": "PASS"
+        },
+        {
+          "index": 21,
+          "bytes": 3116,
+          "syntax": "PASS"
+        },
+        {
+          "index": 22,
+          "bytes": 95,
+          "syntax": "PASS"
+        },
+        {
+          "index": 23,
+          "bytes": 178,
+          "syntax": "PASS"
+        },
+        {
+          "index": 24,
+          "bytes": 147,
+          "syntax": "PASS"
+        },
+        {
+          "index": 25,
+          "bytes": 1704,
+          "syntax": "PASS"
+        }
+      ],
+      "external": [
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/08-6bueb11zzm.js",
+          "status": 200,
+          "bytes": 50702,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/0npg3y4613k6h.js",
+          "status": 200,
+          "bytes": 227528,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/0m905qknaeu8r.js",
+          "status": 200,
+          "bytes": 149980,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/turbopack-16orn6ljuzba2.js",
+          "status": 200,
+          "bytes": 10579,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/3h5-r53dm2pe7.js",
+          "status": 200,
+          "bytes": 3377,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/1ln1dozyh7pbz.js",
+          "status": 200,
+          "bytes": 54644,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/23fh1v51e76jj.js",
+          "status": 200,
+          "bytes": 6548,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/0-74umna2sjqz.js",
+          "status": 200,
+          "bytes": 12328,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/0cw1yiagel403.js",
+          "status": 200,
+          "bytes": 65067,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/0cz1d0mv5g_q7.js",
+          "status": 200,
+          "bytes": 112541,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/zero-defect-routing.js",
+          "status": 200,
+          "bytes": 26759,
+          "syntax": "FAIL"
+        },
+        {
+          "src": "https://hossambahr.com/_next/static/chunks/1xflshzoj7lom.js",
+          "status": 200,
+          "bytes": 17539,
+          "syntax": "PASS"
+        }
+      ],
+      "pageErrors": [
+        {
+          "message": "Invalid or unexpected token",
+          "stack": ""
+        }
+      ],
+      "console": [],
+      "loadedScripts": [
+        {
+          "index": 0,
+          "src": "https://hossambahr.com/_next/static/chunks/08-6bueb11zzm.js",
+          "bytes": 0
+        },
+        {
+          "index": 1,
+          "src": "https://hossambahr.com/_next/static/chunks/0npg3y4613k6h.js",
+          "bytes": 0
+        },
+        {
+          "index": 2,
+          "src": "https://hossambahr.com/_next/static/chunks/0m905qknaeu8r.js",
+          "bytes": 0
+        },
+        {
+          "index": 3,
+          "src": "https://hossambahr.com/_next/static/chunks/turbopack-16orn6ljuzba2.js",
+          "bytes": 0
+        },
+        {
+          "index": 4,
+          "src": "https://hossambahr.com/_next/static/chunks/3h5-r53dm2pe7.js",
+          "bytes": 0
+        },
+        {
+          "index": 5,
+          "src": "https://hossambahr.com/_next/static/chunks/1ln1dozyh7pbz.js",
+          "bytes": 0
+        },
+        {
+          "index": 6,
+          "src": "https://hossambahr.com/_next/static/chunks/23fh1v51e76jj.js",
+          "bytes": 0
+        },
+        {
+          "index": 7,
+          "src": "https://hossambahr.com/_next/static/chunks/0-74umna2sjqz.js",
+          "bytes": 0
+        },
+        {
+          "index": 8,
+          "src": "https://hossambahr.com/_next/static/chunks/0cw1yiagel403.js",
+          "bytes": 0
+        },
+        {
+          "index": 9,
+          "src": "",
+          "bytes": 174
+        },
+        {
+          "index": 10,
+          "src": "https://hossambahr.com/_next/static/chunks/0cz1d0mv5g_q7.js",
+          "bytes": 0
+        },
+        {
+          "index": 11,
+          "src": "https://hossambahr.com/zero-defect-routing.js",
+          "bytes": 0
+        },
+        {
+          "index": 12,
+          "src": "",
+          "bytes": 65
+        },
+        {
+          "index": 13,
+          "src": "",
+          "bytes": 289
+        },
+        {
+          "index": 14,
+          "src": "",
+          "bytes": 57
+        },
+        {
+          "index": 15,
+          "src": "https://hossambahr.com/_next/static/chunks/1xflshzoj7lom.js",
+          "bytes": 0
+        },
+        {
+          "index": 16,
+          "src": "",
+          "bytes": 845
+        },
+        {
+          "index": 17,
+          "src": "",
+          "bytes": 43
+        },
+        {
+          "index": 18,
+          "src": "",
+          "bytes": 867
+        },
+        {
+          "index": 19,
+          "src": "",
+          "bytes": 5747
+        },
+        {
+          "index": 20,
+          "src": "",
+          "bytes": 3116
+        },
+        {
+          "index": 21,
+          "src": "",
+          "bytes": 95
+        },
+        {
+          "index": 22,
+          "src": "",
+          "bytes": 178
+        },
+        {
+          "index": 23,
+          "src": "",
+          "bytes": 147
+        },
+        {
+          "index": 24,
+          "src": "",
+          "bytes": 1704
+        }
+      ]
+    },
+    {
+      "route": "/services/",
+      "status": 200,
+      "inline": [
+        {
+          "index": 2,
+          "bytes": 755,
+          "syntax": "PASS"
+        }
+      ],
+      "external": [
+        {
+          "src": "https://hossambahr.com/zero-defect-routing.js",
+          "status": 200,
+          "bytes": 26759,
+          "syntax": "FAIL"
+        }
+      ],
+      "pageErrors": [
+        {
+          "message": "Invalid or unexpected token",
+          "stack": ""
+        }
+      ],
+      "console": [],
+      "loadedScripts": [
+        {
+          "index": 0,
+          "src": "https://hossambahr.com/zero-defect-routing.js",
+          "bytes": 0
+        },
+        {
+          "index": 1,
+          "src": "",
+          "bytes": 755
+        }
+      ]
+    },
+    {
+      "route": "/services/issue-trade-license-dubai/",
+      "status": 200,
+      "inline": [],
+      "external": [
+        {
+          "src": "https://hossambahr.com/zero-defect-routing.js",
+          "status": 200,
+          "bytes": 26759,
+          "syntax": "FAIL"
+        }
+      ],
+      "pageErrors": [
+        {
+          "message": "Invalid or unexpected token",
+          "stack": ""
+        }
+      ],
+      "console": [],
+      "loadedScripts": [
+        {
+          "index": 0,
+          "src": "https://hossambahr.com/zero-defect-routing.js",
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "route": "/command-center/",
+      "status": 200,
+      "inline": [],
+      "external": [
+        {
+          "src": "https://hossambahr.com/zero-defect-routing.js",
+          "status": 200,
+          "bytes": 26759,
+          "syntax": "FAIL"
+        }
+      ],
+      "pageErrors": [
+        {
+          "message": "Invalid or unexpected token",
+          "stack": ""
+        }
+      ],
+      "console": [],
+      "loadedScripts": [
+        {
+          "index": 0,
+          "src": "https://hossambahr.com/zero-defect-routing.js",
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "route": "/dubai-business-activities.html",
+      "status": 200,
+      "inline": [
+        {
+          "index": 2,
+          "bytes": 525,
+          "syntax": "FAIL"
+        }
+      ],
+      "external": [
+        {
+          "src": "https://hossambahr.com/zero-defect-routing.js",
+          "status": 200,
+          "bytes": 26759,
+          "syntax": "FAIL"
+        },
+        {
+          "src": "https://hossambahr.com/dubai-activities-data.js",
+          "status": 200,
+          "bytes": 2079571,
+          "syntax": "PASS"
+        },
+        {
+          "src": "https://hossambahr.com/activities.js",
+          "status": 200,
+          "bytes": 19724,
+          "syntax": "PASS"
+        }
+      ],
+      "pageErrors": [
+        {
+          "message": "Invalid or unexpected token",
+          "stack": ""
+        }
+      ],
+      "console": [],
+      "loadedScripts": [
+        {
+          "index": 0,
+          "src": "https://hossambahr.com/zero-defect-routing.js",
+          "bytes": 0
+        },
+        {
+          "index": 1,
+          "src": "",
+          "bytes": 525
+        },
+        {
+          "index": 2,
+          "src": "https://hossambahr.com/dubai-activities-data.js",
+          "bytes": 0
+        },
+        {
+          "index": 3,
+          "src": "https://hossambahr.com/activities.js",
+          "bytes": 0
+        }
+      ]
+    }
+  ],
+  "invalidScripts": [
+    {
+      "label": "https://hossambahr.com/zero-defect-routing.js",
+      "message": "Invalid or unexpected token",
+      "stack": "https://hossambahr.com/zero-defect-routing.js:270\n    if (capabilityHeading) capabilityHeading.textContent = \"اختر نوع المعا�׎v��\u001e��k�w\u001a��M�\u001d���̹͕�\u0005��ɥ��є���ɥ�����������b�f\u001fb�b�f\u0004�b�b�b�b�b����(��������Ё�ե��1�����􁑽�յ��й�ɕ�ѕ\u0015�����Р��������(�����ե��1�����ѕ��\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nSyntaxError: Invalid or unexpected token\n    at new Script (node:vm:117:7)\n    at syntax (file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:12:7)\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:29:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+      "excerpt": "(() => {\n  function loadIntentFirstStyles() {\n    if (document.querySelector('link[href=\"/intent-first.css\"]')) return;\n    const link = document.createElement(\"link\");\n    link.rel = \"stylesheet\";\n    link.href = \"/intent-first.css\";\n    document.head.append(link);\n  }\n\n  function loadHomepageIntentSearch() {\n    const input = document.getElementById(\"government-search\");\n    if (!input) return;\n    const load = (source, module = false) => new Promise((resolve, reject) => {\n      const script = document.createElement(\"script\");\n      script.src = source;\n      if (module) script.type = \"modul"
+    },
+    {
+      "label": "/#inline-14",
+      "message": "Unexpected token ':'",
+      "stack": "/#inline-14:1\n{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"HossamBahr\",\"url\":\"https://hossambahr.com\",\"inLanguage\":[\"ar-AE\",\"en\"],\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":\"https://hossambahr.com/services/?q={search_term_string}\",\"query-input\":\"required name=search_term_string\"}}\n           ^\n\nSyntaxError: Unexpected token ':'\n    at new Script (node:vm:117:7)\n    at syntax (file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:12:7)\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:32:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+      "excerpt": "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"HossamBahr\",\"url\":\"https://hossambahr.com\",\"inLanguage\":[\"ar-AE\",\"en\"],\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":\"https://hossambahr.com/services/?q={search_term_string}\",\"query-input\":\"required name=search_term_string\"}}"
+    },
+    {
+      "label": "https://hossambahr.com/zero-defect-routing.js",
+      "message": "Invalid or unexpected token",
+      "stack": "https://hossambahr.com/zero-defect-routing.js:270\n    if (capabilityHeading) capabilityHeading.textContent = \"اختر نوع المعا�׎v��\u001e��k�w\u001a��M�\u001d���̹͕�\u0005��ɥ��є���ɥ�����������b�f\u001fb�b�f\u0004�b�b�b�b�b����(��������Ё�ե��1�����􁑽�յ��й�ɕ�ѕ\u0015�����Р��������(�����ե��1�����ѕ��\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nSyntaxError: Invalid or unexpected token\n    at new Script (node:vm:117:7)\n    at syntax (file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:12:7)\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:29:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+      "excerpt": "(() => {\n  function loadIntentFirstStyles() {\n    if (document.querySelector('link[href=\"/intent-first.css\"]')) return;\n    const link = document.createElement(\"link\");\n    link.rel = \"stylesheet\";\n    link.href = \"/intent-first.css\";\n    document.head.append(link);\n  }\n\n  function loadHomepageIntentSearch() {\n    const input = document.getElementById(\"government-search\");\n    if (!input) return;\n    const load = (source, module = false) => new Promise((resolve, reject) => {\n      const script = document.createElement(\"script\");\n      script.src = source;\n      if (module) script.type = \"modul"
+    },
+    {
+      "label": "https://hossambahr.com/zero-defect-routing.js",
+      "message": "Invalid or unexpected token",
+      "stack": "https://hossambahr.com/zero-defect-routing.js:270\n    if (capabilityHeading) capabilityHeading.textContent = \"اختر نوع المعا�׎v��\u001e��k�w\u001a��M�\u001d���̹͕�\u0005��ɥ��є���ɥ�����������b�f\u001fb�b�f\u0004�b�b�b�b�b����(��������Ё�ե��1�����􁑽�յ��й�ɕ�ѕ\u0015�����Р��������(�����ե��1�����ѕ��\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nSyntaxError: Invalid or unexpected token\n    at new Script (node:vm:117:7)\n    at syntax (file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:12:7)\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:29:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+      "excerpt": "(() => {\n  function loadIntentFirstStyles() {\n    if (document.querySelector('link[href=\"/intent-first.css\"]')) return;\n    const link = document.createElement(\"link\");\n    link.rel = \"stylesheet\";\n    link.href = \"/intent-first.css\";\n    document.head.append(link);\n  }\n\n  function loadHomepageIntentSearch() {\n    const input = document.getElementById(\"government-search\");\n    if (!input) return;\n    const load = (source, module = false) => new Promise((resolve, reject) => {\n      const script = document.createElement(\"script\");\n      script.src = source;\n      if (module) script.type = \"modul"
+    },
+    {
+      "label": "https://hossambahr.com/zero-defect-routing.js",
+      "message": "Invalid or unexpected token",
+      "stack": "https://hossambahr.com/zero-defect-routing.js:270\n    if (capabilityHeading) capabilityHeading.textContent = \"اختر نوع المعا�׎v��\u001e��k�w\u001a��M�\u001d���̹͕�\u0005��ɥ��є���ɥ�����������b�f\u001fb�b�f\u0004�b�b�b�b�b����(��������Ё�ե��1�����􁑽�յ��й�ɕ�ѕ\u0015�����Р��������(�����ե��1�����ѕ��\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nSyntaxError: Invalid or unexpected token\n    at new Script (node:vm:117:7)\n    at syntax (file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:12:7)\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:29:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+      "excerpt": "(() => {\n  function loadIntentFirstStyles() {\n    if (document.querySelector('link[href=\"/intent-first.css\"]')) return;\n    const link = document.createElement(\"link\");\n    link.rel = \"stylesheet\";\n    link.href = \"/intent-first.css\";\n    document.head.append(link);\n  }\n\n  function loadHomepageIntentSearch() {\n    const input = document.getElementById(\"government-search\");\n    if (!input) return;\n    const load = (source, module = false) => new Promise((resolve, reject) => {\n      const script = document.createElement(\"script\");\n      script.src = source;\n      if (module) script.type = \"modul"
+    },
+    {
+      "label": "https://hossambahr.com/zero-defect-routing.js",
+      "message": "Invalid or unexpected token",
+      "stack": "https://hossambahr.com/zero-defect-routing.js:270\n    if (capabilityHeading) capabilityHeading.textContent = \"اختر نوع المعا�׎v��\u001e��k�w\u001a��M�\u001d���̹͕�\u0005��ɥ��є���ɥ�����������b�f\u001fb�b�f\u0004�b�b�b�b�b����(��������Ё�ե��1�����􁑽�յ��й�ɕ�ѕ\u0015�����Р��������(�����ե��1�����ѕ��\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nSyntaxError: Invalid or unexpected token\n    at new Script (node:vm:117:7)\n    at syntax (file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:12:7)\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:29:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+      "excerpt": "(() => {\n  function loadIntentFirstStyles() {\n    if (document.querySelector('link[href=\"/intent-first.css\"]')) return;\n    const link = document.createElement(\"link\");\n    link.rel = \"stylesheet\";\n    link.href = \"/intent-first.css\";\n    document.head.append(link);\n  }\n\n  function loadHomepageIntentSearch() {\n    const input = document.getElementById(\"government-search\");\n    if (!input) return;\n    const load = (source, module = false) => new Promise((resolve, reject) => {\n      const script = document.createElement(\"script\");\n      script.src = source;\n      if (module) script.type = \"modul"
+    },
+    {
+      "label": "/dubai-business-activities.html#inline-2",
+      "message": "Unexpected token ':'",
+      "stack": "/dubai-business-activities.html#inline-2:1\n{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"مساعد اختيار النشاط الاقتصادي في دبي\",\"description\":\"أداة بحث وإرشاد لاختيار النشاط الاقتصادي الأقرب لفكرة المشروع، مع الرمز والوصف والتصنيف والتحقق الرسمي.\",\"url\":\"https://hossambahr.com/dubai-business-activities.html\",\"isPartOf\":{\"@type\":\"WebSite\",\"name\":\"Hossam Bahr Business Platform\",\"url\":\"https://hossambahr.com/\"},\"about\":{\"@type\":\"Dataset\",\"name\":\"Dubai Business Activities\",\"temporalCoverage\":\"2026\",\"spatialCoverage\":\"Dubai, United Arab Emirates\"}}\n           ^\n\nSyntaxError: Unexpected token ':'\n    at new Script (node:vm:117:7)\n    at syntax (file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:12:7)\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/qa/production-js-diagnostic.mjs:32:21\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+      "excerpt": "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"مساعد اختيار النشاط الاقتصادي في دبي\",\"description\":\"أداة بحث وإرشاد لاختيار النشاط الاقتصادي الأقرب لفكرة المشروع، مع الرمز والوصف والتصنيف والتحقق الرسمي.\",\"url\":\"https://hossambahr.com/dubai-business-activities.html\",\"isPartOf\":{\"@type\":\"WebSite\",\"name\":\"Hossam Bahr Business Platform\",\"url\":\"https://hossambahr.com/\"},\"about\":{\"@type\":\"Dataset\",\"name\":\"Dubai Business Activities\",\"temporalCoverage\":\"2026\",\"spatialCoverage\":\"Dubai, United Arab Emirates\"}}"
+    }
+  ],
+  "summary": {
+    "invalidScripts": 7,
+    "pageErrors": 5,
+    "consoleErrors": 0
+  }
+}
