@@ -96,7 +96,7 @@ export function rankServices(query, services = []) {
   const residence = includesAny(normalized, ['إقامة','اقامه','residence','residency']);
   const employee = includesAny(normalized, ['عامل','موظف','employee','worker']);
   const visitRelative = includesAny(normalized, ['زيارة','visit']) && includesAny(normalized, ['أخويا','اخويا','قريب','صديق','relative','friend']);
-  const openCompany = company && includesAny(normalized, ['أفتح','افتح','تأسيس','تاسيس','open','start','establish']);
+  const openCompany = company && includesAny(normalized, ['أفتح','افتح','فتح','تأسيس','تاسيس','open','start','establish']);
   const expiredOrRenewLicense = includesAny(normalized, ['الرخصة','رخصة','license','licence']) && includesAny(normalized, ['انتهت','منتهية','أجدد','اجدد','تجديد','expired','renew']);
   const addActivity = includesAny(normalized, ['أضيف','اضيف','إضافة','اضافه','add']) && includesAny(normalized, ['نشاط','activity']);
   const addPartner = includesAny(normalized, ['أضيف','اضيف','إضافة','اضافه','add']) && includesAny(normalized, ['شريك','partner']);
@@ -105,6 +105,9 @@ export function rankServices(query, services = []) {
   const requestsNoc = includesAny(normalized, ['rta','noc','عدم ممانعة']);
   const renewFamilyResidence = spouseOrFamily && residence && includesAny(normalized, ['تجديد','أجدد','اجدد','renew']);
   const labourComplaint = includesAny(normalized, ['راتب','شكوى','أشتكي','اشتكي','salary','complaint']);
+  const businessIdea = company && includesAny(normalized, ACTIVITY_SYNONYMS.flat());
+  const drivingContext = includesAny(normalized, ['قياده','سائق','سياره','مركبه','مرور','driving','driver','vehicle','traffic']);
+  const cancelEmployee = employee && includesAny(normalized, ['إلغاء','الغاء','ألغي','الغي','cancel','terminate']);
 
   return services.map(service => {
     const name = normalizeIntent(`${service.a || ''} ${service.e || ''}`);
@@ -137,7 +140,10 @@ export function rankServices(query, services = []) {
     if (visitRelative && includesAny(name, ['زيارة قريب','زيارة صديق','visit relative','visit friend'])) score += 260;
     if (employee && residence && includesAny(name, ['إصدار إقامة موظف','إصدار تصريح إقامة','employee residence','issue residence permit'])) score += 260;
     if (openCompany && emirate === 'دبي' && service.s === 'issue-trade-license-dubai') score += 420;
+    if (businessIdea && emirate === 'دبي' && service.s === 'issue-trade-license-dubai') score += 420;
     if (expiredOrRenewLicense && includesAny(name, ['تجديد رخصة','license renewal','renew license','renewal'])) score += 260;
+    if (expiredOrRenewLicense && !drivingContext && emirate === 'دبي' && service.s === 'renew-business-license-dubai') score += 420;
+    if (expiredOrRenewLicense && !drivingContext && service.s === 'renew-driving-license-dubai') score -= 420;
     if (expiredOrRenewLicense && !requestsNoc && includesAny(name, ['عدم ممانعة','noc'])) score -= 260;
     if (addActivity && includesAny(name, ['إضافة أو حذف','تغيير نشاط','add activity','change license activities'])) score += 300;
     if (addPartner && includesAny(name, ['إضافة أو انسحاب شريك','إضافة أو حذف شريك','add partner','remove partner'])) score += 300;
@@ -147,6 +153,8 @@ export function rankServices(query, services = []) {
     if (changeCompanyName && includesAny(name, ['تعديل رخصة','license amendment'])) score += 300;
     if (!requestsNoc && (openCompany || addActivity || addPartner || cancelCompany || changeCompanyName) && includesAny(name, ['عدم ممانعة','noc'])) score -= 380;
     if (labourComplaint && includesAny(name, ['شكوى عمالية للقطاع الخاص','labour complaints private sector'])) score += 280;
+    if (cancelEmployee && service.s === 'cancel-work-permit-uae') score += 420;
+    if (cancelEmployee && service.s === 'cancel-business-license-dubai') score -= 320;
     if (score > 0 && service.v === 'VERIFIED') score += 2;
     return { ...service, score };
   }).filter(result => result.score > 0)
@@ -305,3 +313,4 @@ if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootstrapIntentSearch, { once: true });
   else bootstrapIntentSearch();
 }
+
