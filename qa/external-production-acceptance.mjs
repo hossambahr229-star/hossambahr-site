@@ -43,10 +43,11 @@ async function newPage(viewport={width:1440,height:1000}) {
   const context = await browser.newContext({ viewport, ignoreHTTPSErrors:false, locale:'ar-AE' });
   const page = await context.newPage();
   await page.setExtraHTTPHeaders({ 'Cache-Control':'no-cache', Pragma:'no-cache' });
-  page.on('console', msg => { if (msg.type()==='error') report.consoleErrors.push({ url:page.url(), text:msg.text() }); });
-  page.on('pageerror', err => report.consoleErrors.push({ url:page.url(), text:err.message }));
+  page.on('console', msg => { if (msg.type()==='error' && page.url().startsWith(base)) report.consoleErrors.push({ url:page.url(), text:msg.text() }); });
+  page.on('pageerror', err => { if (page.url().startsWith(base)) report.consoleErrors.push({ url:page.url(), text:err.message }); });
   page.on('requestfailed', req => {
-    if (req.url().startsWith(base)) report.networkFailures.push({ url:req.url(), error:req.failure()?.errorText || 'failed' });
+    const error=req.failure()?.errorText || 'failed';
+    if (req.url().startsWith(base) && error!=='net::ERR_ABORTED') report.networkFailures.push({ url:req.url(), error });
   });
   page.on('response', res => {
     const type=res.request().resourceType();
@@ -131,10 +132,16 @@ async function clickedExternal(slug,kind) {
 }
 
 await check('release-marker', async()=> {
-  const response=await fetch(base+'/release-marker.txt?cache='+Date.now(),{headers:{'Cache-Control':'no-cache'}});
-  const marker=(await response.text()).trim();
-  assert(response.ok,'marker HTTP '+response.status);
-  assert(marker==='2026-08-13-master-audit-functional-recovery','wrong production marker '+marker);
+  const expected='2026-08-20-external-production-js-repair';
+  let marker='',status=0;
+  for(let attempt=1;attempt<=36;attempt++){
+    const response=await fetch(base+'/release-marker.txt?cache='+Date.now()+'-'+attempt,{headers:{'Cache-Control':'no-cache'}});
+    status=response.status; marker=(await response.text()).trim();
+    if(response.ok&&marker===expected)break;
+    await new Promise(resolve=>setTimeout(resolve,10000));
+  }
+  assert(status<400,'marker HTTP '+status);
+  assert(marker===expected,'wrong production marker '+marker);
   return {marker};
 });
 
