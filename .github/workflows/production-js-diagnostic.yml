@@ -1,0 +1,44 @@
+name: Production JavaScript diagnostic
+on:
+  push:
+    branches: [main]
+    paths:
+      - "qa/production-js-diagnostic.mjs"
+      - ".github/workflows/production-js-diagnostic.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: browser-actions/setup-chrome@v2
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - id: diagnostic
+        continue-on-error: true
+        run: node qa/production-js-diagnostic.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-js-diagnostic
+          path: production-js-diagnostic
+          retention-days: 14
+      - if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f production-js-diagnostic/result.json
+          cp production-js-diagnostic/result.json qa/production-js-diagnostic-result.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- qa/production-js-diagnostic-result.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Record Production JavaScript diagnostic [skip ci]"
+          git push origin HEAD:main
+      - if: steps.diagnostic.outcome != 'success'
+        run: exit 1
