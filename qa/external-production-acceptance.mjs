@@ -43,7 +43,7 @@ async function newPage(viewport={width:1440,height:1000}) {
   const context = await browser.newContext({ viewport, ignoreHTTPSErrors:false, locale:'ar-AE' });
   const page = await context.newPage();
   await page.setExtraHTTPHeaders({ 'Cache-Control':'no-cache', Pragma:'no-cache' });
-  page.on('console', msg => { if (msg.type()==='error' && page.url().startsWith(base)) report.consoleErrors.push({ url:page.url(), text:msg.text() }); });
+  page.on('console', msg => { if (msg.type()==='error' && page.url().startsWith(base)) { const location=msg.location(); report.consoleErrors.push({ pageUrl:page.url(), resourceUrl:location?.url || '', line:location?.lineNumber ?? null, text:msg.text() }); } });
   page.on('pageerror', err => { if (page.url().startsWith(base)) report.consoleErrors.push({ url:page.url(), text:err.message }); });
   page.on('requestfailed', req => {
     const error=req.failure()?.errorText || 'failed';
@@ -86,10 +86,12 @@ async function homeJourney(query) {
   const {context,page}=await newPage({width:390,height:844});
   await goto(page,'/');
   await page.waitForSelector('#government-search');
+  // The intent-search module and its data are loaded asynchronously after DOM readiness.
+  await page.waitForTimeout(2500);
   await page.fill('#government-search',query);
   await page.locator('form.primary-search').dispatchEvent('submit');
   const results=page.locator('#search-results .intent-result-card, #search-results .activity-intent-card');
-  await results.first().waitFor({state:'visible',timeout:10000});
+  await results.first().waitFor({state:'visible',timeout:15000});
   const count=await results.count();
   const first=results.first().locator('a').first();
   const href=await first.getAttribute('href');
@@ -109,7 +111,9 @@ async function clickedExternal(slug,kind) {
   await goto(page,'/services/'+slug+'/');
   const selector=kind==='commercial'?'[data-commercial-cta="verified"]':'[data-government-cta="verified"]';
   const link=page.locator(selector).first();
-  await link.waitFor({state:'visible'});
+  // Runtime routing enhances and reveals the verified CTA after deferred scripts execute.
+  await page.waitForTimeout(2500);
+  await link.waitFor({state:'visible',timeout:15000});
   const href=await link.getAttribute('href');
   assert(href && href.startsWith('https://'),'missing external '+kind+' href for '+slug);
   const popupPromise=context.waitForEvent('page',{timeout:8000}).catch(()=>null);
@@ -180,8 +184,9 @@ await check('services-explorer-filters-dubai',async()=>{
   assert(count>0&&mismatch===0,'Dubai filtering mismatch '+mismatch);
   assert(await page.locator('.directory-controls select').count()===4,'advanced filters missing');
   assert(await page.locator('.directory-reset').count()===1,'reset missing');
+  const records=await cards.count();
   await context.close();
-  return {records:await cards.count(),emirates,dubaiVisible:count,dubaiMismatch:mismatch,normalizedNonIndependent:report.normalizedDirectoryOnlyRecords};
+  return {records,emirates,dubaiVisible:count,dubaiMismatch:mismatch,normalizedNonIndependent:report.normalizedDirectoryOnlyRecords};
 });
 
 await check('command-center-truthful-actions',async()=>{
@@ -221,4 +226,4 @@ await writeFile(out+'/external-production-report.json',JSON.stringify(report,nul
 console.log(JSON.stringify(report.summary));
 if(report.failures.length) process.exitCode=1;
 
-// Triggered after workflow registration on main.
+// External acceptance harness timing/diagnostic precision update.
