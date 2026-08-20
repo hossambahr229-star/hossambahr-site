@@ -35,6 +35,91 @@
 
   const normalize = (value) => String(value || "").normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
 
+  const CATEGORY_INTENTS = {
+    "companies-establishments": [
+      ["أريد تأسيس شركة", ["تأسيس", "إصدار رخصة", "ترخيص منشأة"]],
+      ["أريد تجديد الرخصة", ["تجديد رخصة"]],
+      ["أريد تعديل الرخصة", ["تعديل رخصة"]],
+      ["أريد إضافة أو حذف نشاط", ["إضافة", "حذف", "نشاط"]],
+      ["أريد إضافة أو تعديل شريك", ["شريك"]],
+      ["أريد حجز اسم تجاري", ["حجز", "اسم"]],
+      ["أريد إلغاء أو تصفية الشركة", ["إلغاء", "تصفية"]]
+    ],
+    "work-employees": [
+      ["أريد تعيين موظف جديد", ["تصريح عمل جديد", "خارج الإمارات"]],
+      ["أريد نقل موظف", ["نقل تصريح", "انتقال"]],
+      ["أريد تجديد تصريح العمل", ["تجديد", "تصريح عمل"]],
+      ["أريد إلغاء موظف", ["إلغاء تصريح", "إلغاء عقد"]],
+      ["أريد إصدار أو تعديل عقد", ["عقد عمل"]],
+      ["أريد تصريحًا لمواطن أو خليجي", ["مواطني الإمارات", "مجلس التعاون"]],
+      ["لدي شكوى أو راتب متأخر", ["شكوى", "راتب"]]
+    ],
+    "residency-visas": [
+      ["أريد إصدار إقامة", ["إصدار", "إقامة"]],
+      ["أريد تجديد إقامة", ["تجديد", "إقامة"]],
+      ["أريد إلغاء إقامة", ["إلغاء", "إقامة"]],
+      ["أريد إقامة مستثمر أو إقامة ذهبية", ["مستثمر", "ذهبية"]],
+      ["أريد إصدار أو تجديد إقامة عائلية", ["أسرة", "عائل"]],
+      ["أريد تأشيرة زيارة", ["زيارة", "تأشيرة"]],
+      ["أريد تعديل الوضع داخل الدولة", ["تعديل الوضع", "تغيير الحالة"]]
+    ],
+    "family-sponsorship": [
+      ["أريد إصدار إقامة لزوجتي أو أسرتي", ["إصدار", "أسرة"]],
+      ["أريد تجديد إقامة زوجتي أو أسرتي", ["تجديد", "أسرة"]],
+      ["أريد إلغاء إقامة فرد من الأسرة", ["إلغاء", "أسرة"]],
+      ["أريد إذن دخول للأسرة", ["إذن دخول", "أسرة"]],
+      ["أريد تصريح عمل لشخص على كفالة الأسرة", ["كفالة", "تصريح عمل"]]
+    ],
+    "identity-citizenship": [
+      ["أريد إصدار الهوية لأول مرة", ["إصدار", "الهوية"]],
+      ["أريد تجديد الهوية الإماراتية", ["تجديد", "الهوية"]],
+      ["أريد بدل فاقد أو تالف", ["بدل", "فاقد", "تالف"]],
+      ["أريد تعديل بيانات الهوية", ["تعديل", "بيانات"]]
+    ],
+    "property-rentals": [
+      ["أريد تسجيل عقد إيجار", ["إيجاري", "عقد إيجار"]],
+      ["أريد تجديد عقد إيجار", ["تجديد", "إيجار"]],
+      ["أريد إلغاء عقد إيجار", ["إلغاء", "إيجار"]],
+      ["أريد خدمة عقارية أو تسجيل ملكية", ["عقار", "ملكية", "تسجيل"]]
+    ],
+    "contracts-notarization": [
+      ["أريد توثيق عقد", ["توثيق", "عقد"]],
+      ["أريد إصدار توكيل", ["توكيل"]],
+      ["أريد تصديق مستند", ["تصديق"]],
+      ["أريد خدمة كاتب العدل", ["كاتب العدل"]]
+    ],
+    "vehicles-transport": [
+      ["أريد تجديد رخصة القيادة", ["تجديد", "قيادة"]],
+      ["أريد تسجيل أو تجديد مركبة", ["مركبة", "تسجيل", "تجديد"]],
+      ["أريد دفع مخالفة", ["مخالفة"]],
+      ["أريد تصريحًا أو شهادة من RTA", ["تصريح", "شهادة", "عدم ممانعة"]]
+    ],
+    "financial-business": [
+      ["أريد التسجيل في ضريبة الشركات", ["ضريبة الشركات"]],
+      ["أريد التسجيل في ضريبة القيمة المضافة", ["القيمة المضافة"]],
+      ["أريد إلغاء التسجيل الضريبي", ["إلغاء", "ضريبة"]],
+      ["أريد خدمة مصرفية للأعمال", ["مصرف", "بنك"]]
+    ],
+    "municipalities-local-licensing": [
+      ["أريد موافقة بلدية", ["موافقة", "بلدية"]],
+      ["أريد تصريحًا محليًا", ["تصريح"]],
+      ["أريد اعتماد مخطط أو موقع", ["مخطط", "موقع"]],
+      ["أريد خدمة رقابة أو تفتيش", ["رقابة", "تفتيش"]]
+    ],
+    "justice-police": [
+      ["أريد شهادة من الشرطة", ["شهادة", "شرطة"]],
+      ["أريد تقديم بلاغ أو طلب", ["بلاغ", "طلب"]],
+      ["أريد خدمة محكمة", ["محكمة"]],
+      ["أريد الاستعلام عن مخالفة", ["مخالفة"]]
+    ],
+    "customs-trade": [
+      ["أريد تسجيل شركة لدى الجمارك", ["تسجيل", "جمارك"]],
+      ["أريد الاستيراد أو التصدير", ["استيراد", "تصدير"]],
+      ["أريد تصريحًا جمركيًا", ["تصريح", "جمرك"]],
+      ["أريد خدمة تخليص", ["تخليص"]]
+    ]
+  };
+
   function setupFilter() {
     const input = document.querySelector("[data-service-filter]");
     const grid = document.querySelector("[data-service-grid]");
@@ -331,7 +416,7 @@
   }
 
   function enhanceServiceDirectory() {
-    if (location.pathname !== "/services/" || document.body.dataset.directoryEnhanced === "true") return;
+    if (!/^\/services\/(?:index\.html)?$/.test(location.pathname) || document.body.dataset.directoryEnhanced === "true") return;
     const grid = document.getElementById("det-results");
     const input = document.getElementById("det-search");
     const cards = grid ? [...grid.querySelectorAll("[data-directory-card]")] : [];
@@ -339,6 +424,19 @@
     document.body.dataset.directoryEnhanced = "true";
     const form = input.closest("form");
     if (form) form.id = "directory-search";
+    const heroIntro = document.querySelector(".page-hero > p");
+    if (heroIntro) heroIntro.textContent = "صف المعاملة أو اختر هدفًا شائعًا، وسنعرض لك أقرب الخدمات الموثقة وخطواتها.";
+    const historical = document.getElementById("normalized-history-title")?.closest("section");
+    if (historical && !historical.querySelector("details")) {
+      historical.classList.add("professional-history");
+      const details = document.createElement("details");
+      const summary = document.createElement("summary");
+      summary.textContent = "معلومات توافق الروابط القديمة للمتخصصين";
+      const content = document.createElement("div");
+      [...historical.children].forEach((child) => content.append(child));
+      details.append(summary, content);
+      historical.append(details);
+    }
     const setupControls = () => {
     const servicesByRoute = new Map((window.HB_INTENT_SERVICES || []).map((service) => [service.u, service]));
     cards.forEach((card) => {
@@ -359,7 +457,21 @@
         title.insertAdjacentElement("afterend", context);
       }
       [...card.querySelectorAll(".actions a")].slice(1).forEach((secondaryAction) => secondaryAction.classList.add("directory-secondary-action"));
+      simplifyServiceCard(card);
     });
+    const modeSwitch = document.createElement("div");
+    modeSwitch.className = "directory-mode-switch";
+    modeSwitch.setAttribute("aria-label", "طريقة استعراض الخدمات");
+    const assistedMode = document.createElement("button");
+    assistedMode.type = "button";
+    assistedMode.textContent = "ساعدني أختار";
+    assistedMode.className = "is-active";
+    assistedMode.setAttribute("aria-pressed", "true");
+    const fullMode = document.createElement("button");
+    fullMode.type = "button";
+    fullMode.textContent = "عرض جميع الخدمات";
+    fullMode.setAttribute("aria-pressed", "false");
+    modeSwitch.append(assistedMode, fullMode);
     const quickGoals = document.createElement("div");
     quickGoals.className = "directory-quick-goals";
     quickGoals.setAttribute("aria-label", "أهداف شائعة");
@@ -431,7 +543,7 @@
     if (window.matchMedia("(min-width: 900px)").matches) filterDrawer.open = true;
     const explorerTools = document.createElement("div");
     explorerTools.className = "directory-explorer-tools";
-    explorerTools.append(quickGoals, emirateShortcuts, filterDrawer, count);
+    explorerTools.append(modeSwitch, quickGoals, emirateShortcuts, filterDrawer, count);
     form?.insertAdjacentElement("afterend", explorerTools);
     const more = document.createElement("button");
     more.type = "button";
@@ -439,6 +551,7 @@
     more.textContent = "عرض خدمات إضافية";
     grid.insertAdjacentElement("afterend", more);
     let limit = 12;
+    let assisted = true;
     const apply = () => {
       const query = input.value.trim().toLowerCase();
       const emirate = emirateSelect.value;
@@ -455,10 +568,13 @@
       });
       cards.forEach((card) => { card.hidden = true; });
       matches.slice(0, limit).forEach((card) => { card.hidden = false; });
+      grid.hidden = assisted && !query && !emirate && !category && !authority && !userType;
       count.textContent = `${matches.length} خدمة مطابقة — يظهر ${Math.min(limit, matches.length)}`;
+      count.hidden = grid.hidden;
       more.hidden = matches.length <= limit;
+      if (grid.hidden) more.hidden = true;
     };
-    input.addEventListener("input", () => { limit = 12; requestAnimationFrame(apply); });
+    input.addEventListener("input", () => { limit = 12; apply(); });
     emirateSelect.addEventListener("change", () => { limit = 12; apply(); });
     categorySelect.addEventListener("change", () => { limit = 12; apply(); });
     authoritySelect.addEventListener("change", () => { limit = 12; apply(); });
@@ -467,6 +583,7 @@
       const button = event.target.closest("[data-directory-goal]");
       if (!button) return;
       input.value = button.dataset.directoryGoal;
+      assisted = true;
       limit = 12;
       apply();
       grid.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -488,6 +605,24 @@
       apply();
       input.focus();
     });
+    assistedMode.addEventListener("click", () => {
+      assisted = true;
+      assistedMode.classList.add("is-active");
+      fullMode.classList.remove("is-active");
+      assistedMode.setAttribute("aria-pressed", "true");
+      fullMode.setAttribute("aria-pressed", "false");
+      apply();
+      input.focus();
+    });
+    fullMode.addEventListener("click", () => {
+      assisted = false;
+      assistedMode.classList.remove("is-active");
+      fullMode.classList.add("is-active");
+      assistedMode.setAttribute("aria-pressed", "false");
+      fullMode.setAttribute("aria-pressed", "true");
+      apply();
+      grid.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
     document.getElementById("det-search-button")?.addEventListener("click", apply);
     more.addEventListener("click", () => { limit += 12; apply(); });
     apply();
@@ -502,13 +637,121 @@
     }
   }
 
+  function simplifyServiceCard(card) {
+    if (!card || card.dataset.customerCardReady === "true") return;
+    card.dataset.customerCardReady = "true";
+    const actions = card.querySelector(".actions");
+    const primaryAction = actions?.querySelector("a");
+    if (primaryAction) primaryAction.textContent = "عرض المتطلبات والخطوات";
+    const expandable = [
+      card.querySelector(":scope > .official-name"),
+      card.querySelector(":scope > .service-tags"),
+      ...([...actions?.querySelectorAll("a") || []].slice(1))
+    ].filter(Boolean);
+    if (!expandable.length) return;
+    const details = document.createElement("details");
+    details.className = "customer-card-details";
+    const summary = document.createElement("summary");
+    summary.textContent = "تفاصيل أكثر";
+    const content = document.createElement("div");
+    content.className = "customer-card-details-content";
+    expandable.forEach((node) => content.append(node));
+    details.append(summary, content);
+    actions?.insertAdjacentElement("beforebegin", details);
+  }
+
+  function enhanceCategoryJourney() {
+    const match = location.pathname.match(/^\/categories\/([^/]+)\/(?:index\.html)?$/);
+    if (!match || document.body.dataset.categoryJourneyReady === "true") return;
+    const intents = CATEGORY_INTENTS[match[1]];
+    const grid = document.querySelector("[data-service-grid]");
+    const cards = grid ? [...grid.querySelectorAll("[data-service-card]")] : [];
+    if (!intents || !grid || !cards.length) return;
+    document.body.dataset.categoryJourneyReady = "true";
+    cards.forEach(simplifyServiceCard);
+
+    const directorySection = grid.closest(".content-section") || grid.parentElement;
+    directorySection?.classList.add("category-full-directory");
+    const chooser = document.createElement("section");
+    chooser.className = "category-intent-chooser";
+    chooser.innerHTML = `<div class="category-intent-heading"><span class="eyebrow">ابدأ بلغتك</span><h2>ماذا تريد أن تفعل؟</h2><p>اختر الهدف الأقرب، وسنعرض المعاملات المناسبة فقط.</p></div>`;
+    const modeSwitch = document.createElement("div");
+    modeSwitch.className = "category-mode-switch";
+    const assisted = document.createElement("button");
+    assisted.type = "button";
+    assisted.className = "is-active";
+    assisted.textContent = "ساعدني أختار";
+    assisted.setAttribute("aria-pressed", "true");
+    const full = document.createElement("button");
+    full.type = "button";
+    full.textContent = "عرض جميع الخدمات";
+    full.setAttribute("aria-pressed", "false");
+    modeSwitch.append(assisted, full);
+    const options = document.createElement("div");
+    options.className = "category-intent-options";
+    intents.forEach(([label, terms]) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = label;
+      button.dataset.intentTerms = terms.join("|");
+      options.append(button);
+    });
+    const feedback = document.createElement("p");
+    feedback.className = "category-intent-feedback";
+    feedback.hidden = true;
+    chooser.append(modeSwitch, options, feedback);
+    directorySection?.insertAdjacentElement("beforebegin", chooser);
+    directorySection?.classList.add("is-assisted-hidden");
+
+    const setMode = (showAll) => {
+      directorySection?.classList.toggle("is-assisted-hidden", !showAll);
+      assisted.classList.toggle("is-active", !showAll);
+      full.classList.toggle("is-active", showAll);
+      assisted.setAttribute("aria-pressed", String(!showAll));
+      full.setAttribute("aria-pressed", String(showAll));
+      options.hidden = showAll;
+      feedback.hidden = true;
+      if (showAll) cards.forEach((card) => { card.hidden = false; });
+    };
+    assisted.addEventListener("click", () => setMode(false));
+    full.addEventListener("click", () => {
+      setMode(true);
+      directorySection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    options.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-intent-terms]");
+      if (!button) return;
+      const terms = button.dataset.intentTerms.split("|").map(normalize).filter(Boolean);
+      const scored = cards.map((card) => {
+        const haystack = normalize(card.dataset.search || card.textContent);
+        const score = terms.reduce((total, term) => total + (haystack.includes(term) ? (term.includes(" ") ? 4 : 2) : 0), 0);
+        return { card, score };
+      }).filter((item) => item.score > 0).sort((left, right) => right.score - left.score);
+      cards.forEach((card) => { card.hidden = true; });
+      scored.slice(0, 6).forEach(({ card }) => { card.hidden = false; });
+      directorySection?.classList.remove("is-assisted-hidden");
+      [...options.querySelectorAll("button")].forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      feedback.textContent = scored.length
+        ? `هذه أقرب ${Math.min(scored.length, 6)} معاملات لهدفك — اختر المعاملة لعرض المتطلبات.`
+        : "لم نجد تطابقًا دقيقًا. استخدم عرض جميع الخدمات أو ابحث باسم المعاملة.";
+      feedback.hidden = false;
+      directorySection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
   function enhanceServiceDetail() {
-    if (!location.pathname.startsWith("/services/") || location.pathname === "/services/") return;
+    if (!location.pathname.startsWith("/services/") || /^\/services\/(?:index\.html)?$/.test(location.pathname)) return;
     document.body.classList.add("premium-service-detail");
     const main = document.querySelector("main");
     if (!main) return;
-    const primary = main.querySelector('[data-government-cta="verified"]') || main.querySelector('.service-hero .actions > a:first-child');
-    if (primary && /^https:\/\//i.test(primary.getAttribute("href") || "") && !main.matches('[data-publication-state="NORMALIZED"], [data-publication-state="PENDING_VERIFICATION"]')) primary.dataset.governmentCta = "verified";
+    const routeMode = main.dataset.officialRouteMode;
+    const primary = main.querySelector('[data-government-cta="verified"]')
+      || (routeMode === "direct-execution" ? main.querySelector('.service-hero .actions > a[href^="https://"]') : null)
+      || main.querySelector('.official-source-panel a[href^="https://"], .service-aside a[href^="https://"]')
+      || main.querySelector('.service-hero .actions > a:first-child');
+    const pending = main.matches('[data-publication-state="NORMALIZED"], [data-publication-state="PENDING_VERIFICATION"]');
+    const verifiedRouteMode = ["official-service-card", "direct-execution"].includes(routeMode);
+    if (primary && /^https:\/\//i.test(primary.getAttribute("href") || "") && !pending && (verifiedRouteMode || primary.dataset.governmentCta === "verified")) primary.dataset.governmentCta = "verified";
     if (primary) primary.classList.add("primary-government-cta");
     const publicationState = main.dataset.publicationState || main.querySelector('[data-publication-state]')?.dataset.publicationState;
     const publishedService = publicationState === "VERIFIED" || primary?.dataset.governmentCta === "verified";
@@ -520,24 +763,24 @@
       commercial.target = "_blank";
       commercial.rel = "noopener noreferrer";
       commercial.dataset.commercialCta = "verified";
-      commercial.textContent = "اطلب تنفيذ المعاملة مع حسام بحر";
+      commercial.textContent = "أنجز المعاملة معنا";
       const actions = primary.closest(".actions") || primary.parentElement;
       if (actions) {
         actions.classList.add("dual-execution-paths");
         const commercialLabel = document.createElement("span");
         commercialLabel.className = "execution-path-label commercial-path-label";
-        commercialLabel.textContent = "مسار حسام بحر";
+        commercialLabel.textContent = "الخيار الأول — مساعدة كاملة عبر مسار حسام بحر";
         const officialLabel = document.createElement("span");
         officialLabel.className = "execution-path-label official-path-label";
-        officialLabel.textContent = "المسار الحكومي الرسمي";
+        officialLabel.textContent = "الخيار الثاني — التنفيذ بنفسك عبر المسار الحكومي الرسمي";
         actions.insertBefore(commercialLabel, primary);
         actions.insertBefore(commercial, primary);
         actions.insertBefore(officialLabel, primary);
       }
     }
-    const hero = main.querySelector('.service-hero');
+    const hero = main.querySelector('.service-hero, .page-hero');
     if (hero && !hero.querySelector('.service-facts-bar')) {
-      const panels = [...main.querySelectorAll('.content-panel')];
+      const panels = [...main.querySelectorAll('.content-panel, .detail-section')];
       const findPanel = (pattern) => panels.find((panel) => pattern.test(panel.querySelector('h2')?.textContent || ''));
       const fees = findPanel(/الرسوم/);
       const duration = findPanel(/المدة/);
@@ -565,6 +808,20 @@
       const conditions = findPanel(/الشروط|الأهلية/);
       const conditionsHeading = conditions?.querySelector('h2');
       if (conditionsHeading) conditionsHeading.textContent = 'هل هذه الخدمة مناسبة لي؟ — الشروط';
+      const documents = findPanel(/المستندات/);
+      const steps = findPanel(/الخطوات|طريقة التقديم/);
+      const decision = document.createElement("nav");
+      decision.className = "service-decision-nav";
+      decision.setAttribute("aria-label", "خطوات فهم وتنفيذ المعاملة");
+      [[conditions, "هل تناسب حالتي؟"], [documents, "المستندات المطلوبة"], [steps, "خطوات التنفيذ"], [actions, "خيارات التنفيذ"]].forEach(([target, label], index) => {
+        if (!target) return;
+        target.id ||= `service-decision-${index + 1}`;
+        const link = document.createElement("a");
+        link.href = `#${target.id}`;
+        link.textContent = label;
+        decision.append(link);
+      });
+      hero.querySelector("h1")?.insertAdjacentElement("afterend", decision);
     }
     const sections = [...main.querySelectorAll(".detail-section, .content-panel")];
     sections.forEach((section, index) => {
@@ -584,7 +841,7 @@
         ? "ستنتقل إلى المصدر الحكومي الرسمي الذي يشرح هذه المعاملة. راجع الاختصاص قبل المتابعة."
         : "ستنتقل الآن إلى الخدمة الحكومية الرسمية لإكمال الطلب. قد يُطلب تسجيل الدخول عبر UAE Pass.";
       anchor.parentNode?.insertBefore(note, anchor);
-      anchor.textContent = guidance ? "افتح المصدر الرسمي ↗" : "ابدأ من الجهة الرسمية ↗";
+      anchor.textContent = guidance ? "تنفيذها بنفسي عبر المصدر الرسمي ↗" : "تنفيذها بنفسي عبر الجهة الرسمية ↗";
     }
   }
 
@@ -592,7 +849,7 @@
     const path = location.pathname;
     document.body.dataset.uxModernized = "true";
     if (path === "/") document.body.dataset.uxPage = "home";
-    else if (path === "/services/") document.body.dataset.uxPage = "services";
+    else if (/^\/services\/(?:index\.html)?$/.test(path)) document.body.dataset.uxPage = "services";
     else if (path.startsWith("/services/")) document.body.dataset.uxPage = "service-detail";
     else if (path === "/dubai-business-activities.html") document.body.dataset.uxPage = "activities";
     else if (path === "/command-center/") document.body.dataset.uxPage = "command-center";
@@ -636,6 +893,7 @@
     rejectFakeServiceTargets();
     simplifyHomepageByIntent();
     enhanceServiceDirectory();
+    enhanceCategoryJourney();
     enhanceServiceDetail();
     enhanceVerifiedGovernmentHandoff();
     modernizePresentation();
