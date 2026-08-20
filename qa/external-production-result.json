@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-20T07:46:54.209Z",
+  "generatedAt": "2026-08-20T07:53:14.446Z",
   "base": "https://hossambahr.com",
-  "commit": "f1200d2be03b4bebacc76d14a5bd20c5fe5f6314",
+  "commit": "b04a92ce3900ba4fe9dc8d08608bd01801bbcece",
   "method": "GitHub Actions ubuntu-latest + Google Chrome + Playwright",
   "checks": [
     {
@@ -13,33 +13,129 @@
     },
     {
       "name": "journey-cleaning-company-dubai",
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+      "status": "PASS",
+      "details": {
+        "query": "أريد فتح شركة تنظيف في دبي",
+        "count": 6,
+        "href": "/services/new-healthcare-facility-license-dubai/",
+        "destination": "https://hossambahr.com/services/new-healthcare-facility-license-dubai/",
+        "requirements": [
+          "المستندات والمتطلبات",
+          "الشروط",
+          "الرسوم الرسمية المنشورة",
+          "مدة الإنجاز",
+          "خطوات التنفيذ",
+          "الأسئلة الشائعة",
+          "الإمارات"
+        ],
+        "commercial": 1,
+        "official": 1
+      }
     },
     {
       "name": "journey-renew-wife-residence",
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+      "status": "PASS",
+      "details": {
+        "query": "أريد تجديد إقامة زوجتي",
+        "count": 6,
+        "href": "/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/",
+        "destination": "https://hossambahr.com/services/%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D8%A3%D9%81%D8%B1%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/",
+        "requirements": [
+          "المستندات والمتطلبات",
+          "الشروط",
+          "الرسوم",
+          "مدة الإنجاز",
+          "حالات وتنبيهات",
+          "الأسئلة الشائعة",
+          "روابط آمنة"
+        ],
+        "commercial": 1,
+        "official": 1
+      }
     },
     {
       "name": "journey-hire-inside-uae",
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+      "status": "PASS",
+      "details": {
+        "query": "أريد توظيف شخص موجود داخل الإمارات",
+        "count": 6,
+        "href": "/services/transfer-work-permit-uae/",
+        "destination": "https://hossambahr.com/services/transfer-work-permit-uae/",
+        "requirements": [
+          "المتطلبات والمستندات",
+          "الرسوم",
+          "المدة المتوقعة",
+          "هل هذه الخدمة مناسبة لي؟ — الشروط",
+          "الحالات الخاصة وأسباب التعطل",
+          "بيانات الخدمة",
+          "المسار الرسمي الصحيح",
+          "الأسئلة الشائعة"
+        ],
+        "commercial": 1,
+        "official": 1
+      }
     },
     {
       "name": "journey-renew-dubai-license",
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+      "status": "PASS",
+      "details": {
+        "query": "تجديد رخصة في دبي",
+        "count": 6,
+        "href": "/services/renew-driving-license-dubai/",
+        "destination": "https://hossambahr.com/services/renew-driving-license-dubai/",
+        "requirements": [
+          "المستندات والمتطلبات",
+          "الشروط",
+          "الرسوم الرسمية المنشورة",
+          "مدة الإنجاز",
+          "خطوات التنفيذ",
+          "الأسئلة الشائعة",
+          "الإمارات"
+        ],
+        "commercial": 1,
+        "official": 1
+      }
     },
     {
       "name": "journey-contracting-company-dubai",
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+      "status": "PASS",
+      "details": {
+        "query": "شركة مقاولات في دبي",
+        "count": 6,
+        "href": "/services/new-healthcare-facility-license-dubai/",
+        "destination": "https://hossambahr.com/services/new-healthcare-facility-license-dubai/",
+        "requirements": [
+          "المستندات والمتطلبات",
+          "الشروط",
+          "الرسوم الرسمية المنشورة",
+          "مدة الإنجاز",
+          "خطوات التنفيذ",
+          "الأسئلة الشائعة",
+          "الإمارات"
+        ],
+        "commercial": 1,
+        "official": 1
+      }
     },
     {
       "name": "journey-cancel-employee",
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+      "status": "PASS",
+      "details": {
+        "query": "إلغاء موظف",
+        "count": 3,
+        "href": "/services/cancel-business-license-dubai/",
+        "destination": "https://hossambahr.com/services/cancel-business-license-dubai/",
+        "requirements": [
+          "المستندات والمتطلبات",
+          "الشروط",
+          "الرسوم",
+          "مدة الإنجاز",
+          "حالات خاصة",
+          "روابط آمنة"
+        ],
+        "commercial": 1,
+        "official": 1
+      }
     },
     {
       "name": "activity-search-ar-en-partial-code",
@@ -73,8 +169,71 @@
     },
     {
       "name": "services-explorer-filters-dubai",
-      "status": "FAIL",
-      "error": "locator.count: Target page, context or browser has been closed"
+      "status": "PASS",
+      "details": {
+        "records": 208,
+        "emirates": [
+          "دبي",
+          "أبوظبي",
+          "الشارقة",
+          "عجمان",
+          "رأس الخيمة",
+          "أم القيوين",
+          "الفجيرة"
+        ],
+        "dubaiVisible": 12,
+        "dubaiMismatch": 0,
+        "normalizedNonIndependent": [
+          {
+            "id": "directory:mohre:14",
+            "name": "تصريح عمل جزئي",
+            "resolution": "DUPLICATE",
+            "resolvedInto": "guide:part-time-work-permit-uae"
+          },
+          {
+            "id": "directory:mohre:18",
+            "name": "تجديد عقد العمل",
+            "resolution": "SUB_SERVICE",
+            "resolvedInto": "guide:employment-contract-uae"
+          },
+          {
+            "id": "directory:mohre:21",
+            "name": "إصدار عرض العمل",
+            "resolution": "SUB_SERVICE",
+            "resolvedInto": "guide:new-work-permit-overseas-uae"
+          },
+          {
+            "id": "directory:mohre:7",
+            "name": "دليل توعية أصحاب العمل",
+            "resolution": "INFORMATIONAL",
+            "resolvedInto": "/authorities/mohre/"
+          },
+          {
+            "id": "directory:mohre:28",
+            "name": "دليل الضمان المصرفي والتأمين",
+            "resolution": "GUIDANCE",
+            "resolvedInto": "/authorities/mohre/"
+          },
+          {
+            "id": "directory:mohre:27",
+            "name": "خدمات نافس لأصحاب العمل",
+            "resolution": "WRONG_AUTHORITY",
+            "resolvedInto": "https://nafis.gov.ae/employer"
+          },
+          {
+            "id": "directory:mohre:4",
+            "name": "التفويض الإلكتروني للمنشأة",
+            "resolution": "GUIDANCE",
+            "resolvedInto": "guide:establishment-card-mohre-uae"
+          },
+          {
+            "id": "directory:residency:21",
+            "name": "إصدار إقامة لمولود جديد في دبي",
+            "resolution": "SUB_SERVICE",
+            "resolvedInto": "family-residency-uae"
+          }
+        ]
+      }
     },
     {
       "name": "command-center-truthful-actions",
@@ -95,7 +254,7 @@
       "details": {
         "slug": "issue-trade-license-dubai",
         "kind": "commercial",
-        "href": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AF%D9%84%D9%8A%D9%84%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fissue-trade-license-dubai%2F%3Fexternal-acceptance%3D1787212097186",
+        "href": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AF%D9%84%D9%8A%D9%84%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fissue-trade-license-dubai%2F%3Fexternal-acceptance%3D1787212440965",
         "finalUrl": ""
       }
     },
@@ -135,14 +294,14 @@
       "details": {
         "slug": "mohre-private-tutor-permit",
         "kind": "commercial",
-        "href": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%3A%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%B9%D9%85%D9%84%20%D9%85%D8%AF%D8%B1%D8%B3%20%D8%AE%D8%B5%D9%88%D8%B5%D9%8A%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AF%D9%84%D9%8A%D9%84%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fmohre-private-tutor-permit%2F%3Fexternal-acceptance%3D1787212120007",
+        "href": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%3A%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%B9%D9%85%D9%84%20%D9%85%D8%AF%D8%B1%D8%B3%20%D8%AE%D8%B5%D9%88%D8%B5%D9%8A%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AF%D9%84%D9%8A%D9%84%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fmohre-private-tutor-permit%2F%3Fexternal-acceptance%3D1787212473645",
         "finalUrl": ""
       }
     },
     {
       "name": "official-click-mohre-private-tutor-permit",
       "status": "FAIL",
-      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-government-cta=\"verified\"]').first() to be visible\n    65 × locator resolved to hidden <a rel=\"noopener noreferrer\" data-handoff-ready=\"true\" data-government-cta=\"verified\" class=\"primary-government-cta\" href=\"https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit\">ابدأ من الجهة الرسمية ↗</a>\n"
+      "error": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('[data-government-cta=\"verified\"]').first() to be visible\n    35 × locator resolved to hidden <a rel=\"noopener noreferrer\" data-handoff-ready=\"true\" data-government-cta=\"verified\" class=\"primary-government-cta\" href=\"https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit\">ابدأ من الجهة الرسمية ↗</a>\n"
     },
     {
       "name": "visual-375-/",
@@ -387,52 +546,11 @@
   ],
   "failures": [
     {
-      "name": "journey-cleaning-company-dubai",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
-    },
-    {
-      "name": "journey-renew-wife-residence",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
-    },
-    {
-      "name": "journey-hire-inside-uae",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
-    },
-    {
-      "name": "journey-renew-dubai-license",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
-    },
-    {
-      "name": "journey-contracting-company-dubai",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
-    },
-    {
-      "name": "journey-cancel-employee",
-      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
-    },
-    {
-      "name": "services-explorer-filters-dubai",
-      "error": "locator.count: Target page, context or browser has been closed"
-    },
-    {
       "name": "official-click-mohre-private-tutor-permit",
-      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-government-cta=\"verified\"]').first() to be visible\n    65 × locator resolved to hidden <a rel=\"noopener noreferrer\" data-handoff-ready=\"true\" data-government-cta=\"verified\" class=\"primary-government-cta\" href=\"https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit\">ابدأ من الجهة الرسمية ↗</a>\n"
-    },
-    {
-      "name": "console-errors",
-      "error": "[{\"url\":\"https://hossambahr.com/?external-acceptance=1787212037025\",\"text\":\"Failed to load resource: the server responded with a status of 404 ()\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787212070496\",\"text\":\"Failed to load resource: the server responded with a status of 404 ()\"}]"
+      "error": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('[data-government-cta=\"verified\"]').first() to be visible\n    35 × locator resolved to hidden <a rel=\"noopener noreferrer\" data-handoff-ready=\"true\" data-government-cta=\"verified\" class=\"primary-government-cta\" href=\"https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit\">ابدأ من الجهة الرسمية ↗</a>\n"
     }
   ],
-  "consoleErrors": [
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787212037025",
-      "text": "Failed to load resource: the server responded with a status of 404 ()"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787212070496",
-      "text": "Failed to load resource: the server responded with a status of 404 ()"
-    }
-  ],
+  "consoleErrors": [],
   "networkFailures": [],
   "normalizedDirectoryOnlyRecords": [
     {
@@ -486,9 +604,9 @@
   ],
   "summary": {
     "checks": 40,
-    "passed": 32,
-    "failed": 9,
-    "consoleErrors": 2,
+    "passed": 39,
+    "failed": 1,
+    "consoleErrors": 0,
     "networkFailures": 0,
     "productionExternalBrowser": "FAIL"
   }
