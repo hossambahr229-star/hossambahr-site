@@ -101,14 +101,20 @@ export function rankServices(query, services = []) {
   const expiredOrRenewLicense = includesAny(normalized, ['الرخصة','رخصة','license','licence']) && includesAny(normalized, ['انتهت','منتهية','أجدد','اجدد','تجديد','expired','renew']);
   const addActivity = includesAny(normalized, ['أضيف','اضيف','إضافة','اضافه','add']) && includesAny(normalized, ['نشاط','activity']);
   const addPartner = includesAny(normalized, ['أضيف','اضيف','إضافة','اضافه','add']) && includesAny(normalized, ['شريك','partner']);
+  const changePartner = includesAny(normalized, ['تغيير','تعديل','غير','change','amend']) && includesAny(normalized, ['شريك','partner']);
   const cancelCompany = company && includesAny(normalized, ['ألغي','الغي','إلغاء','الغاء','تصفية','cancel','liquidat']);
   const changeCompanyName = company && includesAny(normalized, ['أغير','اغير','تغيير','تعديل','change','amend']) && includesAny(normalized, ['اسم','name']);
   const requestsNoc = includesAny(normalized, ['rta','noc','عدم ممانعة']);
   const renewFamilyResidence = spouseOrFamily && residence && includesAny(normalized, ['تجديد','أجدد','اجدد','renew']);
+  const renewResidence = residence && includesAny(normalized, ['تجديد','أجدد','اجدد','renew']);
+  const investorResidence = residence && includesAny(normalized, ['مستثمر','شريك','ذهبية','خضراء','investor','partner','golden','green']);
   const labourComplaint = includesAny(normalized, ['راتب','شكوى','أشتكي','اشتكي','salary','complaint']);
   const businessIdea = company && includesAny(normalized, ACTIVITY_SYNONYMS.flat());
   const drivingContext = includesAny(normalized, ['قياده','سائق','سياره','مركبه','مرور','driving','driver','vehicle','traffic']);
   const cancelEmployee = employee && includesAny(normalized, ['إلغاء','الغاء','ألغي','الغي','cancel','terminate']);
+  const cleaningCompany = company && includesAny(normalized, ['تنظيف','نظافة','cleaning','clean']);
+  const personalAttestation = includesAny(normalized, ['تصديق','attest']) && includesAny(normalized, ['شهادة','مستند','وثيقة','certificate','document']) && !includesAny(normalized, ['فاتورة','تجاري','invoice','commercial']);
+  const openEstablishmentFile = includesAny(normalized, ['فتح','افتح','open']) && includesAny(normalized, ['ملف','file']) && includesAny(normalized, ['منشأة','منشاه','establishment']);
 
   return services.map(service => {
     const name = normalizeIntent(`${service.a || ''} ${service.e || ''}`);
@@ -131,6 +137,8 @@ export function rankServices(query, services = []) {
     if (emirate) score += matchesEmirate(service.m || '', emirate) ? 70 : -55;
     if (spouseOrFamily && includesAny(name, ['family','اسره','افراد الاسره'])) score += 90;
     if (spouseOrFamily && includesAny(normalized, ['تجديد','اجدد','renew']) && service.s === 'تجديد-إقامة-أفراد-الأسرة-في-دبي') score += 190;
+    if (renewResidence && !spouseOrFamily && emirate === 'دبي' && service.s === 'تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي') score += 560;
+    if (renewResidence && !investorResidence && service.s === 'green-residence-partner-investor-dubai') score -= 420;
     if (insideUae && service.s === 'transfer-work-permit-uae') score += 180;
     if (transferEmployee && service.s === 'transfer-work-permit-uae') score += 520;
     if (outsideUae && service.s === 'new-work-permit-overseas-uae') score += 180;
@@ -142,13 +150,16 @@ export function rankServices(query, services = []) {
     if (visitRelative && includesAny(name, ['زيارة قريب','زيارة صديق','visit relative','visit friend'])) score += 260;
     if (employee && residence && includesAny(name, ['إصدار إقامة موظف','إصدار تصريح إقامة','employee residence','issue residence permit'])) score += 260;
     if (openCompany && emirate === 'دبي' && service.s === 'issue-trade-license-dubai') score += 420;
+    if (cleaningCompany && service.s === 'issue-trade-license-dubai') score += 520;
     if (businessIdea && emirate === 'دبي' && service.s === 'issue-trade-license-dubai') score += 420;
     if (expiredOrRenewLicense && includesAny(name, ['تجديد رخصة','license renewal','renew license','renewal'])) score += 260;
     if (expiredOrRenewLicense && !drivingContext && emirate === 'دبي' && service.s === 'renew-business-license-dubai') score += 420;
     if (expiredOrRenewLicense && !drivingContext && service.s === 'renew-driving-license-dubai') score -= 420;
     if (expiredOrRenewLicense && !requestsNoc && includesAny(name, ['عدم ممانعة','noc'])) score -= 260;
     if (addActivity && includesAny(name, ['إضافة أو حذف','تغيير نشاط','add activity','change license activities'])) score += 300;
+    if (addActivity && service.s === 'add-business-activity-dubai') score += 520;
     if (addPartner && includesAny(name, ['إضافة أو انسحاب شريك','إضافة أو حذف شريك','add partner','remove partner'])) score += 300;
+    if (changePartner && service.s === 'add-remove-partner-dubai') score += 520;
     if (addPartner && includesAny(name, ['الإقامة الخضراء','green residence'])) score -= 180;
     if (cancelCompany && includesAny(name, ['إلغاء رخصة','تصفية شركة','license cancellation','cancel business license'])) score += 320;
     if (cancelCompany && includesAny(name, ['إصدار رخصة','license issuance'])) score -= 300;
@@ -157,6 +168,9 @@ export function rankServices(query, services = []) {
     if (labourComplaint && includesAny(name, ['شكوى عمالية للقطاع الخاص','labour complaints private sector'])) score += 280;
     if (cancelEmployee && service.s === 'cancel-work-permit-uae') score += 420;
     if (cancelEmployee && service.s === 'cancel-business-license-dubai') score -= 320;
+    if (personalAttestation && service.s === 'تصديق-مستند-شخصي-داخل-الإمارات') score += 620;
+    if (personalAttestation && service.s === 'attestation-of-commercial-invoices-via-edas-2-0') score -= 480;
+    if (openEstablishmentFile && service.s === 'establishment-card-mohre-uae') score += 620;
     if (score > 0 && service.v === 'VERIFIED') score += 2;
     return { ...service, score };
   }).filter(result => result.score > 0)
