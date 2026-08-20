@@ -51,3 +51,5 @@ report.summary={invalidScripts:report.invalidScripts.length,pageErrors:report.ro
 await writeFile(out+'/result.json',JSON.stringify(report,null,2)+'\n','utf8');
 console.log(JSON.stringify(report.summary));
 if(report.invalidScripts.length)process.exitCode=1;
+
+// Registered diagnostic trigger.
