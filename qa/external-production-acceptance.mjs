@@ -213,3 +213,5 @@ report.summary={checks:report.checks.length,passed:report.checks.filter(x=>x.sta
 await writeFile(out+'/external-production-report.json',JSON.stringify(report,null,2)+'\n','utf8');
 console.log(JSON.stringify(report.summary));
 if(report.failures.length) process.exitCode=1;
+
+// Triggered after workflow registration on main.
