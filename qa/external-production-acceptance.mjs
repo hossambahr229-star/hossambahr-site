@@ -118,9 +118,11 @@ async function clickedExternal(slug,kind) {
   const href=await link.getAttribute('href');
   assert(href && href.startsWith('https://'),'missing external '+kind+' href for '+slug);
   const popupPromise=context.waitForEvent('page',{timeout:8000}).catch(()=>null);
+  const intendedOrigin=new URL(href).origin;
+  const navigationPromise=page.waitForRequest(req=>req.isNavigationRequest()&&req.url().startsWith(intendedOrigin),{timeout:30000}).catch(()=>null);
   const initialUrl=page.url();
   await link.click({noWaitAfter:true});
-  const popup=await popupPromise;
+  const [popup,navigationRequest]=await Promise.all([popupPromise,navigationPromise]);
   let finalUrl=page.url();
   if (popup) {
     await popup.waitForLoadState('domcontentloaded',{timeout:30000}).catch(()=>{});
@@ -129,6 +131,7 @@ async function clickedExternal(slug,kind) {
     await page.waitForURL(url=>url.href!==initialUrl,{timeout:30000}).catch(()=>{});
     finalUrl=page.url();
   }
+  if(finalUrl===initialUrl&&navigationRequest) finalUrl=navigationRequest.url();
   const intended=new URL(href);
   const reached=finalUrl.startsWith('http') ? new URL(finalUrl) : intended;
   if (kind==='commercial') assert(/(?:wa\.me|whatsapp\.com)$/.test(reached.hostname)||/wa\.me/.test(href),'commercial click reached '+finalUrl);
