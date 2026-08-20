@@ -82,7 +82,7 @@ async function visual(route, width) {
   assert(!layout.vertical.length,'vertical text at '+route+' '+width);
   return layout;
 }
-async function homeJourney(query) {
+async function homeJourney(query, expectedSlug) {
   const {context,page}=await newPage({width:390,height:844});
   await goto(page,'/');
   await page.waitForSelector('#government-search');
@@ -95,7 +95,8 @@ async function homeJourney(query) {
   const count=await results.count();
   const first=results.first().locator('a').first();
   const href=await first.getAttribute('href');
-  assert(href && (href.startsWith('/services/')||href.startsWith('/dubai-business-activities.html')),'unexpected first result '+href);
+  const expectedHref='/services/'+expectedSlug+'/';
+  assert(href===expectedHref,'wrong first result for '+query+': expected '+expectedHref+' but received '+href);
   await first.click();
   await page.waitForLoadState('networkidle');
   assert(page.url().startsWith(base),'journey left production unexpectedly');
@@ -117,6 +118,7 @@ async function clickedExternal(slug,kind) {
   const href=await link.getAttribute('href');
   assert(href && href.startsWith('https://'),'missing external '+kind+' href for '+slug);
   const popupPromise=context.waitForEvent('page',{timeout:8000}).catch(()=>null);
+  const initialUrl=page.url();
   await link.click({noWaitAfter:true});
   const popup=await popupPromise;
   let finalUrl=page.url();
@@ -124,7 +126,7 @@ async function clickedExternal(slug,kind) {
     await popup.waitForLoadState('domcontentloaded',{timeout:30000}).catch(()=>{});
     finalUrl=popup.url();
   } else {
-    await page.waitForLoadState('domcontentloaded',{timeout:30000}).catch(()=>{});
+    await page.waitForURL(url=>url.href!==initialUrl,{timeout:30000}).catch(()=>{});
     finalUrl=page.url();
   }
   const intended=new URL(href);
@@ -136,7 +138,7 @@ async function clickedExternal(slug,kind) {
 }
 
 await check('release-marker', async()=> {
-  const expected='2026-08-20-external-production-js-repair';
+  const expected='2026-08-20-critical-intent-ranking-repair';
   let marker='',status=0;
   for(let attempt=1;attempt<=36;attempt++){
     const response=await fetch(base+'/release-marker.txt?cache='+Date.now()+'-'+attempt,{headers:{'Cache-Control':'no-cache'}});
@@ -149,14 +151,14 @@ await check('release-marker', async()=> {
   return {marker};
 });
 
-for (const [name,query] of [
-  ['journey-cleaning-company-dubai','أريد فتح شركة تنظيف في دبي'],
-  ['journey-renew-wife-residence','أريد تجديد إقامة زوجتي'],
-  ['journey-hire-inside-uae','أريد توظيف شخص موجود داخل الإمارات'],
-  ['journey-renew-dubai-license','تجديد رخصة في دبي'],
-  ['journey-contracting-company-dubai','شركة مقاولات في دبي'],
-  ['journey-cancel-employee','إلغاء موظف']
-]) await check(name,()=>homeJourney(query));
+for (const [name,query,expectedSlug] of [
+  ['journey-cleaning-company-dubai','أريد فتح شركة تنظيف في دبي','issue-trade-license-dubai'],
+  ['journey-renew-wife-residence','أريد تجديد إقامة زوجتي','تجديد-إقامة-أفراد-الأسرة-في-دبي'],
+  ['journey-hire-inside-uae','أريد توظيف شخص موجود داخل الإمارات','transfer-work-permit-uae'],
+  ['journey-renew-dubai-license','تجديد رخصة في دبي','renew-business-license-dubai'],
+  ['journey-contracting-company-dubai','شركة مقاولات في دبي','issue-trade-license-dubai'],
+  ['journey-cancel-employee','إلغاء موظف','cancel-work-permit-uae']
+]) await check(name,()=>homeJourney(query,expectedSlug));
 
 await check('activity-search-ar-en-partial-code',async()=>{
   const {context,page}=await newPage({width:430,height:900});
