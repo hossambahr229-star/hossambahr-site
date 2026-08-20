@@ -1,0 +1,737 @@
+{
+  "generatedAt": "2026-08-20T07:38:23.223Z",
+  "base": "https://hossambahr.com",
+  "commit": "06ab4783b6c76babbba9549b401bf8102486d1c1",
+  "method": "GitHub Actions ubuntu-latest + Google Chrome + Playwright",
+  "checks": [
+    {
+      "name": "release-marker",
+      "status": "PASS",
+      "details": {
+        "marker": "2026-08-13-master-audit-functional-recovery"
+      }
+    },
+    {
+      "name": "journey-cleaning-company-dubai",
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "journey-renew-wife-residence",
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "journey-hire-inside-uae",
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "journey-renew-dubai-license",
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "journey-contracting-company-dubai",
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "journey-cancel-employee",
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "activity-search-ar-en-partial-code",
+      "status": "PASS",
+      "details": [
+        {
+          "q": "تجارة مواد التعبئة",
+          "count": 12,
+          "title": "تجارة مواد التعبئة والتغليف",
+          "code": "514929"
+        },
+        {
+          "q": "Packing Packaging Materials",
+          "count": 12,
+          "title": "تجارة مواد التعبئة والتغليف",
+          "code": "514929"
+        },
+        {
+          "q": "تعبئة",
+          "count": 12,
+          "title": "خدمات إعادة التغليف والتعبئه",
+          "code": "749502"
+        },
+        {
+          "q": "514929",
+          "count": 1,
+          "title": "تجارة مواد التعبئة والتغليف",
+          "code": "514929"
+        }
+      ]
+    },
+    {
+      "name": "services-explorer-filters-dubai",
+      "status": "FAIL",
+      "error": "wrong emirates "
+    },
+    {
+      "name": "command-center-truthful-actions",
+      "status": "PASS",
+      "details": {
+        "hrefs": [
+          "/services/",
+          "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%AA%D8%AD%D8%AF%D9%8A%D8%AF%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%AA%D9%8A",
+          "/dubai-business-activities.html",
+          "/services/#directory-search"
+        ],
+        "metrics": "200\nخدمة منشورة من السجل الحي\n2610\nنشاط اقتصادي في دليل دبي\n7\nإمارات مغطاة\n20\nجهة حكومية مغطاة"
+      }
+    },
+    {
+      "name": "commercial-click-issue-trade-license-dubai",
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
+    },
+    {
+      "name": "official-click-issue-trade-license-dubai",
+      "status": "PASS",
+      "details": {
+        "slug": "issue-trade-license-dubai",
+        "kind": "official",
+        "href": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
+        "finalUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence"
+      }
+    },
+    {
+      "name": "commercial-click-gdrfa-family-residence-renew",
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
+    },
+    {
+      "name": "official-click-gdrfa-family-residence-renew",
+      "status": "PASS",
+      "details": {
+        "slug": "gdrfa-family-residence-renew",
+        "kind": "official",
+        "href": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8",
+        "finalUrl": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8"
+      }
+    },
+    {
+      "name": "commercial-click-mohre-private-tutor-permit",
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
+    },
+    {
+      "name": "official-click-mohre-private-tutor-permit",
+      "status": "FAIL",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-government-cta=\"verified\"]').first() to be visible\n"
+    },
+    {
+      "name": "visual-375-/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "HossamBahr | دليل الخدمات الحكومية في الإمارات"
+      }
+    },
+    {
+      "name": "visual-375-/services/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "دليل الخدمات | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-375-/dubai-business-activities.html",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "اختيار النشاط الاقتصادي في دبي | مساعد الأنشطة والرموز 2026"
+      }
+    },
+    {
+      "name": "visual-375-/command-center/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "مركز القيادة | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-375-/for/resident/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "خدمات مقيم | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-375-/services/issue-trade-license-dubai/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "إصدار رخصة تجارية في دبي | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-430-/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "HossamBahr | دليل الخدمات الحكومية في الإمارات"
+      }
+    },
+    {
+      "name": "visual-430-/services/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "دليل الخدمات | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-430-/dubai-business-activities.html",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "اختيار النشاط الاقتصادي في دبي | مساعد الأنشطة والرموز 2026"
+      }
+    },
+    {
+      "name": "visual-430-/command-center/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "مركز القيادة | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-430-/for/resident/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "خدمات مقيم | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-430-/services/issue-trade-license-dubai/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "إصدار رخصة تجارية في دبي | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-1024-/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "HossamBahr | دليل الخدمات الحكومية في الإمارات"
+      }
+    },
+    {
+      "name": "visual-1024-/services/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "دليل الخدمات | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-1024-/dubai-business-activities.html",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "اختيار النشاط الاقتصادي في دبي | مساعد الأنشطة والرموز 2026"
+      }
+    },
+    {
+      "name": "visual-1024-/command-center/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "مركز القيادة | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-1024-/for/resident/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "خدمات مقيم | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-1024-/services/issue-trade-license-dubai/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "إصدار رخصة تجارية في دبي | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-1440-/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "HossamBahr | دليل الخدمات الحكومية في الإمارات"
+      }
+    },
+    {
+      "name": "visual-1440-/services/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "دليل الخدمات | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-1440-/dubai-business-activities.html",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "اختيار النشاط الاقتصادي في دبي | مساعد الأنشطة والرموز 2026"
+      }
+    },
+    {
+      "name": "visual-1440-/command-center/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "مركز القيادة | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-1440-/for/resident/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "خدمات مقيم | HossamBahr"
+      }
+    },
+    {
+      "name": "visual-1440-/services/issue-trade-license-dubai/",
+      "status": "PASS",
+      "details": {
+        "overflow": false,
+        "clipped": [],
+        "vertical": [],
+        "title": "إصدار رخصة تجارية في دبي | HossamBahr"
+      }
+    }
+  ],
+  "failures": [
+    {
+      "name": "journey-cleaning-company-dubai",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "journey-renew-wife-residence",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "journey-hire-inside-uae",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "journey-renew-dubai-license",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "journey-contracting-company-dubai",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "journey-cancel-employee",
+      "error": "locator.waitFor: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#search-results .intent-result-card, #search-results .activity-intent-card').first() to be visible\n"
+    },
+    {
+      "name": "services-explorer-filters-dubai",
+      "error": "wrong emirates "
+    },
+    {
+      "name": "commercial-click-issue-trade-license-dubai",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
+    },
+    {
+      "name": "commercial-click-gdrfa-family-residence-renew",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
+    },
+    {
+      "name": "commercial-click-mohre-private-tutor-permit",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
+    },
+    {
+      "name": "official-click-mohre-private-tutor-permit",
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-government-cta=\"verified\"]').first() to be visible\n"
+    },
+    {
+      "name": "console-errors",
+      "error": "[{\"url\":\"https://hossambahr.com/?external-acceptance=1787211503553\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211514946\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211525966\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211525966\",\"text\":\"Failed to load resource: the server responded with a status of 404 ()\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211536998\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211548340\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211559758\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211559758\",\"text\":\"Failed to load resource: the server responded with a status of 404 ()\"},{\"url\":\"https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211570791\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/services/?external-acceptance=1787211579778\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/command-center/?external-acceptance=1787211581013\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/command-center/?external-acceptance=1787211581824\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/services/\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/command-center/?external-acceptance=1787211583023\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/command-center/?external-acceptance=1787211583637\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/dubai-business-activities.html\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/command-center/?external-acceptance=1787211585091\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/services/#directory-search\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211586410\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211617273\",\"text\":\"Invalid or unexpected token\"}]"
+    },
+    {
+      "name": "required-network-failures",
+      "error": "[{\"url\":\"https://hossambahr.com/command-center/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/?q=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%B2%D9%88%D8%AC%D8%AA%D9%8A\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/icp-family-residence-renew/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/icp-emirates-id-renew/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/mohre-uae-nationalsgcc-citizens-work-permit/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/mohre-work-permit-contract-cancel/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/mohre-overseas-work-permit/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/updates/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/authorities/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/categories/companies-establishments/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/categories/contracts-notarization/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/for/resident/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/categories/work-employees/\",\"error\":\"net::ERR_ABORTED\"}]"
+    }
+  ],
+  "consoleErrors": [
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211503553",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211514946",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211525966",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211525966",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211536998",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211548340",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211559758",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211559758",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "url": "https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211570791",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/?external-acceptance=1787211579778",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211581013",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211581824",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211583023",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211583637",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/dubai-business-activities.html",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211585091",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/#directory-search",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211586410",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211617273",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
+      "text": "Failed to load resource: the server responded with a status of 403 ()"
+    },
+    {
+      "url": "https://hossambahr.com/services/%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D8%A3%D9%81%D8%B1%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/mohre-private-tutor-permit/?external-acceptance=1787211669341",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/mohre-private-tutor-permit/?external-acceptance=1787211700292",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211731311",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/?external-acceptance=1787211733088",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211735973",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211737336",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/for/resident/?external-acceptance=1787211738226",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211739387",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211740378",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/?external-acceptance=1787211741875",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211744266",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211745650",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/for/resident/?external-acceptance=1787211746605",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211747764",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211748739",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/?external-acceptance=1787211750337",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211753330",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211754669",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/for/resident/?external-acceptance=1787211755569",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211756663",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/?external-acceptance=1787211757571",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/?external-acceptance=1787211759585",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211762970",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211764470",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/for/resident/?external-acceptance=1787211765593",
+      "text": "Invalid or unexpected token"
+    },
+    {
+      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211766659",
+      "text": "Invalid or unexpected token"
+    }
+  ],
+  "networkFailures": [
+    {
+      "url": "https://hossambahr.com/command-center/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/services/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/services/?q=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%B2%D9%88%D8%AC%D8%AA%D9%8A",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/services/icp-family-residence-renew/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/services/icp-emirates-id-renew/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/services/mohre-uae-nationalsgcc-citizens-work-permit/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/services/mohre-work-permit-contract-cancel/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/services/mohre-overseas-work-permit/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/updates/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/authorities/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/categories/companies-establishments/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/categories/contracts-notarization/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/for/resident/",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://hossambahr.com/categories/work-employees/",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "normalizedDirectoryOnlyRecords": [
+    {
+      "id": "directory:mohre:14",
+      "name": "تصريح عمل جزئي",
+      "resolution": "DUPLICATE",
+      "resolvedInto": "guide:part-time-work-permit-uae"
+    },
+    {
+      "id": "directory:mohre:18",
+      "name": "تجديد عقد العمل",
+      "resolution": "SUB_SERVICE",
+      "resolvedInto": "guide:employment-contract-uae"
+    },
+    {
+      "id": "directory:mohre:21",
+      "name": "إصدار عرض العمل",
+      "resolution": "SUB_SERVICE",
+      "resolvedInto": "guide:new-work-permit-overseas-uae"
+    },
+    {
+      "id": "directory:mohre:7",
+      "name": "دليل توعية أصحاب العمل",
+      "resolution": "INFORMATIONAL",
+      "resolvedInto": "/authorities/mohre/"
+    },
+    {
+      "id": "directory:mohre:28",
+      "name": "دليل الضمان المصرفي والتأمين",
+      "resolution": "GUIDANCE",
+      "resolvedInto": "/authorities/mohre/"
+    },
+    {
+      "id": "directory:mohre:27",
+      "name": "خدمات نافس لأصحاب العمل",
+      "resolution": "WRONG_AUTHORITY",
+      "resolvedInto": "https://nafis.gov.ae/employer"
+    },
+    {
+      "id": "directory:mohre:4",
+      "name": "التفويض الإلكتروني للمنشأة",
+      "resolution": "GUIDANCE",
+      "resolvedInto": "guide:establishment-card-mohre-uae"
+    },
+    {
+      "id": "directory:residency:21",
+      "name": "إصدار إقامة لمولود جديد في دبي",
+      "resolution": "SUB_SERVICE",
+      "resolvedInto": "family-residency-uae"
+    }
+  ],
+  "summary": {
+    "checks": 40,
+    "passed": 29,
+    "failed": 13,
+    "consoleErrors": 48,
+    "networkFailures": 14,
+    "productionExternalBrowser": "FAIL"
+  }
+}
