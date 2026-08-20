@@ -94,6 +94,8 @@ for (const viewport of viewports) {
       waitUntil: "networkidle",
       timeout: 30000
     });
+    const settleTime = Number(process.env.HB_WAIT_MS || 0);
+    if (settleTime > 0) await page.waitForTimeout(settleTime);
     await page.screenshot({
       path: resolve(outputDirectory, `${label}-${target.name}-${viewport.name}.png`),
       fullPage: true
@@ -147,3 +149,4 @@ if (
   summary.consoleErrors ||
   summary.pageErrors
 ) process.exitCode = 1;
+

@@ -29,6 +29,7 @@
     if (new URLSearchParams(location.search).has("q")) activityData();
     load("/intent-search-data.js")
       .then(() => load("/intent-search.js", true))
+      .then(() => modernizePresentation())
       .catch(() => { document.getElementById("search-results")?.setAttribute("data-intent-search-error", "true"); });
   }
 
@@ -552,7 +553,9 @@
       });
       hero.append(bar);
       const actions = hero.querySelector('.actions');
-      const secondary = actions ? [...actions.querySelectorAll('a')].slice(1) : [];
+      const secondary = actions
+        ? [...actions.querySelectorAll('a')].filter((link) => link !== primary && !link.matches('[data-commercial-cta="verified"]'))
+        : [];
       if (secondary.length) {
         const details = document.createElement('details'); details.className = 'service-secondary-actions';
         const summary = document.createElement('summary'); summary.textContent = 'المعلومات والمصادر الإضافية';
@@ -585,6 +588,42 @@
     }
   }
 
+  function modernizePresentation() {
+    const path = location.pathname;
+    document.body.dataset.uxModernized = "true";
+    if (path === "/") document.body.dataset.uxPage = "home";
+    else if (path === "/services/") document.body.dataset.uxPage = "services";
+    else if (path.startsWith("/services/")) document.body.dataset.uxPage = "service-detail";
+    else if (path === "/dubai-business-activities.html") document.body.dataset.uxPage = "activities";
+    else if (path === "/command-center/") document.body.dataset.uxPage = "command-center";
+    else if (path.startsWith("/authorities/")) document.body.dataset.uxPage = "authority";
+    else if (path.startsWith("/categories/") || path.startsWith("/for/")) document.body.dataset.uxPage = "catalog";
+
+    if (path === "/") {
+      const input = document.getElementById("government-search");
+      if (input) input.placeholder = "اكتب معاملتك... مثال: أريد تجديد الرخصة التجارية في دبي";
+      const examples = document.querySelector(".examples");
+      if (examples) {
+        const intents = ["تأسيس شركة", "تجديد رخصة", "تجديد إقامة", "تصريح عمل", "إقامة مستثمر", "زيارة / تأشيرة"];
+        const buttons = [...examples.querySelectorAll("button")];
+        buttons.forEach((button, index) => {
+          if (intents[index]) button.textContent = intents[index];
+        });
+        intents.slice(buttons.length).forEach((intent) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = intent;
+          button.dataset.uxIntent = intent;
+          button.addEventListener("click", () => {
+            if (input) input.value = intent;
+            document.querySelector(".search-row button")?.click();
+          });
+          examples.append(button);
+        });
+      }
+    }
+  }
+
   const start = () => {
     loadIntentFirstStyles();
     loadHomepageIntentSearch();
@@ -599,6 +638,7 @@
     enhanceServiceDirectory();
     enhanceServiceDetail();
     enhanceVerifiedGovernmentHandoff();
+    modernizePresentation();
   };
   document.addEventListener('click', (event) => {
     if (location.pathname !== '/') return;

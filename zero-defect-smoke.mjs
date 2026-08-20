@@ -201,7 +201,36 @@ for (const width of [320, 360, 375, 390, 412, 430]) {
     await page.waitForTimeout(2200);
     return {
       status: response?.status(),
-      intentFirstT�nm�G����ƭy�tps://wa.me/971503780460?text='),
+      intentFirstTitle: await page.locator('#hero-title').textContent() === 'ما المعاملة التي تريد إنجازها؟',
+      onePrimarySearch: await page.locator('form.primary-search').count() === 1,
+      primarySearchVisible: await page.locator('#government-search').isVisible(),
+      popularGoals: await page.locator('.action-start-grid > a:visible').count(),
+      progressiveDisclosure: await page.locator('.ux-progressive-details').count() === 1,
+      heroContrast: await page.locator('#hero-title').evaluate((element) => {
+        const channels = (getComputedStyle(element).color.match(/\d+/g) || []).slice(0, 3).map(Number);
+        const luminance = channels.reduce((sum, channel, index) => {
+          const normalized = channel / 255;
+          const linear = normalized <= .03928 ? normalized / 12.92 : ((normalized + .055) / 1.055) ** 2.4;
+          return sum + linear * [.2126, .7152, .0722][index];
+        }, 0);
+        const hero = element.closest('.platform-hero');
+        const brandedSurface = /gradient/i.test(getComputedStyle(hero).backgroundImage);
+        return brandedSurface && (luminance < .18 || luminance > .82);
+      }),
+      suggestionsWrap: await page.locator('.examples').evaluate((element) => getComputedStyle(element).flexWrap === 'wrap' && element.scrollWidth <= element.clientWidth + 1),
+      compactHeader: await page.locator('.site-header').evaluate((element) => element.getBoundingClientRect().height <= 84),
+    };
+  });
+}
+
+await scenario("verified-service-handoff", { width: 390, height: 844 }, async (page) => {
+  const response = await page.goto(`${baseUrl}/services/gdrfa-family-residence-renew/`, { waitUntil: 'networkidle' });
+  return {
+    status: response?.status(),
+    handoffNote: await page.locator('.official-handoff-note').count() === 1,
+    handoffLabel: (await page.locator('[data-government-cta="verified"]').textContent())?.includes('الجهة الرسمية'),
+    executeWithUs: await page.locator('[data-commercial-cta="verified"]').count() === 1,
+    executeWithUsDestination: (await page.locator('[data-commercial-cta="verified"]').getAttribute('href'))?.startsWith('https://wa.me/971503780460?text='),
     officialDestinationUnchanged: await page.locator('[data-government-cta="verified"]').getAttribute('href').then((href) => /gdrfad\.gov\.ae/.test(href || '')),
   };
 });
@@ -346,3 +375,4 @@ const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scen
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));
 if (failed.length) process.exitCode = 1;
+
