@@ -566,13 +566,16 @@
           && (!authority || card.dataset.authority === authority)
           && (!userType || (card.dataset.userTypes || "").includes(userType));
       });
+      const hasCriteria = Boolean(query || emirate || category || authority || userType);
+      const visibleLimit = assisted && !hasCriteria ? 6 : limit;
       cards.forEach((card) => { card.hidden = true; });
-      matches.slice(0, limit).forEach((card) => { card.hidden = false; });
-      grid.hidden = assisted && !query && !emirate && !category && !authority && !userType;
-      count.textContent = `${matches.length} خدمة مطابقة — يظهر ${Math.min(limit, matches.length)}`;
-      count.hidden = grid.hidden;
-      more.hidden = matches.length <= limit;
-      if (grid.hidden) more.hidden = true;
+      matches.slice(0, visibleLimit).forEach((card) => { card.hidden = false; });
+      grid.hidden = false;
+      count.textContent = hasCriteria
+        ? `تم العثور على ${matches.length} خدمة — يظهر ${Math.min(visibleLimit, matches.length)}`
+        : `خدمات مقترحة للبدء — يظهر ${Math.min(visibleLimit, matches.length)} من ${matches.length} خدمة`;
+      count.hidden = false;
+      more.hidden = assisted && !hasCriteria ? true : matches.length <= visibleLimit;
     };
     input.addEventListener("input", () => { limit = 12; apply(); });
     emirateSelect.addEventListener("change", () => { limit = 12; apply(); });
@@ -642,7 +645,7 @@
     card.dataset.customerCardReady = "true";
     const actions = card.querySelector(".actions");
     const primaryAction = actions?.querySelector("a");
-    if (primaryAction) primaryAction.textContent = "عرض المتطلبات والخطوات";
+    if (primaryAction) primaryAction.textContent = "عرض المسار";
     const expandable = [
       card.querySelector(":scope > .official-name"),
       card.querySelector(":scope > .service-tags"),
@@ -652,7 +655,7 @@
     const details = document.createElement("details");
     details.className = "customer-card-details";
     const summary = document.createElement("summary");
-    summary.textContent = "تفاصيل أكثر";
+    summary.textContent = "بطاقة الخدمة والمتطلبات";
     const content = document.createElement("div");
     content.className = "customer-card-details-content";
     expandable.forEach((node) => content.append(node));
@@ -746,11 +749,12 @@
     if (!main) return;
     const routeMode = main.dataset.officialRouteMode;
     const primary = main.querySelector('[data-government-cta="verified"]')
+      || (routeMode === "official-bundle-selector" ? main.querySelector('.exact-route-choices a[href^="https://"]') : null)
       || (routeMode === "direct-execution" ? main.querySelector('.service-hero .actions > a[href^="https://"]') : null)
       || main.querySelector('.official-source-panel a[href^="https://"], .service-aside a[href^="https://"]')
       || main.querySelector('.service-hero .actions > a:first-child');
     const pending = main.matches('[data-publication-state="NORMALIZED"], [data-publication-state="PENDING_VERIFICATION"]');
-    const verifiedRouteMode = ["official-service-card", "direct-execution"].includes(routeMode);
+    const verifiedRouteMode = ["official-service-card", "official-bundle-selector", "direct-execution"].includes(routeMode);
     if (primary && /^https:\/\//i.test(primary.getAttribute("href") || "") && !pending && (verifiedRouteMode || primary.dataset.governmentCta === "verified")) primary.dataset.governmentCta = "verified";
     if (primary) primary.classList.add("primary-government-cta");
     const publicationState = main.dataset.publicationState || main.querySelector('[data-publication-state]')?.dataset.publicationState;
@@ -764,18 +768,21 @@
       commercial.rel = "noopener noreferrer";
       commercial.dataset.commercialCta = "verified";
       commercial.textContent = "أنجز المعاملة معنا";
-      const actions = primary.closest(".actions") || primary.parentElement;
+      const actions = routeMode === "official-bundle-selector"
+        ? main.querySelector(".service-hero .actions")
+        : primary.closest(".actions") || primary.parentElement;
       if (actions) {
         actions.classList.add("dual-execution-paths");
+        const officialEntry = actions.contains(primary) ? primary : actions.querySelector("a");
         const commercialLabel = document.createElement("span");
         commercialLabel.className = "execution-path-label commercial-path-label";
         commercialLabel.textContent = "الخيار الأول — مساعدة كاملة عبر مسار حسام بحر";
         const officialLabel = document.createElement("span");
         officialLabel.className = "execution-path-label official-path-label";
         officialLabel.textContent = "الخيار الثاني — التنفيذ بنفسك عبر المسار الحكومي الرسمي";
-        actions.insertBefore(commercialLabel, primary);
-        actions.insertBefore(commercial, primary);
-        actions.insertBefore(officialLabel, primary);
+        actions.insertBefore(commercialLabel, officialEntry);
+        actions.insertBefore(commercial, officialEntry);
+        actions.insertBefore(officialLabel, officialEntry);
       }
     }
     const hero = main.querySelector('.service-hero, .page-hero');
@@ -838,10 +845,10 @@
       const note = document.createElement("p");
       note.className = "official-handoff-note";
       note.textContent = guidance
-        ? "ستنتقل إلى المصدر الحكومي الرسمي الذي يشرح هذه المعاملة. راجع الاختصاص قبل المتابعة."
-        : "ستنتقل الآن إلى الخدمة الحكومية الرسمية لإكمال الطلب. قد يُطلب تسجيل الدخول عبر UAE Pass.";
+        ? "الموقع الحكومي الرسمي: ستنتقل إلى المصدر الذي يشرح هذه المعاملة. راجع الاختصاص قبل المتابعة."
+        : "الموقع الحكومي الرسمي: ستنتقل إلى الخدمة الحكومية لإكمال الطلب، وقد يُطلب تسجيل الدخول عبر UAE Pass.";
       anchor.parentNode?.insertBefore(note, anchor);
-      anchor.textContent = guidance ? "تنفيذها بنفسي عبر المصدر الرسمي ↗" : "تنفيذها بنفسي عبر الجهة الرسمية ↗";
+      anchor.textContent = guidance ? "افتح المصدر الحكومي الرسمي ↗" : "ابدأ التقديم الرسمي ↗";
     }
   }
 
@@ -859,9 +866,11 @@
     if (path === "/") {
       const input = document.getElementById("government-search");
       if (input) input.placeholder = "اكتب معاملتك... مثال: أريد تجديد الرخصة التجارية في دبي";
+      const searchLabel = document.querySelector('.primary-search label');
+      if (searchLabel) searchLabel.textContent = "ما المعاملة التي تريد إنجازها؟";
       const examples = document.querySelector(".examples");
       if (examples) {
-        const intents = ["تأسيس شركة", "تجديد رخصة", "تجديد إقامة", "تصريح عمل", "إقامة مستثمر", "زيارة / تأشيرة"];
+        const intents = ["تأسيس شركة", "تجديد رخصة", "تصريح عمل", "إقامة", "تأشيرة / زيارة", "تجديد هوية"];
         const buttons = [...examples.querySelectorAll("button")];
         buttons.forEach((button, index) => {
           if (intents[index]) button.textContent = intents[index];
