@@ -22,6 +22,7 @@ for(const route of routes){
     index++;
     const attrs=match[1]||'', body=match[2]||'';
     const src=(attrs.match(/\bsrc=["']([^"']+)["']/i)||[])[1];
+    const type=((attrs.match(/\btype=["']([^"']+)["']/i)||[])[1]||'').toLowerCase();
     if(src){
       const absolute=new URL(src,url).href;
       const scriptResponse=await fetch(absolute,{headers:{'Cache-Control':'no-cache'}});
@@ -29,8 +30,13 @@ for(const route of routes){
       const failure=syntax(absolute,code);
       item.external.push({src:absolute,status:scriptResponse.status,bytes:code.length,syntax:failure?'FAIL':'PASS'});
     }else if(body.trim()){
-      const failure=syntax(route+'#inline-'+index,body);
-      item.inline.push({index,bytes:body.length,syntax:failure?'FAIL':'PASS'});
+      if(type.includes('ld+json')||type==='application/json'){
+        try{JSON.parse(body);item.inline.push({index,bytes:body.length,type,syntax:'DATA_JSON_PASS'});}
+        catch(error){report.invalidScripts.push({label:route+'#inline-'+index,message:'Invalid JSON-LD: '+error.message});item.inline.push({index,bytes:body.length,type,syntax:'DATA_JSON_FAIL'});}
+      }else{
+        const failure=syntax(route+'#inline-'+index,body);
+        item.inline.push({index,bytes:body.length,type:type||'javascript',syntax:failure?'FAIL':'PASS'});
+      }
     }
   }
   report.routes.push(item);
@@ -52,4 +58,4 @@ await writeFile(out+'/result.json',JSON.stringify(report,null,2)+'\n','utf8');
 console.log(JSON.stringify(report.summary));
 if(report.invalidScripts.length)process.exitCode=1;
 
-// Registered diagnostic trigger.
+// Rerun after production runtime repair; JSON-LD is validated as data.
