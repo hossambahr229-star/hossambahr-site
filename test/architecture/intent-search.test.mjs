@@ -46,6 +46,18 @@ test('Dubai cleaning-company intent combines licensing and activity discovery', 
   assert.match(activity.nameEn, /clean|wash/i);
 });
 
+test('external Production acceptance journeys rank the correct service family first', () => {
+  const scenarios = [
+    ['أريد فتح شركة تنظيف في دبي', 'issue-trade-license-dubai'],
+    ['شركة مقاولات في دبي', 'issue-trade-license-dubai'],
+    ['تجديد رخصة في دبي', 'renew-business-license-dubai'],
+    ['إلغاء موظف', 'cancel-work-permit-uae'],
+  ];
+  for (const [query, slug] of scenarios) {
+    assert.equal(rankServices(query, services)[0]?.s, slug, query);
+  }
+});
+
 test('beginner phrases stay discoverable without authority terminology', () => {
   const scenarios = [
     'أريد أجدد الرخصة',
