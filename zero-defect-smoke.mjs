@@ -206,7 +206,17 @@ for (const width of [320, 360, 375, 390, 412, 430]) {
       primarySearchVisible: await page.locator('#government-search').isVisible(),
       popularGoals: await page.locator('.action-start-grid > a:visible').count(),
       progressiveDisclosure: await page.locator('.ux-progressive-details').count() === 1,
-      heroContrast: await page.locator('#hero-title').evaluate((element) => getComputedStyle(element).color === 'rgb(255, 255, 255)'),
+      heroContrast: await page.locator('#hero-title').evaluate((element) => {
+        const channels = (getComputedStyle(element).color.match(/\d+/g) || []).slice(0, 3).map(Number);
+        const luminance = channels.reduce((sum, channel, index) => {
+          const normalized = channel / 255;
+          const linear = normalized <= .03928 ? normalized / 12.92 : ((normalized + .055) / 1.055) ** 2.4;
+          return sum + linear * [.2126, .7152, .0722][index];
+        }, 0);
+        const hero = element.closest('.platform-hero');
+        const brandedSurface = /gradient/i.test(getComputedStyle(hero).backgroundImage);
+        return brandedSurface && (luminance < .18 || luminance > .82);
+      }),
       suggestionsWrap: await page.locator('.examples').evaluate((element) => getComputedStyle(element).flexWrap === 'wrap' && element.scrollWidth <= element.clientWidth + 1),
       compactHeader: await page.locator('.site-header').evaluate((element) => element.getBoundingClientRect().height <= 84),
     };
