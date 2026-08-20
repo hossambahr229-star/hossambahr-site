@@ -95,6 +95,7 @@ export function rankServices(query, services = []) {
   const company = includesAny(normalized, ['شركه','مشروع','محل','business','company','shop']);
   const residence = includesAny(normalized, ['إقامة','اقامه','residence','residency']);
   const employee = includesAny(normalized, ['عامل','موظف','employee','worker']);
+  const transferEmployee = employee && includesAny(normalized, ['نقل','transfer']);
   const visitRelative = includesAny(normalized, ['زيارة','visit']) && includesAny(normalized, ['أخويا','اخويا','قريب','صديق','relative','friend']);
   const openCompany = company && includesAny(normalized, ['أفتح','افتح','فتح','تأسيس','تاسيس','open','start','establish']);
   const expiredOrRenewLicense = includesAny(normalized, ['الرخصة','رخصة','license','licence']) && includesAny(normalized, ['انتهت','منتهية','أجدد','اجدد','تجديد','expired','renew']);
@@ -131,6 +132,7 @@ export function rankServices(query, services = []) {
     if (spouseOrFamily && includesAny(name, ['family','اسره','افراد الاسره'])) score += 90;
     if (spouseOrFamily && includesAny(normalized, ['تجديد','اجدد','renew']) && service.s === 'تجديد-إقامة-أفراد-الأسرة-في-دبي') score += 190;
     if (insideUae && service.s === 'transfer-work-permit-uae') score += 180;
+    if (transferEmployee && service.s === 'transfer-work-permit-uae') score += 520;
     if (outsideUae && service.s === 'new-work-permit-overseas-uae') score += 180;
     if (company && includesAny(name, ['license issuance','licence issuance','اصدار رخصه','تاسيس الاعمال'])) score += 70;
     if (company && (!emirate || matchesEmirate(service.m || '', emirate)) && includesAny(haystack, ['license','licence','رخصه','ترخيص']) && includesAny(haystack, ['issue','issuance','اصدار'])) score += 150;
@@ -204,14 +206,21 @@ function element(tag, className, text) {
   return node;
 }
 
+const CUSTOMER_SERVICE_LABELS = new Map([
+  ['issue-trade-license-dubai', 'إصدار رخصة تجارية في دبي'],
+  ['renew-business-license-dubai', 'تجديد رخصة تجارية في دبي'],
+  ['amend-business-license-dubai', 'تعديل رخصة تجارية في دبي']
+]);
+
 function renderResults(container, query, services, activities) {
   container.replaceChildren();
   const heading = element('div', 'intent-heading');
-  heading.append(element('span', 'eyebrow', 'المسار المقترح'), element('h2', '', services.length || activities.length ? 'أقرب النتائج لما تريد إنجازه' : 'لم نجد تطابقًا واضحًا بعد'));
+  heading.append(element('span', 'eyebrow', 'ترشيح ذكي'), element('h2', '', services.length || activities.length ? 'نعتقد أنك تقصد:' : 'لم نجد تطابقًا واضحًا بعد'));
   container.append(heading);
   const requestedEmirate = queryEmirate(query);
   const availableEmirates = [...new Set(services.slice(0, 8).map((service) => repairText(service.m)).filter(Boolean))];
-  if (!requestedEmirate && availableEmirates.length > 1) {
+  const topResultIsFederal = normalizeIntent(services[0]?.m || '').includes('اتحادي');
+  if (!requestedEmirate && availableEmirates.length > 1 && !topResultIsFederal) {
     const clarification = element('div', 'intent-clarification');
     clarification.append(element('strong', '', 'في أي إمارة تريد إنجاز المعاملة؟'));
     const choices = element('div', 'intent-clarification-options');
@@ -250,18 +259,35 @@ function renderResults(container, query, services, activities) {
     clarification.append(choices);
     container.append(clarification);
   }
-  const grid = element('div', 'intent-results-grid');
-  services.slice(0, 3).forEach(service => {
+  const serviceCard = (service, primary = false) => {
     const card = element('article', 'intent-result-card');
+    if (primary) card.classList.add('is-top-match');
     const meta = element('div', 'intent-result-meta');
     meta.append(element('span', '', 'خدمة حكومية'), element('span', service.v === 'VERIFIED' ? 'verified' : 'pending', service.v === 'VERIFIED' ? 'موثقة' : 'الرابط الرسمي قيد التحقق'));
-    const title = element('h3', '', repairText(service.a));
-    const details = element('p', '', `${repairText(service.r || service.n)} · ${repairText(service.m)}`);
+    const title = element('h3', '', CUSTOMER_SERVICE_LABELS.get(service.s) || repairText(service.a));
+    const officialName = CUSTOMER_SERVICE_LABELS.has(service.s) ? element('small', 'intent-official-name', `الاسم الرسمي: ${repairText(service.a)}`) : null;
+    const explanation = element('p', 'intent-result-explanation', repairText(service.d || 'اعرض المتطلبات للتأكد أن هذه المعاملة تناسب حالتك.'));
+    const details = element('p', 'intent-result-authority', `${repairText(service.r || service.n)} · ${repairText(service.m)}`);
     const link = element('a', '', 'عرض المتطلبات والمسار ←');
     link.href = service.u;
-    card.append(meta, title, details, link);
-    grid.append(card);
-  });
+    card.append(meta, title);
+    if (officialName) card.append(officialName);
+    card.append(explanation, details, link);
+    return card;
+  };
+  const grid = element('div', 'intent-results-grid');
+  services.slice(0, 3).forEach((service, index) => grid.append(serviceCard(service, index === 0)));
+  if (services.length) container.append(grid);
+  if (services.length > 3) {
+    const other = element('details', 'intent-other-results');
+    const otherSummary = element('summary', '', `نتائج أخرى محتملة (${Math.min(services.length - 3, 5)})`);
+    const otherGrid = element('div', 'intent-results-grid');
+    services.slice(3, 8).forEach((service) => otherGrid.append(serviceCard(service)));
+    other.append(otherSummary, otherGrid);
+    container.append(other);
+  }
+  if (activities.length) container.append(element('h3', 'intent-activities-heading', 'أنشطة اقتصادية قد تناسب مشروعك'));
+  const activityGrid = element('div', 'intent-results-grid intent-activity-results');
   activities.slice(0, 3).forEach(activity => {
     const card = element('article', 'intent-result-card activity-intent-card');
     const meta = element('div', 'intent-result-meta');
@@ -271,9 +297,9 @@ function renderResults(container, query, services, activities) {
     const link = element('a', '', 'راجع النشاط والرمز ←');
     link.href = `/dubai-business-activities.html?q=${encodeURIComponent(activity.code || query)}`;
     card.append(meta, title, details, link);
-    grid.append(card);
+    activityGrid.append(card);
   });
-  container.append(grid);
+  if (activities.length) container.append(activityGrid);
   const actions = element('div', 'intent-more-actions');
   const all = element('a', '', 'عرض كل الخدمات'); all.href = `/services/?q=${encodeURIComponent(query)}`;
   const activity = element('a', '', 'بحث الأنشطة والرموز'); activity.href = `/dubai-business-activities.html?q=${encodeURIComponent(query)}`;
@@ -288,7 +314,7 @@ export function bootstrapIntentSearch() {
   const container = document.getElementById('search-results');
   if (!form || !input || !container) return;
   const style = document.createElement('style');
-  style.textContent = '.intent-heading{margin-bottom:1rem}.intent-results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}.intent-result-card{background:var(--surface,#fff);border:1px solid var(--border,#d8d2c6);border-radius:18px;padding:1.2rem;display:flex;flex-direction:column;gap:.75rem}.intent-result-card h3,.intent-result-card p{margin:0}.intent-result-meta{display:flex;justify-content:space-between;gap:.5rem;font-size:.82rem}.intent-result-meta .verified{color:#176b47}.intent-result-meta .pending{color:#8a5a00}.intent-result-card>a,.intent-more-actions a{font-weight:700;color:inherit}.intent-more-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem}.intent-clarification{margin:0 0 1rem;padding:1rem;border:1px solid #d8c59d;border-radius:14px;background:#fff8e8}.intent-clarification-options{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.65rem}.intent-clarification button{min-height:40px;padding:.5rem .85rem;border:1px solid #bfa96f;background:#fff;color:#103d32;font:inherit;font-weight:700;cursor:pointer}.result:empty{display:none}@media(max-width:640px){.intent-results-grid{grid-template-columns:1fr}.intent-clarification-options{display:grid;grid-template-columns:1fr 1fr}}';
+  style.textContent = '.intent-heading{margin-bottom:1rem}.intent-results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}.intent-result-card{background:var(--surface,#fff);border:1px solid var(--border,#d8d2c6);border-radius:18px;padding:1.2rem;display:flex;flex-direction:column;gap:.65rem}.intent-result-card.is-top-match{border-color:#8fb3a8;box-shadow:0 14px 32px rgba(8,44,37,.1)}.intent-result-card h3,.intent-result-card p{margin:0}.intent-official-name{color:#6a7873;font-size:.76rem}.intent-result-explanation{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;color:#52665f}.intent-result-authority{font-size:.82rem;color:#65756f}.intent-result-meta{display:flex;justify-content:space-between;gap:.5rem;font-size:.82rem}.intent-result-meta .verified{color:#176b47}.intent-result-meta .pending{color:#8a5a00}.intent-result-card>a,.intent-more-actions a{font-weight:700;color:inherit}.intent-more-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem}.intent-other-results{margin-top:1rem;border-top:1px solid #d9e3df;padding-top:.8rem}.intent-other-results>summary{font-weight:800;color:#315149;cursor:pointer}.intent-other-results .intent-results-grid{margin-top:.8rem}.intent-activities-heading{margin:1.4rem 0 .75rem}.intent-clarification{margin:0 0 1rem;padding:1rem;border:1px solid #d8c59d;border-radius:14px;background:#fff8e8}.intent-clarification-options{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.65rem}.intent-clarification button{min-height:40px;padding:.5rem .85rem;border:1px solid #bfa96f;background:#fff;color:#103d32;font:inherit;font-weight:700;cursor:pointer}.result:empty{display:none}@media(max-width:640px){.intent-results-grid{grid-template-columns:1fr}.intent-clarification-options{display:grid;grid-template-columns:1fr 1fr}}';
   document.head.append(style);
   const examples = ['أريد أفتح شركة تنظيف في دبي', 'أريد أجدد إقامة زوجتي', 'أريد أوظف شخص موجود داخل الإمارات', 'أريد أفتح محل ملابس ولا أعرف النشاط'];
   document.querySelectorAll('.examples button').forEach((button, index) => {

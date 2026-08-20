@@ -453,6 +453,21 @@ body[data-ux-page="services"] .directory-filter-drawer {
 body[data-ux-page="services"] .directory-filter-drawer > summary { padding: .8rem 1rem; }
 body[data-ux-page="services"] .directory-controls { margin-top: 0; border: 0; border-top: 1px solid #dbe5e1; border-radius: 0; }
 body[data-ux-page="services"] #det-results { gap: .85rem; margin-top: 2rem; }
+body[data-ux-page="services"] #det-results[hidden] { display: none !important; }
+body[data-ux-page="services"] .directory-load-more[hidden] { display: none !important; }
+body[data-ux-page="services"] .professional-history { padding-block: 1rem; }
+body[data-ux-page="services"] .professional-history > details {
+  border: 1px solid #d5e0dc;
+  border-radius: 14px;
+  background: #fff;
+}
+body[data-ux-page="services"] .professional-history > details > summary {
+  padding: .85rem 1rem;
+  color: #4d655e;
+  font-weight: 800;
+  cursor: pointer;
+}
+body[data-ux-page="services"] .professional-history > details > div { padding: 0 1rem 1rem; }
 body[data-ux-page="services"] #det-results .card {
   min-height: 220px;
   padding: 1rem;
@@ -571,4 +586,161 @@ body[data-ux-page="authority"] :is(.service-card,.card) { min-height: 0; padding
 @media (max-width: 430px) {
   body[data-ux-page="home"] .hero-actions { grid-template-columns: 1fr; }
   body[data-ux-page="service-detail"] .service-facts-bar { grid-template-columns: 1fr; }
+}
+
+/* Phase 2: customer journey simplification. Data, routes and execution targets
+   remain untouched; this layer only changes disclosure and decision hierarchy. */
+.directory-mode-switch,
+.category-mode-switch {
+  display: inline-flex;
+  gap: .3rem;
+  padding: .3rem;
+  border: 1px solid #cad9d4;
+  border-radius: 14px;
+  background: #edf3f0;
+}
+.directory-mode-switch button,
+.category-mode-switch button {
+  min-height: 42px;
+  padding: .55rem .95rem;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #315149;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.directory-mode-switch button.is-active,
+.category-mode-switch button.is-active {
+  background: #fff;
+  color: var(--ux-brand-900);
+  box-shadow: 0 5px 16px rgba(8,44,37,.1);
+}
+body[data-ux-page="services"] .directory-mode-switch { align-self: start; }
+
+.category-intent-chooser {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto clamp(1.4rem, 3vw, 2.4rem);
+  padding: clamp(1.1rem, 2.5vw, 1.8rem);
+  border: 1px solid #d4e0dc;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(8,44,37,.055);
+}
+.category-intent-heading h2 { margin: .25rem 0 .35rem; color: var(--ux-brand-900); font-size: clamp(1.55rem,3vw,2.3rem); }
+.category-intent-heading p { margin: 0 0 1rem; color: #5b6d67; }
+.category-mode-switch { margin-bottom: 1rem; }
+.category-intent-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+  gap: .65rem;
+}
+.category-intent-options button {
+  min-height: 54px;
+  padding: .75rem .9rem;
+  border: 1px solid #d1dfda;
+  border-radius: 13px;
+  background: #f7faf8;
+  color: #173f36;
+  font: inherit;
+  font-weight: 800;
+  text-align: right;
+  cursor: pointer;
+}
+.category-intent-options button:hover,
+.category-intent-options button[aria-pressed="true"] {
+  border-color: #8caea4;
+  background: #eaf4f0;
+  color: var(--ux-brand-900);
+}
+.category-intent-feedback {
+  margin: 1rem 0 0;
+  padding: .75rem 1rem;
+  border-inline-start: 3px solid var(--ux-gold-600);
+  background: #fff9e9;
+  color: #56451f;
+  font-weight: 750;
+}
+.category-full-directory.is-assisted-hidden { display: none; }
+body[data-ux-page="catalog"][data-category-journey-ready="true"] .page-hero {
+  padding-block: 1rem;
+}
+body[data-ux-page="catalog"][data-category-journey-ready="true"] .page-hero h1 {
+  margin-block: .2rem;
+  font-size: clamp(2rem,4.2vw,3.6rem);
+}
+
+.customer-card-details { margin-top: .45rem; border-top: 1px solid #e1e8e5; }
+.customer-card-details > summary {
+  padding: .65rem 0 .2rem;
+  color: #4d655e;
+  font-size: .85rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+.customer-card-details-content { display: grid; gap: .45rem; padding: .55rem 0; }
+.customer-card-details-content .official-name { color: #65756f; font-size: .82rem; }
+.customer-card-details-content .service-tags { margin: 0; }
+body[data-ux-page="catalog"] .service-card > p:not(.directory-card-context),
+body[data-ux-page="services"] [data-directory-card] > p:not(.directory-card-context) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-block: .35rem;
+}
+body[data-ux-page="catalog"] .service-card .actions,
+body[data-ux-page="services"] [data-directory-card] .actions { margin-top: .65rem; }
+body[data-ux-page="catalog"] .service-card .actions > a:first-child,
+body[data-ux-page="services"] [data-directory-card] .actions > a:first-child { width: 100%; text-align: center; }
+
+.service-decision-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin-block: .35rem .65rem;
+}
+.service-decision-nav a {
+  padding: .45rem .7rem;
+  border: 1px solid #cfddd8;
+  border-radius: 999px;
+  background: #fff;
+  color: #315149;
+  font-size: .82rem;
+  font-weight: 750;
+}
+body[data-ux-page="service-detail"] .dual-execution-paths {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem .75rem;
+}
+body[data-ux-page="service-detail"] .execution-path-label { align-self: end; }
+body[data-ux-page="service-detail"] .commercial-path-label { grid-column: 1; grid-row: 1; }
+body[data-ux-page="service-detail"] .execute-with-us-cta { grid-column: 1; grid-row: 2; }
+body[data-ux-page="service-detail"] .official-path-label { grid-column: 2; grid-row: 1; }
+body[data-ux-page="service-detail"] .primary-government-cta { grid-column: 2; grid-row: 2; }
+body[data-ux-page="service-detail"] .official-handoff-note { grid-column: 2; margin: 0; font-size: .78rem; color: #65756f; }
+
+@media (max-width: 760px) {
+  body[data-ux-page="catalog"][data-category-journey-ready="true"] .page-shell { padding-top: .75rem; }
+  body[data-ux-page="catalog"][data-category-journey-ready="true"] .page-hero { padding-block: .65rem .85rem; }
+  body[data-ux-page="catalog"][data-category-journey-ready="true"] .page-hero p { margin-bottom: 0; line-height: 1.5; }
+  .category-intent-chooser { width: calc(100% - 24px); margin-bottom: 1rem; padding: .9rem; border-radius: 16px; }
+  .category-intent-heading h2 { font-size: 1.55rem; }
+  .category-intent-heading p { font-size: .88rem; }
+  .category-intent-options { grid-template-columns: 1fr 1fr; gap: .45rem; }
+  .category-intent-options button { min-height: 48px; padding: .55rem .65rem; font-size: .85rem; }
+  .directory-mode-switch,
+  .category-mode-switch { width: 100%; }
+  .directory-mode-switch button,
+  .category-mode-switch button { flex: 1; }
+  body[data-ux-page="service-detail"] .dual-execution-paths { grid-template-columns: 1fr; }
+  body[data-ux-page="service-detail"] :is(.commercial-path-label,.execute-with-us-cta,.official-path-label,.primary-government-cta,.official-handoff-note) { grid-column: 1; grid-row: auto; }
+  .service-decision-nav { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .25rem; }
+  .service-decision-nav a { flex: 0 0 auto; }
+}
+
+@media (max-width: 380px) {
+  .category-intent-options { grid-template-columns: 1fr; }
 }
