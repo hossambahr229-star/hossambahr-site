@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-08-20T07:38:23.223Z",
+  "generatedAt": "2026-08-20T07:46:54.209Z",
   "base": "https://hossambahr.com",
-  "commit": "06ab4783b6c76babbba9549b401bf8102486d1c1",
+  "commit": "f1200d2be03b4bebacc76d14a5bd20c5fe5f6314",
   "method": "GitHub Actions ubuntu-latest + Google Chrome + Playwright",
   "checks": [
     {
       "name": "release-marker",
       "status": "PASS",
       "details": {
-        "marker": "2026-08-13-master-audit-functional-recovery"
+        "marker": "2026-08-20-external-production-js-repair"
       }
     },
     {
@@ -74,7 +74,7 @@
     {
       "name": "services-explorer-filters-dubai",
       "status": "FAIL",
-      "error": "wrong emirates "
+      "error": "locator.count: Target page, context or browser has been closed"
     },
     {
       "name": "command-center-truthful-actions",
@@ -91,8 +91,13 @@
     },
     {
       "name": "commercial-click-issue-trade-license-dubai",
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
+      "status": "PASS",
+      "details": {
+        "slug": "issue-trade-license-dubai",
+        "kind": "commercial",
+        "href": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AF%D9%84%D9%8A%D9%84%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fissue-trade-license-dubai%2F%3Fexternal-acceptance%3D1787212097186",
+        "finalUrl": ""
+      }
     },
     {
       "name": "official-click-issue-trade-license-dubai",
@@ -106,8 +111,13 @@
     },
     {
       "name": "commercial-click-gdrfa-family-residence-renew",
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
+      "status": "PASS",
+      "details": {
+        "slug": "gdrfa-family-residence-renew",
+        "kind": "commercial",
+        "href": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%3A%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%A3%D9%81%D8%B1%D8%A7%D8%AF%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AF%D9%84%D9%8A%D9%84%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2F%25D8%25AA%25D8%25AC%25D8%25AF%25D9%258A%25D8%25AF-%25D8%25A5%25D9%2582%25D8%25A7%25D9%2585%25D8%25A9-%25D8%25A3%25D9%2581%25D8%25B1%25D8%25A7%25D8%25AF-%25D8%25A7%25D9%2584%25D8%25A3%25D8%25B3%25D8%25B1%25D8%25A9-%25D9%2581%25D9%258A-%25D8%25AF%25D8%25A8%25D9%258A%2F",
+        "finalUrl": ""
+      }
     },
     {
       "name": "official-click-gdrfa-family-residence-renew",
@@ -121,13 +131,18 @@
     },
     {
       "name": "commercial-click-mohre-private-tutor-permit",
-      "status": "FAIL",
-      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
+      "status": "PASS",
+      "details": {
+        "slug": "mohre-private-tutor-permit",
+        "kind": "commercial",
+        "href": "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%3A%20%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%B9%D9%85%D9%84%20%D9%85%D8%AF%D8%B1%D8%B3%20%D8%AE%D8%B5%D9%88%D8%B5%D9%8A%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AF%D9%84%D9%8A%D9%84%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fmohre-private-tutor-permit%2F%3Fexternal-acceptance%3D1787212120007",
+        "finalUrl": ""
+      }
     },
     {
       "name": "official-click-mohre-private-tutor-permit",
       "status": "FAIL",
-      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-government-cta=\"verified\"]').first() to be visible\n"
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-government-cta=\"verified\"]').first() to be visible\n    65 × locator resolved to hidden <a rel=\"noopener noreferrer\" data-handoff-ready=\"true\" data-government-cta=\"verified\" class=\"primary-government-cta\" href=\"https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit\">ابدأ من الجهة الرسمية ↗</a>\n"
     },
     {
       "name": "visual-375-/",
@@ -397,285 +412,28 @@
     },
     {
       "name": "services-explorer-filters-dubai",
-      "error": "wrong emirates "
-    },
-    {
-      "name": "commercial-click-issue-trade-license-dubai",
-      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
-    },
-    {
-      "name": "commercial-click-gdrfa-family-residence-renew",
-      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
-    },
-    {
-      "name": "commercial-click-mohre-private-tutor-permit",
-      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-commercial-cta=\"verified\"]').first() to be visible\n"
+      "error": "locator.count: Target page, context or browser has been closed"
     },
     {
       "name": "official-click-mohre-private-tutor-permit",
-      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-government-cta=\"verified\"]').first() to be visible\n"
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-government-cta=\"verified\"]').first() to be visible\n    65 × locator resolved to hidden <a rel=\"noopener noreferrer\" data-handoff-ready=\"true\" data-government-cta=\"verified\" class=\"primary-government-cta\" href=\"https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit\">ابدأ من الجهة الرسمية ↗</a>\n"
     },
     {
       "name": "console-errors",
-      "error": "[{\"url\":\"https://hossambahr.com/?external-acceptance=1787211503553\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211514946\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211525966\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211525966\",\"text\":\"Failed to load resource: the server responded with a status of 404 ()\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211536998\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211548340\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211559758\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787211559758\",\"text\":\"Failed to load resource: the server responded with a status of 404 ()\"},{\"url\":\"https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211570791\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/services/?external-acceptance=1787211579778\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/command-center/?external-acceptance=1787211581013\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/command-center/?external-acceptance=1787211581824\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/services/\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/command-center/?external-acceptance=1787211583023\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/command-center/?external-acceptance=1787211583637\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/dubai-business-activities.html\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/command-center/?external-acceptance=1787211585091\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/services/#directory-search\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211586410\",\"text\":\"Invalid or unexpected token\"},{\"url\":\"https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211617273\",\"text\":\"Invalid or unexpected token\"}]"
-    },
-    {
-      "name": "required-network-failures",
-      "error": "[{\"url\":\"https://hossambahr.com/command-center/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/?q=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%B2%D9%88%D8%AC%D8%AA%D9%8A\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/icp-family-residence-renew/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/icp-emirates-id-renew/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/mohre-uae-nationalsgcc-citizens-work-permit/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/mohre-work-permit-contract-cancel/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/services/mohre-overseas-work-permit/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/updates/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/authorities/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/categories/companies-establishments/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/categories/contracts-notarization/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/for/resident/\",\"error\":\"net::ERR_ABORTED\"},{\"url\":\"https://hossambahr.com/categories/work-employees/\",\"error\":\"net::ERR_ABORTED\"}]"
+      "error": "[{\"url\":\"https://hossambahr.com/?external-acceptance=1787212037025\",\"text\":\"Failed to load resource: the server responded with a status of 404 ()\"},{\"url\":\"https://hossambahr.com/?external-acceptance=1787212070496\",\"text\":\"Failed to load resource: the server responded with a status of 404 ()\"}]"
     }
   ],
   "consoleErrors": [
     {
-      "url": "https://hossambahr.com/?external-acceptance=1787211503553",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787211514946",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787211525966",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787211525966",
+      "url": "https://hossambahr.com/?external-acceptance=1787212037025",
       "text": "Failed to load resource: the server responded with a status of 404 ()"
     },
     {
-      "url": "https://hossambahr.com/?external-acceptance=1787211536998",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787211548340",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787211559758",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787211559758",
+      "url": "https://hossambahr.com/?external-acceptance=1787212070496",
       "text": "Failed to load resource: the server responded with a status of 404 ()"
-    },
-    {
-      "url": "https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211570791",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/?external-acceptance=1787211579778",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211581013",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211581824",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211583023",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211583637",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/dubai-business-activities.html",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211585091",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/#directory-search",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211586410",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211617273",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
-      "text": "Failed to load resource: the server responded with a status of 403 ()"
-    },
-    {
-      "url": "https://hossambahr.com/services/%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D8%A3%D9%81%D8%B1%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/mohre-private-tutor-permit/?external-acceptance=1787211669341",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/mohre-private-tutor-permit/?external-acceptance=1787211700292",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787211731311",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/?external-acceptance=1787211733088",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211735973",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211737336",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/for/resident/?external-acceptance=1787211738226",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211739387",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787211740378",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/?external-acceptance=1787211741875",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211744266",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211745650",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/for/resident/?external-acceptance=1787211746605",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211747764",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787211748739",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/?external-acceptance=1787211750337",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211753330",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211754669",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/for/resident/?external-acceptance=1787211755569",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211756663",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/?external-acceptance=1787211757571",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/?external-acceptance=1787211759585",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/dubai-business-activities.html?external-acceptance=1787211762970",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/command-center/?external-acceptance=1787211764470",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/for/resident/?external-acceptance=1787211765593",
-      "text": "Invalid or unexpected token"
-    },
-    {
-      "url": "https://hossambahr.com/services/issue-trade-license-dubai/?external-acceptance=1787211766659",
-      "text": "Invalid or unexpected token"
     }
   ],
-  "networkFailures": [
-    {
-      "url": "https://hossambahr.com/command-center/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/services/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/services/?q=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%B2%D9%88%D8%AC%D8%AA%D9%8A",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/services/icp-family-residence-renew/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/services/icp-emirates-id-renew/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/services/mohre-uae-nationalsgcc-citizens-work-permit/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/services/mohre-work-permit-contract-cancel/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/services/mohre-overseas-work-permit/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/updates/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/authorities/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/categories/companies-establishments/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/categories/contracts-notarization/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/for/resident/",
-      "error": "net::ERR_ABORTED"
-    },
-    {
-      "url": "https://hossambahr.com/categories/work-employees/",
-      "error": "net::ERR_ABORTED"
-    }
-  ],
+  "networkFailures": [],
   "normalizedDirectoryOnlyRecords": [
     {
       "id": "directory:mohre:14",
@@ -728,10 +486,10 @@
   ],
   "summary": {
     "checks": 40,
-    "passed": 29,
-    "failed": 13,
-    "consoleErrors": 48,
-    "networkFailures": 14,
+    "passed": 32,
+    "failed": 9,
+    "consoleErrors": 2,
+    "networkFailures": 0,
     "productionExternalBrowser": "FAIL"
   }
 }
