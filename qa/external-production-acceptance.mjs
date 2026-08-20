@@ -117,7 +117,7 @@ async function clickedExternal(slug,kind) {
   const href=await link.getAttribute('href');
   assert(href && href.startsWith('https://'),'missing external '+kind+' href for '+slug);
   const popupPromise=context.waitForEvent('page',{timeout:8000}).catch(()=>null);
-  await link.click();
+  await link.click({noWaitAfter:true});
   const popup=await popupPromise;
   let finalUrl=page.url();
   if (popup) {
