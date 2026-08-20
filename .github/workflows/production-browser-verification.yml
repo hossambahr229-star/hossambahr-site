@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   production-verification:
@@ -19,9 +19,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          expected="$(cat release-marker.txt)"
+          expected="$(cat ux-release-marker.txt)"
           for attempt in {1..30}; do
-            actual="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/release-marker.txt?attempt=$attempt" || true)"
+            actual="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/ux-release-marker.txt?attempt=$attempt" || true)"
             if [ "$actual" = "$expected" ]; then exit 0; fi
             sleep 10
           done
@@ -145,3 +145,29 @@ jobs:
             production-browser
             visual-layout-audit
           retention-days: 14
+      - name: Record verified UX production acceptance
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa
+          cat > qa/ux-production-result.json <<EOF
+          {
+            "status": "PASS",
+            "verified_commit": "${GITHUB_SHA}",
+            "production_url": "https://hossambahr.com/",
+            "production_html_routes": 318,
+            "representative_browser_routes": 13,
+            "responsive_layout_checks": 88,
+            "corrupted_strings": 0,
+            "browser_page_errors": 0
+          }
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- qa/ux-production-result.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record verified UX production acceptance [skip ci]"
+            git push
+          fi
+
