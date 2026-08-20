@@ -227,3 +227,5 @@ console.log(JSON.stringify(report.summary));
 if(report.failures.length) process.exitCode=1;
 
 // External acceptance harness timing/diagnostic precision update.
+
+// Final visible-route verification trigger.
