@@ -11,7 +11,7 @@ permissions:
 jobs:
   production-verification:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: browser-actions/setup-chrome@v1
@@ -137,7 +137,7 @@ jobs:
           export HB_BROWSER_PATH="$(command -v chrome)"
           export HB_BASE_URL="https://hossambahr.com"
           node visual-layout-audit.mjs
-      - name: Run all fifteen real customer journeys on Production
+      - name: Run all fifty real customer journeys on Production
         shell: bash
         run: |
           set -euo pipefail
@@ -145,8 +145,8 @@ jobs:
           export HB_NODE_MODULES="$PWD/node_modules"
           export HB_BROWSER_PATH="$(command -v chrome)"
           export HB_BASE_URL="https://hossambahr.com"
-          export HB_OUTPUT_DIR="$PWD/final-production-ux-acceptance"
-          node final-ux-acceptance.mjs
+          export HB_OUTPUT_DIR="$PWD/final-platform-acceptance"
+          node final-platform-acceptance.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -154,7 +154,7 @@ jobs:
           path: |
             production-browser
             visual-layout-audit
-            final-production-ux-acceptance
+            final-platform-acceptance
           retention-days: 14
       - name: Record verified UX production acceptance
         if: success()
@@ -170,8 +170,8 @@ jobs:
             "production_html_routes": 318,
             "representative_browser_routes": 13,
             "responsive_layout_checks": 88,
-            "real_user_journeys": 15,
-            "journey_browser_checks": 30,
+            "real_user_journeys": 50,
+            "journey_browser_checks": 50,
             "corrupted_strings": 0,
             "browser_page_errors": 0
           }
@@ -183,4 +183,3 @@ jobs:
             git commit -m "Record verified UX production acceptance [skip ci]"
             git push
           fi
-

@@ -96,6 +96,22 @@ body[data-intent-first-ready="true"] .search-row input {
 body[data-intent-first-ready="true"] .examples { flex-wrap: wrap; overflow: visible; }
 body[data-intent-first-ready="true"] .examples button { max-width: 100%; white-space: normal; }
 
+.transaction-discovery-modes { max-width: 920px; margin: 1rem 0 .85rem; }
+.transaction-discovery-label { margin: 0 0 .55rem; color: var(--ux-brand-900) !important; font-size: .88rem; font-weight: 800; }
+.transaction-discovery-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .55rem; }
+.transaction-discovery-tabs button,
+.transaction-directory-link { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; padding: .65rem .85rem; border: 1px solid #b9cbc4; border-radius: var(--ux-radius-sm); background: #fff; color: var(--ux-brand-900); cursor: pointer; font: inherit; font-size: .9rem; font-weight: 800; text-align: center; }
+.transaction-discovery-tabs button:hover,
+.transaction-discovery-tabs button.is-active,
+.transaction-directory-link:hover { border-color: var(--ux-gold-500); background: var(--ux-gold-100); color: var(--ux-brand-900); }
+.transaction-discovery-tabs button.is-active { background: var(--ux-brand-900); color: #fff; }
+.guided-transaction-panel { margin-top: .65rem; padding: .9rem; border: 1px solid #d8c59d; border-radius: var(--ux-radius-md); background: #fff; }
+.guided-transaction-panel[hidden] { display: none !important; }
+.guided-transaction-panel > p { margin: 0 0 .65rem; color: var(--ux-muted) !important; font-size: .88rem; }
+.guided-transaction-prompts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .5rem; }
+.guided-transaction-prompts button { min-height: 46px; padding: .55rem .7rem; border: 1px solid rgba(255,255,255,.3); border-radius: var(--ux-radius-sm); background: #fff; color: var(--ux-brand-900); cursor: pointer; font: inherit; font-size: .82rem; font-weight: 800; text-align: start; }
+.guided-transaction-prompts button:hover { border-color: var(--ux-gold-500); background: var(--ux-gold-100); }
+
 body[data-intent-first-ready="true"] .search-row button,
 body[data-intent-first-ready="true"] .hero-actions a,
 .official-handoff-note + [data-government-cta="verified"] {
@@ -196,6 +212,8 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:first-child {
 
 /* Unified service-detail presentation; content, evidence, and links are untouched. */
 .premium-service-detail .page-shell { padding-block-end: 3rem; }
+.premium-service-detail .detail-layout { display: grid; grid-template-columns: minmax(0,1.65fr) minmax(250px,.65fr); gap: clamp(1.25rem,3vw,2.5rem); align-items: start; }
+.premium-service-detail .service-aside { position: sticky; top: 88px; }
 .premium-service-detail .page-hero { max-width: 900px; padding-block: clamp(2rem,5vw,4rem); }
 .premium-service-detail .page-hero h1 { font-size: clamp(2rem,4vw,3.7rem); line-height: 1.18; }
 .premium-service-detail .detail-section { position: relative; padding: clamp(1.1rem,2.5vw,1.75rem); border: 0; border-top: 1px solid var(--ux-line); border-radius: 0; background: transparent; box-shadow: none; }
@@ -248,6 +266,10 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:first-child {
 }
 
 @media (max-width: 760px) {
+  .transaction-discovery-tabs { grid-template-columns: 1fr; }
+  .guided-transaction-prompts { grid-template-columns: 1fr; }
+  .premium-service-detail .detail-layout { grid-template-columns: 1fr; }
+  .premium-service-detail .service-aside { position: static; }
   .account-readiness > div { grid-template-columns: 1fr; gap: .25rem; }
   .content-section, .page-shell { width: calc(100% - 32px); }
   .site-header { min-height: 66px; padding-inline: 16px; gap: .55rem; }
@@ -744,4 +766,3 @@ body[data-ux-page="service-detail"] .official-handoff-note { grid-column: 2; mar
 @media (max-width: 380px) {
   .category-intent-options { grid-template-columns: 1fr; }
 }
-

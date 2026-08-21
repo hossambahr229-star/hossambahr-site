@@ -383,6 +383,82 @@
     }
   }
 
+  function enhanceDiscoveryModes() {
+    if (location.pathname !== "/" || document.querySelector(".transaction-discovery-modes")) return;
+    const searchStage = document.querySelector(".hero-search-stage, .search-shell");
+    const input = document.getElementById("government-search");
+    const form = input?.closest("form");
+    if (!searchStage || !input || !form) return;
+
+    const shell = document.createElement("section");
+    shell.className = "transaction-discovery-modes";
+    shell.setAttribute("aria-label", "طرق الوصول إلى المعاملة");
+    const heading = document.createElement("p");
+    heading.className = "transaction-discovery-label";
+    heading.textContent = "اختر الطريقة الأنسب لك";
+    const modes = document.createElement("div");
+    modes.className = "transaction-discovery-tabs";
+    modes.setAttribute("role", "tablist");
+
+    const direct = document.createElement("button");
+    direct.type = "button";
+    direct.role = "tab";
+    direct.className = "is-active";
+    direct.setAttribute("aria-selected", "true");
+    direct.textContent = "أعرف ما أريد";
+    const guided = document.createElement("button");
+    guided.type = "button";
+    guided.role = "tab";
+    guided.setAttribute("aria-selected", "false");
+    guided.textContent = "ساعدني أحدد المعاملة";
+    const directory = document.createElement("a");
+    directory.href = "/services/";
+    directory.className = "transaction-directory-link";
+    directory.textContent = "تصفح دليل الخدمات";
+    modes.append(direct, guided, directory);
+
+    const guide = document.createElement("div");
+    guide.className = "guided-transaction-panel";
+    guide.hidden = true;
+    guide.setAttribute("aria-live", "polite");
+    const guideIntro = document.createElement("p");
+    guideIntro.textContent = "اختر وصفًا قريبًا من حالتك؛ يمكنك تعديل العبارة قبل البحث.";
+    const prompts = document.createElement("div");
+    prompts.className = "guided-transaction-prompts";
+    [
+      "أريد فتح شركة ولا أعرف نوع الرخصة",
+      "أريد تجديد أو تعديل رخصتي",
+      "أريد تعيين أو نقل موظف",
+      "أريد إقامة لزوجتي أو أولادي",
+      "أريد زيارة قريب أو صديق",
+      "أريد إصدار أو تجديد الهوية"
+    ].forEach((query) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = query;
+      button.addEventListener("click", () => {
+        input.value = query;
+        input.focus();
+        form.requestSubmit?.();
+      });
+      prompts.append(button);
+    });
+    guide.append(guideIntro, prompts);
+    shell.append(heading, modes, guide);
+    searchStage.insertAdjacentElement("beforebegin", shell);
+
+    const setMode = (isGuided) => {
+      direct.classList.toggle("is-active", !isGuided);
+      guided.classList.toggle("is-active", isGuided);
+      direct.setAttribute("aria-selected", String(!isGuided));
+      guided.setAttribute("aria-selected", String(isGuided));
+      guide.hidden = !isGuided;
+      if (!isGuided) input.focus();
+    };
+    direct.addEventListener("click", () => setMode(false));
+    guided.addEventListener("click", () => setMode(true));
+  }
+
   function enhancePrimaryNavigation() {
     const nav = document.querySelector(".desktop-nav");
     if (!nav || nav.dataset.premiumReady === "true") return;
@@ -901,6 +977,7 @@
     correctKnownServiceTargets();
     rejectFakeServiceTargets();
     simplifyHomepageByIntent();
+    enhanceDiscoveryModes();
     enhanceServiceDirectory();
     enhanceCategoryJourney();
     enhanceServiceDetail();
@@ -920,4 +997,3 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot, { once: true });
   else boot();
 })();
-
