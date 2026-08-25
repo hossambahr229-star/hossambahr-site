@@ -5,6 +5,49 @@ const root = resolve(import.meta.dirname, '../..');
 const summary = JSON.parse(await readFile(resolve(root, 'platform-summary.json'), 'utf8'));
 const files = [];
 
+const escapePattern = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+async function countPublishedCards(relativeDirectory) {
+  try {
+    const html = await readFile(resolve(root, relativeDirectory, 'index.html'), 'utf8');
+    const explicitCards = html.match(/\bdata-(?:service|directory)-card(?:=|\s|>)/g)?.length ?? 0;
+    if (explicitCards) return explicitCards;
+    return html.match(/<article\b[^>]*class=["'][^"']*\bservice-card\b[^"']*["']/gi)?.length ?? 0;
+  } catch {
+    return 0;
+  }
+}
+
+async function discoverRouteCounts(relativeDirectory) {
+  const directory = resolve(root, relativeDirectory);
+  const counts = {};
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const count = await countPublishedCards(join(relativeDirectory, entry.name));
+    counts[entry.name] = count;
+  }
+  return counts;
+}
+
+function synchronizeScopedCounts(html, prefix, counts, labelPattern) {
+  for (const [slug, count] of Object.entries(counts)) {
+    const route = `/${prefix}/${slug}/`;
+    const pattern = new RegExp(`(href=["']${escapePattern(route)}["'][\\s\\S]{0,700}?)(\\d+)(<!-- -->)?(${labelPattern})`, 'g');
+    html = html.replace(pattern, `$1${count}$3$4`);
+  }
+  return html;
+}
+
+function removeEmptyScopedEntries(html, prefix, counts) {
+  for (const [slug, count] of Object.entries(counts)) {
+    if (count !== 0) continue;
+    const route = `/${prefix}/${slug}/`;
+    const pattern = new RegExp(`<a\\b[^>]*href=["']${escapePattern(route)}["'][^>]*>[\\s\\S]*?<\\/a>`, 'g');
+    html = html.replace(pattern, '');
+  }
+  return html;
+}
+
 async function walk(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     if (entry.name === '.git' || entry.name === 'node_modules') continue;
@@ -19,6 +62,11 @@ await walk(root);
 const serviceCount = String(summary.verified);
 const authorityCount = String(summary.authorities);
 const reviewDate = String(summary.lastOperationalReview || '').slice(0, 10);
+const categoryCounts = await discoverRouteCounts('categories');
+const audienceCounts = await discoverRouteCounts('for');
+summary.categoryCounts = categoryCounts;
+summary.audienceCounts = audienceCounts;
+await writeFile(resolve(root, 'platform-summary.json'), `${JSON.stringify(summary, null, 2)}\n`, 'utf8');
 let updated = 0;
 let replacements = 0;
 
@@ -26,8 +74,9 @@ for (const file of files) {
   const original = await readFile(file, 'utf8');
   let html = original;
   const isHydratedExport = html.includes('self.__next_f');
+  const hasHydrationBundles = /<script[^>]+src=["']\/_next\/static\/chunks\/[^"']+\.js["'][^>]*><\/script>/i.test(html);
   const isHomepage = file === resolve(root, 'index.html');
-  const rules = isHydratedExport ? [
+  const rules = isHydratedExport && hasHydrationBundles ? [
     // Next must hydrate the exact HTML it exported. The registry runtime replaces
     // these generated fallback values after hydration, so rewriting them here
     // would create React error #418.
@@ -40,28 +89,31 @@ for (const file of files) {
     [/\b\d+<!-- --> خدمات منشورة/g, `${serviceCount}<!-- --> خدمات منشورة`],
     [/\b\d+<!-- --> جهة في سجل النطاق/g, `${authorityCount}<!-- --> جهة في سجل النطاق`],
   ];
-  if (isHomepage) {
-    rules.push(
-      [/خدمة موثقة منشورة<\/dt><dd>\d+<\/dd>/g, 'خدمة موثقة منشورة</dt><dd>24</dd>'],
-      [/دليل خدمة تفصيلي<\/dt><dd>\d+<\/dd>/g, 'دليل خدمة تفصيلي</dt><dd>24</dd>'],
-      [/جهة في سجل النطاق<\/dt><dd>\d+<\/dd>/g, 'جهة في سجل النطاق</dt><dd>23</dd>'],
-      [/\b\d+<!-- --> خدمات منشورة/g, '24<!-- --> خدمات منشورة'],
-      [/\b\d+<!-- --> جهة في سجل النطاق/g, '23<!-- --> جهة في سجل النطاق'],
-    );
-  }
   for (const [pattern, replacement] of rules) {
     const before = html;
     html = html.replace(pattern, replacement);
     if (html !== before) replacements += 1;
+  }
+  if (isHomepage && !hasHydrationBundles) {
+    html = synchronizeScopedCounts(html, 'categories', categoryCounts, '\\s+موثقة');
+    html = synchronizeScopedCounts(html, 'for', audienceCounts, '\\s+خدمات موثقة حاليًا');
+    html = removeEmptyScopedEntries(html, 'categories', categoryCounts);
+    html = removeEmptyScopedEntries(html, 'for', audienceCounts);
   }
   if (isHomepage && reviewDate) {
     const before = html;
     html = html.replace(/آخر مراجعة تشغيلية: [^.]+\./g, 'آخر مراجعة تشغيلية: 28 يوليو 2026.');
     if (html !== before) replacements += 1;
   }
-  if (isHydratedExport && !html.includes('data-registry-count-guard')) {
+  if (isHydratedExport && hasHydrationBundles && !html.includes('data-registry-count-guard')) {
     const guard = '<script data-registry-count-guard>document.documentElement.classList.add("registry-counts-pending")</script><style data-registry-count-guard>html.registry-counts-pending .live-stats,html.registry-counts-pending .footer-intro>span,html.registry-counts-pending .site-footer>div:last-of-type{visibility:hidden}</style>';
     html = html.replace('</head>', `${guard}</head>`);
+    replacements += 1;
+  }
+  if (!hasHydrationBundles && html.includes('data-registry-count-guard')) {
+    html = html
+      .replace(/<script data-registry-count-guard>[\s\S]*?<\/script>/g, '')
+      .replace(/<style data-registry-count-guard>[\s\S]*?<\/style>/g, '');
     replacements += 1;
   }
   if (html !== original) {
@@ -75,10 +127,11 @@ const remaining = [];
 for (const file of files) {
   const html = await readFile(file, 'utf8');
   if (!html.includes('self.__next_f') && legacyCounterPattern.test(html)) remaining.push(file.slice(root.length + 1));
-  if (html.includes('self.__next_f') && (!html.includes('/zero-defect-routing.js') || !html.includes('data-registry-count-guard'))) {
+  const hasHydrationBundles = /<script[^>]+src=["']\/_next\/static\/chunks\/[^"']+\.js["'][^>]*><\/script>/i.test(html);
+  if (hasHydrationBundles && (!html.includes('/zero-defect-routing.js') || !html.includes('data-registry-count-guard'))) {
     remaining.push(`${file.slice(root.length + 1)} (missing hydrated counter runtime)`);
   }
 }
 if (remaining.length) throw new Error(`Legacy counters remain in: ${remaining.join(', ')}`);
 
-console.log(JSON.stringify({ staticCounters: 'SYNCHRONIZED', updated, replacements, serviceCount, authorityCount, reviewDate }));
+console.log(JSON.stringify({ staticCounters: 'SYNCHRONIZED', updated, replacements, serviceCount, authorityCount, categoryCounts, audienceCounts, reviewDate }));
