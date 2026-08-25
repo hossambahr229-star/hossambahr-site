@@ -7,6 +7,29 @@ const timeoutMs = Number(process.env.HB_EXTERNAL_TIMEOUT_MS || 20000);
 const concurrency = Number(process.env.HB_EXTERNAL_CONCURRENCY || 10);
 const output = resolve(root, process.env.HB_EXTERNAL_AUDIT_OUTPUT || 'artifacts/official-links-audit.json');
 const targets = new Map();
+let browserPromise;
+
+async function inspectInBrowser(target) {
+  let page;
+  try {
+    const { chromium } = await import('playwright');
+    browserPromise ||= chromium.launch({ headless: true });
+    const browser = await browserPromise;
+    page = await browser.newPage({ locale: 'en-AE' });
+    const response = await page.goto(target.url, { waitUntil: 'domcontentloaded', timeout: timeoutMs });
+    const status = response?.status();
+    const finalUrl = page.url();
+    const title = await page.title();
+    if (status >= 200 && status < 400) return { ...target, status, finalUrl, title, result: 'REACHABLE', verifiedBy: 'browser-fallback' };
+    if ([401, 403, 405, 406, 409, 429].includes(status)) return { ...target, status, finalUrl, title, result: 'ACCESS_RESTRICTED', reason: 'official server rejected browser audit traffic', verifiedBy: 'browser-fallback' };
+    if ([404, 410].includes(status)) return { ...target, status, finalUrl, title, result: 'BROKEN', reason: 'proven missing destination in HTTP and browser audits', verifiedBy: 'browser-fallback' };
+    return { ...target, status, finalUrl, title, result: 'TEMPORARILY_UNAVAILABLE', reason: `browser HTTP ${status}`, verifiedBy: 'browser-fallback' };
+  } catch (error) {
+    return { ...target, result: 'NETWORK_UNVERIFIED', reason: `browser fallback: ${error?.cause?.code || error.name || error.message}` };
+  } finally {
+    await page?.close();
+  }
+}
 
 function addTarget(url, service, kind) {
   if (!url) return;
@@ -51,7 +74,7 @@ async function inspect(target) {
       },
     });
     const finalUrl = response.url || target.url;
-    if ([404, 410].includes(response.status)) return { ...target, status: response.status, finalUrl, result: 'BROKEN', reason: 'proven missing destination' };
+    if ([404, 410].includes(response.status)) return inspectInBrowser(target);
     if (response.status >= 200 && response.status < 400) return { ...target, status: response.status, finalUrl, result: 'REACHABLE' };
     if ([401, 403, 405, 406, 409, 429].includes(response.status)) return { ...target, status: response.status, finalUrl, result: 'ACCESS_RESTRICTED', reason: 'official server rejected automated audit traffic' };
     return { ...target, status: response.status, finalUrl, result: 'TEMPORARILY_UNAVAILABLE', reason: `HTTP ${response.status}` };
@@ -69,6 +92,7 @@ async function worker() {
 }
 
 await Promise.all(Array.from({ length: Math.min(concurrency, queue.length) }, worker));
+if (browserPromise) await (await browserPromise).close();
 const counts = Object.fromEntries(['REACHABLE', 'ACCESS_RESTRICTED', 'TEMPORARILY_UNAVAILABLE', 'NETWORK_UNVERIFIED', 'BROKEN'].map((state) => [state, results.filter((item) => item.result === state).length]));
 const report = {
   generatedAt: new Date().toISOString(),
