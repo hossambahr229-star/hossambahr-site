@@ -80,4 +80,5 @@ const report = {
 };
 await writeFile(output, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
 console.log(JSON.stringify({ officialLinks: 'AUDITED', services: report.services, uniqueOfficialUrls: report.uniqueOfficialUrls, ...counts }));
+if (report.provenBroken.length) console.error(JSON.stringify({ provenBroken: report.provenBroken }, null, 2));
 if (counts.BROKEN) process.exitCode = 1;
