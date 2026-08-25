@@ -41,6 +41,8 @@ jobs:
           npm run audit:a-plus-plus
           npm run test:final-platform
       - name: Audit official government destinations
+        env:
+          HB_BROWSER_PATH: /usr/bin/google-chrome
         run: node src/publication/audit-official-links.mjs
       - name: Commit the verified generated site on the correction branch
         if: github.ref_name == 'agent/final-production-correction' && !contains(github.event.head_commit.message, '[verified generated site]')
@@ -65,3 +67,4 @@ jobs:
           HB_BASE_URL: https://hossambahr.com
           HB_OUTPUT_DIR: artifacts/live-production-acceptance
         run: npm run test:final-platform
+
