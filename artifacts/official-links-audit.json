@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-25T06:17:28.493Z",
+  "generatedAt": "2026-08-25T06:45:13.233Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 167,
+    "REACHABLE": 163,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 71,
+    "NETWORK_UNVERIFIED": 75,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -629,9 +629,8 @@
       "kinds": [
         "official-cta"
       ],
-      "status": 200,
-      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
@@ -691,9 +690,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=201",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=166",
@@ -705,9 +703,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=166",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=163",
@@ -719,9 +716,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=163",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157",

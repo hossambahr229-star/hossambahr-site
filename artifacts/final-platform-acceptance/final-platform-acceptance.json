@@ -1,0 +1,119 @@
+{
+  "generatedAt": "2026-08-25T06:43:14.735Z",
+  "sourceOfTruth": {
+    "registryServices": 200,
+    "summaryServices": 200,
+    "verified": 200,
+    "activities": 2610,
+    "emirates": [
+      "أبوظبي",
+      "دبي",
+      "عجمان",
+      "الفجيرة",
+      "رأس الخيمة",
+      "الشارقة",
+      "أم القيوين"
+    ]
+  },
+  "ranking": {
+    "total": 50,
+    "passed": 50,
+    "failed": []
+  },
+  "journeys": {
+    "total": 50,
+    "passed": 50,
+    "failed": []
+  },
+  "activitySearch": {
+    "total": 5,
+    "passed": 5,
+    "results": [
+      {
+        "query": "514929",
+        "result": "514929 تجارة مواد التعبئة والتغليف Packing & Packaging Materials Trading",
+        "pass": true
+      },
+      {
+        "query": "5149",
+        "result": "514915 تجارة الاحبار ومواد الطباعة Ink & Printing Materials Trading",
+        "pass": true
+      },
+      {
+        "query": "ملابس",
+        "result": "749914 تصميم الازياء والملابس Fashion Designing",
+        "pass": true
+      },
+      {
+        "query": "clothing",
+        "result": "181023 خياطة الملابس والأزياء العسكرية النسائية Military Women Clothing & Uniforms Tailoring",
+        "pass": true
+      },
+      {
+        "query": "تنظيف",
+        "result": "502007 غسل السيارات وتنظيفها Car Washing & Cleaning",
+        "pass": true
+      }
+    ]
+  },
+  "responsive": {
+    "total": 6,
+    "passed": 6,
+    "results": [
+      {
+        "name": "mobile-320",
+        "overflow": false,
+        "discoveryModes": 3,
+        "lang": "ar",
+        "dir": "rtl",
+        "errors": [],
+        "pass": true
+      },
+      {
+        "name": "mobile-360",
+        "overflow": false,
+        "discoveryModes": 3,
+        "lang": "ar",
+        "dir": "rtl",
+        "errors": [],
+        "pass": true
+      },
+      {
+        "name": "iphone-390",
+        "overflow": false,
+        "discoveryModes": 3,
+        "lang": "ar",
+        "dir": "rtl",
+        "errors": [],
+        "pass": true
+      },
+      {
+        "name": "mobile-430",
+        "overflow": false,
+        "discoveryModes": 3,
+        "lang": "ar",
+        "dir": "rtl",
+        "errors": [],
+        "pass": true
+      },
+      {
+        "name": "tablet",
+        "overflow": false,
+        "discoveryModes": 3,
+        "lang": "ar",
+        "dir": "rtl",
+        "errors": [],
+        "pass": true
+      },
+      {
+        "name": "desktop",
+        "overflow": false,
+        "discoveryModes": 3,
+        "lang": "ar",
+        "dir": "rtl",
+        "errors": [],
+        "pass": true
+      }
+    ]
+  }
+}
