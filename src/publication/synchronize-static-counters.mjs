@@ -3,6 +3,8 @@ import { join, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '../..');
 const summary = JSON.parse(await readFile(resolve(root, 'platform-summary.json'), 'utf8'));
+const registry = JSON.parse(await readFile(resolve(root, 'src/registry/published-services.json'), 'utf8'));
+const registryRoutes = new Set(registry.services.map((service) => service.internalRoute));
 const files = [];
 
 const escapePattern = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -48,6 +50,33 @@ function removeEmptyScopedEntries(html, prefix, counts) {
   return html;
 }
 
+async function synchronizeServiceDirectory() {
+  const file = resolve(root, 'services/index.html');
+  const original = await readFile(file, 'utf8');
+  const seen = new Set();
+  const cardPattern = /<article\b[^>]*(?:data-directory-card|data-service-card)[^>]*>[\s\S]*?<\/article>/gi;
+  let removed = 0;
+  let html = original.replace(cardPattern, (card) => {
+    const route = card.match(/href=["'](\/services\/[^"']+\/)["']/i)?.[1];
+    if (!route || !registryRoutes.has(route) || seen.has(route)) {
+      removed += 1;
+      return '';
+    }
+    seen.add(route);
+    return card;
+  });
+  const missing = [...registryRoutes].filter((route) => !seen.has(route));
+  if (missing.length || seen.size !== registry.services.length) {
+    throw new Error(`Service directory mismatch: cards=${seen.size}, registry=${registry.services.length}, missing=${missing.join(', ')}`);
+  }
+  html = html.replace(
+    /يضم الدليل الخدمات المتحققة، إضافة إلى خدمات DET قيد التحقق بصفحات داخلية آمنة وأزرار حكومية معطّلة\./g,
+    `يضم الدليل ${registry.services.length} خدمة موثقة من سجل نشر مركزي واحد، ولكل خدمة صفحة داخلية ومسار حكومي مصنّف بوضوح.`,
+  );
+  if (html !== original) await writeFile(file, html, 'utf8');
+  return { cards: seen.size, removed };
+}
+
 async function walk(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     if (entry.name === '.git' || entry.name === 'node_modules') continue;
@@ -56,6 +85,8 @@ async function walk(directory) {
     else if (entry.isFile() && entry.name.endsWith('.html')) files.push(target);
   }
 }
+
+const serviceDirectory = await synchronizeServiceDirectory();
 
 await walk(root);
 
@@ -134,4 +165,4 @@ for (const file of files) {
 }
 if (remaining.length) throw new Error(`Legacy counters remain in: ${remaining.join(', ')}`);
 
-console.log(JSON.stringify({ staticCounters: 'SYNCHRONIZED', updated, replacements, serviceCount, authorityCount, categoryCounts, audienceCounts, reviewDate }));
+console.log(JSON.stringify({ staticCounters: 'SYNCHRONIZED', updated, replacements, serviceCount, authorityCount, categoryCounts, audienceCounts, directoryCards: serviceDirectory.cards, directoryCardsRemoved: serviceDirectory.removed, reviewDate }));
