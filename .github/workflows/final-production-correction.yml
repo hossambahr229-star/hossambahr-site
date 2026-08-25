@@ -49,7 +49,7 @@ jobs:
         run: |
           git config user.name "HossamBahr Release Gate"
           git config user.email "release-gate@users.noreply.github.com"
-          git add -A -- ':!node_modules' ':!artifacts'
+          git add -A
           if git diff --cached --quiet; then
             echo "Generated site is already synchronized."
           else
