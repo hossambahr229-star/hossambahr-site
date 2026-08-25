@@ -13,7 +13,10 @@ async function inspectInBrowser(target) {
   let page;
   try {
     const { chromium } = await import('playwright');
-    browserPromise ||= chromium.launch({ headless: true });
+    browserPromise ||= chromium.launch({
+      headless: true,
+      executablePath: process.env.HB_BROWSER_PATH || undefined,
+    });
     const browser = await browserPromise;
     page = await browser.newPage({ locale: 'en-AE' });
     const response = await page.goto(target.url, { waitUntil: 'domcontentloaded', timeout: timeoutMs });
