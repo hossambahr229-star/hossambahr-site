@@ -51,12 +51,12 @@ html a{text-underline-offset:4px}
  .page-hero h1{margin:.15em 0;font-size:clamp(31px,2.45vw,48px)}
  .page-hero p{margin:.4em 0 1.2em;color:#e4eeea!important}
  .eyebrow{color:var(--hb-gold-400)!important;font-weight:900}
- .content-section{margin:0!important;padding:clamp(24px,2.7vw,44px)!important;border-radius:0!important;background:var(--hb-surface)!important}
+ .content-section{margin-block:0!important;margin-inline:auto!important;padding:clamp(24px,2.7vw,44px)!important;border-radius:0!important;background:var(--hb-surface)!important}
  .section-heading{margin-bottom:22px}
  .section-heading h2{font-size:clamp(27px,2vw,38px)}
 
 /* Homepage command centre */
-.hb-page-home .platform-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(390px,.8fr);gap:0;min-height:460px;margin:0!important;padding:0!important;border:1px solid var(--hb-line)!important;border-top:0!important;border-radius:0!important;background:var(--hb-surface)!important;box-shadow:var(--hb-shadow)}
+.hb-page-home .platform-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(390px,.8fr);gap:0;min-height:460px;margin-block:0!important;margin-inline:auto!important;padding:0!important;border:1px solid var(--hb-line)!important;border-top:0!important;border-radius:0!important;background:var(--hb-surface)!important;box-shadow:var(--hb-shadow)}
 .hb-page-home .platform-hero:before{content:"01";position:absolute;top:22px;inset-inline-start:25px;z-index:2;display:grid;width:28px;height:28px;place-items:center;background:var(--hb-green-900);color:var(--hb-gold-400);font:700 10px monospace}
 .hb-page-home .hero-copy{padding:48px clamp(45px,5vw,92px)!important;background:var(--hb-surface)!important}
 .hb-page-home .hero-copy h1{max-width:850px;margin:12px 0;font-size:clamp(43px,3.15vw,62px);color:var(--hb-ink)!important}
