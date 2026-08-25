@@ -1,5 +1,5 @@
-import { readFile, writeFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '../..');
 const registry = JSON.parse(await readFile(resolve(root, 'src/registry/published-services.json'), 'utf8'));
@@ -78,7 +78,9 @@ const report = {
   provenBroken: results.filter((item) => item.result === 'BROKEN'),
   results,
 };
+await mkdir(dirname(output), { recursive: true });
 await writeFile(output, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
 console.log(JSON.stringify({ officialLinks: 'AUDITED', services: report.services, uniqueOfficialUrls: report.uniqueOfficialUrls, ...counts }));
 if (report.provenBroken.length) console.error(JSON.stringify({ provenBroken: report.provenBroken }, null, 2));
 if (counts.BROKEN) process.exitCode = 1;
+
