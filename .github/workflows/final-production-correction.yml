@@ -5,6 +5,7 @@ on:
     branches:
       - agent/final-production-correction
       - main
+      - agent/production-layout-centering
 
 permissions:
   contents: write
@@ -39,6 +40,7 @@ jobs:
           HB_BROWSER_PATH: /usr/bin/google-chrome
         run: |
           npm run audit:a-plus-plus
+          node visual-layout-audit.mjs
           npm run test:final-platform
       - name: Audit official government destinations
         env:
