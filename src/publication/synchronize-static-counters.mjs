@@ -77,6 +77,25 @@ async function synchronizeServiceDirectory() {
   return { cards: seen.size, removed };
 }
 
+async function hardenUpdatesEmptyState() {
+  const file = resolve(root, 'updates/index.html');
+  const original = await readFile(file, 'utf8');
+  const html = original
+    .replace(
+      /<section class="detail-section prose updates-empty-state"[\s\S]*?<\/section>/,
+      '<section class="detail-section prose"><h2>لا توجد تغييرات حكومية معتمدة للنشر حاليًا</h2><p>لم يرصد سجل المراجعة تغييرًا رسميًا اجتاز التحقق والاعتماد حتى هذا الإصدار. لا ننشر أخبارًا أو رسومًا أو شروطًا غير موثقة لملء الصفحة.</p></section>',
+    )
+    .replaceAll('لا توجد تغييرات معتمدة منشورة بعد', 'لا توجد تغييرات حكومية معتمدة للنشر حاليًا')
+    .replaceAll(
+      'هذا لا يعني توقف المراقبة؛ يعني أن سجل الأخبار لا يحتوي تغييراً اجتاز الاعتماد حتى تاريخ هذا الإصدار.',
+      'لم يرصد سجل المراجعة تغييرًا رسميًا اجتاز التحقق والاعتماد حتى هذا الإصدار. لا ننشر أخبارًا أو رسومًا أو شروطًا غير موثقة لملء الصفحة.',
+    )
+    .replace('<section class="detail-section prose"><h2>لا توجد تغييرات حكومية معتمدة للنشر حاليًا</h2>', '<section class="detail-section prose updates-empty-state"><h2>لا توجد تغييرات حكومية معتمدة للنشر حاليًا</h2>')
+    .replaceAll(String.raw`\"className\":\"detail-section prose\"`, String.raw`\"className\":\"detail-section prose updates-empty-state\"`);
+  if (html !== original) await writeFile(file, html, 'utf8');
+  return { updated: html !== original };
+}
+
 async function walk(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     if (entry.name === '.git' || entry.name === 'node_modules') continue;
@@ -87,6 +106,7 @@ async function walk(directory) {
 }
 
 const serviceDirectory = await synchronizeServiceDirectory();
+const updatesEmptyState = await hardenUpdatesEmptyState();
 
 await walk(root);
 
@@ -107,13 +127,23 @@ for (const file of files) {
   const isHydratedExport = html.includes('self.__next_f');
   const hasHydrationBundles = /<script[^>]+src=["']\/_next\/static\/chunks\/[^"']+\.js["'][^>]*><\/script>/i.test(html);
   const isHomepage = file === resolve(root, 'index.html');
+  if (isHydratedExport) {
+    html = html
+      .replaceAll('<span>24<!-- --> خدمة موثقة · <!-- -->20<!-- --> جهة في سجل النطاق</span>', `<span>${serviceCount}<!-- --> خدمة موثقة · <!-- -->${authorityCount}<!-- --> جهة مغطاة</span>`)
+      .replaceAll(`<span>${serviceCount} خدمة موثقة · ${authorityCount} جهة مغطاة</span>`, `<span>${serviceCount}<!-- --> خدمة موثقة · <!-- -->${authorityCount}<!-- --> جهة مغطاة</span>`);
+    for (const [legacyServices, legacyAuthorities] of [[24, 23], [24, 20], [105, 9], [140, 20], [200, 20]]) {
+      html = html.replaceAll(
+        String.raw`[${legacyServices},\" خدمة موثقة · \",${legacyAuthorities},\" جهة في سجل النطاق\"]`,
+        String.raw`[${serviceCount},\" خدمة موثقة · \",${authorityCount},\" جهة مغطاة\"]`,
+      );
+    }
+  }
   const rules = isHydratedExport && hasHydrationBundles ? [
-    // Next must hydrate the exact HTML it exported. The registry runtime replaces
-    // these generated fallback values after hydration, so rewriting them here
-    // would create React error #418.
     [/\b(?:24|105|140|200) خدمة موثقة · (?:3|9|20|23) جهة مغطاة/g, '105 خدمة موثقة · 9 جهة مغطاة'],
   ] : [
     [/\b(?:24|105|140) خدمة موثقة · (?:3|9|23) جهة مغطاة/g, `${serviceCount} خدمة موثقة · ${authorityCount} جهة مغطاة`],
+    [/\b(?:24|105|140|200)(?:<!-- -->)? خدمة موثقة · (?:<!-- -->)?(?:3|9|20|23)(?:<!-- -->)? جهة (?:مغطاة|في سجل النطاق)/g, `${serviceCount} خدمة موثقة · ${authorityCount} جهة مغطاة`],
+    [/\[(?:24|105|140|200),\\" خدمة موثقة · \",(?:3|9|20|23),\\" جهة (?:مغطاة|في سجل النطاق)\\"\]/g, `[${serviceCount},\\" خدمة موثقة · \",${authorityCount},\\" جهة مغطاة\\"]`],
     [/خدمة موثقة منشورة<\/dt><dd>\d+<\/dd>/g, `خدمة موثقة منشورة</dt><dd>${serviceCount}</dd>`],
     [/دليل خدمة تفصيلي<\/dt><dd>\d+<\/dd>/g, `دليل خدمة تفصيلي</dt><dd>${serviceCount}</dd>`],
     [/جهة في سجل النطاق<\/dt><dd>\d+<\/dd>/g, `جهة في سجل النطاق</dt><dd>${authorityCount}</dd>`],
@@ -165,4 +195,4 @@ for (const file of files) {
 }
 if (remaining.length) throw new Error(`Legacy counters remain in: ${remaining.join(', ')}`);
 
-console.log(JSON.stringify({ staticCounters: 'SYNCHRONIZED', updated, replacements, serviceCount, authorityCount, categoryCounts, audienceCounts, directoryCards: serviceDirectory.cards, directoryCardsRemoved: serviceDirectory.removed, reviewDate }));
+console.log(JSON.stringify({ staticCounters: 'SYNCHRONIZED', updated, replacements, serviceCount, authorityCount, categoryCounts, audienceCounts, directoryCards: serviceDirectory.cards, directoryCardsRemoved: serviceDirectory.removed, updatesEmptyState, reviewDate }));

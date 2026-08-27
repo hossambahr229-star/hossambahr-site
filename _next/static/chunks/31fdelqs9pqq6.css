@@ -85,6 +85,8 @@ html a{text-underline-offset:4px}
  th, td{padding:13px 15px!important;border-bottom:1px solid var(--hb-line)!important;text-align:start}
  input, select, textarea{border:1px solid var(--hb-line)!important;border-radius:var(--hb-radius)!important;background:#fff!important;color:var(--hb-ink)!important}
  .status-good, [data-status="verified"]{color:var(--hb-success)!important}
+ .updates-empty-state{max-width:880px!important;margin:0 auto!important;padding:30px!important;border:1px solid var(--hb-line)!important;border-radius:0!important;background:var(--hb-surface-2)!important;box-shadow:inset 4px 0 var(--hb-gold-600)!important}
+ .updates-empty-state h2{margin-block-start:0!important}
 
 /* Service pages become a three-zone transaction workspace without moving data. */
 .hb-page-service .detail-layout{display:grid!important;grid-template-columns:minmax(0,1fr) 300px!important;gap:0!important;align-items:start;margin:0!important}
@@ -140,6 +142,7 @@ html a{text-underline-offset:4px}
   .hb-page-service .detail-content{grid-template-columns:1fr;width:100%}
   .hb-page-service .detail-section{padding:22px 18px!important}
    .metric-grid, .command-action-grid{grid-template-columns:1fr 1fr!important}
+   .updates-empty-state{margin-inline:16px!important;padding:22px 18px!important}
    table{display:block;max-width:100%;overflow:auto}
 }
 @media(max-width:390px){ .metric-grid, .command-action-grid{grid-template-columns:1fr!important} .site-header{padding-inline:10px!important}}
