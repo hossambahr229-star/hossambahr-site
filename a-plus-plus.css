@@ -78,6 +78,20 @@ html.hb-a-plus-plus a{text-underline-offset:4px}
 .hb-a-plus-plus .card-meta,.hb-a-plus-plus .tags{color:var(--hb-muted);font-size:12px}
 .hb-a-plus-plus .actions>a,.hb-a-plus-plus .actions>button,.hb-a-plus-plus button.primary,.hb-a-plus-plus a.primary{border-radius:var(--hb-radius)!important;background:var(--hb-green-900)!important;color:#fff!important;font-weight:900!important;box-shadow:inset 4px 0 var(--hb-gold-600)}
 .hb-a-plus-plus .actions .secondary,.hb-a-plus-plus a.secondary{border:1px solid var(--hb-line)!important;background:transparent!important;color:var(--hb-green-900)!important;box-shadow:none!important}
+.hb-a-plus-plus .phase2-execution-paths{max-width:var(--hb-canvas);margin:24px auto 52px!important;padding:24px!important;border:1px solid var(--hb-line)!important;border-top:3px solid var(--hb-gold-600)!important;background:var(--hb-surface)!important}
+.hb-a-plus-plus .phase2-path-heading{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:8px 28px;align-items:end}
+.hb-a-plus-plus .phase2-path-heading .eyebrow{grid-column:1/-1}
+.hb-a-plus-plus .phase2-path-heading h2{margin:0!important;color:var(--hb-green-900)!important}
+.hb-a-plus-plus .phase2-path-heading p{margin:0!important;color:var(--hb-muted)!important;line-height:1.75}
+.hb-a-plus-plus .phase2-path-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;margin-top:20px;background:var(--hb-line)}
+.hb-a-plus-plus .phase2-path-grid article{display:flex;flex-direction:column;min-width:0;padding:24px;background:var(--hb-surface-2)}
+.hb-a-plus-plus .phase2-path-grid article>span{color:#89642e;font-size:11px;font-weight:900}
+.hb-a-plus-plus .phase2-path-grid h3{margin:8px 0 0;color:var(--hb-ink);font-size:19px}
+.hb-a-plus-plus .phase2-path-grid p{flex:1;color:var(--hb-muted);line-height:1.7}
+.hb-a-plus-plus .phase2-path-grid a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 16px;text-decoration:none;font-weight:900;background:var(--hb-green-900);color:#fff;box-shadow:inset 4px 0 var(--hb-gold-600)}
+.hb-a-plus-plus .phase2-path-grid .execute-with-us-cta{background:var(--hb-gold-600);color:var(--hb-green-900);box-shadow:none}
+.hb-a-plus-plus .phase2-source-note{margin:15px 0 0;color:var(--hb-muted);font-size:12px}
+.hb-a-plus-plus .phase2-source-note a{color:var(--hb-green-900);font-weight:900}
 .hb-a-plus-plus table{width:100%;border-collapse:collapse;background:var(--hb-surface)}
 .hb-a-plus-plus th{background:var(--hb-green-900)!important;color:#fff!important;font-weight:900}
 .hb-a-plus-plus th,.hb-a-plus-plus td{padding:13px 15px!important;border-bottom:1px solid var(--hb-line)!important;text-align:start}
@@ -123,6 +137,7 @@ html.hb-a-plus-plus a{text-underline-offset:4px}
   .hb-a-plus-plus .desktop-nav,.hb-a-plus-plus .hb-mega{display:none!important}
   .hb-a-plus-plus .page-shell,.hb-a-plus-plus main:not(.loading-shell),.hb-a-plus-plus .site-footer{width:100%}
   .hb-a-plus-plus .breadcrumbs{padding:8px 16px!important;white-space:nowrap;overflow:auto}
+  .hb-a-plus-plus .breadcrumbs a,.hb-a-plus-plus .service-identity-row a,.hb-a-plus-plus .phase2-source-note a{display:inline-flex;align-items:center;min-height:44px;padding-block:8px}
   .hb-a-plus-plus .page-hero{padding:21px 18px 34px!important}
   .hb-a-plus-plus .page-hero:after{bottom:10px;inset-inline-end:18px}
   .hb-a-plus-plus .page-hero h1{font-size:30px}
@@ -141,6 +156,8 @@ html.hb-a-plus-plus a{text-underline-offset:4px}
   .hb-a-plus-plus.hb-page-service .detail-section{padding:22px 18px!important}
   .hb-a-plus-plus .metric-grid,.hb-a-plus-plus .command-action-grid{grid-template-columns:1fr 1fr!important}
   .hb-a-plus-plus .updates-empty-state{margin-inline:16px!important;padding:22px 18px!important}
+  .hb-a-plus-plus .phase2-path-heading,.hb-a-plus-plus .phase2-path-grid{grid-template-columns:1fr}
+  .hb-a-plus-plus .phase2-execution-paths{margin:16px 0 36px!important;padding:18px!important}
   .hb-a-plus-plus table{display:block;max-width:100%;overflow:auto}
 }
 @media(max-width:390px){.hb-a-plus-plus .metric-grid,.hb-a-plus-plus .command-action-grid{grid-template-columns:1fr!important}.hb-a-plus-plus .site-header{padding-inline:10px!important}}

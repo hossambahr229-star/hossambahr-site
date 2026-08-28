@@ -114,4 +114,3 @@ test('final beginner journeys resolve to the correct legal service family', () =
 test('unmatched text does not return arbitrary verified services', () => {
   assert.deepEqual(rankServices('zzzz qqqq غير مفهوم إطلاقًا', services), []);
 });
-
