@@ -720,14 +720,31 @@
     more.addEventListener("click", () => { limit += 12; apply(); });
     apply();
     };
-    if (window.HB_INTENT_SERVICES) setupControls();
-    else {
-      const data = document.createElement("script");
-      data.src = "/intent-search-data.js";
-      data.addEventListener("load", setupControls, { once: true });
-      data.addEventListener("error", setupControls, { once: true });
-      document.head.append(data);
-    }
+    const loadDirectoryScript = (source, module = false) => new Promise((resolve, reject) => {
+      const existing = [...document.scripts].find((script) => script.src.endsWith(source));
+      if (existing) {
+        if ((source.includes("intent-search-data") && window.HB_INTENT_SERVICES)
+          || (source.includes("intent-search.js") && window.HB_rankServices)) resolve();
+        else {
+          existing.addEventListener("load", resolve, { once: true });
+          existing.addEventListener("error", reject, { once: true });
+        }
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = source;
+      if (module) script.type = "module";
+      script.addEventListener("load", resolve, { once: true });
+      script.addEventListener("error", reject, { once: true });
+      document.head.append(script);
+    });
+    const dataReady = window.HB_INTENT_SERVICES
+      ? Promise.resolve()
+      : loadDirectoryScript("/intent-search-data.js");
+    dataReady
+      .then(() => window.HB_rankServices ? null : loadDirectoryScript("/intent-search.js", true))
+      .then(setupControls)
+      .catch(setupControls);
   }
 
   function simplifyServiceCard(card) {
@@ -1077,3 +1094,4 @@
 })();
 
 /* HOSSAMBAHR A++ END */
+

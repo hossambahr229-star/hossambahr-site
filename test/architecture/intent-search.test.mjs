@@ -32,6 +32,7 @@ test('service directory uses the shared intent ranker instead of literal all-wor
   assert.match(searchRuntime, /window\.HB_rankServices\s*=\s*rankServices/);
   assert.match(runtime, /window\.HB_rankServices\(query, window\.HB_INTENT_SERVICES/);
   assert.match(runtime, /det-search-button[^\n]+addEventListener\("click", apply\)/);
+  assert.match(runtime, /loadDirectoryScript\("\/intent-search\.js", true\)/);
 });
 
 test('inside-UAE hiring resolves to transfer work permit', () => {
