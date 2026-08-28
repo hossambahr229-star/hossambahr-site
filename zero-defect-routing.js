@@ -523,6 +523,7 @@
       card.dataset.authority = service.i || service.r || "";
       card.dataset.category = service.c || "";
       card.dataset.userTypes = (service.t || []).join(" ");
+      card.dataset.route = route || "";
       const action = card.querySelector('.actions a');
       if (action) action.textContent = "ابدأ";
       const title = card.querySelector("h3");
@@ -629,23 +630,35 @@
     let limit = 12;
     let assisted = true;
     const apply = () => {
-      const query = input.value.trim().toLowerCase();
+      const query = input.value.trim();
       const emirate = emirateSelect.value;
       const category = categorySelect.value;
       const authority = authoritySelect.value;
       const userType = userSelect.value;
+      const ranked = query && typeof window.HB_rankServices === "function"
+        ? window.HB_rankServices(query, window.HB_INTENT_SERVICES || [])
+        : [];
+      const rankByRoute = new Map(ranked.map((service, index) => [service.u, index]));
       const matches = cards.filter((card) => {
         const haystack = (card.dataset.search || card.textContent || "").toLowerCase();
-        return (!query || query.split(/\s+/).every((term) => haystack.includes(term)))
+        const matchesQuery = !query || (rankByRoute.size
+          ? rankByRoute.has(card.dataset.route)
+          : query.toLowerCase().split(/\s+/).every((term) => haystack.includes(term)));
+        return matchesQuery
           && (!emirate || (card.dataset.emirate || haystack).toLowerCase().includes(emirate.toLowerCase()))
           && (!category || card.dataset.category === category)
           && (!authority || card.dataset.authority === authority)
           && (!userType || (card.dataset.userTypes || "").includes(userType));
-      });
+      }).sort((left, right) => query
+        ? (rankByRoute.get(left.dataset.route) ?? Number.MAX_SAFE_INTEGER) - (rankByRoute.get(right.dataset.route) ?? Number.MAX_SAFE_INTEGER)
+        : 0);
       const hasCriteria = Boolean(query || emirate || category || authority || userType);
       const visibleLimit = assisted && !hasCriteria ? 6 : limit;
-      cards.forEach((card) => { card.hidden = true; });
-      matches.slice(0, visibleLimit).forEach((card) => { card.hidden = false; });
+      cards.forEach((card) => { card.hidden = true; card.style.order = ""; });
+      matches.slice(0, visibleLimit).forEach((card, index) => {
+        card.hidden = false;
+        if (query) card.style.order = String(index);
+      });
       grid.hidden = false;
       count.textContent = hasCriteria
         ? `تم العثور على ${matches.length} خدمة — يظهر ${Math.min(visibleLimit, matches.length)}`
@@ -654,6 +667,7 @@
       more.hidden = assisted && !hasCriteria ? true : matches.length <= visibleLimit;
     };
     input.addEventListener("input", () => { limit = 12; apply(); });
+    document.getElementById("det-search-button")?.addEventListener("click", apply);
     emirateSelect.addEventListener("change", () => { limit = 12; apply(); });
     categorySelect.addEventListener("change", () => { limit = 12; apply(); });
     authoritySelect.addEventListener("change", () => { limit = 12; apply(); });
@@ -1063,3 +1077,4 @@
 })();
 
 /* HOSSAMBAHR A++ END */
+

@@ -17,6 +17,21 @@ const activities = JSON.parse(activitySource.slice(activitySource.indexOf('=') +
 
 test('natural Arabic family intent resolves to Dubai family renewal', () => {
   assert.equal(rankServices('أريد أجدد إقامة زوجتي في دبي', services)[0].s, 'تجديد-إقامة-أفراد-الأسرة-في-دبي');
+  assert.equal(rankServices('تجديد إقامة زوجتي', services)[0].s, 'تجديد-إقامة-أفراد-الأسرة-في-دبي');
+});
+
+test('English residence intent remains discoverable in the shared directory ranker', () => {
+  const results = rankServices('renew residence', services);
+  assert.ok(results.length > 0);
+  assert.match(`${results[0].a} ${results[0].e}`, /renew|تجديد/i);
+});
+
+test('service directory uses the shared intent ranker instead of literal all-word matching', async () => {
+  const runtime = await readFile(resolve(root, 'zero-defect-routing.js'), 'utf8');
+  const searchRuntime = await readFile(resolve(root, 'intent-search.js'), 'utf8');
+  assert.match(searchRuntime, /window\.HB_rankServices\s*=\s*rankServices/);
+  assert.match(runtime, /window\.HB_rankServices\(query, window\.HB_INTENT_SERVICES/);
+  assert.match(runtime, /det-search-button[^\n]+addEventListener\("click", apply\)/);
 });
 
 test('inside-UAE hiring resolves to transfer work permit', () => {
@@ -98,3 +113,4 @@ test('final beginner journeys resolve to the correct legal service family', () =
 test('unmatched text does not return arbitrary verified services', () => {
   assert.deepEqual(rankServices('zzzz qqqq غير مفهوم إطلاقًا', services), []);
 });
+

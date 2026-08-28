@@ -208,6 +208,11 @@ export function rankServices(query, services = []) {
     .sort((left, right) => right.score - left.score || String(left.a).localeCompare(String(right.a), 'ar'));
 }
 
+// The static service directory is progressively enhanced by zero-defect-routing.js.
+// Expose the same tested ranker so that its visible directory results cannot drift
+// from the homepage intent search or fall back to literal all-word matching.
+if (typeof window !== 'undefined') window.HB_rankServices = rankServices;
+
 function activityRecord(row) {
   return {
     code: String(row?.c || row?.[0] || ''),
@@ -384,3 +389,4 @@ if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootstrapIntentSearch, { once: true });
   else bootstrapIntentSearch();
 }
+
