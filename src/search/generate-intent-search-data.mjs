@@ -3,6 +3,8 @@ import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "../..");
 const registry = JSON.parse(await readFile(resolve(root, "src/registry/published-services.json"), "utf8"));
+const canonicalRegistry = JSON.parse(await readFile(resolve(root, "src/registry/registry.json"), "utf8"));
+const canonicalBySlug = new Map(canonicalRegistry.services.map((service) => [service.slug, service]));
 const activitySource = await readFile(resolve(root, "dubai-activities-data.js"), "utf8");
 const activities = JSON.parse(activitySource.slice(activitySource.indexOf("=") + 1).replace(/;\s*$/, ""));
 
@@ -17,6 +19,7 @@ const services = registry.services.map((service) => ({
   n: service.authority?.en || "",
   c: service.classification?.main || "",
   b: service.classification?.sub || "",
+  x: canonicalBySlug.get(service.slug)?.classificationNumbers || [],
   t: service.customerTypes || [],
   k: service.keywords || [],
   d: service.description || "",

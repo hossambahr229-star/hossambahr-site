@@ -4028,8 +4028,8 @@
       "id": "official:det:event-permit",
       "slug": "det-event-permit-dubai",
       "name": {
-        "ar": "det-event-permit-dubai",
-        "en": "det-event-permit-dubai"
+        "ar": "طلب تصريح فعالية في دبي",
+        "en": "التقديم للحصول على تصريح فعالية"
       },
       "emirate": "دبي",
       "authority": {
@@ -4039,7 +4039,7 @@
       },
       "classification": {
         "main": "companies-establishments",
-        "sub": "NOT_OFFICIALLY_PUBLISHED"
+        "sub": "تصريح"
       },
       "economicActivity": null,
       "licenseType": null,
@@ -4048,12 +4048,17 @@
         "individual"
       ],
       "keywords": [
-        "det-event-permit-dubai",
+        "طلب",
+        "تصريح",
+        "فعالية",
+        "في",
+        "دبي",
+        "التقديم",
+        "للحصول",
+        "على",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
-        "في",
-        "دبي",
         "DET",
         "Dubai",
         "Department",
@@ -4062,26 +4067,39 @@
         "and",
         "Tourism",
         "companies-establishments",
-        "NOT_OFFICIALLY_PUBLISHED"
+        "الفعاليات",
+        "ذات",
+        "التذاكر",
+        "تحتاج",
+        "أيضًا",
+        "تذاكر",
+        "مستقل",
+        "لكل",
+        "فعالية."
       ],
-      "description": "NOT_OFFICIALLY_PUBLISHED",
+      "description": "تصريح إلزامي للمنشأة أو منظم الفعالية لتنظيم فعاليات ترفيهية أو رياضية أو خيرية أو دينية أو تجارية في دبي.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "نسخة جواز سفر منظم الفعالية",
+          "خطاب عدم ممانعة من موقع الفعالية",
+          "متطلبات إضافية تختلف حسب نوع الفعالية",
+          "بيانات المشاركين أو المؤدين عند انطباقها"
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "NOT_OFFICIALLY_PUBLISHED"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تعتمد على نوع الفعالية وفئتها وتظهر في بوابة e-Permit الرسمية."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "NOT_OFFICIALLY_PUBLISHED"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تحددها البوابة الرسمية حسب نوع الفعالية واكتمال الطلب."
       },
-      "conditions": "NOT_OFFICIALLY_PUBLISHED",
+      "conditions": "مخصص لمنظمي الفعاليات أو الشركات المسجلة في دبي، ولا يُنظر في الطلب قبل سداد الرسوم كاملة.",
       "steps": [
         {
           "order": 1,
@@ -4122,7 +4140,7 @@
       "relatedServiceIds": [
         "official:det:tour-guide",
         "official:det:issue-trade-license",
-        "guide:add-business-activity-dubai"
+        "guide:cancel-business-license-dubai"
       ],
       "alternativeServiceIds": [
         "directory:residency:44",
@@ -4142,8 +4160,8 @@
       "id": "official:det:tour-guide",
       "slug": "det-tour-guide-licence-dubai",
       "name": {
-        "ar": "det-tour-guide-licence-dubai",
-        "en": "det-tour-guide-licence-dubai"
+        "ar": "التأهيل للحصول على ترخيص مرشد سياحي في دبي",
+        "en": "التقديم لبرنامج المرشد السياحي المرخص"
       },
       "emirate": "دبي",
       "authority": {
@@ -4153,7 +4171,7 @@
       },
       "classification": {
         "main": "companies-establishments",
-        "sub": "NOT_OFFICIALLY_PUBLISHED"
+        "sub": "تأهيل وترخيص مهني"
       },
       "economicActivity": null,
       "licenseType": null,
@@ -4162,12 +4180,22 @@
         "individual"
       ],
       "keywords": [
-        "det-tour-guide-licence-dubai",
+        "التأهيل",
+        "للحصول",
+        "على",
+        "ترخيص",
+        "مرشد",
+        "سياحي",
+        "في",
+        "دبي",
+        "التقديم",
+        "لبرنامج",
+        "المرشد",
+        "السياحي",
+        "المرخص",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
-        "في",
-        "دبي",
         "DET",
         "Dubai",
         "Department",
@@ -4176,26 +4204,44 @@
         "and",
         "Tourism",
         "companies-establishments",
-        "NOT_OFFICIALLY_PUBLISHED"
+        "تأهيل",
+        "وترخيص",
+        "مهني",
+        "الصفحة",
+        "تخص",
+        "الفرد",
+        "كمرشد",
+        "وليست",
+        "تصريح",
+        "تنظيم",
+        "فعالية",
+        "أو",
+        "شركة",
+        "سياحية."
       ],
-      "description": "NOT_OFFICIALLY_PUBLISHED",
+      "description": "إكمال برنامج المرشد السياحي الإلكتروني المعتمد للتأهل للعمل كمرشد سياحي مرخص في دبي.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "إقامة سارية في دولة الإمارات",
+          "عمر 18 سنة أو أكثر",
+          "استكمال التسجيل ومتطلبات البرنامج الإلكتروني",
+          "اجتياز البرنامج والتقييمات المطلوبة"
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "NOT_OFFICIALLY_PUBLISHED"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تعرضها منصة البرنامج الرسمية أثناء التسجيل حسب فئة المتقدم."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "NOT_OFFICIALLY_PUBLISHED"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تعتمد على سرعة إكمال المتقدم للبرنامج الإلكتروني والتقييمات."
       },
-      "conditions": "NOT_OFFICIALLY_PUBLISHED",
+      "conditions": "التأهيل الرسمي متاح للمقيمين والمواطنين المؤهلين، ويصدر الترخيص وفق إتمام البرنامج ومتطلبات DET النهائية.",
       "steps": [
         {
           "order": 1,
@@ -4235,12 +4281,12 @@
       ],
       "relatedServiceIds": [
         "official:det:event-permit",
-        "official:det:issue-trade-license",
-        "guide:add-business-activity-dubai"
+        "guide:cancel-business-license-dubai",
+        "guide:add-remove-partner-dubai"
       ],
       "alternativeServiceIds": [
-        "directory:residency:44",
-        "directory:residency:50"
+        "mohre:employment-agency-license-cancel",
+        "mohre:employment-agency-license-new"
       ],
       "officialInformationUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-tour-guide-training",
       "officialCtaUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-tour-guide-training",
@@ -5264,7 +5310,7 @@
       ],
       "alternativeServiceIds": [
         "guide:cancel-business-license-dubai",
-        "directory:approvals:30"
+        "official:det:tour-guide"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022",
       "officialCtaUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022",
@@ -5394,8 +5440,8 @@
         "mohre:employment-agency-license-renew"
       ],
       "alternativeServiceIds": [
-        "directory:approvals:30",
-        "guide:reserve-trade-name-dubai"
+        "official:det:tour-guide",
+        "official:det:issue-trade-license"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-license-for-temporary-employment-and-mediation-agency-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-license-for-temporary-employment-and-mediation-agency-2022",
@@ -5523,8 +5569,8 @@
         "mohre:employment-agency-branch"
       ],
       "alternativeServiceIds": [
-        "directory:approvals:30",
-        "guide:renew-business-license-dubai"
+        "official:det:tour-guide",
+        "directory:approvals:30"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/renewal-of-recruitmenttemporary-employment-and-mediation-agency-license-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/renewal-of-recruitmenttemporary-employment-and-mediation-agency-license-2022",
@@ -6026,7 +6072,7 @@
       ],
       "alternativeServiceIds": [
         "catalog:تأسيس منشأة جديدة في عجمان",
-        "directory:approvals:30"
+        "official:det:issue-trade-license"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/330",
@@ -8772,8 +8818,8 @@
       "id": "official:det:issue-trade-license",
       "slug": "issue-trade-license-dubai",
       "name": {
-        "ar": "issue-trade-license-dubai",
-        "en": "issue-trade-license-dubai"
+        "ar": "إصدار رخصة تجارية في دبي",
+        "en": "طلب إصدار رخصة تجارية"
       },
       "emirate": "دبي",
       "authority": {
@@ -8783,7 +8829,7 @@
       },
       "classification": {
         "main": "companies-establishments",
-        "sub": "NOT_OFFICIALLY_PUBLISHED"
+        "sub": "إصدار جديد"
       },
       "economicActivity": null,
       "licenseType": null,
@@ -8792,12 +8838,15 @@
         "individual"
       ],
       "keywords": [
-        "issue-trade-license-dubai",
+        "إصدار",
+        "رخصة",
+        "تجارية",
+        "في",
+        "دبي",
+        "طلب",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
-        "في",
-        "دبي",
         "DET",
         "Dubai",
         "Department",
@@ -8806,26 +8855,46 @@
         "and",
         "Tourism",
         "companies-establishments",
-        "NOT_OFFICIALLY_PUBLISHED"
+        "جديد",
+        "الرخصة",
+        "الفورية",
+        "متاحة",
+        "لمجموعة",
+        "أنشطة",
+        "لا",
+        "تحتاج",
+        "موافقات",
+        "خارجية",
+        "وتشمل",
+        "مزايا",
+        "إضافية",
+        "للأشكال",
+        "القانونية",
+        "المؤهلة."
       ],
-      "description": "NOT_OFFICIALLY_PUBLISHED",
+      "description": "إصدار الوثيقة الرسمية التي تتيح مزاولة الأنشطة الاقتصادية قانونيًا في دبي، وفق نوع الرخصة والنشاط والشكل القانوني.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "الموافقات الخارجية عند اشتراطها للنشاط",
+          "عقد التأسيس وعقد الموقع للرخصة العادية عند انطباقهما",
+          "الرقم الموحد أو رقم الهوية للرخصة الفورية",
+          "رقم الهوية لرخصة تاجر إلكتروني"
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "NOT_OFFICIALLY_PUBLISHED"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تحددها البوابة حسب نوع الرخصة والنشاط؛ توثق البطاقة الرسمية 1,070 درهمًا إضافة إلى 300 درهم لعضوية غرفة دبي لرخصة تاجر إلكتروني."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "NOT_OFFICIALLY_PUBLISHED"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "10 دقائق للرخصة العادية، و5 دقائق للرخصة الفورية أو رخصة تاجر إلكتروني وفق البطاقة الرسمية."
       },
-      "conditions": "NOT_OFFICIALLY_PUBLISHED",
+      "conditions": "تختلف المتطلبات النهائية حسب نوع الرخصة والنشاط والشكل القانوني، وتعرضها البوابة الرسمية قبل الإرسال.",
       "steps": [
         {
           "order": 1,
@@ -8864,13 +8933,13 @@
         }
       ],
       "relatedServiceIds": [
-        "official:det:event-permit",
-        "official:det:tour-guide",
-        "guide:add-business-activity-dubai"
+        "guide:amend-business-license-dubai",
+        "guide:renew-business-license-dubai",
+        "guide:cancel-business-license-dubai"
       ],
       "alternativeServiceIds": [
-        "directory:residency:44",
-        "directory:residency:50"
+        "mohre:employment-agency-license-new",
+        "guide:renew-business-license-ajman"
       ],
       "officialInformationUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
       "officialCtaUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",

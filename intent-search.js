@@ -82,6 +82,12 @@ function matchesEmirate(serviceEmirate, requestedEmirate) {
 
 export function rankServices(query, services = []) {
   const normalized = normalizeIntent(query);
+  const exactCodeMatches = services.filter((service) =>
+    (service.x || []).some((code) => normalizeIntent(code) === normalized)
+  );
+  if (exactCodeMatches.length) {
+    return exactCodeMatches.map((service) => ({ ...service, score: 5000 }));
+  }
   const terms = new Set(words(query));
   for (const group of QUERY_SYNONYMS) {
     if (group.some((alias) => normalized.includes(normalizeIntent(alias)))) {
@@ -131,7 +137,7 @@ export function rankServices(query, services = []) {
   return services.map(service => {
     const name = normalizeIntent(`${service.a || ''} ${service.e || ''}`);
     const authority = normalizeIntent(`${service.r || ''} ${service.n || ''} ${service.i || ''}`);
-    const classification = normalizeIntent(`${service.c || ''} ${service.b || ''}`);
+    const classification = normalizeIntent(`${service.c || ''} ${service.b || ''} ${(service.x || []).join(' ')}`);
     const description = normalizeIntent(service.d || '');
     const keywords = normalizeIntent((service.k || []).join(' '));
     const haystack = `${name} ${authority} ${classification} ${keywords} ${description}`;
@@ -389,4 +395,3 @@ if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootstrapIntentSearch, { once: true });
   else bootstrapIntentSearch();
 }
-

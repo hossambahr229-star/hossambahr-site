@@ -84,6 +84,7 @@ test('command center replaces legacy static metrics with live registry facts and
   assert.match(runtime, /enhanceCommandCenter\(summary\)/);
   assert.match(runtime, /خدمة منشورة من السجل الحي/);
   assert.match(runtime, /هذه المؤشرات محسوبة من سجل النشر الحالي/);
-  assert.match(runtime, /الحسابات، رفع المستندات، متابعة الطلبات والتنبيهات غير مفعّلة حاليًا/);
+  assert.match(runtime, /الحساب وتسجيل الدخول وحفظ الخدمات مفعّلة/);
+  assert.match(runtime, /رفع المستندات والمدفوعات غير مفعّلين/);
   assert.match(runtime, /data-commercial-cta="verified"/);
 });

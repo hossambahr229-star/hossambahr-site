@@ -6,6 +6,7 @@ import { extname, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname);
 const matrix = JSON.parse(await readFile(resolve(root, "service-matrix.json"), "utf8"));
+const publishedRegistry = JSON.parse(await readFile(resolve(root, "src/registry/published-services.json"), "utf8"));
 const canonicalRegistry = JSON.parse(await readFile(resolve(root, "src/registry/registry.json"), "utf8"));
 const detPublication = JSON.parse(await readFile(resolve(root, "src/publication/det-publication-registry.json"), "utf8"));
 const gdrfaAudit = JSON.parse(await readFile(resolve(root, "content/gdrfa-dubai-deep-audit.json"), "utf8"));
@@ -207,15 +208,23 @@ for (const width of [320, 360, 375, 390, 412, 430]) {
       popularGoals: await page.locator('.action-start-grid > a:visible').count(),
       progressiveDisclosure: await page.locator('.ux-progressive-details').count() === 1,
       heroContrast: await page.locator('#hero-title').evaluate((element) => {
-        const channels = (getComputedStyle(element).color.match(/\d+/g) || []).slice(0, 3).map(Number);
-        const luminance = channels.reduce((sum, channel, index) => {
+        const parse = (value) => (value.match(/\d+(?:\.\d+)?/g) || []).slice(0, 3).map(Number);
+        const luminance = (channels) => channels.reduce((sum, channel, index) => {
           const normalized = channel / 255;
           const linear = normalized <= .03928 ? normalized / 12.92 : ((normalized + .055) / 1.055) ** 2.4;
           return sum + linear * [.2126, .7152, .0722][index];
         }, 0);
-        const hero = element.closest('.platform-hero');
-        const brandedSurface = /gradient/i.test(getComputedStyle(hero).backgroundImage);
-        return brandedSurface && (luminance < .18 || luminance > .82);
+        const foreground = luminance(parse(getComputedStyle(element).color));
+        let surface = element.closest('.platform-hero');
+        let background = parse(getComputedStyle(surface).backgroundColor);
+        while (surface && (!background.length || getComputedStyle(surface).backgroundColor === 'rgba(0, 0, 0, 0)')) {
+          surface = surface.parentElement;
+          if (surface) background = parse(getComputedStyle(surface).backgroundColor);
+        }
+        if (!background.length) background = [255, 255, 255];
+        const backgroundLuminance = luminance(background);
+        const contrast = (Math.max(foreground, backgroundLuminance) + .05) / (Math.min(foreground, backgroundLuminance) + .05);
+        return contrast >= 4.5;
       }),
       suggestionsWrap: await page.locator('.examples').evaluate((element) => getComputedStyle(element).flexWrap === 'wrap' && element.scrollWidth <= element.clientWidth + 1),
       compactHeader: await page.locator('.site-header').evaluate((element) => element.getBoundingClientRect().height <= 84),
@@ -243,7 +252,7 @@ await scenario("command-center-actions", { width: 390, height: 844 }, async (pag
     liveMetrics: await page.locator('.metric-grid').textContent().then((text) => ['200','2610','7','20'].every((value) => text.replaceAll(',', '').includes(value))),
     legacyMetricsAbsent: await page.locator('.coverage-stage-grid').count() === 0,
     realActions: await page.locator('.command-action-grid a').count() === 4,
-    unsupportedCapabilitiesExplained: await page.locator('.account-readiness').textContent().then((text) => ['غير مفعّل','مخطط'].every((value) => text.includes(value))),
+    unsupportedCapabilitiesExplained: await page.locator('.account-readiness').textContent().then((text) => ['تسجيل الدخول والحسابات','مفعّل','رفع المستندات','المدفوعات','غير مفعّل'].every((value) => text.includes(value))),
   };
 });
 
@@ -369,7 +378,7 @@ await scenario("dubai-authority-expansion-desktop", { width: 1440, height: 1000 
 await browser.close();
 await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
-const expectedDirectoryCards = matrix.services.length + activeDetRecords.length + canonicalRegistry.services.length + mohreAudit.newVerifiedServices.length + icpAudit.newVerifiedServices.length + dubaiCoverage.authorities.reduce((sum, authority) => sum + authority.newVerifiedServices.length, 0);
+const expectedDirectoryCards = publishedRegistry.summary.services;
 const failed = results.filter((result) => result.error || result.status !== 200 || result.overflow || !result.identity || result.consoleErrors.length || result.pageErrors.length || result.failedRequests.length || result.routingViolations > 0 || result.unsafeDetLinksOnHomepage > 0 || result.hasServicesEntry === false || result.hasActivitySearchEntry === false || result.correctService === false || result.verifiedLabel === false || result.activityResult === false || result.activitySearchPrefilled === false || result.activityResults === false || result.intentFirstTitle === false || result.onePrimarySearch === false || result.primarySearchVisible === false || result.heroContrast === false || result.suggestionsWrap === false || result.compactHeader === false || result.popularGoals !== undefined && (result.popularGoals < 6 || result.popularGoals > 8) || result.progressiveDisclosure === false || result.preciseFilters !== undefined && result.preciseFilters !== 4 || result.initialVisibleCards !== undefined && result.initialVisibleCards !== 6 || result.visibleCards !== undefined && result.visibleCards !== 6 || result.quickGoals !== undefined && result.quickGoals !== 5 || result.hasReset === false || result.filterDrawerOpen === true || result.serviceFacts === false || result.executeWithUs === false || result.executeWithUsDestination === false || result.officialDestinationUnchanged === false || result.emirateShortcuts !== undefined && result.emirateShortcuts.join('|') !== 'دبي|أبوظبي|الشارقة|عجمان|رأس الخيمة|أم القيوين|الفجيرة' || result.dubaiResults !== undefined && result.dubaiResults < 1 || result.dubaiMismatches > 0 || result.liveMetrics === false || result.legacyMetricsAbsent === false || result.realActions === false || result.unsupportedCapabilitiesExplained === false || result.unifiedHeader === false || result.progressiveFilters === false || result.handoffNote === false || result.handoffLabel === false || result.initialCards && result.initialCards !== expectedDirectoryCards || result.cards && result.cards !== expectedDirectoryCards || result.filteredCards !== undefined && result.filteredCards < 1 || result.hasOfficialCta === false || result.routeMode === null || result.directServiceUrl === false || result.options === 0 || result.icpCards !== undefined && result.icpCards !== expectedIcpServices || result.uniqueIcpTargets !== undefined && result.uniqueIcpTargets !== expectedIcpServices || result.externalCardLinks > 0 || result.wrongCardLinks?.length > 0 || result.checkedIcpChoiceServices !== undefined && result.checkedIcpChoiceServices !== result.expectedIcpChoiceServices || result.choiceFailures?.length > 0 || result.canonicalFailures?.length > 0 || result.canonicalDiscoveryFailures?.length > 0 || result.directRouteMode !== undefined && result.directRouteMode !== "direct-execution" || result.officialRouteLinks !== undefined && result.officialRouteLinks !== 2 || result.uniqueOfficialRouteLinks !== undefined && result.uniqueOfficialRouteLinks !== 2 || result.activityArabic === false || result.activityEnglish === false || result.activityCode === false || result.partialResults === false || result.activityAuthority === false || result.detNormalizationFailures?.length > 0 || result.normalizedRecordFailures?.length > 0 || result.initialApprovalNormalized === false || result.searchResults !== undefined && result.searchResults < 1 || result.gdrfaState !== undefined && result.gdrfaState !== 'VERIFIED' || result.governmentCta !== undefined && result.governmentCta !== result.expectedGovernmentCta || result.contentSections !== undefined && result.contentSections < 6 || result.authorityStatus !== undefined && result.authorityStatus !== 200 || result.authorityCards !== undefined && result.authorityCards !== result.expectedAuthorityCards || result.normalizedState !== undefined && result.normalizedState !== 'SUB_SERVICE' || result.normalizedActiveCtas > 0 || result.familyResolution !== undefined && result.familyResolution < 1 || result.mohreAddedFailures?.length > 0 || result.mohreNormalizedState !== undefined && result.mohreNormalizedState !== 'NORMALIZED' || result.mohreNormalizedActiveCtas > 0 || result.icpAddedFailures?.length > 0 || result.dubaiAuthorityFailures?.length > 0);
 const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scenarios: results.length, passed: results.length - failed.length, failed: failed.length }, results };
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
