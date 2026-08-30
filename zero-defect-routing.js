@@ -1,4 +1,28 @@
 (() => {
+  function loadAuthenticationRuntime() {
+    if (window.HB_AUTH || document.querySelector('script[data-hb-auth-runtime]')) return;
+    const load = (source) => new Promise((resolve, reject) => {
+      const existing = [...document.scripts].find((script) => script.src.endsWith(source));
+      if (existing) {
+        existing.addEventListener("load", resolve, { once: true });
+        existing.addEventListener("error", reject, { once: true });
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = source;
+      script.defer = true;
+      script.dataset.hbAuthRuntime = "true";
+      script.addEventListener("load", resolve, { once: true });
+      script.addEventListener("error", reject, { once: true });
+      document.head.append(script);
+    });
+    load("/auth-config.js")
+      .then(() => load("/vendor/supabase.js"))
+      .then(() => load("/auth-client.js"))
+      .catch(() => document.documentElement.dataset.authRuntime = "unavailable");
+  }
+  loadAuthenticationRuntime();
+
   function loadIntentFirstStyles() {
     if (document.querySelector('link[href="/intent-first.css"]')) return;
     const link = document.createElement("link");
