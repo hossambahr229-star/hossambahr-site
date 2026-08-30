@@ -43,8 +43,8 @@ jobs:
               rel = path.as_posix()
               route = '/' if rel == 'index.html' else '/' + rel[:-10] if rel.endswith('/index.html') else '/' + rel
               routes.append(route)
-          if len(routes) != 318:
-              raise SystemExit(f'Expected 318 tracked production routes, found {len(routes)}')
+          if len(routes) != 322:
+              raise SystemExit(f'Expected 322 tracked production routes, found {len(routes)}')
           bad = re.compile(r'\ufffd|[ØÙ][\u0080-\u00ffŒœŠšŸŽž–-™]|(?:Ã[\u0080-\u00ff]|Â[\u0080-\u00ff]|â€|ðŸ)')
           failures = []
           for route in sorted(routes):
