@@ -34,7 +34,10 @@ jobs:
           npm run typecheck
           npm run test:architecture
       - name: Browser route and customer-journey gates
-        if: ${{ !contains(github.event.head_commit.message, '[external recheck]') }}
+        # Production has a dedicated browser-verification workflow that scans
+        # every route and runs the full journey suite. Avoid running the same
+        # long browser matrix twice on main and exhausting this gate's timeout.
+        if: ${{ github.ref_name != 'main' && !contains(github.event.head_commit.message, '[external recheck]') }}
         env:
           NODE_PATH: ${{ github.workspace }}/node_modules
           HB_BROWSER_PATH: /usr/bin/google-chrome
