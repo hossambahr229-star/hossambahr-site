@@ -291,7 +291,7 @@
     legacyMetrics.insertAdjacentElement("afterend", actions);
     const sourceNote = document.createElement("p");
     sourceNote.className = "command-data-note";
-    sourceNote.textContent = "هذه المؤشرات محسوبة من سجل النشر الحالي. الحسابات، رفع المستندات، متابعة الطلبات والتنبيهات غير مفعّلة حاليًا كما هو موضح أدناه.";
+    sourceNote.textContent = "هذه المؤشرات محسوبة من سجل النشر الحالي. الحساب وتسجيل الدخول وحفظ الخدمات مفعّلة؛ رفع المستندات والمدفوعات غير مفعّلين.";
     actions.insertAdjacentElement("afterend", sourceNote);
   }
 

@@ -101,6 +101,7 @@ if (browserEnabled) {
   const viewports = [{name:'desktop',width:1366,height:768},{name:'mobile',width:390,height:844,isMobile:true}];
   for (const viewport of viewports) {
     const context = await browser.newContext({viewport:{width:viewport.width,height:viewport.height},isMobile:Boolean(viewport.isMobile),locale:'ar-AE'});
+    await context.route('https://bbddlpvxjowphkagvycz.supabase.co/**', route => route.abort('blockedbyclient'));
     let cursor = 0;
     const inspectRoute = async () => {
       while (cursor < matrix.length) {
@@ -111,9 +112,10 @@ if (browserEnabled) {
       page.on('console',message=>{if(message.type()==='error')errors.push(message.text())});
       let status=0,overflow=false,applied=false,content=false,rtl=false;
       try {
-        const response=await page.goto(`http://127.0.0.1:${port}${row.route}`,{waitUntil:'domcontentloaded',timeout:10000});
+        const response=await page.goto(`http://127.0.0.1:${port}${row.route}`,{waitUntil:'commit',timeout:5000});
         status=response?.status() ?? 0;
-        await page.waitForTimeout(550);
+        await page.waitForFunction(() => document.readyState !== 'loading' && (document.querySelector('main')?.innerText.trim().length ?? 0) > 20, null, { timeout: 4000 }).catch(() => {});
+        await page.waitForTimeout(150);
         ({overflow,applied,content,rtl}=await page.evaluate(()=>({
           overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2,
           applied:getComputedStyle(document.documentElement).getPropertyValue('--hb-green-900').trim()!=='',
@@ -136,7 +138,7 @@ if (browserEnabled) {
       await page.close();
       }
     };
-    await Promise.all(Array.from({length:8},()=>inspectRoute()));
+    await Promise.all(Array.from({length:4},()=>inspectRoute()));
     await context.close();
   }
   await browser.close(); server.close();

@@ -177,7 +177,7 @@ function findTreeService(id) {
 }
 
 for (const publication of det.services.filter((item) => !item.normalization?.excludeFromRealTotal)) {
-  const source = findTreeService(publication.sourceId) || {};
+  const source = publication.serviceData || findTreeService(publication.sourceId) || {};
   services.push(base({
     id: publication.sourceId,
     slug: publication.slug,

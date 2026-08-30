@@ -1,0 +1,66 @@
+{
+  "summary": {
+    "scenarios": 5,
+    "correctServiceReached": 5,
+    "requirementsUnderstandable": 5,
+    "executionPathObvious": 5,
+    "pageErrors": 0
+  },
+  "results": [
+    {
+      "task": "أريد أجدد إقامة زوجتي",
+      "meaningfulSelections": 3,
+      "topResult": "تجديد إقامة أفراد الأسرة في دبي",
+      "topHref": "/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/",
+      "correctServiceReached": true,
+      "requirementsUnderstandable": true,
+      "executionPathObvious": true,
+      "clarificationShown": true,
+      "pageErrors": []
+    },
+    {
+      "task": "أريد أفتح شركة تنظيف في دبي",
+      "meaningfulSelections": 2,
+      "topResult": "إصدار رخصة تجارية في دبي",
+      "topHref": "/services/issue-trade-license-dubai/",
+      "correctServiceReached": true,
+      "requirementsUnderstandable": true,
+      "executionPathObvious": true,
+      "clarificationShown": false,
+      "pageErrors": []
+    },
+    {
+      "task": "أريد أنقل موظف من شركة لشركة",
+      "meaningfulSelections": 2,
+      "topResult": "نقل تصريح عمل موظف إلى منشأة جديدة",
+      "topHref": "/services/transfer-work-permit-uae/",
+      "correctServiceReached": true,
+      "requirementsUnderstandable": true,
+      "executionPathObvious": true,
+      "clarificationShown": false,
+      "pageErrors": []
+    },
+    {
+      "task": "أريد أجدد الرخصة",
+      "meaningfulSelections": 3,
+      "topResult": "تجديد رخصة اقتصادية في أبوظبي",
+      "topHref": "/services/abu-dhabi-economic-license-renewal/",
+      "correctServiceReached": true,
+      "requirementsUnderstandable": true,
+      "executionPathObvious": true,
+      "clarificationShown": true,
+      "pageErrors": []
+    },
+    {
+      "task": "أريد ألغي موظف",
+      "meaningfulSelections": 2,
+      "topResult": "إلغاء تصريح وعقد عمل في الإمارات",
+      "topHref": "/services/cancel-work-permit-uae/",
+      "correctServiceReached": true,
+      "requirementsUnderstandable": true,
+      "executionPathObvious": true,
+      "clarificationShown": false,
+      "pageErrors": []
+    }
+  ]
+}

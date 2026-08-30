@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-28T09:27:05.331Z",
+  "generatedAt": "2026-08-30T08:29:20.438Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 167,
+    "REACHABLE": 236,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 71,
+    "NETWORK_UNVERIFIED": 2,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -130,8 +130,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license",
@@ -262,7 +263,8 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://www.mofa.gov.ae/services/edas-attestation-v2",
@@ -278,8 +280,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://hub.dm.gov.ae/index.html",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
@@ -345,10 +348,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
@@ -357,7 +362,8 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
@@ -370,7 +376,8 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
@@ -430,8 +437,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/register-a-labor-complaint-domestic-workers",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17",
@@ -457,8 +465,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/payment-of-the-bank-guarantee-amount-of-employment-agency-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/employment-agencys-bank-guarantee-refund-2022",
@@ -470,8 +479,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/employment-agencys-bank-guarantee-refund-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/issuance-a-branch-of-the-recruitment-temporary-employment-and-mediation-agency-2022",
@@ -483,8 +493,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/issuance-a-branch-of-the-recruitment-temporary-employment-and-mediation-agency-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/amendments-to-a-recruitmenttemporary-employment-or-mediation-agencys-license-details-2022",
@@ -496,8 +507,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/amendments-to-a-recruitmenttemporary-employment-or-mediation-agencys-license-details-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022",
@@ -509,8 +521,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-license-for-temporary-employment-and-mediation-agency-2022",
@@ -522,8 +535,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-license-for-temporary-employment-and-mediation-agency-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/renewal-of-recruitmenttemporary-employment-and-mediation-agency-license-2022",
@@ -535,8 +549,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/renewal-of-recruitmenttemporary-employment-and-mediation-agency-license-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
@@ -546,8 +561,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/70",
@@ -555,10 +571,12 @@
         "employment-contract-uae"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F70",
+      "result": "REACHABLE"
     },
     {
       "url": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
@@ -567,7 +585,8 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
@@ -580,7 +599,8 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
@@ -594,8 +614,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/330",
@@ -603,10 +624,12 @@
         "establishment-card-mohre-uae"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F330",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
@@ -627,7 +650,8 @@
         "family-residency-uae"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
@@ -641,8 +665,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/186",
@@ -650,10 +675,12 @@
         "family-sponsored-work-permit-uae"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F186",
+      "result": "REACHABLE"
     },
     {
       "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=2976",
@@ -665,8 +692,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://hub.dm.gov.ae/index.html",
+      "result": "REACHABLE"
     },
     {
       "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=2975",
@@ -678,8 +706,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://hub.dm.gov.ae/index.html",
+      "result": "REACHABLE"
     },
     {
       "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=201",
@@ -812,7 +841,8 @@
         "golden-residency-uae"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
@@ -856,8 +886,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://hub.dm.gov.ae/index.html",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
@@ -866,10 +897,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
@@ -879,8 +912,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/54",
@@ -888,10 +922,12 @@
         "issuance-of-a-new-work-permit-mission-work-permit"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F54",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7e",
@@ -1040,8 +1076,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=G5&lang=en",
+      "result": "REACHABLE"
     },
     {
       "url": "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=H1&lang=en",
@@ -1053,8 +1090,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=H1&lang=en",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/private-tutor-licensing",
@@ -1064,8 +1102,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/private-tutor-licensing",
+      "result": "REACHABLE"
     },
     {
       "url": "https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit",
@@ -1073,10 +1112,12 @@
         "mohre-private-tutor-permit"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022",
@@ -1086,8 +1127,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/232",
@@ -1096,10 +1138,12 @@
         "تصريح-تدريب-وعمل-طالب"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F232",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/uae-nationalsgcc-citizens-work-permit-2022",
@@ -1109,8 +1153,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/uae-nationalsgcc-citizens-work-permit-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/75",
@@ -1118,10 +1163,12 @@
         "mohre-uae-nationals-gcc-work-permit"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F75",
+      "result": "REACHABLE"
     },
     {
       "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3398",
@@ -1133,8 +1180,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://hub.dm.gov.ae/index.html",
+      "result": "REACHABLE"
     },
     {
       "url": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
@@ -1158,8 +1206,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/309",
@@ -1168,10 +1217,12 @@
         "transfer-work-permit-uae"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F309",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/open-farmestate-sponsorship-file-for-domestic-sponsor",
@@ -1194,8 +1245,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/184",
@@ -1203,10 +1255,12 @@
         "part-time-work-permit-uae"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F184",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rta.ae/wps/portal/rta/ae/driver-and-carowner/parking/pay-parking-fines",
@@ -1232,8 +1286,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=G4&lang=en",
+      "result": "REACHABLE"
     },
     {
       "url": "https://dubailand.gov.ae/en/eservices/property-valuation",
@@ -1357,8 +1412,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://backoffice.mohre.gov.ae/mohre.complaints.app/TwafouqAnonymous2/CallerVerification?lang=en",
@@ -1367,7 +1423,8 @@
         "بلاغ-انقطاع-عن-العمل"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://backoffice.mohre.gov.ae/mohre.complaints.app/TwafouqAnonymous2/CallerVerification?lang=en",
@@ -1394,7 +1451,8 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit",
@@ -1422,10 +1480,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://digital.sedd.gov.ae/digital/license/renew-license/license-details-step",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=618",
@@ -1752,8 +1812,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/81",
@@ -1761,10 +1822,12 @@
         "temporary-work-permit-uae"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F81",
+      "result": "REACHABLE"
     },
     {
       "url": "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/",
@@ -1788,8 +1851,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://portal.uaq.ae/",
@@ -1802,8 +1866,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://portal.uaq.ae/",
+      "result": "REACHABLE"
     },
     {
       "url": "https://uaqftz.gov.ae/ar",
@@ -1841,8 +1906,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/331",
@@ -1850,10 +1916,12 @@
         "update-establishment-file-mohre-uae"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F331",
+      "result": "REACHABLE"
     },
     {
       "url": "https://tax.gov.ae/ar/services/vat.registration.aspx",
@@ -1873,7 +1941,8 @@
         "vat-registration-uae"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://eservices.tax.gov.ae/sap/bc/ui5_ui5/sap/zmcf_fmca/index.html?saml2=disabled&sap-client=100&sap-language=AR&serviceId=6001&sCode=396-02-001-000",
@@ -1903,8 +1972,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://hub.dm.gov.ae/index.html",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
@@ -2021,8 +2091,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/239",
@@ -2030,10 +2101,12 @@
         "إصدار-بطاقة-مندوب-علاقات-عامة-pro"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F239",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
@@ -2117,7 +2190,8 @@
         "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html",
@@ -2212,10 +2286,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
@@ -2224,10 +2300,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
@@ -2290,10 +2368,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63",
@@ -2328,10 +2408,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
@@ -2340,10 +2422,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
@@ -2352,10 +2436,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers",
@@ -2364,10 +2450,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
@@ -2387,7 +2475,8 @@
         "استرداد-رسوم-إصدار-الهوية-غير-المكتمل"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html",
@@ -2440,10 +2529,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
@@ -2490,10 +2581,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
@@ -2503,8 +2596,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
@@ -2513,7 +2607,8 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
@@ -2526,7 +2621,8 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
@@ -2773,10 +2869,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
@@ -2811,7 +2909,8 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://www.mofa.gov.ae/services/attestation",
@@ -2824,7 +2923,8 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://www.mofa.gov.ae/Account/Login?returnUrl=%2Far-ae%2FServices%2FForms%2Fattestation",
@@ -2848,7 +2948,8 @@
         "تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html",
@@ -2862,8 +2963,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
@@ -2873,8 +2975,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/185",
@@ -2882,10 +2985,12 @@
         "تصريح-عمل-حدث"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F185",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
@@ -2963,8 +3068,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/85",
@@ -2972,10 +3078,12 @@
         "تعديل-تصاريح-وعقود-العمل"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F85",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
@@ -2984,10 +3092,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/400?administrativeRegionId=1",
@@ -3019,7 +3129,8 @@
         "تقرير-تفاصيل-الإقامة-عبر-icp"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
       "status": 200,
       "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html",
@@ -3032,10 +3143,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
@@ -3119,8 +3232,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/319",
@@ -3128,10 +3242,12 @@
         "حصة-تصاريح-العمل-للمنشأة"
       ],
       "kinds": [
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://eservices.mohre.gov.ae/Tasheelweb/account/login?ReturnUrl=%2FTasheelWeb%2Fservices%2Ftransactionentry%2F319",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
@@ -3140,10 +3256,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
@@ -3152,10 +3270,12 @@
       ],
       "kinds": [
         "official-information",
-        "official-cta"
+        "official-cta",
+        "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
@@ -3181,9 +3301,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "TimeoutError"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/fines/407/step1?administrativeRegionId=1&withException=false",

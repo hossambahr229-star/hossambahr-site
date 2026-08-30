@@ -35,13 +35,22 @@ for (const file of productionHtml) {
   else canonicalOwners.set(canonical, [...(canonicalOwners.get(canonical) || []), relative(root, file)]);
 }
 const duplicateCanonicals = [...canonicalOwners].filter(([, owners]) => owners.length > 1);
-const categoryCounts = Object.fromEntries(registry.services.reduce((map, service) => map.set(service.classification.main, (map.get(service.classification.main) || 0) + 1), new Map()));
-const inScopeCategoryIds = new Set(registry.services.map((service) => service.classification.main));
+const categoryAliases = new Map([
+  ['business-licensing', 'companies-establishments'],
+  ['legal-notary', 'contracts-notarization'],
+  ['real-estate-services', 'property-rentals'],
+]);
+const categoryRoute = (service) => categoryAliases.get(service.classification.main) || service.classification.main;
+const categoryCounts = Object.fromEntries(registry.services.reduce((map, service) => {
+  const category = categoryRoute(service);
+  return map.set(category, (map.get(category) || 0) + 1);
+}, new Map()));
+const inScopeCategoryIds = new Set(registry.services.map(categoryRoute));
 const emptyInScopeCategories = [...inScopeCategoryIds].filter((id) => !categoryCounts[id]);
 const categoryCatalogIds = new Set(Object.keys(summary.categoryCounts || {}));
 const uncataloguedCategories = [...inScopeCategoryIds].filter((id) => !categoryCatalogIds.has(id));
 const sourceOfTruthPass = registry.services.length === summary.services && summary.services === summary.verified
-  && Object.entries(summary.categoryCounts || {}).every(([id, count]) => categoryCounts[id] === count);
+  && Object.entries(summary.categoryCounts || {}).every(([id, count]) => (categoryCounts[id] || 0) === count);
 
 const types = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png" };
 const server = createServer(async (request, response) => {

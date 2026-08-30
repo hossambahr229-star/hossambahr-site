@@ -71,8 +71,8 @@ for (const scenario of scenarios) {
   }
   const requirementHeading = await page.locator("h2").filter({ hasText: /المستندات|المتطلبات/ }).count() > 0;
   const suitabilityHeading = await page.locator("h2").filter({ hasText: /مناسبة|الشروط/ }).count() > 0;
-  const assistedCta = await page.getByRole("link", { name: "أنجز المعاملة معنا", exact: true }).count() > 0;
-  const officialCta = await page.getByRole("link", { name: /تنفيذها بنفسي عبر/ }).count() > 0;
+  const assistedCta = await page.locator('a[data-commercial-cta="verified"]').count() > 0;
+  const officialCta = await page.locator('a[data-government-cta="verified"]').count() > 0;
   results.push({
     task: scenario.query,
     meaningfulSelections: scenario.clarificationExpected && clarificationShown ? 3 : 2,
