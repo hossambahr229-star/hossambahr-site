@@ -8,6 +8,12 @@ const report = JSON.parse(await readFile(resolve(root, 'artifacts/a-plus-plus-gl
 const routes = report.matrix.map((entry) => entry.route);
 const release = process.env.GITHUB_SHA || Date.now().toString();
 const digest = (value) => createHash('sha256').update(value).digest('hex');
+const comparableDigest = (value, route) => {
+  if (!route.startsWith('/dashboard/')) return digest(value);
+  const normalized = Buffer.from(value).toString('utf8')
+    .replace(/آخر تحديث تلقائي:\s*[^<]+/g, 'آخر تحديث تلقائي: [BUILD_TIMESTAMP]');
+  return digest(normalized);
+};
 
 function routeFile(route) {
   if (route === '/') return resolve(root, 'index.html');
@@ -44,7 +50,9 @@ async function worker() {
       const local = await readFile(routeFile(route));
       const response = await fetch(`${baseUrl}${route}${route.includes('?') ? '&' : '?'}release=${release}`, { redirect: 'follow', signal: AbortSignal.timeout(30000), headers: { 'cache-control': 'no-cache' } });
       const live = Buffer.from(await response.arrayBuffer());
-      if (response.status !== 200 || digest(live) !== digest(local)) failures.push({ route, status: response.status, contentMatch: digest(live) === digest(local) });
+      const localDigest = comparableDigest(local, route);
+      const liveDigest = comparableDigest(live, route);
+      if (response.status !== 200 || liveDigest !== localDigest) failures.push({ route, status: response.status, contentMatch: liveDigest === localDigest });
     } catch (error) {
       failures.push({ route, error: error?.cause?.code || error.name || error.message });
     }
