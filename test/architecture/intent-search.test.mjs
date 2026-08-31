@@ -54,6 +54,17 @@ test('business idea returns clothing activities and code search is exact', () =>
   assert.equal(rankActivities('514929', activities)[0].code, '514929');
 });
 
+test('generic office wording cannot outrank the requested translation activity', () => {
+  const result = rankActivities('أريد مكتب ترجمة عامة', activities)[0];
+  assert.equal(result.code, '749904');
+  assert.match(`${result.nameAr} ${result.nameEn}`, /ترجم|translat/i);
+});
+
+test('compound restaurant and ecommerce intents prefer their official activities', () => {
+  assert.equal(rankActivities('مطعم ومقهى', activities)[0].code, '552001');
+  assert.equal(rankActivities('تجارة إلكترونية', activities)[0].code, '100465');
+});
+
 test('Dubai cleaning-company intent combines licensing and activity discovery', () => {
   const service = rankServices('أريد أفتح شركة تنظيف في دبي', services)[0];
   const activity = rankActivities('أريد أفتح شركة تنظيف في دبي', activities)[0];

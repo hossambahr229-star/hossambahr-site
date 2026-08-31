@@ -163,6 +163,8 @@ html a{text-underline-offset:4px}
    table{display:block;max-width:100%;overflow:auto}
 }
 @media(max-width:390px){ .metric-grid, .command-action-grid{grid-template-columns:1fr!important} .site-header{padding-inline:10px!important}}
+.mobile-menu:not([open])>nav{display:none!important}
+@media(max-width:340px){.site-header .theme-toggle,.site-header .header-search-action{display:none!important}}
 @media(prefers-reduced-motion:reduce){ *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
 /* HOSSAMBAHR A++ END */

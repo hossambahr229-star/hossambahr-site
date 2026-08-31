@@ -65,7 +65,7 @@
     ['عطور','تجميل','مستحضرات','perfume','cosmetics'],
     ['سيارات','مركبات','قطع غيار','car','vehicle','automotive']
   ];
-  const stopWords = new Set(['اريد','أريد','فتح','مشروع','شركه','شركة','نشاط','خدمه','خدمة','في','من','على','الى','إلى','عن','مع','داخل','تقديم','اقوم','أقوم','عمل']);
+  const stopWords = new Set(['اريد','أريد','فتح','مشروع','شركه','شركة','نشاط','خدمه','خدمة','في','من','على','الى','إلى','عن','مع','داخل','تقديم','اقوم','أقوم','عمل','مكتب','عام','عامه']);
 
   function queryTerms(value, channel = '') {
     const base = normalize(value).split(' ').filter(word => word.length > 1 && !stopWords.has(word));
@@ -120,6 +120,9 @@
     const group = normalize(`${activity.groupAr} ${activity.groupEn} ${activity.categoryAr} ${activity.categoryEn}`);
     const description = normalize(`${activity.descAr} ${activity.descEn}`);
     const fullQuery = normalize(value);
+    const generalTranslation = fullQuery.includes('ترجمه') && !/(قانون|دبلج|فني|legal|dubb|subtitl)/.test(fullQuery);
+    const restaurantCafe = fullQuery.includes('مطعم') && fullQuery.includes('مقهي');
+    const ecommerce = /(تجاره الكترونيه|متجر الكتروني|بيع اونلاين|ecommerce|e commerce|online seller)/.test(fullQuery);
     let score = 0;
     const compactQuery = fullQuery.replace(/\s/g, '');
     if (activity.code === compactQuery) score += 1000;
@@ -132,6 +135,13 @@
       else if (group.includes(term)) score += 9;
       else if (description.includes(term)) score += 4;
     });
+    if (generalTranslation && activity.code === '749904') score += 260;
+    if (generalTranslation && /(قانون|دبلج|مصنفات فنيه|legal|dubb|subtitl)/.test(name)) score -= 120;
+    if (restaurantCafe && activity.code === '552001') score += 320;
+    if (restaurantCafe && activity.code === '552002') score += 300;
+    if (restaurantCafe && !/(مطعم|مقهي|restaurant|coffee shop|cafe)/.test(name)) score -= 180;
+    if (ecommerce && activity.code === '100465') score += 360;
+    if (ecommerce && !/(بائع عبر الانترنت|online seller|متاجره الكترونيه|e trading)/.test(name)) score -= 180;
     if (activity.active > 0 && score > 0) score += Math.min(5, Math.log10(activity.active + 1));
     return score;
   }

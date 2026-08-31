@@ -161,4 +161,6 @@ html.hb-a-plus-plus a{text-underline-offset:4px}
   .hb-a-plus-plus table{display:block;max-width:100%;overflow:auto}
 }
 @media(max-width:390px){.hb-a-plus-plus .metric-grid,.hb-a-plus-plus .command-action-grid{grid-template-columns:1fr!important}.hb-a-plus-plus .site-header{padding-inline:10px!important}}
+.mobile-menu:not([open])>nav{display:none!important}
+@media(max-width:340px){.site-header .theme-toggle,.site-header .header-search-action{display:none!important}}
 @media(prefers-reduced-motion:reduce){.hb-a-plus-plus *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}

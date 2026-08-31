@@ -156,6 +156,33 @@ for (const [name, width, height] of deviceProfiles) {
   await page.close();
 }
 
+const advisorScenarios = [
+  ['أريد مكتب ترجمة عامة', /749904[\s\S]*خدمات الترجمة والتدقيق واللغوي/],
+  ['مكتب معاملات حكومية', /مركز إنجاز المعاملات الحكومية/],
+  ['خدمات تنظيف', /تنظيف|نظافة|clean/i],
+  ['مطعم ومقهى', /مطعم|مقهى|restaurant|cafe/i],
+  ['متجر ملابس', /ملابس|أزياء|clothing|garment|fashion/i],
+  ['برمجة تطبيقات', /برمج|تطبيق|software|application/i],
+  ['استشارات إدارية', /استشار|consult/i],
+  ['مقاولات صيانة مباني', /مقاولات|صيانة|مباني|contract|maintenance/i],
+  ['نقل وتوصيل', /نقل|توصيل|transport|delivery/i],
+  ['تجارة إلكترونية', /الكتروني|إلكتروني|online|ecommerce/i]
+];
+const advisorResults = [];
+const advisorPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
+const advisorErrors = [];
+advisorPage.on('pageerror', (error) => advisorErrors.push(error.message));
+await advisorPage.goto(`${baseUrl}/dubai-business-activities.html?advisor-regression=1`, { waitUntil: 'networkidle', timeout: 60000 });
+for (const [query, expected] of advisorScenarios) {
+  await advisorPage.locator('#businessIdea').fill(query);
+  await advisorPage.locator('#activityAdvisorForm button[type="submit"]').click();
+  const first = advisorPage.locator('#advisorMatchGrid .advisor-match').first();
+  await first.waitFor({ state: 'visible', timeout: 20000 });
+  const text = (await first.textContent()) || '';
+  advisorResults.push({ query, first: text.replace(/\s+/g, ' ').trim(), pass: expected.test(text) });
+}
+await advisorPage.close();
+
 await browser.close();
 if (server) await new Promise((done, reject) => server.close((error) => error ? reject(error) : done()));
 
@@ -178,8 +205,9 @@ const report = {
   ranking: { total: rankingResults.length, passed: rankingResults.filter((item) => item.pass).length, failed: rankingResults.filter((item) => !item.pass) },
   journeys: { total: browserResults.length, passed: browserResults.filter((item) => item.pass).length, failed: browserResults.filter((item) => !item.pass) },
   activitySearch: { total: activityChecks.length, passed: activityChecks.filter((item) => item.pass).length, results: activityChecks },
+  activityAdvisor: { total: advisorResults.length, passed: advisorResults.filter((item) => item.pass).length, errors: advisorErrors, results: advisorResults },
   responsive: { total: responsiveResults.length, passed: responsiveResults.filter((item) => item.pass).length, results: responsiveResults }
 };
 await writeFile(resolve(output, "final-platform-acceptance.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
-console.log(JSON.stringify({ sourceOfTruth: report.sourceOfTruth, ranking: report.ranking, journeys: report.journeys, activitySearch: report.activitySearch, responsive: report.responsive }, null, 2));
-if (registry.services.length !== 200 || summary.services !== 200 || activities.length !== 2610 || actualEmirates.size !== 7 || report.ranking.passed !== 50 || report.journeys.passed !== 50 || report.activitySearch.passed !== report.activitySearch.total || report.responsive.passed !== report.responsive.total) process.exit(1);
+console.log(JSON.stringify({ sourceOfTruth: report.sourceOfTruth, ranking: report.ranking, journeys: report.journeys, activitySearch: report.activitySearch, activityAdvisor: report.activityAdvisor, responsive: report.responsive }, null, 2));
+if (registry.services.length !== 200 || summary.services !== 200 || activities.length !== 2610 || actualEmirates.size !== 7 || report.ranking.passed !== 50 || report.journeys.passed !== 50 || report.activitySearch.passed !== report.activitySearch.total || report.activityAdvisor.passed !== report.activityAdvisor.total || advisorErrors.length || report.responsive.passed !== report.responsive.total) process.exit(1);

@@ -24,7 +24,7 @@ export function normalizeIntent(input) {
     .replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim();
 }
 
-const STOP_WORDS = new Set(['اريد','عايز','ابي','ابغي','احتاج','ممكن','كيف','ما','هي','هو','في','من','على','الى','عن','مع','لي','انا','ولا','لا','اعرف','غير','مفهوم','اطلاقا','خدمه','معامله','please','want','need','how','to','a','an','the','in','for','my']);
+const STOP_WORDS = new Set(['اريد','عايز','ابي','ابغي','احتاج','ممكن','كيف','ما','هي','هو','في','من','على','الى','عن','مع','لي','انا','ولا','لا','اعرف','غير','مفهوم','اطلاقا','خدمه','معامله','مكتب','عام','عامه','please','want','need','how','to','a','an','the','in','for','my']);
 const EMIRATES = [
   ['دبي', ['دبي','dubai']], ['أبوظبي', ['ابوظبي','ابو ظبي','abu dhabi']], ['الشارقة', ['الشارقه','sharjah']],
   ['عجمان', ['عجمان','ajman']], ['رأس الخيمة', ['راس الخيمه','rak','ras al khaimah']],
@@ -241,6 +241,9 @@ export function rankActivities(query, activities = []) {
   return activities.map(activityRecord).map(activity => {
     const name = normalizeIntent(`${activity.nameAr} ${activity.nameEn}`);
     const metadata = normalizeIntent(`${activity.categoryAr} ${activity.groupAr}`);
+    const generalTranslation = normalized.includes('ترجمه') && !/(قانون|دبلج|فني|legal|dubb|subtitl)/.test(normalized);
+    const restaurantCafe = normalized.includes('مطعم') && normalized.includes('مقهي');
+    const ecommerce = /(تجاره الكترونيه|متجر الكتروني|بيع اونلاين|ecommerce|e commerce|online seller)/.test(normalized);
     let score = activity.code === compact ? 1000 : activity.isic === compact ? 900 : 0;
     if (/^\d{3,}$/.test(compact) && activity.code.startsWith(compact)) score += 320;
     else if (/^\d{3,}$/.test(compact) && activity.code.includes(compact)) score += 180;
@@ -250,6 +253,13 @@ export function rankActivities(query, activities = []) {
       if (name.includes(term)) score += 16;
       else if (metadata.includes(term)) score += 6;
     }
+    if (generalTranslation && activity.code === '749904') score += 260;
+    if (generalTranslation && /(قانون|دبلج|مصنفات فنيه|legal|dubb|subtitl)/.test(name)) score -= 120;
+    if (restaurantCafe && activity.code === '552001') score += 320;
+    if (restaurantCafe && activity.code === '552002') score += 300;
+    if (restaurantCafe && !/(مطعم|مقهي|restaurant|coffee shop|cafe)/.test(name)) score -= 180;
+    if (ecommerce && activity.code === '100465') score += 360;
+    if (ecommerce && !/(بائع عبر الانترنت|online seller|متاجره الكترونيه|e trading)/.test(name)) score -= 180;
     return { ...activity, score };
   }).filter(result => result.score > 0)
     .sort((left, right) => right.score - left.score || left.nameAr.localeCompare(right.nameAr, 'ar'));
