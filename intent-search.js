@@ -238,6 +238,12 @@ export function rankActivities(query, activities = []) {
   for (const group of ACTIVITY_SYNONYMS) {
     if (group.some(term => normalized.includes(normalizeIntent(term)))) group.forEach(term => expanded.add(normalizeIntent(term)));
   }
+  const cleaningPremises = includesAny(normalized, ['تنظيف','نظافه','cleaning'])
+    && includesAny(normalized, ['شركه','مباني','مساكن','منزل','منازل','building','home','house','company']);
+  const clothingRetail = includesAny(normalized, ['ملابس','clothing','clothes','garments'])
+    && !includesAny(normalized, ['تصميم','خياطه','تفصيل','design','tailor']);
+  const appDevelopment = includesAny(normalized, ['برمجه','تطوير','تصميم','programming','development','develop'])
+    && includesAny(normalized, ['تطبيق','تطبيقات','برمجيات','software','application','applications','app']);
   return activities.map(activityRecord).map(activity => {
     const name = normalizeIntent(`${activity.nameAr} ${activity.nameEn}`);
     const metadata = normalizeIntent(`${activity.categoryAr} ${activity.groupAr}`);
@@ -260,6 +266,12 @@ export function rankActivities(query, activities = []) {
     if (restaurantCafe && !/(مطعم|مقهي|restaurant|coffee shop|cafe)/.test(name)) score -= 180;
     if (ecommerce && activity.code === '100465') score += 360;
     if (ecommerce && !/(بائع عبر الانترنت|online seller|متاجره الكترونيه|e trading)/.test(name)) score -= 180;
+    if (cleaningPremises && activity.code === '749301') score += 560;
+    if (cleaningPremises && /(سيارات|مصائد الدهون|واجهات|car washing|grease trap|facade)/.test(name)) score -= 360;
+    if (clothingRetail && activity.code === '513107') score += 560;
+    if (clothingRetail && /(تصميم|خياطه|عسكريه|design|tailor|military)/.test(name)) score -= 320;
+    if (appDevelopment && activity.code === '722901') score += 640;
+    if (appDevelopment && /(مزادات|طلبات النقل|تشغيل|عسكريه|auction|transport orders|operation|military)/.test(name)) score -= 420;
     return { ...activity, score };
   }).filter(result => result.score > 0)
     .sort((left, right) => right.score - left.score || left.nameAr.localeCompare(right.nameAr, 'ar'));

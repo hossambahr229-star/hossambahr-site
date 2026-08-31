@@ -972,14 +972,22 @@
     for (const anchor of document.querySelectorAll('[data-government-cta="verified"]')) {
       if (anchor.dataset.handoffReady === "true") continue;
       anchor.dataset.handoffReady = "true";
-      const guidance = anchor.closest("main")?.dataset.destinationKind === "OFFICIAL_GUIDANCE";
+      const destinationKind = anchor.closest("main")?.dataset.destinationKind || anchor.dataset.destinationKind || "DIRECT_SERVICE";
+      const guidance = destinationKind === "OFFICIAL_GUIDANCE" || destinationKind === "official-guidance";
+      const directExecution = destinationKind === "DIRECT_EXECUTION" || destinationKind === "direct-execution";
       const note = document.createElement("p");
       note.className = "official-handoff-note";
       note.textContent = guidance
         ? "الموقع الحكومي الرسمي: ستنتقل إلى المصدر الذي يشرح هذه المعاملة. راجع الاختصاص قبل المتابعة."
-        : "الموقع الحكومي الرسمي: ستنتقل إلى الخدمة الحكومية لإكمال الطلب، وقد يُطلب تسجيل الدخول عبر UAE Pass.";
+        : directExecution
+          ? "الموقع الحكومي الرسمي: ستنتقل مباشرة إلى قناة تقديم هذه المعاملة، وقد يُطلب تسجيل الدخول عبر UAE Pass."
+          : "الموقع الحكومي الرسمي: ستنتقل إلى صفحة هذه الخدمة لمراجعة المتطلبات وقنوات التقديم المتاحة.";
       anchor.parentNode?.insertBefore(note, anchor);
-      anchor.textContent = guidance ? "افتح المصدر الحكومي الرسمي ↗" : "ابدأ التقديم الرسمي ↗";
+      anchor.textContent = guidance
+        ? "افتح المصدر الحكومي الرسمي ↗"
+        : directExecution
+          ? "ابدأ التقديم الرسمي ↗"
+          : "عرض صفحة الخدمة الرسمية ↗";
     }
   }
 

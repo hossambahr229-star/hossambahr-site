@@ -123,6 +123,12 @@
     const generalTranslation = fullQuery.includes('ترجمه') && !/(قانون|دبلج|فني|legal|dubb|subtitl)/.test(fullQuery);
     const restaurantCafe = fullQuery.includes('مطعم') && fullQuery.includes('مقهي');
     const ecommerce = /(تجاره الكترونيه|متجر الكتروني|بيع اونلاين|ecommerce|e commerce|online seller)/.test(fullQuery);
+    const cleaningPremises = /(تنظيف|نظافه|cleaning)/.test(fullQuery)
+      && /(شركه|مباني|مساكن|منزل|منازل|building|home|house|company)/.test(fullQuery);
+    const clothingRetail = /(ملابس|clothing|clothes|garments)/.test(fullQuery)
+      && !/(تصميم|خياطه|تفصيل|design|tailor)/.test(fullQuery);
+    const appDevelopment = /(برمجه|تطوير|تصميم|programming|development|develop)/.test(fullQuery)
+      && /(تطبيق|تطبيقات|برمجيات|software|application|applications|app)/.test(fullQuery);
     let score = 0;
     const compactQuery = fullQuery.replace(/\s/g, '');
     if (activity.code === compactQuery) score += 1000;
@@ -142,6 +148,12 @@
     if (restaurantCafe && !/(مطعم|مقهي|restaurant|coffee shop|cafe)/.test(name)) score -= 180;
     if (ecommerce && activity.code === '100465') score += 360;
     if (ecommerce && !/(بائع عبر الانترنت|online seller|متاجره الكترونيه|e trading)/.test(name)) score -= 180;
+    if (cleaningPremises && activity.code === '749301') score += 560;
+    if (cleaningPremises && /(سيارات|مصائد الدهون|واجهات|car washing|grease trap|facade)/.test(name)) score -= 360;
+    if (clothingRetail && activity.code === '513107') score += 560;
+    if (clothingRetail && /(تصميم|خياطه|عسكريه|design|tailor|military)/.test(name)) score -= 320;
+    if (appDevelopment && activity.code === '722901') score += 640;
+    if (appDevelopment && /(مزادات|طلبات النقل|تشغيل|عسكريه|auction|transport orders|operation|military)/.test(name)) score -= 420;
     if (activity.active > 0 && score > 0) score += Math.min(5, Math.log10(activity.active + 1));
     return score;
   }

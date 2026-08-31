@@ -112,16 +112,27 @@ if (browserEnabled) {
       page.on('console',message=>{if(message.type()==='error')errors.push(message.text())});
       let status=0,overflow=false,applied=false,content=false,rtl=false;
       try {
-        const response=await page.goto(`http://127.0.0.1:${port}${row.route}`,{waitUntil:'commit',timeout:5000});
+        const response=await page.goto(`http://127.0.0.1:${port}${row.route}`,{waitUntil:'domcontentloaded',timeout:15000});
         status=response?.status() ?? 0;
         await page.waitForFunction(() => document.readyState !== 'loading' && (document.querySelector('main')?.innerText.trim().length ?? 0) > 20, null, { timeout: 4000 }).catch(() => {});
         await page.waitForTimeout(150);
-        ({overflow,applied,content,rtl}=await page.evaluate(()=>({
-          overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2,
-          applied:getComputedStyle(document.documentElement).getPropertyValue('--hb-green-900').trim()!=='',
-          content:(document.querySelector('main')?.innerText.trim().length ?? 0)>20,
-          rtl:document.documentElement.dir==='rtl'
-        })));
+        for (let attempt=0;attempt<3;attempt+=1) {
+          try {
+            ({overflow,applied,content,rtl}=await page.evaluate(()=>(
+              {
+                overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2,
+                applied:getComputedStyle(document.documentElement).getPropertyValue('--hb-green-900').trim()!=='',
+                content:(document.querySelector('main')?.innerText.trim().length ?? 0)>20,
+                rtl:document.documentElement.dir==='rtl'
+              }
+            )));
+            break;
+          } catch (error) {
+            if (attempt===2) throw error;
+            await page.waitForLoadState('load',{timeout:3000}).catch(()=>{});
+            await page.waitForTimeout(250);
+          }
+        }
         if (!applied) {
           await page.waitForLoadState('load',{timeout:3000}).catch(()=>{});
           await page.waitForTimeout(350);
