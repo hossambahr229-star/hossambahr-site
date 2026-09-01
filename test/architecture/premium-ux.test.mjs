@@ -72,8 +72,8 @@ test('service pages expose verified summary facts and one primary hero action', 
   assert.match(runtime, /هل هذه الخدمة مناسبة لي/);
   assert.match(runtime, /dataset\.commercialCta = "verified"/);
   assert.match(runtime, /طلب تنفيذ معاملة/);
-  assert.match(runtime, /مسار حسام بحر/);
-  assert.match(runtime, /المسار الحكومي الرسمي/);
+  assert.match(runtime, /دعنا ننجزها لك/);
+  assert.match(runtime, /أنجزها بنفسك عبر الجهة الرسمية/);
   assert.match(styles, /\.service-facts-bar/);
   assert.match(styles, /\.premium-service-detail \.service-hero/);
   assert.match(styles, /background: #fbfaf6 !important/);
@@ -88,3 +88,4 @@ test('command center replaces legacy static metrics with live registry facts and
   assert.match(runtime, /رفع المستندات والمدفوعات غير مفعّلين/);
   assert.match(runtime, /data-commercial-cta="verified"/);
 });
+
