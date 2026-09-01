@@ -95,6 +95,19 @@ body[data-intent-first-ready="true"] .search-row input {
 
 body[data-intent-first-ready="true"] .examples { flex-wrap: wrap; overflow: visible; }
 body[data-intent-first-ready="true"] .examples button { max-width: 100%; white-space: normal; }
+body[data-intent-first-ready="true"] .examples .popular-transaction-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  max-width: 100%;
+  padding: .4rem .7rem;
+  border: 1px solid rgba(206, 174, 95, .35);
+  border-radius: 999px;
+  color: inherit;
+  background: rgba(255, 255, 255, .08);
+  text-decoration: none;
+  font-weight: 700;
+}
 
 .transaction-discovery-modes { max-width: 920px; margin: 1rem 0 .85rem; }
 .transaction-discovery-label { margin: 0 0 .55rem; color: var(--ux-brand-900) !important; font-size: .88rem; font-weight: 800; }
@@ -766,3 +779,133 @@ body[data-ux-page="service-detail"] .official-handoff-note { grid-column: 2; mar
 @media (max-width: 380px) {
   .category-intent-options { grid-template-columns: 1fr; }
 }
+
+/* Phase 5: one obvious starting point, secondary guidance on demand. */
+body[data-ux-page="home"] .platform-hero {
+  padding-block: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+body[data-ux-page="home"] .hero-copy {
+  margin-bottom: clamp(.75rem, 1.6vw, 1.25rem);
+}
+body[data-ux-page="home"] .hero-copy h1 {
+  max-width: 20ch;
+  margin-block: .35rem .5rem;
+  font-size: clamp(2.2rem, 4.4vw, 4.2rem);
+  line-height: 1.04;
+}
+body[data-ux-page="home"] .hero-copy > p {
+  max-width: 64ch;
+  margin-block: 0;
+}
+body[data-ux-page="home"] .hero-search-stage {
+  gap: .45rem;
+}
+body[data-ux-page="home"] .search-shell {
+  padding: .65rem;
+  border-color: #b9cec7;
+  box-shadow: 0 15px 40px rgba(8,44,37,.11);
+}
+body[data-ux-page="home"] .search-row button {
+  min-width: 170px;
+  font-weight: 900;
+}
+body[data-ux-page="home"] .examples {
+  margin-block: .2rem 0;
+}
+body[data-ux-page="home"] .hero-proof {
+  margin-top: .55rem;
+}
+
+.homepage-secondary-actions {
+  width: 100%;
+  margin-top: .15rem;
+  border-top: 1px solid rgba(16,61,50,.12);
+}
+.homepage-secondary-actions > summary {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #4d655e;
+  font-size: .84rem;
+  font-weight: 800;
+}
+.homepage-secondary-actions .hero-actions {
+  margin-top: .25rem;
+}
+
+.transaction-discovery-modes {
+  max-width: 900px;
+  margin: .15rem 0 0;
+  border: 1px solid #d5e0dc;
+  border-radius: 13px;
+  background: #f7faf8;
+}
+.transaction-discovery-label {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: .55rem .8rem;
+  cursor: pointer;
+  color: var(--ux-brand-900) !important;
+  font-size: .87rem;
+  font-weight: 850;
+}
+.transaction-discovery-label::marker { color: var(--ux-gold-700); }
+.transaction-discovery-modes .guided-transaction-panel {
+  margin: 0;
+  padding: .75rem;
+  border: 0;
+  border-top: 1px solid #d5e0dc;
+  border-radius: 0 0 13px 13px;
+  background: #fff;
+}
+.transaction-discovery-modes .transaction-directory-link {
+  width: 100%;
+  margin-top: .65rem;
+  background: transparent;
+}
+
+body[data-ux-page="service-detail"] .dual-execution-paths {
+  gap: .45rem .75rem;
+}
+body[data-ux-page="service-detail"] .execution-path-label {
+  color: #315149;
+  font-size: .82rem;
+}
+body[data-ux-page="service-detail"] .execute-with-us-cta,
+body[data-ux-page="service-detail"] .primary-government-cta {
+  min-height: 54px;
+  font-size: .95rem;
+}
+
+@media (max-width: 760px) {
+  body[data-ux-page="home"] .platform-hero { padding: .8rem 14px 1rem; }
+  body[data-ux-page="home"] .hero-kicker { font-size: .72rem; }
+  body[data-ux-page="home"] .hero-copy { margin-bottom: .55rem; }
+  body[data-ux-page="home"] .hero-copy h1 {
+    max-width: 16ch;
+    margin-block: .25rem .4rem;
+    font-size: clamp(1.8rem, 8.4vw, 2.55rem);
+  }
+  body[data-ux-page="home"] .hero-copy > p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-size: .84rem;
+    line-height: 1.55;
+  }
+  body[data-ux-page="home"] .search-shell { padding: .55rem; }
+  body[data-ux-page="home"] .search-row { display: grid; grid-template-columns: 1fr; gap: .45rem; }
+  body[data-ux-page="home"] .search-row input,
+  body[data-ux-page="home"] .search-row button { min-height: 48px; width: 100%; }
+  body[data-ux-page="home"] .examples button { min-height: 34px; padding: .35rem .6rem; font-size: .76rem; }
+  body[data-ux-page="home"] .hero-proof { display: none; }
+  .transaction-discovery-modes { margin-top: .1rem; }
+  .transaction-discovery-label { min-height: 42px; padding: .5rem .7rem; }
+  .guided-transaction-prompts { grid-template-columns: 1fr; }
+  .homepage-secondary-actions > summary { min-height: 40px; }
+  .homepage-secondary-actions .hero-actions { grid-template-columns: 1fr; }
+}
+
