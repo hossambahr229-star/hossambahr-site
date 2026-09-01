@@ -34,6 +34,18 @@
   function loadHomepageIntentSearch() {
     const input = document.getElementById("government-search");
     if (!input) return;
+    const form = input.form;
+    const submitButton = form?.querySelector('button[type="submit"], .search-row button');
+    let pendingSubmit = false;
+    const queueEarlySubmit = (event) => {
+      if (form?.dataset.intentReady === "true") return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      pendingSubmit = true;
+      form?.setAttribute("aria-busy", "true");
+      if (submitButton) submitButton.disabled = true;
+    };
+    form?.addEventListener("submit", queueEarlySubmit, true);
     const load = (source, module = false) => new Promise((resolve, reject) => {
       const script = document.createElement("script");
       script.src = source;
@@ -53,8 +65,22 @@
     if (new URLSearchParams(location.search).has("q")) activityData();
     load("/intent-search-data.js")
       .then(() => load("/intent-search.js", true))
-      .then(() => modernizePresentation())
-      .catch(() => { document.getElementById("search-results")?.setAttribute("data-intent-search-error", "true"); });
+      .then(() => {
+        if (form) {
+          form.dataset.intentReady = "true";
+          form.removeAttribute("aria-busy");
+          form.removeEventListener("submit", queueEarlySubmit, true);
+        }
+        if (submitButton) submitButton.disabled = false;
+        if (pendingSubmit && input.value.trim()) form?.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
+        modernizePresentation();
+      })
+      .catch(() => {
+        form?.removeEventListener("submit", queueEarlySubmit, true);
+        form?.removeAttribute("aria-busy");
+        if (submitButton) submitButton.disabled = false;
+        document.getElementById("search-results")?.setAttribute("data-intent-search-error", "true");
+      });
   }
 
   const normalize = (value) => String(value || "").normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
@@ -1029,9 +1055,13 @@
     }
   }
 
+  // The search loader must start as soon as the deferred runtime sees the
+  // parsed homepage. Waiting for the visual enhancement delay can otherwise
+  // discard a fast customer's first submit on a cold connection.
+  loadHomepageIntentSearch();
+
   const start = () => {
     loadIntentFirstStyles();
-    loadHomepageIntentSearch();
     setupFilter();
     alignGlobalCounts();
     isolateHomepageGovernmentCtas();
