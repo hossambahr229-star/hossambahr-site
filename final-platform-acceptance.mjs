@@ -22,7 +22,7 @@ const services = registry.services.map((service) => ({
   d: service.description, v: service.verificationStatus
 }));
 
-const journeys = [
+const baseJourneys = [
   ["أريد فتح شركة تنظيف في دبي", /issue-trade-license-dubai/, "companies", "دبي"],
   ["أريد إصدار رخصة تجارية في دبي", /issue-trade-license-dubai/, "licensing", "دبي"],
   ["أريد أجدد الرخصة في دبي", /renew-business-license-dubai/, "licensing", "دبي"],
@@ -75,7 +75,27 @@ const journeys = [
   ["أريد التسجيل في ضريبة القيمة المضافة", /vat-registration-uae/, "federal", "اتحادي"]
 ];
 
-if (journeys.length !== 50) throw new Error(`Expected 50 journeys, received ${journeys.length}`);
+const englishJourneyQueries = [
+  "start a cleaning company in Dubai", "issue a trade license in Dubai", "renew my trade license in Dubai",
+  "amend my trade license in Dubai", "add an activity to my Dubai license", "add a partner to my Dubai company",
+  "cancel my company in Dubai", "reserve a trade name in Dubai", "issue an economic license in Abu Dhabi",
+  "renew an economic license in Abu Dhabi", "reserve a trade name in Abu Dhabi", "issue an economic license in Sharjah",
+  "renew my license in Sharjah", "reserve a trade name in Sharjah", "issue a commercial license in Ajman",
+  "renew my commercial license in Ajman", "issue a license in Ras Al Khaimah", "add an activity to my RAK license",
+  "start a company in Umm Al Quwain", "reserve a trade name in Umm Al Quwain", "issue an economic license in Fujairah",
+  "start a free zone company in Fujairah", "new work permit for employee outside UAE", "transfer employee to another company",
+  "cancel employee work permit", "part time work permit", "temporary work permit", "work permit for family sponsored resident",
+  "complain about unpaid salary", "renew my wife's residence in Dubai", "issue family residence for my wife in Dubai",
+  "issue employee residence in Dubai", "renew employee residence in Dubai", "cancel Dubai residence",
+  "investor residence Dubai", "golden residence Dubai", "visit visa for relative in Dubai", "tourist visa outside Dubai",
+  "renew Emirates ID", "issue Emirates ID first time", "replace lost Emirates ID", "renew UAE passport",
+  "register or renew Ejari in Dubai", "transfer property title in Dubai", "property valuation in Dubai",
+  "renew driving license in Dubai", "renew vehicle ownership in Dubai", "register my business with Dubai Customs",
+  "attest a personal document in the UAE", "VAT registration UAE"
+];
+if (baseJourneys.length !== 50 || englishJourneyQueries.length !== 50) throw new Error("Phase 5 requires fifty bilingual journey pairs");
+const journeys = baseJourneys.flatMap((journey, index) => [journey, [englishJourneyQueries[index], ...journey.slice(1)]]);
+if (journeys.length !== 100) throw new Error(`Expected 100 journeys, received ${journeys.length}`);
 const rankingResults = journeys.map(([query, expected, family, emirate]) => {
   const first = rankServices(query, services)[0];
   return { query, family, emirate, slug: first?.s || null, pass: Boolean(first && expected.test(first.s)) };
@@ -131,11 +151,19 @@ for (let index = 0; index < journeys.length; index += 1) {
   const requirements = await page.locator("h2").filter({ hasText: /المستندات|المتطلبات|ما الذي تحتاجه/ }).count() > 0;
   const official = page.locator('[data-government-cta="verified"][href^="https://"]').first();
   const officialCount = await official.count();
+  const contact = page.locator('[data-commercial-cta="verified"][href^="https://wa.me/"]').first();
+  const contactCount = await contact.count();
+  const officialLabel = officialCount ? (await official.innerText()).trim() : "";
+  const contactLabel = contactCount ? (await contact.innerText()).trim() : "";
   const noOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
   const rtl = await page.evaluate(() => getComputedStyle(document.documentElement).direction === "rtl");
-  const pass = response?.status() === 200 && correct && requirements && officialCount === 1 && noOverflow && rtl && errors.length === 0;
+  const pass = response?.status() === 200 && correct && requirements && officialCount === 1 && contactCount === 1
+    && officialLabel.includes("اذهب للجهة الرسمية") && contactLabel.includes("تواصل معنا لإنجازها")
+    && noOverflow && rtl && errors.length === 0;
   if (screenshots.has(index)) await page.screenshot({ path: resolve(output, `${String(index + 1).padStart(2, "0")}-${family}-${profile}.png`), fullPage: true });
-  browserResults.push({ query, family, emirate, profile, route, correct, requirements, officialCta: officialCount === 1, noOverflow, rtl, errors, pass });
+  browserResults.push({ query, family, emirate, profile, route, correct, requirements,
+    officialCta: officialCount === 1, contactCta: contactCount === 1, officialLabel, contactLabel,
+    clicksToService: 2, clicksToOfficial: 3, clicksToContact: 3, noOverflow, rtl, errors, pass });
   await context.close();
 }
 
@@ -150,8 +178,19 @@ for (const [name, width, height] of deviceProfiles) {
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto(`${baseUrl}/`, { waitUntil: "networkidle", timeout: 60000 });
   await page.waitForTimeout(1950);
-  const result = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth > window.innerWidth + 1, discoveryModes: document.querySelectorAll(".transaction-discovery-tabs > *").length, lang: document.documentElement.lang, dir: document.documentElement.dir }));
-  responsiveResults.push({ name, ...result, errors, pass: !result.overflow && result.discoveryModes === 3 && result.lang === "ar" && result.dir === "rtl" && errors.length === 0 });
+  const result = await page.evaluate(() => {
+    const search = document.querySelector("form.primary-search");
+    const submit = search?.querySelector('button[type="submit"]');
+    const rect = search?.getBoundingClientRect();
+    return { overflow: document.documentElement.scrollWidth > window.innerWidth + 1,
+      primarySearches: document.querySelectorAll("form.primary-search").length,
+      guidedHelp: document.querySelectorAll("details.transaction-discovery-modes").length,
+      searchInFirstViewport: Boolean(rect && rect.top >= 0 && rect.bottom <= window.innerHeight),
+      primaryLabel: submit?.textContent?.trim() || "", lang: document.documentElement.lang, dir: document.documentElement.dir };
+  });
+  responsiveResults.push({ name, ...result, errors, pass: !result.overflow && result.primarySearches === 1
+    && result.guidedHelp === 1 && result.searchInFirstViewport && result.primaryLabel === "اعثر على معاملتي"
+    && result.lang === "ar" && result.dir === "rtl" && errors.length === 0 });
   if (name === "mobile-390" || name === "desktop") await page.screenshot({ path: resolve(output, `homepage-${name}.png`), fullPage: true });
   await page.close();
 }
@@ -210,4 +249,5 @@ const report = {
 };
 await writeFile(resolve(output, "final-platform-acceptance.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify({ sourceOfTruth: report.sourceOfTruth, ranking: report.ranking, journeys: report.journeys, activitySearch: report.activitySearch, activityAdvisor: report.activityAdvisor, responsive: report.responsive }, null, 2));
-if (registry.services.length !== 200 || summary.services !== 200 || activities.length !== 2610 || actualEmirates.size !== 7 || report.ranking.passed !== 50 || report.journeys.passed !== 50 || report.activitySearch.passed !== report.activitySearch.total || report.activityAdvisor.passed !== report.activityAdvisor.total || advisorErrors.length || report.responsive.passed !== report.responsive.total) process.exit(1);
+if (registry.services.length !== 200 || summary.services !== 200 || activities.length !== 2610 || actualEmirates.size !== 7 || report.ranking.passed !== 100 || report.journeys.passed !== 100 || report.activitySearch.passed !== report.activitySearch.total || report.activityAdvisor.passed !== report.activityAdvisor.total || advisorErrors.length || report.responsive.passed !== report.responsive.total) process.exit(1);
+
