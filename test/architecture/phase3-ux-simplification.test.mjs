@@ -28,9 +28,11 @@ test('common business ideas rank the intended official Dubai activity first', as
 
 test('government handoff copy distinguishes guidance, service pages and direct execution', async () => {
   const runtime = await readFile(resolve(root, 'zero-defect-routing.js'), 'utf8');
-  assert.match(runtime, /افتح المصدر الحكومي الرسمي/);
-  assert.match(runtime, /عرض صفحة الخدمة الرسمية/);
-  assert.match(runtime, /ابدأ التقديم الرسمي/);
+  assert.match(runtime, /المصدر الذي يشرح هذه المعاملة/);
+  assert.match(runtime, /ستنتقل إلى صفحة هذه الخدمة/);
+  assert.match(runtime, /ستنتقل مباشرة إلى قناة تقديم هذه المعاملة/);
+  assert.match(runtime, /اذهب للجهة الرسمية/);
   assert.match(runtime, /DIRECT_EXECUTION/);
   assert.match(runtime, /DIRECT_SERVICE/);
 });
+
