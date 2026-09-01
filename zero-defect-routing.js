@@ -390,8 +390,23 @@
     const input = document.getElementById("government-search");
     if (searchLabel) searchLabel.textContent = "صف ما تريد إنجازه";
     if (input) input.placeholder = "مثال: أريد أجدد إقامة زوجتي في دبي";
+    const searchButton = input?.closest("form")?.querySelector('button[type="submit"]');
+    if (searchButton) searchButton.textContent = "اعثر على معاملتي";
+    [...document.querySelectorAll(".examples button")].forEach((button, index) => {
+      if (index >= 3) button.classList.add("ux-hidden");
+    });
     const advancedHeroLink = document.querySelector('.hero-actions a[href="/command-center/"]');
     if (advancedHeroLink) advancedHeroLink.classList.add("ux-advanced-link");
+
+    const heroActions = document.querySelector(".hero-actions");
+    if (heroActions && !heroActions.closest(".homepage-secondary-actions")) {
+      const secondaryActions = document.createElement("details");
+      secondaryActions.className = "homepage-secondary-actions";
+      const summary = document.createElement("summary");
+      summary.textContent = "خيارات إضافية للمتخصصين";
+      secondaryActions.append(summary, heroActions);
+      document.querySelector(".hero-search-stage")?.append(secondaryActions);
+    }
 
     const actionSection = document.querySelector(".action-section");
     if (actionSection) {
@@ -440,36 +455,19 @@
     const form = input?.closest("form");
     if (!searchStage || !input || !form) return;
 
-    const shell = document.createElement("section");
+    const shell = document.createElement("details");
     shell.className = "transaction-discovery-modes";
     shell.setAttribute("aria-label", "طرق الوصول إلى المعاملة");
-    const heading = document.createElement("p");
+    const heading = document.createElement("summary");
     heading.className = "transaction-discovery-label";
-    heading.textContent = "اختر الطريقة الأنسب لك";
-    const modes = document.createElement("div");
-    modes.className = "transaction-discovery-tabs";
-    modes.setAttribute("role", "tablist");
-
-    const direct = document.createElement("button");
-    direct.type = "button";
-    direct.role = "tab";
-    direct.className = "is-active";
-    direct.setAttribute("aria-selected", "true");
-    direct.textContent = "أعرف ما أريد";
-    const guided = document.createElement("button");
-    guided.type = "button";
-    guided.role = "tab";
-    guided.setAttribute("aria-selected", "false");
-    guided.textContent = "ساعدني أحدد المعاملة";
+    heading.textContent = "لست متأكدًا؟ ساعدني أختار";
     const directory = document.createElement("a");
     directory.href = "/services/";
     directory.className = "transaction-directory-link";
-    directory.textContent = "تصفح دليل الخدمات";
-    modes.append(direct, guided, directory);
+    directory.textContent = "أو تصفح دليل الخدمات الكامل";
 
     const guide = document.createElement("div");
     guide.className = "guided-transaction-panel";
-    guide.hidden = true;
     guide.setAttribute("aria-live", "polite");
     const guideIntro = document.createElement("p");
     guideIntro.textContent = "اختر وصفًا قريبًا من حالتك؛ يمكنك تعديل العبارة قبل البحث.";
@@ -493,20 +491,9 @@
       });
       prompts.append(button);
     });
-    guide.append(guideIntro, prompts);
-    shell.append(heading, modes, guide);
-    searchStage.insertAdjacentElement("beforebegin", shell);
-
-    const setMode = (isGuided) => {
-      direct.classList.toggle("is-active", !isGuided);
-      guided.classList.toggle("is-active", isGuided);
-      direct.setAttribute("aria-selected", String(!isGuided));
-      guided.setAttribute("aria-selected", String(isGuided));
-      guide.hidden = !isGuided;
-      if (!isGuided) input.focus();
-    };
-    direct.addEventListener("click", () => setMode(false));
-    guided.addEventListener("click", () => setMode(true));
+    guide.append(guideIntro, prompts, directory);
+    shell.append(heading, guide);
+    searchStage.append(shell);
   }
 
   function enhancePrimaryNavigation() {
@@ -575,7 +562,7 @@
       card.dataset.userTypes = (service.t || []).join(" ");
       card.dataset.route = route || "";
       const action = card.querySelector('.actions a');
-      if (action) action.textContent = "ابدأ";
+      if (action) action.textContent = "اعرف المتطلبات";
       const title = card.querySelector("h3");
       if (title && !card.querySelector(".directory-card-context")) {
         const context = document.createElement("p");
@@ -916,6 +903,8 @@
     if (primary) primary.classList.add("primary-government-cta");
     const publicationState = main.dataset.publicationState || main.querySelector('[data-publication-state]')?.dataset.publicationState;
     const publishedService = publicationState === "VERIFIED" || primary?.dataset.governmentCta === "verified";
+    const existingCommercial = main.querySelector('[data-commercial-cta="verified"]');
+    if (existingCommercial) existingCommercial.textContent = "تواصل معنا لإنجازها";
     if (primary && publishedService && !main.querySelector('[data-commercial-cta="verified"]')) {
       const serviceName = main.querySelector("h1")?.textContent?.trim() || "هذه المعاملة";
       const commercial = document.createElement("a");
@@ -924,7 +913,7 @@
       commercial.target = "_blank";
       commercial.rel = "noopener noreferrer";
       commercial.dataset.commercialCta = "verified";
-      commercial.textContent = "أنجز المعاملة معنا";
+      commercial.textContent = "تواصل معنا لإنجازها";
       const actions = routeMode === "official-bundle-selector"
         ? main.querySelector(".service-hero .actions")
         : primary.closest(".actions") || primary.parentElement;
@@ -933,10 +922,10 @@
         const officialEntry = actions.contains(primary) ? primary : actions.querySelector("a");
         const commercialLabel = document.createElement("span");
         commercialLabel.className = "execution-path-label commercial-path-label";
-        commercialLabel.textContent = "الخيار الأول — مساعدة كاملة عبر مسار حسام بحر";
+        commercialLabel.textContent = "دعنا ننجزها لك";
         const officialLabel = document.createElement("span");
         officialLabel.className = "execution-path-label official-path-label";
-        officialLabel.textContent = "الخيار الثاني — التنفيذ بنفسك عبر المسار الحكومي الرسمي";
+        officialLabel.textContent = "أنجزها بنفسك عبر الجهة الرسمية";
         actions.insertBefore(commercialLabel, officialEntry);
         actions.insertBefore(commercial, officialEntry);
         actions.insertBefore(officialLabel, officialEntry);
@@ -1009,11 +998,7 @@
           ? "الموقع الحكومي الرسمي: ستنتقل مباشرة إلى قناة تقديم هذه المعاملة، وقد يُطلب تسجيل الدخول عبر UAE Pass."
           : "الموقع الحكومي الرسمي: ستنتقل إلى صفحة هذه الخدمة لمراجعة المتطلبات وقنوات التقديم المتاحة.";
       anchor.parentNode?.insertBefore(note, anchor);
-      anchor.textContent = guidance
-        ? "افتح المصدر الحكومي الرسمي ↗"
-        : directExecution
-          ? "ابدأ التقديم الرسمي ↗"
-          : "عرض صفحة الخدمة الرسمية ↗";
+      anchor.textContent = "اذهب للجهة الرسمية ↗";
     }
   }
 
@@ -1055,6 +1040,28 @@
     }
   }
 
+  function linkPopularTransactionsDirectly() {
+    if (location.pathname !== "/") return;
+    const directRoutes = [
+      ["تأسيس شركة", "/services/issue-trade-license-dubai/"],
+      ["تجديد رخصة", "/services/renew-business-license-dubai/"],
+      ["تصريح عمل", "/services/new-work-permit-overseas-uae/"],
+    ];
+    const examples = document.querySelector(".examples");
+    if (!examples) return;
+    const buttons = [...examples.querySelectorAll("button")];
+    directRoutes.forEach(([label, href], index) => {
+      const button = buttons[index];
+      if (!button) return;
+      const link = document.createElement("a");
+      link.className = "popular-transaction-link";
+      link.href = href;
+      link.textContent = label;
+      link.setAttribute("aria-label", `${label} — افتح الخدمة مباشرة`);
+      button.replaceWith(link);
+    });
+  }
+
   // The search loader must start as soon as the deferred runtime sees the
   // parsed homepage. Waiting for the visual enhancement delay can otherwise
   // discard a fast customer's first submit on a cold connection.
@@ -1076,6 +1083,7 @@
     enhanceServiceDetail();
     enhanceVerifiedGovernmentHandoff();
     modernizePresentation();
+    linkPopularTransactionsDirectly();
   };
   document.addEventListener('click', (event) => {
     if (location.pathname !== '/') return;
@@ -1156,3 +1164,4 @@
 })();
 
 /* HOSSAMBAHR A++ END */
+
