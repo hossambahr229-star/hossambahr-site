@@ -106,6 +106,7 @@ export function rankServices(query, services = []) {
   const openCompany = company && includesAny(normalized, ['أفتح','افتح','فتح','تأسيس','تاسيس','open','start','establish']);
   const expiredOrRenewLicense = includesAny(normalized, ['الرخصة','رخصة','license','licence']) && includesAny(normalized, ['انتهت','منتهية','أجدد','اجدد','تجديد','expired','renew']);
   const tradeLicenseContext = includesAny(normalized, ['رخصه تجاريه','رخصه اقتصاديه','trade license','trade licence','commercial license','economic license']);
+  const amendTradeLicense = tradeLicenseContext && includesAny(normalized, ['تعديل','اغير','أغير','amend','modify','change']);
   const addActivity = includesAny(normalized, ['أضيف','اضيف','إضافة','اضافه','add']) && includesAny(normalized, ['نشاط','activity']);
   const addPartner = includesAny(normalized, ['أضيف','اضيف','إضافة','اضافه','add']) && includesAny(normalized, ['شريك','partner']);
   const changePartner = includesAny(normalized, ['تغيير','تعديل','غير','change','amend']) && includesAny(normalized, ['شريك','partner']);
@@ -133,10 +134,14 @@ export function rankServices(query, services = []) {
   const cancelResidence = residence && includesAny(normalized, ['الغاء','الغي','cancel']);
   const touristVisa = includesAny(normalized, ['سياحيه','سياحة','tourist']);
   const outsideDubai = includesAny(normalized, ['خارج دبي','عدا دبي','outside dubai']);
-  const identityContext = includesAny(normalized, ['هويه','هويتي','الهوية','identity']);
+  const identityContext = includesAny(normalized, ['هويه','هويتي','الهوية','identity','emirates id']) || normalizedTokens.has('id');
   const passportContext = includesAny(normalized, ['جواز','passport']);
+  const issueIdentity = identityContext && (includesAny(normalized, ['اصدار','أصدر','اول مره','لأول مرة','issue','first time']) || normalizedTokens.has('new'));
+  const renewIdentity = identityContext && includesAny(normalized, ['تجديد','اجدد','renew']);
+  const renewPassport = passportContext && includesAny(normalized, ['تجديد','اجدد','renew']);
   const lostOrDamaged = includesAny(normalized, ['فاقد','فقدت','تالف','lost','damaged']);
   const customsRegistration = includesAny(normalized, ['جمارك','جمرك','customs']) && includesAny(normalized, ['اسجل','تسجيل','سجل','register','registration']);
+  const vatRegistration = includesAny(normalized, ['vat','value added tax','ضريبه القيمه المضافه','القيمه المضافه']);
 
   return services.map(service => {
     const name = normalizeIntent(`${service.a || ''} ${service.e || ''}`);
@@ -184,6 +189,8 @@ export function rankServices(query, services = []) {
     if (expiredOrRenewLicense && !drivingContext && service.s === 'renew-driving-license-dubai') score -= 420;
     if (expiredOrRenewLicense && !requestsNoc && includesAny(name, ['عدم ممانعة','noc'])) score -= 260;
     if (expiredOrRenewLicense && tradeLicenseContext && includesAny(haystack, ['وكاله التوظيف','employment agency','mohre'])) score -= 720;
+    if (amendTradeLicense && emirate === 'دبي' && service.s === 'amend-business-license-dubai') score += 720;
+    if (amendTradeLicense && includesAny(name, ['عدم ممانعه','noc','rta'])) score -= 720;
     if (addActivity && includesAny(name, ['إضافة أو حذف','تغيير نشاط','add activity','change license activities'])) score += 300;
     if (addActivity && service.s === 'add-business-activity-dubai' && (!emirate || emirate === 'دبي')) score += 520;
     if (addActivity && emirate && !matchesEmirate(service.m || '', emirate)) score -= 620;
@@ -214,8 +221,15 @@ export function rankServices(query, services = []) {
     if (touristVisa && outsideDubai && matchesEmirate(service.m || '', 'دبي')) score -= 760;
     if (identityContext && lostOrDamaged && service.s === 'بدل-فاقد-أو-تالف-للهوية') score += 820;
     if (identityContext && !passportContext && includesAny(name, ['جواز','passport'])) score -= 720;
+    if (issueIdentity && service.s === 'issue-emirates-id-uae') score += 1100;
+    if (issueIdentity && service.s === 'issue-family-data-icp') score -= 900;
+    if (renewIdentity && service.s === 'renew-emirates-id-uae') score += 1100;
+    if (renewIdentity && service.s === 'issue-emirates-id-uae') score -= 900;
+    if (renewPassport && service.s === 'renew-uae-passport-icp') score += 1100;
+    if (renewPassport && service.s === 'renew-uae-passport-abroad-icp' && !includesAny(normalized, ['خارج الدوله','خارج الامارات','abroad','outside uae'])) score -= 900;
     if (customsRegistration && service.s === 'dubai-customs-business-registration') score += 900;
     if (customsRegistration && !includesAny(haystack, ['جمارك','customs'])) score -= 720;
+    if (vatRegistration && service.s === 'vat-registration-uae') score += 1200;
     if (score > 0 && service.v === 'VERIFIED') score += 2;
     return { ...service, score };
   }).filter(result => result.score > 0)
@@ -425,3 +439,4 @@ if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootstrapIntentSearch, { once: true });
   else bootstrapIntentSearch();
 }
+
