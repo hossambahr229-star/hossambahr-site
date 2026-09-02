@@ -399,7 +399,7 @@ body[data-phase6="true"][data-ux-page="home"] .platform-hero[data-phase6-hero="t
   position: relative;
   display: grid !important;
   grid-template-columns: minmax(0,1.08fr) minmax(390px,.92fr) !important;
-  width: min(calc(100% - 16px),var(--hb-canvas-width));
+  width: min(100%,var(--hb-canvas-width));
   min-height: 420px !important;
   padding: 0 !important;
   overflow: hidden;
