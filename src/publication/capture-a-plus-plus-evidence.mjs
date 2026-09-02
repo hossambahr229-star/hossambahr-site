@@ -6,7 +6,7 @@ import { createRequire } from 'node:module';
 const require=createRequire(import.meta.url);
 const {chromium}=require('playwright');
 const root=resolve(import.meta.dirname,'../..');
-const output=resolve(root,'artifacts/a-plus-plus-global/screenshots');
+const output=resolve(root,'artifacts/phase6/screenshots');
 const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp'};
 await mkdir(output,{recursive:true});
 const server=createServer(async(req,res)=>{try{const url=new URL(req.url,'http://127.0.0.1');let path=decodeURIComponent(url.pathname);let file=resolve(root,`.${path}`);if(path.endsWith('/'))file=resolve(file,'index.html');else if(!extname(path))file=resolve(root,`.${path}.html`);const body=await readFile(file);res.writeHead(200,{'content-type':types[extname(file)]||'application/octet-stream','cache-control':'no-store'});res.end(body)}catch{res.writeHead(404);res.end('Not found')}});
@@ -20,6 +20,8 @@ async function capture(name,path,viewport,action){
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
   await page.goto(`${base}${path}`,{waitUntil:'domcontentloaded'});
   await page.waitForSelector('.hb-trustbar',{timeout:5000}).catch(()=>{});
+  await page.waitForSelector('body[data-phase6="true"]',{timeout:7000});
+  await page.waitForTimeout(250);
   if(action)await action(page);
   await page.screenshot({path:resolve(output,`${name}.png`),fullPage:false});
   const state=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+2,rtl:document.documentElement.dir==='rtl',design:getComputedStyle(document.documentElement).getPropertyValue('--hb-green-900').trim()}));
@@ -37,5 +39,12 @@ evidence.push(await capture('smart-search-1440','/',{width:1440,height:900},asyn
 evidence.push(await capture('service-journey-1920','/services/issue-trade-license-dubai/',{width:1920,height:1080}));
 evidence.push(await capture('mohre-journey-1440','/services/transfer-work-permit-uae/',{width:1440,height:900}));
 evidence.push(await capture('command-center-1440','/command-center/',{width:1440,height:900}));
+evidence.push(await capture('services-directory-1440','/services/',{width:1440,height:900}));
+evidence.push(await capture('activities-1440','/dubai-business-activities.html',{width:1440,height:900}));
+evidence.push(await capture('login-390','/auth/',{width:390,height:844}));
+evidence.push(await capture('account-protection-390','/account/',{width:390,height:844}));
+evidence.push(await capture('updates-1440','/updates/',{width:1440,height:900}));
+evidence.push(await capture('contact-390','/contact/',{width:390,height:844}));
 await browser.close();server.close();
 console.log(JSON.stringify({screenshots:evidence.length,evidence},null,2));
+

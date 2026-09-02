@@ -145,8 +145,9 @@ for (let index = 0; index < journeys.length; index += 1) {
   await top.waitFor({ state: "visible", timeout: 20000 });
   const route = await top.locator("a").getAttribute("href");
   const correct = Boolean(route && expected.test(decodeURIComponent(route)));
-  await top.locator("a").click();
-  await page.waitForLoadState("networkidle");
+  await top.locator("a").click({ noWaitAfter: true });
+  await page.waitForFunction((expectedPath) => decodeURIComponent(location.pathname) === decodeURIComponent(expectedPath), route, { timeout: 30000 });
+  await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
   await page.waitForTimeout(450);
   const requirements = await page.locator("h2").filter({ hasText: /المستندات|المتطلبات|ما الذي تحتاجه/ }).count() > 0;
   const official = page.locator('[data-government-cta="verified"][href^="https://"]').first();
@@ -158,7 +159,7 @@ for (let index = 0; index < journeys.length; index += 1) {
   const noOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
   const rtl = await page.evaluate(() => getComputedStyle(document.documentElement).direction === "rtl");
   const pass = response?.status() === 200 && correct && requirements && officialCount === 1 && contactCount === 1
-    && officialLabel.includes("اذهب للجهة الرسمية") && contactLabel.includes("تواصل معنا لإنجازها")
+    && officialLabel.includes("اذهب للجهة الرسمية") && /(?:تواصل معنا لإنجازها|أريد حسام بحر أن ينجزها لي)/.test(contactLabel)
     && noOverflow && rtl && errors.length === 0;
   if (screenshots.has(index)) await page.screenshot({ path: resolve(output, `${String(index + 1).padStart(2, "0")}-${family}-${profile}.png`), fullPage: true });
   browserResults.push({ query, family, emirate, profile, route, correct, requirements,

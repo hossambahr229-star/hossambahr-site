@@ -393,7 +393,7 @@
     const searchButton = input?.closest("form")?.querySelector('button[type="submit"]');
     if (searchButton) searchButton.textContent = "اعثر على معاملتي";
     [...document.querySelectorAll(".examples button")].forEach((button, index) => {
-      if (index >= 3) button.classList.add("ux-hidden");
+      if (index >= 5) button.classList.add("ux-hidden");
     });
     const advancedHeroLink = document.querySelector('.hero-actions a[href="/command-center/"]');
     if (advancedHeroLink) advancedHeroLink.classList.add("ux-advanced-link");
@@ -976,6 +976,14 @@
       });
       hero.querySelector("h1")?.insertAdjacentElement("afterend", decision);
     }
+    const executionPaths = main.querySelector(".phase2-execution-paths");
+    if (hero && executionPaths && hero.nextElementSibling !== executionPaths) {
+      const notice = hero.nextElementSibling?.classList.contains("legal-service-notice")
+        ? hero.nextElementSibling
+        : null;
+      (notice || hero).insertAdjacentElement("afterend", executionPaths);
+      executionPaths.dataset.phase6Priority = "true";
+    }
     const sections = [...main.querySelectorAll(".detail-section, .content-panel")];
     sections.forEach((section, index) => {
       section.style.setProperty("--section-order", String(index + 1));
@@ -1062,6 +1070,84 @@
     });
   }
 
+  function activatePhase6Experience() {
+    document.body.dataset.phase6 = "true";
+    const nav = document.querySelector(".desktop-nav");
+    if (nav && !nav.querySelector(".phase6-primary-links")) {
+      const primary = document.createElement("div");
+      primary.className = "phase6-primary-links";
+      [
+        ["الشركات", "/categories/companies-establishments/"],
+        ["العمل", "/categories/work-employees/"],
+        ["الإقامة والتأشيرات", "/categories/residency-visas/"],
+        ["الأنشطة", "/dubai-business-activities.html"],
+      ].forEach(([label, href]) => {
+        const anchor = document.createElement("a");
+        anchor.href = href;
+        anchor.textContent = label;
+        primary.append(anchor);
+      });
+      const megaTrigger = nav.querySelector(".hb-mega-trigger");
+      if (megaTrigger) megaTrigger.textContent = "الخدمات  ⌄";
+      megaTrigger?.insertAdjacentElement("afterend", primary);
+      if (!megaTrigger) nav.prepend(primary);
+      [...nav.children].forEach((child) => {
+        if (child.tagName === "A") child.classList.add("phase6-legacy-nav-link");
+      });
+    }
+
+    if (location.pathname === "/") {
+      const hero = document.querySelector(".platform-hero");
+      hero?.setAttribute("data-phase6-hero", "true");
+      const proof = hero?.querySelector(".hero-proof");
+      if (proof && !proof.querySelector(".phase6-proof-title")) {
+        const title = document.createElement("strong");
+        title.className = "phase6-proof-title";
+        title.textContent = "من الوصف إلى المعاملة الرسمية";
+        proof.prepend(title);
+      }
+    }
+
+    if (location.pathname.startsWith("/services/") && !/^\/services\/(?:index\.html)?$/.test(location.pathname)) {
+      const main = document.querySelector("main");
+      const serviceName = main?.querySelector("h1")?.textContent?.trim() || "هذه المعاملة";
+      const facts = [...(main?.querySelectorAll(".service-aside dl > *") || [])];
+      const fact = (label) => {
+        const dt = facts.find((node) => node.tagName === "DT" && node.textContent.trim() === label);
+        return dt?.nextElementSibling?.textContent?.trim() || "غير محدد";
+      };
+      const serviceId = location.pathname.split("/").filter(Boolean).pop() || "service";
+      const message = [
+        "مرحباً، أريد حسام بحر أن ينجز هذه المعاملة:",
+        `الخدمة: ${serviceName}`,
+        `Service ID: ${serviceId}`,
+        `الإمارة: ${fact("الإمارة")}`,
+        `الجهة: ${fact("الجهة")}`,
+        `نوع الطلب: ${fact("نوع الطلب")}`,
+        `رابط الخدمة: ${location.href}`,
+      ].join("\n");
+      main?.querySelectorAll('[data-commercial-cta="verified"]').forEach((anchor) => {
+        anchor.href = `https://wa.me/971503780460?text=${encodeURIComponent(message)}`;
+        anchor.textContent = "أريد حسام بحر أن ينجزها لي";
+      });
+      main?.querySelectorAll("p, li, dd, .faq-answer").forEach((node) => {
+        if (!/^غير موثق(?: بعد| في سجل الكتالوج)?[.\s]*$/u.test(node.textContent.trim())) return;
+        const section = node.closest("section, article, .detail-section, .content-panel");
+        const heading = section?.querySelector("h2, h3")?.textContent || "";
+        if (/مستند|وثائق/u.test(heading)) {
+          node.textContent = "لم تنشر الجهة قائمة ثابتة؛ تختلف المستندات بحسب صفة مقدم الطلب وحالته، وتظهر القائمة النهائية في القناة الرسمية.";
+        } else if (/رسوم/u.test(heading)) {
+          node.textContent = "لم تنشر الجهة رسمًا ثابتًا؛ تظهر القيمة النهائية بعد إدخال تفاصيل الطلب في القناة الرسمية.";
+        } else if (/مدة|إنجاز/u.test(heading)) {
+          node.textContent = "لم تنشر الجهة مدة ثابتة؛ تعتمد المدة على اكتمال البيانات والموافقات المطلوبة.";
+        } else {
+          node.textContent = "لم تنشر الجهة تفاصيل ثابتة لهذا البند؛ راجع البيانات التي تعرضها القناة الرسمية لحالتك قبل الإرسال.";
+        }
+        node.dataset.phase6ContentExplained = "true";
+      });
+    }
+  }
+
   // The search loader must start as soon as the deferred runtime sees the
   // parsed homepage. Waiting for the visual enhancement delay can otherwise
   // discard a fast customer's first submit on a cold connection.
@@ -1084,6 +1170,7 @@
     enhanceVerifiedGovernmentHandoff();
     modernizePresentation();
     linkPopularTransactionsDirectly();
+    activatePhase6Experience();
   };
   document.addEventListener('click', (event) => {
     if (location.pathname !== '/') return;
