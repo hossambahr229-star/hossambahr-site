@@ -1116,7 +1116,9 @@
         const dt = facts.find((node) => node.tagName === "DT" && node.textContent.trim() === label);
         return dt?.nextElementSibling?.textContent?.trim() || "غير محدد";
       };
-      const serviceId = location.pathname.split("/").filter(Boolean).pop() || "service";
+      const encodedServiceId = location.pathname.split("/").filter(Boolean).pop() || "service";
+      let serviceId = encodedServiceId;
+      try { serviceId = decodeURIComponent(encodedServiceId); } catch { /* Keep the original stable identifier. */ }
       const message = [
         "مرحباً، أريد حسام بحر أن ينجز هذه المعاملة:",
         `الخدمة: ${serviceName}`,

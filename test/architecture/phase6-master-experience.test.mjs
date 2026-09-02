@@ -31,6 +31,7 @@ test('Phase 6 preserves one search and five lightweight examples', async () => {
 
 test('commercial execution carries full service context without changing government CTA', async () => {
   const runtime = await readFile(resolve(root, 'zero-defect-routing.js'), 'utf8');
+  assert.match(runtime, /decodeURIComponent\(encodedServiceId\)/);
   assert.match(runtime, /Service ID: \$\{serviceId\}/);
   assert.match(runtime, /الإمارة: \$\{fact\("الإمارة"\)\}/);
   assert.match(runtime, /الجهة: \$\{fact\("الجهة"\)\}/);
