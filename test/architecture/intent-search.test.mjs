@@ -47,6 +47,7 @@ test('company setup respects the requested emirate', () => {
 
 test('English natural-language query resolves to overseas work permit', () => {
   assert.equal(rankServices('hire an employee from outside UAE', services)[0].s, 'new-work-permit-overseas-uae');
+  assert.equal(rankServices('I need a new work permit', services)[0].s, 'new-work-permit-overseas-uae');
 });
 
 test('business idea returns clothing activities and code search is exact', () => {

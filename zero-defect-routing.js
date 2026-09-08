@@ -198,7 +198,7 @@
       if (!response.ok) return;
       const summary = await response.json();
       if (location.pathname === "/command-center/") setTimeout(() => enhanceCommandCenter(summary), 2400);
-      const total = summary.verified;
+      const total = summary.services;
       const authorities = summary.authorities;
       const categoryCounts = new Map(Object.entries(summary.categoryCounts || {}));
       const audienceCounts = new Map(Object.entries(summary.audienceCounts || {}));
@@ -216,7 +216,7 @@
         if (!match || !categoryCounts.has(match[1])) continue;
         const count = categoryCounts.get(match[1]);
         const countNode = [...anchor.querySelectorAll("span,small")].find((node) => /موثقة|خدمة/.test(node.textContent || ""));
-        if (countNode) countNode.textContent = `${count} موثقة`;
+        if (countNode) countNode.textContent = `${count} خدمة منشورة`;
         if (count === 0 && anchor.closest(".category-grid, .category-directory-grid, .category-list-grid")) anchor.hidden = true;
       }
 
@@ -229,7 +229,7 @@
       }
       const liveItems = document.querySelectorAll(".live-stats dl > div");
       const liveMetrics = [
-        ["خدمة موثقة منشورة", total],
+        ["خدمة منشورة", total],
         ["جهة حكومية مغطاة", authorities],
         ["نشاط اقتصادي في دليل دبي", summary.activities || 0],
         ["إمارات مغطاة", summary.coveredEmirates || 7],
@@ -246,7 +246,7 @@
         liveItems[index].hidden = true;
       }
       const footerScope = document.querySelector(".footer-intro > span");
-      if (footerScope) footerScope.textContent = `${total} خدمة موثقة · ${authorities} جهة مغطاة`;
+      if (footerScope) footerScope.textContent = `${total} خدمة منشورة · ${authorities} جهة مغطاة`;
 
       const footerSections = document.querySelectorAll(".site-footer > div");
       const footerStatus = footerSections[footerSections.length - 1]?.querySelector("p");
@@ -258,7 +258,7 @@
       const footerReview = document.querySelector(".footer-legal");
       if (footerReview && summary.lastOperationalReview) {
         const date = String(summary.lastOperationalReview).slice(0, 10);
-        footerReview.textContent = `آخر مراجعة تشغيلية موثقة: ${date}. لا تطلب المنصة بيانات شخصية ولا تنفذ المعاملة نيابة عن الجهة الحكومية.`;
+        footerReview.textContent = `آخر مراجعة لمحتوى الخدمات: ${date}. تختلف عن تاريخ فحص الروابط والتحديث التقني. لا تطلب المنصة بيانات شخصية ولا تنفذ المعاملة نيابة عن الجهة الحكومية.`;
       }
 
       for (const anchor of document.querySelectorAll('.audience-grid a[href^="/for/"]')) {
@@ -311,7 +311,7 @@
     if (!main || !hero || !legacyMetrics) return;
 
     const metrics = [
-      [summary.verified, "خدمة منشورة من السجل الحي"],
+      [summary.services, "خدمة منشورة من السجل الحي"],
       [summary.activities, "نشاط اقتصادي في دليل دبي"],
       [summary.coveredEmirates, "إمارات مغطاة"],
       [summary.authorities, "جهة حكومية مغطاة"],
@@ -1006,7 +1006,11 @@
           ? "الموقع الحكومي الرسمي: ستنتقل مباشرة إلى قناة تقديم هذه المعاملة، وقد يُطلب تسجيل الدخول عبر UAE Pass."
           : "الموقع الحكومي الرسمي: ستنتقل إلى صفحة هذه الخدمة لمراجعة المتطلبات وقنوات التقديم المتاحة.";
       anchor.parentNode?.insertBefore(note, anchor);
-      anchor.textContent = "اذهب للجهة الرسمية ↗";
+      anchor.textContent = guidance
+        ? "افتح الدليل الحكومي الرسمي ↗"
+        : directExecution
+          ? "ابدأ التنفيذ الحكومي الرسمي ↗"
+          : "افتح صفحة الخدمة الحكومية ↗";
     }
   }
 
@@ -1253,4 +1257,3 @@
 })();
 
 /* HOSSAMBAHR A++ END */
-

@@ -102,6 +102,8 @@ export function rankServices(query, services = []) {
   const residence = includesAny(normalized, ['إقامة','اقامه','residence','residency']);
   const employee = includesAny(normalized, ['عامل','موظف','employee','worker']);
   const transferEmployee = employee && includesAny(normalized, ['نقل','transfer']);
+  const newWorkPermit = includesAny(normalized, ['تصريح عمل','work permit'])
+    && includesAny(normalized, ['جديد','اصدار','إصدار','new','issue','issuance']);
   const visitRelative = includesAny(normalized, ['زيارة','visit']) && includesAny(normalized, ['أخويا','اخويا','قريب','صديق','relative','friend']);
   const openCompany = company && includesAny(normalized, ['أفتح','افتح','فتح','تأسيس','تاسيس','open','start','establish']);
   const expiredOrRenewLicense = includesAny(normalized, ['الرخصة','رخصة','license','licence']) && includesAny(normalized, ['انتهت','منتهية','أجدد','اجدد','تجديد','expired','renew']);
@@ -121,6 +123,8 @@ export function rankServices(query, services = []) {
   const drivingContext = includesAny(normalized, ['قياده','سائق','سياره','مركبه','مرور','driving','driver','vehicle','traffic']);
   const cancelEmployee = employee && includesAny(normalized, ['إلغاء','الغاء','ألغي','الغي','cancel','terminate']);
   const cleaningCompany = company && includesAny(normalized, ['تنظيف','نظافة','cleaning','clean']);
+  const healthcareContext = includesAny(normalized, ['صحي','صحيه','طبي','عياده','مستشفى','health','medical','clinic','hospital']);
+  const propertyContext = includesAny(normalized, ['عقار','عقاري','وسيط','property','real estate','broker']);
   const personalAttestation = includesAny(normalized, ['تصديق','attest']) && includesAny(normalized, ['شهادة','مستند','وثيقة','certificate','document']) && !includesAny(normalized, ['فاتورة','تجاري','invoice','commercial']);
   const openEstablishmentFile = includesAny(normalized, ['فتح','افتح','open']) && includesAny(normalized, ['ملف','file']) && includesAny(normalized, ['منشأة','منشاه','establishment']);
   const normalizedTokens = new Set(normalized.split(' '));
@@ -169,6 +173,8 @@ export function rankServices(query, services = []) {
     if (insideUae && service.s === 'transfer-work-permit-uae') score += 180;
     if (transferEmployee && service.s === 'transfer-work-permit-uae') score += 520;
     if (outsideUae && service.s === 'new-work-permit-overseas-uae') score += 180;
+    if (newWorkPermit && service.s === 'new-work-permit-overseas-uae') score += 520;
+    if (newWorkPermit && !transferEmployee && service.s === 'transfer-work-permit-uae') score -= 420;
     if (company && includesAny(name, ['license issuance','licence issuance','اصدار رخصه','تاسيس الاعمال'])) score += 70;
     if (company && (!emirate || matchesEmirate(service.m || '', emirate)) && includesAny(haystack, ['license','licence','رخصه','ترخيص']) && includesAny(haystack, ['issue','issuance','اصدار'])) score += 150;
     if (issueLicense && (!emirate || matchesEmirate(service.m || '', emirate)) && includesAny(name, ['اصدار رخصه','license issuance','issue trade license'])) score += 520;
@@ -184,6 +190,9 @@ export function rankServices(query, services = []) {
     if (openCompany && emirate === 'دبي' && service.s === 'issue-trade-license-dubai') score += 420;
     if (cleaningCompany && service.s === 'issue-trade-license-dubai') score += 520;
     if (businessIdea && emirate === 'دبي' && service.s === 'issue-trade-license-dubai') score += 420;
+    if (openCompany && !healthcareContext && includesAny(haystack, ['منشأة صحية','مهنه صحيه','healthcare facility','health professional'])) score -= 720;
+    if (openCompany && !propertyContext && includesAny(haystack, ['نشاط عقاري','real estate professional'])) score -= 620;
+    if (cleaningCompany && service.s !== 'issue-trade-license-dubai' && !includesAny(haystack, ['تنظيف','نظافه','cleaning'])) score -= 260;
     if (expiredOrRenewLicense && includesAny(name, ['تجديد رخصة','license renewal','renew license','renewal'])) score += 260;
     if (expiredOrRenewLicense && !drivingContext && emirate === 'دبي' && service.s === 'renew-business-license-dubai') score += 420;
     if (expiredOrRenewLicense && !drivingContext && service.s === 'renew-driving-license-dubai') score -= 420;
@@ -299,6 +308,20 @@ export function rankActivities(query, activities = []) {
     .sort((left, right) => right.score - left.score || left.nameAr.localeCompare(right.nameAr, 'ar'));
 }
 
+export function hasActivityIntent(query) {
+  const normalized = normalizeIntent(query);
+  const compact = normalized.replace(/\s/g, '');
+  if (/^\d{2,}$/.test(compact)) return true;
+  return includesAny(normalized, [
+    'نشاط', 'رمز النشاط', 'activity', 'activity code',
+    'افتح شركه', 'اسس شركه', 'تاسيس شركه', 'start a company', 'set up a company',
+    'محل', 'متجر', 'مطعم', 'مقهي', 'تنظيف', 'ترجمه', 'ملابس', 'خياطه',
+    'برمجه', 'تطبيقات', 'تجاره الكترونيه', 'مقاولات', 'عياده', 'صالون',
+    'shop', 'store', 'restaurant', 'cafe', 'cleaning', 'translation', 'clothing',
+    'tailor', 'software', 'application development', 'ecommerce', 'contracting', 'clinic', 'salon'
+  ]);
+}
+
 function element(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -363,7 +386,10 @@ function renderResults(container, query, services, activities) {
     const card = element('article', 'intent-result-card');
     if (primary) card.classList.add('is-top-match');
     const meta = element('div', 'intent-result-meta');
-    meta.append(element('span', '', 'خدمة حكومية'), element('span', service.v === 'VERIFIED' ? 'verified' : 'pending', service.v === 'VERIFIED' ? 'موثقة' : 'الرابط الرسمي قيد التحقق'));
+    const trustLabel = service.ov
+      ? (service.dv ? 'الرابط والتفاصيل موثقة' : 'رابط التنفيذ الرسمي موثق')
+      : 'الرابط الرسمي قيد التحقق';
+    meta.append(element('span', '', 'خدمة حكومية'), element('span', service.ov ? 'verified' : 'pending', trustLabel));
     const title = element('h3', '', CUSTOMER_SERVICE_LABELS.get(service.s) || repairText(service.a));
     const officialName = CUSTOMER_SERVICE_LABELS.has(service.s) ? element('small', 'intent-official-name', `الاسم الرسمي: ${repairText(service.a)}`) : null;
     const explanation = element('p', 'intent-result-explanation', repairText(service.d || 'اعرض المتطلبات للتأكد أن هذه المعاملة تناسب حالتك.'));
@@ -423,9 +449,10 @@ export function bootstrapIntentSearch() {
   const submit = async () => {
     const query = input.value.trim();
     if (!query) { input.focus(); return; }
-    if (window.HB_ACTIVITY_DATA_READY) await window.HB_ACTIVITY_DATA_READY;
+    const activityIntent = hasActivityIntent(query);
+    if (activityIntent && window.HB_ACTIVITY_DATA_READY) await window.HB_ACTIVITY_DATA_READY;
     const services = rankServices(query, window.HB_INTENT_SERVICES || []);
-    const activities = rankActivities(query, window.DUBAI_ACTIVITIES || []);
+    const activities = activityIntent ? rankActivities(query, window.DUBAI_ACTIVITIES || []) : [];
     renderResults(container, query, services, activities);
     input.setAttribute('aria-expanded', 'true');
   };

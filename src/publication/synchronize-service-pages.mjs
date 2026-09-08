@@ -21,7 +21,29 @@ const commercialMessage = (service) => encodeURIComponent(`مرحباً، أري
 
 function executionPaths(service) {
   const destinationKind = String(service.destinationKind || 'DIRECT_SERVICE').toLowerCase().replaceAll('_', '-');
-  return `<section class="detail-section phase2-execution-paths" data-phase2-execution-paths><div class="phase2-path-heading"><span class="eyebrow">اختر طريقة التنفيذ</span><h2>ماذا تريد أن تفعل الآن؟</h2><p>اختر التنفيذ بنفسك عبر المصدر الحكومي الموثق، أو اطلب مساعدة حسام بحر في تجهيز المعاملة.</p></div><div class="phase2-path-grid"><article><span>المسار الحكومي</span><h3>أنجزها بنفسك عبر الجهة الرسمية</h3><p>راجع المتطلبات النهائية وقدّم الطلب من القناة الرسمية الخاصة بهذه المعاملة.</p><a class="primary-government-cta" data-government-cta="verified" data-destination-kind="${escapeHtml(destinationKind)}" href="${escapeHtml(service.officialCtaUrl)}" rel="noopener noreferrer">فتح المسار الحكومي الرسمي</a></article><article><span>مسار المساعدة</span><h3>تواصل معنا لإنجاز المعاملة</h3><p>نساعدك في تحديد النواقص وتجهيز الخطوات دون الادعاء بأننا الجهة الحكومية.</p><a class="execute-with-us-cta" data-commercial-cta="verified" href="https://wa.me/971503780460?text=${commercialMessage(service)}" target="_blank" rel="noopener noreferrer">اطلب مساعدة حسام بحر</a></article></div><p class="phase2-source-note">المصدر الرسمي: <a href="${escapeHtml(service.officialInformationUrl)}" rel="noopener noreferrer">${escapeHtml(service.authority.ar)}</a> · آخر تحقق: <time datetime="${escapeHtml(service.lastReviewedAt)}">${escapeHtml(service.lastReviewedAt)}</time></p></section>`;
+  const officialAction = destinationKind === 'direct-execution'
+    ? {
+        title: 'ابدأ التنفيذ عبر الجهة الرسمية',
+        description: 'انتقل مباشرة إلى قناة تقديم هذه المعاملة، وقد يُطلب تسجيل الدخول عبر UAE Pass.',
+        label: 'ابدأ التنفيذ الحكومي الرسمي ↗',
+      }
+    : destinationKind === 'official-guidance'
+      ? {
+          title: 'راجع الدليل الحكومي الرسمي',
+          description: 'هذه الوجهة مصدر حكومي يشرح المعاملة؛ اتبع منه قناة التقديم المتاحة ولا تُعامل كرابط تنفيذ مباشر.',
+          label: 'افتح الدليل الحكومي الرسمي ↗',
+        }
+      : {
+          title: 'افتح صفحة الخدمة الحكومية',
+          description: 'راجع المتطلبات وقنوات التقديم المتاحة في الصفحة الحكومية الخاصة بهذه الخدمة.',
+          label: 'افتح صفحة الخدمة الحكومية ↗',
+        };
+  const trust = service.verification || {};
+  const trustLabel = trust.detailsVerified ? 'الرابط والتفاصيل المعروضة موثقة' : 'رابط التنفيذ الرسمي موثق — بعض التفاصيل قيد التحقق';
+  const trustDetail = trust.detailsVerified
+    ? 'تمت مراجعة الرابط والمتطلبات والرسوم والمدة والشروط المنشورة.'
+    : 'لا نعرض أي رسم أو مدة أو مستند غير منشور رسميًا باعتباره معلومة مؤكدة.';
+  return `<section class="detail-section phase2-execution-paths" data-phase2-execution-paths data-verification-label="${escapeHtml(trust.label)}"><div class="phase2-path-heading"><span class="eyebrow">اختر طريقة التنفيذ</span><h2>ماذا تريد أن تفعل الآن؟</h2><p>اختر المسار الحكومي الموثق المتاح لهذه المعاملة، أو اطلب مساعدة حسام بحر في تجهيزها.</p></div><div class="service-trust-state" role="status"><strong>${escapeHtml(trustLabel)}</strong><span>${escapeHtml(trustDetail)}</span></div><div class="phase2-path-grid"><article><span>المسار الحكومي</span><h3>${escapeHtml(officialAction.title)}</h3><p>${escapeHtml(officialAction.description)}</p><a class="primary-government-cta" data-government-cta="verified" data-destination-kind="${escapeHtml(destinationKind)}" href="${escapeHtml(service.officialCtaUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(officialAction.label)}</a></article><article><span>مسار المساعدة</span><h3>تواصل معنا لإنجاز المعاملة</h3><p>نساعدك في تحديد النواقص وتجهيز الخطوات دون الادعاء بأننا الجهة الحكومية.</p><a class="execute-with-us-cta" data-commercial-cta="verified" href="https://wa.me/971503780460?text=${commercialMessage(service)}" target="_blank" rel="noopener noreferrer">تواصل معنا لإنجاز المعاملة</a></article></div><p class="phase2-source-note">المصدر الرسمي: <a href="${escapeHtml(service.officialInformationUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(service.authority.ar)}</a> · آخر تحقق من الرابط الرسمي: <time datetime="${escapeHtml(trust.officialLinkLastCheckedAt)}">${escapeHtml(trust.officialLinkLastCheckedAt)}</time> · آخر مراجعة لمحتوى الخدمة: <time datetime="${escapeHtml(trust.dataLastReviewedAt)}">${escapeHtml(trust.dataLastReviewedAt)}</time></p></section>`;
 }
 
 for (const service of registry.services) {
@@ -58,7 +80,7 @@ for (const service of registry.services) {
     demotedDuplicateGovernmentCtas += duplicateGovernmentCtas;
   }
   if (html.includes('data-phase2-execution-paths')) {
-    html = html.replace(/<section class="detail-section phase2-execution-paths" data-phase2-execution-paths>[\s\S]*?<\/section>/, block);
+    html = html.replace(/<section class="detail-section phase2-execution-paths" data-phase2-execution-paths(?:\s[^>]*)?>[\s\S]*?<\/section>/, block);
   } else {
     if (!html.includes('</main>')) {
       failures.push(`${service.slug}: cannot place execution paths`);

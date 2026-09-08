@@ -31,7 +31,9 @@ test('government handoff copy distinguishes guidance, service pages and direct e
   assert.match(runtime, /المصدر الذي يشرح هذه المعاملة/);
   assert.match(runtime, /ستنتقل إلى صفحة هذه الخدمة/);
   assert.match(runtime, /ستنتقل مباشرة إلى قناة تقديم هذه المعاملة/);
-  assert.match(runtime, /اذهب للجهة الرسمية/);
+  assert.match(runtime, /افتح الدليل الحكومي الرسمي/);
+  assert.match(runtime, /ابدأ التنفيذ الحكومي الرسمي/);
+  assert.match(runtime, /افتح صفحة الخدمة الحكومية/);
   assert.match(runtime, /DIRECT_EXECUTION/);
   assert.match(runtime, /DIRECT_SERVICE/);
 });

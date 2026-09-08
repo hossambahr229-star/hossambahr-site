@@ -20,7 +20,7 @@ for (const service of registry.services) {
   const html = await readFile(path, 'utf8');
   if (!html.includes('data-heritage-identity="f0de873"')) errors.push(`${service.slug}: historical identity marker missing`);
   if (!html.includes(`data-publication-state="${service.classification}"`)) errors.push(`${service.slug}: classification not rendered`);
-  const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
+  const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1].replaceAll('&amp;', '&'));
   active += activeLinks.length;
   if (service.normalization?.excludeFromRealTotal) {
     if (service.officialUrl !== null) errors.push(`${service.slug}: normalized historical record must not retain an official URL`);
@@ -59,14 +59,25 @@ for (const service of gdrfaServices) {
   const path = resolve(root, service.internalUrl.replace(/^\/+/, ''), 'index.html');
   try { await access(path); } catch { errors.push(`${service.slug}: missing GDRFA internal route`); continue; }
   const html = await readFile(path, 'utf8');
-  const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1]);
+  const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1].replaceAll('&amp;', '&'));
   if (!html.includes('data-heritage-identity="f0de873"')) errors.push(`${service.slug}: GDRFA historical identity marker missing`);
   if (normalizedGdrfaIds.has(service.id)) {
     if (activeLinks.length) errors.push(`${service.slug}: normalized GDRFA sub-service exposes an active CTA`);
     if (!html.includes('data-gdrfa-audit-state="SUB_SERVICE"')) errors.push(`${service.slug}: GDRFA sub-service normalization marker missing`);
   } else {
     if (!verifiedGdrfaIds.has(service.id)) errors.push(`${service.slug}: GDRFA service is absent from the official audit`);
-    if (activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: GDRFA verified CTA mismatch`);
+    const allowedPrimaryDestinations = new Set([
+      service.officialUrl,
+      service.officialRouteMode === 'direct-execution' ? service.executionUrl : null,
+    ].filter(Boolean));
+    if (activeLinks.length !== 1 || !allowedPrimaryDestinations.has(activeLinks[0])) errors.push(`${service.slug}: GDRFA verified CTA mismatch`);
+    const executionLinks = [...html.matchAll(/<a\b[^>]*data-government-execution="verified"[^>]*href="([^"]+)"/gi)]
+      .map((match) => match[1].replaceAll('&amp;', '&'));
+    if (service.officialRouteMode === 'direct-execution' && service.executionUrl) {
+      if (executionLinks.length && (executionLinks.length !== 1 || executionLinks[0] !== service.executionUrl)) errors.push(`${service.slug}: GDRFA direct execution CTA mismatch`);
+    } else if (executionLinks.length) {
+      errors.push(`${service.slug}: unexpected GDRFA direct execution CTA`);
+    }
     try {
       const hostname = new URL(service.officialUrl).hostname;
       if (!(hostname === 'gdrfad.gov.ae' || hostname.endsWith('.gdrfad.gov.ae'))) errors.push(`${service.slug}: GDRFA CTA is outside the official domain`);

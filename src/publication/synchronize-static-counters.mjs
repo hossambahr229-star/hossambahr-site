@@ -5,6 +5,7 @@ const root = resolve(import.meta.dirname, '../..');
 const summary = JSON.parse(await readFile(resolve(root, 'platform-summary.json'), 'utf8'));
 const registry = JSON.parse(await readFile(resolve(root, 'src/registry/published-services.json'), 'utf8'));
 const registryRoutes = new Set(registry.services.map((service) => service.internalRoute));
+const registryByRoute = new Map(registry.services.map((service) => [service.internalRoute, service]));
 const files = [];
 
 const escapePattern = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -63,7 +64,13 @@ async function synchronizeServiceDirectory() {
       return '';
     }
     seen.add(route);
-    return card;
+    const service = registryByRoute.get(route);
+    const trustLabel = service?.verification?.detailsVerified
+      ? 'الرابط والتفاصيل موثقة'
+      : 'رابط التنفيذ الرسمي موثق';
+    let normalized = card.replace(/<span>(?:متحقق|موثقة|خدمة موثقة)<\/span>(?=\s*<\/div>)/i, `<span>${trustLabel}</span>`);
+    normalized = normalized.replace(/<article\b/i, `<article data-verification-label="${service?.verification?.label || 'PENDING_VERIFICATION'}"`);
+    return normalized;
   });
   const missing = [...registryRoutes].filter((route) => !seen.has(route));
   if (missing.length || seen.size !== registry.services.length) {

@@ -13,6 +13,9 @@ const icp = await load('content/icp-deep-audit.json');
 const coverage = await load('content/government-coverage-expansion.json');
 
 const reviewedAt = '2026-08-11';
+// Date of the last successful official-destination audit. This is kept
+// separate from content review and technical deployment dates.
+const officialLinkAuditAt = '2026-09-03';
 const unavailable = 'NOT_OFFICIALLY_PUBLISHED';
 const authorityProfiles = new Map([
   ['det-dubai', { ar: 'دائرة الاقتصاد والسياحة في دبي (DET)', en: 'Dubai Department of Economy and Tourism (DET)' }],
@@ -80,6 +83,18 @@ function safeFaq(destinationKind) {
 
 function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt }) {
   const normalizedDestinationKind = verificationStatus === 'VERIFIED' ? destinationKind : 'CTA_DISABLED';
+  const documentsPublished = Boolean(requirements?.length);
+  const feesPublished = Boolean(fees && fees !== unavailable);
+  const durationPublished = Boolean(duration && duration !== unavailable);
+  const conditionsPublished = Boolean(text(conditions) !== unavailable);
+  const officialLinkVerified = verificationStatus === 'VERIFIED' && Boolean(officialCtaUrl);
+  const detailVerification = {
+    requirementsVerified: documentsPublished,
+    feesVerified: feesPublished,
+    durationVerified: durationPublished,
+    eligibilityVerified: conditionsPublished,
+  };
+  const verifiedDetailCount = Object.values(detailVerification).filter(Boolean).length;
   return {
     id,
     slug,
@@ -92,7 +107,7 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
     customerTypes,
     keywords: terms(nameAr, nameEn, authorityAr, authorityEn, emirate, mainCategory, subCategory, keywords),
     description: text(description),
-    documents: { status: requirements?.length ? 'PUBLISHED' : unavailable, items: requirements || [] },
+    documents: { status: documentsPublished ? 'PUBLISHED' : unavailable, items: requirements || [] },
     governmentFees: { status: fees && fees !== unavailable ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(fees) },
     serviceFees: { status: unavailable, text: unavailable },
     processingTime: { status: duration && duration !== unavailable ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(duration) },
@@ -105,6 +120,20 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
     officialCtaUrl: verificationStatus === 'VERIFIED' ? officialCtaUrl || null : null,
     destinationKind: normalizedDestinationKind,
     verificationStatus,
+    verification: {
+      officialLinkVerified,
+      ...detailVerification,
+      detailsVerified: verifiedDetailCount === Object.keys(detailVerification).length,
+      verifiedDetailCount,
+      totalDetailFields: Object.keys(detailVerification).length,
+      label: verifiedDetailCount === Object.keys(detailVerification).length
+        ? 'OFFICIAL_LINK_AND_DETAILS_VERIFIED'
+        : 'OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL',
+      officialLinkLastCheckedAt: officialLinkVerified ? officialLinkAuditAt : null,
+      dataLastReviewedAt: lastReviewedAt,
+      sourceAuthority: normalizedAuthority(authorityId, authorityAr, authorityEn).id,
+      sourceUrl: officialInformationUrl || officialCtaUrl || null,
+    },
     businessAcceptanceStatus: verificationStatus === 'VERIFIED' ? 'APPROVED' : 'PENDING_VERIFICATION',
     lastUpdated: lastReviewedAt,
     lastReviewedAt,
@@ -312,6 +341,9 @@ const registry = {
   summary: {
     services: services.length,
     verified: services.filter((item) => item.verificationStatus === 'VERIFIED').length,
+    officialLinksVerified: services.filter((item) => item.verification.officialLinkVerified).length,
+    fullyVerifiedDetails: services.filter((item) => item.verification.detailsVerified).length,
+    partiallyVerifiedDetails: services.filter((item) => !item.verification.detailsVerified).length,
     pendingVerification: services.filter((item) => item.verificationStatus !== 'VERIFIED').length,
     authorities: new Set(services.map((item) => item.authority.id)).size,
     emirates: [...new Set(services.map((item) => item.emirate))].sort(),

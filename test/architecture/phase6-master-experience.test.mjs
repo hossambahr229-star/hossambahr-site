@@ -37,7 +37,8 @@ test('commercial execution carries full service context without changing governm
   assert.match(runtime, /الجهة: \$\{fact\("الجهة"\)\}/);
   assert.match(runtime, /نوع الطلب: \$\{fact\("نوع الطلب"\)\}/);
   assert.match(runtime, /أريد حسام بحر أن ينجزها لي/);
-  assert.match(runtime, /anchor\.textContent = "اذهب للجهة الرسمية ↗"/);
+  assert.match(runtime, /افتح الدليل الحكومي الرسمي/);
+  assert.match(runtime, /ابدأ التنفيذ الحكومي الرسمي/);
   assert.match(runtime, /لم تنشر الجهة قائمة ثابتة/);
   assert.match(runtime, /لم تنشر الجهة رسمًا ثابتًا/);
   assert.match(runtime, /dataset\.phase6ContentExplained = "true"/);

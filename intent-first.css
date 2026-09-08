@@ -23,6 +23,27 @@
   --ux-control-height: 48px;
 }
 
+/* Keep the static first paint and the progressively enhanced layout inside the
+   viewport. This prevents a brief RTL scrollbar jump while the homepage
+   workspace is being initialized, without changing component dimensions. */
+html, body { max-width: 100%; overflow-x: hidden; }
+@supports (overflow: clip) {
+  html, body { overflow-x: clip; }
+}
+
+.service-trust-state {
+  display: grid;
+  gap: .25rem;
+  margin: .8rem 0 1rem;
+  padding: .8rem 1rem;
+  border-inline-start: 3px solid var(--gold, #b89a5b);
+  background: color-mix(in srgb, var(--surface, #fff) 88%, #efe6d2);
+  color: var(--ink, #17352f);
+}
+
+.service-trust-state strong { font-size: .92rem; }
+.service-trust-state span { font-size: .82rem; color: var(--muted, #596b66); }
+
 html { scroll-behavior: smooth; }
 body { color: var(--ux-ink); background: #fdfcf9; text-rendering: optimizeLegibility; }
 a, button, input, select, summary { -webkit-tap-highlight-color: transparent; }

@@ -23,7 +23,10 @@ const services = registry.services.map((service) => ({
   t: service.customerTypes || [],
   k: service.keywords || [],
   d: service.description || "",
-  v: service.verificationStatus === "VERIFIED" ? "VERIFIED" : "PENDING_VERIFICATION"
+  v: service.verificationStatus === "VERIFIED" ? "VERIFIED" : "PENDING_VERIFICATION",
+  ov: Boolean(service.verification?.officialLinkVerified),
+  dv: Boolean(service.verification?.detailsVerified),
+  vl: service.verification?.label || "PENDING_VERIFICATION"
 }));
 
 const countBy = (values) => Object.fromEntries(
@@ -33,6 +36,9 @@ const countBy = (values) => Object.fromEntries(
 const summary = {
   services: registry.summary.services,
   verified: registry.summary.verified,
+  officialLinksVerified: registry.summary.officialLinksVerified,
+  fullyVerifiedDetails: registry.summary.fullyVerifiedDetails,
+  partiallyVerifiedDetails: registry.summary.partiallyVerifiedDetails,
   pendingVerification: registry.summary.pendingVerification,
   authorities: registry.summary.authorities,
   emirates: registry.summary.emirates,
@@ -44,6 +50,12 @@ const summary = {
     .filter(Boolean)
     .sort()
     .at(-1) || null,
+  lastOfficialLinkAudit: registry.services
+    .map((service) => service.verification?.officialLinkLastCheckedAt)
+    .filter(Boolean)
+    .sort()
+    .at(-1) || null,
+  lastTechnicalRelease: '2026-09-03',
   categoryCounts: countBy(registry.services.map((service) => service.classification.main)),
   audienceCounts: countBy(registry.services.flatMap((service) => service.customerTypes || [])),
 };

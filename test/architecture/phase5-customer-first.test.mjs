@@ -50,7 +50,8 @@ test('homepage exposes one primary search and secondary help only on demand', as
 test('service pages keep both customer execution choices with plain labels', async () => {
   const runtime = await readFile(resolve(root, 'zero-defect-routing.js'), 'utf8');
   assert.match(runtime, /commercial\.textContent = "تواصل معنا لإنجازها"/);
-  assert.match(runtime, /anchor\.textContent = "اذهب للجهة الرسمية ↗"/);
+  assert.match(runtime, /ابدأ التنفيذ الحكومي الرسمي/);
+  assert.match(runtime, /افتح صفحة الخدمة الحكومية/);
   assert.match(runtime, /commercial\.dataset\.commercialCta = "verified"/);
   assert.match(runtime, /data-government-cta/);
 });
