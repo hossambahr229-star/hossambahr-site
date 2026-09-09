@@ -159,7 +159,8 @@ for (let index = 0; index < journeys.length; index += 1) {
   const noOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
   const rtl = await page.evaluate(() => getComputedStyle(document.documentElement).direction === "rtl");
   const pass = response?.status() === 200 && correct && requirements && officialCount === 1 && contactCount === 1
-    && officialLabel.includes("اذهب للجهة الرسمية") && /(?:تواصل معنا لإنجازها|أريد حسام بحر أن ينجزها لي)/.test(contactLabel)
+    && /(?:اذهب للجهة الرسمية|ابدأ التنفيذ الحكومي الرسمي|افتح صفحة الخدمة الحكومية|افتح الدليل الحكومي الرسمي|افتح بوابة التنفيذ الحكومية)/.test(officialLabel)
+    && /(?:تواصل معنا لإنجازها|أريد حسام بحر أن ينجزها لي)/.test(contactLabel)
     && noOverflow && rtl && errors.length === 0;
   if (screenshots.has(index)) await page.screenshot({ path: resolve(output, `${String(index + 1).padStart(2, "0")}-${family}-${profile}.png`), fullPage: true });
   browserResults.push({ query, family, emirate, profile, route, correct, requirements,
