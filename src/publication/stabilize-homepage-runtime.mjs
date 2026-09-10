@@ -41,6 +41,9 @@ if (streamed) {
 if (!html.includes('href="/intent-first.css"')) {
   html = html.replace('</head>', '<link rel="stylesheet" href="/intent-first.css" data-hb-home-runtime="stable"/></head>');
 }
+if (!html.includes('data-account-link="true"')) {
+  html = html.replace(/(<div class="header-actions">)([\s\S]*?)(<\/div>)/, '$1$2<a class="login-action" data-account-link="true" href="/auth/?return=%2F">تسجيل الدخول</a>$3');
+}
 
 const forbidden = [
   ['loading shell', /class=["'][^"']*loading-shell/],
@@ -52,6 +55,7 @@ for (const [label, pattern] of forbidden) {
   if (pattern.test(html)) throw new Error(`Homepage still contains ${label}.`);
 }
 if (!/data-home-render=["']static-stable["']/.test(html)) throw new Error('Stable homepage marker is missing.');
+if (!/data-account-link=["']true["']/.test(html)) throw new Error('Stable authentication action is missing.');
 if ((html.match(/class=["'][^"']*platform-hero/g) || []).length !== 1) throw new Error('Homepage must contain exactly one platform hero.');
 
 await writeFile(homepagePath, html, 'utf8');

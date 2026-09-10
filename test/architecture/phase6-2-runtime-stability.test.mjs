@@ -10,6 +10,7 @@ test('homepage is a single canonical static render without streaming replacement
   const html = await text('index.html');
   assert.match(html, /data-home-render=["']static-stable["']/);
   assert.match(html, /href=["']\/intent-first\.css["']/);
+  assert.match(html, /data-account-link=["']true["']/);
   assert.equal((html.match(/class=["'][^"']*platform-hero/g) || []).length, 1);
   assert.doesNotMatch(html, /class=["'][^"']*loading-shell/);
   assert.doesNotMatch(html, /id=["'](?:B|S):0["']/);
