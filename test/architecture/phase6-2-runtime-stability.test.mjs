@@ -25,4 +25,6 @@ test('homepage discovery loads without invoking the late presentation renderer',
   assert.doesNotMatch(loader, /modernizePresentation\(\)/);
   assert.match(start, /if \(isHomepagePath\(\)\) return/);
   assert.match(runtime, /location\.pathname === "\/index\.html"/);
+  const search = await text('intent-search.js');
+  assert.doesNotMatch(search, /button\.textContent\s*=\s*examples\[index\]/);
 });

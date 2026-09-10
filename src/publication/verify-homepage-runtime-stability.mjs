@@ -47,6 +47,12 @@ async function snapshot(page) {
     const headline = hero?.querySelector('h1');
     const style = hero ? getComputedStyle(hero) : null;
     const rect = hero?.getBoundingClientRect();
+    const box = (selector) => {
+      const element = document.querySelector(selector);
+      const bounds = element?.getBoundingClientRect();
+      const computed = element ? getComputedStyle(element) : null;
+      return bounds ? { x: bounds.x, y: bounds.y, width: bounds.width, height: bounds.height, display: computed.display, visibility: computed.visibility } : null;
+    };
     return {
       headline: headline?.textContent?.replace(/\s+/g, ' ').trim() || '',
       heroClass: hero?.className || '',
@@ -68,6 +74,7 @@ async function snapshot(page) {
         fontSize: getComputedStyle(headline).fontSize,
         lineHeight: getComputedStyle(headline).lineHeight,
       } : null,
+      boxes: Object.fromEntries(['.hero-copy', '.hero-search-stage', '.primary-search', '.examples', '#search-results', '.hero-proof', '.hero-actions'].map((selector) => [selector, box(selector)])),
     };
   });
 }
@@ -87,7 +94,7 @@ async function run(profile, path, warm, context) {
       new MutationObserver((records) => {
         const unexpected = records.filter((record) => {
           const element = record.target.nodeType === Node.ELEMENT_NODE ? record.target : record.target.parentElement;
-          if (element?.closest?.('.primary-search, #search-results, .examples')) return false;
+          if (element?.closest?.('.primary-search, #search-results')) return false;
           return element === hero || Boolean(element?.closest?.('.hero-copy, .hero-proof, .hero-actions'));
         });
         window.__hbRuntimeAudit.heroMutations += unexpected.length;
@@ -102,7 +109,7 @@ async function run(profile, path, warm, context) {
   await page.waitForTimeout(100);
   const early = await snapshot(page);
   await page.evaluate(() => { window.__hbRuntimeAudit.heroMutations = 0; window.__hbRuntimeAudit.shifts = 0; });
-  await page.screenshot({ path: resolve(outputDir, `${profile.name}-${path === '/' ? 'root' : 'index'}-${warm ? 'warm' : 'cold'}-early.png`), fullPage: true });
+  await page.screenshot({ path: resolve(outputDir, `${profile.name}-${path === '/' ? 'root' : 'index'}-${warm ? 'warm' : 'cold'}-early.png`), fullPage: false });
   await page.waitForTimeout(5000);
   const late = await snapshot(page);
   const runtime = await page.evaluate(async () => ({
@@ -110,7 +117,7 @@ async function run(profile, path, warm, context) {
     workers: (await navigator.serviceWorker?.getRegistrations?.() || []).map((worker) => worker.scope),
     caches: await globalThis.caches?.keys?.() || [],
   }));
-  await page.screenshot({ path: resolve(outputDir, `${profile.name}-${path === '/' ? 'root' : 'index'}-${warm ? 'warm' : 'cold'}-5s.png`), fullPage: true });
+  await page.screenshot({ path: resolve(outputDir, `${profile.name}-${path === '/' ? 'root' : 'index'}-${warm ? 'warm' : 'cold'}-5s.png`), fullPage: false });
   const rectDelta = early.rect && late.rect ? Math.max(
     Math.abs(early.rect.x - late.rect.x), Math.abs(early.rect.y - late.rect.y),
     Math.abs(early.rect.width - late.rect.width), Math.abs(early.rect.height - late.rect.height),
