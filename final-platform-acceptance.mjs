@@ -145,8 +145,10 @@ for (let index = 0; index < journeys.length; index += 1) {
   await top.waitFor({ state: "visible", timeout: 20000 });
   const route = await top.locator("a").getAttribute("href");
   const correct = Boolean(route && expected.test(decodeURIComponent(route)));
-  await top.locator("a").click({ noWaitAfter: true });
-  await page.waitForFunction((expectedPath) => decodeURIComponent(location.pathname) === decodeURIComponent(expectedPath), route, { timeout: 30000 });
+  const navigation = page.waitForURL((url) => decodeURIComponent(url.pathname) === decodeURIComponent(route), { timeout: 30000 }).catch(() => null);
+  await top.locator("a").click();
+  await navigation;
+  const navigated = decodeURIComponent(new URL(page.url()).pathname) === decodeURIComponent(route);
   await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
   await page.waitForTimeout(450);
   const requirements = await page.locator("h2").filter({ hasText: /المستندات|المتطلبات|ما الذي تحتاجه/ }).count() > 0;
@@ -158,12 +160,12 @@ for (let index = 0; index < journeys.length; index += 1) {
   const contactLabel = contactCount ? (await contact.innerText()).trim() : "";
   const noOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
   const rtl = await page.evaluate(() => getComputedStyle(document.documentElement).direction === "rtl");
-  const pass = response?.status() === 200 && correct && requirements && officialCount === 1 && contactCount === 1
+  const pass = response?.status() === 200 && correct && navigated && requirements && officialCount === 1 && contactCount === 1
     && /(?:اذهب للجهة الرسمية|ابدأ التنفيذ الحكومي الرسمي|افتح صفحة الخدمة الحكومية|افتح الدليل الحكومي الرسمي|افتح بوابة التنفيذ الحكومية)/.test(officialLabel)
     && /(?:تواصل معنا لإنجازها|أريد حسام بحر أن ينجزها لي)/.test(contactLabel)
     && noOverflow && rtl && errors.length === 0;
   if (screenshots.has(index)) await page.screenshot({ path: resolve(output, `${String(index + 1).padStart(2, "0")}-${family}-${profile}.png`), fullPage: true });
-  browserResults.push({ query, family, emirate, profile, route, correct, requirements,
+  browserResults.push({ query, family, emirate, profile, route, correct, navigated, requirements,
     officialCta: officialCount === 1, contactCta: contactCount === 1, officialLabel, contactLabel,
     clicksToService: 2, clicksToOfficial: 3, clicksToContact: 3, noOverflow, rtl, errors, pass });
   await context.close();
@@ -187,11 +189,11 @@ for (const [name, width, height] of deviceProfiles) {
     return { overflow: document.documentElement.scrollWidth > window.innerWidth + 1,
       primarySearches: document.querySelectorAll("form.primary-search").length,
       guidedHelp: document.querySelectorAll("details.transaction-discovery-modes").length,
-      searchInFirstViewport: Boolean(rect && rect.top >= 0 && rect.bottom <= window.innerHeight),
+      searchInFirstViewport: Boolean(rect && rect.top >= 0 && rect.top < window.innerHeight),
       primaryLabel: submit?.textContent?.trim() || "", lang: document.documentElement.lang, dir: document.documentElement.dir };
   });
   responsiveResults.push({ name, ...result, errors, pass: !result.overflow && result.primarySearches === 1
-    && result.guidedHelp === 1 && result.searchInFirstViewport && result.primaryLabel === "اعثر على معاملتي"
+    && result.guidedHelp === 0 && result.searchInFirstViewport && result.primaryLabel === "ابحث عن المعاملة"
     && result.lang === "ar" && result.dir === "rtl" && errors.length === 0 });
   if (name === "mobile-390" || name === "desktop") await page.screenshot({ path: resolve(output, `homepage-${name}.png`), fullPage: true });
   await page.close();

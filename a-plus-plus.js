@@ -2,7 +2,7 @@
   'use strict';
   const html = document.documentElement;
   const path = location.pathname;
-  const pageType = path === '/' ? 'home' : path === '/services/' ? 'directory' :
+  const pageType = (path === '/' || path === '/index.html') ? 'home' : path === '/services/' ? 'directory' :
     path.startsWith('/services/') ? 'service' : path.includes('command-center') ? 'command' :
     path.includes('dashboard') ? 'dashboard' : path.includes('dubai-business-activities') ? 'activities' : 'standard';
 

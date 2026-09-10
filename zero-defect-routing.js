@@ -1,4 +1,5 @@
 (() => {
+  const isHomepagePath = () => location.pathname === "/" || location.pathname === "/index.html";
   function loadAuthenticationRuntime() {
     if (window.HB_AUTH || document.querySelector('script[data-hb-auth-runtime]')) return;
     const load = (source) => new Promise((resolve, reject) => {
@@ -73,7 +74,7 @@
         }
         if (submitButton) submitButton.disabled = false;
         if (pendingSubmit && input.value.trim()) form?.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-        modernizePresentation();
+        // Search readiness must not rewrite the already-rendered homepage.
       })
       .catch(() => {
         form?.removeEventListener("submit", queueEarlySubmit, true);
@@ -1161,6 +1162,9 @@
 
   const start = () => {
     loadIntentFirstStyles();
+    // The homepage is a canonical static render. All discovery functionality
+    // is loaded above, but its presentation must never be replaced after paint.
+    if (isHomepagePath()) return;
     setupFilter();
     alignGlobalCounts();
     isolateHomepageGovernmentCtas();
@@ -1179,7 +1183,7 @@
     activatePhase6Experience();
   };
   document.addEventListener('click', (event) => {
-    if (location.pathname !== '/') return;
+    if (!isHomepagePath()) return;
     const external = event.target.closest?.('a[href^="https://"], a[href^="http://"]');
     if (external) event.preventDefault();
   }, { capture: true });
@@ -1195,7 +1199,7 @@
   'use strict';
   const html = document.documentElement;
   const path = location.pathname;
-  const pageType = path === '/' ? 'home' : path === '/services/' ? 'directory' :
+  const pageType = (path === '/' || path === '/index.html') ? 'home' : path === '/services/' ? 'directory' :
     path.startsWith('/services/') ? 'service' : path.includes('command-center') ? 'command' :
     path.includes('dashboard') ? 'dashboard' : path.includes('dubai-business-activities') ? 'activities' : 'standard';
 
