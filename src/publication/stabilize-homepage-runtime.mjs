@@ -108,10 +108,14 @@ const secondaryMarkers = [
   'class="content-section government-live-section"',
   'class="content-section command-promo"',
 ];
+html = html.replace(
+  /<details class="phase7-secondary-home content-section"><summary><span>استكشف المزيد<\/span><small>الفئات، دليل التأسيس، أنواع المستخدمين ومركز القيادة<\/small><\/summary><div class="phase7-secondary-home-content"><\/div><\/details>/g,
+  ''
+);
 const secondarySections = secondaryMarkers
   .map((marker) => extractBalancedElement(html, marker))
   .filter(Boolean);
-if (secondarySections.length && !html.includes('class="phase7-secondary-home"')) {
+if (secondarySections.length && !/class=["'][^"']*\bphase7-secondary-home\b/.test(html)) {
   secondarySections.forEach((section) => { html = html.replace(section, ''); });
   const disclosure = `<details class="phase7-secondary-home content-section"><summary><span>استكشف المزيد</span><small>الفئات، دليل التأسيس، أنواع المستخدمين ومركز القيادة</small></summary><div class="phase7-secondary-home-content">${secondarySections.join('')}</div></details>`;
   const legalCallout = extractBalancedElement(html, 'class="content-section legal-callout"');
