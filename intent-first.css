@@ -360,6 +360,130 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:first-child {
   .service-secondary-actions>div { display: grid; }
 }
 
+/* Phase 7: customer-first hierarchy. The content and routes remain intact; the
+   initial view is reduced to search, common outcomes and trusted services. */
+body[data-phase7="true"] .site-header {
+  grid-template-columns: auto minmax(0,1fr) auto;
+}
+body[data-phase7="true"] .desktop-nav {
+  justify-content: center;
+  gap: clamp(.5rem,1vw,1.1rem);
+}
+body[data-phase7="true"] .desktop-nav > a {
+  white-space: nowrap;
+  font-size: .88rem;
+}
+body[data-phase7="true"] .platform-hero {
+  min-height: 0;
+  padding-block: clamp(1rem,2vw,1.8rem);
+}
+body[data-phase7="true"] .hero-copy h1 {
+  max-width: 22ch;
+  font-size: clamp(2rem,3.8vw,3.8rem);
+}
+body[data-phase7="true"] .hero-search-stage {
+  align-self: center;
+}
+body[data-phase7="true"] .homepage-secondary-actions {
+  margin-top: .1rem;
+  border-top-color: rgba(255,255,255,.16);
+}
+body[data-phase7="true"] .homepage-secondary-actions > summary {
+  color: rgba(255,255,255,.82);
+}
+body[data-phase7="true"] .homepage-secondary-actions:not([open]) > .hero-actions {
+  display: none;
+}
+.phase7-trust-strip {
+  width: min(var(--ux-content),calc(100% - 32px));
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.8rem,2vw,2rem);
+  margin: 1rem auto;
+  padding: .7rem 1rem;
+  border: 1px solid #d7e1dd;
+  border-radius: 14px;
+  background: #f8faf9;
+  color: #4d625b;
+  font-size: .88rem;
+}
+.phase7-trust-strip span { white-space: nowrap; }
+.phase7-trust-strip b { color: var(--ux-brand-900); font-size: 1rem; }
+.phase7-trust-strip a { color: var(--ux-brand-700); font-weight: 850; }
+.phase7-secondary-home {
+  width: min(var(--ux-content),calc(100% - 32px));
+  margin-block: 1.2rem 2rem;
+  padding: 0;
+  border: 1px solid #d7e1dd;
+  border-radius: 16px;
+  background: #f8faf9;
+}
+.phase7-secondary-home > summary {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .8rem 1rem;
+  cursor: pointer;
+  color: var(--ux-brand-900);
+  font-weight: 900;
+}
+.phase7-secondary-home > summary small { color: #65756f; font-weight: 650; }
+.phase7-secondary-home-content { padding-bottom: 1rem; border-top: 1px solid #d7e1dd; }
+.phase7-secondary-home-content > section { margin-block: 1rem; }
+.directory-simple-tabs {
+  display: flex;
+  gap: .4rem;
+  overflow-x: auto;
+  padding: .2rem 0 .45rem;
+  scrollbar-width: thin;
+}
+.directory-simple-tabs button {
+  min-height: 42px;
+  flex: 0 0 auto;
+  padding: .55rem .85rem;
+  border: 1px solid #cbd9d4;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ux-brand-900);
+  cursor: pointer;
+  font: inherit;
+  font-size: .84rem;
+  font-weight: 800;
+}
+.directory-simple-tabs button.is-active {
+  border-color: var(--ux-brand-900);
+  background: var(--ux-brand-900);
+  color: #fff;
+}
+
+@media (max-width: 1100px) {
+  body[data-phase7="true"] .desktop-nav > a:nth-of-type(n+5) { display: none; }
+}
+
+@media (max-width: 760px) {
+  body[data-phase7="true"] .platform-hero { padding-block: .7rem 1rem; }
+  body[data-phase7="true"] .hero-copy h1 { max-width: 18ch; font-size: clamp(1.75rem,8vw,2.45rem); }
+  .phase7-trust-strip {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: .35rem;
+    padding: .65rem;
+    text-align: center;
+    font-size: .7rem;
+  }
+  .phase7-trust-strip span { white-space: normal; }
+  .phase7-trust-strip a { grid-column: 1/-1; padding-top: .35rem; border-top: 1px solid #dde6e2; }
+  .phase7-secondary-home { width: calc(100% - 24px); }
+  .phase7-secondary-home > summary { min-height: 56px; align-items: flex-start; flex-direction: column; gap: .15rem; }
+  .phase7-secondary-home > summary small { font-size: .72rem; }
+  .directory-simple-tabs { margin-inline: -.1rem; }
+}
+
 /* Phase 6: search-led UAE service workspace. Capability is preserved; hierarchy is simplified. */
 :root {
   --phase6-green-950: #062e28;
