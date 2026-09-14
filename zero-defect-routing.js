@@ -563,7 +563,7 @@
       card.dataset.userTypes = (service.t || []).join(" ");
       card.dataset.route = route || "";
       const action = card.querySelector('.actions a');
-      if (action) action.textContent = "اعرف المتطلبات";
+      if (action) action.textContent = "عرض الخدمة";
       const title = card.querySelector("h3");
       if (title && !card.querySelector(".directory-card-context")) {
         const context = document.createElement("p");
@@ -631,6 +631,28 @@
       option.textContent = label;
       categorySelect.append(option);
     });
+    const simpleTabs = document.createElement("div");
+    simpleTabs.className = "directory-simple-tabs";
+    simpleTabs.setAttribute("role", "tablist");
+    simpleTabs.setAttribute("aria-label", "فئات الخدمات الأساسية");
+    [
+      ["popular", "الأكثر طلبًا", ""],
+      ["all", "الكل", ""],
+      ["companies", "الشركات والرخص", "companies-establishments"],
+      ["work", "العمل والموظفون", "work-employees"],
+      ["residency", "الإقامة والتأشيرات", "residency-visas"],
+      ["identity", "الهوية والخدمات الشخصية", "identity-citizenship"],
+    ].forEach(([mode, label, category], index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.role = "tab";
+      button.dataset.directoryTab = mode;
+      button.dataset.category = category;
+      button.textContent = label;
+      button.classList.toggle("is-active", index === 0);
+      button.setAttribute("aria-selected", String(index === 0));
+      simpleTabs.append(button);
+    });
     const authoritySelect = document.createElement("select");
     authoritySelect.setAttribute("aria-label", "اختر الجهة الحكومية");
     const authorityOptions = [["", "كل الجهات"], ...[...new Map((window.HB_INTENT_SERVICES || []).map((service) => [service.i || service.r, service.r])).entries()].filter(([value]) => value).sort((a, b) => String(a[1]).localeCompare(String(b[1]), "ar"))];
@@ -655,10 +677,9 @@
     const filterSummary = document.createElement("summary");
     filterSummary.textContent = "أنا محترف — تصفية دقيقة بالجهة والإمارة";
     filterDrawer.append(filterSummary, controls);
-    if (window.matchMedia("(min-width: 900px)").matches) filterDrawer.open = true;
     const explorerTools = document.createElement("div");
     explorerTools.className = "directory-explorer-tools";
-    explorerTools.append(modeSwitch, quickGoals, emirateShortcuts, filterDrawer, count);
+    explorerTools.append(simpleTabs, modeSwitch, quickGoals, emirateShortcuts, filterDrawer, count);
     form?.insertAdjacentElement("afterend", explorerTools);
     const more = document.createElement("button");
     more.type = "button";
@@ -710,6 +731,21 @@
     categorySelect.addEventListener("change", () => { limit = 12; apply(); });
     authoritySelect.addEventListener("change", () => { limit = 12; apply(); });
     userSelect.addEventListener("change", () => { limit = 12; apply(); });
+    simpleTabs.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-directory-tab]");
+      if (!button) return;
+      [...simpleTabs.querySelectorAll("button")].forEach((item) => {
+        const active = item === button;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-selected", String(active));
+      });
+      input.value = "";
+      [emirateSelect, authoritySelect, userSelect].forEach((select) => select.value = "");
+      categorySelect.value = button.dataset.category || "";
+      assisted = button.dataset.directoryTab === "popular";
+      limit = 12;
+      apply();
+    });
     quickGoals.addEventListener("click", (event) => {
       const button = event.target.closest("[data-directory-goal]");
       if (!button) return;
@@ -790,7 +826,7 @@
     card.dataset.customerCardReady = "true";
     const actions = card.querySelector(".actions");
     const primaryAction = actions?.querySelector("a");
-    if (primaryAction) primaryAction.textContent = "عرض المسار";
+    if (primaryAction) primaryAction.textContent = "عرض الخدمة";
     const expandable = [
       card.querySelector(":scope > .official-name"),
       card.querySelector(":scope > .service-tags"),
@@ -800,7 +836,7 @@
     const details = document.createElement("details");
     details.className = "customer-card-details";
     const summary = document.createElement("summary");
-    summary.textContent = "بطاقة الخدمة والمتطلبات";
+    summary.textContent = "تفاصيل أكثر";
     const content = document.createElement("div");
     content.className = "customer-card-details-content";
     expandable.forEach((node) => content.append(node));
