@@ -22,6 +22,8 @@ test('Phase 7 homepage is search-first with compact trust and secondary disclosu
   assert.match(html, />ما المعاملة التي تريد إنجازها؟</);
   assert.doesNotMatch(html, /class=["']live-stats["']/);
   assert.equal((html.match(/class=["'][^"']*platform-hero/g) || []).length, 1);
+  assert.equal((html.match(/class=["']phase7-secondary-home content-section["']/g) || []).length, 1);
+  assert.doesNotMatch(html, /class=["']phase7-secondary-home-content["']><\/div>/);
 });
 
 test('Phase 7 directory exposes simple tabs and keeps advanced filters optional', async () => {
