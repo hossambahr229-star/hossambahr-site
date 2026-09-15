@@ -360,6 +360,131 @@ body[data-directory-enhanced="true"] #det-results .card .actions a:first-child {
   .service-secondary-actions>div { display: grid; }
 }
 
+/* Phase 8 — customer-first density and mobile clarity. Presentation only. */
+html.hb-phase8 {
+  --hb8-dark: #073f34;
+  --hb8-dark-2: #0b5142;
+  --hb8-gold: #b58a3b;
+  --hb8-cream: #fbf8ef;
+  --hb8-line: #d8e1dc;
+}
+html.hb-phase8 :is(.site-footer,.page-hero,.platform-hero,.service-hero,.hb-mega) { text-wrap: pretty; }
+html.hb-phase8 .hb8-updates-context { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(240px,.8fr); gap: .8rem; margin-top: 1rem; }
+html.hb-phase8 .hb8-updates-context > * { margin: 0; padding: .85rem 1rem; border: 1px solid var(--hb8-line); border-radius: 12px; background: #fff; }
+html.hb-phase8 .hb8-updates-context strong { color: var(--hb8-dark); }
+html.hb-phase8 .hb8-updates-actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: .8rem; }
+html.hb-phase8 .hb8-updates-actions a { min-height: 42px; display: inline-flex; align-items: center; padding: .55rem .8rem; border: 1px solid #bfd0c9; border-radius: 9px; color: var(--hb8-dark); font-weight: 800; }
+html.hb-phase8 .footer-group > summary { list-style: none; }
+html.hb-phase8 .footer-group > summary::-webkit-details-marker { display: none; }
+html.hb-phase8 .footer-group > summary::after { content: "+"; margin-inline-start: auto; color: var(--hb8-gold); }
+html.hb-phase8 .footer-group[open] > summary::after { content: "−"; }
+html.hb-phase8 .footer-group-links { display: grid; gap: .45rem; }
+
+@media (max-width: 760px) {
+  html.hb-phase8 body { font-size: 15px; }
+  html.hb-phase8 .site-header .theme-toggle,
+  html.hb-phase8 .site-header .header-search-action { display: none !important; }
+  html.hb-phase8 .site-header .login-action { min-height: 40px; padding: .45rem .65rem; font-size: .76rem; }
+  html.hb-phase8 .site-header .mobile-menu { display: block; }
+  html.hb-phase8 .site-header .mobile-menu > summary { min-height: 40px; padding: .45rem .65rem; font-size: .76rem; }
+  html.hb-phase8 body[data-ux-page="home"] .platform-hero { display: grid; gap: .65rem; padding: .65rem 12px .85rem !important; }
+  html.hb-phase8 body[data-ux-page="home"] .hero-copy { padding: .65rem .35rem .2rem !important; margin: 0 !important; }
+  html.hb-phase8 body[data-ux-page="home"] .hero-copy::before { display: none !important; }
+  html.hb-phase8 body[data-ux-page="home"] .hero-kicker { display: inline-flex; margin-bottom: .25rem; font-size: .69rem !important; }
+  html.hb-phase8 body[data-ux-page="home"] .hero-copy h1 { max-width: 18ch !important; margin: .1rem 0 .35rem !important; font-size: clamp(1.72rem,7.8vw,2.15rem) !important; line-height: 1.14 !important; letter-spacing: -.035em; }
+  html.hb-phase8 body[data-ux-page="home"] .hero-copy h1 em { display: inline; }
+  html.hb-phase8 body[data-ux-page="home"] .hero-copy > p { -webkit-line-clamp: 2 !important; margin: 0 !important; font-size: .78rem !important; line-height: 1.5 !important; }
+  html.hb-phase8 body[data-ux-page="home"] .hero-search-stage { padding: .55rem !important; }
+  html.hb-phase8 body[data-ux-page="home"] .search-shell { padding: .45rem !important; }
+  html.hb-phase8 body[data-ux-page="home"] .primary-search label { font-size: .9rem; }
+  html.hb-phase8 body[data-ux-page="home"] .search-overline { display: none; }
+  html.hb-phase8 body[data-ux-page="home"] .search-row { gap: .35rem !important; }
+  html.hb-phase8 body[data-ux-page="home"] .search-row :is(input,button) { min-height: 46px !important; height: 46px; }
+  html.hb-phase8 body[data-ux-page="home"] .examples { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; gap: .35rem; scrollbar-width: thin; }
+  html.hb-phase8 body[data-ux-page="home"] .examples > * { flex: 0 0 auto; }
+  html.hb-phase8 body[data-ux-page="home"] .homepage-secondary-actions { margin-top: 0; }
+  html.hb-phase8 body[data-ux-page="home"] .homepage-secondary-actions > summary { min-height: 36px; font-size: .78rem; }
+
+  html.hb-phase8 body[data-directory-enhanced="true"] #det-results { gap: .58rem !important; }
+  html.hb-phase8 body[data-directory-enhanced="true"] #det-results .card,
+  html.hb-phase8 body[data-ux-page="catalog"] [data-service-card] { min-height: 0 !important; padding: .72rem .78rem !important; border-radius: 11px !important; box-shadow: 0 3px 12px rgba(6,54,44,.045) !important; }
+  html.hb-phase8 :is([data-directory-card],[data-service-card]) .card-meta { gap: .25rem; margin: 0; }
+  html.hb-phase8 :is([data-directory-card],[data-service-card]) .card-meta span { max-width: 100%; overflow: hidden; padding: .16rem .38rem !important; font-size: .67rem !important; text-overflow: ellipsis; white-space: nowrap; }
+  html.hb-phase8 :is([data-directory-card],[data-service-card]) .card-meta span:nth-child(n+2) { display: none; }
+  html.hb-phase8 :is([data-directory-card],[data-service-card]) h3 { margin: .28rem 0 !important; font-size: .98rem !important; line-height: 1.38 !important; }
+  html.hb-phase8 :is([data-directory-card],[data-service-card]) .directory-card-context { margin: 0 0 .25rem !important; font-size: .7rem !important; line-height: 1.35 !important; }
+  html.hb-phase8 :is([data-directory-card],[data-service-card]) > p:not(.directory-card-context) { -webkit-line-clamp: 1 !important; margin: .18rem 0 !important; font-size: .76rem !important; line-height: 1.45 !important; }
+  html.hb-phase8 .customer-card-details { margin-top: .2rem; }
+  html.hb-phase8 .customer-card-details > summary { padding: .34rem 0 .08rem; font-size: .72rem; }
+  html.hb-phase8 .customer-card-details-content { padding: .35rem 0; }
+  html.hb-phase8 :is([data-directory-card],[data-service-card]) .actions { margin-top: .42rem !important; }
+  html.hb-phase8 :is([data-directory-card],[data-service-card]) .actions > a:first-child { min-height: 40px !important; padding: .48rem .68rem !important; font-size: .8rem !important; }
+
+  html.hb-phase8 .category-intent-chooser { padding: .72rem !important; }
+  html.hb-phase8 .category-intent-heading h2 { font-size: 1.28rem; }
+  html.hb-phase8 .category-intent-heading p { margin-bottom: .45rem; }
+  html.hb-phase8 .category-intent-options { grid-template-columns: 1fr 1fr !important; gap: .38rem !important; }
+  html.hb-phase8 .category-intent-options button { min-height: 43px !important; padding: .42rem .5rem !important; font-size: .77rem !important; }
+  html.hb-phase8 .action-start-grid { grid-template-columns: 1fr 1fr !important; gap: .45rem !important; }
+  html.hb-phase8 .action-start-grid > a { min-height: 54px !important; padding: .55rem !important; font-size: .8rem; }
+  html.hb-phase8 .authority-grid { grid-template-columns: 1fr 1fr !important; gap: .5rem !important; }
+  html.hb-phase8 .authority-grid > * { min-height: 0 !important; padding: .65rem !important; }
+  html.hb-phase8 .authority-grid :is(p,.card-meta) { font-size: .72rem !important; line-height: 1.42 !important; }
+
+  html.hb-phase8 body[data-ux-modernized="true"] .page-hero { padding-block: 1rem .8rem !important; }
+  html.hb-phase8 body[data-ux-modernized="true"] .page-hero h1 { font-size: clamp(1.75rem,8.3vw,2.25rem) !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .dual-execution-paths { gap: .3rem !important; padding: .55rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .execution-path-label { font-size: .72rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] :is(.execute-with-us-cta,.primary-government-cta) { min-height: 47px !important; padding: .58rem .7rem !important; font-size: .84rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-hero { padding: .85rem .8rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-hero h1 { margin-block: .55rem !important; font-size: clamp(1.75rem,8.2vw,2.2rem) !important; line-height: 1.18 !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-decision-nav { margin-block: .2rem .4rem; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-decision-nav a { padding: .38rem .58rem; font-size: .72rem; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-hero > .official-name,
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-hero > p:not(.verification-note) { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; margin-block: .45rem !important; font-size: .82rem !important; line-height: 1.55 !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-hero > .verification-note { display: none; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar { grid-template-columns: 1fr 1fr !important; gap: .4rem !important; margin-top: .55rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar > div { min-height: 58px !important; padding: .48rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar span { font-size: .66rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar b { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: .73rem !important; line-height: 1.4 !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-secondary-actions { margin-top: .45rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-execution-paths { padding: .75rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-heading { gap: .25rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-heading h2 { margin: .15rem 0 !important; font-size: 1.28rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-heading p { margin: 0 !important; font-size: .77rem !important; line-height: 1.45 !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-trust-state { margin-block: .5rem !important; padding: .55rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-trust-state span { display: none; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-grid { gap: .5rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-grid article { min-height: 0 !important; padding: .65rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-grid article h3 { margin: .25rem 0 .45rem !important; font-size: .92rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-grid article > p { display: none; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-grid article > a { min-height: 47px !important; margin-top: 0 !important; font-size: .82rem !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-source-note { margin-top: .55rem !important; font-size: .68rem !important; line-height: 1.45 !important; }
+
+  html.hb-phase8 .hb8-updates-context { grid-template-columns: 1fr; }
+  html.hb-phase8 .hb8-updates-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  html.hb-phase8 .site-footer { padding-block: 1rem !important; }
+  html.hb-phase8 .site-footer .footer-intro { margin-bottom: .5rem; }
+  html.hb-phase8 .site-footer .footer-columns { display: grid !important; grid-template-columns: 1fr !important; gap: 0 !important; }
+  html.hb-phase8 .site-footer .footer-group { border-top: 1px solid rgba(255,255,255,.14); }
+  html.hb-phase8 .site-footer .footer-group > summary { min-height: 42px; display: flex; align-items: center; color: #fffdf7; font-weight: 800; cursor: pointer; }
+  html.hb-phase8 .site-footer .footer-group-links { padding: .1rem 0 .7rem; }
+  html.hb-phase8 .site-footer .footer-legal { display: block; margin-top: .7rem; font-size: .7rem; line-height: 1.5; }
+}
+
+@media (max-width: 350px) {
+  html.hb-phase8 .category-intent-options,
+  html.hb-phase8 .action-start-grid,
+  html.hb-phase8 .authority-grid { grid-template-columns: 1fr !important; }
+  html.hb-phase8 .hb8-updates-actions { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 360px) and (max-width: 760px) {
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-grid { grid-template-columns: 1fr 1fr !important; align-items: stretch; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-grid article { display: flex; flex-direction: column; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-grid article > a { margin-top: auto !important; }
+}
+
 /* Phase 7: customer-first hierarchy. The content and routes remain intact; the
    initial view is reduced to search, common outcomes and trusted services. */
 body[data-phase7="true"] .site-header {
