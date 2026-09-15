@@ -66,6 +66,12 @@ if (streamed) {
 if (!html.includes('href="/intent-first.css"')) {
   html = html.replace('</head>', '<link rel="stylesheet" href="/intent-first.css" data-hb-home-runtime="stable"/></head>');
 }
+html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
+  if (/\bclass=(?:"[^"]*\bhb-phase8\b[^"]*"|'[^']*\bhb-phase8\b[^']*')/i.test(match)) return match;
+  if (/\bclass="/i.test(match)) return match.replace(/\bclass="([^"]*)"/i, 'class="$1 hb-phase8"');
+  if (/\bclass='/i.test(match)) return match.replace(/\bclass='([^']*)'/i, "class='$1 hb-phase8'");
+  return `<html${attributes} class="hb-phase8">`;
+});
 if (!html.includes('data-account-link="true"')) {
   html = html.replace(/(<div class="header-actions">)([\s\S]*?)(<\/div>)/, '$1$2<a class="login-action" data-account-link="true" href="/auth/?return=%2F">تسجيل الدخول</a>$3');
 }
