@@ -56,6 +56,7 @@ test('Phase 8 desktop search keeps the query field wider than the submit action'
   assert.match(css, /white-space: nowrap;/);
   assert.match(homepage, /intent-first\.css\?v=phase8-20260916a/);
   assert.equal((homepage.match(/intent-first\.css/g) || []).length, 1);
+  assert.match(homepage, /zero-defect-routing\.js\?v=phase8-20260916b/);
 });
 
 test('Phase 8 runtime never injects a duplicate versioned design stylesheet', async () => {
