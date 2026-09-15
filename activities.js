@@ -123,6 +123,8 @@
     const generalTranslation = fullQuery.includes('ترجمه') && !/(قانون|دبلج|فني|legal|dubb|subtitl)/.test(fullQuery);
     const restaurantCafe = fullQuery.includes('مطعم') && fullQuery.includes('مقهي');
     const ecommerce = /(تجاره الكترونيه|متجر الكتروني|بيع اونلاين|ecommerce|e commerce|online seller)/.test(fullQuery);
+    const perfumeRetail = /(عطر|عطور|perfume|fragrance)/.test(fullQuery)
+      && /(بيع|تجاره|متجر|retail|trading|shop|store)/.test(fullQuery);
     const cleaningPremises = /(تنظيف|نظافه|cleaning)/.test(fullQuery)
       && /(شركه|مباني|مساكن|منزل|منازل|building|home|house|company)/.test(fullQuery);
     const clothingRetail = /(ملابس|clothing|clothes|garments)/.test(fullQuery)
@@ -148,6 +150,7 @@
     if (restaurantCafe && !/(مطعم|مقهي|restaurant|coffee shop|cafe)/.test(name)) score -= 180;
     if (ecommerce && activity.code === '100465') score += 360;
     if (ecommerce && !/(بائع عبر الانترنت|online seller|متاجره الكترونيه|e trading)/.test(name)) score -= 180;
+    if (perfumeRetail && activity.code === '513958') score += 520;
     if (cleaningPremises && activity.code === '749301') score += 560;
     if (cleaningPremises && /(سيارات|مصائد الدهون|واجهات|car washing|grease trap|facade)/.test(name)) score -= 360;
     if (clothingRetail && activity.code === '513107') score += 560;
