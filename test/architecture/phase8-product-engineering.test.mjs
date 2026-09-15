@@ -30,6 +30,12 @@ test('Phase 8 Arabic hero keeps readable word boundaries', async () => {
   assert.match(homepage, /الحكومية<\/em> من مكان واحد/);
 });
 
+test('Phase 8 activity advisor preserves the specific product activity beside ecommerce', async () => {
+  const runtime = await read('activities.js');
+  assert.match(runtime, /const perfumeRetail =/);
+  assert.match(runtime, /perfumeRetail && activity\.code === '513958'/);
+});
+
 test('Phase 8 has compact cards, intent grids and accessible mobile footer', async () => {
   const [css, runtime] = await Promise.all([read('intent-first.css'), read('a-plus-plus.js')]);
   assert.match(css, /\[data-directory-card\],\[data-service-card\]/);
