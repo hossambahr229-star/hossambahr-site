@@ -25,7 +25,7 @@
   loadAuthenticationRuntime();
 
   function loadIntentFirstStyles() {
-    if (document.querySelector('link[href="/intent-first.css"]')) return;
+    if (document.querySelector('link[href^="/intent-first.css"]')) return;
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = "/intent-first.css";
@@ -1361,3 +1361,4 @@
 })();
 
 /* HOSSAMBAHR A++ END */
+
