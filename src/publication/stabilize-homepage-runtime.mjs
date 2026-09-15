@@ -99,6 +99,10 @@ html = html.replace(
   /(<form class="search-shell primary-search"[^>]*>\s*<label[^>]*>)[\s\S]*?(<\/label>)/i,
   '$1ما المعاملة التي تريد إنجازها؟$2'
 );
+html = html.replace(
+  '<em> معاملات الأعمال والخدمات الحكومية</em>من مكان واحد.',
+  '<em> معاملات الأعمال والخدمات الحكومية</em> من مكان واحد.'
+);
 
 const liveStats = extractBalancedElement(html, 'class="live-stats"');
 if (liveStats) {
