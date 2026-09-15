@@ -9,7 +9,7 @@ const text = (path) => readFile(resolve(root, path), 'utf8');
 test('homepage is a single canonical static render without streaming replacement artifacts', async () => {
   const html = await text('index.html');
   assert.match(html, /data-home-render=["']static-stable["']/);
-  assert.match(html, /href=["']\/intent-first\.css["']/);
+  assert.match(html, /href=["']\/intent-first\.css(?:\?v=[^"']+)?["']/);
   assert.match(html, /data-account-link=["']true["']/);
   assert.equal((html.match(/class=["'][^"']*platform-hero/g) || []).length, 1);
   assert.doesNotMatch(html, /class=["'][^"']*loading-shell/);
@@ -28,3 +28,4 @@ test('homepage discovery loads without invoking the late presentation renderer',
   const search = await text('intent-search.js');
   assert.doesNotMatch(search, /button\.textContent\s*=\s*examples\[index\]/);
 });
+
