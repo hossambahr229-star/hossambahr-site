@@ -1155,7 +1155,16 @@
       const facts = [...(main?.querySelectorAll(".service-aside dl > *") || [])];
       const fact = (label) => {
         const dt = facts.find((node) => node.tagName === "DT" && node.textContent.trim() === label);
-        return dt?.nextElementSibling?.textContent?.trim() || "غير محدد";
+        const legacyValue = dt?.nextElementSibling?.textContent?.trim();
+        if (legacyValue) return legacyValue;
+        const modern = [...(main?.querySelectorAll(".service-facts-bar > div") || [])]
+          .find((item) => item.querySelector("span")?.textContent.trim() === label);
+        if (modern) return modern.querySelector("b")?.textContent?.trim() || "";
+        if (label === "الجهة" || label === "الإمارة") {
+          const parts = (main?.querySelector(".service-hero .eyebrow")?.textContent || "").split("·").map((value) => value.trim());
+          return label === "الجهة" ? (parts[0] || "") : (parts[1] || "");
+        }
+        return "";
       };
       const encodedServiceId = location.pathname.split("/").filter(Boolean).pop() || "service";
       let serviceId = encodedServiceId;
@@ -1164,11 +1173,11 @@
         "مرحباً، أريد حسام بحر أن ينجز هذه المعاملة:",
         `الخدمة: ${serviceName}`,
         `Service ID: ${serviceId}`,
-        `الإمارة: ${fact("الإمارة")}`,
-        `الجهة: ${fact("الجهة")}`,
-        `نوع الطلب: ${fact("نوع الطلب")}`,
+        fact("الإمارة") && `الإمارة: ${fact("الإمارة")}`,
+        fact("الجهة") && `الجهة: ${fact("الجهة")}`,
+        fact("نوع الطلب") && `نوع الطلب: ${fact("نوع الطلب")}`,
         `رابط الخدمة: ${location.href}`,
-      ].join("\n");
+      ].filter(Boolean).join("\n");
       main?.querySelectorAll('[data-commercial-cta="verified"]').forEach((anchor) => {
         anchor.href = `https://wa.me/971503780460?text=${encodeURIComponent(message)}`;
         anchor.textContent = "أريد حسام بحر أن ينجزها لي";
@@ -1255,6 +1264,12 @@
     if (!document.querySelector('.hb-trustbar')) {
       header.insertAdjacentHTML('beforebegin', '<div class="hb-trustbar"><span>منصة مستقلة لإرشادك إلى خدمات الإمارات</span><span>المصدر الحكومي هو المرجع النهائي</span></div>');
     }
+    if (!header.querySelector('.mobile-menu')) {
+      const mobileMenu = document.createElement('details');
+      mobileMenu.className = 'mobile-menu';
+      mobileMenu.innerHTML = '<summary aria-label="فتح قائمة التنقل">القائمة</summary><nav aria-label="التنقل للهاتف"><a href="/">الرئيسية</a><a href="/services/">الخدمات</a><a href="/categories/companies-establishments/">الشركات والرخص</a><a href="/categories/work-employees/">العمل والموظفون</a><a href="/categories/residency-visas/">الإقامة والتأشيرات</a><a href="/dubai-business-activities.html">الأنشطة</a><a href="/updates/">التحديثات</a><a href="/auth/">تسجيل الدخول</a></nav>';
+      header.append(mobileMenu);
+    }
     const nav = header.querySelector('.desktop-nav');
     if (nav && !nav.querySelector('.hb-mega-trigger')) {
       const trigger = document.createElement('button');
@@ -1281,10 +1296,59 @@
     document.querySelectorAll('.card,.service-card,.canonical-card').forEach(card => card.dataset.hbSurface = 'service');
   }
 
+  function enhancePhase8Footer() {
+    const footer = document.querySelector('.site-footer');
+    const columns = footer?.querySelector('.footer-columns');
+    if (!columns || columns.dataset.phase8Ready === 'true') return;
+    columns.dataset.phase8Ready = 'true';
+    const mobile = matchMedia('(max-width: 760px)');
+    [...columns.children].forEach((group) => {
+      const heading = group.querySelector(':scope > h2');
+      if (!heading) return;
+      const details = document.createElement('details');
+      details.className = 'footer-group';
+      details.open = !mobile.matches;
+      const summary = document.createElement('summary');
+      summary.textContent = heading.textContent.trim();
+      const links = document.createElement('div');
+      links.className = 'footer-group-links';
+      [...group.children].filter((node) => node !== heading).forEach((node) => links.append(node));
+      details.append(summary, links);
+      group.replaceWith(details);
+    });
+    const sync = () => {
+      if (!mobile.matches) columns.querySelectorAll('.footer-group').forEach((item) => { item.open = true; });
+    };
+    mobile.addEventListener?.('change', sync);
+  }
+
+  async function enhancePhase8Updates() {
+    if (!/^\/updates\/(?:index\.html)?$/.test(path)) return;
+    const empty = document.querySelector('.updates-empty-state');
+    if (!empty || empty.querySelector('.hb8-updates-context')) return;
+    let reviewed = 'يظهر تاريخ المراجعة في سجل الجودة المنشور';
+    try {
+      const response = await fetch('/platform-summary.json', { cache: 'no-store' });
+      const summary = response.ok ? await response.json() : null;
+      if (summary?.lastOperationalReview) {
+        reviewed = `آخر مراجعة تشغيلية مسجلة: ${new Intl.DateTimeFormat('ar-AE', { dateStyle: 'long' }).format(new Date(summary.lastOperationalReview))}`;
+      }
+    } catch {}
+    const context = document.createElement('div');
+    context.className = 'hb8-updates-context';
+    context.innerHTML = `<p><strong>${reviewed}</strong><br>لا يظهر هنا إلا تغيير حكومي اجتاز التحقق من المصدر الرسمي.</p><p><strong>نطاق المراجعة</strong><br>DET وMOHRE وICP وGDRFA والجهات المحلية المشمولة في دليل الخدمات.</p>`;
+    const actions = document.createElement('div');
+    actions.className = 'hb8-updates-actions';
+    actions.innerHTML = '<a href="/services/">تصفح الخدمات الموثقة</a><a href="/services/#directory-search">ابحث عن معاملة</a>';
+    empty.append(context, actions);
+  }
+
   const startEnhancement = () => {
-    html.classList.add('hb-a-plus-plus',`hb-page-${pageType}`);
+    html.classList.add('hb-a-plus-plus','hb-phase8',`hb-page-${pageType}`);
     html.dataset.hbDesignSystem = 'a-plus-plus';
     annotate();
+    enhancePhase8Footer();
+    enhancePhase8Updates();
     if (enhanceHeader()) return;
     const observer = new MutationObserver(() => { if (enhanceHeader()) observer.disconnect(); });
     observer.observe(document.documentElement,{childList:true,subtree:true});
