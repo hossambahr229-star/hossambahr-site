@@ -58,6 +58,12 @@ test('Phase 8 desktop search keeps the query field wider than the submit action'
   assert.equal((homepage.match(/intent-first\.css/g) || []).length, 1);
 });
 
+test('Phase 8 runtime never injects a duplicate versioned design stylesheet', async () => {
+  const runtime = await read('zero-defect-routing.js');
+  assert.ok(runtime.includes('link[href^="/intent-first.css"]'));
+  assert.ok(!runtime.includes('link[href="/intent-first.css"]'));
+});
+
 test('Phase 8 updates empty state remains truthful and useful', async () => {
   const [html, runtime] = await Promise.all([read('updates/index.html'), read('a-plus-plus.js')]);
   assert.match(html, /لا توجد تغييرات حكومية معتمدة للنشر حاليًا/);
