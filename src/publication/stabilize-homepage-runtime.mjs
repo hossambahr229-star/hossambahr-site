@@ -63,9 +63,11 @@ if (streamed) {
   html = html.replace(/<body\b[^>]*>[\s\S]*?<\/body>/i, `<body${bodyAttributes ? ` ${bodyAttributes}` : ''} data-home-render="static-stable">${canonicalBody}</body>`);
 }
 
-if (!html.includes('href="/intent-first.css"')) {
-  html = html.replace('</head>', '<link rel="stylesheet" href="/intent-first.css" data-hb-home-runtime="stable"/></head>');
-}
+html = html.replace(/<link\b[^>]*href=["']\/intent-first\.css(?:\?[^"']*)?["'][^>]*>\s*/gi, '');
+html = html.replace(
+  '</head>',
+  '<link rel="stylesheet" href="/intent-first.css?v=phase8-20260916a" data-hb-home-runtime="stable"/></head>'
+);
 html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
   if (/\bclass=(?:"[^"]*\bhb-phase8\b[^"]*"|'[^']*\bhb-phase8\b[^']*')/i.test(match)) return match;
   if (/\bclass="/i.test(match)) return match.replace(/\bclass="([^"]*)"/i, 'class="$1 hb-phase8"');
@@ -149,3 +151,4 @@ if ((html.match(/class=["'][^"']*platform-hero/g) || []).length !== 1) throw new
 
 await writeFile(homepagePath, html, 'utf8');
 console.log(JSON.stringify({ homepage: '/', render: 'STATIC_SINGLE_SOURCE', suspenseBoundaries: 0, flightPayloads: 0 }, null, 2));
+
