@@ -1379,8 +1379,16 @@ body[data-ux-page="home"] .search-shell {
   box-shadow: 0 15px 40px rgba(8,44,37,.11);
 }
 body[data-ux-page="home"] .search-row button {
-  min-width: 170px;
+  min-width: 0;
+  padding-inline: .55rem;
+  white-space: nowrap;
+  font-size: .82rem;
   font-weight: 900;
+}
+@media (min-width: 761px) {
+  html.hb-phase8 body[data-ux-page="home"] .search-row {
+    grid-template-columns: minmax(0, 1.65fr) minmax(132px, .78fr) !important;
+  }
 }
 body[data-ux-page="home"] .examples {
   margin-block: .2rem 0;
@@ -1481,4 +1489,5 @@ body[data-ux-page="service-detail"] .primary-government-cta {
   .homepage-secondary-actions > summary { min-height: 40px; }
   .homepage-secondary-actions .hero-actions { grid-template-columns: 1fr; }
 }
+
 
