@@ -49,6 +49,15 @@ test('Phase 8 has compact cards, intent grids and accessible mobile footer', asy
   assert.match(css, /\.phase2-path-grid \{ grid-template-columns: 1fr 1fr/);
 });
 
+test('Phase 8 desktop search keeps the query field wider than the submit action', async () => {
+  const [css, homepage] = await Promise.all([read('intent-first.css'), read('index.html')]);
+  assert.match(css, /grid-template-columns: minmax\(0, 1\.65fr\) minmax\(132px, \.78fr\)/);
+  assert.match(css, /body\[data-ux-page="home"\] \.search-row button \{\s*min-width: 0;/);
+  assert.match(css, /white-space: nowrap;/);
+  assert.match(homepage, /intent-first\.css\?v=phase8-20260916a/);
+  assert.equal((homepage.match(/intent-first\.css/g) || []).length, 1);
+});
+
 test('Phase 8 updates empty state remains truthful and useful', async () => {
   const [html, runtime] = await Promise.all([read('updates/index.html'), read('a-plus-plus.js')]);
   assert.match(html, /لا توجد تغييرات حكومية معتمدة للنشر حاليًا/);
@@ -75,3 +84,4 @@ test('assistance handoff never sends fabricated unknown metadata', async () => {
   assert.doesNotMatch(runtime, /return dt\?\.nextElementSibling\?\.textContent\?\.trim\(\) \|\| "غير محدد"/);
   assert.match(runtime, /service-facts-bar > div/);
 });
+
