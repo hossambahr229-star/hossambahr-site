@@ -69,8 +69,12 @@ html = html.replace(
   '<link rel="stylesheet" href="/intent-first.css?v=phase8-20260916a" data-hb-home-runtime="stable"/></head>'
 );
 html = html.replace(
-  /<script\b([^>]*?)src=["']\/zero-defect-routing\.js(?:\?[^"']*)?["']([^>]*)><\/script>/gi,
-  '<script$1src="/zero-defect-routing.js?v=phase8-20260916b"$2></script>'
+  /<script\b[^>]*src=["']\/zero-defect-routing\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*/gi,
+  ''
+);
+html = html.replace(
+  '</head>',
+  '<script src="/zero-defect-routing.js?v=phase8-20260916b" defer></script></head>'
 );
 html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
   if (/\bclass=(?:"[^"]*\bhb-phase8\b[^"]*"|'[^']*\bhb-phase8\b[^']*')/i.test(match)) return match;
