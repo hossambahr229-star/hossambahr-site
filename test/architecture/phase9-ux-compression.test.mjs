@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '../..');
+// The correction workflow must exercise this gate before production promotion.
 
 test('Phase 9 homepage service summaries stay compact and expose both execution paths', async () => {
   const [home, css, stabilizer, summary] = await Promise.all([
