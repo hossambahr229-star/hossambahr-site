@@ -66,7 +66,7 @@ if (streamed) {
 html = html.replace(/<link\b[^>]*href=["']\/intent-first\.css(?:\?[^"']*)?["'][^>]*>\s*/gi, '');
 html = html.replace(
   '</head>',
-  '<link rel="stylesheet" href="/intent-first.css?v=phase8-20260916a" data-hb-home-runtime="stable"/></head>'
+  '<link rel="stylesheet" href="/intent-first.css?v=phase9-20260917a" data-hb-home-runtime="stable"/></head>'
 );
 html = html.replace(
   /<script\b[^>]*src=["']\/zero-defect-routing\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*/gi,
@@ -74,7 +74,7 @@ html = html.replace(
 );
 html = html.replace(
   '</head>',
-  '<script src="/zero-defect-routing.js?v=phase8-20260916b" defer></script></head>'
+  '<script src="/zero-defect-routing.js?v=phase9-20260917a" defer></script></head>'
 );
 html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
   if (/\bclass=(?:"[^"]*\bhb-phase8\b[^"]*"|'[^']*\bhb-phase8\b[^']*')/i.test(match)) return match;
@@ -113,6 +113,26 @@ html = html.replace(
   '<em> معاملات الأعمال والخدمات الحكومية</em>من مكان واحد.',
   '<em> معاملات الأعمال والخدمات الحكومية</em> من مكان واحد.'
 );
+
+function compactHomepageServiceCards(source) {
+  return source.replace(/<article\b[^>]*class=["'][^"']*\bservice-card\b[^"']*["'][^>]*>[\s\S]*?<\/article>/gi, (card) => {
+    if (/\bservice-assist-action\b/i.test(card)) return card;
+    const serviceHref = card.match(/href=["'](\/services\/[^"']+)["']/i)?.[1];
+    const officialHref = card.match(/<div\s+class=["']actions["'][^>]*>[\s\S]*?href=["'](https:\/\/[^"']+)["']/i)?.[1];
+    const title = card.match(/<h3[^>]*>[\s\S]*?<a[^>]*>([\s\S]*?)<\/a>[\s\S]*?<\/h3>/i)?.[1]
+      ?.replace(/<[^>]+>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (!serviceHref || !officialHref || !title) return card;
+    const assistance = `https://wa.me/971503780460?text=${encodeURIComponent(`مرحباً، أريد إنجاز معاملة: ${title}%0Aرابط الخدمة: https://hossambahr.com${serviceHref}`)}`;
+    const actions = `<div class="actions phase9-card-actions"><a class="secondary service-official-action" href="${officialHref}" target="_blank" rel="noopener noreferrer" data-government-cta="verified">التقديم الرسمي ↗</a><a class="service-assist-action" href="${assistance}" target="_blank" rel="noopener noreferrer" data-commercial-cta="verified">أنجزها معنا</a><a class="home-card-detail-action" href="${serviceHref}">التفاصيل</a></div>`;
+    return card
+      .replace(/<article\b([^>]*)>/i, (opening, attributes) => /\bdata-phase9-card=/.test(opening) ? opening : `<article${attributes} data-phase9-card="compact-dual-path">`)
+      .replace(/<div\s+class=["']actions["'][^>]*>[\s\S]*?<\/div>/i, actions);
+  });
+}
+
+html = compactHomepageServiceCards(html);
 
 const liveStats = extractBalancedElement(html, 'class="live-stats"');
 if (liveStats) {
@@ -155,6 +175,9 @@ if (!/data-home-render=["']static-stable["']/.test(html)) throw new Error('Stabl
 if (!/data-account-link=["']true["']/.test(html)) throw new Error('Stable authentication action is missing.');
 if (!/data-phase7=["']true["']/.test(html)) throw new Error('Phase 7 homepage marker is missing.');
 if (!/class=["']phase7-trust-strip["']/.test(html)) throw new Error('Compact Phase 7 trust strip is missing.');
+const phase9Cards = html.match(/data-phase9-card=["']compact-dual-path["']/g) || [];
+if (phase9Cards.length < 4) throw new Error('Phase 9 compact dual-path homepage cards are incomplete.');
+if ((html.match(/class=["'][^"']*service-assist-action/g) || []).length !== phase9Cards.length) throw new Error('Every Phase 9 card must expose the assisted execution path.');
 if ((html.match(/class=["'][^"']*platform-hero/g) || []).length !== 1) throw new Error('Homepage must contain exactly one platform hero.');
 
 await writeFile(homepagePath, html, 'utf8');
