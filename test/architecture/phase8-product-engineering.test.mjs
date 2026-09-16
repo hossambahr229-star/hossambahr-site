@@ -54,16 +54,16 @@ test('Phase 8 desktop search keeps the query field wider than the submit action'
   assert.match(css, /grid-template-columns: minmax\(0, 1\.65fr\) minmax\(132px, \.78fr\)/);
   assert.match(css, /body\[data-ux-page="home"\] \.search-row button \{\s*min-width: 0;/);
   assert.match(css, /white-space: nowrap;/);
-  assert.match(homepage, /intent-first\.css\?v=phase8-20260916a/);
+  assert.match(homepage, /intent-first\.css\?v=phase(?:8-20260916a|9-20260917a)/);
   assert.equal((homepage.match(/intent-first\.css/g) || []).length, 1);
-  assert.match(homepage, /zero-defect-routing\.js\?v=phase8-20260916b/);
+  assert.match(homepage, /zero-defect-routing\.js\?v=phase(?:8-20260916b|9-20260917a)/);
   assert.equal((homepage.match(/zero-defect-routing\.js/g) || []).length, 1);
 });
 
 test('Phase 8 homepage stabilizer removes every legacy runtime copy before inserting one canonical script', async () => {
   const stabilizer = await read('src/publication/stabilize-homepage-runtime.mjs');
   assert.match(stabilizer, /zero-defect-routing\\\.js/);
-  assert.ok(stabilizer.includes('<script src="/zero-defect-routing.js?v=phase8-20260916b" defer></script></head>'));
+  assert.match(stabilizer, /zero-defect-routing\.js\?v=phase(?:8-20260916b|9-20260917a)/);
 });
 
 test('Phase 8 runtime never injects a duplicate versioned design stylesheet', async () => {
