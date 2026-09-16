@@ -124,7 +124,7 @@ function compactHomepageServiceCards(source) {
       .replace(/\s+/g, ' ')
       .trim();
     if (!serviceHref || !officialHref || !title) return card;
-    const assistance = `https://wa.me/971503780460?text=${encodeURIComponent(`مرحباً، أريد إنجاز معاملة: ${title}%0Aرابط الخدمة: https://hossambahr.com${serviceHref}`)}`;
+    const assistance = `https://wa.me/971503780460?text=${encodeURIComponent(`مرحباً، أريد إنجاز معاملة: ${title}\nرابط الخدمة: https://hossambahr.com${serviceHref}`)}`;
     const actions = `<div class="actions phase9-card-actions"><a class="secondary service-official-action" href="${officialHref}" target="_blank" rel="noopener noreferrer" data-government-cta="verified">التقديم الرسمي ↗</a><a class="service-assist-action" href="${assistance}" target="_blank" rel="noopener noreferrer" data-commercial-cta="verified">أنجزها معنا</a><a class="home-card-detail-action" href="${serviceHref}">التفاصيل</a></div>`;
     return card
       .replace(/<article\b([^>]*)>/i, (opening, attributes) => /\bdata-phase9-card=/.test(opening) ? opening : `<article${attributes} data-phase9-card="compact-dual-path">`)
