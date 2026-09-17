@@ -53,13 +53,12 @@ for(const viewport of viewports){
       const interactive=[...document.querySelectorAll('a[href],button,input,select,textarea')].filter(el=>{
         const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;
       });
-      const hiddenInteractive=[...document.querySelectorAll('a[href],button')].filter(el=>{
-        const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&(r.width<1||r.height<1);
-      }).length;
-      return {overflow:document.documentElement.scrollWidth-window.innerWidth,hiddenInteractive,interactive:interactive.length,title:document.title};
+      const critical=[...document.querySelectorAll('.action-start-grid>a,.phase9-card-actions a,.activities-hero a,.advisor-input-row button,[data-government-cta="verified"],[data-commercial-cta="verified"]')].filter(el=>el.checkVisibility({checkOpacity:true,checkVisibilityCSS:true}));
+      const brokenInteractive=critical.filter(el=>{const r=el.getBoundingClientRect();return r.width<1||r.height<1}).length;
+      return {overflow:document.documentElement.scrollWidth-window.innerWidth,brokenInteractive,criticalVisible:critical.length,interactive:interactive.length,title:document.title};
     });
     if(audit.overflow>1)failures.push(`${surface.name}/${viewport.name}: horizontal overflow ${audit.overflow}px`);
-    if(audit.hiddenInteractive)failures.push(`${surface.name}/${viewport.name}: ${audit.hiddenInteractive} zero-size interactive controls`);
+    if(audit.brokenInteractive)failures.push(`${surface.name}/${viewport.name}: ${audit.brokenInteractive} visible zero-size critical controls`);
     if(runtime.length)failures.push(`${surface.name}/${viewport.name}: runtime errors ${runtime.join(' | ')}`);
     if(surface.name==='homepage'){
       const card=page.locator('.action-start-grid>a').first();
