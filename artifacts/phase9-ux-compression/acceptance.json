@@ -1,0 +1,53 @@
+{
+  "phase": "PHASE 9",
+  "baseline": "77eb55cf4ed4e0a47ef1a4ca1fadd9c6e12fa7ff",
+  "verifiedCandidate": "57baf1bcd8ef52450ecc72910ffa544056905387",
+  "verifiedAt": "2026-09-17T07:46:00Z",
+  "production": "https://hossambahr.com/",
+  "inventory": {
+    "routes": 322,
+    "services": 200,
+    "activities": 2610,
+    "emirates": 7
+  },
+  "homepageMobile": {
+    "viewport": "400x558",
+    "beforeCardHeightsPx": [
+      344,
+      369,
+      389,
+      354,
+      354,
+      333,
+      374,
+      314
+    ],
+    "afterCardHeightsPx": [
+      155,
+      155,
+      155,
+      155,
+      155,
+      155,
+      155,
+      155
+    ],
+    "horizontalOverflow": false,
+    "officialPath": true,
+    "assistedPath": true,
+    "detailPath": true
+  },
+  "runtime": {
+    "initialEqualsFiveSeconds": true,
+    "runtimeScriptCopies": 1,
+    "designStylesheetCopies": 1
+  },
+  "gates": {
+    "build": "PASS",
+    "architecture": "PASS",
+    "browserRoutes": "PASS",
+    "customerJourneys": "PASS",
+    "officialDestinations": "PASS",
+    "deletedFiles": 0
+  }
+}
