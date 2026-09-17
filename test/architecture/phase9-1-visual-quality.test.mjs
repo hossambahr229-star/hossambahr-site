@@ -27,6 +27,6 @@ test('Phase 9.1 visual QA script covers required viewports and surfaces',async()
   for(const surface of ['homepage','services','activities','service-detail','mohre','updates','login'])assert.match(script,new RegExp(`name:'${surface}'`));
   assert.match(script,/post-load DOM mutation/);
   assert.match(script,/horizontal overflow/);
-  assert.match(script,/zero-size interactive controls/);
+  assert.match(script,/visible zero-size critical controls/);
   assert.match(script,/focus ring missing/);
 });
