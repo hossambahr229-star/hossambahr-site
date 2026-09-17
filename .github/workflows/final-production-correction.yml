@@ -33,6 +33,12 @@ jobs:
         run: |
           npm run typecheck
           npm run test:architecture
+      - name: Phase 9.1 visual quality gate
+        env:
+          NODE_PATH: ${{ github.workspace }}/node_modules
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+          HB_OUTPUT_DIR: artifacts/phase9-1-visual-quality
+        run: npm run test:phase9-1-visual
       - name: Browser route and customer-journey gates
         # Production has a dedicated browser-verification workflow that scans
         # every route and runs the full journey suite. Avoid running the same
