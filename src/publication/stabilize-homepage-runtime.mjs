@@ -63,10 +63,10 @@ if (streamed) {
   html = html.replace(/<body\b[^>]*>[\s\S]*?<\/body>/i, `<body${bodyAttributes ? ` ${bodyAttributes}` : ''} data-home-render="static-stable">${canonicalBody}</body>`);
 }
 
-html = html.replace(/<link\b[^>]*href=["']\/intent-first\.css(?:\?[^"']*)?["'][^>]*>\s*/gi, '');
+html = html.replace(/<link\b[^>]*href=["']\/(?:brand-tokens|intent-first)\.css(?:\?[^"']*)?["'][^>]*>\s*/gi, '');
 html = html.replace(
   '</head>',
-  '<link rel="stylesheet" href="/intent-first.css?v=phase9-20260917a" data-hb-home-runtime="stable"/></head>'
+  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/></head>'
 );
 html = html.replace(
   /<script\b[^>]*src=["']\/zero-defect-routing\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*/gi,
@@ -74,7 +74,7 @@ html = html.replace(
 );
 html = html.replace(
   '</head>',
-  '<script src="/zero-defect-routing.js?v=phase9-20260917a" defer></script></head>'
+  '<script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script></head>'
 );
 html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
   if (/\bclass=(?:"[^"]*\bhb-phase8\b[^"]*"|'[^']*\bhb-phase8\b[^']*')/i.test(match)) return match;
