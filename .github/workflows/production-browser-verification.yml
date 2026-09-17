@@ -137,6 +137,14 @@ jobs:
           export HB_BROWSER_PATH="$(command -v chrome)"
           export HB_BASE_URL="https://hossambahr.com"
           node visual-layout-audit.mjs
+      - name: Phase 9.1 live visual quality gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          export HB_BROWSER_PATH="$(command -v chrome)"
+          export HB_BASE_URL="https://hossambahr.com"
+          export HB_OUTPUT_DIR="$PWD/artifacts/phase9-1-visual-quality"
+          node src/publication/verify-phase9-1-visual-quality.mjs
       - name: Run all one hundred real customer journeys on Production
         shell: bash
         run: |
@@ -155,6 +163,7 @@ jobs:
             production-browser
             visual-layout-audit
             final-platform-acceptance
+            artifacts/phase9-1-visual-quality
           retention-days: 14
       - name: Record verified UX production acceptance
         if: success()
