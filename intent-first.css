@@ -1577,3 +1577,77 @@ html.hb-phase8 body[data-ux-page="home"] .service-card[data-phase9-card="compact
     text-underline-offset: 3px;
   }
 }
+
+
+/* Phase 9.1 — centralized visual consistency and state-safe contrast. */
+.action-start-grid > a,
+.action-start-grid > a:link,
+.action-start-grid > a:visited{
+  background:linear-gradient(145deg,var(--brand-green),var(--brand-green-dark))!important;
+  border:1px solid color-mix(in srgb,var(--brand-gold-muted) 42%,transparent)!important;
+  color:var(--brand-ivory)!important;
+  box-shadow:var(--shadow-sm);
+  isolation:isolate;
+}
+.action-start-grid > a > span{color:var(--brand-gold-muted)!important;font-weight:800!important}
+.action-start-grid > a > b,
+.action-start-grid > a:link > b,
+.action-start-grid > a:visited > b{
+  color:#fffdf8!important;opacity:1!important;font-size:clamp(.94rem,1.05vw,1.08rem)!important;font-weight:800!important;line-height:1.45!important;
+}
+.action-start-grid > a > small,
+.action-start-grid > a:link > small,
+.action-start-grid > a:visited > small{
+  color:#f2dfb5!important;opacity:1!important;font-size:.75rem!important;font-weight:750!important;
+}
+.action-start-grid > a:hover{
+  background:linear-gradient(145deg,#115547,var(--brand-green-dark))!important;border-color:var(--brand-gold)!important;transform:translateY(-2px);box-shadow:var(--shadow-md);
+}
+.action-start-grid > a:active{transform:translateY(0);background:var(--brand-green-dark)!important}
+.action-start-grid > a:focus-visible{outline:3px solid var(--focus-ring)!important;outline-offset:3px!important;box-shadow:0 0 0 6px rgba(11,63,53,.22)!important}
+.action-start-grid > a:is(:hover,:focus-visible,:active) > b{color:#fff!important}
+.action-start-grid > a:is(:hover,:focus-visible,:active) > small{color:#f7e7c3!important}
+
+/* Activity advisor uses the same restrained institutional visual language. */
+.activities-hero{
+  min-height:clamp(410px,45vw,520px)!important;padding:clamp(52px,6vw,82px) clamp(24px,8vw,120px)!important;
+  background:radial-gradient(circle at 16% 26%,rgba(213,189,135,.12),transparent 34%),linear-gradient(135deg,var(--brand-green),var(--brand-green-dark))!important;
+  color:var(--brand-ivory)!important;
+}
+.activities-hero:before{color:rgba(255,255,255,.025)!important;font-family:inherit!important;letter-spacing:-.06em!important}
+.activities-hero h1{font-family:inherit!important;color:#fffdf8!important;letter-spacing:-.025em}
+.activities-hero h1 em{display:inline;font-family:inherit!important;color:var(--brand-gold-muted)!important;font-style:normal!important;font-weight:750!important}
+.activities-hero-copy>p{color:#d8e4df!important;font-size:var(--type-sm)!important;line-height:1.9!important}
+.activities-hero .pill{color:#f4e5c2!important;border-color:rgba(213,189,135,.45)!important;background:rgba(255,255,255,.055)!important}
+.activities-facts{border-color:rgba(255,255,255,.18)!important}
+.activities-facts article{border-color:rgba(255,255,255,.18)!important}
+.activities-facts b{font-family:inherit!important;color:var(--brand-gold-muted)!important;font-weight:800!important}
+.activities-facts span{color:#d2dfda!important;font-size:var(--type-xs)!important}
+.activities-hero .primary-btn{
+  min-height:var(--button-height)!important;background:var(--brand-gold-muted)!important;color:var(--brand-green-dark)!important;
+  border:1px solid var(--brand-gold-muted)!important;border-radius:var(--radius-sm)!important;font-weight:850!important;
+}
+.activities-hero .primary-btn:hover{background:#ead5a5!important;border-color:#ead5a5!important}
+.activities-hero .primary-btn:focus-visible{outline:3px solid #fff!important;outline-offset:3px!important}
+.activity-advisor,.activities-directory{background:var(--brand-ivory)!important}
+.advisor-card,.activity-card,.activity-search-panel{border-color:var(--brand-border)!important;box-shadow:var(--shadow-sm)}
+.advisor-card,.activity-card{background:var(--brand-surface)!important}
+.advisor-heading h2,.directory-intro h2,.activity-card h3{color:var(--brand-text)!important}
+.advisor-heading p,.directory-intro p,.advisor-privacy{color:var(--brand-text-muted)!important}
+.advisor-input-row button{background:var(--brand-green)!important;color:#fff!important;min-height:var(--button-height)!important}
+.advisor-input-row button:focus-visible,.advisor-choices button:focus-visible,.activity-search-panel :is(input,select,button):focus-visible{outline:3px solid var(--focus-ring)!important;outline-offset:2px!important}
+.advisor-choices button{color:var(--brand-green-dark)!important;background:var(--brand-surface)!important;border-color:var(--brand-border)!important}
+.advisor-choices button:hover{background:var(--brand-green-soft)!important;border-color:var(--brand-gold-muted)!important}
+.advisor-results{background:var(--brand-green-dark)!important;color:var(--brand-ivory)!important}
+.advisor-results-head span,.advisor-match>div span,.advisor-match small{color:var(--brand-gold-muted)!important}
+
+@media(max-width:720px){
+  .action-start-grid > a{min-height:88px!important;padding:.72rem!important}
+  .action-start-grid > a > b{font-size:.94rem!important}
+  .action-start-grid > a > small{font-size:.72rem!important}
+  .activities-hero{min-height:auto!important;padding:42px 20px 38px!important;gap:28px!important}
+  .activities-hero h1{font-size:clamp(2rem,10vw,2.7rem)!important;line-height:1.3!important}
+  .activities-hero:before{font-size:110px!important;bottom:-38px!important}
+  .activities-facts article{min-height:88px!important;padding:16px!important}
+}
+@media(max-width:350px){.action-start-grid{grid-template-columns:1fr!important}}
