@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-16T20:27:42.985Z",
+  "generatedAt": "2026-09-17T13:36:46.955Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 167,
+    "REACHABLE": 166,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 71,
+    "NETWORK_UNVERIFIED": 72,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -771,9 +771,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://freezone.fujairah.ae/ar/registration-process",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://fujairah.ae/en/Pages/settingupbusinessinfujairah.aspx",
