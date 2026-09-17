@@ -1,0 +1,28 @@
+:root{
+  --brand-green:#0b3f35;
+  --brand-green-dark:#072f28;
+  --brand-green-soft:#e6f0ec;
+  --brand-gold:#b88a35;
+  --brand-gold-muted:#d5bd87;
+  --brand-ivory:#fbf8f1;
+  --brand-surface:#ffffff;
+  --brand-text:#14231f;
+  --brand-text-muted:#596b65;
+  --brand-border:#d8e2dd;
+  --brand-success:#237a58;
+  --focus-ring:#e8c675;
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:22px;
+  --button-height:44px;
+  --card-spacing:18px;
+  --container-width:1440px;
+  --shadow-sm:0 8px 24px rgba(7,47,40,.08);
+  --shadow-md:0 18px 48px rgba(7,47,40,.12);
+  --type-xs:.75rem;
+  --type-sm:.875rem;
+  --type-body:1rem;
+  --type-title:clamp(1.125rem,1.4vw,1.35rem);
+  --type-display:clamp(2rem,4.4vw,4.5rem);
+  color-scheme:light;
+}
