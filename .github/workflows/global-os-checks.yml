@@ -34,4 +34,15 @@ jobs:
           node --check global-os-client.js
           node --check src/auth/apply-auth-runtime.mjs
       - name: Architecture tests
-        run: node --test test/architecture/*.test.mjs
+        run: npm run test:architecture
+      - name: Full static build compatibility
+        run: npm run build
+      - name: Verify Global OS runtime injection
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q '/vendor/supabase.js' account/index.html
+          grep -q '/auth-client.js' account/index.html
+          grep -q '/global-os-client.js' account/index.html
+          grep -q '/global-os.css' account/index.html
+          grep -q '/global-os-client.js' services/mohre-establishment-file-open/index.html
