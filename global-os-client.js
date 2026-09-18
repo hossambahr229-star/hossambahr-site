@@ -41,6 +41,7 @@
         <h2>ما الذي يحتاج انتباهك الآن؟</h2>
         <p>ملخص لحالاتك، مهامك والتزاماتك القادمة. لا يتم تنفيذ أي إجراء حساس بدون موافقتك.</p>
       </div>
+      <div class="hb-os-launch-row"><a data-os-launch class="save-service-action" href="/os/">افتح HOSSAM BAHR OS</a></div>
       <div data-hb-action-summary class="hb-action-summary" aria-live="polite"></div>
       <div data-hb-action-items class="hb-action-items"></div>
     `;
