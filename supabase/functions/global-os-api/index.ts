@@ -58,7 +58,7 @@ export default {
       return json(req, { data });
     }
 
-    if (req.method === "POST" && path === "/v1/cases") {
+    if (req.method === "POST" && (path === "/" || path === "/v1/cases")) {
       let body: Record<string, unknown>;
       try {
         body = await req.json();
