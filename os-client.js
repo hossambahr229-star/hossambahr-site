@@ -68,16 +68,16 @@
       const button=form.querySelector("button");
       button.disabled=true;
       button.textContent="جاري إنشاء الحالة…";
-      const { error } = await client.from("hb_cases").insert({
-        user_id: session.user.id,
-        title: goal.slice(0,180),
-        goal,
-        status:"qualifying",
-        priority:"normal"
-      });
+      let createError=null;
+      try {
+        if(!window.HB_OS_API)throw new Error("Global OS API unavailable");
+        await window.HB_OS_API.createCase({title:goal.slice(0,180),goal});
+      } catch (error) {
+        createError=error;
+      }
       button.disabled=false;
       button.textContent="ابدأ الحالة";
-      if (error) return setMessage("تعذر إنشاء الحالة الآن. تأكد من تفعيل نواة HOSSAM BAHR OS في قاعدة البيانات.","error");
+      if (createError) return setMessage("تعذر إنشاء الحالة الآن. تأكد من تفعيل Global OS API.","error");
       form.reset();
       setMessage("تم إنشاء الحالة. أصبحت جزءًا من مركز التشغيل.","success");
       const cases=await loadCases();
