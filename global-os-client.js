@@ -159,6 +159,7 @@
 
   async function boot() {
     const { data } = await client.auth.getSession();
+    if (!window.HB_OS_API || !await window.HB_OS_API.health()) return;
     await ensureActionCenter(data.session);
     await addStartCaseActions(data.session);
   }
