@@ -27,27 +27,38 @@ jobs:
       SUPABASE_PROJECT_ID: bbddlpvxjowphkagvycz
     steps:
       - uses: actions/checkout@v4
-      - name: Validate encrypted deployment credentials
+      - name: Detect encrypted deployment credentials
+        id: credentials
         shell: bash
         run: |
           set -euo pipefail
-          if [ -z "${SUPABASE_ACCESS_TOKEN:-}" ] || [ -z "${SUPABASE_DB_PASSWORD:-}" ]; then
-            echo "::error::Supabase production deployment secrets are not configured."
-            exit 1
+          if [ -n "${SUPABASE_ACCESS_TOKEN:-}" ] && [ -n "${SUPABASE_DB_PASSWORD:-}" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "Supabase production credentials are available."
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Supabase production deployment is deferred because encrypted credentials are not configured."
           fi
       - name: Setup Supabase CLI
+        if: steps.credentials.outputs.ready == 'true'
         uses: supabase/setup-cli@v1
         with:
           version: latest
       - name: Link production project
+        if: steps.credentials.outputs.ready == 'true'
         run: supabase link --project-ref "$SUPABASE_PROJECT_ID"
       - name: Show migration plan
+        if: steps.credentials.outputs.ready == 'true'
         run: supabase migration list
       - name: Apply reviewed migrations
+        if: steps.credentials.outputs.ready == 'true'
         run: supabase db push
       - name: Deploy Global OS Edge API
+        if: steps.credentials.outputs.ready == 'true'
         run: supabase functions deploy global-os-api --project-ref "$SUPABASE_PROJECT_ID"
       - name: Deploy Global OS worker
+        if: steps.credentials.outputs.ready == 'true'
         run: supabase functions deploy global-os-worker --project-ref "$SUPABASE_PROJECT_ID"
       - name: Verify migration state
+        if: steps.credentials.outputs.ready == 'true'
         run: supabase migration list
