@@ -55,8 +55,8 @@ jobs:
         env:
           HB_BROWSER_PATH: /usr/bin/google-chrome
         run: node src/publication/audit-official-links.mjs
-      - name: Commit the verified generated site on the correction branch
-        if: github.ref_name == 'agent/final-production-correction' && !contains(github.event.head_commit.message, '[verified generated site]')
+      - name: Commit the verified generated site
+        if: (github.ref_name == 'agent/final-production-correction' || github.ref_name == 'main') && !contains(github.event.head_commit.message, '[verified generated site]')
         run: |
           git config user.name "HossamBahr Release Gate"
           git config user.email "release-gate@users.noreply.github.com"
@@ -64,7 +64,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Generated site is already synchronized."
           else
-            git commit -m "Synchronize verified production data [verified generated site] [skip ci]"
+            git commit -m "Synchronize verified generated site [verified generated site] [skip ci]"
             git push origin HEAD:${{ github.ref_name }}
           fi
       - name: Wait for and byte-verify live Production

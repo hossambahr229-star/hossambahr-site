@@ -20,12 +20,17 @@ jobs:
         run: |
           set -euo pipefail
           expected="$(cat ux-release-marker.txt)"
-          for attempt in {1..30}; do
+          for attempt in {1..36}; do
             actual="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/ux-release-marker.txt?attempt=$attempt" || true)"
-            if [ "$actual" = "$expected" ]; then exit 0; fi
+            os_html="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/os/?runtime-check=$attempt" || true)"
+            account_html="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/account/?runtime-check=$attempt" || true)"
+            service_html="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/services/mohre-establishment-file-open/?runtime-check=$attempt" || true)"
+            if [ "$actual" = "$expected" ]               && grep -q '/auth-client.js' <<<"$os_html"               && grep -q '/global-os-api-client.js' <<<"$os_html"               && grep -q '/os-client.js' <<<"$os_html"               && grep -q '/auth-client.js' <<<"$account_html"               && grep -q '/global-os-client.js' <<<"$service_html"; then
+              exit 0
+            fi
             sleep 10
           done
-          echo "Production never exposed expected marker: $expected" >&2
+          echo "Production never exposed the expected marker plus authenticated Global OS runtime." >&2
           exit 1
       - name: Scan every production HTML route for encoding corruption
         shell: python
