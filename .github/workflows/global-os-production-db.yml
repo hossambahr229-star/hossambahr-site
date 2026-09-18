@@ -47,5 +47,7 @@ jobs:
         run: supabase db push
       - name: Deploy Global OS Edge API
         run: supabase functions deploy global-os-api --project-ref "$SUPABASE_PROJECT_ID"
+      - name: Deploy Global OS worker
+        run: supabase functions deploy global-os-worker --project-ref "$SUPABASE_PROJECT_ID"
       - name: Verify migration state
         run: supabase migration list
