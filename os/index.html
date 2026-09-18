@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://bbddlpvxjowphkagvycz.supabase.co wss://bbddlpvxjowphkagvycz.supabase.co; upgrade-insecure-requests">
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>HOSSAM BAHR OS | مركز التشغيل</title>
@@ -62,6 +63,28 @@
     <article class="hb-os-panel">
       <div class="hb-os-panel-heading"><div><span class="eyebrow">60 يومًا</span><h2>الاستحقاقات القادمة</h2></div></div>
       <div data-os-obligations class="hb-os-list"><p>جارٍ التحميل…</p></div>
+    </article>
+
+    <article class="hb-os-panel hb-os-panel-wide">
+      <div class="hb-os-panel-heading"><div><span class="eyebrow">Private Vault</span><h2>مستنداتي</h2></div><button type="button" data-toggle-document>+ رفع مستند</button></div>
+      <form data-document-upload-form class="hb-os-document-form" hidden>
+        <label>نوع المستند
+          <select name="document_type" required>
+            <option value="">اختر النوع</option>
+            <option value="passport">جواز سفر</option>
+            <option value="residency">إقامة</option>
+            <option value="emirates_id">هوية إماراتية</option>
+            <option value="trade_license">رخصة تجارية</option>
+            <option value="contract">عقد</option>
+            <option value="other">مستند آخر</option>
+          </select>
+        </label>
+        <label>تاريخ الانتهاء - إن وجد<input name="expires_at" type="date"></label>
+        <label class="hb-os-file-label">الملف<input name="file" type="file" accept=".pdf,image/jpeg,image/png,image/webp" required></label>
+        <label class="hb-os-consent"><input name="consent" type="checkbox" required> أوافق على تخزين هذا المستند بصورة خاصة واستخدامه في فحص وتجهيز معاملاتي داخل HOSSAM BAHR OS.</label>
+        <button type="submit">رفع إلى الخزنة الخاصة</button>
+      </form>
+      <div data-os-documents class="hb-os-list"><p>جارٍ التحميل…</p></div>
     </article>
   </section>
 
