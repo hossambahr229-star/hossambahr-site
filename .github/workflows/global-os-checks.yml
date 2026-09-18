@@ -50,6 +50,7 @@ jobs:
           node --check src/global/operations/assignment-engine.mjs
           node --check src/global/marketplace/commerce-engine.mjs
           node --check src/global/intelligence/executive-intelligence.mjs
+          node --check src/global/observability/health.mjs
           node --check src/global/simulation/scenario-engine.mjs
           node --check src/global/compliance/compliance-engine.mjs
           node --check src/global/passport/passport-builder.mjs
