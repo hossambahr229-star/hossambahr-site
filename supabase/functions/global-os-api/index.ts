@@ -66,6 +66,20 @@ export default {
         return json(req, { error: "invalid_json" }, 400);
       }
 
+      if (path === "/" && body.action === "health") {
+        const { error: readinessError } = await ctx.supabase
+          .from("hb_cases")
+          .select("id")
+          .limit(1);
+        if (readinessError) return json(req, { ok: false, ready: false }, 503);
+        return json(req, {
+          ok: true,
+          ready: true,
+          service: "hossambahr-global-os-api",
+          version: "1.0"
+        });
+      }
+
       const goal = String(body.goal || "").trim();
       const title = String(body.title || goal).trim().slice(0, 180);
       const serviceSlug = body.service_slug ? String(body.service_slug).trim().slice(0, 240) : null;
