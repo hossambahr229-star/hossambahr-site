@@ -410,3 +410,6 @@ enabled = true
 
 [functions.global-os-api]
 verify_jwt = true
+
+[functions.global-os-worker]
+verify_jwt = false
