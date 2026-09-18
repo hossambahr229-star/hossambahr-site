@@ -37,6 +37,8 @@ jobs:
           node --check src/global/tenant/tenant-context.mjs
           node --check src/global/developer/api-security.mjs
           node --check src/global/operations/assignment-engine.mjs
+          node --check src/global/marketplace/commerce-engine.mjs
+          node --check src/global/passport/passport-builder.mjs
           node --check src/global/ai/orchestrator.mjs
           node --check src/global/protocol/transaction-protocol.mjs
           node --check src/global/ai/model-router.mjs
