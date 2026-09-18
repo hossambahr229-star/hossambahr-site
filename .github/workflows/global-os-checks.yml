@@ -43,6 +43,7 @@ jobs:
           node --check global-os-client.js
           node --check src/auth/apply-auth-runtime.mjs
           node --check os-client.js
+          node --check os-automation-client.js
           node --check pwa-runtime.js
           node --check sw.js
           node --check src/global/tenant/tenant-context.mjs
@@ -89,5 +90,10 @@ jobs:
           grep -q '/global-os-client.js' os/index.html
           grep -q '/os-client.js' os/index.html
           grep -q '/os.css' os/index.html
+          grep -q '/vendor/supabase.js' os/automation/index.html
+          grep -q '/auth-client.js' os/automation/index.html
+          grep -q '/global-os-api-client.js' os/automation/index.html
+          grep -q '/global-os-client.js' os/automation/index.html
+          grep -q '/os-automation-client.js' os/automation/index.html
           grep -q '/pwa-runtime.js' index.html
           grep -q '/pwa-runtime.js' account/index.html
