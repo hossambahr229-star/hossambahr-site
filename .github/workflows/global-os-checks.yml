@@ -28,6 +28,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+          cache: true
       - name: Syntax checks
         run: |
           node --check src/global/core/domain-model.mjs
@@ -55,6 +59,8 @@ jobs:
           node --check src/global/finance/finance-engine.mjs
           node --check src/global/approval/approval-engine.mjs
           node --check src/global/graph/business-graph.mjs
+      - name: Deno-check Global OS Edge API
+        run: deno check supabase/functions/global-os-api/index.ts
       - name: Architecture tests
         run: npm run test:architecture
       - name: Migration safety audit
