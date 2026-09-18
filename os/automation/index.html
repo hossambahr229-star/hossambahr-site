@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://bbddlpvxjowphkagvycz.supabase.co wss://bbddlpvxjowphkagvycz.supabase.co; upgrade-insecure-requests">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>الأتمتة والصلاحيات | HOSSAM BAHR OS</title>
+<meta name="description" content="إدارة الصلاحيات الدائمة والأتمتة الآمنة داخل HOSSAM BAHR OS.">
+<link rel="canonical" href="https://hossambahr.com/os/automation/">
+<link rel="icon" href="/icon.svg">
+<link rel="stylesheet" href="/_next/static/chunks/31fdelqs9pqq6.css">
+<link rel="stylesheet" href="/auth.css">
+<link rel="stylesheet" href="/os.css">
+<link rel="stylesheet" href="/os-automation.css">
+</head>
+<body class="hb-os-page">
+<a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
+<header class="site-header">
+  <a class="brand" href="/"><b aria-hidden="true">HB</b><span>HOSSAM BAHR<small>Business & Government Operations OS</small></span></a>
+  <nav class="desktop-nav">
+    <a href="/os/">مركز التشغيل</a>
+    <a href="/services/">الخدمات</a>
+    <a href="/account/">حسابي</a>
+  </nav>
+  <div class="header-actions"><a data-account-link class="login-action" href="/account/">حسابي</a></div>
+</header>
+
+<main id="main-content" class="hb-os-shell">
+  <section class="hb-os-hero">
+    <span class="eyebrow">Autonomy Control</span>
+    <h1>نفّذ الأعمال الروتينية دون الرجوع لي كل مرة.</h1>
+    <p>يمكنك منح HOSSAM BAHR OS صلاحية دائمة لأعمال داخلية منخفضة أو متوسطة المخاطر. المدفوعات، التوقيع، الإرسال الحكومي، الحذف، وتغيير الموافقات تبقى دائمًا خارج التفويض الدائم.</p>
+    <p data-autonomy-status class="auth-message" hidden aria-live="polite"></p>
+  </section>
+
+  <section class="hb-os-grid">
+    <article class="hb-os-panel hb-os-panel-wide">
+      <div class="hb-os-panel-heading">
+        <div><span class="eyebrow">Standing Authorization</span><h2>تفويض التشغيل الروتيني</h2></div>
+      </div>
+      <form data-standing-auth-form class="hb-autonomy-form">
+        <label class="hb-autonomy-toggle"><input type="checkbox" name="enabled"> تفعيل التفويض الدائم للأعمال الروتينية الآمنة</label>
+        <fieldset>
+          <legend>الصلاحيات المسموحة</legend>
+          <label><input type="checkbox" name="scope" value="case:read" checked> قراءة الحالات</label>
+          <label><input type="checkbox" name="scope" value="task:draft" checked> تجهيز المهام والمسودات</label>
+          <label><input type="checkbox" name="scope" value="document:extract" checked> استخراج بيانات المستندات داخل الخزنة</label>
+          <label><input type="checkbox" name="scope" value="policy:read" checked> قراءة السياسات والمصادر</label>
+          <label><input type="checkbox" name="scope" value="source:read" checked> التحقق من المصادر المرتبطة</label>
+          <label><input type="checkbox" name="scope" value="finding:draft" checked> تجهيز ملاحظات الامتثال للمراجعة</label>
+        </fieldset>
+        <label>حد المخاطر
+          <select name="max_risk_level">
+            <option value="low">منخفض فقط</option>
+            <option value="medium" selected>منخفض ومتوسط</option>
+          </select>
+        </label>
+        <button type="submit">حفظ التفويض</button>
+      </form>
+    </article>
+
+    <article class="hb-os-panel">
+      <div class="hb-os-panel-heading"><div><span class="eyebrow">Always blocked</span><h2>لا تُنفّذ تلقائيًا</h2></div></div>
+      <div class="hb-os-list">
+        <article><strong>المدفوعات والتحويلات</strong><p>سحب، استرداد، أو تحويل أموال.</p></article>
+        <article><strong>التوقيع والإقرار</strong><p>توقيع عقد أو مستند أو إقرار قانوني.</p></article>
+        <article><strong>الإرسال الحكومي</strong><p>إرسال طلب خارجي نهائي نيابة عنك.</p></article>
+        <article><strong>الحذف والإلغاء</strong><p>حذف شركة أو حالة أو مستند أو إلغاء اعتماد.</p></article>
+      </div>
+    </article>
+
+    <article class="hb-os-panel">
+      <div class="hb-os-panel-heading"><div><span class="eyebrow">Automation History</span><h2>آخر عمليات الأتمتة</h2></div></div>
+      <div data-automation-runs class="hb-os-list"><p>جارٍ التحميل…</p></div>
+    </article>
+  </section>
+</main>
+</body>
+</html>
