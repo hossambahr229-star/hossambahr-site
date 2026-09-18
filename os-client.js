@@ -193,6 +193,28 @@
       location.replace(`/auth/?return=${encodeURIComponent("/os/")}`);
       return;
     }
+    if(!window.HB_OS_API || !await window.HB_OS_API.health()){
+      const main=document.querySelector("main");
+      if(main){
+        main.replaceChildren();
+        const section=document.createElement("section");
+        section.className="hb-os-hero";
+        const kicker=document.createElement("span");
+        kicker.className="eyebrow";
+        kicker.textContent="HOSSAM BAHR OS";
+        const title=document.createElement("h1");
+        title.textContent="مركز التشغيل قيد التفعيل.";
+        const p=document.createElement("p");
+        p.textContent="الخدمات الحالية للمنصة مستمرة بشكل طبيعي. سيظهر مركز التشغيل تلقائيًا بعد اكتمال تفعيل البنية الخلفية الآمنة.";
+        const link=document.createElement("a");
+        link.href="/services/";
+        link.className="save-service-action";
+        link.textContent="العودة إلى الخدمات";
+        section.append(kicker,title,p,link);
+        main.append(section);
+      }
+      return;
+    }
     await setupGoal(data.session);
     await setupOrganization(data.session);
     await setupDocumentUpload(data.session);
