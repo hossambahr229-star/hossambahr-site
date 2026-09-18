@@ -5,3 +5,11 @@ coverage-smoke/
 visual-layout-audit/
 visual-layout-run.log
 visual-layout-run.err.log
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.key
+secrets/
