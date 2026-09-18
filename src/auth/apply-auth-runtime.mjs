@@ -32,6 +32,7 @@ const authAssets = [
 ].join("");
 const globalOsAssets = [
   '<link rel="stylesheet" href="/global-os.css?v=global-os-20260918a">',
+  '<script src="/global-os-api-client.js?v=global-os-20260918a" defer></script>',
   '<script src="/global-os-client.js?v=global-os-20260918a" defer></script>'
 ].join("");
 const osAssets = [
