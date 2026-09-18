@@ -17,7 +17,7 @@ const walk = (directory) => {
 
 const isInteractiveRoute = (file) => {
   const route = relative(root, file).replaceAll("\\", "/");
-  return route.startsWith("auth/") || route.startsWith("account/") || route.startsWith("services/");
+  return route.startsWith("auth/") || route.startsWith("account/") || route.startsWith("services/") || route.startsWith("os/");
 };
 
 walk(root);
@@ -33,11 +33,16 @@ const globalOsAssets = [
   '<link rel="stylesheet" href="/global-os.css?v=global-os-20260918a">',
   '<script src="/global-os-client.js?v=global-os-20260918a" defer></script>'
 ].join("");
+const osAssets = [
+  '<link rel="stylesheet" href="/os.css?v=global-os-20260918a">',
+  '<script src="/os-client.js?v=global-os-20260918a" defer></script>'
+].join("");
 
 let changed = 0;
 let faviconAdded = 0;
 let authRuntimeAdded = 0;
 let globalOsAdded = 0;
+let osRuntimeAdded = 0;
 
 for (const file of files) {
   let html = await readFile(file, "utf8");
@@ -62,6 +67,11 @@ for (const file of files) {
       html = html.replace("</head>", `${globalOsAssets}</head>`);
       globalOsAdded += 1;
     }
+    const route = relative(root, file).replaceAll("\\", "/");
+    if (route.startsWith("os/") && !html.includes("/os-client.js")) {
+      html = html.replace("</head>", `${osAssets}</head>`);
+      osRuntimeAdded += 1;
+    }
   }
 
   if (html !== before) {
@@ -76,5 +86,6 @@ console.log(JSON.stringify({
   faviconAdded,
   authRuntimeAdded,
   globalOsAdded,
+  osRuntimeAdded,
   endpoint
 }));
