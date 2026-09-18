@@ -35,6 +35,8 @@ jobs:
           node --check src/auth/apply-auth-runtime.mjs
           node --check os-client.js
           node --check src/global/tenant/tenant-context.mjs
+          node --check src/global/developer/api-security.mjs
+          node --check src/global/protocol/transaction-protocol.mjs
           node --check src/global/ai/model-router.mjs
           node --check src/global/finance/finance-engine.mjs
           node --check src/global/approval/approval-engine.mjs
