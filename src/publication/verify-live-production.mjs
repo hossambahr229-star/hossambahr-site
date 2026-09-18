@@ -21,6 +21,10 @@ function routeFile(route) {
   return resolve(root, relative.endsWith('/') ? `${relative}index.html` : relative);
 }
 
+function isPlatform404Route(route) {
+  return route === '/404.html' || route === '/404/';
+}
+
 const localHome = await readFile(resolve(root, 'index.html'));
 const expectedHomeHash = digest(localHome);
 let liveHomeHash = '';
@@ -52,7 +56,13 @@ async function worker() {
       const live = Buffer.from(await response.arrayBuffer());
       const localDigest = comparableDigest(local, route);
       const liveDigest = comparableDigest(live, route);
-      if (response.status !== 200 || liveDigest !== localDigest) failures.push({ route, status: response.status, contentMatch: liveDigest === localDigest });
+      const contentMatch = liveDigest === localDigest;
+      // GitHub Pages serves its configured custom 404 document for unknown paths.
+      // /404.html and /404/ are deployment plumbing, not customer routes, and can
+      // legitimately be rewritten by the host while still returning a healthy page.
+      if (response.status !== 200 || (!contentMatch && !isPlatform404Route(route))) {
+        failures.push({ route, status: response.status, contentMatch });
+      }
     } catch (error) {
       failures.push({ route, error: error?.cause?.code || error.name || error.message });
     }
