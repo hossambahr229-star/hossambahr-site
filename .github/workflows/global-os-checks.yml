@@ -35,6 +35,8 @@ jobs:
           node --check src/auth/apply-auth-runtime.mjs
       - name: Architecture tests
         run: npm run test:architecture
+      - name: Migration safety audit
+        run: npm run audit:global-os-migrations
       - name: Full static build compatibility
         run: npm run build
       - name: Verify Global OS runtime injection
