@@ -31,6 +31,7 @@ jobs:
           node --check src/global/workflow/workflow-engine.mjs
           node --check src/global/country-packs/uae.mjs
           node --check src/global/ai/agent-contracts.mjs
+          node --check global-os-api-client.js
           node --check global-os-client.js
           node --check src/auth/apply-auth-runtime.mjs
           node --check os-client.js
@@ -64,6 +65,7 @@ jobs:
           set -euo pipefail
           grep -q '/vendor/supabase.js' account/index.html
           grep -q '/auth-client.js' account/index.html
+          grep -q '/global-os-api-client.js' account/index.html
           grep -q '/global-os-client.js' account/index.html
           grep -q '/global-os.css' account/index.html
           grep -q '/global-os-client.js' services/mohre-establishment-file-open/index.html
