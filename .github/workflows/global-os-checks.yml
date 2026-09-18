@@ -33,6 +33,10 @@ jobs:
           node --check src/global/ai/agent-contracts.mjs
           node --check global-os-client.js
           node --check src/auth/apply-auth-runtime.mjs
+          node --check os-client.js
+          node --check src/global/finance/finance-engine.mjs
+          node --check src/global/approval/approval-engine.mjs
+          node --check src/global/graph/business-graph.mjs
       - name: Architecture tests
         run: npm run test:architecture
       - name: Migration safety audit
@@ -48,3 +52,8 @@ jobs:
           grep -q '/global-os-client.js' account/index.html
           grep -q '/global-os.css' account/index.html
           grep -q '/global-os-client.js' services/mohre-establishment-file-open/index.html
+          grep -q '/vendor/supabase.js' os/index.html
+          grep -q '/auth-client.js' os/index.html
+          grep -q '/global-os-client.js' os/index.html
+          grep -q '/os-client.js' os/index.html
+          grep -q '/os.css' os/index.html
