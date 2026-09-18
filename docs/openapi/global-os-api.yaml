@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: HOSSAM BAHR Global OS API
+  version: 1.0.0
+  description: Authenticated API for HOSSAM BAHR Business & Government Operations OS.
+servers:
+  - url: https://bbddlpvxjowphkagvycz.supabase.co/functions/v1/global-os-api
+security:
+  - bearerAuth: []
+paths:
+  /health:
+    get:
+      summary: Authenticated API health
+      responses:
+        '200':
+          description: API is available
+  /v1/cases:
+    get:
+      summary: List cases visible to the authenticated user under RLS
+      responses:
+        '200':
+          description: Case list
+    post:
+      summary: Create a new case
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCase'
+      responses:
+        '201':
+          description: Case created
+        '422':
+          description: Invalid case goal
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    CreateCase:
+      type: object
+      additionalProperties: false
+      required: [goal]
+      properties:
+        goal:
+          type: string
+          minLength: 3
+          maxLength: 1200
+        title:
+          type: string
+          maxLength: 180
+        service_slug:
+          type: [string, 'null']
+          maxLength: 240
+        organization_id:
+          type: [string, 'null']
+          format: uuid

@@ -1,0 +1,91 @@
+name: Global OS Architecture Checks
+
+on:
+  pull_request:
+    paths:
+      - "src/global/**"
+      - "supabase/migrations/**"
+      - "global-os-client.js"
+      - "global-os.css"
+      - "src/auth/apply-auth-runtime.mjs"
+      - "test/architecture/**"
+      - ".github/workflows/global-os-checks.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: global-os-architecture-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  architecture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+          cache: true
+      - name: Syntax checks
+        run: |
+          node --check src/global/core/domain-model.mjs
+          node --check src/global/policy/policy-engine.mjs
+          node --check src/global/workflow/workflow-engine.mjs
+          node --check src/global/country-packs/uae.mjs
+          node --check src/global/ai/agent-contracts.mjs
+          node --check global-os-api-client.js
+          node --check global-os-client.js
+          node --check src/auth/apply-auth-runtime.mjs
+          node --check os-client.js
+          node --check pwa-runtime.js
+          node --check sw.js
+          node --check src/global/tenant/tenant-context.mjs
+          node --check src/global/developer/api-security.mjs
+          node --check src/global/operations/assignment-engine.mjs
+          node --check src/global/marketplace/commerce-engine.mjs
+          node --check src/global/intelligence/executive-intelligence.mjs
+          node --check src/global/observability/health.mjs
+          node --check src/global/simulation/scenario-engine.mjs
+          node --check src/global/compliance/compliance-engine.mjs
+          node --check src/global/passport/passport-builder.mjs
+          node --check src/global/ai/orchestrator.mjs
+          node --check src/global/protocol/transaction-protocol.mjs
+          node --check src/global/ai/model-router.mjs
+          node --check src/global/finance/finance-engine.mjs
+          node --check src/global/approval/approval-engine.mjs
+          node --check src/global/graph/business-graph.mjs
+      - name: Deno-check Global OS Edge Functions
+        run: |
+          deno check supabase/functions/global-os-api/index.ts
+          deno check supabase/functions/global-os-worker/index.ts
+      - name: Architecture tests
+        run: npm run test:architecture
+      - name: Migration safety audit
+        run: npm run audit:global-os-migrations
+      - name: Secret leakage audit
+        run: npm run audit:secrets
+      - name: Full static build compatibility
+        run: npm run build
+      - name: Verify Global OS runtime injection
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q '/vendor/supabase.js' account/index.html
+          grep -q '/auth-client.js' account/index.html
+          grep -q '/global-os-api-client.js' account/index.html
+          grep -q '/global-os-client.js' account/index.html
+          grep -q '/global-os.css' account/index.html
+          grep -q '/global-os-client.js' services/mohre-establishment-file-open/index.html
+          grep -q '/vendor/supabase.js' os/index.html
+          grep -q '/auth-client.js' os/index.html
+          grep -q '/global-os-client.js' os/index.html
+          grep -q '/os-client.js' os/index.html
+          grep -q '/os.css' os/index.html
+          grep -q '/pwa-runtime.js' index.html
+          grep -q '/pwa-runtime.js' account/index.html
