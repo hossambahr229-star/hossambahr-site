@@ -52,6 +52,8 @@ jobs:
         run: npm run test:architecture
       - name: Migration safety audit
         run: npm run audit:global-os-migrations
+      - name: Secret leakage audit
+        run: npm run audit:secrets
       - name: Full static build compatibility
         run: npm run build
       - name: Verify Global OS runtime injection
