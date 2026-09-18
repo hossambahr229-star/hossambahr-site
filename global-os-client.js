@@ -137,15 +137,16 @@
       }
       button.disabled = true;
       button.textContent = "جاري إنشاء المعاملة…";
-      const { data, error } = await client.from("hb_cases").insert({
-        user_id: session.user.id,
-        service_slug: slug,
-        title,
-        status: "draft",
-        goal: title
-      }).select("id").single();
+      let created=null;
+      let createError=null;
+      try {
+        if(!window.HB_OS_API)throw new Error("Global OS API unavailable");
+        created=await window.HB_OS_API.createCase({service_slug:slug,title,goal:title});
+      } catch (error) {
+        createError=error;
+      }
       button.disabled = false;
-      if (error) {
+      if (createError || !created) {
         button.textContent = "تعذر بدء المعاملة الآن";
         return;
       }
