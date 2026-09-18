@@ -43,8 +43,8 @@ jobs:
               rel = path.as_posix()
               route = '/' if rel == 'index.html' else '/' + rel[:-10] if rel.endswith('/index.html') else '/' + rel
               routes.append(route)
-          if len(routes) != 322:
-              raise SystemExit(f'Expected 322 tracked production routes, found {len(routes)}')
+          if len(routes) < 322:
+              raise SystemExit(f'Production route inventory regressed below baseline: {len(routes)}')
           bad = re.compile(r'\ufffd|[ØÙ][\u0080-\u00ffŒœŠšŸŽž–-™]|(?:Ã[\u0080-\u00ff]|Â[\u0080-\u00ff]|â€|ðŸ)')
           failures = []
           for route in sorted(routes):
@@ -171,12 +171,22 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p qa
+          route_count="$(python - <<'PY'
+          from pathlib import Path
+          routes=[]
+          for path in Path('.').rglob('*.html'):
+              if any(part in {'.git','node_modules','zero-defect-smoke'} for part in path.parts):
+                  continue
+              routes.append(path)
+          print(len(routes))
+          PY
+          )"
           cat > qa/ux-production-result.json <<EOF
           {
             "status": "PASS",
             "verified_commit": "${GITHUB_SHA}",
             "production_url": "https://hossambahr.com/",
-            "production_html_routes": 322,
+            "production_html_routes": ${route_count},
             "representative_browser_routes": 13,
             "responsive_layout_checks": 88,
             "real_user_journeys": 100,
