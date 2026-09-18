@@ -23,6 +23,26 @@ export const AGENT_CONTRACTS = Object.freeze({
     purpose: "Check completeness, evidence, and contradictions before an action proceeds.",
     allowedScopes: ["case:read","task:read","document:read","audit:read"],
     forbidden: ["government:submit","payment:capture"]
+  },
+  finance: {
+    purpose: "Analyze quotes, fees, payments, ledger entries and cash-flow signals without moving money.",
+    allowedScopes: ["finance:read","quote:read","payment:read","ledger:read","metric:read"],
+    forbidden: ["payment:capture","payment:refund","ledger:post","bank:transfer"]
+  },
+  operations: {
+    purpose: "Analyze queues, assignments, SLA risk and operational bottlenecks.",
+    allowedScopes: ["case:read","task:read","assignment:read","sla:read","metric:read"],
+    forbidden: ["task:approve","government:submit","payment:capture"]
+  },
+  compliance: {
+    purpose: "Assess policy-backed controls, obligations and evidence gaps and escalate for review.",
+    allowedScopes: ["policy:read","source:read","case:read","document:read","compliance:read","finding:draft"],
+    forbidden: ["finding:accept_risk","policy:publish","government:submit"]
+  },
+  growth: {
+    purpose: "Analyze aggregated CRM and funnel performance and draft growth actions without contacting users autonomously.",
+    allowedScopes: ["lead:read","metric:read","campaign:draft","content:draft"],
+    forbidden: ["message:send","campaign:publish","consent:grant"]
   }
 });
 
