@@ -24,6 +24,7 @@ walk(root);
 
 const endpoint = "https://bbddlpvxjowphkagvycz.supabase.co";
 const websocket = "wss://bbddlpvxjowphkagvycz.supabase.co";
+const pwaAsset = '<script src="/pwa-runtime.js?v=pwa-20260918a" defer></script>';
 const authAssets = [
   '<script src="/vendor/supabase.js" defer></script>',
   '<script src="/auth-config.js" defer></script>',
@@ -39,6 +40,7 @@ const osAssets = [
 ].join("");
 
 let changed = 0;
+let pwaAdded = 0;
 let faviconAdded = 0;
 let authRuntimeAdded = 0;
 let globalOsAdded = 0;
@@ -56,6 +58,11 @@ for (const file of files) {
   if (!/<link\b[^>]*rel=["']icon["']/i.test(html)) {
     html = html.replace("</head>", '<link rel="icon" href="/icon.svg"></head>');
     faviconAdded += 1;
+  }
+
+  if (!html.includes("/pwa-runtime.js")) {
+    html = html.replace("</head>", `${pwaAsset}</head>`);
+    pwaAdded += 1;
   }
 
   if (isInteractiveRoute(file)) {
@@ -84,6 +91,7 @@ console.log(JSON.stringify({
   scanned: files.length,
   changed,
   faviconAdded,
+  pwaAdded,
   authRuntimeAdded,
   globalOsAdded,
   osRuntimeAdded,
