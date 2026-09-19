@@ -37,7 +37,10 @@ jobs:
             echo "Supabase production credentials are available."
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::Supabase production deployment is deferred because encrypted credentials are not configured."
+            echo "::error::Supabase production deployment NOT performed: configure SUPABASE_ACCESS_TOKEN and SUPABASE_DB_PASSWORD as encrypted production environment secrets."
+            echo "### Supabase production deployment: BLOCKED" >> "$GITHUB_STEP_SUMMARY"
+            echo "Required encrypted production environment secrets are missing. No migrations or Edge Functions were deployed." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
           fi
       - name: Setup Supabase CLI
         if: steps.credentials.outputs.ready == 'true'
