@@ -38,7 +38,8 @@ jobs:
           from pathlib import Path
           from urllib.parse import quote
           from urllib.request import Request, urlopen
-          import re, sys
+          from urllib.error import HTTPError
+          import re, sys, time
 
           root = Path('.')
           routes = []
@@ -54,14 +55,24 @@ jobs:
           failures = []
           for route in sorted(routes):
               url = 'https://hossambahr.com' + quote(route, safe='/%?=&')
-              try:
-                  req = Request(url + ('&' if '?' in url else '?') + 'utf8-audit=1', headers={'Cache-Control':'no-cache','User-Agent':'HossamBahr-Production-Audit/1.0'})
-                  raw = urlopen(req, timeout=25).read()
-                  text = raw.decode('utf-8', errors='strict')
-                  match = bad.search(text)
-                  if match: failures.append((route, 'mojibake', match.group(0)))
-              except Exception as exc:
-                  failures.append((route, 'fetch/decode', str(exc)))
+              req = Request(url + ('&' if '?' in url else '?') + 'utf8-audit=1', headers={'Cache-Control':'no-cache','User-Agent':'HossamBahr-Production-Audit/1.0'})
+              # Retry temporary upstream throttling/outages without hiding a persistent failure.
+              for attempt in range(1, 5):
+                  try:
+                      raw = urlopen(req, timeout=25).read()
+                      text = raw.decode('utf-8', errors='strict')
+                      match = bad.search(text)
+                      if match: failures.append((route, 'mojibake', match.group(0)))
+                      break
+                  except HTTPError as exc:
+                      if exc.code in {429, 502, 503, 504} and attempt < 4:
+                          time.sleep(3 * attempt)
+                          continue
+                      failures.append((route, 'fetch/decode', str(exc)))
+                      break
+                  except Exception as exc:
+                      failures.append((route, 'fetch/decode', str(exc)))
+                      break
           print({'productionRoutes':len(routes), 'corrupted':len(failures), 'failures':failures[:20]})
           if failures: sys.exit(1)
       - name: Browser-render representative production journeys
