@@ -171,16 +171,6 @@ jobs:
           export HB_BASE_URL="https://hossambahr.com"
           export HB_OUTPUT_DIR="$PWD/final-platform-acceptance"
           node final-platform-acceptance.mjs
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: production-browser-verification
-          path: |
-            production-browser
-            visual-layout-audit
-            final-platform-acceptance
-            artifacts/phase9-1-visual-quality
-          retention-days: 14
       - name: Record verified UX production acceptance
         if: success()
         shell: bash
@@ -211,11 +201,16 @@ jobs:
             "browser_page_errors": 0
           }
           EOF
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- qa/ux-production-result.json
-          if ! git diff --cached --quiet; then
-            git commit -m "Record verified UX production acceptance [skip ci]"
-            git push
-          fi
+          echo "Production UX acceptance recorded for $GITHUB_SHA in the workflow artifact."
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: production-browser-verification
+          path: |
+            production-browser
+            visual-layout-audit
+            final-platform-acceptance
+            artifacts/phase9-1-visual-quality
+            qa/ux-production-result.json
+          retention-days: 14
 
