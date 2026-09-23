@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-23T07:45:41.999Z",
+  "generatedAt": "2026-09-23T16:23:16.119Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 161,
+    "REACHABLE": 165,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 77,
+    "NETWORK_UNVERIFIED": 73,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -625,9 +625,8 @@
         "official-information",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "ERR_SSL_SSL/TLS_ALERT_HANDSHAKE_FAILURE"
     },
     {
       "url": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=14aefa78-624c-4f8a-aee9-c6876fcc8b1a&Lang=ar-AE",
@@ -1277,8 +1276,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/adding-or-removing-a-partner",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/change-addition-or-removal-of-activities",
@@ -1290,8 +1290,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/change-addition-or-removal-of-activities",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees",
@@ -1305,8 +1306,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-cancellation",
@@ -1318,8 +1320,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-cancellation",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rak.ae/wps/portal/rak/e-services/govt/ded/license-issuance",
@@ -1331,8 +1334,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/e-services/govt/ded/license-issuance",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-renewal",
@@ -1344,8 +1348,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-renewal",
+      "result": "REACHABLE"
     },
     {
       "url": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/",
@@ -2960,9 +2965,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
