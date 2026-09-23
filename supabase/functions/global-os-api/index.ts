@@ -1,4 +1,4 @@
-import { withSupabase } from "npm:@supabase/server";
+import { withSupabase } from "npm:@supabase/server@1.8.0";
 
 const ALLOWED_ORIGINS = new Set([
   "https://hossambahr.com",
@@ -110,3 +110,4 @@ export default {
     return json(req, { error: "not_found" }, 404);
   })
 };
+
