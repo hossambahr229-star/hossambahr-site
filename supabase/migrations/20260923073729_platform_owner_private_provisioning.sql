@@ -1,0 +1,3 @@
+-- The mailbox of the verified platform owner is allowlisted directly and privately in production.
+-- Do not commit owner email, credentials, passwords, or recovery tokens to a public repository.
+-- This file records the corresponding applied production migration version without disclosing identity.
