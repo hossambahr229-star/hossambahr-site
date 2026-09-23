@@ -17,7 +17,7 @@ const walk = (directory) => {
 
 const isInteractiveRoute = (file) => {
   const route = relative(root, file).replaceAll("\\", "/");
-  return route.startsWith("auth/") || route.startsWith("account/") || route.startsWith("services/") || route.startsWith("os/");
+  return route.startsWith("auth/") || route.startsWith("owner/") || route.startsWith("account/") || route.startsWith("services/") || route.startsWith("os/");
 };
 
 walk(root);
