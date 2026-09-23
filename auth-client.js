@@ -28,20 +28,21 @@
     const reset = document.querySelector("[data-reset-form]");
     const returnPath = safeReturnPath(new URLSearchParams(location.search).get("return"));
     login?.addEventListener("submit", async (event) => {
-      event.preventDefault(); setBusy(login, true); const data = new FormData(login);
+      event.preventDefault(); const data = new FormData(login); setBusy(login, true);
       const { error } = await client.auth.signInWithPassword({ email: String(data.get("email") || "").trim(), password: String(data.get("password") || "") });
       setBusy(login, false); if (error) return message("تعذر تسجيل الدخول. تحقق من البريد وكلمة المرور وتفعيل البريد.", "error"); location.assign(returnPath);
     });
     signup?.addEventListener("submit", async (event) => {
-      event.preventDefault(); setBusy(signup, true); const data = new FormData(signup); const password = String(data.get("password") || "");
+      event.preventDefault(); const data = new FormData(signup); setBusy(signup, true); const password = String(data.get("password") || "");
       if (!passwordValid(password)) { setBusy(signup, false); return message("استخدم كلمة مرور من 10 أحرف على الأقل وتضم حروفًا وأرقامًا.", "error"); }
       const { data: result, error } = await client.auth.signUp({ email: String(data.get("email") || "").trim(), password, options: { emailRedirectTo: `${config.siteUrl}/auth/callback/`, data: { display_name: String(data.get("name") || "").trim() } } });
       setBusy(signup, false); if (error) return message("تعذر إنشاء الحساب. تحقق من البريد أو حاول لاحقًا.", "error");
       if (result.session) location.assign(returnPath); else message("تم إنشاء الحساب. افتح رسالة التحقق المرسلة إلى بريدك ثم سجّل الدخول.", "success");
     });
     magic?.addEventListener("submit", async (event) => {
-      event.preventDefault(); setBusy(magic, true);
+      event.preventDefault();
       const email = String(new FormData(magic).get("email") || "").trim();
+      setBusy(magic, true);
       const { error } = await client.auth.signInWithOtp({
         email,
         options: {
@@ -54,12 +55,12 @@
       message("أرسلنا رابط دخول آمن إلى بريدك. افتح الرابط لإكمال التحقق.", "success");
     });
     forgot?.addEventListener("submit", async (event) => {
-      event.preventDefault(); setBusy(forgot, true); const data = new FormData(forgot);
+      event.preventDefault(); const data = new FormData(forgot); setBusy(forgot, true);
       const { error } = await client.auth.resetPasswordForEmail(String(data.get("email") || "").trim(), { redirectTo: `${config.siteUrl}/auth/reset/` });
       setBusy(forgot, false); if (error) return message("تعذر إرسال رسالة الاستعادة الآن. حاول لاحقًا.", "error"); message("إذا كان البريد مسجلًا فستصلك رسالة استعادة آمنة.", "success");
     });
     reset?.addEventListener("submit", async (event) => {
-      event.preventDefault(); setBusy(reset, true); const data = new FormData(reset); const password = String(data.get("password") || "");
+      event.preventDefault(); const data = new FormData(reset); setBusy(reset, true); const password = String(data.get("password") || "");
       if (!passwordValid(password)) { setBusy(reset, false); return message("استخدم كلمة مرور من 10 أحرف على الأقل وتضم حروفًا وأرقامًا.", "error"); }
       const { error } = await client.auth.updateUser({ password }); setBusy(reset, false);
       if (error) return message("رابط الاستعادة غير صالح أو انتهت صلاحيته. اطلب رابطًا جديدًا.", "error");
