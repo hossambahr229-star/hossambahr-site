@@ -23,6 +23,7 @@
   async function setupAuthPage() {
     const login = document.querySelector("[data-login-form]");
     const signup = document.querySelector("[data-signup-form]");
+    const magic = document.querySelector("[data-magic-form]");
     const forgot = document.querySelector("[data-forgot-form]");
     const reset = document.querySelector("[data-reset-form]");
     const returnPath = safeReturnPath(new URLSearchParams(location.search).get("return"));
@@ -37,6 +38,20 @@
       const { data: result, error } = await client.auth.signUp({ email: String(data.get("email") || "").trim(), password, options: { emailRedirectTo: `${config.siteUrl}/auth/callback/`, data: { display_name: String(data.get("name") || "").trim() } } });
       setBusy(signup, false); if (error) return message("تعذر إنشاء الحساب. تحقق من البريد أو حاول لاحقًا.", "error");
       if (result.session) location.assign(returnPath); else message("تم إنشاء الحساب. افتح رسالة التحقق المرسلة إلى بريدك ثم سجّل الدخول.", "success");
+    });
+    magic?.addEventListener("submit", async (event) => {
+      event.preventDefault(); setBusy(magic, true);
+      const email = String(new FormData(magic).get("email") || "").trim();
+      const { error } = await client.auth.signInWithOtp({
+        email,
+        options: {
+          shouldCreateUser: true,
+          emailRedirectTo: `${config.siteUrl}/auth/callback/?return=${encodeURIComponent(returnPath)}`
+        }
+      });
+      setBusy(magic, false);
+      if (error) return message("تعذر إرسال رابط الدخول حاليًا. يمكنك إنشاء الحساب أو المحاولة لاحقًا.", "error");
+      message("أرسلنا رابط دخول آمن إلى بريدك. افتح الرابط لإكمال التحقق.", "success");
     });
     forgot?.addEventListener("submit", async (event) => {
       event.preventDefault(); setBusy(forgot, true); const data = new FormData(forgot);
@@ -56,13 +71,25 @@
     if (location.pathname !== "/auth/callback/") return;
     const code = new URLSearchParams(location.search).get("code");
     if (code) { const { error } = await client.auth.exchangeCodeForSession(code); if (error) return message("تعذر إكمال التحقق. اطلب رسالة تحقق جديدة.", "error"); }
-    location.replace("/account/");
+    location.replace(safeReturnPath(new URLSearchParams(location.search).get("return")));
   }
 
   async function setupAccount(session) {
     if (location.pathname !== "/account/") return;
     if (!session) { location.replace(`/auth/?return=${encodeURIComponent("/account/")}`); return; }
     const email = document.querySelector("[data-account-email]"); if (email) email.textContent = session.user.email || "";
+    const { data: isOwner } = await client.rpc("hb_is_platform_owner");
+    if (isOwner === true) {
+      const panel = document.querySelector("[data-account-email]")?.closest(".auth-panel");
+      if (panel && !panel.querySelector("[data-owner-dashboard-link]")) {
+        const link = document.createElement("a");
+        link.dataset.ownerDashboardLink = "true";
+        link.className = "save-service-action";
+        link.href = "/owner/";
+        link.textContent = "لوحة إدارة المنصة (المالك)";
+        panel.append(link);
+      }
+    }
     document.querySelector("[data-logout]")?.addEventListener("click", async () => { await client.auth.signOut(); location.replace("/"); });
     const { data, error } = await client.from("user_transactions").select("id,service_slug,service_name,status,created_at").order("created_at", { ascending: false }).limit(50);
     const list = document.querySelector("[data-transactions]"); if (!list) return;
