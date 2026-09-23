@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-23T16:37:44.009Z",
+  "generatedAt": "2026-09-23T21:56:54.981Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 165,
+    "REACHABLE": 167,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 73,
+    "NETWORK_UNVERIFIED": 71,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -701,8 +701,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=201",
+      "result": "REACHABLE"
     },
     {
       "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=166",
@@ -714,8 +715,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=166",
+      "result": "REACHABLE"
     },
     {
       "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=163",
