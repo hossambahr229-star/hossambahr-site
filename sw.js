@@ -1,6 +1,7 @@
-const CACHE_NAME="hb-public-v1";
+const CACHE_NAME="hb-public-v2";
 const PRECACHE=["/","/manifest.webmanifest","/icon.svg","/brand-tokens.css","/intent-first.css"];
 const SENSITIVE_PREFIXES=["/auth/","/account/","/os/"];
+const AUTH_RUNTIME_PATHS=new Set(["/auth-client.js","/auth-config.js","/vendor/supabase.js"]);
 
 self.addEventListener("install",(event)=>{
   event.waitUntil(caches.open(CACHE_NAME).then((cache)=>cache.addAll(PRECACHE)).then(()=>self.skipWaiting()));
@@ -15,7 +16,7 @@ self.addEventListener("activate",(event)=>{
 });
 
 function isSensitive(url){
-  return SENSITIVE_PREFIXES.some((prefix)=>url.pathname.startsWith(prefix));
+  return AUTH_RUNTIME_PATHS.has(url.pathname)||SENSITIVE_PREFIXES.some((prefix)=>url.pathname.startsWith(prefix));
 }
 
 self.addEventListener("fetch",(event)=>{
