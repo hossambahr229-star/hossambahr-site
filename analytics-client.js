@@ -65,17 +65,35 @@
     onReady();
   }
 
+  const classifyAnchor = (anchor) => {
+    if (anchor.matches("[data-commercial-cta='verified'], .service-assist-action")) return "commercial";
+    if (anchor.matches("[data-government-cta='verified'], .service-official-action")) return "government";
+
+    const rawHref = anchor.getAttribute("href") || "";
+    if (/^tel:/i.test(rawHref)) return "commercial";
+
+    try {
+      const url = new URL(anchor.href, location.href);
+      const host = url.hostname.toLowerCase();
+      if (host === "wa.me" || host === "api.whatsapp.com" || host === "web.whatsapp.com") return "commercial";
+      if (
+        host === "u.ae" ||
+        host.endsWith(".gov.ae") ||
+        host === "tamm.abudhabi" ||
+        host.endsWith(".tamm.abudhabi") ||
+        host === "invest.dubai.ae"
+      ) return "government";
+    } catch {
+      return null;
+    }
+
+    return null;
+  };
+
   document.addEventListener("click", (event) => {
     const anchor = event.target instanceof Element ? event.target.closest("a") : null;
     if (!anchor) return;
-
-    if (anchor.matches("[data-commercial-cta='verified'], .service-assist-action")) {
-      send("cta_click", "commercial");
-      return;
-    }
-
-    if (anchor.matches("[data-government-cta='verified'], .service-official-action")) {
-      send("cta_click", "government");
-    }
+    const targetKind = classifyAnchor(anchor);
+    if (targetKind) send("cta_click", targetKind);
   }, { capture: true });
 })();
