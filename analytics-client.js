@@ -45,8 +45,14 @@
 
   const getAttribution = () => {
     const campaign = new URLSearchParams(location.search);
+    const inferredSource = campaign.get("utm_source")
+      || (campaign.has("fbclid") ? "facebook" : null)
+      || (campaign.has("ttclid") ? "tiktok" : null)
+      || (campaign.has("gclid") ? "google" : null)
+      || (campaign.has("msclkid") ? "bing" : null)
+      || (campaign.has("li_fat_id") ? "linkedin" : null);
     const current = {
-      utm_source: campaign.get("utm_source"),
+      utm_source: inferredSource,
       utm_medium: campaign.get("utm_medium"),
       utm_campaign: campaign.get("utm_campaign"),
       referrer_host: externalReferrerHost(),
