@@ -65,6 +65,9 @@ jobs:
       - name: Link production project
         if: steps.credentials.outputs.ready == 'true'
         run: supabase link --project-ref "$SUPABASE_PROJECT_ID"
+      - name: Push versioned Supabase project config
+        if: steps.credentials.outputs.ready == 'true'
+        run: supabase config push
       - name: Show migration plan
         if: steps.credentials.outputs.ready == 'true'
         run: supabase migration list
