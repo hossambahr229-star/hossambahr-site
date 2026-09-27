@@ -413,3 +413,7 @@ verify_jwt = true
 
 [functions.global-os-worker]
 verify_jwt = false
+
+
+[functions.web-analytics]
+verify_jwt = false
