@@ -42,14 +42,14 @@ function socialImageFor(route) {
 }
 
 function canonicalHrefFrom(html) {
-  return html.match(/<link\\b[^>]*\\brel=["']canonical["'][^>]*\\bhref=["']([^"']+)["'][^>]*>/i)?.[1]
-    || html.match(/<link\\b[^>]*\\bhref=["']([^"']+)["'][^>]*\\brel=["']canonical["'][^>]*>/i)?.[1]
+  return html.match(/<link\b[^>]*\brel=["']canonical["'][^>]*\bhref=["']([^"']+)["'][^>]*>/i)?.[1]
+    || html.match(/<link\b[^>]*\bhref=["']([^"']+)["'][^>]*\brel=["']canonical["'][^>]*>/i)?.[1]
     || null;
 }
 
 function descriptionFrom(html) {
-  return html.match(/<meta\\b[^>]*\\bname=["']description["'][^>]*\\bcontent=["']([^"']*)["'][^>]*>/i)?.[1]
-    || html.match(/<meta\\b[^>]*\\bcontent=["']([^"']*)["'][^>]*\\bname=["']description["'][^>]*>/i)?.[1]
+  return html.match(/<meta\b[^>]*\bname=["']description["'][^>]*\bcontent=["']([^"']*)["'][^>]*>/i)?.[1]
+    || html.match(/<meta\b[^>]*\bcontent=["']([^"']*)["'][^>]*\bname=["']description["'][^>]*>/i)?.[1]
     || "";
 }
 
@@ -126,8 +126,8 @@ async function walk(directory) {
     const canonicalHref = canonicalHrefFrom(html) || fallbackCanonical;
     const pageTitle = decodeBasicEntities(stripTags(html.match(/<title>([^<]+)<\/title>/i)?.[1])) || "HossamBahr";
     const pageDescription = decodeBasicEntities(descriptionFrom(html)) || `خدمات ومعاملات حكومية عبر HossamBahr: ${pageTitle}`;
-    const socialImage = html.match(/<meta\\b[^>]*\\bproperty=["']og:image["'][^>]*\\bcontent=["']([^"']+)["'][^>]*>/i)?.[1]
-      || html.match(/<meta\\b[^>]*\\bcontent=["']([^"']+)["'][^>]*\\bproperty=["']og:image["'][^>]*>/i)?.[1]
+    const socialImage = html.match(/<meta\b[^>]*\bproperty=["']og:image["'][^>]*\bcontent=["']([^"']+)["'][^>]*>/i)?.[1]
+      || html.match(/<meta\b[^>]*\bcontent=["']([^"']+)["'][^>]*\bproperty=["']og:image["'][^>]*>/i)?.[1]
       || `https://hossambahr.com${socialImageFor(route)}`;
 
     html = html
