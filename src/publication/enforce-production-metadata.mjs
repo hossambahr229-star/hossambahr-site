@@ -9,9 +9,27 @@ let descriptionsAdded = 0;
 let notFoundFixed = 0;
 let cspAdded = 0;
 let referrerPolicyAdded = 0;
+let socialImagesAdded = 0;
+let twitterCardsUpgraded = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const escapeAttribute = (value) => String(value || "").replaceAll("&", "&amp;").replaceAll('"', "&quot;");
+
+function routeFor(normalized) {
+  return normalized === "index.html" ? "/" : `/${normalized.replace(/index\.html$/, "")}`;
+}
+
+function socialImageFor(route) {
+  if (route === "/") return "/artifacts/phase9-1-visual-quality/homepage-desktop-1440.png";
+  if (route === "/services/") return "/artifacts/phase9-1-visual-quality/services-desktop-1440.png";
+  if (route.startsWith("/services/")) return "/artifacts/phase9-1-visual-quality/service-detail-desktop-1440.png";
+  if (route.includes("dubai-business-activities") || route.startsWith("/activities/")) {
+    return "/artifacts/phase9-1-visual-quality/activities-desktop-1440.png";
+  }
+  if (route.startsWith("/updates/")) return "/artifacts/phase9-1-visual-quality/updates-desktop-1440.png";
+  if (route.startsWith("/auth/")) return "/artifacts/phase9-1-visual-quality/login-desktop-1440.png";
+  return "/artifacts/phase9-1-visual-quality/homepage-desktop-1440.png";
+}
 
 async function walk(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -27,7 +45,7 @@ async function walk(directory) {
     scanned += 1;
     let html = await readFile(path, "utf8");
     if (!/http-equiv=["']Content-Security-Policy["']/i.test(html)) {
-      const csp = "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://bbddlpvxjowphkagvycz.supabase.co wss://bbddlpvxjowphkagvycz.supabase.co; upgrade-insecure-requests";
+      const csp = "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://ngcrkuykfqmiqhsnpcrc.supabase.co wss://ngcrkuykfqmiqhsnpcrc.supabase.co; upgrade-insecure-requests";
       html = html.replace("</head>", `<meta http-equiv="Content-Security-Policy" content="${csp}"></head>`);
       cspAdded += 1;
     }
@@ -56,12 +74,37 @@ async function walk(directory) {
       html = html.replace("</head>", `<meta name="description" content="${escapeAttribute(description)}"></head>`);
       descriptionsAdded += 1;
     }
+
+    const route = routeFor(normalized);
+    const socialImage = `https://hossambahr.com${socialImageFor(route)}`;
+    const title = stripTags(html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i)?.[1])
+      || stripTags(html.match(/<title>([^<]+)<\/title>/i)?.[1])
+      || "HossamBahr";
+    if (!/<meta[^>]+property=["']og:image["']/i.test(html)) {
+      const tags = [
+        `<meta property="og:image" content="${escapeAttribute(socialImage)}">`,
+        `<meta property="og:image:alt" content="${escapeAttribute(title)}">`,
+      ].join("");
+      html = html.replace("</head>", `${tags}</head>`);
+      socialImagesAdded += 1;
+    }
+    if (/<meta[^>]+name=["']twitter:card["'][^>]+content=["']summary["'][^>]*>/i.test(html)) {
+      html = html.replace(
+        /<meta([^>]+name=["']twitter:card["'][^>]+content=["'])summary(["'][^>]*)>/i,
+        '<meta$1summary_large_image$2>',
+      );
+      twitterCardsUpgraded += 1;
+    }
+    if (!/<meta[^>]+name=["']twitter:image["']/i.test(html)) {
+      html = html.replace("</head>", `<meta name="twitter:image" content="${escapeAttribute(socialImage)}"></head>`);
+      socialImagesAdded += 1;
+    }
+
     const hasCanonical = /<link[^>]+rel=["']canonical["']/i.test(html) || /<link[^>]+href=["'][^"']+["'][^>]+rel=["']canonical["']/i.test(html);
     if (hasCanonical) {
       await writeFile(path, html, "utf8");
       continue;
     }
-    const route = normalized === "index.html" ? "/" : `/${normalized.replace(/index\.html$/, "")}`;
     const canonical = `<link rel="canonical" href="https://hossambahr.com${route}">`;
     if (!html.includes("</head>")) throw new Error(`Missing </head> in ${normalized}`);
     html = html.replace("</head>", `${canonical}</head>`);
@@ -71,4 +114,14 @@ async function walk(directory) {
 }
 
 await walk(root);
-console.log(JSON.stringify({ productionMetadata: "ENFORCED", scanned, canonicalAdded, descriptionsAdded, notFoundFixed, cspAdded, referrerPolicyAdded }));
+console.log(JSON.stringify({
+  productionMetadata: "ENFORCED",
+  scanned,
+  canonicalAdded,
+  descriptionsAdded,
+  notFoundFixed,
+  cspAdded,
+  referrerPolicyAdded,
+  socialImagesAdded,
+  twitterCardsUpgraded,
+}));
