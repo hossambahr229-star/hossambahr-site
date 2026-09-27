@@ -125,10 +125,11 @@ if (server) {
   baseUrl = `http://127.0.0.1:${server.address().port}`;
 }
 const browser = await chromium.launch({ headless: true, executablePath: browserPath });
-const browserResults = [];
+const browserResults = Array(journeys.length);
 const screenshots = new Set([0, 8, 22, 29, 42, 49]);
+let journeyCursor = 0;
 
-for (let index = 0; index < journeys.length; index += 1) {
+async function runJourney(index) {
   const [query, expected, family, emirate] = journeys[index];
   const profile = index % 2 ? "desktop" : "mobile";
   const context = await browser.newContext(profile === "mobile"
@@ -137,39 +138,61 @@ for (let index = 0; index < journeys.length; index += 1) {
   const page = await context.newPage();
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  const response = await page.goto(`${baseUrl}/?journey=${index + 1}`, { waitUntil: "networkidle", timeout: 60000 });
-  await page.waitForTimeout(1950);
-  await page.locator("#government-search").fill(query);
-  await page.locator("form.primary-search button[type=submit]").click();
-  const top = page.locator(".intent-result-card:not(.activity-intent-card)").first();
-  await top.waitFor({ state: "visible", timeout: 20000 });
-  const route = await top.locator("a").getAttribute("href");
-  const correct = Boolean(route && expected.test(decodeURIComponent(route)));
-  const navigation = page.waitForURL((url) => decodeURIComponent(url.pathname) === decodeURIComponent(route), { timeout: 30000 }).catch(() => null);
-  await top.locator("a").click();
-  await navigation;
-  const navigated = decodeURIComponent(new URL(page.url()).pathname) === decodeURIComponent(route);
-  await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
-  await page.waitForTimeout(450);
-  const requirements = await page.locator("h2").filter({ hasText: /المستندات|المتطلبات|ما الذي تحتاجه/ }).count() > 0;
-  const official = page.locator('[data-government-cta="verified"][href^="https://"]').first();
-  const officialCount = await official.count();
-  const contact = page.locator('[data-commercial-cta="verified"][href^="https://wa.me/"]').first();
-  const contactCount = await contact.count();
-  const officialLabel = officialCount ? (await official.innerText()).trim() : "";
-  const contactLabel = contactCount ? (await contact.innerText()).trim() : "";
-  const noOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
-  const rtl = await page.evaluate(() => getComputedStyle(document.documentElement).direction === "rtl");
-  const pass = response?.status() === 200 && correct && navigated && requirements && officialCount === 1 && contactCount === 1
-    && /(?:اذهب للجهة الرسمية|ابدأ التنفيذ الحكومي الرسمي|افتح صفحة الخدمة الحكومية|افتح الدليل الحكومي الرسمي|افتح بوابة التنفيذ الحكومية)/.test(officialLabel)
-    && /(?:تواصل معنا لإنجازها|أريد حسام بحر أن ينجزها لي)/.test(contactLabel)
-    && noOverflow && rtl && errors.length === 0;
-  if (screenshots.has(index)) await page.screenshot({ path: resolve(output, `${String(index + 1).padStart(2, "0")}-${family}-${profile}.png`), fullPage: true });
-  browserResults.push({ query, family, emirate, profile, route, correct, navigated, requirements,
-    officialCta: officialCount === 1, contactCta: contactCount === 1, officialLabel, contactLabel,
-    clicksToService: 2, clicksToOfficial: 3, clicksToContact: 3, noOverflow, rtl, errors, pass });
-  await context.close();
+
+  try {
+    const response = await page.goto(`${baseUrl}/?journey=${index + 1}`, { waitUntil: "networkidle", timeout: 60000 });
+    await page.waitForTimeout(1950);
+    await page.locator("#government-search").fill(query);
+    await page.locator("form.primary-search button[type=submit]").click();
+    const top = page.locator(".intent-result-card:not(.activity-intent-card)").first();
+    await top.waitFor({ state: "visible", timeout: 20000 });
+    const route = await top.locator("a").getAttribute("href");
+    const correct = Boolean(route && expected.test(decodeURIComponent(route)));
+    const navigation = page.waitForURL((url) => decodeURIComponent(url.pathname) === decodeURIComponent(route), { timeout: 30000 }).catch(() => null);
+    await top.locator("a").click();
+    await navigation;
+    const navigated = decodeURIComponent(new URL(page.url()).pathname) === decodeURIComponent(route);
+    await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
+    await page.waitForTimeout(450);
+    const requirements = await page.locator("h2").filter({ hasText: /المستندات|المتطلبات|ما الذي تحتاجه/ }).count() > 0;
+    const official = page.locator('[data-government-cta="verified"][href^="https://"]').first();
+    const officialCount = await official.count();
+    const contact = page.locator('[data-commercial-cta="verified"][href^="https://wa.me/"]').first();
+    const contactCount = await contact.count();
+    const officialLabel = officialCount ? (await official.innerText()).trim() : "";
+    const contactLabel = contactCount ? (await contact.innerText()).trim() : "";
+    const noOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
+    const rtl = await page.evaluate(() => getComputedStyle(document.documentElement).direction === "rtl");
+    const pass = response?.status() === 200 && correct && navigated && requirements && officialCount === 1 && contactCount === 1
+      && /(?:اذهب للجهة الرسمية|ابدأ التنفيذ الحكومي الرسمي|افتح صفحة الخدمة الحكومية|افتح الدليل الحكومي الرسمي|افتح بوابة التنفيذ الحكومية)/.test(officialLabel)
+      && /(?:تواصل معنا لإنجازها|أريد حسام بحر أن ينجزها لي)/.test(contactLabel)
+      && noOverflow && rtl && errors.length === 0;
+    if (screenshots.has(index)) await page.screenshot({ path: resolve(output, `${String(index + 1).padStart(2, "0")}-${family}-${profile}.png`), fullPage: true });
+    browserResults[index] = { query, family, emirate, profile, route, correct, navigated, requirements,
+      officialCta: officialCount === 1, contactCta: contactCount === 1, officialLabel, contactLabel,
+      clicksToService: 2, clicksToOfficial: 3, clicksToContact: 3, noOverflow, rtl, errors, pass };
+  } catch (error) {
+    browserResults[index] = {
+      query, family, emirate, profile, route: null, correct: false, navigated: false, requirements: false,
+      officialCta: false, contactCta: false, officialLabel: "", contactLabel: "",
+      clicksToService: 2, clicksToOfficial: 3, clicksToContact: 3, noOverflow: false, rtl: false,
+      errors: [...errors, error?.message || String(error)], pass: false,
+    };
+  } finally {
+    await context.close();
+  }
 }
+
+async function journeyWorker() {
+  while (true) {
+    const index = journeyCursor;
+    journeyCursor += 1;
+    if (index >= journeys.length) return;
+    await runJourney(index);
+  }
+}
+
+await Promise.all(Array.from({ length: 5 }, () => journeyWorker()));
 
 const deviceProfiles = [
   ["mobile-320", 320, 720], ["mobile-360", 360, 800], ["iphone-390", 390, 844],
