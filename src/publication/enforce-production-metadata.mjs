@@ -11,6 +11,7 @@ let cspAdded = 0;
 let referrerPolicyAdded = 0;
 let socialImagesAdded = 0;
 let twitterCardsUpgraded = 0;
+let analyticsRuntimeAdded = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const escapeAttribute = (value) => String(value || "").replaceAll("&", "&amp;").replaceAll('"', "&quot;");
@@ -66,6 +67,12 @@ async function walk(directory) {
       notFoundFixed += 1;
       continue;
     }
+
+    if (!html.includes('data-hb-analytics="v1"')) {
+      html = html.replace("</head>", '<script src="/analytics-client.js?v=analytics-20260927a" defer data-hb-analytics="v1"></script></head>');
+      analyticsRuntimeAdded += 1;
+    }
+
     if (!/<meta[^>]+name=["']description["']/i.test(html)) {
       const heading = stripTags(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]);
       const title = stripTags(html.match(/<title>([^<]+)<\/title>/i)?.[1]).replace(/\s*\|\s*HossamBahr.*$/i, "");
@@ -124,4 +131,5 @@ console.log(JSON.stringify({
   referrerPolicyAdded,
   socialImagesAdded,
   twitterCardsUpgraded,
+  analyticsRuntimeAdded,
 }));
