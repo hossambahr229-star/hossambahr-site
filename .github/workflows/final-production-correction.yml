@@ -6,6 +6,9 @@ on:
       - agent/final-production-correction
       - main
       - agent/production-layout-centering
+    paths-ignore:
+      - 'supabase/**'
+      - 'diagnostics/**'
 
 permissions:
   contents: write
