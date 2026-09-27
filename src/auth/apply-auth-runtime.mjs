@@ -22,8 +22,10 @@ const isInteractiveRoute = (file) => {
 
 walk(root);
 
-const endpoint = "https://bbddlpvxjowphkagvycz.supabase.co";
-const websocket = "wss://bbddlpvxjowphkagvycz.supabase.co";
+const endpoint = "https://ngcrkuykfqmiqhsnpcrc.supabase.co";
+const websocket = "wss://ngcrkuykfqmiqhsnpcrc.supabase.co";
+const legacyEndpoint = "https://bbddlpvxjowphkagvycz.supabase.co";
+const legacyWebsocket = "wss://bbddlpvxjowphkagvycz.supabase.co";
 const pwaAsset = '<script src="/pwa-runtime.js?v=pwa-20260918a" defer></script>';
 const authAssets = [
   '<script src="/vendor/supabase.js" defer></script>',
@@ -51,8 +53,10 @@ for (const file of files) {
   let html = await readFile(file, "utf8");
   const before = html;
 
+  html = html.replaceAll(legacyEndpoint, endpoint).replaceAll(legacyWebsocket, websocket);
+
   html = html.replace(
-    /connect-src (?:&#x27;|')self(?:&#x27;|')(?![^;]*bbddlpvxjowphkagvycz)/g,
+    /connect-src (?:&#x27;|')self(?:&#x27;|')(?![^;]*ngcrkuykfqmiqhsnpcrc)/g,
     (match) => `${match} ${endpoint} ${websocket}`
   );
 

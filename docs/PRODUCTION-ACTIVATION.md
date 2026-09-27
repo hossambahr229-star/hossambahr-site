@@ -1,6 +1,6 @@
 # HOSSAM BAHR OS — Production Activation
 
-The Global OS code is deliberately separated from production activation. Production database changes must only run after the pull request passes both architecture/build checks and local Supabase database checks.
+The Global OS backend is activated on the connected production project. GitHub deployment remains the repeatable release path. Production database changes must only run after the pull request passes both architecture/build checks and local Supabase database checks.
 
 ## One-time credential setup
 GitHub repository encrypted secrets required by the production deployment workflow:
@@ -8,7 +8,7 @@ GitHub repository encrypted secrets required by the production deployment workfl
 - `SUPABASE_DB_PASSWORD`
 
 The project reference is already non-secret and configured as:
-`bbddlpvxjowphkagvycz`
+`ngcrkuykfqmiqhsnpcrc`
 
 Never commit the access token or database password to source control. The repository secret audit rejects common secret formats.
 
