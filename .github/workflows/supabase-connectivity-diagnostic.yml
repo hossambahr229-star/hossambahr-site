@@ -1,0 +1,76 @@
+name: Supabase Production Connectivity Diagnostic
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/supabase-connectivity-diagnostic.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: production
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_PROJECT_ID: ngcrkuykfqmiqhsnpcrc
+      SUPABASE_URL: https://ngcrkuykfqmiqhsnpcrc.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_EIwB2Y88kU8aptPf7ieX8g_HPdiRuNO
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Test public Supabase endpoints and sanitize Auth config
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p diagnostics
+          dns_ok=false
+          if getent hosts ngcrkuykfqmiqhsnpcrc.supabase.co >/tmp/hb-dns.txt 2>/dev/null; then dns_ok=true; fi
+          settings_status=$(curl --connect-timeout 10 --max-time 20 -sS -o /tmp/settings.json -w '%{http_code}' -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL/auth/v1/settings" || true)
+          rest_status=$(curl --connect-timeout 10 --max-time 20 -sS -o /tmp/rest.json -w '%{http_code}' -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL/rest/v1/" || true)
+          functions_status=$(curl --connect-timeout 10 --max-time 20 -sS -o /tmp/functions.json -w '%{http_code}' -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL/functions/v1/global-os-api" || true)
+          auth_config_status=0
+          site_url="unknown"
+          uri_allow_list="unknown"
+          external_email_enabled="unknown"
+          disable_signup="unknown"
+          if [ -n "${SUPABASE_ACCESS_TOKEN:-}" ]; then
+            auth_config_status=$(curl --connect-timeout 10 --max-time 20 -sS -o /tmp/auth-config.json -w '%{http_code}' -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" "https://api.supabase.com/v1/projects/$SUPABASE_PROJECT_ID/config/auth" || true)
+            if [ "$auth_config_status" = "200" ]; then
+              site_url=$(jq -r '.site_url // "unset"' /tmp/auth-config.json)
+              uri_allow_list=$(jq -r '.uri_allow_list // "unset"' /tmp/auth-config.json)
+              external_email_enabled=$(jq -r '.external_email_enabled // "unset"' /tmp/auth-config.json)
+              disable_signup=$(jq -r '.disable_signup // "unset"' /tmp/auth-config.json)
+            fi
+          fi
+          cat > diagnostics/supabase-connectivity.json <<EOF
+          {
+            "project_ref": "$SUPABASE_PROJECT_ID",
+            "dns_ok": $dns_ok,
+            "auth_settings_http": "$settings_status",
+            "rest_http": "$rest_status",
+            "edge_function_unauthenticated_http": "$functions_status",
+            "management_auth_config_http": "$auth_config_status",
+            "site_url": "$site_url",
+            "uri_allow_list": "$uri_allow_list",
+            "external_email_enabled": "$external_email_enabled",
+            "disable_signup": "$disable_signup"
+          }
+          EOF
+          cat diagnostics/supabase-connectivity.json
+      - name: Commit sanitized diagnostic
+        run: |
+          git config user.name "HossamBahr Diagnostics"
+          git config user.email "diagnostics@users.noreply.github.com"
+          git add diagnostics/supabase-connectivity.json
+          if git diff --cached --quiet; then
+            echo "Diagnostic unchanged."
+          else
+            git commit -m "Record sanitized Supabase connectivity diagnostic [skip ci]"
+            git push origin HEAD:main
+          fi
