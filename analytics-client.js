@@ -3,6 +3,9 @@
 
   if (navigator.webdriver || /HeadlessChrome|Playwright/i.test(navigator.userAgent || "")) return;
 
+  const privatePrefixes = ["/owner/", "/account/", "/auth/", "/os/"];
+  if (privatePrefixes.some((prefix) => location.pathname.startsWith(prefix))) return;
+
   const endpoint = "https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/web-analytics";
   const sessionKey = "hb_analytics_session_v1";
 
