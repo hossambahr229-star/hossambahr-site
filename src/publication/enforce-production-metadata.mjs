@@ -11,7 +11,8 @@ let cspAdded = 0;
 let referrerPolicyAdded = 0;
 let socialImagesAdded = 0;
 let twitterCardsUpgraded = 0;
-let analyticsRuntimeAdded = 0;\nlet privacyDisclosureAdded = 0;
+let analyticsRuntimeAdded = 0;
+let privacyDisclosureAdded = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const escapeAttribute = (value) => String(value || "").replaceAll("&", "&amp;").replaceAll('"', "&quot;");
@@ -143,4 +144,5 @@ console.log(JSON.stringify({
   socialImagesAdded,
   twitterCardsUpgraded,
   analyticsRuntimeAdded,
+  privacyDisclosureAdded,
 }));
