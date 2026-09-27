@@ -68,10 +68,36 @@
     }));
   }
 
+  function renderSources(rows) {
+    const list = $("[data-owner-traffic-sources]");
+    if (!list) return;
+    if (!rows?.length) {
+      list.textContent = "لا توجد بيانات مصادر بعد.";
+      return;
+    }
+    list.replaceChildren(...rows.map((item) => {
+      const row = document.createElement("div");
+      row.className = "owner-row";
+      const label = document.createElement("b");
+      const source = item.source || item.referrer_host || "مباشر / غير محدد";
+      const medium = item.medium ? " · " + item.medium : "";
+      label.textContent = source + medium;
+      const meta = document.createElement("span");
+      meta.textContent = `${number(item.page_views)} مشاهدة · ${number(item.sessions)} جلسة · ${number(item.commercial_clicks)} تواصل معنا`;
+      row.append(label, meta);
+      return row;
+    }));
+  }
+
   async function loadAnalytics(client) {
-    const [{ data: daily, error: dailyError }, { data: paths, error: pathsError }] = await Promise.all([
+    const [
+      { data: daily, error: dailyError },
+      { data: paths, error: pathsError },
+      { data: sources, error: sourcesError },
+    ] = await Promise.all([
       client.rpc("hb_web_analytics_summary", { p_days: 30 }),
       client.rpc("hb_web_analytics_top_paths", { p_days: 30, p_limit: 15 }),
+      client.rpc("hb_web_analytics_sources", { p_days: 30, p_limit: 15 }),
     ]);
 
     if (dailyError) {
@@ -99,6 +125,13 @@
       if (list) list.textContent = "تعذر تحميل ترتيب الصفحات مؤقتًا.";
     } else {
       renderTopPaths(paths || []);
+    }
+
+    if (sourcesError) {
+      const list = $("[data-owner-traffic-sources]");
+      if (list) list.textContent = "تعذر تحميل مصادر الزيارات مؤقتًا.";
+    } else {
+      renderSources(sources || []);
     }
   }
 
