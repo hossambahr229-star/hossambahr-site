@@ -13,8 +13,16 @@ let socialImagesAdded = 0;
 let twitterCardsUpgraded = 0;
 let analyticsRuntimeAdded = 0;
 let privacyDisclosureAdded = 0;
+let socialMetadataNormalized = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+const decodeBasicEntities = (value) => String(value || "")
+  .replaceAll("&amp;", "&")
+  .replaceAll("&quot;", '"')
+  .replaceAll("&#39;", "'")
+  .replaceAll("&#x27;", "'")
+  .replaceAll("&lt;", "<")
+  .replaceAll("&gt;", ">");
 const escapeAttribute = (value) => String(value || "").replaceAll("&", "&amp;").replaceAll('"', "&quot;");
 
 function routeFor(normalized) {
@@ -31,6 +39,18 @@ function socialImageFor(route) {
   if (route.startsWith("/updates/")) return "/artifacts/phase9-1-visual-quality/updates-desktop-1440.png";
   if (route.startsWith("/auth/")) return "/artifacts/phase9-1-visual-quality/login-desktop-1440.png";
   return "/artifacts/phase9-1-visual-quality/homepage-desktop-1440.png";
+}
+
+function canonicalHrefFrom(html) {
+  return html.match(/<link\b[^>]*\brel=["']canonical["'][^>]*\bhref=["']([^"']+)["'][^>]*>/i)?.[1]
+    || html.match(/<link\b[^>]*\bhref=["']([^"']+)["'][^>]*\brel=["']canonical["'][^>]*>/i)?.[1]
+    || null;
+}
+
+function descriptionFrom(html) {
+  return html.match(/<meta\b[^>]*\bname=["']description["'][^>]*\bcontent=["']([^"']*)["'][^>]*>/i)?.[1]
+    || html.match(/<meta\b[^>]*\bcontent=["']([^"']*)["'][^>]*\bname=["']description["'][^>]*>/i)?.[1]
+    || "";
 }
 
 async function walk(directory) {
@@ -95,40 +115,45 @@ async function walk(directory) {
     }
 
     const route = routeFor(normalized);
-    const socialImage = `https://hossambahr.com${socialImageFor(route)}`;
-    const title = stripTags(html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i)?.[1])
-      || stripTags(html.match(/<title>([^<]+)<\/title>/i)?.[1])
-      || "HossamBahr";
+    const fallbackCanonical = `https://hossambahr.com${route}`;
+    const hasCanonical = /<link[^>]+rel=["']canonical["']/i.test(html) || /<link[^>]+href=["'][^"']+["'][^>]+rel=["']canonical["']/i.test(html);
+    if (!hasCanonical) {
+      if (!html.includes("</head>")) throw new Error(`Missing </head> in ${normalized}`);
+      html = html.replace("</head>", `<link rel="canonical" href="${fallbackCanonical}"></head>`);
+      canonicalAdded += 1;
+    }
+
+    const canonicalHref = canonicalHrefFrom(html) || fallbackCanonical;
+    const pageTitle = decodeBasicEntities(stripTags(html.match(/<title>([^<]+)<\/title>/i)?.[1])) || "HossamBahr";
+    const pageDescription = decodeBasicEntities(descriptionFrom(html)) || `خدمات ومعاملات حكومية عبر HossamBahr: ${pageTitle}`;
+    const socialImage = html.match(/<meta\b[^>]*\bproperty=["']og:image["'][^>]*\bcontent=["']([^"']+)["'][^>]*>/i)?.[1]
+      || html.match(/<meta\b[^>]*\bcontent=["']([^"']+)["'][^>]*\bproperty=["']og:image["'][^>]*>/i)?.[1]
+      || `https://hossambahr.com${socialImageFor(route)}`;
+
+    html = html
+      .replace(/<meta[^>]+property=["']og:(?:title|description|url|image:alt)["'][^>]*>/gi, "")
+      .replace(/<meta[^>]+name=["']twitter:(?:card|title|description|image)["'][^>]*>/gi, "");
+
     if (!/<meta[^>]+property=["']og:image["']/i.test(html)) {
-      const tags = [
-        `<meta property="og:image" content="${escapeAttribute(socialImage)}">`,
-        `<meta property="og:image:alt" content="${escapeAttribute(title)}">`,
-      ].join("");
-      html = html.replace("</head>", `${tags}</head>`);
-      socialImagesAdded += 1;
-    }
-    if (/<meta[^>]+name=["']twitter:card["'][^>]+content=["']summary["'][^>]*>/i.test(html)) {
-      html = html.replace(
-        /<meta([^>]+name=["']twitter:card["'][^>]+content=["'])summary(["'][^>]*)>/i,
-        '<meta$1summary_large_image$2>',
-      );
-      twitterCardsUpgraded += 1;
-    }
-    if (!/<meta[^>]+name=["']twitter:image["']/i.test(html)) {
-      html = html.replace("</head>", `<meta name="twitter:image" content="${escapeAttribute(socialImage)}"></head>`);
+      html = html.replace("</head>", `<meta property="og:image" content="${escapeAttribute(socialImage)}"></head>`);
       socialImagesAdded += 1;
     }
 
-    const hasCanonical = /<link[^>]+rel=["']canonical["']/i.test(html) || /<link[^>]+href=["'][^"']+["'][^>]+rel=["']canonical["']/i.test(html);
-    if (hasCanonical) {
-      await writeFile(path, html, "utf8");
-      continue;
-    }
-    const canonical = `<link rel="canonical" href="https://hossambahr.com${route}">`;
-    if (!html.includes("</head>")) throw new Error(`Missing </head> in ${normalized}`);
-    html = html.replace("</head>", `${canonical}</head>`);
+    const socialTags = [
+      `<meta property="og:title" content="${escapeAttribute(pageTitle)}">`,
+      `<meta property="og:description" content="${escapeAttribute(pageDescription)}">`,
+      `<meta property="og:url" content="${escapeAttribute(canonicalHref)}">`,
+      `<meta property="og:image:alt" content="${escapeAttribute(pageTitle)}">`,
+      '<meta name="twitter:card" content="summary_large_image">',
+      `<meta name="twitter:title" content="${escapeAttribute(pageTitle)}">`,
+      `<meta name="twitter:description" content="${escapeAttribute(pageDescription)}">`,
+      `<meta name="twitter:image" content="${escapeAttribute(socialImage)}">`,
+    ].join("");
+    html = html.replace("</head>", `${socialTags}</head>`);
+    socialMetadataNormalized += 1;
+    twitterCardsUpgraded += 1;
+
     await writeFile(path, html, "utf8");
-    canonicalAdded += 1;
   }
 }
 
@@ -145,4 +170,5 @@ console.log(JSON.stringify({
   twitterCardsUpgraded,
   analyticsRuntimeAdded,
   privacyDisclosureAdded,
+  socialMetadataNormalized,
 }));
