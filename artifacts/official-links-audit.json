@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-27T11:22:42.545Z",
+  "generatedAt": "2026-09-27T11:37:05.890Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 165,
+    "REACHABLE": 166,
     "ACCESS_RESTRICTED": 9,
-    "TEMPORARILY_UNAVAILABLE": 1,
+    "TEMPORARILY_UNAVAILABLE": 0,
     "NETWORK_UNVERIFIED": 72,
     "BROKEN": 0
   },
@@ -376,8 +376,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-an-event-permit",
@@ -1898,10 +1899,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 503,
+      "status": 200,
       "finalUrl": "https://eservices.tax.gov.ae/sap/bc/ui5_ui5/sap/zmcf_fmca/index.html?saml2=disabled&sap-client=100&sap-language=AR&serviceId=6001&sCode=396-02-001-000",
-      "result": "TEMPORARILY_UNAVAILABLE",
-      "reason": "HTTP 503"
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54",
@@ -3217,9 +3217,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
