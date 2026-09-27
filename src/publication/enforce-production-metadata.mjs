@@ -105,6 +105,16 @@ async function walk(directory) {
       }
     }
 
+    if (normalized === "authorities/icp/index.html") {
+      const icpTitle = "ICP الإمارات | الهوية والجنسية والإقامة وصلاحية الملف | HossamBahr";
+      const icpDescription = "دليل خدمات الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP): الهوية الإماراتية، الإقامة والتأشيرات، الجوازات، بطاقة المنشأة، وصلاحية الملف مع الروابط الرسمية.";
+      const icpHeading = "خدمات الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)";
+      html = html
+        .replace(/<title>[^<]*<\/title>/i, `<title>${icpTitle}</title>`)
+        .replace(/<meta[^>]+name=["']description["'][^>]*>/i, `<meta name="description" content="${escapeAttribute(icpDescription)}">`)
+        .replace(/<h1\b[^>]*>[\s\S]*?<\/h1>/i, `<h1>${icpHeading}</h1>`);
+    }
+
     if (!/<meta[^>]+name=["']description["']/i.test(html)) {
       const heading = stripTags(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]);
       const title = stripTags(html.match(/<title>([^<]+)<\/title>/i)?.[1]).replace(/\s*\|\s*HossamBahr.*$/i, "");
