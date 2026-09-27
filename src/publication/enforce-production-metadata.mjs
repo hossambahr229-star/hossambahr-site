@@ -17,6 +17,7 @@ let socialMetadataNormalized = 0;
 let seoOverridesApplied = 0;
 let structuredDataAdded = 0;
 let fujairahMunicipalityInfoAdded = 0;
+let canonicalOverridesApplied = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const decodeBasicEntities = (value) => String(value || "")
@@ -64,9 +65,22 @@ const seoOverrides = new Map([
     title: "بلدية الفجيرة | Fujairah Municipality | HossamBahr",
     description: "دليل مستقل للوصول إلى بلدية الفجيرة والبوابات الرسمية وبيانات التواصل المنشورة حكوميًا، مع إضافة الخدمات فقط بعد اكتمال التحقق.",
   }],
+  ["goals/renew-residence/index.html", {
+    title: "تجديد الإقامة في دبي والإمارات | الأسرة والموظف | HossamBahr",
+    description: "تجديد الإقامة في دبي والإمارات: اختر المسار الصحيح حسب الإمارة ونوع الإقامة، من إقامة الأسرة والموظف في دبي إلى خدمات ICP خارج دبي، ثم افتح الخدمة المتخصصة.",
+    heading: "تجديد الإقامة في دبي والإمارات",
+  }],
+  ["services/ajman-commercial-license-renewal/index.html", {
+    title: "تجديد الرخصة التجارية في عجمان | اقتصادية عجمان | HossamBahr",
+    description: "تجديد رخصة تجارية في عجمان عبر دائرة التنمية الاقتصادية: رسوم تجديد الرخصة الاقتصادية المنشورة 600 درهم ومدة الخدمة 10 دقائق، مع المتطلبات والرابط الرسمي.",
+  }],
   ["services/index.html", {
     title: "دليل الخدمات الحكومية في الإمارات | HossamBahr",
   }],
+]);
+
+const canonicalOverrides = new Map([
+  ["services/renew-business-license-ajman/index.html", "https://hossambahr.com/services/ajman-commercial-license-renewal/"],
 ]);
 
 function routeFor(normalized) {
@@ -190,6 +204,15 @@ async function walk(directory) {
 
     const route = routeFor(normalized);
     const fallbackCanonical = `https://hossambahr.com${route}`;
+    const canonicalOverride = canonicalOverrides.get(normalized);
+    if (canonicalOverride) {
+      html = html
+        .replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, "")
+        .replace(/<link[^>]+href=["'][^"']+["'][^>]+rel=["']canonical["'][^>]*>/gi, "")
+        .replace("</head>", `<link rel="canonical" href="${escapeAttribute(canonicalOverride)}"></head>`);
+      canonicalOverridesApplied += 1;
+    }
+
     const hasCanonical = /<link[^>]+rel=["']canonical["']/i.test(html) || /<link[^>]+href=["'][^"']+["'][^>]+rel=["']canonical["']/i.test(html);
     if (!hasCanonical) {
       if (!html.includes("</head>")) throw new Error(`Missing </head> in ${normalized}`);
@@ -197,7 +220,7 @@ async function walk(directory) {
       canonicalAdded += 1;
     }
 
-    const canonicalHref = canonicalHrefFrom(html) || fallbackCanonical;
+    const canonicalHref = canonicalHrefFrom(html) || canonicalOverride || fallbackCanonical;
     const pageTitle = decodeBasicEntities(stripTags(html.match(/<title>([^<]+)<\/title>/i)?.[1])) || "HossamBahr";
     const pageDescription = decodeBasicEntities(descriptionFrom(html)) || `خدمات ومعاملات حكومية عبر HossamBahr: ${pageTitle}`;
     const socialImage = html.match(/<meta\b[^>]*\bproperty=["']og:image["'][^>]*\bcontent=["']([^"']+)["'][^>]*>/i)?.[1]
@@ -269,4 +292,5 @@ console.log(JSON.stringify({
   seoOverridesApplied,
   structuredDataAdded,
   fujairahMunicipalityInfoAdded,
+  canonicalOverridesApplied,
 }));
