@@ -42,70 +42,100 @@ const zoomChecks = [1366,1920].flatMap((physicalWidth) =>
     height:Math.round((physicalWidth===1920?1080:768)/zoom)
   }))
 );
-const report = [];
+const layoutTasks = [];
 for (const [width,height] of viewports) {
-  const context = await browser.newContext({ viewport:{ width, height } });
   for (const [name,path,openExpert] of pages) {
-    const page = await context.newPage();
-    const response = await page.goto(`${base}${path}`, { waitUntil:'networkidle' });
-    await page.waitForTimeout(1800);
-    if (openExpert) {
-      const expertDetails = page.locator('.ux-progressive-details');
-      if (await expertDetails.count()) await expertDetails.evaluate((node) => { node.open = true; });
-      await page.waitForTimeout(250);
-    }
-    const layout = await page.evaluate(() => {
-      const viewport = document.documentElement.clientWidth;
-      const pick = (selector) => [...document.querySelectorAll(selector)].filter((node) => {
-        const s=getComputedStyle(node), r=node.getBoundingClientRect();
-        return s.display!=='none' && s.visibility!=='hidden' && r.height>0;
-      }).map((node) => {
-        const r=node.getBoundingClientRect(), s=getComputedStyle(node);
-        const left=Math.max(0,r.left), right=Math.max(0,viewport-r.right);
-        return { tag:node.tagName.toLowerCase(), cls:String(node.className||'').slice(0,100), width:Math.round(r.width), height:Math.round(r.height), left:+left.toFixed(2), right:+right.toFixed(2), gutterDelta:+Math.abs(left-right).toFixed(2), display:s.display, grid:s.gridTemplateColumns, maxWidth:s.maxWidth, minWidth:s.minWidth };
-      });
-      const centered=pick('.site-header, main:not(.loading-shell), .page-shell, .platform-hero, .content-section, .site-footer')
-        .filter((block)=>block.width>=viewport*.45);
-      const header=centered.find((block)=>/site-header/.test(block.cls));
-      const hero=centered.find((block)=>/platform-hero/.test(block.cls));
-      return {
-        viewport,
-        scrollWidth:document.documentElement.scrollWidth,
-        overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+1,
-        bodyHeight:document.body.scrollHeight,
-        centered,
-        centeringFailures:centered.filter((block)=>block.gutterDelta>3),
-        headerHeroDelta:header&&hero?Math.max(Math.abs(header.left-hero.left),Math.abs(header.right-hero.right)):0,
-        blocks:pick('main > section, main > div, .ux-progressive-content > section, .action-start-grid, .audience-grid, .page-shell, .page-hero, .directory-explorer-tools, #det-results, .activities-directory, .activity-grid')
-      };
-    });
-    const collapsed = layout.blocks.filter((block) => width>=1024 && (
-      block.width < Math.min(500,width*.45) && !/grid|hero/i.test(block.cls)
-      || /action-start-grid|audience-grid/.test(block.cls) && block.width < Math.min(850,width*.65)
-      || /page-hero/.test(block.cls) && block.width < Math.min(900,width*.65)
-    ));
-    report.push({ width,height,name,path,status:response?.status(),...layout,collapsed });
-    if ([375,1440].includes(width)) await page.screenshot({ path:resolve(out,`${name}-${width}.png`),fullPage:true });
-    await page.close();
+    layoutTasks.push({ kind:'page', width, height, name, path, openExpert, order:layoutTasks.length });
   }
-  await context.close();
+}
+for (const check of zoomChecks) {
+  layoutTasks.push({ kind:'zoom', ...check, order:layoutTasks.length });
 }
 
-for (const check of zoomChecks) {
-  const context = await browser.newContext({ viewport:{ width:check.width,height:check.height } });
+const report = new Array(layoutTasks.length);
+let layoutCursor = 0;
+const layoutConcurrency = Math.max(1, Number(process.env.HB_LAYOUT_CONCURRENCY || 4));
+
+async function runLayoutTask(task) {
+  if (task.kind === 'page') {
+    const { width, height, name, path, openExpert, order } = task;
+    const context = await browser.newContext({ viewport:{ width, height } });
+    const page = await context.newPage();
+    try {
+      const response = await page.goto(`${base}${path}`, { waitUntil:'networkidle' });
+      await page.waitForTimeout(1800);
+      if (openExpert) {
+        const expertDetails = page.locator('.ux-progressive-details');
+        if (await expertDetails.count()) await expertDetails.evaluate((node) => { node.open = true; });
+        await page.waitForTimeout(250);
+      }
+      const layout = await page.evaluate(() => {
+        const viewport = document.documentElement.clientWidth;
+        const pick = (selector) => [...document.querySelectorAll(selector)].filter((node) => {
+          const s=getComputedStyle(node), r=node.getBoundingClientRect();
+          return s.display!=='none' && s.visibility!=='hidden' && r.height>0;
+        }).map((node) => {
+          const r=node.getBoundingClientRect(), s=getComputedStyle(node);
+          const left=Math.max(0,r.left), right=Math.max(0,viewport-r.right);
+          return { tag:node.tagName.toLowerCase(), cls:String(node.className||'').slice(0,100), width:Math.round(r.width), height:Math.round(r.height), left:+left.toFixed(2), right:+right.toFixed(2), gutterDelta:+Math.abs(left-right).toFixed(2), display:s.display, grid:s.gridTemplateColumns, maxWidth:s.maxWidth, minWidth:s.minWidth };
+        });
+        const centered=pick('.site-header, main:not(.loading-shell), .page-shell, .platform-hero, .content-section, .site-footer')
+          .filter((block)=>block.width>=viewport*.45);
+        const header=centered.find((block)=>/site-header/.test(block.cls));
+        const hero=centered.find((block)=>/platform-hero/.test(block.cls));
+        return {
+          viewport,
+          scrollWidth:document.documentElement.scrollWidth,
+          overflow:document.documentElement.scrollWidth>document.documentElement.clientWidth+1,
+          bodyHeight:document.body.scrollHeight,
+          centered,
+          centeringFailures:centered.filter((block)=>block.gutterDelta>3),
+          headerHeroDelta:header&&hero?Math.max(Math.abs(header.left-hero.left),Math.abs(header.right-hero.right)):0,
+          blocks:pick('main > section, main > div, .ux-progressive-content > section, .action-start-grid, .audience-grid, .page-shell, .page-hero, .directory-explorer-tools, #det-results, .activities-directory, .activity-grid')
+        };
+      });
+      const collapsed = layout.blocks.filter((block) => width>=1024 && (
+        block.width < Math.min(500,width*.45) && !/grid|hero/i.test(block.cls)
+        || /action-start-grid|audience-grid/.test(block.cls) && block.width < Math.min(850,width*.65)
+        || /page-hero/.test(block.cls) && block.width < Math.min(900,width*.65)
+      ));
+      report[order] = { width,height,name,path,status:response?.status(),...layout,collapsed };
+      if ([375,1440].includes(width)) await page.screenshot({ path:resolve(out,`${name}-${width}.png`),fullPage:true });
+    } finally {
+      await page.close();
+      await context.close();
+    }
+    return;
+  }
+
+  const { physicalWidth, zoom, width, height, order } = task;
+  const context = await browser.newContext({ viewport:{ width,height } });
   const page = await context.newPage();
-  const response = await page.goto(`${base}/`, { waitUntil:'networkidle' });
-  await page.waitForTimeout(1200);
-  const layout = await page.evaluate(() => {
-    const viewport=document.documentElement.clientWidth;
-    const measure=(selector)=>{const node=document.querySelector(selector);if(!node)return null;const r=node.getBoundingClientRect();const left=Math.max(0,r.left),right=Math.max(0,viewport-r.right);return{selector,width:+r.width.toFixed(2),left:+left.toFixed(2),right:+right.toFixed(2),gutterDelta:+Math.abs(left-right).toFixed(2)}};
-    const centered=['.site-header','main:not(.loading-shell)','.platform-hero','.content-section','.site-footer'].map(measure).filter(Boolean);
-    return { viewport,scrollWidth:document.documentElement.scrollWidth,overflow:document.documentElement.scrollWidth>viewport+1,centered,centeringFailures:centered.filter((block)=>block.width>=viewport*.45&&block.gutterDelta>3) };
-  });
-  report.push({name:'home-zoom',path:'/',status:response?.status(),physicalWidth:check.physicalWidth,zoom:check.zoom,...layout,collapsed:[]});
-  await page.close();
-  await context.close();
+  try {
+    const response = await page.goto(`${base}/`, { waitUntil:'networkidle' });
+    await page.waitForTimeout(1200);
+    const layout = await page.evaluate(() => {
+      const viewport=document.documentElement.clientWidth;
+      const measure=(selector)=>{const node=document.querySelector(selector);if(!node)return null;const r=node.getBoundingClientRect();const left=Math.max(0,r.left),right=Math.max(0,viewport-r.right);return{selector,width:+r.width.toFixed(2),left:+left.toFixed(2),right:+right.toFixed(2),gutterDelta:+Math.abs(left-right).toFixed(2)}};
+      const centered=['.site-header','main:not(.loading-shell)','.platform-hero','.content-section','.site-footer'].map(measure).filter(Boolean);
+      return { viewport,scrollWidth:document.documentElement.scrollWidth,overflow:document.documentElement.scrollWidth>viewport+1,centered,centeringFailures:centered.filter((block)=>block.width>=viewport*.45&&block.gutterDelta>3) };
+    });
+    report[order] = {name:'home-zoom',path:'/',status:response?.status(),physicalWidth,zoom,...layout,collapsed:[]};
+  } finally {
+    await page.close();
+    await context.close();
+  }
 }
+
+async function layoutWorker() {
+  while (true) {
+    const index = layoutCursor++;
+    if (index >= layoutTasks.length) return;
+    await runLayoutTask(layoutTasks[index]);
+  }
+}
+
+await Promise.all(Array.from({ length: Math.min(layoutConcurrency, layoutTasks.length) }, () => layoutWorker()));
 await browser.close();
 if (server) await new Promise((done) => server.close(done));
 await writeFile(resolve(out,'report.json'),JSON.stringify(report,null,2));

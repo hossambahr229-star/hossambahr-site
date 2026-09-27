@@ -54,6 +54,7 @@ jobs:
       - name: Audit official government destinations
         env:
           HB_BROWSER_PATH: /usr/bin/google-chrome
+          HB_EXTERNAL_CONCURRENCY: 16
         run: node src/publication/audit-official-links.mjs
       - name: Commit the verified generated site
         if: (github.ref_name == 'agent/final-production-correction' || github.ref_name == 'main') && !contains(github.event.head_commit.message, '[verified generated site]')
