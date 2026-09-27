@@ -1,0 +1,56 @@
+name: Materialize Auth Runtime
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "auth-config.js"
+      - "src/auth/apply-auth-runtime.mjs"
+      - "_headers"
+      - "supabase/config.toml"
+      - "auth-client.js"
+      - ".github/workflows/materialize-auth-runtime.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: materialize-auth-runtime-main
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    if: ${{ !contains(github.event.head_commit.message, '[auth runtime sync]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Materialize Supabase/Auth runtime into static HTML
+        run: node src/auth/apply-auth-runtime.mjs
+      - name: Reject legacy Supabase project references
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -R -n --include='*.html' 'bbddlpvxjowphkagvycz' auth account owner os services 2>/dev/null; then
+            echo "::error::Legacy Supabase project reference remains in interactive HTML."
+            exit 1
+          fi
+          grep -q 'ngcrkuykfqmiqhsnpcrc' auth/index.html
+          grep -q '/auth-client.js' os/index.html
+      - name: Commit synchronized runtime
+        run: |
+          git config user.name "HossamBahr Auth Runtime"
+          git config user.email "auth-runtime@users.noreply.github.com"
+          git add auth account owner os services
+          if git diff --cached --quiet; then
+            echo "Auth runtime is already synchronized."
+          else
+            git commit -m "Synchronize Supabase auth runtime [auth runtime sync] [skip ci]"
+            git push origin HEAD:main
+          fi
