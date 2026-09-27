@@ -11,7 +11,7 @@ let cspAdded = 0;
 let referrerPolicyAdded = 0;
 let socialImagesAdded = 0;
 let twitterCardsUpgraded = 0;
-let analyticsRuntimeAdded = 0;
+let analyticsRuntimeAdded = 0;\nlet privacyDisclosureAdded = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const escapeAttribute = (value) => String(value || "").replaceAll("&", "&amp;").replaceAll('"', "&quot;");
@@ -71,6 +71,17 @@ async function walk(directory) {
     if (!html.includes('data-hb-analytics="v1"')) {
       html = html.replace("</head>", '<script src="/analytics-client.js?v=analytics-20260927a" defer data-hb-analytics="v1"></script></head>');
       analyticsRuntimeAdded += 1;
+    }
+
+    if (normalized === "privacy/index.html") {
+      const privacySection = '<section data-hb-analytics-disclosure="v1"><h2>قياس استخدام المنصة</h2><p>نستخدم قياسًا تشغيليًا داخليًا لفهم الصفحات المستخدمة وتحسين الوصول إلى الخدمات. قد نسجل مسار الصفحة، ومعرّف جلسة مؤقتًا داخل المتصفح، واسم الموقع المُحيل الخارجي إن وُجد، ووسوم الحملات UTM، ونوع النقر على زر التواصل أو الرابط الحكومي.</p><p>لا نضع الاسم أو البريد الإلكتروني أو رقم الهاتف أو رقم الهوية أو رقم الجواز أو نص البحث أو عنوان IP داخل سجل القياس التحليلي الخاص بالمنصة. ولا تُحتسب صفحات المالك وتسجيل الدخول ضمن هذا القياس.</p></section>';
+      if (!html.includes('data-hb-analytics-disclosure="v1"')) {
+        html = html.replace("</article>", `${privacySection}</article>`);
+        privacyDisclosureAdded += 1;
+      }
+      if (!html.includes('src="/privacy-disclosure.js"')) {
+        html = html.replace("</head>", '<script src="/privacy-disclosure.js?v=20260927a" defer></script></head>');
+      }
     }
 
     if (!/<meta[^>]+name=["']description["']/i.test(html)) {
