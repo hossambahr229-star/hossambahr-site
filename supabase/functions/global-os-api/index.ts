@@ -80,6 +80,42 @@ export default {
         });
       }
 
+      if (path === "/" && body.action === "submit_task") {
+        const taskId = String(body.task_id || "").trim();
+        const note = body.note ? String(body.note).trim().slice(0, 1000) : null;
+        if (!/^[0-9a-f-]{36}$/i.test(taskId)) return json(req, { error: "invalid_task_id" }, 422);
+
+        const { data, error } = await ctx.supabase.rpc("hb_submit_user_task", {
+          p_task_id: taskId,
+          p_note: note
+        });
+        if (error) {
+          console.error("hb_submit_user_task failed", { code: error.code, message: error.message });
+          return json(req, { error: "task_submit_failed" }, 400);
+        }
+        return json(req, { data }, 200);
+      }
+
+      if (path === "/" && body.action === "decide_approval") {
+        const taskId = String(body.task_id || "").trim();
+        const decision = String(body.decision || "").trim();
+        const note = body.note ? String(body.note).trim().slice(0, 1000) : null;
+        if (!/^[0-9a-f-]{36}$/i.test(taskId) || !["approve","reject"].includes(decision)) {
+          return json(req, { error: "invalid_approval_request" }, 422);
+        }
+
+        const { data, error } = await ctx.supabase.rpc("hb_decide_task_approval", {
+          p_task_id: taskId,
+          p_decision: decision,
+          p_note: note
+        });
+        if (error) {
+          console.error("hb_decide_task_approval failed", { code: error.code, message: error.message });
+          return json(req, { error: "approval_decision_failed" }, 400);
+        }
+        return json(req, { data }, 200);
+      }
+
       const goal = String(body.goal || "").trim();
       const title = String(body.title || goal).trim().slice(0, 180);
       const serviceSlug = body.service_slug ? String(body.service_slug).trim().slice(0, 240) : null;

@@ -31,5 +31,17 @@
     return data?.data||data;
   }
 
-  window.HB_OS_API=Object.freeze({health,createCase});
+  async function submitTask(taskId,note=""){
+    if(!await health())throw new Error("Global OS is not ready");
+    const data=await invoke({action:"submit_task",task_id:taskId,note});
+    return data?.data||data;
+  }
+
+  async function decideApproval(taskId,decision,note=""){
+    if(!await health())throw new Error("Global OS is not ready");
+    const data=await invoke({action:"decide_approval",task_id:taskId,decision,note});
+    return data?.data||data;
+  }
+
+  window.HB_OS_API=Object.freeze({health,createCase,submitTask,decideApproval});
 })();

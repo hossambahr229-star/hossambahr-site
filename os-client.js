@@ -53,11 +53,54 @@
 
   function nextExecutableTask(tasks = []) {
     const done = new Set(tasks.filter((task)=>task.status==="done").map((task)=>task.id));
-    return tasks.find((task)=>{
+    const ready=tasks.filter((task)=>{
       if(!taskStatusOpen.has(task.status)) return false;
       const deps=Array.isArray(task.dependency_ids)?task.dependency_ids:[];
       return deps.every((id)=>done.has(id));
-    }) || tasks.find((task)=>taskStatusOpen.has(task.status)) || null;
+    });
+    const needsApproval=(task)=>task.requires_approval && !task.metadata?.approval_granted_at;
+    return ready.find((task)=>task.assignee_type==="user" || needsApproval(task))
+      || ready.find((task)=>task.status==="in_progress")
+      || ready.find((task)=>task.status==="waiting")
+      || ready[0]
+      || tasks.find((task)=>taskStatusOpen.has(task.status))
+      || null;
+  }
+
+  function appendTaskAction(card,item,next) {
+    if(!next || !window.HB_OS_API) return;
+    const approvalPending=next.requires_approval && !next.metadata?.approval_granted_at;
+    const userRequirement=next.assignee_type==="user" && !next.requires_approval && ["todo","in_progress"].includes(next.status);
+    if(!approvalPending && !userRequirement) return;
+
+    const actions=document.createElement("div");
+    actions.className="hb-case-actions";
+    const button=document.createElement("button");
+    button.type="button";
+    button.className="hb-case-action";
+    button.textContent=approvalPending ? "مراجعة واعتماد" : "إرسال للمراجعة";
+    button.addEventListener("click",async()=>{
+      if(approvalPending){
+        const accepted=window.confirm(`سيتم تسجيل موافقتك على الخطوة: ${next.title}. لن يتم إرسال أي طلب حكومي تلقائيًا بهذه الموافقة وحدها. هل تعتمد؟`);
+        if(!accepted)return;
+      }
+      button.disabled=true;
+      const previous=button.textContent;
+      button.textContent="جارٍ الحفظ…";
+      try{
+        if(approvalPending) await window.HB_OS_API.decideApproval(next.id,"approve");
+        else await window.HB_OS_API.submitTask(next.id);
+        setMessage(approvalPending ? "تم تسجيل الموافقة بأمان." : "تم إرسال المتطلب للمراجعة.","success");
+        const refreshed=await loadCases();
+        await loadAttention(refreshed);
+      }catch{
+        setMessage("تعذر تحديث الخطوة الآن. لم يتم تنفيذ أي إجراء خارجي.","error");
+        button.disabled=false;
+        button.textContent=previous;
+      }
+    });
+    actions.append(button);
+    card.append(actions);
   }
 
   function buildCaseCard(item,tasks=[]) {
@@ -92,12 +135,19 @@
     const nextLine=document.createElement("p");
     nextLine.className="hb-case-next";
     if(next){
-      const prefix=next.requires_approval ? "اعتماد مطلوب: " : next.assignee_type==="user" ? "مطلوب منك: " : "الخطوة التالية: ";
+      const approvalPending=next.requires_approval && !next.metadata?.approval_granted_at;
+      const prefix=approvalPending ? "اعتماد مطلوب: "
+        : next.assignee_type==="user" ? "مطلوب منك: "
+        : next.assignee_type==="agent" && next.status==="waiting" ? "قيد المراجعة: "
+        : next.assignee_type==="integration" && next.status==="waiting" ? "بانتظار التنفيذ الخارجي: "
+        : next.assignee_type==="agent" ? "المنصة تعالج: "
+        : "الخطوة التالية: ";
       nextLine.textContent=prefix+next.title;
     }else{
       nextLine.textContent=total && completed===total ? "اكتملت جميع خطوات المسار." : "سيتم تحديد الخطوة التالية تلقائيًا.";
     }
     card.append(heading,progress,meta,nextLine);
+    appendTaskAction(card,item,next);
     return card;
   }
 
@@ -116,7 +166,7 @@
 
     const ids=data.map((item)=>item.id);
     const {data:tasks,error:taskError}=await client.from("hb_case_tasks")
-      .select("id,case_id,title,status,assignee_type,requires_approval,dependency_ids,due_at,created_at")
+      .select("id,case_id,title,status,assignee_type,requires_approval,dependency_ids,due_at,created_at,metadata")
       .in("case_id",ids)
       .order("created_at",{ascending:true});
 
