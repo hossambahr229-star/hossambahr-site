@@ -8,6 +8,7 @@
 
   const endpoint = "https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/web-analytics";
   const sessionKey = "hb_analytics_session_v1";
+  const attributionKey = "hb_analytics_attribution_v1";
 
   const getSessionToken = () => {
     try {
@@ -24,12 +25,16 @@
     }
   };
 
-  const referrerHost = () => {
+  const externalReferrerHost = () => {
     try {
       if (!document.referrer) return null;
       const host = new URL(document.referrer).hostname.toLowerCase();
       const currentHost = location.hostname.toLowerCase();
-      if (host === currentHost || (host === "www.hossambahr.com" && currentHost === "hossambahr.com") || (host === "hossambahr.com" && currentHost === "www.hossambahr.com")) {
+      if (
+        host === currentHost ||
+        (host === "www.hossambahr.com" && currentHost === "hossambahr.com") ||
+        (host === "hossambahr.com" && currentHost === "www.hossambahr.com")
+      ) {
         return null;
       }
       return host;
@@ -38,14 +43,42 @@
     }
   };
 
-  const campaign = new URLSearchParams(location.search);
+  const getAttribution = () => {
+    const campaign = new URLSearchParams(location.search);
+    const current = {
+      utm_source: campaign.get("utm_source"),
+      utm_medium: campaign.get("utm_medium"),
+      utm_campaign: campaign.get("utm_campaign"),
+      referrer_host: externalReferrerHost(),
+    };
+
+    try {
+      const storedRaw = sessionStorage.getItem(attributionKey);
+      const stored = storedRaw ? JSON.parse(storedRaw) : null;
+      if (stored && typeof stored === "object") {
+        const storedHasSource = stored.utm_source || stored.utm_medium || stored.utm_campaign || stored.referrer_host;
+        const currentHasCampaign = current.utm_source || current.utm_medium || current.utm_campaign;
+        if (!storedHasSource && currentHasCampaign) {
+          sessionStorage.setItem(attributionKey, JSON.stringify(current));
+          return current;
+        }
+        return stored;
+      }
+      sessionStorage.setItem(attributionKey, JSON.stringify(current));
+      return current;
+    } catch {
+      return current;
+    }
+  };
+
+  const attribution = getAttribution();
   const basePayload = {
     path: location.pathname || "/",
     session_token: getSessionToken(),
-    referrer_host: referrerHost(),
-    utm_source: campaign.get("utm_source"),
-    utm_medium: campaign.get("utm_medium"),
-    utm_campaign: campaign.get("utm_campaign"),
+    referrer_host: attribution.referrer_host || null,
+    utm_source: attribution.utm_source || null,
+    utm_medium: attribution.utm_medium || null,
+    utm_campaign: attribution.utm_campaign || null,
   };
 
   const send = (eventName, targetKind = null) => {
