@@ -40,7 +40,7 @@
       const day = document.createElement("b");
       day.textContent = item.day || "—";
       const meta = document.createElement("span");
-      meta.textContent = `${number(item.page_views)} مشاهدة · ${number(item.sessions)} جلسة · ${number(item.commercial_clicks)} تواصل معنا`;
+      meta.textContent = `${number(item.page_views)} مشاهدة · ${number(item.sessions)} جلسة · ${number(item.internal_clicks)} تفاعل داخلي · ${number(item.commercial_clicks)} تواصل معنا`;
       row.append(day, meta);
       return row;
     }));
@@ -62,7 +62,7 @@
       link.target = "_blank";
       link.rel = "noopener";
       const meta = document.createElement("span");
-      meta.textContent = `${number(item.page_views)} مشاهدة · ${number(item.sessions)} جلسة · ${number(item.commercial_clicks)} تواصل معنا`;
+      meta.textContent = `${number(item.page_views)} مشاهدة · ${number(item.sessions)} جلسة · ${number(item.internal_clicks)} تفاعل داخلي · ${number(item.commercial_clicks)} تواصل معنا`;
       row.append(link, meta);
       return row;
     }));
@@ -115,6 +115,7 @@
     setText("[data-owner-views-today]", number(today?.page_views));
     setText("[data-owner-sessions-today]", number(today?.sessions));
     setText("[data-owner-views-7d]", number(sum("page_views")));
+    setText("[data-owner-internal-7d]", number(sum("internal_clicks")));
     setText("[data-owner-commercial-7d]", number(sum("commercial_clicks")));
     setText("[data-owner-government-7d]", number(sum("government_clicks")));
     const sessions7d = sum("sessions");
@@ -123,7 +124,7 @@
     const percent = (value) => new Intl.NumberFormat("ar-AE", { maximumFractionDigits: 1 }).format(value) + "%";
     setText("[data-owner-commercial-rate-7d]", percent(commercialRate));
     setText("[data-owner-government-rate-7d]", percent(governmentRate));
-    setText("[data-owner-analytics-state]", "القياس مباشر من HossamBahr.com ويستبعد اختبارات المتصفح وصفحات المالك والدخول.");
+    setText("[data-owner-analytics-state]", "القياس مباشر من HossamBahr.com ويستبعد اختبارات المتصفح وصفحات المالك والدخول. التفاعل الداخلي يعني استخدام البحث أو فتح مسار خدمة، دون حفظ نص البحث.");
 
     renderDailyAnalytics(daily || []);
     if (pathsError) {
