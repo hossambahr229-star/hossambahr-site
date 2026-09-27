@@ -163,12 +163,12 @@ async function walk(directory) {
     }
 
     if (normalized === "privacy/index.html") {
-      const privacySection = '<section data-hb-analytics-disclosure="v2"><h2>قياس استخدام المنصة</h2><p>نستخدم قياسًا تشغيليًا داخليًا لفهم الصفحات المستخدمة وتحسين الوصول إلى الخدمات. قد نسجل مسار الصفحة، ومعرّف جلسة مؤقتًا داخل المتصفح، واسم الموقع المُحيل الخارجي إن وُجد، ووسوم الحملات UTM، ونوع النقر على زر التواصل أو الرابط الحكومي، وكذلك استخدام البحث أو فتح مسار خدمة داخل المنصة.</p><p>لا نضع الاسم أو البريد الإلكتروني أو رقم الهاتف أو رقم الهوية أو رقم الجواز أو نص البحث أو عنوان IP داخل سجل القياس التحليلي الخاص بالمنصة. ولا تُحتسب صفحات المالك وتسجيل الدخول ضمن هذا القياس.</p></section>';
-      const previousDisclosure = /<section data-hb-analytics-disclosure="v1">[\s\S]*?<\/section>/i;
+      const privacySection = '<section data-hb-analytics-disclosure="v3"><h2>قياس استخدام المنصة</h2><p>نستخدم قياسًا تشغيليًا داخليًا لفهم الصفحات المستخدمة وتحسين الوصول إلى الخدمات. قد نسجل مسار الصفحة، ومعرّف جلسة مؤقتًا داخل المتصفح، واسم الموقع المُحيل الخارجي إن وُجد، ووسوم الحملات UTM، ونوع النقر على زر التواصل أو الرابط الحكومي، واستخدام البحث أو فتح مسار خدمة، ونوع قناة التواصل بشكل عام مثل WhatsApp أو الهاتف أو البريد.</p><p>لا نحفظ وجهة التواصل نفسها: لا رقم الهاتف، ولا عنوان البريد، ولا رابط WhatsApp، ولا نص الرسالة. كما لا نضع الاسم أو رقم الهوية أو رقم الجواز أو نص البحث أو عنوان IP داخل سجل القياس التحليلي الخاص بالمنصة. ولا تُحتسب صفحات المالك وتسجيل الدخول ضمن هذا القياس.</p></section>';
+      const previousDisclosure = /<section data-hb-analytics-disclosure="v[12]">[\s\S]*?<\/section>/i;
       if (previousDisclosure.test(html)) {
         html = html.replace(previousDisclosure, privacySection);
         privacyDisclosureAdded += 1;
-      } else if (!html.includes('data-hb-analytics-disclosure="v2"')) {
+      } else if (!html.includes('data-hb-analytics-disclosure="v3"')) {
         html = html.replace("</article>", `${privacySection}</article>`);
         privacyDisclosureAdded += 1;
       }
