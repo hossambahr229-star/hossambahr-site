@@ -117,6 +117,12 @@
     setText("[data-owner-views-7d]", number(sum("page_views")));
     setText("[data-owner-commercial-7d]", number(sum("commercial_clicks")));
     setText("[data-owner-government-7d]", number(sum("government_clicks")));
+    const sessions7d = sum("sessions");
+    const commercialRate = sessions7d > 0 ? (sum("commercial_clicks") / sessions7d) * 100 : 0;
+    const governmentRate = sessions7d > 0 ? (sum("government_clicks") / sessions7d) * 100 : 0;
+    const percent = (value) => new Intl.NumberFormat("ar-AE", { maximumFractionDigits: 1 }).format(value) + "%";
+    setText("[data-owner-commercial-rate-7d]", percent(commercialRate));
+    setText("[data-owner-government-rate-7d]", percent(governmentRate));
     setText("[data-owner-analytics-state]", "القياس مباشر من HossamBahr.com ويستبعد اختبارات المتصفح وصفحات المالك والدخول.");
 
     renderDailyAnalytics(daily || []);
