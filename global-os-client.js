@@ -158,10 +158,22 @@
   }
 
   async function boot() {
+    const isServiceDetail = location.pathname.startsWith("/services/") && location.pathname !== "/services/";
+    const isAccount = location.pathname === "/account/";
+    if (!isServiceDetail && !isAccount) return;
+
     const { data } = await client.auth.getSession();
+    const session = data.session;
+
+    if (isServiceDetail && !session) {
+      await addStartCaseActions(null);
+      return;
+    }
+    if (!session) return;
+
     if (!window.HB_OS_API || !await window.HB_OS_API.health()) return;
-    await ensureActionCenter(data.session);
-    await addStartCaseActions(data.session);
+    await ensureActionCenter(session);
+    if (isServiceDetail) await addStartCaseActions(session);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot, { once: true });
