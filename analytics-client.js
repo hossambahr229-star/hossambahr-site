@@ -26,7 +26,13 @@
 
   const referrerHost = () => {
     try {
-      return document.referrer ? new URL(document.referrer).hostname : null;
+      if (!document.referrer) return null;
+      const host = new URL(document.referrer).hostname.toLowerCase();
+      const currentHost = location.hostname.toLowerCase();
+      if (host === currentHost || (host === "www.hossambahr.com" && currentHost === "hossambahr.com") || (host === "hossambahr.com" && currentHost === "www.hossambahr.com")) {
+        return null;
+      }
+      return host;
     } catch {
       return null;
     }
