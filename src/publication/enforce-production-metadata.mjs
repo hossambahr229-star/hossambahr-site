@@ -16,6 +16,7 @@ let privacyDisclosureAdded = 0;
 let socialMetadataNormalized = 0;
 let seoOverridesApplied = 0;
 let structuredDataAdded = 0;
+let fujairahMunicipalityInfoAdded = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const decodeBasicEntities = (value) => String(value || "")
@@ -34,8 +35,8 @@ const seoOverrides = new Map([
     heading: "خدمات الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
   }],
   ["services/renew-uae-passport-icp/index.html", {
-    title: "تجديد جواز السفر الإماراتي | UAE Passport Renewal | HossamBahr",
-    description: "تجديد جواز السفر الإماراتي للمواطن عبر ICP: الشروط والمستندات وخطوات الخدمة والرابط الرسمي. UAE Passport Renewal.",
+    title: "تجديد جواز السفر الإماراتي ورسومه | UAE Passport Renewal | HossamBahr",
+    description: "تجديد جواز السفر الإماراتي عبر ICP: رسوم الطلب 10 دراهم، والإصدار 40 درهمًا لـ5 سنوات أو 90 لـ10 سنوات، والتوصيل 15 درهمًا، مع الشروط والرابط الرسمي.",
   }],
   ["services/abu-dhabi-trade-name-reservation/index.html", {
     title: "حجز اسم تجاري في أبوظبي | اقتصادية أبوظبي / TAMM | HossamBahr",
@@ -50,6 +51,18 @@ const seoOverrides = new Map([
     title: "RERA دبي | مؤسسة التنظيم العقاري ودائرة الأراضي والأملاك | HossamBahr",
     description: "دليل خدمات RERA دبي ودائرة الأراضي والأملاك: التصاريح العقارية وبطاقات الممارسة وخدمات الملكية والتقييم مع المسارات الرسمية.",
     heading: "RERA دبي — مؤسسة التنظيم العقاري ودائرة الأراضي والأملاك",
+  }],
+  ["services/reserve-trade-name-dubai/index.html", {
+    title: "حجز اسم تجاري دبي | دائرة الاقتصاد والسياحة DET | HossamBahr",
+    description: "حجز اسم تجاري في دبي قبل إصدار الرخصة عبر دائرة الاقتصاد والسياحة ومنصة Invest in Dubai: المتطلبات والخطوات والرابط الحكومي الرسمي.",
+  }],
+  ["services/ajman-trade-name-reservation/index.html", {
+    title: "حجز اسم تجاري عجمان | اقتصادية عجمان | HossamBahr",
+    description: "حجز الاسم التجاري في عجمان عبر دائرة التنمية الاقتصادية: الرسوم الرسمية 350 درهمًا، والمدة المنشورة 10 دقائق، مع الشروط والرابط الحكومي الرسمي.",
+  }],
+  ["authorities/fujairah-municipality/index.html", {
+    title: "بلدية الفجيرة | Fujairah Municipality | HossamBahr",
+    description: "دليل مستقل للوصول إلى بلدية الفجيرة والبوابات الرسمية وبيانات التواصل المنشورة حكوميًا، مع إضافة الخدمات فقط بعد اكتمال التحقق.",
   }],
   ["services/index.html", {
     title: "دليل الخدمات الحكومية في الإمارات | HossamBahr",
@@ -134,6 +147,12 @@ async function walk(directory) {
       if (!html.includes('src="/privacy-disclosure.js"')) {
         html = html.replace("</head>", '<script src="/privacy-disclosure.js?v=20260927a" defer></script></head>');
       }
+    }
+
+    if (normalized === "authorities/fujairah-municipality/index.html" && !html.includes('data-hb-fujairah-municipality-info="v1"')) {
+      const officialAccess = '<section class="content-section" data-hb-fujairah-municipality-info="v1"><h2>الوصول الرسمي إلى بلدية الفجيرة</h2><p>لا ننشر خدمة بلدية داخل المنصة قبل اكتمال التحقق منها. للوصول المباشر إلى القنوات الحكومية المنشورة حاليًا، استخدم الروابط الرسمية التالية.</p><div class="actions"><a href="https://portal.fujmun.gov.ae/Thinkgreen/default.aspx" rel="noopener noreferrer">بوابة بلدية الفجيرة الرسمية</a><a class="secondary" href="https://fujairah.ae/ar/Pages/contactingofficials.aspx" rel="noopener noreferrer">دليل التواصل الحكومي الرسمي</a></div><p><strong>التواصل المنشور رسميًا:</strong> 80036 · info@fujmun.gov.ae</p></section>';
+      html = html.replace("</main>", `${officialAccess}</main>`);
+      fujairahMunicipalityInfoAdded += 1;
     }
 
     const seoOverride = seoOverrides.get(normalized);
@@ -249,4 +268,5 @@ console.log(JSON.stringify({
   socialMetadataNormalized,
   seoOverridesApplied,
   structuredDataAdded,
+  fujairahMunicipalityInfoAdded,
 }));
