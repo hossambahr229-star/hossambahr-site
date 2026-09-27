@@ -36,18 +36,119 @@
     target.replaceChildren(...(data.length ? data.map((item)=>article(item.trade_name || item.legal_name, `${item.legal_name} • ${item.lifecycle_status}`)) : [article("لا توجد شركة مضافة بعد","يمكنك إضافة أول كيان تجاري من هنا.")]));
   }
 
+  const caseStatusLabel = (status) => ({
+    draft:"مسودة",
+    qualifying:"تجهيز المسار",
+    waiting_customer:"بانتظارك",
+    ready_for_review:"جاهزة للمراجعة",
+    approved:"معتمدة",
+    in_progress:"قيد التنفيذ",
+    waiting_external:"بانتظار جهة خارجية",
+    blocked:"متوقفة",
+    completed:"مكتملة",
+    cancelled:"ملغاة"
+  })[status] || status;
+
+  const taskStatusOpen = new Set(["todo","in_progress","waiting","needs_approval"]);
+
+  function nextExecutableTask(tasks = []) {
+    const done = new Set(tasks.filter((task)=>task.status==="done").map((task)=>task.id));
+    return tasks.find((task)=>{
+      if(!taskStatusOpen.has(task.status)) return false;
+      const deps=Array.isArray(task.dependency_ids)?task.dependency_ids:[];
+      return deps.every((id)=>done.has(id));
+    }) || tasks.find((task)=>taskStatusOpen.has(task.status)) || null;
+  }
+
+  function buildCaseCard(item,tasks=[]) {
+    const card=document.createElement("article");
+    card.className="hb-case-card";
+    const heading=document.createElement("div");
+    heading.className="hb-case-card-heading";
+    const title=document.createElement("strong");
+    title.textContent=item.title;
+    const status=document.createElement("span");
+    status.className="hb-case-status";
+    status.textContent=caseStatusLabel(item.status);
+    heading.append(title,status);
+
+    const completed=tasks.filter((task)=>task.status==="done").length;
+    const total=tasks.length;
+    const percent=total?Math.round((completed/total)*100):Number(item.readiness_percent||0);
+    const progress=document.createElement("div");
+    progress.className="hb-case-progress";
+    progress.setAttribute("role","progressbar");
+    progress.setAttribute("aria-valuemin","0");
+    progress.setAttribute("aria-valuemax","100");
+    progress.setAttribute("aria-valuenow",String(percent));
+    const bar=document.createElement("span");
+    bar.style.width=`${Math.max(0,Math.min(100,percent))}%`;
+    progress.append(bar);
+
+    const meta=document.createElement("p");
+    meta.textContent=total ? `${completed} من ${total} خطوات مكتملة • ${percent}%` : `جاهزية ${percent}%`;
+
+    const next=nextExecutableTask(tasks);
+    const nextLine=document.createElement("p");
+    nextLine.className="hb-case-next";
+    if(next){
+      const prefix=next.requires_approval ? "اعتماد مطلوب: " : next.assignee_type==="user" ? "مطلوب منك: " : "الخطوة التالية: ";
+      nextLine.textContent=prefix+next.title;
+    }else{
+      nextLine.textContent=total && completed===total ? "اكتملت جميع خطوات المسار." : "سيتم تحديد الخطوة التالية تلقائيًا.";
+    }
+    card.append(heading,progress,meta,nextLine);
+    return card;
+  }
+
   async function loadCases() {
     const target = $("[data-os-cases]");
-    const { data, error } = await client.from("hb_cases").select("id,title,status,priority,readiness_percent,created_at").not("status","in",'("completed","cancelled")').order("created_at",{ascending:false}).limit(20);
+    const { data, error } = await client.from("hb_cases")
+      .select("id,title,status,priority,readiness_percent,created_at")
+      .not("status","in",'("completed","cancelled")')
+      .order("created_at",{ascending:false})
+      .limit(20);
     if (error) { target.innerHTML = "<p>تعذر تحميل الحالات.</p>"; return []; }
-    target.replaceChildren(...(data.length ? data.map((item)=>article(item.title, `${item.status} • جاهزية ${item.readiness_percent}% • أولوية ${item.priority}`)) : [article("لا توجد حالات مفتوحة","اكتب هدفك بالأعلى أو ابدأ من أي خدمة.")]));
-    return data;
+    if(!data.length){
+      target.replaceChildren(article("لا توجد حالات مفتوحة","اكتب هدفك بالأعلى أو ابدأ من أي خدمة."));
+      return [];
+    }
+
+    const ids=data.map((item)=>item.id);
+    const {data:tasks,error:taskError}=await client.from("hb_case_tasks")
+      .select("id,case_id,title,status,assignee_type,requires_approval,dependency_ids,due_at,created_at")
+      .in("case_id",ids)
+      .order("created_at",{ascending:true});
+
+    const byCase=new Map(ids.map((id)=>[id,[]]));
+    if(!taskError){
+      for(const task of tasks||[]){
+        if(!byCase.has(task.case_id))byCase.set(task.case_id,[]);
+        byCase.get(task.case_id).push(task);
+      }
+    }
+
+    const enriched=data.map((item)=>({...item,_tasks:byCase.get(item.id)||[]}));
+    target.replaceChildren(...enriched.map((item)=>buildCaseCard(item,item._tasks)));
+    return enriched;
   }
 
   async function loadAttention(cases) {
     const target = $("[data-os-attention]");
-    const attention = cases.filter((x)=>["blocked","waiting_customer"].includes(x.status) || ["high","urgent"].includes(x.priority));
-    target.replaceChildren(...(attention.length ? attention.map((item)=>article(item.title, item.status === "waiting_customer" ? "بانتظار إجراء منك" : `الحالة: ${item.status} • أولوية: ${item.priority}`)) : [article("لا يوجد إجراء عاجل","سيظهر هنا أي عنصر يتطلب تدخلك.")]));
+    const attention=[];
+    for(const item of cases){
+      const next=nextExecutableTask(item._tasks||[]);
+      const needsUser=next && (next.assignee_type==="user" || next.requires_approval || next.status==="needs_approval");
+      if(needsUser || ["blocked","waiting_customer"].includes(item.status) || ["high","urgent"].includes(item.priority)){
+        attention.push({item,next});
+      }
+    }
+    target.replaceChildren(...(attention.length ? attention.map(({item,next})=>{
+      const message=next
+        ? (next.requires_approval ? `اعتماد مطلوب: ${next.title}` : next.assignee_type==="user" ? `مطلوب منك: ${next.title}` : `الخطوة الحالية: ${next.title}`)
+        : item.status==="waiting_customer" ? "بانتظار إجراء منك" : `الحالة: ${caseStatusLabel(item.status)} • أولوية: ${item.priority}`;
+      return article(item.title,message);
+    }) : [article("لا يوجد إجراء عاجل","سيظهر هنا أي عنصر يتطلب تدخلك.")]));
   }
 
   async function loadObligations() {
