@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: final-production-correction-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   verify:
@@ -65,7 +65,22 @@ jobs:
             echo "Generated site is already synchronized."
           else
             git commit -m "Synchronize verified generated site [verified generated site] [skip ci]"
-            git push origin HEAD:${{ github.ref_name }}
+            git fetch origin ${{ github.ref_name }}
+            REMOTE_HEAD="$(git rev-parse origin/${{ github.ref_name }})"
+            if [ "$REMOTE_HEAD" != "${{ github.sha }}" ]; then
+              echo "Remote branch advanced to $REMOTE_HEAD; a newer release gate owns synchronization."
+              exit 0
+            fi
+            if ! git push origin HEAD:${{ github.ref_name }}; then
+              git fetch origin ${{ github.ref_name }}
+              REMOTE_HEAD="$(git rev-parse origin/${{ github.ref_name }})"
+              if [ "$REMOTE_HEAD" != "${{ github.sha }}" ]; then
+                echo "Remote branch advanced during push; treating this run as superseded."
+                exit 0
+              fi
+              echo "Generated-site push failed without a newer remote commit."
+              exit 1
+            fi
           fi
       - name: Wait for and byte-verify live Production
         if: github.ref_name == 'main'
