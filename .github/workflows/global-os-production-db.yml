@@ -38,9 +38,9 @@ jobs:
             echo "Supabase production credentials are available."
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::Supabase CLI deployment deferred: encrypted CLI credentials are not configured."
-            echo "### Supabase production deployment: DEFERRED" >> "$GITHUB_STEP_SUMMARY"
-            echo "Database/Edge deployment can be performed through the authorized Supabase connector or by adding encrypted CLI credentials." >> "$GITHUB_STEP_SUMMARY"
+            echo "::warning::Supabase production deployment DEFERRED: encrypted CLI credentials are not configured. This workflow did not deploy database migrations or Edge Functions."
+            echo "### Supabase production deployment: DEFERRED — NOT DEPLOYED BY THIS RUN" >> "$GITHUB_STEP_SUMMARY"
+            echo "Database/Edge deployment must be performed through the authorized Supabase connector or by adding encrypted CLI credentials before this workflow can deploy." >> "$GITHUB_STEP_SUMMARY"
           fi
       - name: Configure production Auth URLs
         if: steps.credentials.outputs.ready == 'true'
@@ -80,6 +80,15 @@ jobs:
       - name: Deploy Global OS worker
         if: steps.credentials.outputs.ready == 'true'
         run: supabase functions deploy global-os-worker --project-ref "$SUPABASE_PROJECT_ID"
+      - name: Deploy first-party web analytics
+        if: steps.credentials.outputs.ready == 'true'
+        run: supabase functions deploy web-analytics --project-ref "$SUPABASE_PROJECT_ID" --no-verify-jwt
+      - name: Record deferred production deployment
+        if: steps.credentials.outputs.ready != 'true'
+        run: |
+          echo "PRODUCTION_DEPLOYMENT=DEFERRED"
+          echo "MIGRATIONS_DEPLOYED=false"
+          echo "EDGE_FUNCTIONS_DEPLOYED=false"
       - name: Verify migration state
         if: steps.credentials.outputs.ready == 'true'
         run: supabase migration list
