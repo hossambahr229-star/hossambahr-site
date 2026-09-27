@@ -16,6 +16,13 @@ let privacyDisclosureAdded = 0;
 let socialMetadataNormalized = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+const decodeBasicEntities = (value) => String(value || "")
+  .replaceAll("&amp;", "&")
+  .replaceAll("&quot;", '"')
+  .replaceAll("&#39;", "'")
+  .replaceAll("&#x27;", "'")
+  .replaceAll("&lt;", "<")
+  .replaceAll("&gt;", ">");
 const escapeAttribute = (value) => String(value || "").replaceAll("&", "&amp;").replaceAll('"', "&quot;");
 
 function routeFor(normalized) {
@@ -117,8 +124,8 @@ async function walk(directory) {
     }
 
     const canonicalHref = canonicalHrefFrom(html) || fallbackCanonical;
-    const pageTitle = stripTags(html.match(/<title>([^<]+)<\/title>/i)?.[1]) || "HossamBahr";
-    const pageDescription = descriptionFrom(html) || `خدمات ومعاملات حكومية عبر HossamBahr: ${pageTitle}`;
+    const pageTitle = decodeBasicEntities(stripTags(html.match(/<title>([^<]+)<\/title>/i)?.[1])) || "HossamBahr";
+    const pageDescription = decodeBasicEntities(descriptionFrom(html)) || `خدمات ومعاملات حكومية عبر HossamBahr: ${pageTitle}`;
     const socialImage = html.match(/<meta\\b[^>]*\\bproperty=["']og:image["'][^>]*\\bcontent=["']([^"']+)["'][^>]*>/i)?.[1]
       || html.match(/<meta\\b[^>]*\\bcontent=["']([^"']+)["'][^>]*\\bproperty=["']og:image["'][^>]*>/i)?.[1]
       || `https://hossambahr.com${socialImageFor(route)}`;
