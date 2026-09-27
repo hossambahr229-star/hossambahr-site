@@ -85,6 +85,14 @@ const seoOverrides = new Map([
     description: "تجديد ملكية المركبة أو السيارة في دبي عبر RTA: المتطلبات الأساسية مثل التأمين والفحص الفني عند انطباقه وتسوية الالتزامات، مع الوصول إلى المسار الرسمي.",
     heading: "تجديد ملكية السيارة أو المركبة في دبي",
   }],
+  ["services/gdrfa-family-residence-renew/index.html", {
+    title: "تجديد إقامة أفراد الأسرة في دبي | GDRFA Dubai | HossamBahr",
+    description: "المسار القديم لخدمة تجديد إقامة الأسرة في دبي يحوّلك تلقائيًا إلى صفحة الخدمة المحدثة والمتخصصة لدى GDRFA Dubai.",
+  }],
+  ["services/icp-family-entry-permit/index.html", {
+    title: "إذن دخول وإقامة الأسرة عبر ICP | المسار المحدث | HossamBahr",
+    description: "المسار القديم لخدمات دخول وإقامة الأسرة عبر ICP يحوّلك تلقائيًا إلى دليل إقامة الأسرة المحدث لاختيار المعاملة الصحيحة.",
+  }],
   ["services/index.html", {
     title: "دليل الخدمات الحكومية في الإمارات | HossamBahr",
   }],
