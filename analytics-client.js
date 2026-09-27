@@ -128,6 +128,16 @@
         host.endsWith(".tamm.abudhabi") ||
         host === "invest.dubai.ae"
       ) return "government";
+
+      if (url.origin === location.origin) {
+        const path = url.pathname;
+        if (
+          path.startsWith("/services/") ||
+          path.startsWith("/goals/") ||
+          path.startsWith("/categories/") ||
+          path.startsWith("/for/")
+        ) return "internal";
+      }
     } catch {
       return null;
     }
@@ -140,5 +150,10 @@
     if (!anchor) return;
     const targetKind = classifyAnchor(anchor);
     if (targetKind) send("cta_click", targetKind);
+  }, { capture: true });
+
+  document.addEventListener("submit", (event) => {
+    const form = event.target instanceof HTMLFormElement ? event.target : null;
+    if (form?.matches("form.primary-search")) send("cta_click", "internal");
   }, { capture: true });
 })();
