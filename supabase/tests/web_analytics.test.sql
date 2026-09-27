@@ -1,6 +1,6 @@
 begin;
 
-select plan(9);
+select plan(12);
 
 select ok(
   to_regclass('public.hb_web_analytics_events') is not null,
@@ -54,6 +54,28 @@ select ok(
 select ok(
   has_function_privilege('authenticated', 'public.hb_web_analytics_summary(integer)', 'EXECUTE'),
   'authenticated role can call owner summary RPC subject to owner check'
+);
+
+select ok(
+  exists(
+    select 1
+    from information_schema.columns
+    where table_schema='public'
+      and table_name='hb_web_analytics_events'
+      and column_name='target_channel'
+  ),
+  'analytics stores an optional coarse contact channel'
+);
+
+select ok(
+  position('e.path !~ ''^/__''' in pg_get_functiondef('public.hb_web_analytics_channels(integer,integer)'::regprocedure)) > 0,
+  'channel aggregation excludes synthetic routes'
+);
+
+select ok(
+  not has_function_privilege('anon', 'public.hb_web_analytics_channels(integer,integer)', 'EXECUTE')
+  and has_function_privilege('authenticated', 'public.hb_web_analytics_channels(integer,integer)', 'EXECUTE'),
+  'contact-channel analytics remain owner-gated through authenticated RPC'
 );
 
 select * from finish();

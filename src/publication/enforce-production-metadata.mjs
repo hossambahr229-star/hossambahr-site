@@ -155,10 +155,10 @@ async function walk(directory) {
 
     html = html.replace(
       /<script\b[^>]*\bsrc=["']\/analytics-client\.js(?:\?[^"']*)?["'][^>]*\bdata-hb-analytics=["']v1["'][^>]*><\/script>/gi,
-      '<script src="/analytics-client.js?v=analytics-20260927b" defer data-hb-analytics="v1"></script>',
+      '<script src="/analytics-client.js?v=analytics-20260928a" defer data-hb-analytics="v1"></script>',
     );
     if (!html.includes('data-hb-analytics="v1"')) {
-      html = html.replace("</head>", '<script src="/analytics-client.js?v=analytics-20260927b" defer data-hb-analytics="v1"></script></head>');
+      html = html.replace("</head>", '<script src="/analytics-client.js?v=analytics-20260928a" defer data-hb-analytics="v1"></script></head>');
       analyticsRuntimeAdded += 1;
     }
 

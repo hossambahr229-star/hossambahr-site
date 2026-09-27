@@ -89,15 +89,43 @@
     }));
   }
 
+  function renderContactChannels(rows) {
+    const list = $("[data-owner-contact-channels]");
+    if (!list) return;
+    if (!rows?.length) {
+      list.textContent = "لا توجد نقرات تواصل مصنفة بعد.";
+      return;
+    }
+    const labels = {
+      whatsapp: "WhatsApp",
+      phone: "اتصال هاتفي",
+      email: "بريد إلكتروني",
+      contact: "تواصل عام",
+      unknown: "قبل تفعيل تصنيف القناة",
+    };
+    list.replaceChildren(...rows.map((item) => {
+      const row = document.createElement("div");
+      row.className = "owner-row";
+      const label = document.createElement("b");
+      label.textContent = labels[item.target_channel] || item.target_channel || "غير محدد";
+      const meta = document.createElement("span");
+      meta.textContent = `${number(item.clicks)} نقرة · ${number(item.sessions)} جلسة`;
+      row.append(label, meta);
+      return row;
+    }));
+  }
+
   async function loadAnalytics(client) {
     const [
       { data: daily, error: dailyError },
       { data: paths, error: pathsError },
       { data: sources, error: sourcesError },
+      { data: channels, error: channelsError },
     ] = await Promise.all([
       client.rpc("hb_web_analytics_summary", { p_days: 30 }),
       client.rpc("hb_web_analytics_top_paths", { p_days: 30, p_limit: 15 }),
       client.rpc("hb_web_analytics_sources", { p_days: 30, p_limit: 15 }),
+      client.rpc("hb_web_analytics_channels", { p_days: 7, p_limit: 10 }),
     ]);
 
     if (dailyError) {
@@ -118,13 +146,17 @@
     setText("[data-owner-internal-7d]", number(sum("internal_clicks")));
     setText("[data-owner-commercial-7d]", number(sum("commercial_clicks")));
     setText("[data-owner-government-7d]", number(sum("government_clicks")));
+    const whatsappClicks = (channels || [])
+      .filter((item) => item.target_channel === "whatsapp")
+      .reduce((total, item) => total + Number(item.clicks || 0), 0);
+    setText("[data-owner-whatsapp-7d]", number(whatsappClicks));
     const sessions7d = sum("sessions");
     const commercialRate = sessions7d > 0 ? (sum("commercial_clicks") / sessions7d) * 100 : 0;
     const governmentRate = sessions7d > 0 ? (sum("government_clicks") / sessions7d) * 100 : 0;
     const percent = (value) => new Intl.NumberFormat("ar-AE", { maximumFractionDigits: 1 }).format(value) + "%";
     setText("[data-owner-commercial-rate-7d]", percent(commercialRate));
     setText("[data-owner-government-rate-7d]", percent(governmentRate));
-    setText("[data-owner-analytics-state]", "القياس مباشر من HossamBahr.com ويستبعد اختبارات المتصفح وصفحات المالك والدخول. التفاعل الداخلي يعني استخدام البحث أو فتح مسار خدمة، دون حفظ نص البحث.");
+    setText("[data-owner-analytics-state]", "القياس مباشر من HossamBahr.com ويستبعد اختبارات المتصفح وصفحات المالك والدخول. نسجل نوع قناة التواصل فقط (مثل WhatsApp أو الهاتف) دون حفظ الرقم أو الرابط أو نص الرسالة أو نص البحث.");
 
     renderDailyAnalytics(daily || []);
     if (pathsError) {
@@ -139,6 +171,13 @@
       if (list) list.textContent = "تعذر تحميل مصادر الزيارات مؤقتًا.";
     } else {
       renderSources(sources || []);
+    }
+
+    if (channelsError) {
+      const list = $("[data-owner-contact-channels]");
+      if (list) list.textContent = "تعذر تحميل قنوات التواصل مؤقتًا.";
+    } else {
+      renderContactChannels(channels || []);
     }
   }
 
