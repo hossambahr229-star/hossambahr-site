@@ -148,7 +148,7 @@ async function walk(directory) {
     }
 
     if (!html.includes('data-hb-analytics="v1"')) {
-      html = html.replace("</head>", '<script src="/analytics-client.js?v=analytics-20260927a" defer data-hb-analytics="v1"></script></head>');
+      html = html.replace("</head>", '<script src="/analytics-client.js?v=analytics-20260927b" defer data-hb-analytics="v1"></script></head>');
       analyticsRuntimeAdded += 1;
     }
 
