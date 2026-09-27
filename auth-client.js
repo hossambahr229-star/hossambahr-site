@@ -10,6 +10,14 @@
   const message = (text, state = "info") => { const target = document.querySelector("[data-auth-message]"); if (target) { target.textContent = text; target.dataset.state = state; target.hidden = false; } };
   const setBusy = (form, busy) => { form?.querySelectorAll("button,input").forEach((field) => { field.disabled = busy; }); form?.setAttribute("aria-busy", String(busy)); };
   const passwordValid = (value) => value.length >= 10 && /[a-zA-Z]/.test(value) && /\d/.test(value);
+  const authDebugEnabled = new URLSearchParams(location.search).get("authdebug") === "1";
+  const authDebugText = (prefix, error) => {
+    if (!authDebugEnabled || !error) return prefix;
+    const status = error.status ?? "na";
+    const code = error.code ?? error.name ?? "unknown";
+    const detail = String(error.message || "").slice(0,180);
+    return `${prefix} [${status}/${code}] ${detail}`;
+  };
 
   async function updateNavigation(session) {
     const actions = document.querySelector(".header-actions");
@@ -51,7 +59,7 @@
         }
       });
       setBusy(magic, false);
-      if (error) return message("تعذر إرسال رابط الدخول حاليًا. يمكنك إنشاء الحساب أو المحاولة لاحقًا.", "error");
+      if (error) return message(authDebugText("تعذر إرسال رابط الدخول حاليًا. يمكنك إنشاء الحساب أو المحاولة لاحقًا.", error), "error");
       message("أرسلنا رابط دخول آمن إلى بريدك. افتح الرابط لإكمال التحقق.", "success");
     });
     forgot?.addEventListener("submit", async (event) => {
