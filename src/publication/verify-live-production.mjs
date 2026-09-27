@@ -52,16 +52,43 @@ async function worker() {
     const route = routes[index];
     try {
       const local = await readFile(routeFile(route));
-      const response = await fetch(`${baseUrl}${route}${route.includes('?') ? '&' : '?'}release=${release}`, { redirect: 'follow', signal: AbortSignal.timeout(30000), headers: { 'cache-control': 'no-cache' } });
-      const live = Buffer.from(await response.arrayBuffer());
       const localDigest = comparableDigest(local, route);
-      const liveDigest = comparableDigest(live, route);
-      const contentMatch = liveDigest === localDigest;
-      // GitHub Pages serves its configured custom 404 document for unknown paths.
-      // /404.html and /404/ are deployment plumbing, not customer routes, and can
-      // legitimately be rewritten by the host while still returning a healthy page.
-      if (response.status !== 200 || (!contentMatch && !isPlatform404Route(route))) {
-        failures.push({ route, status: response.status, contentMatch });
+      let lastStatus = 0;
+      let contentMatch = false;
+      let lastError = null;
+
+      for (let attempt = 1; attempt <= 6; attempt += 1) {
+        try {
+          const separator = route.includes('?') ? '&' : '?';
+          const response = await fetch(
+            `${baseUrl}${route}${separator}release=${release}&routeAttempt=${attempt}`,
+            {
+              redirect: 'follow',
+              signal: AbortSignal.timeout(30000),
+              headers: { 'cache-control': 'no-cache, no-store', pragma: 'no-cache' },
+            },
+          );
+          const live = Buffer.from(await response.arrayBuffer());
+          lastStatus = response.status;
+          contentMatch = comparableDigest(live, route) === localDigest;
+          lastError = null;
+
+          if (response.status === 200 && (contentMatch || isPlatform404Route(route))) break;
+        } catch (error) {
+          lastError = error;
+        }
+
+        if (attempt < 6) await new Promise((done) => setTimeout(done, 5000));
+      }
+
+      // GitHub Pages can update edge objects shortly after the homepage flips to
+      // a new deployment. Retry only stale/mismatched routes before declaring a
+      // byte-verification failure so a short CDN propagation window is not
+      // misreported as a production regression.
+      if (lastError) {
+        failures.push({ route, error: lastError?.cause?.code || lastError.name || lastError.message });
+      } else if (lastStatus !== 200 || (!contentMatch && !isPlatform404Route(route))) {
+        failures.push({ route, status: lastStatus, contentMatch });
       }
     } catch (error) {
       failures.push({ route, error: error?.cause?.code || error.name || error.message });
