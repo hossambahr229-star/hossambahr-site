@@ -87,11 +87,12 @@
     utm_campaign: attribution.utm_campaign || null,
   };
 
-  const send = (eventName, targetKind = null) => {
+  const send = (eventName, targetKind = null, targetChannel = null) => {
     const payload = {
       ...basePayload,
       event_name: eventName,
       target_kind: targetKind,
+      target_channel: targetChannel,
     };
 
     fetch(endpoint, {
@@ -111,23 +112,23 @@
   }
 
   const classifyAnchor = (anchor) => {
-    if (anchor.matches("[data-commercial-cta='verified'], .service-assist-action")) return "commercial";
-    if (anchor.matches("[data-government-cta='verified'], .service-official-action")) return "government";
-
     const rawHref = anchor.getAttribute("href") || "";
-    if (/^tel:/i.test(rawHref)) return "commercial";
+    if (/^tel:/i.test(rawHref)) return { kind: "commercial", channel: "phone" };
+    if (/^mailto:/i.test(rawHref)) return { kind: "commercial", channel: "email" };
 
     try {
       const url = new URL(anchor.href, location.href);
       const host = url.hostname.toLowerCase();
-      if (host === "wa.me" || host === "api.whatsapp.com" || host === "web.whatsapp.com") return "commercial";
+      if (host === "wa.me" || host === "api.whatsapp.com" || host === "web.whatsapp.com") {
+        return { kind: "commercial", channel: "whatsapp" };
+      }
       if (
         host === "u.ae" ||
         host.endsWith(".gov.ae") ||
         host === "tamm.abudhabi" ||
         host.endsWith(".tamm.abudhabi") ||
         host === "invest.dubai.ae"
-      ) return "government";
+      ) return { kind: "government", channel: null };
 
       if (url.origin === location.origin) {
         const path = url.pathname;
@@ -136,10 +137,17 @@
           path.startsWith("/goals/") ||
           path.startsWith("/categories/") ||
           path.startsWith("/for/")
-        ) return "internal";
+        ) return { kind: "internal", channel: null };
       }
     } catch {
       return null;
+    }
+
+    if (anchor.matches("[data-commercial-cta='verified'], .service-assist-action")) {
+      return { kind: "commercial", channel: "contact" };
+    }
+    if (anchor.matches("[data-government-cta='verified'], .service-official-action")) {
+      return { kind: "government", channel: null };
     }
 
     return null;
@@ -148,8 +156,8 @@
   document.addEventListener("click", (event) => {
     const anchor = event.target instanceof Element ? event.target.closest("a") : null;
     if (!anchor) return;
-    const targetKind = classifyAnchor(anchor);
-    if (targetKind) send("cta_click", targetKind);
+    const target = classifyAnchor(anchor);
+    if (target) send("cta_click", target.kind, target.channel);
   }, { capture: true });
 
   document.addEventListener("submit", (event) => {
