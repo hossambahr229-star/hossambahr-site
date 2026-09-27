@@ -74,6 +74,12 @@ Deno.serve(async (req: Request) => {
   const targetKind = body.target_kind === "commercial" || body.target_kind === "government" || body.target_kind === "internal"
     ? body.target_kind
     : null;
+  const targetChannel = body.target_channel === "whatsapp"
+    || body.target_channel === "phone"
+    || body.target_channel === "email"
+    || body.target_channel === "contact"
+    ? body.target_channel
+    : null;
 
   const secretKey = getSecretKey();
   const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
@@ -94,6 +100,7 @@ Deno.serve(async (req: Request) => {
     utm_medium: cleanText(body.utm_medium, 120),
     utm_campaign: cleanText(body.utm_campaign, 160),
     target_kind: eventName === "cta_click" ? targetKind : null,
+    target_channel: eventName === "cta_click" && targetKind === "commercial" ? targetChannel : null,
   });
 
   if (error) {
