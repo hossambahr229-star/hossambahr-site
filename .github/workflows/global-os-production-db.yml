@@ -42,6 +42,21 @@ jobs:
             echo "### Supabase production deployment: DEFERRED" >> "$GITHUB_STEP_SUMMARY"
             echo "Database/Edge deployment can be performed through the authorized Supabase connector or by adding encrypted CLI credentials." >> "$GITHUB_STEP_SUMMARY"
           fi
+      - name: Configure production Auth URLs
+        if: steps.credentials.outputs.ready == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail-with-body --silent --show-error \
+            -X PATCH "https://api.supabase.com/v1/projects/$SUPABASE_PROJECT_ID/config/auth" \
+            -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{
+              "site_url": "https://hossambahr.com",
+              "uri_allow_list": "https://hossambahr.com/auth/callback/**,https://hossambahr.com/auth/reset/**",
+              "external_email_enabled": true,
+              "disable_signup": false
+            }'
       - name: Setup Supabase CLI
         if: steps.credentials.outputs.ready == 'true'
         uses: supabase/setup-cli@v1
