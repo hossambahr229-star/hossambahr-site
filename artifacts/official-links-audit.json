@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-27T20:29:59.149Z",
+  "generatedAt": "2026-09-27T20:42:01.446Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 165,
+    "REACHABLE": 167,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 73,
+    "NETWORK_UNVERIFIED": 71,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -239,8 +239,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
+      "result": "REACHABLE"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/413?administrativeRegionId=1",
@@ -2551,8 +2552,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
