@@ -14,6 +14,8 @@ let twitterCardsUpgraded = 0;
 let analyticsRuntimeAdded = 0;
 let privacyDisclosureAdded = 0;
 let socialMetadataNormalized = 0;
+let seoOverridesApplied = 0;
+let structuredDataAdded = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const decodeBasicEntities = (value) => String(value || "")
@@ -24,6 +26,35 @@ const decodeBasicEntities = (value) => String(value || "")
   .replaceAll("&lt;", "<")
   .replaceAll("&gt;", ">");
 const escapeAttribute = (value) => String(value || "").replaceAll("&", "&amp;").replaceAll('"', "&quot;");
+
+const seoOverrides = new Map([
+  ["authorities/icp/index.html", {
+    title: "ICP الإمارات | الهوية والجنسية والإقامة وصلاحية الملف | HossamBahr",
+    description: "دليل خدمات الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP): الهوية الإماراتية، الإقامة والتأشيرات، الجوازات، بطاقة المنشأة، وصلاحية الملف مع الروابط الرسمية.",
+    heading: "خدمات الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+  }],
+  ["services/renew-uae-passport-icp/index.html", {
+    title: "تجديد جواز السفر الإماراتي | UAE Passport Renewal | HossamBahr",
+    description: "تجديد جواز السفر الإماراتي للمواطن عبر ICP: الشروط والمستندات وخطوات الخدمة والرابط الرسمي. UAE Passport Renewal.",
+  }],
+  ["services/abu-dhabi-trade-name-reservation/index.html", {
+    title: "حجز اسم تجاري في أبوظبي | اقتصادية أبوظبي / TAMM | HossamBahr",
+    description: "خطوات حجز اسم تجاري في أبوظبي عبر دائرة التنمية الاقتصادية (ADDED) والقنوات الرسمية على TAMM قبل استكمال إجراءات الترخيص الاقتصادي.",
+  }],
+  ["services/green-residence-partner-investor-dubai/index.html", {
+    title: "الإقامة الخضراء في دبي للشريك أو المستثمر | HossamBahr",
+    description: "دليل الإقامة الخضراء في دبي للشريك أو المستثمر لمدة تصل إلى خمس سنوات: الشروط والمتطلبات وخطوات التقديم والرابط الحكومي الرسمي.",
+    heading: "الإقامة الخضراء في دبي للشريك أو المستثمر",
+  }],
+  ["authorities/dld-rera/index.html", {
+    title: "RERA دبي | مؤسسة التنظيم العقاري ودائرة الأراضي والأملاك | HossamBahr",
+    description: "دليل خدمات RERA دبي ودائرة الأراضي والأملاك: التصاريح العقارية وبطاقات الممارسة وخدمات الملكية والتقييم مع المسارات الرسمية.",
+    heading: "RERA دبي — مؤسسة التنظيم العقاري ودائرة الأراضي والأملاك",
+  }],
+  ["services/index.html", {
+    title: "دليل الخدمات الحكومية في الإمارات | HossamBahr",
+  }],
+]);
 
 function routeFor(normalized) {
   return normalized === "index.html" ? "/" : `/${normalized.replace(/index\.html$/, "")}`;
@@ -105,14 +136,28 @@ async function walk(directory) {
       }
     }
 
-    if (normalized === "authorities/icp/index.html") {
-      const icpTitle = "ICP الإمارات | الهوية والجنسية والإقامة وصلاحية الملف | HossamBahr";
-      const icpDescription = "دليل خدمات الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP): الهوية الإماراتية، الإقامة والتأشيرات، الجوازات، بطاقة المنشأة، وصلاحية الملف مع الروابط الرسمية.";
-      const icpHeading = "خدمات الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)";
-      html = html
-        .replace(/<title>[^<]*<\/title>/i, `<title>${icpTitle}</title>`)
-        .replace(/<meta[^>]+name=["']description["'][^>]*>/i, `<meta name="description" content="${escapeAttribute(icpDescription)}">`)
-        .replace(/<h1\b[^>]*>[\s\S]*?<\/h1>/i, `<h1>${icpHeading}</h1>`);
+    const seoOverride = seoOverrides.get(normalized);
+    if (seoOverride) {
+      if (seoOverride.title) {
+        html = html.replace(/<title>[^<]*<\/title>/i, `<title>${seoOverride.title}</title>`);
+      }
+      if (seoOverride.description) {
+        if (/<meta[^>]+name=["']description["']/i.test(html)) {
+          html = html.replace(
+            /<meta[^>]+name=["']description["'][^>]*>/i,
+            `<meta name="description" content="${escapeAttribute(seoOverride.description)}">`,
+          );
+        } else {
+          html = html.replace(
+            "</head>",
+            `<meta name="description" content="${escapeAttribute(seoOverride.description)}"></head>`,
+          );
+        }
+      }
+      if (seoOverride.heading) {
+        html = html.replace(/<h1\b[^>]*>[\s\S]*?<\/h1>/i, `<h1>${seoOverride.heading}</h1>`);
+      }
+      seoOverridesApplied += 1;
     }
 
     if (!/<meta[^>]+name=["']description["']/i.test(html)) {
@@ -163,6 +208,27 @@ async function walk(directory) {
     socialMetadataNormalized += 1;
     twitterCardsUpgraded += 1;
 
+    const isNoindex = /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html);
+    const hasStructuredData = /<script[^>]+type=["']application\/ld\+json["']/i.test(html);
+    const isSelfCanonical = canonicalHref === fallbackCanonical;
+    if (!isNoindex && isSelfCanonical && !hasStructuredData && html.includes("</body>")) {
+      const webPageData = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: pageTitle,
+        description: pageDescription,
+        url: canonicalHref,
+        inLanguage: "ar-AE",
+        isPartOf: {
+          "@type": "WebSite",
+          name: "HossamBahr",
+          url: "https://hossambahr.com/",
+        },
+      }).replaceAll("<", "\\u003c");
+      html = html.replace("</body>", `<script type="application/ld+json">${webPageData}</script></body>`);
+      structuredDataAdded += 1;
+    }
+
     await writeFile(path, html, "utf8");
   }
 }
@@ -181,4 +247,6 @@ console.log(JSON.stringify({
   analyticsRuntimeAdded,
   privacyDisclosureAdded,
   socialMetadataNormalized,
+  seoOverridesApplied,
+  structuredDataAdded,
 }));
