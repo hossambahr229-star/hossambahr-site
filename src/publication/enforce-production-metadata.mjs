@@ -13,6 +13,7 @@ let socialImagesAdded = 0;
 let twitterCardsUpgraded = 0;
 let analyticsRuntimeAdded = 0;
 let privacyDisclosureAdded = 0;
+let privacyRuntimeNormalized = 0;
 let socialMetadataNormalized = 0;
 let seoOverridesApplied = 0;
 let structuredDataAdded = 0;
@@ -166,9 +167,11 @@ async function walk(directory) {
         html = html.replace("</article>", `${privacySection}</article>`);
         privacyDisclosureAdded += 1;
       }
-      if (!html.includes('src="/privacy-disclosure.js"')) {
-        html = html.replace("</head>", '<script src="/privacy-disclosure.js?v=20260927a" defer></script></head>');
-      }
+      const privacyRuntimeTag = '<script src="/privacy-disclosure.js?v=20260927a" defer></script>';
+      const privacyRuntimePattern = /<script\b[^>]*\bsrc=["']\/privacy-disclosure\.js(?:\?[^"']*)?["'][^>]*><\/script>/gi;
+      html = html.replace(privacyRuntimePattern, "");
+      html = html.replace("</head>", `${privacyRuntimeTag}</head>`);
+      privacyRuntimeNormalized += 1;
     }
 
     if (normalized === "authorities/fujairah-municipality/index.html" && !html.includes('data-hb-fujairah-municipality-info="v1"')) {
@@ -296,6 +299,7 @@ console.log(JSON.stringify({
   twitterCardsUpgraded,
   analyticsRuntimeAdded,
   privacyDisclosureAdded,
+  privacyRuntimeNormalized,
   socialMetadataNormalized,
   seoOverridesApplied,
   structuredDataAdded,
