@@ -89,21 +89,17 @@ export default {
         return json(req, { error: "invalid_case_goal" }, 422);
       }
 
-      const { data, error } = await ctx.supabase
-        .from("hb_cases")
-        .insert({
-          user_id: userId,
-          organization_id: organizationId,
-          service_slug: serviceSlug,
-          goal,
-          title,
-          status: "qualifying",
-          priority: "normal"
-        })
-        .select("id,title,status,created_at")
-        .single();
+      const { data, error } = await ctx.supabase.rpc("hb_start_case", {
+        p_goal: goal,
+        p_title: title,
+        p_service_slug: serviceSlug,
+        p_organization_id: organizationId
+      });
 
-      if (error) return json(req, { error: "case_create_failed" }, 400);
+      if (error) {
+        console.error("hb_start_case failed", { code: error.code, message: error.message });
+        return json(req, { error: "case_create_failed" }, 400);
+      }
       return json(req, { data }, 201);
     }
 
