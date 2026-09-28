@@ -55,7 +55,7 @@
 
     const [casesResult, obligationsResult] = await Promise.all([
       client.from("hb_cases").select("id,title,status,priority,readiness_percent,due_at,created_at").not("status", "in", '("completed","cancelled")').order("created_at", { ascending: false }).limit(25),
-      client.from("hb_obligations").select("id,title,status,due_at,obligation_type").eq("status", "open").gte("due_at", nowIso).lte("due_at", soon).order("due_at", { ascending: true }).limit(25)
+      client.from("hb_obligations").select("id,title,status,due_at,obligation_type").eq("status", "open").lte("due_at", soon).order("due_at", { ascending: true }).limit(25)
     ]);
 
     if (casesResult.error || obligationsResult.error) {
@@ -65,14 +65,16 @@
 
     const cases = casesResult.data || [];
     const obligations = obligationsResult.data || [];
+    const overdue = obligations.filter((item)=>item.due_at && item.due_at < nowIso);
+    const upcoming = obligations.filter((item)=>!item.due_at || item.due_at >= nowIso);
     const urgent = cases.filter((item) => item.priority === "urgent" || item.priority === "high").length;
     const blocked = cases.filter((item) => item.status === "blocked" || item.status === "waiting_customer").length;
 
     summary.append(
       createCard("المعاملات المفتوحة", String(cases.length)),
-      createCard("تحتاج أولوية", String(urgent)),
       createCard("تحتاج إجراء منك", String(blocked)),
-      createCard("استحقاقات 60 يومًا", String(obligations.length))
+      createCard("استحقاقات متأخرة", String(overdue.length)),
+      createCard("قادم خلال 60 يومًا", String(upcoming.length))
     );
 
     const createHeading = (label) => {
@@ -98,11 +100,28 @@
       items.append(list);
     }
 
-    if (obligations.length) {
+    if (overdue.length) {
+      items.append(createHeading("متأخر ويحتاج انتباهك"));
+      const list = document.createElement("div");
+      list.className = "hb-obligation-list";
+      for (const entry of overdue.slice(0, 8)) {
+        const article = document.createElement("article");
+        article.className = "hb-obligation-item";
+        const title = document.createElement("strong");
+        title.textContent = entry.title;
+        const meta = document.createElement("p");
+        meta.textContent = `متأخر منذ: ${formatDate(entry.due_at)}`;
+        article.append(title, meta);
+        list.append(article);
+      }
+      items.append(list);
+    }
+
+    if (upcoming.length) {
       items.append(createHeading("قادم خلال 60 يومًا"));
       const list = document.createElement("div");
       list.className = "hb-obligation-list";
-      for (const entry of obligations.slice(0, 8)) {
+      for (const entry of upcoming.slice(0, 8)) {
         const article = document.createElement("article");
         article.className = "hb-obligation-item";
         const title = document.createElement("strong");
