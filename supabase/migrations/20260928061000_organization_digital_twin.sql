@@ -338,3 +338,28 @@ $$;
 
 revoke all on function public.hb_organization_digital_twin(uuid) from public,anon;
 grant execute on function public.hb_organization_digital_twin(uuid) to authenticated;
+
+
+create or replace function public.hb_my_organization_twins(p_limit integer default 20)
+returns table(
+  organization_id uuid,
+  twin jsonb
+)
+language sql
+stable
+security invoker
+set search_path=''
+as $$
+  select
+    o.id,
+    hb_private.organization_digital_twin(o.id)
+  from public.hb_organizations o
+  join public.hb_organization_members m
+    on m.organization_id=o.id
+   and m.user_id=(select auth.uid())
+  order by o.updated_at desc
+  limit least(greatest(coalesce(p_limit,20),1),50)
+$$;
+
+revoke all on function public.hb_my_organization_twins(integer) from public,anon;
+grant execute on function public.hb_my_organization_twins(integer) to authenticated;
