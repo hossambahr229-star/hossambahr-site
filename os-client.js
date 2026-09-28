@@ -210,11 +210,97 @@
     target.replaceChildren(...(data.length ? data.map((item)=>article(item.title,`الاستحقاق: ${date(item.due_at)}`)) : [article("لا توجد استحقاقات خلال 60 يومًا","ستظهر التجديدات والمواعيد المهمة هنا.")]));
   }
 
+  function renderGoalSelection(candidate) {
+    const hidden=$("[data-os-selected-service]");
+    const selected=$("[data-os-goal-selection]");
+    if(!hidden || !selected) return;
+    hidden.value=candidate?.service_slug || "";
+    if(!candidate){
+      selected.hidden=true;
+      selected.replaceChildren();
+      return;
+    }
+    const text=document.createElement("span");
+    text.textContent=`المسار المختار: ${candidate.service_name}${candidate.emirate ? " • "+candidate.emirate : ""}`;
+    const clear=document.createElement("button");
+    clear.type="button";
+    clear.className="hb-os-goal-clear";
+    clear.textContent="تغيير";
+    clear.addEventListener("click",()=>{
+      renderGoalSelection(null);
+      const area=$("[data-os-goal-suggestions]");
+      if(area)area.hidden=false;
+    });
+    selected.replaceChildren(text,clear);
+    selected.hidden=false;
+    const suggestions=$("[data-os-goal-suggestions]");
+    if(suggestions)suggestions.hidden=true;
+  }
+
+  function renderGoalSuggestions(rows=[]) {
+    const target=$("[data-os-goal-suggestions]");
+    if(!target)return;
+    if(!rows.length){
+      target.hidden=true;
+      target.replaceChildren();
+      return;
+    }
+    const hint=document.createElement("p");
+    hint.className="hb-os-goal-hint";
+    hint.textContent="هل تقصد إحدى هذه الخدمات؟ اخترها لفتح المسار الموثق، أو اتركها بدون اختيار لبدء مسار عام.";
+    const nodes=rows.map((candidate)=>{
+      const button=document.createElement("button");
+      button.type="button";
+      button.className="hb-os-service-suggestion";
+      const copy=document.createElement("div");
+      const title=document.createElement("strong");
+      title.textContent=candidate.service_name;
+      const meta=document.createElement("small");
+      meta.textContent=[candidate.service_type,candidate.emirate,candidate.authority_key].filter(Boolean).join(" • ");
+      copy.append(title,meta);
+      const badge=document.createElement("span");
+      badge.textContent=candidate.emirate || "خدمة موثقة";
+      button.append(copy,badge);
+      button.addEventListener("click",()=>renderGoalSelection(candidate));
+      return button;
+    });
+    target.replaceChildren(hint,...nodes);
+    target.hidden=false;
+  }
+
+  function setupGoalResolver() {
+    const textarea=$("#os-goal");
+    if(!textarea)return;
+    let timer=null;
+    let requestSeq=0;
+    textarea.addEventListener("input",()=>{
+      renderGoalSelection(null);
+      const value=textarea.value.trim();
+      clearTimeout(timer);
+      if(value.length<4){
+        renderGoalSuggestions([]);
+        return;
+      }
+      const seq=++requestSeq;
+      timer=setTimeout(async()=>{
+        const {data,error}=await client.rpc("hb_resolve_service_candidates",{p_query:value,p_limit:5});
+        if(seq!==requestSeq)return;
+        if(error){
+          renderGoalSuggestions([]);
+          return;
+        }
+        renderGoalSuggestions(data||[]);
+      },320);
+    });
+  }
+
   async function setupGoal(session) {
     const form = $("[data-os-goal-form]");
     form?.addEventListener("submit", async (event)=>{
       event.preventDefault();
-      const goal = String(new FormData(form).get("goal") || "").trim();
+      const formData=new FormData(form);
+      const goal = String(formData.get("goal") || "").trim();
+      const serviceSlug=String(formData.get("service_slug") || "").trim() || null;
       if (!goal) return;
       const button=form.querySelector("button");
       button.disabled=true;
@@ -222,7 +308,7 @@
       let createError=null;
       try {
         if(!window.HB_OS_API)throw new Error("Global OS API unavailable");
-        await window.HB_OS_API.createCase({title:goal.slice(0,180),goal});
+        await window.HB_OS_API.createCase({title:goal.slice(0,180),goal,service_slug:serviceSlug});
       } catch (error) {
         createError=error;
       }
@@ -230,7 +316,9 @@
       button.textContent="ابدأ الحالة";
       if (createError) return setMessage("تعذر إنشاء الحالة الآن. تأكد من تفعيل Global OS API.","error");
       form.reset();
-      setMessage("تم إنشاء الحالة. أصبحت جزءًا من مركز التشغيل.","success");
+      renderGoalSelection(null);
+      renderGoalSuggestions([]);
+      setMessage(serviceSlug ? "تم إنشاء الحالة وربطها بالمسار الموثق للخدمة المختارة." : "تم إنشاء الحالة في مسار عام آمن. يمكنك تحديد الخدمة لاحقًا.","success");
       const cases=await loadCases();
       await loadAttention(cases);
     });
@@ -366,6 +454,7 @@
       }
       return;
     }
+    setupGoalResolver();
     await setupGoal(data.session);
     await setupOrganization(data.session);
     await setupDocumentUpload(data.session);
