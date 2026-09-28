@@ -55,3 +55,13 @@
   .hb-org-health{justify-self:start}
   .hb-org-twin-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+.hb-case-timeline{margin-top:.55rem;border-top:1px solid rgba(255,255,255,.08);padding-top:.6rem}
+.hb-case-timeline summary{cursor:pointer;color:#d7e5df;font-weight:800;list-style:none}
+.hb-case-timeline summary::-webkit-details-marker{display:none}
+.hb-case-timeline summary::before{content:"◷";margin-inline-end:.4rem;color:#e8c97e}
+.hb-case-event-list{display:grid;gap:.55rem;margin:.7rem 0 0;padding:0;list-style:none}
+.hb-case-event-list li{position:relative;padding-inline-start:1rem}
+.hb-case-event-list li::before{content:"";position:absolute;inset-inline-start:0;top:.45rem;width:.42rem;height:.42rem;border-radius:50%;background:#e8c97e}
+.hb-case-event-list strong{display:block;color:#eef6f2;font-size:.84rem}
+.hb-case-event-list small{display:block;margin-top:.12rem;color:#97aaa2;font-size:.72rem}
