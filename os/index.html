@@ -36,6 +36,9 @@
         <textarea id="os-goal" name="goal" rows="3" maxlength="1200" placeholder="مثال: أريد تأسيس شركة في دبي والحصول على إقامة مستثمر وتوظيف موظفين." required></textarea>
         <button type="submit">ابدأ الحالة</button>
       </div>
+      <input type="hidden" name="service_slug" data-os-selected-service>
+      <div data-os-goal-selection class="hb-os-goal-selection" hidden></div>
+      <div data-os-goal-suggestions class="hb-os-goal-suggestions" hidden aria-live="polite"></div>
       <p data-os-message class="auth-message" hidden aria-live="polite"></p>
     </form>
   </section>
