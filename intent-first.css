@@ -1651,3 +1651,27 @@ html.hb-phase8 body[data-ux-page="home"] .service-card[data-phase9-card="compact
   .activities-facts article{min-height:88px!important;padding:16px!important}
 }
 @media(max-width:350px){.action-start-grid{grid-template-columns:1fr!important}}
+
+
+/* HOSSAM BAHR OS first-screen launch */
+.hero-os-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.1rem}
+.hero-os-actions a{min-height:50px;display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1.05rem;border-radius:12px;font-weight:900;text-decoration:none}
+.hero-os-primary{background:var(--ux-gold-500);color:#082c25;border:1px solid var(--ux-gold-500)}
+.hero-os-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.os-value-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;max-width:920px;margin:1rem 0 0}
+.os-value-strip span{min-height:68px;display:flex;flex-direction:column;justify-content:center;padding:.65rem .8rem;border:1px solid rgba(200,155,60,.35);border-radius:12px;background:rgba(255,255,255,.06);color:#e7f0ed;font-size:.82rem;line-height:1.5}
+.os-value-strip b{color:#f0d99d;font-size:1.05rem}
+.mobile-os-primary{background:var(--ux-brand-900)!important;color:#fff!important;border-radius:10px;font-weight:900!important}
+@media(max-width:760px){
+  body[data-intent-first-ready="true"] .platform-hero{padding:1.25rem 16px 1.5rem}
+  body[data-intent-first-ready="true"] .hero-copy h1{font-size:clamp(2rem,10vw,3rem);max-width:13ch;line-height:1.08}
+  .hero-os-actions{display:grid;grid-template-columns:1fr;gap:.55rem}
+  .hero-os-actions a{width:100%;box-sizing:border-box}
+  .os-value-strip{grid-template-columns:1fr 1fr;gap:.5rem}
+  .os-value-strip span{min-height:60px;padding:.55rem .65rem;font-size:.76rem}
+  body[data-intent-first-ready="true"] .hero-search-stage{margin-top:1rem}
+}
+@media(max-width:420px){
+  .os-value-strip{grid-template-columns:1fr}
+  .os-value-strip span{min-height:52px}
+}
