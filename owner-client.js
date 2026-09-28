@@ -107,6 +107,25 @@
     }));
   }
 
+  function renderDigitalCampaigns(rows) {
+    const target=$("[data-owner-digital-campaigns]");
+    if(!target)return;
+    if(!rows?.length){
+      target.textContent="لا توجد حملات UTM مسجلة بعد.";
+      return;
+    }
+    target.replaceChildren(...rows.map((item)=>{
+      const row=document.createElement("div");
+      row.className="owner-intel-row";
+      const label=document.createElement("b");
+      label.textContent=item.campaign || "بدون اسم";
+      const meta=document.createElement("span");
+      meta.textContent=(item.source||"unknown")+" · "+number(item.sessions)+" جلسة · "+number(item.engaged_sessions)+" متفاعل · "+number(item.commercial_sessions)+" تواصل";
+      row.append(label,meta);
+      return row;
+    }));
+  }
+
   async function loadDigitalIntent(client) {
     const {data,error}=await client.rpc("hb_owner_digital_intent_snapshot",{p_days:7});
     if(error || !data){
@@ -120,7 +139,14 @@
     setText("[data-owner-digital-commercial-rate]",percent(data.commercial_rate));
     renderDigitalSources(data.sources || []);
     renderDigitalPaths(data.top_paths || []);
-    setText("[data-owner-digital-state]","Digital Intent يقيس نية الزائر قبل إنشاء Lead فعلي، لذلك لا يرفع أرقام المبيعات أو Leads تلقائيًا.");
+    const {data:campaigns,error:campaignError}=await client.rpc("hb_owner_digital_campaigns",{p_days:7});
+    if(campaignError){
+      const target=$("[data-owner-digital-campaigns]");
+      if(target)target.textContent="تعذر تحميل أداء الحملات مؤقتًا.";
+    }else{
+      renderDigitalCampaigns(campaigns || []);
+    }
+    setText("[data-owner-digital-state]","Digital Intent يقيس نية الزائر قبل إنشاء Lead فعلي، ويعرض أداء حملات UTM بشكل منفصل دون رفع أرقام المبيعات أو Leads تلقائيًا.");
   }
 
   async function loadExecutiveSnapshot(client) {
