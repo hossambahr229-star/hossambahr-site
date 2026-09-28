@@ -15,6 +15,97 @@
     $("[data-owner-analytics-error]").hidden = false;
   };
   const number = (value) => new Intl.NumberFormat("ar-AE").format(Number(value || 0));
+  const money = (amount, currency) => {
+    try {
+      return new Intl.NumberFormat("ar-AE", {
+        style:"currency",
+        currency:currency || "AED",
+        maximumFractionDigits:2
+      }).format(Number(amount || 0));
+    } catch {
+      return number(amount) + " " + (currency || "");
+    }
+  };
+
+  function renderMoneyRows(selector, rows) {
+    const target=$(selector);
+    if(!target)return;
+    if(!rows?.length){
+      target.textContent="لا توجد قيمة مسجلة.";
+      return;
+    }
+    target.replaceChildren(...rows.map((item)=>{
+      const row=document.createElement("div");
+      row.className="owner-money-row";
+      const label=document.createElement("b");
+      label.textContent=money(item.amount,item.currency);
+      const meta=document.createElement("span");
+      meta.textContent=number(item.count)+" عنصر";
+      row.append(label,meta);
+      return row;
+    }));
+  }
+
+  function renderIntelRows(selector, rows, labelKey) {
+    const target=$(selector);
+    if(!target)return;
+    if(!rows?.length){
+      target.textContent="لا توجد بيانات كافية بعد.";
+      return;
+    }
+    target.replaceChildren(...rows.map((item)=>{
+      const row=document.createElement("div");
+      row.className="owner-intel-row";
+      const label=document.createElement("b");
+      label.textContent=item[labelKey] || "غير محدد";
+      const meta=document.createElement("span");
+      meta.textContent=number(item.count);
+      row.append(label,meta);
+      return row;
+    }));
+  }
+
+  async function loadExecutiveSnapshot(client) {
+    const {data,error}=await client.rpc("hb_owner_executive_snapshot",{p_tenant_key:"hossambahr"});
+    if(error || !data){
+      const target=$("[data-owner-ceo-error]");
+      if(target){
+        target.textContent="تعذر تحميل CEO Intelligence مؤقتًا.";
+        target.hidden=false;
+      }
+      return;
+    }
+
+    const leads=data.leads || {};
+    const operations=data.operations || {};
+    const compliance=data.compliance || {};
+    const marketplace=data.marketplace || {};
+    const attention=data.attention || {};
+    const sales=data.sales || {};
+
+    setText("[data-owner-open-leads]",number(leads.open));
+    setText("[data-owner-new-leads-30d]",number(leads.new_30d));
+    setText("[data-owner-won-leads-30d]",number(leads.won_30d));
+    setText("[data-owner-open-cases]",number(operations.open_cases));
+    setText("[data-owner-blocked-cases]",number(operations.blocked_cases));
+    setText("[data-owner-waiting-customer]",number(operations.waiting_customer));
+    setText("[data-owner-overdue-obligations]",number(compliance.overdue_obligations));
+    setText("[data-owner-critical-findings]",number(compliance.critical_open));
+    setText("[data-owner-open-conversations]",number(operations.open_conversations));
+    setText("[data-owner-marketplace-active]",number(marketplace.active_orders));
+    setText("[data-owner-marketplace-disputed]",number(marketplace.disputed_orders));
+    setText("[data-owner-critical-attention]",number(attention.critical_count));
+
+    renderMoneyRows("[data-owner-lead-value]",leads.open_value_by_currency || []);
+    renderMoneyRows("[data-owner-quote-pipeline]",sales.quote_pipeline_by_currency || []);
+    renderMoneyRows("[data-owner-collected-30d]",sales.collected_30d_by_currency || []);
+    renderMoneyRows("[data-owner-refunded-30d]",sales.refunded_30d_by_currency || []);
+    renderIntelRows("[data-owner-top-services-30d]",operations.top_services_30d || [],"service_name");
+    renderIntelRows("[data-owner-lead-sources-30d]",leads.sources_30d || [],"source");
+
+    const generated=data.generated_at ? new Date(data.generated_at).toLocaleString("ar-AE") : "الآن";
+    setText("[data-owner-ceo-state]","آخر تحديث: "+generated+" • المؤشرات مجمعة على Tenant HOSSAM BAHR.");
+  }
 
   function dubaiDateKey(date = new Date()) {
     const parts = new Intl.DateTimeFormat("en-GB", {
@@ -361,6 +452,7 @@
     setText("[data-owner-cases]", overview.cases ?? 0);
     $("[data-owner-content]").hidden = false;
 
+    loadExecutiveSnapshot(client).catch(() => {});
     loadAnalytics(client).catch(() => explainAnalytics("تعذر تحميل قياس الزيارات مؤقتًا."));
     loadReviewQueue(client).catch(() => {});
     loadExecutionQueue(client).catch(() => {});
