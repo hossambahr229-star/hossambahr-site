@@ -5,6 +5,8 @@ const root = resolve(import.meta.dirname, '../..');
 const homepagePath = resolve(root, 'index.html');
 let html = await readFile(homepagePath, 'utf8');
 const platformSummary = JSON.parse(await readFile(resolve(root, 'platform-summary.json'), 'utf8'));
+const osHomepageTitle = 'HOSSAM BAHR OS | منصة الأعمال والخدمات الحكومية في الإمارات';
+const osHomepageDescription = 'HOSSAM BAHR OS منصة تشغيل الأعمال والمعاملات الحكومية في الإمارات: ابدأ بالهدف، نظّم معاملتك، مستنداتك وشركتك من مكان واحد مع مصادر وروابط رسمية.';
 
 function extractBalancedDivInner(source, marker) {
   const start = source.indexOf(marker);
@@ -82,6 +84,13 @@ html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
   if (/\bclass='/i.test(match)) return match.replace(/\bclass='([^']*)'/i, "class='$1 hb-phase8'");
   return `<html${attributes} class="hb-phase8">`;
 });
+html = html.replace(/<title>[^<]*<\/title>/i, `<title>${osHomepageTitle}</title>`);
+if (/<meta[^>]+name=["']description["']/i.test(html)) {
+  html = html.replace(/<meta[^>]+name=["']description["'][^>]*>/i, `<meta name="description" content="${osHomepageDescription}">`);
+} else {
+  html = html.replace('</head>', `<meta name="description" content="${osHomepageDescription}"></head>`);
+}
+
 if (!html.includes('data-account-link="true"')) {
   html = html.replace(/(<div class="header-actions">)([\s\S]*?)(<\/div>)/, '$1$2<a class="login-action" data-account-link="true" href="/auth/?return=%2F">تسجيل الدخول</a>$3');
 }
@@ -98,7 +107,7 @@ html = html
 
 html = html.replace(
   /<nav class="desktop-nav"([^>]*)>[\s\S]*?<\/nav>/i,
-  '<nav class="desktop-nav"$1><a href="/services/">الخدمات</a><a href="/categories/companies-establishments/">الشركات والرخص</a><a href="/categories/work-employees/">العمل</a><a href="/categories/residency-visas/">الإقامة والتأشيرات</a><a href="/dubai-business-activities.html">الأنشطة</a><a href="/updates/">التحديثات</a><details class="nav-more"><summary>المزيد</summary><div class="nav-more-menu"><a href="/authorities/">الجهات</a><a href="/command-center/">مركز القيادة</a><a href="/faq/">الأسئلة والحلول</a></div></details></nav>'
+  '<nav class="desktop-nav"$1><a href="/os/">HOSSAM BAHR OS</a><a href="/services/">الخدمات</a><a href="/categories/companies-establishments/">الشركات والرخص</a><a href="/categories/work-employees/">العمل</a><a href="/categories/residency-visas/">الإقامة والتأشيرات</a><a href="/dubai-business-activities.html">الأنشطة</a><a href="/updates/">التحديثات</a><details class="nav-more"><summary>المزيد</summary><div class="nav-more-menu"><a href="/authorities/">الجهات</a><a href="/command-center/">مركز القيادة</a><a href="/faq/">الأسئلة والحلول</a></div></details></nav>'
 );
 
 const heroActions = html.match(/<div class="hero-actions">[\s\S]*?<\/div>/i)?.[0];
