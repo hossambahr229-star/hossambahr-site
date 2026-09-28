@@ -267,7 +267,7 @@
           await window.HB_OS_API.decideApproval(next.id,"approve");
           setMessage("تم تسجيل الموافقة بأمان.","success");
           const refreshed=await loadCases();
-          await loadAttention(refreshed);
+          await loadAttention();
         }catch{
           setMessage("تعذر تسجيل الموافقة الآن. لم يتم تنفيذ أي إجراء خارجي.","error");
           approve.disabled=false;
@@ -290,7 +290,7 @@
           await window.HB_OS_API.decideApproval(next.id,"reject");
           setMessage("تم تسجيل الرفض وإيقاف المسار عند هذه النقطة.","success");
           const refreshed=await loadCases();
-          await loadAttention(refreshed);
+          await loadAttention();
         }catch{
           setMessage("تعذر تسجيل الرفض الآن.","error");
           approve.disabled=false;
@@ -311,7 +311,7 @@
           await window.HB_OS_API.submitTask(next.id);
           setMessage("تم إرسال المتطلب للمراجعة.","success");
           const refreshed=await loadCases();
-          await loadAttention(refreshed);
+          await loadAttention();
         }catch{
           setMessage("تعذر تحديث الخطوة الآن.","error");
           button.disabled=false;
@@ -391,6 +391,7 @@
   function buildCaseCard(item,tasks=[],events=[]) {
     const card=document.createElement("article");
     card.className="hb-case-card";
+    card.id=`case-${item.id}`;
     const heading=document.createElement("div");
     heading.className="hb-case-card-heading";
     const title=document.createElement("strong");
@@ -490,22 +491,106 @@
     return enriched;
   }
 
-  async function loadAttention(cases) {
-    const target = $("[data-os-attention]");
-    const attention=[];
-    for(const item of cases){
-      const next=nextExecutableTask(item._tasks||[]);
-      const needsUser=next && (next.assignee_type==="user" || next.requires_approval || next.status==="needs_approval");
-      if(needsUser || ["blocked","waiting_customer"].includes(item.status) || ["high","urgent"].includes(item.priority)){
-        attention.push({item,next});
+  const inboxPriorityLabel=(priority)=>({
+    urgent:"عاجل",
+    high:"مرتفع",
+    normal:"عادي",
+    low:"منخفض"
+  })[priority] || priority;
+
+  function inboxDestination(item) {
+    if(["owner_internal_review","owner_external_execution"].includes(item.action_key)){
+      return {type:"link",href:"/owner/",label:"فتح لوحة التشغيل"};
+    }
+    if(item.action_key==="obligation"){
+      return {type:"scroll",selector:"[data-os-obligations]",label:"عرض الاستحقاقات"};
+    }
+    if(item.case_id){
+      return {type:"scroll",selector:`#case-${item.case_id}`,label:"فتح المعاملة"};
+    }
+    if(item.action_key==="notification"){
+      return {type:"read",label:"تم الاطلاع"};
+    }
+    return null;
+  }
+
+  function buildInboxItem(item) {
+    const card=document.createElement("article");
+    card.className=`hb-inbox-item hb-inbox-item--${item.priority || "normal"}`;
+
+    const top=document.createElement("div");
+    top.className="hb-inbox-item-top";
+    const copy=document.createElement("div");
+    const title=document.createElement("strong");
+    title.textContent=item.title;
+    const summary=document.createElement("p");
+    summary.textContent=item.summary || "يحتاج انتباهك";
+    copy.append(title,summary);
+
+    const badge=document.createElement("span");
+    badge.className="hb-inbox-priority";
+    badge.textContent=inboxPriorityLabel(item.priority || "normal");
+    top.append(copy,badge);
+    card.append(top);
+
+    const meta=document.createElement("small");
+    meta.textContent=item.due_at ? `الموعد: ${date(item.due_at)}` : "بدون موعد محدد";
+    card.append(meta);
+
+    const destination=inboxDestination(item);
+    if(destination){
+      if(destination.type==="link"){
+        const link=document.createElement("a");
+        link.href=destination.href;
+        link.className="hb-inbox-action";
+        link.textContent=destination.label;
+        card.append(link);
+      }else{
+        const button=document.createElement("button");
+        button.type="button";
+        button.className="hb-inbox-action";
+        button.textContent=destination.label;
+        button.addEventListener("click",async()=>{
+          if(destination.type==="scroll"){
+            const node=document.querySelector(destination.selector);
+            node?.scrollIntoView({behavior:"smooth",block:"start"});
+            if(node && node.matches(".hb-case-card")){
+              node.classList.add("hb-case-card--focus");
+              setTimeout(()=>node.classList.remove("hb-case-card--focus"),1800);
+            }
+            return;
+          }
+          if(destination.type==="read"){
+            button.disabled=true;
+            const {error}=await client.from("hb_notifications")
+              .update({status:"read"})
+              .eq("id",item.item_id);
+            if(error){
+              button.disabled=false;
+              setMessage("تعذر تحديث التنبيه الآن.","error");
+              return;
+            }
+            await loadAttention();
+          }
+        });
+        card.append(button);
       }
     }
-    target.replaceChildren(...(attention.length ? attention.map(({item,next})=>{
-      const message=next
-        ? (next.requires_approval ? `اعتماد مطلوب: ${next.title}` : next.assignee_type==="user" ? `مطلوب منك: ${next.title}` : `الخطوة الحالية: ${next.title}`)
-        : item.status==="waiting_customer" ? "بانتظار إجراء منك" : `الحالة: ${caseStatusLabel(item.status)} • أولوية: ${item.priority}`;
-      return article(item.title,message);
-    }) : [article("لا يوجد إجراء عاجل","سيظهر هنا أي عنصر يتطلب تدخلك.")]));
+    return card;
+  }
+
+  async function loadAttention() {
+    const target = $("[data-os-attention]");
+    const {data,error}=await client.rpc("hb_my_action_inbox",{p_limit:50});
+    if(error){
+      target.replaceChildren(article("تعذر تحميل Action Inbox","ستظل معاملاتك وبقية الأقسام متاحة بشكل طبيعي."));
+      return [];
+    }
+    const rows=data||[];
+    target.replaceChildren(...(rows.length ? rows.map(buildInboxItem) : [
+      article("لا يوجد إجراء يحتاج تدخلك الآن","سيظهر هنا كل ما يحتاج موافقتك أو انتباهك بترتيب الأولوية.")
+    ]));
+    return rows;
   }
 
   async function loadObligations() {
@@ -643,7 +728,7 @@
       renderGoalSuggestions([]);
       setMessage(serviceSlug ? "تم إنشاء الحالة وربطها بالمسار الموثق للخدمة المختارة." : "تم إنشاء الحالة في مسار عام آمن. يمكنك تحديد الخدمة لاحقًا.","success");
       const cases=await loadCases();
-      await loadAttention(cases);
+      await loadAttention();
     });
   }
 
@@ -792,7 +877,7 @@
     const organizations=await loadOrganizations();
     syncDocumentOrganizationOptions(organizations);
     syncDocumentCaseOptions(cases);
-    await Promise.all([loadAttention(cases),loadObligations(),loadDocuments()]);
+    await Promise.all([loadAttention(),loadObligations(),loadDocuments()]);
   }
 
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot,{once:true});else boot();
