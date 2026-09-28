@@ -115,6 +115,66 @@
     }));
   }
 
+  function renderReviewQueue(client, rows) {
+    const list = $("[data-owner-review-queue]");
+    if (!list) return;
+    if (!rows?.length) {
+      list.textContent = "لا توجد مهام داخلية جاهزة للمراجعة الآن.";
+      return;
+    }
+    list.replaceChildren(...rows.map((item) => {
+      const wrap = document.createElement("article");
+      wrap.className = "owner-review-item";
+
+      const copy = document.createElement("div");
+      const title = document.createElement("h3");
+      title.textContent = item.task_title || "مهمة مراجعة";
+      const meta = document.createElement("p");
+      const caseTitle = item.case_title || "حالة تشغيلية";
+      const service = item.service_slug ? " · " + item.service_slug : "";
+      meta.textContent = caseTitle + service;
+      copy.append(title, meta);
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "owner-review-button";
+      button.textContent = "اعتماد المراجعة الداخلية";
+      button.addEventListener("click", async () => {
+        button.disabled = true;
+        button.textContent = "جارٍ الاعتماد…";
+        const { error } = await client.rpc("hb_complete_internal_review", {
+          p_task_id: item.task_id,
+          p_note: null
+        });
+        if (error) {
+          button.disabled = false;
+          button.textContent = "تعذر الاعتماد";
+          const target = $("[data-owner-review-error]");
+          if (target) {
+            target.textContent = "تعذر إكمال هذه المراجعة. قد تكون المهمة حساسة أو تغيّرت حالتها.";
+            target.hidden = false;
+          }
+          return;
+        }
+        await loadReviewQueue(client);
+      });
+
+      wrap.append(copy, button);
+      return wrap;
+    }));
+  }
+
+  async function loadReviewQueue(client) {
+    const list = $("[data-owner-review-queue]");
+    if (!list) return;
+    const { data, error } = await client.rpc("hb_owner_review_queue", { p_limit: 50 });
+    if (error) {
+      list.textContent = "تعذر تحميل طابور المراجعة.";
+      return;
+    }
+    renderReviewQueue(client, data || []);
+  }
+
   async function loadAnalytics(client) {
     const [
       { data: daily, error: dailyError },
@@ -216,6 +276,7 @@
     $("[data-owner-content]").hidden = false;
 
     loadAnalytics(client).catch(() => explainAnalytics("تعذر تحميل قياس الزيارات مؤقتًا."));
+    loadReviewQueue(client).catch(() => {});
 
     const list = $("[data-owner-recent]");
     const { data: recent, error: recentError } = await client.rpc("hb_owner_recent_transactions", { p_limit: 25 });
