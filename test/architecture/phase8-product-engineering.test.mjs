@@ -24,10 +24,10 @@ test('Phase 8 homepage density is present before first paint', async () => {
   assert.match(css, /body\[data-ux-page="home"\] \.search-row :is\(input,button\)/);
 });
 
-test('Phase 8 Arabic hero keeps readable word boundaries', async () => {
+test('Global OS Arabic hero keeps readable word boundaries', async () => {
   const homepage = await read('index.html');
-  assert.doesNotMatch(homepage, /الحكومية<\/em>من/);
-  assert.match(homepage, /الحكومية<\/em> من مكان واحد/);
+  assert.doesNotMatch(homepage, /إنجازه\.<em>والمنصة/);
+  assert.match(homepage, /إنجازه\.<em> والمنصة ترتّب لك الطريق/);
 });
 
 test('Phase 8 activity advisor preserves the specific product activity beside ecommerce', async () => {
@@ -98,4 +98,3 @@ test('assistance handoff never sends fabricated unknown metadata', async () => {
   assert.doesNotMatch(runtime, /return dt\?\.nextElementSibling\?\.textContent\?\.trim\(\) \|\| "غير محدد"/);
   assert.match(runtime, /service-facts-bar > div/);
 });
-

@@ -175,6 +175,92 @@
     renderReviewQueue(client, data || []);
   }
 
+  function renderExecutionQueue(client, rows) {
+    const list = $("[data-owner-execution-queue]");
+    if (!list) return;
+    if (!rows?.length) {
+      list.textContent = "لا توجد معاملات بانتظار توثيق تنفيذ خارجي.";
+      return;
+    }
+    list.replaceChildren(...rows.map((item) => {
+      const wrap = document.createElement("article");
+      wrap.className = "owner-row";
+      wrap.style.display = "block";
+
+      const title = document.createElement("b");
+      title.textContent = item.task_title || "تنفيذ خارجي";
+      const meta = document.createElement("span");
+      meta.style.display = "block";
+      meta.style.marginTop = "4px";
+      meta.textContent = (item.case_title || "حالة تشغيلية") + (item.service_slug ? " · " + item.service_slug : "");
+
+      const fields = document.createElement("div");
+      fields.className = "owner-execution-fields";
+      const reference = document.createElement("input");
+      reference.type = "text";
+      reference.maxLength = 200;
+      reference.placeholder = "رقم الطلب / المرجع";
+      reference.setAttribute("aria-label","رقم مرجع التنفيذ الخارجي");
+
+      const note = document.createElement("input");
+      note.type = "text";
+      note.maxLength = 1000;
+      note.placeholder = "ملاحظة اختيارية";
+      note.setAttribute("aria-label","ملاحظة التنفيذ الخارجي");
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = "تسجيل التنفيذ المنجز";
+      button.addEventListener("click", async () => {
+        const ref = reference.value.trim();
+        if (ref.length < 2) {
+          reference.focus();
+          const target = $("[data-owner-execution-error]");
+          if (target) {
+            target.textContent = "أدخل رقم الطلب أو مرجع التنفيذ الفعلي قبل التسجيل.";
+            target.hidden = false;
+          }
+          return;
+        }
+        const confirmed = window.confirm("أؤكد أن الإجراء تم تنفيذه فعليًا لدى الجهة المختصة، وأن الرقم المدخل هو مرجع التنفيذ. هل تريد توثيق النتيجة؟");
+        if (!confirmed) return;
+        button.disabled = true;
+        button.textContent = "جارٍ التسجيل…";
+        const { error } = await client.rpc("hb_record_external_execution", {
+          p_task_id: item.task_id,
+          p_reference: ref,
+          p_note: note.value.trim() || null
+        });
+        if (error) {
+          button.disabled = false;
+          button.textContent = "تعذر التسجيل";
+          const target = $("[data-owner-execution-error]");
+          if (target) {
+            target.textContent = "تعذر توثيق التنفيذ. تأكد أن موافقة المستخدم سُجلت وأن المهمة ما زالت بانتظار التنفيذ.";
+            target.hidden = false;
+          }
+          return;
+        }
+        await loadExecutionQueue(client);
+        await loadReviewQueue(client);
+      });
+      fields.append(reference,note,button);
+      wrap.append(title,meta,fields);
+      return wrap;
+    }));
+  }
+
+  async function loadExecutionQueue(client) {
+    const list = $("[data-owner-execution-queue]");
+    if (!list) return;
+    const { data, error } = await client.rpc("hb_owner_execution_queue", { p_limit: 50 });
+    if (error) {
+      list.textContent = "تعذر تحميل طابور التنفيذ الخارجي.";
+      return;
+    }
+    renderExecutionQueue(client, data || []);
+  }
+
   async function loadAnalytics(client) {
     const [
       { data: daily, error: dailyError },
@@ -277,6 +363,7 @@
 
     loadAnalytics(client).catch(() => explainAnalytics("تعذر تحميل قياس الزيارات مؤقتًا."));
     loadReviewQueue(client).catch(() => {});
+    loadExecutionQueue(client).catch(() => {});
 
     const list = $("[data-owner-recent]");
     const { data: recent, error: recentError } = await client.rpc("hb_owner_recent_transactions", { p_limit: 25 });
