@@ -65,6 +65,64 @@
     }));
   }
 
+  function percent(value) {
+    return new Intl.NumberFormat("ar-AE", { maximumFractionDigits: 1 }).format(Number(value || 0)) + "%";
+  }
+
+  function renderDigitalSources(rows) {
+    const target=$("[data-owner-digital-sources]");
+    if(!target)return;
+    if(!rows?.length){
+      target.textContent="لا توجد مصادر رقمية كافية بعد.";
+      return;
+    }
+    target.replaceChildren(...rows.map((item)=>{
+      const row=document.createElement("div");
+      row.className="owner-intel-row";
+      const label=document.createElement("b");
+      label.textContent=item.source || "direct_or_unknown";
+      const meta=document.createElement("span");
+      meta.textContent=number(item.sessions)+" جلسة · "+number(item.commercial_clicks)+" تواصل";
+      row.append(label,meta);
+      return row;
+    }));
+  }
+
+  function renderDigitalPaths(rows) {
+    const target=$("[data-owner-digital-paths]");
+    if(!target)return;
+    if(!rows?.length){
+      target.textContent="لا توجد مسارات رقمية كافية بعد.";
+      return;
+    }
+    target.replaceChildren(...rows.map((item)=>{
+      const row=document.createElement("div");
+      row.className="owner-intel-row";
+      const label=document.createElement("b");
+      label.textContent=item.path || "/";
+      const meta=document.createElement("span");
+      meta.textContent=number(item.sessions)+" جلسة · "+number(item.internal_clicks)+" تفاعل · "+number(item.commercial_clicks)+" تواصل";
+      row.append(label,meta);
+      return row;
+    }));
+  }
+
+  async function loadDigitalIntent(client) {
+    const {data,error}=await client.rpc("hb_owner_digital_intent_snapshot",{p_days:7});
+    if(error || !data){
+      setText("[data-owner-digital-state]","تعذر تحميل Digital Intent مؤقتًا.");
+      return;
+    }
+    setText("[data-owner-digital-sessions]",number(data.sessions));
+    setText("[data-owner-digital-internal]",number(data.internal_clicks));
+    setText("[data-owner-digital-government]",number(data.government_clicks));
+    setText("[data-owner-digital-commercial]",number(data.commercial_clicks));
+    setText("[data-owner-digital-commercial-rate]",percent(data.commercial_rate));
+    renderDigitalSources(data.sources || []);
+    renderDigitalPaths(data.top_paths || []);
+    setText("[data-owner-digital-state]","Digital Intent يقيس نية الزائر قبل إنشاء Lead فعلي، لذلك لا يرفع أرقام المبيعات أو Leads تلقائيًا.");
+  }
+
   async function loadExecutiveSnapshot(client) {
     const {data,error}=await client.rpc("hb_owner_executive_snapshot",{p_tenant_key:"hossambahr"});
     if(error || !data){
@@ -390,7 +448,6 @@
     const sessions7d = sum("sessions");
     const commercialRate = sessions7d > 0 ? (sum("commercial_clicks") / sessions7d) * 100 : 0;
     const governmentRate = sessions7d > 0 ? (sum("government_clicks") / sessions7d) * 100 : 0;
-    const percent = (value) => new Intl.NumberFormat("ar-AE", { maximumFractionDigits: 1 }).format(value) + "%";
     setText("[data-owner-commercial-rate-7d]", percent(commercialRate));
     setText("[data-owner-government-rate-7d]", percent(governmentRate));
     setText("[data-owner-analytics-state]", "القياس مباشر من HossamBahr.com ويستبعد اختبارات المتصفح وصفحات المالك والدخول. نسجل نوع قناة التواصل فقط (مثل WhatsApp أو الهاتف) دون حفظ الرقم أو الرابط أو نص الرسالة أو نص البحث.");
@@ -453,6 +510,7 @@
     $("[data-owner-content]").hidden = false;
 
     loadExecutiveSnapshot(client).catch(() => {});
+    loadDigitalIntent(client).catch(() => {});
     loadAnalytics(client).catch(() => explainAnalytics("تعذر تحميل قياس الزيارات مؤقتًا."));
     loadReviewQueue(client).catch(() => {});
     loadExecutionQueue(client).catch(() => {});
