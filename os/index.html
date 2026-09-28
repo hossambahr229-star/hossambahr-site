@@ -49,6 +49,12 @@
       <form data-organization-form class="hb-os-inline-form" hidden>
         <label>الاسم القانوني<input name="legal_name" maxlength="180" required></label>
         <label>الاسم التجاري<input name="trade_name" maxlength="180"></label>
+        <label>الإمارة
+          <select name="jurisdiction_id" data-jurisdiction-select>
+            <option value="">اختر الإمارة</option>
+          </select>
+        </label>
+        <label>رقم الرخصة / التسجيل<input name="registration_number" maxlength="120" inputmode="text"></label>
         <button type="submit">حفظ الشركة</button>
       </form>
       <div data-os-organizations class="hb-os-list"><p>جارٍ التحميل…</p></div>
@@ -81,6 +87,16 @@
             <option value="trade_license">رخصة تجارية</option>
             <option value="contract">عقد</option>
             <option value="other">مستند آخر</option>
+          </select>
+        </label>
+        <label>الشركة المرتبطة
+          <select name="organization_id" data-document-organization>
+            <option value="">بدون شركة</option>
+          </select>
+        </label>
+        <label>المعاملة المرتبطة
+          <select name="case_id" data-document-case>
+            <option value="">بدون معاملة</option>
           </select>
         </label>
         <label>تاريخ الانتهاء - إن وجد<input name="expires_at" type="date"></label>

@@ -29,11 +29,161 @@
     catch { return String(value); }
   };
 
+  const healthLabel=(level)=>({
+    stable:"مستقر",
+    attention:"يحتاج انتباه",
+    critical:"حرج"
+  })[level] || level;
+
+  function buildOrganizationTwin(item) {
+    const twin=item.twin || {};
+    const org=twin.organization || {};
+    const health=twin.health || {};
+    const counts=twin.counts || {};
+    const card=document.createElement("article");
+    card.className="hb-org-twin";
+
+    const head=document.createElement("div");
+    head.className="hb-org-twin-head";
+    const titleWrap=document.createElement("div");
+    const title=document.createElement("strong");
+    title.textContent=org.trade_name || org.legal_name || "شركة";
+    const legal=document.createElement("small");
+    legal.textContent=[org.legal_name,org.registration_number ? "رقم "+org.registration_number : ""].filter(Boolean).join(" • ");
+    titleWrap.append(title,legal);
+
+    const score=document.createElement("span");
+    score.className=`hb-org-health hb-org-health--${health.level || "stable"}`;
+    score.textContent=`${Number(health.score ?? 100)}% • ${healthLabel(health.level || "stable")}`;
+    head.append(titleWrap,score);
+
+    const stats=document.createElement("div");
+    stats.className="hb-org-twin-stats";
+    const statPairs=[
+      ["حالات مفتوحة",counts.open_cases||0],
+      ["التزامات",counts.open_obligations||0],
+      ["مستندات",counts.documents||0],
+      ["رخص مرتبطة",counts.licenses||0],
+      ["موظفون",counts.employees||0],
+      ["إقامات",counts.residencies||0]
+    ];
+    for(const [label,value] of statPairs){
+      const box=document.createElement("span");
+      box.innerHTML=`<b>${Number(value||0)}</b><small>${label}</small>`;
+      stats.append(box);
+    }
+
+    const details=document.createElement("details");
+    details.className="hb-org-twin-details";
+    const summary=document.createElement("summary");
+    summary.textContent="عرض Digital Twin";
+
+    const note=document.createElement("p");
+    note.className="hb-org-health-note";
+    note.textContent=health.note || "مؤشر تشغيلي داخلي.";
+
+    const obligations=document.createElement("div");
+    obligations.className="hb-org-twin-section";
+    const obTitle=document.createElement("h4");
+    obTitle.textContent="الاستحقاقات القادمة";
+    obligations.append(obTitle);
+    const obs=Array.isArray(twin.upcoming_obligations)?twin.upcoming_obligations:[];
+    if(!obs.length){
+      const p=document.createElement("p"); p.textContent="لا توجد استحقاقات مفتوحة."; obligations.append(p);
+    } else {
+      for(const ob of obs.slice(0,5)){
+        const row=document.createElement("p");
+        row.textContent=`${ob.title} • ${date(ob.due_at)}`;
+        obligations.append(row);
+      }
+    }
+
+    const docs=document.createElement("div");
+    docs.className="hb-org-twin-section";
+    const docsTitle=document.createElement("h4");
+    docsTitle.textContent="المستندات";
+    docs.append(docsTitle);
+    const docRows=Array.isArray(twin.documents)?twin.documents:[];
+    if(!docRows.length){
+      const p=document.createElement("p"); p.textContent="لا توجد مستندات مرتبطة بالشركة بعد."; docs.append(p);
+    } else {
+      for(const d of docRows.slice(0,6)){
+        const row=document.createElement("p");
+        row.textContent=`${d.name || d.type}${d.expires_at ? " • انتهاء "+date(d.expires_at) : ""}`;
+        docs.append(row);
+      }
+    }
+
+    const cases=document.createElement("div");
+    cases.className="hb-org-twin-section";
+    const casesTitle=document.createElement("h4");
+    casesTitle.textContent="المعاملات";
+    cases.append(casesTitle);
+    const caseRows=Array.isArray(twin.cases)?twin.cases:[];
+    if(!caseRows.length){
+      const p=document.createElement("p"); p.textContent="لا توجد معاملات مرتبطة بالشركة."; cases.append(p);
+    } else {
+      for(const c of caseRows.slice(0,6)){
+        const row=document.createElement("p");
+        row.textContent=`${c.title} • ${caseStatusLabel(c.status)} • ${Number(c.readiness_percent||0)}%`;
+        cases.append(row);
+      }
+    }
+
+    details.append(summary,note,obligations,docs,cases);
+    card.append(head,stats,details);
+    return card;
+  }
+
   async function loadOrganizations() {
     const target = $("[data-os-organizations]");
-    const { data, error } = await client.from("hb_organizations").select("id,legal_name,trade_name,lifecycle_status,created_at").order("created_at",{ascending:false}).limit(20);
-    if (error) { target.innerHTML = "<p>تعذر تحميل الشركات.</p>"; return; }
-    target.replaceChildren(...(data.length ? data.map((item)=>article(item.trade_name || item.legal_name, `${item.legal_name} • ${item.lifecycle_status}`)) : [article("لا توجد شركة مضافة بعد","يمكنك إضافة أول كيان تجاري من هنا.")]));
+    const { data, error } = await client.rpc("hb_my_organization_twins",{p_limit:20});
+    if (error) { target.innerHTML = "<p>تعذر تحميل الشركات.</p>"; return []; }
+    const rows=data || [];
+    target.replaceChildren(...(rows.length ? rows.map(buildOrganizationTwin) : [article("لا توجد شركة مضافة بعد","يمكنك إضافة أول كيان تجاري من هنا.")]));
+    syncDocumentOrganizationOptions(rows);
+    return rows;
+  }
+
+  async function loadJurisdictions() {
+    const selects=[...document.querySelectorAll("[data-jurisdiction-select]")];
+    if(!selects.length)return;
+    const {data,error}=await client.from("hb_jurisdictions")
+      .select("id,name_ar,code")
+      .eq("active",true)
+      .eq("level","emirate")
+      .order("code",{ascending:true});
+    if(error)return;
+    for(const select of selects){
+      const current=select.value;
+      select.replaceChildren(new Option("اختر الإمارة",""),...(data||[]).map((item)=>new Option(item.name_ar,item.id)));
+      select.value=current;
+    }
+  }
+
+  function syncDocumentOrganizationOptions(rows=[]) {
+    const select=$("[data-document-organization]");
+    if(!select)return;
+    const current=select.value;
+    const options=[new Option("بدون شركة","")];
+    for(const item of rows){
+      const org=item.twin?.organization || {};
+      options.push(new Option(org.trade_name || org.legal_name || "شركة",item.organization_id));
+    }
+    select.replaceChildren(...options);
+    select.value=current;
+  }
+
+  function syncDocumentCaseOptions(cases=[]) {
+    const select=$("[data-document-case]");
+    if(!select)return;
+    const current=select.value;
+    const options=[new Option("بدون معاملة","")];
+    for(const item of cases){
+      options.push(new Option(item.title,item.id));
+    }
+    select.replaceChildren(...options);
+    select.value=current;
   }
 
   const caseStatusLabel = (status) => ({
@@ -246,7 +396,7 @@
   async function loadCases() {
     const target = $("[data-os-cases]");
     const { data, error } = await client.from("hb_cases")
-      .select("id,title,status,priority,readiness_percent,created_at")
+      .select("id,title,status,priority,readiness_percent,created_at,organization_id,service_slug")
       .not("status","in",'("completed","cancelled")')
       .order("created_at",{ascending:false})
       .limit(20);
@@ -272,6 +422,7 @@
 
     const enriched=data.map((item)=>({...item,_tasks:byCase.get(item.id)||[]}));
     target.replaceChildren(...enriched.map((item)=>buildCaseCard(item,item._tasks)));
+    syncDocumentCaseOptions(enriched);
     return enriched;
   }
 
@@ -425,13 +576,17 @@
       const fd=new FormData(form);
       const legal=String(fd.get("legal_name")||"").trim();
       const trade=String(fd.get("trade_name")||"").trim();
+      const jurisdictionId=String(fd.get("jurisdiction_id")||"").trim()||null;
+      const registrationNumber=String(fd.get("registration_number")||"").trim()||null;
       if(!legal)return;
       const button=form.querySelector("button");
       button.disabled=true;
       const {error}=await client.from("hb_organizations").insert({
         owner_user_id:session.user.id,
         legal_name:legal,
-        trade_name:trade||null
+        trade_name:trade||null,
+        jurisdiction_id:jurisdictionId,
+        registration_number:registrationNumber
       });
       button.disabled=false;
       if(error)return setMessage("تعذر إضافة الشركة الآن.","error");
@@ -467,6 +622,8 @@
       const file=fd.get("file");
       const documentType=String(fd.get("document_type")||"").trim();
       const expiresAt=String(fd.get("expires_at")||"").trim()||null;
+      const organizationId=String(fd.get("organization_id")||"").trim()||null;
+      const caseId=String(fd.get("case_id")||"").trim()||null;
       if(!(file instanceof File)||!documentType)return;
       const allowed=new Map([
         ["application/pdf","pdf"],
@@ -492,8 +649,8 @@
         p_original_filename:file.name,
         p_size_bytes:file.size,
         p_mime_type:file.type,
-        p_case_id:null,
-        p_organization_id:null,
+        p_case_id:caseId,
+        p_organization_id:organizationId,
         p_expires_at:expiresAt
       });
       if(registered.error){
@@ -547,11 +704,15 @@
       return;
     }
     setupGoalResolver();
+    await loadJurisdictions();
     await setupGoal(data.session);
     await setupOrganization(data.session);
     await setupDocumentUpload(data.session);
     const cases=await loadCases();
-    await Promise.all([loadOrganizations(),loadAttention(cases),loadObligations(),loadDocuments()]);
+    const organizations=await loadOrganizations();
+    syncDocumentOrganizationOptions(organizations);
+    syncDocumentCaseOptions(cases);
+    await Promise.all([loadAttention(cases),loadObligations(),loadDocuments()]);
   }
 
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot,{once:true});else boot();

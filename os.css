@@ -31,3 +31,27 @@
 .hb-case-task--done{opacity:.72}.hb-case-task--done strong{text-decoration:line-through}
 .hb-case-action--danger{background:transparent;color:#ffd8d8;border-color:rgba(255,120,120,.5)}
 @media(max-width:560px){.hb-case-task>div{display:grid}.hb-case-task>div span{white-space:normal}.hb-case-actions{display:grid;grid-template-columns:1fr 1fr}.hb-case-actions .hb-case-action{width:100%}}
+
+.hb-org-twin{border:1px solid rgba(20,73,57,.13);border-radius:16px;padding:.9rem;background:rgba(255,255,255,.72)}
+.hb-org-twin-head{display:flex;justify-content:space-between;gap:.8rem;align-items:flex-start}
+.hb-org-twin-head strong{display:block;font-size:1rem;color:#103e31}
+.hb-org-twin-head small{display:block;margin-top:.2rem;color:#6c7c75}
+.hb-org-health{font-size:.75rem;font-weight:900;border-radius:999px;padding:.32rem .56rem;white-space:nowrap}
+.hb-org-health--stable{background:#e9f7ef;color:#17613f}
+.hb-org-health--attention{background:#fff4d8;color:#825f0b}
+.hb-org-health--critical{background:#ffe9e9;color:#9b2f2f}
+.hb-org-twin-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.45rem;margin-top:.7rem}
+.hb-org-twin-stats span{display:grid;gap:.1rem;padding:.55rem;border-radius:10px;background:#f6f8f5}
+.hb-org-twin-stats b{font-size:1rem;color:#103e31}
+.hb-org-twin-stats small{font-size:.68rem;color:#718078}
+.hb-org-twin-details{margin-top:.65rem;border-top:1px solid rgba(20,73,57,.1);padding-top:.6rem}
+.hb-org-twin-details summary{cursor:pointer;font-weight:900;color:#8a6a27}
+.hb-org-health-note{font-size:.8rem;color:#6a786f}
+.hb-org-twin-section{padding:.55rem 0;border-top:1px dashed rgba(20,73,57,.1)}
+.hb-org-twin-section h4{margin:0 0 .35rem;color:#103e31}
+.hb-org-twin-section p{margin:.25rem 0;font-size:.82rem;color:#63726b}
+@media(max-width:620px){
+  .hb-org-twin-head{display:grid}
+  .hb-org-health{justify-self:start}
+  .hb-org-twin-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
