@@ -50,6 +50,14 @@
   })[status] || status;
 
   const taskStatusOpen = new Set(["todo","in_progress","waiting","needs_approval"]);
+  const taskStatusLabel = (status) => ({
+    todo:"لم تبدأ",
+    in_progress:"قيد العمل",
+    waiting:"بانتظار خطوة أخرى",
+    needs_approval:"تحتاج موافقة",
+    done:"مكتملة",
+    cancelled:"ملغاة"
+  })[status] || status;
 
   function nextExecutableTask(tasks = []) {
     const done = new Set(tasks.filter((task)=>task.status==="done").map((task)=>task.id));
@@ -75,32 +83,115 @@
 
     const actions=document.createElement("div");
     actions.className="hb-case-actions";
-    const button=document.createElement("button");
-    button.type="button";
-    button.className="hb-case-action";
-    button.textContent=approvalPending ? "مراجعة واعتماد" : "إرسال للمراجعة";
-    button.addEventListener("click",async()=>{
-      if(approvalPending){
-        const accepted=window.confirm(`سيتم تسجيل موافقتك على الخطوة: ${next.title}. لن يتم إرسال أي طلب حكومي تلقائيًا بهذه الموافقة وحدها. هل تعتمد؟`);
+
+    if(approvalPending){
+      const approve=document.createElement("button");
+      approve.type="button";
+      approve.className="hb-case-action";
+      approve.textContent="اعتماد الخطوة";
+      approve.addEventListener("click",async()=>{
+        const accepted=window.confirm(`سيتم تسجيل موافقتك على الخطوة: ${next.title}. هذه الموافقة لا ترسل أي طلب حكومي تلقائيًا. هل تعتمد؟`);
         if(!accepted)return;
-      }
-      button.disabled=true;
-      const previous=button.textContent;
-      button.textContent="جارٍ الحفظ…";
-      try{
-        if(approvalPending) await window.HB_OS_API.decideApproval(next.id,"approve");
-        else await window.HB_OS_API.submitTask(next.id);
-        setMessage(approvalPending ? "تم تسجيل الموافقة بأمان." : "تم إرسال المتطلب للمراجعة.","success");
-        const refreshed=await loadCases();
-        await loadAttention(refreshed);
-      }catch{
-        setMessage("تعذر تحديث الخطوة الآن. لم يتم تنفيذ أي إجراء خارجي.","error");
-        button.disabled=false;
-        button.textContent=previous;
-      }
-    });
-    actions.append(button);
+        approve.disabled=true;
+        reject.disabled=true;
+        approve.textContent="جارٍ الحفظ…";
+        try{
+          await window.HB_OS_API.decideApproval(next.id,"approve");
+          setMessage("تم تسجيل الموافقة بأمان.","success");
+          const refreshed=await loadCases();
+          await loadAttention(refreshed);
+        }catch{
+          setMessage("تعذر تسجيل الموافقة الآن. لم يتم تنفيذ أي إجراء خارجي.","error");
+          approve.disabled=false;
+          reject.disabled=false;
+          approve.textContent="اعتماد الخطوة";
+        }
+      });
+
+      const reject=document.createElement("button");
+      reject.type="button";
+      reject.className="hb-case-action hb-case-action--danger";
+      reject.textContent="رفض";
+      reject.addEventListener("click",async()=>{
+        const accepted=window.confirm(`سيتم رفض الخطوة: ${next.title} وستتوقف الحالة إلى أن تُراجع. هل تريد المتابعة؟`);
+        if(!accepted)return;
+        approve.disabled=true;
+        reject.disabled=true;
+        reject.textContent="جارٍ الحفظ…";
+        try{
+          await window.HB_OS_API.decideApproval(next.id,"reject");
+          setMessage("تم تسجيل الرفض وإيقاف المسار عند هذه النقطة.","success");
+          const refreshed=await loadCases();
+          await loadAttention(refreshed);
+        }catch{
+          setMessage("تعذر تسجيل الرفض الآن.","error");
+          approve.disabled=false;
+          reject.disabled=false;
+          reject.textContent="رفض";
+        }
+      });
+      actions.append(approve,reject);
+    }else if(userRequirement){
+      const button=document.createElement("button");
+      button.type="button";
+      button.className="hb-case-action";
+      button.textContent="إرسال للمراجعة";
+      button.addEventListener("click",async()=>{
+        button.disabled=true;
+        button.textContent="جارٍ الحفظ…";
+        try{
+          await window.HB_OS_API.submitTask(next.id);
+          setMessage("تم إرسال المتطلب للمراجعة.","success");
+          const refreshed=await loadCases();
+          await loadAttention(refreshed);
+        }catch{
+          setMessage("تعذر تحديث الخطوة الآن.","error");
+          button.disabled=false;
+          button.textContent="إرسال للمراجعة";
+        }
+      });
+      actions.append(button);
+    }
     card.append(actions);
+  }
+
+  function buildCasePlan(tasks=[]) {
+    const details=document.createElement("details");
+    details.className="hb-case-plan";
+    const summary=document.createElement("summary");
+    summary.textContent=`عرض خطة التنفيذ (${tasks.length} خطوة)`;
+    const list=document.createElement("ol");
+    list.className="hb-case-task-list";
+    for(const task of tasks){
+      const li=document.createElement("li");
+      li.className=`hb-case-task hb-case-task--${task.status}`;
+      const row=document.createElement("div");
+      const title=document.createElement("strong");
+      title.textContent=task.title;
+      const state=document.createElement("span");
+      state.textContent=taskStatusLabel(task.status);
+      row.append(title,state);
+      const meta=document.createElement("small");
+      const who=task.assignee_type==="user" ? "عليك"
+        : task.assignee_type==="agent" ? "مراجعة المنصة"
+        : task.assignee_type==="integration" ? "تنفيذ خارجي"
+        : task.assignee_type==="system" ? "النظام"
+        : "فريق التشغيل";
+      meta.textContent=who+(task.requires_approval ? " • موافقة صريحة مطلوبة" : "");
+      li.append(row,meta);
+      const official=task.metadata?.officialUrl || task.metadata?.source;
+      if(official && /^https:\/\//i.test(official)){
+        const link=document.createElement("a");
+        link.href=official;
+        link.target="_blank";
+        link.rel="noopener";
+        link.textContent="المصدر الرسمي";
+        li.append(link);
+      }
+      list.append(li);
+    }
+    details.append(summary,list);
+    return details;
   }
 
   function buildCaseCard(item,tasks=[]) {
@@ -147,6 +238,7 @@
       nextLine.textContent=total && completed===total ? "اكتملت جميع خطوات المسار." : "سيتم تحديد الخطوة التالية تلقائيًا.";
     }
     card.append(heading,progress,meta,nextLine);
+    if(tasks.length)card.append(buildCasePlan(tasks));
     appendTaskAction(card,item,next);
     return card;
   }
