@@ -3,6 +3,9 @@
 
   if (navigator.webdriver || /HeadlessChrome|Playwright/i.test(navigator.userAgent || "")) return;
 
+  const query = new URLSearchParams(location.search);
+  if (query.get("hb_qa") === "1") return;
+
   const privatePrefixes = ["/owner/", "/account/", "/auth/", "/os/"];
   if (privatePrefixes.some((prefix) => location.pathname.startsWith(prefix))) return;
 

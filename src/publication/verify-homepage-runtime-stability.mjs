@@ -102,7 +102,7 @@ async function run(profile, path, warm, context) {
         .observe(hero, { subtree: true, childList: true, attributes: true, characterData: true });
     }, { once: true });
   });
-  const url = `${baseUrl}${path}?phase62=${profile.name}-${warm ? 'warm' : 'cold'}-${Date.now()}`;
+  const url = `${baseUrl}${path}?phase62=${profile.name}-${warm ? 'warm' : 'cold'}-${Date.now()}&hb_qa=1`;
   await page.goto(url, { waitUntil: 'domcontentloaded' });
   await page.locator('.platform-hero').waitFor({ state: 'visible' });
   await page.evaluate(() => document.fonts?.ready);

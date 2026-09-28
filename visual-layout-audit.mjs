@@ -62,7 +62,7 @@ async function runLayoutTask(task) {
     const context = await browser.newContext({ viewport:{ width, height } });
     const page = await context.newPage();
     try {
-      const response = await page.goto(`${base}${path}`, { waitUntil:'networkidle' });
+      const response = await page.goto(`${base}${path}${path.includes('?')?'&':'?'}hb_qa=1`, { waitUntil:'networkidle' });
       await page.waitForTimeout(1800);
       if (openExpert) {
         const expertDetails = page.locator('.ux-progressive-details');
@@ -112,7 +112,7 @@ async function runLayoutTask(task) {
   const context = await browser.newContext({ viewport:{ width,height } });
   const page = await context.newPage();
   try {
-    const response = await page.goto(`${base}/`, { waitUntil:'networkidle' });
+    const response = await page.goto(`${base}/?hb_qa=1`, { waitUntil:'networkidle' });
     await page.waitForTimeout(1200);
     const layout = await page.evaluate(() => {
       const viewport=document.documentElement.clientWidth;
