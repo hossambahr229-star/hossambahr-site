@@ -209,6 +209,24 @@
     cancelled:"ملغاة"
   })[status] || status;
 
+  const caseEventLabel = (eventType) => ({
+    "case.created":"تم إنشاء المعاملة",
+    "case.task_submitted":"تم إرسال متطلب للمراجعة",
+    "case.approval_decided":"تم تسجيل قرار الموافقة",
+    "task.human_review_completed":"اكتملت مراجعة داخلية",
+    "external_execution.recorded":"تم توثيق تنفيذ خارجي",
+    "workflow.compiled":"تم تجهيز مسار التنفيذ"
+  })[eventType] || "تم تحديث المعاملة";
+
+  const actorLabel = (actorType) => ({
+    user:"أنت",
+    staff:"فريق التشغيل",
+    agent:"المنصة الذكية",
+    system:"النظام",
+    integration:"تكامل خارجي",
+    partner:"شريك تنفيذ"
+  })[actorType] || "النظام";
+
   function nextExecutableTask(tasks = []) {
     const done = new Set(tasks.filter((task)=>task.status==="done").map((task)=>task.id));
     const ready=tasks.filter((task)=>{
@@ -344,7 +362,33 @@
     return details;
   }
 
-  function buildCaseCard(item,tasks=[]) {
+  function buildCaseTimeline(events=[]) {
+    const details=document.createElement("details");
+    details.className="hb-case-timeline";
+    const summary=document.createElement("summary");
+    summary.textContent=`سجل المعاملة (${events.length})`;
+    const list=document.createElement("ol");
+    list.className="hb-case-event-list";
+    if(!events.length){
+      const empty=document.createElement("li");
+      empty.textContent="لا توجد أحداث مسجلة بعد.";
+      list.append(empty);
+    }else{
+      for(const event of events.slice(0,20)){
+        const li=document.createElement("li");
+        const title=document.createElement("strong");
+        title.textContent=caseEventLabel(event.event_type);
+        const meta=document.createElement("small");
+        meta.textContent=`${actorLabel(event.actor_type)} • ${date(event.occurred_at)}`;
+        li.append(title,meta);
+        list.append(li);
+      }
+    }
+    details.append(summary,list);
+    return details;
+  }
+
+  function buildCaseCard(item,tasks=[],events=[]) {
     const card=document.createElement("article");
     card.className="hb-case-card";
     const heading=document.createElement("div");
@@ -389,6 +433,7 @@
     }
     card.append(heading,progress,meta,nextLine);
     if(tasks.length)card.append(buildCasePlan(tasks));
+    card.append(buildCaseTimeline(events));
     appendTaskAction(card,item,next);
     return card;
   }
@@ -407,21 +452,40 @@
     }
 
     const ids=data.map((item)=>item.id);
-    const {data:tasks,error:taskError}=await client.from("hb_case_tasks")
-      .select("id,case_id,title,status,assignee_type,requires_approval,dependency_ids,due_at,created_at,metadata")
-      .in("case_id",ids)
-      .order("created_at",{ascending:true});
+    const [taskResult,eventResult]=await Promise.all([
+      client.from("hb_case_tasks")
+        .select("id,case_id,title,status,assignee_type,requires_approval,dependency_ids,due_at,created_at,metadata")
+        .in("case_id",ids)
+        .order("created_at",{ascending:true}),
+      client.from("hb_case_events")
+        .select("id,case_id,event_type,actor_type,occurred_at")
+        .in("case_id",ids)
+        .order("occurred_at",{ascending:false})
+        .limit(200)
+    ]);
 
     const byCase=new Map(ids.map((id)=>[id,[]]));
-    if(!taskError){
-      for(const task of tasks||[]){
+    if(!taskResult.error){
+      for(const task of taskResult.data||[]){
         if(!byCase.has(task.case_id))byCase.set(task.case_id,[]);
         byCase.get(task.case_id).push(task);
       }
     }
 
-    const enriched=data.map((item)=>({...item,_tasks:byCase.get(item.id)||[]}));
-    target.replaceChildren(...enriched.map((item)=>buildCaseCard(item,item._tasks)));
+    const eventsByCase=new Map(ids.map((id)=>[id,[]]));
+    if(!eventResult.error){
+      for(const event of eventResult.data||[]){
+        if(!eventsByCase.has(event.case_id))eventsByCase.set(event.case_id,[]);
+        eventsByCase.get(event.case_id).push(event);
+      }
+    }
+
+    const enriched=data.map((item)=>({
+      ...item,
+      _tasks:byCase.get(item.id)||[],
+      _events:eventsByCase.get(item.id)||[]
+    }));
+    target.replaceChildren(...enriched.map((item)=>buildCaseCard(item,item._tasks,item._events)));
     syncDocumentCaseOptions(enriched);
     return enriched;
   }
@@ -446,11 +510,27 @@
 
   async function loadObligations() {
     const target = $("[data-os-obligations]");
-    const start = new Date().toISOString();
+    const now = new Date().toISOString();
     const end = new Date(Date.now()+60*24*60*60*1000).toISOString();
-    const { data, error } = await client.from("hb_obligations").select("id,title,due_at,obligation_type,status").eq("status","open").gte("due_at",start).lte("due_at",end).order("due_at",{ascending:true}).limit(20);
+    const { data, error } = await client.from("hb_obligations")
+      .select("id,title,due_at,obligation_type,status")
+      .eq("status","open")
+      .lte("due_at",end)
+      .order("due_at",{ascending:true})
+      .limit(30);
     if (error) { target.innerHTML="<p>تعذر تحميل الاستحقاقات.</p>"; return; }
-    target.replaceChildren(...(data.length ? data.map((item)=>article(item.title,`الاستحقاق: ${date(item.due_at)}`)) : [article("لا توجد استحقاقات خلال 60 يومًا","ستظهر التجديدات والمواعيد المهمة هنا.")]));
+    const rows=data||[];
+    if(!rows.length){
+      target.replaceChildren(article("لا توجد استحقاقات مفتوحة","ستظهر التجديدات والمواعيد المهمة هنا."));
+      return;
+    }
+    target.replaceChildren(...rows.map((item)=>{
+      const overdue=item.due_at && item.due_at < now;
+      return article(
+        overdue ? `متأخر: ${item.title}` : item.title,
+        overdue ? `كان مستحقًا: ${date(item.due_at)}` : `الاستحقاق: ${date(item.due_at)}`
+      );
+    }));
   }
 
   function renderGoalSelection(candidate) {
