@@ -140,7 +140,7 @@ async function runJourney(index) {
   page.on("pageerror", (error) => errors.push(error.message));
 
   try {
-    const response = await page.goto(`${baseUrl}/?journey=${index + 1}`, { waitUntil: "networkidle", timeout: 60000 });
+    const response = await page.goto(`${baseUrl}/?journey=${index + 1}&hb_qa=1`, { waitUntil: "networkidle", timeout: 60000 });
     await page.waitForTimeout(1950);
     await page.locator("#government-search").fill(query);
     await page.locator("form.primary-search button[type=submit]").click();
@@ -203,7 +203,7 @@ for (const [name, width, height] of deviceProfiles) {
   const page = await browser.newPage({ viewport: { width, height } });
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto(`${baseUrl}/`, { waitUntil: "networkidle", timeout: 60000 });
+  await page.goto(`${baseUrl}/?hb_qa=1`, { waitUntil: "networkidle", timeout: 60000 });
   await page.waitForTimeout(1950);
   const result = await page.evaluate(() => {
     const search = document.querySelector("form.primary-search");
@@ -238,7 +238,7 @@ const advisorResults = [];
 const advisorPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
 const advisorErrors = [];
 advisorPage.on('pageerror', (error) => advisorErrors.push(error.message));
-await advisorPage.goto(`${baseUrl}/dubai-business-activities.html?advisor-regression=1`, { waitUntil: 'networkidle', timeout: 60000 });
+await advisorPage.goto(`${baseUrl}/dubai-business-activities.html?advisor-regression=1&hb_qa=1`, { waitUntil: 'networkidle', timeout: 60000 });
 for (const [query, expected] of advisorScenarios) {
   await advisorPage.locator('#businessIdea').fill(query);
   await advisorPage.locator('#activityAdvisorForm button[type="submit"]').click();
