@@ -47,7 +47,7 @@ for(const viewport of viewports){
   for(const surface of surfaces){
     const page=await context.newPage();
     const runtime=[];page.on('pageerror',error=>runtime.push(error.message));
-    await page.goto(base+surface.path+'?phase9-1-visual=1',{waitUntil:'networkidle',timeout:60000});
+    await page.goto(base+surface.path+'?phase9-1-visual=1&hb_qa=1',{waitUntil:'networkidle',timeout:60000});
     await page.waitForTimeout(250);
     const audit=await page.evaluate(()=>{
       const interactive=[...document.querySelectorAll('a[href],button,input,select,textarea')].filter(el=>{
