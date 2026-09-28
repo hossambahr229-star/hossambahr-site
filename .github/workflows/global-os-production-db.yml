@@ -42,21 +42,6 @@ jobs:
             echo "### Supabase production deployment: DEFERRED — NOT DEPLOYED BY THIS RUN" >> "$GITHUB_STEP_SUMMARY"
             echo "Database/Edge deployment must be performed through the authorized Supabase connector or by adding encrypted CLI credentials before this workflow can deploy." >> "$GITHUB_STEP_SUMMARY"
           fi
-      - name: Configure production Auth URLs
-        if: steps.credentials.outputs.ready == 'true'
-        shell: bash
-        run: |
-          set -euo pipefail
-          curl --fail-with-body --silent --show-error \
-            -X PATCH "https://api.supabase.com/v1/projects/$SUPABASE_PROJECT_ID/config/auth" \
-            -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" \
-            -H "Content-Type: application/json" \
-            --data '{
-              "site_url": "https://hossambahr.com",
-              "uri_allow_list": "https://hossambahr.com/auth/callback/**,https://hossambahr.com/auth/reset/**",
-              "external_email_enabled": true,
-              "disable_signup": false
-            }'
       - name: Setup Supabase CLI
         if: steps.credentials.outputs.ready == 'true'
         uses: supabase/setup-cli@v1
@@ -68,6 +53,24 @@ jobs:
       - name: Push versioned Supabase project config
         if: steps.credentials.outputs.ready == 'true'
         run: supabase config push
+      - name: Enforce production Auth URLs after config push
+        if: steps.credentials.outputs.ready == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail-with-body --silent --show-error             -X PATCH "https://api.supabase.com/v1/projects/$SUPABASE_PROJECT_ID/config/auth"             -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN"             -H "Content-Type: application/json"             --data '{
+              "site_url": "https://hossambahr.com",
+              "uri_allow_list": "https://hossambahr.com/auth/callback/**,https://hossambahr.com/auth/reset/**",
+              "external_email_enabled": true,
+              "disable_signup": false
+            }' >/tmp/auth-patch.json
+          curl --fail-with-body --silent --show-error             "https://api.supabase.com/v1/projects/$SUPABASE_PROJECT_ID/config/auth"             -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN"             > /tmp/auth-config.json
+          jq '{site_url,uri_allow_list,external_email_enabled,disable_signup}' /tmp/auth-config.json
+          test "$(jq -r '.site_url' /tmp/auth-config.json)" = "https://hossambahr.com"
+          if jq -r '.site_url,.uri_allow_list' /tmp/auth-config.json | grep -qi 'localhost'; then
+            echo "::error::Production Auth configuration still references localhost."
+            exit 1
+          fi
       - name: Show migration plan
         if: steps.credentials.outputs.ready == 'true'
         run: supabase migration list
