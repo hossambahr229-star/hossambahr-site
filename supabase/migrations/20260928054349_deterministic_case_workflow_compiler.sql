@@ -1,0 +1,5 @@
+-- Historical compatibility marker.
+-- This migration was briefly applied in production while validating deterministic case workflow compilation.
+-- The existing atomic hb_start_case() implementation already materializes workflow tasks correctly,
+-- so the temporary compiler was immediately removed in the next migration.
+-- Fresh environments intentionally perform no schema change here.
