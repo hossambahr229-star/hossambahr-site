@@ -76,7 +76,7 @@ do update set
   active=excluded.active,
   updated_at=now();
 
-create index if not exists hb_obligations_source_document_idx
+create unique index if not exists hb_obligations_source_document_unique
 on public.hb_obligations(source_document_id,obligation_type)
 where source_document_id is not null;
 
@@ -101,36 +101,28 @@ begin
 
   v_title := 'انتهاء مستند: ' || coalesce(nullif(new.original_filename,''),new.document_type);
 
-  update public.hb_obligations
-  set
-    user_id=new.owner_user_id,
-    organization_id=new.organization_id,
-    title=v_title,
-    due_at=(new.expires_at::timestamp at time zone 'UTC'),
-    status=case when status='completed' then status else 'open' end,
-    related_case_id=new.case_id,
-    metadata=metadata || jsonb_build_object(
+  insert into public.hb_obligations(
+    user_id,organization_id,source_document_id,obligation_type,title,due_at,status,related_case_id,metadata
+  )
+  values(
+    new.owner_user_id,new.organization_id,new.id,'document_expiry',v_title,
+    (new.expires_at::timestamp at time zone 'UTC'),'open',new.case_id,
+    jsonb_build_object(
       'document_type',new.document_type,
       'verification_status',new.verification_status,
       'source','document_expiry'
     )
-  where source_document_id=new.id
-    and obligation_type='document_expiry';
-
-  if not found then
-    insert into public.hb_obligations(
-      user_id,organization_id,source_document_id,obligation_type,title,due_at,status,related_case_id,metadata
-    )
-    values(
-      new.owner_user_id,new.organization_id,new.id,'document_expiry',v_title,
-      (new.expires_at::timestamp at time zone 'UTC'),'open',new.case_id,
-      jsonb_build_object(
-        'document_type',new.document_type,
-        'verification_status',new.verification_status,
-        'source','document_expiry'
-      )
-    );
-  end if;
+  )
+  on conflict(source_document_id,obligation_type)
+  where source_document_id is not null
+  do update set
+    user_id=excluded.user_id,
+    organization_id=excluded.organization_id,
+    title=excluded.title,
+    due_at=excluded.due_at,
+    status=case when public.hb_obligations.status='completed' then public.hb_obligations.status else 'open' end,
+    related_case_id=excluded.related_case_id,
+    metadata=public.hb_obligations.metadata || excluded.metadata;
   return new;
 end;
 $$;
