@@ -171,15 +171,21 @@ begin
 
   select coalesce(jsonb_agg(jsonb_build_object(
     'service_slug',s.service_slug,
+    'service_name',s.service_name,
     'count',s.case_count
   ) order by s.case_count desc,s.service_slug),'[]'::jsonb)
   into v_top_services
   from (
-    select coalesce(service_slug,'general') as service_slug,count(*) as case_count
-    from public.hb_cases
-    where tenant_id=v_tenant_id
-      and created_at>=now()-interval '30 days'
-    group by coalesce(service_slug,'general')
+    select
+      coalesce(c.service_slug,'general') as service_slug,
+      coalesce(b.metadata->>'name',c.service_slug,'مسار عام') as service_name,
+      count(*) as case_count
+    from public.hb_cases c
+    left join public.hb_service_bindings b
+      on b.service_slug=c.service_slug and b.active=true
+    where c.tenant_id=v_tenant_id
+      and c.created_at>=now()-interval '30 days'
+    group by coalesce(c.service_slug,'general'),coalesce(b.metadata->>'name',c.service_slug,'مسار عام')
     order by case_count desc
     limit 10
   ) s;
