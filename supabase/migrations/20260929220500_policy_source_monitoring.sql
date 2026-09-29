@@ -202,9 +202,10 @@ begin
     v_review:=v_source.review_required or v_changed;
   else
     v_failure_count:=v_source.monitor_failures+1;
+    -- Technical monitoring failures are not policy changes. Only a confirmed
+    -- hard missing response (404/410) can open review without a content hash delta.
     v_review:=v_source.review_required
-      or coalesce(p_http_status,0) in (404,410)
-      or v_failure_count>=3;
+      or coalesce(p_http_status,0) in (404,410);
 
     update public.hb_policy_sources
     set last_checked_at=now(),
