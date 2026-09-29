@@ -2,6 +2,7 @@
   "use strict";
   const client = window.HB_AUTH;
   if (!client) return;
+  const countryPackNameById=new Map();
 
   const $ = (selector) => document.querySelector(selector);
   const setMessage = (text, state = "info") => {
@@ -472,7 +473,9 @@
     progress.append(bar);
 
     const meta=document.createElement("p");
-    meta.textContent=total ? `${completed} من ${total} خطوات مكتملة • ${percent}%` : `جاهزية ${percent}%`;
+    const countryName=item.country_pack_id ? countryPackNameById.get(item.country_pack_id) : "";
+    const progressText=total ? `${completed} من ${total} خطوات مكتملة • ${percent}%` : `جاهزية ${percent}%`;
+    meta.textContent=countryName ? `${countryName} • ${progressText}` : progressText;
 
     const next=nextExecutableTask(tasks);
     const nextLine=document.createElement("p");
@@ -500,7 +503,7 @@
   async function loadCases() {
     const target = $("[data-os-cases]");
     const { data, error } = await client.from("hb_cases")
-      .select("id,title,status,priority,readiness_percent,created_at,organization_id,service_slug")
+      .select("id,title,status,priority,readiness_percent,created_at,organization_id,service_slug,country_pack_id")
       .not("status","in",'("completed","cancelled")')
       .order("created_at",{ascending:false})
       .limit(20);
@@ -782,8 +785,10 @@
       select.disabled=true;
       return [];
     }
+    countryPackNameById.clear();
     const options=data.map((pack)=>{
       const label=pack.name_ar || pack.name_en || pack.country_code || pack.pack_key;
+      if(pack.pack_id)countryPackNameById.set(pack.pack_id,label);
       return new Option(label,pack.pack_key);
     });
     select.replaceChildren(...options);
