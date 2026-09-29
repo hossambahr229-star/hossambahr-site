@@ -21,6 +21,15 @@ function json(req: Request, body: unknown, status = 200) {
   return Response.json(body, { status, headers: { ...cors(req), "Cache-Control": "no-store" } });
 }
 
+async function kickWorker(ctx: any, reason: string) {
+  EdgeRuntime.waitUntil((async () => {
+    const { error } = await ctx.supabaseAdmin.functions.invoke("global-os-worker", {
+      body: { reason }
+    });
+    if (error) console.error("global-os-worker kick failed", { reason, message: error.message });
+  })());
+}
+
 function routeSuffix(req: Request) {
   const path = new URL(req.url).pathname;
   const marker = "/global-os-api";
@@ -67,10 +76,11 @@ export default {
       }
 
       if (path === "/" && body.action === "health") {
-        const [{ error: readinessError }, { count: modelCount }, { count: routeCount }] = await Promise.all([
+        const [{ error: readinessError }, { count: modelCount }, { count: routeCount }, { count: internalModelCount }] = await Promise.all([
           ctx.supabase.from("hb_cases").select("id").limit(1),
           ctx.supabaseAdmin.from("hb_ai_models").select("id", { count: "exact", head: true }).eq("status", "active"),
-          ctx.supabaseAdmin.from("hb_ai_routes").select("id", { count: "exact", head: true }).eq("active", true)
+          ctx.supabaseAdmin.from("hb_ai_routes").select("id", { count: "exact", head: true }).eq("active", true),
+          ctx.supabaseAdmin.from("hb_ai_models").select("id", { count: "exact", head: true }).eq("status", "active").eq("provider", "hossambahr")
         ]);
         if (readinessError) return json(req, { ok: false, ready: false }, 503);
         const providerConfigured = Boolean(Deno.env.get("OPENAI_API_KEY"));
@@ -80,10 +90,12 @@ export default {
           service: "hossambahr-global-os-api",
           version: "1.1",
           ai_runtime: {
-            configured: providerConfigured,
+            external_model_configured: providerConfigured,
             active_models: modelCount || 0,
+            internal_models: internalModelCount || 0,
             active_routes: routeCount || 0,
-            intake_enabled: Boolean(providerConfigured && (modelCount || 0) > 0 && (routeCount || 0) > 0)
+            intake_enabled: Boolean((modelCount || 0) > 0 && (routeCount || 0) > 0),
+            external_intake_available: providerConfigured
           }
         });
       }
@@ -101,7 +113,8 @@ export default {
           console.error("hb_submit_user_task failed", { code: error.code, message: error.message });
           return json(req, { error: "task_submit_failed" }, 400);
         }
-        return json(req, { data }, 200);
+        kickWorker(ctx, "task_submitted");
+        return json(req, { data, ai_queued: true }, 200);
       }
 
       if (path === "/" && body.action === "decide_approval") {
@@ -121,7 +134,13 @@ export default {
           console.error("hb_decide_task_approval failed", { code: error.code, message: error.message });
           return json(req, { error: "approval_decision_failed" }, 400);
         }
+        kickWorker(ctx, "approval_decided");
         return json(req, { data }, 200);
+      }
+
+      if (path === "/" && body.action === "kick_worker") {
+        kickWorker(ctx, String(body.reason || "authenticated_kick").slice(0, 80));
+        return json(req, { ok: true, queued: true }, 202);
       }
 
       const goal = String(body.goal || "").trim();
@@ -145,15 +164,7 @@ export default {
         return json(req, { error: "case_create_failed" }, 400);
       }
 
-      EdgeRuntime.waitUntil((async () => {
-        const { error: workerError } = await ctx.supabaseAdmin.functions.invoke("global-os-worker", {
-          body: { reason: "case_created" }
-        });
-        if (workerError) {
-          console.error("global-os-worker kick failed", { message: workerError.message });
-        }
-      })());
-
+      kickWorker(ctx, "case_created");
       return json(req, { data, ai_queued: true }, 201);
     }
 
