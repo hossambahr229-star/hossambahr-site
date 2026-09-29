@@ -673,11 +673,15 @@
       const labels={
         authorities_active:"سلطات فعالة",
         services_active:"خدمات فعالة",
+        official_sources_active:"مصادر رسمية نشطة",
+        official_sources_verified:"مصادر تم التحقق منها",
+        oldest_source_verification:"أقدم تحقق مصدر",
         services_without_authority:"خدمات بلا سلطة",
         services_without_policy:"خدمات بلا سياسة",
         services_without_workflow:"خدمات بلا Workflow",
         services_without_active_policy:"سياسات غير فعالة",
-        services_without_active_workflow:"Workflows غير فعالة"
+        services_without_active_workflow:"Workflows غير فعالة",
+        active_policies_without_official_sources:"سياسات بلا مصدر رسمي"
       };
       Object.entries(metrics).forEach(([key,value])=>{
         const item=document.createElement("div");
@@ -685,7 +689,9 @@
         const label=document.createElement("span");
         label.textContent=labels[key] || key;
         const amount=document.createElement("b");
-        amount.textContent=number(value);
+        amount.textContent=key==="oldest_source_verification" && value
+          ? new Date(value).toLocaleDateString("ar-AE")
+          : number(value);
         item.append(label,amount);
         grid.append(item);
       });
