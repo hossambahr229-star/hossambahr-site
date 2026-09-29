@@ -42,7 +42,7 @@ export default {
       return json(req, {
         ok: true,
         service: "hossambahr-global-os-api",
-        version: "1.0",
+        version: "1.1",
         authenticated: true
       });
     }
@@ -67,16 +67,24 @@ export default {
       }
 
       if (path === "/" && body.action === "health") {
-        const { error: readinessError } = await ctx.supabase
-          .from("hb_cases")
-          .select("id")
-          .limit(1);
+        const [{ error: readinessError }, { count: modelCount }, { count: routeCount }] = await Promise.all([
+          ctx.supabase.from("hb_cases").select("id").limit(1),
+          ctx.supabaseAdmin.from("hb_ai_models").select("id", { count: "exact", head: true }).eq("status", "active"),
+          ctx.supabaseAdmin.from("hb_ai_routes").select("id", { count: "exact", head: true }).eq("active", true)
+        ]);
         if (readinessError) return json(req, { ok: false, ready: false }, 503);
+        const providerConfigured = Boolean(Deno.env.get("OPENAI_API_KEY"));
         return json(req, {
           ok: true,
           ready: true,
           service: "hossambahr-global-os-api",
-          version: "1.0"
+          version: "1.1",
+          ai_runtime: {
+            configured: providerConfigured,
+            active_models: modelCount || 0,
+            active_routes: routeCount || 0,
+            intake_enabled: Boolean(providerConfigured && (modelCount || 0) > 0 && (routeCount || 0) > 0)
+          }
         });
       }
 
@@ -136,7 +144,17 @@ export default {
         console.error("hb_start_case failed", { code: error.code, message: error.message });
         return json(req, { error: "case_create_failed" }, 400);
       }
-      return json(req, { data }, 201);
+
+      EdgeRuntime.waitUntil((async () => {
+        const { error: workerError } = await ctx.supabaseAdmin.functions.invoke("global-os-worker", {
+          body: { reason: "case_created" }
+        });
+        if (workerError) {
+          console.error("global-os-worker kick failed", { message: workerError.message });
+        }
+      })());
+
+      return json(req, { data, ai_queued: true }, 201);
     }
 
     return json(req, { error: "not_found" }, 404);
