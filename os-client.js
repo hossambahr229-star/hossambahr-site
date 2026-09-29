@@ -773,6 +773,25 @@
     });
   }
 
+  async function loadCountryPacks() {
+    const select=$("[data-os-country-pack]");
+    if(!select)return [];
+    const {data,error}=await client.rpc("hb_active_country_packs");
+    if(error || !Array.isArray(data) || !data.length){
+      select.replaceChildren(new Option("لا توجد دولة مفعّلة حاليًا",""));
+      select.disabled=true;
+      return [];
+    }
+    const options=data.map((pack)=>{
+      const label=pack.name_ar || pack.name_en || pack.country_code || pack.pack_key;
+      return new Option(label,pack.pack_key);
+    });
+    select.replaceChildren(...options);
+    if(data.length===1)select.value=data[0].pack_key;
+    select.disabled=false;
+    return data;
+  }
+
   async function setupGoal(session) {
     const form = $("[data-os-goal-form]");
     form?.addEventListener("submit", async (event)=>{
@@ -780,6 +799,7 @@
       const formData=new FormData(form);
       const goal = String(formData.get("goal") || "").trim();
       const serviceSlug=String(formData.get("service_slug") || "").trim() || null;
+      const countryPackKey=String(formData.get("country_pack_key") || "").trim() || null;
       if (!goal) return;
       const button=form.querySelector("button");
       button.disabled=true;
@@ -787,7 +807,7 @@
       let createError=null;
       try {
         if(!window.HB_OS_API)throw new Error("Global OS API unavailable");
-        await window.HB_OS_API.createCase({title:goal.slice(0,180),goal,service_slug:serviceSlug});
+        await window.HB_OS_API.createCase({title:goal.slice(0,180),goal,service_slug:serviceSlug,country_pack_key:countryPackKey});
       } catch (error) {
         createError=error;
       }
@@ -941,6 +961,7 @@
       }
       return;
     }
+    await loadCountryPacks();
     setupGoalResolver();
     await loadJurisdictions();
     await setupGoal(data.session);
