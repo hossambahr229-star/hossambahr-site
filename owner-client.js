@@ -506,6 +506,153 @@
     }
   }
 
+  const AI_AGENT_LABELS = {
+    operations: "Operations Agent",
+    growth: "Growth Agent",
+    finance: "Finance Agent",
+    compliance: "Compliance Agent"
+  };
+
+  const AI_METRIC_LABELS = {
+    cases_total: "إجمالي الحالات",
+    cases_open: "حالات مفتوحة",
+    tasks_open: "مهام مفتوحة",
+    blocked_cases: "حالات متوقفة",
+    overdue_cases: "حالات متأخرة",
+    overdue_tasks: "مهام متأخرة",
+    waiting_customer: "بانتظار العميل",
+    waiting_external: "بانتظار جهة خارجية",
+    approval_tasks: "تحتاج موافقة",
+    page_views_7d: "مشاهدات 7 أيام",
+    sessions_7d: "جلسات 7 أيام",
+    cta_clicks_7d: "نقرات CTA",
+    commercial_clicks_7d: "تفاعل تجاري",
+    whatsapp_clicks_7d: "نقرات WhatsApp",
+    leads_30d: "Leads خلال 30 يومًا",
+    qualified_30d: "Leads مؤهلة",
+    quoted_30d: "Leads بعرض سعر",
+    won_30d: "Leads رابحة",
+    lead_to_win_rate_pct: "معدل التحويل %",
+    quotes_total: "عروض الأسعار",
+    quotes_pipeline: "Pipeline العروض",
+    quotes_expired: "عروض منتهية",
+    payments_total: "محاولات الدفع",
+    failed_payments_30d: "دفع فاشل 30 يومًا",
+    refunds_30d: "مرتجعات 30 يومًا",
+    controls_active: "ضوابط فعالة",
+    findings_open: "ملاحظات مفتوحة",
+    critical_open: "ملاحظات حرجة",
+    high_open: "ملاحظات عالية",
+    overdue_obligations: "التزامات متأخرة",
+    due_30d: "استحقاقات 30 يومًا"
+  };
+
+  function renderAiInsights(rows) {
+    const target = $("[data-owner-ai-insights]");
+    if (!target) return;
+    if (!rows?.length) {
+      target.textContent = "لا توجد قراءات AI دورية بعد.";
+      return;
+    }
+
+    target.replaceChildren(...rows.map((row) => {
+      const card = document.createElement("article");
+      card.className = "owner-ai-card";
+
+      const title = document.createElement("h3");
+      title.textContent = AI_AGENT_LABELS[row.agent_key] || row.agent_name || row.agent_key || "AI Agent";
+
+      const meta = document.createElement("small");
+      const time = row.completed_at || row.started_at;
+      const stamp = time ? new Date(time).toLocaleString("ar-AE") : "الآن";
+      const confidence = row.confidence === "rule_validated" ? "متحقق بالقواعد" :
+        row.confidence === "source_backed" ? "مسند بالمصادر" : "قراءة تشغيلية";
+      meta.textContent = confidence + " · " + stamp;
+
+      const result = row.output_summary?.result || {};
+      const metrics = result.metrics || {};
+      const metricGrid = document.createElement("div");
+      metricGrid.className = "owner-ai-metrics";
+      Object.entries(metrics).slice(0, 8).forEach(([key, value]) => {
+        const item = document.createElement("div");
+        item.className = "owner-ai-metric";
+        const label = document.createElement("span");
+        label.textContent = AI_METRIC_LABELS[key] || key;
+        const amount = document.createElement("b");
+        amount.textContent = typeof value === "number" ? new Intl.NumberFormat("ar-AE",{maximumFractionDigits:2}).format(value) : String(value ?? "—");
+        item.append(label, amount);
+        metricGrid.append(item);
+      });
+
+      card.append(title, meta);
+      if (metricGrid.childElementCount) card.append(metricGrid);
+
+      const alerts = Array.isArray(result.alerts) ? result.alerts : [];
+      if (alerts.length) {
+        const list = document.createElement("ul");
+        list.className = "owner-ai-alerts";
+        alerts.slice(0, 4).forEach((alert) => {
+          const li = document.createElement("li");
+          li.textContent = alert?.message_ar || alert?.code || "تنبيه تشغيلي";
+          list.append(li);
+        });
+        card.append(list);
+      } else {
+        const note = document.createElement("p");
+        note.textContent = "لا توجد تنبيهات تشغيلية من هذه القراءة.";
+        card.append(note);
+      }
+
+      return card;
+    }));
+  }
+
+  async function loadAiInsights(client) {
+    const target = $("[data-owner-ai-insights]");
+    if (!target) return;
+    const { data, error } = await client.rpc("hb_owner_ai_insights", { p_tenant_key: "hossambahr" });
+    if (error) {
+      target.textContent = "تعذر تحميل تحليلات الوكلاء.";
+      const errorTarget = $("[data-owner-ai-error]");
+      if (errorTarget) {
+        errorTarget.textContent = "تعذر تحميل HOSSAM BAHR AI Command Center مؤقتًا.";
+        errorTarget.hidden = false;
+      }
+      return;
+    }
+    renderAiInsights(data || []);
+    const latest = (data || []).map((row) => row.completed_at || row.started_at).filter(Boolean).sort().at(-1);
+    setText("[data-owner-ai-state]", latest
+      ? "آخر تحديث للوكلاء: " + new Date(latest).toLocaleString("ar-AE") + " · التحديث الدوري يعمل كل ساعة."
+      : "لم تسجل قراءة دورية بعد.");
+  }
+
+  function bindAiRefresh(client) {
+    const button = $("[data-owner-ai-refresh]");
+    if (!button || button.dataset.bound === "1") return;
+    button.dataset.bound = "1";
+    button.addEventListener("click", async () => {
+      button.disabled = true;
+      const original = button.textContent;
+      button.textContent = "جارٍ تحديث الوكلاء…";
+      const errorTarget = $("[data-owner-ai-error]");
+      if (errorTarget) errorTarget.hidden = true;
+      try {
+        const { error } = await client.rpc("hb_owner_refresh_ai", { p_tenant_key: "hossambahr" });
+        if (error) throw error;
+        await loadAiInsights(client);
+      } catch {
+        if (errorTarget) {
+          errorTarget.textContent = "تعذر تحديث الوكلاء الآن. بقيت آخر قراءة محفوظة كما هي.";
+          errorTarget.hidden = false;
+        }
+      } finally {
+        button.disabled = false;
+        button.textContent = original;
+      }
+    });
+  }
+
   async function boot() {
     const client = window.HB_AUTH;
     if (!client) {
@@ -545,6 +692,8 @@
     loadAnalytics(client).catch(() => explainAnalytics("تعذر تحميل قياس الزيارات مؤقتًا."));
     loadReviewQueue(client).catch(() => {});
     loadExecutionQueue(client).catch(() => {});
+    loadAiInsights(client).catch(() => {});
+    bindAiRefresh(client);
 
     const list = $("[data-owner-recent]");
     const { data: recent, error: recentError } = await client.rpc("hb_owner_recent_transactions", { p_limit: 25 });
