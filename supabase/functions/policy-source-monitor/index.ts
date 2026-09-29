@@ -79,7 +79,7 @@ async function inspectSource(admin:any,source:any) {
 
   try{
     const controller=new AbortController();
-    const timeout=setTimeout(()=>controller.abort(),8000);
+    const timeout=setTimeout(()=>controller.abort(),15000);
     try{
       const response=await fetch(String(source.source_url),{
         method:"GET",
