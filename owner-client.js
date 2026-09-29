@@ -331,6 +331,11 @@
           }
           return;
         }
+        try {
+          await client.functions.invoke("global-os-api", {
+            body: { action: "kick_worker", reason: "owner_internal_review" }
+          });
+        } catch {}
         await loadReviewQueue(client);
       });
 
