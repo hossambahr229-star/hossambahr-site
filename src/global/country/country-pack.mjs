@@ -52,11 +52,13 @@ export function evaluateCountryPackReadiness(health) {
   const blockers={
     noAuthorities:Number(metrics.authorities_active||0)<=0,
     noServices:Number(metrics.services_active||0)<=0,
+    noOfficialSources:Number(metrics.official_sources_active||0)<=0,
     missingAuthorities:Number(metrics.services_without_authority||0)>0,
     missingPolicies:Number(metrics.services_without_policy||0)>0,
     missingWorkflows:Number(metrics.services_without_workflow||0)>0,
     inactivePolicies:Number(metrics.services_without_active_policy||0)>0,
-    inactiveWorkflows:Number(metrics.services_without_active_workflow||0)>0
+    inactiveWorkflows:Number(metrics.services_without_active_workflow||0)>0,
+    policiesWithoutOfficialSources:Number(metrics.active_policies_without_official_sources||0)>0
   };
   const reasons=Object.entries(blockers).filter(([,blocked])=>blocked).map(([key])=>key);
   return {ready:reasons.length===0,reasons};
