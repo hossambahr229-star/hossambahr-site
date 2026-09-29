@@ -51,7 +51,7 @@ export default {
       return json(req, {
         ok: true,
         service: "hossambahr-global-os-api",
-        version: "1.2",
+        version: "1.3",
         authenticated: true
       });
     }
@@ -162,16 +162,18 @@ export default {
       const title = String(body.title || goal).trim().slice(0, 180);
       const serviceSlug = body.service_slug ? String(body.service_slug).trim().slice(0, 240) : null;
       const organizationId = body.organization_id ? String(body.organization_id) : null;
+      const countryPackKey = body.country_pack_key ? String(body.country_pack_key).trim().slice(0, 80) : null;
 
       if (goal.length < 3 || goal.length > 1200 || !title) {
         return json(req, { error: "invalid_case_goal" }, 422);
       }
 
-      const { data, error } = await ctx.supabase.rpc("hb_start_case", {
+      const { data, error } = await ctx.supabase.rpc("hb_start_case_v2", {
         p_goal: goal,
         p_title: title,
         p_service_slug: serviceSlug,
-        p_organization_id: organizationId
+        p_organization_id: organizationId,
+        p_country_pack_key: countryPackKey
       });
 
       if (error) {
