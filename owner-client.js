@@ -766,6 +766,82 @@
     });
   }
 
+  function renderPolicySourceMonitor(summary,rows) {
+    const target=$("[data-owner-source-monitor]");
+    const reviewTarget=$("[data-owner-source-review]");
+    if(!target || !reviewTarget)return;
+
+    const metrics=[
+      ["المصادر الرسمية",summary?.sources_total],
+      ["فُحصت خلال 24 ساعة",summary?.checked_24h],
+      ["لم تُفحص بعد",summary?.never_checked],
+      ["تحتاج مراجعة",summary?.review_required],
+      ["إخفاقات مؤقتة",summary?.failed],
+      ["404 / 410",summary?.hard_failures]
+    ];
+    target.replaceChildren(...metrics.map(([label,value])=>{
+      const item=document.createElement("article");
+      item.className="owner-metric";
+      const span=document.createElement("span");
+      span.textContent=String(label);
+      const strong=document.createElement("strong");
+      strong.textContent=number(value);
+      item.append(span,strong);
+      return item;
+    }));
+
+    if(!Array.isArray(rows)||!rows.length){
+      reviewTarget.replaceChildren();
+      const p=document.createElement("p");
+      p.className="owner-analytics-note";
+      p.textContent="لا توجد مصادر معلّمة لمراجعة بشرية حاليًا.";
+      reviewTarget.append(p);
+      return;
+    }
+
+    const heading=document.createElement("h3");
+    heading.textContent="مصادر تحتاج مراجعة";
+    const list=document.createElement("div");
+    rows.forEach((row)=>{
+      const item=document.createElement("div");
+      item.className="owner-row";
+      const copy=document.createElement("div");
+      const title=document.createElement("b");
+      title.textContent=row.title || row.authority_key || "مصدر رسمي";
+      const meta=document.createElement("span");
+      const status=row.last_http_status ? `HTTP ${row.last_http_status}` : "بدون استجابة";
+      meta.textContent=`${row.authority_key || "جهة"} · ${status} · إخفاقات ${number(row.monitor_failures)}`;
+      copy.append(title,meta);
+      const link=document.createElement("a");
+      link.href=row.source_url;
+      link.target="_blank";
+      link.rel="noopener noreferrer";
+      link.textContent="فتح المصدر الرسمي";
+      item.append(copy,link);
+      list.append(item);
+    });
+    reviewTarget.replaceChildren(heading,list);
+  }
+
+  async function loadPolicySourceMonitor(client) {
+    const target=$("[data-owner-source-monitor]");
+    if(!target)return;
+    const [{data:summary,error:summaryError},{data:rows,error:rowsError}]=await Promise.all([
+      client.rpc("hb_owner_policy_source_monitor"),
+      client.rpc("hb_owner_policy_sources_needing_review",{p_limit:25})
+    ]);
+    if(summaryError || rowsError){
+      target.textContent="تعذر تحميل Policy Source Monitor.";
+      const errorTarget=$("[data-owner-source-monitor-error]");
+      if(errorTarget){
+        errorTarget.textContent="تعذر قراءة حالة المصادر الرسمية مؤقتًا.";
+        errorTarget.hidden=false;
+      }
+      return;
+    }
+    renderPolicySourceMonitor(summary||{},rows||[]);
+  }
+
   async function boot() {
     const client = window.HB_AUTH;
     if (!client) {
@@ -809,6 +885,7 @@
     bindAiRefresh(client);
     loadCountryPackHealth(client).catch(() => {});
     bindCountryPackDraft(client);
+    loadPolicySourceMonitor(client).catch(() => {});
 
     const list = $("[data-owner-recent]");
     const { data: recent, error: recentError } = await client.rpc("hb_owner_recent_transactions", { p_limit: 25 });
