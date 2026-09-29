@@ -9,6 +9,7 @@ import {
   normalizeJurisdictionCode,
   requiresHumanApproval
 } from "../../src/global/core/domain-model.mjs";
+import { assertServiceCountryCompatibility, countryPackKey, evaluateCountryPackReadiness, validateCountryPack } from "../../src/global/country/country-pack.mjs";
 
 test("terminal case states are explicit", () => {
   assert.equal(isTerminalCaseStatus(CaseStatus.COMPLETED), true);
@@ -46,4 +47,47 @@ test("audit envelopes reject unknown actor types", () => {
 
 test("task states retain explicit approval state", () => {
   assert.equal(TaskStatus.NEEDS_APPROVAL, "needs_approval");
+});
+
+
+test("country pack contract enforces ISO-scoped pack keys", () => {
+  const pack=validateCountryPack({
+    pack_key:"country:AE",
+    country_code:"ae",
+    version:1,
+    status:"active",
+    default_locale:"ar-AE",
+    default_currency:"aed",
+    supported_languages:["ar","en"]
+  });
+  assert.equal(pack.packKey,countryPackKey("AE"));
+  assert.equal(pack.defaultCurrency,"AED");
+});
+
+test("country pack readiness blocks missing policies or workflows", () => {
+  const result=evaluateCountryPackReadiness({
+    metrics:{
+      authorities_active:2,
+      services_active:10,
+      services_without_authority:0,
+      services_without_policy:1,
+      services_without_workflow:0,
+      services_without_active_policy:1,
+      services_without_active_workflow:0
+    }
+  });
+  assert.equal(result.ready,false);
+  assert.ok(result.reasons.includes("missingPolicies"));
+  assert.ok(result.reasons.includes("inactivePolicies"));
+});
+
+test("service and requested country packs cannot conflict", () => {
+  assert.equal(assertServiceCountryCompatibility({
+    servicePackKey:"country:AE",
+    requestedPackKey:"country:AE"
+  }),true);
+  assert.throws(()=>assertServiceCountryCompatibility({
+    servicePackKey:"country:AE",
+    requestedPackKey:"country:SA"
+  }),/conflicts/);
 });
