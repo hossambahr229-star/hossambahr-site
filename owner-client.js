@@ -716,6 +716,56 @@
     renderCountryPackHealth(data || []);
   }
 
+  function bindCountryPackDraft(client) {
+    const toggle=$("[data-owner-country-toggle]");
+    const form=$("[data-owner-country-form]");
+    if(!toggle || !form || form.dataset.bound==="1")return;
+    form.dataset.bound="1";
+
+    toggle.addEventListener("click",()=>{
+      form.hidden=!form.hidden;
+      if(!form.hidden)form.querySelector("input")?.focus();
+    });
+
+    form.addEventListener("submit",async(event)=>{
+      event.preventDefault();
+      const fd=new FormData(form);
+      const languages=String(fd.get("supported_languages")||"")
+        .split(",")
+        .map((value)=>value.trim().toLowerCase())
+        .filter(Boolean);
+      const button=form.querySelector("button[type='submit']");
+      const errorTarget=$("[data-owner-country-packs-error]");
+      if(errorTarget)errorTarget.hidden=true;
+      button.disabled=true;
+      const original=button.textContent;
+      button.textContent="جارٍ إنشاء المسودة…";
+      try{
+        const {error}=await client.rpc("hb_owner_create_country_pack_draft",{
+          p_country_code:String(fd.get("country_code")||"").trim().toUpperCase(),
+          p_name_en:String(fd.get("name_en")||"").trim(),
+          p_name_ar:String(fd.get("name_ar")||"").trim(),
+          p_default_locale:String(fd.get("default_locale")||"").trim(),
+          p_default_currency:String(fd.get("default_currency")||"").trim().toUpperCase(),
+          p_supported_languages:languages,
+          p_data_residency_region:String(fd.get("data_residency_region")||"").trim()||null
+        });
+        if(error)throw error;
+        form.reset();
+        form.hidden=true;
+        await loadCountryPackHealth(client);
+      }catch{
+        if(errorTarget){
+          errorTarget.textContent="تعذر إنشاء Country Pack Draft. تحقق من رمز الدولة والعملة وأن الحساب يملك Owner/Admin.";
+          errorTarget.hidden=false;
+        }
+      }finally{
+        button.disabled=false;
+        button.textContent=original;
+      }
+    });
+  }
+
   async function boot() {
     const client = window.HB_AUTH;
     if (!client) {
@@ -758,6 +808,7 @@
     loadAiInsights(client).catch(() => {});
     bindAiRefresh(client);
     loadCountryPackHealth(client).catch(() => {});
+    bindCountryPackDraft(client);
 
     const list = $("[data-owner-recent]");
     const { data: recent, error: recentError } = await client.rpc("hb_owner_recent_transactions", { p_limit: 25 });
