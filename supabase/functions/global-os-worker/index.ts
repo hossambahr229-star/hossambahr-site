@@ -328,6 +328,81 @@ async function deterministicQuality(admin, caseRow) {
   };
 }
 
+async function deterministicPlanner(admin, caseRow, binding) {
+  const workflowKey = binding?.workflow_key || caseRow.metadata?.workflow_key || null;
+  let template = null;
+
+  if (workflowKey && workflowKey !== "generic:intake") {
+    const templateResult = await admin
+      .from("hb_workflow_templates")
+      .select("workflow_key,version,definition")
+      .eq("workflow_key", workflowKey)
+      .eq("status", "active")
+      .order("version", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (!templateResult.error) template = templateResult.data;
+  }
+
+  const { data: tasks, error: taskError } = await admin
+    .from("hb_case_tasks")
+    .select("id,title,task_type,status,assignee_type,assignee_ref,requires_approval,dependency_ids,metadata")
+    .eq("case_id", caseRow.id)
+    .order("created_at", { ascending: true });
+  if (taskError) throw new Error("planner_case_tasks_unavailable");
+
+  const actual = tasks || [];
+  if (!template) {
+    return {
+      output: {
+        summary_ar: "الحالة تعمل على مسار عام آمن، لذلك يحتفظ Planner بالخطة الحالية ولا يخترع خطوات تنظيمية غير موثقة.",
+        detected_intent: "case_planning",
+        recommended_next_steps: actual.map((task) => task.title).slice(0, 6),
+        missing_information: workflowKey === "generic:intake" ? ["تحديد خدمة موثقة عند توفرها للانتقال إلى Workflow رسمي."] : [],
+        risk_flags: ["لا يوجد قالب Workflow فعّال موثق لهذه الحالة؛ لن يضيف Planner خطوات حكومية من تلقاء نفسه."],
+        confidence: "unverified",
+        needs_human_review: true,
+        safe_to_prepare: true,
+        workflow_key: workflowKey,
+        expected_steps_count: null,
+        materialized_tasks_count: actual.length,
+        drift: { missing_steps: [], extra_steps: [] }
+      },
+      response_id: null,
+      usage: null
+    };
+  }
+
+  const expected = Array.isArray(template.definition?.steps) ? template.definition.steps : [];
+  const expectedKeys = new Set(expected.map((step) => String(step?.key || "")).filter(Boolean));
+  const actualKeys = new Set(actual.map((task) => String(task?.metadata?.workflow_step_key || "")).filter(Boolean));
+  const missing = [...expectedKeys].filter((key) => !actualKeys.has(key));
+  const extra = [...actualKeys].filter((key) => !expectedKeys.has(key));
+  const drifted = missing.length > 0 || extra.length > 0 || expected.length !== actual.length;
+
+  return {
+    output: {
+      summary_ar: drifted
+        ? "تمت مقارنة خطة الحالة بالقالب الفعّال وظهر اختلاف يحتاج مراجعة قبل الاعتماد."
+        : "خطة الحالة مطابقة للقالب الفعّال المخزن للخدمة.",
+      detected_intent: "case_planning",
+      recommended_next_steps: expected.map((step) => String(step?.title || step?.key || "")).filter(Boolean).slice(0, 6),
+      missing_information: [],
+      risk_flags: drifted ? ["يوجد اختلاف بين Workflow الموثق والمهام المادية للحالة."] : [],
+      confidence: "source_backed",
+      needs_human_review: drifted,
+      safe_to_prepare: !drifted,
+      workflow_key: workflowKey,
+      workflow_version: template.version,
+      expected_steps_count: expected.length,
+      materialized_tasks_count: actual.length,
+      drift: { missing_steps: missing.slice(0, 12), extra_steps: extra.slice(0, 12) }
+    },
+    response_id: null,
+    usage: null
+  };
+}
+
 async function deterministicTaskReview(admin, job) {
   const taskRef = (job.input_refs || []).find((ref) => ref?.type === "task" && ref?.id);
   if (!taskRef?.id) throw new Error("task_review_reference_missing");
@@ -406,7 +481,7 @@ async function processAgentJob(admin) {
     if (modelError) throw new Error("ai_model_catalog_unavailable");
     if (!job.case_id) throw new Error("case_required_for_agent");
 
-    const supportedRoutes = new Set(["case-intake", "policy-resolution", "task-quality-review", "quality-check"]);
+    const supportedRoutes = new Set(["case-intake", "policy-resolution", "case-planning", "task-quality-review", "quality-check"]);
     if (!supportedRoutes.has(job.route_key)) throw new Error("route_executor_not_implemented");
 
     let model = chooseModel(route, models || []);
@@ -445,6 +520,7 @@ async function processAgentJob(admin) {
 
     const { data: run, error: runError } = await admin.from("hb_agent_runs").insert({
       agent_id: agent.id,
+      tenant_id: caseRow.tenant_id,
       user_id: caseRow.user_id,
       case_id: caseRow.id,
       provider: model.provider,
@@ -458,7 +534,9 @@ async function processAgentJob(admin) {
     runId = run.id;
 
     let result;
-    if (job.route_key === "policy-resolution") {
+    if (job.route_key === "case-planning") {
+      result = await deterministicPlanner(admin, caseRow, binding);
+    } else if (job.route_key === "policy-resolution") {
       result = await deterministicPolicy(admin, binding);
     } else if (job.route_key === "task-quality-review") {
       result = await deterministicTaskReview(admin, job);
