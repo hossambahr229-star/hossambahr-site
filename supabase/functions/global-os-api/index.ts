@@ -59,7 +59,7 @@ export default {
     if (req.method === "GET" && path === "/v1/cases") {
       const { data, error } = await ctx.supabase
         .from("hb_cases")
-        .select("id,title,goal,service_slug,status,priority,readiness_percent,due_at,created_at,organization_id")
+        .select("id,title,goal,service_slug,country_pack_id,status,priority,readiness_percent,due_at,created_at,organization_id")
         .order("created_at", { ascending: false })
         .limit(100);
 
