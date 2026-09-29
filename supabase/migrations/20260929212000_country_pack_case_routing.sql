@@ -339,12 +339,8 @@ begin
     raise exception 'Authentication required' using errcode='42501';
   end if;
 
-  if not exists(
-    select 1
-    from public.hb_tenant_members tm
-    where tm.user_id=v_uid and tm.role in ('owner','admin','operator')
-  ) then
-    raise exception 'Owner access denied' using errcode='42501';
+  if not hb_private.is_platform_owner() then
+    raise exception 'Platform owner access required' using errcode='42501';
   end if;
 
   for v_row in
