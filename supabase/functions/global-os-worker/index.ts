@@ -524,6 +524,11 @@ async function processAgentJob(admin) {
       p_error: message,
       p_retryable: retryable
     });
+    if (retryable && Number(job.attempts || 0) < 3) {
+      const delayMs = Math.min(30000, Math.max(2000, Math.pow(2, Number(job.attempts || 1)) * 1000)) + 250;
+      await new Promise((resolve) => setTimeout(resolve, delayMs));
+      return { job_id: job.id, route_key: job.route_key, retry_scheduled: true };
+    }
     throw error;
   }
 }
