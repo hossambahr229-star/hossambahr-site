@@ -69,44 +69,73 @@ async function sha256(value:string) {
   return [...new Uint8Array(hash)].map((b)=>b.toString(16).padStart(2,"0")).join("");
 }
 
+async function fetchWithTimeout(url:string,method:"GET"|"HEAD",timeoutMs:number) {
+  const controller=new AbortController();
+  const timeout=setTimeout(()=>controller.abort(),timeoutMs);
+  try{
+    return await fetch(url,{
+      method,
+      redirect:"follow",
+      signal:controller.signal,
+      headers:{
+        "Accept":"text/html,application/xhtml+xml,application/json;q=0.9,text/plain;q=0.8,*/*;q=0.5",
+        "Accept-Language":"ar,en;q=0.8",
+        "User-Agent":"HOSSAM-BAHR-Policy-Monitor/1.0"
+      }
+    });
+  }finally{
+    clearTimeout(timeout);
+  }
+}
+
 async function inspectSource(admin:any,source:any) {
   const started=Date.now();
+  const url=String(source.source_url);
   let httpStatus:number|null=null;
   let etag:string|null=null;
   let lastModified:string|null=null;
   let contentHash:string|null=null;
   let errorText:string|null=null;
+  let getFailure:string|null=null;
 
   try{
-    const controller=new AbortController();
-    const timeout=setTimeout(()=>controller.abort(),15000);
-    try{
-      const response=await fetch(String(source.source_url),{
-        method:"GET",
-        redirect:"follow",
-        signal:controller.signal,
-        headers:{
-          "Accept":"text/html,application/xhtml+xml,application/json;q=0.9,text/plain;q=0.8,*/*;q=0.5",
-          "Accept-Language":"ar,en;q=0.8",
-          "User-Agent":"HOSSAM-BAHR-Policy-Monitor/1.0"
-        }
-      });
-      httpStatus=response.status;
-      etag=response.headers.get("etag");
-      lastModified=response.headers.get("last-modified");
-      if(response.ok){
+    const response=await fetchWithTimeout(url,"GET",12000);
+    httpStatus=response.status;
+    etag=response.headers.get("etag");
+    lastModified=response.headers.get("last-modified");
+
+    if(response.ok){
+      try{
         const body=await readLimited(response);
         const normalized=normalizeOfficialPage(body);
         if(normalized.length<20)throw new Error("source_content_too_small");
         contentHash=await sha256(normalized);
-      }else{
-        errorText=`http_status_${response.status}`;
+      }catch(error){
+        getFailure=safeError(error);
       }
-    }finally{
-      clearTimeout(timeout);
+    }else if([404,410].includes(response.status)){
+      errorText=`http_status_${response.status}`;
+    }else{
+      getFailure=`get_http_status_${response.status}`;
     }
   }catch(error){
-    errorText=safeError(error);
+    getFailure=safeError(error);
+  }
+
+  if(getFailure && !errorText){
+    try{
+      const head=await fetchWithTimeout(url,"HEAD",7000);
+      httpStatus=head.status;
+      etag=head.headers.get("etag") || etag;
+      lastModified=head.headers.get("last-modified") || lastModified;
+      if(head.ok){
+        errorText=null;
+      }else{
+        errorText=`${getFailure}; head_http_status_${head.status}`;
+      }
+    }catch(error){
+      errorText=`${getFailure}; head_${safeError(error)}`;
+    }
   }
 
   const {data,error}=await admin.rpc("hb_finish_policy_source_check",{
@@ -124,7 +153,8 @@ async function inspectSource(admin:any,source:any) {
     status:httpStatus,
     changed:Boolean(data?.changed),
     review_required:Boolean(data?.review_required),
-    error:Boolean(errorText)
+    error:Boolean(errorText),
+    content_checked:Boolean(contentHash)
   };
 }
 
