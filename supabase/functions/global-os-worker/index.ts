@@ -328,6 +328,35 @@ async function deterministicQuality(admin, caseRow) {
   };
 }
 
+async function deterministicTaskReview(admin, job) {
+  const taskRef = (job.input_refs || []).find((ref) => ref?.type === "task" && ref?.id);
+  if (!taskRef?.id) throw new Error("task_review_reference_missing");
+
+  const { data: task, error } = await admin
+    .from("hb_case_tasks")
+    .select("id,title,task_type,status,assignee_type,assignee_ref,requires_approval,metadata")
+    .eq("id", taskRef.id)
+    .single();
+  if (error || !task) throw new Error("task_review_context_unavailable");
+
+  const noteSupplied = Boolean(task.metadata?.user_note);
+  return {
+    output: {
+      summary_ar: "تم تجهيز المتطلب المرسل للمراجعة الداخلية. لم يعتمد النظام صحة المستند أو المعلومة تلقائيًا.",
+      detected_intent: "task_quality_review",
+      recommended_next_steps: ["مراجعة المتطلب في لوحة المالك/المشغل.", "اعتماد المراجعة يدويًا فقط بعد التحقق من الأدلة المطلوبة."],
+      missing_information: noteSupplied ? [] : ["لا توجد ملاحظة إضافية من العميل مع هذا الإرسال."],
+      risk_flags: ["هذه الجولة لا تقرأ محتوى جواز السفر أو الهوية أو المستندات الحساسة، ولا تستبدل المراجعة البشرية."],
+      confidence: "unverified",
+      needs_human_review: true,
+      safe_to_prepare: true,
+      reviewed_task_id: task.id
+    },
+    response_id: null,
+    usage: null
+  };
+}
+
 async function completeAgentTask(admin, caseRow, routeKey, runId, result) {
   const agentRef = routeKey === "case-intake" ? "intake" : routeKey === "quality-check" ? "quality" : null;
   if (!agentRef) return;
@@ -377,7 +406,7 @@ async function processAgentJob(admin) {
     if (modelError) throw new Error("ai_model_catalog_unavailable");
     if (!job.case_id) throw new Error("case_required_for_agent");
 
-    const supportedRoutes = new Set(["case-intake", "policy-resolution", "quality-check"]);
+    const supportedRoutes = new Set(["case-intake", "policy-resolution", "task-quality-review", "quality-check"]);
     if (!supportedRoutes.has(job.route_key)) throw new Error("route_executor_not_implemented");
 
     let model = chooseModel(route, models || []);
@@ -431,6 +460,8 @@ async function processAgentJob(admin) {
     let result;
     if (job.route_key === "policy-resolution") {
       result = await deterministicPolicy(admin, binding);
+    } else if (job.route_key === "task-quality-review") {
+      result = await deterministicTaskReview(admin, job);
     } else if (job.route_key === "quality-check") {
       result = await deterministicQuality(admin, caseRow);
     } else if (model.provider === "openai") {
