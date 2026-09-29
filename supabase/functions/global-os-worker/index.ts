@@ -228,6 +228,136 @@ async function processOutbox(admin) {
   }
 }
 
+function deterministicIntake(caseRow, binding) {
+  const knownService = Boolean(caseRow.service_slug && binding);
+  return {
+    output: {
+      summary_ar: knownService
+        ? "تم ربط هدفك بالخدمة المختارة وتجهيز الحالة للمتابعة على المسار الموثق."
+        : "تم تسجيل هدفك وفتح حالة تشغيلية آمنة. سنحتاج تحديد الخدمة أو استكمال البيانات قبل اعتماد أي متطلبات تنظيمية.",
+      detected_intent: caseRow.service_slug || "general_case_intake",
+      recommended_next_steps: knownService
+        ? ["مراجعة المتطلبات المسجلة للخدمة.", "استكمال المطلوب منك داخل الحالة.", "إبقاء التنفيذ الخارجي خلف بوابة الموافقة."]
+        : ["تحديد الخدمة الأقرب للهدف.", "استكمال المعلومات الأساسية المطلوبة للحالة.", "مراجعة المسار قبل أي إجراء خارجي."],
+      missing_information: knownService ? [] : ["تحديد الخدمة أو الجهة الحكومية المرتبطة بالهدف عند توفرها."],
+      risk_flags: ["تم استخدام مسار احتياطي داخلي؛ لا تُعتمد منه رسوم أو شروط أو متطلبات حكومية غير مسندة إلى مصدر."],
+      confidence: "unverified",
+      needs_human_review: true,
+      safe_to_prepare: true
+    },
+    response_id: null,
+    usage: null
+  };
+}
+
+async function deterministicPolicy(admin, binding) {
+  if (!binding?.policy_key) throw new Error("policy_binding_missing");
+  const { data: policy, error } = await admin
+    .from("hb_policy_versions")
+    .select("version,rules,source_ids,effective_from,effective_until")
+    .eq("policy_key", binding.policy_key)
+    .eq("status", "active")
+    .order("version", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (error || !policy) throw new Error("active_policy_unavailable");
+
+  const rules = Array.isArray(policy.rules) ? policy.rules : [];
+  const requirements = rules
+    .filter((rule) => String(rule?.id || "").startsWith("requirement:"))
+    .map((rule) => String(rule?.reason || "").trim())
+    .filter(Boolean);
+  const flags = rules
+    .filter((rule) => !String(rule?.id || "").startsWith("requirement:"))
+    .map((rule) => String(rule?.reason || "").trim())
+    .filter(Boolean);
+  const sourceUrls = [...new Set(rules.flatMap((rule) => Array.isArray(rule?.sourceRefs) ? rule.sourceRefs : []).filter((url) => /^https:\/\//i.test(String(url))))];
+
+  return {
+    output: {
+      summary_ar: "تم تحميل النسخة الفعالة من سياسة الخدمة وربطها بالحالة من قاعدة HOSSAM BAHR المصدرية.",
+      detected_intent: "policy_resolution",
+      recommended_next_steps: requirements.slice(0, 6),
+      missing_information: [],
+      risk_flags: flags.slice(0, 6),
+      confidence: "source_backed",
+      needs_human_review: false,
+      safe_to_prepare: true,
+      source_urls: sourceUrls.slice(0, 8),
+      policy_version: policy.version
+    },
+    response_id: null,
+    usage: null
+  };
+}
+
+async function deterministicQuality(admin, caseRow) {
+  const { data: tasks, error } = await admin
+    .from("hb_case_tasks")
+    .select("id,title,task_type,status,assignee_type,assignee_ref,requires_approval,dependency_ids,metadata")
+    .eq("case_id", caseRow.id)
+    .order("created_at", { ascending: true });
+  if (error) throw new Error("quality_context_unavailable");
+
+  const rows = tasks || [];
+  const requirements = rows.filter((task) => task.task_type === "requirement");
+  const missing = requirements.filter((task) => task.status !== "done").map((task) => task.title);
+  const qualityTask = rows.find((task) => task.assignee_type === "agent" && task.assignee_ref === "quality");
+  const flags = [
+    qualityTask?.metadata?.conditions,
+    qualityTask?.metadata?.specialCases
+  ].filter(Boolean).map(String);
+
+  return {
+    output: {
+      summary_ar: missing.length
+        ? "ما زالت هناك متطلبات غير مكتملة، لذلك لن ينتقل المسار إلى التنفيذ الخارجي."
+        : "اكتملت المتطلبات المسجلة في المسار، وتم اجتياز فحص الاتساق التشغيلي قبل بوابة الموافقة البشرية.",
+      detected_intent: "quality_review",
+      recommended_next_steps: missing.length
+        ? missing.slice(0, 6)
+        : ["مراجعة ملخص الحالة.", "الانتقال إلى بوابة الموافقة البشرية قبل أي تنفيذ خارجي."],
+      missing_information: missing.slice(0, 6),
+      risk_flags: flags.slice(0, 6),
+      confidence: caseRow.service_slug ? "source_backed" : "unverified",
+      needs_human_review: true,
+      safe_to_prepare: missing.length === 0
+    },
+    response_id: null,
+    usage: null
+  };
+}
+
+async function completeAgentTask(admin, caseRow, routeKey, runId, result) {
+  const agentRef = routeKey === "case-intake" ? "intake" : routeKey === "quality-check" ? "quality" : null;
+  if (!agentRef) return;
+
+  const query = await admin
+    .from("hb_case_tasks")
+    .select("id,status,metadata")
+    .eq("case_id", caseRow.id)
+    .eq("assignee_type", "agent")
+    .eq("assignee_ref", agentRef)
+    .neq("status", "done")
+    .limit(1)
+    .maybeSingle();
+  if (query.error || !query.data) return;
+
+  if (routeKey === "quality-check" && result?.output?.safe_to_prepare !== true) return;
+
+  const metadata = {
+    ...(query.data.metadata || {}),
+    ai_run_id: runId,
+    ai_route_key: routeKey,
+    ai_completed_at: new Date().toISOString()
+  };
+  const { error } = await admin
+    .from("hb_case_tasks")
+    .update({ status: "done", metadata })
+    .eq("id", query.data.id);
+  if (error) throw new Error("agent_task_complete_failed");
+}
+
 async function processAgentJob(admin) {
   await admin.rpc("hb_recover_stale_agent_jobs", { p_timeout_seconds: 240 });
   const { data: jobs, error: claimError } = await admin.rpc("hb_claim_agent_job");
@@ -245,11 +375,25 @@ async function processAgentJob(admin) {
     if (agentError || !agent?.active) throw new Error("agent_unavailable");
     if (routeError || !route) throw new Error("ai_route_unavailable");
     if (modelError) throw new Error("ai_model_catalog_unavailable");
+    if (!job.case_id) throw new Error("case_required_for_agent");
 
-    const model = chooseModel(route, models || []);
+    const supportedRoutes = new Set(["case-intake", "policy-resolution", "quality-check"]);
+    if (!supportedRoutes.has(job.route_key)) throw new Error("route_executor_not_implemented");
+
+    let model = chooseModel(route, models || []);
     if (!model) throw new Error("no_compliant_ai_model");
-    if (job.route_key !== "case-intake") throw new Error("route_executor_not_implemented");
-    if (!job.case_id) throw new Error("case_required_for_intake");
+
+    if (job.route_key === "case-intake" && model.provider === "openai") {
+      const apiKey = Deno.env.get(String(model.metadata?.secret_env || "OPENAI_API_KEY")) || "";
+      if (!apiKey) {
+        const fallback = (models || []).find((candidate) =>
+          candidate.provider === "hossambahr" &&
+          candidate.model_key === "intake-fallback-v1" &&
+          modelAllowed(candidate, route)
+        );
+        if (fallback) model = fallback;
+      }
+    }
 
     const { data: caseRow, error: caseError } = await admin
       .from("hb_cases")
@@ -260,14 +404,14 @@ async function processAgentJob(admin) {
 
     let binding = null;
     if (caseRow.service_slug) {
-      const result = await admin
+      const bindingResult = await admin
         .from("hb_service_bindings")
         .select("service_slug,authority_key,policy_key,workflow_key,execution_mode")
         .eq("service_slug", caseRow.service_slug)
         .eq("active", true)
         .limit(1)
         .maybeSingle();
-      if (!result.error) binding = result.data;
+      if (!bindingResult.error) binding = bindingResult.data;
     }
 
     const { data: run, error: runError } = await admin.from("hb_agent_runs").insert({
@@ -284,8 +428,18 @@ async function processAgentJob(admin) {
     if (runError || !run?.id) throw new Error("agent_run_create_failed");
     runId = run.id;
 
-    const apiKey = Deno.env.get(String(model.metadata?.secret_env || "OPENAI_API_KEY")) || "";
-    const result = await callOpenAI({ apiKey, model, route, caseRow, binding });
+    let result;
+    if (job.route_key === "policy-resolution") {
+      result = await deterministicPolicy(admin, binding);
+    } else if (job.route_key === "quality-check") {
+      result = await deterministicQuality(admin, caseRow);
+    } else if (model.provider === "openai") {
+      const apiKey = Deno.env.get(String(model.metadata?.secret_env || "OPENAI_API_KEY")) || "";
+      result = await callOpenAI({ apiKey, model, route, caseRow, binding });
+    } else {
+      result = deterministicIntake(caseRow, binding);
+    }
+
     const confidence = ["unverified", "source_backed"].includes(result.output?.confidence)
       ? result.output.confidence
       : "unverified";
@@ -297,6 +451,7 @@ async function processAgentJob(admin) {
         route_key: route.route_key,
         data_class: DATA_CLASS,
         minimized_input: true,
+        execution_mode: model.provider === "hossambahr" ? "deterministic" : "model",
         provider_response_id: result.response_id,
         usage: result.usage ? {
           input_tokens: result.usage.input_tokens ?? null,
@@ -308,6 +463,8 @@ async function processAgentJob(admin) {
       completed_at: new Date().toISOString()
     }).eq("id", runId);
     if (completeRunError) throw new Error("agent_run_complete_failed");
+
+    await completeAgentTask(admin, caseRow, job.route_key, runId, result);
 
     const { error: finishError } = await admin.rpc("hb_finish_agent_job", {
       p_job_id: job.id,
