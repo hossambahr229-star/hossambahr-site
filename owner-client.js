@@ -653,6 +653,63 @@
     });
   }
 
+  function renderCountryPackHealth(rows) {
+    const target=$("[data-owner-country-packs]");
+    if(!target)return;
+    if(!Array.isArray(rows)||!rows.length){
+      target.textContent="لا توجد Country Packs مسجلة.";
+      return;
+    }
+    target.replaceChildren(...rows.map((health)=>{
+      const card=document.createElement("article");
+      card.className="owner-ai-card";
+      const title=document.createElement("h3");
+      title.textContent=(health.country_code || health.pack_key || "Country Pack")+" · "+(health.status || "unknown");
+      const meta=document.createElement("small");
+      meta.textContent=health.ready_for_activation ? "جاهز للتفعيل" : "يحتاج استكمال";
+      const metrics=health.metrics || {};
+      const grid=document.createElement("div");
+      grid.className="owner-ai-metrics";
+      const labels={
+        authorities_active:"سلطات فعالة",
+        services_active:"خدمات فعالة",
+        services_without_authority:"خدمات بلا سلطة",
+        services_without_policy:"خدمات بلا سياسة",
+        services_without_workflow:"خدمات بلا Workflow",
+        services_without_active_policy:"سياسات غير فعالة",
+        services_without_active_workflow:"Workflows غير فعالة"
+      };
+      Object.entries(metrics).forEach(([key,value])=>{
+        const item=document.createElement("div");
+        item.className="owner-ai-metric";
+        const label=document.createElement("span");
+        label.textContent=labels[key] || key;
+        const amount=document.createElement("b");
+        amount.textContent=number(value);
+        item.append(label,amount);
+        grid.append(item);
+      });
+      card.append(title,meta,grid);
+      return card;
+    }));
+  }
+
+  async function loadCountryPackHealth(client) {
+    const target=$("[data-owner-country-packs]");
+    if(!target)return;
+    const {data,error}=await client.rpc("hb_owner_country_pack_health");
+    if(error){
+      target.textContent="تعذر تحميل جاهزية Country Packs.";
+      const errorTarget=$("[data-owner-country-packs-error]");
+      if(errorTarget){
+        errorTarget.textContent="تعذر التحقق من Country Pack Health مؤقتًا.";
+        errorTarget.hidden=false;
+      }
+      return;
+    }
+    renderCountryPackHealth(data || []);
+  }
+
   async function boot() {
     const client = window.HB_AUTH;
     if (!client) {
@@ -694,6 +751,7 @@
     loadExecutionQueue(client).catch(() => {});
     loadAiInsights(client).catch(() => {});
     bindAiRefresh(client);
+    loadCountryPackHealth(client).catch(() => {});
 
     const list = $("[data-owner-recent]");
     const { data: recent, error: recentError } = await client.rpc("hb_owner_recent_transactions", { p_limit: 25 });
