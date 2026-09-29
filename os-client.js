@@ -388,7 +388,64 @@
     return details;
   }
 
-  function buildCaseCard(item,tasks=[],events=[]) {
+  function buildCaseAI(run) {
+    const details=document.createElement("details");
+    details.className="hb-case-ai";
+    const summary=document.createElement("summary");
+    summary.textContent="تحليل HOSSAM BAHR AI";
+    const body=document.createElement("div");
+    body.className="hb-case-ai-body";
+    const result=run?.output_summary?.result || null;
+
+    if(run?.status==="failed"){
+      const p=document.createElement("p");
+      p.textContent="تعذر إكمال التحليل الذكي لهذه الحالة حاليًا. لم يتم تنفيذ أي إجراء خارجي.";
+      body.append(p);
+    }else if(!result){
+      const p=document.createElement("p");
+      p.textContent="يجري تجهيز التحليل الذكي للحالة.";
+      body.append(p);
+    }else{
+      const intro=document.createElement("p");
+      intro.textContent=result.summary_ar || "تم تحليل الهدف وتجهيز مسار أولي.";
+      body.append(intro);
+
+      if(result.detected_intent){
+        const intent=document.createElement("p");
+        intent.innerHTML="<b>فهم الطلب:</b> ";
+        intent.append(document.createTextNode(result.detected_intent));
+        body.append(intent);
+      }
+
+      const addList=(label,items)=>{
+        if(!Array.isArray(items)||!items.length)return;
+        const section=document.createElement("div");
+        const heading=document.createElement("b");
+        heading.textContent=label;
+        const list=document.createElement("ul");
+        for(const item of items.slice(0,6)){
+          const li=document.createElement("li");
+          li.textContent=String(item);
+          list.append(li);
+        }
+        section.append(heading,list);
+        body.append(section);
+      };
+      addList("الخطوات المقترحة",result.recommended_next_steps);
+      addList("معلومات نحتاجها",result.missing_information);
+      addList("نقاط تحتاج انتباهًا",result.risk_flags);
+
+      const note=document.createElement("small");
+      note.textContent=result.needs_human_review
+        ? "هذه قراءة مساعدة وتحتاج مراجعة بشرية/مصدرية قبل اعتماد أي معلومة تنظيمية أو إجراء حساس."
+        : "تحليل تمهيدي للمساعدة في تجهيز الحالة؛ لا ينفذ مدفوعات أو توقيعًا أو إرسالًا حكوميًا تلقائيًا.";
+      body.append(note);
+    }
+    details.append(summary,body);
+    return details;
+  }
+
+  function buildCaseCard(item,tasks=[],events=[],aiRun=null) {
     const card=document.createElement("article");
     card.className="hb-case-card";
     card.id=`case-${item.id}`;
@@ -433,6 +490,7 @@
       nextLine.textContent=total && completed===total ? "اكتملت جميع خطوات المسار." : "سيتم تحديد الخطوة التالية تلقائيًا.";
     }
     card.append(heading,progress,meta,nextLine);
+    if(aiRun)card.append(buildCaseAI(aiRun));
     if(tasks.length)card.append(buildCasePlan(tasks));
     card.append(buildCaseTimeline(events));
     appendTaskAction(card,item,next);
@@ -453,7 +511,7 @@
     }
 
     const ids=data.map((item)=>item.id);
-    const [taskResult,eventResult]=await Promise.all([
+    const [taskResult,eventResult,aiResult]=await Promise.all([
       client.from("hb_case_tasks")
         .select("id,case_id,title,status,assignee_type,requires_approval,dependency_ids,due_at,created_at,metadata")
         .in("case_id",ids)
@@ -462,7 +520,12 @@
         .select("id,case_id,event_type,actor_type,occurred_at")
         .in("case_id",ids)
         .order("occurred_at",{ascending:false})
-        .limit(200)
+        .limit(200),
+      client.from("hb_agent_runs")
+        .select("id,case_id,status,confidence,output_summary,created_at,completed_at")
+        .in("case_id",ids)
+        .order("created_at",{ascending:false})
+        .limit(100)
     ]);
 
     const byCase=new Map(ids.map((id)=>[id,[]]));
@@ -481,12 +544,20 @@
       }
     }
 
+    const latestAIByCase=new Map();
+    if(!aiResult.error){
+      for(const run of aiResult.data||[]){
+        if(run.case_id && !latestAIByCase.has(run.case_id)) latestAIByCase.set(run.case_id,run);
+      }
+    }
+
     const enriched=data.map((item)=>({
       ...item,
       _tasks:byCase.get(item.id)||[],
-      _events:eventsByCase.get(item.id)||[]
+      _events:eventsByCase.get(item.id)||[],
+      _ai:latestAIByCase.get(item.id)||null
     }));
-    target.replaceChildren(...enriched.map((item)=>buildCaseCard(item,item._tasks,item._events)));
+    target.replaceChildren(...enriched.map((item)=>buildCaseCard(item,item._tasks,item._events,item._ai)));
     syncDocumentCaseOptions(enriched);
     return enriched;
   }
@@ -726,8 +797,10 @@
       form.reset();
       renderGoalSelection(null);
       renderGoalSuggestions([]);
-      setMessage(serviceSlug ? "تم إنشاء الحالة وربطها بالمسار الموثق للخدمة المختارة." : "تم إنشاء الحالة في مسار عام آمن. يمكنك تحديد الخدمة لاحقًا.","success");
+      setMessage(serviceSlug ? "تم إنشاء الحالة وربطها بالمسار الموثق، وبدأ HOSSAM BAHR AI تحليلها." : "تم إنشاء الحالة في مسار عام آمن، وبدأ HOSSAM BAHR AI تحليلها.","success");
       const cases=await loadCases();
+      setTimeout(()=>loadCases(),3000);
+      setTimeout(()=>loadCases(),8000);
       await loadAttention();
     });
   }
