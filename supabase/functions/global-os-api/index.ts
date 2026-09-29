@@ -51,7 +51,7 @@ export default {
       return json(req, {
         ok: true,
         service: "hossambahr-global-os-api",
-        version: "1.1",
+        version: "1.2",
         authenticated: true
       });
     }
@@ -76,11 +76,20 @@ export default {
       }
 
       if (path === "/" && body.action === "health") {
-        const [{ error: readinessError }, { count: modelCount }, { count: routeCount }, { count: internalModelCount }] = await Promise.all([
+        const [
+          { error: readinessError },
+          { count: modelCount },
+          { count: routeCount },
+          { count: internalModelCount },
+          { count: countryPackCount },
+          { count: authorityCount }
+        ] = await Promise.all([
           ctx.supabase.from("hb_cases").select("id").limit(1),
           ctx.supabaseAdmin.from("hb_ai_models").select("id", { count: "exact", head: true }).eq("status", "active"),
           ctx.supabaseAdmin.from("hb_ai_routes").select("id", { count: "exact", head: true }).eq("active", true),
-          ctx.supabaseAdmin.from("hb_ai_models").select("id", { count: "exact", head: true }).eq("status", "active").eq("provider", "hossambahr")
+          ctx.supabaseAdmin.from("hb_ai_models").select("id", { count: "exact", head: true }).eq("status", "active").eq("provider", "hossambahr"),
+          ctx.supabaseAdmin.from("hb_country_packs").select("id", { count: "exact", head: true }).eq("status", "active"),
+          ctx.supabaseAdmin.from("hb_authorities").select("id", { count: "exact", head: true }).eq("active", true)
         ]);
         if (readinessError) return json(req, { ok: false, ready: false }, 503);
         const providerConfigured = Boolean(Deno.env.get("OPENAI_API_KEY"));
@@ -88,7 +97,7 @@ export default {
           ok: true,
           ready: true,
           service: "hossambahr-global-os-api",
-          version: "1.1",
+          version: "1.2",
           ai_runtime: {
             external_model_configured: providerConfigured,
             active_models: modelCount || 0,
@@ -96,6 +105,12 @@ export default {
             active_routes: routeCount || 0,
             intake_enabled: Boolean((modelCount || 0) > 0 && (routeCount || 0) > 0),
             external_intake_available: providerConfigured
+          },
+          global_architecture: {
+            active_country_packs: countryPackCount || 0,
+            active_authorities: authorityCount || 0,
+            country_pack_ready: Boolean((countryPackCount || 0) > 0 && (authorityCount || 0) > 0),
+            periodic_agents: ["operations","growth","finance","compliance"]
           }
         });
       }
