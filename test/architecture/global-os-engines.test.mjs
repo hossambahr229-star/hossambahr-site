@@ -74,3 +74,58 @@ test("AI model router rejects a model that cannot handle the requested data clas
     }]
   }), /no compliant AI model available/);
 });
+
+
+test("AI model router prefers deterministic workflow engine before external fallback", () => {
+  const model = selectModel({
+    route: {
+      active:true,
+      preferred_models:[
+        {provider:"hossambahr",modelKey:"workflow-engine-v1"},
+        {provider:"openai",modelKey:"gpt-5.6-sol"}
+      ],
+      required_capabilities:["text","reasoning","structured_output"],
+      max_data_class:"internal"
+    },
+    models:[
+      {
+        provider:"openai",
+        model_key:"gpt-5.6-sol",
+        capability_tags:["text","reasoning","structured_output"],
+        allowed_data_classes:["public","internal"],
+        regions:[],
+        status:"active"
+      },
+      {
+        provider:"hossambahr",
+        model_key:"workflow-engine-v1",
+        capability_tags:["text","reasoning","structured_output","source_grounded"],
+        allowed_data_classes:["public","internal"],
+        regions:[],
+        status:"active"
+      }
+    ]
+  });
+  assert.equal(model.provider,"hossambahr");
+  assert.equal(model.model_key,"workflow-engine-v1");
+});
+
+test("operations route accepts internal deterministic metric engine", () => {
+  const model = selectModel({
+    route: {
+      active:true,
+      preferred_models:[{provider:"hossambahr",modelKey:"operations-engine-v1"}],
+      required_capabilities:["text","reasoning","structured_output"],
+      max_data_class:"internal"
+    },
+    models:[{
+      provider:"hossambahr",
+      model_key:"operations-engine-v1",
+      capability_tags:["text","reasoning","structured_output","source_grounded","metric_analysis"],
+      allowed_data_classes:["public","internal"],
+      regions:[],
+      status:"active"
+    }]
+  });
+  assert.equal(model.model_key,"operations-engine-v1");
+});
