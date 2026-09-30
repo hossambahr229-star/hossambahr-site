@@ -635,8 +635,18 @@ async function drain(admin) {
 }
 
 export default {
-  fetch: withSupabase({ auth: "secret" }, async (req, ctx) => {
+  fetch: withSupabase({ auth: "none" }, async (req, ctx) => {
     if (req.method !== "POST") return response({ error: "method_not_allowed" }, 405);
+
+    const token = req.headers.get("x-hb-worker-token") || "";
+    const verified = await ctx.supabaseAdmin.rpc("hb_verify_internal_token", {
+      p_name: "global-os-worker",
+      p_token: token
+    });
+    if (verified.error || verified.data !== true) {
+      return response({ error: "unauthorized" }, 401);
+    }
+
     try {
       const activity = await drain(ctx.supabaseAdmin);
       return response({ ok: true, processed: activity.length > 0, activity });
