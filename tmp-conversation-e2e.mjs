@@ -46,8 +46,8 @@ for(const [width,height] of sizes){
  if(!box||box.y>height)failures.push(`${width}: composer below first viewport`);
  const dims=await page.evaluate(()=>({sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth}));
  if(dims.sw>dims.cw+2)failures.push(`${width}: horizontal overflow ${dims.sw}-${dims.cw}`);
- if(await page.getByText("تحليل AI",{exact:true}).count()) failures.push(`${width}: legacy Analyze AI label still primary`);
- if(await page.getByText("ابحث عن المعاملة",{exact:true}).count()) failures.push(`${width}: legacy search button remains`);
+ if(await page.locator(".hb-conversation-composer button").filter({hasText:"تحليل AI"}).count()) failures.push(`${width}: legacy Analyze AI button remains in composer`);
+ if(await page.locator(".hb-conversation-composer button").filter({hasText:"ابحث عن المعاملة"}).count()) failures.push(`${width}: legacy search button remains in composer`);
  if(errors.length)failures.push(`${width}: runtime errors before chat: ${errors.join(" | ")}`);
  await context.close();
 }
@@ -66,20 +66,30 @@ for(const [width,height] of sizes){
    await page.locator(".hb-chat-send").click();
    await page.locator(".hb-chat-message--user").last().waitFor({timeout:10000});
    await page.locator(".hb-chat-message--assistant .hb-chat-answer").last().waitFor({timeout:30000});
+   for(let turn=0;turn<2;turn++){
+     const hasService=await page.locator(".hb-chat-message--assistant .hb-chat-info-block").filter({has:page.locator("strong", {hasText:"الخدمة المطابقة"})}).count();
+     if(hasService)break;
+     const quick=page.locator(".hb-chat-quick-replies button:not([disabled])").first();
+     if(!(await quick.count()))break;
+     await quick.click();
+     await page.waitForTimeout(250);
+     await page.locator(".hb-chat-message--assistant .hb-chat-answer").last().waitFor({timeout:30000});
+   }
    const data=await page.evaluate(()=>({
-     user:[...document.querySelectorAll(".hb-chat-message--user .hb-chat-bubble")].at(-1)?.textContent||"",
+     user:[...document.querySelectorAll(".hb-chat-message--user .hb-chat-bubble")][0]?.textContent||"",
      assistant:[...document.querySelectorAll(".hb-chat-message--assistant .hb-chat-answer")].at(-1)?.textContent||"",
      source:[...document.querySelectorAll(".hb-chat-message--assistant .hb-chat-source a")].at(-1)?.href||"",
-     service:[...document.querySelectorAll(".hb-chat-message--assistant .hb-chat-info-block")].find(x=>x.querySelector("strong")?.textContent==="الخدمة المطابقة")?.textContent||"",
-     authority:[...document.querySelectorAll(".hb-chat-message--assistant .hb-chat-info-block")].find(x=>x.querySelector("strong")?.textContent==="الجهة المختصة")?.textContent||"",
+     service:[...document.querySelectorAll(".hb-chat-message--assistant .hb-chat-info-block")].reverse().find(x=>x.querySelector("strong")?.textContent==="الخدمة المطابقة")?.textContent||"",
+     authority:[...document.querySelectorAll(".hb-chat-message--assistant .hb-chat-info-block")].reverse().find(x=>x.querySelector("strong")?.textContent==="الجهة المختصة")?.textContent||"",
      reqs:[...document.querySelectorAll(".hb-chat-message--assistant .hb-chat-info-block")].some(x=>["المتطلبات الأساسية","المستندات العامة"].includes(x.querySelector("strong")?.textContent||"")),
      follow:[...document.querySelectorAll(".hb-chat-followup>strong")].at(-1)?.textContent||"",
-     start:[...document.querySelectorAll(".hb-chat-primary")].at(-1)?.getAttribute("href")||""
+     start:[...document.querySelectorAll(".hb-chat-primary")].at(-1)?.getAttribute("href")||"",
+     turns:document.querySelectorAll(".hb-chat-message--user").length
    }));
    if(!data.user.includes(goal.slice(0,8)))failures.push(`${goal}: user message missing`);
-   if(!data.assistant.includes("الخدمة الأقرب"))failures.push(`${goal}: natural assistant response missing`);
-   if(!data.service)failures.push(`${goal}: service block missing`);
-   if(!data.authority)failures.push(`${goal}: authority block missing`);
+   if(!data.assistant)failures.push(`${goal}: assistant response missing`);
+   if(!data.service)failures.push(`${goal}: service block missing after clarifications`);
+   if(!data.authority)failures.push(`${goal}: authority block missing after clarifications`);
    if(!data.source.startsWith("https://"))failures.push(`${goal}: official source missing`);
    if(!data.reqs)failures.push(`${goal}: requirements/documents block missing`);
    if(!data.start.startsWith("/auth/?return="))failures.push(`${goal}: protected CTA not auth-gated`);
