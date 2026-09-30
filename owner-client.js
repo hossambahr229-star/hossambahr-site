@@ -721,7 +721,9 @@
           workflows_invalid:"Workflows غير صالحة",
           bindings_total:"روابط خدمات",
           bindings_with_reference_issues:"روابط بمراجع ناقصة",
-          cross_country_slug_conflicts:"تعارض Slugs بين الدول"
+          cross_country_slug_conflicts:"تعارض Slugs بين الدول",
+          catalog_objects_total:"عناصر الكتالوج",
+          catalog_objects_pending_review:"عناصر بانتظار المراجعة"
         };
         Object.entries(preflight.metrics||{}).forEach(([key,value])=>{
           const item=document.createElement("div");
@@ -1008,6 +1010,113 @@
     renderPolicySourceMonitor(summary||{},reviewRows||[],manualRows||[],client);
   }
 
+  function renderCountryCatalogReviewQueue(rows,client) {
+    const target=$("[data-owner-country-review-queue]");
+    if(!target)return;
+    target.replaceChildren();
+
+    const heading=document.createElement("h3");
+    heading.textContent="Country Pack Review Queue";
+    target.append(heading);
+
+    if(!Array.isArray(rows)||!rows.length){
+      const p=document.createElement("p");
+      p.className="owner-analytics-note";
+      p.textContent="لا توجد عناصر Country Pack بانتظار مراجعة بشرية.";
+      target.append(p);
+      return;
+    }
+
+    const labels={
+      authority:"Authority",
+      policy_version:"Policy",
+      workflow:"Workflow",
+      service_binding:"Service Binding"
+    };
+    const list=document.createElement("div");
+
+    rows.forEach((row)=>{
+      const item=document.createElement("article");
+      item.className="owner-review-item";
+      const copy=document.createElement("div");
+      const title=document.createElement("h3");
+      title.textContent=(labels[row.object_type]||row.object_type)+" · "+(row.object_title||row.object_key||"عنصر");
+      const meta=document.createElement("p");
+      meta.textContent=(row.pack_key||"Country Pack")+(row.latest_outcome ? " · آخر قرار: "+row.latest_outcome : " · لم يُراجع بعد");
+      copy.append(title,meta);
+
+      const actions=document.createElement("div");
+      actions.className="owner-execution-fields";
+
+      const approve=document.createElement("button");
+      approve.type="button";
+      approve.textContent="اعتماد";
+      approve.addEventListener("click",async()=>{
+        const accepted=window.confirm("هل راجعت هذا العنصر ومصادره/بنيته وتؤكد أنه صالح للانتقال نحو تفعيل Country Pack؟");
+        if(!accepted)return;
+        approve.disabled=true;
+        changes.disabled=true;
+        const {error}=await client.rpc("hb_owner_review_country_catalog_object",{
+          p_object_type:row.object_type,
+          p_object_id:row.object_id,
+          p_outcome:"approved",
+          p_note:null
+        });
+        if(error){
+          approve.disabled=false;
+          changes.disabled=false;
+          const errorTarget=$("[data-owner-country-packs-error]");
+          if(errorTarget){
+            errorTarget.textContent="تعذر اعتماد عنصر Country Pack.";
+            errorTarget.hidden=false;
+          }
+          return;
+        }
+        await loadCountryCatalogReviewQueue(client);
+        await loadCountryPackHealth(client);
+      });
+
+      const changes=document.createElement("button");
+      changes.type="button";
+      changes.textContent="يحتاج تعديل";
+      changes.addEventListener("click",async()=>{
+        const accepted=window.confirm("سيبقى Country Pack غير قابل للتفعيل حتى تتم معالجة هذا العنصر واعتماده لاحقًا. هل تؤكد؟");
+        if(!accepted)return;
+        approve.disabled=true;
+        changes.disabled=true;
+        const {error}=await client.rpc("hb_owner_review_country_catalog_object",{
+          p_object_type:row.object_type,
+          p_object_id:row.object_id,
+          p_outcome:"changes_required",
+          p_note:null
+        });
+        if(error){
+          approve.disabled=false;
+          changes.disabled=false;
+          return;
+        }
+        await loadCountryCatalogReviewQueue(client);
+        await loadCountryPackHealth(client);
+      });
+
+      actions.append(approve,changes);
+      item.append(copy,actions);
+      list.append(item);
+    });
+    target.append(list);
+  }
+
+  async function loadCountryCatalogReviewQueue(client) {
+    const target=$("[data-owner-country-review-queue]");
+    if(!target)return;
+    const {data,error}=await client.rpc("hb_owner_country_catalog_review_queue",{p_limit:100});
+    if(error){
+      target.textContent="تعذر تحميل Country Pack Review Queue.";
+      return;
+    }
+    renderCountryCatalogReviewQueue(data||[],client);
+  }
+
   async function boot() {
     const client = window.HB_AUTH;
     if (!client) {
@@ -1050,6 +1159,7 @@
     loadAiInsights(client).catch(() => {});
     bindAiRefresh(client);
     loadCountryPackHealth(client).catch(() => {});
+    loadCountryCatalogReviewQueue(client).catch(() => {});
     bindCountryPackDraft(client);
     loadPolicySourceMonitor(client).catch(() => {});
 
