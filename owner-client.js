@@ -653,7 +653,7 @@
     });
   }
 
-  function renderCountryPackHealth(rows) {
+  function renderCountryPackHealth(rows,client) {
     const target=$("[data-owner-country-packs]");
     if(!target)return;
     if(!Array.isArray(rows)||!rows.length){
@@ -665,8 +665,16 @@
       card.className="owner-ai-card";
       const title=document.createElement("h3");
       title.textContent=(health.country_code || health.pack_key || "Country Pack")+" · "+(health.status || "unknown");
+
+      const preflight=health.preflight || null;
+      const readyToActivate=Boolean(preflight?.ready_to_activate);
       const meta=document.createElement("small");
-      meta.textContent=health.ready_for_activation ? "جاهز للتفعيل" : "يحتاج استكمال";
+      meta.textContent=health.status==="active"
+        ? "فعّال"
+        : readyToActivate
+          ? "اجتاز Preflight — جاهز للتفعيل البشري"
+          : "يحتاج استكمال";
+
       const metrics=health.metrics || {};
       const grid=document.createElement("div");
       grid.className="owner-ai-metrics";
@@ -696,6 +704,64 @@
         grid.append(item);
       });
       card.append(title,meta,grid);
+
+      if(preflight && health.status!=="active"){
+        const preHeading=document.createElement("b");
+        preHeading.textContent="Preflight";
+        const preGrid=document.createElement("div");
+        preGrid.className="owner-ai-metrics";
+        const preLabels={
+          authorities_total:"سلطات",
+          sources_total:"مصادر",
+          sources_unverified:"مصادر غير متحقق منها",
+          sources_review_required:"مصادر تحتاج مراجعة",
+          policies_total:"سياسات",
+          policies_with_source_issues:"سياسات بمشكلة مصدر",
+          workflows_total:"Workflows",
+          workflows_invalid:"Workflows غير صالحة",
+          bindings_total:"روابط خدمات",
+          bindings_with_reference_issues:"روابط بمراجع ناقصة",
+          cross_country_slug_conflicts:"تعارض Slugs بين الدول"
+        };
+        Object.entries(preflight.metrics||{}).forEach(([key,value])=>{
+          const item=document.createElement("div");
+          item.className="owner-ai-metric";
+          const label=document.createElement("span");
+          label.textContent=preLabels[key] || key;
+          const amount=document.createElement("b");
+          amount.textContent=number(value);
+          item.append(label,amount);
+          preGrid.append(item);
+        });
+        card.append(preHeading,preGrid);
+
+        if(readyToActivate){
+          const activate=document.createElement("button");
+          activate.type="button";
+          activate.className="owner-ai-refresh";
+          activate.textContent="تفعيل Country Pack";
+          activate.addEventListener("click",async()=>{
+            const accepted=window.confirm("هذا سيحوّل أحدث السياسات والـWorkflows والخدمات التي اجتازت Preflight إلى Active لهذه الدولة. هل راجعت المصادر الرسمية وتؤكد التفعيل؟");
+            if(!accepted)return;
+            activate.disabled=true;
+            activate.textContent="جارٍ التفعيل…";
+            const {error}=await client.rpc("hb_owner_activate_country_pack",{p_pack_key:health.pack_key});
+            if(error){
+              activate.disabled=false;
+              activate.textContent="تعذر التفعيل";
+              const errorTarget=$("[data-owner-country-packs-error]");
+              if(errorTarget){
+                errorTarget.textContent="تعذر تفعيل Country Pack. أعد فحص Preflight والمصادر الرسمية.";
+                errorTarget.hidden=false;
+              }
+              return;
+            }
+            await loadCountryPackHealth(client);
+            loadPolicySourceMonitor(client).catch(()=>{});
+          });
+          card.append(activate);
+        }
+      }
       return card;
     }));
   }
@@ -713,7 +779,7 @@
       }
       return;
     }
-    renderCountryPackHealth(data || []);
+    renderCountryPackHealth(data || [],client);
   }
 
   function bindCountryPackDraft(client) {
