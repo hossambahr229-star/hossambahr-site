@@ -318,7 +318,7 @@ body[data-ux-page="home"][data-uae-os-visual="true"] .hero-proof span::before{
 
 @media(min-width:861px){
   body[data-ux-page="home"][data-uae-os-visual="true"] .platform-hero{
-    width:min(calc(100% - 40px),1240px);
+    width:min(calc(100% - 16px),1240px);
     margin-inline:auto;
     border-radius:0 0 28px 28px;
   }
