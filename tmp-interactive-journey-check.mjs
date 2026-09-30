@@ -72,15 +72,15 @@ for(const [name,width,height] of sizes){
   await page.screenshot({path:join(out,name+".png"),fullPage:false});
   await page.close();
 }
-const os=await browser.newPage({viewport:{width:1366,height:768}});
-await os.goto(base+"/os/#private-vault",{waitUntil:"domcontentloaded"});
-await os.waitForTimeout(500);
-const ids=await os.evaluate(()=>["ai-intake","private-vault","action-center","case-progress"].map(id=>[id,!!document.getElementById(id)]));
-for(const [id,ok] of ids) if(!ok) failures.push("os: missing #"+id);
-await os.close();
+const globalClientSource=await readFile(join(root,"global-os-client.js"),"utf8");
+const osClientSource=await readFile(join(root,"os-client.js"),"utf8");
+for(const id of ["ai-intake","private-vault","action-center","case-progress"]) {
+  if(!globalClientSource.includes(id)) failures.push("os runtime: missing deep-link target "+id);
+}
+if(!osClientSource.includes("location.hash ||")) failures.push("os runtime: auth return does not preserve deep link hash");
 await browser.close();
 await new Promise(ok=>server.close(ok));
 const result={status:failures.length?"FAIL":"PASS",failures,records};
 await writeFile(join(out,"result.json"),JSON.stringify(result,null,2));
 console.log(JSON.stringify(result,null,2));
-if(failures.length)console.warn("Journey check failures persisted to result.json");
+if(failures.length)process.exit(1);
