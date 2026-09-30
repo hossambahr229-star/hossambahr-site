@@ -1,0 +1,75 @@
+name: HB AI Production Visual Verification
+on:
+  push:
+    branches:
+      - test/hb-ai-production-visual-20260930
+permissions:
+  contents: read
+jobs:
+  prod:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Verify live HOSSAM BAHR AI UX
+        env:
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+        run: |
+          node --input-type=module <<'NODE'
+          import { chromium } from "playwright";
+          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH,args:["--no-sandbox"]});
+          const failures=[];
+          for(const [width,height] of [[1366,768],[1440,900],[390,844],[430,932]]){
+            const context=await browser.newContext({viewport:{width,height}});
+            const page=await context.newPage();
+            const errors=[];page.on("pageerror",e=>errors.push(e.message));
+            await page.goto("https://hossambahr.com/",{waitUntil:"domcontentloaded",timeout:30000});
+            await page.evaluate(()=>{sessionStorage.clear();localStorage.clear()});
+            await page.reload({waitUntil:"domcontentloaded"});
+            const composer=page.locator(".hb-conversation-composer");
+            const brand=page.locator("[data-hb-ai-brand]");
+            if(!await composer.isVisible())failures.push(width+": composer missing");
+            if(!await brand.isVisible())failures.push(width+": HB AI identity missing");
+            if(!await brand.locator(".hb-ai-symbol svg").isVisible())failures.push(width+": AI symbol missing");
+            const box=await composer.boundingBox();if(!box||box.y>height)failures.push(width+": composer below first viewport");
+            const dims=await page.evaluate(()=>({sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth}));
+            if(dims.sw>dims.cw+2)failures.push(width+": overflow");
+            if(errors.length)failures.push(width+": errors "+errors.join(" | "));
+            await context.close();
+          }
+          {
+            const context=await browser.newContext({viewport:{width:390,height:844}});
+            const page=await context.newPage();
+            await page.goto("https://hossambahr.com/",{waitUntil:"domcontentloaded",timeout:30000});
+            await page.evaluate(()=>{sessionStorage.clear();localStorage.clear()});await page.reload({waitUntil:"domcontentloaded"});
+            if(await page.locator(".hb-chat-primary").count())failures.push("auth CTA before analysis");
+            await page.locator("#government-search").fill("أريد أجدد إقامة زوجتي في دبي");
+            await page.locator(".hb-chat-send").click();
+            await page.locator(".hb-chat-answer").last().waitFor({timeout:30000});
+            const d=await page.evaluate(()=>({
+              ai:[...document.querySelectorAll(".hb-ai-identity-copy strong")].at(-1)?.textContent||"",
+              service:[...document.querySelectorAll(".hb-chat-info-block")].find(x=>x.querySelector("strong")?.textContent==="الخدمة المطابقة")?.textContent||"",
+              source:document.querySelector(".hb-chat-source a")?.href||"",
+              sourceBadge:document.querySelector(".hb-ai-source-badge")?.textContent||"",
+              trust:document.querySelector(".hb-ai-trust-badge")?.textContent||"",
+              primary:document.querySelector(".hb-chat-primary")?.textContent||"",
+              save:document.querySelector(".hb-chat-save-plan")?.textContent||"",
+              href:document.querySelector(".hb-chat-primary")?.getAttribute("href")||""
+            }));
+            if(d.ai!=="HB AI")failures.push("assistant identity missing");
+            if(!/تجديد/.test(d.service))failures.push("renewal service mismatch");
+            if(!d.source.startsWith("https://"))failures.push("official source missing");
+            if(!d.sourceBadge.includes("مصدر رسمي"))failures.push("official badge missing");
+            if(!d.trust.includes("معلومة موثقة"))failures.push("verified info badge missing");
+            if(d.primary!=="ابدأ معاملتي"||d.save!=="احفظ الخطة")failures.push("transaction CTAs missing");
+            if(!d.href.startsWith("/auth/?return="))failures.push("auth gate timing wrong");
+            await context.close();
+          }
+          console.log(JSON.stringify({status:failures.length?"FAIL":"PASS",failures},null,2));
+          await browser.close();
+          if(failures.length)process.exit(1);
+          NODE
