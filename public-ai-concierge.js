@@ -112,8 +112,18 @@
     return intro;
   }
 
+  function effectiveQuestion(payload) {
+    const base = scrubLocal(state.original_goal).toLowerCase();
+    const answeredIntent = (state.answers || []).some((answer) => /تجديد|إصدار|اصدار|إلغاء|الغاء|رفض|تأخير/.test(answer));
+    if (/مشكله|مشكلة|problem/.test(base) && /اقامه|إقامة|residence/.test(base) && !answeredIntent) {
+      return "ما نوع المشكلة أو النتيجة التي تريدها في الإقامة؟";
+    }
+    return payload?.result?.follow_up_questions?.[0] || "";
+  }
+
   function quickRepliesFor(question, payload) {
     const q = String(question || "");
+    if (/نوع المشكلة|النتيجة التي تريدها/.test(q)) return ["تجديد", "إصدار جديد", "إلغاء", "رفض أو تأخير"];
     if (/إمارة|الامارة|الإماره|اماره/.test(q)) return ["دبي", "أبوظبي", "الشارقة", "إمارة أخرى"];
     if (/سارية|انتهت|منتهية|صلاحية/.test(q)) return ["سارية", "منتهية", "لست متأكدًا"];
     if (/الكفيل|الشركة/.test(q)) return ["أنا الكفيل", "الشركة هي الكفيل", "لست متأكدًا"];
@@ -141,7 +151,10 @@
   }
 
   function needsClarification(payload) {
-    return Boolean(payload?.result?.follow_up_questions?.[0]) && payload?.result?.confidence !== "high";
+    const forced = effectiveQuestion(payload);
+    if (!forced) return false;
+    if (/نوع المشكلة|النتيجة التي تريدها/.test(forced)) return true;
+    return payload?.result?.confidence !== "high";
   }
 
   function buildAssistantMessage(payload) {
@@ -183,7 +196,7 @@
       }
     }
 
-    const question = payload?.result?.follow_up_questions?.[0] || "";
+    const question = effectiveQuestion(payload);
     if (question) {
       const q = create("section", "hb-chat-followup");
       q.append(create("strong", "", question));
@@ -285,7 +298,7 @@
       authority_key: match?.authority?.key || state.authority_key || null,
       conversation_context: {
         answers: (state.answers || []).slice(-6).map(scrubLocal),
-        last_question: payload?.result?.follow_up_questions?.[0] || null,
+        last_question: effectiveQuestion(payload) || null,
         assistant_summary: payload?.result?.understood_intent || null
       }
     };
