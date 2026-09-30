@@ -1,0 +1,36 @@
+name: UAE OS Visual Smoke
+
+on:
+  push:
+    branches:
+      - feat/uae-ai-os-visual-upgrade-20260930
+
+permissions:
+  contents: read
+
+concurrency:
+  group: uae-os-visual-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install browser runtime
+        run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Build
+        run: npm run build
+      - name: UAE OS responsive visual smoke
+        env:
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+        run: node tmp-uae-visual-smoke.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uae-os-visual-smoke
+          path: artifacts/uae-os-visual-smoke
