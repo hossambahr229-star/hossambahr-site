@@ -766,10 +766,11 @@
     });
   }
 
-  function renderPolicySourceMonitor(summary,rows) {
+  function renderPolicySourceMonitor(summary,reviewRows,manualRows,client) {
     const target=$("[data-owner-source-monitor]");
     const reviewTarget=$("[data-owner-source-review]");
-    if(!target || !reviewTarget)return;
+    const manualTarget=$("[data-owner-source-manual]");
+    if(!target || !reviewTarget || !manualTarget)return;
 
     const metrics=[
       ["المصادر الرسمية",summary?.sources_total],
@@ -792,47 +793,144 @@
       return item;
     }));
 
-    if(!Array.isArray(rows)||!rows.length){
+    if(!Array.isArray(reviewRows)||!reviewRows.length){
       reviewTarget.replaceChildren();
       const p=document.createElement("p");
       p.className="owner-analytics-note";
-      p.textContent="لا توجد مصادر معلّمة لمراجعة بشرية حاليًا.";
+      p.textContent="لا توجد مصادر معلّمة لمراجعة تغيير حاليًا.";
       reviewTarget.append(p);
+    }else{
+      const heading=document.createElement("h3");
+      heading.textContent="مصادر تحتاج مراجعة تغيير";
+      const list=document.createElement("div");
+      reviewRows.forEach((row)=>{
+        const item=document.createElement("div");
+        item.className="owner-row";
+        const copy=document.createElement("div");
+        const title=document.createElement("b");
+        title.textContent=row.title || row.authority_key || "مصدر رسمي";
+        const meta=document.createElement("span");
+        const status=row.last_http_status ? `HTTP ${row.last_http_status}` : "بدون استجابة";
+        meta.textContent=`${row.authority_key || "جهة"} · ${status} · إخفاقات ${number(row.monitor_failures)}`;
+        copy.append(title,meta);
+        const link=document.createElement("a");
+        link.href=row.source_url;
+        link.target="_blank";
+        link.rel="noopener noreferrer";
+        link.textContent="فتح المصدر الرسمي";
+        item.append(copy,link);
+        list.append(item);
+      });
+      reviewTarget.replaceChildren(heading,list);
+    }
+
+    manualTarget.replaceChildren();
+    const manualHeading=document.createElement("h3");
+    manualHeading.textContent="المراجعة اليدوية للمصادر غير القابلة للمراقبة من الخادم";
+    manualTarget.append(manualHeading);
+
+    if(!Array.isArray(manualRows)||!manualRows.length){
+      const p=document.createElement("p");
+      p.className="owner-analytics-note";
+      p.textContent="لا توجد مصادر في المسار اليدوي.";
+      manualTarget.append(p);
       return;
     }
 
-    const heading=document.createElement("h3");
-    heading.textContent="مصادر تحتاج مراجعة";
-    const list=document.createElement("div");
-    rows.forEach((row)=>{
+    const manualList=document.createElement("div");
+    manualRows.slice(0,25).forEach((row)=>{
       const item=document.createElement("div");
-      item.className="owner-row";
+      item.className="owner-review-item";
+
       const copy=document.createElement("div");
-      const title=document.createElement("b");
+      const title=document.createElement("h3");
       title.textContent=row.title || row.authority_key || "مصدر رسمي";
-      const meta=document.createElement("span");
-      const status=row.last_http_status ? `HTTP ${row.last_http_status}` : "بدون استجابة";
-      meta.textContent=`${row.authority_key || "جهة"} · ${status} · إخفاقات ${number(row.monitor_failures)}`;
+      const meta=document.createElement("p");
+      const verified=row.last_verified_at ? new Date(row.last_verified_at).toLocaleDateString("ar-AE") : "لم يسجل تحقق سابق";
+      meta.textContent=`${row.authority_key || "جهة"} · آخر تحقق: ${verified}`;
       copy.append(title,meta);
+
+      const actions=document.createElement("div");
+      actions.className="owner-execution-fields";
+
       const link=document.createElement("a");
       link.href=row.source_url;
       link.target="_blank";
       link.rel="noopener noreferrer";
       link.textContent="فتح المصدر الرسمي";
-      item.append(copy,link);
-      list.append(item);
+
+      const verifiedButton=document.createElement("button");
+      verifiedButton.type="button";
+      verifiedButton.textContent="تم التحقق — لا تغيير";
+      verifiedButton.addEventListener("click",async()=>{
+        const accepted=window.confirm("هل راجعت المصدر الرسمي فعليًا وتأكدت أن المعلومات المعتمدة لم تتغير؟ سيُحدّث تاريخ التحقق فقط ولن تتغير أي Policy.");
+        if(!accepted)return;
+        verifiedButton.disabled=true;
+        changedButton.disabled=true;
+        const {error}=await client.rpc("hb_owner_record_policy_source_review",{
+          p_source_id:row.source_id,
+          p_outcome:"verified_no_change",
+          p_note:null
+        });
+        if(error){
+          verifiedButton.disabled=false;
+          changedButton.disabled=false;
+          const errorTarget=$("[data-owner-source-monitor-error]");
+          if(errorTarget){
+            errorTarget.textContent="تعذر تسجيل مراجعة المصدر.";
+            errorTarget.hidden=false;
+          }
+          return;
+        }
+        await loadPolicySourceMonitor(client);
+      });
+
+      const changedButton=document.createElement("button");
+      changedButton.type="button";
+      changedButton.textContent="يوجد تغيير";
+      changedButton.addEventListener("click",async()=>{
+        const accepted=window.confirm("سيتم تعليم المصدر بأنه تغيّر ويحتاج مراجعة Policy. لن يتم تعديل أو نشر أي سياسة تلقائيًا. هل تؤكد؟");
+        if(!accepted)return;
+        verifiedButton.disabled=true;
+        changedButton.disabled=true;
+        const {error}=await client.rpc("hb_owner_record_policy_source_review",{
+          p_source_id:row.source_id,
+          p_outcome:"change_detected",
+          p_note:null
+        });
+        if(error){
+          verifiedButton.disabled=false;
+          changedButton.disabled=false;
+          const errorTarget=$("[data-owner-source-monitor-error]");
+          if(errorTarget){
+            errorTarget.textContent="تعذر تسجيل تغيّر المصدر.";
+            errorTarget.hidden=false;
+          }
+          return;
+        }
+        await loadPolicySourceMonitor(client);
+      });
+
+      actions.append(link,verifiedButton,changedButton);
+      item.append(copy,actions);
+      manualList.append(item);
     });
-    reviewTarget.replaceChildren(heading,list);
+    manualTarget.append(manualList);
   }
 
   async function loadPolicySourceMonitor(client) {
     const target=$("[data-owner-source-monitor]");
     if(!target)return;
-    const [{data:summary,error:summaryError},{data:rows,error:rowsError}]=await Promise.all([
+    const [
+      {data:summary,error:summaryError},
+      {data:reviewRows,error:reviewError},
+      {data:manualRows,error:manualError}
+    ]=await Promise.all([
       client.rpc("hb_owner_policy_source_monitor"),
-      client.rpc("hb_owner_policy_sources_needing_review",{p_limit:25})
+      client.rpc("hb_owner_policy_sources_needing_review",{p_limit:25}),
+      client.rpc("hb_owner_manual_policy_sources",{p_limit:50})
     ]);
-    if(summaryError || rowsError){
+    if(summaryError || reviewError || manualError){
       target.textContent="تعذر تحميل Policy Source Monitor.";
       const errorTarget=$("[data-owner-source-monitor-error]");
       if(errorTarget){
@@ -841,7 +939,7 @@
       }
       return;
     }
-    renderPolicySourceMonitor(summary||{},rows||[]);
+    renderPolicySourceMonitor(summary||{},reviewRows||[],manualRows||[],client);
   }
 
   async function boot() {
