@@ -937,11 +937,55 @@
     });
   }
 
+  const HANDOFF_KEY="hb-public-ai-handoff-v1";
+  function readPublicHandoff(){
+    try{
+      const raw=sessionStorage.getItem(HANDOFF_KEY)||localStorage.getItem(HANDOFF_KEY);
+      if(!raw)return null;
+      const value=JSON.parse(raw);
+      if(!value?.goal||!value?.expires_at||Date.now()>Number(value.expires_at)){
+        sessionStorage.removeItem(HANDOFF_KEY);localStorage.removeItem(HANDOFF_KEY);return null;
+      }
+      return value;
+    }catch{return null;}
+  }
+  function clearPublicHandoff(){
+    try{sessionStorage.removeItem(HANDOFF_KEY);}catch{}
+    try{localStorage.removeItem(HANDOFF_KEY);}catch{}
+  }
+  async function consumePublicHandoff(session){
+    const params=new URLSearchParams(location.search);
+    if(params.get("handoff")!=="1")return;
+    const handoff=readPublicHandoff();
+    const goal=$("#os-goal");
+    const service=$("[data-os-selected-service]");
+    if(handoff?.goal&&goal)goal.value=handoff.goal;
+    if(handoff?.service_slug&&service)service.value=handoff.service_slug;
+    if(params.get("start")!=="1"||!handoff?.goal)return;
+    const marker="hb-handoff-consumed:"+handoff.id;
+    try{if(sessionStorage.getItem(marker)==="1")return;}catch{}
+    try{
+      if(!window.HB_OS_API)throw new Error("Global OS API unavailable");
+      await window.HB_OS_API.createCase({
+        title:handoff.goal.slice(0,180),
+        goal:handoff.goal,
+        service_slug:handoff.service_slug||null,
+        country_pack_key:"country:AE"
+      });
+      try{sessionStorage.setItem(marker,"1");}catch{}
+      clearPublicHandoff();
+      history.replaceState(null,"","/os/#case-progress");
+      setMessage("تم حفظ خطتك وبدء المعاملة من نفس الهدف الذي حللته قبل تسجيل الدخول.","success");
+    }catch{
+      setMessage("تم الاحتفاظ بهدفك، لكن تعذر إنشاء المعاملة الآن. يمكنك المحاولة من زر «ابدأ الحالة».","error");
+    }
+  }
+
   async function boot() {
     if (location.pathname !== "/os/") return;
     const {data}=await client.auth.getSession();
     if(!data.session){
-      location.replace(`/auth/?return=${encodeURIComponent(`/os/${location.hash || ""}`)}`);
+      location.replace(`/auth/?return=${encodeURIComponent(location.pathname + location.search + location.hash)}`);
       return;
     }
     if(!window.HB_OS_API || !await window.HB_OS_API.health()){
@@ -970,6 +1014,7 @@
     setupGoalResolver();
     await loadJurisdictions();
     await setupGoal(data.session);
+    await consumePublicHandoff(data.session);
     await setupOrganization(data.session);
     await setupDocumentUpload(data.session);
     const cases=await loadCases();
