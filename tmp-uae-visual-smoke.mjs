@@ -27,8 +27,8 @@ const failures=[];
 for(const [name,width,height] of sizes){
   const page=await browser.newPage({viewport:{width,height}});
   const runtime=[]; page.on("pageerror",e=>runtime.push(e.message));
-  await page.goto(base+"/?uae-os-smoke=1",{waitUntil:"networkidle",timeout:60000});
-  await page.waitForTimeout(350);
+  await page.goto(base+"/?uae-os-smoke=1",{waitUntil:"domcontentloaded",timeout:30000});
+  await page.waitForTimeout(650);
   const before=await page.evaluate(()=>{
     const hero=document.querySelector(".platform-hero");
     const visual=document.querySelector("[data-uae-os-journey]");
