@@ -640,7 +640,7 @@ async function processAgentJob(admin) {
       confidence,
       output_summary: {
         route_key: route.route_key,
-        data_class: DATA_CLASS,
+        data_class: route.max_data_class || DATA_CLASS,
         minimized_input: true,
         execution_mode: model.provider === "hossambahr" ? "deterministic" : "model",
         provider_response_id: result.response_id,
