@@ -376,8 +376,8 @@ async function deterministicPlanner(admin, caseRow, binding) {
   }
 
   const expected = Array.isArray(template.definition?.steps) ? template.definition.steps : [];
-  const expectedKeys = new Set(expected.map((step) => String(step?.key || "")).filter(Boolean));
-  const actualKeys = new Set(actual.map((task) => String(task?.metadata?.workflow_step_key || "")).filter(Boolean));
+  const expectedKeys = new Set<string>(expected.map((step) => String(step?.key || "")).filter(Boolean) as string[]);
+  const actualKeys = new Set<string>(actual.map((task) => String(task?.metadata?.workflow_step_key || "")).filter(Boolean) as string[]);
   const missing = [...expectedKeys].filter((key) => !actualKeys.has(key));
   const extra = [...actualKeys].filter((key) => !expectedKeys.has(key));
   const drifted = missing.length > 0 || extra.length > 0 || expected.length !== actual.length;
