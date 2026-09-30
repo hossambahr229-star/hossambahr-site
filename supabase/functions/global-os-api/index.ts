@@ -1,5 +1,9 @@
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 
+declare const EdgeRuntime: {
+  waitUntil(promise: Promise<unknown>): void;
+};
+
 const ALLOWED_ORIGINS = new Set([
   "https://hossambahr.com",
   "https://www.hossambahr.com",

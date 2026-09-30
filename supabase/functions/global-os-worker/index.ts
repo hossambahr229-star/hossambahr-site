@@ -146,7 +146,7 @@ async function callOpenAI({ apiKey, model, route, caseRow, binding }) {
     }
   };
 
-  let lastError = null;
+  let lastError: Error | null = null;
   for (let attempt = 1; attempt <= 2; attempt++) {
     const upstream = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
@@ -330,7 +330,9 @@ async function deterministicQuality(admin, caseRow) {
 
 async function deterministicPlanner(admin, caseRow, binding) {
   const workflowKey = binding?.workflow_key || caseRow.metadata?.workflow_key || null;
-  let template = null;
+  type WorkflowStep = { key?: unknown; title?: unknown };
+  type WorkflowTemplate = { version?: unknown; definition?: { steps?: WorkflowStep[] } };
+  let template: WorkflowTemplate | null = null;
 
   if (workflowKey && workflowKey !== "generic:intake") {
     const templateResult = await admin
@@ -374,8 +376,8 @@ async function deterministicPlanner(admin, caseRow, binding) {
   }
 
   const expected = Array.isArray(template.definition?.steps) ? template.definition.steps : [];
-  const expectedKeys = new Set(expected.map((step) => String(step?.key || "")).filter(Boolean));
-  const actualKeys = new Set(actual.map((task) => String(task?.metadata?.workflow_step_key || "")).filter(Boolean));
+  const expectedKeys = new Set<string>(expected.map((step) => String(step?.key || "")).filter(Boolean) as string[]);
+  const actualKeys = new Set<string>(actual.map((task) => String(task?.metadata?.workflow_step_key || "")).filter(Boolean) as string[]);
   const missing = [...expectedKeys].filter((key) => !actualKeys.has(key));
   const extra = [...actualKeys].filter((key) => !expectedKeys.has(key));
   const drifted = missing.length > 0 || extra.length > 0 || expected.length !== actual.length;
@@ -694,7 +696,7 @@ async function processAgentJob(admin) {
 }
 
 async function drain(admin) {
-  const activity = [];
+  const activity: Array<Record<string, unknown>> = [];
   for (let i = 0; i < MAX_DRAIN; i++) {
     let didWork = false;
     try {
