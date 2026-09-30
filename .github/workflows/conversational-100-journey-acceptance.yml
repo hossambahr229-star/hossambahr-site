@@ -1,0 +1,30 @@
+name: Conversational 100 Journey Acceptance
+on:
+  push:
+    branches:
+      - fix/conversational-100-journey-acceptance-20260930
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: browser-actions/setup-chrome@v1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - name: Run 100 conversational journeys against Production
+        env:
+          HB_NODE_MODULES: ${{ github.workspace }}/node_modules
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+          HB_BASE_URL: https://hossambahr.com
+          HB_OUTPUT_DIR: ${{ github.workspace }}/artifacts/conversational-100
+        run: node final-platform-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: conversational-100-journeys
+          path: artifacts/conversational-100
