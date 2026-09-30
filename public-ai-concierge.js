@@ -47,6 +47,80 @@
   let composer = null;
   let form = null;
   let sendButton = null;
+  let attachmentInput = null;
+  let attachmentTray = null;
+  let pendingAttachment = null;
+
+
+  const TEXT_DOCUMENT_TYPES = new Set(["text/plain","text/markdown","text/csv","application/json","application/xml","text/xml"]);
+  const TEXT_DOCUMENT_EXTENSIONS = /\\.(txt|md|csv|json|xml)$/i;
+  const MAX_PUBLIC_DOCUMENT_BYTES = 2 * 1024 * 1024;
+
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + " B";
+    if (bytes < 1024 * 1024) return Math.round(bytes / 1024) + " KB";
+    return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+  }
+
+  function renderAttachmentTray() {
+    if (!attachmentTray) return;
+    attachmentTray.replaceChildren();
+    if (!pendingAttachment) {
+      attachmentTray.hidden = true;
+      return;
+    }
+    attachmentTray.hidden = false;
+    const card = create("div", "hb-ai-attachment-card");
+    const meta = create("div", "hb-ai-attachment-meta");
+    meta.append(create("strong", "", pendingAttachment.name));
+    meta.append(create("small", "", formatBytes(pendingAttachment.size) + " • " + (pendingAttachment.type || "ملف")));
+    const actions = create("div", "hb-ai-attachment-actions");
+    const analyzeButton = create("button", "hb-ai-document-analyze", "تحليل المستند");
+    analyzeButton.type = "button";
+    analyzeButton.addEventListener("click", analyzeAttachedDocument);
+    const removeButton = create("button", "hb-ai-document-remove", "إزالة");
+    removeButton.type = "button";
+    removeButton.addEventListener("click", () => {
+      pendingAttachment = null;
+      if (attachmentInput) attachmentInput.value = "";
+      renderAttachmentTray();
+    });
+    actions.append(analyzeButton, removeButton);
+    card.append(meta, actions);
+    attachmentTray.append(card);
+  }
+
+  async function analyzeAttachedDocument() {
+    const file = pendingAttachment;
+    if (!file) return;
+    if (file.size > MAX_PUBLIC_DOCUMENT_BYTES) {
+      addBubble("assistant", "لحماية الخصوصية وسرعة التحليل العام، الحد الحالي للمستند قبل تسجيل الدخول هو 2 MB. يمكنك وصف المعاملة هنا، أو تسجيل الدخول عند بدء المعاملة لرفع المستند ضمن مساحة المستندات الآمنة.");
+      return;
+    }
+    const isText = TEXT_DOCUMENT_TYPES.has(file.type) || TEXT_DOCUMENT_EXTENSIONS.test(file.name);
+    if (!isText) {
+      addBubble("assistant", "تعرفت على الملف «" + file.name + "»، لكن تحليل محتوى PDF والصور لا يتم إرساله مجهولًا من هذه الواجهة حفاظًا على مستنداتك الشخصية. يمكنك متابعة الاستشارة الآن بدون تسجيل، وعند «ابدأ معاملتي» يصبح رفع المستند إلى مساحة المستندات الآمنة متاحًا بعد تسجيل الدخول.");
+      return;
+    }
+    const pending = addStatus();
+    try {
+      const raw = await file.text();
+      const cleaned = scrubLocal(raw.replace(/\\s+/g, " ").slice(0, 600));
+      removePending(pending);
+      if (cleaned.length < 4) {
+        addBubble("assistant", "لم أجد نصًا قابلًا للتحليل داخل هذا المستند.");
+        return;
+      }
+      addBubble("user", "حلّل هذا المستند: " + file.name);
+      pendingAttachment = null;
+      if (attachmentInput) attachmentInput.value = "";
+      renderAttachmentTray();
+      await analyze("محتوى مستند " + file.name + ": " + cleaned, { fromDocument: true, suppressUserBubble: true });
+    } catch {
+      removePending(pending);
+      addBubble("assistant", "تعذر قراءة هذا المستند محليًا. لم يتم رفعه أو حفظه. يمكنك وصف محتواه أو بدء المعاملة لرفعه ضمن المساحة الآمنة.");
+    }
+  }
 
   function scrubLocal(value) {
     return String(value || "")
@@ -377,7 +451,7 @@
     const displayed = scrubLocal(userMessage);
     if (displayed.length < 2) return;
     document.body.classList.add("hb-chat-engaged");
-    if (!options.fromQuickReply) addBubble("user", displayed);
+    if (!options.fromQuickReply && !options.suppressUserBubble) addBubble("user", displayed);
     const pending = addStatus();
     sendButton && (sendButton.disabled = true);
 
@@ -534,6 +608,27 @@
     sendButton.type = "submit";
     sendButton.setAttribute("aria-label", "إرسال السؤال إلى HOSSAM BAHR AI");
     row?.append(sendButton);
+
+    const toolRow = create("div", "hb-ai-composer-tools");
+    const attachLabel = create("label", "hb-ai-attach-control");
+    attachLabel.setAttribute("for", "hb-ai-document-input");
+    attachLabel.textContent = "＋ إرفاق مستند";
+    attachmentInput = document.createElement("input");
+    attachmentInput.id = "hb-ai-document-input";
+    attachmentInput.type = "file";
+    attachmentInput.accept = ".txt,.md,.csv,.json,.xml,.pdf,image/*";
+    attachmentInput.hidden = true;
+    attachmentInput.addEventListener("change", () => {
+      pendingAttachment = attachmentInput.files?.[0] || null;
+      renderAttachmentTray();
+    });
+    attachLabel.append(attachmentInput);
+    const privacy = create("span", "hb-ai-local-analysis-note", "التحليل العام للنصوص يتم محليًا • الحفظ والرفع الآمن عند بدء المعاملة");
+    toolRow.append(attachLabel, privacy);
+    attachmentTray = create("div", "hb-ai-attachment-tray");
+    attachmentTray.hidden = true;
+    form.append(toolRow, attachmentTray);
+
 
     const shell = create("section", "hb-chat-shell");
     shell.dataset.chatShell = "true";
