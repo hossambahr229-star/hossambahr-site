@@ -146,7 +146,7 @@ async function callOpenAI({ apiKey, model, route, caseRow, binding }) {
     }
   };
 
-  let lastError = null;
+  let lastError: Error | null = null;
   for (let attempt = 1; attempt <= 2; attempt++) {
     const upstream = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
@@ -330,7 +330,9 @@ async function deterministicQuality(admin, caseRow) {
 
 async function deterministicPlanner(admin, caseRow, binding) {
   const workflowKey = binding?.workflow_key || caseRow.metadata?.workflow_key || null;
-  let template = null;
+  type WorkflowStep = { key?: unknown; title?: unknown };
+  type WorkflowTemplate = { version?: unknown; definition?: { steps?: WorkflowStep[] } };
+  let template: WorkflowTemplate | null = null;
 
   if (workflowKey && workflowKey !== "generic:intake") {
     const templateResult = await admin
@@ -694,7 +696,7 @@ async function processAgentJob(admin) {
 }
 
 async function drain(admin) {
-  const activity = [];
+  const activity: Array<Record<string, unknown>> = [];
   for (let i = 0; i < MAX_DRAIN; i++) {
     let didWork = false;
     try {
