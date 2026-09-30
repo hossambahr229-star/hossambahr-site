@@ -859,3 +859,25 @@ body[data-ux-page="home"] .hb-chat-prompts button:focus-visible{
     overflow-wrap:anywhere;
   }
 }
+
+
+/* HB AI Experience Upgrade — document-aware premium composer */
+body[data-ux-page="home"] .hb-conversation-stage{position:relative}
+body[data-ux-page="home"] .hb-conversation-stage::before{content:"";position:absolute;inset:-18px -16px auto;height:170px;pointer-events:none;background:radial-gradient(circle at 70% 15%,rgba(56,168,142,.13),transparent 54%),radial-gradient(circle at 22% 8%,rgba(198,168,95,.10),transparent 46%);filter:blur(10px);z-index:-1}
+body[data-ux-page="home"] .hb-ai-composer-tools{display:flex;align-items:center;justify-content:space-between;gap:.55rem;margin-top:.48rem;padding-top:.46rem;border-top:1px solid #e4ece9}
+body[data-ux-page="home"] .hb-ai-attach-control{display:inline-flex!important;align-items:center;justify-content:center;min-height:34px!important;margin:0!important;padding:.32rem .55rem!important;border:1px solid rgba(56,168,142,.38);border-radius:10px;color:#174d41!important;background:#f5fbf9;cursor:pointer;font-size:.69rem!important;font-weight:900!important}
+body[data-ux-page="home"] .hb-ai-attach-control:hover,body[data-ux-page="home"] .hb-ai-attach-control:focus-within{border-color:#38a88e;background:#eaf8f4;outline:none}
+body[data-ux-page="home"] .hb-ai-local-analysis-note{color:#71817c;font-size:.59rem;line-height:1.35;text-align:end}
+body[data-ux-page="home"] .hb-ai-attachment-tray{margin-top:.42rem}
+body[data-ux-page="home"] .hb-ai-attachment-tray[hidden]{display:none!important}
+body[data-ux-page="home"] .hb-ai-attachment-card{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.52rem .58rem;border:1px solid #dce9e4;border-radius:12px;background:linear-gradient(135deg,#f8fcfa,#fffaf0)}
+body[data-ux-page="home"] .hb-ai-attachment-meta{display:grid;gap:.08rem;min-width:0}
+body[data-ux-page="home"] .hb-ai-attachment-meta strong{max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#193f36;font-size:.7rem}
+body[data-ux-page="home"] .hb-ai-attachment-meta small{color:#73837e;font-size:.58rem}
+body[data-ux-page="home"] .hb-ai-attachment-actions{display:flex;gap:.3rem;flex:0 0 auto}
+body[data-ux-page="home"] .hb-ai-attachment-actions button{min-height:32px;padding:.3rem .48rem;border-radius:9px;font:inherit;font-size:.64rem;font-weight:900;cursor:pointer}
+body[data-ux-page="home"] .hb-ai-document-analyze{border:0;background:linear-gradient(135deg,#0a5849,#073f34);color:#fff}
+body[data-ux-page="home"] .hb-ai-document-remove{border:1px solid #d7dfdc;background:#fff;color:#5b6d67}
+body[data-ux-page="home"] .hb-chat-shell:has(.hb-chat-message:nth-child(n+3)){min-height:190px}
+body[data-ux-page="home"].hb-chat-engaged .hero-copy{opacity:.96}
+@media(max-width:560px){body[data-ux-page="home"] .hb-ai-composer-tools{align-items:flex-start;flex-direction:column}.hb-ai-local-analysis-note{text-align:start!important}body[data-ux-page="home"] .hb-ai-attachment-card{align-items:flex-start;flex-direction:column}body[data-ux-page="home"] .hb-ai-attachment-actions{width:100%}body[data-ux-page="home"] .hb-ai-attachment-actions button{flex:1}body[data-ux-page="home"] .hb-chat-shell:has(.hb-chat-message:nth-child(n+3)){min-height:160px}}
