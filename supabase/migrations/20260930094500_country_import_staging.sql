@@ -38,6 +38,8 @@ create index if not exists hb_country_pack_import_items_status_idx
   on public.hb_country_pack_import_items(batch_id,status,item_type);
 create index if not exists hb_country_pack_import_batches_pack_idx
   on public.hb_country_pack_import_batches(country_pack_id,created_at desc);
+create index if not exists hb_country_pack_import_batches_created_by_idx
+  on public.hb_country_pack_import_batches(created_by,created_at desc);
 
 alter table public.hb_country_pack_import_batches enable row level security;
 alter table public.hb_country_pack_import_items enable row level security;
