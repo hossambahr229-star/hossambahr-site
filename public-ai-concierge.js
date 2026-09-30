@@ -697,14 +697,25 @@
 
     stage.querySelector(".homepage-secondary-actions")?.remove();
 
+    const submitComposer = () => {
+      const value = composer.value.trim();
+      if (!value || analysisInFlight) return composer.focus();
+      composer.value = "";
+      composer.style.height = "auto";
+      analyze(value);
+    };
+
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       event.stopImmediatePropagation();
-      const value = composer.value.trim();
-      if (!value) return composer.focus();
-      composer.value = "";
-      analyze(value);
+      submitComposer();
     }, true);
+
+    sendButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      submitComposer();
+    });
 
     const autoGrow = () => {
       composer.style.height = "auto";
