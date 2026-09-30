@@ -1,4 +1,8 @@
-import { withSupabase } from "npm:@supabase/server@1.8.0";\n\ndeclare const EdgeRuntime: {\n  waitUntil(promise: Promise<unknown>): void;\n};
+import { withSupabase } from "npm:@supabase/server@1.8.0";
+
+declare const EdgeRuntime: {
+  waitUntil(promise: Promise<unknown>): void;
+};
 
 const ALLOWED_ORIGINS = new Set([
   "https://hossambahr.com",
