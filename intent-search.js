@@ -467,7 +467,7 @@ export function bootstrapIntentSearch() {
   if (query) { input.value = query; submit(); }
 }
 
-if (typeof document !== 'undefined') {
+if (typeof document !== 'undefined' && globalThis.HB_DISABLE_INTENT_SEARCH_BOOTSTRAP !== true) {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootstrapIntentSearch, { once: true });
   else bootstrapIntentSearch();
 }
