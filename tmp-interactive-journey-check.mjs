@@ -22,7 +22,8 @@ await new Promise(ok=>server.listen(0,"127.0.0.1",ok));
 const base="http://127.0.0.1:"+server.address().port;
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||undefined,args:["--no-sandbox"]});
 const sizes=[["mobile-390",390,844],["mobile-430",430,932],["laptop-1366",1366,768]];
-const failures=[];\nconst records=[];
+const failures=[];
+const records=[];
 for(const [name,width,height] of sizes){
   const page=await browser.newPage({viewport:{width,height}});
   const errors=[]; page.on("pageerror",e=>errors.push(e.message));
@@ -58,7 +59,8 @@ for(const [name,width,height] of sizes){
   if(name==="laptop-1366" && summary.belowTop>760)failures.push(name+": next content not visible in first viewport; top="+summary.belowTop);
   if(!summary.osLinks.includes("/os/#ai-intake")||!summary.osLinks.includes("/os/#private-vault")||!summary.osLinks.includes("/os/#action-center")||!summary.osLinks.includes("/os/#case-progress"))failures.push(name+": missing OS deep link");
   if(!summary.osLinks.includes("/authorities/"))failures.push(name+": authority deep link missing");
-  if(errors.length)failures.push(name+": runtime "+errors.join(" | "));\n  records.push({name,...summary});
+  if(errors.length)failures.push(name+": runtime "+errors.join(" | "));
+  records.push({name,...summary});
 
   const goal=page.locator('[data-journey-action="goal"]');
   await goal.focus();
@@ -71,7 +73,8 @@ for(const [name,width,height] of sizes){
   await page.close();
 }
 const os=await browser.newPage({viewport:{width:1366,height:768}});
-await os.goto(base+"/os/#private-vault",{waitUntil:"domcontentloaded"});\nawait os.waitForTimeout(500);
+await os.goto(base+"/os/#private-vault",{waitUntil:"domcontentloaded"});
+await os.waitForTimeout(500);
 const ids=await os.evaluate(()=>["ai-intake","private-vault","action-center","case-progress"].map(id=>[id,!!document.getElementById(id)]));
 for(const [id,ok] of ids) if(!ok) failures.push("os: missing #"+id);
 await os.close();
