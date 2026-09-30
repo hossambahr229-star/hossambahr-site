@@ -122,13 +122,40 @@
     return [];
   }
 
-  function buildAssistantMessage(payload) {
-    const match = payload?.result?.matches?.[0] || null;
-    const body = create("div", "hb-chat-answer");
-    body.append(create("p", "hb-chat-answer-intro", assistantNaturalIntro(payload, match)));
+  function selectPresentationMatch(payload) {
+    const matches = Array.isArray(payload?.result?.matches) ? [...payload.result.matches] : [];
+    if (!matches.length) return null;
+    const q = scrubLocal(state.resolved_query || state.original_goal).toLowerCase();
+    const score = (match) => {
+      const text = [match?.service_slug, match?.service_name].filter(Boolean).join(" ").toLowerCase();
+      let s = 0;
+      if (/اجدد|تجديد|renew/.test(q) && /تجديد|renew/.test(text)) s += 120;
+      if (/انقل|نقل|transfer/.test(q) && /نقل|transfer/.test(text)) s += 120;
+      if (/افتح شركة|تأسيس شركة|فتح شركة|open company|start company/.test(q) && /اصدار|إصدار|issue|licen|رخص/.test(text)) s += 100;
+      if (/والدتي|والدتي|الوالدين|والد|والده|والدة/.test(q) && /والد|parent|family|اسر|أسرة/.test(text)) s += 70;
+      return s;
+    };
+    matches.sort((a,b)=>score(b)-score(a));
+    if (payload?.result) payload.result.matches = matches;
+    return matches[0];
+  }
 
-    if (!match) {
-      body.append(create("p", "", "أحتاج معلومة إضافية واحدة حتى أحدد الخدمة الموثقة المناسبة بدل التخمين."));
+  function needsClarification(payload) {
+    return Boolean(payload?.result?.follow_up_questions?.[0]) && payload?.result?.confidence !== "high";
+  }
+
+  function buildAssistantMessage(payload) {
+    const match = selectPresentationMatch(payload);
+    const uncertain = needsClarification(payload);
+    const body = create("div", "hb-chat-answer");
+    if (uncertain) {
+      body.append(create("p", "hb-chat-answer-intro", "أفهم طلبك، لكن أحتاج معلومة واحدة إضافية حتى أحدد الخدمة والجهة بدقة بدل التخمين."));
+    } else {
+      body.append(create("p", "hb-chat-answer-intro", assistantNaturalIntro(payload, match)));
+    }
+
+    if (!match || uncertain) {
+      if (!uncertain) body.append(create("p", "", "أحتاج معلومة إضافية واحدة حتى أحدد الخدمة الموثقة المناسبة بدل التخمين."));
     } else {
       const facts = create("div", "hb-chat-facts");
       if (match.service_name) facts.append(makeInfoBlock("الخدمة المطابقة", match.service_name));
@@ -174,20 +201,22 @@
       body.append(q);
     }
 
-    const actions = create("div", "hb-chat-actions");
-    if (match?.service_url) {
-      const details = document.createElement("a");
-      details.className = "hb-chat-secondary";
-      details.href = match.service_url;
-      details.textContent = "تفاصيل الخدمة";
-      actions.append(details);
+    if (!uncertain && match) {
+      const actions = create("div", "hb-chat-actions");
+      if (match.service_url) {
+        const details = document.createElement("a");
+        details.className = "hb-chat-secondary";
+        details.href = match.service_url;
+        details.textContent = "تفاصيل الخدمة";
+        actions.append(details);
+      }
+      const start = document.createElement("a");
+      start.className = "hb-chat-primary";
+      start.href = authStartUrl(payload, "ai-intake");
+      start.textContent = "ابدأ معاملتي واحفظ الخطة";
+      actions.append(start);
+      body.append(actions);
     }
-    const start = document.createElement("a");
-    start.className = "hb-chat-primary";
-    start.href = authStartUrl(payload, "ai-intake");
-    start.textContent = "ابدأ معاملتي واحفظ الخطة";
-    actions.append(start);
-    body.append(actions);
 
     return body;
   }
@@ -225,7 +254,7 @@
       }
       if (!response.ok || !payload?.ok) throw new Error(payload?.error || "analysis_failed");
 
-      const match = payload?.result?.matches?.[0] || null;
+      const match = selectPresentationMatch(payload);
       state.last_payload = payload;
       state.resolved_query = payload?.goal_context?.safe_goal || query;
       if (!state.original_goal) state.original_goal = state.resolved_query;
@@ -336,7 +365,7 @@
     thread.setAttribute("aria-live", "polite");
     thread.setAttribute("aria-label", "محادثة HOSSAM BAHR AI");
     shell.append(thread);
-    stage.insertBefore(shell, form);
+    form.insertAdjacentElement("afterend", shell);
 
     addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI لمعاملات الإمارات. اكتب ما تريد إنجازه وسأحدد لك الخدمة والجهة والمتطلبات من مصادرنا الموثقة.", { instant: true });
 
