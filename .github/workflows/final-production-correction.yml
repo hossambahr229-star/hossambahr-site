@@ -6,6 +6,7 @@ on:
       - agent/final-production-correction
       - main
       - agent/production-layout-centering
+      - feat/uae-ai-os-visual-upgrade-20260930
     paths-ignore:
       - 'supabase/**'
       - 'diagnostics/**'
