@@ -68,7 +68,7 @@ if (streamed) {
 html = html.replace(/<link\b[^>]*href=["']\/(?:brand-tokens|intent-first|global-os)\.css(?:\?[^"']*)?["'][^>]*>\s*/gi, '');
 html = html.replace(
   '</head>',
-  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/><link rel="stylesheet" href="/global-os.css?v=uae-os-20260930f" data-hb-uae-os-visual="20260930a"/></head>'
+  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/><link rel="stylesheet" href="/global-os.css?v=uae-os-20260930g" data-hb-uae-os-visual="20260930a"/></head>'
 );
 html = html.replace(
   /<script\b[^>]*src=["']\/(?:zero-defect-routing|global-os-client|public-ai-concierge|vendor\/supabase|auth-config|auth-client)\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*/gi,
@@ -100,7 +100,7 @@ for (const [name, value] of [
   ['data-ux-modernized', 'true'],
   ['data-phase7', 'true'],
   ['data-uae-os-visual', 'true'],
-  ['data-release', '2026-09-30.hb-ai-identity-f'],
+  ['data-release', '2026-09-30.hb-ai-mobile-g'],
 ]) html = setBodyAttribute(html, name, value);
 html = html
   .replace(/\sdata-phase6=(?:"[^"]*"|'[^']*')/gi, '')
