@@ -47,6 +47,8 @@ jobs:
             await page.goto("https://hossambahr.com/",{waitUntil:"domcontentloaded",timeout:30000});
             await page.evaluate(()=>{sessionStorage.clear();localStorage.clear()});await page.reload({waitUntil:"domcontentloaded"});
             if(await page.locator(".hb-chat-primary").count())failures.push("auth CTA before analysis");
+            const preDiag=await page.evaluate(()=>[".platform-hero",".hero-search-stage",".hb-ai-composer-brand",".hb-conversation-composer",".hb-chat-shell",".hb-chat-thread"].map(sel=>{const el=document.querySelector(sel);if(!el)return {sel,missing:true};const s=getComputedStyle(el),r=el.getBoundingClientRect();return {sel,w:r.width,h:r.height,display:s.display,position:s.position,gridArea:s.gridArea,alignSelf:s.alignSelf,justifySelf:s.justifySelf,opacity:s.opacity,transform:s.transform,minWidth:s.minWidth,maxWidth:s.maxWidth,width:s.width}}));
+            console.log("PRE_DIAG",JSON.stringify(preDiag));
             await page.locator("#government-search").fill("أريد أجدد إقامة زوجتي في دبي");
             await page.locator(".hb-chat-send").click();
             await page.waitForFunction(()=>document.querySelectorAll(".hb-chat-answer").length>0,null,{timeout:30000});
