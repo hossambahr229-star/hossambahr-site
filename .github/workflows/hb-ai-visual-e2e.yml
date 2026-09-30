@@ -1,0 +1,23 @@
+name: HB AI Visual UX E2E
+on:
+  push:
+    branches:
+      - feat/conversational-ai-home-20260930
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: npm run build
+      - run: npm run typecheck
+      - name: HOSSAM BAHR AI visual and conversation E2E
+        env:
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+        run: node tmp-hb-ai-visual-e2e.mjs
