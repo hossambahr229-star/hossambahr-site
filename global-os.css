@@ -821,3 +821,41 @@ body[data-ux-page="home"] .hb-chat-prompts button:focus-visible{
   body[data-ux-page="home"] .hb-chat-quick-replies button,
   body[data-ux-page="home"] .hb-chat-prompts button{transition:none!important}
 }
+
+
+/* HB AI mobile single-column containment fix */
+@media(max-width:860px){
+  body[data-ux-page="home"][data-uae-os-visual="true"] .platform-hero{
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-areas:"copy" "search" "visual" "values" "proof"!important;
+  }
+  body[data-ux-page="home"] .hero-search-stage,
+  body[data-ux-page="home"] .hb-conversation-stage{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    margin-inline:0!important;
+    justify-self:stretch!important;
+    box-sizing:border-box!important;
+  }
+  body[data-ux-page="home"] .hb-ai-composer-brand,
+  body[data-ux-page="home"] .hb-conversation-composer,
+  body[data-ux-page="home"] .hb-chat-shell,
+  body[data-ux-page="home"] .hb-chat-thread{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+  }
+  body[data-ux-page="home"] .hb-chat-message{
+    width:min(94%,100%)!important;
+    min-width:0!important;
+  }
+  body[data-ux-page="home"] .hb-chat-message-stack,
+  body[data-ux-page="home"] .hb-chat-bubble,
+  body[data-ux-page="home"] .hb-chat-answer{
+    min-width:0!important;
+    max-width:100%!important;
+    overflow-wrap:anywhere;
+  }
+}
