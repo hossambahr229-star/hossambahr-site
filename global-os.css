@@ -316,6 +316,13 @@ body[data-ux-page="home"][data-uae-os-visual="true"] .hero-proof span::before{
   4%,8%{border-color:rgba(239,217,158,.62);background:rgba(239,217,158,.1);box-shadow:0 10px 30px rgba(0,0,0,.18),0 0 0 1px rgba(239,217,158,.08)}
 }
 
+@media(min-width:861px){
+  body[data-ux-page="home"][data-uae-os-visual="true"] .platform-hero{
+    width:min(calc(100% - 40px),1240px);
+    margin-inline:auto;
+    border-radius:0 0 28px 28px;
+  }
+}
 @media(max-width:1080px){
   body[data-ux-page="home"][data-uae-os-visual="true"] .platform-hero{
     grid-template-columns:minmax(0,1fr) minmax(330px,.82fr);
