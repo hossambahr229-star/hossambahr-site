@@ -68,7 +68,7 @@ if (streamed) {
 html = html.replace(/<link\b[^>]*href=["']\/(?:brand-tokens|intent-first|global-os)\.css(?:\?[^"']*)?["'][^>]*>\s*/gi, '');
 html = html.replace(
   '</head>',
-  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/><link rel="stylesheet" href="/global-os.css?v=uae-os-20260930d" data-hb-uae-os-visual="20260930a"/></head>'
+  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/><link rel="stylesheet" href="/global-os.css?v=uae-os-20260930e" data-hb-uae-os-visual="20260930a"/></head>'
 );
 html = html.replace(
   /<script\b[^>]*src=["']\/(?:zero-defect-routing|global-os-client|public-ai-concierge|vendor\/supabase|auth-config|auth-client)\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*/gi,
@@ -76,7 +76,7 @@ html = html.replace(
 );
 html = html.replace(
   '</head>',
-  '<script src="/vendor/supabase.js" defer></script><script src="/auth-config.js" defer></script><script src="/auth-client.js" defer></script><script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script><script src="/global-os-client.js?v=uae-os-20260930d" defer data-hb-uae-os-visual="20260930a"></script><script src="/public-ai-concierge.js?v=public-ai-20260930a" defer></script></head>'
+  '<script src="/vendor/supabase.js" defer></script><script src="/auth-config.js" defer></script><script src="/auth-client.js" defer></script><script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script><script src="/global-os-client.js?v=uae-os-20260930d" defer data-hb-uae-os-visual="20260930a"></script><script src="/public-ai-concierge.js?v=public-ai-20260930b" defer></script></head>'
 );
 html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
   if (/\bclass=(?:"[^"]*\bhb-phase8\b[^"]*"|'[^']*\bhb-phase8\b[^']*')/i.test(match)) return match;
@@ -100,7 +100,7 @@ for (const [name, value] of [
   ['data-ux-modernized', 'true'],
   ['data-phase7', 'true'],
   ['data-uae-os-visual', 'true'],
-  ['data-release', '2026-09-30.public-ai-concierge-d'],
+  ['data-release', '2026-09-30.conversational-ai-e'],
 ]) html = setBodyAttribute(html, name, value);
 html = html
   .replace(/\sdata-phase6=(?:"[^"]*"|'[^']*')/gi, '')
@@ -134,8 +134,8 @@ if (heroActions && !html.includes('class="homepage-secondary-actions"')) {
   html = html.replace(heroActions, `<details class="homepage-secondary-actions"><summary>خيارات إضافية</summary>${heroActions}</details>`);
 }
 html = html.replace(
-  /(<form class="search-shell primary-search"[^>]*>\s*<label[^>]*>)[\s\S]*?(<\/label>)/i,
-  '$1ما المعاملة التي تريد إنجازها؟$2'
+  /<form class="search-shell primary-search"[\s\S]*?<\/form>/i,
+  '<form class="search-shell primary-search hb-conversation-composer" role="form" aria-label="محادثة مع HOSSAM BAHR AI"><label for="government-search">اسأل HOSSAM BAHR AI</label><span class="search-overline">اكتب سؤالك بطريقتك — لا تحتاج لاختيار خدمة أو جهة مسبقًا</span><div class="search-row"><textarea id="government-search" name="goal" rows="2" maxlength="800" autocomplete="off" aria-label="اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات" placeholder="اسألني عن أي معاملة في الإمارات…"></textarea><button class="hb-chat-send" type="submit" aria-label="إرسال السؤال إلى HOSSAM BAHR AI">إرسال</button></div></form>'
 );
 html = html.replace(
   '<em> معاملات الأعمال والخدمات الحكومية</em>من مكان واحد.',
