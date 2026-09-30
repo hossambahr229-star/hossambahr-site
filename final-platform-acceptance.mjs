@@ -144,12 +144,33 @@ async function runJourney(index) {
     await page.waitForTimeout(1950);
     await page.locator("#government-search").fill(query);
     await page.locator("form.primary-search button[type=submit]").click();
-    const top = page.locator(".intent-result-card:not(.activity-intent-card)").first();
-    await top.waitFor({ state: "visible", timeout: 20000 });
-    const route = await top.locator("a").getAttribute("href");
+
+    let route = null;
+    for (let turn = 0; turn < 3; turn += 1) {
+      const detail = page.locator(".hb-chat-message--assistant .hb-chat-secondary").last();
+      if (await detail.count()) {
+        await detail.waitFor({ state: "visible", timeout: 30000 });
+        route = await detail.getAttribute("href");
+        if (route) break;
+      }
+      const quick = page.locator(".hb-chat-quick-replies button:not([disabled])").first();
+      if (!(await quick.count())) break;
+      const before = await page.locator(".hb-chat-message--assistant .hb-chat-answer").count();
+      await quick.click();
+      await page.waitForFunction(
+        (count) => document.querySelectorAll(".hb-chat-message--assistant .hb-chat-answer").length > count,
+        before,
+        { timeout: 30000 }
+      );
+    }
+
     const correct = Boolean(route && expected.test(decodeURIComponent(route)));
-    const navigation = page.waitForURL((url) => decodeURIComponent(url.pathname) === decodeURIComponent(route), { timeout: 30000 }).catch(() => null);
-    await top.locator("a").click();
+    if (!route) throw new Error("Conversational AI did not expose a service detail link");
+    const navigation = page.waitForURL(
+      (url) => decodeURIComponent(url.pathname) === decodeURIComponent(route),
+      { timeout: 30000 }
+    ).catch(() => null);
+    await page.locator(`.hb-chat-message--assistant .hb-chat-secondary[href="${route}"]`).last().click();
     await navigation;
     const navigated = decodeURIComponent(new URL(page.url()).pathname) === decodeURIComponent(route);
     await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
@@ -209,14 +230,20 @@ for (const [name, width, height] of deviceProfiles) {
     const search = document.querySelector("form.primary-search");
     const submit = search?.querySelector('button[type="submit"]');
     const rect = search?.getBoundingClientRect();
+    const brand = document.querySelector("[data-hb-ai-brand]");
+    const thread = document.querySelector("[data-chat-thread]");
     return { overflow: document.documentElement.scrollWidth > window.innerWidth + 1,
       primarySearches: document.querySelectorAll("form.primary-search").length,
       guidedHelp: document.querySelectorAll("details.transaction-discovery-modes").length,
       searchInFirstViewport: Boolean(rect && rect.top >= 0 && rect.top < window.innerHeight),
-      primaryLabel: submit?.textContent?.trim() || "", lang: document.documentElement.lang, dir: document.documentElement.dir };
+      primaryLabel: submit?.textContent?.trim() || "",
+      aiBrand: brand?.textContent?.includes("HOSSAM BAHR AI") || false,
+      chatThread: Boolean(thread),
+      lang: document.documentElement.lang, dir: document.documentElement.dir };
   });
   responsiveResults.push({ name, ...result, errors, pass: !result.overflow && result.primarySearches === 1
-    && result.guidedHelp === 0 && result.searchInFirstViewport && result.primaryLabel === "ابحث عن المعاملة"
+    && result.guidedHelp === 0 && result.searchInFirstViewport && result.primaryLabel === "إرسال"
+    && result.aiBrand && result.chatThread
     && result.lang === "ar" && result.dir === "rtl" && errors.length === 0 });
   if (name === "mobile-390" || name === "desktop") await page.screenshot({ path: resolve(output, `homepage-${name}.png`), fullPage: true });
   await page.close();
