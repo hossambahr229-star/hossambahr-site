@@ -1,0 +1,57 @@
+name: Production Public AI E2E
+on:
+  push:
+    branches:
+      - test/public-ai-production-e2e-20260930
+permissions:
+  contents: read
+jobs:
+  prod:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Verify live anonymous AI funnel
+        env:
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+        run: |
+          node --input-type=module <<'NODE'
+          import { chromium } from "playwright";
+          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH,args:["--no-sandbox"]});
+          const context=await browser.newContext({viewport:{width:390,height:844}});
+          const page=await context.newPage();
+          const errors=[]; page.on("pageerror",e=>errors.push(e.message));
+          await page.goto("https://hossambahr.com/",{waitUntil:"domcontentloaded",timeout:30000});
+          await page.evaluate(()=>{localStorage.clear();sessionStorage.clear()});
+          await page.reload({waitUntil:"domcontentloaded"});
+          await page.locator("#government-search").fill("أريد أجدد إقامة زوجتي");
+          await page.locator("[data-public-ai-analyze]").click();
+          await page.locator(".public-ai-match.is-primary").waitFor({timeout:30000});
+          const result=await page.evaluate(()=>({
+            path:location.pathname,
+            title:document.querySelector("#public-ai-title")?.textContent,
+            service:document.querySelector(".public-ai-match.is-primary h3 a")?.textContent,
+            authority:document.querySelector(".public-ai-match.is-primary .public-ai-facts a")?.textContent,
+            requirements:document.querySelectorAll("#public-ai-requirements li").length,
+            source:document.querySelector("#public-ai-source a")?.getAttribute("href"),
+            start:document.querySelector(".public-ai-actions .public-ai-primary")?.getAttribute("href"),
+            openai:[...document.querySelectorAll(".public-ai-meta span")].some(x=>x.textContent.includes("غير مستخدم"))
+          }));
+          const failures=[];
+          if(result.path!=="/")failures.push("anonymous analysis left homepage");
+          if(!result.service||!result.authority||result.requirements<1||!String(result.source||"").startsWith("https://"))failures.push("public evidence incomplete");
+          if(!String(result.start||"").startsWith("/auth/?return="))failures.push("start is not auth gated");
+          if(!result.openai)failures.push("provider disclosure missing");
+          await page.locator('[data-journey-action="documents"]').click();
+          if(new URL(page.url()).pathname!=="/")failures.push("documents redirected");
+          await page.locator('[data-journey-action="follow"]').click();
+          if(new URL(page.url()).pathname!=="/")failures.push("follow redirected");
+          if(errors.length)failures.push(errors.join(" | "));
+          console.log(JSON.stringify({result,failures},null,2));
+          await browser.close();
+          if(failures.length)process.exit(1);
+          NODE
