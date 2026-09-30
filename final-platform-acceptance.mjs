@@ -133,8 +133,8 @@ async function runJourney(index) {
   const [query, expected, family, emirate] = journeys[index];
   const profile = index % 2 ? "desktop" : "mobile";
   const context = await browser.newContext(profile === "mobile"
-    ? { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true }
-    : { viewport: { width: 1440, height: 1000 } });
+    ? { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, userAgent: `HossamBahr-Production-QA/${index + 1}-mobile` }
+    : { viewport: { width: 1440, height: 1000 }, userAgent: `HossamBahr-Production-QA/${index + 1}-desktop` });
   const page = await context.newPage();
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
@@ -144,6 +144,7 @@ async function runJourney(index) {
     await page.waitForTimeout(1950);
     await page.locator("#government-search").fill(query);
     await page.locator("form.primary-search button[type=submit]").click();
+    await page.locator(".hb-chat-message--assistant .hb-chat-answer").last().waitFor({ state: "visible", timeout: 30000 });
 
     let route = null;
     for (let turn = 0; turn < 3; turn += 1) {
