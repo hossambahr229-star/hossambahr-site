@@ -148,7 +148,7 @@ async function runJourney(index) {
 
     let route = null;
     for (let turn = 0; turn < 3; turn += 1) {
-      const detail = page.locator(".hb-chat-message--assistant .hb-chat-secondary").last();
+      const detail = page.locator('.hb-chat-message--assistant .hb-chat-secondary[href^="/services/"]').last();
       if (await detail.count()) {
         await detail.waitFor({ state: "visible", timeout: 30000 });
         route = await detail.getAttribute("href");
