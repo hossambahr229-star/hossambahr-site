@@ -23,10 +23,10 @@ function json(req: Request, body: unknown, status = 200) {
 
 async function kickWorker(ctx: any, reason: string) {
   EdgeRuntime.waitUntil((async () => {
-    const { error } = await ctx.supabaseAdmin.functions.invoke("global-os-worker", {
-      body: { reason }
+    const { error } = await ctx.supabaseAdmin.rpc("hb_internal_kick_global_os_worker", {
+      p_reason: String(reason || "api").slice(0, 80)
     });
-    if (error) console.error("global-os-worker kick failed", { reason, message: error.message });
+    if (error) console.error("global-os-worker kick failed", { reason, code: error.code });
   })());
 }
 
@@ -51,7 +51,7 @@ export default {
       return json(req, {
         ok: true,
         service: "hossambahr-global-os-api",
-        version: "1.3",
+        version: "1.4",
         authenticated: true
       });
     }
