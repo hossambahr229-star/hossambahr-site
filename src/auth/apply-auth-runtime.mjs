@@ -35,7 +35,7 @@ const authAssets = [
 const globalOsAssets = [
   '<link rel="stylesheet" href="/global-os.css?v=global-os-20260928a">',
   '<script src="/global-os-api-client.js?v=global-os-20260928a" defer></script>',
-  '<script src="/global-os-client.js?v=global-os-20260928a" defer></script>'
+  '<script src="/global-os-client.js?v=global-os-20260930c" defer></script>'
 ].join("");
 const osAssets = [
   '<link rel="stylesheet" href="/os.css?v=global-os-20260928a">',
@@ -58,7 +58,7 @@ for (const file of files) {
   html = html
     .replace(/\/global-os\.css\?v=global-os-[^"'<>]+/g, "/global-os.css?v=global-os-20260928a")
     .replace(/\/global-os-api-client\.js\?v=global-os-[^"'<>]+/g, "/global-os-api-client.js?v=global-os-20260928a")
-    .replace(/\/global-os-client\.js\?v=global-os-[^"'<>]+/g, "/global-os-client.js?v=global-os-20260928a")
+    .replace(/\/global-os-client\.js\?v=global-os-[^"'<>]+/g, "/global-os-client.js?v=global-os-20260930c")
     .replace(/\/os\.css\?v=global-os-[^"'<>]+/g, "/os.css?v=global-os-20260928a")
     .replace(/\/os-client\.js\?v=global-os-[^"'<>]+/g, "/os-client.js?v=global-os-20260928a");
 
@@ -87,6 +87,13 @@ for (const file of files) {
       globalOsAdded += 1;
     }
     const route = relative(root, file).replaceAll("\\", "/");
+    if (route === "os/index.html") {
+      html = html
+        .replace(/<section\b([^>]*\bclass=["'][^"']*\bhb-os-hero\b[^"']*["'][^>]*)>/i, (match, attrs) => /\bid=/.test(match) ? match : `<section${attrs} id="ai-intake">`)
+        .replace(/<article\b([^>]*\bclass=["'][^"']*\bhb-os-panel\b[^"']*["'][^>]*)>(\s*<div class=["']hb-os-panel-heading["']><div><span class=["']eyebrow["']>Cases<\/span>)/i, (match, attrs, rest) => /\bid=/.test(match) ? match : `<article${attrs} id="case-progress">${rest}`)
+        .replace(/<article\b([^>]*\bclass=["'][^"']*\bhb-os-panel\b[^"']*["'][^>]*)>(\s*<div class=["']hb-os-panel-heading["']><div><span class=["']eyebrow["']>Action Center<\/span>)/i, (match, attrs, rest) => /\bid=/.test(match) ? match : `<article${attrs} id="action-center">${rest}`)
+        .replace(/<article\b([^>]*\bclass=["'][^"']*\bhb-os-panel-wide\b[^"']*["'][^>]*)>(\s*<div class=["']hb-os-panel-heading["']><div><span class=["']eyebrow["']>Private Vault<\/span>)/i, (match, attrs, rest) => /\bid=/.test(match) ? match : `<article${attrs} id="private-vault">${rest}`);
+    }
     if (route.startsWith("os/") && !html.includes("/os-client.js")) {
       html = html.replace("</head>", `${osAssets}</head>`);
       osRuntimeAdded += 1;

@@ -941,7 +941,7 @@
     if (location.pathname !== "/os/") return;
     const {data}=await client.auth.getSession();
     if(!data.session){
-      location.replace(`/auth/?return=${encodeURIComponent("/os/")}`);
+      location.replace(`/auth/?return=${encodeURIComponent(`/os/${location.hash || ""}`)}`);
       return;
     }
     if(!window.HB_OS_API || !await window.HB_OS_API.health()){
