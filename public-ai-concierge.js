@@ -14,6 +14,25 @@
     return node;
   };
 
+  function aiSymbol(size = 24, label = "") {
+    const wrap = create("span", "hb-ai-symbol");
+    wrap.style.setProperty("--hb-ai-symbol-size", size + "px");
+    if (label) wrap.setAttribute("aria-label", label);
+    else wrap.setAttribute("aria-hidden", "true");
+    wrap.innerHTML = '<svg viewBox="0 0 48 48" focusable="false" aria-hidden="true"><rect x="5.5" y="5.5" width="37" height="37" rx="12" class="hb-ai-symbol-frame"/><path d="M14 17v14M14 24h8M22 17v14" class="hb-ai-symbol-hb"/><path d="M29 31V20.5c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5V31M29 25h8" class="hb-ai-symbol-ai"/><circle cx="39" cy="11" r="2.4" class="hb-ai-symbol-node"/><path d="M36.9 12.6 34 16" class="hb-ai-symbol-link"/></svg>';
+    return wrap;
+  }
+
+  function assistantIdentity(compact = false) {
+    const row = create("div", "hb-ai-identity");
+    row.append(aiSymbol(compact ? 20 : 24, "HOSSAM BAHR AI"));
+    const textWrap = create("span", "hb-ai-identity-copy");
+    textWrap.append(create("strong", "", compact ? "HB AI" : "HOSSAM BAHR AI"));
+    textWrap.append(create("small", "", "مدعوم بسياسات ومصادر إماراتية موثقة"));
+    row.append(textWrap);
+    return row;
+  }
+
   let state = {
     expires_at: Date.now() + TTL,
     original_goal: "",
@@ -67,11 +86,15 @@
     if (!thread) return null;
     const wrap = create("article", "hb-chat-message hb-chat-message--" + role);
     wrap.dataset.chatRole = role;
-    const avatar = create("span", "hb-chat-avatar", role === "assistant" ? "HB" : "أنت");
+    const avatar = role === "assistant" ? aiSymbol(32, "HOSSAM BAHR AI") : create("span", "hb-chat-avatar hb-chat-avatar--user", "أنت");
+    avatar.classList.add("hb-chat-avatar");
+    const stack = create("div", "hb-chat-message-stack");
+    if (role === "assistant") stack.append(assistantIdentity(true));
     const body = create("div", "hb-chat-bubble");
     if (typeof content === "string") body.append(create("p", "", content));
     else if (content) body.append(content);
-    wrap.append(avatar, body);
+    stack.append(body);
+    wrap.append(avatar, stack);
     if (options.pending) wrap.dataset.pending = "true";
     thread.append(wrap);
     requestAnimationFrame(() => wrap.scrollIntoView({ behavior: options.instant ? "auto" : "smooth", block: "nearest" }));
@@ -79,9 +102,28 @@
   }
 
   function addStatus() {
-    const bubble = addBubble("assistant", "أراجع الخدمات والسياسات الرسمية…", { pending: true });
-    bubble?.querySelector(".hb-chat-bubble")?.classList.add("hb-chat-thinking");
+    const statuses = ["أفهم طلبك…", "أطابق الخدمة المناسبة…", "أراجع المصدر الرسمي…"];
+    const bubble = addBubble("assistant", statuses[0], { pending: true });
+    const body = bubble?.querySelector(".hb-chat-bubble");
+    body?.classList.add("hb-chat-thinking");
+    const symbol = bubble?.querySelector(".hb-ai-symbol");
+    symbol?.classList.add("is-thinking");
+    let index = 0;
+    const timer = window.setInterval(() => {
+      if (!bubble?.isConnected) return window.clearInterval(timer);
+      index = Math.min(index + 1, statuses.length - 1);
+      const p = body?.querySelector("p");
+      if (p) p.textContent = statuses[index];
+      if (index === statuses.length - 1) window.clearInterval(timer);
+    }, 260);
+    bubble._hbThinkingTimer = timer;
     return bubble;
+  }
+
+  function removePending(bubble) {
+    if (!bubble) return;
+    if (bubble._hbThinkingTimer) window.clearInterval(bubble._hbThinkingTimer);
+    bubble.remove();
   }
 
   function makeInfoBlock(label, values) {
@@ -258,14 +300,23 @@
       if (steps) body.append(steps);
 
       if (match.official_source?.url) {
+        const trust = create("div", "hb-chat-trust-row");
+        const verified = create("span", "hb-ai-trust-badge", "✓ معلومة موثقة");
+        trust.append(verified);
+        body.append(trust);
+
         const source = create("section", "hb-chat-source");
-        source.append(create("strong", "", "المصدر الرسمي"));
+        const badge = create("span", "hb-ai-source-badge", "✓ مصدر رسمي");
+        source.append(badge);
+        const copy = create("div", "hb-chat-source-copy");
+        copy.append(create("strong", "", match.authority?.name_ar || "الجهة الحكومية المختصة"));
         const link = document.createElement("a");
         link.href = match.official_source.url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.textContent = match.official_source.title || match.authority?.name_ar || "فتح المصدر الحكومي";
-        source.append(link);
+        link.textContent = match.official_source.title || "فتح المصدر الحكومي";
+        copy.append(link);
+        source.append(copy);
         body.append(source);
       }
     }
@@ -300,8 +351,13 @@
       const start = document.createElement("a");
       start.className = "hb-chat-primary";
       start.href = authStartUrl(payload, "ai-intake");
-      start.textContent = "ابدأ معاملتي واحفظ الخطة";
+      start.textContent = "ابدأ معاملتي";
       actions.append(start);
+      const save = document.createElement("a");
+      save.className = "hb-chat-secondary hb-chat-save-plan";
+      save.href = authStartUrl(payload, "ai-intake");
+      save.textContent = "احفظ الخطة";
+      actions.append(save);
       body.append(actions);
     }
 
@@ -339,7 +395,7 @@
       });
       let payload = await response.json().catch(() => ({}));
       if (response.status === 429) {
-        pending?.remove();
+        removePending(pending);
         addBubble("assistant", "وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");
         return;
       }
@@ -358,7 +414,7 @@
         if (refined.ok && refinedPayload?.ok) payload = refinedPayload;
       }
 
-      pending?.remove();
+      removePending(pending);
       const match = selectPresentationMatch(payload);
       state.last_payload = payload;
       state.resolved_query = payload?.goal_context?.safe_goal || query;
@@ -370,7 +426,7 @@
 
       addBubble("assistant", buildAssistantMessage(payload));
     } catch {
-      pending?.remove();
+      removePending(pending);
       addBubble("assistant", "تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");
     } finally {
       if (sendButton) sendButton.disabled = false;
@@ -435,6 +491,17 @@
     if (!stage || !form) return;
 
     stage.classList.add("hb-conversation-stage");
+    if (!stage.querySelector("[data-hb-ai-brand]")) {
+      const brand = create("div", "hb-ai-composer-brand");
+      brand.dataset.hbAiBrand = "true";
+      brand.append(aiSymbol(32, "HOSSAM BAHR AI"));
+      const copy = create("div", "hb-ai-composer-brand-copy");
+      copy.append(create("strong", "", "HOSSAM BAHR AI"));
+      copy.append(create("span", "", "مساعدك الذكي للمعاملات في الإمارات"));
+      copy.append(create("small", "", "UAE policy-aware • مصادر إماراتية موثقة"));
+      brand.append(copy);
+      stage.insertBefore(brand, form);
+    }
     form.classList.add("hb-conversation-composer");
     form.setAttribute("role", "form");
     form.setAttribute("aria-label", "محادثة مع HOSSAM BAHR AI");
@@ -472,7 +539,7 @@
     shell.append(thread);
     form.insertAdjacentElement("afterend", shell);
 
-    addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI لمعاملات الإمارات. اكتب ما تريد إنجازه وسأحدد لك الخدمة والجهة والمتطلبات من مصادرنا الموثقة.", { instant: true });
+    addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
 
     const prompts = stage.querySelector(".examples");
     if (prompts) {
