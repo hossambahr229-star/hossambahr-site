@@ -1,5 +1,5 @@
 import { createServer } from "node:http";
-import { readFile, stat, mkdir } from "node:fs/promises";
+import { readFile, stat, mkdir, writeFile } from "node:fs/promises";
 import { extname, join, normalize, resolve } from "node:path";
 import { chromium } from "playwright";
 
@@ -73,5 +73,7 @@ for(const [id,ok] of ids) if(!ok) failures.push("os: missing #"+id);
 await os.close();
 await browser.close();
 await new Promise(ok=>server.close(ok));
-console.log(JSON.stringify({status:failures.length?"FAIL":"PASS",failures},null,2));
+const result={status:failures.length?"FAIL":"PASS",failures};
+await writeFile(join(out,"result.json"),JSON.stringify(result,null,2));
+console.log(JSON.stringify(result,null,2));
 if(failures.length)process.exit(1);
