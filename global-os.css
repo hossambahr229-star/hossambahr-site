@@ -231,11 +231,16 @@ body[data-ux-page="home"][data-uae-os-visual="true"] .hero-proof span::before{
 }
 .uae-os-step:nth-child(odd){transform:translateX(-.2rem)}
 .uae-os-step:nth-child(even){transform:translateX(.2rem)}
-.uae-os-step.is-active{
-  border-color:rgba(239,217,158,.62);
-  background:rgba(239,217,158,.1);
-  box-shadow:0 10px 30px rgba(0,0,0,.18),0 0 0 1px rgba(239,217,158,.08);
+.uae-os-step{
+  animation:hbStepSignal 8.05s ease-in-out infinite;
 }
+.uae-os-step:nth-child(1){animation-delay:0s}
+.uae-os-step:nth-child(2){animation-delay:1.15s}
+.uae-os-step:nth-child(3){animation-delay:2.3s}
+.uae-os-step:nth-child(4){animation-delay:3.45s}
+.uae-os-step:nth-child(5){animation-delay:4.6s}
+.uae-os-step:nth-child(6){animation-delay:5.75s}
+.uae-os-step:nth-child(7){animation-delay:6.9s}
 .uae-os-step-icon{
   width:34px;height:34px;
   display:grid;place-items:center;
@@ -306,6 +311,10 @@ body[data-ux-page="home"][data-uae-os-visual="true"] .hero-proof span::before{
 @keyframes hbCoreSpin{to{transform:rotate(360deg)}}
 @keyframes hbRouteDash{to{stroke-dashoffset:-120}}
 @keyframes hbProgress{0%{width:12%}50%{width:72%}100%{width:100%}}
+@keyframes hbStepSignal{
+  0%,11%,100%{border-color:rgba(255,255,255,.1);background:rgba(4,35,31,.5);box-shadow:none}
+  4%,8%{border-color:rgba(239,217,158,.62);background:rgba(239,217,158,.1);box-shadow:0 10px 30px rgba(0,0,0,.18),0 0 0 1px rgba(239,217,158,.08)}
+}
 
 @media(max-width:1080px){
   body[data-ux-page="home"][data-uae-os-visual="true"] .platform-hero{
@@ -380,6 +389,6 @@ body[data-ux-page="home"][data-uae-os-visual="true"] .hero-proof span::before{
   body[data-ux-page="home"][data-uae-os-visual="true"] .hero-copy h1{font-size:clamp(1.9rem,9vw,2.55rem)!important}
 }
 @media(prefers-reduced-motion:reduce){
-  .uae-os-live::before,.uae-os-core::after,.uae-os-route path,.uae-os-progress::after{animation:none!important}
+  .uae-os-live::before,.uae-os-core::after,.uae-os-route path,.uae-os-progress::after,.uae-os-step{animation:none!important}
   .uae-os-step{transition:none!important}
 }
