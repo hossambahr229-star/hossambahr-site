@@ -161,6 +161,8 @@ async function runConversationalJourney(index) {
     const response = await page.goto(`${baseUrl}/?journey=${index + 1}&hb_qa=1`, { waitUntil: "domcontentloaded", timeout: 60000 });
     await page.evaluate(() => { sessionStorage.clear(); localStorage.clear(); });
     await page.reload({ waitUntil: "domcontentloaded", timeout: 60000 });
+    await page.locator("[data-hb-ai-brand]").waitFor({ state: "visible", timeout: 15000 });
+    await page.locator(".hb-chat-send").waitFor({ state: "visible", timeout: 15000 });
 
     const composer = page.locator(".hb-conversation-composer");
     const composerBox = await composer.boundingBox();

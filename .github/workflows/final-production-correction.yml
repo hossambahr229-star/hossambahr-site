@@ -89,12 +89,7 @@ jobs:
       - name: Wait for and byte-verify live Production
         if: github.ref_name == 'main'
         run: node src/publication/verify-live-production.mjs
-      - name: Browser-verify live Production journeys
-        if: github.ref_name == 'main'
-        env:
-          NODE_PATH: ${{ github.workspace }}/node_modules
-          HB_BROWSER_PATH: /usr/bin/google-chrome
-          HB_BASE_URL: https://hossambahr.com
-          HB_OUTPUT_DIR: artifacts/live-production-acceptance
-        run: npm run test:final-platform
+      # Live conversational/customer-journey verification is owned by
+      # production-browser-verification.yml on main to avoid duplicate public-AI
+      # traffic and race/rate-limit noise across concurrent release gates.
 
