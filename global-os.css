@@ -666,3 +666,9 @@ body[data-ux-page="home"] .os-value-strip{margin-top:.1rem!important}
   body[data-ux-page="home"] .uae-os-visual{margin-top:.1rem}
 }
 @media(prefers-reduced-motion:reduce){body[data-ux-page="home"] .hb-chat-thinking::after{animation:none}}
+
+@media(max-width:560px){
+  body[data-ux-page="home"] .uae-os-visual{display:none}
+  body[data-ux-page="home"].hb-chat-engaged .uae-os-visual{display:block}
+  body[data-ux-page="home"][data-uae-os-visual="true"] .hero-copy>p{display:none!important}
+}
