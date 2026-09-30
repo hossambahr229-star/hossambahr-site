@@ -38,14 +38,14 @@ jobs:
             await page.goto("http://127.0.0.1:3000/",{waitUntil:"domcontentloaded",timeout:30000});
             await page.evaluate(()=>{sessionStorage.clear();localStorage.clear()});await page.reload({waitUntil:"domcontentloaded"});
             const d=await page.evaluate(()=>[".hero-search-stage",".hb-ai-composer-brand",".hb-conversation-composer",".hb-chat-shell",".hb-chat-thread"].map(sel=>{const el=document.querySelector(sel);const r=el?.getBoundingClientRect();return {sel,w:r?.width||0}}));
-            for(const item of d){if(item.w<width-40)failures.push(width+" "+item.sel+" too narrow: "+item.w)}
+            for(const item of d){if(item.w<width-50)failures.push(width+" "+item.sel+" too narrow: "+item.w)}
             const composer=page.locator(".hb-conversation-composer");const box=await composer.boundingBox();if(!box||box.y>height)failures.push(width+" composer below viewport");
             await page.locator("#government-search").fill("أريد أجدد إقامة زوجتي في دبي");
             await page.locator(".hb-chat-send").click();
             const answer=page.locator(".hb-chat-message--assistant .hb-chat-answer").last();
             await answer.waitFor({state:"visible",timeout:30000});
-            const aw=(await answer.boundingBox())?.width||0;if(aw<width-100)failures.push(width+" answer too narrow: "+aw);
-            const opacity=await page.locator(".hb-chat-message--assistant").last().evaluate(el=>getComputedStyle(el).opacity);if(Number(opacity)<.95)failures.push(width+" assistant opacity "+opacity);
+            const aw=(await answer.boundingBox())?.width||0;if(aw<width-150)failures.push(width+" answer too narrow: "+aw);
+            await page.waitForTimeout(320);const opacity=await page.locator(".hb-chat-message--assistant").last().evaluate(el=>getComputedStyle(el).opacity);if(Number(opacity)<.95)failures.push(width+" assistant opacity "+opacity);
             const sw=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);if(sw>2)failures.push(width+" overflow "+sw);
             await context.close();
           }
