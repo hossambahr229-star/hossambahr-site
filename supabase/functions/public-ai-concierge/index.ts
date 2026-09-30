@@ -158,13 +158,17 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   return score;
 }
 
-function rank(goal: string, rows: any[]) {
+function rank(goal: string, rows: any[], serviceHint: string | null = null) {
   const normalized = normalize(goal);
   const terms = normalized.split(" ").filter((t) => t.length > 1);
   const detected = detectJurisdiction(normalized);
+  const validHint = serviceHint && rows.some((row:any) => row.binding.service_slug === serviceHint)
+    ? serviceHint
+    : null;
 
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
+    if (validHint && row.binding.service_slug === validHint) score += 10000;
     const title = normalize(row.title);
     const slugText = normalize(row.binding.service_slug.replace(/-/g," "));
     const authority = normalize((row.authority?.name_ar || "")+" "+(row.authority?.name_en || ""));
@@ -267,7 +271,7 @@ function publicResult(goal: string, ranked: any[]) {
 export default {
   fetch: withSupabase({ auth: "none" }, async (req, ctx) => {
     if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(req) });
-    if (req.method === "GET") return reply(req, { ok:true, service:"hossambahr-public-ai-concierge", version:"1.0", authenticated:false });
+    if (req.method === "GET") return reply(req, { ok:true, service:"hossambahr-public-ai-concierge", version:"1.1", authenticated:false });
     if (req.method !== "POST") return reply(req, { error:"method_not_allowed" }, 405);
 
     const origin = req.headers.get("origin") || "";
@@ -282,16 +286,21 @@ export default {
     let body:any = {};
     try { body = await req.json(); } catch { return reply(req, { error:"invalid_json" }, 400); }
     const goal = scrubGoal(body?.goal);
+    const serviceHint = String(body?.service_hint || "").trim().slice(0, 220) || null;
     if (goal.length < 4 || goal.length > 800) return reply(req, { error:"invalid_goal" }, 422);
+    if (serviceHint && !/^[a-z0-9\u0600-\u06ff][a-z0-9\u0600-\u06ff-]{1,218}$/i.test(serviceHint)) {
+      return reply(req, { error:"invalid_service_hint" }, 422);
+    }
 
     try {
       const catalog = await loadCatalog(ctx.supabaseAdmin);
-      const ranked = rank(goal, catalog);
+      const ranked = rank(goal, catalog, serviceHint);
       return reply(req, {
         ok:true,
         goal_context:{
           jurisdiction_hint: detectJurisdiction(normalize(goal)),
-          safe_goal: goal
+          safe_goal: goal,
+          service_hint_applied: Boolean(serviceHint && ranked[0]?.binding?.service_slug === serviceHint)
         },
         result: publicResult(goal, ranked),
         rate_limit:{ remaining: rate.remaining, reset_at: rate.reset_at }
