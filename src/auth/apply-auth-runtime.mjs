@@ -87,6 +87,13 @@ for (const file of files) {
       globalOsAdded += 1;
     }
     const route = relative(root, file).replaceAll("\\", "/");
+    if (route === "os/index.html") {
+      html = html
+        .replace('<section class="hb-os-hero">', '<section class="hb-os-hero" id="ai-intake">')
+        .replace('<article class="hb-os-panel">\n      <div class="hb-os-panel-heading"><div><span class="eyebrow">Cases</span><h2>المعاملات المفتوحة</h2></div><a href="/services/">دليل الخدمات</a></div>', '<article class="hb-os-panel" id="case-progress">\n      <div class="hb-os-panel-heading"><div><span class="eyebrow">Cases</span><h2>المعاملات المفتوحة</h2></div><a href="/services/">دليل الخدمات</a></div>')
+        .replace('<article class="hb-os-panel">\n      <div class="hb-os-panel-heading"><div><span class="eyebrow">Action Center</span><h2>يحتاج انتباهك</h2></div></div>', '<article class="hb-os-panel" id="action-center">\n      <div class="hb-os-panel-heading"><div><span class="eyebrow">Action Center</span><h2>يحتاج انتباهك</h2></div></div>')
+        .replace('<article class="hb-os-panel hb-os-panel-wide">\n      <div class="hb-os-panel-heading"><div><span class="eyebrow">Private Vault</span><h2>مستنداتي</h2></div><button type="button" data-toggle-document>+ رفع مستند</button></div>', '<article class="hb-os-panel hb-os-panel-wide" id="private-vault">\n      <div class="hb-os-panel-heading"><div><span class="eyebrow">Private Vault</span><h2>مستنداتي</h2></div><button type="button" data-toggle-document>+ رفع مستند</button></div>');
+    }
     if (route.startsWith("os/") && !html.includes("/os-client.js")) {
       html = html.replace("</head>", `${osAssets}</head>`);
       osRuntimeAdded += 1;
