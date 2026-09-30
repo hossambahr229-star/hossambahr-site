@@ -35,11 +35,11 @@ const authAssets = [
 const globalOsAssets = [
   '<link rel="stylesheet" href="/global-os.css?v=global-os-20260928a">',
   '<script src="/global-os-api-client.js?v=global-os-20260928a" defer></script>',
-  '<script src="/global-os-client.js?v=global-os-20260930c" defer></script>'
+  '<script src="/global-os-client.js?v=global-os-20260930d" defer></script>'
 ].join("");
 const osAssets = [
   '<link rel="stylesheet" href="/os.css?v=global-os-20260928a">',
-  '<script src="/os-client.js?v=global-os-20260928a" defer></script>'
+  '<script src="/os-client.js?v=global-os-20260930d" defer></script>'
 ].join("");
 
 let changed = 0;
@@ -58,9 +58,9 @@ for (const file of files) {
   html = html
     .replace(/\/global-os\.css\?v=global-os-[^"'<>]+/g, "/global-os.css?v=global-os-20260928a")
     .replace(/\/global-os-api-client\.js\?v=global-os-[^"'<>]+/g, "/global-os-api-client.js?v=global-os-20260928a")
-    .replace(/\/global-os-client\.js\?v=global-os-[^"'<>]+/g, "/global-os-client.js?v=global-os-20260930c")
+    .replace(/\/global-os-client\.js\?v=global-os-[^"'<>]+/g, "/global-os-client.js?v=global-os-20260930d")
     .replace(/\/os\.css\?v=global-os-[^"'<>]+/g, "/os.css?v=global-os-20260928a")
-    .replace(/\/os-client\.js\?v=global-os-[^"'<>]+/g, "/os-client.js?v=global-os-20260928a");
+    .replace(/\/os-client\.js\?v=global-os-[^"'<>]+/g, "/os-client.js?v=global-os-20260930d");
 
   html = html.replace(
     /connect-src (?:&#x27;|')self(?:&#x27;|')(?![^;]*ngcrkuykfqmiqhsnpcrc)/g,

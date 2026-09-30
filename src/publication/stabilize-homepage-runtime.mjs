@@ -68,15 +68,15 @@ if (streamed) {
 html = html.replace(/<link\b[^>]*href=["']\/(?:brand-tokens|intent-first|global-os)\.css(?:\?[^"']*)?["'][^>]*>\s*/gi, '');
 html = html.replace(
   '</head>',
-  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/><link rel="stylesheet" href="/global-os.css?v=uae-os-20260930c" data-hb-uae-os-visual="20260930a"/></head>'
+  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/><link rel="stylesheet" href="/global-os.css?v=uae-os-20260930d" data-hb-uae-os-visual="20260930a"/></head>'
 );
 html = html.replace(
-  /<script\b[^>]*src=["']\/(?:zero-defect-routing|global-os-client)\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*/gi,
+  /<script\b[^>]*src=["']\/(?:zero-defect-routing|global-os-client|public-ai-concierge|vendor\/supabase|auth-config|auth-client)\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*/gi,
   ''
 );
 html = html.replace(
   '</head>',
-  '<script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script><script src="/global-os-client.js?v=uae-os-20260930c" defer data-hb-uae-os-visual="20260930a"></script></head>'
+  '<script src="/vendor/supabase.js" defer></script><script src="/auth-config.js" defer></script><script src="/auth-client.js" defer></script><script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script><script src="/global-os-client.js?v=uae-os-20260930d" defer data-hb-uae-os-visual="20260930a"></script><script src="/public-ai-concierge.js?v=public-ai-20260930a" defer></script></head>'
 );
 html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
   if (/\bclass=(?:"[^"]*\bhb-phase8\b[^"]*"|'[^']*\bhb-phase8\b[^']*')/i.test(match)) return match;
@@ -100,7 +100,7 @@ for (const [name, value] of [
   ['data-ux-modernized', 'true'],
   ['data-phase7', 'true'],
   ['data-uae-os-visual', 'true'],
-  ['data-release', '2026-09-30.uae-ai-os-interactive-c'],
+  ['data-release', '2026-09-30.public-ai-concierge-d'],
 ]) html = setBodyAttribute(html, name, value);
 html = html
   .replace(/\sdata-phase6=(?:"[^"]*"|'[^']*')/gi, '')

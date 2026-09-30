@@ -43,7 +43,7 @@
     signup?.addEventListener("submit", async (event) => {
       event.preventDefault(); const data = new FormData(signup); setBusy(signup, true); const password = String(data.get("password") || "");
       if (!passwordValid(password)) { setBusy(signup, false); return message("استخدم كلمة مرور من 10 أحرف على الأقل وتضم حروفًا وأرقامًا.", "error"); }
-      const { data: result, error } = await client.auth.signUp({ email: String(data.get("email") || "").trim(), password, options: { emailRedirectTo: `${config.siteUrl}/auth/callback/`, data: { display_name: String(data.get("name") || "").trim() } } });
+      const { data: result, error } = await client.auth.signUp({ email: String(data.get("email") || "").trim(), password, options: { emailRedirectTo: `${config.siteUrl}/auth/callback/?return=${encodeURIComponent(returnPath)}`, data: { display_name: String(data.get("name") || "").trim() } } });
       setBusy(signup, false); if (error) return message("تعذر إنشاء الحساب. تحقق من البريد أو حاول لاحقًا.", "error");
       if (result.session) location.assign(returnPath); else message("تم إنشاء الحساب. افتح رسالة التحقق المرسلة إلى بريدك ثم سجّل الدخول.", "success");
     });
