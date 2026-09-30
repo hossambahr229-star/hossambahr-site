@@ -164,7 +164,7 @@ async function runConversationalJourney(index) {
 
     const composer = page.locator(".hb-conversation-composer");
     const composerBox = await composer.boundingBox();
-    const composerInFirstViewport = Boolean(composerBox && composerBox.top >= 0 && composerBox.top < (profile === "mobile" ? 844 : 1000));
+    const composerInFirstViewport = Boolean(composerBox && composerBox.y >= 0 && composerBox.y < (profile === "mobile" ? 844 : 1000));
     const authBeforeAnalysis = await page.locator(".hb-chat-primary").count();
     const homepageOverflowBefore = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
     const aiBrand = await page.locator("[data-hb-ai-brand]").count();
