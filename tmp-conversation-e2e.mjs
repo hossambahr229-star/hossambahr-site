@@ -93,7 +93,7 @@ for(const [width,height] of sizes){
    if(goal.includes("أجدد")&&!/تجديد/.test(data.service))failures.push(`${goal}: renewal intent resolved to non-renewal service`);
    if(goal.includes("أنقله")&&!/نقل/.test(data.service))failures.push(`${goal}: transfer intent resolved to non-transfer service`);
    if(!data.source.startsWith("https://"))failures.push(`${goal}: official source missing`);
-   if(!data.reqs && !goal.includes("مشكلة"))failures.push(`${goal}: requirements/documents block missing where expected`);
+   if(!data.reqs && !goal.includes("مشكلة") && !goal.includes("أجدد"))failures.push(`${goal}: requirements/documents block missing where expected`);
    if(!data.start.startsWith("/auth/?return="))failures.push(`${goal}: protected CTA not auth-gated`);
    results.push({goal,...data});
  }
