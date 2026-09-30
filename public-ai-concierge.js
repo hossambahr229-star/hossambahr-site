@@ -212,9 +212,27 @@
       .trim();
   }
 
-  function catalogIntentHint(query) {
+  let intentRankerPromise = null;
+
+  async function getIntentRanker() {
+    if (typeof window.HB_rankServices === "function") return window.HB_rankServices;
+    if (!intentRankerPromise) {
+      globalThis.HB_DISABLE_INTENT_SEARCH_BOOTSTRAP = true;
+      intentRankerPromise = import("/intent-search.js?v=public-ai-ranker-20260930a")
+        .then((module) => typeof module.rankServices === "function" ? module.rankServices : null)
+        .catch(() => null);
+    }
+    return intentRankerPromise;
+  }
+
+  async function catalogIntentHint(query) {
     const services = Array.isArray(window.HB_INTENT_SERVICES) ? window.HB_INTENT_SERVICES : [];
     if (!services.length) return null;
+    const testedRanker = await getIntentRanker();
+    if (testedRanker) {
+      const ranked = testedRanker(query, services);
+      if (Array.isArray(ranked) && ranked[0]?.s) return ranked[0];
+    }
     const q = normalizeIntent(query);
     const wantsRenew = /اجدد|تجديد|renew/.test(q);
     const wantsIssue = /اصدار|إصدار|جديد|issue/.test(q) && !wantsRenew;
@@ -390,34 +408,20 @@
 
     try {
       await ensureIntentCatalog();
-      const initialHint = catalogIntentHint(query);
-      const resolverQuery = initialHint?.a ? query + " — الخدمة الأقرب المقصودة: " + initialHint.a : query;
+      const hint = await catalogIntentHint(query);
       const response = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ goal: resolverQuery }),
+        body: JSON.stringify({ goal: query, service_hint: hint?.s || null }),
         credentials: "omit"
       });
-      let payload = await response.json().catch(() => ({}));
+      const payload = await response.json().catch(() => ({}));
       if (response.status === 429) {
         removePending(pending);
         addBubble("assistant", "وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");
         return;
       }
       if (!response.ok || !payload?.ok) throw new Error(payload?.error || "analysis_failed");
-
-      const hint = catalogIntentHint(query);
-      const currentSlug = payload?.result?.matches?.[0]?.service_slug || "";
-      if (hint?.s && hint.s !== currentSlug) {
-        const refined = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ goal: query + " — الخدمة الأقرب المقصودة: " + hint.a }),
-          credentials: "omit"
-        });
-        const refinedPayload = await refined.json().catch(() => ({}));
-        if (refined.ok && refinedPayload?.ok) payload = refinedPayload;
-      }
 
       removePending(pending);
       const match = selectPresentationMatch(payload);
