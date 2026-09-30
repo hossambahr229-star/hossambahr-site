@@ -26,8 +26,8 @@ test('Phase 8 homepage density is present before first paint', async () => {
 
 test('Global OS Arabic hero keeps readable word boundaries', async () => {
   const homepage = await read('index.html');
-  assert.doesNotMatch(homepage, /إنجازه\.<em>والمنصة/);
-  assert.match(homepage, /إنجازه\.<em> والمنصة ترتّب لك الطريق/);
+  assert.doesNotMatch(homepage, /الإمارات\.<em>منظّمة/);
+  assert.match(homepage, /الإمارات\.<em> منظّمة بالذكاء الاصطناعي/);
 });
 
 test('Phase 8 activity advisor preserves the specific product activity beside ecommerce', async () => {
