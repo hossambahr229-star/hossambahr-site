@@ -16,4 +16,4 @@ jobs:
           deno-version: v2.x
           cache: true
       - run: deno check supabase/functions/global-os-api/index.ts
-      - run: deno check supabase/functions/global-os-worker/index.ts
+      - run: deno check --config supabase/functions/global-os-worker/deno.json supabase/functions/global-os-worker/index.ts
