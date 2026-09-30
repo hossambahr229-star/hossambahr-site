@@ -1,0 +1,54 @@
+name: HB AI Mobile Containment E2E
+on:
+  push:
+    branches:
+      - fix/hb-ai-mobile-chat-width-20260930
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: npm run build
+      - run: npm run typecheck
+      - name: Verify mobile conversation containment
+        env:
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+        run: |
+          node --input-type=module <<'NODE'
+          import { createServer } from "node:http";
+          import { readFile, stat } from "node:fs/promises";
+          import { extname, join, normalize, resolve } from "node:path";
+          import { chromium } from "playwright";
+          const root=resolve(".");
+          const mime={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",".js":"text/javascript; charset=utf-8",".json":"application/json; charset=utf-8",".svg":"image/svg+xml"};
+          const server=createServer(async(req,res)=>{try{const pathname=decodeURIComponent(new URL(req.url,"http://127.0.0.1:3000").pathname);let file=resolve(root,"."+normalize(pathname));try{if((await stat(file)).isDirectory())file=join(file,"index.html")}catch{}try{await stat(file)}catch{file=join(root,"404.html")}const body=await readFile(file);res.writeHead(file.endsWith("404.html")?404:200,{"content-type":mime[extname(file)]||"application/octet-stream","cache-control":"no-store"});res.end(body)}catch(e){res.writeHead(500);res.end(String(e))}});
+          await new Promise((ok,fail)=>server.listen(3000,"127.0.0.1",e=>e?fail(e):ok()));
+          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH,args:["--no-sandbox"]});
+          const failures=[];
+          for(const [width,height] of [[390,844],[430,932]]){
+            const context=await browser.newContext({viewport:{width,height}});
+            const page=await context.newPage();
+            await page.goto("http://127.0.0.1:3000/",{waitUntil:"domcontentloaded",timeout:30000});
+            await page.evaluate(()=>{sessionStorage.clear();localStorage.clear()});await page.reload({waitUntil:"domcontentloaded"});
+            const d=await page.evaluate(()=>[".hero-search-stage",".hb-ai-composer-brand",".hb-conversation-composer",".hb-chat-shell",".hb-chat-thread"].map(sel=>{const el=document.querySelector(sel);const r=el?.getBoundingClientRect();return {sel,w:r?.width||0}}));
+            for(const item of d){if(item.w<width-40)failures.push(width+" "+item.sel+" too narrow: "+item.w)}
+            const composer=page.locator(".hb-conversation-composer");const box=await composer.boundingBox();if(!box||box.y>height)failures.push(width+" composer below viewport");
+            await page.locator("#government-search").fill("أريد أجدد إقامة زوجتي في دبي");
+            await page.locator(".hb-chat-send").click();
+            const answer=page.locator(".hb-chat-message--assistant .hb-chat-answer").last();
+            await answer.waitFor({state:"visible",timeout:30000});
+            const aw=(await answer.boundingBox())?.width||0;if(aw<width-100)failures.push(width+" answer too narrow: "+aw);
+            const opacity=await page.locator(".hb-chat-message--assistant").last().evaluate(el=>getComputedStyle(el).opacity);if(Number(opacity)<.95)failures.push(width+" assistant opacity "+opacity);
+            const sw=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);if(sw>2)failures.push(width+" overflow "+sw);
+            await context.close();
+          }
+          console.log(JSON.stringify({status:failures.length?"FAIL":"PASS",failures},null,2));
+          await browser.close();await new Promise(ok=>server.close(ok));if(failures.length)process.exit(1);
+          NODE
