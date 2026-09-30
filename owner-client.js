@@ -773,10 +773,12 @@
 
     const metrics=[
       ["المصادر الرسمية",summary?.sources_total],
+      ["مراقبة آلية",summary?.automatic_sources],
+      ["مراجعة يدوية",summary?.manual_sources],
       ["فُحصت خلال 24 ساعة",summary?.checked_24h],
       ["لم تُفحص بعد",summary?.never_checked],
       ["تحتاج مراجعة",summary?.review_required],
-      ["إخفاقات مؤقتة",summary?.failed],
+      ["إخفاقات آلية",summary?.failed],
       ["404 / 410",summary?.hard_failures]
     ];
     target.replaceChildren(...metrics.map(([label,value])=>{
