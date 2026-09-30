@@ -168,7 +168,7 @@ jobs:
           export HB_BASE_URL="https://hossambahr.com"
           export HB_OUTPUT_DIR="$PWD/artifacts/phase9-1-visual-quality"
           node src/publication/verify-phase9-1-visual-quality.mjs
-      - name: Run all one hundred real customer journeys on Production
+      - name: Run 100 deterministic intent checks plus conversational AI Production journeys
         shell: bash
         run: |
           set -euo pipefail
@@ -202,8 +202,8 @@ jobs:
             "production_html_routes": ${route_count},
             "representative_browser_routes": 13,
             "responsive_layout_checks": 88,
-            "real_user_journeys": 100,
-            "journey_browser_checks": 100,
+            "intent_resolution_checks": 100,
+            "conversational_ai_browser_checks": 5,
             "corrupted_strings": 0,
             "browser_page_errors": 0
           }
