@@ -26,7 +26,7 @@
       visual.dataset.uaeOsJourney = "true";
       visual.setAttribute("aria-label", "رحلة المعاملة داخل HOSSAM BAHR UAE AI OS");
       visual.innerHTML = [
-        '<div class="uae-os-visual-head"><div><strong>رحلة تشغيل واحدة من البداية إلى الإنجاز</strong><p>ذكاء اصطناعي + سياسات موثقة + موافقات بشرية + متابعة تشغيلية داخل الإمارات</p></div><span class="uae-os-live">UAE OS LIVE</span></div>',
+        '<div class="uae-os-visual-head"><div><strong>كيف يحوّل HOSSAM BAHR AI سؤالك إلى مسار</strong><p>شرح مبسّط لما يحدث بعد رسالتك: فهم الهدف، مطابقة الخدمة، تجهيز المتطلبات ثم المتابعة</p></div><span class="uae-os-live">HOW IT WORKS</span></div>',
         '<div class="uae-os-route" aria-hidden="true"><svg viewBox="0 0 600 320" preserveAspectRatio="none"><path d="M92 52 C210 52 205 145 300 160 C395 175 390 270 510 270"/><circle cx="92" cy="52" r="4"/><circle cx="300" cy="160" r="4"/><circle cx="510" cy="270" r="4"/></svg></div>',
         '<div class="uae-os-core" aria-label="محرك الذكاء والتشغيل"><div class="uae-os-core-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 3.5h9l4 7.5-4 9h-9l-4-9 4-7.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M8.2 12h7.6M12 8.2v7.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><b>AI CORE</b><small>UAE policy-aware</small></div></div>',
         '<ol class="uae-os-flow" aria-label="رحلة تشغيل المعاملة">',
@@ -38,7 +38,7 @@
         '<li><button class="uae-os-step" type="button" data-journey-step data-journey-action="follow" aria-label="المتابعة: افتح أو فعّل المتابعة الشخصية"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6M4 4v4.6h4.6" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>المتابعة</b><small>الحساب مطلوب للمتابعة</small></span></button></li>',
         '<li><button class="uae-os-step" type="button" data-journey-step data-journey-action="completion" aria-label="الإنجاز: افتح حالة المعاملة أو ابدأ معاملة جديدة"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>الإنجاز</b><small>احفظ وابدأ عند الجاهزية</small></span></button></li>',
         '</ol>',
-        '<div class="uae-os-status"><span data-journey-feedback role="status" aria-live="polite">اختر أي خطوة للانتقال مباشرة</span><div class="uae-os-progress" aria-hidden="true"></div><strong>7/7 إمارات</strong></div>'
+        '<div class="uae-os-status"><span data-journey-feedback role="status" aria-live="polite">المحادثة هي نقطة البداية — وهذه المراحل تشرح ما يحدث بعدها</span><div class="uae-os-progress" aria-hidden="true"></div><strong>7/7 إمارات</strong></div>'
       ].join("");
       const search = hero.querySelector(".hero-search-stage");
       hero.insertBefore(visual, search || copy.nextSibling);

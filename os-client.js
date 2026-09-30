@@ -953,6 +953,34 @@
     try{sessionStorage.removeItem(HANDOFF_KEY);}catch{}
     try{localStorage.removeItem(HANDOFF_KEY);}catch{}
   }
+  function renderImportedConversation(handoff){
+    if(!handoff)return;
+    const hero=document.querySelector(".hb-os-hero");
+    if(!hero||hero.querySelector("[data-imported-conversation]"))return;
+    const box=document.createElement("aside");
+    box.dataset.importedConversation="true";
+    box.className="hb-imported-conversation";
+    const title=document.createElement("strong");
+    title.textContent="تم نقل سياق محادثتك إلى مركز التشغيل";
+    const meta=document.createElement("p");
+    const parts=[];
+    if(handoff.service_slug)parts.push("الخدمة: "+handoff.service_slug);
+    if(handoff.jurisdiction_code)parts.push("الاختصاص: "+handoff.jurisdiction_code);
+    if(handoff.authority_key)parts.push("الجهة: "+handoff.authority_key);
+    meta.textContent=parts.join(" • ");
+    box.append(title,meta);
+    const answers=handoff.conversation_context?.answers||[];
+    if(answers.length){
+      const details=document.createElement("details");
+      const summary=document.createElement("summary");
+      summary.textContent="إجابات التوضيح المنقولة ("+answers.length+")";
+      const list=document.createElement("ul");
+      answers.forEach((answer)=>{const li=document.createElement("li");li.textContent=answer;list.append(li);});
+      details.append(summary,list);
+      box.append(details);
+    }
+    hero.append(box);
+  }
   async function consumePublicHandoff(session){
     const params=new URLSearchParams(location.search);
     if(params.get("handoff")!=="1")return;
@@ -961,6 +989,10 @@
     const service=$("[data-os-selected-service]");
     if(handoff?.goal&&goal)goal.value=handoff.goal;
     if(handoff?.service_slug&&service)service.value=handoff.service_slug;
+    if(handoff){
+      try{sessionStorage.setItem("hb-os-conversation-context-v1",JSON.stringify(handoff));}catch{}
+      renderImportedConversation(handoff);
+    }
     if(params.get("start")!=="1"||!handoff?.goal)return;
     const marker="hb-handoff-consumed:"+handoff.id;
     try{if(sessionStorage.getItem(marker)==="1")return;}catch{}
