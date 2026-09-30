@@ -65,18 +65,18 @@ if (streamed) {
   html = html.replace(/<body\b[^>]*>[\s\S]*?<\/body>/i, `<body${bodyAttributes ? ` ${bodyAttributes}` : ''} data-home-render="static-stable">${canonicalBody}</body>`);
 }
 
-html = html.replace(/<link\b[^>]*href=["']\/(?:brand-tokens|intent-first)\.css(?:\?[^"']*)?["'][^>]*>\s*/gi, '');
+html = html.replace(/<link\b[^>]*href=["']\/(?:brand-tokens|intent-first|global-os)\.css(?:\?[^"']*)?["'][^>]*>\s*/gi, '');
 html = html.replace(
   '</head>',
-  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/></head>'
+  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/><link rel="stylesheet" href="/global-os.css?v=uae-os-20260930a" data-hb-uae-os-visual="20260930a"/></head>'
 );
 html = html.replace(
-  /<script\b[^>]*src=["']\/zero-defect-routing\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*/gi,
+  /<script\b[^>]*src=["']\/(?:zero-defect-routing|global-os-client)\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*/gi,
   ''
 );
 html = html.replace(
   '</head>',
-  '<script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script></head>'
+  '<script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script><script src="/global-os-client.js?v=uae-os-20260930a" defer data-hb-uae-os-visual="20260930a"></script></head>'
 );
 html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
   if (/\bclass=(?:"[^"]*\bhb-phase8\b[^"]*"|'[^']*\bhb-phase8\b[^']*')/i.test(match)) return match;
@@ -99,6 +99,8 @@ for (const [name, value] of [
   ['data-ux-page', 'home'],
   ['data-ux-modernized', 'true'],
   ['data-phase7', 'true'],
+  ['data-uae-os-visual', 'true'],
+  ['data-release', '2026-09-30.uae-ai-os-visual'],
 ]) html = setBodyAttribute(html, name, value);
 html = html
   .replace(/\sdata-phase6=(?:"[^"]*"|'[^']*')/gi, '')
@@ -108,6 +110,23 @@ html = html
 html = html.replace(
   /<nav class="desktop-nav"([^>]*)>[\s\S]*?<\/nav>/i,
   '<nav class="desktop-nav"$1><a href="/os/">HOSSAM BAHR OS</a><a href="/services/">الخدمات</a><a href="/categories/companies-establishments/">الشركات والرخص</a><a href="/categories/work-employees/">العمل</a><a href="/categories/residency-visas/">الإقامة والتأشيرات</a><a href="/dubai-business-activities.html">الأنشطة</a><a href="/updates/">التحديثات</a><details class="nav-more"><summary>المزيد</summary><div class="nav-more-menu"><a href="/authorities/">الجهات</a><a href="/command-center/">مركز القيادة</a><a href="/faq/">الأسئلة والحلول</a></div></details></nav>'
+);
+
+html = html.replace(
+  /<span class="hero-kicker">[\s\S]*?<\/span>/i,
+  '<span class="hero-kicker">UAE AI OS • منصة تشغيل المعاملات والأعمال في الإمارات</span>'
+);
+html = html.replace(
+  /<h1 id="hero-title">[\s\S]*?<\/h1>/i,
+  '<h1 id="hero-title">كل معاملاتك في الإمارات.<em> منظّمة بالذكاء الاصطناعي.</em></h1>'
+);
+html = html.replace(
+  /(<div class="hero-copy">[\s\S]*?<h1 id="hero-title">[\s\S]*?<\/h1>)<p>[\s\S]*?<\/p>/i,
+  '$1<p>من الطلب الأول إلى المستندات والموافقات والمتابعة والإنجاز: HOSSAM BAHR يرتّب لك الرحلة داخل الإمارات، ويُبقي القرار البشري حاضرًا عند كل خطوة حساسة.</p>'
+);
+html = html.replace(
+  /<span><b>\d+<\/b>\s*مسارات تشغيل مرتبطة<\/span>/i,
+  '<span><b>' + platformSummary.services + '</b> مسارات تشغيل مرتبطة</span>'
 );
 
 const heroActions = html.match(/<div class="hero-actions">[\s\S]*?<\/div>/i)?.[0];
