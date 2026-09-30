@@ -30,7 +30,7 @@
         '<div class="uae-os-route" aria-hidden="true"><svg viewBox="0 0 600 440" preserveAspectRatio="none"><path d="M92 65 C220 65 185 190 300 210 C415 230 380 360 510 360"/><circle cx="92" cy="65" r="4"/><circle cx="300" cy="210" r="4"/><circle cx="510" cy="360" r="4"/></svg></div>',
         '<div class="uae-os-core" aria-label="محرك الذكاء والتشغيل"><div class="uae-os-core-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 3.5h9l4 7.5-4 9h-9l-4-9 4-7.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M8.2 12h7.6M12 8.2v7.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><b>AI CORE</b><small>UAE policy-aware</small></div></div>',
         '<div class="uae-os-flow" role="list">',
-        '<div class="uae-os-step is-active" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-5 4V5Z" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>طلب العميل</b><small>اكتب هدفك بطريقتك</small></span></div>',
+        '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-5 4V5Z" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>طلب العميل</b><small>اكتب هدفك بطريقتك</small></span></div>',
         '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="m12 3 2.2 4.5L19 9l-3.5 3.4.8 4.8L12 15l-4.3 2.2.8-4.8L5 9l4.8-1.5L12 3Z" stroke="currentColor" stroke-width="1.5"/></svg></span><span><b>تحليل AI</b><small>فهم الهدف والسياق</small></span></div>',
         '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>الخدمة الصحيحة</b><small>مطابقة الجهة والمسار</small></span></div>',
         '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v14H7V3Z" stroke="currentColor" stroke-width="1.6"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>المستندات</b><small>تجميع وفحص المتطلبات</small></span></div>',
@@ -44,26 +44,6 @@
       hero.insertBefore(visual, search || copy.nextSibling);
     }
 
-    const steps = [...hero.querySelectorAll("[data-journey-step]")];
-    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-    if (steps.length && !reduced && hero.dataset.motionReady !== "true") {
-      hero.dataset.motionReady = "true";
-      let index = 0;
-      const tick = () => {
-        steps[index]?.classList.remove("is-active");
-        index = (index + 1) % steps.length;
-        steps[index]?.classList.add("is-active");
-      };
-      let timer = setInterval(tick, 1150);
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          clearInterval(timer);
-          timer = 0;
-        } else if (!timer) {
-          timer = setInterval(tick, 1150);
-        }
-      });
-    }
   }
 
   if (document.readyState === "loading") {
