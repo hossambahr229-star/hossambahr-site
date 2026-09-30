@@ -132,6 +132,37 @@
     return [];
   }
 
+  function catalogIntentHint(query) {
+    const services = Array.isArray(window.HB_INTENT_SERVICES) ? window.HB_INTENT_SERVICES : [];
+    if (!services.length) return null;
+    const q = scrubLocal(query).toLowerCase();
+    const wantsRenew = /اجدد|تجديد|renew/.test(q);
+    const wantsIssue = /اصدار|إصدار|جديد|issue/.test(q) && !wantsRenew;
+    const wantsTransfer = /انقل|نقل|transfer/.test(q);
+    const family = /زوج|زوجتي|والد|والدتي|والدين|اسره|أسرة|عائل/.test(q);
+    const company = /شركه|شركة|رخصه|رخصة|company|business/.test(q);
+    const employee = /موظف|عامل|employee|worker/.test(q);
+    const emirates = [
+      ["دبي","دبي"],["ابوظبي","أبوظبي"],["أبوظبي","أبوظبي"],["الشارقه","الشارقة"],["الشارقة","الشارقة"],
+      ["عجمان","عجمان"],["راس الخيمه","رأس الخيمة"],["رأس الخيمة","رأس الخيمة"],["الفجيره","الفجيرة"],["الفجيرة","الفجيرة"],
+      ["ام القيوين","أم القيوين"],["أم القيوين","أم القيوين"]
+    ];
+    const emirate = emirates.find(([key])=>q.includes(key.toLowerCase()))?.[1] || "";
+    const ranked = services.map((service) => {
+      const hay = [service.s,service.a,service.e,service.c,service.m,...(service.k||[])].join(" ").toLowerCase();
+      let score = 0;
+      if (wantsRenew) score += /تجديد|renew/.test(hay) ? 120 : (/إصدار|اصدار|issue/.test(hay) ? -80 : 0);
+      if (wantsIssue) score += /إصدار|اصدار|issue/.test(hay) ? 90 : 0;
+      if (wantsTransfer) score += /نقل|transfer/.test(hay) ? 120 : 0;
+      if (family) score += /family-sponsorship|اسر|أسرة|عائل|زوج/.test(hay) ? 70 : 0;
+      if (company) score += /companies-establishments|business-licensing|رخص|شركة/.test(hay) ? 65 : 0;
+      if (employee) score += /work-employees|موظف|عامل|work/.test(hay) ? 65 : 0;
+      if (emirate) score += service.m === emirate ? 75 : (service.m && service.m !== "اتحادي" ? -25 : 0);
+      return { service, score };
+    }).sort((a,b)=>b.score-a.score);
+    return ranked[0]?.score >= 120 ? ranked[0].service : null;
+  }
+
   function selectPresentationMatch(payload) {
     const matches = Array.isArray(payload?.result?.matches) ? [...payload.result.matches] : [];
     if (!matches.length) return null;
@@ -241,6 +272,7 @@
   async function analyze(userMessage, options = {}) {
     const displayed = scrubLocal(userMessage);
     if (displayed.length < 2) return;
+    document.body.classList.add("hb-chat-engaged");
     if (!options.fromQuickReply) addBubble("user", displayed);
     const pending = addStatus();
     sendButton && (sendButton.disabled = true);
@@ -259,14 +291,28 @@
         body: JSON.stringify({ goal: query }),
         credentials: "omit"
       });
-      const payload = await response.json().catch(() => ({}));
-      pending?.remove();
+      let payload = await response.json().catch(() => ({}));
       if (response.status === 429) {
+        pending?.remove();
         addBubble("assistant", "وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");
         return;
       }
       if (!response.ok || !payload?.ok) throw new Error(payload?.error || "analysis_failed");
 
+      const hint = catalogIntentHint(query);
+      const currentSlug = payload?.result?.matches?.[0]?.service_slug || "";
+      if (hint?.s && hint.s !== currentSlug) {
+        const refined = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ goal: query + " — الخدمة الأقرب المقصودة: " + hint.a }),
+          credentials: "omit"
+        });
+        const refinedPayload = await refined.json().catch(() => ({}));
+        if (refined.ok && refinedPayload?.ok) payload = refinedPayload;
+      }
+
+      pending?.remove();
       const match = selectPresentationMatch(payload);
       state.last_payload = payload;
       state.resolved_query = payload?.goal_context?.safe_goal || query;
