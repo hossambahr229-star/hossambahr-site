@@ -432,6 +432,86 @@ async function deterministicTaskReview(admin, job) {
   };
 }
 
+
+async function deterministicDocumentAnalysis(admin, job, caseRow) {
+  const docRef = (job.input_refs || []).find((ref) => ref?.type === "document" && ref?.id);
+  if (!docRef?.id) throw new Error("document_reference_missing");
+
+  const { data: document, error: docError } = await admin
+    .from("hb_documents")
+    .select("id,owner_user_id,case_id,document_type,storage_path,original_filename,issuing_country,issued_at,expires_at,verification_status,extracted_data")
+    .eq("id", docRef.id)
+    .single();
+  if (docError || !document) throw new Error("document_unavailable");
+  if (String(document.case_id || "") !== String(caseRow.id)) throw new Error("document_case_mismatch");
+
+  const { data: version, error: versionError } = await admin
+    .from("hb_document_versions")
+    .select("version,size_bytes,mime_type,checksum,created_at")
+    .eq("document_id", document.id)
+    .order("version", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (versionError) throw new Error("document_version_unavailable");
+
+  const now = new Date();
+  const expiry = document.expires_at ? new Date(document.expires_at + "T00:00:00Z") : null;
+  const expired = Boolean(expiry && expiry.getTime() < now.getTime());
+  const expiresSoon = Boolean(expiry && !expired && expiry.getTime() - now.getTime() <= 30 * 86400000);
+
+  const output = {
+    summary_ar: "تم فحص بيانات المستند التشغيلية بأقل قدر من البيانات دون إرسال محتوى الملف إلى نموذج خارجي.",
+    detected_intent: "document_analysis",
+    recommended_next_steps: [
+      "مراجعة نوع المستند وارتباطه بالحالة.",
+      "إجراء مراجعة بشرية قبل اعتماد صحة المحتوى أو البيانات الحساسة."
+    ],
+    missing_information: document.document_type ? [] : ["نوع المستند غير محدد."],
+    risk_flags: [
+      "لم تتم قراءة محتوى الملف أو تنفيذ OCR في هذه الجولة.",
+      ...(expired ? ["المستند مسجل كمنتهي الصلاحية."] : []),
+      ...(expiresSoon ? ["المستند مسجل كقريب من انتهاء الصلاحية خلال 30 يومًا."] : [])
+    ],
+    confidence: "unverified",
+    needs_human_review: true,
+    safe_to_prepare: true,
+    document: {
+      id: document.id,
+      document_type: document.document_type,
+      mime_type: version?.mime_type || null,
+      size_bytes: version?.size_bytes || null,
+      version: version?.version || null,
+      has_expiry: Boolean(document.expires_at),
+      expired,
+      expires_soon: expiresSoon,
+      content_inspected: false,
+      external_model_used: false
+    }
+  };
+
+  const merged = {
+    ...(document.extracted_data || {}),
+    safe_document_analysis: {
+      analyzed_at: new Date().toISOString(),
+      route: "document-analysis",
+      mode: "metadata_only",
+      human_review_required: true,
+      content_inspected: false,
+      mime_type: version?.mime_type || null,
+      size_bytes: version?.size_bytes || null,
+      expired,
+      expires_soon: expiresSoon
+    }
+  };
+  const { error: updateError } = await admin
+    .from("hb_documents")
+    .update({ extracted_data: merged })
+    .eq("id", document.id);
+  if (updateError) throw new Error("document_analysis_persist_failed");
+
+  return { output, response_id: null, usage: null };
+}
+
 async function completeAgentTask(admin, caseRow, routeKey, runId, result) {
   const agentRef = routeKey === "case-intake" ? "intake" : routeKey === "quality-check" ? "quality" : null;
   if (!agentRef) return;
@@ -481,7 +561,7 @@ async function processAgentJob(admin) {
     if (modelError) throw new Error("ai_model_catalog_unavailable");
     if (!job.case_id) throw new Error("case_required_for_agent");
 
-    const supportedRoutes = new Set(["case-intake", "policy-resolution", "case-planning", "task-quality-review", "quality-check"]);
+    const supportedRoutes = new Set(["case-intake", "policy-resolution", "case-planning", "task-quality-review", "quality-check", "document-analysis"]);
     if (!supportedRoutes.has(job.route_key)) throw new Error("route_executor_not_implemented");
 
     let model = chooseModel(route, models || []);
@@ -542,6 +622,8 @@ async function processAgentJob(admin) {
       result = await deterministicTaskReview(admin, job);
     } else if (job.route_key === "quality-check") {
       result = await deterministicQuality(admin, caseRow);
+    } else if (job.route_key === "document-analysis") {
+      result = await deterministicDocumentAnalysis(admin, job, caseRow);
     } else if (model.provider === "openai") {
       const apiKey = Deno.env.get(String(model.metadata?.secret_env || "OPENAI_API_KEY")) || "";
       result = await callOpenAI({ apiKey, model, route, caseRow, binding });
@@ -649,7 +731,7 @@ export default {
 
     try {
       const activity = await drain(ctx.supabaseAdmin);
-      return response({ ok: true, processed: activity.length > 0, activity });
+      return response({ ok: true, processed: activity.length > 0, external_model_configured: Boolean(Deno.env.get("OPENAI_API_KEY")), activity });
     } catch (error) {
       return response({ ok: false, error: safeError(error) }, 500);
     }
