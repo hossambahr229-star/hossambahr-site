@@ -72,6 +72,28 @@
     initUaeOsHomepageVisual();
   }
 
+  function initOsJourneyAnchors() {
+    if (location.pathname !== "/os/") return;
+    const hero = document.querySelector(".hb-os-hero");
+    if (hero) hero.id = "ai-intake";
+    for (const panel of document.querySelectorAll(".hb-os-panel")) {
+      const eyebrow = panel.querySelector(".eyebrow")?.textContent?.trim();
+      if (eyebrow === "Cases") panel.id = "case-progress";
+      if (eyebrow === "Action Center") panel.id = "action-center";
+      if (eyebrow === "Private Vault") panel.id = "private-vault";
+    }
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initOsJourneyAnchors, { once: true });
+  } else {
+    initOsJourneyAnchors();
+  }
+
   const client = window.HB_AUTH;
   if (!client) return;
 
