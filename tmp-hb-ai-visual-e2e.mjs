@@ -71,9 +71,9 @@ const scenarios=[
       if(sourceCount) break;
       const quick=page.locator(".hb-chat-quick-replies button:not([disabled])").first();
       if(!(await quick.count())) break;
-      const before=await page.locator(".hb-chat-message--assistant").count();
+      const before=await page.locator(".hb-chat-message--assistant .hb-chat-answer").count();
       await quick.click();
-      await page.waitForFunction(n=>document.querySelectorAll(".hb-chat-message--assistant").length>n,before,{timeout:30000});
+      await page.waitForFunction(n=>document.querySelectorAll(".hb-chat-message--assistant .hb-chat-answer").length>n,before,{timeout:30000});
     }
 
     const data=await page.evaluate(()=>({
@@ -111,9 +111,9 @@ const scenarios=[
   await page.locator(".hb-chat-send").click();
   await page.locator(".hb-chat-quick-replies button").first().waitFor({timeout:30000});
   const answer=await page.locator(".hb-chat-quick-replies button").first().textContent();
-  const before=await page.locator(".hb-chat-message--assistant").count();
+  const before=await page.locator(".hb-chat-message--assistant .hb-chat-answer").count();
   await page.locator(".hb-chat-quick-replies button").first().click();
-  await page.waitForFunction(n=>document.querySelectorAll(".hb-chat-message--assistant").length>n,before,{timeout:30000});
+  await page.waitForFunction(n=>document.querySelectorAll(".hb-chat-message--assistant .hb-chat-answer").length>n,before,{timeout:30000});
   const state=await page.evaluate(()=>JSON.parse(sessionStorage.getItem("hb-public-ai-conversation-v2")||"null"));
   if(!state?.answers?.includes(answer)) failures.push("quick reply not retained in conversation context");
   const motion=await page.evaluate(()=>getComputedStyle(document.querySelector(".hb-chat-message--assistant")).animationName);
