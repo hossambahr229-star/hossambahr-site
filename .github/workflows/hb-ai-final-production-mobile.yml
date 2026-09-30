@@ -1,0 +1,85 @@
+name: HB AI Final Production Mobile
+on:
+  push:
+    branches:
+      - test/hb-ai-production-mobile-final-20260930
+permissions:
+  contents: read
+jobs:
+  prod:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Verify live mobile HB AI
+        env:
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+        run: |
+          node --input-type=module <<'NODE'
+          import { chromium } from "playwright";
+          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH,args:["--no-sandbox"]});
+          const failures=[]; const evidence=[];
+          for(const [width,height] of [[390,844],[430,932],[1366,768],[1440,900]]){
+            const context=await browser.newContext({viewport:{width,height}});
+            const page=await context.newPage();
+            const errors=[];page.on("pageerror",e=>errors.push(e.message));
+            await page.goto("https://hossambahr.com/",{waitUntil:"domcontentloaded",timeout:30000});
+            await page.evaluate(()=>{sessionStorage.clear();localStorage.clear()}); await page.reload({waitUntil:"domcontentloaded"});
+            const pre=await page.evaluate(()=>[".hero-search-stage",".hb-ai-composer-brand",".hb-conversation-composer",".hb-chat-shell"].map(sel=>{const el=document.querySelector(sel),r=el?.getBoundingClientRect();return {sel,w:r?.width||0,h:r?.height||0}}));
+            const composer=page.locator(".hb-conversation-composer"); const cb=await composer.boundingBox();
+            if(!cb||cb.y>height) failures.push(width+": composer below viewport");
+            if(width<=430){
+              for(const item of pre){ if(item.w<width-55) failures.push(width+" "+item.sel+" too narrow "+item.w); }
+            }
+            const delta=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+            if(delta>2) failures.push(width+": pre overflow "+delta);
+            if(errors.length) failures.push(width+": page errors "+errors.join(" | "));
+            evidence.push({width,pre,composerY:cb?.y||null});
+            await context.close();
+          }
+          {
+            const context=await browser.newContext({viewport:{width:390,height:844}});
+            const page=await context.newPage();
+            await page.goto("https://hossambahr.com/",{waitUntil:"domcontentloaded",timeout:30000});
+            await page.evaluate(()=>{sessionStorage.clear();localStorage.clear()}); await page.reload({waitUntil:"domcontentloaded"});
+            if(await page.locator(".hb-chat-primary").count()) failures.push("auth CTA before analysis");
+            await page.locator("#government-search").fill("أريد أجدد إقامة زوجتي في دبي");
+            await page.locator(".hb-chat-send").click();
+            const answer=page.locator(".hb-chat-message--assistant .hb-chat-answer").last();
+            await answer.waitFor({state:"visible",timeout:30000});
+            await page.waitForTimeout(320);
+            const d=await page.evaluate(()=>({
+              answerWidth:[...document.querySelectorAll(".hb-chat-answer")].at(-1)?.getBoundingClientRect().width||0,
+              messageOpacity:getComputedStyle([...document.querySelectorAll(".hb-chat-message--assistant")].at(-1)).opacity,
+              ai:[...document.querySelectorAll(".hb-ai-identity-copy strong")].at(-1)?.textContent||"",
+              service:[...document.querySelectorAll(".hb-chat-info-block")].find(x=>x.querySelector("strong")?.textContent==="الخدمة المطابقة")?.textContent||"",
+              authority:[...document.querySelectorAll(".hb-chat-info-block")].find(x=>x.querySelector("strong")?.textContent==="الجهة المختصة")?.textContent||"",
+              source:document.querySelector(".hb-chat-source a")?.href||"",
+              sourceBadge:document.querySelector(".hb-ai-source-badge")?.textContent||"",
+              trust:document.querySelector(".hb-ai-trust-badge")?.textContent||"",
+              primary:document.querySelector(".hb-chat-primary")?.textContent||"",
+              save:document.querySelector(".hb-chat-save-plan")?.textContent||"",
+              href:document.querySelector(".hb-chat-primary")?.getAttribute("href")||"",
+              overflow:document.documentElement.scrollWidth-document.documentElement.clientWidth
+            }));
+            if(d.answerWidth<235) failures.push("390 answer too narrow "+d.answerWidth);
+            if(Number(d.messageOpacity)<.95) failures.push("assistant opacity "+d.messageOpacity);
+            if(d.ai!=="HB AI") failures.push("assistant identity missing");
+            if(!/تجديد/.test(d.service)) failures.push("renewal service mismatch");
+            if(!d.authority) failures.push("authority missing");
+            if(!d.source.startsWith("https://")) failures.push("official source missing");
+            if(!d.sourceBadge.includes("مصدر رسمي")) failures.push("source badge missing");
+            if(!d.trust.includes("معلومة موثقة")) failures.push("trust badge missing");
+            if(d.primary!=="ابدأ معاملتي"||d.save!=="احفظ الخطة") failures.push("CTA labels wrong");
+            if(!d.href.startsWith("/auth/?return=")) failures.push("auth gate wrong");
+            if(d.overflow>2) failures.push("post-answer overflow "+d.overflow);
+            evidence.push({conversation:d});
+            await context.close();
+          }
+          console.log(JSON.stringify({status:failures.length?"FAIL":"PASS",evidence,failures},null,2));
+          await browser.close(); if(failures.length)process.exit(1);
+          NODE
