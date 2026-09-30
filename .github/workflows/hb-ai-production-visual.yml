@@ -49,7 +49,17 @@ jobs:
             if(await page.locator(".hb-chat-primary").count())failures.push("auth CTA before analysis");
             await page.locator("#government-search").fill("أريد أجدد إقامة زوجتي في دبي");
             await page.locator(".hb-chat-send").click();
-            await page.locator(".hb-chat-answer").last().waitFor({timeout:30000});
+            await page.waitForFunction(()=>document.querySelectorAll(".hb-chat-answer").length>0,null,{timeout:30000});
+            const diag=await page.evaluate(()=>{
+              const answer=[...document.querySelectorAll(".hb-chat-answer")].at(-1);
+              const bubble=answer?.closest(".hb-chat-bubble");
+              const message=answer?.closest(".hb-chat-message");
+              const thread=answer?.closest(".hb-chat-thread");
+              const shell=answer?.closest(".hb-chat-shell");
+              const chain=[answer,bubble,message,thread,shell].filter(Boolean).map(el=>({cls:el.className,hidden:el.hidden,display:getComputedStyle(el).display,visibility:getComputedStyle(el).visibility,opacity:getComputedStyle(el).opacity,w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height}));
+              return {chain,html:answer?.outerHTML?.slice(0,1000)};
+            });
+            console.log("ANSWER_DIAG",JSON.stringify(diag));
             const d=await page.evaluate(()=>({
               ai:[...document.querySelectorAll(".hb-ai-identity-copy strong")].at(-1)?.textContent||"",
               service:[...document.querySelectorAll(".hb-chat-info-block")].find(x=>x.querySelector("strong")?.textContent==="الخدمة المطابقة")?.textContent||"",
