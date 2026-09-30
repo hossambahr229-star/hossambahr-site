@@ -114,9 +114,15 @@
 
   function effectiveQuestion(payload) {
     const base = scrubLocal(state.original_goal).toLowerCase();
+    const combined = scrubLocal([state.original_goal,...(state.answers||[])].join(" ")).toLowerCase();
     const answeredIntent = (state.answers || []).some((answer) => /تجديد|إصدار|اصدار|إلغاء|الغاء|رفض|تأخير/.test(answer));
-    if (/مشكله|مشكلة|problem/.test(base) && /اقامه|إقامة|residence/.test(base) && !answeredIntent) {
+    const hasEmirate = /دبي|ابوظبي|أبوظبي|الشارقه|الشارقة|عجمان|راس الخيمه|رأس الخيمة|الفجيره|الفجيرة|ام القيوين|أم القيوين/.test(combined);
+    const residency = /اقامه|إقامة|residence|residency/.test(base);
+    if (/مشكله|مشكلة|problem/.test(base) && residency && !answeredIntent) {
       return "ما نوع المشكلة أو النتيجة التي تريدها في الإقامة؟";
+    }
+    if (residency && !hasEmirate) {
+      return "في أي إمارة تتم معاملة الإقامة؟";
     }
     return payload?.result?.follow_up_questions?.[0] || "";
   }
@@ -132,6 +138,27 @@
     return [];
   }
 
+  function ensureIntentCatalog() {
+    if (Array.isArray(window.HB_INTENT_SERVICES) && window.HB_INTENT_SERVICES.length) return Promise.resolve();
+    if (window.HB_INTENT_DATA_READY) return window.HB_INTENT_DATA_READY;
+    window.HB_INTENT_DATA_READY = new Promise((resolve) => {
+      const existing = [...document.scripts].find((script) => script.src.includes("/intent-search-data.js"));
+      if (existing) {
+        if (Array.isArray(window.HB_INTENT_SERVICES) && window.HB_INTENT_SERVICES.length) return resolve();
+        existing.addEventListener("load", () => resolve(), { once: true });
+        existing.addEventListener("error", () => resolve(), { once: true });
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = "/intent-search-data.js";
+      script.defer = true;
+      script.addEventListener("load", () => resolve(), { once: true });
+      script.addEventListener("error", () => resolve(), { once: true });
+      document.head.append(script);
+    });
+    return window.HB_INTENT_DATA_READY;
+  }
+
   function catalogIntentHint(query) {
     const services = Array.isArray(window.HB_INTENT_SERVICES) ? window.HB_INTENT_SERVICES : [];
     if (!services.length) return null;
@@ -142,6 +169,7 @@
     const family = /زوج|زوجتي|والد|والدتي|والدين|اسره|أسرة|عائل/.test(q);
     const company = /شركه|شركة|رخصه|رخصة|company|business/.test(q);
     const employee = /موظف|عامل|employee|worker/.test(q);
+    const residency = /اقامه|إقامة|residence|residency/.test(q);
     const emirates = [
       ["دبي","دبي"],["ابوظبي","أبوظبي"],["أبوظبي","أبوظبي"],["الشارقه","الشارقة"],["الشارقة","الشارقة"],
       ["عجمان","عجمان"],["راس الخيمه","رأس الخيمة"],["رأس الخيمة","رأس الخيمة"],["الفجيره","الفجيرة"],["الفجيرة","الفجيرة"],
@@ -157,6 +185,10 @@
       if (family) score += /family-sponsorship|اسر|أسرة|عائل|زوج/.test(hay) ? 70 : 0;
       if (company) score += /companies-establishments|business-licensing|رخص|شركة/.test(hay) ? 65 : 0;
       if (employee) score += /work-employees|موظف|عامل|work/.test(hay) ? 65 : 0;
+      if (residency) {
+        if (/residency-visas|family-sponsorship|اقامه|إقامة|residence/.test(hay)) score += 90;
+        if (/business-licensing|companies-establishments|رخصة اقتصادية|رخصه اقتصاديه/.test(hay)) score -= 110;
+      }
       if (emirate) score += service.m === emirate ? 75 : (service.m && service.m !== "اتحادي" ? -25 : 0);
       return { service, score };
     }).sort((a,b)=>b.score-a.score);
@@ -285,10 +317,13 @@
     saveState();
 
     try {
+      await ensureIntentCatalog();
+      const initialHint = catalogIntentHint(query);
+      const resolverQuery = initialHint?.a ? query + " — الخدمة الأقرب المقصودة: " + initialHint.a : query;
       const response = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ goal: query }),
+        body: JSON.stringify({ goal: resolverQuery }),
         credentials: "omit"
       });
       let payload = await response.json().catch(() => ({}));
