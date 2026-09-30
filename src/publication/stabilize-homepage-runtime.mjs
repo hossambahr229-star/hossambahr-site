@@ -76,7 +76,7 @@ html = html.replace(
 );
 html = html.replace(
   '</head>',
-  '<script src="/vendor/supabase.js" defer></script><script src="/auth-config.js" defer></script><script src="/auth-client.js" defer></script><script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script><script src="/global-os-client.js?v=uae-os-20260930d" defer data-hb-uae-os-visual="20260930a"></script><script src="/public-ai-concierge.js?v=public-ai-20260930b" defer></script></head>'
+  '<script src="/vendor/supabase.js" defer></script><script src="/auth-config.js" defer></script><script src="/auth-client.js" defer></script><script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script><script src="/global-os-client.js?v=uae-os-20260930e" defer data-hb-uae-os-visual="20260930a"></script><script src="/public-ai-concierge.js?v=public-ai-20260930b" defer></script></head>'
 );
 html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
   if (/\bclass=(?:"[^"]*\bhb-phase8\b[^"]*"|'[^']*\bhb-phase8\b[^']*')/i.test(match)) return match;
