@@ -1,0 +1,120 @@
+name: Live Conversational AI Acceptance
+on:
+  push:
+    branches:
+      - test/conversational-ai-production-20260930
+permissions:
+  contents: read
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Verify live conversational funnel
+        env:
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+        run: |
+          node --input-type=module <<'NODE'
+          import { chromium } from "playwright";
+          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH,args:["--no-sandbox"]});
+          const failures=[]; const results=[];
+          const sizes=[[1366,768],[1440,900],[390,844],[430,932]];
+          for(const [width,height] of sizes){
+            const ctx=await browser.newContext({viewport:{width,height}});
+            const page=await ctx.newPage();
+            await page.goto("https://hossambahr.com/",{waitUntil:"domcontentloaded",timeout:30000});
+            await page.evaluate(()=>{localStorage.clear();sessionStorage.clear()});
+            await page.reload({waitUntil:"domcontentloaded"});
+            const composer=page.locator("#government-search"),send=page.locator(".hb-chat-send");
+            if(!await composer.isVisible())failures.push(width+": composer hidden");
+            if(!await send.isVisible())failures.push(width+": send hidden");
+            const box=await composer.boundingBox(); if(!box||box.y>height)failures.push(width+": composer below viewport");
+            const dims=await page.evaluate(()=>({sw:document.documentElement.scrollWidth,cw:document.documentElement.clientWidth}));
+            if(dims.sw>dims.cw+2)failures.push(width+": horizontal overflow");
+            if(await page.locator(".hb-conversation-composer button").filter({hasText:"تحليل AI"}).count())failures.push(width+": legacy analyze button");
+            if(await page.locator(".hb-conversation-composer button").filter({hasText:"ابحث عن المعاملة"}).count())failures.push(width+": legacy search button");
+            await ctx.close();
+          }
+
+          const scenarios=[
+            "أريد أجدد إقامة زوجتي في دبي",
+            "أريد أفتح شركة في دبي",
+            "عندي موظف وأريد أنقله إلى شركتي",
+            "أريد إقامة لوالدتي",
+            "عندي مشكلة في الإقامة"
+          ];
+          for(const goal of scenarios){
+            const ctx=await browser.newContext({viewport:{width:1366,height:768}});
+            const page=await ctx.newPage();
+            const errors=[];page.on("pageerror",e=>errors.push(e.message));
+            await page.goto("https://hossambahr.com/",{waitUntil:"domcontentloaded",timeout:30000});
+            await page.evaluate(()=>{localStorage.clear();sessionStorage.clear()});
+            await page.reload({waitUntil:"domcontentloaded"});
+            if(await page.locator(".hb-chat-thread a[href^='/auth/']").count())failures.push(goal+": auth shown before analysis");
+            await page.locator("#government-search").fill(goal);
+            await page.locator(".hb-chat-send").click();
+            await page.locator(".hb-chat-message--user").last().waitFor({timeout:10000});
+            await page.locator(".hb-chat-message--assistant .hb-chat-answer").last().waitFor({timeout:30000});
+
+            for(let turn=0;turn<2;turn++){
+              const serviceCount=await page.locator(".hb-chat-info-block").filter({has:page.locator("strong",{hasText:"الخدمة المطابقة"})}).count();
+              if(serviceCount)break;
+              const quick=page.locator(".hb-chat-quick-replies button:not([disabled])").first();
+              if(!(await quick.count()))break;
+              const before=await page.locator(".hb-chat-message--assistant .hb-chat-answer").count();
+              await quick.click();
+              await page.waitForFunction((count)=>document.querySelectorAll(".hb-chat-message--assistant .hb-chat-answer").length>count,before,{timeout:30000});
+            }
+
+            const data=await page.evaluate(()=>({
+              user:[...document.querySelectorAll(".hb-chat-message--user .hb-chat-bubble")][0]?.textContent||"",
+              assistant:[...document.querySelectorAll(".hb-chat-message--assistant .hb-chat-answer")].at(-1)?.textContent||"",
+              service:[...document.querySelectorAll(".hb-chat-info-block")].reverse().find(x=>x.querySelector("strong")?.textContent==="الخدمة المطابقة")?.textContent||"",
+              authority:[...document.querySelectorAll(".hb-chat-info-block")].reverse().find(x=>x.querySelector("strong")?.textContent==="الجهة المختصة")?.textContent||"",
+              source:[...document.querySelectorAll(".hb-chat-source a")].at(-1)?.href||"",
+              follow:[...document.querySelectorAll(".hb-chat-followup>strong")].at(-1)?.textContent||"",
+              auth:[...document.querySelectorAll(".hb-chat-primary")].at(-1)?.getAttribute("href")||"",
+              turns:document.querySelectorAll(".hb-chat-message--user").length
+            }));
+            if(!data.user.includes(goal.slice(0,8)))failures.push(goal+": user bubble missing");
+            if(!data.assistant)failures.push(goal+": assistant response missing");
+            if(!data.service)failures.push(goal+": service missing");
+            if(!data.authority)failures.push(goal+": authority missing");
+            if(!data.source.startsWith("https://"))failures.push(goal+": official source missing");
+            if(!data.auth.startsWith("/auth/?return="))failures.push(goal+": start CTA not auth gated");
+            if(goal.includes("أجدد")&&!/تجديد/.test(data.service))failures.push(goal+": renewal mismatch");
+            if(goal.includes("أنقله")&&!/نقل/.test(data.service))failures.push(goal+": transfer mismatch");
+            if(errors.length)failures.push(goal+": "+errors.join(" | "));
+            results.push({goal,...data});
+            await ctx.close();
+          }
+
+          const ctx=await browser.newContext({viewport:{width:430,height:932}});
+          const page=await ctx.newPage();
+          await page.goto("https://hossambahr.com/",{waitUntil:"domcontentloaded"});
+          await page.evaluate(()=>{localStorage.clear();sessionStorage.clear()});
+          await page.reload({waitUntil:"domcontentloaded"});
+          await page.locator("#government-search").fill("أريد إقامة لوالدتي");
+          await page.locator(".hb-chat-send").click();
+          await page.locator(".hb-chat-followup").last().waitFor({timeout:30000});
+          const quick=page.locator(".hb-chat-quick-replies button").first();
+          const answer=await quick.textContent();
+          const before=await page.locator(".hb-chat-message--assistant .hb-chat-answer").count();
+          await quick.click();
+          await page.waitForFunction((count)=>document.querySelectorAll(".hb-chat-message--assistant .hb-chat-answer").length>count,before,{timeout:30000});
+          const s=await page.evaluate(()=>JSON.parse(sessionStorage.getItem("hb-public-ai-conversation-v2")||"null"));
+          if(!s?.answers?.includes(answer)||!String(s?.original_goal||"").includes("والدتي"))failures.push("quick reply context not preserved");
+          const start=page.locator(".hb-chat-primary").last(); await start.getAttribute("href");
+          const h=await page.evaluate(()=>JSON.parse(sessionStorage.getItem("hb-public-ai-handoff-v1")||"null"));
+          if(!h?.goal||!h?.service_slug||!h?.jurisdiction_code||!h?.authority_key||!h?.conversation_context)failures.push("auth handoff context incomplete");
+          await ctx.close();
+
+          console.log(JSON.stringify({status:failures.length?"FAIL":"PASS",results,failures},null,2));
+          await browser.close();
+          if(failures.length)process.exit(1);
+          NODE
