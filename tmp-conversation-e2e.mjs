@@ -71,9 +71,9 @@ for(const [width,height] of sizes){
      if(hasService)break;
      const quick=page.locator(".hb-chat-quick-replies button:not([disabled])").first();
      if(!(await quick.count()))break;
+     const beforeAssistant=await page.locator(".hb-chat-message--assistant .hb-chat-answer").count();
      await quick.click();
-     await page.waitForTimeout(250);
-     await page.locator(".hb-chat-message--assistant .hb-chat-answer").last().waitFor({timeout:30000});
+     await page.waitForFunction((count)=>document.querySelectorAll(".hb-chat-message--assistant .hb-chat-answer").length>count,beforeAssistant,{timeout:30000});
    }
    const data=await page.evaluate(()=>({
      user:[...document.querySelectorAll(".hb-chat-message--user .hb-chat-bubble")][0]?.textContent||"",
@@ -90,6 +90,8 @@ for(const [width,height] of sizes){
    if(!data.assistant)failures.push(`${goal}: assistant response missing`);
    if(!data.service)failures.push(`${goal}: service block missing after clarifications`);
    if(!data.authority)failures.push(`${goal}: authority block missing after clarifications`);
+   if(goal.includes("أجدد")&&!/تجديد/.test(data.service))failures.push(`${goal}: renewal intent resolved to non-renewal service`);
+   if(goal.includes("أنقله")&&!/نقل/.test(data.service))failures.push(`${goal}: transfer intent resolved to non-transfer service`);
    if(!data.source.startsWith("https://"))failures.push(`${goal}: official source missing`);
    if(!data.reqs)failures.push(`${goal}: requirements/documents block missing`);
    if(!data.start.startsWith("/auth/?return="))failures.push(`${goal}: protected CTA not auth-gated`);
@@ -112,8 +114,9 @@ for(const [width,height] of sizes){
  if(!(await quick.count())) failures.push("quick replies missing for clarification");
  else{
    const answer=await quick.textContent();
+   const beforeAssistant=await page.locator(".hb-chat-message--assistant .hb-chat-answer").count();
    await quick.click();
-   await page.locator(".hb-chat-message--assistant .hb-chat-answer").nth(1).waitFor({timeout:30000});
+   await page.waitForFunction((count)=>document.querySelectorAll(".hb-chat-message--assistant .hb-chat-answer").length>count,beforeAssistant,{timeout:30000});
    const state=await page.evaluate(()=>JSON.parse(sessionStorage.getItem("hb-public-ai-conversation-v2")||"null"));
    const userCount=await page.locator(".hb-chat-message--user").count();
    const assistantCount=await page.locator(".hb-chat-message--assistant .hb-chat-answer").count();
