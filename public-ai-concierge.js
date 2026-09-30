@@ -192,11 +192,8 @@
     return body;
   }
 
-  function buildResolvedQuery(userMessage) {
-    const safe = scrubLocal(userMessage);
-    if (!state.original_goal) state.original_goal = safe;
-    const answers = (state.answers || []).filter(Boolean);
-    return [state.original_goal, ...answers, safe !== state.original_goal ? safe : ""].filter(Boolean).join(" — ");
+  function buildResolvedQuery() {
+    return [state.original_goal, ...(state.answers || [])].filter(Boolean).join(" — ");
   }
 
   async function analyze(userMessage, options = {}) {
@@ -206,11 +203,10 @@
     const pending = addStatus();
     sendButton && (sendButton.disabled = true);
 
-    if (options.fromQuickReply) {
-      state.answers.push(displayed);
-    }
+    if (!state.original_goal) state.original_goal = displayed;
+    else if (displayed !== state.original_goal) state.answers.push(displayed);
 
-    const query = buildResolvedQuery(displayed);
+    const query = buildResolvedQuery();
     state.resolved_query = query;
     saveState();
 
