@@ -2,71 +2,270 @@
   "use strict";
 
   const ENDPOINT = "https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge";
+  const STATE_KEY = "hb-public-ai-conversation-v2";
   const HANDOFF_KEY = "hb-public-ai-handoff-v1";
-  const HANDOFF_TTL = 30 * 60 * 1000;
-  let lastPayload = null;
+  const TTL = 30 * 60 * 1000;
 
   const $ = (selector, root = document) => root.querySelector(selector);
-  const text = (value) => String(value ?? "");
-
-  function create(tag, className, value) {
+  const create = (tag, className, value) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
     if (value != null) node.textContent = String(value);
     return node;
+  };
+
+  let state = {
+    expires_at: Date.now() + TTL,
+    original_goal: "",
+    resolved_query: "",
+    answers: [],
+    service_slug: null,
+    jurisdiction_code: null,
+    authority_key: null,
+    last_payload: null
+  };
+  let thread = null;
+  let composer = null;
+  let form = null;
+  let sendButton = null;
+
+  function scrubLocal(value) {
+    return String(value || "")
+      .slice(0, 800)
+      .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "[email]")
+      .replace(/(?:\+?971|00971|0)?5\d[\s-]?\d{3}[\s-]?\d{4}/g, "[phone]")
+      .replace(/\b\d{7,}\b/g, "[number]")
+      .trim();
   }
 
-  function currentGoal() {
-    return text($("#government-search")?.value).trim();
+  function loadState() {
+    try {
+      const parsed = JSON.parse(sessionStorage.getItem(STATE_KEY) || "null");
+      if (parsed?.expires_at && Date.now() < Number(parsed.expires_at)) {
+        state = { ...state, ...parsed, last_payload: null };
+      } else {
+        sessionStorage.removeItem(STATE_KEY);
+      }
+    } catch {}
   }
 
-  function ensurePanel() {
-    let panel = $("[data-public-ai-panel]");
-    if (panel) return panel;
-    panel = document.createElement("section");
-    panel.className = "public-ai-panel";
-    panel.dataset.publicAiPanel = "true";
-    panel.id = "public-ai-panel";
-    panel.hidden = true;
-    panel.setAttribute("aria-live", "polite");
-    panel.setAttribute("aria-labelledby", "public-ai-title");
-    const hero = $(".platform-hero");
-    const searchResults = $("#search-results");
-    if (hero) hero.insertAdjacentElement("afterend", panel);
-    else if (searchResults) searchResults.insertAdjacentElement("beforebegin", panel);
-    return panel;
+  function saveState() {
+    state.expires_at = Date.now() + TTL;
+    const safe = {
+      expires_at: state.expires_at,
+      original_goal: scrubLocal(state.original_goal),
+      resolved_query: scrubLocal(state.resolved_query),
+      answers: (state.answers || []).slice(-6).map(scrubLocal),
+      service_slug: state.service_slug || null,
+      jurisdiction_code: state.jurisdiction_code || null,
+      authority_key: state.authority_key || null
+    };
+    try { sessionStorage.setItem(STATE_KEY, JSON.stringify(safe)); } catch {}
   }
 
-  function setPanelMessage(message, state = "info") {
-    const panel = ensurePanel();
-    panel.hidden = false;
-    panel.dataset.state = state;
-    panel.replaceChildren();
-    const shell = create("div", "public-ai-shell");
-    const kicker = create("span", "public-ai-kicker", "PUBLIC AI CONCIERGE");
-    const h2 = create("h2", "", "تحليل أولي قبل تسجيل الدخول");
-    h2.id = "public-ai-title";
-    const p = create("p", "public-ai-message", message);
-    shell.append(kicker, h2, p);
-    panel.append(shell);
-    panel.scrollIntoView({ behavior: "smooth", block: "start" });
-    return panel;
+  function addBubble(role, content, options = {}) {
+    if (!thread) return null;
+    const wrap = create("article", "hb-chat-message hb-chat-message--" + role);
+    wrap.dataset.chatRole = role;
+    const avatar = create("span", "hb-chat-avatar", role === "assistant" ? "HB" : "أنت");
+    const body = create("div", "hb-chat-bubble");
+    if (typeof content === "string") body.append(create("p", "", content));
+    else if (content) body.append(content);
+    wrap.append(avatar, body);
+    if (options.pending) wrap.dataset.pending = "true";
+    thread.append(wrap);
+    requestAnimationFrame(() => wrap.scrollIntoView({ behavior: options.instant ? "auto" : "smooth", block: "nearest" }));
+    return wrap;
   }
 
-  function rememberHandoff(payload) {
-    const match = payload?.result?.matches?.[0];
-    const safeGoal = payload?.goal_context?.safe_goal || currentGoal();
+  function addStatus() {
+    const bubble = addBubble("assistant", "أراجع الخدمات والسياسات الرسمية…", { pending: true });
+    bubble?.querySelector(".hb-chat-bubble")?.classList.add("hb-chat-thinking");
+    return bubble;
+  }
+
+  function makeInfoBlock(label, values) {
+    if (!values || (Array.isArray(values) && !values.length)) return null;
+    const block = create("section", "hb-chat-info-block");
+    block.append(create("strong", "", label));
+    if (Array.isArray(values)) {
+      const ul = document.createElement("ul");
+      values.slice(0, 7).forEach((item) => ul.append(create("li", "", item)));
+      block.append(ul);
+    } else {
+      block.append(create("p", "", values));
+    }
+    return block;
+  }
+
+  function assistantNaturalIntro(payload, match) {
+    const original = state.original_goal || payload?.goal_context?.safe_goal || "";
+    const service = match?.service_name || payload?.result?.understood_intent || "المسار الأقرب";
+    const authority = match?.authority?.name_ar;
+    const jurisdiction = match?.jurisdiction?.name_ar;
+    let intro = "فهمت طلبك.";
+    if (original) intro = `فهمت أنك تريد: «${original}».`;
+    intro += ` الخدمة الأقرب حاليًا هي «${service}»`;
+    if (authority) intro += `، والجهة المختصة هي ${authority}`;
+    if (jurisdiction) intro += ` ضمن ${jurisdiction}`;
+    intro += ".";
+    return intro;
+  }
+
+  function quickRepliesFor(question, payload) {
+    const q = String(question || "");
+    if (/إمارة|الامارة|الإماره|اماره/.test(q)) return ["دبي", "أبوظبي", "الشارقة", "إمارة أخرى"];
+    if (/سارية|انتهت|منتهية|صلاحية/.test(q)) return ["سارية", "منتهية", "لست متأكدًا"];
+    if (/الكفيل|الشركة/.test(q)) return ["أنا الكفيل", "الشركة هي الكفيل", "لست متأكدًا"];
+    if (/داخل الإمارات|خارجها|خارج الإمارات/.test(q)) return ["داخل الإمارات", "خارج الإمارات", "لست متأكدًا"];
+    if (payload?.result?.confidence === "low") return ["تجديد", "إصدار جديد", "إلغاء", "رفض أو تأخير"];
+    return [];
+  }
+
+  function buildAssistantMessage(payload) {
+    const match = payload?.result?.matches?.[0] || null;
+    const body = create("div", "hb-chat-answer");
+    body.append(create("p", "hb-chat-answer-intro", assistantNaturalIntro(payload, match)));
+
+    if (!match) {
+      body.append(create("p", "", "أحتاج معلومة إضافية واحدة حتى أحدد الخدمة الموثقة المناسبة بدل التخمين."));
+    } else {
+      const facts = create("div", "hb-chat-facts");
+      if (match.service_name) facts.append(makeInfoBlock("الخدمة المطابقة", match.service_name));
+      if (match.authority?.name_ar) facts.append(makeInfoBlock("الجهة المختصة", match.authority.name_ar));
+      if (match.jurisdiction?.name_ar) facts.append(makeInfoBlock("الإمارة / الاختصاص", match.jurisdiction.name_ar));
+      body.append(facts);
+
+      const requirements = makeInfoBlock("المتطلبات الأساسية", match.requirements || []);
+      if (requirements) body.append(requirements);
+      const documents = makeInfoBlock("المستندات العامة", match.general_documents || []);
+      if (documents) body.append(documents);
+      const steps = makeInfoBlock("الخطوات الرئيسية", match.main_steps || []);
+      if (steps) body.append(steps);
+
+      if (match.official_source?.url) {
+        const source = create("section", "hb-chat-source");
+        source.append(create("strong", "", "المصدر الرسمي"));
+        const link = document.createElement("a");
+        link.href = match.official_source.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = match.official_source.title || match.authority?.name_ar || "فتح المصدر الحكومي";
+        source.append(link);
+        body.append(source);
+      }
+    }
+
+    const question = payload?.result?.follow_up_questions?.[0] || "";
+    if (question) {
+      const q = create("section", "hb-chat-followup");
+      q.append(create("strong", "", question));
+      const replies = quickRepliesFor(question, payload);
+      if (replies.length) {
+        const row = create("div", "hb-chat-quick-replies");
+        replies.forEach((answer) => {
+          const button = create("button", "", answer);
+          button.type = "button";
+          button.dataset.quickReply = answer;
+          row.append(button);
+        });
+        q.append(row);
+      }
+      body.append(q);
+    }
+
+    const actions = create("div", "hb-chat-actions");
+    if (match?.service_url) {
+      const details = document.createElement("a");
+      details.className = "hb-chat-secondary";
+      details.href = match.service_url;
+      details.textContent = "تفاصيل الخدمة";
+      actions.append(details);
+    }
+    const start = document.createElement("a");
+    start.className = "hb-chat-primary";
+    start.href = authStartUrl(payload, "ai-intake");
+    start.textContent = "ابدأ معاملتي واحفظ الخطة";
+    actions.append(start);
+    body.append(actions);
+
+    return body;
+  }
+
+  function buildResolvedQuery(userMessage) {
+    const safe = scrubLocal(userMessage);
+    if (!state.original_goal) state.original_goal = safe;
+    const answers = (state.answers || []).filter(Boolean);
+    return [state.original_goal, ...answers, safe !== state.original_goal ? safe : ""].filter(Boolean).join(" — ");
+  }
+
+  async function analyze(userMessage, options = {}) {
+    const displayed = scrubLocal(userMessage);
+    if (displayed.length < 2) return;
+    if (!options.fromQuickReply) addBubble("user", displayed);
+    const pending = addStatus();
+    sendButton && (sendButton.disabled = true);
+
+    if (options.fromQuickReply) {
+      state.answers.push(displayed);
+    }
+
+    const query = buildResolvedQuery(displayed);
+    state.resolved_query = query;
+    saveState();
+
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ goal: query }),
+        credentials: "omit"
+      });
+      const payload = await response.json().catch(() => ({}));
+      pending?.remove();
+      if (response.status === 429) {
+        addBubble("assistant", "وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");
+        return;
+      }
+      if (!response.ok || !payload?.ok) throw new Error(payload?.error || "analysis_failed");
+
+      const match = payload?.result?.matches?.[0] || null;
+      state.last_payload = payload;
+      state.resolved_query = payload?.goal_context?.safe_goal || query;
+      if (!state.original_goal) state.original_goal = state.resolved_query;
+      state.service_slug = match?.service_slug || state.service_slug;
+      state.jurisdiction_code = match?.jurisdiction?.code || payload?.goal_context?.jurisdiction_hint || state.jurisdiction_code;
+      state.authority_key = match?.authority?.key || state.authority_key;
+      saveState();
+
+      addBubble("assistant", buildAssistantMessage(payload));
+    } catch {
+      pending?.remove();
+      addBubble("assistant", "تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");
+    } finally {
+      if (sendButton) sendButton.disabled = false;
+      composer?.focus();
+    }
+  }
+
+  function rememberHandoff(payload = state.last_payload) {
+    const match = payload?.result?.matches?.[0] || null;
     const context = {
       id: crypto.randomUUID(),
-      expires_at: Date.now() + HANDOFF_TTL,
-      goal: safeGoal,
-      service_slug: match?.service_slug || null,
-      jurisdiction_code: match?.jurisdiction?.code || payload?.goal_context?.jurisdiction_hint || "AE",
-      authority_key: match?.authority?.key || null
+      expires_at: Date.now() + TTL,
+      goal: scrubLocal(state.original_goal || payload?.goal_context?.safe_goal || ""),
+      resolved_query: scrubLocal(state.resolved_query || payload?.goal_context?.safe_goal || ""),
+      service_slug: match?.service_slug || state.service_slug || null,
+      jurisdiction_code: match?.jurisdiction?.code || state.jurisdiction_code || "AE",
+      authority_key: match?.authority?.key || state.authority_key || null,
+      conversation_context: {
+        answers: (state.answers || []).slice(-6).map(scrubLocal),
+        last_question: payload?.result?.follow_up_questions?.[0] || null,
+        assistant_summary: payload?.result?.understood_intent || null
+      }
     };
-    const raw = JSON.stringify(context);
-    try { sessionStorage.setItem(HANDOFF_KEY, raw); } catch {}
-    try { localStorage.setItem(HANDOFF_KEY, raw); } catch {}
+    try { sessionStorage.setItem(HANDOFF_KEY, JSON.stringify(context)); } catch {}
+    try { localStorage.setItem(HANDOFF_KEY, JSON.stringify(context)); } catch {}
     return context;
   }
 
@@ -90,291 +289,136 @@
     try {
       const s = await session();
       if (!s || !window.HB_AUTH) return false;
-      const { data, error } = await window.HB_AUTH
-        .from("hb_cases")
-        .select("id")
-        .not("status", "in", '("completed","cancelled")')
-        .limit(1);
+      const { data, error } = await window.HB_AUTH.from("hb_cases").select("id").not("status", "in", '("completed","cancelled")').limit(1);
       return !error && Array.isArray(data) && data.length > 0;
     } catch {
       return false;
     }
   }
 
-  function addList(parent, title, values, marker) {
-    if (!Array.isArray(values) || !values.length) return;
-    const section = create("section", "public-ai-block");
-    if (marker) section.id = marker;
-    section.append(create("h3", "", title));
-    const ul = document.createElement("ul");
-    for (const value of values.slice(0, 8)) ul.append(create("li", "", value));
-    section.append(ul);
-    parent.append(section);
-  }
-
-  function renderMatch(match, index) {
-    const card = create("article", "public-ai-match" + (index === 0 ? " is-primary" : ""));
-    const head = create("div", "public-ai-match-head");
-    const titleWrap = create("div", "");
-    titleWrap.append(create("span", "public-ai-match-label", index === 0 ? "المسار الأقرب" : "مسار بديل"));
-    const h3 = document.createElement("h3");
-    const service = document.createElement("a");
-    service.href = match.service_url;
-    service.textContent = match.service_name;
-    h3.append(service);
-    titleWrap.append(h3);
-    head.append(titleWrap);
-    card.append(head);
-
-    const facts = create("div", "public-ai-facts");
-    if (match.jurisdiction?.name_ar) {
-      const item = create("span", "");
-      item.append(create("b", "", "الاختصاص: "), document.createTextNode(match.jurisdiction.name_ar));
-      facts.append(item);
-    }
-    if (match.authority?.name_ar) {
-      const item = create("span", "");
-      item.append(create("b", "", "الجهة: "));
-      const a = document.createElement("a");
-      a.href = match.authority.public_url || "/authorities/";
-      a.textContent = match.authority.name_ar;
-      item.append(a);
-      facts.append(item);
-    }
-    card.append(facts);
-
-    addList(card, "المتطلبات الأساسية الموثقة", match.requirements, index === 0 ? "public-ai-requirements" : "");
-    addList(card, "المستندات العامة المطلوبة", match.general_documents, index === 0 ? "public-ai-documents" : "");
-    addList(card, "الخطوات الرئيسية", match.main_steps);
-
-    if (Array.isArray(match.conditions) && match.conditions.length) {
-      const conditions = create("section", "public-ai-block");
-      conditions.append(create("h3", "", "ملاحظات تنظيمية"));
-      for (const value of match.conditions) conditions.append(create("p", "", value));
-      card.append(conditions);
-    }
-
-    if (match.official_source?.url) {
-      const source = create("div", "public-ai-source");
-      source.id = index === 0 ? "public-ai-source" : "";
-      source.append(create("span", "", "المصدر الرسمي"));
-      const a = document.createElement("a");
-      a.href = match.official_source.url;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.textContent = match.official_source.title || "فتح المصدر الحكومي";
-      source.append(a);
-      if (match.official_source.last_verified_at) {
-        const verified = create("small", "", "آخر تحقق مسجل: " + new Date(match.official_source.last_verified_at).toLocaleDateString("ar-AE"));
-        source.append(verified);
-      }
-      card.append(source);
-    }
-    return card;
-  }
-
-  function addGateNotice(shell, kind) {
-    const box = create("div", "public-ai-gate");
-    const copy = kind === "follow"
-      ? "المتابعة الشخصية وحالة المعاملة تحتاج حسابًا لأنها تعرض بياناتك وحالاتك الخاصة."
-      : "حفظ الخطة وبدء التنفيذ يحتاج حسابًا حتى نحفظ السياق وننشئ Case خاصة بك بأمان.";
-    box.append(create("strong", "", kind === "follow" ? "المتابعة الشخصية محمية" : "جاهز للانتقال من التحليل إلى التنفيذ؟"));
-    box.append(create("p", "", copy));
-    const actions = create("div", "public-ai-actions");
-    const login = document.createElement("a");
-    login.className = "public-ai-primary";
-    login.href = authStartUrl(lastPayload, kind === "follow" ? "action-center" : "ai-intake");
-    login.textContent = kind === "follow" ? "تسجيل الدخول للمتابعة" : "ابدأ المعاملة واحفظ خطتك";
-    actions.append(login);
-    box.append(actions);
-    shell.append(box);
-    box.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-
-  function render(payload) {
-    lastPayload = payload;
-    const panel = ensurePanel();
-    panel.hidden = false;
-    panel.dataset.state = "ready";
-    panel.replaceChildren();
-
-    const shell = create("div", "public-ai-shell");
-    shell.append(create("span", "public-ai-kicker", "PUBLIC AI CONCIERGE"));
-    const h2 = create("h2", "", "فهمنا طلبك: " + (payload.result?.understood_intent || "تحليل أولي"));
-    h2.id = "public-ai-title";
-    shell.append(h2);
-
-    const note = create("p", "public-ai-note",
-      "هذا تحليل عام مبني على مسارات وسياسات ومصادر حكومية موثقة داخل المنصة. لا ننشئ Case ولا نحفظ مستنداتك قبل تسجيل الدخول."
-    );
-    shell.append(note);
-
-    const meta = create("div", "public-ai-meta");
-    meta.append(create("span", "", "المحرك: Policy/Workflow Resolver"));
-    meta.append(create("span", "", "External OpenAI: غير مستخدم"));
-    meta.append(create("span", "", "الثقة: " + ({high:"مرتفعة",medium:"متوسطة",low:"تحتاج تحديدًا أكثر"}[payload.result?.confidence] || "—")));
-    shell.append(meta);
-
-    const matches = payload.result?.matches || [];
-    const matchWrap = create("div", "public-ai-matches");
-    matches.forEach((match, index) => matchWrap.append(renderMatch(match, index)));
-    shell.append(matchWrap);
-
-    const questions = payload.result?.follow_up_questions || [];
-    if (questions.length) {
-      const q = create("div", "public-ai-questions");
-      q.append(create("h3", "", "نحتاج معلومة إضافية واحدة أو اثنتين فقط"));
-      const ul = document.createElement("ul");
-      questions.slice(0,2).forEach((item) => ul.append(create("li", "", item)));
-      q.append(ul, create("p", "", "أضف الإجابة إلى وصف هدفك ثم اضغط «تحليل AI» مرة أخرى لتضييق المسار."));
-      shell.append(q);
-    }
-
-    const actions = create("div", "public-ai-actions");
-    if (matches[0]?.service_url) {
-      const serviceLink = document.createElement("a");
-      serviceLink.className = "public-ai-secondary";
-      serviceLink.href = matches[0].service_url;
-      serviceLink.textContent = "عرض تفاصيل الخدمة";
-      actions.append(serviceLink);
-    }
-    const start = document.createElement("a");
-    start.className = "public-ai-primary";
-    start.href = authStartUrl(payload, "ai-intake");
-    start.textContent = "ابدأ المعاملة واحفظ خطتك";
-    actions.append(start);
-    shell.append(actions);
-
-    panel.append(shell);
-    panel.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  async function analyze(goal = currentGoal()) {
-    goal = text(goal).trim();
-    if (goal.length < 4) {
-      $("#government-search")?.focus();
-      setPanelMessage("اكتب هدفك بطريقتك أولًا، مثل: «أريد أجدد إقامة زوجتي» أو «أريد أفتح شركة في دبي».", "needs-input");
-      return null;
-    }
-    setPanelMessage("نجمع الخدمة والجهة والمتطلبات والخطوات من مصادر المنصة الموثقة…", "loading");
-    try {
-      const response = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ goal }),
-        credentials: "omit"
-      });
-      const payload = await response.json().catch(() => ({}));
-      if (response.status === 429) {
-        setPanelMessage("تم الوصول إلى حد الاستخدام المؤقت لهذه الساعة. حاول لاحقًا.", "error");
-        return null;
-      }
-      if (!response.ok || !payload?.ok) throw new Error(payload?.error || "analysis_failed");
-      render(payload);
-      return payload;
-    } catch {
-      setPanelMessage("تعذر إكمال التحليل العام الآن. لم يتم إنشاء أي معاملة أو حفظ بيانات شخصية.", "error");
-      return null;
-    }
-  }
-
-  function scrollToPanel(selector) {
-    const target = $(selector);
-    if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
-    else ensurePanel().scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  async function handleJourney(event) {
-    const control = event.target.closest("[data-journey-action]");
-    if (!control) return;
-    const action = control.dataset.journeyAction;
-    if (action === "goal") return;
-
-    if (action === "analysis") {
-      await analyze();
-      return;
-    }
-
-    if (["service","documents","authority"].includes(action) && !lastPayload) {
-      const payload = await analyze();
-      if (!payload) return;
-    }
-
-    if (action === "service") {
-      scrollToPanel(".public-ai-match.is-primary");
-      return;
-    }
-    if (action === "documents") {
-      scrollToPanel("#public-ai-documents");
-      const shell = $(".public-ai-shell");
-      if (shell && !shell.querySelector("[data-private-vault-cta]")) {
-        const gate = create("div", "public-ai-gate");
-        gate.dataset.privateVaultCta = "true";
-        gate.append(create("strong", "", "رفع المستندات إلى الخزنة الخاصة"));
-        gate.append(create("p", "", "يمكنك رؤية المتطلبات العامة بدون حساب. الرفع والتخزين الخاصان يحتاجان تسجيل دخول."));
-        const a = document.createElement("a");
-        a.className = "public-ai-secondary";
-        a.href = authStartUrl(lastPayload, "private-vault");
-        a.textContent = "تسجيل الدخول وفتح Private Vault";
-        gate.append(a);
-        shell.append(gate);
-      }
-      return;
-    }
-    if (action === "authority") {
-      const target = lastPayload?.result?.matches?.[0]?.authority?.public_url || "/authorities/";
-      location.assign(target);
-      return;
-    }
-    if (action === "follow") {
-      const s = await session();
-      if (s) {
-        location.assign("/os/#action-center");
-      } else {
-        if (!lastPayload) await analyze();
-        const shell = $(".public-ai-shell") || ensurePanel();
-        addGateNotice(shell, "follow");
-      }
-      return;
-    }
-    if (action === "completion") {
-      const s = await session();
-      if (s && await hasSavedCase()) {
-        location.assign("/os/#case-progress");
-      } else {
-        if (!lastPayload) await analyze();
-        const shell = $(".public-ai-shell") || ensurePanel();
-        addGateNotice(shell, "start");
-      }
-    }
-  }
-
-  function setup() {
+  function setupConversationUI() {
     if (location.pathname !== "/" && location.pathname !== "/index.html") return;
-    const form = $(".primary-search");
-    const row = form?.querySelector(".search-row");
-    if (row && !row.querySelector("[data-public-ai-analyze]")) {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "public-ai-trigger";
-      button.dataset.publicAiAnalyze = "true";
-      button.textContent = "تحليل AI";
-      row.append(button);
-      button.addEventListener("click", () => analyze());
-    }
-    document.addEventListener("click", handleJourney);
+    loadState();
 
-    const goal = $("#government-search");
-    goal?.addEventListener("keydown", (event) => {
-      if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+    const stage = $(".hero-search-stage");
+    form = $(".primary-search");
+    if (!stage || !form) return;
+
+    stage.classList.add("hb-conversation-stage");
+    form.classList.add("hb-conversation-composer");
+    form.setAttribute("role", "form");
+    form.setAttribute("aria-label", "محادثة مع HOSSAM BAHR AI");
+
+    const oldInput = $("#government-search");
+    const textarea = document.createElement("textarea");
+    textarea.id = "government-search";
+    textarea.name = "goal";
+    textarea.rows = 2;
+    textarea.maxLength = 800;
+    textarea.autocomplete = "off";
+    textarea.placeholder = "اسألني عن أي معاملة في الإمارات…";
+    textarea.setAttribute("aria-label", "اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات");
+    oldInput?.replaceWith(textarea);
+    composer = textarea;
+
+    const label = form.querySelector("label");
+    if (label) label.textContent = "اسأل HOSSAM BAHR AI";
+    const overline = form.querySelector(".search-overline");
+    if (overline) overline.textContent = "اكتب سؤالك بطريقتك — لا تحتاج لاختيار خدمة أو جهة مسبقًا";
+
+    const row = form.querySelector(".search-row");
+    row?.querySelectorAll("button").forEach((button) => button.remove());
+    sendButton = create("button", "hb-chat-send", "إرسال");
+    sendButton.type = "submit";
+    sendButton.setAttribute("aria-label", "إرسال السؤال إلى HOSSAM BAHR AI");
+    row?.append(sendButton);
+
+    const shell = create("section", "hb-chat-shell");
+    shell.dataset.chatShell = "true";
+    thread = create("div", "hb-chat-thread");
+    thread.dataset.chatThread = "true";
+    thread.setAttribute("aria-live", "polite");
+    thread.setAttribute("aria-label", "محادثة HOSSAM BAHR AI");
+    shell.append(thread);
+    stage.insertBefore(shell, form);
+
+    addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI لمعاملات الإمارات. اكتب ما تريد إنجازه وسأحدد لك الخدمة والجهة والمتطلبات من مصادرنا الموثقة.", { instant: true });
+
+    const prompts = stage.querySelector(".examples");
+    if (prompts) {
+      prompts.classList.add("hb-chat-prompts");
+      const span = prompts.querySelector("span");
+      if (span) span.textContent = "أمثلة:";
+      const labels = [
+        "أريد أجدد إقامة زوجتي",
+        "أريد أفتح شركة في دبي",
+        "كيف أنقل موظف إلى شركتي؟",
+        "ما الأوراق المطلوبة لإقامة الوالدين؟"
+      ];
+      [...prompts.querySelectorAll("button")].forEach((button, index) => {
+        button.textContent = labels[index] || button.textContent;
+        button.onclick = () => {
+          composer.value = button.textContent;
+          composer.focus();
+        };
+      });
+    }
+
+    stage.querySelector(".homepage-secondary-actions")?.remove();
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      const value = composer.value.trim();
+      if (!value) return composer.focus();
+      composer.value = "";
+      analyze(value);
+    }, true);
+
+    composer.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey) {
         event.preventDefault();
-        analyze();
+        form.requestSubmit();
       }
     });
+
+    thread.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-quick-reply]");
+      if (!button) return;
+      const answer = button.dataset.quickReply;
+      thread.querySelectorAll("[data-quick-reply]").forEach((item) => item.disabled = true);
+      addBubble("user", answer);
+      analyze(answer, { fromQuickReply: true });
+    });
+
+    document.addEventListener("click", async (event) => {
+      const control = event.target.closest("[data-journey-action]");
+      if (!control) return;
+      const action = control.dataset.journeyAction;
+      if (action === "goal" || action === "analysis" || action === "service" || action === "documents" || action === "authority") {
+        composer.scrollIntoView({ behavior: "smooth", block: "center" });
+        composer.focus({ preventScroll: true });
+        return;
+      }
+      if (action === "follow") {
+        const s = await session();
+        if (s) location.assign("/os/#action-center");
+        else if (state.last_payload) location.assign(authStartUrl(state.last_payload, "action-center"));
+        return;
+      }
+      if (action === "completion") {
+        const s = await session();
+        if (s && await hasSavedCase()) location.assign("/os/#case-progress");
+        else if (state.last_payload) location.assign(authStartUrl(state.last_payload, "ai-intake"));
+      }
+    }, true);
   }
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", setup, { once: true });
-  else setup();
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", setupConversationUI, { once: true });
+  else setupConversationUI();
 
-  window.HB_PUBLIC_AI = Object.freeze({ analyze });
+  window.HB_PUBLIC_AI = Object.freeze({
+    analyze: (goal) => analyze(goal),
+    getContext: () => ({ ...state, last_payload: undefined })
+  });
 })();
