@@ -302,10 +302,10 @@ for (const [name, width, height] of deviceProfiles) {
       guidedHelp: document.querySelectorAll("details.transaction-discovery-modes").length,
       aiBrand: document.querySelectorAll("[data-hb-ai-brand]").length,
       searchInFirstViewport: Boolean(rect && rect.top >= 0 && rect.top < window.innerHeight),
-      primaryLabel: submit?.textContent?.trim() || "", lang: document.documentElement.lang, dir: document.documentElement.dir };
+      primaryLabel: submit?.textContent?.trim() || "", primaryAriaLabel: submit?.getAttribute("aria-label") || "", lang: document.documentElement.lang, dir: document.documentElement.dir };
   });
   responsiveResults.push({ name, ...result, errors, pass: !result.overflow && result.primarySearches === 1
-    && result.guidedHelp === 0 && result.aiBrand === 1 && result.searchInFirstViewport && result.primaryLabel === "إرسال"
+    && result.guidedHelp === 0 && result.aiBrand === 1 && result.searchInFirstViewport && /إرسال السؤال/.test(result.primaryAriaLabel)
     && result.lang === "ar" && result.dir === "rtl" && errors.length === 0 });
   if (name === "mobile-390" || name === "desktop") await page.screenshot({ path: resolve(output, `homepage-${name}.png`), fullPage: true });
   await page.close();
