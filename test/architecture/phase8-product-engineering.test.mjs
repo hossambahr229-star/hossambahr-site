@@ -26,8 +26,8 @@ test('Phase 8 homepage density is present before first paint', async () => {
 
 test('Global OS Arabic hero keeps readable word boundaries', async () => {
   const homepage = await read('index.html');
-  assert.doesNotMatch(homepage, /إنجازه\.<em>والمنصة/);
-  assert.match(homepage, /إنجازه\.<em> والمنصة ترتّب لك الطريق/);
+  assert.doesNotMatch(homepage, /الإمارات\.<em>منظّمة/);
+  assert.match(homepage, /الإمارات\.<em> منظّمة بالذكاء الاصطناعي/);
 });
 
 test('Phase 8 activity advisor preserves the specific product activity beside ecommerce', async () => {
@@ -62,7 +62,7 @@ test('Phase 8 desktop search keeps the query field wider than the submit action'
 
 test('Phase 8 homepage stabilizer removes every legacy runtime copy before inserting one canonical script', async () => {
   const stabilizer = await read('src/publication/stabilize-homepage-runtime.mjs');
-  assert.match(stabilizer, /zero-defect-routing\\\.js/);
+  assert.match(stabilizer, /\(\?:zero-defect-routing\|global-os-client\|public-ai-concierge/);
   assert.match(stabilizer, /zero-defect-routing\.js\?v=phase(?:8-20260916b|9-20260917a|9-1-20260917a)/);
 });
 
