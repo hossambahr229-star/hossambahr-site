@@ -168,13 +168,17 @@ begin
     true,
     jsonb_build_object('foundation','derived-from-existing-uae-catalog')
   from (
-    select authority_key,jurisdiction_id
-    from public.hb_service_bindings
-    where nullif(btrim(coalesce(authority_key,'')),'') is not null
-    union
-    select authority_key,jurisdiction_id
-    from public.hb_policy_sources
-    where nullif(btrim(coalesce(authority_key,'')),'') is not null
+    select distinct on (authority_key) authority_key,jurisdiction_id
+    from (
+      select authority_key,jurisdiction_id
+      from public.hb_service_bindings
+      where nullif(btrim(coalesce(authority_key,'')),'') is not null
+      union all
+      select authority_key,jurisdiction_id
+      from public.hb_policy_sources
+      where nullif(btrim(coalesce(authority_key,'')),'') is not null
+    ) raw_authorities
+    order by authority_key,jurisdiction_id nulls last
   ) x
   on conflict(country_pack_id,authority_key) do nothing;
 
@@ -281,6 +285,16 @@ create index if not exists hb_policy_versions_country_pack_status_idx
 
 create index if not exists hb_workflow_templates_country_pack_status_idx
   on public.hb_workflow_templates(country_pack_id,status);
+
+drop policy if exists "active country packs readable" on public.hb_country_packs;
+create policy "active country packs readable"
+on public.hb_country_packs for select
+using (status='active');
+
+drop policy if exists "active authorities readable" on public.hb_authorities;
+create policy "active authorities readable"
+on public.hb_authorities for select
+using (active=true);
 
 grant select on public.hb_country_packs to anon,authenticated;
 grant select on public.hb_authorities to anon,authenticated;
