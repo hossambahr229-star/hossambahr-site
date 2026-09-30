@@ -159,10 +159,21 @@
     return window.HB_INTENT_DATA_READY;
   }
 
+  function normalizeIntent(value) {
+    return scrubLocal(value).toLowerCase()
+      .normalize("NFKD")
+      .replace(/[\u064B-\u065F\u0670]/g, "")
+      .replace(/[إأآٱ]/g, "ا")
+      .replace(/ى/g, "ي")
+      .replace(/ة/g, "ه")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
   function catalogIntentHint(query) {
     const services = Array.isArray(window.HB_INTENT_SERVICES) ? window.HB_INTENT_SERVICES : [];
     if (!services.length) return null;
-    const q = scrubLocal(query).toLowerCase();
+    const q = normalizeIntent(query);
     const wantsRenew = /اجدد|تجديد|renew/.test(q);
     const wantsIssue = /اصدار|إصدار|جديد|issue/.test(q) && !wantsRenew;
     const wantsTransfer = /انقل|نقل|transfer/.test(q);
@@ -177,7 +188,7 @@
     ];
     const emirate = emirates.find(([key])=>q.includes(key.toLowerCase()))?.[1] || "";
     const ranked = services.map((service) => {
-      const hay = [service.s,service.a,service.e,service.c,service.m,...(service.k||[])].join(" ").toLowerCase();
+      const hay = normalizeIntent([service.s,service.a,service.e,service.c,service.m,...(service.k||[])].join(" "));
       let score = 0;
       if (wantsRenew) score += /تجديد|renew/.test(hay) ? 120 : (/إصدار|اصدار|issue/.test(hay) ? -80 : 0);
       if (wantsIssue) score += /إصدار|اصدار|issue/.test(hay) ? 90 : 0;
