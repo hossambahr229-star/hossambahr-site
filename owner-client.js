@@ -951,6 +951,7 @@
           return;
         }
         await loadPolicySourceMonitor(client);
+        await loadCountryPackHealth(client);
       });
 
       const changedButton=document.createElement("button");
@@ -977,6 +978,7 @@
           return;
         }
         await loadPolicySourceMonitor(client);
+        await loadCountryPackHealth(client);
       });
 
       actions.append(link,verifiedButton,changedButton);
