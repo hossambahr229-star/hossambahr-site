@@ -334,6 +334,33 @@ body[data-ux-page="home"][data-uae-os-visual="true"] .hero-proof span::before{
 
 
 @media(min-width:861px){
+  body[data-ux-page="home"][data-uae-os-visual="true"] .hero-copy{
+    padding:.48rem .62rem!important;
+  }
+  body[data-ux-page="home"][data-uae-os-visual="true"] .hero-copy h1{
+    max-width:none!important;
+    font-size:clamp(2.15rem,2.7vw,3.15rem)!important;
+    line-height:1.02!important;
+    margin:.18rem 0 .38rem!important;
+  }
+  body[data-ux-page="home"][data-uae-os-visual="true"] .hero-copy>p{
+    max-width:64ch!important;
+    font-size:.9rem!important;
+    line-height:1.48!important;
+    margin:.25rem 0 0!important;
+  }
+  body[data-ux-page="home"][data-uae-os-visual="true"] .hero-kicker{
+    padding:.3rem .58rem;
+    font-size:.7rem!important;
+  }
+  body[data-ux-page="home"][data-uae-os-visual="true"] .hero-os-actions{
+    margin-top:.4rem;
+  }
+  body[data-ux-page="home"][data-uae-os-visual="true"] .hero-os-actions a{
+    min-height:40px;
+    padding:.5rem .8rem;
+    font-size:.78rem;
+  }
   body[data-ux-page="home"][data-uae-os-visual="true"] .hero-search-stage{
     align-self:start;
     padding:.55rem!important;
