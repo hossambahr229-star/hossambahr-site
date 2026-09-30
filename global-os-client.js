@@ -1,6 +1,57 @@
 (() => {
   "use strict";
 
+  function initUaeOsHomepageVisual() {
+    if (location.pathname !== "/" && location.pathname !== "/index.html") return;
+    const body = document.body;
+    const hero = document.querySelector(".platform-hero");
+    const copy = hero?.querySelector(".hero-copy");
+    if (!body || !hero || !copy) return;
+
+    body.dataset.uaeOsVisual = "true";
+
+    const kicker = copy.querySelector(".hero-kicker");
+    const title = copy.querySelector("h1");
+    const intro = copy.querySelector(":scope > p");
+    if (kicker) kicker.textContent = "UAE AI OS • منصة تشغيل المعاملات والأعمال في الإمارات";
+    if (title) title.innerHTML = "كل معاملاتك في الإمارات.<em> منظّمة بالذكاء الاصطناعي.</em>";
+    if (intro) intro.textContent = "من الطلب الأول إلى المستندات والموافقات والمتابعة والإنجاز: HOSSAM BAHR يرتّب لك الرحلة داخل الإمارات، ويُبقي القرار البشري حاضرًا عند كل خطوة حساسة.";
+
+    const valueCount = hero.querySelector(".os-value-strip span:first-child b");
+    if (valueCount) valueCount.textContent = "200";
+
+    if (!hero.querySelector("[data-uae-os-journey]")) {
+      const visual = document.createElement("div");
+      visual.className = "uae-os-visual";
+      visual.dataset.uaeOsJourney = "true";
+      visual.setAttribute("aria-label", "رحلة المعاملة داخل HOSSAM BAHR UAE AI OS");
+      visual.innerHTML = [
+        '<div class="uae-os-visual-head"><div><strong>رحلة تشغيل واحدة من البداية إلى الإنجاز</strong><p>ذكاء اصطناعي + سياسات موثقة + موافقات بشرية + متابعة تشغيلية داخل الإمارات</p></div><span class="uae-os-live">UAE OS LIVE</span></div>',
+        '<div class="uae-os-route" aria-hidden="true"><svg viewBox="0 0 600 440" preserveAspectRatio="none"><path d="M92 65 C220 65 185 190 300 210 C415 230 380 360 510 360"/><circle cx="92" cy="65" r="4"/><circle cx="300" cy="210" r="4"/><circle cx="510" cy="360" r="4"/></svg></div>',
+        '<div class="uae-os-core" aria-label="محرك الذكاء والتشغيل"><div class="uae-os-core-mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 3.5h9l4 7.5-4 9h-9l-4-9 4-7.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M8.2 12h7.6M12 8.2v7.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><b>AI CORE</b><small>UAE policy-aware</small></div></div>',
+        '<div class="uae-os-flow" role="list">',
+        '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-5 4V5Z" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>طلب العميل</b><small>اكتب هدفك بطريقتك</small></span></div>',
+        '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="m12 3 2.2 4.5L19 9l-3.5 3.4.8 4.8L12 15l-4.3 2.2.8-4.8L5 9l4.8-1.5L12 3Z" stroke="currentColor" stroke-width="1.5"/></svg></span><span><b>تحليل AI</b><small>فهم الهدف والسياق</small></span></div>',
+        '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>الخدمة الصحيحة</b><small>مطابقة الجهة والمسار</small></span></div>',
+        '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v14H7V3Z" stroke="currentColor" stroke-width="1.6"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>المستندات</b><small>تجميع وفحص المتطلبات</small></span></div>',
+        '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 10h18M5 10v9M9 10v9M15 10v9M19 10v9M2 19h20M12 3l9 5H3l9-5Z" stroke="currentColor" stroke-width="1.5"/></svg></span><span><b>الجهة المختصة</b><small>مسار رسمي موثّق</small></span></div>',
+        '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6M4 4v4.6h4.6" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.6"/></svg></span><span><b>المتابعة</b><small>حالة واضحة وتنبيهات</small></span></div>',
+        '<div class="uae-os-step" data-journey-step role="listitem"><span class="uae-os-step-icon"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>الإنجاز</b><small>توثيق النتيجة وإغلاق المسار</small></span></div>',
+        '<div class="uae-os-step" data-step="ai" aria-hidden="true"></div></div>',
+        '<div class="uae-os-status"><span>Human-in-the-loop للإجراءات الحساسة</span><div class="uae-os-progress" aria-hidden="true"></div><strong>7/7 إمارات</strong></div>'
+      ].join("");
+      const search = hero.querySelector(".hero-search-stage");
+      hero.insertBefore(visual, search || copy.nextSibling);
+    }
+
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initUaeOsHomepageVisual, { once: true });
+  } else {
+    initUaeOsHomepageVisual();
+  }
+
   const client = window.HB_AUTH;
   if (!client) return;
 
