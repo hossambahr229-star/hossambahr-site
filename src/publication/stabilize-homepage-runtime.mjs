@@ -68,7 +68,7 @@ if (streamed) {
 html = html.replace(/<link\b[^>]*href=["']\/(?:brand-tokens|intent-first|global-os)\.css(?:\?[^"']*)?["'][^>]*>\s*/gi, '');
 html = html.replace(
   '</head>',
-  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/><link rel="stylesheet" href="/global-os.css?v=uae-os-20260930g" data-hb-uae-os-visual="20260930a"/></head>'
+  '<link rel="stylesheet" href="/brand-tokens.css?v=phase9-1-20260917a" data-hb-design-tokens="phase9-1"/><link rel="stylesheet" href="/intent-first.css?v=phase9-1-20260917a" data-hb-home-runtime="stable"/><link rel="stylesheet" href="/global-os.css?v=hb-ai-v2-20261001a" data-hb-uae-os-visual="20260930a"/></head>'
 );
 html = html.replace(
   /<script\b[^>]*src=["']\/(?:zero-defect-routing|global-os-client|public-ai-concierge|vendor\/supabase|auth-config|auth-client)\.js(?:\?[^"']*)?["'][^>]*><\/script>\s*/gi,
@@ -76,7 +76,7 @@ html = html.replace(
 );
 html = html.replace(
   '</head>',
-  '<script src="/vendor/supabase.js" defer></script><script src="/auth-config.js" defer></script><script src="/auth-client.js" defer></script><script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script><script src="/global-os-client.js?v=uae-os-20260930e" defer data-hb-uae-os-visual="20260930a"></script><script src="/public-ai-concierge.js?v=public-ai-20260930c" defer></script></head>'
+  '<script src="/vendor/supabase.js" defer></script><script src="/auth-config.js" defer></script><script src="/auth-client.js" defer></script><script src="/zero-defect-routing.js?v=phase9-1-20260917a" defer></script><script src="/global-os-client.js?v=uae-os-20260930e" defer data-hb-uae-os-visual="20260930a"></script><script src="/public-ai-concierge.js?v=hb-ai-v2-20261001a" defer></script></head>'
 );
 html = html.replace(/<html\b([^>]*)>/i, (match, attributes) => {
   if (/\bclass=(?:"[^"]*\bhb-phase8\b[^"]*"|'[^']*\bhb-phase8\b[^']*')/i.test(match)) return match;
@@ -100,7 +100,7 @@ for (const [name, value] of [
   ['data-ux-modernized', 'true'],
   ['data-phase7', 'true'],
   ['data-uae-os-visual', 'true'],
-  ['data-release', '2026-09-30.hb-ai-mobile-g'],
+  ['data-release', '2026-10-01.hb-ai-conversational-v2'],
 ]) html = setBodyAttribute(html, name, value);
 html = html
   .replace(/\sdata-phase6=(?:"[^"]*"|'[^']*')/gi, '')
@@ -114,15 +114,15 @@ html = html.replace(
 
 html = html.replace(
   /<span class="hero-kicker">[\s\S]*?<\/span>/i,
-  '<span class="hero-kicker">UAE AI OS • منصة تشغيل المعاملات والأعمال في الإمارات</span>'
+  '<span class="hero-kicker">HOSSAM BAHR AI • UAE Government Transactions Assistant</span>'
 );
 html = html.replace(
   /<h1 id="hero-title">[\s\S]*?<\/h1>/i,
-  '<h1 id="hero-title">كل معاملاتك في الإمارات.<em> منظّمة بالذكاء الاصطناعي.</em></h1>'
+  '<h1 id="hero-title">HOSSAM BAHR AI<em> مساعدك الذكي للمعاملات في الإمارات.</em></h1>'
 );
 html = html.replace(
   /(<div class="hero-copy">[\s\S]*?<h1 id="hero-title">[\s\S]*?<\/h1>)<p>[\s\S]*?<\/p>/i,
-  '$1<p>من الطلب الأول إلى المستندات والموافقات والمتابعة والإنجاز: HOSSAM BAHR يرتّب لك الرحلة داخل الإمارات، ويُبقي القرار البشري حاضرًا عند كل خطوة حساسة.</p>'
+  '$1<p>اسأل بطريقتك. أفهم طلبك، أحدد الخدمة والجهة والمصدر الرسمي، ثم أنقلك بسلاسة من الاستشارة إلى تنفيذ المعاملة عند رغبتك.</p>'
 );
 html = html.replace(
   /<span><b>\d+<\/b>\s*مسارات تشغيل مرتبطة<\/span>/i,
@@ -135,7 +135,7 @@ if (heroActions && !html.includes('class="homepage-secondary-actions"')) {
 }
 html = html.replace(
   /<form class="search-shell primary-search"[\s\S]*?<\/form>/i,
-  '<form class="search-shell primary-search hb-conversation-composer" role="form" aria-label="محادثة مع HOSSAM BAHR AI"><label for="government-search">اسأل HOSSAM BAHR AI</label><span class="search-overline">اكتب سؤالك بطريقتك — لا تحتاج لاختيار خدمة أو جهة مسبقًا</span><div class="search-row"><textarea id="government-search" name="goal" rows="2" maxlength="800" autocomplete="off" aria-label="اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات" placeholder="اسألني عن أي معاملة في الإمارات…"></textarea><button class="hb-chat-send" type="submit" aria-label="إرسال السؤال إلى HOSSAM BAHR AI">إرسال</button></div></form>'
+  '<form class="search-shell primary-search hb-conversation-composer" role="form" aria-label="محادثة مع HOSSAM BAHR AI"><label for="government-search">اسأل HOSSAM BAHR AI</label><span class="search-overline">اكتب سؤالك بطريقتك — لا تحتاج لاختيار خدمة أو جهة مسبقًا</span><div class="search-row"><textarea id="government-search" name="goal" rows="1" maxlength="800" autocomplete="off" aria-label="اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات" placeholder="اسألني عن أي معاملة في الإمارات…"></textarea><button class="hb-chat-send" type="submit" aria-label="إرسال السؤال إلى HOSSAM BAHR AI">➤</button></div></form>'
 );
 html = html.replace(
   '<em> معاملات الأعمال والخدمات الحكومية</em>من مكان واحد.',

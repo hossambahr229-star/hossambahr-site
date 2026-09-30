@@ -50,6 +50,8 @@
   let attachmentInput = null;
   let attachmentTray = null;
   let pendingAttachment = null;
+  let attachmentAnalysisInFlight = false;
+  let analysisInFlight = false;
 
 
   const TEXT_DOCUMENT_TYPES = new Set(["text/plain","text/markdown","text/csv","application/json","application/xml","text/xml"]);
@@ -92,14 +94,24 @@
 
   async function analyzeAttachedDocument() {
     const file = pendingAttachment;
-    if (!file) return;
+    if (!file || attachmentAnalysisInFlight) return;
+    attachmentAnalysisInFlight = true;
+    const analyzeButton = attachmentTray?.querySelector(".hb-ai-document-analyze");
+    if (analyzeButton) {
+      analyzeButton.disabled = true;
+      analyzeButton.textContent = "جارٍ التحليل…";
+    }
     if (file.size > MAX_PUBLIC_DOCUMENT_BYTES) {
       addBubble("assistant", "لحماية الخصوصية وسرعة التحليل العام، الحد الحالي للمستند قبل تسجيل الدخول هو 2 MB. يمكنك وصف المعاملة هنا، أو تسجيل الدخول عند بدء المعاملة لرفع المستند ضمن مساحة المستندات الآمنة.");
+      attachmentAnalysisInFlight = false;
+      renderAttachmentTray();
       return;
     }
     const isText = TEXT_DOCUMENT_TYPES.has(file.type) || TEXT_DOCUMENT_EXTENSIONS.test(file.name);
     if (!isText) {
-      addBubble("assistant", "تعرفت على الملف «" + file.name + "»، لكن تحليل محتوى PDF والصور لا يتم إرساله مجهولًا من هذه الواجهة حفاظًا على مستنداتك الشخصية. يمكنك متابعة الاستشارة الآن بدون تسجيل، وعند «ابدأ معاملتي» يصبح رفع المستند إلى مساحة المستندات الآمنة متاحًا بعد تسجيل الدخول.");
+      addBubble("assistant", "تعرفت على الملف «" + file.name + "». لحماية مستنداتك، تحليل PDF والصور الحساسة يتم بعد تسجيل الدخول ضمن مساحة المستندات الآمنة. يمكنك متابعة الاستشارة النصية الآن دون تسجيل.");
+      attachmentAnalysisInFlight = false;
+      renderAttachmentTray();
       return;
     }
     const pending = addStatus();
@@ -119,6 +131,9 @@
     } catch {
       removePending(pending);
       addBubble("assistant", "تعذر قراءة هذا المستند محليًا. لم يتم رفعه أو حفظه. يمكنك وصف محتواه أو بدء المعاملة لرفعه ضمن المساحة الآمنة.");
+    } finally {
+      attachmentAnalysisInFlight = false;
+      renderAttachmentTray();
     }
   }
 
@@ -200,10 +215,16 @@
     bubble.remove();
   }
 
-  function makeInfoBlock(label, values) {
+  function makeInfoBlock(label, values, options = {}) {
     if (!values || (Array.isArray(values) && !values.length)) return null;
-    const block = create("section", "hb-chat-info-block");
-    block.append(create("strong", "", label));
+    const block = create(options.disclosure ? "details" : "section", "hb-chat-info-block" + (options.disclosure ? " hb-chat-disclosure" : ""));
+    if (options.disclosure) {
+      const summary = create("summary", "", label);
+      summary.setAttribute("aria-label", "عرض " + label);
+      block.append(summary);
+    } else {
+      block.append(create("strong", "", label));
+    }
     if (Array.isArray(values)) {
       const ul = document.createElement("ul");
       values.slice(0, 7).forEach((item) => ul.append(create("li", "", item)));
@@ -371,12 +392,21 @@
       if (match.jurisdiction?.name_ar) facts.append(makeInfoBlock("الإمارة / الاختصاص", match.jurisdiction.name_ar));
       body.append(facts);
 
-      const requirements = makeInfoBlock("المتطلبات الأساسية", match.requirements || []);
-      if (requirements) body.append(requirements);
-      const documents = makeInfoBlock("المستندات العامة", match.general_documents || []);
-      if (documents) body.append(documents);
-      const steps = makeInfoBlock("الخطوات الرئيسية", match.main_steps || []);
-      if (steps) body.append(steps);
+      const detailChips = create("div", "hb-chat-detail-chips");
+      const disclosures = [
+        ["المستندات", match.general_documents || []],
+        ["الخطوات", match.main_steps || []],
+        ["الشروط", [...(match.requirements || []), ...(match.conditions || [])]]
+      ];
+      disclosures.forEach(([label, values]) => {
+        const detail = makeInfoBlock(label, values, { disclosure: true });
+        if (detail) detailChips.append(detail);
+      });
+      if (detailChips.childElementCount) body.append(detailChips);
+      const fees = create("button", "hb-chat-context-chip", "الرسوم");
+      fees.type = "button";
+      fees.dataset.contextPrompt = "كم الرسوم الحكومية الموثقة لهذه المعاملة؟";
+      detailChips.append(fees);
 
       if (match.official_source?.url) {
         const trust = create("div", "hb-chat-trust-row");
@@ -384,8 +414,8 @@
         trust.append(verified);
         body.append(trust);
 
-        const source = create("section", "hb-chat-source");
-        const badge = create("span", "hb-ai-source-badge", "✓ مصدر رسمي");
+        const source = create("details", "hb-chat-source hb-chat-source--disclosure");
+        const badge = create("summary", "hb-ai-source-badge", "✓ مصدر رسمي");
         source.append(badge);
         const copy = create("div", "hb-chat-source-copy");
         copy.append(create("strong", "", match.authority?.name_ar || "الجهة الحكومية المختصة"));
@@ -449,7 +479,8 @@
 
   async function analyze(userMessage, options = {}) {
     const displayed = scrubLocal(userMessage);
-    if (displayed.length < 2) return;
+    if (displayed.length < 2 || analysisInFlight) return;
+    analysisInFlight = true;
     document.body.classList.add("hb-chat-engaged");
     if (!options.fromQuickReply && !options.suppressUserBubble) addBubble("user", displayed);
     const pending = addStatus();
@@ -508,6 +539,7 @@
       removePending(pending);
       addBubble("assistant", "تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");
     } finally {
+      analysisInFlight = false;
       if (sendButton) sendButton.disabled = false;
       composer?.focus();
     }
@@ -589,7 +621,7 @@
     const textarea = document.createElement("textarea");
     textarea.id = "government-search";
     textarea.name = "goal";
-    textarea.rows = 2;
+    textarea.rows = 1;
     textarea.maxLength = 800;
     textarea.autocomplete = "off";
     textarea.placeholder = "اسألني عن أي معاملة في الإمارات…";
@@ -604,9 +636,10 @@
 
     const row = form.querySelector(".search-row");
     row?.querySelectorAll("button").forEach((button) => button.remove());
-    sendButton = create("button", "hb-chat-send", "إرسال");
+    sendButton = create("button", "hb-chat-send", "➤");
     sendButton.type = "submit";
     sendButton.setAttribute("aria-label", "إرسال السؤال إلى HOSSAM BAHR AI");
+    sendButton.title = "إرسال";
     row?.append(sendButton);
 
     const toolRow = create("div", "hb-ai-composer-tools");
@@ -627,7 +660,8 @@
     toolRow.append(attachLabel, privacy);
     attachmentTray = create("div", "hb-ai-attachment-tray");
     attachmentTray.hidden = true;
-    form.append(toolRow, attachmentTray);
+    row?.insertAdjacentElement("beforebegin", attachmentTray);
+    form.append(toolRow);
 
 
     const shell = create("section", "hb-chat-shell");
@@ -672,6 +706,11 @@
       analyze(value);
     }, true);
 
+    const autoGrow = () => {
+      composer.style.height = "auto";
+      composer.style.height = Math.min(composer.scrollHeight, 144) + "px";
+    };
+    composer.addEventListener("input", autoGrow);
     composer.addEventListener("keydown", (event) => {
       if (event.key === "Enter" && !event.shiftKey) {
         event.preventDefault();
@@ -680,6 +719,14 @@
     });
 
     thread.addEventListener("click", (event) => {
+      const context = event.target.closest("[data-context-prompt]");
+      if (context) {
+        const prompt = context.dataset.contextPrompt;
+        thread.querySelectorAll("[data-context-prompt]").forEach((item) => item.disabled = true);
+        addBubble("user", prompt);
+        analyze(prompt, { fromQuickReply: true });
+        return;
+      }
       const button = event.target.closest("[data-quick-reply]");
       if (!button) return;
       const answer = button.dataset.quickReply;
