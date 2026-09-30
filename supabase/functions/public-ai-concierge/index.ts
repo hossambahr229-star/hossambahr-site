@@ -290,7 +290,10 @@ export default {
       const ranked = rank(goal, catalog);
       return reply(req, {
         ok:true,
-        goal_context:{ jurisdiction_hint: detectJurisdiction(normalize(goal)) },
+        goal_context:{
+          jurisdiction_hint: detectJurisdiction(normalize(goal)),
+          safe_goal: goal
+        },
         result: publicResult(goal, ranked),
         rate_limit:{ remaining: rate.remaining, reset_at: rate.reset_at }
       });
