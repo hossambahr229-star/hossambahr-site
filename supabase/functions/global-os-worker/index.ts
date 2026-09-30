@@ -330,7 +330,9 @@ async function deterministicQuality(admin, caseRow) {
 
 async function deterministicPlanner(admin, caseRow, binding) {
   const workflowKey = binding?.workflow_key || caseRow.metadata?.workflow_key || null;
-  type WorkflowStep = { key?: unknown; title?: unknown };\n  type WorkflowTemplate = { version?: unknown; definition?: { steps?: WorkflowStep[] } };\n  let template: WorkflowTemplate | null = null;
+  type WorkflowStep = { key?: unknown; title?: unknown };
+  type WorkflowTemplate = { version?: unknown; definition?: { steps?: WorkflowStep[] } };
+  let template: WorkflowTemplate | null = null;
 
   if (workflowKey && workflowKey !== "generic:intake") {
     const templateResult = await admin
