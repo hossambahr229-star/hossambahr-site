@@ -93,7 +93,7 @@ test("parent residence is part of family clarification when emirate is missing",
 
 
 test("family special boost covers spouse and parent residence vocabulary", () => {
-  assert.match(edge, /"والد","والدتي","والدي","الوالدين".*"family","wife","spouse","parent","mother","father"/);
+  assert.match(edge, /"والد","والدتي","والدي","الوالدين".*"family","wife","spouse","child","children","son","daughter","parent","mother","father"/);
   assert.match(edge, /family && residence && renew/);
 });
 
@@ -110,7 +110,7 @@ test("resolver uses verified binding metadata name before falling back to slug",
 
 
 test("grounded jurisdiction-specific match is presented instead of hidden by confidence-only clarification", () => {
-  assert.match(client, /grounding\?\.source_backed && hasEmirate/);
+  assert.match(ui, /grounding\?\.source_backed && hasEmirate/);
 });
 
 
