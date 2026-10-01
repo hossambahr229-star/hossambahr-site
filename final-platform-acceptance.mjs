@@ -131,7 +131,7 @@ const conversationalScenarios = [
   ["أريد أجدد إقامة زوجتي في دبي", /gdrfa-family-residence-renew|تجديد-إقامة-أفراد-الأسرة-في-دبي/, "family", "دبي"],
   ["أريد أفتح شركة في دبي", /issue-trade-license-dubai/, "companies", "دبي"],
   ["عندي موظف وأريد أنقله إلى شركتي", /transfer-work-permit-uae|mohre-transfer-work-permit/, "employment", "اتحادي"],
-  ["أريد إقامة لوالدتي", /family-residency-uae|family-residence|إقامة-أفراد-الأسرة/, "family", "دبي"],
+  ["أريد إقامة لوالدتي في دبي", /family-residency-uae|family-residence|إقامة-أفراد-الأسرة/, "family", "دبي"],
   ["عندي مشكلة في الإقامة", /residen|إقامة|اقامة/, "residency", "دبي"]
 ];
 

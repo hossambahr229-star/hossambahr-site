@@ -84,3 +84,9 @@ test("public conversational budget supports multi-turn QA without disabling rate
   assert.match(edge, /p_limit: 60/);
   assert.match(edge, /rate_limited/);
 });
+
+
+test("parent residence is part of family clarification when emirate is missing", () => {
+  assert.match(edge, /"والد","والدتي","والدي","الوالدين"/);
+  assert.match(edge, /if \(family && residence && !emirate\)/);
+});
