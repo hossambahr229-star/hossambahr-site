@@ -366,7 +366,7 @@
     const combined = normalizeIntent([state.original_goal,...(state.answers||[])].join(" "));
     const parentCase = /والد|والدتي|والدين|parent/.test(combined);
     const hasEmirate = /دبي|ابوظبي|ابو ظبي|الشارقه|الشارقة|عجمان|راس الخيمه|الفجيره|ام القيوين/.test(combined);
-    if (parentCase && hasEmirate) return false;
+    if (parentCase && hasEmirate && !effectiveQuestion(payload)) return false;
     const forced = effectiveQuestion(payload);
     if (!forced) return false;
     if (/نوع المشكلة|النتيجة التي تريدها/.test(forced)) return true;
