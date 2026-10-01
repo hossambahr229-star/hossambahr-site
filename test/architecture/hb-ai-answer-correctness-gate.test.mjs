@@ -129,6 +129,6 @@ test("employee cancellation cannot resolve to transfer work permit", () => {
 
 test("non-Dubai residence authority choice prefers ICP over GDRFA or local unrelated authorities", () => {
   assert.match(edge, /asksResidenceAuthorityChoice/);
-  assert.match(edge, /authority_key === "icp".*1600/s);
-  assert.match(edge, /authority_key === "gdrfa-dubai".*-=/s);
+  assert.match(edge, /authority_key === "icp".*6000/s);
+  assert.match(edge, /else score -= 6000/);
 });
