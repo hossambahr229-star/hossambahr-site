@@ -400,7 +400,7 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
 type ProviderResult = { text:string; provider:string; model:string; latency_ms:number } | null;
 
 function providerConfig() {
-  const openai = Deno.env.get("OPENAI_API_KEY") || "";
+  const openai = (Deno.env.get("OPENAI_API_KEY") || "").trim().replace(/^["\']|["\']$/g, "");
   const anthropic = Deno.env.get("ANTHROPIC_API_KEY") || "";
   const gemini = Deno.env.get("GEMINI_API_KEY") || Deno.env.get("GOOGLE_GENERATIVE_AI_API_KEY") || "";
   if (openai) return { provider:"openai", key:openai, model:Deno.env.get("OPENAI_MODEL") || "gpt-5.6-sol" };
