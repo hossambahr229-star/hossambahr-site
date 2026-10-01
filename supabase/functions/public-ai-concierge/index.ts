@@ -335,6 +335,17 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   if (has(goal, ["الاقامه الذهبيه","الإقامة الذهبية","golden residency","golden visa"])) {
     if (slug === "golden-residency-uae") score += 9000; else if (/family|اسر|والد/.test(slug)) score -= 4000;
   }
+  const economicLicense = has(goal, ["رخصه اقتصاديه","رخصة اقتصادية","economic license","economic licence","رخصه تجاريه","رخصة تجارية","trade license","trade licence"]);
+  const wantsRenewEconomic = economicLicense && has(goal, ["اجدد","تجديد","renew"]);
+  const wantsAmendEconomic = economicLicense && has(goal, ["اعدل","تعديل","amend","modify"]);
+  const exactEconomic:Record<string,{renew:string,amend:string}> = {
+    "AE-FU":{renew:"fujairah-economic-license-renewal",amend:"fujairah-economic-license-amendment"},
+    "AE-SH":{renew:"sharjah-economic-license-renewal",amend:"sharjah-economic-license-amendment"},
+    "AE-DU":{renew:"renew-business-license-dubai",amend:"amend-business-license-dubai"}
+  };
+  const exact = emirate ? exactEconomic[emirate] : undefined;
+  if (exact && wantsRenewEconomic) { if (slug === exact.renew) score += 12000; else score -= 4500; }
+  if (exact && wantsAmendEconomic) { if (slug === exact.amend) score += 12000; else score -= 4500; }
   if (has(goal, ["تصفيه الشركه","تصفية الشركة","اصفي الشركه","أصفي الشركة","اصفيها","أصفيها","liquidat"])) {
     if (slug === "cancel-business-license-dubai") score += emirate === "AE-DU" ? 9000 : 7000;
     else score -= 3500;
