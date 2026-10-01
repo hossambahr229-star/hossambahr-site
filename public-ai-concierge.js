@@ -589,9 +589,10 @@
   }
 
   function setupConversationUI() {
-    if (location.pathname !== "/" && location.pathname !== "/index.html") return;
+    if (!["/","/index.html","/ai","/ai/","/ai/index.html"].includes(location.pathname)) return;
     loadState();
 
+    const isAIProduct = document.body.dataset.hbAiProduct === "true";
     const stage = $(".hero-search-stage");
     form = $(".primary-search");
     if (!stage || !form) return;
@@ -668,7 +669,10 @@
     shell.append(thread);
     form.insertAdjacentElement("afterend", shell);
 
-    addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
+    if (isAIProduct && state.original_goal) document.body.classList.add("hb-chat-engaged");
+    addBubble("assistant", isAIProduct ? "مرحبًا، أنا HOSSAM BAHR AI. اسألني عن معاملتك، وسأعطيك الإجابة المفيدة أولًا ثم التفاصيل والمصدر الرسمي عند الحاجة." : "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
+    const incoming = new URLSearchParams(location.search).get("q");
+    if (isAIProduct && incoming) { composer.value = scrubLocal(incoming); setTimeout(() => form.requestSubmit(), 80); }
 
     const prompts = stage.querySelector(".examples");
     if (prompts) {
