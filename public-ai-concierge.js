@@ -487,66 +487,41 @@
   }
 
   async function analyze(userMessage, options = {}) {
-    const displayed = scrubLocal(userMessage);
-    if (displayed.length < 2 || analysisInFlight) return;
-    analysisInFlight = true;
-    const perfStart = performance.now();
-    document.body.classList.add("hb-chat-engaged");
-    if (!options.fromQuickReply && !options.suppressUserBubble) addBubble("user", displayed);
-    state.history = Array.isArray(state.history) ? state.history : [];
-    const pending = addStatus();
-    const firstFeedbackMs = Math.round(performance.now() - perfStart);
-    sendButton && (sendButton.disabled = true);
-
-    if (!state.original_goal) state.original_goal = displayed;
-    else if (displayed !== state.original_goal) state.answers.push(displayed);
-
-    const query = buildResolvedQuery();
-    state.resolved_query = query;
-    saveState();
-
-    try {
-      const resolverQuery = query;
-      const response = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ goal: resolverQuery, latest_turn: displayed, history: state.history.slice(-10), context: { service_slug: state.service_slug, jurisdiction_code: state.jurisdiction_code, authority_key: state.authority_key } }),
-        credentials: "omit"
-      });
-      let payload = await response.json().catch(() => ({}));
-      const responseMs = Math.round(performance.now() - perfStart);
-      performance.mark?.("hb-ai-useful-content");
-      window.dispatchEvent(new CustomEvent("hb:ai-performance",{detail:{first_feedback_ms:firstFeedbackMs,response_ms:responseMs,server_timing:response.headers.get("server-timing")||null}}));
-      if (response.status === 429) {
-        removePending(pending);
-        addBubble("assistant", "وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");
-        return;
+    const displayed=scrubLocal(userMessage); if(displayed.length<2||analysisInFlight)return;
+    analysisInFlight=true; const perfStart=performance.now(); document.body.classList.add("hb-chat-engaged");
+    if(!options.fromQuickReply&&!options.suppressUserBubble)addBubble("user",displayed);
+    state.history=Array.isArray(state.history)?state.history:[]; const pending=addStatus(); sendButton&&(sendButton.disabled=true);
+    if(!state.original_goal)state.original_goal=displayed;else if(displayed!==state.original_goal)state.answers.push(displayed);
+    const query=buildResolvedQuery(); state.resolved_query=query; saveState();
+    try{
+      const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn:displayed,history:state.history.slice(-8),stream:true,context:{service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key}}),credentials:"omit"});
+      if(response.status===429){removePending(pending);addBubble("assistant","وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");return;}
+      if(!response.ok||!response.body)throw new Error("stream_unavailable");
+      const reader=response.body.getReader(),decoder=new TextDecoder();let buffer="",payload=null,streamBubble=null,streamP=null,full="",ttft=null,doneMeta=null;
+      while(true){
+        const part=await reader.read(); if(part.done)break; buffer+=decoder.decode(part.value,{stream:true});
+        const lines=buffer.split("\n");buffer=lines.pop()||"";
+        for(const raw of lines){if(!raw.trim())continue;let evt;try{evt=JSON.parse(raw);}catch{continue;}
+          if(evt.type==="meta"){payload={ok:true,goal_context:evt.goal_context,result:evt.result,rate_limit:evt.rate_limit};continue;}
+          if(evt.type==="delta"){
+            if(ttft===null){ttft=Math.round(performance.now()-perfStart);removePending(pending);streamBubble=addBubble("assistant","");streamP=streamBubble?.querySelector(".hb-chat-bubble p");}
+            full+=evt.delta;if(streamP)streamP.textContent=full;
+          }
+          if(evt.type==="done"){doneMeta=evt;if(payload){payload.result.answer={...(payload.result.answer||{}),text:evt.text,generated:true};payload.result.engine=evt.engine;}full=evt.text||full;}
+          if(evt.type==="fallback"){payload={ok:true,goal_context:{safe_goal:query},result:evt.result};full=evt.result?.answer?.text||"";}
+        }
       }
-      if (!response.ok || !payload?.ok) throw new Error(payload?.error || "analysis_failed");
-
-      removePending(pending);
-      const match = selectPresentationMatch(payload);
-      state.last_payload = payload;
-      state.history.push({ role: "user", content: displayed });
-      const assistantText = payload?.result?.answer?.text;
-      if (assistantText) state.history.push({ role: "assistant", content: assistantText });
-      state.history = state.history.slice(-12);
-      state.resolved_query = payload?.goal_context?.safe_goal || query;
-      if (!state.original_goal) state.original_goal = state.resolved_query;
-      state.service_slug = match?.service_slug || state.service_slug;
-      state.jurisdiction_code = match?.jurisdiction?.code || payload?.goal_context?.jurisdiction_hint || state.jurisdiction_code;
-      state.authority_key = match?.authority?.key || state.authority_key;
-      saveState();
-
-      addBubble("assistant", buildAssistantMessage(payload));
-    } catch {
-      removePending(pending);
-      addBubble("assistant", "تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");
-    } finally {
-      analysisInFlight = false;
-      if (sendButton) sendButton.disabled = false;
-      composer?.focus();
-    }
+      if(!payload)throw new Error("stream_invalid");
+      if(streamBubble)streamBubble.remove();else removePending(pending);
+      const totalMs=Math.round(performance.now()-perfStart);performance.mark?.("hb-ai-useful-content");
+      window.dispatchEvent(new CustomEvent("hb:ai-performance",{detail:{ttft_ms:ttft??doneMeta?.engine?.ttft_ms??null,response_ms:totalMs,total_ms:doneMeta?.engine?.total_ms??totalMs,usage:doneMeta?.usage||null}}));
+      const match=selectPresentationMatch(payload);state.last_payload=payload;state.history.push({role:"user",content:displayed});
+      const assistantText=payload?.result?.answer?.text||full;if(assistantText)state.history.push({role:"assistant",content:assistantText});
+      state.history=state.history.slice(-8);state.resolved_query=payload?.goal_context?.safe_goal||query;if(!state.original_goal)state.original_goal=state.resolved_query;
+      state.service_slug=match?.service_slug||state.service_slug;state.jurisdiction_code=match?.jurisdiction?.code||payload?.goal_context?.jurisdiction_hint||state.jurisdiction_code;state.authority_key=match?.authority?.key||state.authority_key;saveState();
+      addBubble("assistant",buildAssistantMessage(payload));
+    }catch{removePending(pending);addBubble("assistant","تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");}
+    finally{analysisInFlight=false;if(sendButton)sendButton.disabled=false;composer?.focus();}
   }
 
   function rememberHandoff(payload = state.last_payload) {
