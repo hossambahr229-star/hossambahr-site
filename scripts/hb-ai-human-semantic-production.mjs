@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
-const endpoint=process.env.HB_AI_ENDPOINT||"https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge";
+const endpoint=process.env.HB_AI_ENDPOINT||"https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge";\nconst qaRun="semantic-"+Date.now();
 async function ask(goal,latestTurn=goal,history=[],context={}){
- const res=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json","origin":"https://hossambahr.com"},body:JSON.stringify({goal,latest_turn:latestTurn,history,context,stream:false})});
+ const res=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json","origin":"https://hossambahr.com","x-hb-qa-run":qaRun},body:JSON.stringify({goal,latest_turn:latestTurn,history,context,stream:false})});
  const p=await res.json(); assert.equal(res.status,200,goal); assert.equal(p.ok,true,goal); return p;
 }
 const spouseBad=/الوالد(?:ين|ة|تي|ي)?|الأب|الاب|الأم|الام|parents?|mother|father/i;
