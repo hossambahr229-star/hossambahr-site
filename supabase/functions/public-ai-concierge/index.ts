@@ -296,6 +296,7 @@ function followUps(goal: string, top: any) {
   const emirate = detectJurisdiction(normalized);
   const family = has(normalized, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","child","children","son","daughter","parent","mother","father"]);
   const residence = has(normalized, ["اقامه","residence","residency"]);
+  const parent = has(normalized, ["والد","والدتي","والدي","الوالدين","parent","mother","father"]);
   const company = has(normalized, ["شركه","رخصه","ترخيص","business","company","license","licence"]);
   const employee = has(normalized, ["موظف","عامل","employee","worker"]);
   const workAction = has(normalized, ["تصريح عمل","توظيف","عمل","work permit","hire"]);
