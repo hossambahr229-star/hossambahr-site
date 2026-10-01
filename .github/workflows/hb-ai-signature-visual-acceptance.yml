@@ -22,7 +22,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p hb-ai-visual
-          cat > /tmp/hb-ai-visual.mjs <<'JS'
+          cat > hb-ai-visual.mjs <<'JS'
           import { chromium } from 'playwright';
           import { execFileSync } from 'node:child_process';
           import fs from 'node:fs';
@@ -63,7 +63,7 @@ jobs:
           const fail=results.some(r=>!r.tileVisible||!r.first.mark||!r.first.composer||!r.first.bodyBg.includes('rgb(255, 255, 255)')&&r.first.bodyBg.includes('rgb(17, 17, 17)')||r.first.quick.length!==4||!r.answer.answer||!r.answer.verified||!r.answer.source||!r.answer.transaction||r.answer.overflow||!r.attachment||r.errors.length);
           await browser.close(); if(fail)process.exit(1);
           JS
-          node /tmp/hb-ai-visual.mjs
+          node hb-ai-visual.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
