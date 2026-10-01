@@ -597,7 +597,7 @@ export default {
 
     const fp = await fingerprint(req);
     const { data: rate, error: rateError } = await ctx.supabaseAdmin
-      .rpc("hb_public_ai_rate_limit_allow", { p_fingerprint_hash: fp, p_limit: 60 });
+      .rpc("hb_public_ai_rate_limit_allow", { p_fingerprint_hash: fp, p_limit: 120 });
     if (rateError) return reply(req, { error:"rate_limit_unavailable" }, 503);
     if (!rate?.allowed) return reply(req, { error:"rate_limited", retry_after:"hourly" }, 429, { "Retry-After":"3600" });
 
