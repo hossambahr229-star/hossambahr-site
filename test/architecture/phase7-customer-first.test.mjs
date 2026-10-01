@@ -14,14 +14,16 @@ const services = registry.services.map((service) => ({
   d: service.description, v: service.verificationStatus,
 }));
 
-test('Phase 7 homepage is conversation-first with compact trust and secondary disclosure', async () => {
-  const html = await read('index.html');
+test('Phase 7 homepage keeps compact trust while conversation moves to the dedicated AI product', async () => {
+  const [html, ai] = await Promise.all([read('index.html'), read('ai/index.html')]);
   assert.match(html, /data-phase7=["']true["']/);
   assert.match(html, /class=["']phase7-trust-strip["']/);
   assert.match(html, /class=["']phase7-secondary-home content-section["']/);
-  assert.match(html, /aria-label=["']محادثة مع HOSSAM BAHR AI["']/);
-  assert.match(html, />اسأل HOSSAM BAHR AI</);
-  assert.match(html, />إرسال<\/button>/);
+  assert.match(html, /class=["'][^"']*hb-ai-app-tile/);
+  assert.match(html, /href=["']\/ai\//);
+  assert.match(ai, /aria-label=["']محادثة مع HOSSAM BAHR AI["']/);
+  assert.match(ai, />اسأل HOSSAM BAHR AI</);
+  assert.match(ai, />إرسال<\/button>/);
   assert.doesNotMatch(html, /class=["']live-stats["']/);
   assert.equal((html.match(/class=["'][^"']*platform-hero/g) || []).length, 1);
   assert.equal((html.match(/class=["']phase7-secondary-home content-section["']/g) || []).length, 1);

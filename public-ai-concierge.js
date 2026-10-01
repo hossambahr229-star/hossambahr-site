@@ -491,9 +491,11 @@
     const displayed = scrubLocal(userMessage);
     if (displayed.length < 2 || analysisInFlight) return;
     analysisInFlight = true;
+    const perfStart = performance.now();
     document.body.classList.add("hb-chat-engaged");
     if (!options.fromQuickReply && !options.suppressUserBubble) addBubble("user", displayed);
     const pending = addStatus();
+    const firstFeedbackMs = Math.round(performance.now() - perfStart);
     sendButton && (sendButton.disabled = true);
 
     if (!state.original_goal) state.original_goal = displayed;
@@ -512,6 +514,8 @@
         credentials: "omit"
       });
       let payload = await response.json().catch(() => ({}));
+      const responseMs = Math.round(performance.now() - perfStart);
+      window.dispatchEvent(new CustomEvent("hb:ai-performance",{detail:{first_feedback_ms:firstFeedbackMs,response_ms:responseMs,server_timing:response.headers.get("server-timing")||null}}));
       if (response.status === 429) {
         removePending(pending);
         addBubble("assistant", "وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");
@@ -589,15 +593,16 @@
   }
 
   function setupConversationUI() {
-    if (location.pathname !== "/" && location.pathname !== "/index.html") return;
+    if (!["/","/index.html","/ai","/ai/","/ai/index.html"].includes(location.pathname)) return;
     loadState();
 
+    const isAIProduct = document.body.dataset.hbAiProduct === "true";
     const stage = $(".hero-search-stage");
     form = $(".primary-search");
     if (!stage || !form) return;
 
     stage.classList.add("hb-conversation-stage");
-    if (!stage.querySelector("[data-hb-ai-brand]")) {
+    if (!isAIProduct && !stage.querySelector("[data-hb-ai-brand]")) {
       const brand = create("div", "hb-ai-composer-brand");
       brand.dataset.hbAiBrand = "true";
       brand.append(aiSymbol(32, "HOSSAM BAHR AI"));
@@ -668,14 +673,17 @@
     shell.append(thread);
     form.insertAdjacentElement("afterend", shell);
 
-    addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
+    if (isAIProduct && state.original_goal) document.body.classList.add("hb-chat-engaged");
+    if (!isAIProduct) addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
+    const incoming = new URLSearchParams(location.search).get("q");
+    if (isAIProduct && incoming) { composer.value = scrubLocal(incoming); setTimeout(() => form.requestSubmit(), 80); }
 
     const prompts = stage.querySelector(".examples");
     if (prompts) {
       prompts.classList.add("hb-chat-prompts");
       const span = prompts.querySelector("span");
       if (span) span.textContent = "أمثلة:";
-      const labels = [
+      const labels = isAIProduct ? ["تجديد إقامة","تأسيس شركة","معاملة موظف","الرسوم والمستندات"] : [
         "أريد أجدد إقامة زوجتي",
         "أريد أفتح شركة في دبي",
         "كيف أنقل موظف إلى شركتي؟",

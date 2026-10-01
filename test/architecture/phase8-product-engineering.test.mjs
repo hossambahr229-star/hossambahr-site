@@ -15,19 +15,23 @@ test('Phase 8 keeps the verified inventory unchanged', async () => {
   assert.equal(new Set(registry.services.map((service) => service.emirate).filter((value) => /دبي|أبوظبي|الشارقة|عجمان|رأس الخيمة|أم القيوين|الفجيرة/.test(value))).size >= 7, true);
 });
 
-test('Phase 8 homepage density is present before first paint', async () => {
-  const [html, css] = await Promise.all([read('index.html'), read('intent-first.css')]);
+test('Homepage keeps platform density while HB AI owns a dedicated product surface', async () => {
+  const [html, ai, css] = await Promise.all([read('index.html'), read('ai/index.html'), read('intent-first.css')]);
   assert.match(html, /<html[^>]*\bhb-phase8\b/);
-  assert.match(html, /id="government-search"/);
+  assert.match(html, /class="hero-search-stage hb-ai-app-tile"/);
+  assert.match(html, /href="\/ai\/"/);
+  assert.doesNotMatch(html, /id="government-search"/);
+  assert.match(ai, /id="government-search"/);
+  assert.match(ai, /data-hb-ai-product="true"/);
   assert.match(css, /Phase 8 — customer-first density/);
-  assert.match(css, /body\[data-ux-page="home"\] \.hero-copy h1/);
-  assert.match(css, /body\[data-ux-page="home"\] \.search-row :is\(input,button\)/);
 });
 
-test('HOSSAM BAHR AI Arabic hero keeps readable word boundaries', async () => {
-  const homepage = await read('index.html');
-  assert.doesNotMatch(homepage, /HOSSAM BAHR AI<em>مساعدك/);
-  assert.match(homepage, /HOSSAM BAHR AI<em> مساعدك الذكي للمعاملات في الإمارات\./);
+test('HOSSAM BAHR AI identity is readable on the dedicated product and app tile', async () => {
+  const [homepage, ai] = await Promise.all([read('index.html'), read('ai/index.html')]);
+  assert.match(homepage, /HOSSAM BAHR AI/);
+  assert.match(homepage, /مساعدك الذكي للمعاملات في الإمارات/);
+  assert.match(ai, /<h1 id="hb-ai-title">HOSSAM BAHR AI<\/h1>/);
+  assert.match(ai, /كيف يمكنني مساعدتك اليوم؟/);
 });
 
 test('Phase 8 activity advisor preserves the specific product activity beside ecommerce', async () => {
