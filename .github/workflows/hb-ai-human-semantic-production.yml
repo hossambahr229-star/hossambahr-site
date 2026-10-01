@@ -1,7 +1,7 @@
 name: HB AI human semantic production
 on:
   push:
-    branches: [qa/global-gate-semantic-e2e]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
