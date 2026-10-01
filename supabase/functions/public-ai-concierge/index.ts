@@ -282,7 +282,8 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   let score = 0;
   const family = has(goal, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","child","children","son","daughter","parent","mother","father"]);
   const residence = has(goal, ["اقامه","residence","residency"]);
-  const renew = has(goal, ["اجدد","تجديد","renew"]);\n  const amend = has(goal, ["تعديل","عدل","amend","modify"]);
+  const renew = has(goal, ["اجدد","تجديد","renew"]);
+  const amend = has(goal, ["تعديل","عدل","amend","modify"]);
   const company = has(goal, ["شركه","رخصه","ترخيص","business","company","license","licence"]);
   const open = has(goal, ["افتح","تاسيس","اصدار","ابدأ","ابدا","open","start","issue","establish"]);
   const employee = has(goal, ["موظف","عامل","employee","worker"]);
@@ -305,7 +306,9 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   }
   if (company && open) {
     if (slug === "issue-trade-license-dubai") score += emirate === "AE-DU" ? 7000 : emirate ? -180 : 360;
-    if (emirate && jurisdictionCode === emirate && /license-issuance|license-issue|economic-license-issuance|commercial-license-issuance/.test(slug)) score += 6500;\n    if (emirate && jurisdictionCode === emirate && renew && /license-renewal|renew-business-license/.test(slug)) score += 6500;\n    if (emirate && jurisdictionCode === emirate && amend && /license-amendment|amend-business-license/.test(slug)) score += 6500;
+    if (emirate && jurisdictionCode === emirate && /license-issuance|license-issue|economic-license-issuance|commercial-license-issuance/.test(slug)) score += 6500;
+    if (emirate && jurisdictionCode === emirate && renew && /license-renewal|renew-business-license/.test(slug)) score += 6500;
+    if (emirate && jurisdictionCode === emirate && amend && /license-amendment|amend-business-license/.test(slug)) score += 6500;
   }
   if (employee && wantsCancel) {
     if (slug === "cancel-work-permit-uae") score += 7000;
