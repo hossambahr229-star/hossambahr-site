@@ -299,7 +299,9 @@ function rank(goal: string, rows: any[]) {
       else if (row.jurisdiction?.code?.startsWith("AE-")) score -= 45;
     }
     return { ...row, score };
-  }).filter((row:any) => row.score > 0 && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
+  }).filter((row:any) => row.score > 0
+      && (!residencyDomain || !detected || detected === "AE-DU" || row.jurisdiction?.code === "AE" || row.jurisdiction?.code === detected)
+      && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
     .sort((a:any,b:any) => b.score - a.score || a.title.localeCompare(b.title,"ar"));
 }
 
@@ -324,8 +326,13 @@ function followUps(goal: string, top: any) {
   return out.slice(0,2);
 }
 
+function jurisdictionNameAr(code: string | null) {
+  return ({ "AE-DU":"دبي","AE-AZ":"أبوظبي","AE-SH":"الشارقة","AE-AJ":"عجمان","AE-RK":"رأس الخيمة","AE-UQ":"أم القيوين","AE-FU":"الفجيرة" } as Record<string,string>)[code || ""] || null;
+}
+
 function publicResult(goal: string, ranked: any[], latestTurn = goal) {
   const candidates = ranked.slice(0,3);
+  const requestedJurisdiction = detectJurisdiction(normalize(goal));
   if (!candidates.length) {
     return {
       understood_intent: "لم أستطع تحديد خدمة موثقة بدقة من وصفك الحالي.",
@@ -359,7 +366,11 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
       service_slug: row.binding.service_slug,
       service_name: row.title,
       service_url: "/services/"+encodeURIComponent(row.binding.service_slug)+"/",
-      jurisdiction: row.jurisdiction ? { code: row.jurisdiction.code, name_ar: row.jurisdiction.name_ar, name_en: row.jurisdiction.name_en } : { code:"AE", name_ar:"دولة الإمارات", name_en:"United Arab Emirates" },
+      jurisdiction: row.jurisdiction ? {
+        code: requestedJurisdiction && row.jurisdiction.code === "AE" ? requestedJurisdiction : row.jurisdiction.code,
+        name_ar: requestedJurisdiction && row.jurisdiction.code === "AE" ? (jurisdictionNameAr(requestedJurisdiction) || row.jurisdiction.name_ar) : row.jurisdiction.name_ar,
+        name_en: row.jurisdiction.name_en
+      } : { code: requestedJurisdiction || "AE", name_ar: jurisdictionNameAr(requestedJurisdiction) || "دولة الإمارات", name_en:"United Arab Emirates" },
       authority: row.authority ? {
         key: row.authority.authority_key,
         name_ar: row.authority.name_ar,
