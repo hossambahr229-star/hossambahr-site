@@ -41,7 +41,8 @@
     service_slug: null,
     jurisdiction_code: null,
     authority_key: null,
-    last_payload: null,\n    history: []\n  };
+    last_payload: null,
+    history: []\n  };
   let thread = null;
   let composer = null;
   let form = null;
@@ -490,7 +491,8 @@
     analysisInFlight = true;
     const perfStart = performance.now();
     document.body.classList.add("hb-chat-engaged");
-    if (!options.fromQuickReply && !options.suppressUserBubble) addBubble("user", displayed);\n    state.history = Array.isArray(state.history) ? state.history : [];
+    if (!options.fromQuickReply && !options.suppressUserBubble) addBubble("user", displayed);
+    state.history = Array.isArray(state.history) ? state.history : [];
     const pending = addStatus();
     const firstFeedbackMs = Math.round(performance.now() - perfStart);
     sendButton && (sendButton.disabled = true);
@@ -523,7 +525,11 @@
 
       removePending(pending);
       const match = selectPresentationMatch(payload);
-      state.last_payload = payload;\n      state.history.push({ role: "user", content: displayed });\n      const assistantText = payload?.result?.answer?.text;\n      if (assistantText) state.history.push({ role: "assistant", content: assistantText });\n      state.history = state.history.slice(-12);
+      state.last_payload = payload;
+      state.history.push({ role: "user", content: displayed });
+      const assistantText = payload?.result?.answer?.text;
+      if (assistantText) state.history.push({ role: "assistant", content: assistantText });
+      state.history = state.history.slice(-12);
       state.resolved_query = payload?.goal_context?.safe_goal || query;
       if (!state.original_goal) state.original_goal = state.resolved_query;
       state.service_slug = match?.service_slug || state.service_slug;
