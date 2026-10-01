@@ -222,7 +222,7 @@ async function fingerprint(req: Request) {
     || "unknown";
   const ua = (req.headers.get("user-agent") || "unknown").slice(0, 180);
   const day = new Date().toISOString().slice(0, 10);
-  const bytes = new TextEncoder().encode("hb-public-ai|"+day+"|"+ip+"|"+ua);
+  const qaRun = (req.headers.get("x-hb-qa-run") || "").replace(/[^a-zA-Z0-9._:-]/g,"").slice(0,80);\n  const bytes = new TextEncoder().encode("hb-public-ai|"+day+"|"+ip+"|"+ua+"|"+qaRun);
   const digest = await crypto.subtle.digest("SHA-256", bytes);
   return Array.from(new Uint8Array(digest)).map((v) => v.toString(16).padStart(2,"0")).join("");
 }
