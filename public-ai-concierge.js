@@ -93,6 +93,8 @@
     attachmentTray.append(card);
   }
 
+  async function fileDataUrl(file) { return await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result||""));r.onerror=()=>reject(r.error);r.readAsDataURL(file);}); }
+
   async function analyzeAttachedDocument() {
     const file = pendingAttachment;
     if (!file || attachmentAnalysisInFlight) return;
@@ -110,9 +112,22 @@
     }
     const isText = TEXT_DOCUMENT_TYPES.has(file.type) || TEXT_DOCUMENT_EXTENSIONS.test(file.name);
     if (!isText) {
-      addBubble("assistant", "تعرفت على الملف «" + file.name + "». لحماية مستنداتك، تحليل PDF والصور الحساسة يتم بعد تسجيل الدخول ضمن مساحة المستندات الآمنة. يمكنك متابعة الاستشارة النصية الآن دون تسجيل.");
-      attachmentAnalysisInFlight = false;
-      renderAttachmentTray();
+      const isPdf=file.type==="application/pdf"||/\\.pdf$/i.test(file.name);
+      const isImage=/^image\\/(png|jpeg|jpg|webp|gif)$/i.test(file.type);
+      if(!isPdf&&!isImage){addBubble("assistant","نوع الملف غير مدعوم للتحليل الآمن حاليًا.");attachmentAnalysisInFlight=false;renderAttachmentTray();return;}
+      if(file.size>3*1024*1024){addBubble("assistant","الحد الآمن الحالي لتحليل PDF والصور هو 3 MB.");attachmentAnalysisInFlight=false;renderAttachmentTray();return;}
+      const s=await session();
+      if(!s?.access_token){addBubble("assistant","تحليل PDF والصور قد يتضمن بيانات حساسة، لذلك يتطلب تسجيل الدخول. لن أرفع الملف أو أحلله قبل تسجيل الدخول.");attachmentAnalysisInFlight=false;renderAttachmentTray();return;}
+      const pending=addStatus();
+      try{
+        const dataUrl=await fileDataUrl(file);
+        const res=await fetch("https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/document-ai",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+s.access_token},body:JSON.stringify({filename:file.name,mime_type:file.type,data_url:dataUrl})});
+        const out=await res.json();removePending(pending);
+        if(!res.ok||!out?.analysis)throw new Error("document_analysis_failed");
+        addBubble("user","حلّل هذا المستند: "+file.name);addBubble("assistant",out.analysis);
+        pendingAttachment=null;if(attachmentInput)attachmentInput.value="";renderAttachmentTray();
+      }catch{removePending(pending);addBubble("assistant","تعذر تحليل المستند الآن. لم يتم حفظ نسخة منه بواسطة خدمة التحليل.");}
+      finally{attachmentAnalysisInFlight=false;renderAttachmentTray();}
       return;
     }
     const pending = addStatus();
