@@ -90,3 +90,9 @@ test("parent residence is part of family clarification when emirate is missing",
   assert.match(edge, /"والد","والدتي","والدي","الوالدين"/);
   assert.match(edge, /if \(family && residence && !emirate\)/);
 });
+
+
+test("family special boost covers spouse and parent residence vocabulary", () => {
+  assert.match(edge, /"والد","والدتي","والدي","الوالدين".*"family","wife","spouse","parent","mother","father"/);
+  assert.match(edge, /family && residence && renew/);
+});
