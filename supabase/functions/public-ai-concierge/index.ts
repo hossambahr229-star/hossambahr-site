@@ -264,6 +264,7 @@ function rank(goal: string, rows: any[]) {
   const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","اسره","عائله","family","wife","spouse","parent"]);
   const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
   const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
+  const asksResidenceAuthorityChoice = residencyDomain && has(normalized, ["icp"]) && has(normalized, ["gdrfa"]);
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
@@ -273,6 +274,11 @@ function rank(goal: string, rows: any[]) {
     if (residencyDomain && !employeeDomain && /(work permit|تصريح عمل|labour|labor)/.test(identityText)) score -= 2200;
     if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(identityText)) score -= 900;
     if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(identityText)) score -= 900;
+    if (asksResidenceAuthorityChoice && detected && detected !== "AE-DU") {
+      if (row.authority?.authority_key === "icp") score += 1600;
+      else if (row.authority?.authority_key === "gdrfa-dubai") score -= 1600;
+      else score -= 900;
+    }
     const wantsRenew = has(normalized, ["اجدد","تجديد","renew"]);
     const wantsCancel = has(normalized, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
     const wantsIssue = has(normalized, ["اريد اقامه","أريد إقامة","اصدار اقامه","إصدار إقامة","issue residence","new residence"]);
