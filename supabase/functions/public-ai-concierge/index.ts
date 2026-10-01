@@ -428,7 +428,7 @@ async function selectSemanticCandidate(semantic:SemanticState, ranked:any[], cat
     }
     const chosen=shortlist.find((r:any)=>r.binding.service_slug===p.selected_slug);if(!chosen)return [];
     return [chosen,...ranked.filter((r:any)=>r.binding.service_slug!==p.selected_slug)];
-  }catch{return [];}
+  }catch{return ranked[0]?.score>=5000?ranked:[];}
 }
 
 function followUps(goal: string, top: any) {
