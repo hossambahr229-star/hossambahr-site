@@ -429,66 +429,117 @@ Answer-first: give a direct natural answer, then only useful verified details. D
 Do not claim you searched the web unless a supplied source says so. Do not mention OpenAI, Anthropic, Google, ChatGPT, Gemini or Claude.
 Return plain text only; no JSON and no markdown table.`;
 
-async function callConversationalModel(latestTurn:string, history:any[], deterministic:any, signal:AbortSignal): Promise<ProviderResult> {
-  const cfg = providerConfig();
-  if (!cfg) return null;
-  const started = performance.now();
-  const safeHistory = Array.isArray(history) ? history.slice(-10).map((m:any)=>({
+type StreamMetrics = { ttft_ms:number|null; total_ms:number; input_tokens:number; output_tokens:number; cached_tokens:number; retry_count:number };
+
+function safeHistoryForModel(history:any[]) {
+  const items = Array.isArray(history) ? history.slice(-8).map((m:any)=>({
     role: m?.role === "assistant" ? "assistant" : "user",
-    content: scrubGoal(m?.content || "")
+    content: scrubGoal(m?.content || "").slice(0,1200)
   })).filter((m:any)=>m.content) : [];
-  const grounding = JSON.stringify({deterministic_intent:deterministic?.understood_intent || null, confidence:deterministic?.confidence || "low", grounding:compactGrounding(deterministic)}, null, 0);
-  const userContent = "Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
-  try {
-    if (cfg.provider === "openai") {
-      const input = [...safeHistory, {role:"user",content:userContent}];
-      const res = await fetch("https://api.openai.com/v1/responses", {
-        method:"POST", signal,
-        headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},
-        body:JSON.stringify({model:cfg.model,instructions:AI_INSTRUCTIONS,input,max_output_tokens:700,reasoning:{effort:"low"},store:false})
-      });
-      if (!res.ok) throw new Error("openai_"+res.status);
-      const data:any = await res.json();
-      const text = String(data.output_text || (data.output || []).flatMap((o:any)=>o.content||[]).find((c:any)=>c.type==="output_text")?.text || "").trim();
-      if (!text) throw new Error("openai_empty");
-      return {text,provider:"openai",model:cfg.model,latency_ms:Math.round(performance.now()-started)};
-    }
-    if (cfg.provider === "anthropic") {
-      const messages = [...safeHistory, {role:"user",content:userContent}];
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method:"POST", signal,
-        headers:{"x-api-key":cfg.key,"anthropic-version":"2023-06-01","content-type":"application/json"},
-        body:JSON.stringify({model:cfg.model,system:AI_INSTRUCTIONS,messages,max_tokens:700})
-      });
-      if (!res.ok) throw new Error("anthropic_"+res.status);
-      const data:any = await res.json(); const text=String(data.content?.find((x:any)=>x.type==="text")?.text||"").trim();
-      if (!text) throw new Error("anthropic_empty");
-      return {text,provider:"anthropic",model:cfg.model,latency_ms:Math.round(performance.now()-started)};
-    }
-    const contents=[...safeHistory,{role:"user",content:userContent}].map((m:any)=>({role:m.role==="assistant"?"model":"user",parts:[{text:m.content}]}));
-    const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(cfg.model)+":generateContent?key="+encodeURIComponent(cfg.key),{
-      method:"POST",signal,headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({systemInstruction:{parts:[{text:AI_INSTRUCTIONS}]},contents,generationConfig:{maxOutputTokens:700,temperature:.25}})
-    });
-    if(!res.ok) throw new Error("gemini_"+res.status);
-    const data:any=await res.json();const text=String(data.candidates?.[0]?.content?.parts?.map((p:any)=>p.text||"").join("")||"").trim();
-    if(!text) throw new Error("gemini_empty");
-    return {text,provider:"gemini",model:cfg.model,latency_ms:Math.round(performance.now()-started)};
-  } catch (error) {
-    console.error("hb-ai-provider-failed",{provider:cfg.provider,message:error instanceof Error?error.message:"unknown"});
-    return null;
-  }
+  let chars=0; const kept:any[]=[];
+  for (let i=items.length-1;i>=0;i--) { if (chars+items[i].content.length>6000) break; kept.unshift(items[i]); chars+=items[i].content.length; }
+  return kept;
 }
 
-async function conversationalResult(latestTurn:string, history:any[], deterministic:any) {
-  const controller=new AbortController(); const timer=setTimeout(()=>controller.abort(),12000);
-  try {
-    const generated=await callConversationalModel(latestTurn,history,deterministic,controller.signal);
-    if (!generated) return deterministic;
-    console.info("hb-ai-provider-success",{provider:generated.provider,model:generated.model,latency_ms:generated.latency_ms});
-    const next={...deterministic,answer:{...(deterministic.answer||{}),text:generated.text,generated:true},engine:{mode:"grounded-conversational-ai",external_model_used:true,provider_latency_ms:generated.latency_ms}};
-    return next;
-  } finally { clearTimeout(timer); }
+function streamHeaders(req:Request) {
+  return {...cors(req),"Content-Type":"application/x-ndjson; charset=utf-8","Cache-Control":"no-cache, no-transform","X-Accel-Buffering":"no"};
+}
+
+function streamEvent(controller:ReadableStreamDefaultController<Uint8Array>, event:any) {
+  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"\n"));
+}
+
+async function openAIStream(cfg:any,input:any[],signal:AbortSignal) {
+  let lastStatus=0;
+  for(let attempt=0;attempt<3;attempt++) {
+    const res=await fetch("https://api.openai.com/v1/responses",{
+      method:"POST",signal,
+      headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},
+      body:JSON.stringify({model:cfg.model,instructions:AI_INSTRUCTIONS,input,max_output_tokens:700,reasoning:{effort:"low"},store:false,stream:true})
+    });
+    if(res.ok) return {res,retry_count:attempt};
+    lastStatus=res.status;
+    if(![408,429,500,502,503,504].includes(res.status) || attempt===2) break;
+    const retryAfter=Number(res.headers.get("retry-after")||"0");
+    await new Promise(r=>setTimeout(r,Math.min(1800,retryAfter>0?retryAfter*1000:250*Math.pow(2,attempt))));
+  }
+  throw new Error("openai_"+lastStatus);
+}
+
+function makeStreamingResponse(req:Request, latestTurn:string, history:any[], deterministic:any, rate:any, goal:string, requestStarted:number, catalogMs:number) {
+  const cfg=providerConfig();
+  if(!cfg || cfg.provider!=="openai") return null;
+  const safeHistory=safeHistoryForModel(history);
+  const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
+  const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
+  const input=[...safeHistory,{role:"user",content:userContent}];
+  const stream=new ReadableStream<Uint8Array>({
+    async start(controller){
+      const aborter=new AbortController(); const timer=setTimeout(()=>aborter.abort(),15000);
+      let full=""; let ttft:number|null=null; let usage:any={}; let retries=0;
+      try{
+        streamEvent(controller,{type:"meta",goal_context:{jurisdiction_hint:detectJurisdiction(normalize(goal)),safe_goal:goal},result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai",external_model_used:true}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
+        const opened=await openAIStream(cfg,input,aborter.signal); retries=opened.retry_count;
+        const reader=opened.res.body?.getReader(); if(!reader) throw new Error("openai_empty_stream");
+        const decoder=new TextDecoder(); let buffer="";
+        while(true){
+          const {done,value}=await reader.read(); if(done) break;
+          buffer+=decoder.decode(value,{stream:true});
+          const lines=buffer.split("\n"); buffer=lines.pop()||"";
+          for(const raw of lines){
+            const line=raw.trim(); if(!line.startsWith("data:")) continue;
+            const data=line.slice(5).trim(); if(!data || data==="[DONE]") continue;
+            let evt:any; try{evt=JSON.parse(data);}catch{continue;}
+            if(evt.type==="response.output_text.delta" && evt.delta){
+              if(ttft===null) ttft=Math.round(performance.now()-requestStarted);
+              full+=String(evt.delta); streamEvent(controller,{type:"delta",delta:String(evt.delta)});
+            }
+            if(evt.type==="response.completed") usage=evt.response?.usage||usage;
+            if(evt.type==="response.failed") throw new Error("openai_stream_failed");
+          }
+        }
+        if(!full.trim()) throw new Error("openai_empty");
+        const total=Math.round(performance.now()-requestStarted);
+        const metrics:StreamMetrics={ttft_ms:ttft,total_ms:total,input_tokens:Number(usage.input_tokens||0),output_tokens:Number(usage.output_tokens||0),cached_tokens:Number(usage.input_tokens_details?.cached_tokens||0),retry_count:retries};
+        console.info("hb-ai-stream-success",{provider:"openai",model:cfg.model,ttft_ms:metrics.ttft_ms,total_ms:metrics.total_ms,input_tokens:metrics.input_tokens,output_tokens:metrics.output_tokens,cached_tokens:metrics.cached_tokens,retry_count:retries});
+        streamEvent(controller,{type:"done",text:full.trim(),engine:{mode:"grounded-conversational-ai",external_model_used:true,ttft_ms:ttft,total_ms:total},usage:{input_tokens:metrics.input_tokens,output_tokens:metrics.output_tokens,cached_tokens:metrics.cached_tokens}});
+      }catch(error){
+        console.error("hb-ai-provider-failed",{provider:"openai",message:error instanceof Error?error.message:"unknown"});
+        streamEvent(controller,{type:"fallback",result:deterministic});
+      }finally{clearTimeout(timer);controller.close();}
+    }
+  });
+  return new Response(stream,{status:200,headers:streamHeaders(req)});
+}
+
+async function callConversationalModel(latestTurn:string, history:any[], deterministic:any, signal:AbortSignal): Promise<ProviderResult> {
+  const cfg=providerConfig(); if(!cfg) return null;
+  const started=performance.now(); const safeHistory=safeHistoryForModel(history);
+  const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
+  const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
+  try{
+    if(cfg.provider==="openai"){
+      const input=[...safeHistory,{role:"user",content:userContent}];
+      let res:Response|null=null;
+      for(let attempt=0;attempt<3;attempt++){
+        res=await fetch("https://api.openai.com/v1/responses",{method:"POST",signal,headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({model:cfg.model,instructions:AI_INSTRUCTIONS,input,max_output_tokens:700,reasoning:{effort:"low"},store:false})});
+        if(res.ok) break;
+        if(![408,429,500,502,503,504].includes(res.status)||attempt===2) throw new Error("openai_"+res.status);
+        await new Promise(r=>setTimeout(r,250*Math.pow(2,attempt)));
+      }
+      if(!res?.ok) throw new Error("openai_unavailable");
+      const data:any=await res.json(); const text=String(data.output_text||(data.output||[]).flatMap((o:any)=>o.content||[]).find((x:any)=>x.type==="output_text")?.text||"").trim();
+      if(!text) throw new Error("openai_empty");
+      const u=data.usage||{}; console.info("hb-ai-usage",{provider:"openai",model:cfg.model,input_tokens:Number(u.input_tokens||0),output_tokens:Number(u.output_tokens||0),cached_tokens:Number(u.input_tokens_details?.cached_tokens||0)});
+      return {text,provider:"openai",model:cfg.model,latency_ms:Math.round(performance.now()-started)};
+    }
+    return null;
+  }catch(error){console.error("hb-ai-provider-failed",{provider:cfg.provider,message:error instanceof Error?error.message:"unknown"});return null;}
+}
+
+async function conversationalResult(latestTurn:string,history:any[],deterministic:any){
+  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),15000);
+  try{const generated=await callConversationalModel(latestTurn,history,deterministic,controller.signal);if(!generated)return deterministic;return {...deterministic,answer:{...(deterministic.answer||{}),text:generated.text,generated:true},engine:{mode:"grounded-conversational-ai",external_model_used:true,provider_latency_ms:generated.latency_ms}};}finally{clearTimeout(timer);}
 }
 
 export default {
@@ -510,7 +561,8 @@ export default {
     try { body = await req.json(); } catch { return reply(req, { error:"invalid_json" }, 400); }
     const goal = scrubGoal(body?.goal);
     const latestTurn = scrubGoal(body?.latest_turn || body?.goal);
-    const history = Array.isArray(body?.history) ? body.history.slice(-10) : [];
+    const history = Array.isArray(body?.history) ? body.history.slice(-8) : [];
+    const wantsStream = body?.stream === true;
     if (goal.length < 4 || goal.length > 800) return reply(req, { error:"invalid_goal" }, 422);
 
     try {
@@ -520,6 +572,7 @@ export default {
       const catalogMs = performance.now() - catalogStarted;
       const ranked = rank(goal, catalog);
       const deterministic = publicResult(goal, ranked, latestTurn);
+      if (wantsStream) { const streamed=makeStreamingResponse(req,latestTurn,history,deterministic,rate,goal,requestStarted,catalogMs); if(streamed) return streamed; }
       const intelligenceStarted = performance.now();
       const intelligent = await conversationalResult(latestTurn, history, deterministic);
       const intelligenceMs = performance.now() - intelligenceStarted;
