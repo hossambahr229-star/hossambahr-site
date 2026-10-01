@@ -17,7 +17,7 @@ const cases = [
  ["abu-dhabi-authority","إقامتي أبوظبي هل أراجع ICP أم GDRFA؟",{authority:"icp"}],
  ["ajman-cafeteria","أريد رخصة كافتيريا في عجمان",{jurisdiction:"AE-AJ",authority:"ajman-ded"}],
  ["identity-renew","أريد أجدد الهوية",{}],
- ["domestic-worker-az","أريد إقامة عمالة مساعدة في أبوظبي",{jurisdiction:"AE-AZ"}],
+ ["domestic-worker-az","أريد إقامة عمالة مساعدة في أبوظبي",{goalJurisdiction:"AE-AZ"}],
  ["rak-to-dubai","أريد أنقل رخصة رأس الخيمة إلى دبي",{}],
  ["dubai-fines-mercy","أريد أعمل استرحام مخالفات في دبي",{jurisdiction:"AE-DU"}],
  ["add-partner","أريد أضيف شريك",{}]
@@ -26,6 +26,7 @@ const results=[];
 for (const [name,q,expect] of cases) {
  const p=await ask(q); const m=p.result?.matches?.[0]||{}; const a=p.result?.answer||{}; const g=p.result?.grounding||{};
  const row={name,q,service:m.service_slug||null,jurisdiction:m.jurisdiction?.code||null,authority:m.authority?.key||null,confidence:p.result?.confidence,answer:a.text||"",status:g.status,source_backed:g.source_backed};
+ if(expect.goalJurisdiction) assert.equal(p.goal_context?.jurisdiction_hint,expect.goalJurisdiction,name);
  if(expect.slug) assert.equal(row.service,expect.slug,name);
  if(expect.jurisdiction) assert.equal(row.jurisdiction,expect.jurisdiction,name);
  if(expect.authority) assert.equal(row.authority,expect.authority,name);
