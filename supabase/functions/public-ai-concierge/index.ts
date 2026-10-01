@@ -299,7 +299,7 @@ function rank(goal: string, rows: any[]) {
       else if (row.jurisdiction?.code?.startsWith("AE-")) score -= 45;
     }
     return { ...row, score };
-  }).filter((row:any) => row.score > 0)
+  }).filter((row:any) => row.score > 0 && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
     .sort((a:any,b:any) => b.score - a.score || a.title.localeCompare(b.title,"ar"));
 }
 
