@@ -227,10 +227,15 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const employee = has(goal, ["موظف","عامل","employee","worker"]);
   const transfer = has(goal, ["انقله","نقل","تحويل","transfer","move"]);
   const outside = has(goal, ["خارج الامارات","من الخارج","overseas","outside uae"]);
+  const parent = has(goal, ["والد","والدتي","والدي","الوالدين","parent","mother","father"]);
+  const wantsCancel = has(goal, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
   const emirate = detectJurisdiction(goal);
 
   if (family && residence && renew) {
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 1100 : emirate ? -260 : 520;
+  }
+  if (parent && residence && !wantsCancel && slug === "family-residency-uae") {
+    score += emirate === "AE-DU" ? 1250 : emirate ? -180 : 900;
   }
   if (company && open) {
     if (slug === "issue-trade-license-dubai") score += emirate === "AE-DU" ? 980 : emirate ? -180 : 360;
@@ -261,8 +266,9 @@ function rank(goal: string, rows: any[]) {
     if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(identityText)) score -= 900;
     const wantsRenew = has(normalized, ["اجدد","تجديد","renew"]);
     const wantsCancel = has(normalized, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
-    if (wantsRenew && /(cancel|الغاء|إلغاء)/.test(domainText)) score -= 1000;
-    if (wantsCancel && /(renew|تجديد)/.test(domainText)) score -= 1000;
+    const wantsIssue = has(normalized, ["اريد اقامه","أريد إقامة","اصدار اقامه","إصدار إقامة","issue residence","new residence"]);
+    if ((wantsRenew || wantsIssue) && /(cancel|الغاء|إلغاء)/.test(domainText)) score -= 2400;
+    if (wantsCancel && /(renew|تجديد|issue|اصدار|إصدار)/.test(domainText)) score -= 1600;
     const title = normalize(row.title);
     const slugText = normalize(row.binding.service_slug.replace(/-/g," "));
     const authority = normalize((row.authority?.name_ar || "")+" "+(row.authority?.name_en || ""));
@@ -386,7 +392,7 @@ export default {
 
     const fp = await fingerprint(req);
     const { data: rate, error: rateError } = await ctx.supabaseAdmin
-      .rpc("hb_public_ai_rate_limit_allow", { p_fingerprint_hash: fp, p_limit: 30 });
+      .rpc("hb_public_ai_rate_limit_allow", { p_fingerprint_hash: fp, p_limit: 60 });
     if (rateError) return reply(req, { error:"rate_limit_unavailable" }, 503);
     if (!rate?.allowed) return reply(req, { error:"rate_limited", retry_after:"hourly" }, 429, { "Retry-After":"3600" });
 
