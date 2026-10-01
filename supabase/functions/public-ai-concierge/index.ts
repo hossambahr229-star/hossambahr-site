@@ -257,6 +257,10 @@ function rank(goal: string, rows: any[]) {
     if (familyDomain && residencyDomain && !/(family|اسر|عائل|زوج|والد|residen)/.test(domainText)) score -= 900;
     if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(domainText)) score -= 700;
     if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(domainText)) score -= 700;
+    const wantsRenew = has(normalized, ["اجدد","تجديد","renew"]);
+    const wantsCancel = has(normalized, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
+    if (wantsRenew && /(cancel|الغاء|إلغاء)/.test(domainText)) score -= 1000;
+    if (wantsCancel && /(renew|تجديد)/.test(domainText)) score -= 1000;
     const title = normalize(row.title);
     const slugText = normalize(row.binding.service_slug.replace(/-/g," "));
     const authority = normalize((row.authority?.name_ar || "")+" "+(row.authority?.name_en || ""));
