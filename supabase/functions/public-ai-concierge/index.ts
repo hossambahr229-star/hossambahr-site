@@ -304,7 +304,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 280 : emirate ? -300 : 120;
   }
   if (company && open) {
-    if (slug === "issue-trade-license-dubai") score += emirate === "AE-DU" ? 980 : emirate ? -180 : 360;
+    if (slug === "issue-trade-license-dubai") score += emirate === "AE-DU" ? 7000 : emirate ? -180 : 360;
     if (emirate && jurisdictionCode === emirate && /license-issuance|license-issue|economic-license-issuance|commercial-license-issuance/.test(slug)) score += 620;
   }
   if (employee && wantsCancel) {
