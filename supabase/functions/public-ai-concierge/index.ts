@@ -289,7 +289,7 @@ function followUps(goal: string, top: any) {
   return out.slice(0,2);
 }
 
-function publicResult(goal: string, ranked: any[]) {
+function publicResult(goal: string, ranked: any[], latestTurn = goal) {
   const candidates = ranked.slice(0,3);
   if (!candidates.length) {
     return {
@@ -305,7 +305,7 @@ function publicResult(goal: string, ranked: any[]) {
 
   const top = candidates[0];
   const questions = followUps(goal, top);
-  const focus = answerFocus(goal);
+  const focus = answerFocus(latestTurn);
   const margin = candidates[1] ? top.score - candidates[1].score : top.score;
   const sourceBacked = Boolean(top.safeSources?.[0]?.source_url);
   const ambiguous = margin < 35 && candidates[1]?.binding?.service_slug !== top.binding?.service_slug;
@@ -379,6 +379,7 @@ export default {
     let body:any = {};
     try { body = await req.json(); } catch { return reply(req, { error:"invalid_json" }, 400); }
     const goal = scrubGoal(body?.goal);
+    const latestTurn = scrubGoal(body?.latest_turn || body?.goal);
     if (goal.length < 4 || goal.length > 800) return reply(req, { error:"invalid_goal" }, 422);
 
     try {
@@ -390,7 +391,7 @@ export default {
           jurisdiction_hint: detectJurisdiction(normalize(goal)),
           safe_goal: goal
         },
-        result: publicResult(goal, ranked),
+        result: publicResult(goal, ranked, latestTurn),
         rate_limit:{ remaining: rate.remaining, reset_at: rate.reset_at }
       });
     } catch (error) {
