@@ -405,6 +405,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
 
 async function selectSemanticCandidate(semantic:SemanticState, ranked:any[], catalog:any[]):Promise<any[]>{
   if(!ranked.length) return [];
+  if(semantic.relationship) return ranked;
   const shortlist=ranked.slice(0,18);
   const cfg=providerConfig(); if(!cfg||cfg.provider!=="openai") return ranked;
   const choices=shortlist.map((r:any)=>({slug:r.binding.service_slug,title:r.title,authority:r.authority?.authority_key||null,jurisdiction:r.jurisdiction?.code||"AE"}));
