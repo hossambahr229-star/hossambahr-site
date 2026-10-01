@@ -260,7 +260,7 @@ function rank(goal: string, rows: any[]) {
   const terms = normalized.split(" ").filter((t) => t.length > 1);
   const detected = detectJurisdiction(normalized);
 
-  const residencyDomain = has(normalized, ["اقامه","إقامة","residence","residency"]);
+  const residencyDomain = has(normalized, ["اقامه","إقامة","اقامتي","إقامتي","residence","residency"]);
   const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","اسره","عائله","family","wife","spouse","parent"]);
   const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
   const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
