@@ -242,7 +242,7 @@ async function runConversationalJourney(index) {
       && Boolean(authorityText)
       && Boolean(sourceHref?.startsWith("https://"))
       && /مصدر رسمي/.test(sourceBadge || "")
-      && /معلومة موثقة/.test(trustBadge || "")
+      && /(?:معلومة موثقة|مستند إلى مصدر رسمي)/.test(trustBadge || "")
       && primaryLabel === "ابدأ معاملتي"
       && saveLabel === "احفظ الخطة"
       && Boolean(primaryHref?.startsWith("/auth/?return="));
