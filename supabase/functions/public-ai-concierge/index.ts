@@ -393,7 +393,7 @@ async function selectSemanticCandidate(semantic:SemanticState, ranked:any[], cat
       instructions:"Select the ONE catalog service that matches the CURRENT semantic state. Service identity must match the user's actual action and object, not merely share an emirate or generic word. Examples: trade licence is not driving licence; Ejari is not marriage contract; WPS is not a work permit; investor residence is not family residence; liquidation is not partner amendment. If no candidate actually matches, choose __NONE__. Never choose a stale prior-topic service.",
       input:JSON.stringify({semantic,choices}),text:{format:{type:"json_schema",name:"hb_service_selection",strict:true,schema}}
     })});
-    if(!res.ok)return ranked;const j=await res.json();const txt=(j.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const p=JSON.parse(txt);
+    if(!res.ok)return [];const j=await res.json();const txt=(j.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const p=JSON.parse(txt);
     if(p.selected_slug==="__NONE__"){
       const allChoices=catalog.map((r:any)=>({slug:r.binding.service_slug,title:r.title,authority:r.authority?.authority_key||null,jurisdiction:r.jurisdiction?.code||"AE"}));
       const allAllowed=[...allChoices.map((x:any)=>x.slug),"__NONE__"];
@@ -404,9 +404,9 @@ async function selectSemanticCandidate(semantic:SemanticState, ranked:any[], cat
       const fullChosen=catalog.find((r:any)=>r.binding.service_slug===fp.selected_slug);if(!fullChosen)return [];
       return [fullChosen,...ranked.filter((r:any)=>r.binding.service_slug!==fp.selected_slug)];
     }
-    const chosen=shortlist.find((r:any)=>r.binding.service_slug===p.selected_slug);if(!chosen)return ranked;
+    const chosen=shortlist.find((r:any)=>r.binding.service_slug===p.selected_slug);if(!chosen)return [];
     return [chosen,...ranked.filter((r:any)=>r.binding.service_slug!==p.selected_slug)];
-  }catch{return ranked;}
+  }catch{return [];}
 }
 
 function followUps(goal: string, top: any) {
