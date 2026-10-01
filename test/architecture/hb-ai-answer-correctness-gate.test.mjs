@@ -112,3 +112,10 @@ test("resolver uses verified binding metadata name before falling back to slug",
 test("grounded jurisdiction-specific match is presented instead of hidden by confidence-only clarification", () => {
   assert.match(client, /grounding\?\.source_backed && hasEmirate/);
 });
+
+
+test("family residence routing distinguishes wife children and Dubai parents", () => {
+  assert.match(edge, /إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/);
+  assert.match(edge, /child","children","son","daughter/);
+  assert.match(edge, /family-residency-uae/);
+});
