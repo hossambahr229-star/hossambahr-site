@@ -228,6 +228,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const transfer = has(goal, ["انقله","نقل","تحويل","transfer","move"]);
   const outside = has(goal, ["خارج الامارات","من الخارج","overseas","outside uae"]);
   const parent = has(goal, ["والد","والدتي","والدي","الوالدين","parent","mother","father"]);
+  const child = has(goal, ["ابن","ابني","ابنتي","طفل","اطفال","child","children","son","daughter"]);
   const wantsCancel = has(goal, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
   const emirate = detectJurisdiction(goal);
 
@@ -235,6 +236,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "تجديد-إقامة-أفراد-الأسرة-في-دبي") score += emirate === "AE-DU" ? 1450 : emirate ? -320 : 620;
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 420 : emirate ? -260 : 180;
   }
+  if (child && residence && !renew && !wantsCancel && slug === "family-residency-uae") score += emirate === "AE-DU" ? 1250 : emirate ? -250 : 500;
   if (parent && residence && !wantsCancel) {
     if (slug === "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي") score += emirate === "AE-DU" ? 1850 : emirate ? -500 : 700;
     if (slug === "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي") score += emirate && emirate !== "AE-DU" ? 1450 : emirate === "AE-DU" ? -700 : 620;
