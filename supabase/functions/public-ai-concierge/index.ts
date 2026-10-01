@@ -508,7 +508,8 @@ export default {
     let body:any = {};
     try { body = await req.json(); } catch { return reply(req, { error:"invalid_json" }, 400); }
     const goal = scrubGoal(body?.goal);
-    const latestTurn = scrubGoal(body?.latest_turn || body?.goal);\n    const history = Array.isArray(body?.history) ? body.history.slice(-10) : [];
+    const latestTurn = scrubGoal(body?.latest_turn || body?.goal);
+    const history = Array.isArray(body?.history) ? body.history.slice(-10) : [];
     if (goal.length < 4 || goal.length > 800) return reply(req, { error:"invalid_goal" }, 422);
 
     try {
@@ -516,7 +517,12 @@ export default {
       const catalogStarted = performance.now();
       const catalog = await loadCatalog(ctx.supabaseAdmin);
       const catalogMs = performance.now() - catalogStarted;
-      const ranked = rank(goal, catalog);\n      const deterministic = publicResult(goal, ranked, latestTurn);\n      const intelligenceStarted = performance.now();\n      const intelligent = await conversationalResult(latestTurn, history, deterministic);\n      const intelligenceMs = performance.now() - intelligenceStarted;\n      return reply(req, {
+      const ranked = rank(goal, catalog);
+      const deterministic = publicResult(goal, ranked, latestTurn);
+      const intelligenceStarted = performance.now();
+      const intelligent = await conversationalResult(latestTurn, history, deterministic);
+      const intelligenceMs = performance.now() - intelligenceStarted;
+      return reply(req, {
         ok:true,
         goal_context:{
           jurisdiction_hint: detectJurisdiction(normalize(goal)),
