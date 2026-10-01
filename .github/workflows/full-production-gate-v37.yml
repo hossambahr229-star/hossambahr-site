@@ -1,0 +1,36 @@
+name: Full production gate v37
+on:
+  push:
+    branches: [qa/full-production-gate-v37]
+permissions: { contents: read }
+jobs:
+  full:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - name: Responsive production layout audit
+        run: |
+          export HB_NODE_MODULES="$PWD/node_modules"
+          export HB_BROWSER_PATH="$(command -v chrome)"
+          export HB_BASE_URL="https://hossambahr.com"
+          node visual-layout-audit.mjs
+      - name: Full platform acceptance
+        run: |
+          export HB_NODE_MODULES="$PWD/node_modules"
+          export HB_BROWSER_PATH="$(command -v chrome)"
+          export HB_BASE_URL="https://hossambahr.com"
+          export HB_OUTPUT_DIR="$PWD/full-platform-acceptance"
+          node final-platform-acceptance.mjs
+      - name: Golden answer production
+        run: node golden-answer-production.mjs | tee golden-answer-production-result.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-production-gate-v37
+          path: |
+            visual-layout-audit
+            full-platform-acceptance
+            golden-answer-production-result.json
