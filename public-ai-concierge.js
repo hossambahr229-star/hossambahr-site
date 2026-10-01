@@ -491,9 +491,11 @@
     const displayed = scrubLocal(userMessage);
     if (displayed.length < 2 || analysisInFlight) return;
     analysisInFlight = true;
+    const perfStart = performance.now();
     document.body.classList.add("hb-chat-engaged");
     if (!options.fromQuickReply && !options.suppressUserBubble) addBubble("user", displayed);
     const pending = addStatus();
+    const firstFeedbackMs = Math.round(performance.now() - perfStart);
     sendButton && (sendButton.disabled = true);
 
     if (!state.original_goal) state.original_goal = displayed;
@@ -512,6 +514,8 @@
         credentials: "omit"
       });
       let payload = await response.json().catch(() => ({}));
+      const responseMs = Math.round(performance.now() - perfStart);
+      window.dispatchEvent(new CustomEvent("hb:ai-performance",{detail:{first_feedback_ms:firstFeedbackMs,response_ms:responseMs,server_timing:response.headers.get("server-timing")||null}}));
       if (response.status === 429) {
         removePending(pending);
         addBubble("assistant", "وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");
