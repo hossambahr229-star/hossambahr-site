@@ -253,10 +253,12 @@ function rank(goal: string, rows: any[]) {
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
-    if (residencyDomain && !/(اقامه|residen|family residency|family-residency|visa)/.test(domainText)) score -= 1200;
-    if (familyDomain && residencyDomain && !/(family|اسر|عائل|زوج|والد|residen)/.test(domainText)) score -= 900;
-    if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(domainText)) score -= 700;
-    if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(domainText)) score -= 700;
+    const identityText = normalize(row.binding.service_slug+" "+row.title);
+    if (residencyDomain && !/(اقامه|residen|residency|visa)/.test(identityText)) score -= 2200;
+    if (familyDomain && residencyDomain && !/(family|اسر|عائل|زوج|والد|residen)/.test(identityText)) score -= 1600;
+    if (residencyDomain && !employeeDomain && /(work permit|تصريح عمل|labour|labor)/.test(identityText)) score -= 2200;
+    if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(identityText)) score -= 900;
+    if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(identityText)) score -= 900;
     const wantsRenew = has(normalized, ["اجدد","تجديد","renew"]);
     const wantsCancel = has(normalized, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
     if (wantsRenew && /(cancel|الغاء|إلغاء)/.test(domainText)) score -= 1000;
