@@ -288,3 +288,5 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot, { once: true });
   else boot();
 })();
+
+;(()=>{if(!location.pathname.startsWith("/services/")||location.pathname==="/services/")return;document.addEventListener("DOMContentLoaded",()=>{const h1=document.querySelector("main h1");if(!h1)return;const title=(h1.textContent||"هذه الخدمة").trim();const a=document.createElement("a");a.href="/ai/?q="+encodeURIComponent("أريد أن أسأل عن "+title);a.className="hb-service-ai-cta";a.textContent="اسأل HB AI عن هذه الخدمة";a.setAttribute("aria-label","اسأل HOSSAM BAHR AI عن "+title);const host=h1.closest(".page-hero,.service-hero,header")||h1.parentElement;host?.append(a);},{once:true});})();
