@@ -42,7 +42,8 @@
     jurisdiction_code: null,
     authority_key: null,
     last_payload: null,
-    history: []\n  };
+    history: []
+  };
   let thread = null;
   let composer = null;
   let form = null;
