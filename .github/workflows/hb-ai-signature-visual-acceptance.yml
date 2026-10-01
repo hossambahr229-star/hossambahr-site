@@ -51,7 +51,7 @@ jobs:
             await page.waitForSelector('.hb-chat-answer',{timeout:20000});
             await page.locator('.hb-chat-disclosure').first().click().catch(()=>{});
             await page.locator('.hb-chat-source').first().click().catch(()=>{});
-            const answer={answer:await page.locator('.hb-chat-answer').isVisible(),verified:await page.getByText('موثق رسميًا',{exact:false}).count(),source:await page.locator('.hb-chat-source').count(),transaction:await page.getByText('ابدأ معاملتي',{exact:true}).count(),overflow:await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth)};
+            const answer={answer:await page.locator('.hb-chat-answer').isVisible(),verified:await page.getByText('مستند إلى مصدر رسمي',{exact:false}).count(),source:await page.locator('.hb-chat-source').count(),transaction:await page.getByText('ابدأ معاملتي',{exact:true}).count(),overflow:await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth)};
             await page.screenshot({path:'hb-ai-visual/'+name+'-conversation.png',fullPage:false});
             const input=page.locator('#hb-ai-document-input'); await input.setInputFiles({name:'visual-qa.txt',mimeType:'text/plain',buffer:Buffer.from('طلب تجديد إقامة تجريبي بدون بيانات شخصية')});
             const attachment=await page.locator('.hb-ai-attachment-card').isVisible();
