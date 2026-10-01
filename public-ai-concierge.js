@@ -602,7 +602,7 @@
     if (!stage || !form) return;
 
     stage.classList.add("hb-conversation-stage");
-    if (!stage.querySelector("[data-hb-ai-brand]")) {
+    if (!isAIProduct && !stage.querySelector("[data-hb-ai-brand]")) {
       const brand = create("div", "hb-ai-composer-brand");
       brand.dataset.hbAiBrand = "true";
       brand.append(aiSymbol(32, "HOSSAM BAHR AI"));
@@ -674,7 +674,7 @@
     form.insertAdjacentElement("afterend", shell);
 
     if (isAIProduct && state.original_goal) document.body.classList.add("hb-chat-engaged");
-    addBubble("assistant", isAIProduct ? "مرحبًا، أنا HOSSAM BAHR AI. اسألني عن معاملتك، وسأعطيك الإجابة المفيدة أولًا ثم التفاصيل والمصدر الرسمي عند الحاجة." : "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
+    if (!isAIProduct) addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
     const incoming = new URLSearchParams(location.search).get("q");
     if (isAIProduct && incoming) { composer.value = scrubLocal(incoming); setTimeout(() => form.requestSubmit(), 80); }
 
@@ -683,7 +683,7 @@
       prompts.classList.add("hb-chat-prompts");
       const span = prompts.querySelector("span");
       if (span) span.textContent = "أمثلة:";
-      const labels = [
+      const labels = isAIProduct ? ["تجديد إقامة","تأسيس شركة","معاملة موظف","الرسوم والمستندات"] : [
         "أريد أجدد إقامة زوجتي",
         "أريد أفتح شركة في دبي",
         "كيف أنقل موظف إلى شركتي؟",
