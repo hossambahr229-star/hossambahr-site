@@ -481,11 +481,12 @@ async function callConversationalModel(latestTurn:string, history:any[], determi
 }
 
 async function conversationalResult(latestTurn:string, history:any[], deterministic:any) {
-  const controller=new AbortController(); const timer=setTimeout(()=>controller.abort(),9000);
+  const controller=new AbortController(); const timer=setTimeout(()=>controller.abort(),12000);
   try {
     const generated=await callConversationalModel(latestTurn,history,deterministic,controller.signal);
     if (!generated) return deterministic;
-    const next={...deterministic,answer:{...(deterministic.answer||{}),text:generated.text,generated:true},engine:{mode:"grounded-conversational-ai",external_model_used:true,provider:generated.provider,model:generated.model,provider_latency_ms:generated.latency_ms}};
+    console.info("hb-ai-provider-success",{provider:generated.provider,model:generated.model,latency_ms:generated.latency_ms});
+    const next={...deterministic,answer:{...(deterministic.answer||{}),text:generated.text,generated:true},engine:{mode:"grounded-conversational-ai",external_model_used:true,provider_latency_ms:generated.latency_ms}};
     return next;
   } finally { clearTimeout(timer); }
 }
