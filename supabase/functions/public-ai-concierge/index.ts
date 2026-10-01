@@ -330,7 +330,8 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "golden-residency-uae") score += 9000; else if (/family|اسر|والد/.test(slug)) score -= 4000;
   }
   if (has(goal, ["تصفيه الشركه","تصفية الشركة","اصفي الشركه","أصفي الشركة","اصفيها","أصفيها","liquidat"])) {
-    if (slug === "cancel-business-license-dubai") score += emirate === "AE-DU" ? 9000 : 7000;\n    else score -= 3500;
+    if (slug === "cancel-business-license-dubai") score += emirate === "AE-DU" ? 9000 : 7000;
+    else score -= 3500;
     if (/issue|issuance|partner/.test(slug)) score -= 5000;
   }
   return score;
