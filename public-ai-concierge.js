@@ -494,7 +494,7 @@
     if(!state.original_goal)state.original_goal=displayed;else if(displayed!==state.original_goal)state.answers.push(displayed);
     const query=buildResolvedQuery(); state.resolved_query=query; saveState();
     try{
-      const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn:displayed,history:state.history.slice(-8),stream:true,context:{service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key}}),credentials:"omit"});
+      const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn: displayed,history:state.history.slice(-8),stream:true,context:{service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key}}),credentials:"omit"});
       if(response.status===429){removePending(pending);addBubble("assistant","وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");return;}
       if(!response.ok||!response.body)throw new Error("stream_unavailable");
       const reader=response.body.getReader(),decoder=new TextDecoder();let buffer="",payload=null,streamBubble=null,streamP=null,full="",ttft=null,doneMeta=null;
@@ -521,7 +521,8 @@
       state.service_slug=match?.service_slug||state.service_slug;state.jurisdiction_code=match?.jurisdiction?.code||payload?.goal_context?.jurisdiction_hint||state.jurisdiction_code;state.authority_key=match?.authority?.key||state.authority_key;saveState();
       addBubble("assistant",buildAssistantMessage(payload));
     }catch{removePending(pending);addBubble("assistant","تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");}
-    finally{analysisInFlight=false;if(sendButton)sendButton.disabled=false;composer?.focus();}
+    finally {
+      analysisInFlight = false;if(sendButton)sendButton.disabled=false;composer?.focus();}
   }
 
   function rememberHandoff(payload = state.last_payload) {
