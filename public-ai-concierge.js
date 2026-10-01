@@ -625,7 +625,7 @@
     textarea.rows = 1;
     textarea.maxLength = 800;
     textarea.autocomplete = "off";
-    textarea.placeholder = isAIProduct ? "اسألني عن معاملتك..." : "اسألني عن أي معاملة في الإمارات…";
+    textarea.placeholder = isAIProduct ? "اسألني عن أي معاملة في الإمارات" : "اسألني عن أي معاملة في الإمارات…";
     textarea.setAttribute("aria-label", "اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات");
     oldInput?.replaceWith(textarea);
     composer = textarea;
@@ -684,7 +684,7 @@
       prompts.classList.add("hb-chat-prompts");
       const span = prompts.querySelector("span");
       if (span) span.textContent = "أمثلة:";
-      const labels = isAIProduct ? ["تجديد إقامة","تأسيس شركة","معاملة موظف","تحليل مستند"] : [
+      const labels = isAIProduct ? ["الإقامة والتأشيرات","تأسيس شركة","معاملات العمل","تحليل مستند"] : [
         "أريد أجدد إقامة زوجتي",
         "أريد أفتح شركة في دبي",
         "كيف أنقل موظف إلى شركتي؟",
