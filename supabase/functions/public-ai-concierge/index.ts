@@ -230,8 +230,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const emirate = detectJurisdiction(goal);
 
   if (family && residence && renew) {
-    if (slug === "gdrfa-family-residence-renew") score += emirate === "AE-DU" ? 950 : emirate ? -220 : 420;
-    if (slug === "icp-family-residence-renew") score += emirate === "AE-DU" ? -220 : emirate ? 760 : 410;
+    if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 1100 : emirate ? -260 : 520;
   }
   if (company && open) {
     if (slug === "issue-trade-license-dubai") score += emirate === "AE-DU" ? 980 : emirate ? -180 : 360;
@@ -247,8 +246,21 @@ function rank(goal: string, rows: any[]) {
   const terms = normalized.split(" ").filter((t) => t.length > 1);
   const detected = detectJurisdiction(normalized);
 
+  const residencyDomain = has(normalized, ["اقامه","إقامة","residence","residency"]);
+  const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","اسره","عائله","family","wife","spouse","parent"]);
+  const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
+  const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
+    const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
+    if (residencyDomain && !/(اقامه|residen|family residency|family-residency|visa)/.test(domainText)) score -= 1200;
+    if (familyDomain && residencyDomain && !/(family|اسر|عائل|زوج|والد|residen)/.test(domainText)) score -= 900;
+    if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(domainText)) score -= 700;
+    if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(domainText)) score -= 700;
+    const wantsRenew = has(normalized, ["اجدد","تجديد","renew"]);
+    const wantsCancel = has(normalized, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
+    if (wantsRenew && /(cancel|الغاء|إلغاء)/.test(domainText)) score -= 1000;
+    if (wantsCancel && /(renew|تجديد)/.test(domainText)) score -= 1000;
     const title = normalize(row.title);
     const slugText = normalize(row.binding.service_slug.replace(/-/g," "));
     const authority = normalize((row.authority?.name_ar || "")+" "+(row.authority?.name_en || ""));
