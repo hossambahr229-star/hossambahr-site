@@ -178,6 +178,11 @@ jobs:
           export HB_BASE_URL="https://hossambahr.com"
           export HB_OUTPUT_DIR="$PWD/final-platform-acceptance"
           node final-platform-acceptance.mjs
+      - name: Run live Golden Answer Correctness gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          node golden-answer-production.mjs | tee golden-answer-production-result.json
       - name: Record verified UX production acceptance
         if: success()
         shell: bash
