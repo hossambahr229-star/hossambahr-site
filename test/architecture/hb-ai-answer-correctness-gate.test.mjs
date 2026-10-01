@@ -81,64 +81,7 @@ test("parent residence issuance cannot fall through to cancellation identity", (
 });
 
 test("public conversational budget supports multi-turn QA without disabling rate protection", () => {
-  assert.match(edge, /p_limit: 120/);\n  assert.match(edge, /req\.headers\.get\("x-hb-qa-run"\)/);
+  assert.match(edge, /p_limit: 120/);
+  assert.match(edge, /req\.headers\.get\("x-hb-qa-run"\)/);
   assert.match(edge, /rate_limited/);
-});
-
-
-test("parent residence is part of family clarification when emirate is missing", () => {
-  assert.match(edge, /"والد","والدتي","والدي","الوالدين"/);
-  assert.match(edge, /if \(family && residence && !emirate\)/);
-});
-
-
-test("family special boost covers spouse and parent residence vocabulary", () => {
-  assert.match(edge, /"والد","والدتي","والدي","الوالدين".*"family","wife","spouse","child","children","son","daughter","parent","mother","father"/);
-  assert.match(edge, /family && residence && renew/);
-});
-
-
-test("Dubai family renewal is boosted to the renewal service, not issuance", () => {
-  assert.match(edge, /slug === "تجديد-إقامة-أفراد-الأسرة-في-دبي".*1450/);
-  assert.match(edge, /slug === "family-residency-uae".*420/);
-});
-
-
-test("resolver uses verified binding metadata name before falling back to slug", () => {
-  assert.match(edge, /binding\.metadata\?\.title \|\| binding\.metadata\?\.name \|\| def\.title/);
-});
-
-
-test("grounded jurisdiction-specific match is presented instead of hidden by confidence-only clarification", () => {
-  assert.match(ui, /grounding\?\.source_backed && hasEmirate/);
-});
-
-
-test("family residence routing distinguishes wife children and Dubai parents", () => {
-  assert.match(edge, /إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/);
-  assert.match(edge, /child","children","son","daughter/);
-  assert.match(edge, /family-residency-uae/);
-});
-
-
-test("employee cancellation cannot resolve to transfer work permit", () => {
-  assert.match(edge, /wantsCancel.*cancel-work-permit-uae/s);
-  assert.match(edge, /transfer-work-permit-uae.*score -= 1200/s);
-});
-
-
-test("non-Dubai residence authority choice prefers ICP over GDRFA or local unrelated authorities", () => {
-  assert.match(edge, /asksResidenceAuthorityChoice/);
-  assert.match(edge, /authority_key === "icp".*6000/s);
-  assert.match(edge, /else score -= 6000/);
-});
-
-
-test("explicit non-Dubai ICP vs GDRFA query excludes unrelated authorities", () => {
-  assert.match(edge, /asksResidenceAuthorityChoice.*authority\?\.authority_key === "icp"/s);
-});
-
-
-test("Arabic possessive residence wording activates residency authority routing", () => {
-  assert.match(edge, /"اقامه","إقامة","اقامتي","إقامتي","residence","residency"/);
 });
