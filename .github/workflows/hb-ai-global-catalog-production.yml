@@ -1,0 +1,19 @@
+name: HB AI global catalog production
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - run: node scripts/hb-ai-global-catalog-production.mjs | tee global-catalog-result.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: global-catalog-result
+          path: global-catalog-result.json
