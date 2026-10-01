@@ -30,7 +30,7 @@ test("HB AI V2 keeps modern composer behavior and generated-site persistence", (
   assert.match(source, /event\.key === "Enter" && !event\.shiftKey/);
   assert.match(source, /Math\.min\(composer\.scrollHeight, 144\)/);
   assert.match(css, /\.hb-chat-send\{width:44px!important/);
-  assert.match(stabilizer, /hb-ai-v2-20261001a/);
+  assert.match(stabilizer, /hb-ai-quality-20261001a/);
   assert.match(stabilizer, /2026-10-01\.hb-ai-conversational-v2/);
 });
 
