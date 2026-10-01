@@ -235,8 +235,10 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "تجديد-إقامة-أفراد-الأسرة-في-دبي") score += emirate === "AE-DU" ? 1450 : emirate ? -320 : 620;
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 420 : emirate ? -260 : 180;
   }
-  if (parent && residence && !wantsCancel && slug === "family-residency-uae") {
-    score += emirate === "AE-DU" ? 1250 : emirate ? -180 : 900;
+  if (parent && residence && !wantsCancel) {
+    if (slug === "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي") score += emirate === "AE-DU" ? 1850 : emirate ? -500 : 700;
+    if (slug === "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي") score += emirate && emirate !== "AE-DU" ? 1450 : emirate === "AE-DU" ? -700 : 620;
+    if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 280 : emirate ? -300 : 120;
   }
   if (company && open) {
     if (slug === "issue-trade-license-dubai") score += emirate === "AE-DU" ? 980 : emirate ? -180 : 360;
@@ -303,7 +305,6 @@ function followUps(goal: string, top: any) {
   const locationKnown = Boolean(emirate) || top?.jurisdiction?.code === "AE";
 
   if (family && residence && !emirate) out.push("في أي إمارة صادرة إقامة فرد الأسرة؟");
-  else if (parent && residence) out.push("إقامة الوالدين لها شروط خاصة تختلف عن الزوج/الأبناء. هل تريد التحقق من كفالة الوالدين معًا أم لديك حالة خاصة لأحدهما؟");
   else if (company && !emirate) out.push("في أي إمارة تريد إصدار أو تعديل الرخصة؟");
   if (employee && workAction && !has(normalized, ["داخل الامارات","خارج الامارات","نقل","انقله","inside uae","outside uae","transfer"])) {
     out.push("هل الموظف داخل الإمارات حاليًا أم خارجها؟");
