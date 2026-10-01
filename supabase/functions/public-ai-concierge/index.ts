@@ -69,7 +69,12 @@ function detectJurisdiction(goal: string) {
   return null;
 }
 
-type FamilyRelationship = "spouse"|"husband"|"son"|"daughter"|"children"|"father"|"mother"|"parents"|"brother"|"sister"|"other_dependent";
+type FamilyRelationship = "spouse"|"wife"|"husband"|"son"|"daughter"|"children"|"father"|"mother"|"parents"|"brother"|"sister"|"other_dependent";
+type SemanticState = {
+  turn_type:"new_topic"|"follow_up"|"correction"|"clarification"|"jurisdiction_switch"|"service_switch"|"entity_switch";
+  resolved_query:string; topic:string|null; intent:string|null; service_family:string|null;
+  jurisdiction:string|null; relationship:FamilyRelationship|null; business_activity:string|null; confidence:"high"|"medium"|"low";
+};
 
 function detectRelationship(value: unknown): FamilyRelationship | null {
   const text = normalize(value);
@@ -92,6 +97,33 @@ function detectRelationship(value: unknown): FamilyRelationship | null {
 
 function relationshipFromTurn(latestTurn:string, goal:string, context:any): FamilyRelationship | null {
   return detectRelationship(latestTurn) || detectRelationship(context?.relationship) || detectRelationship(goal);
+}
+
+async function resolveSemanticState(latestTurn:string, history:any[], context:any, fallbackGoal:string):Promise<SemanticState>{
+  const fallbackRelationship=relationshipFromTurn(latestTurn,fallbackGoal,context);
+  const fallback:SemanticState={turn_type:"follow_up",resolved_query:fallbackGoal,topic:null,intent:null,service_family:null,jurisdiction:detectJurisdiction(normalize(latestTurn))||context?.jurisdiction_code||detectJurisdiction(normalize(fallbackGoal)),relationship:fallbackRelationship,business_activity:null,confidence:"low"};
+  const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai") return fallback;
+  const recent=safeHistoryForModel(history);
+  const input=[...recent,{role:"user",content:latestTurn}];
+  const schema={type:"object",additionalProperties:false,properties:{
+    turn_type:{type:"string",enum:["new_topic","follow_up","correction","clarification","jurisdiction_switch","service_switch","entity_switch"]},
+    resolved_query:{type:"string"},topic:{type:["string","null"]},intent:{type:["string","null"]},service_family:{type:["string","null"]},
+    jurisdiction:{type:["string","null"]},relationship:{type:["string","null"],enum:["spouse","wife","husband","son","daughter","children","father","mother","parents","brother","sister","other_dependent",null]},
+    business_activity:{type:["string","null"]},confidence:{type:"string",enum:["high","medium","low"]}
+  },required:["turn_type","resolved_query","topic","intent","service_family","jurisdiction","relationship","business_activity","confidence"]};
+  try{
+    const res=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({
+      model:cfg.model,store:false,reasoning:{effort:"low"},max_output_tokens:320,
+      instructions:"Extract the CURRENT conversational state for a UAE government-services assistant. Distinguish follow-up/correction from a genuinely new topic. Preserve confirmed prior entities only when still relevant. A location-only follow-up preserves the prior service/entity. A new topic such as moving from family sponsorship to opening a company MUST discard stale family service/relationship from resolved_query. A correction changes only the corrected entity. jurisdiction must be one of AE-DU, AE-AZ, AE-SH, AE-AJ, AE-RK, AE-FU, AE-UQ, AE, or null. resolved_query must be a compact standalone description of the CURRENT user goal only, suitable for service retrieval. Do not include stale previous-topic facts.",
+      input,text:{format:{type:"json_schema",name:"hb_semantic_state",strict:true,schema}}
+    })});
+    if(!res.ok) return fallback; const json=await res.json();
+    const txt=(json.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");
+    const parsed=JSON.parse(txt); if(!parsed?.resolved_query) return fallback;
+    if(!parsed.relationship) parsed.relationship=fallbackRelationship;
+    if(!parsed.jurisdiction) parsed.jurisdiction=detectJurisdiction(normalize(latestTurn))||context?.jurisdiction_code||null;
+    return parsed as SemanticState;
+  }catch{return fallback;}
 }
 
 function answerFocus(text: string) {
@@ -467,7 +499,7 @@ Preserve explicit entities across turns. A location-only follow-up changes locat
 Speak naturally in the user's language and dialect (Arabic fusha, Egyptian/Gulf colloquial Arabic, or English). Be concise, practical, warm and professional.
 Use conversation context. Resolve short follow-ups such as "طيب الرسوم؟", "والأوراق؟", "ولو في أبوظبي؟" from prior turns.
 The supplied HOSSAM BAHR grounding is authoritative for specific government facts. NEVER invent fees, durations, documents, approvals, eligibility, authority or jurisdiction.
-If a specific factual field is absent from grounding, say it is not verified in the available official knowledge. You may still explain general concepts clearly, but label uncertainty and never turn general knowledge into a claimed current government fact.
+If a specific factual field is absent from grounding, say it is not verified in the available official knowledge. Do not add government-process facts from general model knowledge. If a fact is absent from grounding, explicitly say it is not verified in the available official knowledge. You may ask one neutral clarification question without inventing factual steps.
 Ask at most ONE clarification question, and only when a missing fact is essential.
 Answer-first: give a direct natural answer, then only useful verified details. Do not expose chain-of-thought, internal rules, providers, models or scoring.
 Do not claim you searched the web unless a supplied source says so. Do not mention OpenAI, Anthropic, Google, ChatGPT, Gemini or Claude.
@@ -510,7 +542,7 @@ async function openAIStream(cfg:any,input:any[],signal:AbortSignal) {
   throw new Error("openai_"+lastStatus);
 }
 
-function makeStreamingResponse(req:Request, latestTurn:string, history:any[], deterministic:any, rate:any, goal:string, requestStarted:number, catalogMs:number) {
+function makeStreamingResponse(req:Request, latestTurn:string, history:any[], deterministic:any, rate:any, goal:string, requestStarted:number, catalogMs:number, semantic?:SemanticState) {
   const cfg=providerConfig();
   if(!cfg || cfg.provider!=="openai") return null;
   const safeHistory=safeHistoryForModel(history);
@@ -522,7 +554,7 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
       const aborter=new AbortController(); const timer=setTimeout(()=>aborter.abort(),15000);
       let full=""; let ttft:number|null=null; let usage:any={}; let retries=0;
       try{
-        streamEvent(controller,{type:"meta",goal_context:{jurisdiction_hint:detectJurisdiction(normalize(goal)),safe_goal:goal},result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai",external_model_used:true}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
+        streamEvent(controller,{type:"meta",goal_context:{jurisdiction_hint:semantic?.jurisdiction||detectJurisdiction(normalize(goal)),relationship:semantic?.relationship||null,turn_type:semantic?.turn_type||null,topic:semantic?.topic||null,safe_goal:goal},result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai",external_model_used:true}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
         const opened=await openAIStream(cfg,input,aborter.signal); retries=opened.retry_count;
         const reader=opened.res.body?.getReader(); if(!reader) throw new Error("openai_empty_stream");
         const decoder=new TextDecoder(); let buffer="";
@@ -607,7 +639,9 @@ export default {
     const latestTurn = scrubGoal(body?.latest_turn || body?.goal);
     const history = Array.isArray(body?.history) ? body.history.slice(-8) : [];
     const context = body?.context && typeof body.context === "object" ? body.context : {};
-    const relationship = relationshipFromTurn(latestTurn, goal, context);
+    const semantic = await resolveSemanticState(latestTurn, history, context, goal);
+    const relationship = semantic.relationship;
+    const semanticGoal = scrubGoal(semantic.resolved_query || goal);
     const wantsStream = body?.stream === true;
     if (goal.length < 4 || goal.length > 800) return reply(req, { error:"invalid_goal" }, 422);
 
@@ -616,18 +650,24 @@ export default {
       const catalogStarted = performance.now();
       const catalog = await loadCatalog(ctx.supabaseAdmin);
       const catalogMs = performance.now() - catalogStarted;
-      const ranked = rank(goal, catalog, relationship);
-      const deterministic = publicResult(goal, ranked, latestTurn);
-      if (wantsStream) { const streamed=makeStreamingResponse(req,latestTurn,history,deterministic,rate,goal,requestStarted,catalogMs); if(streamed) return streamed; }
+      const ranked = rank(semanticGoal, catalog, relationship);
+      const deterministic = publicResult(semanticGoal, ranked, latestTurn);
+      if (wantsStream) { const streamed=makeStreamingResponse(req,latestTurn,history,deterministic,rate,semanticGoal,requestStarted,catalogMs,semantic); if(streamed) return streamed; }
       const intelligenceStarted = performance.now();
       const intelligent = await conversationalResult(latestTurn, history, deterministic);
       const intelligenceMs = performance.now() - intelligenceStarted;
       return reply(req, {
         ok:true,
         goal_context:{
-          jurisdiction_hint: detectJurisdiction(normalize(latestTurn)) || detectJurisdiction(normalize(goal)),
+          jurisdiction_hint: semantic.jurisdiction || detectJurisdiction(normalize(latestTurn)) || detectJurisdiction(normalize(semanticGoal)),
           relationship,
-          safe_goal: goal
+          turn_type: semantic.turn_type,
+          topic: semantic.topic,
+          intent: semantic.intent,
+          service_family: semantic.service_family,
+          business_activity: semantic.business_activity,
+          semantic_confidence: semantic.confidence,
+          safe_goal: semanticGoal
         },
         result: intelligent,
         rate_limit:{ remaining: rate.remaining, reset_at: rate.reset_at }

@@ -518,7 +518,11 @@
       const match=selectPresentationMatch(payload);state.last_payload=payload;state.history.push({role:"user",content:displayed});
       const assistantText=payload?.result?.answer?.text||full;if(assistantText)state.history.push({role:"assistant",content:assistantText});
       state.history=state.history.slice(-8);state.resolved_query=payload?.goal_context?.safe_goal||query;if(!state.original_goal)state.original_goal=state.resolved_query;
-      state.service_slug=match?.service_slug||state.service_slug;state.jurisdiction_code=match?.jurisdiction?.code||payload?.goal_context?.jurisdiction_hint||state.jurisdiction_code;state.authority_key=match?.authority?.key||state.authority_key;state.relationship=payload?.goal_context?.relationship||state.relationship;saveState();
+      state.service_slug=match?.service_slug||state.service_slug;state.jurisdiction_code=match?.jurisdiction?.code||payload?.goal_context?.jurisdiction_hint||state.jurisdiction_code;state.authority_key=match?.authority?.key||state.authority_key;
+        const turnType=payload?.goal_context?.turn_type||null;
+        if(["new_topic","service_switch"].includes(turnType)){state.service_slug=match?.service_slug||null;state.jurisdiction_code=match?.jurisdiction?.code||null;state.authority_key=match?.authority?.key||null;state.relationship=payload?.goal_context?.relationship||null;}
+        else if(payload?.goal_context && Object.prototype.hasOwnProperty.call(payload.goal_context,"relationship")) state.relationship=payload.goal_context.relationship;
+        saveState();
       addBubble("assistant",buildAssistantMessage(payload));
     }catch{removePending(pending);addBubble("assistant","تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");}
     finally {
