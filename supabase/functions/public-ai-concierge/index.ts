@@ -311,6 +311,28 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   }
   if (employee && transfer && slug === "transfer-work-permit-uae") score += 1100;
   if (employee && outside && slug === "new-work-permit-overseas-uae") score += 900;
+  const tradeLicense = has(goal, ["رخصه تجاريه","الرخصه التجاريه","رخصة تجارية","الرخصة التجارية","trade license","business license","economic license","رخصه الشركه","رخصة الشركة"]);
+  if (tradeLicense && renew) {
+    if (/(renew-business-license-dubai|economic-license-renewal|commercial-license-renewal)/.test(slug)) score += 6500;
+    if (/(driving|residence|family|issue|issuance)/.test(slug)) score -= 6500;
+  }
+  if (tradeLicense && wantsCancel) {
+    if (/(cancel-business-license-dubai|economic-license-cancellation|commercial-license-cancellation|license-cancellation)/.test(slug)) score += 6500;
+    if (/(issue|issuance|renew|partner)/.test(slug)) score -= 5000;
+  }
+  if (has(goal, ["ايجاري","إيجاري","ejari"])) {
+    if (slug === "register-renew-ejari-contract-dubai") score += 9000; else score -= 2500;
+  }
+  if (has(goal, ["wps","نظام حمايه الاجور","نظام حماية الأجور","حمايه الاجور","حماية الأجور"])) {
+    if (slug === "التسجيل-والمتابعة-في-wps") score += 9000; else if (/work-permit|تصريح/.test(slug)) score -= 3500;
+  }
+  if (has(goal, ["الاقامه الذهبيه","الإقامة الذهبية","golden residency","golden visa"])) {
+    if (slug === "golden-residency-uae") score += 9000; else if (/family|اسر|والد/.test(slug)) score -= 4000;
+  }
+  if (has(goal, ["تصفيه الشركه","تصفية الشركة","اصفيها","أصفيها","liquidat"])) {
+    if (slug === "cancel-business-license-dubai" || /license-cancellation/.test(slug)) score += 7500;
+    if (/issue|issuance|partner/.test(slug)) score -= 5000;
+  }
   return score;
 }
 
@@ -393,20 +415,20 @@ async function selectSemanticCandidate(semantic:SemanticState, ranked:any[], cat
       instructions:"Select the ONE catalog service that matches the CURRENT semantic state. Service identity must match the user's actual action and object, not merely share an emirate or generic word. Examples: trade licence is not driving licence; Ejari is not marriage contract; WPS is not a work permit; investor residence is not family residence; liquidation is not partner amendment. If no candidate actually matches, choose __NONE__. Never choose a stale prior-topic service.",
       input:JSON.stringify({semantic,choices}),text:{format:{type:"json_schema",name:"hb_service_selection",strict:true,schema}}
     })});
-    if(!res.ok)return [];const j=await res.json();const txt=(j.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const p=JSON.parse(txt);
+    if(!res.ok)return ranked[0]?.score>=5000?ranked:[];const j=await res.json();const txt=(j.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const p=JSON.parse(txt);
     if(p.selected_slug==="__NONE__"){
       const allChoices=catalog.map((r:any)=>({slug:r.binding.service_slug,title:r.title,authority:r.authority?.authority_key||null,jurisdiction:r.jurisdiction?.code||"AE"}));
       const allAllowed=[...allChoices.map((x:any)=>x.slug),"__NONE__"];
       const fullSchema={type:"object",additionalProperties:false,properties:{selected_slug:{type:"string",enum:allAllowed},confidence:{type:"string",enum:["high","medium","low"]},reason_code:{type:"string",enum:["exact","closest_verified","ambiguous","no_match"]}},required:["selected_slug","confidence","reason_code"]};
       const fullRes=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({model:cfg.model,store:false,reasoning:{effort:"low"},max_output_tokens:120,instructions:"Recovery service lookup over the full verified catalog. Select exactly one service only when its identity matches the current semantic goal; otherwise __NONE__. Prefer exact action/object matches over generic category similarity. Never choose a stale topic.",input:JSON.stringify({semantic,choices:allChoices}),text:{format:{type:"json_schema",name:"hb_full_service_selection",strict:true,schema:fullSchema}}})});
-      if(!fullRes.ok)return [];const fj=await fullRes.json();const ftxt=(fj.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const fp=JSON.parse(ftxt);
+      if(!fullRes.ok)return ranked[0]?.score>=5000?ranked:[];const fj=await fullRes.json();const ftxt=(fj.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const fp=JSON.parse(ftxt);
       if(fp.selected_slug==="__NONE__")return [];
       const fullChosen=catalog.find((r:any)=>r.binding.service_slug===fp.selected_slug);if(!fullChosen)return [];
       return [fullChosen,...ranked.filter((r:any)=>r.binding.service_slug!==fp.selected_slug)];
     }
     const chosen=shortlist.find((r:any)=>r.binding.service_slug===p.selected_slug);if(!chosen)return [];
     return [chosen,...ranked.filter((r:any)=>r.binding.service_slug!==p.selected_slug)];
-  }catch{return [];}
+  }catch{return ranked[0]?.score>=5000?ranked:[];}
 }
 
 function followUps(goal: string, top: any) {
