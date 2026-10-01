@@ -119,3 +119,9 @@ test("family residence routing distinguishes wife children and Dubai parents", (
   assert.match(edge, /child","children","son","daughter/);
   assert.match(edge, /family-residency-uae/);
 });
+
+
+test("employee cancellation cannot resolve to transfer work permit", () => {
+  assert.match(edge, /wantsCancel.*cancel-work-permit-uae/s);
+  assert.match(edge, /transfer-work-permit-uae.*-1200/);
+});
