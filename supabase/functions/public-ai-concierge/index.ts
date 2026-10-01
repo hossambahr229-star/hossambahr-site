@@ -120,8 +120,9 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
     if(!res.ok) return fallback; const json=await res.json();
     const txt=(json.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");
     const parsed=JSON.parse(txt); if(!parsed?.resolved_query) return fallback;
-    if(!parsed.relationship) parsed.relationship=fallbackRelationship;
-    if(!parsed.jurisdiction) parsed.jurisdiction=detectJurisdiction(normalize(latestTurn))||context?.jurisdiction_code||null;
+    const topicReset=parsed.turn_type==="new_topic"||parsed.turn_type==="service_switch";
+    if(!parsed.relationship && !topicReset) parsed.relationship=fallbackRelationship;
+    if(!parsed.jurisdiction) parsed.jurisdiction=detectJurisdiction(normalize(latestTurn))||(!topicReset?context?.jurisdiction_code:null)||null;
     return parsed as SemanticState;
   }catch{return fallback;}
 }
