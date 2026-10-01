@@ -107,3 +107,8 @@ test("Dubai family renewal is boosted to the renewal service, not issuance", () 
 test("resolver uses verified binding metadata name before falling back to slug", () => {
   assert.match(edge, /binding\.metadata\?\.title \|\| binding\.metadata\?\.name \|\| def\.title/);
 });
+
+
+test("grounded jurisdiction-specific match is presented instead of hidden by confidence-only clarification", () => {
+  assert.match(client, /grounding\?\.source_backed && hasEmirate/);
+});
