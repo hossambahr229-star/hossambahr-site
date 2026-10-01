@@ -107,3 +107,10 @@ test("Dubai family renewal is boosted to the renewal service, not issuance", () 
 test("resolver uses verified binding metadata name before falling back to slug", () => {
   assert.match(edge, /binding\.metadata\?\.title \|\| binding\.metadata\?\.name \|\| def\.title/);
 });
+
+
+test("family residence routing distinguishes wife children and Dubai parents", () => {
+  assert.match(edge, /إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/);
+  assert.match(edge, /child","children","son","daughter/);
+  assert.match(edge, /family-residency-uae/);
+});
