@@ -199,7 +199,7 @@ async function loadCatalog(admin: any) {
     const def = workflow?.definition || {};
     const rules = Array.isArray(policy?.rules) ? policy.rules : [];
     const steps = Array.isArray(def.steps) ? def.steps : [];
-    const title = binding.metadata?.title || def.title || def.name || binding.service_slug;
+    const title = binding.metadata?.title || binding.metadata?.name || def.title || def.name || binding.service_slug;
     const requirementTitles = steps.filter((s:any) => s.taskType === "requirement").map((s:any) => String(s.title || "")).filter(Boolean);
     const ruleRequirements = rules
       .filter((r:any) => String(r.id || "").startsWith("requirement"))

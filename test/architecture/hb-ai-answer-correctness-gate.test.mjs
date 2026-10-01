@@ -102,3 +102,8 @@ test("Dubai family renewal is boosted to the renewal service, not issuance", () 
   assert.match(edge, /slug === "تجديد-إقامة-أفراد-الأسرة-في-دبي".*1450/);
   assert.match(edge, /slug === "family-residency-uae".*420/);
 });
+
+
+test("resolver uses verified binding metadata name before falling back to slug", () => {
+  assert.match(edge, /binding\.metadata\?\.title \|\| binding\.metadata\?\.name \|\| def\.title/);
+});
