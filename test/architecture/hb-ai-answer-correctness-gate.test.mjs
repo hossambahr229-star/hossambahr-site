@@ -96,3 +96,9 @@ test("family special boost covers spouse and parent residence vocabulary", () =>
   assert.match(edge, /"والد","والدتي","والدي","الوالدين".*"family","wife","spouse","parent","mother","father"/);
   assert.match(edge, /family && residence && renew/);
 });
+
+
+test("Dubai family renewal is boosted to the renewal service, not issuance", () => {
+  assert.match(edge, /slug === "تجديد-إقامة-أفراد-الأسرة-في-دبي".*1450/);
+  assert.match(edge, /slug === "family-residency-uae".*420/);
+});

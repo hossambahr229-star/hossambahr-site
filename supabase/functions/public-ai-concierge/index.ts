@@ -232,7 +232,8 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const emirate = detectJurisdiction(goal);
 
   if (family && residence && renew) {
-    if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 1100 : emirate ? -260 : 520;
+    if (slug === "تجديد-إقامة-أفراد-الأسرة-في-دبي") score += emirate === "AE-DU" ? 1450 : emirate ? -320 : 620;
+    if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 420 : emirate ? -260 : 180;
   }
   if (parent && residence && !wantsCancel && slug === "family-residency-uae") {
     score += emirate === "AE-DU" ? 1250 : emirate ? -180 : 900;
