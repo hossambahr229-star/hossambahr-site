@@ -19,7 +19,7 @@
     wrap.style.setProperty("--hb-ai-symbol-size", size + "px");
     if (label) wrap.setAttribute("aria-label", label);
     else wrap.setAttribute("aria-hidden", "true");
-    wrap.innerHTML = '<svg viewBox="0 0 48 48" focusable="false" aria-hidden="true"><rect x="5.5" y="5.5" width="37" height="37" rx="12" class="hb-ai-symbol-frame"/><path d="M14 17v14M14 24h8M22 17v14" class="hb-ai-symbol-hb"/><path d="M29 31V20.5c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5V31M29 25h8" class="hb-ai-symbol-ai"/><circle cx="39" cy="11" r="2.4" class="hb-ai-symbol-node"/><path d="M36.9 12.6 34 16" class="hb-ai-symbol-link"/></svg>';
+    wrap.innerHTML = '<svg viewBox="0 0 64 64" focusable="false" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="18" class="hb-ai-symbol-frame"/><path d="M17 18v28M17 32h13M30 18v28" class="hb-ai-symbol-hb"/><path d="M37 18h5.5a7 7 0 0 1 0 14H37m0 0h7a7 7 0 0 1 0 14h-7V18" class="hb-ai-symbol-ai"/><circle cx="52" cy="12" r="3" class="hb-ai-symbol-node"/><path d="M49.5 14.5 46 18" class="hb-ai-symbol-link"/></svg>';
     return wrap;
   }
 
@@ -191,7 +191,7 @@
   }
 
   function addStatus() {
-    const statuses = ["أفهم طلبك…", "أطابق الخدمة المناسبة…", "أراجع المصدر الرسمي…"];
+    const statuses = ["أتحقق من معاملتك…", "أحدد الخدمة المناسبة…", "أراجع المصدر الرسمي…"];
     const bubble = addBubble("assistant", statuses[0], { pending: true });
     const body = bubble?.querySelector(".hb-chat-bubble");
     body?.classList.add("hb-chat-thinking");
@@ -515,6 +515,7 @@
       });
       let payload = await response.json().catch(() => ({}));
       const responseMs = Math.round(performance.now() - perfStart);
+      performance.mark?.("hb-ai-useful-content");
       window.dispatchEvent(new CustomEvent("hb:ai-performance",{detail:{first_feedback_ms:firstFeedbackMs,response_ms:responseMs,server_timing:response.headers.get("server-timing")||null}}));
       if (response.status === 429) {
         removePending(pending);
@@ -624,7 +625,7 @@
     textarea.rows = 1;
     textarea.maxLength = 800;
     textarea.autocomplete = "off";
-    textarea.placeholder = "اسألني عن أي معاملة في الإمارات…";
+    textarea.placeholder = isAIProduct ? "اسألني عن معاملتك..." : "اسألني عن أي معاملة في الإمارات…";
     textarea.setAttribute("aria-label", "اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات");
     oldInput?.replaceWith(textarea);
     composer = textarea;
@@ -645,7 +646,7 @@
     const toolRow = create("div", "hb-ai-composer-tools");
     const attachLabel = create("label", "hb-ai-attach-control");
     attachLabel.setAttribute("for", "hb-ai-document-input");
-    attachLabel.textContent = "＋ إرفاق مستند";
+    attachLabel.textContent = "＋ إرفاق";
     attachmentInput = document.createElement("input");
     attachmentInput.id = "hb-ai-document-input";
     attachmentInput.type = "file";
@@ -683,7 +684,7 @@
       prompts.classList.add("hb-chat-prompts");
       const span = prompts.querySelector("span");
       if (span) span.textContent = "أمثلة:";
-      const labels = isAIProduct ? ["تجديد إقامة","تأسيس شركة","معاملة موظف","الرسوم والمستندات"] : [
+      const labels = isAIProduct ? ["تجديد إقامة","تأسيس شركة","معاملة موظف","تحليل مستند"] : [
         "أريد أجدد إقامة زوجتي",
         "أريد أفتح شركة في دبي",
         "كيف أنقل موظف إلى شركتي؟",
@@ -692,6 +693,7 @@
       [...prompts.querySelectorAll("button")].forEach((button, index) => {
         button.textContent = labels[index] || button.textContent;
         button.onclick = () => {
+          if (isAIProduct && button.textContent === "تحليل مستند") { attachmentInput?.click(); return; }
           composer.value = button.textContent;
           composer.focus();
         };
@@ -699,6 +701,15 @@
     }
 
     stage.querySelector(".homepage-secondary-actions")?.remove();
+
+    document.querySelector("[data-ai-new]")?.addEventListener("click", () => {
+      try { sessionStorage.removeItem(STATE_KEY); } catch {}
+      state = { expires_at: Date.now() + TTL, original_goal: "", resolved_query: "", answers: [], service_slug: null, jurisdiction_code: null, authority_key: null, last_payload: null };
+      thread?.replaceChildren();
+      document.body.classList.remove("hb-chat-engaged");
+      composer.value = "";
+      composer.focus();
+    });
 
     const submitComposer = () => {
       const value = composer.value.trim();
