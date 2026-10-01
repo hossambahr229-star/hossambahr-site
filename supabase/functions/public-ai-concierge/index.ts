@@ -275,9 +275,8 @@ function rank(goal: string, rows: any[]) {
     if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(identityText)) score -= 900;
     if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(identityText)) score -= 900;
     if (asksResidenceAuthorityChoice && detected && detected !== "AE-DU") {
-      if (row.authority?.authority_key === "icp") score += 1600;
-      else if (row.authority?.authority_key === "gdrfa-dubai") score -= 1600;
-      else score -= 900;
+      if (row.authority?.authority_key === "icp") score += 6000;
+      else score -= 6000;
     }
     const wantsRenew = has(normalized, ["اجدد","تجديد","renew"]);
     const wantsCancel = has(normalized, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
