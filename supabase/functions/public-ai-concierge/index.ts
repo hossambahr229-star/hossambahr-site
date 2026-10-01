@@ -7,7 +7,7 @@ const ALLOWED_ORIGINS = new Set([
   "http://127.0.0.1:3000"
 ]);
 
-const CACHE_TTL_MS = 5 * 60 * 1000;
+const CACHE_TTL_MS = 10 * 60 * 1000;
 let catalogCache: { at: number; rows: any[] } | null = null;
 
 function cors(req: Request) {
@@ -418,7 +418,10 @@ export default {
     if (goal.length < 4 || goal.length > 800) return reply(req, { error:"invalid_goal" }, 422);
 
     try {
+      const requestStarted = performance.now();
+      const catalogStarted = performance.now();
       const catalog = await loadCatalog(ctx.supabaseAdmin);
+      const catalogMs = performance.now() - catalogStarted;
       const ranked = rank(goal, catalog);
       return reply(req, {
         ok:true,
@@ -428,7 +431,7 @@ export default {
         },
         result: publicResult(goal, ranked, latestTurn),
         rate_limit:{ remaining: rate.remaining, reset_at: rate.reset_at }
-      });
+      }, 200, { "Server-Timing": `catalog;dur=${catalogMs.toFixed(1)},total;dur=${(performance.now()-requestStarted).toFixed(1)}` });
     } catch (error) {
       console.error("public-ai-concierge failed", { message: error instanceof Error ? error.message : "unknown" });
       return reply(req, { error:"analysis_unavailable" }, 503);
