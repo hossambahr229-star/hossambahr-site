@@ -81,7 +81,7 @@ test("parent residence issuance cannot fall through to cancellation identity", (
 });
 
 test("public conversational budget supports multi-turn QA without disabling rate protection", () => {
-  assert.match(edge, /p_limit: 120/);\n  assert.match(edge, /x-hb-qa-run/);
+  assert.match(edge, /p_limit: 120/);\n  assert.match(edge, /req\.headers\.get\("x-hb-qa-run"\)/);
   assert.match(edge, /rate_limited/);
 });
 
