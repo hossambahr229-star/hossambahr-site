@@ -72,3 +72,15 @@ test("grounded resolver is the single service-decision path", () => {
   assert.doesNotMatch(ui, /const initialHint = catalogIntentHint\(query\)/);
   assert.doesNotMatch(ui, /const refined = await fetch/);
 });
+
+
+test("parent residence issuance cannot fall through to cancellation identity", () => {
+  assert.match(edge, /parent && residence && !wantsCancel/);
+  assert.match(edge, /wantsIssue/);
+  assert.match(edge, /\(wantsRenew \|\| wantsIssue\).*cancel/);
+});
+
+test("public conversational budget supports multi-turn QA without disabling rate protection", () => {
+  assert.match(edge, /p_limit: 60/);
+  assert.match(edge, /rate_limited/);
+});
