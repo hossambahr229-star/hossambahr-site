@@ -219,7 +219,7 @@ async function loadCatalog(admin: any) {
 
 function specialBoost(goal: string, slug: string, jurisdictionCode: string | null) {
   let score = 0;
-  const family = has(goal, ["زوجه","زوجتي","زوج","اسره","عائله","family","wife","spouse"]);
+  const family = has(goal, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","parent","mother","father"]);
   const residence = has(goal, ["اقامه","residence","residency"]);
   const renew = has(goal, ["اجدد","تجديد","renew"]);
   const company = has(goal, ["شركه","رخصه","ترخيص","business","company","license","licence"]);
