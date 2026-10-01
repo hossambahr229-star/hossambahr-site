@@ -416,7 +416,8 @@ async function selectSemanticCandidate(semantic:SemanticState, ranked:any[], cat
       input:JSON.stringify({semantic,choices}),text:{format:{type:"json_schema",name:"hb_service_selection",strict:true,schema}}
     })});
     if(!res.ok)return ranked[0]?.score>=5000?ranked:[];const j=await res.json();const txt=(j.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const p=JSON.parse(txt);
-    if(p.selected_slug==="__NONE__"){\n      if(ranked[0]?.score>=5000) return ranked;
+    if(p.selected_slug==="__NONE__"){
+      if(ranked[0]?.score>=5000) return ranked;
       const allChoices=catalog.map((r:any)=>({slug:r.binding.service_slug,title:r.title,authority:r.authority?.authority_key||null,jurisdiction:r.jurisdiction?.code||"AE"}));
       const allAllowed=[...allChoices.map((x:any)=>x.slug),"__NONE__"];
       const fullSchema={type:"object",additionalProperties:false,properties:{selected_slug:{type:"string",enum:allAllowed},confidence:{type:"string",enum:["high","medium","low"]},reason_code:{type:"string",enum:["exact","closest_verified","ambiguous","no_match"]}},required:["selected_slug","confidence","reason_code"]};
