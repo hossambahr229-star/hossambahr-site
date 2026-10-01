@@ -19,7 +19,7 @@
     wrap.style.setProperty("--hb-ai-symbol-size", size + "px");
     if (label) wrap.setAttribute("aria-label", label);
     else wrap.setAttribute("aria-hidden", "true");
-    wrap.innerHTML = '<svg viewBox="0 0 64 64" focusable="false" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="18" class="hb-ai-symbol-frame"/><path d="M17 18v28M17 32h13M30 18v28" class="hb-ai-symbol-hb"/><path d="M37 18h5.5a7 7 0 0 1 0 14H37m0 0h7a7 7 0 0 1 0 14h-7V18" class="hb-ai-symbol-ai"/><circle cx="52" cy="12" r="3" class="hb-ai-symbol-node"/><path d="M49.5 14.5 46 18" class="hb-ai-symbol-link"/></svg>';
+    wrap.innerHTML = '<svg viewBox="0 0 64 64" focusable="false" aria-hidden="true"><circle cx="32" cy="32" r="29" class="hb-ai-symbol-frame"/><circle cx="32" cy="32" r="24.5" class="hb-ai-symbol-inner"/><path d="M17 19v27M17 32h12M29 19v27" class="hb-ai-symbol-hb"/><path d="M36 19h5.5c5 0 8 2.6 8 6.3 0 3-1.9 5-5 5.8 4.1.8 6.3 3 6.3 6.5 0 4.5-3.4 7.4-9 7.4H36V19Z" class="hb-ai-symbol-ai"/><circle cx="51.5" cy="13.5" r="3.7" class="hb-ai-symbol-node"/><circle cx="51.5" cy="13.5" r="1.2" class="hb-ai-symbol-spark"/><path d="M49 16 46 19" class="hb-ai-symbol-link"/></svg>';
     return wrap;
   }
 
@@ -191,7 +191,7 @@
   }
 
   function addStatus() {
-    const statuses = ["أتحقق من معاملتك…", "أحدد الخدمة المناسبة…", "أراجع المصدر الرسمي…"];
+    const statuses = ["أراجع طلبك…", "أتحقق من المعلومات المتاحة…", "أطابقها مع المصدر الرسمي…"];
     const bubble = addBubble("assistant", statuses[0], { pending: true });
     const body = bubble?.querySelector(".hb-chat-bubble");
     body?.classList.add("hb-chat-thinking");
