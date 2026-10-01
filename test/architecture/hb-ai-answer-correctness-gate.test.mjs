@@ -137,3 +137,8 @@ test("non-Dubai residence authority choice prefers ICP over GDRFA or local unrel
 test("explicit non-Dubai ICP vs GDRFA query excludes unrelated authorities", () => {
   assert.match(edge, /asksResidenceAuthorityChoice.*authority\?\.authority_key === "icp"/s);
 });
+
+
+test("Arabic possessive residence wording activates residency authority routing", () => {
+  assert.match(edge, /"اقامه","إقامة","اقامتي","إقامتي","residence","residency"/);
+});
