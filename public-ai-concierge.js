@@ -41,7 +41,8 @@
     service_slug: null,
     jurisdiction_code: null,
     authority_key: null,
-    last_payload: null
+    last_payload: null,
+    history: []
   };
   let thread = null;
   let composer = null;
@@ -379,9 +380,7 @@
     const uncertain = needsClarification(payload);
     const body = create("div", "hb-chat-answer");
     const groundedAnswer = payload?.result?.answer;
-    if (uncertain) {
-      body.append(create("p", "hb-chat-answer-intro", "أفهم طلبك، لكن أحتاج معلومة واحدة إضافية حتى أحدد الخدمة والجهة بدقة بدل التخمين."));
-    } else if (groundedAnswer?.text) {
+    if (groundedAnswer?.text) {
       body.append(create("p", "hb-chat-answer-intro", groundedAnswer.text));
     } else {
       body.append(create("p", "hb-chat-answer-intro", assistantNaturalIntro(payload, match)));
@@ -494,6 +493,7 @@
     const perfStart = performance.now();
     document.body.classList.add("hb-chat-engaged");
     if (!options.fromQuickReply && !options.suppressUserBubble) addBubble("user", displayed);
+    state.history = Array.isArray(state.history) ? state.history : [];
     const pending = addStatus();
     const firstFeedbackMs = Math.round(performance.now() - perfStart);
     sendButton && (sendButton.disabled = true);
@@ -510,7 +510,7 @@
       const response = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ goal: resolverQuery, latest_turn: displayed, context: { service_slug: state.service_slug, jurisdiction_code: state.jurisdiction_code, authority_key: state.authority_key } }),
+        body: JSON.stringify({ goal: resolverQuery, latest_turn: displayed, history: state.history.slice(-10), context: { service_slug: state.service_slug, jurisdiction_code: state.jurisdiction_code, authority_key: state.authority_key } }),
         credentials: "omit"
       });
       let payload = await response.json().catch(() => ({}));
@@ -527,6 +527,10 @@
       removePending(pending);
       const match = selectPresentationMatch(payload);
       state.last_payload = payload;
+      state.history.push({ role: "user", content: displayed });
+      const assistantText = payload?.result?.answer?.text;
+      if (assistantText) state.history.push({ role: "assistant", content: assistantText });
+      state.history = state.history.slice(-12);
       state.resolved_query = payload?.goal_context?.safe_goal || query;
       if (!state.original_goal) state.original_goal = state.resolved_query;
       state.service_slug = match?.service_slug || state.service_slug;
