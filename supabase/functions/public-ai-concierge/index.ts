@@ -69,6 +69,90 @@ function detectJurisdiction(goal: string) {
   return null;
 }
 
+function answerFocus(text: string) {
+  if (has(text, ["كم الرسوم","الرسوم","رسوم","fee","fees","cost"])) return "fees";
+  if (has(text, ["الاوراق","الأوراق","المستندات","مستندات","documents","requirements"])) return "documents";
+  if (has(text, ["كم تستغرق","المدة","مده","مدة","duration","how long"])) return "duration";
+  if (has(text, ["من الجهة","الجهه","الجهة","authority"])) return "authority";
+  if (has(text, ["هل احتاج موافقه","هل أحتاج موافقة","موافقه","موافقة","approval"])) return "approvals";
+  if (has(text, ["ابدأ معاملتي","ابدا معاملتي","start my transaction"])) return "start";
+  return "overview";
+}
+
+function ruleFact(rules: any[], id: string) {
+  const rule = rules.find((item:any) => String(item?.id || "") === id);
+  if (!rule?.reason) return null;
+  return { value: String(rule.reason), source_refs: Array.isArray(rule.sourceRefs) ? rule.sourceRefs : [] };
+}
+
+function groundedAnswer(goal: string, row: any, focus: string) {
+  const source = row.safeSources?.[0] || null;
+  const rules = Array.isArray(row.policy?.rules) ? row.policy.rules : [];
+  const fees = ruleFact(rules, "fees");
+  const duration = ruleFact(rules, "duration");
+  const conditions = ruleFact(rules, "conditions");
+  const special = ruleFact(rules, "special-cases");
+  const authority = row.authority?.name_ar || null;
+  const jurisdiction = row.jurisdiction?.name_ar || null;
+  const verified = Boolean(source?.source_url);
+
+  let text = "";
+  let factStatus = "VERIFIED_FACT";
+  if (focus === "fees") {
+    if (fees?.value && fees.source_refs.length) text = fees.value;
+    else {
+      text = "لا توجد في المعرفة الموثقة الحالية قيمة رسوم محددة يمكنني تأكيدها لهذه الحالة. لن أضع رقمًا تقديريًا؛ راجع المصدر الرسمي أو ابدأ المعاملة للتحقق من الرسوم الحالية.";
+      factStatus = "MISSING_INFORMATION";
+    }
+  } else if (focus === "duration") {
+    if (duration?.value && duration.source_refs.length) text = duration.value;
+    else {
+      text = "لا توجد مدة تنفيذ محددة وموثقة في البيانات الحالية لهذه الحالة، لذلك لن أذكر مدة تقديرية.";
+      factStatus = "MISSING_INFORMATION";
+    }
+  } else if (focus === "documents") {
+    if (row.requirements?.length) text = "المتطلبات المسجلة لهذه الخدمة: " + row.requirements.slice(0,6).join("، ") + ".";
+    else {
+      text = "لا توجد قائمة مستندات مكتملة وموثقة في البيانات الحالية لهذه الحالة.";
+      factStatus = "MISSING_INFORMATION";
+    }
+  } else if (focus === "authority") {
+    text = authority ? "الجهة المختصة المسجلة لهذه الخدمة هي " + authority + (jurisdiction ? " ضمن " + jurisdiction : "") + "." : "الجهة المختصة غير محسومة في البيانات الحالية.";
+    if (!authority) factStatus = "MISSING_INFORMATION";
+  } else if (focus === "approvals") {
+    const approvalText = row.requirements?.filter((x:string) => /موافق/.test(x)).join("، ");
+    if (approvalText) text = approvalText + ".";
+    else if (conditions?.value) text = conditions.value;
+    else {
+      text = "لا أملك في البيانات الموثقة الحالية ما يكفي لتأكيد موافقة خارجية محددة لهذه الحالة.";
+      factStatus = "NEEDS_CLARIFICATION";
+    }
+  } else if (focus === "start") {
+    text = "الخدمة محددة. يمكنك الانتقال إلى بدء المعاملة مع الاحتفاظ بالخدمة والإمارة والجهة في سياقك الحالي.";
+    factStatus = "DERIVED_GUIDANCE";
+  } else {
+    text = "الخدمة الموثقة الأقرب لطلبك هي «" + row.title + "»" + (authority ? " لدى " + authority : "") + (jurisdiction ? " ضمن " + jurisdiction : "") + ".";
+    if (conditions?.value) text += " " + conditions.value;
+  }
+
+  return {
+    text,
+    focus,
+    fact_status: factStatus,
+    grounded: verified && factStatus !== "NEEDS_CLARIFICATION",
+    evidence: {
+      policy_key: row.policy?.policy_key || row.binding?.policy_key || null,
+      policy_version: row.policy?.version || null,
+      workflow_key: row.workflow?.workflow_key || row.binding?.workflow_key || null,
+      source_title: source?.title || null,
+      source_url: source?.source_url || null,
+      last_verified_at: source?.last_verified_at || null,
+      supporting_rule: focus === "fees" ? fees : focus === "duration" ? duration : focus === "overview" ? conditions : null,
+      special_case: special?.value || null
+    }
+  };
+}
+
 function docLike(text: string) {
   return has(text, ["جواز","هوية","الهويه","صورة","صوره","عقد","شهادة","شهاده","رخصة","رخصه","نموذج","خطاب","مستند","تأمين","تامين","فحص","passport","identity","photo","contract","certificate","license","form","letter","document","insurance"]);
 }
@@ -221,7 +305,13 @@ function publicResult(goal: string, ranked: any[]) {
 
   const top = candidates[0];
   const questions = followUps(goal, top);
-  const confidence = top.score >= 700 ? "high" : top.score >= 220 ? "medium" : "low";
+  const focus = answerFocus(goal);
+  const margin = candidates[1] ? top.score - candidates[1].score : top.score;
+  const sourceBacked = Boolean(top.safeSources?.[0]?.source_url);
+  const ambiguous = margin < 35 && candidates[1]?.binding?.service_slug !== top.binding?.service_slug;
+  if (ambiguous && questions.length === 0) questions.push("وجدت أكثر من خدمة محتملة. ما النتيجة التي تريد تنفيذها تحديدًا؟");
+  const confidence = sourceBacked && !questions.length && !ambiguous && top.score >= 700 ? "high" : sourceBacked && top.score >= 220 ? "medium" : "low";
+  const answer = groundedAnswer(goal, top, focus);
 
   const matches = candidates.map((row:any) => {
     const requirements = row.requirements.slice(0,8);
@@ -256,6 +346,13 @@ function publicResult(goal: string, ranked: any[]) {
   return {
     understood_intent: top.title,
     confidence,
+    answer,
+    grounding: {
+      status: answer.fact_status,
+      source_backed: Boolean(answer.evidence?.source_url),
+      no_invention: true,
+      ambiguity_detected: ambiguous
+    },
     matches,
     missing_information: questions,
     follow_up_questions: questions,
