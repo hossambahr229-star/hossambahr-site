@@ -219,7 +219,7 @@ async function loadCatalog(admin: any) {
 
 function specialBoost(goal: string, slug: string, jurisdictionCode: string | null) {
   let score = 0;
-  const family = has(goal, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","parent","mother","father"]);
+  const family = has(goal, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","child","children","son","daughter","parent","mother","father"]);
   const residence = has(goal, ["اقامه","residence","residency"]);
   const renew = has(goal, ["اجدد","تجديد","renew"]);
   const company = has(goal, ["شركه","رخصه","ترخيص","business","company","license","licence"]);
@@ -294,7 +294,7 @@ function followUps(goal: string, top: any) {
   const out:string[] = [];
   const normalized = normalize(goal);
   const emirate = detectJurisdiction(normalized);
-  const family = has(normalized, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","parent","mother","father"]);
+  const family = has(normalized, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","child","children","son","daughter","parent","mother","father"]);
   const residence = has(normalized, ["اقامه","residence","residency"]);
   const company = has(normalized, ["شركه","رخصه","ترخيص","business","company","license","licence"]);
   const employee = has(normalized, ["موظف","عامل","employee","worker"]);
@@ -302,6 +302,7 @@ function followUps(goal: string, top: any) {
   const locationKnown = Boolean(emirate) || top?.jurisdiction?.code === "AE";
 
   if (family && residence && !emirate) out.push("في أي إمارة صادرة إقامة فرد الأسرة؟");
+  else if (parent && residence) out.push("إقامة الوالدين لها شروط خاصة تختلف عن الزوج/الأبناء. هل تريد التحقق من كفالة الوالدين معًا أم لديك حالة خاصة لأحدهما؟");
   else if (company && !emirate) out.push("في أي إمارة تريد إصدار أو تعديل الرخصة؟");
   if (employee && workAction && !has(normalized, ["داخل الامارات","خارج الامارات","نقل","انقله","inside uae","outside uae","transfer"])) {
     out.push("هل الموظف داخل الإمارات حاليًا أم خارجها؟");
