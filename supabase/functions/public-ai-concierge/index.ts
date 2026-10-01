@@ -100,8 +100,10 @@ function relationshipFromTurn(latestTurn:string, goal:string, context:any): Fami
 }
 
 async function resolveSemanticState(latestTurn:string, history:any[], context:any, fallbackGoal:string):Promise<SemanticState>{
-  const fallbackRelationship=relationshipFromTurn(latestTurn,fallbackGoal,context);
-  const fallback:SemanticState={turn_type:"follow_up",resolved_query:fallbackGoal,topic:null,intent:null,service_family:null,jurisdiction:detectJurisdiction(normalize(latestTurn))||context?.jurisdiction_code||detectJurisdiction(normalize(fallbackGoal)),relationship:fallbackRelationship,business_activity:null,confidence:"low"};
+  const latestNorm=normalize(latestTurn);
+  const explicitNonFamilyTopic=has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"]) && !detectRelationship(latestTurn);
+  const fallbackRelationship=explicitNonFamilyTopic?null:relationshipFromTurn(latestTurn,fallbackGoal,context);
+  const fallback:SemanticState={turn_type:explicitNonFamilyTopic?"new_topic":"follow_up",resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:null,service_family:null,jurisdiction:detectJurisdiction(latestNorm)||(explicitNonFamilyTopic?null:context?.jurisdiction_code)||detectJurisdiction(normalize(fallbackGoal)),relationship:fallbackRelationship,business_activity:null,confidence:"low"};
   const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai") return fallback;
   const recent=safeHistoryForModel(history);
   const input=[...recent,{role:"user",content:latestTurn}];
