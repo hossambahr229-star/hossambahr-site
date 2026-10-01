@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-01T16:15:36.567Z",
+  "generatedAt": "2026-10-01T16:27:14.558Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 153,
-    "ACCESS_RESTRICTED": 8,
+    "REACHABLE": 159,
+    "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 86,
+    "NETWORK_UNVERIFIED": 79,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -54,8 +54,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.tamm.abudhabi/journeys/start-a-business?lang=ar",
+      "result": "REACHABLE"
     },
     {
       "url": "https://added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
@@ -67,8 +68,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
+      "result": "REACHABLE"
     },
     {
       "url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
@@ -80,8 +82,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
@@ -98,8 +101,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 403,
+      "finalUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "result": "ACCESS_RESTRICTED",
+      "reason": "official server rejected automated audit traffic"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/activitiesapprovalsinquiry",
@@ -124,8 +129,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license",
@@ -137,8 +143,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/future-investor/issue-trade-license",
@@ -237,8 +244,9 @@
       "kinds": [
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mofa.gov.ae/services/edas-attestation-v2",
