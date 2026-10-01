@@ -1,0 +1,19 @@
+name: HB AI human semantic production
+on:
+  push:
+    branches: [qa/global-gate-semantic-e2e]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  semantic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - run: node scripts/hb-ai-human-semantic-production.mjs | tee semantic-production-result.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: semantic-production-result
+          path: semantic-production-result.json
