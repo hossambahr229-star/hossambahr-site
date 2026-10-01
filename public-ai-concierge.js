@@ -427,13 +427,13 @@
         copy.append(create("strong", "", match.authority?.name_ar || "الجهة الحكومية المختصة"));
         if (match.official_source.last_verified_at) {
           const verifiedAt = new Date(match.official_source.last_verified_at);
-          if (!Number.isNaN(verifiedAt.getTime())) copy.append(create("small", "", "آخر تحقق: " + verifiedAt.toLocaleDateString("ar-AE")));
+          if (!Number.isNaN(verifiedAt.getTime())) copy.append(create("small", "", "تم التحقق من المعلومة • " + verifiedAt.toLocaleDateString("ar-AE")));
         }
         const link = document.createElement("a");
         link.href = match.official_source.url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.textContent = match.official_source.title || "فتح المصدر الحكومي";
+        link.textContent = "فتح المصدر";
         copy.append(link);
         source.append(copy);
         body.append(source);
