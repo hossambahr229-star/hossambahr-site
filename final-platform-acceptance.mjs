@@ -158,10 +158,10 @@ async function runConversationalJourney(index) {
   page.on("pageerror", (error) => errors.push(error.message));
 
   try {
-    const response = await page.goto(`${baseUrl}/?journey=${index + 1}&hb_qa=1`, { waitUntil: "domcontentloaded", timeout: 60000 });
+    const response = await page.goto(`${baseUrl}/ai/?journey=${index + 1}&hb_qa=1`, { waitUntil: "domcontentloaded", timeout: 60000 });
     await page.evaluate(() => { sessionStorage.clear(); localStorage.clear(); });
     await page.reload({ waitUntil: "domcontentloaded", timeout: 60000 });
-    await page.locator("[data-hb-ai-brand]").waitFor({ state: "visible", timeout: 15000 });
+    await page.locator(".hb-ai-product-mark").waitFor({ state: "visible", timeout: 15000 });
     await page.locator(".hb-chat-send").waitFor({ state: "visible", timeout: 15000 });
 
     const composer = page.locator(".hb-conversation-composer");
@@ -169,7 +169,7 @@ async function runConversationalJourney(index) {
     const composerInFirstViewport = Boolean(composerBox && composerBox.y >= 0 && composerBox.y < (profile === "mobile" ? 844 : 1000));
     const authBeforeAnalysis = await page.locator(".hb-chat-primary").count();
     const homepageOverflowBefore = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
-    const aiBrand = await page.locator("[data-hb-ai-brand]").count();
+    const aiBrand = await page.locator(".hb-ai-product-mark").count();
 
     await page.locator("#government-search").fill(query);
     const answersBefore = await page.locator(".hb-chat-message--assistant .hb-chat-answer").count();
@@ -291,7 +291,7 @@ for (const [name, width, height] of deviceProfiles) {
   const page = await browser.newPage({ viewport: { width, height } });
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto(`${baseUrl}/?hb_qa=1`, { waitUntil: "networkidle", timeout: 60000 });
+  await page.goto(`${baseUrl}/ai/?hb_qa=1`, { waitUntil: "networkidle", timeout: 60000 });
   await page.waitForTimeout(1950);
   const result = await page.evaluate(() => {
     const search = document.querySelector("form.primary-search");
@@ -300,14 +300,14 @@ for (const [name, width, height] of deviceProfiles) {
     return { overflow: document.documentElement.scrollWidth > window.innerWidth + 1,
       primarySearches: document.querySelectorAll("form.primary-search").length,
       guidedHelp: document.querySelectorAll("details.transaction-discovery-modes").length,
-      aiBrand: document.querySelectorAll("[data-hb-ai-brand]").length,
+      aiBrand: document.querySelectorAll(".hb-ai-product-mark").length,
       searchInFirstViewport: Boolean(rect && rect.top >= 0 && rect.top < window.innerHeight),
       primaryLabel: submit?.textContent?.trim() || "", primaryAriaLabel: submit?.getAttribute("aria-label") || "", lang: document.documentElement.lang, dir: document.documentElement.dir };
   });
   responsiveResults.push({ name, ...result, errors, pass: !result.overflow && result.primarySearches === 1
     && result.guidedHelp === 0 && result.aiBrand === 1 && result.searchInFirstViewport && /إرسال السؤال/.test(result.primaryAriaLabel)
     && result.lang === "ar" && result.dir === "rtl" && errors.length === 0 });
-  if (name === "mobile-390" || name === "desktop") await page.screenshot({ path: resolve(output, `homepage-${name}.png`), fullPage: true });
+  if (name === "iphone-390" || name === "desktop") await page.screenshot({ path: resolve(output, `hb-ai-${name}.png`), fullPage: true });
   await page.close();
 }
 
