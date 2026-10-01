@@ -487,7 +487,7 @@
   }
 
   async function analyze(userMessage, options = {}) {
-    const displayed=scrubLocal(userMessage); if(displayed.length<2||analysisInFlight)return;
+    const displayed=scrubLocal(userMessage); if (displayed.length < 2 || analysisInFlight) return;
     analysisInFlight=true; const perfStart=performance.now(); document.body.classList.add("hb-chat-engaged");
     if(!options.fromQuickReply&&!options.suppressUserBubble)addBubble("user",displayed);
     state.history=Array.isArray(state.history)?state.history:[]; const pending=addStatus(); sendButton&&(sendButton.disabled=true);
