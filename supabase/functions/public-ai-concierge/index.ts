@@ -69,6 +69,31 @@ function detectJurisdiction(goal: string) {
   return null;
 }
 
+type FamilyRelationship = "spouse"|"husband"|"son"|"daughter"|"children"|"father"|"mother"|"parents"|"brother"|"sister"|"other_dependent";
+
+function detectRelationship(value: unknown): FamilyRelationship | null {
+  const text = normalize(value);
+  const aliases: Array<[FamilyRelationship,string[]]> = [
+    ["parents",["الوالدين","والداي","امي وابويا","أمي وأبويا","my parents","parents"]],
+    ["mother",["والدتي","امي","أمي","الام","الأم","my mother","mother","mom"]],
+    ["father",["والدي","ابي","أبي","الاب","الأب","my father","father","dad"]],
+    ["wife",["زوجتي","مراتي","wife","my wife"]],
+    ["husband",["زوجي","جوزي","husband","my husband"]],
+    ["children",["اولادي","أولادي","عيالي","ابنائي","أبنائي","children","my children","kids"]],
+    ["daughter",["بنتي","ابنتي","إبنتي","daughter","my daughter"]],
+    ["son",["ابني","إبني","son","my son"]],
+    ["brother",["اخي","أخي","brother","my brother"]],
+    ["sister",["اختي","أختي","sister","my sister"]]
+  ];
+  for (const [relationship, words] of aliases) if (has(text, words)) return relationship;
+  if (has(text,["زوجه","زوجة","spouse"])) return "spouse";
+  return null;
+}
+
+function relationshipFromTurn(latestTurn:string, goal:string, context:any): FamilyRelationship | null {
+  return detectRelationship(latestTurn) || detectRelationship(context?.relationship) || detectRelationship(goal);
+}
+
 function answerFocus(text: string) {
   if (has(text, ["كم الرسوم","الرسوم","رسوم","fee","fees","cost"])) return "fees";
   if (has(text, ["الاوراق","الأوراق","المستندات","مستندات","documents","requirements"])) return "documents";
@@ -255,7 +280,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   return score;
 }
 
-function rank(goal: string, rows: any[]) {
+function rank(goal: string, rows: any[], relationship: FamilyRelationship | null = null) {
   const normalized = normalize(goal);
   const terms = normalized.split(" ").filter((t) => t.length > 1);
   const detected = detectJurisdiction(normalized);
@@ -265,8 +290,26 @@ function rank(goal: string, rows: any[]) {
   const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
   const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
   const asksResidenceAuthorityChoice = residencyDomain && has(normalized, ["icp"]) && has(normalized, ["gdrfa"]);
+  const spouseRelationship = relationship === "spouse" || relationship === "wife" || relationship === "husband";
+  const parentRelationship = relationship === "parents" || relationship === "mother" || relationship === "father";
+  const childRelationship = relationship === "children" || relationship === "son" || relationship === "daughter";
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
+    const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title);
+    const parentService = /(والدين|والد|parent|mother|father)/.test(relationshipIdentity);
+    const familyService = /(family|اسر|عائل|زوج|spouse|wife|husband)/.test(relationshipIdentity);
+    if (spouseRelationship) {
+      if (parentService) score -= 9000;
+      if (familyService && !parentService) score += 2600;
+    }
+    if (parentRelationship) {
+      if (parentService) score += 3200;
+      if (familyService && !parentService) score -= 900;
+    }
+    if (childRelationship) {
+      if (parentService) score -= 7000;
+      if (familyService && !parentService) score += 2200;
+    }
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
     const identityText = normalize(row.binding.service_slug+" "+row.title);
     if (residencyDomain && !/(اقامه|residen|residency|visa)/.test(identityText)) score -= 2200;
@@ -420,6 +463,7 @@ function compactGrounding(result:any) {
 }
 
 const AI_INSTRUCTIONS = `You are HOSSAM BAHR AI, a specialist conversational assistant for UAE government and business transactions.
+Preserve explicit entities across turns. A location-only follow-up changes location only; it must never change a spouse into parents, a child into a spouse, or any other relationship. An explicit correction in the newest user turn overrides only the corrected entity.
 Speak naturally in the user's language and dialect (Arabic fusha, Egyptian/Gulf colloquial Arabic, or English). Be concise, practical, warm and professional.
 Use conversation context. Resolve short follow-ups such as "طيب الرسوم؟", "والأوراق؟", "ولو في أبوظبي؟" from prior turns.
 The supplied HOSSAM BAHR grounding is authoritative for specific government facts. NEVER invent fees, durations, documents, approvals, eligibility, authority or jurisdiction.
@@ -562,6 +606,8 @@ export default {
     const goal = scrubGoal(body?.goal);
     const latestTurn = scrubGoal(body?.latest_turn || body?.goal);
     const history = Array.isArray(body?.history) ? body.history.slice(-8) : [];
+    const context = body?.context && typeof body.context === "object" ? body.context : {};
+    const relationship = relationshipFromTurn(latestTurn, goal, context);
     const wantsStream = body?.stream === true;
     if (goal.length < 4 || goal.length > 800) return reply(req, { error:"invalid_goal" }, 422);
 
@@ -570,7 +616,7 @@ export default {
       const catalogStarted = performance.now();
       const catalog = await loadCatalog(ctx.supabaseAdmin);
       const catalogMs = performance.now() - catalogStarted;
-      const ranked = rank(goal, catalog);
+      const ranked = rank(goal, catalog, relationship);
       const deterministic = publicResult(goal, ranked, latestTurn);
       if (wantsStream) { const streamed=makeStreamingResponse(req,latestTurn,history,deterministic,rate,goal,requestStarted,catalogMs); if(streamed) return streamed; }
       const intelligenceStarted = performance.now();
@@ -579,7 +625,8 @@ export default {
       return reply(req, {
         ok:true,
         goal_context:{
-          jurisdiction_hint: detectJurisdiction(normalize(goal)),
+          jurisdiction_hint: detectJurisdiction(normalize(latestTurn)) || detectJurisdiction(normalize(goal)),
+          relationship,
           safe_goal: goal
         },
         result: intelligent,
