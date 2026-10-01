@@ -393,7 +393,16 @@ async function selectSemanticCandidate(semantic:SemanticState, ranked:any[]):Pro
       input:JSON.stringify({semantic,choices}),text:{format:{type:"json_schema",name:"hb_service_selection",strict:true,schema}}
     })});
     if(!res.ok)return ranked;const j=await res.json();const txt=(j.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const p=JSON.parse(txt);
-    if(p.selected_slug==="__NONE__")return [];
+    if(p.selected_slug==="__NONE__"){
+      const allChoices=ranked.map((r:any)=>({slug:r.binding.service_slug,title:r.title,authority:r.authority?.authority_key||null,jurisdiction:r.jurisdiction?.code||"AE"}));
+      const allAllowed=[...allChoices.map((x:any)=>x.slug),"__NONE__"];
+      const fullSchema={type:"object",additionalProperties:false,properties:{selected_slug:{type:"string",enum:allAllowed},confidence:{type:"string",enum:["high","medium","low"]},reason_code:{type:"string",enum:["exact","closest_verified","ambiguous","no_match"]}},required:["selected_slug","confidence","reason_code"]};
+      const fullRes=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({model:cfg.model,store:false,reasoning:{effort:"low"},max_output_tokens:120,instructions:"Recovery service lookup over the full verified catalog. Select exactly one service only when its identity matches the current semantic goal; otherwise __NONE__. Prefer exact action/object matches over generic category similarity. Never choose a stale topic.",input:JSON.stringify({semantic,choices:allChoices}),text:{format:{type:"json_schema",name:"hb_full_service_selection",strict:true,schema:fullSchema}}})});
+      if(!fullRes.ok)return [];const fj=await fullRes.json();const ftxt=(fj.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const fp=JSON.parse(ftxt);
+      if(fp.selected_slug==="__NONE__")return [];
+      const fullChosen=ranked.find((r:any)=>r.binding.service_slug===fp.selected_slug);if(!fullChosen)return [];
+      return [fullChosen,...ranked.filter((r:any)=>r.binding.service_slug!==fp.selected_slug)];
+    }
     const chosen=shortlist.find((r:any)=>r.binding.service_slug===p.selected_slug);if(!chosen)return ranked;
     return [chosen,...ranked.filter((r:any)=>r.binding.service_slug!==p.selected_slug)];
   }catch{return ranked;}
