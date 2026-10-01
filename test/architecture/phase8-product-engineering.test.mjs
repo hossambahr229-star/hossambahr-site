@@ -31,7 +31,7 @@ test('HOSSAM BAHR AI identity is readable on the dedicated product and app tile'
   assert.match(homepage, /HOSSAM BAHR AI/);
   assert.match(homepage, /مساعدك الذكي للمعاملات في الإمارات/);
   assert.match(ai, /<h1 id="hb-ai-title">HOSSAM BAHR AI<\/h1>/);
-  assert.match(ai, /كيف يمكنني مساعدتك؟/);
+  assert.match(ai, /كيف يمكنني مساعدتك اليوم؟/);
 });
 
 test('Phase 8 activity advisor preserves the specific product activity beside ecommerce', async () => {
