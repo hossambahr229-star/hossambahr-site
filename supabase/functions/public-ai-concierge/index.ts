@@ -379,6 +379,26 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
     .sort((a:any,b:any) => b.score - a.score || a.title.localeCompare(b.title,"ar"));
 }
 
+async function selectSemanticCandidate(semantic:SemanticState, ranked:any[]):Promise<any[]>{
+  if(!ranked.length) return [];
+  const shortlist=ranked.slice(0,18);
+  const cfg=providerConfig(); if(!cfg||cfg.provider!=="openai") return ranked;
+  const choices=shortlist.map((r:any)=>({slug:r.binding.service_slug,title:r.title,authority:r.authority?.authority_key||null,jurisdiction:r.jurisdiction?.code||"AE"}));
+  const allowed=[...choices.map((x:any)=>x.slug),"__NONE__"];
+  const schema={type:"object",additionalProperties:false,properties:{selected_slug:{type:"string",enum:allowed},confidence:{type:"string",enum:["high","medium","low"]},reason_code:{type:"string",enum:["exact","closest_verified","ambiguous","no_match"]}},required:["selected_slug","confidence","reason_code"]};
+  try{
+    const res=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({
+      model:cfg.model,store:false,reasoning:{effort:"low"},max_output_tokens:120,
+      instructions:"Select the ONE catalog service that matches the CURRENT semantic state. Service identity must match the user's actual action and object, not merely share an emirate or generic word. Examples: trade licence is not driving licence; Ejari is not marriage contract; WPS is not a work permit; investor residence is not family residence; liquidation is not partner amendment. If no candidate actually matches, choose __NONE__. Never choose a stale prior-topic service.",
+      input:JSON.stringify({semantic,choices}),text:{format:{type:"json_schema",name:"hb_service_selection",strict:true,schema}}
+    })});
+    if(!res.ok)return ranked;const j=await res.json();const txt=(j.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const p=JSON.parse(txt);
+    if(p.selected_slug==="__NONE__")return [];
+    const chosen=shortlist.find((r:any)=>r.binding.service_slug===p.selected_slug);if(!chosen)return ranked;
+    return [chosen,...ranked.filter((r:any)=>r.binding.service_slug!==p.selected_slug)];
+  }catch{return ranked;}
+}
+
 function followUps(goal: string, top: any) {
   const out:string[] = [];
   const normalized = normalize(goal);
@@ -652,7 +672,8 @@ export default {
       const catalogStarted = performance.now();
       const catalog = await loadCatalog(ctx.supabaseAdmin);
       const catalogMs = performance.now() - catalogStarted;
-      const ranked = rank(semanticGoal, catalog, relationship);
+      const lexicalRanked = rank(semanticGoal, catalog, relationship);
+      const ranked = await selectSemanticCandidate(semantic, lexicalRanked);
       const deterministic = publicResult(semanticGoal, ranked, latestTurn);
       if (wantsStream) { const streamed=makeStreamingResponse(req,latestTurn,history,deterministic,rate,semanticGoal,requestStarted,catalogMs,semantic); if(streamed) return streamed; }
       const intelligenceStarted = performance.now();
