@@ -219,7 +219,7 @@ async function loadCatalog(admin: any) {
 
 function specialBoost(goal: string, slug: string, jurisdictionCode: string | null) {
   let score = 0;
-  const family = has(goal, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","parent","mother","father"]);
+  const family = has(goal, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","child","children","son","daughter","parent","mother","father"]);
   const residence = has(goal, ["اقامه","residence","residency"]);
   const renew = has(goal, ["اجدد","تجديد","renew"]);
   const company = has(goal, ["شركه","رخصه","ترخيص","business","company","license","licence"]);
@@ -228,6 +228,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const transfer = has(goal, ["انقله","نقل","تحويل","transfer","move"]);
   const outside = has(goal, ["خارج الامارات","من الخارج","overseas","outside uae"]);
   const parent = has(goal, ["والد","والدتي","والدي","الوالدين","parent","mother","father"]);
+  const child = has(goal, ["ابن","ابني","ابنتي","طفل","اطفال","child","children","son","daughter"]);
   const wantsCancel = has(goal, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
   const emirate = detectJurisdiction(goal);
 
@@ -235,8 +236,11 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "تجديد-إقامة-أفراد-الأسرة-في-دبي") score += emirate === "AE-DU" ? 1450 : emirate ? -320 : 620;
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 420 : emirate ? -260 : 180;
   }
-  if (parent && residence && !wantsCancel && slug === "family-residency-uae") {
-    score += emirate === "AE-DU" ? 1250 : emirate ? -180 : 900;
+  if (child && residence && !renew && !wantsCancel && slug === "family-residency-uae") score += emirate === "AE-DU" ? 1250 : emirate ? -250 : 500;
+  if (parent && residence && !wantsCancel) {
+    if (slug === "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي") score += emirate === "AE-DU" ? 1850 : emirate ? -500 : 700;
+    if (slug === "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي") score += emirate && emirate !== "AE-DU" ? 1450 : emirate === "AE-DU" ? -700 : 620;
+    if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 280 : emirate ? -300 : 120;
   }
   if (company && open) {
     if (slug === "issue-trade-license-dubai") score += emirate === "AE-DU" ? 980 : emirate ? -180 : 360;
@@ -294,8 +298,9 @@ function followUps(goal: string, top: any) {
   const out:string[] = [];
   const normalized = normalize(goal);
   const emirate = detectJurisdiction(normalized);
-  const family = has(normalized, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","parent","mother","father"]);
+  const family = has(normalized, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","child","children","son","daughter","parent","mother","father"]);
   const residence = has(normalized, ["اقامه","residence","residency"]);
+  const parent = has(normalized, ["والد","والدتي","والدي","الوالدين","parent","mother","father"]);
   const company = has(normalized, ["شركه","رخصه","ترخيص","business","company","license","licence"]);
   const employee = has(normalized, ["موظف","عامل","employee","worker"]);
   const workAction = has(normalized, ["تصريح عمل","توظيف","عمل","work permit","hire"]);
