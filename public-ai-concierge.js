@@ -427,13 +427,13 @@
         copy.append(create("strong", "", match.authority?.name_ar || "الجهة الحكومية المختصة"));
         if (match.official_source.last_verified_at) {
           const verifiedAt = new Date(match.official_source.last_verified_at);
-          if (!Number.isNaN(verifiedAt.getTime())) copy.append(create("small", "", "آخر تحقق: " + verifiedAt.toLocaleDateString("ar-AE")));
+          if (!Number.isNaN(verifiedAt.getTime())) copy.append(create("small", "", "تم التحقق من المعلومة • آخر تحقق: " + verifiedAt.toLocaleDateString("ar-AE")));
         }
         const link = document.createElement("a");
         link.href = match.official_source.url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.textContent = match.official_source.title || "فتح المصدر الحكومي";
+        link.textContent = "فتح المصدر";
         copy.append(link);
         source.append(copy);
         body.append(source);
@@ -625,7 +625,7 @@
     textarea.rows = 1;
     textarea.maxLength = 800;
     textarea.autocomplete = "off";
-    textarea.placeholder = isAIProduct ? "اسألني عن معاملتك..." : "اسألني عن أي معاملة في الإمارات…";
+    textarea.placeholder = isAIProduct ? "اسألني عن أي معاملة في الإمارات" : "اسألني عن أي معاملة في الإمارات…";
     textarea.setAttribute("aria-label", "اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات");
     oldInput?.replaceWith(textarea);
     composer = textarea;
@@ -684,7 +684,7 @@
       prompts.classList.add("hb-chat-prompts");
       const span = prompts.querySelector("span");
       if (span) span.textContent = "أمثلة:";
-      const labels = isAIProduct ? ["تجديد إقامة","تأسيس شركة","معاملة موظف","تحليل مستند"] : [
+      const labels = isAIProduct ? ["الإقامة والتأشيرات","تأسيس شركة","معاملات العمل","تحليل مستند"] : [
         "أريد أجدد إقامة زوجتي",
         "أريد أفتح شركة في دبي",
         "كيف أنقل موظف إلى شركتي؟",
