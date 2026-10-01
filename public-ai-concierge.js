@@ -377,8 +377,11 @@
     const match = selectPresentationMatch(payload);
     const uncertain = needsClarification(payload);
     const body = create("div", "hb-chat-answer");
+    const groundedAnswer = payload?.result?.answer;
     if (uncertain) {
       body.append(create("p", "hb-chat-answer-intro", "أفهم طلبك، لكن أحتاج معلومة واحدة إضافية حتى أحدد الخدمة والجهة بدقة بدل التخمين."));
+    } else if (groundedAnswer?.text) {
+      body.append(create("p", "hb-chat-answer-intro", groundedAnswer.text));
     } else {
       body.append(create("p", "hb-chat-answer-intro", assistantNaturalIntro(payload, match)));
     }
@@ -410,8 +413,10 @@
 
       if (match.official_source?.url) {
         const trust = create("div", "hb-chat-trust-row");
-        const verified = create("span", "hb-ai-trust-badge", "✓ معلومة موثقة");
-        trust.append(verified);
+        if (payload?.result?.grounding?.source_backed) {
+          const verified = create("span", "hb-ai-trust-badge", "✓ مستند إلى مصدر رسمي");
+          trust.append(verified);
+        }
         body.append(trust);
 
         const source = create("details", "hb-chat-source hb-chat-source--disclosure");
@@ -419,6 +424,10 @@
         source.append(badge);
         const copy = create("div", "hb-chat-source-copy");
         copy.append(create("strong", "", match.authority?.name_ar || "الجهة الحكومية المختصة"));
+        if (match.official_source.last_verified_at) {
+          const verifiedAt = new Date(match.official_source.last_verified_at);
+          if (!Number.isNaN(verifiedAt.getTime())) copy.append(create("small", "", "آخر تحقق: " + verifiedAt.toLocaleDateString("ar-AE")));
+        }
         const link = document.createElement("a");
         link.href = match.official_source.url;
         link.target = "_blank";
@@ -500,7 +509,7 @@
       const response = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ goal: resolverQuery }),
+        body: JSON.stringify({ goal: resolverQuery, latest_turn: displayed, context: { service_slug: state.service_slug, jurisdiction_code: state.jurisdiction_code, authority_key: state.authority_key } }),
         credentials: "omit"
       });
       let payload = await response.json().catch(() => ({}));
@@ -517,7 +526,7 @@
         const refined = await fetch(ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ goal: query + " — الخدمة الأقرب المقصودة: " + hint.a }),
+          body: JSON.stringify({ goal: query + " — الخدمة الأقرب المقصودة: " + hint.a, latest_turn: displayed, context: { service_slug: state.service_slug, jurisdiction_code: state.jurisdiction_code, authority_key: state.authority_key } }),
           credentials: "omit"
         });
         const refinedPayload = await refined.json().catch(() => ({}));
