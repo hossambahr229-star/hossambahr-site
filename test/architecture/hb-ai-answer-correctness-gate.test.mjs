@@ -66,3 +66,9 @@ test("golden question catalog covers required UAE transaction families", () => {
   assert.equal(golden.length, 13);
   for (const q of golden) assert.ok(q.length > 8);
 });
+
+test("grounded resolver is the single service-decision path", () => {
+  assert.doesNotMatch(ui, /الخدمة الأقرب المقصودة:/);
+  assert.doesNotMatch(ui, /const initialHint = catalogIntentHint\(query\)/);
+  assert.doesNotMatch(ui, /const refined = await fetch/);
+});
