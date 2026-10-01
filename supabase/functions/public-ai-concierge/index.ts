@@ -246,6 +246,10 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "issue-trade-license-dubai") score += emirate === "AE-DU" ? 980 : emirate ? -180 : 360;
     if (emirate && jurisdictionCode === emirate && /license-issuance|license-issue|economic-license-issuance|commercial-license-issuance/.test(slug)) score += 620;
   }
+  if (employee && wantsCancel) {
+    if (slug === "cancel-work-permit-uae") score += 1550;
+    if (slug === "transfer-work-permit-uae") score -= 1200;
+  }
   if (employee && transfer && slug === "transfer-work-permit-uae") score += 1100;
   if (employee && outside && slug === "new-work-permit-overseas-uae") score += 900;
   return score;
