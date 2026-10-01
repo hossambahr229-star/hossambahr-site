@@ -946,7 +946,8 @@
       const serviceName = main.querySelector("h1")?.textContent?.trim() || "هذه المعاملة";
       const commercial = document.createElement("a");
       commercial.className = "execute-with-us-cta";
-      const commercialText = "مرحباً، أريد طلب تنفيذ معاملة: " + serviceName + "\\nرابط الدليل: " + location.href;\n      commercial.href = "https://wa.me/971503780460?text=" + encodeURIComponent(commercialText);
+      const commercialText = "مرحباً، أريد طلب تنفيذ معاملة: " + serviceName + "\\nرابط الدليل: " + location.href;
+      commercial.href = "https://wa.me/971503780460?text=" + encodeURIComponent(commercialText);
       commercial.target = "_blank";
       commercial.rel = "noopener noreferrer";
       commercial.dataset.commercialCta = "verified";
