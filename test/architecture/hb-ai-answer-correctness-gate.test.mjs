@@ -132,3 +132,8 @@ test("non-Dubai residence authority choice prefers ICP over GDRFA or local unrel
   assert.match(edge, /authority_key === "icp".*6000/s);
   assert.match(edge, /else score -= 6000/);
 });
+
+
+test("explicit non-Dubai ICP vs GDRFA query excludes unrelated authorities", () => {
+  assert.match(edge, /asksResidenceAuthorityChoice.*authority\?\.authority_key === "icp"/s);
+});
