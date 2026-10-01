@@ -503,9 +503,7 @@
     saveState();
 
     try {
-      await ensureIntentCatalog();
-      const initialHint = catalogIntentHint(query);
-      const resolverQuery = initialHint?.a ? query + " — الخدمة الأقرب المقصودة: " + initialHint.a : query;
+      const resolverQuery = query;
       const response = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -519,19 +517,6 @@
         return;
       }
       if (!response.ok || !payload?.ok) throw new Error(payload?.error || "analysis_failed");
-
-      const hint = catalogIntentHint(query);
-      const currentSlug = payload?.result?.matches?.[0]?.service_slug || "";
-      if (hint?.s && hint.s !== currentSlug) {
-        const refined = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ goal: query + " — الخدمة الأقرب المقصودة: " + hint.a, latest_turn: displayed, context: { service_slug: state.service_slug, jurisdiction_code: state.jurisdiction_code, authority_key: state.authority_key } }),
-          credentials: "omit"
-        });
-        const refinedPayload = await refined.json().catch(() => ({}));
-        if (refined.ok && refinedPayload?.ok) payload = refinedPayload;
-      }
 
       removePending(pending);
       const match = selectPresentationMatch(payload);
