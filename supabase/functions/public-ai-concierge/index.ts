@@ -423,7 +423,8 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
   const confidence = sourceBacked && !questions.length && !ambiguous && top.score >= 700 ? "high" : sourceBacked && top.score >= 220 ? "medium" : "low";
   const answer = groundedAnswer(goal, top, focus);
 
-  const matches = candidates.map((row:any) => {
+  // Presentation receives only the authoritative current semantic match. Alternatives are used internally for ambiguity/confidence only; exposing stale-topic alternatives lets clients resurrect an obsolete service.
+  const matches = candidates.slice(0,1).map((row:any) => {
     const requirements = row.requirements.slice(0,8);
     const documents = requirements.filter(docLike).slice(0,8);
     const processSteps = row.steps
