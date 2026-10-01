@@ -436,6 +436,8 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
     return {
       understood_intent: "لم أستطع تحديد خدمة موثقة بدقة من وصفك الحالي.",
       confidence: "low",
+      answer: { text:"لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.", focus:"clarification", fact_status:"NEEDS_CLARIFICATION", grounded:false, evidence:{} },
+      grounding: { status:"NEEDS_CLARIFICATION", source_backed:false, no_invention:true, ambiguity_detected:true },
       matches: [],
       missing_information: ["اكتب نوع المعاملة والجهة أو الإمارة إن كنت تعرفها."],
       follow_up_questions: ["ما النتيجة التي تريد الوصول إليها تحديدًا؟"],
