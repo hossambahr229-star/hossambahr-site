@@ -335,7 +335,7 @@
     actions.innerHTML = `<div class="section-heading compact-heading"><div><span class="eyebrow">إجراءات متاحة الآن</span><h2>ماذا تريد أن تفعل؟</h2></div></div>
       <div class="command-action-grid">
         <a href="/services/"><b>ابدأ معاملة</b><span>ابحث عن الخدمة والمتطلبات والمسار الصحيح.</span></a>
-        <a href="https://wa.me/971503780460?text=${encodeURIComponent("مرحباً، أريد مساعدة في تحديد وتجهيز معاملتي")}" target="_blank" rel="noopener noreferrer" data-commercial-cta="verified"><b>اطلب مساعدة حسام بحر</b><span>حدد المعاملة والنواقص قبل إرسال أي مستند حساس.</span></a>
+        <a href="https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%AA%D8%AD%D8%AF%D9%8A%D8%AF%20%D9%88%D8%AA%D8%AC%D9%87%D9%8A%D8%B2%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%AA%D9%8A" target="_blank" rel="noopener noreferrer" data-commercial-cta="verified"><b>اطلب مساعدة حسام بحر</b><span>حدد المعاملة والنواقص قبل إرسال أي مستند حساس.</span></a>
         <a href="/dubai-business-activities.html"><b>ابحث عن نشاط ورمزه</b><span>ابحث في 2,610 نشاطًا بالاسم أو الرمز.</span></a>
         <a href="/services/#directory-search"><b>افتح المسار الحكومي</b><span>اختر الخدمة ثم انتقل إلى الجهة الرسمية الموثقة.</span></a>
       </div>`;
