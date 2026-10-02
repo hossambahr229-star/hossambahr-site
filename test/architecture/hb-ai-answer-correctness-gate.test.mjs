@@ -5,6 +5,7 @@ import { readFile } from "node:fs/promises";
 const edge = await readFile(new URL("../../supabase/functions/public-ai-concierge/index.ts", import.meta.url), "utf8");
 const ui = await readFile(new URL("../../public-ai-concierge.js", import.meta.url), "utf8");
 const css = await readFile(new URL("../../global-os.css", import.meta.url), "utf8");
+const documentAi = await readFile(new URL("../../supabase/functions/document-ai/index.ts", import.meta.url), "utf8");
 
 const golden = [
   "أريد أجدد إقامة زوجتي في دبي",
@@ -84,4 +85,13 @@ test("public conversational budget supports multi-turn QA without disabling rate
   assert.match(edge, /p_limit: 120/);
   assert.match(edge, /req\.headers\.get\("x-hb-qa-run"\)/);
   assert.match(edge, /rate_limited/);
+});
+
+
+test("document intelligence requires a real authenticated user and uses valid multimodal inputs", () => {
+  assert.match(documentAi, /auth\.getUser\(bearer\)/);
+  assert.match(documentAi, /type:"input_file",filename,file_data:data/);
+  assert.doesNotMatch(documentAi, /type:"input_file",filename,file_data:data,detail:/);
+  assert.match(documentAi, /type:"input_image",image_url:data,detail:"high"/);
+  assert.match(documentAi, /provider_store:false|store:false/);
 });
