@@ -630,7 +630,13 @@ function streamEvent(controller:ReadableStreamDefaultController<Uint8Array>, eve
 
 async function logProviderHttpError(res:Response, attempt:number) {
   let body:any=null; try{body=await res.clone().json()}catch{}
-  console.warn("hb-ai-provider-http-error",{provider:"openai",status:res.status,code:body?.error?.code||null,type:body?.error?.type||null,retry_after:res.headers.get("retry-after")||null,attempt});
+  const info={provider:"openai",status:res.status,code:body?.error?.code||null,type:body?.error?.type||null,retry_after:res.headers.get("retry-after")||null,attempt};
+  console.warn("hb-ai-provider-http-error",info);
+  return info;
+}
+function retryableProviderHttpError(status:number, code:string|null) {
+  if(["credit_balance_exhausted","organization_spend_limit_exceeded","project_spend_limit_exceeded","organization_usage_limit_exceeded"].includes(String(code||""))) return false;
+  return [408,429,500,502,503,504].includes(status);
 }
 
 function providerRetryDelayMs(res:Response, attempt:number) {
@@ -653,8 +659,8 @@ async function openAIStream(cfg:any,input:any[],signal:AbortSignal) {
     });
     if(res.ok) return {res,retry_count:attempt};
     lastStatus=res.status;
-    await logProviderHttpError(res,attempt);
-    if(![408,429,500,502,503,504].includes(res.status) || attempt===2) break;
+    const providerError=await logProviderHttpError(res,attempt);
+    if(!retryableProviderHttpError(res.status,providerError.code) || attempt===2) break;
     const delay=providerRetryDelayMs(res,attempt);
     if(delay===null) break;
     await new Promise(r=>setTimeout(r,delay));
@@ -720,8 +726,8 @@ async function callConversationalModel(latestTurn:string, history:any[], determi
       for(let attempt=0;attempt<3;attempt++){
         res=await fetch("https://api.openai.com/v1/responses",{method:"POST",signal,headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({model:cfg.model,instructions:AI_INSTRUCTIONS,input,max_output_tokens:700,reasoning:{effort:"low"},store:false})});
         if(res.ok) break;
-        await logProviderHttpError(res,attempt);
-        if(![408,429,500,502,503,504].includes(res.status)||attempt===2) throw new Error("openai_"+res.status);
+        const providerError=await logProviderHttpError(res,attempt);
+        if(!retryableProviderHttpError(res.status,providerError.code)||attempt===2) throw new Error("openai_"+res.status);
         const delay=providerRetryDelayMs(res,attempt);
         if(delay===null) throw new Error("openai_"+res.status);
         await new Promise(r=>setTimeout(r,delay));
