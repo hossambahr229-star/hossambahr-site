@@ -155,10 +155,14 @@ function groundedAnswer(goal: string, row: any, focus: string) {
   const authority = row.authority?.name_ar || null;
   const jurisdiction = row.jurisdiction?.name_ar || null;
   const verified = Boolean(source?.source_url);
+  const reviewPending = Boolean(source?.review_required);
 
   let text = "";
   let factStatus = "VERIFIED_FACT";
-  if (focus === "fees") {
+  if (reviewPending && focus !== "overview" && focus !== "authority" && focus !== "start") {
+    text = "المصدر الرسمي لهذه الخدمة متاح، لكن تغيّر محتواه آليًا وهو بانتظار مراجعة التفاصيل. أستطيع تأكيد مسار الخدمة والجهة، لكن لن أعرض رسومًا أو مدة أو مستندات أو شروطًا من النسخة السابقة حتى تكتمل المراجعة.";
+    factStatus = "MISSING_INFORMATION";
+  } else if (focus === "fees") {
     if (fees?.value && fees.source_refs.length) text = fees.value;
     else {
       text = "لا توجد في المعرفة الموثقة الحالية قيمة رسوم محددة يمكنني تأكيدها لهذه الحالة. لن أضع رقمًا تقديريًا؛ راجع المصدر الرسمي أو ابدأ المعاملة للتحقق من الرسوم الحالية.";
@@ -192,7 +196,7 @@ function groundedAnswer(goal: string, row: any, focus: string) {
     factStatus = "DERIVED_GUIDANCE";
   } else {
     text = "الخدمة الموثقة الأقرب لطلبك هي «" + row.title + "»" + (authority ? " لدى " + authority : "") + (jurisdiction ? " ضمن " + jurisdiction : "") + ".";
-    if (conditions?.value) text += " " + conditions.value;
+    if (conditions?.value && !reviewPending) text += " " + conditions.value;
   }
 
   return {
@@ -208,7 +212,8 @@ function groundedAnswer(goal: string, row: any, focus: string) {
       source_url: source?.source_url || null,
       last_verified_at: source?.last_verified_at || null,
       supporting_rule: focus === "fees" ? fees : focus === "duration" ? duration : focus === "overview" ? conditions : null,
-      special_case: special?.value || null
+      special_case: reviewPending ? null : (special?.value || null),
+      review_pending: reviewPending
     }
   };
 }
@@ -237,7 +242,7 @@ async function loadCatalog(admin: any) {
     admin.from("hb_service_bindings").select("service_slug,authority_key,policy_key,workflow_key,metadata,jurisdiction_id,authority_id").eq("active", true),
     admin.from("hb_policy_versions").select("policy_key,rules,source_ids,version,effective_from").eq("status", "active"),
     admin.from("hb_workflow_templates").select("workflow_key,definition,version").eq("status", "active"),
-    admin.from("hb_policy_sources").select("id,title,source_url,last_verified_at,review_required,active,authority_key").eq("active", true).eq("review_required", false),
+    admin.from("hb_policy_sources").select("id,title,source_url,last_verified_at,review_required,active,authority_key,last_http_status,monitor_failures,metadata").eq("active", true),
     admin.from("hb_authorities").select("id,authority_key,name_ar,name_en,official_base_url,portal_url").eq("active", true),
     admin.from("hb_jurisdictions").select("id,code,name_ar,name_en").eq("active", true)
   ]);
@@ -256,7 +261,14 @@ async function loadCatalog(admin: any) {
     const workflow:any = workflows.get(binding.workflow_key) || null;
     const authority:any = authoritiesById.get(binding.authority_id) || null;
     const jurisdiction:any = jurisdictions.get(binding.jurisdiction_id) || null;
-    const safeSources = (policy?.source_ids || []).map((id:string) => sources.get(id)).filter(Boolean);
+    const safeSources = (policy?.source_ids || []).map((id:string) => sources.get(id)).filter((source:any) => {
+      if (!source) return false;
+      if (!source.review_required) return true;
+      const recentlyVerified = source.last_verified_at && Date.now() - Date.parse(source.last_verified_at) <= 72 * 60 * 60 * 1000;
+      const healthy = Number(source.last_http_status) >= 200 && Number(source.last_http_status) < 400 && Number(source.monitor_failures || 0) === 0;
+      const approvedIdentity = source.metadata?.review_result === "approved_for_user_navigation" || source.metadata?.verification_state === "official_source_reverified";
+      return Boolean(recentlyVerified && healthy && approvedIdentity);
+    });
     const def = workflow?.definition || {};
     const rules = Array.isArray(policy?.rules) ? policy.rules : [];
     const steps = Array.isArray(def.steps) ? def.steps : [];
