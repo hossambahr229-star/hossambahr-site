@@ -12,6 +12,7 @@ const firstText=first.result?.answer?.text||"";
 assert.ok(firstText.length>10,"spouse final answer missing");
 assert.doesNotMatch(firstText,spouseBad,"spouse final answer drifted to parents");
 assert.equal(first.goal_context?.relationship,"wife");
+assert.equal(first.result?.engine?.external_model_used,true,"representative semantic journey must use the real external model");
 assert.equal(first.result?.matches?.[0]?.jurisdiction?.code,"AE-DU");
 const second=await ask("أريد أن أكفل زوجتي على إقامتي — دبي — لا، قصدي والدتي","لا، قصدي والدتي",[
  {role:"user",content:"أريد أن أكفل زوجتي على إقامتي"},{role:"assistant",content:firstText},{role:"user",content:"دبي"}
