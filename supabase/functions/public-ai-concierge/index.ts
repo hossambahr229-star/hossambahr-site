@@ -1,4 +1,4 @@
-import { detectJurisdiction, detectRelationship, mergeSemanticContext, relationshipCompatibility, relationshipGroup, type FamilyRelationship, type SemanticEntity } from "../_shared/semantic-context.ts";
+import { detectJurisdiction, detectRelationship, mergeSemanticContext, relationshipCompatibility, relationshipGroup, type FamilyRelationship, type SemanticEntity } from "./semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 
 const ALLOWED_ORIGINS = new Set([
