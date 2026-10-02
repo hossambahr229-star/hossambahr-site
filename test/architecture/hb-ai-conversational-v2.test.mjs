@@ -105,3 +105,12 @@ test("credit-blocked mode bypasses all paid provider paths without pretending Re
   assert.match(edge,/cfg\.provider!=="openai" \|\| providerCreditBlocked\(\)/);
   assert.match(edge,/if\(!cfg \|\| providerCreditBlocked\(\)\) return null/);
 });
+
+
+test("deterministic family routing recognizes child vocabulary and strongly separates parent vs child services",()=>{
+  assert.match(edge,/"ابني","ابنتي","بنتي","اولادي","ابنائي","عيالي"/);
+  assert.match(edge,/if \(parentService\) score \+= 7200/);
+  assert.match(edge,/jurisdictionCode === "AE-DU" && parentService\) score \+= 5200/);
+  assert.match(edge,/if \(parentService\) score -= 9000/);
+  assert.match(edge,/slug === "family-residency-uae"\) score \+= 6500/);
+});
