@@ -77,3 +77,31 @@ test("stream fallback preserves semantic metadata from the initial meta event",(
   assert.match(source,/goal_context:payload\?\.goal_context\|\|\{safe_goal:query\}/);
   assert.match(source,/rate_limit:payload\?\.rate_limit/);
 });
+
+
+test("document AI fails closed and enforces authenticated bounded document inputs", async()=>{
+  const fs=await import("node:fs/promises");
+  const doc=await fs.readFile("supabase/functions/document-ai/index.ts","utf8");
+  assert.match(doc,/authentication_required/);
+  assert.match(doc,/origin_not_allowed/);
+  assert.match(doc,/MAX_BYTES=3\*1024\*1024/);
+  assert.match(doc,/unsupported_file_type/);
+  assert.match(doc,/Analyze only what is actually visible\/present/);
+  assert.match(doc,/Do not infer missing passport\/ID\/license fields/);
+  assert.match(doc,/store:false/);
+  assert.match(doc,/provider_store:false/);
+  assert.doesNotMatch(doc,/reply\(req,\{[^\n]*(?:serviceKey|OPENAI_API_KEY|SUPABASE_SERVICE_ROLE_KEY)/);
+});
+
+
+test("jurisdiction resolver has an explicit scalar return contract",()=>{
+  assert.match(edge,/function detectJurisdiction\(goal: string\): string \| null/);
+  assert.match(edge,/const map: Array<\[string, string\[\]\]>/);
+});
+
+
+test("credit-blocked mode bypasses all paid provider paths without pretending Real LLM",()=>{
+  assert.match(edge,/HB_OPENAI_CREDIT_BLOCKED/);
+  assert.match(edge,/cfg\.provider!=="openai" \|\| providerCreditBlocked\(\)/);
+  assert.match(edge,/if\(!cfg \|\| providerCreditBlocked\(\)\) return null/);
+});
