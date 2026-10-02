@@ -3,9 +3,6 @@ name: Production browser verification
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - 'supabase/**'
-      - 'diagnostics/**'
   workflow_dispatch:
 
 permissions:
