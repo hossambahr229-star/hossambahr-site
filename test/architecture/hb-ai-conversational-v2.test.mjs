@@ -55,3 +55,10 @@ test("direct emirate licence requests are treated as issuance intent",()=>{
   assert.match(edge,/company && \(open \|\| directLicenseRequest\)/);
   assert.match(edge,/jurisdictionCode === emirate/);
 });
+
+
+test("provider retries honor Retry-After and are bounded",()=>{
+  assert.match(edge,/function providerRetryDelayMs/);
+  assert.match(edge,/headers\.get\("retry-after"\)/);
+  assert.match(edge,/ms<=5000 \? ms : null/);
+});
