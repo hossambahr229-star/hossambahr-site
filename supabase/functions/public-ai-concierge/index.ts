@@ -502,6 +502,10 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
   if (ambiguous && questions.length === 0) questions.push("وجدت أكثر من خدمة محتملة. ما النتيجة التي تريد تنفيذها تحديدًا؟");
   const confidence = sourceBacked && !questions.length && !ambiguous && top.score >= 700 ? "high" : sourceBacked && top.score >= 220 ? "medium" : "low";
   const answer = groundedAnswer(goal, top, focus);
+  const activeRelationship = detectRelationship(latestTurn) || detectRelationship(goal);
+  const relationshipLabel:Partial<Record<FamilyRelationship,string>> = { wife:"زوجتك", husband:"زوجك", mother:"والدتك", father:"والدك", parents:"والديك", son:"ابنك", daughter:"ابنتك", children:"أولادك", brother:"أخوك", sister:"أختك" };
+  const activeLabel = activeRelationship ? relationshipLabel[activeRelationship] : null;
+  if (activeLabel && answer.text && focus === "overview") answer.text = "فهمت: المقصود " + activeLabel + ". " + answer.text;
 
   // Presentation receives only the authoritative current semantic match. Alternatives are used internally for ambiguity/confidence only; exposing stale-topic alternatives lets clients resurrect an obsolete service.
   const matches = candidates.slice(0,1).map((row:any) => {
