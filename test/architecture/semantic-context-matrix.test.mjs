@@ -1,5 +1,5 @@
 import test from "node:test";import assert from "node:assert/strict";import fs from "node:fs";
-import {detectRelationship,mergeSemanticContext,semanticInvariants,relationshipCompatibility} from "../../supabase/functions/_shared/semantic-context.ts";
+import {detectRelationship,mergeSemanticContext,semanticInvariants,relationshipCompatibility} from "../../supabase/functions/public-ai-concierge/semantic-context.ts";
 const catalog=JSON.parse(fs.readFileSync(new URL("../../service-matrix.json",import.meta.url),"utf8")).services;
 const variants=new Map([
  ["wife",["زوجتي","مراتي","my wife"]],["husband",["زوجي","جوزي","my husband"]],["son",["ابني","ولدي","my son"]],["daughter",["بنتي","ابنتي","my daughter"]],["children",["أولادي","عيالي","my kids"]],["mother",["والدتي","أمي","ماما","my mother"]],["father",["والدي","أبي","ابويا","my father"]],["brother",["أخي","اخويا","my brother"]],["sister",["أختي","my sister"]]
