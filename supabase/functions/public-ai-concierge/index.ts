@@ -1,3 +1,4 @@
+import { detectJurisdiction, detectRelationship, mergeSemanticContext, relationshipCompatibility, relationshipGroup, type FamilyRelationship, type SemanticEntity } from "../_shared/semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 
 const ALLOWED_ORIGINS = new Set([
@@ -60,64 +61,28 @@ function hasPhrase(text: string, words: string[]) {
   return words.some((word) => padded.includes(" " + normalize(word) + " "));
 }
 
-function detectJurisdiction(goal: string): string | null {
-  const map: Array<[string, string[]]> = [
-    ["AE-DU", ["دبي","dubai"]],
-    ["AE-AZ", ["ابوظبي","ابو ظبي","abu dhabi","abudhabi"]],
-    ["AE-SH", ["الشارقه","الشارقة","sharjah"]],
-    ["AE-AJ", ["عجمان","ajman"]],
-    ["AE-RK", ["راس الخيمه","رأس الخيمة","ras al khaimah","rak"]],
-    ["AE-UQ", ["ام القيوين","أم القيوين","umm al quwain","uaq"]],
-    ["AE-FU", ["الفجيره","الفجيرة","fujairah"]]
-  ];
-  for (const [code, aliases] of map) if (has(goal, aliases)) return code;
-  return null;
-}
-
-type FamilyRelationship = "spouse"|"wife"|"husband"|"son"|"daughter"|"children"|"father"|"mother"|"parents"|"brother"|"sister"|"other_dependent";
 type SemanticState = {
   turn_type:"new_topic"|"follow_up"|"correction"|"clarification"|"jurisdiction_switch"|"service_switch"|"entity_switch";
   resolved_query:string; topic:string|null; intent:string|null; service_family:string|null;
-  jurisdiction:string|null; relationship:FamilyRelationship|null; business_activity:string|null; confidence:"high"|"medium"|"low";
+  jurisdiction:string|null; relationship:FamilyRelationship|null; relationship_group:ReturnType<typeof relationshipGroup>;
+  entity:SemanticEntity; service_slug:string|null; authority_key:string|null; business_activity:string|null; confidence:"high"|"medium"|"low";
 };
-
-function detectRelationship(value: unknown): FamilyRelationship | null {
-  const text = normalize(value);
-  const aliases: Array<[FamilyRelationship,string[]]> = [
-    ["parents",["الوالدين","والداي","امي وابويا","أمي وأبويا","my parents","parents"]],
-    ["mother",["والدتي","امي","أمي","الام","الأم","my mother","mother","mom"]],
-    ["father",["والدي","ابي","أبي","الاب","الأب","my father","father","dad"]],
-    ["wife",["زوجتي","مراتي","wife","my wife"]],
-    ["husband",["زوجي","جوزي","husband","my husband"]],
-    ["children",["اولادي","أولادي","عيالي","ابنائي","أبنائي","children","my children","kids"]],
-    ["daughter",["بنتي","ابنتي","إبنتي","daughter","my daughter"]],
-    ["son",["ابني","إبني","son","my son"]],
-    ["brother",["اخي","أخي","brother","my brother"]],
-    ["sister",["اختي","أختي","sister","my sister"]]
-  ];
-  for (const [relationship, words] of aliases) if (hasPhrase(text, words)) return relationship;
-  if (hasPhrase(text,["زوجه","زوجة","spouse"])) return "spouse";
-  return null;
-}
-
-function relationshipFromTurn(latestTurn:string, goal:string, context:any): FamilyRelationship | null {
-  return detectRelationship(latestTurn) || detectRelationship(context?.relationship) || detectRelationship(goal);
-}
 
 async function resolveSemanticState(latestTurn:string, history:any[], context:any, fallbackGoal:string):Promise<SemanticState>{
   const latestNorm=normalize(latestTurn);
   const explicitNonFamilyTopic=has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"]) && !detectRelationship(latestTurn);
-  const fallbackRelationship=explicitNonFamilyTopic?null:relationshipFromTurn(latestTurn,fallbackGoal,context);
-  const fallback:SemanticState={turn_type:explicitNonFamilyTopic?"new_topic":"follow_up",resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:null,service_family:null,jurisdiction:detectJurisdiction(latestNorm)||(explicitNonFamilyTopic?null:context?.jurisdiction_code)||detectJurisdiction(normalize(fallbackGoal)),relationship:fallbackRelationship,business_activity:null,confidence:"low"};
+  const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null};
+  const merged=mergeSemanticContext(latestTurn,priorSemantic,fallbackGoal,{newTopic:explicitNonFamilyTopic});
+  const fallback:SemanticState={turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,business_activity:null,confidence:"low"};
   const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return fallback;
   const recent=safeHistoryForModel(history);
   const input=[...recent,{role:"user",content:latestTurn}];
   const schema={type:"object",additionalProperties:false,properties:{
     turn_type:{type:"string",enum:["new_topic","follow_up","correction","clarification","jurisdiction_switch","service_switch","entity_switch"]},
     resolved_query:{type:"string"},topic:{type:["string","null"]},intent:{type:["string","null"]},service_family:{type:["string","null"]},
-    jurisdiction:{type:["string","null"]},relationship:{type:["string","null"],enum:["spouse","wife","husband","son","daughter","children","father","mother","parents","brother","sister","other_dependent",null]},
-    business_activity:{type:["string","null"]},confidence:{type:"string",enum:["high","medium","low"]}
-  },required:["turn_type","resolved_query","topic","intent","service_family","jurisdiction","relationship","business_activity","confidence"]};
+    jurisdiction:{type:["string","null"]},relationship:{type:["string","null"],enum:["spouse","wife","husband","son","daughter","children","father","mother","parents","brother","sister","siblings","other_dependent",null]},
+    relationship_group:{type:["string","null"],enum:["spouse","child","parent","sibling","dependent",null]},entity:{type:"object",additionalProperties:false,properties:{kind:{type:"string",enum:["person","company","property","employment","document","service_subject","unknown"]},relationship:{type:["string","null"]},relationship_group:{type:["string","null"]}},required:["kind","relationship","relationship_group"]},service_slug:{type:["string","null"]},authority_key:{type:["string","null"]},business_activity:{type:["string","null"]},confidence:{type:"string",enum:["high","medium","low"]}
+  },required:["turn_type","resolved_query","topic","intent","service_family","jurisdiction","relationship","relationship_group","entity","service_slug","authority_key","business_activity","confidence"]};
   try{
     const res=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({
       model:cfg.model,store:false,reasoning:{effort:"low"},max_output_tokens:320,
@@ -128,8 +93,15 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
     const txt=(json.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");
     const parsed=JSON.parse(txt); if(!parsed?.resolved_query) return fallback;
     const topicReset=parsed.turn_type==="new_topic"||parsed.turn_type==="service_switch";
-    if(!parsed.relationship && !topicReset) parsed.relationship=fallbackRelationship;
-    if(!parsed.jurisdiction) parsed.jurisdiction=detectJurisdiction(normalize(latestTurn))||(!topicReset?context?.jurisdiction_code:null)||null;
+    const explicitRelationship=detectRelationship(latestTurn);
+    if(explicitRelationship) parsed.relationship=explicitRelationship;
+    else if(!topicReset) parsed.relationship=fallback.relationship;
+    else parsed.relationship=null;
+    parsed.relationship_group=relationshipGroup(parsed.relationship);
+    parsed.entity=parsed.relationship?{kind:"person",relationship:parsed.relationship,relationship_group:parsed.relationship_group}:(topicReset?{kind:"unknown",relationship:null,relationship_group:null}:fallback.entity);
+    if(!parsed.jurisdiction) parsed.jurisdiction=detectJurisdiction(latestTurn)||(!topicReset?fallback.jurisdiction:null);
+    if(!parsed.service_slug&&!topicReset) parsed.service_slug=fallback.service_slug;
+    if(!parsed.authority_key&&!topicReset) parsed.authority_key=fallback.authority_key;
     return parsed as SemanticState;
   }catch{return fallback;}
 }
@@ -392,23 +364,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const childRelationship = relationship === "children" || relationship === "son" || relationship === "daughter";
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
-    const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title);
-    const parentService = /(والدين|والد|parent|mother|father)/.test(relationshipIdentity);
-    const familyService = /(family|اسر|عائل|زوج|spouse|wife|husband)/.test(relationshipIdentity);
-    if (spouseRelationship) {
-      if (parentService) score -= 9000;
-      if (familyService && !parentService) score += 2600;
-    }
-    if (parentRelationship) {
-      if (parentService) score += 7200;
-      if (detected === "AE-DU" && row.jurisdiction?.code === "AE-DU" && parentService) score += 5200;
-      if (familyService && !parentService) score -= 1800;
-    }
-    if (childRelationship) {
-      if (parentService) score -= 9000;
-      if (familyService && !parentService) score += 5200;
-      if (detected === "AE-DU" && row.jurisdiction?.code === "AE-DU" && row.binding.service_slug === "family-residency-uae") score += 6500;
-    }
+    const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));
+    score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
     const identityText = normalize(row.binding.service_slug+" "+row.title);
     if (residencyDomain && !/(اقامه|residen|residency|visa)/.test(identityText)) score -= 2200;
@@ -795,6 +752,10 @@ export default {
         goal_context:{
           jurisdiction_hint: semantic.jurisdiction || detectJurisdiction(normalize(latestTurn)) || detectJurisdiction(normalize(semanticGoal)),
           relationship,
+          relationship_group: semantic.relationship_group,
+          entity: semantic.entity,
+          service_slug: semantic.service_slug,
+          authority_key: semantic.authority_key,
           turn_type: semantic.turn_type,
           topic: semantic.topic,
           intent: semantic.intent,

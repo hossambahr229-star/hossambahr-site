@@ -6,6 +6,7 @@ const source = await readFile(new URL("../../public-ai-concierge.js", import.met
 const edge = await readFile(new URL("../../supabase/functions/public-ai-concierge/index.ts", import.meta.url), "utf8");
 const css = await readFile(new URL("../../global-os.css", import.meta.url), "utf8");
 const stabilizer = await readFile(new URL("../../src/publication/stabilize-homepage-runtime.mjs", import.meta.url), "utf8");
+const semanticLayer = await readFile(new URL("../../supabase/functions/_shared/semantic-context.ts", import.meta.url), "utf8");
 
 test("HB AI attachment analysis is guarded against duplicate re-entry", () => {
   assert.match(source, /attachmentAnalysisInFlight/);
@@ -45,8 +46,9 @@ test("HB AI public consultation retains secure auth handoff state", () => {
 
 
 test("relationship detection uses phrase boundaries so الإمارات never becomes الأم", () => {
-  assert.match(edge, /function hasPhrase/);
-  assert.match(edge, /if \(hasPhrase\(text, words\)\) return relationship/);
+  assert.match(semanticLayer, /export function detectRelationship/);
+  assert.match(semanticLayer, /tokens\.some/);
+  assert.match(semanticLayer, /t\.includes\(" "\+n\+" "\)\|\|clitic/);
 });
 
 
@@ -95,8 +97,8 @@ test("document AI fails closed and enforces authenticated bounded document input
 
 
 test("jurisdiction resolver has an explicit scalar return contract",()=>{
-  assert.match(edge,/function detectJurisdiction\(goal: string\): string \| null/);
-  assert.match(edge,/const map: Array<\[string, string\[\]\]>/);
+  assert.match(semanticLayer,/export function detectJurisdiction/);
+  assert.match(semanticLayer,/\["AE-DU"/);
 });
 
 
@@ -107,10 +109,9 @@ test("credit-blocked mode bypasses all paid provider paths without pretending Re
 });
 
 
-test("deterministic family routing recognizes child vocabulary and strongly separates parent vs child services",()=>{
-  assert.match(edge,/"ابني","ابنتي","بنتي","اولادي","ابنائي","عيالي"/);
-  assert.match(edge,/if \(parentService\) score \+= 7200/);
-  assert.match(edge,/row\.jurisdiction\?\.code === "AE-DU" && parentService\) score \+= 5200/);
-  assert.match(edge,/if \(parentService\) score -= 9000/);
-  assert.match(edge,/row\.binding\.service_slug === "family-residency-uae"\) score \+= 6500/);
+test("deterministic family routing consumes canonical relationship compatibility instead of prompt-specific weights",()=>{
+  assert.match(edge,/relationshipCompatibility\(relationshipIdentity, relationship\)/);
+  assert.match(semanticLayer,/export function relationshipCompatibility/);
+  assert.match(semanticLayer,/if\(g==="parent"\)return parent\?4:family\?1:0/);
+  assert.doesNotMatch(edge,/score \+= 7200|score \-= 9000|family-residency-uae"\) score \+= 6500/);
 });
