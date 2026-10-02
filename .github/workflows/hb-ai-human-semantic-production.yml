@@ -5,6 +5,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: hb-ai-live-provider-verification
+  cancel-in-progress: false
 jobs:
   semantic:
     runs-on: ubuntu-latest
