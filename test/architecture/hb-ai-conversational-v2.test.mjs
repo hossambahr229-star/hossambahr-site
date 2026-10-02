@@ -116,4 +116,4 @@ test("deterministic family routing consumes canonical relationship compatibility
   assert.doesNotMatch(edge,/score \+= 7200|score \-= 9000|family-residency-uae"\) score \+= 6500/);
 });
 
-test("stream framing emits real newline-delimited JSON records",()=>{assert.match(edge,/JSON\.stringify\(event\)\+"\\\\n"/);assert.doesNotMatch(edge,/JSON\.stringify\(event\)\+"\\\\\\\\n"/);});
+test("stream framing emits real newline-delimited JSON records",()=>{const bs=String.fromCharCode(92);assert.ok(edge.includes('JSON.stringify(event)+"'+bs+'n"'));assert.ok(!edge.includes('JSON.stringify(event)+"'+bs+bs+'n"'));});
