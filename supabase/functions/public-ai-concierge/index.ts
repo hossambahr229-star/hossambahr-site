@@ -638,11 +638,7 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
   if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return null;
   const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
-  const userContent="Verified HOSSAM BAHR grounding for this turn:
-"+grounding+"
-
-Current user message:
-"+latestTurn;
+  const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
   const input=[...safeHistory,{role:"user",content:userContent}];
   const stream=new ReadableStream<Uint8Array>({
     async start(controller){
@@ -656,8 +652,7 @@ Current user message:
         while(true){
           const {done,value}=await reader.read(); if(done) break;
           buffer+=decoder.decode(value,{stream:true});
-          const lines=buffer.split("
-"); buffer=lines.pop()||"";
+          const lines=buffer.split("\n"); buffer=lines.pop()||"";
           for(const raw of lines){
             const line=raw.trim(); if(!line.startsWith("data:")) continue;
             const data=line.slice(5).trim(); if(!data || data==="[DONE]") continue;
@@ -688,11 +683,7 @@ async function callConversationalModel(latestTurn:string, history:any[], determi
   const cfg=providerConfig(); if(!cfg || providerCreditBlocked()) return null;
   const started=performance.now(); const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
-  const userContent="Verified HOSSAM BAHR grounding for this turn:
-"+grounding+"
-
-Current user message:
-"+latestTurn;
+  const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
   try{
     if(cfg.provider==="openai"){
       const input=[...safeHistory,{role:"user",content:userContent}];
@@ -769,7 +760,6 @@ export default {
           entity: semantic.entity,
           service_slug: semantic.service_slug,
           authority_key: semantic.authority_key,
-          action: semantic.action,
           turn_type: semantic.turn_type,
           topic: semantic.topic,
           intent: semantic.intent,
