@@ -365,7 +365,16 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const spouseRelationship = relationship === "spouse" || relationship === "wife" || relationship === "husband";
   const parentRelationship = relationship === "parents" || relationship === "mother" || relationship === "father";
   const childRelationship = relationship === "children" || relationship === "son" || relationship === "daughter";
-  return rows.map((row:any) => {
+  // Semantic eligibility is resolved before lexical scoring. If the catalog contains
+  // family-residence candidates, unrelated same-action services cannot compete.
+  const familyResidenceRows = familyDomain && residencyDomain
+    ? rows.filter((row:any) => /(family|اسر|عائل|زوج|والد|ابن|بنت|child|son|daughter|dependent|residen)/.test(normalize(row.binding.service_slug+" "+row.title)))
+    : [];
+  const exactFamilyJurisdictionRows = familyResidenceRows.length && detected
+    ? familyResidenceRows.filter((row:any) => row.jurisdiction?.code === detected)
+    : [];
+  const eligibleRows = exactFamilyJurisdictionRows.length ? exactFamilyJurisdictionRows : (familyResidenceRows.length ? familyResidenceRows : rows);
+  return eligibleRows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
     const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));
     score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;
