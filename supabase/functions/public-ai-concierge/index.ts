@@ -1,4 +1,4 @@
-import { detectJurisdiction, detectRelationship, mergeSemanticContext, relationshipCompatibility, relationshipGroup, type FamilyRelationship, type SemanticEntity } from "./semantic-context.ts";
+import { detectAction, detectJurisdiction, detectRelationship, mergeSemanticContext, relationshipCompatibility, relationshipGroup, type FamilyRelationship, type SemanticEntity } from "./semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 
 const ALLOWED_ORIGINS = new Set([
@@ -65,15 +65,15 @@ type SemanticState = {
   turn_type:"new_topic"|"follow_up"|"correction"|"clarification"|"jurisdiction_switch"|"service_switch"|"entity_switch";
   resolved_query:string; topic:string|null; intent:string|null; service_family:string|null;
   jurisdiction:string|null; relationship:FamilyRelationship|null; relationship_group:ReturnType<typeof relationshipGroup>;
-  entity:SemanticEntity; service_slug:string|null; authority_key:string|null; business_activity:string|null; confidence:"high"|"medium"|"low";
+  entity:SemanticEntity; service_slug:string|null; authority_key:string|null; action:ReturnType<typeof detectAction>; business_activity:string|null; confidence:"high"|"medium"|"low";
 };
 
 async function resolveSemanticState(latestTurn:string, history:any[], context:any, fallbackGoal:string):Promise<SemanticState>{
   const latestNorm=normalize(latestTurn);
   const explicitNonFamilyTopic=has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"]) && !detectRelationship(latestTurn);
-  const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null};
+  const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null,action:context?.action??null};
   const merged=mergeSemanticContext(latestTurn,priorSemantic,fallbackGoal,{newTopic:explicitNonFamilyTopic});
-  const fallback:SemanticState={turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,business_activity:null,confidence:"low"};
+  const fallback:SemanticState={turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,action:merged.action,business_activity:null,confidence:"low"};
   const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return fallback;
   const recent=safeHistoryForModel(history);
   const input=[...recent,{role:"user",content:latestTurn}];
@@ -81,8 +81,8 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
     turn_type:{type:"string",enum:["new_topic","follow_up","correction","clarification","jurisdiction_switch","service_switch","entity_switch"]},
     resolved_query:{type:"string"},topic:{type:["string","null"]},intent:{type:["string","null"]},service_family:{type:["string","null"]},
     jurisdiction:{type:["string","null"]},relationship:{type:["string","null"],enum:["spouse","wife","husband","son","daughter","children","father","mother","parents","brother","sister","siblings","other_dependent",null]},
-    relationship_group:{type:["string","null"],enum:["spouse","child","parent","sibling","dependent",null]},entity:{type:"object",additionalProperties:false,properties:{kind:{type:"string",enum:["person","company","property","employment","document","service_subject","unknown"]},relationship:{type:["string","null"]},relationship_group:{type:["string","null"]}},required:["kind","relationship","relationship_group"]},service_slug:{type:["string","null"]},authority_key:{type:["string","null"]},business_activity:{type:["string","null"]},confidence:{type:"string",enum:["high","medium","low"]}
-  },required:["turn_type","resolved_query","topic","intent","service_family","jurisdiction","relationship","relationship_group","entity","service_slug","authority_key","business_activity","confidence"]};
+    relationship_group:{type:["string","null"],enum:["spouse","child","parent","sibling","dependent",null]},entity:{type:"object",additionalProperties:false,properties:{kind:{type:"string",enum:["person","company","property","employment","document","service_subject","unknown"]},relationship:{type:["string","null"]},relationship_group:{type:["string","null"]}},required:["kind","relationship","relationship_group"]},service_slug:{type:["string","null"]},authority_key:{type:["string","null"]},action:{type:["string","null"],enum:["issue","renew","amend","cancel","transfer","sponsor",null]},business_activity:{type:["string","null"]},confidence:{type:"string",enum:["high","medium","low"]}
+  },required:["turn_type","resolved_query","topic","intent","service_family","jurisdiction","relationship","relationship_group","entity","service_slug","authority_key","action","business_activity","confidence"]};
   try{
     const res=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({
       model:cfg.model,store:false,reasoning:{effort:"low"},max_output_tokens:320,
@@ -102,6 +102,7 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
     if(!parsed.jurisdiction) parsed.jurisdiction=detectJurisdiction(latestTurn)||(!topicReset?fallback.jurisdiction:null);
     if(!parsed.service_slug&&!topicReset) parsed.service_slug=fallback.service_slug;
     if(!parsed.authority_key&&!topicReset) parsed.authority_key=fallback.authority_key;
+    const explicitAction=detectAction(latestTurn); parsed.action=explicitAction??(!topicReset?fallback.action:null);
     return parsed as SemanticState;
   }catch{return fallback;}
 }
@@ -349,7 +350,9 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   return score;
 }
 
-function rank(goal: string, rows: any[], relationship: FamilyRelationship | null = null) {
+function actionCompatibility(identity:string, action:ReturnType<typeof detectAction>){if(!action)return 0;const t=normalize(identity);const map={issue:/issue|issuance|اصدار|إصدار|new/,renew:/renew|تجديد/,amend:/amend|modify|تعديل/,cancel:/cancel|cancellation|الغاء|إلغاء/,transfer:/transfer|نقل|تحويل/,sponsor:/family|sponsor|كفال|residen/};return map[action].test(t)?5:-2;}
+
+function rank(goal: string, rows: any[], relationship: FamilyRelationship | null = null, action: ReturnType<typeof detectAction> = null) {
   const normalized = normalize(goal);
   const terms = normalized.split(" ").filter((t) => t.length > 1);
   const detected = detectJurisdiction(normalized);
@@ -366,6 +369,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
     const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));
     score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;
+    score += actionCompatibility(relationshipIdentity, action) * 1500;
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
     const identityText = normalize(row.binding.service_slug+" "+row.title);
     if (residencyDomain && !/(اقامه|residen|residency|visa)/.test(identityText)) score -= 2200;
@@ -584,7 +588,7 @@ function streamHeaders(req:Request) {
 }
 
 function streamEvent(controller:ReadableStreamDefaultController<Uint8Array>, event:any) {
-  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"\n"));
+  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"\\n"));
 }
 
 async function logProviderHttpError(res:Response, attempt:number) {
