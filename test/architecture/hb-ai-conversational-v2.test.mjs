@@ -98,3 +98,10 @@ test("jurisdiction resolver has an explicit scalar return contract",()=>{
   assert.match(edge,/function detectJurisdiction\(goal: string\): string \| null/);
   assert.match(edge,/const map: Array<\[string, string\[\]\]>/);
 });
+
+
+test("credit-blocked mode bypasses all paid provider paths without pretending Real LLM",()=>{
+  assert.match(edge,/HB_OPENAI_CREDIT_BLOCKED/);
+  assert.match(edge,/cfg\.provider!=="openai" \|\| providerCreditBlocked\(\)/);
+  assert.match(edge,/if\(!cfg \|\| providerCreditBlocked\(\)\) return null/);
+});
