@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-02T15:25:45.158Z",
+  "generatedAt": "2026-10-02T18:11:59.439Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 164,
+    "REACHABLE": 167,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 74,
+    "NETWORK_UNVERIFIED": 71,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -839,8 +839,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
+      "result": "REACHABLE"
     },
     {
       "url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
@@ -1939,8 +1940,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
@@ -2031,8 +2033,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
