@@ -5,6 +5,9 @@ on:
     paths:
       - "src/global/**"
       - "supabase/migrations/**"
+      - "supabase/functions/document-ai/**"
+      - "supabase/functions/public-ai-concierge/**"
+      - "public-ai-concierge.js"
       - "global-os-client.js"
       - "global-os.css"
       - "src/auth/apply-auth-runtime.mjs"
@@ -67,6 +70,8 @@ jobs:
         run: |
           deno check supabase/functions/global-os-api/index.ts
           deno check --config supabase/functions/global-os-worker/deno.json supabase/functions/global-os-worker/index.ts
+          deno check supabase/functions/document-ai/index.ts
+          deno check supabase/functions/public-ai-concierge/index.ts
       - name: Architecture tests
         run: npm run test:architecture
       - name: Migration safety audit
