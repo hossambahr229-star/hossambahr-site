@@ -80,7 +80,7 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
   const schema={type:"object",additionalProperties:false,properties:{
     turn_type:{type:"string",enum:["new_topic","follow_up","correction","clarification","jurisdiction_switch","service_switch","entity_switch"]},
     resolved_query:{type:"string"},topic:{type:["string","null"]},intent:{type:["string","null"]},service_family:{type:["string","null"]},
-    jurisdiction:{type:["string","null"]},relationship:{type:["string","null"],enum:["spouse","wife","husband","son","daughter","children","father","mother","parents","brother","sister","other_dependent",null]},
+    jurisdiction:{type:["string","null"]},relationship:{type:["string","null"],enum:["spouse","wife","husband","son","daughter","children","father","mother","parents","brother","sister","siblings","other_dependent",null]},
     relationship_group:{type:["string","null"],enum:["spouse","child","parent","sibling","dependent",null]},entity:{type:"object",additionalProperties:false,properties:{kind:{type:"string",enum:["person","company","property","employment","document","service_subject","unknown"]},relationship:{type:["string","null"]},relationship_group:{type:["string","null"]}},required:["kind","relationship","relationship_group"]},service_slug:{type:["string","null"]},authority_key:{type:["string","null"]},business_activity:{type:["string","null"]},confidence:{type:"string",enum:["high","medium","low"]}
   },required:["turn_type","resolved_query","topic","intent","service_family","jurisdiction","relationship","relationship_group","entity","service_slug","authority_key","business_activity","confidence"]};
   try{
