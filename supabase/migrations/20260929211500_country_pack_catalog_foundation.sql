@@ -104,3 +104,15 @@ exception when duplicate_object then null; end $$;
 do $$ begin
   alter table public.hb_workflow_templates add constraint hb_workflow_templates_country_pack_id_fkey foreign key(country_pack_id) references public.hb_country_packs(id) on delete cascade;
 exception when duplicate_object then null; end $$;
+
+-- Match Global OS security/performance invariants on a clean rebuild.
+alter table public.hb_country_packs enable row level security;
+create index if not exists hb_country_packs_country_jurisdiction_idx on public.hb_country_packs(country_jurisdiction_id);
+create index if not exists hb_authorities_country_pack_idx on public.hb_authorities(country_pack_id);
+create index if not exists hb_authorities_jurisdiction_idx on public.hb_authorities(jurisdiction_id);
+create index if not exists hb_service_bindings_country_pack_idx on public.hb_service_bindings(country_pack_id);
+create index if not exists hb_service_bindings_authority_idx on public.hb_service_bindings(authority_id);
+create index if not exists hb_policy_sources_country_pack_idx on public.hb_policy_sources(country_pack_id);
+create index if not exists hb_policy_sources_authority_idx on public.hb_policy_sources(authority_id);
+create index if not exists hb_policy_versions_country_pack_idx on public.hb_policy_versions(country_pack_id);
+create index if not exists hb_workflow_templates_country_pack_idx on public.hb_workflow_templates(country_pack_id);
