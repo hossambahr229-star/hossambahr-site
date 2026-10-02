@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 
 const endpoint = process.env.HB_AI_ENDPOINT || "https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge";
 
-async function ask(goal, latestTurn = goal) {
-  const res = await fetch(endpoint, { method:"POST", headers:{"content-type":"application/json","origin":"https://hossambahr.com"}, body:JSON.stringify({goal,latest_turn:latestTurn}) });
+async function ask(goal, latestTurn = goal, context = {}) {
+  const res = await fetch(endpoint, { method:"POST", headers:{"content-type":"application/json","origin":"https://hossambahr.com"}, body:JSON.stringify({goal,latest_turn:latestTurn,context}) });
   const json = await res.json();
   assert.equal(res.status, 200, goal);
   assert.equal(json.ok, true, goal);
@@ -38,8 +38,9 @@ for (const [name,q,expect] of cases) {
 }
 const first=await ask("أريد أجدد إقامة زوجتي في دبي");
 const base=first.goal_context.safe_goal;
+const conversationContext={jurisdiction_code:first.goal_context.jurisdiction_hint,relationship:first.goal_context.relationship,entity:first.goal_context.entity,service_slug:first.goal_context.service_slug,authority_key:first.goal_context.authority_key,action:first.goal_context.action,intent:first.goal_context.intent,service_family:first.goal_context.service_family};
 for(const follow of ["كم الرسوم؟","والأوراق؟","كم تستغرق؟","ومن الجهة؟","هل أحتاج موافقة؟"]) {
- const p=await ask(base+" — "+follow,follow); const a=p.result?.answer||{}; const m=p.result?.matches?.[0]||{};
+ const p=await ask(base+" — "+follow,follow,conversationContext); const a=p.result?.answer||{}; const m=p.result?.matches?.[0]||{};
  assert.equal(m.jurisdiction?.code,"AE-DU","follow-up lost Dubai context: "+follow);
  assert.equal(m.authority?.key,"gdrfa-dubai","follow-up lost GDRFA context: "+follow);
  assert.ok(a.text?.length>15,"follow-up answer missing: "+follow);
