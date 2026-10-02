@@ -47,3 +47,10 @@ test("relationship detection uses phrase boundaries so الإمارات never be
   assert.match(edge, /function hasPhrase/);
   assert.match(edge, /if \(hasPhrase\(text, words\)\) return relationship/);
 });
+
+
+test("direct emirate licence requests are treated as issuance intent",()=>{
+  assert.match(edge,/directLicenseRequest/);
+  assert.match(edge,/company && \(open \|\| directLicenseRequest\)/);
+  assert.match(edge,/jurisdictionCode === emirate/);
+});
