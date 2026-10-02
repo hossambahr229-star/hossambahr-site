@@ -383,7 +383,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const detected = detectJurisdiction(normalized);
 
   const residencyDomain = has(normalized, ["اقامه","إقامة","اقامتي","إقامتي","residence","residency"]);
-  const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","اسره","عائله","family","wife","spouse","parent"]);
+  const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","ابني","ابنتي","بنتي","اولادي","ابنائي","عيالي","اسره","عائله","family","wife","spouse","parent","son","daughter","children","kids"]);
   const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
   const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
   const asksResidenceAuthorityChoice = residencyDomain && has(normalized, ["icp"]) && has(normalized, ["gdrfa"]);
@@ -400,12 +400,14 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
       if (familyService && !parentService) score += 2600;
     }
     if (parentRelationship) {
-      if (parentService) score += 3200;
-      if (familyService && !parentService) score -= 900;
+      if (parentService) score += 7200;
+      if (detected === "AE-DU" && row.jurisdiction?.code === "AE-DU" && parentService) score += 5200;
+      if (familyService && !parentService) score -= 1800;
     }
     if (childRelationship) {
-      if (parentService) score -= 7000;
-      if (familyService && !parentService) score += 2200;
+      if (parentService) score -= 9000;
+      if (familyService && !parentService) score += 5200;
+      if (detected === "AE-DU" && row.jurisdiction?.code === "AE-DU" && row.binding.service_slug === "family-residency-uae") score += 6500;
     }
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
     const identityText = normalize(row.binding.service_slug+" "+row.title);
