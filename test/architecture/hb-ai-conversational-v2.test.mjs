@@ -117,3 +117,8 @@ test("deterministic family routing consumes canonical relationship compatibility
 });
 
 test("stream framing emits real newline-delimited JSON records",()=>{const bs=String.fromCharCode(92);assert.ok(edge.includes('JSON.stringify(event)+"'+bs+'n"'));assert.ok(!edge.includes('JSON.stringify(event)+"'+bs+bs+'n"'));});
+
+
+test("document AI validates data-url MIME and binary magic bytes before provider use",()=>{
+ assert.match(doc,/function parseDataUrl/);assert.match(doc,/function sniffMime/);assert.match(doc,/file_type_mismatch/);assert.match(doc,/parsed\.bytes\.byteLength>MAX_BYTES/);assert.match(doc,/declared!==embedded\|\|declared!==sniffed/);assert.match(doc,/0x25,0x50,0x44,0x46,0x2d/);assert.match(doc,/0x89,0x50,0x4e,0x47/);assert.match(doc,/0xff,0xd8,0xff/);
+});
