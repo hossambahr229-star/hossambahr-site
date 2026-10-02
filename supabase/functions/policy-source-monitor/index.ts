@@ -95,8 +95,7 @@ async function inspectSource(admin:any,source:any) {
   let etag:string|null=null;
   let lastModified:string|null=null;
   let contentHash:string|null=null;
-  let errorText:string|null=null;
-  let getFailure:string|null=null;
+  let errorText:string|null=null;\n  let getFailure:string|null=null;\n  let transientFailure=false;
 
   try{
     const response=await fetchWithTimeout(url,"GET",12000);
@@ -118,9 +117,7 @@ async function inspectSource(admin:any,source:any) {
     }else{
       getFailure=`get_http_status_${response.status}`;
     }
-  }catch(error){
-    getFailure=safeError(error);
-  }
+  }catch(error){\n    getFailure=safeError(error);\n    transientFailure=/aborted|timeout|timed out|network|fetch failed/i.test(getFailure);\n  }
 
   if(getFailure && !errorText){
     try{
@@ -133,9 +130,7 @@ async function inspectSource(admin:any,source:any) {
       }else{
         errorText=`${getFailure}; head_http_status_${head.status}`;
       }
-    }catch(error){
-      errorText=`${getFailure}; head_${safeError(error)}`;
-    }
+    }catch(error){\n      const headFailure=safeError(error);\n      transientFailure=transientFailure || /aborted|timeout|timed out|network|fetch failed/i.test(headFailure);\n      errorText=`${getFailure}; head_${headFailure}`;\n    }
   }
 
   const {data,error}=await admin.rpc("hb_finish_policy_source_check",{
@@ -144,8 +139,7 @@ async function inspectSource(admin:any,source:any) {
     p_etag:etag,
     p_last_modified:lastModified,
     p_content_hash:contentHash,
-    p_error:errorText,
-    p_duration_ms:Date.now()-started
+    p_error:errorText,\n    p_duration_ms:Date.now()-started
   });
   if(error)throw new Error("source_check_finish_failed");
   return {
@@ -154,8 +148,7 @@ async function inspectSource(admin:any,source:any) {
     changed:Boolean(data?.changed),
     review_required:Boolean(data?.review_required),
     error:Boolean(errorText),
-    content_checked:Boolean(contentHash)
-  };
+    content_checked:Boolean(contentHash),\n    transient_failure:transientFailure\n  };
 }
 
 Deno.serve(async(req)=>{
