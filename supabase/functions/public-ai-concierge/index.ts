@@ -401,13 +401,13 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
     }
     if (parentRelationship) {
       if (parentService) score += 7200;
-      if (detected === "AE-DU" && jurisdictionCode === "AE-DU" && parentService) score += 5200;
+      if (detected === "AE-DU" && row.jurisdiction?.code === "AE-DU" && parentService) score += 5200;
       if (familyService && !parentService) score -= 1800;
     }
     if (childRelationship) {
       if (parentService) score -= 9000;
       if (familyService && !parentService) score += 5200;
-      if (detected === "AE-DU" && jurisdictionCode === "AE-DU" && slug === "family-residency-uae") score += 6500;
+      if (detected === "AE-DU" && row.jurisdiction?.code === "AE-DU" && row.binding.service_slug === "family-residency-uae") score += 6500;
     }
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
     const identityText = normalize(row.binding.service_slug+" "+row.title);
