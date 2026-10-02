@@ -92,3 +92,9 @@ test("document AI fails closed and enforces authenticated bounded document input
   assert.match(doc,/provider_store:false/);
   assert.doesNotMatch(doc,/serviceKey[^\n]*reply|OPENAI_API_KEY[^\n]*reply/);
 });
+
+
+test("jurisdiction resolver has an explicit scalar return contract",()=>{
+  assert.match(edgeSource,/function detectJurisdiction\(goal: string\): string \| null/);
+  assert.match(edgeSource,/const map: Array<\[string, string\[\]\]>/);
+});
