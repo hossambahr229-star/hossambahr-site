@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 const endpoint=process.env.HB_AI_ENDPOINT||"https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge";
 const run="catalog-"+Date.now();
-async function ask(name,prompt){const r=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json","origin":"https://hossambahr.com","x-hb-qa-run":run},body:JSON.stringify({goal:prompt,latest_turn:prompt,history:[],context:{},stream:false})});const p=await r.json();assert.equal(r.status,200,name);assert.equal(p.ok,true,name);return p}
+async function ask(name,prompt){const r=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json","origin":"https://hossambahr.com","x-hb-qa-run":run},body:JSON.stringify({goal:prompt,latest_turn:prompt,history:[],context:{},stream:false})});const raw=await r.text();let p;try{p=JSON.parse(raw)}catch{throw new Error(`${name} non_json_response status=${r.status} content_type=${r.headers.get("content-type")} body=${raw.slice(0,160)}`)}assert.equal(r.status,200,name);assert.equal(p.ok,true,name);return p}
 const cases=[
 ["trade-issue","عايز أفتح شركة تجارة عامة في دبي",/issue-trade-license-dubai/],
 ["trade-renew","عايز اجدد الرخصة التجارية للشركة في دبي",/renew-business-license-dubai/],
