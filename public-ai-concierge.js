@@ -523,7 +523,7 @@
             full+=evt.delta;if(streamP)streamP.textContent=full;
           }
           if(evt.type==="done"){doneMeta=evt;if(payload){payload.result.answer={...(payload.result.answer||{}),text:evt.text,generated:true};payload.result.engine=evt.engine;}full=evt.text||full;}
-          if(evt.type==="fallback"){payload={ok:true,goal_context:{safe_goal:query},result:evt.result};full=evt.result?.answer?.text||"";}
+          if(evt.type==="fallback"){payload={ok:true,goal_context:payload?.goal_context||{safe_goal:query},result:evt.result,rate_limit:payload?.rate_limit};full=evt.result?.answer?.text||"";}
         }
       }
       if(!payload)throw new Error("stream_invalid");
