@@ -367,8 +367,10 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const childRelationship = relationship === "children" || relationship === "son" || relationship === "daughter";
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
-    const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));\n    const domainCompatibility = semanticDomainCompatibility(row.binding.metadata?.category||"", relationship);
-    score += domainCompatibility * 3000;\n    score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;
+    const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));
+    const domainCompatibility = semanticDomainCompatibility(row.binding.metadata?.category||"", relationship);
+    score += domainCompatibility * 3000;
+    score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;
     score += actionCompatibility(relationshipIdentity, action) * 1500;
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
     const identityText = normalize(row.binding.service_slug+" "+row.title);
