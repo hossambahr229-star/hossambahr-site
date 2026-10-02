@@ -56,7 +56,7 @@
 
 
   const TEXT_DOCUMENT_TYPES = new Set(["text/plain","text/markdown","text/csv","application/json","application/xml","text/xml"]);
-  const TEXT_DOCUMENT_EXTENSIONS = /\\.(txt|md|csv|json|xml)$/i;
+  const TEXT_DOCUMENT_EXTENSIONS = /\.(txt|md|csv|json|xml)$/i;
   const MAX_PUBLIC_DOCUMENT_BYTES = 2 * 1024 * 1024;
 
   function formatBytes(bytes) {
@@ -112,8 +112,8 @@
     }
     const isText = TEXT_DOCUMENT_TYPES.has(file.type) || TEXT_DOCUMENT_EXTENSIONS.test(file.name);
     if (!isText) {
-      const isPdf=file.type==="application/pdf"||/\\.pdf$/i.test(file.name);
-      const isImage=/^image\\/(png|jpeg|jpg|webp|gif)$/i.test(file.type);
+      const isPdf=file.type==="application/pdf"||/\.pdf$/i.test(file.name);
+      const isImage=/^image\/(png|jpeg|jpg|webp|gif)$/i.test(file.type);
       if(!isPdf&&!isImage){addBubble("assistant","نوع الملف غير مدعوم للتحليل الآمن حاليًا.");attachmentAnalysisInFlight=false;renderAttachmentTray();return;}
       if(file.size>3*1024*1024){addBubble("assistant","الحد الآمن الحالي لتحليل PDF والصور هو 3 MB.");attachmentAnalysisInFlight=false;renderAttachmentTray();return;}
       const s=await session();
@@ -133,7 +133,7 @@
     const pending = addStatus();
     try {
       const raw = await file.text();
-      const cleaned = scrubLocal(raw.replace(/\\s+/g, " ").slice(0, 600));
+      const cleaned = scrubLocal(raw.replace(/\s+/g, " ").slice(0, 600));
       removePending(pending);
       if (cleaned.length < 4) {
         addBubble("assistant", "لم أجد نصًا قابلًا للتحليل داخل هذا المستند.");
