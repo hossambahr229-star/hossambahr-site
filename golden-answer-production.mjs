@@ -20,7 +20,7 @@ const cases = [
  ["identity-renew","أريد أجدد الهوية",{}],
  ["domestic-worker-az","أريد إقامة عمالة مساعدة في أبوظبي",{goalJurisdiction:"AE-AZ"}],
  ["rak-to-dubai","أريد أنقل رخصة رأس الخيمة إلى دبي",{}],
- ["dubai-fines-mercy","أريد أعمل استرحام مخالفات في دبي",{jurisdiction:"AE-DU"}],
+ ["dubai-fines-mercy","أريد أعمل استرحام مخالفات في دبي",{goalJurisdiction:"AE-DU",unsupported:true}],
  ["add-partner","أريد أضيف شريك",{}]
 ];
 const results=[];
@@ -30,7 +30,7 @@ for (const [name,q,expect] of cases) {
  if(expect.goalJurisdiction) assert.equal(p.goal_context?.jurisdiction_hint,expect.goalJurisdiction,name);
  if(expect.slug) assert.equal(row.service,expect.slug,name);
  if(expect.jurisdiction) assert.equal(row.jurisdiction,expect.jurisdiction,name);
- if(expect.authority) assert.equal(row.authority,expect.authority,name);
+ if(expect.authority) assert.equal(row.authority,expect.authority,name);\n if(expect.unsupported){ assert.equal(row.service,null,name+" invented unsupported service"); assert.equal(row.authority,null,name+" invented unsupported authority"); }
  assert.ok(row.answer.length>15,name+" answer missing");
  if(row.confidence==="high") assert.equal(row.source_backed,true,name+" high confidence without source");
  results.push(row);
