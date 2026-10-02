@@ -117,3 +117,11 @@ test("deterministic family routing consumes canonical relationship compatibility
 });
 
 test("stream framing emits real newline-delimited JSON records",()=>{const bs=String.fromCharCode(92);assert.ok(edge.includes('JSON.stringify(event)+"'+bs+'n"'));assert.ok(!edge.includes('JSON.stringify(event)+"'+bs+bs+'n"'));});
+
+
+test("family residence ranking cannot be displaced by same-action non-family services", () => {
+  assert.match(edge, /familyDomain && residencyDomain[\\s\\S]*score -= 9000/);
+  assert.match(edge, /familyDomain && residencyDomain && detected === "AE-DU"/);
+  assert.match(edge, /row\.jurisdiction\?\.code === "AE-DU"\) score \+= 6000/);
+  assert.match(edge, /row\.jurisdiction\?\.code === "AE"\) score -= 2500/);
+});
