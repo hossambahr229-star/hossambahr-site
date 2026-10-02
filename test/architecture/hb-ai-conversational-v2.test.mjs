@@ -62,3 +62,12 @@ test("provider retries honor Retry-After and are bounded",()=>{
   assert.match(edge,/headers\.get\("retry-after"\)/);
   assert.match(edge,/ms<=5000 \? ms : null/);
 });
+
+
+test("billing and quota 429s fail fast instead of retrying",()=>{
+  assert.match(edge,/credit_balance_exhausted/);
+  assert.match(edge,/organization_spend_limit_exceeded/);
+  assert.match(edge,/project_spend_limit_exceeded/);
+  assert.match(edge,/organization_usage_limit_exceeded/);
+  assert.match(edge,/retryableProviderHttpError/);
+});
