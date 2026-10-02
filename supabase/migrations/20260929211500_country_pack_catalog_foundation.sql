@@ -39,7 +39,7 @@ alter table public.hb_authorities enable row level security;
 
 insert into public.hb_authorities(country_pack_id,jurisdiction_id,authority_key,name_en,active,metadata)
 select cp.id,
-       min(coalesce(b.jurisdiction_id,s.jurisdiction_id)) as jurisdiction_id,
+       min(coalesce(b.jurisdiction_id,s.jurisdiction_id)::text)::uuid as jurisdiction_id,
        keys.authority_key,
        keys.authority_key,
        true,
