@@ -95,8 +95,8 @@ function detectRelationship(value: unknown): FamilyRelationship | null {
     ["brother",["اخي","أخي","brother","my brother"]],
     ["sister",["اختي","أختي","sister","my sister"]]
   ];
-  for (const [relationship, words] of aliases) if (has(text, words)) return relationship;
-  if (has(text,["زوجه","زوجة","spouse"])) return "spouse";
+  for (const [relationship, words] of aliases) if (hasPhrase(text, words)) return relationship;
+  if (hasPhrase(text,["زوجه","زوجة","spouse"])) return "spouse";
   return null;
 }
 
