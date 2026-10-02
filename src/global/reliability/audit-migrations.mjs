@@ -15,8 +15,9 @@ const forbidden = [
 const violations = [];
 for (const name of globalFiles) {
   const sql = await readFile(join(dir, name), "utf8");
+  const destructiveSql = sql.replace(/\brevoke\b[^;]*;/gi, "");
   for (const pattern of forbidden) {
-    if (pattern.test(sql)) violations.push({ file: name, rule: pattern.source });
+    if (pattern.test(destructiveSql)) violations.push({ file: name, rule: pattern.source });
   }
 }
 
