@@ -60,8 +60,8 @@ function hasPhrase(text: string, words: string[]) {
   return words.some((word) => padded.includes(" " + normalize(word) + " "));
 }
 
-function detectJurisdiction(goal: string) {
-  const map = [
+function detectJurisdiction(goal: string): string | null {
+  const map: Array<[string, string[]]> = [
     ["AE-DU", ["دبي","dubai"]],
     ["AE-AZ", ["ابوظبي","ابو ظبي","abu dhabi","abudhabi"]],
     ["AE-SH", ["الشارقه","الشارقة","sharjah"]],
@@ -70,7 +70,7 @@ function detectJurisdiction(goal: string) {
     ["AE-UQ", ["ام القيوين","أم القيوين","umm al quwain","uaq"]],
     ["AE-FU", ["الفجيره","الفجيرة","fujairah"]]
   ];
-  for (const [code, aliases] of map) if (has(goal, aliases as string[])) return code;
+  for (const [code, aliases] of map) if (has(goal, aliases)) return code;
   return null;
 }
 
