@@ -350,7 +350,9 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   return score;
 }
 
-function actionCompatibility(identity:string, action:ReturnType<typeof detectAction>){if(!action)return 0;const t=normalize(identity);const map={issue:/issue|issuance|اصدار|إصدار|new/,renew:/renew|تجديد/,amend:/amend|modify|تعديل/,cancel:/cancel|cancellation|الغاء|إلغاء/,transfer:/transfer|نقل|تحويل/,sponsor:/family|sponsor|كفال|residen/};return map[action].test(t)?5:-2;}\n\nfunction rank(goal: string, rows: any[], relationship: FamilyRelationship | null = null, action: ReturnType<typeof detectAction> = null) {
+function actionCompatibility(identity:string, action:ReturnType<typeof detectAction>){if(!action)return 0;const t=normalize(identity);const map={issue:/issue|issuance|اصدار|إصدار|new/,renew:/renew|تجديد/,amend:/amend|modify|تعديل/,cancel:/cancel|cancellation|الغاء|إلغاء/,transfer:/transfer|نقل|تحويل/,sponsor:/family|sponsor|كفال|residen/};return map[action].test(t)?5:-2;}
+
+function rank(goal: string, rows: any[], relationship: FamilyRelationship | null = null, action: ReturnType<typeof detectAction> = null) {
   const normalized = normalize(goal);
   const terms = normalized.split(" ").filter((t) => t.length > 1);
   const detected = detectJurisdiction(normalized);
