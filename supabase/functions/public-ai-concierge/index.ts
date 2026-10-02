@@ -109,7 +109,7 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
   const explicitNonFamilyTopic=has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"]) && !detectRelationship(latestTurn);
   const fallbackRelationship=explicitNonFamilyTopic?null:relationshipFromTurn(latestTurn,fallbackGoal,context);
   const fallback:SemanticState={turn_type:explicitNonFamilyTopic?"new_topic":"follow_up",resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:null,service_family:null,jurisdiction:detectJurisdiction(latestNorm)||(explicitNonFamilyTopic?null:context?.jurisdiction_code)||detectJurisdiction(normalize(fallbackGoal)),relationship:fallbackRelationship,business_activity:null,confidence:"low"};
-  const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai") return fallback;
+  const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return fallback;
   const recent=safeHistoryForModel(history);
   const input=[...recent,{role:"user",content:latestTurn}];
   const schema={type:"object",additionalProperties:false,properties:{
@@ -668,9 +668,11 @@ async function openAIStream(cfg:any,input:any[],signal:AbortSignal) {
   throw new Error("openai_"+lastStatus);
 }
 
+function providerCreditBlocked(){return (Deno.env.get("HB_OPENAI_CREDIT_BLOCKED")||"").trim()==="1";}
+
 function makeStreamingResponse(req:Request, latestTurn:string, history:any[], deterministic:any, rate:any, goal:string, requestStarted:number, catalogMs:number, semantic?:SemanticState) {
   const cfg=providerConfig();
-  if(!cfg || cfg.provider!=="openai") return null;
+  if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return null;
   const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
   const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
@@ -715,7 +717,7 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
 }
 
 async function callConversationalModel(latestTurn:string, history:any[], deterministic:any, signal:AbortSignal): Promise<ProviderResult> {
-  const cfg=providerConfig(); if(!cfg) return null;
+  const cfg=providerConfig(); if(!cfg || providerCreditBlocked()) return null;
   const started=performance.now(); const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
   const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
