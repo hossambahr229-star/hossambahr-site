@@ -77,3 +77,18 @@ test("stream fallback preserves semantic metadata from the initial meta event",(
   assert.match(source,/goal_context:payload\?\.goal_context\|\|\{safe_goal:query\}/);
   assert.match(source,/rate_limit:payload\?\.rate_limit/);
 });
+
+
+test("document AI fails closed and enforces authenticated bounded document inputs", async()=>{
+  const fs=await import("node:fs/promises");
+  const doc=await fs.readFile("supabase/functions/document-ai/index.ts","utf8");
+  assert.match(doc,/authentication_required/);
+  assert.match(doc,/origin_not_allowed/);
+  assert.match(doc,/MAX_BYTES=3\*1024\*1024/);
+  assert.match(doc,/unsupported_file_type/);
+  assert.match(doc,/Analyze only what is actually visible\/present/);
+  assert.match(doc,/Do not infer missing passport\/ID\/license fields/);
+  assert.match(doc,/store:false/);
+  assert.match(doc,/provider_store:false/);
+  assert.doesNotMatch(doc,/serviceKey[^\n]*reply|OPENAI_API_KEY[^\n]*reply/);
+});
