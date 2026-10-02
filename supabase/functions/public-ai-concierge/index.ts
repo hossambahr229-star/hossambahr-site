@@ -55,6 +55,11 @@ function has(text: string, words: string[]) {
   return words.some((word) => text.includes(normalize(word)));
 }
 
+function hasPhrase(text: string, words: string[]) {
+  const padded = " " + normalize(text) + " ";
+  return words.some((word) => padded.includes(" " + normalize(word) + " "));
+}
+
 function detectJurisdiction(goal: string) {
   const map = [
     ["AE-DU", ["دبي","dubai"]],

@@ -41,3 +41,9 @@ test("HB AI public consultation retains secure auth handoff state", () => {
   assert.match(source, /conversation_context:/);
   assert.match(source, /\/auth\/\?return=/);
 });
+
+
+test("relationship detection uses phrase boundaries so الإمارات never becomes الأم", () => {
+  assert.match(edge, /function hasPhrase/);
+  assert.match(edge, /if \(hasPhrase\(text, words\)\) return relationship/);
+});
