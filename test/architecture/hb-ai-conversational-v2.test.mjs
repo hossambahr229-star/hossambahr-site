@@ -6,7 +6,7 @@ const source = await readFile(new URL("../../public-ai-concierge.js", import.met
 const edge = await readFile(new URL("../../supabase/functions/public-ai-concierge/index.ts", import.meta.url), "utf8");
 const css = await readFile(new URL("../../global-os.css", import.meta.url), "utf8");
 const stabilizer = await readFile(new URL("../../src/publication/stabilize-homepage-runtime.mjs", import.meta.url), "utf8");
-const semanticLayer = await readFile(new URL("../../supabase/functions/_shared/semantic-context.ts", import.meta.url), "utf8");
+const semanticLayer = await readFile(new URL("../../supabase/functions/public-ai-concierge/semantic-context.ts", import.meta.url), "utf8");
 
 test("HB AI attachment analysis is guarded against duplicate re-entry", () => {
   assert.match(source, /attachmentAnalysisInFlight/);
