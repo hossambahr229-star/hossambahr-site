@@ -744,7 +744,7 @@ export default {
       const catalogStarted = performance.now();
       const catalog = await loadCatalog(ctx.supabaseAdmin);
       const catalogMs = performance.now() - catalogStarted;
-      const lexicalRanked = rank(semanticGoal, catalog, relationship);
+      const lexicalRanked = rank(semanticGoal, catalog, relationship, semantic.action);
       const ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
       const deterministic = publicResult(semanticGoal, ranked, latestTurn);
       if (wantsStream) { const streamed=makeStreamingResponse(req,latestTurn,history,deterministic,rate,semanticGoal,requestStarted,catalogMs,semantic); if(streamed) return streamed; }
@@ -759,7 +759,7 @@ export default {
           relationship_group: semantic.relationship_group,
           entity: semantic.entity,
           service_slug: semantic.service_slug,
-          authority_key: semantic.authority_key,
+          authority_key: semantic.authority_key,\n          action: semantic.action,
           turn_type: semantic.turn_type,
           topic: semantic.topic,
           intent: semantic.intent,
