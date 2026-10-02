@@ -46,7 +46,7 @@ for(const viewport of viewports){
   const context=await browser.newContext({viewport:{width:viewport.width,height:viewport.height},locale:'ar-AE',colorScheme:'light'});
   for(const surface of surfaces){
     const page=await context.newPage();
-    const runtime=[];page.on('pageerror',error=>runtime.push(error.message));
+    const runtime=[];page.on('pageerror',error=>runtime.push({message:error.message,stack:error.stack||''}));
     await page.goto(base+surface.path+'?phase9-1-visual=1&hb_qa=1',{waitUntil:'networkidle',timeout:60000});
     await page.waitForTimeout(250);
     const audit=await page.evaluate(()=>{
@@ -89,7 +89,7 @@ for(const viewport of viewports){
       if(ratio(identity.title,'rgb(7,47,40)')<4.5)failures.push(`activities/${viewport.name}: hero title contrast`);
     }
     await page.screenshot({path:join(out,`${surface.name}-${viewport.name}.png`),fullPage:false});
-    records.push({surface:surface.name,viewport:viewport.name,...audit,runtimeErrors:runtime.length});
+    records.push({surface:surface.name,viewport:viewport.name,...audit,runtimeErrors:runtime.length,runtimeDetails:runtime});
     await page.close();
   }
   await context.close();
