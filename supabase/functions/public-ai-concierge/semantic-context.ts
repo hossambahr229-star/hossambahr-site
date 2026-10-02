@@ -1,7 +1,8 @@
 export type RelationshipGroup="spouse"|"child"|"parent"|"sibling"|"dependent";
 export type FamilyRelationship="spouse"|"wife"|"husband"|"son"|"daughter"|"children"|"father"|"mother"|"parents"|"brother"|"sister"|"siblings"|"other_dependent";
 export type SemanticEntity={kind:"person"|"company"|"property"|"employment"|"document"|"service_subject"|"unknown";relationship:FamilyRelationship|null;relationship_group:RelationshipGroup|null};
-export type SemanticAction="issue"|"renew"|"amend"|"cancel"|"transfer"|"sponsor"|null;\nexport type SemanticContext={relationship:FamilyRelationship|null;relationship_group:RelationshipGroup|null;entity:SemanticEntity;service_slug:string|null;authority_key:string|null;jurisdiction:string|null;intent:string|null;service_family:string|null;action:SemanticAction};
+export type SemanticAction="issue"|"renew"|"amend"|"cancel"|"transfer"|"sponsor"|null;
+export type SemanticContext={relationship:FamilyRelationship|null;relationship_group:RelationshipGroup|null;entity:SemanticEntity;service_slug:string|null;authority_key:string|null;jurisdiction:string|null;intent:string|null;service_family:string|null;action:SemanticAction};
 const norm=(v:unknown)=>String(v??"").toLowerCase().normalize("NFKD").replace(/[\u064B-\u065F\u0670]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();
 const aliases:Record<FamilyRelationship,string[]>={
  parents:["الوالدين","والداي","امي وابويا","امي وابي","ابويا وامي","my parents","parents","mom and dad"],mother:["والدتي","امي","الوالده","ماما","my mother","mother","mom","mum"],father:["والدي","ابي","ابويا","الوالد","بابا","my father","father","dad"],
