@@ -447,7 +447,7 @@ async function selectSemanticCandidate(semantic:SemanticState, ranked:any[], cat
   if(!ranked.length) return [];
   if(semantic.relationship) return ranked;
   const shortlist=ranked.slice(0,18);
-  const cfg=providerConfig(); if(!cfg||cfg.provider!=="openai") return ranked;
+  const cfg=providerConfig(); if(!cfg||cfg.provider!=="openai"||providerCreditBlocked()) return ranked;
   const choices=shortlist.map((r:any)=>({slug:r.binding.service_slug,title:r.title,authority:r.authority?.authority_key||null,jurisdiction:r.jurisdiction?.code||"AE"}));
   const allowed=[...choices.map((x:any)=>x.slug),"__NONE__"];
   const schema={type:"object",additionalProperties:false,properties:{selected_slug:{type:"string",enum:allowed},confidence:{type:"string",enum:["high","medium","low"]},reason_code:{type:"string",enum:["exact","closest_verified","ambiguous","no_match"]}},required:["selected_slug","confidence","reason_code"]};
