@@ -281,7 +281,7 @@ async function loadCatalog(admin: any) {
 function specialBoost(goal: string, slug: string, jurisdictionCode: string | null) {
   let score = 0;
   const family = has(goal, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","child","children","son","daughter","parent","mother","father"]);
-  const residence = has(goal, ["اقامه","residence","residency"]);
+  const residence = has(goal, ["اقامه","اقامتي","إقامتي","residence","residency"]);
   const renew = has(goal, ["اجدد","تجديد","renew"]);
   const amend = has(goal, ["تعديل","عدل","amend","modify"]);
   const company = has(goal, ["شركه","رخصه","ترخيص","business","company","license","licence"]);
@@ -292,8 +292,13 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const parent = has(goal, ["والد","والدتي","والدي","الوالدين","parent","mother","father"]);
   const child = has(goal, ["ابن","ابني","ابنتي","طفل","اطفال","child","children","son","daughter"]);
   const wantsCancel = has(goal, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
+  const sponsorship = has(goal, ["اكفل","أكفل","كفاله","كفالة","sponsor","sponsorship"]);
   const emirate = detectJurisdiction(goal);
 
+  if (sponsorship && (family || child) && !parent) {
+    if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 15000 : emirate ? -9000 : 6500;
+    if (/family-data-icp/.test(slug)) score -= 12000;
+  }
   if (family && residence && renew) {
     if (slug === "تجديد-إقامة-أفراد-الأسرة-في-دبي") score += emirate === "AE-DU" ? 1450 : emirate ? -320 : 620;
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 420 : emirate ? -260 : 180;
@@ -335,7 +340,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   if (has(goal, ["الاقامه الذهبيه","الإقامة الذهبية","golden residency","golden visa"])) {
     if (slug === "golden-residency-uae") score += 9000; else if (/family|اسر|والد/.test(slug)) score -= 4000;
   }
-  const economicLicense = has(goal, ["رخصه اقتصاديه","رخصة اقتصادية","economic license","economic licence","رخصه تجاريه","رخصة تجارية","trade license","trade licence"]);
+  const economicLicense = has(goal, ["رخصه اقتصاديه","رخصة اقتصادية","الرخصه الاقتصاديه","الرخصة الاقتصادية","economic license","economic licence","رخصه تجاريه","رخصة تجارية","الرخصه التجاريه","الرخصة التجارية","trade license","trade licence"]);
   const wantsRenewEconomic = economicLicense && has(goal, ["اجدد","تجديد","renew"]);
   const wantsAmendEconomic = economicLicense && has(goal, ["اعدل","تعديل","amend","modify"]);
   const exactEconomic:Record<string,{renew:string,amend:string}> = {
