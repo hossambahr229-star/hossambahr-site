@@ -120,8 +120,8 @@ test("stream framing emits real newline-delimited JSON records",()=>{const bs=St
 
 
 test("family residence ranking cannot be displaced by same-action non-family services", () => {
-  assert.match(edge, /familyDomain && residencyDomain[\\s\\S]*score -= 9000/);
-  assert.match(edge, /familyDomain && residencyDomain && detected === "AE-DU"/);
-  assert.match(edge, /row\.jurisdiction\?\.code === "AE-DU"\) score \+= 6000/);
-  assert.match(edge, /row\.jurisdiction\?\.code === "AE"\) score -= 2500/);
+  assert.match(edge, /const familyResidenceRows = familyDomain && residencyDomain/);
+  assert.match(edge, /const exactFamilyJurisdictionRows = familyResidenceRows\.length && detected/);
+  assert.match(edge, /const eligibleRows = exactFamilyJurisdictionRows\.length/);
+  assert.match(edge, /return eligibleRows\.map/);
 });
