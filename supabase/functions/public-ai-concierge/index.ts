@@ -1,4 +1,4 @@
-import { detectAction, detectJurisdiction, detectRelationship, mergeSemanticContext, relationshipCompatibility, relationshipGroup, type FamilyRelationship, type SemanticEntity } from "./semantic-context.ts";
+import { detectAction, detectJurisdiction, detectRelationship, mergeSemanticContext, relationshipCompatibility, relationshipGroup, semanticDomainCompatibility, type FamilyRelationship, type SemanticEntity } from "./semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 
 const ALLOWED_ORIGINS = new Set([
@@ -368,6 +368,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
     const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));
+    const domainCompatibility = semanticDomainCompatibility(row.binding.metadata?.category||"", relationship);
+    score += domainCompatibility * 3000;
     score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;
     score += actionCompatibility(relationshipIdentity, action) * 1500;
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
@@ -401,8 +403,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
       else if (row.jurisdiction?.code === "AE") score += 20;
       else if (row.jurisdiction?.code?.startsWith("AE-")) score -= 45;
     }
-    return { ...row, score };
-  }).filter((row:any) => row.score > 0 && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
+    return { ...row, score, domainCompatibility };
+  }).filter((row:any) => (!relationship || row.domainCompatibility >= 0) && row.score > 0 && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
     .sort((a:any,b:any) => b.score - a.score || a.title.localeCompare(b.title,"ar"));
 }
 

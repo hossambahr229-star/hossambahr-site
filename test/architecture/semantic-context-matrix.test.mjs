@@ -1,5 +1,5 @@
 import test from "node:test";import assert from "node:assert/strict";import fs from "node:fs";
-import {detectAction,detectRelationship,mergeSemanticContext,semanticInvariants,relationshipCompatibility} from "../../supabase/functions/public-ai-concierge/semantic-context.ts";
+import {detectAction,detectRelationship,mergeSemanticContext,semanticInvariants,relationshipCompatibility,semanticDomainCompatibility} from "../../supabase/functions/public-ai-concierge/semantic-context.ts";
 const catalog=JSON.parse(fs.readFileSync(new URL("../../service-matrix.json",import.meta.url),"utf8")).services;
 const variants=new Map([
  ["wife",["زوجتي","مراتي","my wife"]],["husband",["زوجي","جوزي","my husband"]],["son",["ابني","ولدي","my son"]],["daughter",["بنتي","ابنتي","my daughter"]],["children",["أولادي","عيالي","my kids"]],["mother",["والدتي","أمي","ماما","my mother"]],["father",["والدي","أبي","ابويا","my father"]],["brother",["أخي","اخويا","my brother"]],["sister",["أختي","my sister"]]
@@ -16,3 +16,5 @@ test("service action is independent state and explicit action changes override c
 test("catalog action matrix never lets service ranking redefine semantic action",()=>{for(const service of catalog)for(const action of ["issue","renew","amend","cancel","transfer"]){const prior={...mergeSemanticContext("ابني",null,""),action};const after=mergeSemanticContext("دبي",prior,"");assert.equal(after.action,action,service.slug+" "+action);}});
 
 test("production request path passes canonical action into ranker",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/rank\(semanticGoal, catalog, relationship, semantic\.action\)/);assert.match(edge,/action: semantic\.action/);});
+
+test("family relationships cannot cross into unrelated catalog domains",()=>{for(const service of catalog){for(const relationship of ["wife","husband","son","daughter","mother","father","brother","sister"]){const score=semanticDomainCompatibility(service.category,relationship);if(score>=0)assert.match(String(service.category),/family|dependent|sponsor/i,service.slug+" "+relationship);}}});
