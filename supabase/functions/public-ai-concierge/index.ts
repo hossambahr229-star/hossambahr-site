@@ -368,7 +368,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
     const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));
-    score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;\n    score += actionCompatibility(relationshipIdentity, action) * 1500;
+    score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;
+    score += actionCompatibility(relationshipIdentity, action) * 1500;
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
     const identityText = normalize(row.binding.service_slug+" "+row.title);
     if (residencyDomain && !/(اقامه|residen|residency|visa)/.test(identityText)) score -= 2200;
@@ -587,7 +588,8 @@ function streamHeaders(req:Request) {
 }
 
 function streamEvent(controller:ReadableStreamDefaultController<Uint8Array>, event:any) {
-  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"\n"));
+  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"
+"));
 }
 
 async function logProviderHttpError(res:Response, attempt:number) {
@@ -637,7 +639,11 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
   if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return null;
   const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
-  const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
+  const userContent="Verified HOSSAM BAHR grounding for this turn:
+"+grounding+"
+
+Current user message:
+"+latestTurn;
   const input=[...safeHistory,{role:"user",content:userContent}];
   const stream=new ReadableStream<Uint8Array>({
     async start(controller){
@@ -651,7 +657,8 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
         while(true){
           const {done,value}=await reader.read(); if(done) break;
           buffer+=decoder.decode(value,{stream:true});
-          const lines=buffer.split("\n"); buffer=lines.pop()||"";
+          const lines=buffer.split("
+"); buffer=lines.pop()||"";
           for(const raw of lines){
             const line=raw.trim(); if(!line.startsWith("data:")) continue;
             const data=line.slice(5).trim(); if(!data || data==="[DONE]") continue;
@@ -682,7 +689,11 @@ async function callConversationalModel(latestTurn:string, history:any[], determi
   const cfg=providerConfig(); if(!cfg || providerCreditBlocked()) return null;
   const started=performance.now(); const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
-  const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
+  const userContent="Verified HOSSAM BAHR grounding for this turn:
+"+grounding+"
+
+Current user message:
+"+latestTurn;
   try{
     if(cfg.provider==="openai"){
       const input=[...safeHistory,{role:"user",content:userContent}];
@@ -758,7 +769,8 @@ export default {
           relationship_group: semantic.relationship_group,
           entity: semantic.entity,
           service_slug: semantic.service_slug,
-          authority_key: semantic.authority_key,\n          action: semantic.action,
+          authority_key: semantic.authority_key,
+          action: semantic.action,
           turn_type: semantic.turn_type,
           topic: semantic.topic,
           intent: semantic.intent,
