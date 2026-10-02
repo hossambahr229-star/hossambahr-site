@@ -11,7 +11,10 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - run: node scripts/hb-ai-global-catalog-production.mjs | tee global-catalog-result.json
+      - shell: bash
+        run: |
+          set -o pipefail
+          node scripts/hb-ai-global-catalog-production.mjs | tee global-catalog-result.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
