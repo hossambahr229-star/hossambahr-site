@@ -365,7 +365,16 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const spouseRelationship = relationship === "spouse" || relationship === "wife" || relationship === "husband";
   const parentRelationship = relationship === "parents" || relationship === "mother" || relationship === "father";
   const childRelationship = relationship === "children" || relationship === "son" || relationship === "daughter";
-  return rows.map((row:any) => {
+  // Semantic eligibility is resolved before lexical scoring. If the catalog contains
+  // family-residence candidates, unrelated same-action services cannot compete.
+  const familyResidenceRows = familyDomain && residencyDomain
+    ? rows.filter((row:any) => /(family|اسر|عائل|زوج|والد|ابن|بنت|child|son|daughter|dependent|residen)/.test(normalize(row.binding.service_slug+" "+row.title)))
+    : [];
+  const exactFamilyJurisdictionRows = familyResidenceRows.length && detected
+    ? familyResidenceRows.filter((row:any) => row.jurisdiction?.code === detected)
+    : [];
+  const eligibleRows = exactFamilyJurisdictionRows.length ? exactFamilyJurisdictionRows : (familyResidenceRows.length ? familyResidenceRows : rows);
+  return eligibleRows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
     const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));
     score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;
@@ -373,15 +382,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
     const domainText = normalize(row.binding.service_slug+" "+row.title+" "+row.haystack);
     const identityText = normalize(row.binding.service_slug+" "+row.title);
     if (residencyDomain && !/(اقامه|residen|residency|visa)/.test(identityText)) score -= 2200;
-    if (familyDomain && residencyDomain && !/(family|اسر|عائل|زوج|والد|ابن|بنت|child|son|daughter|dependent|residen)/.test(identityText)) score -= 9000;
-    // UAE residence authority is jurisdiction-sensitive: Dubai family residence is a
-    // GDRFA Dubai route, while ICP is the federal route outside Dubai. Action-token
-    // overlap must never overpower that service-domain boundary.
-    if (familyDomain && residencyDomain && detected === "AE-DU") {
-      if (row.jurisdiction?.code === "AE-DU") score += 6000;
-      else if (row.jurisdiction?.code === "AE") score -= 2500;
-      else score -= 6000;
-    }
+    if (familyDomain && residencyDomain && !/(family|اسر|عائل|زوج|والد|residen)/.test(identityText)) score -= 1600;
     if (residencyDomain && !employeeDomain && /(work permit|تصريح عمل|labour|labor)/.test(identityText)) score -= 2200;
     if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(identityText)) score -= 900;
     if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(identityText)) score -= 900;
