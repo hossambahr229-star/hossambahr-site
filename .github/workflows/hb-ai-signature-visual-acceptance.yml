@@ -6,6 +6,8 @@ on:
       - 'ai/**'
       - 'public-ai-concierge.js'
       - 'global-os.css'
+      - 'supabase/functions/public-ai-concierge/**'
+      - 'supabase/functions/document-ai/**'
       - '.github/workflows/hb-ai-signature-visual-acceptance.yml'
   workflow_dispatch:
 jobs:
@@ -21,6 +23,7 @@ jobs:
       - name: Capture and verify live HB AI signature experience
         shell: bash
         run: |
+          set -euo pipefail
           mkdir -p hb-ai-visual
           cat > hb-ai-visual.mjs <<'JS'
           import { chromium } from 'playwright';
