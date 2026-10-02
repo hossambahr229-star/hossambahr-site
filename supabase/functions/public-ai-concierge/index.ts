@@ -786,6 +786,7 @@ export default {
       const lexicalRanked = rank(semanticGoal, catalog, relationship);
       const ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
       const deterministic = publicResult(semanticGoal, ranked, latestTurn);
+      console.info("hb-ai-deterministic-route",{relationship:semantic.relationship||null,jurisdiction:semantic.jurisdiction||null,top_service:deterministic?.matches?.[0]?.service_slug||null,confidence:deterministic?.confidence||null,source_backed:Boolean(deterministic?.grounding?.source_backed)});
       if (wantsStream) { const streamed=makeStreamingResponse(req,latestTurn,history,deterministic,rate,semanticGoal,requestStarted,catalogMs,semantic); if(streamed) return streamed; }
       const intelligenceStarted = performance.now();
       const intelligent = await conversationalResult(latestTurn, history, deterministic);
