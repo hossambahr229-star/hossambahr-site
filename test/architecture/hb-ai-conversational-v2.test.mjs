@@ -90,11 +90,11 @@ test("document AI fails closed and enforces authenticated bounded document input
   assert.match(doc,/Do not infer missing passport\/ID\/license fields/);
   assert.match(doc,/store:false/);
   assert.match(doc,/provider_store:false/);
-  assert.doesNotMatch(doc,/serviceKey[^\n]*reply|OPENAI_API_KEY[^\n]*reply/);
+  assert.doesNotMatch(doc,/reply\(req,\{[^\n]*(?:serviceKey|OPENAI_API_KEY|SUPABASE_SERVICE_ROLE_KEY)/);
 });
 
 
 test("jurisdiction resolver has an explicit scalar return contract",()=>{
-  assert.match(edgeSource,/function detectJurisdiction\(goal: string\): string \| null/);
-  assert.match(edgeSource,/const map: Array<\[string, string\[\]\]>/);
+  assert.match(edge,/function detectJurisdiction\(goal: string\): string \| null/);
+  assert.match(edge,/const map: Array<\[string, string\[\]\]>/);
 });
