@@ -129,3 +129,5 @@ test("client carries canonical action independently across short follow-ups",()=
 
 
 test("browser carries family member set through the semantic context contract",()=>{assert.match(source,/family_members: \[\]/);assert.match(source,/family_members:state\.family_members/);assert.match(source,/state\.family_members=payload\?\.goal_context\?\.family_members/);assert.match(edge,/family_members: semantic\.family_members/);});
+
+test("billing exhaustion opens a runtime provider circuit without faking external model use",()=>{assert.match(edge,/providerBillingBlockedUntil/);assert.match(edge,/credit_balance_exhausted/);assert.match(edge,/insufficient_quota/);assert.match(edge,/Date\.now\(\)<providerBillingBlockedUntil/);assert.match(edge,/external_model_used: false/);});
