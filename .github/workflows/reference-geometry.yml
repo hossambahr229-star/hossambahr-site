@@ -1,0 +1,31 @@
+name: Approved Reference Geometry
+on:
+  pull_request:
+    paths: ['home-geometry.css','index.html','en/index.html','assets/**','src/publication/apply-home-geometry.mjs','scripts/reference-geometry-gate.mjs','qa/reference/**','package.json','.github/workflows/reference-geometry.yml']
+  push:
+    branches: [main]
+    paths: ['home-geometry.css','index.html','en/index.html','assets/**','src/publication/apply-home-geometry.mjs','scripts/reference-geometry-gate.mjs','qa/reference/**','package.json','.github/workflows/reference-geometry.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - name: Build from source and check architecture
+        run: npm run build && npm run typecheck && npm run test:architecture
+      - name: Measure rebuilt homepage against approved desktop coordinates
+        shell: bash
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/reference-geometry-gate.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reference-geometry-overlay
+          path: artifacts/reference-geometry
+          retention-days: 30
