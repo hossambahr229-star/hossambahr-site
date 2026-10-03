@@ -50,5 +50,5 @@ test("Production human variants resolve stable semantic roles and actions",()=>{
  assert.equal(detectAction("عاوز اطلع اقامة للمدام في دبي"),"issue");
  assert.equal(detectAction("رخصتي بعجمان بتنتهي"),"renew");
  assert.equal(detectSubjectRole("add shareholder Dubai license"),"partner");
- for(const q of ["ابي اجدد اقامة الخادمة","domestic worker visa renewal","تجديد اقامة عامل مساعد"]) assert.equal(detectSubjectRole(q),"domestic_worker",q);
+ for(const q of ["ابي اجدد اقامة الخادمة","إقامة العاملة المنزلية قربت تنتهي","domestic worker visa renewal","تجديد اقامة عامل مساعد"]) assert.equal(detectSubjectRole(q),"domestic_worker",q);
 });

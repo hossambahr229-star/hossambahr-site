@@ -368,7 +368,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const residencyDomain = has(normalized, ["اقامه","إقامة","اقامتي","إقامتي","residence","residency"]);
   const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","ابني","ابنتي","بنتي","اولادي","ابنائي","عيالي","اسره","عائله","family","wife","spouse","parent","son","daughter","children","kids"]);
   const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
-  const domesticWorkerDomain = has(normalized, ["عامله منزليه","عاملة منزلية","خادمه","خادمة","عامل مساعد","عامله مساعده","عاملة مساعدة","عماله مساعده","عمالة مساعدة","domestic worker","domestic helper","housemaid","maid"]);
+  const domesticWorkerDomain = has(normalized, ["عامله منزليه","العامله المنزليه","عاملة منزلية","العاملة المنزلية","خادمه","خادمة","عامل مساعد","عامله مساعده","عاملة مساعدة","عماله مساعده","عمالة مساعدة","domestic worker","domestic helper","housemaid","maid"]);
   const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
   const workDomain = has(normalized, ["تصريح عمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
   const familyResidenceSponsorship = Boolean(relationship) && (action === "sponsor" || residencyDomain || has(normalized,["visa","فيزا"])) && !workDomain;
