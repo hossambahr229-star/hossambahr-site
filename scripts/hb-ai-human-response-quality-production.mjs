@@ -30,4 +30,6 @@ const freq=new Map();for(const a of answers)freq.set(a,(freq.get(a)||0)+1);const
 latencies.sort((a,b)=>a-b);const pct=q=>Math.round(latencies[Math.min(latencies.length-1,Math.floor(q*latencies.length))]);
 const metrics={total:cases.length,fallback_rate:fallback/cases.length,dead_end_rate:dead/cases.length,wrong_route_rate:wrong/cases.length,unsupported_claim_guard_failures:unsupported,duplicate_response_rate:duplicate,latency_p50_ms:pct(.5),latency_p95_ms:pct(.95)};
 assert.equal(wrong,0,JSON.stringify(metrics));assert.equal(unsupported,0);assert.ok(dead/cases.length<=.10,JSON.stringify(metrics));assert.ok(fallback/cases.length<=.10,JSON.stringify(metrics));
-console.log(JSON.stringify({status:"PASS",metrics,samples:cases.slice(0,15).map((c,i)=>({prompt:c.prompt,answer:answers[i]}))},null,2));\n// Continuity is part of free human quality: independent prompts alone cannot prove conversation quality.\nawait import("./hb-ai-conversational-continuity-production.mjs");\n
+console.log(JSON.stringify({status:"PASS",metrics,samples:cases.slice(0,15).map((c,i)=>({prompt:c.prompt,answer:answers[i]}))},null,2));
+// Continuity is part of free human quality: independent prompts alone cannot prove conversation quality.
+await import("./hb-ai-conversational-continuity-production.mjs");
