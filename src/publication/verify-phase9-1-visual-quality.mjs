@@ -61,10 +61,10 @@ for(const viewport of viewports){
     if(audit.brokenInteractive)failures.push(`${surface.name}/${viewport.name}: ${audit.brokenInteractive} visible zero-size critical controls`);
     if(runtime.length)failures.push(`${surface.name}/${viewport.name}: runtime errors ${runtime.join(' | ')}`);
     if(surface.name==='homepage'){
-      const card=page.locator('.action-start-grid>a').first();
+      const card=page.locator('.target-discovery .premium-category-grid>a,.action-start-grid>a').first();
       await card.waitFor({state:'visible'});
       const check=await card.evaluate(el=>{
-        const title=el.querySelector('b'),cta=el.querySelector('small'),bg=getComputedStyle(el).backgroundColor;
+        const title=el.querySelector('b'),cta=el.querySelector('small,span'),bg=getComputedStyle(el).backgroundColor;
         return {bg,title:getComputedStyle(title).color,cta:getComputedStyle(cta).color,titleText:title.textContent.trim(),ctaText:cta.textContent.trim()};
       });
       if(ratio(check.title,check.bg)<4.5)failures.push(`homepage/${viewport.name}: start title contrast ${ratio(check.title,check.bg).toFixed(2)}`);
