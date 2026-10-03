@@ -640,7 +640,7 @@
     form.setAttribute("role", "form");
     form.setAttribute("aria-label", "محادثة مع HOSSAM BAHR AI");
 
-    const oldInput = $("#government-search");
+    const oldInput = $("#government-search") || $("#premium-ai-seed");
     const textarea = document.createElement("textarea");
     textarea.id = "government-search";
     textarea.name = "goal";
