@@ -768,7 +768,7 @@ export default {
       // A family sponsorship service is jurisdiction-specific. Until the emirate is known,
       // fail closed instead of presenting whichever emirate-specific catalog row ranked first.
       const domesticResidence = semantic.subject_role === "domestic_worker" && has(normalize(semanticGoal),["اقامه","إقامة","اقامتها","إقامتها","اقامته","إقامته","residence","residency","visa"]);
-      if (domesticResidence && !semantic.jurisdiction && !deterministic.matches?.length) {
+      if (domesticResidence && !semantic.jurisdiction) {
         deterministic = {
           ...deterministic,
           understood_intent:"إقامة عامل/عاملة مساعدة",
