@@ -292,7 +292,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 15000 : emirate ? -9000 : 6500;
     if (/family-data-icp/.test(slug)) score -= 12000;
   }
-  if (relationship && (residencyDomain || has(normalized,["visa","فيزا"])) && !workDomain && !wantsCancel) {
+  if (relationship && (residencyDomain || has(normalized,["visa","فيزا"])) && !workDomain && !has(normalized, ["الغي","ألغي","إلغاء","الغاء","cancel"])) {
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 16000 : emirate ? -5000 : 7000;
     if (/family-sponsored-work-permit|work-permit/.test(slug)) score -= 15000;
   }
