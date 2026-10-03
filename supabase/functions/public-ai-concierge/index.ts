@@ -392,7 +392,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
     // explicitly asks about employment/work. Family-sponsored work permits share the same
     // catalog category, so category compatibility alone must never substitute the service object.
     if (familyResidenceSponsorship && /(work permit|تصريح عمل|employment|employee|worker|توظيف)/.test(identityText)) score -= 12000;
-    if (domesticWorkerDomain) { if (/(عامل مساعد|عماله مساعده|عمالة مساعدة|domestic)/.test(identityText)) score += 10000; else if (/(family|اسر|golden|موظف في القطاع الخاص|employee residence)/.test(identityText)) score -= 12000; }\n    if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(identityText)) score -= 900;
+    if (domesticWorkerDomain) { if (/(عامل مساعد|عماله مساعده|عمالة مساعدة|domestic)/.test(identityText)) score += 10000; else if (/(family|اسر|golden|موظف في القطاع الخاص|employee residence)/.test(identityText)) score -= 12000; }
+    if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(identityText)) score -= 900;
     if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(identityText)) score -= 900;
     if (asksResidenceAuthorityChoice && detected && detected !== "AE-DU") {
       if (row.authority?.authority_key === "icp") score += 6000;
@@ -605,7 +606,8 @@ function streamHeaders(req:Request) {
 }
 
 function streamEvent(controller:ReadableStreamDefaultController<Uint8Array>, event:any) {
-  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"\n"));
+  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"
+"));
 }
 
 async function logProviderHttpError(res:Response, attempt:number) {
@@ -655,7 +657,11 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
   if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return null;
   const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
-  const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
+  const userContent="Verified HOSSAM BAHR grounding for this turn:
+"+grounding+"
+
+Current user message:
+"+latestTurn;
   const input=[...safeHistory,{role:"user",content:userContent}];
   const stream=new ReadableStream<Uint8Array>({
     async start(controller){
@@ -669,7 +675,8 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
         while(true){
           const {done,value}=await reader.read(); if(done) break;
           buffer+=decoder.decode(value,{stream:true});
-          const lines=buffer.split("\n"); buffer=lines.pop()||"";
+          const lines=buffer.split("
+"); buffer=lines.pop()||"";
           for(const raw of lines){
             const line=raw.trim(); if(!line.startsWith("data:")) continue;
             const data=line.slice(5).trim(); if(!data || data==="[DONE]") continue;
@@ -700,7 +707,11 @@ async function callConversationalModel(latestTurn:string, history:any[], determi
   const cfg=providerConfig(); if(!cfg || providerCreditBlocked()) return null;
   const started=performance.now(); const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
-  const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
+  const userContent="Verified HOSSAM BAHR grounding for this turn:
+"+grounding+"
+
+Current user message:
+"+latestTurn;
   try{
     if(cfg.provider==="openai"){
       const input=[...safeHistory,{role:"user",content:userContent}];
