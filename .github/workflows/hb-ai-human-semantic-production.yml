@@ -2,6 +2,11 @@ name: HB AI human semantic production
 on:
   push:
     branches: [main]
+    paths:
+      - "supabase/functions/public-ai-concierge/**"
+      - "public-ai-concierge.js"
+      - "scripts/hb-ai-human-semantic-production.mjs"
+      - ".github/workflows/hb-ai-human-semantic-production.yml"
   workflow_dispatch:
 permissions:
   contents: read
