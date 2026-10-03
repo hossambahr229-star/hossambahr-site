@@ -117,15 +117,16 @@ function isContextualFollowUp(text:string){
 }
 
 function answerFocus(text: string) {
-  if (has(text, ["كم الرسوم","الرسوم","رسوم","fee","fees","cost"])) return "fees";
-  if (has(text, ["الاوراق","الأوراق","المستندات","مستندات","documents"])) return "documents";
-  if (has(text, ["الشروط","شروط","conditions","eligibility","requirements"])) return "conditions";
-  if (has(text, ["الخطوات","خطوات","steps","how to apply"])) return "steps";
-  if (has(text, ["الرابط","لينك","link","url"])) return "link";
-  if (has(text, ["كم تستغرق","المدة","مده","مدة","duration","how long"])) return "duration";
-  if (has(text, ["من الجهة","الجهه","الجهة","authority"])) return "authority";
-  if (has(text, ["هل احتاج موافقه","هل أحتاج موافقة","موافقه","موافقة","approval"])) return "approvals";
-  if (has(text, ["ابدأ معاملتي","ابدا معاملتي","start my transaction"])) return "start";
+  const normalized = normalize(text);
+  if (has(normalized, ["كم الرسوم","الرسوم","رسوم","fee","fees","cost"])) return "fees";
+  if (has(normalized, ["الاوراق","الأوراق","المستندات","مستندات","documents"])) return "documents";
+  if (has(normalized, ["الشروط","شروط","conditions","eligibility","requirements"])) return "conditions";
+  if (has(normalized, ["الخطوات","خطوات","steps","how to apply"])) return "steps";
+  if (has(normalized, ["الرابط","لينك","link","url"])) return "link";
+  if (has(normalized, ["كم تستغرق","المدة","مده","مدة","duration","how long"])) return "duration";
+  if (has(normalized, ["من الجهة","الجهه","الجهة","authority"])) return "authority";
+  if (has(normalized, ["هل احتاج موافقه","هل أحتاج موافقة","موافقه","موافقة","approval"])) return "approvals";
+  if (has(normalized, ["ابدأ معاملتي","ابدا معاملتي","start my transaction"])) return "start";
   return "overview";
 }
 
