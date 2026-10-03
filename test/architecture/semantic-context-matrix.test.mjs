@@ -21,3 +21,5 @@ test("family relationships cannot cross into unrelated catalog domains",()=>{for
 
 
 test("family sponsorship service object cannot degrade into a family-sponsored work permit",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/familyResidenceSponsorship/);assert.match(edge,/work permit\|تصريح عمل[\s\S]{0,200}score -= 12000/);const s=mergeSemanticContext("أريد أن أكفل زوجتي على إقامتي",null,"");assert.equal(s.relationship,"wife");assert.equal(s.action,"sponsor");});
+
+test("family sponsorship without emirate fails closed before selecting an emirate-specific service",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/relationship && semantic\.action === "sponsor" && !semantic\.jurisdiction/);assert.match(edge,/في أي إمارة صادرة إقامة الكفيل؟/);});
