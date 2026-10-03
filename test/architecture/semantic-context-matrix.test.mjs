@@ -41,3 +41,6 @@ test("production response exposes subject role so clients can carry it across tu
 
 test("Gulf first-person أبي is not misread as father",()=>{assert.equal(detectRelationship("أبي أفتح شركة في الشارقة"),null);assert.equal(detectSubjectRole("أبي أفتح شركة في الشارقة"),"company");});
 test("natural residence issuance language resolves action",()=>{for(const q of ["عايز أعمل إقامة لمراتي","كيف اسوي اقامة للزوجة","wife visa dubai","ابي اقامه لزوجتي"])assert.equal(detectAction(q),"issue",q);});
+
+test("English business partner is not coerced into spouse",()=>{assert.equal(detectRelationship("add partner Dubai company"),null);assert.equal(detectSubjectRole("add partner Dubai company"),"partner");});
+test("Gulf أبي remains first-person before service nouns",()=>{for(const q of ["ابي رخصه اقتصاديه الشارقه","ابي اقامة ذهبية بدبي كمستثمر","ابي اسجل إيجاري","ابي اضيف شريك بالرخصة دبي"])assert.equal(detectRelationship(q),null,q);});

@@ -276,8 +276,8 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const residence = has(goal, ["اقامه","اقامتي","إقامتي","residence","residency"]);
   const renew = has(goal, ["اجدد","تجديد","renew"]);
   const amend = has(goal, ["تعديل","عدل","amend","modify"]);
-  const company = has(goal, ["شركه","رخصه","ترخيص","business","company","license","licence"]);
-  const open = has(goal, ["افتح","تاسيس","اصدار","ابدأ","ابدا","open","start","issue","establish"]);
+  const company = has(goal, ["شركه","رخصه","رخصتي","ترخيص","بزنس","business","company","license","licence"]);
+  const open = has(goal, ["افتح","تاسيس","اصدار","ابدأ","ابدا","open","start","issue","establish","new"]);
   const directLicenseRequest = has(goal, ["اريد رخصه","عايز رخصه","احتاج رخصه","ابغي رخصه","ابي رخصه","want a license","need a license","need licence","want licence"]);
   const employee = has(goal, ["موظف","عامل","employee","worker"]);
   const workDomain = has(goal, ["تصريح عمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
@@ -313,11 +313,11 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (emirate && jurisdictionCode === emirate && renew && /license-renewal|renew-business-license/.test(slug)) score += 6500;
     if (emirate && jurisdictionCode === emirate && amend && /license-amendment|amend-business-license/.test(slug)) score += 6500;
   }
-  if (employee && wantsCancel) {
+  if ((employee || workDomain) && wantsCancel) {
     if (slug === "cancel-work-permit-uae") score += 7000;
     if (slug === "transfer-work-permit-uae") score -= 1200;
   }
-  if (employee && transfer && slug === "transfer-work-permit-uae") score += 7000;
+  if ((employee || workDomain) && transfer && slug === "transfer-work-permit-uae") score += 7000;
   if (employee && outside && slug === "new-work-permit-overseas-uae") score += 7000;
   const tradeLicense = has(goal, ["رخصه تجاريه","الرخصه التجاريه","رخصة تجارية","الرخصة التجارية","trade license","business license","economic license","رخصه الشركه","رخصة الشركة"]);
   if (tradeLicense && renew) {
@@ -329,13 +329,13 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (/(issue|issuance|renew|partner)/.test(slug)) score -= 5000;
   }
   if (has(goal, ["اضيف شريك","أضيف شريك","اضافه شريك","إضافة شريك","remove partner","add partner"]) && slug === "add-remove-partner-dubai") score += 7500;
-  if (has(goal, ["ايجاري","إيجاري","ejari"])) {
+  if (has(goal, ["ايجاري","إيجاري","اجاري","ejari"])) {
     if (slug === "register-renew-ejari-contract-dubai") score += 9000; else score -= 2500;
   }
-  if (has(goal, ["wps","نظام حمايه الاجور","نظام حماية الأجور","حمايه الاجور","حماية الأجور"])) {
+  if (has(goal, ["wps","نظام حمايه الاجور","نظام حماية الأجور","حمايه الاجور","حماية الأجور","نظام الاجور","نظام الأجور","wage protection"])) {
     if (slug === "التسجيل-والمتابعة-في-wps") score += 9000; else if (/work-permit|تصريح/.test(slug)) score -= 3500;
   }
-  if (has(goal, ["الاقامه الذهبيه","الإقامة الذهبية","golden residency","golden visa"])) {
+  if (has(goal, ["الاقامه الذهبيه","الإقامة الذهبية","جولدن فيزا","جولدن","golden residency","golden visa"])) {
     if (slug === "golden-residency-uae") score += 9000; else if (/family|اسر|والد/.test(slug)) score -= 4000;
   }
   const economicLicense = has(goal, ["رخصه اقتصاديه","رخصة اقتصادية","الرخصه الاقتصاديه","الرخصة الاقتصادية","economic license","economic licence","رخصه تجاريه","رخصة تجارية","الرخصه التجاريه","الرخصة التجارية","trade license","trade licence"]);
