@@ -606,8 +606,7 @@ function streamHeaders(req:Request) {
 }
 
 function streamEvent(controller:ReadableStreamDefaultController<Uint8Array>, event:any) {
-  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"
-"));
+  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"\\n"));
 }
 
 async function logProviderHttpError(res:Response, attempt:number) {
