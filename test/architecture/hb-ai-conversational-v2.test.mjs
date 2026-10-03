@@ -126,3 +126,6 @@ test("document AI validates data-url MIME and binary magic bytes before provider
 
 
 test("client carries canonical action independently across short follow-ups",()=>{assert.match(source,/action: null/);assert.match(source,/service_family:state\.service_family,action:state\.action/);assert.match(source,/state\.action=payload\?\.goal_context\?\.action\?\?state\.action/);});
+
+
+test("browser carries family member set through the semantic context contract",()=>{assert.match(source,/family_members: \[\]/);assert.match(source,/family_members:state\.family_members/);assert.match(source,/state\.family_members=payload\?\.goal_context\?\.family_members/);assert.match(edge,/family_members: semantic\.family_members/);});

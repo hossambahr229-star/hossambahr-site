@@ -64,16 +64,16 @@ function hasPhrase(text: string, words: string[]) {
 type SemanticState = {
   turn_type:"new_topic"|"follow_up"|"correction"|"clarification"|"jurisdiction_switch"|"service_switch"|"entity_switch";
   resolved_query:string; topic:string|null; intent:string|null; service_family:string|null;
-  jurisdiction:string|null; relationship:FamilyRelationship|null; relationship_group:ReturnType<typeof relationshipGroup>;
+  jurisdiction:string|null; relationship:FamilyRelationship|null; relationship_group:ReturnType<typeof relationshipGroup>; family_members:FamilyRelationship[];
   entity:SemanticEntity; service_slug:string|null; authority_key:string|null; action:ReturnType<typeof detectAction>; business_activity:string|null; confidence:"high"|"medium"|"low";
 };
 
 async function resolveSemanticState(latestTurn:string, history:any[], context:any, fallbackGoal:string):Promise<SemanticState>{
   const latestNorm=normalize(latestTurn);
   const explicitNonFamilyTopic=has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"]) && !detectRelationship(latestTurn);
-  const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null,action:context?.action??null};
+  const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),family_members:Array.isArray(context?.family_members)?context.family_members:[],entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null,action:context?.action??null};
   const merged=mergeSemanticContext(latestTurn,priorSemantic,fallbackGoal,{newTopic:explicitNonFamilyTopic});
-  const fallback:SemanticState={turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,action:merged.action,business_activity:null,confidence:"low"};
+  const fallback:SemanticState={turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,family_members:merged.family_members,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,action:merged.action,business_activity:null,confidence:"low"};
   const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return fallback;
   const recent=safeHistoryForModel(history);
   const input=[...recent,{role:"user",content:latestTurn}];
@@ -81,8 +81,8 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
     turn_type:{type:"string",enum:["new_topic","follow_up","correction","clarification","jurisdiction_switch","service_switch","entity_switch"]},
     resolved_query:{type:"string"},topic:{type:["string","null"]},intent:{type:["string","null"]},service_family:{type:["string","null"]},
     jurisdiction:{type:["string","null"]},relationship:{type:["string","null"],enum:["spouse","wife","husband","son","daughter","children","father","mother","parents","brother","sister","siblings","other_dependent",null]},
-    relationship_group:{type:["string","null"],enum:["spouse","child","parent","sibling","dependent",null]},entity:{type:"object",additionalProperties:false,properties:{kind:{type:"string",enum:["person","company","property","employment","document","service_subject","unknown"]},relationship:{type:["string","null"]},relationship_group:{type:["string","null"]}},required:["kind","relationship","relationship_group"]},service_slug:{type:["string","null"]},authority_key:{type:["string","null"]},action:{type:["string","null"],enum:["issue","renew","amend","cancel","transfer","sponsor",null]},business_activity:{type:["string","null"]},confidence:{type:"string",enum:["high","medium","low"]}
-  },required:["turn_type","resolved_query","topic","intent","service_family","jurisdiction","relationship","relationship_group","entity","service_slug","authority_key","action","business_activity","confidence"]};
+    relationship_group:{type:["string","null"],enum:["spouse","child","parent","sibling","dependent",null]},family_members:{type:"array",items:{type:"string",enum:["spouse","wife","husband","son","daughter","children","father","mother","parents","brother","sister","siblings","other_dependent"]},maxItems:12},entity:{type:"object",additionalProperties:false,properties:{kind:{type:"string",enum:["person","company","property","employment","document","service_subject","unknown"]},relationship:{type:["string","null"]},relationship_group:{type:["string","null"]}},required:["kind","relationship","relationship_group"]},service_slug:{type:["string","null"]},authority_key:{type:["string","null"]},action:{type:["string","null"],enum:["issue","renew","amend","cancel","transfer","sponsor",null]},business_activity:{type:["string","null"]},confidence:{type:"string",enum:["high","medium","low"]}
+  },required:["turn_type","resolved_query","topic","intent","service_family","jurisdiction","relationship","relationship_group","family_members","entity","service_slug","authority_key","action","business_activity","confidence"]};
   try{
     const res=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({
       model:cfg.model,store:false,reasoning:{effort:"low"},max_output_tokens:320,
@@ -98,6 +98,7 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
     else if(!topicReset) parsed.relationship=fallback.relationship;
     else parsed.relationship=null;
     parsed.relationship_group=relationshipGroup(parsed.relationship);
+    parsed.family_members=merged.family_members;
     parsed.entity=parsed.relationship?{kind:"person",relationship:parsed.relationship,relationship_group:parsed.relationship_group}:(topicReset?{kind:"unknown",relationship:null,relationship_group:null}:fallback.entity);
     if(!parsed.jurisdiction) parsed.jurisdiction=detectJurisdiction(latestTurn)||(!topicReset?fallback.jurisdiction:null);
     if(!parsed.service_slug&&!topicReset) parsed.service_slug=fallback.service_slug;
@@ -653,7 +654,7 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
       const aborter=new AbortController(); const timer=setTimeout(()=>aborter.abort(),15000);
       let full=""; let ttft:number|null=null; let usage:any={}; let retries=0;
       try{
-        streamEvent(controller,{type:"meta",goal_context:{jurisdiction_hint:semantic?.jurisdiction||detectJurisdiction(normalize(goal)),relationship:semantic?.relationship||null,turn_type:semantic?.turn_type||null,topic:semantic?.topic||null,safe_goal:goal},result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai",external_model_used:true}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
+        streamEvent(controller,{type:"meta",goal_context:{jurisdiction_hint:semantic?.jurisdiction||detectJurisdiction(normalize(goal)),relationship:semantic?.relationship||null,family_members:semantic?.family_members||[],turn_type:semantic?.turn_type||null,topic:semantic?.topic||null,safe_goal:goal},result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai",external_model_used:true}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
         const opened=await openAIStream(cfg,input,aborter.signal); retries=opened.retry_count;
         const reader=opened.res.body?.getReader(); if(!reader) throw new Error("openai_empty_stream");
         const decoder=new TextDecoder(); let buffer="";
@@ -776,6 +777,7 @@ export default {
           jurisdiction_hint: semantic.jurisdiction || detectJurisdiction(normalize(latestTurn)) || detectJurisdiction(normalize(semanticGoal)),
           relationship,
           relationship_group: semantic.relationship_group,
+          family_members: semantic.family_members,
           entity: semantic.entity,
           service_slug: semantic.service_slug,
           authority_key: semantic.authority_key,
