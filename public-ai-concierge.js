@@ -531,30 +531,22 @@
     state.history=Array.isArray(state.history)?state.history:[]; const pending=addStatus(); sendButton&&(sendButton.disabled=true);
     if(!state.original_goal)state.original_goal=displayed;else if(displayed!==state.original_goal)state.answers.push(displayed);
     const query=buildResolvedQuery(); state.resolved_query=query; saveState();
+    let streamBubble = null;
     try{
       const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn: displayed,history:state.history.slice(-8),stream:true,context:{active_service_id:state.active_service_id||state.service_slug,service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key,relationship:state.relationship,family_members:state.family_members,entity:state.entity,intent:state.intent,service_family:state.service_family,action:state.action,subject_role:state.subject_role,last_answer_topic:state.last_answer_topic,pending_clarification:state.pending_clarification,known_facts:state.known_facts}}),credentials:"omit"});
       if(response.status===429){removePending(pending);addBubble("assistant","وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");return;}
-      if(!response.ok||!response.body)throw new Error("stream_unavailable");
-      const reader=response.body.getReader(),decoder=new TextDecoder();let buffer="",payload=null,streamBubble=null,streamP=null,full="",ttft=null,doneMeta=null;
-      while(true){
-        const part=await reader.read(); if(part.done)break; buffer+=decoder.decode(part.value,{stream:true});
-        const lines=buffer.split("\n");buffer=lines.pop()||"";
-        for(const raw of lines){if(!raw.trim())continue;let evt;try{evt=JSON.parse(raw);}catch{continue;}
-          if(evt.type==="meta"){payload={ok:true,goal_context:evt.goal_context,result:evt.result,rate_limit:evt.rate_limit};continue;}
-          if(evt.type==="delta"){
-            if(ttft===null){ttft=Math.round(performance.now()-perfStart);removePending(pending);streamBubble=addBubble("assistant","");streamP=streamBubble?.querySelector(".hb-chat-bubble p");}
-            full+=evt.delta;if(streamP)streamP.textContent=full;
-          }
-          if(evt.type==="done"){doneMeta=evt;if(payload){payload.result.answer={...(payload.result.answer||{}),text:evt.text,generated:true};payload.result.engine=evt.engine;}full=evt.text||full;}
-          if(evt.type==="fallback"){payload={ok:true,goal_context:payload?.goal_context||{safe_goal:query},result:evt.result,rate_limit:payload?.rate_limit};full=evt.result?.answer?.text||"";}
-        }
-      }
-      if(!payload)throw new Error("stream_invalid");
+      let streamP=null,ttft=null;
+      const {readAIResponse}=await import("/ai-response-protocol.mjs");
+      const {payload,doneMeta}=await readAIResponse(response,(text)=>{
+        if(ttft===null){ttft=Math.round(performance.now()-perfStart);removePending(pending);streamBubble=addBubble("assistant","");streamP=streamBubble?.querySelector(".hb-chat-bubble p");}
+        if(streamP)streamP.textContent=text;
+      });
+      payload.goal_context=payload.goal_context||{safe_goal:query};
       if(streamBubble)streamBubble.remove();else removePending(pending);
       const totalMs=Math.round(performance.now()-perfStart);performance.mark?.("hb-ai-useful-content");
       window.dispatchEvent(new CustomEvent("hb:ai-performance",{detail:{ttft_ms:ttft??doneMeta?.engine?.ttft_ms??null,response_ms:totalMs,total_ms:doneMeta?.engine?.total_ms??totalMs,usage:doneMeta?.usage||null}}));
       const match=selectPresentationMatch(payload);state.last_payload=payload;state.history.push({role:"user",content:displayed});
-      const assistantText=payload?.result?.answer?.text||full;if(assistantText)state.history.push({role:"assistant",content:assistantText});
+      const assistantText=payload?.result?.answer?.text||"";if(assistantText)state.history.push({role:"assistant",content:assistantText});
       state.history=state.history.slice(-8);state.resolved_query=payload?.goal_context?.safe_goal||query;if(!state.original_goal)state.original_goal=state.resolved_query;
       state.service_slug=match?.service_slug||state.service_slug;state.active_service_id=payload?.goal_context?.active_service_id||match?.service_slug||state.active_service_id||state.service_slug;state.last_answer_topic=payload?.goal_context?.last_answer_topic||payload?.result?.answer?.focus||state.last_answer_topic;state.pending_clarification=payload?.goal_context?.pending_clarification??null;state.known_facts=payload?.goal_context?.known_facts||state.known_facts||{};state.subject_role=payload?.goal_context?.subject_role??state.subject_role;state.jurisdiction_code=match?.jurisdiction?.code||payload?.goal_context?.jurisdiction_hint||state.jurisdiction_code;state.authority_key=match?.authority?.key||state.authority_key;
         const turnType=payload?.goal_context?.turn_type||null;
@@ -562,7 +554,7 @@
         else if(payload?.goal_context && Object.prototype.hasOwnProperty.call(payload.goal_context,"relationship")) state.relationship=payload.goal_context.relationship; state.family_members=payload?.goal_context?.family_members||state.family_members; state.entity=payload?.goal_context?.entity||state.entity; state.intent=payload?.goal_context?.intent??state.intent; state.service_family=payload?.goal_context?.service_family??state.service_family; state.action=payload?.goal_context?.action??state.action;
         saveState();
       addBubble("assistant",buildAssistantMessage(payload));
-    }catch{removePending(pending);addBubble("assistant","تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");}
+    }catch{streamBubble?.remove();removePending(pending);addBubble("assistant","تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");}
     finally {
       analysisInFlight = false;if(sendButton)sendButton.disabled=false;composer?.focus();}
   }

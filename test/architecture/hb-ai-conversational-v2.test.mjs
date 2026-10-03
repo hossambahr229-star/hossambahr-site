@@ -76,8 +76,8 @@ test("billing and quota 429s fail fast instead of retrying",()=>{
 
 
 test("stream fallback preserves semantic metadata from the initial meta event",()=>{
-  assert.match(source,/goal_context:payload\?\.goal_context\|\|\{safe_goal:query\}/);
-  assert.match(source,/rate_limit:payload\?\.rate_limit/);
+  assert.match(source,/readAIResponse/);
+  assert.match(source,/payload\.goal_context=payload\.goal_context\|\|\{safe_goal:query\}/);
 });
 
 
