@@ -16,16 +16,16 @@ const groups=[
 ];
 const cases=groups.flatMap(([expected,prompts])=>prompts.map(prompt=>({expected,prompt})));
 assert.equal(cases.length,100);
-const answers=[],latencies=[];let fallback=0,dead=0,wrong=0,unsupported=0;
-for(const [i,c] of cases.entries()){
+const answers=new Array(cases.length),latencies=[];let fallback=0,dead=0,wrong=0,unsupported=0;
+async function runCase(c,i){
  const t=performance.now();const r=await fetch(endpoint,{method:"POST",signal:AbortSignal.timeout(20000),headers:{"content-type":"application/json","origin":"https://hossambahr.com","x-hb-qa-run":run},body:JSON.stringify({goal:c.prompt,latest_turn:c.prompt,history:[],context:{},stream:false})});latencies.push(performance.now()-t);
  assert.equal(r.status,200,"HTTP "+i);const p=await r.json();const slug=p.result?.matches?.[0]?.service_slug||"";const ans=p.result?.answer?.text||"";
  if(!slug)fallback++;if(!ans||/لم أتمكن من مطابقة طلبك/.test(ans))dead++;
  if(c.expected){if(!c.expected.test(slug)){wrong++;console.error("WRONG",i,c.prompt,slug)}}
- else {if(!/العامل|العاملة|عامل\/عاملة/.test(ans)||!/إمارة|الامارة|الإمارة/.test(ans)){wrong++;console.error("BAD_CLARIFY",i,c.prompt,ans)}}
- if(p.result?.grounding?.no_invention!==true)unsupported++;
- answers.push(ans.replace(/\s+/g," ").trim());
+ else {if(!/العامل|العاملة|عامل\\/عاملة/.test(ans)||!/إمارة|الامارة|الإمارة/.test(ans)){wrong++;console.error("BAD_CLARIFY",i,c.prompt,ans)}}
+ if(p.result?.grounding?.no_invention!==true)unsupported++;answers[i]=ans.replace(/\\s+/g," ").trim();
 }
+for(let i=0;i<cases.length;i+=10)await Promise.all(cases.slice(i,i+10).map((item,j)=>runCase(item,i+j)));
 const freq=new Map();for(const a of answers)freq.set(a,(freq.get(a)||0)+1);const duplicate=answers.reduce((n,a)=>n+((freq.get(a)||0)>1?1:0),0)/answers.length;
 latencies.sort((a,b)=>a-b);const pct=q=>Math.round(latencies[Math.min(latencies.length-1,Math.floor(q*latencies.length))]);
 const metrics={total:cases.length,fallback_rate:fallback/cases.length,dead_end_rate:dead/cases.length,wrong_route_rate:wrong/cases.length,unsupported_claim_guard_failures:unsupported,duplicate_response_rate:duplicate,latency_p50_ms:pct(.5),latency_p95_ms:pct(.95)};
