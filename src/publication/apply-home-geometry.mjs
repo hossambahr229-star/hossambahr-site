@@ -13,7 +13,7 @@ for (const route of ['index.html', 'en/index.html']) {
     .replace(/<style id="approved-reference-hard-lock">[\s\S]*?<\/style>/g, '')
     .replace(/<body\b/, '<body data-home-geometry="approved-desktop"')
     .replace(/<link\b[^>]*href="\/home-geometry\.css[^" ]*"[^>]*>/g, '')
-    .replace('</head>', '<link rel="stylesheet" href="/home-geometry.css?v=20261004-geometry1"/></head>');
+    .replace('</head>', '<link rel="stylesheet" href="/home-geometry.css?v=20261004-geometry2"/></head>');
   if (!html.includes('ai-showcase-robot')) html = html.replace(/(<aside class="premium-ai-showcase"[^>]*>)/,
     '$1<img class="ai-showcase-robot" src="/assets/hb-ai-robot.webp" alt="" width="160" height="205"/>');
   html = html.replace('/assets/hb-ai-robot.png','/assets/hb-ai-robot.webp');
