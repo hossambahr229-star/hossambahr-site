@@ -670,8 +670,7 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
         while(true){
           const {done,value}=await reader.read(); if(done) break;
           buffer+=decoder.decode(value,{stream:true});
-          const lines=buffer.split("
-"); buffer=lines.pop()||"";
+          const lines=buffer.split("\\n"); buffer=lines.pop()||"";
           for(const raw of lines){
             const line=raw.trim(); if(!line.startsWith("data:")) continue;
             const data=line.slice(5).trim(); if(!data || data==="[DONE]") continue;
