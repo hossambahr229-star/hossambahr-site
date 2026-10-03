@@ -128,10 +128,10 @@ if (server) {
 const browser = await chromium.launch({ headless: true, executablePath: browserPath });
 
 const conversationalScenarios = [
-  ["أريد أجدد إقامة زوجتي في دبي", /gdrfa-family-residence-renew|تجديد-إقامة-أفراد-الأسرة-في-دبي/, "family", "دبي"],
+  ["أريد أجدد إقامة زوجتي في دبي", /family-residency-uae|gdrfa-family-residence-renew|تجديد-إقامة-أفراد-الأسرة-في-دبي/, "family", "دبي"],
   ["أريد أفتح شركة في دبي", /issue-trade-license-dubai/, "companies", "دبي"],
   ["عندي موظف وأريد أنقله إلى شركتي", /transfer-work-permit-uae|mohre-transfer-work-permit/, "employment", "اتحادي"],
-  ["أريد إقامة لوالدتي في دبي", /إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/, "family", "دبي"],
+  ["أريد إقامة لوالدتي في دبي", /family-residency-uae|إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/, "family", "دبي"],
   ["أريد إصدار إقامة لابني في دبي", /family-residency-uae|family-residence|إقامة-أفراد-الأسرة/, "family", "دبي"]
 ];
 
