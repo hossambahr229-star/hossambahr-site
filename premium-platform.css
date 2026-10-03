@@ -151,3 +151,6 @@ body[data-ux-page="home"] .premium-authorities{display:block!important;backgroun
 body[data-ux-page="home"] .premium-authorities .authority-pills{display:grid!important}
 body[data-ux-page="home"] .premium-final-cta~section:not(#search-results){display:none!important}
 body[data-ux-page="home"] .premium-final-cta{background-image:linear-gradient(90deg,rgba(4,39,62,.82),rgba(4,63,75,.62)),url("https://images.unsplash.com/photo-1715109862630-9d8c83591d5f?auto=format&fit=crop&fm=jpg&q=82&w=1800")!important}
+
+/* Reference CTA full-bleed centering */
+body[data-ux-page="home"] .premium-final-cta{width:100%!important;max-width:none!important;margin-inline:auto!important;box-sizing:border-box}
