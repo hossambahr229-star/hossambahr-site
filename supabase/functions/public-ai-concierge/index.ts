@@ -488,7 +488,8 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
   const focus = answerFocus(latestTurn);
   const margin = candidates[1] ? top.score - candidates[1].score : top.score;
   const sourceBacked = Boolean(top.safeSources?.[0]?.source_url);
-  const ambiguous = margin < 35 && candidates[1]?.binding?.service_slug !== top.binding?.service_slug;
+  const semanticallyBound = Boolean(detectRelationship(goal) && detectAction(goal) && detectJurisdiction(goal));
+  const ambiguous = !semanticallyBound && margin < 35 && candidates[1]?.binding?.service_slug !== top.binding?.service_slug;
   if (ambiguous && questions.length === 0) questions.push("وجدت أكثر من خدمة محتملة. ما النتيجة التي تريد تنفيذها تحديدًا؟");
   const confidence = sourceBacked && !questions.length && !ambiguous && top.score >= 700 ? "high" : sourceBacked && top.score >= 220 ? "medium" : "low";
   const answer = groundedAnswer(goal, top, focus);
