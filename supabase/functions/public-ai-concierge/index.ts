@@ -274,9 +274,10 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   let score = 0;
   const family = has(goal, ["زوجه","زوجتي","زوج","اسره","عائله","والد","والدتي","والدي","الوالدين","family","wife","spouse","child","children","son","daughter","parent","mother","father"]);
   const residence = has(goal, ["اقامه","اقامتي","إقامتي","residence","residency"]);
-  const renew = has(goal, ["اجدد","تجديد","renew"]);
+  const renew = has(goal, ["اجدد","تجديد","renew","بتنتهي","تنتهي","قربت تنتهي","expiring","expires"]);
   const amend = has(goal, ["تعديل","عدل","amend","modify"]);
   const company = has(goal, ["شركه","رخصه","رخصتي","ترخيص","بزنس","business","company","license","licence"]);
+  const partnerChange = has(goal, ["اضيف شريك","أضيف شريك","اضافه شريك","إضافة شريك","ادخل شريك","أدخل شريك","ادخال شريك","إدخال شريك","شريك جديد","new partner","add partner","add shareholder","new shareholder"]);
   const open = has(goal, ["افتح","تاسيس","اصدار","ابدأ","ابدا","open","start","issue","establish","new"]);
   const directLicenseRequest = has(goal, ["اريد رخصه","عايز رخصه","احتاج رخصه","ابغي رخصه","ابي رخصه","want a license","need a license","need licence","want licence"]);
   const employee = has(goal, ["موظف","عامل","employee","worker"]);
@@ -328,14 +329,14 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (/(cancel-business-license-dubai|economic-license-cancellation|commercial-license-cancellation|license-cancellation)/.test(slug)) score += 6500;
     if (/(issue|issuance|renew|partner)/.test(slug)) score -= 5000;
   }
-  if (has(goal, ["اضيف شريك","أضيف شريك","اضافه شريك","إضافة شريك","remove partner","add partner"]) && slug === "add-remove-partner-dubai") score += 7500;
+  if (partnerChange) { if (slug === "add-remove-partner-dubai") score += 14000; else if (/issue-trade-license|license-issuance/.test(slug)) score -= 8000; }
   if (has(goal, ["ايجاري","إيجاري","اجاري","ejari"])) {
     if (slug === "register-renew-ejari-contract-dubai") score += 9000; else score -= 2500;
   }
   if (has(goal, ["wps","نظام حمايه الاجور","نظام حماية الأجور","حمايه الاجور","حماية الأجور","نظام الاجور","نظام الأجور","wage protection"])) {
     if (slug === "التسجيل-والمتابعة-في-wps") score += 9000; else if (/work-permit|تصريح/.test(slug)) score -= 3500;
   }
-  if (has(goal, ["الاقامه الذهبيه","الإقامة الذهبية","جولدن فيزا","جولدن","golden residency","golden visa"])) {
+  if (has(goal, ["الاقامه الذهبيه","الإقامة الذهبية","اقامه ذهبيه","إقامة ذهبية","جولدن فيزا","جولدن","golden residency","golden visa"])) {
     if (slug === "golden-residency-uae") score += 9000; else if (/family|اسر|والد/.test(slug)) score -= 4000;
   }
   const economicLicense = has(goal, ["رخصه اقتصاديه","رخصة اقتصادية","الرخصه الاقتصاديه","الرخصة الاقتصادية","economic license","economic licence","رخصه تجاريه","رخصة تجارية","الرخصه التجاريه","الرخصة التجارية","trade license","trade licence"]);
@@ -367,6 +368,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const residencyDomain = has(normalized, ["اقامه","إقامة","اقامتي","إقامتي","residence","residency"]);
   const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","ابني","ابنتي","بنتي","اولادي","ابنائي","عيالي","اسره","عائله","family","wife","spouse","parent","son","daughter","children","kids"]);
   const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
+  const domesticWorkerDomain = has(normalized, ["عامله منزليه","عاملة منزلية","خادمه","خادمة","عامل مساعد","عامله مساعده","عاملة مساعدة","عماله مساعده","عمالة مساعدة","domestic worker","domestic helper","housemaid","maid"]);
   const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
   const workDomain = has(normalized, ["تصريح عمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
   const familyResidenceSponsorship = Boolean(relationship) && (action === "sponsor" || residencyDomain || has(normalized,["visa","فيزا"])) && !workDomain;
@@ -390,6 +392,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
     // explicitly asks about employment/work. Family-sponsored work permits share the same
     // catalog category, so category compatibility alone must never substitute the service object.
     if (familyResidenceSponsorship && /(work permit|تصريح عمل|employment|employee|worker|توظيف)/.test(identityText)) score -= 12000;
+    if (domesticWorkerDomain) { if (/(عامل مساعد|عماله مساعده|عمالة مساعدة|domestic)/.test(identityText)) score += 10000; else if (/(family|اسر|golden|موظف في القطاع الخاص|employee residence)/.test(identityText)) score -= 12000; }
     if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(identityText)) score -= 900;
     if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(identityText)) score -= 900;
     if (asksResidenceAuthorityChoice && detected && detected !== "AE-DU") {
@@ -398,7 +401,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
     }
     const wantsRenew = has(normalized, ["اجدد","تجديد","renew"]);
     const wantsCancel = has(normalized, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
-    const wantsIssue = has(normalized, ["اريد اقامه","أريد إقامة","اصدار اقامه","إصدار إقامة","issue residence","new residence"]);
+    const wantsIssue = has(normalized, ["اريد اقامه","أريد إقامة","عايز اقامه","عاوز اقامه","اطلع اقامه","اصدار اقامه","إصدار إقامة","issue residence","new residence"]);
     if ((wantsRenew || wantsIssue) && /(cancel|الغاء|إلغاء)/.test(domainText)) score -= 2400;
     if (wantsCancel && /(renew|تجديد|issue|اصدار|إصدار)/.test(domainText)) score -= 1600;
     const title = normalize(row.title);
