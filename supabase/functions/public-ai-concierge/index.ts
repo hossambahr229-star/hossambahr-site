@@ -764,6 +764,15 @@ export default {
       let deterministic:any = publicResult(semanticGoal, ranked, latestTurn);
       // A family sponsorship service is jurisdiction-specific. Until the emirate is known,
       // fail closed instead of presenting whichever emirate-specific catalog row ranked first.
+      const domesticResidence = semantic.subject_role === "domestic_worker" && has(normalize(semanticGoal),["اقامه","إقامة","residence","residency"]);
+      if (domesticResidence && !semantic.jurisdiction && !deterministic.matches?.length) {
+        deterministic = {
+          ...deterministic,
+          understood_intent:"إقامة عامل/عاملة مساعدة",
+          answer:{text:"أفهم أنك تقصد إقامة العامل/العاملة المساعدة. حدّد الإمارة أولًا لأن جهة ومسار الإقامة يختلفان بين دبي وبقية الإمارات، ولن أخلطها مع تجديد عقد أو تصريح العمل.",focus:"clarification",fact_status:"NEEDS_CLARIFICATION",grounded:false,evidence:{}},
+          missing_information:["الإمارة المرتبطة بالإقامة"],follow_up_questions:["الإقامة صادرة من أي إمارة؟"]
+        };
+      }
       if (relationship && semantic.action === "sponsor" && !semantic.jurisdiction) {
         deterministic = {
           ...publicResult(semanticGoal, [], latestTurn),
