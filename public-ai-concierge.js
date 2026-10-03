@@ -39,6 +39,7 @@
     resolved_query: "",
     answers: [],
     service_slug: null,
+    active_service_id: null,
     jurisdiction_code: null,
     authority_key: null,
     relationship: null,
@@ -47,6 +48,10 @@
     intent: null,
     service_family: null,
     action: null,
+    subject_role: null,
+    last_answer_topic: null,
+    pending_clarification: null,
+    known_facts: {},
     last_payload: null,
     history: []
   };
@@ -188,7 +193,19 @@
       answers: (state.answers || []).slice(-6).map(scrubLocal),
       service_slug: state.service_slug || null,
       jurisdiction_code: state.jurisdiction_code || null,
-      authority_key: state.authority_key || null
+      authority_key: state.authority_key || null,
+      active_service_id: state.active_service_id || state.service_slug || null,
+      relationship: state.relationship || null,
+      family_members: Array.isArray(state.family_members) ? state.family_members.slice(-12) : [],
+      entity: state.entity || null,
+      intent: state.intent || null,
+      service_family: state.service_family || null,
+      action: state.action || null,
+      subject_role: state.subject_role || null,
+      last_answer_topic: state.last_answer_topic || null,
+      pending_clarification: state.pending_clarification || null,
+      known_facts: state.known_facts && typeof state.known_facts === "object" ? state.known_facts : {},
+      history: (state.history || []).slice(-8).map((m) => ({ role: m.role === "assistant" ? "assistant" : "user", content: scrubLocal(m.content) }))
     };
     try { sessionStorage.setItem(STATE_KEY, JSON.stringify(safe)); } catch {}
   }

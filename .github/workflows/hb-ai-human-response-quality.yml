@@ -5,6 +5,7 @@ on:
     paths:
       - 'supabase/functions/public-ai-concierge/**'
       - 'scripts/hb-ai-human-response-quality-production.mjs'
+      - 'scripts/hb-ai-conversational-continuity-production.mjs'
       - '.github/workflows/hb-ai-human-response-quality.yml'
   workflow_dispatch:
 concurrency:
