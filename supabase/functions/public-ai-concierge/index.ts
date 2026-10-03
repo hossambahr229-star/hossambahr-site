@@ -276,7 +276,8 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const residence = has(goal, ["اقامه","اقامتي","إقامتي","residence","residency"]);
   const renew = has(goal, ["اجدد","تجديد","renew","بتنتهي","تنتهي","قربت تنتهي","expiring","expires"]);
   const amend = has(goal, ["تعديل","عدل","amend","modify"]);
-  const company = has(goal, ["شركه","رخصه","رخصتي","ترخيص","بزنس","business","company","license","licence"]);\n  const partnerChange = has(goal, ["اضيف شريك","أضيف شريك","اضافه شريك","إضافة شريك","ادخل شريك","أدخل شريك","ادخال شريك","إدخال شريك","شريك جديد","new partner","add partner","add shareholder","new shareholder"]);
+  const company = has(goal, ["شركه","رخصه","رخصتي","ترخيص","بزنس","business","company","license","licence"]);
+  const partnerChange = has(goal, ["اضيف شريك","أضيف شريك","اضافه شريك","إضافة شريك","ادخل شريك","أدخل شريك","ادخال شريك","إدخال شريك","شريك جديد","new partner","add partner","add shareholder","new shareholder"]);
   const open = has(goal, ["افتح","تاسيس","اصدار","ابدأ","ابدا","open","start","issue","establish","new"]);
   const directLicenseRequest = has(goal, ["اريد رخصه","عايز رخصه","احتاج رخصه","ابغي رخصه","ابي رخصه","want a license","need a license","need licence","want licence"]);
   const employee = has(goal, ["موظف","عامل","employee","worker"]);
@@ -366,7 +367,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
 
   const residencyDomain = has(normalized, ["اقامه","إقامة","اقامتي","إقامتي","residence","residency"]);
   const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","ابني","ابنتي","بنتي","اولادي","ابنائي","عيالي","اسره","عائله","family","wife","spouse","parent","son","daughter","children","kids"]);
-  const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);\n  const domesticWorkerDomain = has(normalized, ["عامله منزليه","عاملة منزلية","خادمه","خادمة","عامل مساعد","عامله مساعده","عاملة مساعدة","عماله مساعده","عمالة مساعدة","domestic worker","domestic helper","housemaid","maid"]);
+  const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
+  const domesticWorkerDomain = has(normalized, ["عامله منزليه","عاملة منزلية","خادمه","خادمة","عامل مساعد","عامله مساعده","عاملة مساعدة","عماله مساعده","عمالة مساعدة","domestic worker","domestic helper","housemaid","maid"]);
   const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
   const workDomain = has(normalized, ["تصريح عمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
   const familyResidenceSponsorship = Boolean(relationship) && (action === "sponsor" || residencyDomain || has(normalized,["visa","فيزا"])) && !workDomain;
