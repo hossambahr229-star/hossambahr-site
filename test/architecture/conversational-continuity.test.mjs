@@ -7,4 +7,7 @@ test("contextual follow-ups inherit the active catalog service before lexical ra
  assert.match(src,/catalog\.find\(\(row:any\)=>row\.binding\.service_slug===inheritedServiceId\)/);
  assert.match(src,/last_answer_topic/);assert.match(src,/pending_clarification/);assert.match(src,/known_facts/);
  for(const focus of["documents","conditions","fees","steps","duration","authority","approvals","link","start"])assert.ok(src.includes('"'+focus+'"'),focus);
+ assert.match(src,/function answerFocus\(text: string\) \{\s*const normalized = normalize\(text\)/);
+ assert.match(src,/broadWorkPermit/);
+ assert.match(src,/هذه الخدمة غير موثقة كمسار إقامة مستقل/);
 });
