@@ -18,3 +18,8 @@ test("catalog action matrix never lets service ranking redefine semantic action"
 test("production request path passes canonical action into ranker",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/rank\(semanticGoal, catalog, relationship, semantic\.action\)/);assert.match(edge,/action: semantic\.action/);});
 
 test("family relationships cannot cross into unrelated catalog domains",()=>{for(const service of catalog){for(const relationship of ["wife","husband","son","daughter","mother","father","brother","sister"]){const score=semanticDomainCompatibility(service.category,relationship);if(score>=0)assert.match(String(service.category),/family|dependent|sponsor/i,service.slug+" "+relationship);}}});
+
+
+test("family sponsorship service object cannot degrade into a family-sponsored work permit",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/familyResidenceSponsorship/);assert.match(edge,/work permit\|تصريح عمل[\s\S]{0,200}score -= 12000/);const s=mergeSemanticContext("أريد أن أكفل زوجتي على إقامتي",null,"");assert.equal(s.relationship,"wife");assert.equal(s.action,"sponsor");});
+
+test("family sponsorship without emirate fails closed before selecting an emirate-specific service",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/relationship && semantic\.action === "sponsor" && !semantic\.jurisdiction/);assert.match(edge,/في أي إمارة صادرة إقامة الكفيل؟/);});

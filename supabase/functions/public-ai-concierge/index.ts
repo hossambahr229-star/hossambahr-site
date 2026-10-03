@@ -361,6 +361,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","ابني","ابنتي","بنتي","اولادي","ابنائي","عيالي","اسره","عائله","family","wife","spouse","parent","son","daughter","children","kids"]);
   const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
   const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
+  const workDomain = has(normalized, ["تصريح عمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
+  const familyResidenceSponsorship = Boolean(relationship) && action === "sponsor" && !workDomain;
   const asksResidenceAuthorityChoice = residencyDomain && has(normalized, ["icp"]) && has(normalized, ["gdrfa"]);
   const spouseRelationship = relationship === "spouse" || relationship === "wife" || relationship === "husband";
   const parentRelationship = relationship === "parents" || relationship === "mother" || relationship === "father";
@@ -377,6 +379,10 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
     if (residencyDomain && !/(اقامه|residen|residency|visa)/.test(identityText)) score -= 2200;
     if (familyDomain && residencyDomain && !/(family|اسر|عائل|زوج|والد|residen)/.test(identityText)) score -= 1600;
     if (residencyDomain && !employeeDomain && /(work permit|تصريح عمل|labour|labor)/.test(identityText)) score -= 2200;
+    // A family member + sponsorship request is a residence sponsorship object unless the user
+    // explicitly asks about employment/work. Family-sponsored work permits share the same
+    // catalog category, so category compatibility alone must never substitute the service object.
+    if (familyResidenceSponsorship && /(work permit|تصريح عمل|employment|employee|worker|توظيف)/.test(identityText)) score -= 12000;
     if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(identityText)) score -= 900;
     if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(identityText)) score -= 900;
     if (asksResidenceAuthorityChoice && detected && detected !== "AE-DU") {
@@ -748,7 +754,18 @@ export default {
       const catalogMs = performance.now() - catalogStarted;
       const lexicalRanked = rank(semanticGoal, catalog, relationship, semantic.action);
       const ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
-      const deterministic = publicResult(semanticGoal, ranked, latestTurn);
+      let deterministic:any = publicResult(semanticGoal, ranked, latestTurn);
+      // A family sponsorship service is jurisdiction-specific. Until the emirate is known,
+      // fail closed instead of presenting whichever emirate-specific catalog row ranked first.
+      if (relationship && semantic.action === "sponsor" && !semantic.jurisdiction) {
+        deterministic = {
+          ...publicResult(semanticGoal, [], latestTurn),
+          understood_intent: "كفالة فرد من الأسرة على الإقامة",
+          answer: { text:"حدّد الإمارة المرتبطة بإقامة الكفيل حتى أحدد خدمة كفالة الأسرة والجهة المختصة بدقة.", focus:"clarification", fact_status:"NEEDS_CLARIFICATION", grounded:false, evidence:{} },
+          missing_information:["الإمارة المرتبطة بإقامة الكفيل"],
+          follow_up_questions:["في أي إمارة صادرة إقامة الكفيل؟"]
+        };
+      }
       if (wantsStream) { const streamed=makeStreamingResponse(req,latestTurn,history,deterministic,rate,semanticGoal,requestStarted,catalogMs,semantic); if(streamed) return streamed; }
       const intelligenceStarted = performance.now();
       const intelligent = await conversationalResult(latestTurn, history, deterministic);
