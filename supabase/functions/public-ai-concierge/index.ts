@@ -411,7 +411,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
       else if (row.jurisdiction?.code?.startsWith("AE-")) score -= 45;
     }
     return { ...row, score, domainCompatibility };
-  }).filter((row:any) => (!relationship || row.domainCompatibility >= 0) && row.score > 0 && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
+  }).filter((row:any) => (!familyResidenceSponsorship || !/(work permit|تصريح عمل|employment|employee|worker|توظيف)/.test(normalize(row.binding.service_slug+" "+row.title))) && (!relationship || row.domainCompatibility >= 0) && row.score > 0 && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
     .sort((a:any,b:any) => b.score - a.score || a.title.localeCompare(b.title,"ar"));
 }
 
