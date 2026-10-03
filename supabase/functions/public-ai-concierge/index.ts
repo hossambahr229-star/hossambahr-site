@@ -280,7 +280,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const open = has(goal, ["افتح","تاسيس","اصدار","ابدأ","ابدا","open","start","issue","establish","new"]);
   const directLicenseRequest = has(goal, ["اريد رخصه","عايز رخصه","احتاج رخصه","ابغي رخصه","ابي رخصه","want a license","need a license","need licence","want licence"]);
   const employee = has(goal, ["موظف","عامل","employee","worker"]);
-  const workDomain = has(goal, ["تصريح عمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
+  const workDomain = has(goal, ["تصريح عمل","تصريح العمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
   const transfer = has(goal, ["انقله","نقل","تحويل","transfer","move"]);
   const outside = has(goal, ["خارج الامارات","من الخارج","overseas","outside uae"]);
   const parent = has(goal, ["والد","والدتي","والدي","الوالدين","parent","mother","father"]);
@@ -764,7 +764,7 @@ export default {
       let deterministic:any = publicResult(semanticGoal, ranked, latestTurn);
       // A family sponsorship service is jurisdiction-specific. Until the emirate is known,
       // fail closed instead of presenting whichever emirate-specific catalog row ranked first.
-      const domesticResidence = semantic.subject_role === "domestic_worker" && has(normalize(semanticGoal),["اقامه","إقامة","residence","residency"]);
+      const domesticResidence = semantic.subject_role === "domestic_worker" && has(normalize(semanticGoal),["اقامه","إقامة","اقامتها","إقامتها","اقامته","إقامته","residence","residency","visa"]);
       if (domesticResidence && !semantic.jurisdiction && !deterministic.matches?.length) {
         deterministic = {
           ...deterministic,
