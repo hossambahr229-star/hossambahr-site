@@ -18,7 +18,7 @@ const cases=groups.flatMap(([expected,prompts])=>prompts.map(prompt=>({expected,
 assert.equal(cases.length,100);
 const answers=[],latencies=[];let fallback=0,dead=0,wrong=0,unsupported=0;
 for(const [i,c] of cases.entries()){
- const t=performance.now();const r=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json","origin":"https://hossambahr.com","x-hb-qa-run":run},body:JSON.stringify({goal:c.prompt,latest_turn:c.prompt,history:[],context:{},stream:false})});latencies.push(performance.now()-t);
+ const t=performance.now();const r=await fetch(endpoint,{method:"POST",signal:AbortSignal.timeout(20000),headers:{"content-type":"application/json","origin":"https://hossambahr.com","x-hb-qa-run":run},body:JSON.stringify({goal:c.prompt,latest_turn:c.prompt,history:[],context:{},stream:false})});latencies.push(performance.now()-t);
  assert.equal(r.status,200,"HTTP "+i);const p=await r.json();const slug=p.result?.matches?.[0]?.service_slug||"";const ans=p.result?.answer?.text||"";
  if(!slug)fallback++;if(!ans||/لم أتمكن من مطابقة طلبك/.test(ans))dead++;
  if(c.expected){if(!c.expected.test(slug)){wrong++;console.error("WRONG",i,c.prompt,slug)}}
