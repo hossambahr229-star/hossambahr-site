@@ -1,5 +1,5 @@
 import test from "node:test";import assert from "node:assert/strict";import fs from "node:fs";
-import {detectAction,detectRelationship,mergeSemanticContext,semanticInvariants,relationshipCompatibility,semanticDomainCompatibility} from "../../supabase/functions/public-ai-concierge/semantic-context.ts";
+import {detectAction,detectRelationship,detectSubjectRole,mergeSemanticContext,semanticInvariants,relationshipCompatibility,semanticDomainCompatibility} from "../../supabase/functions/public-ai-concierge/semantic-context.ts";
 const catalog=JSON.parse(fs.readFileSync(new URL("../../service-matrix.json",import.meta.url),"utf8")).services;
 const variants=new Map([
  ["wife",["زوجتي","مراتي","my wife"]],["husband",["زوجي","جوزي","my husband"]],["son",["ابني","ولدي","my son"]],["daughter",["بنتي","ابنتي","my daughter"]],["children",["أولادي","عيالي","my kids"]],["mother",["والدتي","أمي","ماما","my mother"]],["father",["والدي","أبي","ابويا","my father"]],["brother",["أخي","اخويا","my brother"]],["sister",["أختي","my sister"]]
@@ -18,3 +18,11 @@ test("catalog action matrix never lets service ranking redefine semantic action"
 test("production request path passes canonical action into ranker",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/rank\(semanticGoal, catalog, relationship, semantic\.action\)/);assert.match(edge,/action: semantic\.action/);});
 
 test("family relationships cannot cross into unrelated catalog domains",()=>{for(const service of catalog){for(const relationship of ["wife","husband","son","daughter","mother","father","brother","sister"]){const score=semanticDomainCompatibility(service.category,relationship);if(score>=0)assert.match(String(service.category),/family|dependent|sponsor/i,service.slug+" "+relationship);}}});
+
+const roleVariants=new Map([
+["employee",["الموظف","موظف","employee"]],["employer",["صاحب العمل","جهة العمل","employer"]],["investor",["المستثمر","مستثمر","investor"]],["partner",["الشريك","شريك","partner"]],["manager",["المدير","مدير","manager"]],["owner",["المالك","صاحب الشركة","owner"]],["sponsor",["الكفيل","كفيل","sponsor"]],["dependent",["المكفول","تابع","dependent"]],["domestic_worker",["عمالة مساعدة","عاملة منزلية","domestic worker"]],["company",["الشركة","منشأة","company"]],["branch",["الفرع","فرع","branch"]]
+]);
+test("business subject roles cover Arabic variants and English",()=>{for(const [expected,forms] of roleVariants)for(const form of forms)assert.equal(detectSubjectRole(form),expected,form);});
+test("business subject role survives deterministic multi-turn context changes",()=>{for(const [role,forms] of roleVariants){let s=mergeSemanticContext(forms[0],null,forms[0]);assert.equal(s.subject_role,role);for(const turn of ["دبي","كم الرسوم؟","والمستندات؟","GDRFA"]){s=mergeSemanticContext(turn,s,turn);assert.equal(s.subject_role,role,role+" "+turn);}}});
+test("explicit business subject role change wins while topic reset clears stale role",()=>{let s=mergeSemanticContext("الموظف",null,"");assert.equal(s.subject_role,"employee");s=mergeSemanticContext("الشريك",s,"");assert.equal(s.subject_role,"partner");s=mergeSemanticContext("موضوع جديد",s,"",{newTopic:true});assert.equal(s.subject_role,null);});
+test("mixed Arabic English subject references normalize deterministically",()=>{assert.equal(detectSubjectRole("عايز renew للـ employee في دبي"),"employee");assert.equal(detectSubjectRole("company branch في دبي"),"company");assert.equal(detectSubjectRole("domestic worker إقامة"),"domestic_worker");});
