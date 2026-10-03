@@ -189,7 +189,7 @@ function groundedAnswer(goal: string, row: any, focus: string) {
     else if (conditions?.value) text = conditions.value;
     else {
       text = "لا أملك في البيانات الموثقة الحالية ما يكفي لتأكيد موافقة خارجية محددة لهذه الحالة.";
-      factStatus = "NEEDS_CLARIFICATION";
+      factStatus = "MISSING_INFORMATION";
     }
   } else if (focus === "start") {
     text = "الخدمة محددة. يمكنك الانتقال إلى بدء المعاملة مع الاحتفاظ بالخدمة والإمارة والجهة في سياقك الحالي.";
