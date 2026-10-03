@@ -75,7 +75,7 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
   const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),family_members:Array.isArray(context?.family_members)?context.family_members:[],subject_role:context?.subject_role??null,entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null,action:context?.action??null};
   const merged=mergeSemanticContext(latestTurn,priorSemantic,fallbackGoal,{newTopic:explicitNonFamilyTopic});
   const fallback:SemanticState={active_service_id:context?.active_service_id??context?.service_slug??null,last_answer_topic:context?.last_answer_topic??null,pending_clarification:context?.pending_clarification??null,known_facts:(context?.known_facts&&typeof context.known_facts==="object")?context.known_facts:{},turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,family_members:merged.family_members,subject_role:merged.subject_role,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,action:merged.action,business_activity:null,confidence:"low"};
-  const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai") return fallback;
+  const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return fallback;
   const recent=safeHistoryForModel(history);
   const input=[...recent,{role:"user",content:latestTurn}];
   const schema={type:"object",additionalProperties:false,properties:{
@@ -467,7 +467,7 @@ async function selectSemanticCandidate(semantic:SemanticState, ranked:any[], cat
   if(!ranked.length) return [];
   if(semantic.relationship) return ranked;
   const shortlist=ranked.slice(0,18);
-  const cfg=providerConfig(); if(!cfg||cfg.provider!=="openai") return ranked;
+  const cfg=providerConfig(); if(!cfg||cfg.provider!=="openai"||providerCreditBlocked()) return ranked;
   const choices=shortlist.map((r:any)=>({slug:r.binding.service_slug,title:r.title,authority:r.authority?.authority_key||null,jurisdiction:r.jurisdiction?.code||"AE"}));
   const allowed=[...choices.map((x:any)=>x.slug),"__NONE__"];
   const schema={type:"object",additionalProperties:false,properties:{selected_slug:{type:"string",enum:allowed},confidence:{type:"string",enum:["high","medium","low"]},reason_code:{type:"string",enum:["exact","closest_verified","ambiguous","no_match"]}},required:["selected_slug","confidence","reason_code"]};
@@ -688,9 +688,9 @@ async function openAIStream(cfg:any,input:any[],signal:AbortSignal) {
   throw new Error("openai_"+lastStatus);
 }
 
-function makeStreamingResponse(req:Request, latestTurn:string, history:any[], deterministic:any, rate:any, goal:string, requestStarted:number, catalogMs:number, semantic?:SemanticState) {
+function providerCreditBlocked(){return (Deno.env.get("HB_OPENAI_CREDIT_BLOCKED")||"").trim()==="1";}\n\nfunction makeStreamingResponse(req:Request, latestTurn:string, history:any[], deterministic:any, rate:any, goal:string, requestStarted:number, catalogMs:number, semantic?:SemanticState) {
   const cfg=providerConfig();
-  if(!cfg || cfg.provider!=="openai") return null;
+  if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return null;
   const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
   const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
@@ -735,7 +735,7 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
 }
 
 async function callConversationalModel(latestTurn:string, history:any[], deterministic:any, signal:AbortSignal): Promise<ProviderResult> {
-  const cfg=providerConfig(); if(!cfg) return null;
+  const cfg=providerConfig(); if(!cfg || providerCreditBlocked()) return null;
   const started=performance.now(); const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
   const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
