@@ -19,6 +19,7 @@ let seoOverridesApplied = 0;
 let structuredDataAdded = 0;
 let fujairahMunicipalityInfoAdded = 0;
 let canonicalOverridesApplied = 0;
+let legacyBrandMarksReplaced = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const decodeBasicEntities = (value) => String(value || "")
@@ -161,7 +162,14 @@ async function walk(directory) {
         .replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, "")
         .replace(/<link[^>]+href=["'][^"']+["'][^>]+rel=["']canonical["'][^>]*>/gi, "")
         .replace("</head>", '<meta name="robots" content="noindex, nofollow"><meta name="description" content="الصفحة المطلوبة غير متاحة. استخدم البحث أو دليل الخدمات للوصول إلى المعاملة الصحيحة."></head>');
-      await writeFile(path, html, "utf8");
+      const legacyBrandMark = /<b\s+aria-hidden=["']true["']>ح<\/b>/g;
+    const legacyBrandMatches = html.match(legacyBrandMark)?.length || 0;
+    if (legacyBrandMatches) {
+      html = html.replace(legacyBrandMark, '<b class="hb-master-mark" aria-hidden="true">HB</b>');
+      legacyBrandMarksReplaced += legacyBrandMatches;
+    }
+
+    await writeFile(path, html, "utf8");
       notFoundFixed += 1;
       continue;
     }
@@ -323,4 +331,5 @@ console.log(JSON.stringify({
   structuredDataAdded,
   fujairahMunicipalityInfoAdded,
   canonicalOverridesApplied,
+  legacyBrandMarksReplaced,
 }));
