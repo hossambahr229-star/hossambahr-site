@@ -1,5 +1,5 @@
 import test from "node:test";import assert from "node:assert/strict";import fs from "node:fs";
-import {detectAction,detectRelationship,mergeSemanticContext,semanticInvariants,relationshipCompatibility,semanticDomainCompatibility} from "../../supabase/functions/public-ai-concierge/semantic-context.ts";
+import {detectAction,detectRelationship,detectSubjectRole,mergeSemanticContext,semanticInvariants,relationshipCompatibility,semanticDomainCompatibility} from "../../supabase/functions/public-ai-concierge/semantic-context.ts";
 const catalog=JSON.parse(fs.readFileSync(new URL("../../service-matrix.json",import.meta.url),"utf8")).services;
 const variants=new Map([
  ["wife",["زوجتي","مراتي","my wife"]],["husband",["زوجي","جوزي","my husband"]],["son",["ابني","ولدي","my son"]],["daughter",["بنتي","ابنتي","my daughter"]],["children",["أولادي","عيالي","my kids"]],["mother",["والدتي","أمي","ماما","my mother"]],["father",["والدي","أبي","ابويا","my father"]],["brother",["أخي","اخويا","my brother"]],["sister",["أختي","my sister"]]
@@ -26,3 +26,11 @@ test("family sponsorship without emirate fails closed before selecting an emirat
 
 
 test("family member set accumulates additions and correction replaces only when explicit",()=>{let s=mergeSemanticContext("أريد أكفل زوجتي",null,"");assert.deepEqual(s.family_members,["wife"]);s=mergeSemanticContext("عندي ولدين كمان",s,"");assert.equal(s.relationship,"children");assert.ok(s.family_members.includes("wife"));assert.ok(s.family_members.includes("children"));s=mergeSemanticContext("ولو أبوظبي؟",s,"");assert.equal(s.jurisdiction,"AE-AZ");assert.ok(s.family_members.includes("wife"));assert.ok(s.family_members.includes("children"));s=mergeSemanticContext("لا، قصدي والدتي",s,"");assert.equal(s.relationship,"mother");assert.deepEqual(s.family_members,["mother"]);});
+
+const roleVariants=new Map([
+["employee",["الموظف","موظف","employee"]],["employer",["صاحب العمل","جهة العمل","employer"]],["investor",["المستثمر","مستثمر","investor"]],["partner",["الشريك","شريك","partner"]],["manager",["المدير","مدير","manager"]],["owner",["المالك","صاحب الشركة","owner"]],["sponsor",["الكفيل","كفيل","sponsor"]],["dependent",["المكفول","تابع","dependent"]],["domestic_worker",["عمالة مساعدة","عاملة منزلية","domestic worker"]],["company",["الشركة","منشأة","company"]],["branch",["الفرع","فرع","branch"]]
+]);
+test("business subject roles cover Arabic variants and English",()=>{for(const [expected,forms] of roleVariants)for(const form of forms)assert.equal(detectSubjectRole(form),expected,form);});
+test("business subject role survives deterministic multi-turn context changes",()=>{for(const [role,forms] of roleVariants){let s=mergeSemanticContext(forms[0],null,forms[0]);assert.equal(s.subject_role,role);for(const turn of ["دبي","كم الرسوم؟","والمستندات؟","GDRFA"]){s=mergeSemanticContext(turn,s,turn);assert.equal(s.subject_role,role,role+" "+turn);}}});
+test("explicit business subject role change wins while topic reset clears stale role",()=>{let s=mergeSemanticContext("الموظف",null,"");assert.equal(s.subject_role,"employee");s=mergeSemanticContext("الشريك",s,"");assert.equal(s.subject_role,"partner");s=mergeSemanticContext("موضوع جديد",s,"",{newTopic:true});assert.equal(s.subject_role,null);});
+test("mixed Arabic English subject references normalize deterministically",()=>{assert.equal(detectSubjectRole("عايز renew لل employee في دبي"),"employee");assert.equal(detectSubjectRole("domestic worker إقامة"),"domestic_worker");assert.equal(detectSubjectRole("فرع company في دبي"),"company");});
