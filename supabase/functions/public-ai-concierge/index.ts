@@ -62,6 +62,7 @@ function hasPhrase(text: string, words: string[]) {
 }
 
 type SemanticState = {
+  active_service_id:string|null; last_answer_topic:string|null; pending_clarification:string|null; known_facts:Record<string,unknown>;
   turn_type:"new_topic"|"follow_up"|"correction"|"clarification"|"jurisdiction_switch"|"service_switch"|"entity_switch";
   resolved_query:string; topic:string|null; intent:string|null; service_family:string|null;
   jurisdiction:string|null; relationship:FamilyRelationship|null; relationship_group:ReturnType<typeof relationshipGroup>; family_members:FamilyRelationship[]; subject_role:SubjectRole;
@@ -73,7 +74,7 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
   const explicitNonFamilyTopic=has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"]) && !detectRelationship(latestTurn);
   const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),family_members:Array.isArray(context?.family_members)?context.family_members:[],subject_role:context?.subject_role??null,entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null,action:context?.action??null};
   const merged=mergeSemanticContext(latestTurn,priorSemantic,fallbackGoal,{newTopic:explicitNonFamilyTopic});
-  const fallback:SemanticState={turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,family_members:merged.family_members,subject_role:merged.subject_role,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,action:merged.action,business_activity:null,confidence:"low"};
+  const fallback:SemanticState={active_service_id:context?.active_service_id??context?.service_slug??null,last_answer_topic:context?.last_answer_topic??null,pending_clarification:context?.pending_clarification??null,known_facts:(context?.known_facts&&typeof context.known_facts==="object")?context.known_facts:{},turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,family_members:merged.family_members,subject_role:merged.subject_role,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,action:merged.action,business_activity:null,confidence:"low"};
   const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return fallback;
   const recent=safeHistoryForModel(history);
   const input=[...recent,{role:"user",content:latestTurn}];
@@ -109,9 +110,18 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
   }catch{return fallback;}
 }
 
+function isContextualFollowUp(text:string){
+  const n=normalize(text); if(!n)return false;
+  if(detectJurisdiction(text)||detectRelationship(text)) return /^(ولو|و|طيب|طب|لا|but|what about)/.test(n)||n.split(" ").length<=5;
+  return hasPhrase(n,["الاوراق","الأوراق","المستندات","الشروط","الرسوم","الخطوات","المدة","الموافقة","الجهة","الرابط","ابدأ","ابدا","عايز اعملها","ليه","ازاي","إزاي","documents","requirements","conditions","fees","steps","duration","approval","authority","link","start","why","how"]) || n.split(" ").length<=3 && has(n,["اوراق","مستندات","شروط","رسوم","خطوات","مده","مدة","موافقه","موافقة","جهه","جهة","رابط","ابدأ","ابدا","ليه","ازاي","إزاي","documents","fees","steps","link","why","how"]);
+}
+
 function answerFocus(text: string) {
   if (has(text, ["كم الرسوم","الرسوم","رسوم","fee","fees","cost"])) return "fees";
-  if (has(text, ["الاوراق","الأوراق","المستندات","مستندات","documents","requirements"])) return "documents";
+  if (has(text, ["الاوراق","الأوراق","المستندات","مستندات","documents"])) return "documents";
+  if (has(text, ["الشروط","شروط","conditions","eligibility","requirements"])) return "conditions";
+  if (has(text, ["الخطوات","خطوات","steps","how to apply"])) return "steps";
+  if (has(text, ["الرابط","لينك","link","url"])) return "link";
   if (has(text, ["كم تستغرق","المدة","مده","مدة","duration","how long"])) return "duration";
   if (has(text, ["من الجهة","الجهه","الجهة","authority"])) return "authority";
   if (has(text, ["هل احتاج موافقه","هل أحتاج موافقة","موافقه","موافقة","approval"])) return "approvals";
@@ -160,6 +170,16 @@ function groundedAnswer(goal: string, row: any, focus: string) {
       text = "لا توجد قائمة مستندات مكتملة وموثقة في البيانات الحالية لهذه الحالة.";
       factStatus = "MISSING_INFORMATION";
     }
+  } else if (focus === "conditions") {
+    if (conditions?.value && conditions.source_refs.length) text = conditions.value;
+    else { text = "الشروط التفصيلية لهذه الجزئية غير موثقة في المعرفة الرسمية الحالية؛ ما زلت محتفظًا بنفس الخدمة ولن أعيد تحديد المعاملة."; factStatus = "MISSING_INFORMATION"; }
+  } else if (focus === "steps") {
+    const processSteps = row.steps?.filter((s:any)=>["intake","review","approval","external","completion"].includes(String(s.taskType||""))).map((s:any)=>String(s.title||"")).filter(Boolean).slice(0,6) || [];
+    if(processSteps.length) text = "الخطوات المسجلة: " + processSteps.join(" ← ") + ".";
+    else { text="الخطوات التفصيلية غير موثقة لهذه الخدمة حاليًا؛ الخدمة نفسها ما زالت محددة."; factStatus="MISSING_INFORMATION"; }
+  } else if (focus === "link") {
+    if(source?.source_url) text = "الرابط الرسمي للخدمة: " + source.source_url;
+    else { text="الرابط الرسمي غير موثق في المعرفة الحالية لهذه الخدمة."; factStatus="MISSING_INFORMATION"; }
   } else if (focus === "authority") {
     text = authority ? "الجهة المختصة المسجلة لهذه الخدمة هي " + authority + (jurisdiction ? " ضمن " + jurisdiction : "") + "." : "الجهة المختصة غير محسومة في البيانات الحالية.";
     if (!authority) factStatus = "MISSING_INFORMATION";
@@ -752,6 +772,7 @@ export default {
     const history = Array.isArray(body?.history) ? body.history.slice(-8) : [];
     const context = body?.context && typeof body.context === "object" ? body.context : {};
     const semantic = await resolveSemanticState(latestTurn, history, context, goal);
+    const contextualFollowUp = isContextualFollowUp(latestTurn) && Boolean(context?.active_service_id || context?.service_slug);
     const relationship = semantic.relationship;
     const semanticGoal = scrubGoal(semantic.resolved_query || goal);
     const wantsStream = body?.stream === true;
@@ -762,8 +783,19 @@ export default {
       const catalogStarted = performance.now();
       const catalog = await loadCatalog(ctx.supabaseAdmin);
       const catalogMs = performance.now() - catalogStarted;
-      const lexicalRanked = rank(semanticGoal, catalog, relationship, semantic.action);
-      const ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
+      let ranked:any[];
+      const inheritedServiceId = String(context?.active_service_id || context?.service_slug || "");
+      const inherited = contextualFollowUp && inheritedServiceId ? catalog.find((row:any)=>row.binding.service_slug===inheritedServiceId) : null;
+      if(inherited){
+        const explicitJ=detectJurisdiction(latestTurn);
+        if(explicitJ && inherited.jurisdiction?.code!==explicitJ && inherited.jurisdiction?.code!=="AE") {
+          const switchedGoal=[inherited.title,latestTurn].join(" ");
+          ranked=await selectSemanticCandidate({...semantic,jurisdiction:explicitJ,service_slug:null},rank(switchedGoal,catalog,relationship,semantic.action),catalog);
+        } else ranked=[inherited];
+      } else {
+        const lexicalRanked = rank(semanticGoal, catalog, relationship, semantic.action);
+        ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
+      }
       let deterministic:any = publicResult(semanticGoal, ranked, latestTurn);
       // A family sponsorship service is jurisdiction-specific. Until the emirate is known,
       // fail closed instead of presenting whichever emirate-specific catalog row ranked first.
@@ -792,6 +824,10 @@ export default {
       return reply(req, {
         ok:true,
         goal_context:{
+          active_service_id: intelligent?.matches?.[0]?.service_slug ?? semantic.active_service_id ?? null,
+          last_answer_topic: intelligent?.answer?.focus ?? answerFocus(latestTurn),
+          pending_clarification: intelligent?.answer?.fact_status==="NEEDS_CLARIFICATION" ? (intelligent?.follow_up_questions?.[0]||null) : null,
+          known_facts: semantic.known_facts,
           jurisdiction_hint: semantic.jurisdiction || detectJurisdiction(normalize(latestTurn)) || detectJurisdiction(normalize(semanticGoal)),
           relationship,
           relationship_group: semantic.relationship_group,
