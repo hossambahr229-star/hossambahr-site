@@ -162,13 +162,6 @@ async function walk(directory) {
         .replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, "")
         .replace(/<link[^>]+href=["'][^"']+["'][^>]+rel=["']canonical["'][^>]*>/gi, "")
         .replace("</head>", '<meta name="robots" content="noindex, nofollow"><meta name="description" content="الصفحة المطلوبة غير متاحة. استخدم البحث أو دليل الخدمات للوصول إلى المعاملة الصحيحة."></head>');
-      const legacyBrandMark = /<b\s+aria-hidden=["']true["']>ح<\/b>/g;
-    const legacyBrandMatches = html.match(legacyBrandMark)?.length || 0;
-    if (legacyBrandMatches) {
-      html = html.replace(legacyBrandMark, '<b class="hb-master-mark" aria-hidden="true">HB</b>');
-      legacyBrandMarksReplaced += legacyBrandMatches;
-    }
-
     await writeFile(path, html, "utf8");
       notFoundFixed += 1;
       continue;
@@ -306,6 +299,13 @@ async function walk(directory) {
       }).replaceAll("<", "\\u003c");
       html = html.replace("</body>", `<script type="application/ld+json">${webPageData}</script></body>`);
       structuredDataAdded += 1;
+    }
+
+    const legacyBrandMark = /<b\s+aria-hidden=["']true["']>ح<\/b>/g;
+    const legacyBrandMatches = html.match(legacyBrandMark)?.length || 0;
+    if (legacyBrandMatches) {
+      html = html.replace(legacyBrandMark, '<b class="hb-master-mark" aria-hidden="true">HB</b>');
+      legacyBrandMarksReplaced += legacyBrandMatches;
     }
 
     await writeFile(path, html, "utf8");
