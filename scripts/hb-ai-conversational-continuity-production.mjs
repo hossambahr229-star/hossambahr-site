@@ -35,5 +35,6 @@ for(let i=0;i<100;i++){
 const exact={goal:"",users:[],history:[],context:{}};const qa="continuity-exact-"+Date.now();
 let x=await turn("عايز تأشيرة سياحية 5 سنين",exact,qa);assert.equal(x.match?.service_slug,"إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp");
 for(const q of["الأوراق المطلوبة","والرسوم؟","الشروط؟","الخطوات؟","الرابط؟"]){x=await turn(q,exact,qa);assert.equal(x.match?.service_slug,"إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",q);assert.doesNotMatch(x.answer,forbidden,q);}
+console.log(JSON.stringify({diagnostic:true,totalTurns,lost_context,unnecessary_clarification,generic_fallback,wrong_route,dead_end,unsupported_claim,samples},null,2));
 assert.equal(lost_context,0);assert.equal(unnecessary_clarification,0);assert.equal(generic_fallback,0);assert.equal(wrong_route,0);assert.equal(dead_end,0);assert.equal(unsupported_claim,0);
 console.log(JSON.stringify({status:"PASS",scenarios:101,totalTurns,lost_context_rate:lost_context/totalTurns,unnecessary_clarification_rate:unnecessary_clarification/totalTurns,generic_fallback_rate:generic_fallback/totalTurns,wrong_route_rate:wrong_route/totalTurns,dead_end_rate:dead_end/totalTurns,unsupported_claim_rate:unsupported_claim/totalTurns,samples},null,2));
