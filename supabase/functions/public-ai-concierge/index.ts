@@ -754,7 +754,18 @@ export default {
       const catalogMs = performance.now() - catalogStarted;
       const lexicalRanked = rank(semanticGoal, catalog, relationship, semantic.action);
       const ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
-      const deterministic = publicResult(semanticGoal, ranked, latestTurn);
+      let deterministic = publicResult(semanticGoal, ranked, latestTurn);
+      // A family sponsorship service is jurisdiction-specific. Until the emirate is known,
+      // fail closed instead of presenting whichever emirate-specific catalog row ranked first.
+      if (relationship && semantic.action === "sponsor" && !semantic.jurisdiction) {
+        deterministic = {
+          ...publicResult(semanticGoal, [], latestTurn),
+          understood_intent: "كفالة فرد من الأسرة على الإقامة",
+          answer: { text:"حدّد الإمارة المرتبطة بإقامة الكفيل حتى أحدد خدمة كفالة الأسرة والجهة المختصة بدقة.", focus:"clarification", fact_status:"NEEDS_CLARIFICATION", grounded:false, evidence:{} },
+          missing_information:["الإمارة المرتبطة بإقامة الكفيل"],
+          follow_up_questions:["في أي إمارة صادرة إقامة الكفيل؟"]
+        };
+      }
       if (wantsStream) { const streamed=makeStreamingResponse(req,latestTurn,history,deterministic,rate,semanticGoal,requestStarted,catalogMs,semantic); if(streamed) return streamed; }
       const intelligenceStarted = performance.now();
       const intelligent = await conversationalResult(latestTurn, history, deterministic);
