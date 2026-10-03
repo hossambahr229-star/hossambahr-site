@@ -297,3 +297,11 @@ html[lang="en"] body[data-ux-page="home"] .premium-hero-main:before{right:auto!i
 @media(max-width:980px){
 .visual-target-hero{grid-template-columns:1fr;min-height:0}.premium-hero-main{min-height:430px;background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.45)),url("https://unsplash.com/photos/cgLpzM8CWr8/download?force=true") center/cover no-repeat}.premium-hero-main:before{display:none}.premium-hero-copy{width:100%;position:relative;inset:auto;top:auto;text-align:start}.premium-ai-showcase{min-height:245px}.target-discovery{padding-inline:12px!important}.premium-featured{padding-inline:12px!important}.target-proof{margin-inline:12px}.premium-featured .premium-story{display:flex;overflow-x:auto}.premium-featured .premium-slide,.premium-featured .premium-slide[hidden]{display:flex!important;min-width:82vw}.compact-emirates{display:block!important}
 }
+
+/* reference slider + LTR parity */
+@media(min-width:981px){
+.premium-featured .premium-story{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 24px)/4);padding-bottom:14px;overflow-x:auto;scrollbar-width:none}.premium-featured .premium-story::-webkit-scrollbar{display:none}
+.premium-featured .premium-slider-controls{display:flex;pointer-events:none;inset-inline:5px;bottom:48px;z-index:8}.premium-featured .premium-slider-controls>button{pointer-events:auto;width:34px;height:34px;background:#fff;border:1px solid #d7dfe5;box-shadow:0 2px 8px rgba(4,35,59,.12)}.premium-featured .premium-slider-controls>div{position:absolute;left:50%;transform:translateX(-50%);top:72px;pointer-events:auto}
+html[dir="ltr"] .premium-hero-main:before{content:"Always with you\A for UAE transactions";font-size:1.35rem}
+html[dir="ltr"] .premium-hero-copy{text-align:left}
+}
