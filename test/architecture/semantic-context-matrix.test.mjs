@@ -36,3 +36,5 @@ test("explicit business subject role change wins while topic reset clears stale 
 test("mixed Arabic English subject references normalize deterministically",()=>{assert.equal(detectSubjectRole("عايز renew لل employee في دبي"),"employee");assert.equal(detectSubjectRole("domestic worker إقامة"),"domestic_worker");assert.equal(detectSubjectRole("فرع company في دبي"),"company");});
 
 test("production semantic resolver propagates canonical subject role independently",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/subject_role:context\?\.subject_role\?\?null/);assert.match(edge,/subject_role:merged\.subject_role/);assert.match(edge,/parsed\.subject_role=detectSubjectRole\(latestTurn\)/);});
+
+test("production response exposes subject role so clients can carry it across turns",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/subject_role: semantic\.subject_role/);assert.match(edge,/subject_role:semantic\?\.subject_role\|\|null/);});
