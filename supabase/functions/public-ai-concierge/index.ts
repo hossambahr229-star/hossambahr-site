@@ -279,7 +279,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const company = has(goal, ["شركه","رخصه","ترخيص","business","company","license","licence"]);
   const open = has(goal, ["افتح","تاسيس","اصدار","ابدأ","ابدا","open","start","issue","establish"]);
   const directLicenseRequest = has(goal, ["اريد رخصه","عايز رخصه","احتاج رخصه","ابغي رخصه","ابي رخصه","want a license","need a license","need licence","want licence"]);
-  const employee = has(goal, ["موظف","عامل","employee","worker"]);
+  const employee = has(goal, ["موظف","عامل","employee","worker"]);\n  const workDomain = has(goal, ["تصريح عمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
   const transfer = has(goal, ["انقله","نقل","تحويل","transfer","move"]);
   const outside = has(goal, ["خارج الامارات","من الخارج","overseas","outside uae"]);
   const parent = has(goal, ["والد","والدتي","والدي","الوالدين","parent","mother","father"]);
@@ -292,7 +292,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 15000 : emirate ? -9000 : 6500;
     if (/family-data-icp/.test(slug)) score -= 12000;
   }
-  if (relationship && (residencyDomain || has(normalized,["visa","فيزا"])) && !workDomain && !has(normalized, ["الغي","ألغي","إلغاء","الغاء","cancel"])) {
+  if (family && (residence || has(goal,["visa","فيزا"])) && !workDomain && !wantsCancel) {
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 16000 : emirate ? -5000 : 7000;
     if (/family-sponsored-work-permit|work-permit/.test(slug)) score -= 15000;
   }
