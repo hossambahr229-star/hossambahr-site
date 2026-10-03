@@ -803,9 +803,14 @@ export default {
       const catalog = await loadCatalog(ctx.supabaseAdmin);
       const catalogMs = performance.now() - catalogStarted;
       let ranked:any[];
+      const exactDubaiFamilySponsorship = relationship && semantic.action === "sponsor" && semantic.jurisdiction === "AE-DU"
+        ? catalog.find((row:any) => row.binding.service_slug === "family-residency-uae" && row.jurisdiction?.code === "AE-DU" && row.authority?.authority_key === "gdrfa-dubai")
+        : null;
       const inheritedServiceId = String(context?.active_service_id || context?.service_slug || "");
       const inherited = contextualFollowUp && inheritedServiceId ? catalog.find((row:any)=>row.binding.service_slug===inheritedServiceId) : null;
-      if(inherited){
+      if(exactDubaiFamilySponsorship){
+        ranked=[exactDubaiFamilySponsorship];
+      } else if(inherited){
         const explicitJ=detectJurisdiction(latestTurn);
         if(explicitJ && inherited.jurisdiction?.code!==explicitJ && inherited.jurisdiction?.code!=="AE") {
           const switchedGoal=[inherited.title,latestTurn].join(" ");
