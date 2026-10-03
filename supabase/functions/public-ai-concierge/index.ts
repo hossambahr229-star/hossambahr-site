@@ -175,7 +175,7 @@ function groundedAnswer(goal: string, row: any, focus: string) {
     text = "الخدمة محددة. يمكنك الانتقال إلى بدء المعاملة مع الاحتفاظ بالخدمة والإمارة والجهة في سياقك الحالي.";
     factStatus = "DERIVED_GUIDANCE";
   } else {
-    text = "الخدمة الموثقة الأقرب لطلبك هي «" + row.title + "»" + (authority ? " لدى " + authority : "") + (jurisdiction ? " ضمن " + jurisdiction : "") + ".";
+    text = "المسار المناسب لطلبك هو «" + row.title + "»" + (authority ? " لدى " + authority : "") + (jurisdiction ? " في " + jurisdiction : "") + ".";
     if (conditions?.value && !reviewPending) text += " " + conditions.value;
   }
 
@@ -500,7 +500,7 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
   const activeRelationship = detectRelationship(latestTurn) || detectRelationship(goal);
   const relationshipLabel:Partial<Record<FamilyRelationship,string>> = { wife:"زوجتك", husband:"زوجك", mother:"والدتك", father:"والدك", parents:"والديك", son:"ابنك", daughter:"ابنتك", children:"أولادك", brother:"أخوك", sister:"أختك" };
   const activeLabel = activeRelationship ? relationshipLabel[activeRelationship] : null;
-  if (activeLabel && answer.text && focus === "overview") answer.text = "فهمت: المقصود " + activeLabel + ". " + answer.text;
+  if (activeLabel && answer.text && focus === "overview") answer.text = "بالنسبة إلى " + activeLabel + ": " + answer.text;
 
   // Presentation receives only the authoritative current semantic match. Alternatives are used internally for ambiguity/confidence only; exposing stale-topic alternatives lets clients resurrect an obsolete service.
   const matches = candidates.slice(0,1).map((row:any) => {
