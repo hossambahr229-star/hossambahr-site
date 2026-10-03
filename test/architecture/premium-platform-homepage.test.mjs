@@ -7,3 +7,5 @@ test("AI is a persistent secondary side assistant",()=>{assert.match(html,/premi
 test("premium story is accessible and motion-safe",()=>{assert.equal((html.match(/<article class="premium-slide/g)||[]).length,5);assert.match(css,/prefers-reduced-motion/);assert.match(js,/prefers-reduced-motion/);assert.match(html,/aria-roledescription="carousel"/);});
 test("premium surface avoids fabricated partnership language and exposes real counts only",()=>{assert.doesNotMatch(html,/شركاؤنا/);assert.match(html,/<b>200<\/b> خدمة فعلية/);assert.match(html,/<b>7\/7<\/b> إمارات/);assert.match(html,/<b>20<\/b> جهة/);});
 test("responsive release breakpoints cover phone and tablet classes",()=>{for(const bp of["1100","720","390"])assert.ok(css.includes("@media(max-width:"+bp+"px)"),bp);assert.match(css,/overflow:hidden/);});
+
+test("publication stabilizer preserves premium platform hero",()=>{const s=fs.readFileSync(new URL("../../src/publication/stabilize-homepage-runtime.mjs",import.meta.url),"utf8");assert.match(s,/!html\.includes\('premium-home-hero'\)/);});
