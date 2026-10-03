@@ -6,6 +6,9 @@ on:
       - 'ai/**'
       - 'public-ai-concierge.js'
       - 'global-os.css'
+      - 'premium-platform.css'
+      - 'premium-platform.js'
+      - 'index.html'
       - 'supabase/functions/public-ai-concierge/**'
       - 'supabase/functions/document-ai/**'
       - '.github/workflows/hb-ai-signature-visual-acceptance.yml'
@@ -33,19 +36,19 @@ jobs:
           const sizes=[['desktop-1440',1440,1000],['laptop-1366',1366,900],['mobile-390',390,844],['mobile-430',430,932]];
           const results=[];
           for(const [name,width,height] of sizes){
-            const page=await browser.newPage({viewport:{width,height},colorScheme:'dark'});
+            const page=await browser.newPage({viewport:{width,height},colorScheme:'light'});
             const errors=[]; page.on('pageerror',e=>errors.push(e.message));
             await page.goto('https://hossambahr.com/?hb-ai-visual='+name,{waitUntil:'networkidle'});
-            const tile=page.locator('.hb-ai-app-tile');
+            const tile=page.locator('[data-premium-ai-toggle]');
             const tileVisible=await tile.isVisible();
-            const tileBg=await tile.evaluate(el=>getComputedStyle(el).backgroundImage);
+            const tileBg=await tile.evaluate(el=>getComputedStyle(el).backgroundColor);
             await tile.click();
-            await page.waitForURL(/\/ai\//);
-            await page.waitForLoadState('networkidle');
+            const panel=page.locator('#premium-ai-panel');
+            await panel.waitFor({state:'visible'});
             const bodyBg=await page.locator('body').evaluate(el=>getComputedStyle(el).backgroundImage+' '+getComputedStyle(el).backgroundColor);
-            const mark=page.locator('.hb-ai-product-mark');
-            const composer=page.locator('#government-search');
-            const first={mark:await mark.isVisible(),composer:await composer.isVisible(),title:await page.locator('h1').textContent(),tagline:await page.locator('.hb-ai-tagline').textContent(),quick:await page.locator('.examples button').allTextContents(),bodyBg};
+            const mark=panel.locator('.premium-hb-mark').first();
+            const composer=panel.locator('#government-search');
+            const first={mark:await mark.isVisible(),composer:await composer.isVisible(),title:await page.locator('h1').textContent(),tagline:await panel.locator('.premium-ai-head small').textContent(),quick:await panel.locator('.examples button').allTextContents(),bodyBg,panelVisible:await panel.isVisible()};
             await page.screenshot({path:'hb-ai-visual/'+name+'-landing.png',fullPage:false});
             await composer.fill('أريد أجدد إقامة زوجتي في دبي');
             await composer.press('Enter');
@@ -63,7 +66,7 @@ jobs:
           }
           fs.writeFileSync('hb-ai-visual/result.json',JSON.stringify(results,null,2));
           console.log(JSON.stringify(results,null,2));
-          const fail=results.some(r=>!r.tileVisible||!r.first.mark||!r.first.composer||!r.first.bodyBg.includes('rgb(255, 255, 255)')&&r.first.bodyBg.includes('rgb(17, 17, 17)')||r.first.quick.length!==4||!r.answer.answer||!r.answer.verified||!r.answer.source||!r.answer.transaction||r.answer.overflow||!r.attachment||r.errors.length);
+          const fail=results.some(r=>!r.tileVisible||!r.first.panelVisible||!r.first.mark||!r.first.composer||!r.first.bodyBg.includes('rgb(255, 255, 255)')&&r.first.bodyBg.includes('rgb(17, 17, 17)')||r.first.quick.length!==4||!r.answer.answer||!r.answer.verified||!r.answer.source||!r.answer.transaction||r.answer.overflow||!r.attachment||r.errors.length);
           await browser.close(); if(fail)process.exit(1);
           JS
           node hb-ai-visual.mjs
