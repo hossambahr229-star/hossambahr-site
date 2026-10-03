@@ -28,13 +28,16 @@ async function turn(message,s,qa){
 for(let i=0;i<100;i++){
  const s={goal:"",users:[],history:[],context:{}};const qa="continuity-"+Date.now()+"-"+i;
  const seed=seeds[i%seeds.length]; const a=await turn(seed,s,qa); const active=a.match?.service_slug;
+ const expectedSeed = /أجدد رخصة شركتي في دبي/.test(seed) ? /renew-business-license-dubai/ : /إلغاء رخصة في دبي/.test(seed) ? /cancel-business-license-dubai/ : /إصدار رخصة في أم القيوين/.test(seed) ? /umm-al-quwain-mainland-licensing-official-path/ : null;
+ if(expectedSeed && !expectedSeed.test(active||"")) wrong_route++;
+ if(/إقامة العاملة المنزلية في أبوظبي/.test(seed) && /complaint|شكوى|عقد-عمل|تصريح-عمل/.test(active||"")) wrong_route++;
  const f=followups[i%followups.length]; const b=await turn(f,s,qa);
  if(active && b.match?.service_slug!==active && !/ولو|بدل|قصدي|actually|instead/i.test(f))wrong_route++;
  if(i<20)samples.push({scenario:i+1,turns:[{q:seed,a:a.answer,service:a.match?.service_slug},{q:f,a:b.answer,service:b.match?.service_slug}]});
 }
 const exact={goal:"",users:[],history:[],context:{}};const qa="continuity-exact-"+Date.now();
 let x=await turn("عايز تأشيرة سياحية 5 سنين",exact,qa);assert.equal(x.match?.service_slug,"إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp");
-for(const q of["الأوراق المطلوبة","والرسوم؟","الشروط؟","الخطوات؟","الرابط؟"]){x=await turn(q,exact,qa);assert.equal(x.match?.service_slug,"إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",q);assert.doesNotMatch(x.answer,forbidden,q);}
+for(const q of["الأوراق المطلوبة","والرسوم؟","الشروط؟","الخطوات؟","الرابط؟"]){x=await turn(q,exact,qa);assert.equal(x.match?.service_slug,"إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",q);assert.doesNotMatch(x.answer,forbidden,q);if(/الأوراق/.test(q))assert.match(x.answer,/المتطلبات|المستندات|جواز|غير موثقة/,q);}
 console.log(JSON.stringify({diagnostic:true,totalTurns,lost_context,unnecessary_clarification,generic_fallback,wrong_route,dead_end,unsupported_claim,samples},null,2));
 assert.equal(lost_context,0);assert.equal(unnecessary_clarification,0);assert.equal(generic_fallback,0);assert.equal(wrong_route,0);assert.equal(dead_end,0);assert.equal(unsupported_claim,0);
 console.log(JSON.stringify({status:"PASS",scenarios:101,totalTurns,lost_context_rate:lost_context/totalTurns,unnecessary_clarification_rate:unnecessary_clarification/totalTurns,generic_fallback_rate:generic_fallback/totalTurns,wrong_route_rate:wrong_route/totalTurns,dead_end_rate:dead_end/totalTurns,unsupported_claim_rate:unsupported_claim/totalTurns,samples},null,2));

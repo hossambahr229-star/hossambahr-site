@@ -117,15 +117,16 @@ function isContextualFollowUp(text:string){
 }
 
 function answerFocus(text: string) {
-  if (has(text, ["كم الرسوم","الرسوم","رسوم","fee","fees","cost"])) return "fees";
-  if (has(text, ["الاوراق","الأوراق","المستندات","مستندات","documents"])) return "documents";
-  if (has(text, ["الشروط","شروط","conditions","eligibility","requirements"])) return "conditions";
-  if (has(text, ["الخطوات","خطوات","steps","how to apply"])) return "steps";
-  if (has(text, ["الرابط","لينك","link","url"])) return "link";
-  if (has(text, ["كم تستغرق","المدة","مده","مدة","duration","how long"])) return "duration";
-  if (has(text, ["من الجهة","الجهه","الجهة","authority"])) return "authority";
-  if (has(text, ["هل احتاج موافقه","هل أحتاج موافقة","موافقه","موافقة","approval"])) return "approvals";
-  if (has(text, ["ابدأ معاملتي","ابدا معاملتي","start my transaction"])) return "start";
+  const normalized = normalize(text);
+  if (has(normalized, ["كم الرسوم","الرسوم","رسوم","fee","fees","cost"])) return "fees";
+  if (has(normalized, ["الاوراق","الأوراق","المستندات","مستندات","documents"])) return "documents";
+  if (has(normalized, ["الشروط","شروط","conditions","eligibility","requirements"])) return "conditions";
+  if (has(normalized, ["الخطوات","خطوات","steps","how to apply"])) return "steps";
+  if (has(normalized, ["الرابط","لينك","link","url"])) return "link";
+  if (has(normalized, ["كم تستغرق","المدة","مده","مدة","duration","how long"])) return "duration";
+  if (has(normalized, ["من الجهة","الجهه","الجهة","authority"])) return "authority";
+  if (has(normalized, ["هل احتاج موافقه","هل أحتاج موافقة","موافقه","موافقة","approval"])) return "approvals";
+  if (has(normalized, ["ابدأ معاملتي","ابدا معاملتي","start my transaction"])) return "start";
   return "overview";
 }
 
@@ -346,6 +347,18 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   }
   if ((employee || workDomain) && transfer && slug === "transfer-work-permit-uae") score += 7000;
   if (employee && outside && slug === "new-work-permit-overseas-uae") score += 7000;
+  if (company && renew) {
+    if (emirate === "AE-DU" && slug === "renew-business-license-dubai") score += 14000;
+    if (/driving-license|vehicle|residence|family/.test(slug)) score -= 12000;
+  }
+  if (company && wantsCancel) {
+    if (emirate === "AE-DU" && slug === "cancel-business-license-dubai") score += 14000;
+    if (/establishment-card|بطاقة-المنشأة|residence|driving/.test(slug)) score -= 12000;
+  }
+  if (company && open && emirate === "AE-UQ") {
+    if (slug === "umm-al-quwain-mainland-licensing-official-path") score += 16000;
+    else if (/employment-contract|work-permit/.test(slug)) score -= 12000;
+  }
   const tradeLicense = has(goal, ["رخصه تجاريه","الرخصه التجاريه","رخصة تجارية","الرخصة التجارية","trade license","business license","economic license","رخصه الشركه","رخصة الشركة"]);
   if (tradeLicense && renew) {
     if (/(renew-business-license-dubai|economic-license-renewal|commercial-license-renewal)/.test(slug)) score += 6500;
@@ -803,10 +816,29 @@ export default {
         ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
       }
       let deterministic:any = publicResult(semanticGoal, ranked, latestTurn);
+      const currentFocus = answerFocus(latestTurn);
+      const selectedIdentity = normalize((deterministic?.matches?.[0]?.service_slug || "")+" "+(deterministic?.matches?.[0]?.service_name || ""));
+      const broadWorkPermit = has(normalize(semanticGoal),["تصريح عمل","work permit"]) && !has(normalize(semanticGoal),["نقل","تحويل","transfer","الغاء","إلغاء","cancel","خارج الامارات","من الخارج","overseas","طالب","student","تدريب","trainee","مدرس خصوصي","tutor","كفالة ذويه","family sponsored"]);
+      if (broadWorkPermit && !deterministic?.matches?.length) {
+        const detail = currentFocus === "documents" ? "المستندات تختلف حسب نوع تصريح العمل؛ لا أريد أن أعطيك أوراق مسار غير مناسب. " : "";
+        deterministic = {
+          ...deterministic,
+          understood_intent:"إصدار تصريح عمل عبر MOHRE",
+          answer:{text:detail+"تصريح العمل له عدة مسارات رسمية. حدّد فقط: الموظف من خارج الإمارات، داخل الإمارات وينتقل إلى منشأة جديدة، أم مقيم على كفالة ذويه؟",focus:"clarification",fact_status:"NEEDS_CLARIFICATION",grounded:false,evidence:{}},
+          missing_information:["فئة تصريح العمل"],follow_up_questions:["هل الموظف من خارج الإمارات، منتقل داخل الدولة، أم على كفالة ذويه؟"]
+        };
+      }
       // A family sponsorship service is jurisdiction-specific. Until the emirate is known,
       // fail closed instead of presenting whichever emirate-specific catalog row ranked first.
       const domesticResidence = semantic.subject_role === "domestic_worker" && has(normalize(semanticGoal),["اقامه","إقامة","اقامتها","إقامتها","اقامته","إقامته","residence","residency","visa"]);
-      if (domesticResidence && !semantic.jurisdiction) {
+      if (domesticResidence && semantic.jurisdiction && !/residen|اقام/.test(selectedIdentity)) {
+        deterministic = {
+          ...publicResult(semanticGoal, [], latestTurn),
+          understood_intent:"إقامة عامل/عاملة مساعدة",
+          answer:{text:"أفهم أنك تقصد إقامة العامل/العاملة المساعدة، وليس شكوى عمالية أو عقد عمل. هذه الخدمة غير موثقة كمسار إقامة مستقل في الكتالوج الحالي لهذه الإمارة، لذلك لن أحولك إلى خدمة MOHRE مختلفة.",focus:currentFocus,fact_status:"MISSING_INFORMATION",grounded:false,evidence:{}},
+          missing_information:["مسار الإقامة الموثق للعامل/العاملة المساعدة في الإمارة المحددة"],follow_up_questions:[]
+        };
+      } else if (domesticResidence && !semantic.jurisdiction) {
         deterministic = {
           ...deterministic,
           understood_intent:"إقامة عامل/عاملة مساعدة",
