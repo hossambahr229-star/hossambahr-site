@@ -9,3 +9,5 @@ test("premium surface avoids fabricated partnership language and exposes real co
 test("responsive release breakpoints cover phone and tablet classes",()=>{for(const bp of["1100","720","390"])assert.ok(css.includes("@media(max-width:"+bp+"px)"),bp);assert.match(css,/overflow:hidden/);});
 
 test("publication stabilizer preserves premium platform hero",()=>{const s=fs.readFileSync(new URL("../../src/publication/stabilize-homepage-runtime.mjs",import.meta.url),"utf8");assert.match(s,/!html\.includes\('premium-home-hero'\)/);});
+
+test("closed AI panel never blocks underlying platform controls",()=>{assert.match(css,/premium-ai-panel[^}]*pointer-events:none[^}]*visibility:hidden/);assert.match(css,/premium-ai-panel\.is-open[^}]*pointer-events:auto[^}]*visibility:visible/);});
