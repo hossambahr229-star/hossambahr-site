@@ -129,3 +129,5 @@ test("client carries canonical action independently across short follow-ups",()=
 
 
 test("browser carries family member set through the semantic context contract",()=>{assert.match(source,/family_members: \[\]/);assert.match(source,/family_members:state\.family_members/);assert.match(source,/state\.family_members=payload\?\.goal_context\?\.family_members/);assert.match(edge,/family_members: semantic\.family_members/);});
+
+test("domestic-worker residence without jurisdiction fails closed before unrelated catalog match",()=>{assert.match(edge,/if \(domesticResidence && !semantic\.jurisdiction\)/);assert.ok(!edge.includes("domesticResidence && !semantic.jurisdiction && !deterministic.matches?.length"));});
