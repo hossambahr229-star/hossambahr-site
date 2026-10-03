@@ -292,6 +292,10 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 15000 : emirate ? -9000 : 6500;
     if (/family-data-icp/.test(slug)) score -= 12000;
   }
+  if (relationship && (residencyDomain || has(normalized,["visa","فيزا"])) && !workDomain && !wantsCancel) {
+    if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 16000 : emirate ? -5000 : 7000;
+    if (/family-sponsored-work-permit|work-permit/.test(slug)) score -= 15000;
+  }
   if (family && residence && renew) {
     if (slug === "تجديد-إقامة-أفراد-الأسرة-في-دبي") score += emirate === "AE-DU" ? 1450 : emirate ? -320 : 620;
     if (slug === "family-residency-uae") score += emirate === "AE-DU" ? 420 : emirate ? -260 : 180;
@@ -364,7 +368,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
   const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
   const workDomain = has(normalized, ["تصريح عمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
-  const familyResidenceSponsorship = Boolean(relationship) && action === "sponsor" && !workDomain;
+  const familyResidenceSponsorship = Boolean(relationship) && (action === "sponsor" || residencyDomain || has(normalized,["visa","فيزا"])) && !workDomain;
   const asksResidenceAuthorityChoice = residencyDomain && has(normalized, ["icp"]) && has(normalized, ["gdrfa"]);
   const spouseRelationship = relationship === "spouse" || relationship === "wife" || relationship === "husband";
   const parentRelationship = relationship === "parents" || relationship === "mother" || relationship === "father";
