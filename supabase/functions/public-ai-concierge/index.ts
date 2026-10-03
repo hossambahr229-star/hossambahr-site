@@ -1,5 +1,6 @@
 import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole, mergeSemanticContext, relationshipCompatibility, relationshipGroup, semanticDomainCompatibility, type FamilyRelationship, type SemanticEntity, type SubjectRole } from "./semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
+import { providerFailure, completedProviderText } from "./provider-status.ts";
 
 const ALLOWED_ORIGINS = new Set([
   "https://hossambahr.com",
@@ -595,16 +596,21 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
 }
 
 
-type ProviderResult = { text:string; provider:string; model:string; latency_ms:number } | null;
+type ProviderResult = { text?:string; provider?:string; model?:string; latency_ms?:number; failure?:ReturnType<typeof providerFailure> } | null;
+let providerConfigReported = false;
 
 function providerConfig() {
   const openai = (Deno.env.get("OPENAI_API_KEY") || "").trim().replace(/^["\']|["\']$/g, "");
   const anthropic = Deno.env.get("ANTHROPIC_API_KEY") || "";
   const gemini = Deno.env.get("GEMINI_API_KEY") || Deno.env.get("GOOGLE_GENERATIVE_AI_API_KEY") || "";
-  if (openai) return { provider:"openai", key:openai, model:Deno.env.get("OPENAI_MODEL") || "gpt-5.6-sol" };
-  if (anthropic) return { provider:"anthropic", key:anthropic, model:Deno.env.get("ANTHROPIC_MODEL") || "claude-sonnet-4-5" };
-  if (gemini) return { provider:"gemini", key:gemini, model:Deno.env.get("GEMINI_MODEL") || "gemini-2.5-pro" };
-  return null;
+  const cfg = openai ? { provider:"openai", key:openai, model:Deno.env.get("OPENAI_MODEL") || "gpt-5.6-sol" }
+    : anthropic ? { provider:"anthropic", key:anthropic, model:Deno.env.get("ANTHROPIC_MODEL") || "claude-sonnet-4-5" }
+    : gemini ? { provider:"gemini", key:gemini, model:Deno.env.get("GEMINI_MODEL") || "gemini-2.5-pro" } : null;
+  if (!providerConfigReported) {
+    console.info("hb-ai-provider-config", {provider:cfg?.provider||null,model:cfg?.model||null,key_present:Boolean(cfg),credit_guard_enabled:providerCreditBlocked()});
+    providerConfigReported = true;
+  }
+  return cfg;
 }
 
 function compactGrounding(result:any) {
@@ -650,12 +656,13 @@ function streamEvent(controller:ReadableStreamDefaultController<Uint8Array>, eve
 
 async function logProviderHttpError(res:Response, attempt:number) {
   let body:any=null; try{body=await res.clone().json()}catch{}
-  const info={provider:"openai",status:res.status,code:body?.error?.code||null,type:body?.error?.type||null,retry_after:res.headers.get("retry-after")||null,attempt};
+  const failure=providerFailure(res.status,body?.error?.code,body?.error?.type);
+  const info={provider:"openai",...failure,retry_after:res.headers.get("retry-after")||null,attempt};
   console.warn("hb-ai-provider-http-error",info);
   return info;
 }
 function retryableProviderHttpError(status:number, code:string|null) {
-  if(["credit_balance_exhausted","organization_spend_limit_exceeded","project_spend_limit_exceeded","organization_usage_limit_exceeded"].includes(String(code||""))) return false;
+  if(["credit_balance_exhausted","insufficient_quota","organization_spend_limit_exceeded","project_spend_limit_exceeded","organization_usage_limit_exceeded"].includes(String(code||""))) return false;
   return [408,429,500,502,503,504].includes(status);
 }
 
@@ -670,7 +677,7 @@ function providerRetryDelayMs(res:Response, attempt:number) {
 }
 
 async function openAIStream(cfg:any,input:any[],signal:AbortSignal) {
-  let lastStatus=0;
+  let lastStatus=0; let failure:any=null;
   for(let attempt=0;attempt<3;attempt++) {
     const res=await fetch("https://api.openai.com/v1/responses",{
       method:"POST",signal,
@@ -680,12 +687,13 @@ async function openAIStream(cfg:any,input:any[],signal:AbortSignal) {
     if(res.ok) return {res,retry_count:attempt};
     lastStatus=res.status;
     const providerError=await logProviderHttpError(res,attempt);
+    failure=providerFailure(res.status,providerError.code,providerError.type);
     if(!retryableProviderHttpError(res.status,providerError.code) || attempt===2) break;
     const delay=providerRetryDelayMs(res,attempt);
     if(delay===null) break;
     await new Promise(r=>setTimeout(r,delay));
   }
-  throw new Error("openai_"+lastStatus);
+  throw Object.assign(new Error("openai_"+lastStatus),{failure});
 }
 
 function providerCreditBlocked(){return (Deno.env.get("HB_OPENAI_CREDIT_BLOCKED")||"").trim()==="1";}
@@ -700,9 +708,9 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
   const stream=new ReadableStream<Uint8Array>({
     async start(controller){
       const aborter=new AbortController(); const timer=setTimeout(()=>aborter.abort(),15000);
-      let full=""; let ttft:number|null=null; let usage:any={}; let retries=0;
+      let full=""; let ttft:number|null=null; let usage:any={}; let retries=0; let completed=false;
       try{
-        streamEvent(controller,{type:"meta",goal_context:{jurisdiction_hint:semantic?.jurisdiction||detectJurisdiction(normalize(goal)),relationship:semantic?.relationship||null,family_members:semantic?.family_members||[],subject_role:semantic?.subject_role||null,turn_type:semantic?.turn_type||null,topic:semantic?.topic||null,safe_goal:goal},result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai",external_model_used:true}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
+        streamEvent(controller,{type:"meta",goal_context:{jurisdiction_hint:semantic?.jurisdiction||detectJurisdiction(normalize(goal)),relationship:semantic?.relationship||null,family_members:semantic?.family_members||[],subject_role:semantic?.subject_role||null,turn_type:semantic?.turn_type||null,topic:semantic?.topic||null,safe_goal:goal},result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai-pending",external_model_used:false}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
         const opened=await openAIStream(cfg,input,aborter.signal); retries=opened.retry_count;
         const reader=opened.res.body?.getReader(); if(!reader) throw new Error("openai_empty_stream");
         const decoder=new TextDecoder(); let buffer="";
@@ -718,18 +726,22 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
               if(ttft===null) ttft=Math.round(performance.now()-requestStarted);
               full+=String(evt.delta); streamEvent(controller,{type:"delta",delta:String(evt.delta)});
             }
-            if(evt.type==="response.completed") usage=evt.response?.usage||usage;
-            if(evt.type==="response.failed") throw new Error("openai_stream_failed");
+            if(evt.type==="response.completed") {completedProviderText(evt.response);completed=true;usage=evt.response?.usage||usage;}
+            if(evt.type==="response.failed"||evt.type==="response.incomplete"||evt.type==="error") {
+              const error=evt.response?.error||evt.error||evt;
+              throw Object.assign(new Error("openai_stream_failed"),{failure:providerFailure(200,error.code,error.type)});
+            }
           }
         }
-        if(!full.trim()) throw new Error("openai_empty");
+        if(!completed||!full.trim()) throw new Error("openai_incomplete_stream");
         const total=Math.round(performance.now()-requestStarted);
         const metrics:StreamMetrics={ttft_ms:ttft,total_ms:total,input_tokens:Number(usage.input_tokens||0),output_tokens:Number(usage.output_tokens||0),cached_tokens:Number(usage.input_tokens_details?.cached_tokens||0),retry_count:retries};
         console.info("hb-ai-stream-success",{provider:"openai",model:cfg.model,ttft_ms:metrics.ttft_ms,total_ms:metrics.total_ms,input_tokens:metrics.input_tokens,output_tokens:metrics.output_tokens,cached_tokens:metrics.cached_tokens,retry_count:retries});
         streamEvent(controller,{type:"done",text:full.trim(),engine:{mode:"grounded-conversational-ai",external_model_used:true,ttft_ms:ttft,total_ms:total},usage:{input_tokens:metrics.input_tokens,output_tokens:metrics.output_tokens,cached_tokens:metrics.cached_tokens}});
       }catch(error){
-        console.error("hb-ai-provider-failed",{provider:"openai",message:error instanceof Error?error.message:"unknown"});
-        streamEvent(controller,{type:"fallback",result:deterministic});
+        const failure=(error as any)?.failure||providerFailure(null,error instanceof Error?error.name:"unknown");
+        console.error("hb-ai-provider-failed",{provider:"openai",...failure});
+        streamEvent(controller,{type:"fallback",result:{...deterministic,engine:{...deterministic.engine,external_model_used:false,provider_failure:failure}}});
       }finally{clearTimeout(timer);controller.close();}
     }
   });
@@ -749,24 +761,24 @@ async function callConversationalModel(latestTurn:string, history:any[], determi
         res=await fetch("https://api.openai.com/v1/responses",{method:"POST",signal,headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({model:cfg.model,instructions:AI_INSTRUCTIONS,input,max_output_tokens:700,reasoning:{effort:"low"},store:false})});
         if(res.ok) break;
         const providerError=await logProviderHttpError(res,attempt);
-        if(!retryableProviderHttpError(res.status,providerError.code)||attempt===2) throw new Error("openai_"+res.status);
+        if(!retryableProviderHttpError(res.status,providerError.code)||attempt===2) throw Object.assign(new Error("openai_"+res.status),{failure:providerFailure(res.status,providerError.code,providerError.type)});
         const delay=providerRetryDelayMs(res,attempt);
         if(delay===null) throw new Error("openai_"+res.status);
         await new Promise(r=>setTimeout(r,delay));
       }
       if(!res?.ok) throw new Error("openai_unavailable");
-      const data:any=await res.json(); const text=String(data.output_text||(data.output||[]).flatMap((o:any)=>o.content||[]).find((x:any)=>x.type==="output_text")?.text||"").trim();
+      const data:any=await res.json(); const text=completedProviderText(data);
       if(!text) throw new Error("openai_empty");
       const u=data.usage||{}; console.info("hb-ai-usage",{provider:"openai",model:cfg.model,input_tokens:Number(u.input_tokens||0),output_tokens:Number(u.output_tokens||0),cached_tokens:Number(u.input_tokens_details?.cached_tokens||0)});
       return {text,provider:"openai",model:cfg.model,latency_ms:Math.round(performance.now()-started)};
     }
     return null;
-  }catch(error){console.error("hb-ai-provider-failed",{provider:cfg.provider,message:error instanceof Error?error.message:"unknown"});return null;}
+  }catch(error){const failure=(error as any)?.failure||providerFailure(null,error instanceof Error?error.name:"unknown");console.error("hb-ai-provider-failed",{provider:cfg.provider,...failure});return {failure};}
 }
 
 async function conversationalResult(latestTurn:string,history:any[],deterministic:any){
   const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),15000);
-  try{const generated=await callConversationalModel(latestTurn,history,deterministic,controller.signal);if(!generated)return deterministic;return {...deterministic,answer:{...(deterministic.answer||{}),text:generated.text,generated:true},engine:{mode:"grounded-conversational-ai",external_model_used:true,provider_latency_ms:generated.latency_ms}};}finally{clearTimeout(timer);}
+  try{const generated=await callConversationalModel(latestTurn,history,deterministic,controller.signal);if(!generated?.text)return generated?.failure?{...deterministic,engine:{...deterministic.engine,provider_failure:generated.failure,external_model_used:false}}:deterministic;return {...deterministic,answer:{...(deterministic.answer||{}),text:generated.text,generated:true},engine:{mode:"grounded-conversational-ai",external_model_used:true,provider_latency_ms:generated.latency_ms}};}finally{clearTimeout(timer);}
 }
 
 export default {
