@@ -688,7 +688,9 @@ async function openAIStream(cfg:any,input:any[],signal:AbortSignal) {
   throw new Error("openai_"+lastStatus);
 }
 
-function providerCreditBlocked(){return (Deno.env.get("HB_OPENAI_CREDIT_BLOCKED")||"").trim()==="1";}\n\nfunction makeStreamingResponse(req:Request, latestTurn:string, history:any[], deterministic:any, rate:any, goal:string, requestStarted:number, catalogMs:number, semantic?:SemanticState) {
+function providerCreditBlocked(){return (Deno.env.get("HB_OPENAI_CREDIT_BLOCKED")||"").trim()==="1";}
+
+function makeStreamingResponse(req:Request, latestTurn:string, history:any[], deterministic:any, rate:any, goal:string, requestStarted:number, catalogMs:number, semantic?:SemanticState) {
   const cfg=providerConfig();
   if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return null;
   const safeHistory=safeHistoryForModel(history);
