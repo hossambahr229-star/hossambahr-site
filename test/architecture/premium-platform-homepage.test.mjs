@@ -11,3 +11,5 @@ test("responsive release breakpoints cover phone and tablet classes",()=>{for(co
 test("publication stabilizer preserves premium platform hero",()=>{const s=fs.readFileSync(new URL("../../src/publication/stabilize-homepage-runtime.mjs",import.meta.url),"utf8");assert.match(s,/!html\.includes\('premium-home-hero'\)/);});
 
 test("closed AI panel never blocks underlying platform controls",()=>{assert.match(css,/premium-ai-panel[^}]*pointer-events:none[^}]*visibility:hidden/);assert.match(css,/premium-ai-panel\.is-open[^}]*pointer-events:auto[^}]*visibility:visible/);});
+
+test("English homepage has premium platform-first parity",()=>{const en=fs.readFileSync(new URL("../../en/index.html",import.meta.url),"utf8");assert.match(en,/Your UAE transaction/);assert.match(en,/premium-intent-search/);assert.match(en,/premium-ai-orb/);assert.match(en,/premium-ai-panel/);assert.match(en,/dir="ltr"/);assert.doesNotMatch(en,/<h1[^>]*>HOSSAM BAHR AI/);for(const e of["Dubai","Abu Dhabi","Sharjah","Ajman","Ras Al Khaimah","Fujairah","Umm Al Quwain"])assert.ok(en.includes(e),e);});
