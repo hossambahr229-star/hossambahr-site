@@ -367,3 +367,4 @@ await writeFile(resolve(output, "final-platform-acceptance.json"), `${JSON.strin
 console.log(JSON.stringify({ sourceOfTruth: report.sourceOfTruth, ranking: report.ranking, journeys: report.journeys, activitySearch: report.activitySearch, activityAdvisor: report.activityAdvisor, responsive: report.responsive }, null, 2));
 if (registry.services.length !== 200 || summary.services !== 200 || activities.length !== 2610 || actualEmirates.size !== 7 || report.ranking.passed !== 100 || report.journeys.passed !== conversationalScenarios.length || report.activitySearch.passed !== report.activitySearch.total || report.activityAdvisor.passed !== report.activityAdvisor.total || advisorErrors.length || report.responsive.passed !== report.responsive.total) process.exit(1);
 
+\nawait import("./hb-ai-browser-conversational-continuity.mjs");\n
