@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-03T20:10:09.599Z",
+  "generatedAt": "2026-10-03T21:15:52.912Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 167,
+    "REACHABLE": 164,
     "ACCESS_RESTRICTED": 9,
-    "TEMPORARILY_UNAVAILABLE": 0,
+    "TEMPORARILY_UNAVAILABLE": 3,
     "NETWORK_UNVERIFIED": 71,
     "BROKEN": 0
   },
@@ -82,9 +82,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
+      "status": 500,
       "finalUrl": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 500"
     },
     {
       "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
@@ -853,9 +854,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
+      "status": 500,
       "finalUrl": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 500"
     },
     {
       "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3485",
@@ -1162,9 +1164,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
+      "status": 500,
       "finalUrl": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 500"
     },
     {
       "url": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
