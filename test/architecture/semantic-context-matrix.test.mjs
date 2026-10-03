@@ -38,3 +38,6 @@ test("mixed Arabic English subject references normalize deterministically",()=>{
 test("production semantic resolver propagates canonical subject role independently",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/subject_role:context\?\.subject_role\?\?null/);assert.match(edge,/subject_role:merged\.subject_role/);assert.match(edge,/parsed\.subject_role=detectSubjectRole\(latestTurn\)/);});
 
 test("production response exposes subject role so clients can carry it across turns",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/subject_role: semantic\.subject_role/);assert.match(edge,/subject_role:semantic\?\.subject_role\|\|null/);});
+
+test("Gulf first-person أبي is not misread as father",()=>{assert.equal(detectRelationship("أبي أفتح شركة في الشارقة"),null);assert.equal(detectSubjectRole("أبي أفتح شركة في الشارقة"),"company");});
+test("natural residence issuance language resolves action",()=>{for(const q of ["عايز أعمل إقامة لمراتي","كيف اسوي اقامة للزوجة","wife visa dubai","ابي اقامه لزوجتي"])assert.equal(detectAction(q),"issue",q);});
