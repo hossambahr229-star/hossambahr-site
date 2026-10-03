@@ -656,11 +656,7 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
   if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return null;
   const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
-  const userContent="Verified HOSSAM BAHR grounding for this turn:
-"+grounding+"
-
-Current user message:
-"+latestTurn;
+  const userContent="Verified HOSSAM BAHR grounding for this turn:\\n"+grounding+"\\n\\nCurrent user message:\\n"+latestTurn;
   const input=[...safeHistory,{role:"user",content:userContent}];
   const stream=new ReadableStream<Uint8Array>({
     async start(controller){
