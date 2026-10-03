@@ -308,7 +308,8 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const child = has(goal, ["ابن","ابني","ابنتي","طفل","اطفال","child","children","son","daughter"]);
   const wantsCancel = has(goal, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
   const sponsorship = has(goal, ["اكفل","أكفل","كفاله","كفالة","sponsor","sponsorship"]);
-  const emirate = detectJurisdiction(goal);\n  const fiveYearTourist = has(goal,["سياحيه","سياحية","سياحه","سياحة","tourist","tourism"]) && (has(goal,["5 سنين","5 سنوات","خمس سنين","خمس سنوات","five years","5 years"]) || (has(goal,["متعدده","متعددة","multiple","multi"]) && has(goal,["دخول","entry"])));
+  const emirate = detectJurisdiction(goal);
+  const fiveYearTourist = has(goal,["سياحيه","سياحية","سياحه","سياحة","tourist","tourism"]) && (has(goal,["5 سنين","5 سنوات","خمس سنين","خمس سنوات","five years","5 years"]) || (has(goal,["متعدده","متعددة","multiple","multi"]) && has(goal,["دخول","entry"])));
   if (fiveYearTourist) {
     if (slug === "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp") score += 18000;
     else if (/visa|tour|تاشير|تأشير/.test(normalize(slug))) score -= 5000;
