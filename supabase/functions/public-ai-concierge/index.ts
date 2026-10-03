@@ -1,6 +1,7 @@
 import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole, mergeSemanticContext, relationshipCompatibility, relationshipGroup, semanticDomainCompatibility, type FamilyRelationship, type SemanticEntity, type SubjectRole } from "./semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 import { providerFailure, completedProviderText } from "./provider-status.ts";
+import { responseContext } from "./response-context.ts";
 
 const ALLOWED_ORIGINS = new Set([
   "https://hossambahr.com",
@@ -710,7 +711,7 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
       const aborter=new AbortController(); const timer=setTimeout(()=>aborter.abort(),15000);
       let full=""; let ttft:number|null=null; let usage:any={}; let retries=0; let completed=false;
       try{
-        streamEvent(controller,{type:"meta",goal_context:{jurisdiction_hint:semantic?.jurisdiction||detectJurisdiction(normalize(goal)),relationship:semantic?.relationship||null,family_members:semantic?.family_members||[],subject_role:semantic?.subject_role||null,turn_type:semantic?.turn_type||null,topic:semantic?.topic||null,safe_goal:goal},result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai-pending",external_model_used:false}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
+        streamEvent(controller,{type:"meta",goal_context:responseContext(semantic,deterministic,goal,detectJurisdiction(normalize(goal))),result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai-pending",external_model_used:false}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
         const opened=await openAIStream(cfg,input,aborter.signal); retries=opened.retry_count;
         const reader=opened.res.body?.getReader(); if(!reader) throw new Error("openai_empty_stream");
         const decoder=new TextDecoder(); let buffer="";
@@ -878,28 +879,7 @@ export default {
       const intelligenceMs = performance.now() - intelligenceStarted;
       return reply(req, {
         ok:true,
-        goal_context:{
-          active_service_id: intelligent?.matches?.[0]?.service_slug ?? semantic.active_service_id ?? null,
-          last_answer_topic: intelligent?.answer?.focus ?? answerFocus(latestTurn),
-          pending_clarification: intelligent?.answer?.fact_status==="NEEDS_CLARIFICATION" ? (intelligent?.follow_up_questions?.[0]||null) : null,
-          known_facts: semantic.known_facts,
-          jurisdiction_hint: semantic.jurisdiction || detectJurisdiction(normalize(latestTurn)) || detectJurisdiction(normalize(semanticGoal)),
-          relationship,
-          relationship_group: semantic.relationship_group,
-          family_members: semantic.family_members,
-          subject_role: semantic.subject_role,
-          entity: semantic.entity,
-          service_slug: semantic.service_slug,
-          authority_key: semantic.authority_key,
-          action: semantic.action,
-          turn_type: semantic.turn_type,
-          topic: semantic.topic,
-          intent: semantic.intent,
-          service_family: semantic.service_family,
-          business_activity: semantic.business_activity,
-          semantic_confidence: semantic.confidence,
-          safe_goal: semanticGoal
-        },
+        goal_context:responseContext(semantic,intelligent,semanticGoal,detectJurisdiction(normalize(latestTurn)) || detectJurisdiction(normalize(semanticGoal))),
         result: intelligent,
         rate_limit:{ remaining: rate.remaining, reset_at: rate.reset_at }
       }, 200, { "Server-Timing": `catalog;dur=${catalogMs.toFixed(1)},intelligence;dur=${intelligenceMs.toFixed(1)},total;dur=${(performance.now()-requestStarted).toFixed(1)}` });
