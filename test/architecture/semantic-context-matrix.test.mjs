@@ -44,3 +44,11 @@ test("natural residence issuance language resolves action",()=>{for(const q of [
 
 test("English business partner is not coerced into spouse",()=>{assert.equal(detectRelationship("add partner Dubai company"),null);assert.equal(detectSubjectRole("add partner Dubai company"),"partner");});
 test("Gulf أبي remains first-person before service nouns",()=>{for(const q of ["ابي رخصه اقتصاديه الشارقه","ابي اقامة ذهبية بدبي كمستثمر","ابي اسجل إيجاري","ابي اضيف شريك بالرخصة دبي"])assert.equal(detectRelationship(q),null,q);});
+
+test("Production human variants resolve stable semantic roles and actions",()=>{
+ assert.equal(detectRelationship("عاوز اطلع اقامة للمدام في دبي"),"wife");
+ assert.equal(detectAction("عاوز اطلع اقامة للمدام في دبي"),"issue");
+ assert.equal(detectAction("رخصتي بعجمان بتنتهي"),"renew");
+ assert.equal(detectSubjectRole("add shareholder Dubai license"),"partner");
+ for(const q of ["ابي اجدد اقامة الخادمة","domestic worker visa renewal","تجديد اقامة عامل مساعد"]) assert.equal(detectSubjectRole(q),"domestic_worker",q);
+});
