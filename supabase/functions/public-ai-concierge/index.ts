@@ -89,7 +89,7 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
       instructions:"Extract the CURRENT conversational state for a UAE government-services assistant. Distinguish follow-up/correction from a genuinely new topic. Preserve confirmed prior entities only when still relevant. A location-only follow-up preserves the prior service/entity. A new topic such as moving from family sponsorship to opening a company MUST discard stale family service/relationship from resolved_query. A correction changes only the corrected entity. jurisdiction must be one of AE-DU, AE-AZ, AE-SH, AE-AJ, AE-RK, AE-FU, AE-UQ, AE, or null. resolved_query must be a compact standalone description of the CURRENT user goal only, suitable for service retrieval. Do not include stale previous-topic facts.",
       input,text:{format:{type:"json_schema",name:"hb_semantic_state",strict:true,schema}}
     })});
-    if(!res.ok) return fallback; const json=await res.json();
+    if(!res.ok){await markProviderBillingBlock(res);return fallback;} const json=await res.json();
     const txt=(json.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");
     const parsed=JSON.parse(txt); if(!parsed?.resolved_query) return fallback;
     const topicReset=parsed.turn_type==="new_topic"||parsed.turn_type==="service_switch";
@@ -435,14 +435,14 @@ async function selectSemanticCandidate(semantic:SemanticState, ranked:any[], cat
       instructions:"Select the ONE catalog service that matches the CURRENT semantic state. Service identity must match the user's actual action and object, not merely share an emirate or generic word. Examples: trade licence is not driving licence; Ejari is not marriage contract; WPS is not a work permit; investor residence is not family residence; liquidation is not partner amendment. If no candidate actually matches, choose __NONE__. Never choose a stale prior-topic service.",
       input:JSON.stringify({semantic,choices}),text:{format:{type:"json_schema",name:"hb_service_selection",strict:true,schema}}
     })});
-    if(!res.ok)return ranked[0]?.score>=5000?ranked:[];const j=await res.json();const txt=(j.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const p=JSON.parse(txt);
+    if(!res.ok){await markProviderBillingBlock(res);return ranked[0]?.score>=5000?ranked:[];}const j=await res.json();const txt=(j.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const p=JSON.parse(txt);
     if(p.selected_slug==="__NONE__"){
       if(ranked[0]?.score>=5000) return ranked;
       const allChoices=catalog.map((r:any)=>({slug:r.binding.service_slug,title:r.title,authority:r.authority?.authority_key||null,jurisdiction:r.jurisdiction?.code||"AE"}));
       const allAllowed=[...allChoices.map((x:any)=>x.slug),"__NONE__"];
       const fullSchema={type:"object",additionalProperties:false,properties:{selected_slug:{type:"string",enum:allAllowed},confidence:{type:"string",enum:["high","medium","low"]},reason_code:{type:"string",enum:["exact","closest_verified","ambiguous","no_match"]}},required:["selected_slug","confidence","reason_code"]};
       const fullRes=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+cfg.key,"Content-Type":"application/json"},body:JSON.stringify({model:cfg.model,store:false,reasoning:{effort:"low"},max_output_tokens:120,instructions:"Recovery service lookup over the full verified catalog. Select exactly one service only when its identity matches the current semantic goal; otherwise __NONE__. Prefer exact action/object matches over generic category similarity. Never choose a stale topic.",input:JSON.stringify({semantic,choices:allChoices}),text:{format:{type:"json_schema",name:"hb_full_service_selection",strict:true,schema:fullSchema}}})});
-      if(!fullRes.ok)return ranked[0]?.score>=5000?ranked:[];const fj=await fullRes.json();const ftxt=(fj.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const fp=JSON.parse(ftxt);
+      if(!fullRes.ok){await markProviderBillingBlock(fullRes);return ranked[0]?.score>=5000?ranked:[];}const fj=await fullRes.json();const ftxt=(fj.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==="output_text").map((x:any)=>x.text).join("");const fp=JSON.parse(ftxt);
       if(fp.selected_slug==="__NONE__")return ranked[0]?.score>=5000?ranked:[];
       const fullChosen=catalog.find((r:any)=>r.binding.service_slug===fp.selected_slug);if(!fullChosen)return [];
       return [fullChosen,...ranked.filter((r:any)=>r.binding.service_slug!==fp.selected_slug)];
@@ -606,7 +606,7 @@ function streamEvent(controller:ReadableStreamDefaultController<Uint8Array>, eve
   controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"\n"));
 }
 
-async function logProviderHttpError(res:Response, attempt:number) {
+let providerBillingBlockedUntil=0;\nconst BILLING_CODES=new Set(["credit_balance_exhausted","insufficient_quota","organization_spend_limit_exceeded","project_spend_limit_exceeded","organization_usage_limit_exceeded"]);\nasync function markProviderBillingBlock(res:Response){let body:any=null;try{body=await res.clone().json()}catch{}const code=String(body?.error?.code||body?.error?.type||"");if(BILLING_CODES.has(code)){providerBillingBlockedUntil=Date.now()+15*60*1000;console.warn("hb-ai-provider-billing-circuit-open",{code,until:providerBillingBlockedUntil});return true;}return false;}\n\nasync function logProviderHttpError(res:Response, attempt:number) {
   let body:any=null; try{body=await res.clone().json()}catch{}
   const info={provider:"openai",status:res.status,code:body?.error?.code||null,type:body?.error?.type||null,retry_after:res.headers.get("retry-after")||null,attempt};
   console.warn("hb-ai-provider-http-error",info);
@@ -646,7 +646,7 @@ async function openAIStream(cfg:any,input:any[],signal:AbortSignal) {
   throw new Error("openai_"+lastStatus);
 }
 
-function providerCreditBlocked(){return (Deno.env.get("HB_OPENAI_CREDIT_BLOCKED")||"").trim()==="1";}
+function providerCreditBlocked(){return (Deno.env.get("HB_OPENAI_CREDIT_BLOCKED")||"").trim()==="1" || Date.now()<providerBillingBlockedUntil;}
 
 function makeStreamingResponse(req:Request, latestTurn:string, history:any[], deterministic:any, rate:any, goal:string, requestStarted:number, catalogMs:number, semantic?:SemanticState) {
   const cfg=providerConfig();
