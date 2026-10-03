@@ -1,3 +1,4 @@
+// Final acceptance revalidation: external model must serve every curated Production turn.
 import assert from "node:assert/strict";
 const endpoint=process.env.HB_AI_ENDPOINT||"https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge";
 const qaRun="human-semantic-"+Date.now();
