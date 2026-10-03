@@ -107,6 +107,7 @@ html = html
   .replace(/\sdata-intent-first-ready=(?:"[^"]*"|'[^']*')/gi, '')
   .replace(/\sdata-phase6-hero=(?:"[^"]*"|'[^']*')/gi, '');
 
+if (!html.includes('premium-home-hero')) {
 html = html.replace(
   /<nav class="desktop-nav"([^>]*)>[\s\S]*?<\/nav>/i,
   '<nav class="desktop-nav"$1><a href="/os/">HOSSAM BAHR OS</a><a href="/services/">الخدمات</a><a href="/categories/companies-establishments/">الشركات والرخص</a><a href="/categories/work-employees/">العمل</a><a href="/categories/residency-visas/">الإقامة والتأشيرات</a><a href="/dubai-business-activities.html">الأنشطة</a><a href="/updates/">التحديثات</a><details class="nav-more"><summary>المزيد</summary><div class="nav-more-menu"><a href="/authorities/">الجهات</a><a href="/command-center/">مركز القيادة</a><a href="/faq/">الأسئلة والحلول</a></div></details></nav>'
@@ -137,6 +138,7 @@ html = html.replace(
   /<form class="search-shell primary-search"[\s\S]*?<\/form>/i,
   '<form class="search-shell primary-search hb-conversation-composer" role="form" aria-label="محادثة مع HOSSAM BAHR AI"><label for="government-search">اسأل HOSSAM BAHR AI</label><span class="search-overline">اكتب سؤالك بطريقتك — لا تحتاج لاختيار خدمة أو جهة مسبقًا</span><div class="search-row"><textarea id="government-search" name="goal" rows="1" maxlength="800" autocomplete="off" aria-label="اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات" placeholder="اسألني عن أي معاملة في الإمارات…"></textarea><button class="hb-chat-send" type="submit" aria-label="إرسال السؤال إلى HOSSAM BAHR AI">➤</button></div></form>'
 );
+}
 html = html.replace(
   '<em> معاملات الأعمال والخدمات الحكومية</em>من مكان واحد.',
   '<em> معاملات الأعمال والخدمات الحكومية</em> من مكان واحد.'

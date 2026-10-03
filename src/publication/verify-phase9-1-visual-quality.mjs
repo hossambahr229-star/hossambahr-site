@@ -28,7 +28,7 @@ if(!base){
   base=`http://127.0.0.1:${server.address().port}`;
 }
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||undefined,args:['--no-sandbox']});
-const viewports=[{name:'mobile-390',width:390,height:844},{name:'mobile-430',width:430,height:932},{name:'desktop-1440',width:1440,height:900}];
+const viewports=[{name:'mobile-320',width:320,height:720},{name:'mobile-360',width:360,height:800},{name:'mobile-390',width:390,height:844},{name:'mobile-412',width:412,height:915},{name:'mobile-430',width:430,height:932},{name:'tablet-768',width:768,height:1024},{name:'laptop-1024',width:1024,height:768},{name:'desktop-1440',width:1440,height:900},{name:'desktop-1920',width:1920,height:1080}];
 const surfaces=[
   {name:'homepage',path:'/'},
   {name:'services',path:'/services/'},
