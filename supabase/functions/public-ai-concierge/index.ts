@@ -361,6 +361,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","ابني","ابنتي","بنتي","اولادي","ابنائي","عيالي","اسره","عائله","family","wife","spouse","parent","son","daughter","children","kids"]);
   const employeeDomain = has(normalized, ["موظف","عامل","employee","worker"]);
   const companyDomain = has(normalized, ["شركه","شركة","رخصه تجاريه","رخصة تجارية","business","company","trade license"]);
+  const workDomain = has(normalized, ["تصريح عمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
+  const familyResidenceSponsorship = Boolean(relationship) && action === "sponsor" && !workDomain;
   const asksResidenceAuthorityChoice = residencyDomain && has(normalized, ["icp"]) && has(normalized, ["gdrfa"]);
   const spouseRelationship = relationship === "spouse" || relationship === "wife" || relationship === "husband";
   const parentRelationship = relationship === "parents" || relationship === "mother" || relationship === "father";
@@ -377,6 +379,10 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
     if (residencyDomain && !/(اقامه|residen|residency|visa)/.test(identityText)) score -= 2200;
     if (familyDomain && residencyDomain && !/(family|اسر|عائل|زوج|والد|residen)/.test(identityText)) score -= 1600;
     if (residencyDomain && !employeeDomain && /(work permit|تصريح عمل|labour|labor)/.test(identityText)) score -= 2200;
+    // A family member + sponsorship request is a residence sponsorship object unless the user
+    // explicitly asks about employment/work. Family-sponsored work permits share the same
+    // catalog category, so category compatibility alone must never substitute the service object.
+    if (familyResidenceSponsorship && /(work permit|تصريح عمل|employment|employee|worker|توظيف)/.test(identityText)) score -= 12000;
     if (employeeDomain && !/(work|employee|worker|موظف|عامل|تصريح)/.test(identityText)) score -= 900;
     if (companyDomain && !/(license|licence|business|company|رخص|شرك)/.test(identityText)) score -= 900;
     if (asksResidenceAuthorityChoice && detected && detected !== "AE-DU") {
