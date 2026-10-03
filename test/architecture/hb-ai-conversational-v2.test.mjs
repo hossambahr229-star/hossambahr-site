@@ -123,3 +123,6 @@ test("document AI validates data-url MIME and binary magic bytes before provider
  const doc=await readFile("supabase/functions/document-ai/index.ts","utf8");
  assert.match(doc,/function parseDataUrl/);assert.match(doc,/function sniffMime/);assert.match(doc,/file_type_mismatch/);assert.match(doc,/parsed\.bytes\.byteLength>MAX_BYTES/);assert.match(doc,/declared!==embedded\|\|declared!==sniffed/);assert.match(doc,/0x25,0x50,0x44,0x46,0x2d/);assert.match(doc,/0x89,0x50,0x4e,0x47/);assert.match(doc,/0xff,0xd8,0xff/);
 });
+
+
+test("client carries canonical action independently across short follow-ups",()=>{assert.match(source,/action: null/);assert.match(source,/service_family:state\.service_family,action:state\.action/);assert.match(source,/state\.action=payload\?\.goal_context\?\.action\?\?state\.action/);});

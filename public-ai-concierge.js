@@ -45,6 +45,7 @@
     entity: null,
     intent: null,
     service_family: null,
+    action: null,
     last_payload: null,
     history: []
   };
@@ -513,7 +514,7 @@
     if(!state.original_goal)state.original_goal=displayed;else if(displayed!==state.original_goal)state.answers.push(displayed);
     const query=buildResolvedQuery(); state.resolved_query=query; saveState();
     try{
-      const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn: displayed,history:state.history.slice(-8),stream:true,context:{service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key,relationship:state.relationship,entity:state.entity,intent:state.intent,service_family:state.service_family}}),credentials:"omit"});
+      const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn: displayed,history:state.history.slice(-8),stream:true,context:{service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key,relationship:state.relationship,entity:state.entity,intent:state.intent,service_family:state.service_family,action:state.action}}),credentials:"omit"});
       if(response.status===429){removePending(pending);addBubble("assistant","وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");return;}
       if(!response.ok||!response.body)throw new Error("stream_unavailable");
       const reader=response.body.getReader(),decoder=new TextDecoder();let buffer="",payload=null,streamBubble=null,streamP=null,full="",ttft=null,doneMeta=null;
@@ -540,7 +541,7 @@
       state.service_slug=match?.service_slug||state.service_slug;state.jurisdiction_code=match?.jurisdiction?.code||payload?.goal_context?.jurisdiction_hint||state.jurisdiction_code;state.authority_key=match?.authority?.key||state.authority_key;
         const turnType=payload?.goal_context?.turn_type||null;
         if(["new_topic","service_switch"].includes(turnType)){state.service_slug=match?.service_slug||null;state.jurisdiction_code=match?.jurisdiction?.code||null;state.authority_key=match?.authority?.key||null;state.relationship=payload?.goal_context?.relationship||null;}
-        else if(payload?.goal_context && Object.prototype.hasOwnProperty.call(payload.goal_context,"relationship")) state.relationship=payload.goal_context.relationship; state.entity=payload?.goal_context?.entity||state.entity; state.intent=payload?.goal_context?.intent??state.intent; state.service_family=payload?.goal_context?.service_family??state.service_family;
+        else if(payload?.goal_context && Object.prototype.hasOwnProperty.call(payload.goal_context,"relationship")) state.relationship=payload.goal_context.relationship; state.entity=payload?.goal_context?.entity||state.entity; state.intent=payload?.goal_context?.intent??state.intent; state.service_family=payload?.goal_context?.service_family??state.service_family; state.action=payload?.goal_context?.action??state.action;
         saveState();
       addBubble("assistant",buildAssistantMessage(payload));
     }catch{removePending(pending);addBubble("assistant","تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");}
@@ -707,7 +708,7 @@
 
     document.querySelector("[data-ai-new]")?.addEventListener("click", () => {
       try { sessionStorage.removeItem(STATE_KEY); } catch {}
-      state = { expires_at: Date.now() + TTL, original_goal: "", resolved_query: "", answers: [], service_slug: null, jurisdiction_code: null, authority_key: null, relationship: null, entity: null, intent: null, service_family: null, last_payload: null };
+      state = { expires_at: Date.now() + TTL, original_goal: "", resolved_query: "", answers: [], service_slug: null, jurisdiction_code: null, authority_key: null, relationship: null, entity: null, intent: null, service_family: null, action: null, last_payload: null };
       thread?.replaceChildren();
       document.body.classList.remove("hb-chat-engaged");
       composer.value = "";
