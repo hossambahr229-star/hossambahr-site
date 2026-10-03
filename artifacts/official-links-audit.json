@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-03T07:50:30.524Z",
+  "generatedAt": "2026-10-03T07:58:49.411Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 167,
+    "REACHABLE": 166,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 71,
+    "NETWORK_UNVERIFIED": 72,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -376,9 +376,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "TimeoutError"
     },
     {
       "url": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-an-event-permit",
