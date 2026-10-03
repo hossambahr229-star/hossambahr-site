@@ -754,7 +754,7 @@ export default {
       const catalogMs = performance.now() - catalogStarted;
       const lexicalRanked = rank(semanticGoal, catalog, relationship, semantic.action);
       const ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
-      let deterministic = publicResult(semanticGoal, ranked, latestTurn);
+      let deterministic:any = publicResult(semanticGoal, ranked, latestTurn);
       // A family sponsorship service is jurisdiction-specific. Until the emirate is known,
       // fail closed instead of presenting whichever emirate-specific catalog row ranked first.
       if (relationship && semantic.action === "sponsor" && !semantic.jurisdiction) {
