@@ -515,7 +515,7 @@
     if(!state.original_goal)state.original_goal=displayed;else if(displayed!==state.original_goal)state.answers.push(displayed);
     const query=buildResolvedQuery(); state.resolved_query=query; saveState();
     try{
-      const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn: displayed,history:state.history.slice(-8),stream:true,context:{service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key,relationship:state.relationship,family_members:state.family_members,entity:state.entity,intent:state.intent,service_family:state.service_family,action:state.action}}),credentials:"omit"});
+      const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn: displayed,history:state.history.slice(-8),stream:true,context:{active_service_id:state.active_service_id||state.service_slug,service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key,relationship:state.relationship,family_members:state.family_members,entity:state.entity,intent:state.intent,service_family:state.service_family,action:state.action,subject_role:state.subject_role,last_answer_topic:state.last_answer_topic,pending_clarification:state.pending_clarification,known_facts:state.known_facts}}),credentials:"omit"});
       if(response.status===429){removePending(pending);addBubble("assistant","وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");return;}
       if(!response.ok||!response.body)throw new Error("stream_unavailable");
       const reader=response.body.getReader(),decoder=new TextDecoder();let buffer="",payload=null,streamBubble=null,streamP=null,full="",ttft=null,doneMeta=null;
@@ -539,7 +539,7 @@
       const match=selectPresentationMatch(payload);state.last_payload=payload;state.history.push({role:"user",content:displayed});
       const assistantText=payload?.result?.answer?.text||full;if(assistantText)state.history.push({role:"assistant",content:assistantText});
       state.history=state.history.slice(-8);state.resolved_query=payload?.goal_context?.safe_goal||query;if(!state.original_goal)state.original_goal=state.resolved_query;
-      state.service_slug=match?.service_slug||state.service_slug;state.jurisdiction_code=match?.jurisdiction?.code||payload?.goal_context?.jurisdiction_hint||state.jurisdiction_code;state.authority_key=match?.authority?.key||state.authority_key;
+      state.service_slug=match?.service_slug||state.service_slug;state.active_service_id=payload?.goal_context?.active_service_id||match?.service_slug||state.active_service_id||state.service_slug;state.last_answer_topic=payload?.goal_context?.last_answer_topic||payload?.result?.answer?.focus||state.last_answer_topic;state.pending_clarification=payload?.goal_context?.pending_clarification??null;state.known_facts=payload?.goal_context?.known_facts||state.known_facts||{};state.subject_role=payload?.goal_context?.subject_role??state.subject_role;state.jurisdiction_code=match?.jurisdiction?.code||payload?.goal_context?.jurisdiction_hint||state.jurisdiction_code;state.authority_key=match?.authority?.key||state.authority_key;
         const turnType=payload?.goal_context?.turn_type||null;
         if(["new_topic","service_switch"].includes(turnType)){state.service_slug=match?.service_slug||null;state.jurisdiction_code=match?.jurisdiction?.code||null;state.authority_key=match?.authority?.key||null;state.relationship=payload?.goal_context?.relationship||null;state.family_members=payload?.goal_context?.family_members||[];}
         else if(payload?.goal_context && Object.prototype.hasOwnProperty.call(payload.goal_context,"relationship")) state.relationship=payload.goal_context.relationship; state.family_members=payload?.goal_context?.family_members||state.family_members; state.entity=payload?.goal_context?.entity||state.entity; state.intent=payload?.goal_context?.intent??state.intent; state.service_family=payload?.goal_context?.service_family??state.service_family; state.action=payload?.goal_context?.action??state.action;
@@ -709,7 +709,7 @@
 
     document.querySelector("[data-ai-new]")?.addEventListener("click", () => {
       try { sessionStorage.removeItem(STATE_KEY); } catch {}
-      state = { expires_at: Date.now() + TTL, original_goal: "", resolved_query: "", answers: [], service_slug: null, jurisdiction_code: null, authority_key: null, relationship: null, family_members: [], entity: null, intent: null, service_family: null, action: null, last_payload: null };
+      state = { expires_at: Date.now() + TTL, original_goal: "", resolved_query: "", answers: [], active_service_id:null, service_slug: null, jurisdiction_code: null, authority_key: null, relationship: null, family_members: [], entity: null, intent: null, service_family: null, action: null, subject_role:null, last_answer_topic:null, pending_clarification:null, known_facts:{}, last_payload: null, history:[] };
       thread?.replaceChildren();
       document.body.classList.remove("hb-chat-engaged");
       composer.value = "";
