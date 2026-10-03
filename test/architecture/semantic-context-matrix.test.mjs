@@ -26,3 +26,7 @@ test("family sponsorship without emirate fails closed before selecting an emirat
 
 
 test("family member set accumulates additions and correction replaces only when explicit",()=>{let s=mergeSemanticContext("أريد أكفل زوجتي",null,"");assert.deepEqual(s.family_members,["wife"]);s=mergeSemanticContext("عندي ولدين كمان",s,"");assert.equal(s.relationship,"children");assert.ok(s.family_members.includes("wife"));assert.ok(s.family_members.includes("children"));s=mergeSemanticContext("ولو أبوظبي؟",s,"");assert.equal(s.jurisdiction,"AE-AZ");assert.ok(s.family_members.includes("wife"));assert.ok(s.family_members.includes("children"));s=mergeSemanticContext("لا، قصدي والدتي",s,"");assert.equal(s.relationship,"mother");assert.deepEqual(s.family_members,["mother"]);});
+
+test("family sponsorship ranker hard-excludes employment objects without explicit work intent",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/!familyResidenceSponsorship \|\| !\/\(work permit\|تصريح عمل\|employment\|employee\|worker\|توظيف\)\//);});
+
+test("fully bound relationship action and emirate do not trigger lexical ambiguity prompts",()=>{const edge=fs.readFileSync(new URL("../../supabase/functions/public-ai-concierge/index.ts",import.meta.url),"utf8");assert.match(edge,/const semanticallyBound = Boolean\(detectRelationship\(goal\) && detectAction\(goal\) && detectJurisdiction\(goal\)\)/);assert.match(edge,/const ambiguous = !semanticallyBound/);});

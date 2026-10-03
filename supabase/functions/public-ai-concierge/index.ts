@@ -411,7 +411,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
       else if (row.jurisdiction?.code?.startsWith("AE-")) score -= 45;
     }
     return { ...row, score, domainCompatibility };
-  }).filter((row:any) => (!relationship || row.domainCompatibility >= 0) && row.score > 0 && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
+  }).filter((row:any) => (!familyResidenceSponsorship || !/(work permit|تصريح عمل|employment|employee|worker|توظيف)/.test(normalize(row.binding.service_slug+" "+row.title))) && (!relationship || row.domainCompatibility >= 0) && row.score > 0 && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
     .sort((a:any,b:any) => b.score - a.score || a.title.localeCompare(b.title,"ar"));
 }
 
@@ -488,7 +488,8 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
   const focus = answerFocus(latestTurn);
   const margin = candidates[1] ? top.score - candidates[1].score : top.score;
   const sourceBacked = Boolean(top.safeSources?.[0]?.source_url);
-  const ambiguous = margin < 35 && candidates[1]?.binding?.service_slug !== top.binding?.service_slug;
+  const semanticallyBound = Boolean(detectRelationship(goal) && detectAction(goal) && detectJurisdiction(goal));
+  const ambiguous = !semanticallyBound && margin < 35 && candidates[1]?.binding?.service_slug !== top.binding?.service_slug;
   if (ambiguous && questions.length === 0) questions.push("وجدت أكثر من خدمة محتملة. ما النتيجة التي تريد تنفيذها تحديدًا؟");
   const confidence = sourceBacked && !questions.length && !ambiguous && top.score >= 700 ? "high" : sourceBacked && top.score >= 220 ? "medium" : "low";
   const answer = groundedAnswer(goal, top, focus);
