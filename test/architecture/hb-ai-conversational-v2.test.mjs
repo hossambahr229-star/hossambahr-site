@@ -125,4 +125,4 @@ test("document AI validates data-url MIME and binary magic bytes before provider
 });
 
 
-test("client carries canonical action independently across short follow-ups",()=>{const src=read("public-ai-concierge.js");assert.match(src,/action: null/);assert.match(src,/service_family:state\.service_family,action:state\.action/);assert.match(src,/state\.action=payload\?\.goal_context\?\.action\?\?state\.action/);});
+test("client carries canonical action independently across short follow-ups",()=>{assert.match(source,/action: null/);assert.match(source,/service_family:state\.service_family,action:state\.action/);assert.match(source,/state\.action=payload\?\.goal_context\?\.action\?\?state\.action/);});
