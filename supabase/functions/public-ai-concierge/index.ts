@@ -655,7 +655,7 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
       const aborter=new AbortController(); const timer=setTimeout(()=>aborter.abort(),15000);
       let full=""; let ttft:number|null=null; let usage:any={}; let retries=0;
       try{
-        streamEvent(controller,{type:"meta",goal_context:{jurisdiction_hint:semantic?.jurisdiction||detectJurisdiction(normalize(goal)),relationship:semantic?.relationship||null,family_members:semantic?.family_members||[],turn_type:semantic?.turn_type||null,topic:semantic?.topic||null,safe_goal:goal},result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai",external_model_used:true}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
+        streamEvent(controller,{type:"meta",goal_context:{jurisdiction_hint:semantic?.jurisdiction||detectJurisdiction(normalize(goal)),relationship:semantic?.relationship||null,family_members:semantic?.family_members||[],subject_role:semantic?.subject_role||null,turn_type:semantic?.turn_type||null,topic:semantic?.topic||null,safe_goal:goal},result:{...deterministic,answer:{...(deterministic.answer||{}),text:""},engine:{mode:"grounded-conversational-ai",external_model_used:true}},rate_limit:{remaining:rate.remaining,reset_at:rate.reset_at}});
         const opened=await openAIStream(cfg,input,aborter.signal); retries=opened.retry_count;
         const reader=opened.res.body?.getReader(); if(!reader) throw new Error("openai_empty_stream");
         const decoder=new TextDecoder(); let buffer="";
@@ -779,6 +779,7 @@ export default {
           relationship,
           relationship_group: semantic.relationship_group,
           family_members: semantic.family_members,
+          subject_role: semantic.subject_role,
           entity: semantic.entity,
           service_slug: semantic.service_slug,
           authority_key: semantic.authority_key,
