@@ -347,6 +347,18 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   }
   if ((employee || workDomain) && transfer && slug === "transfer-work-permit-uae") score += 7000;
   if (employee && outside && slug === "new-work-permit-overseas-uae") score += 7000;
+  if (company && renew) {
+    if (emirate === "AE-DU" && slug === "renew-business-license-dubai") score += 14000;
+    if (/driving-license|vehicle|residence|family/.test(slug)) score -= 12000;
+  }
+  if (company && wantsCancel) {
+    if (emirate === "AE-DU" && slug === "cancel-business-license-dubai") score += 14000;
+    if (/establishment-card|بطاقة-المنشأة|residence|driving/.test(slug)) score -= 12000;
+  }
+  if (company && open && emirate === "AE-UQ") {
+    if (slug === "umm-al-quwain-mainland-licensing-official-path") score += 16000;
+    else if (/employment-contract|work-permit/.test(slug)) score -= 12000;
+  }
   const tradeLicense = has(goal, ["رخصه تجاريه","الرخصه التجاريه","رخصة تجارية","الرخصة التجارية","trade license","business license","economic license","رخصه الشركه","رخصة الشركة"]);
   if (tradeLicense && renew) {
     if (/(renew-business-license-dubai|economic-license-renewal|commercial-license-renewal)/.test(slug)) score += 6500;
