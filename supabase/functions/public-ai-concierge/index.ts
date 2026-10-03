@@ -816,10 +816,29 @@ export default {
         ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
       }
       let deterministic:any = publicResult(semanticGoal, ranked, latestTurn);
+      const currentFocus = answerFocus(latestTurn);
+      const selectedIdentity = normalize((deterministic?.matches?.[0]?.service_slug || "")+" "+(deterministic?.matches?.[0]?.service_name || ""));
+      const broadWorkPermit = has(normalize(semanticGoal),["تصريح عمل","work permit"]) && !has(normalize(semanticGoal),["نقل","تحويل","transfer","الغاء","إلغاء","cancel","خارج الامارات","من الخارج","overseas","طالب","student","تدريب","trainee","مدرس خصوصي","tutor","كفالة ذويه","family sponsored"]);
+      if (broadWorkPermit && !deterministic?.matches?.length) {
+        const detail = currentFocus === "documents" ? "المستندات تختلف حسب نوع تصريح العمل؛ لا أريد أن أعطيك أوراق مسار غير مناسب. " : "";
+        deterministic = {
+          ...deterministic,
+          understood_intent:"إصدار تصريح عمل عبر MOHRE",
+          answer:{text:detail+"تصريح العمل له عدة مسارات رسمية. حدّد فقط: الموظف من خارج الإمارات، داخل الإمارات وينتقل إلى منشأة جديدة، أم مقيم على كفالة ذويه؟",focus:"clarification",fact_status:"NEEDS_CLARIFICATION",grounded:false,evidence:{}},
+          missing_information:["فئة تصريح العمل"],follow_up_questions:["هل الموظف من خارج الإمارات، منتقل داخل الدولة، أم على كفالة ذويه؟"]
+        };
+      }
       // A family sponsorship service is jurisdiction-specific. Until the emirate is known,
       // fail closed instead of presenting whichever emirate-specific catalog row ranked first.
       const domesticResidence = semantic.subject_role === "domestic_worker" && has(normalize(semanticGoal),["اقامه","إقامة","اقامتها","إقامتها","اقامته","إقامته","residence","residency","visa"]);
-      if (domesticResidence && !semantic.jurisdiction) {
+      if (domesticResidence && semantic.jurisdiction && !/residen|اقام/.test(selectedIdentity)) {
+        deterministic = {
+          ...publicResult(semanticGoal, [], latestTurn),
+          understood_intent:"إقامة عامل/عاملة مساعدة",
+          answer:{text:"أفهم أنك تقصد إقامة العامل/العاملة المساعدة، وليس شكوى عمالية أو عقد عمل. هذه الخدمة غير موثقة كمسار إقامة مستقل في الكتالوج الحالي لهذه الإمارة، لذلك لن أحولك إلى خدمة MOHRE مختلفة.",focus:currentFocus,fact_status:"MISSING_INFORMATION",grounded:false,evidence:{}},
+          missing_information:["مسار الإقامة الموثق للعامل/العاملة المساعدة في الإمارة المحددة"],follow_up_questions:[]
+        };
+      } else if (domesticResidence && !semantic.jurisdiction) {
         deterministic = {
           ...deterministic,
           understood_intent:"إقامة عامل/عاملة مساعدة",
