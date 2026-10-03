@@ -1,0 +1,22 @@
+name: HB AI Free Human Response Quality
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/public-ai-concierge/**'
+      - 'scripts/hb-ai-human-response-quality-production.mjs'
+      - '.github/workflows/hb-ai-human-response-quality.yml'
+  workflow_dispatch:
+concurrency:
+  group: hb-ai-free-human-quality
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for Edge deployment
+        run: sleep 20
+      - name: Run 100 unseen human prompts against Production
+        run: node scripts/hb-ai-human-response-quality-production.mjs
