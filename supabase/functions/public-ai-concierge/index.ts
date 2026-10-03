@@ -603,10 +603,15 @@ function streamHeaders(req:Request) {
 }
 
 function streamEvent(controller:ReadableStreamDefaultController<Uint8Array>, event:any) {
-  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"\n"));
+  controller.enqueue(new TextEncoder().encode(JSON.stringify(event)+"
+"));
 }
 
-let providerBillingBlockedUntil=0;\nconst BILLING_CODES=new Set(["credit_balance_exhausted","insufficient_quota","organization_spend_limit_exceeded","project_spend_limit_exceeded","organization_usage_limit_exceeded"]);\nasync function markProviderBillingBlock(res:Response){let body:any=null;try{body=await res.clone().json()}catch{}const code=String(body?.error?.code||body?.error?.type||"");if(BILLING_CODES.has(code)){providerBillingBlockedUntil=Date.now()+15*60*1000;console.warn("hb-ai-provider-billing-circuit-open",{code,until:providerBillingBlockedUntil});return true;}return false;}\n\nasync function logProviderHttpError(res:Response, attempt:number) {
+let providerBillingBlockedUntil=0;
+const BILLING_CODES=new Set(["credit_balance_exhausted","insufficient_quota","organization_spend_limit_exceeded","project_spend_limit_exceeded","organization_usage_limit_exceeded"]);
+async function markProviderBillingBlock(res:Response){let body:any=null;try{body=await res.clone().json()}catch{}const code=String(body?.error?.code||body?.error?.type||"");if(BILLING_CODES.has(code)){providerBillingBlockedUntil=Date.now()+15*60*1000;console.warn("hb-ai-provider-billing-circuit-open",{code,until:providerBillingBlockedUntil});return true;}return false;}
+
+async function logProviderHttpError(res:Response, attempt:number) {
   let body:any=null; try{body=await res.clone().json()}catch{}
   const info={provider:"openai",status:res.status,code:body?.error?.code||null,type:body?.error?.type||null,retry_after:res.headers.get("retry-after")||null,attempt};
   console.warn("hb-ai-provider-http-error",info);
@@ -653,7 +658,11 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
   if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return null;
   const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
-  const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
+  const userContent="Verified HOSSAM BAHR grounding for this turn:
+"+grounding+"
+
+Current user message:
+"+latestTurn;
   const input=[...safeHistory,{role:"user",content:userContent}];
   const stream=new ReadableStream<Uint8Array>({
     async start(controller){
@@ -667,7 +676,8 @@ function makeStreamingResponse(req:Request, latestTurn:string, history:any[], de
         while(true){
           const {done,value}=await reader.read(); if(done) break;
           buffer+=decoder.decode(value,{stream:true});
-          const lines=buffer.split("\n"); buffer=lines.pop()||"";
+          const lines=buffer.split("
+"); buffer=lines.pop()||"";
           for(const raw of lines){
             const line=raw.trim(); if(!line.startsWith("data:")) continue;
             const data=line.slice(5).trim(); if(!data || data==="[DONE]") continue;
@@ -698,7 +708,11 @@ async function callConversationalModel(latestTurn:string, history:any[], determi
   const cfg=providerConfig(); if(!cfg || providerCreditBlocked()) return null;
   const started=performance.now(); const safeHistory=safeHistoryForModel(history);
   const grounding=JSON.stringify({deterministic_intent:deterministic?.understood_intent||null,confidence:deterministic?.confidence||"low",grounding:compactGrounding(deterministic)});
-  const userContent="Verified HOSSAM BAHR grounding for this turn:\n"+grounding+"\n\nCurrent user message:\n"+latestTurn;
+  const userContent="Verified HOSSAM BAHR grounding for this turn:
+"+grounding+"
+
+Current user message:
+"+latestTurn;
   try{
     if(cfg.provider==="openai"){
       const input=[...safeHistory,{role:"user",content:userContent}];
