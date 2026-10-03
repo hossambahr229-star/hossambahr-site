@@ -222,3 +222,46 @@ body[data-ux-page="home"] .premium-how{grid-template-columns:1fr!important}
 body[data-ux-page="home"] .premium-how .section-heading,body[data-ux-page="home"] .premium-how ol,body[data-ux-page="home"] .premium-consult-cta{grid-column:1!important}
 body[data-ux-page="home"] .premium-consult-cta{margin-top:.45rem}
 }
+
+/* APPROVED REFERENCE — ROUND 2 DENSITY + BIDI */
+@media(min-width:821px){
+body[data-ux-page="home"] .site-header{flex-direction:row!important;justify-content:space-between!important}
+body[data-ux-page="home"] .site-header .brand{margin:0!important;flex:0 0 245px!important}
+body[data-ux-page="home"] .header-actions{margin:0!important;flex:0 0 285px!important;justify-content:flex-start!important}
+body[data-ux-page="home"] .desktop-nav{flex:1 1 auto!important}
+body[data-ux-page="home"] .target-discovery .premium-category-grid a{min-height:104px!important;height:104px!important;padding:.4rem!important}
+body[data-ux-page="home"] .target-discovery i{margin-bottom:.18rem!important}
+body[data-ux-page="home"] .premium-featured .premium-story{height:124px!important;min-height:124px!important}
+body[data-ux-page="home"] .premium-featured .premium-slide{height:124px!important;min-height:124px!important;padding-top:10px!important}
+body[data-ux-page="home"] .target-proof{min-height:48px!important;margin-block:.2rem!important;padding:.48rem .8rem!important}
+body[data-ux-page="home"] .premium-how{padding-top:.18rem!important;padding-bottom:.18rem!important}
+body[data-ux-page="home"] .premium-how .section-heading{margin:0 0 .12rem!important;min-height:18px!important}
+body[data-ux-page="home"] .premium-how .section-heading h2{margin:0!important;font-size:.9rem!important}
+body[data-ux-page="home"] .premium-how li{min-height:54px!important;padding:.42rem .72rem!important}
+body[data-ux-page="home"] .premium-consult-cta{min-height:54px!important;padding:.42rem .72rem!important}
+body[data-ux-page="home"] .premium-authorities{padding-top:.18rem!important;padding-bottom:.18rem!important}
+body[data-ux-page="home"] .premium-authorities .section-heading{margin:0 0 .1rem!important;min-height:18px!important}
+body[data-ux-page="home"] .premium-authorities .section-heading h2{margin:0!important;font-size:.78rem!important}
+body[data-ux-page="home"] .premium-authorities .section-heading>a{font-size:.62rem!important}
+body[data-ux-page="home"] .authority-pills a{min-height:42px!important;padding:.35rem!important}
+body[data-ux-page="home"] .premium-final-cta{min-height:72px!important;padding:.55rem 11%!important;margin-top:.18rem!important}
+body[data-ux-page="home"] .premium-final-cta h2{font-size:1rem!important;margin:.12rem 0!important}
+body[data-ux-page="home"] .premium-final-cta p{font-size:.65rem!important}
+}
+html[lang="en"] body[data-ux-page="home"] .premium-en-header{height:64px;min-height:64px;padding:0 clamp(18px,2.2vw,38px);max-width:none;background:#fff;box-shadow:0 1px 8px rgba(3,31,53,.10);border:0}
+html[lang="en"] body[data-ux-page="home"] .visual-target-hero{direction:rtl!important}
+html[lang="en"] body[data-ux-page="home"] .premium-hero-main{order:2!important;direction:ltr!important}
+html[lang="en"] body[data-ux-page="home"] .premium-ai-showcase{order:1!important;direction:ltr!important}
+html[lang="en"] body[data-ux-page="home"] .premium-hero-main:before{content:"Always with you\A for UAE transactions"!important;left:auto!important;right:4.2%!important;text-align:left!important}
+html[lang="en"] body[data-ux-page="home"] .premium-hero-copy{text-align:left!important;margin-inline-start:0!important;margin-inline-end:auto!important}
+html[lang="en"] body[data-ux-page="home"] .premium-hero-copy>p{margin-inline-start:0!important;margin-inline-end:auto!important}
+html[lang="en"] body[data-ux-page="home"] .premium-popular{justify-content:flex-start!important}
+html[lang="en"] body[data-ux-page="home"] .premium-featured .premium-slide>a{right:auto!important;left:14px!important}
+html[lang="en"] body[data-ux-page="home"] .premium-how{text-align:left!important}
+html[lang="en"] body[data-ux-page="home"] .premium-consult-cta{direction:ltr!important}
+@media(max-width:820px){
+html[lang="en"] body[data-ux-page="home"] .visual-target-hero{direction:ltr!important}
+html[lang="en"] body[data-ux-page="home"] .premium-hero-main{order:1!important}
+html[lang="en"] body[data-ux-page="home"] .premium-ai-showcase{order:2!important}
+html[lang="en"] body[data-ux-page="home"] .premium-hero-main:before{right:auto!important;left:24px!important}
+}
