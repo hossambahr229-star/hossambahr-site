@@ -7,7 +7,7 @@ export type SemanticContext={relationship:FamilyRelationship|null;relationship_g
 const norm=(v:unknown)=>String(v??"").toLowerCase().normalize("NFKD").replace(/[\u064B-\u065F\u0670]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();
 const aliases:Record<FamilyRelationship,string[]>={
  parents:["الوالدين","والداي","امي وابويا","امي وابي","ابويا وامي","my parents","parents","mom and dad"],mother:["والدتي","امي","الوالده","ماما","my mother","mother","mom","mum"],father:["والدي","ابي","ابويا","الوالد","بابا","my father","father","dad"],
- wife:["زوجتي","مراتي","المدام","مدام","wife","my wife"],husband:["زوجي","جوزي","husband","my husband"],spouse:["زوجه","زوج","spouse"],
+ wife:["زوجتي","مراتي","المدام","مدام","للمدام","wife","my wife"],husband:["زوجي","جوزي","husband","my husband"],spouse:["زوجه","زوج","spouse"],
  children:["اولادي","عيالي","ابنائي","اطفالي","ولدين","ولدان","طفلين","طفلان","my children","children","kids","my kids"],daughter:["بنتي","ابنتي","my daughter","daughter"],son:["ابني","ولدي","my son","son"],
  siblings:["اخواتي","اخوتي","اخواني","siblings","my siblings"],brother:["اخي","اخويا","my brother","brother"],sister:["اختي","my sister","sister"],other_dependent:["معالي","تابعي","مكفولي","dependent","my dependent"]};
 const group=(r:FamilyRelationship|null):RelationshipGroup|null=>!r?null:(["wife","husband","spouse"].includes(r)?"spouse":["son","daughter","children"].includes(r)?"child":["father","mother","parents"].includes(r)?"parent":["brother","sister","siblings"].includes(r)?"sibling":"dependent");
