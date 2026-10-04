@@ -15,6 +15,24 @@ const services = registry.services.map(service => ({
 const activitySource = await readFile(resolve(root, 'dubai-activities-data.js'), 'utf8');
 const activities = JSON.parse(activitySource.slice(activitySource.indexOf('=') + 1).replace(/;\s*$/, ''));
 
+test('every published service is discoverable by its exact Arabic and English title',()=>{
+ for(const service of services) for(const title of [service.a,service.e].filter(Boolean))
+  assert.ok(rankServices(title,services).some(result=>result.s===service.s),service.s+' '+title);
+});
+test('parent sponsorship cannot rank cancellation or employment above parent residence',()=>{
+ for(const query of ['كفالة أم','اكفل امي','sponsor my mother','كفالة أم في أبوظبي']) {
+  const top=rankServices(query,services)[0];assert.ok(top,query);assert.match(top.a,/والدين/);
+  if(query.includes('أبوظبي'))assert.match(top.a,/ICP/);
+ }
+});
+test('golden visa means residence unless work is explicitly requested',()=>{
+ assert.equal(rankServices('golden visa',services)[0].s,'golden-residency-uae');
+ assert.equal(rankServices('golden visa work permit',services)[0].s,'issuance-of-a-new-work-permit-golden-visa-holders');
+});
+test('common renewal misspelling retains renewal action',()=>{
+ assert.match(rankServices('تجدد اقامه دبي',services)[0].a,/تجديد/);
+});
+
 test('natural Arabic family intent resolves to Dubai family renewal', () => {
   assert.equal(rankServices('أريد أجدد إقامة زوجتي في دبي', services)[0].s, 'تجديد-إقامة-أفراد-الأسرة-في-دبي');
   assert.equal(rankServices('تجديد إقامة زوجتي', services)[0].s, 'تجديد-إقامة-أفراد-الأسرة-في-دبي');
