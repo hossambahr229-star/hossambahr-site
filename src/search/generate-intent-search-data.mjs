@@ -1,5 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import {emirateEnglish} from "../publication/english-catalog.mjs";
 
 const root = resolve(import.meta.dirname, "../..");
 const registry = JSON.parse(await readFile(resolve(root, "src/registry/published-services.json"), "utf8"));
@@ -14,6 +15,7 @@ const services = registry.services.map((service) => ({
   a: service.name?.ar || service.slug,
   e: service.name?.en || "",
   m: service.emirate || "",
+  emirate: emirateEnglish(service.emirate),
   i: service.authority?.id || "",
   r: service.authority?.ar || "",
   n: service.authority?.en || "",
