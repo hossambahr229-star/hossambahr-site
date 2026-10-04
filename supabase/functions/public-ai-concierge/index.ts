@@ -1,7 +1,7 @@
 import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole, mergeSemanticContext, relationshipCompatibility, relationshipGroup, semanticDomainCompatibility, type FamilyRelationship, type SemanticEntity, type SubjectRole } from "./semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 import { providerFailure, completedProviderText } from "./provider-status.ts";
-import { responseContext } from "./response-context.ts";
+import { responseContext, jurisdictionCandidates } from "./response-context.ts";
 
 const ALLOWED_ORIGINS = new Set([
   "https://hossambahr.com",
@@ -827,7 +827,8 @@ export default {
         const explicitJ=detectJurisdiction(latestTurn);
         if(explicitJ && inherited.jurisdiction?.code!==explicitJ && inherited.jurisdiction?.code!=="AE") {
           const switchedGoal=[inherited.title,latestTurn].join(" ");
-          ranked=await selectSemanticCandidate({...semantic,jurisdiction:explicitJ,service_slug:null},rank(switchedGoal,catalog,relationship,semantic.action),catalog);
+          const currentCatalog=jurisdictionCandidates(catalog,explicitJ);
+          ranked=await selectSemanticCandidate({...semantic,jurisdiction:explicitJ,service_slug:null},rank(switchedGoal,currentCatalog,relationship,semantic.action),currentCatalog);
         } else ranked=[inherited];
       } else {
         const lexicalRanked = rank(semanticGoal, catalog, relationship, semantic.action);

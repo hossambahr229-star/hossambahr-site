@@ -7,6 +7,7 @@ const edge = await readFile(new URL("../../supabase/functions/public-ai-concierg
 const css = await readFile(new URL("../../global-os.css", import.meta.url), "utf8");
 const stabilizer = await readFile(new URL("../../src/publication/stabilize-homepage-runtime.mjs", import.meta.url), "utf8");
 const semanticLayer = await readFile(new URL("../../supabase/functions/public-ai-concierge/semantic-context.ts", import.meta.url), "utf8");
+const responseContract = await readFile(new URL("../../supabase/functions/public-ai-concierge/response-context.ts", import.meta.url), "utf8");
 
 test("HB AI attachment analysis is guarded against duplicate re-entry", () => {
   assert.match(source, /attachmentAnalysisInFlight/);
@@ -128,6 +129,6 @@ test("document AI validates data-url MIME and binary magic bytes before provider
 test("client carries canonical action independently across short follow-ups",()=>{assert.match(source,/action: null/);assert.match(source,/service_family:state\.service_family,action:state\.action/);assert.match(source,/state\.action=payload\?\.goal_context\?\.action\?\?state\.action/);});
 
 
-test("browser carries family member set through the semantic context contract",()=>{assert.match(source,/family_members: \[\]/);assert.match(source,/family_members:state\.family_members/);assert.match(source,/state\.family_members=payload\?\.goal_context\?\.family_members/);assert.match(edge,/family_members: semantic\.family_members/);});
+test("browser carries family member set through the semantic context contract",()=>{assert.match(source,/family_members: \[\]/);assert.match(source,/family_members:state\.family_members/);assert.match(source,/state\.family_members=payload\?\.goal_context\?\.family_members/);assert.match(responseContract,/family_members: semantic\.family_members/);assert.match(edge,/goal_context:responseContext\(semantic,deterministic/);assert.match(edge,/goal_context:responseContext\(semantic,intelligent/);});
 
 test("domestic-worker residence without jurisdiction fails closed before unrelated catalog match",()=>{assert.match(edge,/if \(domesticResidence && !semantic\.jurisdiction\)/);assert.ok(!edge.includes("domesticResidence && !semantic.jurisdiction && !deterministic.matches?.length"));});

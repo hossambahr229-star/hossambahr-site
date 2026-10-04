@@ -1,4 +1,9 @@
 // JSON and streaming responses share the same current-turn context contract.
+export function jurisdictionCandidates(rows: any[], jurisdiction: string | null) {
+  if (!jurisdiction || jurisdiction === 'AE') return rows;
+  return rows.filter(row => row.jurisdiction?.code === jurisdiction || row.jurisdiction?.code === 'AE');
+}
+
 export function responseContext(semantic: any, result: any, safeGoal: string, fallbackJurisdiction: string | null) {
   const match = result?.matches?.[0];
   return {

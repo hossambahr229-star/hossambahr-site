@@ -1,6 +1,13 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {detectRelationship,mergeSemanticContext} from '../../supabase/functions/public-ai-concierge/semantic-context.ts';
-import {responseContext} from '../../supabase/functions/public-ai-concierge/response-context.ts';
+import {responseContext,jurisdictionCandidates} from '../../supabase/functions/public-ai-concierge/response-context.ts';
+
+test('emirate switch excludes stale local authorities and retains federal services',()=>{
+ const rows=['AE-DU','AE-AZ','AE','AE-SH'].map(code=>({jurisdiction:{code}}));
+ assert.deepEqual(jurisdictionCandidates(rows,'AE-AZ').map(row=>row.jurisdiction.code),['AE-AZ','AE']);
+ assert.deepEqual(jurisdictionCandidates(rows,'AE-DU').map(row=>row.jurisdiction.code),['AE-DU','AE']);
+ assert.equal(jurisdictionCandidates(rows,null),rows);
+});
 test('wife renewal → children → emirate change preserves the current transaction',()=>{
  let semantic=mergeSemanticContext('عايز أجدد إقامة مراتي في دبي',null,'');
  const result={matches:[{service_slug:'family-renewal-dubai',authority:{key:'gdrfa-dubai'}}],answer:{focus:'overview'}};
