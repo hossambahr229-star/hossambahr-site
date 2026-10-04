@@ -1,0 +1,2837 @@
+{
+  "base": "https://hossambahr.com/",
+  "deployedCommit": "13fd73a15b1218c96c9ec64d9e06b2a97291c3c6",
+  "captureSource": "LIVE_PRODUCTION",
+  "geometryPassed": true,
+  "pixelFidelity": "NOT_DECLARED",
+  "humanVisualAcceptance": "NOT_ACCEPTED",
+  "scope": "Measured layout and image comparison do not establish founder acceptance.",
+  "meanAbsolutePixelDifference": 37.19881703317901,
+  "changedPixelPercent": 30.728587962962962,
+  "results": [
+    {
+      "width": 1440,
+      "height": 960,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "fontLoaded": true,
+        "legacyMarks": 0,
+        "images": [],
+        "content": {
+          "headline": {
+            "x": 433.828125,
+            "y": 103,
+            "right": 1032.15625,
+            "bottom": 178.59375,
+            "w": 598.328125,
+            "h": 75.59375
+          },
+          "support": {
+            "x": 601.375,
+            "y": 187.59375,
+            "right": 1032.15625,
+            "bottom": 232.59375,
+            "w": 430.78125,
+            "h": 45
+          },
+          "search": {
+            "x": 433.828125,
+            "y": 248,
+            "right": 1032.15625,
+            "bottom": 295,
+            "w": 598.328125,
+            "h": 47
+          },
+          "chips": {
+            "x": 545.34375,
+            "y": 311,
+            "right": 1032.15625,
+            "bottom": 333,
+            "w": 486.8125,
+            "h": 22
+          },
+          "hero": {
+            "x": 0,
+            "y": 61,
+            "right": 1440,
+            "bottom": 363,
+            "w": 1440,
+            "h": 302
+          },
+          "categories": {
+            "x": 30.953125,
+            "y": 367,
+            "right": 1409.046875,
+            "bottom": 483,
+            "w": 1378.09375,
+            "h": 116
+          },
+          "aiActions": [
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 186,
+              "clientWidth": 186
+            },
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 186,
+              "clientWidth": 186
+            }
+          ]
+        },
+        "boxes": {
+          ".site-header": [
+            0,
+            0,
+            1440,
+            61
+          ],
+          ".visual-target-hero": [
+            0,
+            61,
+            1440,
+            302
+          ],
+          ".premium-hero-main": [
+            0,
+            61,
+            1068.46875,
+            302
+          ],
+          ".premium-ai-showcase": [
+            1068.46875,
+            61,
+            371.515625,
+            302
+          ],
+          ".premium-intent-search": [
+            433.828125,
+            248,
+            598.328125,
+            47
+          ],
+          ".premium-category-grid>a": [
+            30.953125,
+            367,
+            166.125,
+            116
+          ],
+          ".premium-story": [
+            30.953125,
+            497,
+            1378.09375,
+            127
+          ],
+          ".target-proof": [
+            30.96875,
+            643,
+            1378.078125,
+            66
+          ],
+          ".premium-how ol": [
+            30.953125,
+            749,
+            1054.09375,
+            44
+          ],
+          ".premium-authorities": [
+            0,
+            803,
+            1440,
+            85
+          ],
+          ".premium-final-cta": [
+            0,
+            888,
+            1440,
+            85
+          ]
+        }
+      },
+      "lifecycle": [
+        {
+          "stage": "DOMContentLoaded",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "fonts.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "images.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "+1s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "+3s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        }
+      ],
+      "ai": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "fontLoaded": true,
+        "legacyMarks": 0,
+        "images": [],
+        "content": {
+          "headline": {
+            "x": 433.828125,
+            "y": 103,
+            "right": 1032.15625,
+            "bottom": 178.59375,
+            "w": 598.328125,
+            "h": 75.59375
+          },
+          "support": {
+            "x": 601.375,
+            "y": 187.59375,
+            "right": 1032.15625,
+            "bottom": 232.59375,
+            "w": 430.78125,
+            "h": 45
+          },
+          "search": {
+            "x": 433.828125,
+            "y": 248,
+            "right": 1032.15625,
+            "bottom": 295,
+            "w": 598.328125,
+            "h": 47
+          },
+          "chips": {
+            "x": 545.34375,
+            "y": 311,
+            "right": 1032.15625,
+            "bottom": 333,
+            "w": 486.8125,
+            "h": 22
+          },
+          "hero": {
+            "x": 0,
+            "y": 61,
+            "right": 1440,
+            "bottom": 363,
+            "w": 1440,
+            "h": 302
+          },
+          "categories": {
+            "x": 30.953125,
+            "y": 367,
+            "right": 1409.046875,
+            "bottom": 483,
+            "w": 1378.09375,
+            "h": 116
+          },
+          "aiActions": [
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 186,
+              "clientWidth": 186
+            },
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 186,
+              "clientWidth": 186
+            }
+          ]
+        },
+        "boxes": {
+          ".site-header": [
+            0,
+            0,
+            1440,
+            61
+          ],
+          ".visual-target-hero": [
+            0,
+            61,
+            1440,
+            302
+          ],
+          ".premium-hero-main": [
+            0,
+            61,
+            1068.46875,
+            302
+          ],
+          ".premium-ai-showcase": [
+            1068.46875,
+            61,
+            371.515625,
+            302
+          ],
+          ".premium-intent-search": [
+            433.828125,
+            248,
+            598.328125,
+            47
+          ],
+          ".premium-category-grid>a": [
+            30.953125,
+            367,
+            166.125,
+            116
+          ],
+          ".premium-story": [
+            30.953125,
+            497,
+            1378.09375,
+            127
+          ],
+          ".target-proof": [
+            30.96875,
+            643,
+            1378.078125,
+            66
+          ],
+          ".premium-how ol": [
+            30.953125,
+            749,
+            1054.09375,
+            44
+          ],
+          ".premium-authorities": [
+            0,
+            803,
+            1440,
+            85
+          ],
+          ".premium-final-cta": [
+            0,
+            888,
+            1440,
+            85
+          ]
+        }
+      },
+      "lifecycle": [
+        {
+          "stage": "DOMContentLoaded",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "fonts.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "images.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "+1s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "+3s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        }
+      ],
+      "ai": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "fontLoaded": true,
+        "legacyMarks": 0,
+        "images": [],
+        "content": {
+          "headline": {
+            "x": 433.828125,
+            "y": 103,
+            "right": 1032.15625,
+            "bottom": 178.59375,
+            "w": 598.328125,
+            "h": 75.59375
+          },
+          "support": {
+            "x": 601.375,
+            "y": 187.59375,
+            "right": 1032.15625,
+            "bottom": 232.59375,
+            "w": 430.78125,
+            "h": 45
+          },
+          "search": {
+            "x": 433.828125,
+            "y": 248,
+            "right": 1032.15625,
+            "bottom": 295,
+            "w": 598.328125,
+            "h": 47
+          },
+          "chips": {
+            "x": 545.34375,
+            "y": 311,
+            "right": 1032.15625,
+            "bottom": 333,
+            "w": 486.8125,
+            "h": 22
+          },
+          "hero": {
+            "x": 0,
+            "y": 61,
+            "right": 1440,
+            "bottom": 363,
+            "w": 1440,
+            "h": 302
+          },
+          "categories": {
+            "x": 30.953125,
+            "y": 367,
+            "right": 1409.046875,
+            "bottom": 483,
+            "w": 1378.09375,
+            "h": 116
+          },
+          "aiActions": [
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 186,
+              "clientWidth": 186
+            },
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 186,
+              "clientWidth": 186
+            }
+          ]
+        },
+        "boxes": {
+          ".site-header": [
+            0,
+            0,
+            1440,
+            61
+          ],
+          ".visual-target-hero": [
+            0,
+            61,
+            1440,
+            302
+          ],
+          ".premium-hero-main": [
+            0,
+            61,
+            1068.46875,
+            302
+          ],
+          ".premium-ai-showcase": [
+            1068.46875,
+            61,
+            371.515625,
+            302
+          ],
+          ".premium-intent-search": [
+            433.828125,
+            248,
+            598.328125,
+            47
+          ],
+          ".premium-category-grid>a": [
+            30.953125,
+            367,
+            166.125,
+            116
+          ],
+          ".premium-story": [
+            30.953125,
+            497,
+            1378.09375,
+            127
+          ],
+          ".target-proof": [
+            30.96875,
+            643,
+            1378.078125,
+            66
+          ],
+          ".premium-how ol": [
+            30.953125,
+            749,
+            1054.09375,
+            44
+          ],
+          ".premium-authorities": [
+            0,
+            803,
+            1440,
+            85
+          ],
+          ".premium-final-cta": [
+            0,
+            888,
+            1440,
+            85
+          ]
+        }
+      },
+      "lifecycle": [
+        {
+          "stage": "DOMContentLoaded",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "fonts.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "images.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "+1s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "+3s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1440,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1068.46875,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              433.828125,
+              103,
+              598.328125,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              433.828125,
+              248,
+              598.328125,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1068.46875,
+              61,
+              371.515625,
+              302
+            ],
+            ".premium-category-grid": [
+              30.953125,
+              367,
+              1378.09375,
+              116
+            ]
+          }
+        }
+      ],
+      "ai": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "layout": {
+        "width": 1366,
+        "scrollWidth": 1366,
+        "fontLoaded": true,
+        "legacyMarks": 0,
+        "images": [],
+        "content": {
+          "headline": {
+            "x": 381.109375,
+            "y": 103,
+            "right": 979.109375,
+            "bottom": 178.59375,
+            "w": 598,
+            "h": 75.59375
+          },
+          "support": {
+            "x": 548.5625,
+            "y": 187.59375,
+            "right": 979.109375,
+            "bottom": 232.59375,
+            "w": 430.546875,
+            "h": 45
+          },
+          "search": {
+            "x": 381.109375,
+            "y": 248,
+            "right": 979.109375,
+            "bottom": 295,
+            "w": 598,
+            "h": 47
+          },
+          "chips": {
+            "x": 492.296875,
+            "y": 311,
+            "right": 979.109375,
+            "bottom": 333,
+            "w": 486.8125,
+            "h": 22
+          },
+          "hero": {
+            "x": 0,
+            "y": 61,
+            "right": 1366,
+            "bottom": 363,
+            "w": 1366,
+            "h": 302
+          },
+          "categories": {
+            "x": 29.359375,
+            "y": 367,
+            "right": 1336.640625,
+            "bottom": 483,
+            "w": 1307.28125,
+            "h": 116
+          },
+          "aiActions": [
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 175,
+              "clientWidth": 175
+            },
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 175,
+              "clientWidth": 175
+            }
+          ]
+        },
+        "boxes": {
+          ".site-header": [
+            0,
+            0,
+            1366,
+            61
+          ],
+          ".visual-target-hero": [
+            0,
+            61,
+            1366,
+            302
+          ],
+          ".premium-hero-main": [
+            0,
+            61,
+            1013.5625,
+            302
+          ],
+          ".premium-ai-showcase": [
+            1013.5625,
+            61,
+            352.421875,
+            302
+          ],
+          ".premium-intent-search": [
+            381.109375,
+            248,
+            598,
+            47
+          ],
+          ".premium-category-grid>a": [
+            29.359375,
+            367,
+            157.28125,
+            116
+          ],
+          ".premium-story": [
+            29.359375,
+            497,
+            1307.28125,
+            127
+          ],
+          ".target-proof": [
+            29.390625,
+            643,
+            1307.25,
+            66
+          ],
+          ".premium-how ol": [
+            29.359375,
+            749,
+            983.28125,
+            44
+          ],
+          ".premium-authorities": [
+            0,
+            803,
+            1366,
+            85
+          ],
+          ".premium-final-cta": [
+            0,
+            888,
+            1366,
+            85
+          ]
+        }
+      },
+      "lifecycle": [
+        {
+          "stage": "DOMContentLoaded",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1366,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1013.5625,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              381.109375,
+              103,
+              598,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              381.109375,
+              248,
+              598,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1013.5625,
+              61,
+              352.421875,
+              302
+            ],
+            ".premium-category-grid": [
+              29.359375,
+              367,
+              1307.28125,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "fonts.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1366,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1013.5625,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              381.109375,
+              103,
+              598,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              381.109375,
+              248,
+              598,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1013.5625,
+              61,
+              352.421875,
+              302
+            ],
+            ".premium-category-grid": [
+              29.359375,
+              367,
+              1307.28125,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "images.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1366,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1013.5625,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              381.109375,
+              103,
+              598,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              381.109375,
+              248,
+              598,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1013.5625,
+              61,
+              352.421875,
+              302
+            ],
+            ".premium-category-grid": [
+              29.359375,
+              367,
+              1307.28125,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "+1s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1366,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1013.5625,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              381.109375,
+              103,
+              598,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              381.109375,
+              248,
+              598,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1013.5625,
+              61,
+              352.421875,
+              302
+            ],
+            ".premium-category-grid": [
+              29.359375,
+              367,
+              1307.28125,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "+3s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1366,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1013.5625,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              381.109375,
+              103,
+              598,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              381.109375,
+              248,
+              598,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1013.5625,
+              61,
+              352.421875,
+              302
+            ],
+            ".premium-category-grid": [
+              29.359375,
+              367,
+              1307.28125,
+              116
+            ]
+          }
+        }
+      ],
+      "ai": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 1366,
+      "height": 900,
+      "layout": {
+        "width": 1366,
+        "scrollWidth": 1366,
+        "fontLoaded": true,
+        "legacyMarks": 0,
+        "images": [],
+        "content": {
+          "headline": {
+            "x": 381.109375,
+            "y": 103,
+            "right": 979.109375,
+            "bottom": 178.59375,
+            "w": 598,
+            "h": 75.59375
+          },
+          "support": {
+            "x": 548.5625,
+            "y": 187.59375,
+            "right": 979.109375,
+            "bottom": 232.59375,
+            "w": 430.546875,
+            "h": 45
+          },
+          "search": {
+            "x": 381.109375,
+            "y": 248,
+            "right": 979.109375,
+            "bottom": 295,
+            "w": 598,
+            "h": 47
+          },
+          "chips": {
+            "x": 492.296875,
+            "y": 311,
+            "right": 979.109375,
+            "bottom": 333,
+            "w": 486.8125,
+            "h": 22
+          },
+          "hero": {
+            "x": 0,
+            "y": 61,
+            "right": 1366,
+            "bottom": 363,
+            "w": 1366,
+            "h": 302
+          },
+          "categories": {
+            "x": 29.359375,
+            "y": 367,
+            "right": 1336.640625,
+            "bottom": 483,
+            "w": 1307.28125,
+            "h": 116
+          },
+          "aiActions": [
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 175,
+              "clientWidth": 175
+            },
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 175,
+              "clientWidth": 175
+            }
+          ]
+        },
+        "boxes": {
+          ".site-header": [
+            0,
+            0,
+            1366,
+            61
+          ],
+          ".visual-target-hero": [
+            0,
+            61,
+            1366,
+            302
+          ],
+          ".premium-hero-main": [
+            0,
+            61,
+            1013.5625,
+            302
+          ],
+          ".premium-ai-showcase": [
+            1013.5625,
+            61,
+            352.421875,
+            302
+          ],
+          ".premium-intent-search": [
+            381.109375,
+            248,
+            598,
+            47
+          ],
+          ".premium-category-grid>a": [
+            29.359375,
+            367,
+            157.28125,
+            116
+          ],
+          ".premium-story": [
+            29.359375,
+            497,
+            1307.28125,
+            127
+          ],
+          ".target-proof": [
+            29.390625,
+            643,
+            1307.25,
+            66
+          ],
+          ".premium-how ol": [
+            29.359375,
+            749,
+            983.28125,
+            44
+          ],
+          ".premium-authorities": [
+            0,
+            803,
+            1366,
+            85
+          ],
+          ".premium-final-cta": [
+            0,
+            888,
+            1366,
+            85
+          ]
+        }
+      },
+      "lifecycle": [
+        {
+          "stage": "DOMContentLoaded",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1366,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1013.5625,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              381.109375,
+              103,
+              598,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              381.109375,
+              248,
+              598,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1013.5625,
+              61,
+              352.421875,
+              302
+            ],
+            ".premium-category-grid": [
+              29.359375,
+              367,
+              1307.28125,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "fonts.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1366,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1013.5625,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              381.109375,
+              103,
+              598,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              381.109375,
+              248,
+              598,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1013.5625,
+              61,
+              352.421875,
+              302
+            ],
+            ".premium-category-grid": [
+              29.359375,
+              367,
+              1307.28125,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "images.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1366,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1013.5625,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              381.109375,
+              103,
+              598,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              381.109375,
+              248,
+              598,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1013.5625,
+              61,
+              352.421875,
+              302
+            ],
+            ".premium-category-grid": [
+              29.359375,
+              367,
+              1307.28125,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "+1s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1366,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1013.5625,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              381.109375,
+              103,
+              598,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              381.109375,
+              248,
+              598,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1013.5625,
+              61,
+              352.421875,
+              302
+            ],
+            ".premium-category-grid": [
+              29.359375,
+              367,
+              1307.28125,
+              116
+            ]
+          }
+        },
+        {
+          "stage": "+3s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              61,
+              1366,
+              302
+            ],
+            ".premium-hero-main": [
+              0,
+              61,
+              1013.5625,
+              302
+            ],
+            ".premium-hero-copy h1": [
+              381.109375,
+              103,
+              598,
+              75.59375
+            ],
+            ".premium-intent-search": [
+              381.109375,
+              248,
+              598,
+              47
+            ],
+            ".premium-ai-showcase": [
+              1013.5625,
+              61,
+              352.421875,
+              302
+            ],
+            ".premium-category-grid": [
+              29.359375,
+              367,
+              1307.28125,
+              116
+            ]
+          }
+        }
+      ],
+      "ai": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "layout": {
+        "width": 430,
+        "scrollWidth": 430,
+        "fontLoaded": true,
+        "legacyMarks": 0,
+        "images": [],
+        "content": {
+          "headline": {
+            "x": 16,
+            "y": 219,
+            "right": 414,
+            "bottom": 295.78125,
+            "w": 398,
+            "h": 76.78125
+          },
+          "support": {
+            "x": 16,
+            "y": 304.78125,
+            "right": 414,
+            "bottom": 343.78125,
+            "w": 398,
+            "h": 39
+          },
+          "search": {
+            "x": 16,
+            "y": 355.78125,
+            "right": 414,
+            "bottom": 403.78125,
+            "w": 398,
+            "h": 48
+          },
+          "chips": {
+            "x": 16,
+            "y": 415.78125,
+            "right": 414,
+            "bottom": 464.78125,
+            "w": 398,
+            "h": 49
+          },
+          "hero": {
+            "x": 0,
+            "y": 64,
+            "right": 430,
+            "bottom": 797.78125,
+            "w": 430,
+            "h": 733.78125
+          },
+          "categories": {
+            "x": 16,
+            "y": 813.78125,
+            "right": 414,
+            "bottom": 1371.78125,
+            "w": 398,
+            "h": 558
+          },
+          "aiActions": [
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 241,
+              "clientWidth": 241
+            },
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 241,
+              "clientWidth": 241
+            }
+          ]
+        },
+        "boxes": {
+          ".site-header": [
+            0,
+            0,
+            430,
+            64
+          ],
+          ".visual-target-hero": [
+            0,
+            64,
+            430,
+            733.78125
+          ],
+          ".premium-hero-main": [
+            0,
+            64,
+            430,
+            418.78125
+          ],
+          ".premium-ai-showcase": [
+            0,
+            482.78125,
+            430,
+            315
+          ],
+          ".premium-intent-search": [
+            16,
+            355.78125,
+            398,
+            48
+          ],
+          ".premium-category-grid>a": [
+            16,
+            813.78125,
+            194,
+            132
+          ],
+          ".premium-story": [
+            16,
+            1387.78125,
+            398,
+            175
+          ],
+          ".target-proof": [
+            16,
+            1581.78125,
+            398,
+            226.75
+          ],
+          ".premium-how ol": [
+            16,
+            1857.53125,
+            398,
+            150
+          ],
+          ".premium-authorities": [
+            0,
+            2124.53125,
+            430,
+            270.4375
+          ],
+          ".premium-final-cta": [
+            0,
+            2394.96875,
+            430,
+            145
+          ]
+        }
+      },
+      "lifecycle": [
+        {
+          "stage": "DOMContentLoaded",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              430,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              430,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              398,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              398,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              430,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              398,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "fonts.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              430,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              430,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              398,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              398,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              430,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              398,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "images.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              430,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              430,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              398,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              398,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              430,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              398,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "+1s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              430,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              430,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              398,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              398,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              430,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              398,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "+3s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              430,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              430,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              398,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              398,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              430,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              398,
+              558
+            ]
+          }
+        }
+      ],
+      "ai": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "fontLoaded": true,
+        "legacyMarks": 0,
+        "images": [],
+        "content": {
+          "headline": {
+            "x": 16,
+            "y": 219,
+            "right": 374,
+            "bottom": 295.78125,
+            "w": 358,
+            "h": 76.78125
+          },
+          "support": {
+            "x": 16,
+            "y": 304.78125,
+            "right": 374,
+            "bottom": 343.78125,
+            "w": 358,
+            "h": 39
+          },
+          "search": {
+            "x": 16,
+            "y": 355.78125,
+            "right": 374,
+            "bottom": 403.78125,
+            "w": 358,
+            "h": 48
+          },
+          "chips": {
+            "x": 16,
+            "y": 415.78125,
+            "right": 374,
+            "bottom": 464.78125,
+            "w": 358,
+            "h": 49
+          },
+          "hero": {
+            "x": 0,
+            "y": 64,
+            "right": 390,
+            "bottom": 797.78125,
+            "w": 390,
+            "h": 733.78125
+          },
+          "categories": {
+            "x": 16,
+            "y": 813.78125,
+            "right": 374,
+            "bottom": 1371.78125,
+            "w": 358,
+            "h": 558
+          },
+          "aiActions": [
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 215,
+              "clientWidth": 215
+            },
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 215,
+              "clientWidth": 215
+            }
+          ]
+        },
+        "boxes": {
+          ".site-header": [
+            0,
+            0,
+            390,
+            64
+          ],
+          ".visual-target-hero": [
+            0,
+            64,
+            390,
+            733.78125
+          ],
+          ".premium-hero-main": [
+            0,
+            64,
+            390,
+            418.78125
+          ],
+          ".premium-ai-showcase": [
+            0,
+            482.78125,
+            390,
+            315
+          ],
+          ".premium-intent-search": [
+            16,
+            355.78125,
+            358,
+            48
+          ],
+          ".premium-category-grid>a": [
+            16,
+            813.78125,
+            174,
+            132
+          ],
+          ".premium-story": [
+            16,
+            1387.78125,
+            358,
+            175
+          ],
+          ".target-proof": [
+            16,
+            1581.78125,
+            358,
+            271.53125
+          ],
+          ".premium-how ol": [
+            16,
+            1902.3125,
+            358,
+            150
+          ],
+          ".premium-authorities": [
+            0,
+            2169.3125,
+            390,
+            270.4375
+          ],
+          ".premium-final-cta": [
+            0,
+            2439.75,
+            390,
+            145
+          ]
+        }
+      },
+      "lifecycle": [
+        {
+          "stage": "DOMContentLoaded",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              390,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              390,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              358,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              358,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              390,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              358,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "fonts.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              390,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              390,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              358,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              358,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              390,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              358,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "images.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              390,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              390,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              358,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              358,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              390,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              358,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "+1s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              390,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              390,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              358,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              358,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              390,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              358,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "+3s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              390,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              390,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              358,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              358,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              390,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              358,
+              558
+            ]
+          }
+        }
+      ],
+      "ai": true,
+      "errors": [],
+      "failures": []
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "layout": {
+        "width": 360,
+        "scrollWidth": 360,
+        "fontLoaded": true,
+        "legacyMarks": 0,
+        "images": [],
+        "content": {
+          "headline": {
+            "x": 16,
+            "y": 219,
+            "right": 344,
+            "bottom": 295.78125,
+            "w": 328,
+            "h": 76.78125
+          },
+          "support": {
+            "x": 16,
+            "y": 304.78125,
+            "right": 344,
+            "bottom": 343.78125,
+            "w": 328,
+            "h": 39
+          },
+          "search": {
+            "x": 16,
+            "y": 355.78125,
+            "right": 344,
+            "bottom": 403.78125,
+            "w": 328,
+            "h": 48
+          },
+          "chips": {
+            "x": 16,
+            "y": 415.78125,
+            "right": 344,
+            "bottom": 464.78125,
+            "w": 328,
+            "h": 49
+          },
+          "hero": {
+            "x": 0,
+            "y": 64,
+            "right": 360,
+            "bottom": 797.78125,
+            "w": 360,
+            "h": 733.78125
+          },
+          "categories": {
+            "x": 16,
+            "y": 813.78125,
+            "right": 344,
+            "bottom": 1371.78125,
+            "w": 328,
+            "h": 558
+          },
+          "aiActions": [
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 195,
+              "clientWidth": 195
+            },
+            {
+              "scrollHeight": 25,
+              "clientHeight": 25,
+              "scrollWidth": 195,
+              "clientWidth": 195
+            }
+          ]
+        },
+        "boxes": {
+          ".site-header": [
+            0,
+            0,
+            360,
+            64
+          ],
+          ".visual-target-hero": [
+            0,
+            64,
+            360,
+            733.78125
+          ],
+          ".premium-hero-main": [
+            0,
+            64,
+            360,
+            418.78125
+          ],
+          ".premium-ai-showcase": [
+            0,
+            482.78125,
+            360,
+            315
+          ],
+          ".premium-intent-search": [
+            16,
+            355.78125,
+            328,
+            48
+          ],
+          ".premium-category-grid>a": [
+            16,
+            813.78125,
+            159,
+            132
+          ],
+          ".premium-story": [
+            16,
+            1387.78125,
+            328,
+            175
+          ],
+          ".target-proof": [
+            16,
+            1581.78125,
+            328,
+            289.125
+          ],
+          ".premium-how ol": [
+            16,
+            1919.90625,
+            328,
+            150
+          ],
+          ".premium-authorities": [
+            0,
+            2186.90625,
+            360,
+            270.4375
+          ],
+          ".premium-final-cta": [
+            0,
+            2457.34375,
+            360,
+            145
+          ]
+        }
+      },
+      "lifecycle": [
+        {
+          "stage": "DOMContentLoaded",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              360,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              360,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              328,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              328,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              360,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              328,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "fonts.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              360,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              360,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              328,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              328,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              360,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              328,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "images.ready",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              360,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              360,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              328,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              328,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              360,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              328,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "+1s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              360,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              360,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              328,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              328,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              360,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              328,
+              558
+            ]
+          }
+        },
+        {
+          "stage": "+3s",
+          "boxes": {
+            ".visual-target-hero": [
+              0,
+              64,
+              360,
+              733.78125
+            ],
+            ".premium-hero-main": [
+              0,
+              64,
+              360,
+              418.78125
+            ],
+            ".premium-hero-copy h1": [
+              16,
+              219,
+              328,
+              76.78125
+            ],
+            ".premium-intent-search": [
+              16,
+              355.78125,
+              328,
+              48
+            ],
+            ".premium-ai-showcase": [
+              0,
+              482.78125,
+              360,
+              315
+            ],
+            ".premium-category-grid": [
+              16,
+              813.78125,
+              328,
+              558
+            ]
+          }
+        }
+      ],
+      "ai": true,
+      "errors": [],
+      "failures": []
+    }
+  ]
+}
