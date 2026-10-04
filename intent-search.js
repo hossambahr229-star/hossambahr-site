@@ -32,7 +32,7 @@ const EMIRATES = [
 ];
 
 const SERVICE_INTENTS = [
-  { words: ['تجديد','اجدد','renew'], target: ['renew','تجديد'] },
+  { words: ['تجديد','اجدد','تجدد','تجدديد','renew'], target: ['renew','تجديد'] },
   { words: ['الغاء','الغي','cancel'], target: ['cancel','cancellation','الغاء'] },
   { words: ['تعديل','modify','amend','change'], target: ['amend','modify','تعديل'] },
   { words: ['اصدار','فتح','ابدا','تاسيس','open','start','setup','establish','issue'], target: ['issue','issuance','new','تاسيس','اصدار'] },
@@ -76,6 +76,7 @@ function queryEmirate(query) {
 
 function matchesEmirate(serviceEmirate, requestedEmirate) {
   const normalized = normalizeIntent(serviceEmirate);
+  if (normalized.includes('icp') && normalized.includes('خارج دبي')) return requestedEmirate !== 'دبي';
   const aliases = EMIRATES.find(([name]) => name === requestedEmirate)?.[1] || [requestedEmirate];
   return aliases.some(alias => normalized === normalizeIntent(alias));
 }
@@ -88,6 +89,9 @@ export function rankServices(query, services = []) {
   if (exactCodeMatches.length) {
     return exactCodeMatches.map((service) => ({ ...service, score: 5000 }));
   }
+  const exactNames = normalized && services.filter(service =>
+    [service.a, service.e].some(name => name && normalizeIntent(name) === normalized));
+  if (exactNames?.length) return exactNames.map(service => ({ ...service, score: 10000 }));
   const terms = new Set(words(query));
   for (const group of QUERY_SYNONYMS) {
     if (group.some((alias) => normalized.includes(normalizeIntent(alias)))) {
@@ -116,8 +120,8 @@ export function rankServices(query, services = []) {
   const cancelCompany = company && includesAny(normalized, ['ألغي','الغي','إلغاء','الغاء','تصفية','cancel','liquidat']);
   const changeCompanyName = company && includesAny(normalized, ['أغير','اغير','تغيير','تعديل','change','amend']) && includesAny(normalized, ['اسم','name']);
   const requestsNoc = includesAny(normalized, ['rta','noc','عدم ممانعة']);
-  const renewFamilyResidence = spouseOrFamily && residence && includesAny(normalized, ['تجديد','أجدد','اجدد','renew']);
-  const renewResidence = residence && includesAny(normalized, ['تجديد','أجدد','اجدد','renew']);
+  const renewFamilyResidence = spouseOrFamily && residence && includesAny(normalized, ['تجديد','أجدد','اجدد','تجدد','تجدديد','renew']);
+  const renewResidence = residence && includesAny(normalized, ['تجديد','أجدد','اجدد','تجدد','تجدديد','renew']);
   const investorResidence = residence && includesAny(normalized, ['مستثمر','شريك','ذهبية','خضراء','investor','partner','golden','green']);
   const labourComplaint = includesAny(normalized, ['راتب','شكوى','أشتكي','اشتكي','salary','complaint']);
   const businessIdea = company && includesAny(normalized, ACTIVITY_SYNONYMS.flat());
@@ -130,6 +134,9 @@ export function rankServices(query, services = []) {
   const openEstablishmentFile = includesAny(normalized, ['فتح','افتح','open']) && includesAny(normalized, ['ملف','file']) && includesAny(normalized, ['منشأة','منشاه','establishment']);
   const establishmentCard = includesAny(normalized, ['بطاقة منشأة','بطاقه منشاه','establishment card']);
   const normalizedTokens = new Set(normalized.split(' '));
+  const parentResidence = ['ام','امي','الام','والدتي','اب','ابي','والدي','الوالدين','والدين','mother','father','parents','mom','dad'].some(word => normalizedTokens.has(word))
+    && includesAny(normalized, ['كفاله','اكفل','sponsor','اقامه','residence','visa']);
+  const goldenResidence = includesAny(normalized, ['اقامه ذهبيه','golden visa','golden residence']) && !includesAny(normalized, ['عمل','وظف','work','employment']);
   const issueLicense = includesAny(normalized, ['رخصه','ترخيص','license','licence'])
     && (includesAny(normalized, ['اصدار','اطلع','issue','issuance']) || normalizedTokens.has('new'));
   const freelanceIntent = includesAny(normalized, ['مهن حره','مهنة حرة','عمل حر','فري لانس','freelance','freelancer','professional license','professional licence']);
@@ -167,8 +174,10 @@ export function rankServices(query, services = []) {
     for (const intent of SERVICE_INTENTS) {
       if (includesAny(normalized, intent.words) && includesAny(haystack, intent.target)) score += 22;
     }
-    if (emirate) score += matchesEmirate(service.m || '', emirate) ? 70 : -55;
+    if (emirate) score += matchesEmirate(service.m || '', emirate) ? 70 : normalizeIntent(service.m)==='اتحادي' ? 20 : -55;
     if (spouseOrFamily && includesAny(name, ['family','اسره','افراد الاسره'])) score += 90;
+    if (parentResidence) score += includesAny(name, ['والدين','parents','parent residence']) ? 1200 : -900;
+    if (goldenResidence) score += includesAny(name, ['اقامه ذهبيه','الاقامه الذهبيه','golden residence','golden residency']) && !includesAny(name, ['تصريح عمل','work permit']) ? 900 : -700;
     if (spouseOrFamily && includesAny(normalized, ['تجديد','اجدد','renew']) && service.s === 'تجديد-إقامة-أفراد-الأسرة-في-دبي') score += 190;
     if (renewResidence && !spouseOrFamily && emirate === 'دبي' && service.s === 'تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي') score += 560;
     if (renewResidence && !investorResidence && service.s === 'green-residence-partner-investor-dubai') score -= 420;
