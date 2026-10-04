@@ -20,6 +20,8 @@ jobs:
       - run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
       - name: Build from source and check architecture
         run: npm run build && npm run typecheck && npm run test:architecture
+      - name: Check all rebuilt public routes and bilingual service pathways
+        run: HB_AUDIT_LOCAL=1 HB_OUTPUT_DIR=artifacts/reference-geometry node src/publication/audit-live-customer-routes.mjs
       - name: Measure rebuilt homepage against approved desktop coordinates
         shell: bash
         run: HB_BROWSER_PATH="$(which chrome)" node scripts/reference-geometry-gate.mjs

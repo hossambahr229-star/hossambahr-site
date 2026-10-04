@@ -87,6 +87,7 @@ jobs:
             fi
           fi
       - name: Wait for and byte-verify live Production
+        id: live_bytes
         if: github.ref_name == 'main'
         run: node src/publication/verify-live-production.mjs
       # Live conversational/customer-journey verification is owned by
@@ -94,8 +95,16 @@ jobs:
       # traffic and race/rate-limit noise across concurrent release gates.
 
 
-      - name: Capture actual Production geometry and reference comparison
+      - name: Audit all live public routes and 200 bilingual customer service paths
         if: github.ref_name == 'main'
+        env:
+          HB_BASE_URL: https://hossambahr.com
+          HB_OUTPUT_DIR: artifacts/production-reference
+        run: |
+          export HB_DEPLOYED_SHA="$(git rev-parse HEAD)"
+          node src/publication/audit-live-customer-routes.mjs
+      - name: Capture actual Production geometry and reference comparison
+        if: always() && github.ref_name == 'main' && steps.live_bytes.outcome == 'success'
         env:
           HB_BASE_URL: https://hossambahr.com/
           HB_BROWSER_PATH: /usr/bin/google-chrome
@@ -104,7 +113,7 @@ jobs:
           export HB_DEPLOYED_SHA="$(git rev-parse HEAD)"
           node scripts/reference-geometry-gate.mjs
       - name: Preserve actual Production evidence
-        if: github.ref_name == 'main'
+        if: always() && github.ref_name == 'main' && steps.live_bytes.outcome == 'success'
         run: |
           git fetch origin main
           EXPECTED_HEAD="$(git rev-parse HEAD)"
