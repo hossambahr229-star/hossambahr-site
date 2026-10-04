@@ -38,6 +38,13 @@ test('natural Arabic family intent resolves to Dubai family renewal', () => {
   assert.equal(rankServices('تجديد إقامة زوجتي', services)[0].s, 'تجديد-إقامة-أفراد-الأسرة-في-دبي');
 });
 
+test('English family residence issuance cannot rank renewal first', () => {
+  const result = rankServices('issue family residence for my wife in Dubai', services)[0];
+  assert.ok(result);
+  assert.notEqual(result.s, 'تجديد-إقامة-أفراد-الأسرة-في-دبي');
+  assert.match(`${result.a} ${result.e}`, /إصدار|issue|issuance|family residence/i);
+});
+
 test('English residence intent remains discoverable in the shared directory ranker', () => {
   const results = rankServices('renew residence', services);
   assert.ok(results.length > 0);
