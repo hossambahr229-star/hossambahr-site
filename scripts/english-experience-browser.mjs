@@ -9,7 +9,15 @@ const routes=[];for(let offset=0;offset<services.length;offset+=8){await Promise
 }));}
 assert.equal(routes.length,200);
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||undefined});const layouts=[];
-for(const width of [1440,1366,430,390,360]){const page=await browser.newPage({viewport:{width,height:900}});const errors=[];page.on('pageerror',e=>errors.push(e.message));for(const route of ['/en/services/','/en/ai/','/en/auth/']){
+for(const width of [1440,1366,430,390,360]){const page=await browser.newPage({viewport:{width,height:900}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(base+'/en/services/golden-residency-uae/?hb_qa=1',{waitUntil:'networkidle'});
+ assert.equal(await page.locator('[data-platform-detail-translation]').count(),4,'Golden Residence investor details need native English in all four recorded sections');
+ assert.ok(!/[\u0600-\u06ff]/.test((await page.locator('[data-platform-detail-translation]').allTextContents()).join(' ')));
+ assert.equal(await page.getByText('This service record is for investors in Dubai only. It is not the pathway for talented individuals, scientists, entrepreneurs or other Golden Residence categories.',{exact:true}).count(),1);
+ const originals=await page.locator('details blockquote').allTextContents();assert.ok(originals.join(' ').includes('هذه بطاقة خدمة المستثمرين في دبي فقط'));
+ assert.ok(await page.locator('main').innerText().then(text=>text.includes("not the authority's official English wording")));
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,'Translated detail page overflow '+width);
+ await page.screenshot({path:`${out}/golden-investor-en-${width}.png`,fullPage:true});for(const route of ['/en/services/','/en/ai/','/en/auth/']){
  await page.goto(base+route+'?hb_qa=1',{waitUntil:'networkidle'});
  if(route==='/en/ai/')await page.getByRole('button',{name:'Send your question to HOSSAM BAHR AI',exact:true}).waitFor();
  const dimensions=await page.evaluate(()=>({width:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,lang:document.documentElement.lang,dir:document.documentElement.dir,heading:document.querySelector('h1')?.textContent}));
