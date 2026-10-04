@@ -1404,7 +1404,7 @@
       "slug": "add-business-activity-dubai",
       "name": {
         "ar": "إضافة أو حذف نشاط تجاري في دبي",
-        "en": "تعديل الأنشطة الاقتصادية"
+        "en": "Add or Remove a Business Activity in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -1430,14 +1430,17 @@
         "تجاري",
         "في",
         "دبي",
-        "تعديل",
-        "الأنشطة",
-        "الاقتصادية",
+        "Add",
+        "or",
+        "Remove",
+        "Business",
+        "Activity",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -1523,8 +1526,8 @@
       ],
       "relatedServiceIds": [
         "guide:reserve-trade-name-dubai",
-        "guide:amend-business-license-dubai",
-        "guide:renew-business-license-dubai"
+        "guide:add-remove-partner-dubai",
+        "guide:cancel-business-license-dubai"
       ],
       "alternativeServiceIds": [
         "directory:residency:44",
@@ -1560,7 +1563,7 @@
       "slug": "add-remove-partner-dubai",
       "name": {
         "ar": "إضافة أو انسحاب شريك في شركة بدبي",
-        "en": "تعديل الشركاء"
+        "en": "Add or Withdraw a Company Partner in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -1586,14 +1589,18 @@
         "في",
         "شركة",
         "بدبي",
-        "تعديل",
-        "الشركاء",
+        "Add",
+        "or",
+        "Withdraw",
+        "Company",
+        "Partner",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "دبي",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -1680,8 +1687,8 @@
       ],
       "relatedServiceIds": [
         "guide:transfer-company-ownership-dubai",
-        "guide:change-company-manager-dubai",
-        "guide:add-business-activity-dubai"
+        "guide:add-business-activity-dubai",
+        "guide:cancel-business-license-dubai"
       ],
       "alternativeServiceIds": [
         "directory:residency:44",
@@ -2533,7 +2540,7 @@
       "slug": "amend-business-license-dubai",
       "name": {
         "ar": "تعديل رخصة تجارية في دبي",
-        "en": "تعديل الرخصة الاقتصادية"
+        "en": "Amend a Trade Licence in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -2557,13 +2564,15 @@
         "تجارية",
         "في",
         "دبي",
-        "الرخصة",
-        "الاقتصادية",
+        "Amend",
+        "Trade",
+        "Licence",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -2573,6 +2582,7 @@
         "المنشآت",
         "المرخصة",
         "تنفيذ",
+        "الرخصة",
         "دون",
         "تحديث",
         "عقد",
@@ -2650,11 +2660,11 @@
       "relatedServiceIds": [
         "guide:change-company-manager-dubai",
         "guide:renew-business-license-dubai",
-        "guide:add-business-activity-dubai"
+        "guide:cancel-business-license-dubai"
       ],
       "alternativeServiceIds": [
         "directory:residency:49",
-        "directory:residency:48"
+        "guide:renew-business-license-sharjah"
       ],
       "officialInformationUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
       "officialCtaUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
@@ -2794,8 +2804,8 @@
         "icp:renew-passport-abroad"
       ],
       "alternativeServiceIds": [
-        "guide:family-residency-uae",
-        "guide:family-sponsored-work-permit-uae"
+        "directory:residency:11",
+        "guide:family-residency-uae"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e77",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e77",
@@ -2933,8 +2943,8 @@
         "directory:residency:7"
       ],
       "alternativeServiceIds": [
-        "guide:cancel-residency-permit-uae",
-        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+        "directory:residency:11",
+        "guide:cancel-residency-permit-uae"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
@@ -3370,7 +3380,7 @@
       "slug": "cancel-business-license-dubai",
       "name": {
         "ar": "إلغاء رخصة أو تصفية شركة في دبي",
-        "en": "إلغاء رخصة أو تصفية شركة"
+        "en": "Cancel a Trade Licence or Liquidate a Company in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -3396,11 +3406,18 @@
         "شركة",
         "في",
         "دبي",
+        "Cancel",
+        "Trade",
+        "Licence",
+        "or",
+        "Liquidate",
+        "Company",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -3490,7 +3507,7 @@
       ],
       "alternativeServiceIds": [
         "directory:residency:44",
-        "directory:residency:50"
+        "guide:renew-business-license-sharjah"
       ],
       "officialInformationUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
       "officialCtaUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
@@ -3773,8 +3790,8 @@
       ],
       "relatedServiceIds": [
         "catalog:تعديل بيانات تصريح الإقامة",
-        "directory:residency:7",
-        "directory:residency:9"
+        "directory:residency:15",
+        "directory:residency:7"
       ],
       "alternativeServiceIds": [
         "guide:cancel-residency-permit-uae",
@@ -3922,7 +3939,7 @@
       ],
       "alternativeServiceIds": [
         "icp:cancel-residency",
-        "catalog:تعديل بيانات تصريح الإقامة"
+        "directory:residency:7"
       ],
       "officialInformationUrl": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
       "officialCtaUrl": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
@@ -4097,7 +4114,7 @@
       "slug": "change-company-manager-dubai",
       "name": {
         "ar": "تعديل مدير شركة في دبي",
-        "en": "تعديل مدير الشركة"
+        "en": "Change a Company Manager in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -4121,12 +4138,15 @@
         "شركة",
         "في",
         "دبي",
-        "الشركة",
+        "Change",
+        "Company",
+        "Manager",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -4213,8 +4233,8 @@
         "guide:cancel-business-license-dubai"
       ],
       "alternativeServiceIds": [
-        "guide:employment-contract-uae",
-        "directory:residency:44"
+        "directory:residency:44",
+        "guide:employment-contract-uae"
       ],
       "officialInformationUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
       "officialCtaUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
@@ -4380,7 +4400,7 @@
       "slug": "corporate-tax-registration-uae",
       "name": {
         "ar": "التسجيل في ضريبة الشركات بالإمارات",
-        "en": "التسجيل في ضريبة الشركات"
+        "en": "Register for Corporate Tax in the UAE"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -4404,6 +4424,13 @@
         "ضريبة",
         "الشركات",
         "بالإمارات",
+        "Register",
+        "for",
+        "Corporate",
+        "Tax",
+        "in",
+        "the",
+        "UAE",
         "الهيئة",
         "الاتحادية",
         "للضرائب",
@@ -4512,7 +4539,7 @@
       "slug": "det-event-permit-dubai",
       "name": {
         "ar": "طلب تصريح فعالية في دبي",
-        "en": "التقديم للحصول على تصريح فعالية"
+        "en": "Apply for an Event Permit in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -4536,14 +4563,17 @@
         "فعالية",
         "في",
         "دبي",
-        "التقديم",
-        "للحصول",
-        "على",
+        "Apply",
+        "for",
+        "an",
+        "Event",
+        "Permit",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -4623,11 +4653,11 @@
       "relatedServiceIds": [
         "official:det:tour-guide",
         "official:det:issue-trade-license",
-        "guide:cancel-business-license-dubai"
+        "guide:add-business-activity-dubai"
       ],
       "alternativeServiceIds": [
-        "directory:residency:44",
-        "directory:residency:50"
+        "guide:renew-business-license-ajman",
+        "directory:residency:44"
       ],
       "officialInformationUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-an-event-permit",
       "officialCtaUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-an-event-permit",
@@ -4659,7 +4689,7 @@
       "slug": "det-tour-guide-licence-dubai",
       "name": {
         "ar": "التأهيل للحصول على ترخيص مرشد سياحي في دبي",
-        "en": "التقديم لبرنامج المرشد السياحي المرخص"
+        "en": "Qualify for a Dubai Tour Guide Licence"
       },
       "emirate": "دبي",
       "authority": {
@@ -4686,16 +4716,16 @@
         "سياحي",
         "في",
         "دبي",
-        "التقديم",
-        "لبرنامج",
-        "المرشد",
-        "السياحي",
-        "المرخص",
+        "Qualify",
+        "for",
+        "Dubai",
+        "Tour",
+        "Guide",
+        "Licence",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -4778,13 +4808,13 @@
         }
       ],
       "relatedServiceIds": [
-        "official:det:event-permit",
         "guide:cancel-business-license-dubai",
+        "official:det:event-permit",
         "guide:add-remove-partner-dubai"
       ],
       "alternativeServiceIds": [
-        "mohre:employment-agency-license-cancel",
-        "mohre:employment-agency-license-new"
+        "mohre:employment-agency-license-new",
+        "mohre:employment-agency-license-cancel"
       ],
       "officialInformationUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-tour-guide-training",
       "officialCtaUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-tour-guide-training",
@@ -5784,8 +5814,8 @@
         "mohre:employment-agency-license-new"
       ],
       "alternativeServiceIds": [
-        "guide:amend-business-license-dubai",
-        "guide:add-business-activity-dubai"
+        "directory:approvals:30",
+        "guide:amend-business-license-dubai"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/amendments-to-a-recruitmenttemporary-employment-or-mediation-agencys-license-details-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/amendments-to-a-recruitmenttemporary-employment-or-mediation-agencys-license-details-2022",
@@ -5927,8 +5957,8 @@
         "mohre:employment-agency-branch"
       ],
       "alternativeServiceIds": [
-        "guide:cancel-business-license-dubai",
-        "official:det:tour-guide"
+        "directory:approvals:30",
+        "guide:cancel-business-license-dubai"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022",
       "officialCtaUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022",
@@ -6074,7 +6104,7 @@
       ],
       "alternativeServiceIds": [
         "official:det:tour-guide",
-        "official:det:issue-trade-license"
+        "directory:approvals:30"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-license-for-temporary-employment-and-mediation-agency-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-license-for-temporary-employment-and-mediation-agency-2022",
@@ -6217,8 +6247,8 @@
         "mohre:employment-agency-branch"
       ],
       "alternativeServiceIds": [
-        "official:det:tour-guide",
-        "directory:approvals:30"
+        "directory:approvals:30",
+        "official:det:tour-guide"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/renewal-of-recruitmenttemporary-employment-and-mediation-agency-license-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/renewal-of-recruitmenttemporary-employment-and-mediation-agency-license-2022",
@@ -6779,8 +6809,8 @@
         "directory:mohre:3"
       ],
       "alternativeServiceIds": [
-        "catalog:تأسيس منشأة جديدة في عجمان",
-        "official:det:issue-trade-license"
+        "directory:residency:45",
+        "directory:residency:44"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/330",
@@ -8578,8 +8608,8 @@
         "directory:residency:11"
       ],
       "alternativeServiceIds": [
-        "catalog:تصريح عمل لحامل الإقامة الذهبية",
-        "catalog:تعديل بيانات تصريح الإقامة"
+        "directory:residency:7",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية"
       ],
       "officialInformationUrl": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
       "officialCtaUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=256a91d9-23d7-469f-a054-ffee6c0fc4c7&Lang=ar-AE",
@@ -8722,8 +8752,8 @@
         "guide:family-residency-uae"
       ],
       "alternativeServiceIds": [
-        "catalog:تعديل بيانات تصريح الإقامة",
-        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+        "directory:residency:7",
+        "directory:residency:9"
       ],
       "officialInformationUrl": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
       "officialCtaUrl": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
@@ -9872,7 +9902,7 @@
       "slug": "issue-trade-license-dubai",
       "name": {
         "ar": "إصدار رخصة تجارية في دبي",
-        "en": "طلب إصدار رخصة تجارية"
+        "en": "Issue a Trade Licence in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -9896,12 +9926,15 @@
         "تجارية",
         "في",
         "دبي",
-        "طلب",
+        "Issue",
+        "Trade",
+        "Licence",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -9987,12 +10020,12 @@
       ],
       "relatedServiceIds": [
         "guide:amend-business-license-dubai",
-        "guide:renew-business-license-dubai",
-        "guide:cancel-business-license-dubai"
+        "guide:cancel-business-license-dubai",
+        "guide:renew-business-license-dubai"
       ],
       "alternativeServiceIds": [
-        "mohre:employment-agency-license-new",
-        "guide:renew-business-license-ajman"
+        "guide:renew-business-license-sharjah",
+        "directory:residency:44"
       ],
       "officialInformationUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
       "officialCtaUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
@@ -10024,7 +10057,7 @@
       "slug": "legacy-service-67abe5ccf3",
       "name": {
         "ar": "تغيير الشكل القانوني لشركة في دبي",
-        "en": "تغيير الشكل القانوني"
+        "en": "Change a Company's Legal Form in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -10049,11 +10082,16 @@
         "لشركة",
         "في",
         "دبي",
+        "Change",
+        "Company's",
+        "Legal",
+        "Form",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -10129,13 +10167,13 @@
         }
       ],
       "relatedServiceIds": [
-        "guide:add-business-activity-dubai",
-        "guide:add-remove-partner-dubai",
-        "guide:amend-business-license-dubai"
+        "guide:change-company-manager-dubai",
+        "guide:amend-business-license-dubai",
+        "guide:add-business-activity-dubai"
       ],
       "alternativeServiceIds": [
-        "directory:residency:48",
-        "mohre:employment-agency-license-amend"
+        "directory:residency:44",
+        "directory:residency:48"
       ],
       "officialInformationUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
       "officialCtaUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
@@ -10167,7 +10205,7 @@
       "slug": "legacy-service-85a10469d8",
       "name": {
         "ar": "التصاريح التجارية والإعلانية",
-        "en": "التصاريح التجارية والإعلانية"
+        "en": "Commercial and Advertising Permits"
       },
       "emirate": "دبي",
       "authority": {
@@ -10189,6 +10227,10 @@
         "التصاريح",
         "التجارية",
         "والإعلانية",
+        "Commercial",
+        "and",
+        "Advertising",
+        "Permits",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
@@ -10199,7 +10241,6 @@
         "Department",
         "of",
         "Economy",
-        "and",
         "Tourism",
         "companies-establishments",
         "التراخيص",
@@ -10266,8 +10307,8 @@
       ],
       "relatedServiceIds": [
         "directory:approvals:30",
-        "guide:amend-business-license-dubai",
-        "guide:add-business-activity-dubai"
+        "guide:add-remove-partner-dubai",
+        "guide:amend-business-license-dubai"
       ],
       "alternativeServiceIds": [
         "guide:renew-business-license-ajman",
@@ -10303,7 +10344,7 @@
       "slug": "legacy-service-e7f35a06d9",
       "name": {
         "ar": "ترخيص منشأة فندقية أو بيت عطلات",
-        "en": "ترخيص منشأة فندقية أو بيت عطلات"
+        "en": "License a Hotel Establishment or Holiday Home"
       },
       "emirate": "دبي",
       "authority": {
@@ -10328,6 +10369,12 @@
         "أو",
         "بيت",
         "عطلات",
+        "License",
+        "Hotel",
+        "Establishment",
+        "or",
+        "Holiday",
+        "Home",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
@@ -10403,13 +10450,13 @@
         }
       ],
       "relatedServiceIds": [
-        "directory:approvals:2",
         "guide:add-remove-partner-dubai",
-        "guide:amend-business-license-dubai"
+        "directory:approvals:2",
+        "guide:transfer-company-ownership-dubai"
       ],
       "alternativeServiceIds": [
         "directory:residency:44",
-        "mohre:employment-agency-license-cancel"
+        "mohre:employment-agency-license-amend"
       ],
       "officialInformationUrl": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits",
       "officialCtaUrl": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits",
@@ -13603,8 +13650,8 @@
       ],
       "relatedServiceIds": [
         "mohre:domestic-worker-labour-complaint",
-        "guide:mohre-private-tutor-permit",
-        "directory:mohre:32"
+        "directory:mohre:32",
+        "guide:mohre-private-tutor-permit"
       ],
       "alternativeServiceIds": [
         "icp:cancel-departure-permit",
@@ -13780,7 +13827,7 @@
       "slug": "renew-business-license-ajman",
       "name": {
         "ar": "تجديد رخصة اقتصادية في عجمان",
-        "en": "تجديد رخصة تجارية"
+        "en": "Renew an Economic Licence in Ajman"
       },
       "emirate": "عجمان",
       "authority": {
@@ -13804,7 +13851,12 @@
         "اقتصادية",
         "في",
         "عجمان",
-        "تجارية",
+        "Renew",
+        "an",
+        "Economic",
+        "Licence",
+        "in",
+        "Ajman",
         "دائرة",
         "التنمية",
         "الاقتصادية",
@@ -13911,7 +13963,7 @@
       "slug": "renew-business-license-dubai",
       "name": {
         "ar": "تجديد رخصة تجارية في دبي",
-        "en": "تجديد الرخصة الاقتصادية"
+        "en": "Renew a Trade Licence in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -13935,13 +13987,15 @@
         "تجارية",
         "في",
         "دبي",
-        "الرخصة",
-        "الاقتصادية",
+        "Renew",
+        "Trade",
+        "Licence",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -14033,8 +14087,8 @@
         "guide:add-business-activity-dubai"
       ],
       "alternativeServiceIds": [
-        "guide:renew-business-license-ajman",
-        "guide:renew-business-license-sharjah"
+        "guide:renew-business-license-sharjah",
+        "guide:renew-business-license-ajman"
       ],
       "officialInformationUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
       "officialCtaUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
@@ -14066,7 +14120,7 @@
       "slug": "renew-business-license-sharjah",
       "name": {
         "ar": "تجديد رخصة تجارية في الشارقة",
-        "en": "تجديد رخصة"
+        "en": "Renew a Trade Licence in Sharjah"
       },
       "emirate": "الشارقة",
       "authority": {
@@ -14090,6 +14144,11 @@
         "تجارية",
         "في",
         "الشارقة",
+        "Renew",
+        "Trade",
+        "Licence",
+        "in",
+        "Sharjah",
         "دائرة",
         "التنمية",
         "الاقتصادية",
@@ -14160,9 +14219,9 @@
         }
       ],
       "relatedServiceIds": [
-        "sedd:license-renewal",
         "sedd:license-amendment",
-        "sedd:license-cancellation"
+        "sedd:license-cancellation",
+        "sedd:license-renewal"
       ],
       "alternativeServiceIds": [
         "guide:renew-business-license-ajman",
@@ -15183,7 +15242,7 @@
       "slug": "reserve-trade-name-dubai",
       "name": {
         "ar": "حجز اسم تجاري في دبي",
-        "en": "حجز اسم تجاري"
+        "en": "Reserve a Trade Name in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -15207,11 +15266,15 @@
         "تجاري",
         "في",
         "دبي",
+        "Reserve",
+        "Trade",
+        "Name",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -15301,11 +15364,11 @@
       "relatedServiceIds": [
         "guide:add-business-activity-dubai",
         "guide:renew-business-license-dubai",
-        "guide:add-remove-partner-dubai"
+        "guide:amend-business-license-dubai"
       ],
       "alternativeServiceIds": [
-        "mohre:employment-agency-license-new",
-        "directory:residency:44"
+        "directory:residency:44",
+        "mohre:employment-agency-license-new"
       ],
       "officialInformationUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
       "officialCtaUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
@@ -17340,7 +17403,7 @@
       "slug": "transfer-company-ownership-dubai",
       "name": {
         "ar": "نقل ملكية أو بيع شركة في دبي",
-        "en": "نقل ملكية المنشأة أو الحصص"
+        "en": "Transfer Ownership or Sell a Company in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -17366,13 +17429,17 @@
         "شركة",
         "في",
         "دبي",
-        "المنشأة",
-        "الحصص",
+        "Transfer",
+        "Ownership",
+        "or",
+        "Sell",
+        "Company",
+        "in",
+        "Dubai",
         "دائرة",
         "الاقتصاد",
         "والسياحة",
         "DET",
-        "Dubai",
         "Department",
         "of",
         "Economy",
@@ -17457,13 +17524,13 @@
         }
       ],
       "relatedServiceIds": [
-        "guide:add-remove-partner-dubai",
         "guide:cancel-business-license-dubai",
-        "guide:renew-business-license-dubai"
+        "guide:add-remove-partner-dubai",
+        "guide:change-company-manager-dubai"
       ],
       "alternativeServiceIds": [
         "directory:residency:44",
-        "directory:residency:50"
+        "mohre:open-farm-ranch-file"
       ],
       "officialInformationUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
       "officialCtaUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
@@ -18308,8 +18375,8 @@
         "directory:mohre:3"
       ],
       "alternativeServiceIds": [
-        "guide:amend-business-license-dubai",
-        "guide:change-company-manager-dubai"
+        "directory:residency:51",
+        "directory:residency:50"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/331",
@@ -18341,7 +18408,7 @@
       "slug": "vat-registration-uae",
       "name": {
         "ar": "التسجيل في ضريبة القيمة المضافة بالإمارات",
-        "en": "التسجيل لضريبة القيمة المضافة"
+        "en": "Register for VAT in the UAE"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -18366,7 +18433,12 @@
         "القيمة",
         "المضافة",
         "بالإمارات",
-        "لضريبة",
+        "Register",
+        "for",
+        "VAT",
+        "in",
+        "the",
+        "UAE",
         "الهيئة",
         "الاتحادية",
         "للضرائب",
@@ -18741,7 +18813,7 @@
       "slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
       "name": {
         "ar": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
-        "en": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي"
+        "en": "Issue Residence for Parents under Humanitarian Cases in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -18768,13 +18840,21 @@
         "الإنسانية",
         "في",
         "دبي",
+        "Issue",
+        "Residence",
+        "for",
+        "Parents",
+        "under",
+        "Humanitarian",
+        "Cases",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "family-sponsorship",
         "الأسرة"
       ],
@@ -18875,7 +18955,7 @@
       "slug": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
       "name": {
         "ar": "إصدار إقامة للوالدين عبر ICP (خارج دبي)",
-        "en": "إصدار إقامة للوالدين عبر ICP (خارج دبي)"
+        "en": "Issue Residence for Parents through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -18901,6 +18981,13 @@
         "ICP",
         "خارج",
         "دبي",
+        "Issue",
+        "Residence",
+        "for",
+        "Parents",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -19010,7 +19097,7 @@
       "slug": "إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي",
       "name": {
         "ar": "إصدار إقامة لمولود جديد عبر ICP (خارج دبي)",
-        "en": "إصدار إقامة لمولود جديد عبر ICP (خارج دبي)"
+        "en": "Issue Residence for a Newborn through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -19037,6 +19124,13 @@
         "ICP",
         "خارج",
         "دبي",
+        "Issue",
+        "Residence",
+        "for",
+        "Newborn",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -19146,7 +19240,7 @@
       "slug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
       "name": {
         "ar": "إصدار إقامة موظف في القطاع الخاص في دبي",
-        "en": "إصدار إقامة موظف في القطاع الخاص في دبي"
+        "en": "Issue Private-Sector Employee Residence in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -19172,13 +19266,18 @@
         "القطاع",
         "الخاص",
         "دبي",
+        "Issue",
+        "Private-Sector",
+        "Employee",
+        "Residence",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "residency-visas",
         "الإقامة"
       ],
@@ -19280,7 +19379,7 @@
       "slug": "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
       "name": {
         "ar": "إصدار بطاقة مندوب علاقات عامة PRO",
-        "en": "إصدار بطاقة مندوب علاقات عامة PRO"
+        "en": "Issue a Public Relations Officer (PRO) Card"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -19305,6 +19404,11 @@
         "علاقات",
         "عامة",
         "PRO",
+        "Issue",
+        "Public",
+        "Relations",
+        "Officer",
+        "Card",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -19413,7 +19517,7 @@
       "slug": "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي",
       "name": {
         "ar": "إصدار بطاقة منشأة عبر ICP (خارج دبي)",
-        "en": "إصدار بطاقة منشأة عبر ICP (خارج دبي)"
+        "en": "Issue an Establishment Card through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -19439,6 +19543,13 @@
         "ICP",
         "خارج",
         "دبي",
+        "Issue",
+        "an",
+        "Establishment",
+        "Card",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -19550,7 +19661,7 @@
       "slug": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
       "name": {
         "ar": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي",
-        "en": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي"
+        "en": "Issue a Private-Sector or Free Zone Establishment Card in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -19579,13 +19690,21 @@
         "الحرة",
         "في",
         "دبي",
+        "Issue",
+        "Private-Sector",
+        "or",
+        "Free",
+        "Zone",
+        "Establishment",
+        "Card",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "companies-establishments",
         "المنشآت"
       ],
@@ -19687,7 +19806,7 @@
       "slug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
       "name": {
         "ar": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP",
-        "en": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP"
+        "en": "Issue a Five-Year Multiple-Entry Tourist Visa through ICP"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -19715,6 +19834,12 @@
         "سنوات",
         "عبر",
         "ICP",
+        "Issue",
+        "Five-Year",
+        "Multiple-Entry",
+        "Tourist",
+        "Visa",
+        "through",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -19828,7 +19953,7 @@
       "slug": "إصدار-تأشيرة-عبر-icp-خارج-دبي",
       "name": {
         "ar": "إصدار تأشيرة عبر ICP (خارج دبي)",
-        "en": "إصدار تأشيرة عبر ICP (خارج دبي)"
+        "en": "Issue a Visa through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -19853,6 +19978,11 @@
         "ICP",
         "خارج",
         "دبي",
+        "Issue",
+        "Visa",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -19965,7 +20095,7 @@
       "slug": "إصدار-تصريح-إقامة-عبر-icp-خارج-دبي",
       "name": {
         "ar": "إصدار تصريح إقامة عبر ICP (خارج دبي)",
-        "en": "إصدار تصريح إقامة عبر ICP (خارج دبي)"
+        "en": "Issue a Residence Permit through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -19991,6 +20121,12 @@
         "ICP",
         "خارج",
         "دبي",
+        "Issue",
+        "Residence",
+        "Permit",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -20102,7 +20238,7 @@
       "slug": "إصدار-تصريح-عمل-جديد-لعامل-مساعد",
       "name": {
         "ar": "إصدار تصريح عمل جديد لعامل مساعد",
-        "en": "إصدار تصريح عمل جديد لعامل مساعد"
+        "en": "Issue a New Domestic Worker Work Permit"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -20127,6 +20263,12 @@
         "جديد",
         "لعامل",
         "مساعد",
+        "Issue",
+        "New",
+        "Domestic",
+        "Worker",
+        "Work",
+        "Permit",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -20235,7 +20377,7 @@
       "slug": "إصدار-عقد-عمل-جديد-لعامل-مساعد",
       "name": {
         "ar": "إصدار عقد عمل جديد لعامل مساعد",
-        "en": "إصدار عقد عمل جديد لعامل مساعد"
+        "en": "Issue a New Domestic Worker Employment Contract"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -20260,6 +20402,12 @@
         "جديد",
         "لعامل",
         "مساعد",
+        "Issue",
+        "New",
+        "Domestic",
+        "Worker",
+        "Employment",
+        "Contract",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -20368,7 +20516,7 @@
       "slug": "إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
       "name": {
         "ar": "إلغاء إذن دخول أو تأشيرة صادرة من دبي",
-        "en": "إلغاء إذن دخول أو تأشيرة صادرة من دبي"
+        "en": "Cancel an Entry Permit or Visa Issued in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -20395,6 +20543,15 @@
         "صادرة",
         "من",
         "دبي",
+        "Cancel",
+        "an",
+        "Entry",
+        "Permit",
+        "or",
+        "Visa",
+        "Issued",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
@@ -20402,7 +20559,6 @@
         "الأجانب",
         "في",
         "GDRFA",
-        "Dubai",
         "residency-visas",
         "تأشيرات",
         "الدخول"
@@ -20505,7 +20661,7 @@
       "slug": "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
       "name": {
         "ar": "إلغاء بطاقة المنشأة عبر ICP (خارج دبي)",
-        "en": "إلغاء بطاقة المنشأة عبر ICP (خارج دبي)"
+        "en": "Cancel an Establishment Card through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -20531,6 +20687,13 @@
         "ICP",
         "خارج",
         "دبي",
+        "Cancel",
+        "an",
+        "Establishment",
+        "Card",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -20642,7 +20805,7 @@
       "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
       "name": {
         "ar": "إلغاء بطاقة المنشأة في دبي لجميع الفئات",
-        "en": "إلغاء بطاقة المنشأة في دبي لجميع الفئات"
+        "en": "Cancel a Dubai Establishment Card for All Categories"
       },
       "emirate": "دبي",
       "authority": {
@@ -20668,13 +20831,19 @@
         "دبي",
         "لجميع",
         "الفئات",
+        "Cancel",
+        "Dubai",
+        "Establishment",
+        "Card",
+        "for",
+        "All",
+        "Categories",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "companies-establishments",
         "المنشآت"
       ],
@@ -20776,7 +20945,7 @@
       "slug": "إلغاء-بلاغ-انقطاع-عن-العمل",
       "name": {
         "ar": "إلغاء بلاغ انقطاع عن العمل",
-        "en": "إلغاء بلاغ انقطاع عن العمل"
+        "en": "Cancel an Absence from Work Report"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -20800,6 +20969,12 @@
         "انقطاع",
         "عن",
         "العمل",
+        "Cancel",
+        "an",
+        "Absence",
+        "from",
+        "Work",
+        "Report",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -20876,7 +21051,7 @@
       ],
       "alternativeServiceIds": [
         "directory:mohre:30",
-        "directory:mohre:32"
+        "directory:mohre:40"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
       "officialCtaUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
@@ -20908,7 +21083,7 @@
       "slug": "إلغاء-تأشيرة-عبر-icp-خارج-دبي",
       "name": {
         "ar": "إلغاء تأشيرة عبر ICP (خارج دبي)",
-        "en": "إلغاء تأشيرة عبر ICP (خارج دبي)"
+        "en": "Cancel a Visa through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -20933,6 +21108,11 @@
         "ICP",
         "خارج",
         "دبي",
+        "Cancel",
+        "Visa",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -21045,7 +21225,7 @@
       "slug": "إلغاء-تصريح-عمل-عامل-مساعد",
       "name": {
         "ar": "إلغاء تصريح عمل عامل مساعد",
-        "en": "إلغاء تصريح عمل عامل مساعد"
+        "en": "Cancel a Domestic Worker Work Permit"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -21069,6 +21249,11 @@
         "عمل",
         "عامل",
         "مساعد",
+        "Cancel",
+        "Domestic",
+        "Worker",
+        "Work",
+        "Permit",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -21144,8 +21329,8 @@
         "guide:mohre-uae-national-trainee-work-permit"
       ],
       "alternativeServiceIds": [
-        "directory:mohre:38",
-        "directory:mohre:34"
+        "directory:mohre:34",
+        "directory:mohre:38"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
       "officialCtaUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
@@ -21177,7 +21362,7 @@
       "slug": "إلغاء-تصريح-لعامل-لديه-قضية-عمالية",
       "name": {
         "ar": "إلغاء تصريح لعامل لديه قضية عمالية",
-        "en": "إلغاء تصريح لعامل لديه قضية عمالية"
+        "en": "Cancel the Work Permit of a Worker with a Labour Court Case"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -21202,6 +21387,16 @@
         "لديه",
         "قضية",
         "عمالية",
+        "Cancel",
+        "the",
+        "Work",
+        "Permit",
+        "of",
+        "Worker",
+        "with",
+        "Labour",
+        "Court",
+        "Case",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -21277,8 +21472,8 @@
         "guide:mohre-uae-national-trainee-work-permit"
       ],
       "alternativeServiceIds": [
-        "directory:mohre:31",
-        "guide:cancel-work-permit-uae"
+        "directory:mohre:39",
+        "directory:mohre:34"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
@@ -21310,7 +21505,7 @@
       "slug": "إلغاء-عقد-عمل-عامل-مساعد",
       "name": {
         "ar": "إلغاء عقد عمل عامل مساعد",
-        "en": "إلغاء عقد عمل عامل مساعد"
+        "en": "Cancel a Domestic Worker Employment Contract"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -21334,6 +21529,11 @@
         "عمل",
         "عامل",
         "مساعد",
+        "Cancel",
+        "Domestic",
+        "Worker",
+        "Employment",
+        "Contract",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -21409,8 +21609,8 @@
         "guide:mohre-uae-national-trainee-work-permit"
       ],
       "alternativeServiceIds": [
-        "directory:mohre:39",
-        "directory:mohre:36"
+        "directory:mohre:36",
+        "directory:mohre:35"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
@@ -21442,7 +21642,7 @@
       "slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
       "name": {
         "ar": "إلغاء ملف أو بطاقة المنشأة",
-        "en": "إلغاء ملف أو بطاقة المنشأة"
+        "en": "Cancel an Establishment File or Card"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -21466,6 +21666,12 @@
         "أو",
         "بطاقة",
         "المنشأة",
+        "Cancel",
+        "an",
+        "Establishment",
+        "File",
+        "or",
+        "Card",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -21574,7 +21780,7 @@
       "slug": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
       "name": {
         "ar": "استرداد رسوم إصدار الهوية غير المكتمل",
-        "en": "استرداد رسوم إصدار الهوية غير المكتمل"
+        "en": "Refund Fees for Incomplete Emirates ID Issuance"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -21599,6 +21805,13 @@
         "الهوية",
         "غير",
         "المكتمل",
+        "Refund",
+        "Fees",
+        "for",
+        "Incomplete",
+        "Emirates",
+        "ID",
+        "Issuance",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -21682,7 +21895,7 @@
       ],
       "alternativeServiceIds": [
         "guide:family-residency-uae",
-        "guide:golden-residency-uae"
+        "directory:residency:19"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
       "officialCtaUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/depositRefund/376/request/step1?administrativeRegionId=1&withException=false",
@@ -21714,7 +21927,7 @@
       "slug": "الإعفاء-من-غرامة-تأخير-الهوية",
       "name": {
         "ar": "الإعفاء من غرامة تأخير الهوية",
-        "en": "الإعفاء من غرامة تأخير الهوية"
+        "en": "Apply for Exemption from Emirates ID Late Fees"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -21738,6 +21951,14 @@
         "غرامة",
         "تأخير",
         "الهوية",
+        "Apply",
+        "for",
+        "Exemption",
+        "from",
+        "Emirates",
+        "ID",
+        "Late",
+        "Fees",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -21821,7 +22042,7 @@
       ],
       "alternativeServiceIds": [
         "guide:cancel-residency-permit-uae",
-        "directory:residency:27"
+        "guide:family-residency-uae"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
@@ -21853,7 +22074,7 @@
       "slug": "الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي",
       "name": {
         "ar": "الاستعلام عن غرامات ملف أو مكفول في دبي",
-        "en": "الاستعلام عن غرامات ملف أو مكفول في دبي"
+        "en": "Check Fines for a File or Sponsored Person in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -21880,13 +22101,21 @@
         "مكفول",
         "في",
         "دبي",
+        "Check",
+        "Fines",
+        "for",
+        "File",
+        "or",
+        "Sponsored",
+        "Person",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "justice-police",
         "الغرامات",
         "والتقارير"
@@ -21988,7 +22217,7 @@
       "slug": "التسجيل-والمتابعة-في-wps",
       "name": {
         "ar": "التسجيل والمتابعة في WPS",
-        "en": "التسجيل والمتابعة في WPS"
+        "en": "Register and Monitor Wage Protection System (WPS) Compliance"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -22011,6 +22240,13 @@
         "والمتابعة",
         "في",
         "WPS",
+        "Register",
+        "and",
+        "Monitor",
+        "Wage",
+        "Protection",
+        "System",
+        "Compliance",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -22118,7 +22354,7 @@
       "slug": "بدل-فاقد-أو-تالف-للهوية",
       "name": {
         "ar": "بدل فاقد أو تالف للهوية",
-        "en": "بدل فاقد أو تالف للهوية"
+        "en": "Replace a Lost or Damaged Emirates ID"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -22142,6 +22378,12 @@
         "أو",
         "تالف",
         "للهوية",
+        "Replace",
+        "Lost",
+        "or",
+        "Damaged",
+        "Emirates",
+        "ID",
         "الهيئة",
         "الاتحادية",
         "والجنسية",
@@ -22223,8 +22465,8 @@
         "directory:residency:4"
       ],
       "alternativeServiceIds": [
-        "gdrfa:green-residence-partner-investor-dubai",
-        "directory:residency:27"
+        "directory:residency:27",
+        "directory:residency:28"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
@@ -22256,7 +22498,7 @@
       "slug": "بلاغ-انقطاع-عامل-مساعد",
       "name": {
         "ar": "بلاغ انقطاع عامل مساعد",
-        "en": "بلاغ انقطاع عامل مساعد"
+        "en": "Report a Domestic Worker's Absence from Work"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -22279,6 +22521,12 @@
         "انقطاع",
         "عامل",
         "مساعد",
+        "Report",
+        "Domestic",
+        "Worker's",
+        "Absence",
+        "from",
+        "Work",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -22355,7 +22603,7 @@
       ],
       "alternativeServiceIds": [
         "directory:mohre:41",
-        "directory:mohre:39"
+        "directory:mohre:42"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
@@ -22387,7 +22635,7 @@
       "slug": "بلاغ-انقطاع-عن-العمل",
       "name": {
         "ar": "بلاغ انقطاع عن العمل",
-        "en": "بلاغ انقطاع عن العمل"
+        "en": "Report Absence from Work"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -22410,6 +22658,10 @@
         "انقطاع",
         "عن",
         "العمل",
+        "Report",
+        "Absence",
+        "from",
+        "Work",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -22486,7 +22738,7 @@
       ],
       "alternativeServiceIds": [
         "directory:mohre:31",
-        "directory:mohre:41"
+        "directory:mohre:40"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
       "officialCtaUrl": "https://backoffice.mohre.gov.ae/mohre.complaints.app/TwafouqAnonymous2/CallerVerification?lang=en",
@@ -22518,7 +22770,7 @@
       "slug": "تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة",
       "name": {
         "ar": "تأسيس شركة في المنطقة الحرة بالفجيرة",
-        "en": "تسجيل رخصة تجارية"
+        "en": "Establish a Company in Fujairah Free Zone"
       },
       "emirate": "الفجيرة",
       "authority": {
@@ -22543,9 +22795,12 @@
         "المنطقة",
         "الحرة",
         "بالفجيرة",
-        "تسجيل",
-        "رخصة",
-        "تجارية",
+        "Establish",
+        "Company",
+        "in",
+        "Fujairah",
+        "Free",
+        "Zone",
         "هيئة",
         "الفجيرة",
         "companies-establishments"
@@ -22611,12 +22866,12 @@
       ],
       "relatedServiceIds": [
         "fujairah:free-zone-registration",
-        "guide:amend-business-license-dubai",
-        "guide:cancel-business-license-dubai"
+        "directory:residency:44",
+        "guide:add-remove-partner-dubai"
       ],
       "alternativeServiceIds": [
-        "guide:amend-business-license-dubai",
-        "guide:cancel-business-license-dubai"
+        "directory:residency:44",
+        "guide:add-remove-partner-dubai"
       ],
       "officialInformationUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
       "officialCtaUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
@@ -22745,7 +23000,7 @@
       ],
       "alternativeServiceIds": [
         "guide:renew-business-license-sharjah",
-        "guide:amend-business-license-dubai"
+        "official:det:issue-trade-license"
       ],
       "officialInformationUrl": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
       "officialCtaUrl": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
@@ -22777,7 +23032,7 @@
       "slug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
       "name": {
         "ar": "تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)",
-        "en": "تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)"
+        "en": "Business Opportunities Exploration Visa through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -22805,6 +23060,13 @@
         "ICP",
         "خارج",
         "دبي",
+        "Business",
+        "Opportunities",
+        "Exploration",
+        "Visa",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -22917,7 +23179,7 @@
       "slug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
       "name": {
         "ar": "تأشيرة استكشاف فرص تأسيس الأعمال في دبي",
-        "en": "تأشيرة استكشاف فرص تأسيس الأعمال في دبي"
+        "en": "Business Opportunities Exploration Visa in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -22943,13 +23205,18 @@
         "الأعمال",
         "في",
         "دبي",
+        "Business",
+        "Opportunities",
+        "Exploration",
+        "Visa",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "residency-visas",
         "تأشيرات",
         "الدخول"
@@ -23052,7 +23319,7 @@
       "slug": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
       "name": {
         "ar": "تأشيرة استكشاف فرص عمل عبر ICP (خارج دبي)",
-        "en": "تأشيرة استكشاف فرص عمل عبر ICP (خارج دبي)"
+        "en": "Job Exploration Visa through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -23079,6 +23346,12 @@
         "ICP",
         "خارج",
         "دبي",
+        "Job",
+        "Exploration",
+        "Visa",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -23191,7 +23464,7 @@
       "slug": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
       "name": {
         "ar": "تأشيرة استكشاف فرص عمل في دبي",
-        "en": "تأشيرة استكشاف فرص عمل في دبي"
+        "en": "Job Exploration Visa in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -23216,13 +23489,17 @@
         "عمل",
         "في",
         "دبي",
+        "Job",
+        "Exploration",
+        "Visa",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "residency-visas",
         "تأشيرات",
         "الدخول"
@@ -23325,7 +23602,7 @@
       "slug": "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي",
       "name": {
         "ar": "تأشيرة زيارة قريب أو صديق عبر ICP (خارج دبي)",
-        "en": "تأشيرة زيارة قريب أو صديق عبر ICP (خارج دبي)"
+        "en": "Visit a Relative or Friend Visa through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -23353,6 +23630,14 @@
         "ICP",
         "خارج",
         "دبي",
+        "Visit",
+        "Relative",
+        "or",
+        "Friend",
+        "Visa",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -23465,7 +23750,7 @@
       "slug": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
       "name": {
         "ar": "تأشيرة زيارة قريب أو صديق لدخول واحد في دبي",
-        "en": "تأشيرة زيارة قريب أو صديق لدخول واحد في دبي"
+        "en": "Single-Entry Relative or Friend Visit Visa in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -23493,13 +23778,20 @@
         "واحد",
         "في",
         "دبي",
+        "Single-Entry",
+        "Relative",
+        "or",
+        "Friend",
+        "Visit",
+        "Visa",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "residency-visas",
         "تأشيرات",
         "الدخول"
@@ -23570,7 +23862,7 @@
       ],
       "alternativeServiceIds": [
         "directory:residency:29",
-        "directory:residency:32"
+        "directory:residency:23"
       ],
       "officialInformationUrl": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
       "officialCtaUrl": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
@@ -23602,7 +23894,7 @@
       "slug": "تأشيرة-سياحية-عبر-icp-خارج-دبي",
       "name": {
         "ar": "تأشيرة سياحية عبر ICP (خارج دبي)",
-        "en": "تأشيرة سياحية عبر ICP (خارج دبي)"
+        "en": "Tourist Visa through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -23627,6 +23919,11 @@
         "ICP",
         "خارج",
         "دبي",
+        "Tourist",
+        "Visa",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -23739,7 +24036,7 @@
       "slug": "تأشيرة-سياحية-لدخول-واحد-في-دبي",
       "name": {
         "ar": "تأشيرة سياحية لدخول واحد في دبي",
-        "en": "تأشيرة سياحية لدخول واحد في دبي"
+        "en": "Single-Entry Tourist Visa in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -23764,13 +24061,17 @@
         "واحد",
         "في",
         "دبي",
+        "Single-Entry",
+        "Tourist",
+        "Visa",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "residency-visas",
         "تأشيرات",
         "الدخول"
@@ -23840,8 +24141,8 @@
         "directory:residency:8"
       ],
       "alternativeServiceIds": [
-        "directory:residency:32",
-        "directory:residency:31"
+        "directory:residency:31",
+        "directory:residency:32"
       ],
       "officialInformationUrl": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
       "officialCtaUrl": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
@@ -23873,7 +24174,7 @@
       "slug": "تجديد-إقامة-أفراد-الأسرة-في-دبي",
       "name": {
         "ar": "تجديد إقامة أفراد الأسرة في دبي",
-        "en": "تجديد إقامة أفراد الأسرة في دبي"
+        "en": "Renew Family Residence in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -23898,13 +24199,17 @@
         "الأسرة",
         "في",
         "دبي",
+        "Renew",
+        "Family",
+        "Residence",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "family-sponsorship"
       ],
       "description": "تجديد إقامة أفراد الأسرة المرتبطة بملف كفيل صادر من دبي.",
@@ -24004,7 +24309,7 @@
       "slug": "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
       "name": {
         "ar": "تجديد إقامة موظف في القطاع الخاص في دبي",
-        "en": "تجديد إقامة موظف في القطاع الخاص في دبي"
+        "en": "Renew Private-Sector Employee Residence in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -24030,13 +24335,18 @@
         "القطاع",
         "الخاص",
         "دبي",
+        "Renew",
+        "Private-Sector",
+        "Employee",
+        "Residence",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "residency-visas",
         "الإقامة"
       ],
@@ -24138,7 +24448,7 @@
       "slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
       "name": {
         "ar": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
-        "en": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)"
+        "en": "Renew an Establishment Card through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -24164,6 +24474,13 @@
         "ICP",
         "خارج",
         "دبي",
+        "Renew",
+        "an",
+        "Establishment",
+        "Card",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -24275,7 +24592,7 @@
       "slug": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
       "name": {
         "ar": "تجديد بطاقة المنشأة في دبي لجميع الفئات",
-        "en": "تجديد بطاقة المنشأة في دبي لجميع الفئات"
+        "en": "Renew a Dubai Establishment Card for All Categories"
       },
       "emirate": "دبي",
       "authority": {
@@ -24301,13 +24618,19 @@
         "دبي",
         "لجميع",
         "الفئات",
+        "Renew",
+        "Dubai",
+        "Establishment",
+        "Card",
+        "for",
+        "All",
+        "Categories",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "companies-establishments",
         "المنشآت"
       ],
@@ -24409,7 +24732,7 @@
       "slug": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
       "name": {
         "ar": "تجديد تصريح إقامة عبر ICP (خارج دبي)",
-        "en": "تجديد تصريح إقامة عبر ICP (خارج دبي)"
+        "en": "Renew a Residence Permit through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -24435,6 +24758,12 @@
         "ICP",
         "خارج",
         "دبي",
+        "Renew",
+        "Residence",
+        "Permit",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -24546,7 +24875,7 @@
       "slug": "تجديد-عقد-عمل-عامل-مساعد",
       "name": {
         "ar": "تجديد عقد عمل عامل مساعد",
-        "en": "تجديد عقد عمل عامل مساعد"
+        "en": "Renew a Domestic Worker Employment Contract"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -24570,6 +24899,11 @@
         "عمل",
         "عامل",
         "مساعد",
+        "Renew",
+        "Domestic",
+        "Worker",
+        "Employment",
+        "Contract",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -24646,7 +24980,7 @@
       ],
       "alternativeServiceIds": [
         "directory:mohre:38",
-        "directory:mohre:37"
+        "directory:mohre:35"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
@@ -24678,7 +25012,7 @@
       "slug": "تحديث-بيانات-الهوية",
       "name": {
         "ar": "تحديث بيانات الهوية",
-        "en": "تحديث بيانات الهوية"
+        "en": "Update Emirates ID Data"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -24700,6 +25034,10 @@
         "تحديث",
         "بيانات",
         "الهوية",
+        "Update",
+        "Emirates",
+        "ID",
+        "Data",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -25074,7 +25412,7 @@
       "slug": "تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp",
       "name": {
         "ar": "تصريح بقاء خارج الدولة لأكثر من 6 أشهر عبر ICP",
-        "en": "تصريح بقاء خارج الدولة لأكثر من 6 أشهر عبر ICP"
+        "en": "ICP Permit to Remain outside the UAE for More Than Six Months"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -25102,6 +25440,17 @@
         "أشهر",
         "عبر",
         "ICP",
+        "Permit",
+        "to",
+        "Remain",
+        "outside",
+        "the",
+        "UAE",
+        "for",
+        "More",
+        "Than",
+        "Six",
+        "Months",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -25182,7 +25531,7 @@
       ],
       "alternativeServiceIds": [
         "directory:residency:13",
-        "directory:residency:8"
+        "directory:residency:11"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
       "officialCtaUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/serviceCards/1040?administrativeRegionId=1",
@@ -25214,7 +25563,7 @@
       "slug": "تصريح-تدريب-وعمل-طالب",
       "name": {
         "ar": "تصريح تدريب وعمل طالب",
-        "en": "تصريح تدريب وعمل طالب"
+        "en": "Student Training and Work Permit"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -25237,6 +25586,11 @@
         "تدريب",
         "وعمل",
         "طالب",
+        "Student",
+        "Training",
+        "and",
+        "Work",
+        "Permit",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -25345,7 +25699,7 @@
       "slug": "تصريح-عمل-حدث",
       "name": {
         "ar": "تصريح عمل حدث",
-        "en": "تصريح عمل حدث"
+        "en": "Juvenile Work Permit"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -25367,6 +25721,9 @@
         "تصريح",
         "عمل",
         "حدث",
+        "Juvenile",
+        "Work",
+        "Permit",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -25443,7 +25800,7 @@
       ],
       "alternativeServiceIds": [
         "directory:mohre:16",
-        "guide:cancel-work-permit-uae"
+        "catalog:تصريح عمل لمهمة"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/185",
@@ -25475,7 +25832,7 @@
       "slug": "تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي",
       "name": {
         "ar": "تعديل أو إضافة بيانات بطاقة المنشأة عبر ICP (خارج دبي)",
-        "en": "تعديل أو إضافة بيانات بطاقة المنشأة عبر ICP (خارج دبي)"
+        "en": "Amend or Add Establishment Card Data through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -25504,6 +25861,15 @@
         "ICP",
         "خارج",
         "دبي",
+        "Amend",
+        "or",
+        "Add",
+        "Establishment",
+        "Card",
+        "Data",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -25615,7 +25981,7 @@
       "slug": "تعديل-الوضع-داخل-الدولة-في-دبي",
       "name": {
         "ar": "تعديل الوضع داخل الدولة في دبي",
-        "en": "تعديل الوضع داخل الدولة في دبي"
+        "en": "Change Immigration Status inside the UAE in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -25640,13 +26006,20 @@
         "الدولة",
         "في",
         "دبي",
+        "Change",
+        "Immigration",
+        "Status",
+        "inside",
+        "the",
+        "UAE",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "residency-visas",
         "الإقامة"
       ],
@@ -25715,8 +26088,8 @@
         "directory:residency:8"
       ],
       "alternativeServiceIds": [
-        "directory:residency:15",
-        "directory:residency:14"
+        "directory:residency:14",
+        "directory:residency:15"
       ],
       "officialInformationUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
       "officialCtaUrl": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
@@ -25748,7 +26121,7 @@
       "slug": "تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
       "name": {
         "ar": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات",
-        "en": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات"
+        "en": "Amend Dubai Establishment Card Data for All Categories"
       },
       "emirate": "دبي",
       "authority": {
@@ -25775,13 +26148,20 @@
         "دبي",
         "لجميع",
         "الفئات",
+        "Amend",
+        "Dubai",
+        "Establishment",
+        "Card",
+        "Data",
+        "for",
+        "All",
+        "Categories",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "companies-establishments",
         "المنشآت"
       ],
@@ -25883,7 +26263,7 @@
       "slug": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
       "name": {
         "ar": "تعديل بيانات جميع أنواع الإقامة في دبي",
-        "en": "تعديل بيانات جميع أنواع الإقامة في دبي"
+        "en": "Amend Data for All Dubai Residence Types"
       },
       "emirate": "دبي",
       "authority": {
@@ -25909,13 +26289,19 @@
         "الإقامة",
         "في",
         "دبي",
+        "Amend",
+        "Data",
+        "for",
+        "All",
+        "Dubai",
+        "Residence",
+        "Types",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "residency-visas"
       ],
       "description": "تعديل البيانات المسجلة على تصريح إقامة صادر من دبي وفق المستند المؤيد لنوع التعديل.",
@@ -26016,7 +26402,7 @@
       "slug": "تعديل-تصاريح-وعقود-العمل",
       "name": {
         "ar": "تعديل تصاريح وعقود العمل",
-        "en": "تعديل تصاريح وعقود العمل"
+        "en": "Amend Work Permits and Employment Contracts"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -26039,6 +26425,12 @@
         "تصاريح",
         "وعقود",
         "العمل",
+        "Amend",
+        "Work",
+        "Permits",
+        "and",
+        "Employment",
+        "Contracts",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -26112,8 +26504,8 @@
         "guide:mohre-uae-national-trainee-work-permit"
       ],
       "alternativeServiceIds": [
-        "directory:mohre:16",
-        "directory:mohre:15"
+        "guide:cancel-work-permit-uae",
+        "directory:mohre:16"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/85",
@@ -26145,7 +26537,7 @@
       "slug": "تعديل-عقد-وتصريح-عمل-عامل-مساعد",
       "name": {
         "ar": "تعديل عقد وتصريح عمل عامل مساعد",
-        "en": "تعديل عقد وتصريح عمل عامل مساعد"
+        "en": "Amend a Domestic Worker's Contract and Work Permit"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -26170,6 +26562,13 @@
         "عمل",
         "عامل",
         "مساعد",
+        "Amend",
+        "Domestic",
+        "Worker's",
+        "Contract",
+        "and",
+        "Work",
+        "Permit",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -26245,8 +26644,8 @@
         "guide:mohre-uae-national-trainee-work-permit"
       ],
       "alternativeServiceIds": [
-        "directory:mohre:38",
-        "directory:mohre:36"
+        "directory:mohre:39",
+        "directory:mohre:38"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
@@ -26278,7 +26677,7 @@
       "slug": "تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي",
       "name": {
         "ar": "تغيير الوضع عبر ICP ضمن إصدار الإقامة (خارج دبي)",
-        "en": "تغيير الوضع عبر ICP ضمن إصدار الإقامة (خارج دبي)"
+        "en": "Change Immigration Status during ICP Residence Issuance outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -26306,6 +26705,14 @@
         "الإقامة",
         "خارج",
         "دبي",
+        "Change",
+        "Immigration",
+        "Status",
+        "during",
+        "Residence",
+        "Issuance",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -26383,8 +26790,8 @@
         "catalog:تمديد التأشيرة أو إذن الدخول"
       ],
       "alternativeServiceIds": [
-        "directory:residency:8",
-        "directory:residency:13"
+        "directory:residency:13",
+        "directory:residency:8"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
@@ -26416,7 +26823,7 @@
       "slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
       "name": {
         "ar": "تقرير تفاصيل الإقامة عبر ICP",
-        "en": "تقرير تفاصيل الإقامة عبر ICP"
+        "en": "ICP Residence Details Report"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -26440,6 +26847,9 @@
         "الإقامة",
         "عبر",
         "ICP",
+        "Residence",
+        "Details",
+        "Report",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -26551,7 +26961,7 @@
       "slug": "تقرير-تقييم-المنشأة",
       "name": {
         "ar": "تقرير تقييم المنشأة",
-        "en": "تقرير تقييم المنشأة"
+        "en": "Establishment Assessment Report"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -26573,6 +26983,9 @@
         "تقرير",
         "تقييم",
         "المنشأة",
+        "Establishment",
+        "Assessment",
+        "Report",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -26818,7 +27231,7 @@
       "slug": "حصة-تصاريح-العمل-للمنشأة",
       "name": {
         "ar": "حصة تصاريح العمل للمنشأة",
-        "en": "حصة تصاريح العمل للمنشأة"
+        "en": "Establishment Work Permit Quota"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -26841,6 +27254,10 @@
         "تصاريح",
         "العمل",
         "للمنشأة",
+        "Establishment",
+        "Work",
+        "Permit",
+        "Quota",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -26917,7 +27334,7 @@
       ],
       "alternativeServiceIds": [
         "guide:cancel-business-license-dubai",
-        "guide:add-business-activity-dubai"
+        "directory:residency:45"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/319",
@@ -26949,7 +27366,7 @@
       "slug": "سحب-بلاغ-انقطاع-بطلب-العامل-المساعد",
       "name": {
         "ar": "سحب بلاغ انقطاع بطلب العامل المساعد",
-        "en": "سحب بلاغ انقطاع بطلب العامل المساعد"
+        "en": "Withdraw an Absence Report at the Domestic Worker's Request"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -26974,6 +27391,15 @@
         "بطلب",
         "العامل",
         "المساعد",
+        "Withdraw",
+        "an",
+        "Absence",
+        "Report",
+        "at",
+        "the",
+        "Domestic",
+        "Worker's",
+        "Request",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -27082,7 +27508,7 @@
       "slug": "سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل",
       "name": {
         "ar": "سحب بلاغ انقطاع عامل مساعد من صاحب العمل",
-        "en": "سحب بلاغ انقطاع عامل مساعد من صاحب العمل"
+        "en": "Withdraw a Domestic Worker Absence Report at the Employer's Request"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -27109,6 +27535,15 @@
         "من",
         "صاحب",
         "العمل",
+        "Withdraw",
+        "Domestic",
+        "Worker",
+        "Absence",
+        "Report",
+        "at",
+        "the",
+        "Employer's",
+        "Request",
         "وزارة",
         "الموارد",
         "البشرية",
@@ -27184,8 +27619,8 @@
         "guide:mohre-uae-national-trainee-work-permit"
       ],
       "alternativeServiceIds": [
-        "directory:mohre:40",
-        "directory:mohre:42"
+        "directory:mohre:42",
+        "directory:mohre:40"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
@@ -27217,7 +27652,7 @@
       "slug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
       "name": {
         "ar": "سداد غرامات مخالفي قانون الإقامة في دبي",
-        "en": "سداد غرامات مخالفي قانون الإقامة في دبي"
+        "en": "Pay Residence Law Violation Fines in Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -27243,13 +27678,19 @@
         "الإقامة",
         "في",
         "دبي",
+        "Pay",
+        "Residence",
+        "Law",
+        "Violation",
+        "Fines",
+        "in",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "GDRFA",
-        "Dubai",
         "justice-police",
         "الغرامات",
         "والتقارير"
@@ -27351,7 +27792,7 @@
       "slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
       "name": {
         "ar": "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي)",
-        "en": "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي)"
+        "en": "Pay Visa or Residence Violation Fines through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -27380,6 +27821,15 @@
         "ICP",
         "خارج",
         "دبي",
+        "Pay",
+        "Visa",
+        "or",
+        "Residence",
+        "Violation",
+        "Fines",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
@@ -27458,8 +27908,8 @@
         "directory:residency:56"
       ],
       "alternativeServiceIds": [
-        "directory:residency:52",
-        "directory:residency:53"
+        "directory:residency:53",
+        "directory:residency:52"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
@@ -27491,7 +27941,7 @@
       "slug": "متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي",
       "name": {
         "ar": "متابعة حالة طلب أو ملف لدى GDRFA دبي",
-        "en": "متابعة حالة طلب أو ملف لدى GDRFA دبي"
+        "en": "Track an Application or File with GDRFA Dubai"
       },
       "emirate": "دبي",
       "authority": {
@@ -27518,13 +27968,19 @@
         "لدى",
         "GDRFA",
         "دبي",
+        "Track",
+        "an",
+        "Application",
+        "or",
+        "File",
+        "with",
+        "Dubai",
         "الإدارة",
         "العامة",
         "للإقامة",
         "وشؤون",
         "الأجانب",
         "في",
-        "Dubai",
         "justice-police",
         "الغرامات",
         "والتقارير"
@@ -27626,7 +28082,7 @@
       "slug": "متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي",
       "name": {
         "ar": "متابعة حالة طلب تأشيرة لدى ICP (خارج دبي)",
-        "en": "متابعة حالة طلب تأشيرة لدى ICP (خارج دبي)"
+        "en": "Track a Visa Application through ICP outside Dubai"
       },
       "emirate": "الإمارات الخاضعة لمسار ICP (خارج دبي)",
       "authority": {
@@ -27653,6 +28109,12 @@
         "ICP",
         "خارج",
         "دبي",
+        "Track",
+        "Visa",
+        "Application",
+        "through",
+        "outside",
+        "Dubai",
         "الهيئة",
         "الاتحادية",
         "للهوية",
