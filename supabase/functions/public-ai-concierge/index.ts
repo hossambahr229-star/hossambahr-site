@@ -3,6 +3,7 @@ import { withSupabase } from "npm:@supabase/server@1.8.0";
 import { providerFailure, completedProviderText } from "./provider-status.ts";
 import { responseContext, jurisdictionCandidates } from "./response-context.ts";
 import { documentedRule, hasDocumentedValue, serviceIntroduction } from "./grounded-facts.ts";
+import { familyCandidate } from "./family-candidates.ts";
 
 const ALLOWED_ORIGINS = new Set([
   "https://hossambahr.com",
@@ -415,7 +416,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
     const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));
-    const domainCompatibility = semanticDomainCompatibility(row.binding.metadata?.category||"", relationship);
+    const familyCompatibility = familyCandidate(row,relationship,action,familyResidenceSponsorship);
+    const domainCompatibility = familyCompatibility.domain;
     score += domainCompatibility * 3000;
     score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;
     score += actionCompatibility(relationshipIdentity, action) * 1500;
@@ -455,8 +457,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
       else if (row.jurisdiction?.code === "AE") score += 20;
       else if (row.jurisdiction?.code?.startsWith("AE-")) score -= 45;
     }
-    return { ...row, score, domainCompatibility };
-  }).filter((row:any) => (!relationship || row.domainCompatibility >= 0) && row.score > 0 && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
+    return { ...row, score, domainCompatibility, familyAllowed:familyCompatibility.allowed };
+  }).filter((row:any) => row.familyAllowed && row.score > 0 && (!asksResidenceAuthorityChoice || !detected || detected === "AE-DU" || row.authority?.authority_key === "icp"))
     .sort((a:any,b:any) => b.score - a.score || a.title.localeCompare(b.title,"ar"));
 }
 
