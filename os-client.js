@@ -1,5 +1,9 @@
 (() => {
   "use strict";
+  const english = document.documentElement.lang === "en";
+  const tr = value => window.HB_UI_T ? window.HB_UI_T(value) : String(value);
+  const html = value => window.HB_OS_HTML ? window.HB_OS_HTML(value) : String(value);
+  const route = location.pathname.replace(/^\/en(?=\/)/, "");
   const client = window.HB_AUTH;
   if (!client) return;
   const countryPackNameById=new Map();
@@ -8,33 +12,33 @@
   const setMessage = (text, state = "info") => {
     const node = $("[data-os-message]");
     if (!node) return;
-    node.textContent = text;
+    node.textContent = tr(text);
     node.dataset.state = state;
     node.hidden = false;
   };
   const article = (title, meta = "") => {
     const el = document.createElement("article");
     const strong = document.createElement("strong");
-    strong.textContent = title;
+    strong.textContent = tr(title);
     el.append(strong);
     if (meta) {
       const p = document.createElement("p");
-      p.textContent = meta;
+      p.textContent = tr(meta);
       el.append(p);
     }
     return el;
   };
   const date = (value) => {
     if (!value) return "";
-    try { return new Intl.DateTimeFormat("ar-AE", { dateStyle: "medium" }).format(new Date(value)); }
+    try { return new Intl.DateTimeFormat(english ? "en-AE" : "ar-AE", { dateStyle: "medium" }).format(new Date(value)); }
     catch { return String(value); }
   };
 
-  const healthLabel=(level)=>({
+  const healthLabel=(level)=>tr(({
     stable:"مستقر",
     attention:"يحتاج انتباه",
     critical:"حرج"
-  })[level] || level;
+  })[level] || level);
 
   function buildOrganizationTwin(item) {
     const twin=item.twin || {};
@@ -48,14 +52,14 @@
     head.className="hb-org-twin-head";
     const titleWrap=document.createElement("div");
     const title=document.createElement("strong");
-    title.textContent=org.trade_name || org.legal_name || "شركة";
+    title.textContent=tr(org.trade_name || org.legal_name || "شركة");
     const legal=document.createElement("small");
-    legal.textContent=[org.legal_name,org.registration_number ? "رقم "+org.registration_number : ""].filter(Boolean).join(" • ");
+    legal.textContent=tr([org.legal_name,org.registration_number ? "رقم "+org.registration_number : ""].filter(Boolean).join(" • "));
     titleWrap.append(title,legal);
 
     const score=document.createElement("span");
     score.className=`hb-org-health hb-org-health--${health.level || "stable"}`;
-    score.textContent=`${Number(health.score ?? 100)}% • ${healthLabel(health.level || "stable")}`;
+    score.textContent=tr(`${Number(health.score ?? 100)}% • ${healthLabel(health.level || "stable")}`);
     head.append(titleWrap,score);
 
     const stats=document.createElement("div");
@@ -70,31 +74,31 @@
     ];
     for(const [label,value] of statPairs){
       const box=document.createElement("span");
-      box.innerHTML=`<b>${Number(value||0)}</b><small>${label}</small>`;
+      box.innerHTML=html(`<b>${Number(value||0)}</b><small>${label}</small>`);
       stats.append(box);
     }
 
     const details=document.createElement("details");
     details.className="hb-org-twin-details";
     const summary=document.createElement("summary");
-    summary.textContent="عرض Digital Twin";
+    summary.textContent=tr("عرض Digital Twin");
 
     const note=document.createElement("p");
     note.className="hb-org-health-note";
-    note.textContent=health.note || "مؤشر تشغيلي داخلي.";
+    note.textContent=tr(health.note || "مؤشر تشغيلي داخلي.");
 
     const obligations=document.createElement("div");
     obligations.className="hb-org-twin-section";
     const obTitle=document.createElement("h4");
-    obTitle.textContent="الاستحقاقات القادمة";
+    obTitle.textContent=tr("الاستحقاقات القادمة");
     obligations.append(obTitle);
     const obs=Array.isArray(twin.upcoming_obligations)?twin.upcoming_obligations:[];
     if(!obs.length){
-      const p=document.createElement("p"); p.textContent="لا توجد استحقاقات مفتوحة."; obligations.append(p);
+      const p=document.createElement("p"); p.textContent=tr("لا توجد استحقاقات مفتوحة."); obligations.append(p);
     } else {
       for(const ob of obs.slice(0,5)){
         const row=document.createElement("p");
-        row.textContent=`${ob.title} • ${date(ob.due_at)}`;
+        row.textContent=tr(`${ob.title} • ${date(ob.due_at)}`);
         obligations.append(row);
       }
     }
@@ -102,15 +106,15 @@
     const docs=document.createElement("div");
     docs.className="hb-org-twin-section";
     const docsTitle=document.createElement("h4");
-    docsTitle.textContent="المستندات";
+    docsTitle.textContent=tr("المستندات");
     docs.append(docsTitle);
     const docRows=Array.isArray(twin.documents)?twin.documents:[];
     if(!docRows.length){
-      const p=document.createElement("p"); p.textContent="لا توجد مستندات مرتبطة بالشركة بعد."; docs.append(p);
+      const p=document.createElement("p"); p.textContent=tr("لا توجد مستندات مرتبطة بالشركة بعد."); docs.append(p);
     } else {
       for(const d of docRows.slice(0,6)){
         const row=document.createElement("p");
-        row.textContent=`${d.name || d.type}${d.expires_at ? " • انتهاء "+date(d.expires_at) : ""}`;
+        row.textContent=tr(`${d.name || d.type}${d.expires_at ? " • انتهاء "+date(d.expires_at) : ""}`);
         docs.append(row);
       }
     }
@@ -118,15 +122,15 @@
     const cases=document.createElement("div");
     cases.className="hb-org-twin-section";
     const casesTitle=document.createElement("h4");
-    casesTitle.textContent="المعاملات";
+    casesTitle.textContent=tr("المعاملات");
     cases.append(casesTitle);
     const caseRows=Array.isArray(twin.cases)?twin.cases:[];
     if(!caseRows.length){
-      const p=document.createElement("p"); p.textContent="لا توجد معاملات مرتبطة بالشركة."; cases.append(p);
+      const p=document.createElement("p"); p.textContent=tr("لا توجد معاملات مرتبطة بالشركة."); cases.append(p);
     } else {
       for(const c of caseRows.slice(0,6)){
         const row=document.createElement("p");
-        row.textContent=`${c.title} • ${caseStatusLabel(c.status)} • ${Number(c.readiness_percent||0)}%`;
+        row.textContent=tr(`${c.title} • ${caseStatusLabel(c.status)} • ${Number(c.readiness_percent||0)}%`);
         cases.append(row);
       }
     }
@@ -139,7 +143,7 @@
   async function loadOrganizations() {
     const target = $("[data-os-organizations]");
     const { data, error } = await client.rpc("hb_my_organization_twins",{p_limit:20});
-    if (error) { target.innerHTML = "<p>تعذر تحميل الشركات.</p>"; return []; }
+    if (error) { target.innerHTML = html("<p>تعذر تحميل الشركات.</p>"); return []; }
     const rows=data || [];
     target.replaceChildren(...(rows.length ? rows.map(buildOrganizationTwin) : [article("لا توجد شركة مضافة بعد","يمكنك إضافة أول كيان تجاري من هنا.")]));
     syncDocumentOrganizationOptions(rows);
@@ -150,14 +154,14 @@
     const selects=[...document.querySelectorAll("[data-jurisdiction-select]")];
     if(!selects.length)return;
     const {data,error}=await client.from("hb_jurisdictions")
-      .select("id,name_ar,code")
+      .select("id,name_ar,name_en,code")
       .eq("active",true)
       .eq("level","emirate")
       .order("code",{ascending:true});
     if(error)return;
     for(const select of selects){
       const current=select.value;
-      select.replaceChildren(new Option("اختر الإمارة",""),...(data||[]).map((item)=>new Option(item.name_ar,item.id)));
+      select.replaceChildren(new Option(tr("اختر الإمارة"),""),...(data||[]).map((item)=>new Option(english ? (item.name_en||item.code) : item.name_ar,item.id)));
       select.value=current;
     }
   }
@@ -257,13 +261,13 @@
       const approve=document.createElement("button");
       approve.type="button";
       approve.className="hb-case-action";
-      approve.textContent="اعتماد الخطوة";
+      approve.textContent=tr("اعتماد الخطوة");
       approve.addEventListener("click",async()=>{
-        const accepted=window.confirm(`سيتم تسجيل موافقتك على الخطوة: ${next.title}. هذه الموافقة لا ترسل أي طلب حكومي تلقائيًا. هل تعتمد؟`);
+        const accepted=window.confirm(english ? `Record your approval for this step: ${next.title}. This approval does not automatically submit a government request. Approve?` : `سيتم تسجيل موافقتك على الخطوة: ${next.title}. هذه الموافقة لا ترسل أي طلب حكومي تلقائيًا. هل تعتمد؟`);
         if(!accepted)return;
         approve.disabled=true;
         reject.disabled=true;
-        approve.textContent="جارٍ الحفظ…";
+        approve.textContent=tr("جارٍ الحفظ…");
         try{
           await window.HB_OS_API.decideApproval(next.id,"approve");
           setMessage("تم تسجيل الموافقة بأمان.","success");
@@ -273,20 +277,20 @@
           setMessage("تعذر تسجيل الموافقة الآن. لم يتم تنفيذ أي إجراء خارجي.","error");
           approve.disabled=false;
           reject.disabled=false;
-          approve.textContent="اعتماد الخطوة";
+          approve.textContent=tr("اعتماد الخطوة");
         }
       });
 
       const reject=document.createElement("button");
       reject.type="button";
       reject.className="hb-case-action hb-case-action--danger";
-      reject.textContent="رفض";
+      reject.textContent=tr("رفض");
       reject.addEventListener("click",async()=>{
-        const accepted=window.confirm(`سيتم رفض الخطوة: ${next.title} وستتوقف الحالة إلى أن تُراجع. هل تريد المتابعة؟`);
+        const accepted=window.confirm(english ? `Reject this step: ${next.title}. The transaction will pause pending review. Continue?` : `سيتم رفض الخطوة: ${next.title} وستتوقف الحالة إلى أن تُراجع. هل تريد المتابعة؟`);
         if(!accepted)return;
         approve.disabled=true;
         reject.disabled=true;
-        reject.textContent="جارٍ الحفظ…";
+        reject.textContent=tr("جارٍ الحفظ…");
         try{
           await window.HB_OS_API.decideApproval(next.id,"reject");
           setMessage("تم تسجيل الرفض وإيقاف المسار عند هذه النقطة.","success");
@@ -296,7 +300,7 @@
           setMessage("تعذر تسجيل الرفض الآن.","error");
           approve.disabled=false;
           reject.disabled=false;
-          reject.textContent="رفض";
+          reject.textContent=tr("رفض");
         }
       });
       actions.append(approve,reject);
@@ -304,10 +308,10 @@
       const button=document.createElement("button");
       button.type="button";
       button.className="hb-case-action";
-      button.textContent="إرسال للمراجعة";
+      button.textContent=tr("إرسال للمراجعة");
       button.addEventListener("click",async()=>{
         button.disabled=true;
-        button.textContent="جارٍ الحفظ…";
+        button.textContent=tr("جارٍ الحفظ…");
         try{
           await window.HB_OS_API.submitTask(next.id);
           setMessage("تم إرسال المتطلب للمراجعة.","success");
@@ -316,7 +320,7 @@
         }catch{
           setMessage("تعذر تحديث الخطوة الآن.","error");
           button.disabled=false;
-          button.textContent="إرسال للمراجعة";
+          button.textContent=tr("إرسال للمراجعة");
         }
       });
       actions.append(button);
@@ -328,7 +332,7 @@
     const details=document.createElement("details");
     details.className="hb-case-plan";
     const summary=document.createElement("summary");
-    summary.textContent=`عرض خطة التنفيذ (${tasks.length} خطوة)`;
+    summary.textContent=tr(`عرض خطة التنفيذ (${tasks.length} خطوة)`);
     const list=document.createElement("ol");
     list.className="hb-case-task-list";
     for(const task of tasks){
@@ -336,9 +340,9 @@
       li.className=`hb-case-task hb-case-task--${task.status}`;
       const row=document.createElement("div");
       const title=document.createElement("strong");
-      title.textContent=task.title;
+      title.textContent=tr(task.title);
       const state=document.createElement("span");
-      state.textContent=taskStatusLabel(task.status);
+      state.textContent=tr(taskStatusLabel(task.status));
       row.append(title,state);
       const meta=document.createElement("small");
       const who=task.assignee_type==="user" ? "عليك"
@@ -346,7 +350,7 @@
         : task.assignee_type==="integration" ? "تنفيذ خارجي"
         : task.assignee_type==="system" ? "النظام"
         : "فريق التشغيل";
-      meta.textContent=who+(task.requires_approval ? " • موافقة صريحة مطلوبة" : "");
+      meta.textContent=tr(who+(task.requires_approval ? " • موافقة صريحة مطلوبة" : ""));
       li.append(row,meta);
       const official=task.metadata?.officialUrl || task.metadata?.source;
       if(official && /^https:\/\//i.test(official)){
@@ -354,7 +358,7 @@
         link.href=official;
         link.target="_blank";
         link.rel="noopener";
-        link.textContent="المصدر الرسمي";
+        link.textContent=tr("المصدر الرسمي");
         li.append(link);
       }
       list.append(li);
@@ -367,20 +371,20 @@
     const details=document.createElement("details");
     details.className="hb-case-timeline";
     const summary=document.createElement("summary");
-    summary.textContent=`سجل المعاملة (${events.length})`;
+    summary.textContent=tr(`سجل المعاملة (${events.length})`);
     const list=document.createElement("ol");
     list.className="hb-case-event-list";
     if(!events.length){
       const empty=document.createElement("li");
-      empty.textContent="لا توجد أحداث مسجلة بعد.";
+      empty.textContent=tr("لا توجد أحداث مسجلة بعد.");
       list.append(empty);
     }else{
       for(const event of events.slice(0,20)){
         const li=document.createElement("li");
         const title=document.createElement("strong");
-        title.textContent=caseEventLabel(event.event_type);
+        title.textContent=tr(caseEventLabel(event.event_type));
         const meta=document.createElement("small");
-        meta.textContent=`${actorLabel(event.actor_type)} • ${date(event.occurred_at)}`;
+        meta.textContent=tr(`${actorLabel(event.actor_type)} • ${date(event.occurred_at)}`);
         li.append(title,meta);
         list.append(li);
       }
@@ -393,27 +397,27 @@
     const details=document.createElement("details");
     details.className="hb-case-ai";
     const summary=document.createElement("summary");
-    summary.textContent="تحليل HOSSAM BAHR AI";
+    summary.textContent=tr("تحليل HOSSAM BAHR AI");
     const body=document.createElement("div");
     body.className="hb-case-ai-body";
     const result=run?.output_summary?.result || null;
 
     if(run?.status==="failed"){
       const p=document.createElement("p");
-      p.textContent="تعذر إكمال التحليل الذكي لهذه الحالة حاليًا. لم يتم تنفيذ أي إجراء خارجي.";
+      p.textContent=tr("تعذر إكمال التحليل الذكي لهذه الحالة حاليًا. لم يتم تنفيذ أي إجراء خارجي.");
       body.append(p);
     }else if(!result){
       const p=document.createElement("p");
-      p.textContent="يجري تجهيز التحليل الذكي للحالة.";
+      p.textContent=tr("يجري تجهيز التحليل الذكي للحالة.");
       body.append(p);
     }else{
       const intro=document.createElement("p");
-      intro.textContent=result.summary_ar || "تم تحليل الهدف وتجهيز مسار أولي.";
+      intro.textContent=tr(result.summary_ar || "تم تحليل الهدف وتجهيز مسار أولي.");
       body.append(intro);
 
       if(result.detected_intent){
         const intent=document.createElement("p");
-        intent.innerHTML="<b>فهم الطلب:</b> ";
+        intent.innerHTML=html("<b>فهم الطلب:</b> ");
         intent.append(document.createTextNode(result.detected_intent));
         body.append(intent);
       }
@@ -422,11 +426,11 @@
         if(!Array.isArray(items)||!items.length)return;
         const section=document.createElement("div");
         const heading=document.createElement("b");
-        heading.textContent=label;
+        heading.textContent=tr(label);
         const list=document.createElement("ul");
         for(const item of items.slice(0,6)){
           const li=document.createElement("li");
-          li.textContent=String(item);
+          li.textContent=tr(String(item));
           list.append(li);
         }
         section.append(heading,list);
@@ -453,10 +457,10 @@
     const heading=document.createElement("div");
     heading.className="hb-case-card-heading";
     const title=document.createElement("strong");
-    title.textContent=item.title;
+    title.textContent=tr(item.title);
     const status=document.createElement("span");
     status.className="hb-case-status";
-    status.textContent=caseStatusLabel(item.status);
+    status.textContent=tr(caseStatusLabel(item.status));
     heading.append(title,status);
 
     const completed=tasks.filter((task)=>task.status==="done").length;
@@ -474,8 +478,8 @@
 
     const meta=document.createElement("p");
     const countryName=item.country_pack_id ? countryPackNameById.get(item.country_pack_id) : "";
-    const progressText=total ? `${completed} من ${total} خطوات مكتملة • ${percent}%` : `جاهزية ${percent}%`;
-    meta.textContent=countryName ? `${countryName} • ${progressText}` : progressText;
+    const progressText=tr(total ? `${completed} من ${total} خطوات مكتملة • ${percent}%` : `جاهزية ${percent}%`);
+    meta.textContent=tr(countryName ? `${countryName} • ${progressText}` : progressText);
 
     const next=nextExecutableTask(tasks);
     const nextLine=document.createElement("p");
@@ -488,9 +492,9 @@
         : next.assignee_type==="integration" && next.status==="waiting" ? "بانتظار التنفيذ الخارجي: "
         : next.assignee_type==="agent" ? "المنصة تعالج: "
         : "الخطوة التالية: ";
-      nextLine.textContent=prefix+next.title;
+      nextLine.textContent=tr(prefix+next.title);
     }else{
-      nextLine.textContent=total && completed===total ? "اكتملت جميع خطوات المسار." : "سيتم تحديد الخطوة التالية تلقائيًا.";
+      nextLine.textContent=tr(total && completed===total ? "اكتملت جميع خطوات المسار." : "سيتم تحديد الخطوة التالية تلقائيًا.");
     }
     card.append(heading,progress,meta,nextLine);
     if(aiRun)card.append(buildCaseAI(aiRun));
@@ -507,7 +511,7 @@
       .not("status","in",'("completed","cancelled")')
       .order("created_at",{ascending:false})
       .limit(20);
-    if (error) { target.innerHTML = "<p>تعذر تحميل الحالات.</p>"; return []; }
+    if (error) { target.innerHTML = html("<p>تعذر تحميل الحالات.</p>"); return []; }
     if(!data.length){
       target.replaceChildren(article("لا توجد حالات مفتوحة","اكتب هدفك بالأعلى أو ابدأ من أي خدمة."));
       return [];
@@ -596,19 +600,19 @@
     top.className="hb-inbox-item-top";
     const copy=document.createElement("div");
     const title=document.createElement("strong");
-    title.textContent=item.title;
+    title.textContent=tr(item.title);
     const summary=document.createElement("p");
-    summary.textContent=item.summary || "يحتاج انتباهك";
+    summary.textContent=tr(item.summary || "يحتاج انتباهك");
     copy.append(title,summary);
 
     const badge=document.createElement("span");
     badge.className="hb-inbox-priority";
-    badge.textContent=inboxPriorityLabel(item.priority || "normal");
+    badge.textContent=tr(inboxPriorityLabel(item.priority || "normal"));
     top.append(copy,badge);
     card.append(top);
 
     const meta=document.createElement("small");
-    meta.textContent=item.due_at ? `الموعد: ${date(item.due_at)}` : "بدون موعد محدد";
+    meta.textContent=tr(item.due_at ? `الموعد: ${date(item.due_at)}` : "بدون موعد محدد");
     card.append(meta);
 
     const destination=inboxDestination(item);
@@ -617,13 +621,13 @@
         const link=document.createElement("a");
         link.href=destination.href;
         link.className="hb-inbox-action";
-        link.textContent=destination.label;
+        link.textContent=tr(destination.label);
         card.append(link);
       }else{
         const button=document.createElement("button");
         button.type="button";
         button.className="hb-inbox-action";
-        button.textContent=destination.label;
+        button.textContent=tr(destination.label);
         button.addEventListener("click",async()=>{
           if(destination.type==="scroll"){
             const node=document.querySelector(destination.selector);
@@ -677,7 +681,7 @@
       .lte("due_at",end)
       .order("due_at",{ascending:true})
       .limit(30);
-    if (error) { target.innerHTML="<p>تعذر تحميل الاستحقاقات.</p>"; return; }
+    if (error) { target.innerHTML=html("<p>تعذر تحميل الاستحقاقات.</p>"); return; }
     const rows=data||[];
     if(!rows.length){
       target.replaceChildren(article("لا توجد استحقاقات مفتوحة","ستظهر التجديدات والمواعيد المهمة هنا."));
@@ -703,11 +707,11 @@
       return;
     }
     const text=document.createElement("span");
-    text.textContent=`المسار المختار: ${candidate.service_name}${candidate.emirate ? " • "+candidate.emirate : ""}`;
+    text.textContent=tr(`${english ? "Selected pathway: " : "المسار المختار: "}${candidate.service_name}${candidate.emirate ? " • "+candidate.emirate : ""}`);
     const clear=document.createElement("button");
     clear.type="button";
     clear.className="hb-os-goal-clear";
-    clear.textContent="تغيير";
+    clear.textContent=tr("تغيير");
     clear.addEventListener("click",()=>{
       renderGoalSelection(null);
       const area=$("[data-os-goal-suggestions]");
@@ -729,19 +733,19 @@
     }
     const hint=document.createElement("p");
     hint.className="hb-os-goal-hint";
-    hint.textContent="هل تقصد إحدى هذه الخدمات؟ اخترها لفتح المسار الموثق، أو اتركها بدون اختيار لبدء مسار عام.";
+    hint.textContent=tr("هل تقصد إحدى هذه الخدمات؟ اخترها لفتح المسار الموثق، أو اتركها بدون اختيار لبدء مسار عام.");
     const nodes=rows.map((candidate)=>{
       const button=document.createElement("button");
       button.type="button";
       button.className="hb-os-service-suggestion";
       const copy=document.createElement("div");
       const title=document.createElement("strong");
-      title.textContent=candidate.service_name;
+      title.textContent=tr(candidate.service_name);
       const meta=document.createElement("small");
-      meta.textContent=[candidate.service_type,candidate.emirate,candidate.authority_key].filter(Boolean).join(" • ");
+      meta.textContent=tr([candidate.service_type,candidate.emirate,candidate.authority_label||candidate.authority_key].filter(Boolean).join(" • "));
       copy.append(title,meta);
       const badge=document.createElement("span");
-      badge.textContent=candidate.emirate || "خدمة موثقة";
+      badge.textContent=tr(candidate.emirate || "خدمة موثقة");
       button.append(copy,badge);
       button.addEventListener("click",()=>renderGoalSelection(candidate));
       return button;
@@ -755,6 +759,12 @@
     if(!textarea)return;
     let timer=null;
     let requestSeq=0;
+    let englishCatalog;
+    async function englishCandidates(value){
+      if(!englishCatalog)englishCatalog=Promise.all([import('/intent-search.js?v=english-os-20261004'),fetch('/english-catalog-data.json').then(r=>{if(!r.ok)throw Error('catalog unavailable');return r.json();})]);
+      const [search,rows]=await englishCatalog;
+      return search.rankServices(value,rows).slice(0,5).map(row=>({service_slug:row.s,service_name:row.e,emirate:row.emirate,authority_key:row.i,authority_label:row.n,service_type:null}));
+    }
     textarea.addEventListener("input",()=>{
       renderGoalSelection(null);
       const value=textarea.value.trim();
@@ -765,7 +775,9 @@
       }
       const seq=++requestSeq;
       timer=setTimeout(async()=>{
-        const {data,error}=await client.rpc("hb_resolve_service_candidates",{p_query:value,p_limit:5});
+        let data,error;
+        if(english){try{data=await englishCandidates(value);}catch(e){error=e;}}
+        else ({data,error}=await client.rpc("hb_resolve_service_candidates",{p_query:value,p_limit:5}));
         if(seq!==requestSeq)return;
         if(error){
           renderGoalSuggestions([]);
@@ -781,13 +793,13 @@
     if(!select)return [];
     const {data,error}=await client.rpc("hb_active_country_packs");
     if(error || !Array.isArray(data) || !data.length){
-      select.replaceChildren(new Option("لا توجد دولة مفعّلة حاليًا",""));
+      select.replaceChildren(new Option(tr("لا توجد دولة مفعّلة حاليًا"),""));
       select.disabled=true;
       return [];
     }
     countryPackNameById.clear();
     const options=data.map((pack)=>{
-      const label=pack.name_ar || pack.name_en || pack.country_code || pack.pack_key;
+      const label=english ? (pack.name_en || pack.country_code || pack.pack_key) : (pack.name_ar || pack.name_en || pack.country_code || pack.pack_key);
       if(pack.pack_id)countryPackNameById.set(pack.pack_id,label);
       return new Option(label,pack.pack_key);
     });
@@ -808,7 +820,7 @@
       if (!goal) return;
       const button=form.querySelector("button");
       button.disabled=true;
-      button.textContent="جاري إنشاء الحالة…";
+      button.textContent=tr("جاري إنشاء الحالة…");
       let createError=null;
       try {
         if(!window.HB_OS_API)throw new Error("Global OS API unavailable");
@@ -817,7 +829,7 @@
         createError=error;
       }
       button.disabled=false;
-      button.textContent="ابدأ الحالة";
+      button.textContent=tr("ابدأ الحالة");
       if (createError) return setMessage("تعذر إنشاء الحالة الآن. تأكد من تفعيل Global OS API.","error");
       form.reset();
       renderGoalSelection(null);
@@ -867,7 +879,7 @@
       .select("id,document_type,original_filename,verification_status,expires_at,created_at")
       .order("created_at",{ascending:false})
       .limit(20);
-    if (error) { target.innerHTML="<p>تعذر تحميل المستندات.</p>"; return; }
+    if (error) { target.innerHTML=html("<p>تعذر تحميل المستندات.</p>"); return; }
     target.replaceChildren(...(data.length ? data.map((item)=>{
       const expiry=item.expires_at ? ` • انتهاء: ${date(item.expires_at)}` : "";
       return article(item.original_filename || item.document_type, `${item.document_type} • ${item.verification_status}${expiry}`);
@@ -898,12 +910,12 @@
       if(file.size>10*1024*1024)return setMessage("حجم الملف يتجاوز 10 ميجابايت.","error");
       const button=form.querySelector("button[type='submit']");
       button.disabled=true;
-      button.textContent="جاري الرفع الآمن…";
+      button.textContent=tr("جاري الرفع الآمن…");
       const objectId=crypto.randomUUID();
       const storagePath=`${session.user.id}/${objectId}/document.${allowed.get(file.type)}`;
       const upload=await client.storage.from("hb-private-documents").upload(storagePath,file,{contentType:file.type,upsert:false});
       if(upload.error){
-        button.disabled=false; button.textContent="رفع إلى الخزنة الخاصة";
+        button.disabled=false; button.textContent=tr("رفع إلى الخزنة الخاصة");
         return setMessage("تعذر رفع الملف إلى الخزنة الخاصة.","error");
       }
       const registered=await client.rpc("hb_register_document",{
@@ -918,7 +930,7 @@
       });
       if(registered.error){
         await client.storage.from("hb-private-documents").remove([storagePath]);
-        button.disabled=false; button.textContent="رفع إلى الخزنة الخاصة";
+        button.disabled=false; button.textContent=tr("رفع إلى الخزنة الخاصة");
         return setMessage("تم إلغاء الرفع لأن تسجيل المستند لم يكتمل بأمان.","error");
       }
       await client.from("hb_consents").insert({
@@ -929,7 +941,7 @@
         scopes:["document:store","document:analyze"]
       });
       button.disabled=false;
-      button.textContent="رفع إلى الخزنة الخاصة";
+      button.textContent=tr("رفع إلى الخزنة الخاصة");
       form.reset();
       form.hidden=true;
       setMessage("تم حفظ المستند في خزنتك الخاصة. لا يتم إرساله إلى جهة خارجية تلقائيًا.","success");
@@ -961,21 +973,21 @@
     box.dataset.importedConversation="true";
     box.className="hb-imported-conversation";
     const title=document.createElement("strong");
-    title.textContent="تم نقل سياق محادثتك إلى مركز التشغيل";
+    title.textContent=tr("تم نقل سياق محادثتك إلى مركز التشغيل");
     const meta=document.createElement("p");
     const parts=[];
     if(handoff.service_slug)parts.push("الخدمة: "+handoff.service_slug);
     if(handoff.jurisdiction_code)parts.push("الاختصاص: "+handoff.jurisdiction_code);
     if(handoff.authority_key)parts.push("الجهة: "+handoff.authority_key);
-    meta.textContent=parts.join(" • ");
+    meta.textContent=tr(parts.join(" • "));
     box.append(title,meta);
     const answers=handoff.conversation_context?.answers||[];
     if(answers.length){
       const details=document.createElement("details");
       const summary=document.createElement("summary");
-      summary.textContent="إجابات التوضيح المنقولة ("+answers.length+")";
+      summary.textContent=tr("إجابات التوضيح المنقولة ("+answers.length+")");
       const list=document.createElement("ul");
-      answers.forEach((answer)=>{const li=document.createElement("li");li.textContent=answer;list.append(li);});
+      answers.forEach((answer)=>{const li=document.createElement("li");li.textContent=tr(answer);list.append(li);});
       details.append(summary,list);
       box.append(details);
     }
@@ -1006,7 +1018,7 @@
       });
       try{sessionStorage.setItem(marker,"1");}catch{}
       clearPublicHandoff();
-      history.replaceState(null,"","/os/#case-progress");
+      history.replaceState(null,"",(english ? "/en" : "")+"/os/#case-progress");
       setMessage("تم حفظ خطتك وبدء المعاملة من نفس الهدف الذي حللته قبل تسجيل الدخول.","success");
     }catch{
       setMessage("تم الاحتفاظ بهدفك، لكن تعذر إنشاء المعاملة الآن. يمكنك المحاولة من زر «ابدأ الحالة».","error");
@@ -1014,10 +1026,10 @@
   }
 
   async function boot() {
-    if (location.pathname !== "/os/") return;
+    if (route !== "/os/") return;
     const {data}=await client.auth.getSession();
     if(!data.session){
-      location.replace(`/auth/?return=${encodeURIComponent(location.pathname + location.search + location.hash)}`);
+      location.replace(`${english ? "/en" : ""}/auth/?return=${encodeURIComponent(location.pathname + location.search + location.hash)}`);
       return;
     }
     if(!window.HB_OS_API || !await window.HB_OS_API.health()){
@@ -1028,15 +1040,15 @@
         section.className="hb-os-hero";
         const kicker=document.createElement("span");
         kicker.className="eyebrow";
-        kicker.textContent="HOSSAM BAHR OS";
+        kicker.textContent=tr("HOSSAM BAHR OS");
         const title=document.createElement("h1");
-        title.textContent="مركز التشغيل قيد التفعيل.";
+        title.textContent=tr("مركز التشغيل قيد التفعيل.");
         const p=document.createElement("p");
-        p.textContent="الخدمات الحالية للمنصة مستمرة بشكل طبيعي. سيظهر مركز التشغيل تلقائيًا بعد اكتمال تفعيل البنية الخلفية الآمنة.";
+        p.textContent=tr("الخدمات الحالية للمنصة مستمرة بشكل طبيعي. سيظهر مركز التشغيل تلقائيًا بعد اكتمال تفعيل البنية الخلفية الآمنة.");
         const link=document.createElement("a");
-        link.href="/services/";
+        link.href=english ? "/en/services/" : "/services/";
         link.className="save-service-action";
-        link.textContent="العودة إلى الخدمات";
+        link.textContent=tr("العودة إلى الخدمات");
         section.append(kicker,title,p,link);
         main.append(section);
       }
