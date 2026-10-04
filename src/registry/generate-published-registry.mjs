@@ -11,6 +11,8 @@ const gdrfa = await load('content/gdrfa-dubai-deep-audit.json');
 const mohre = await load('content/mohre-deep-audit.json');
 const icp = await load('content/icp-deep-audit.json');
 const coverage = await load('content/government-coverage-expansion.json');
+// Platform translations preserve service identity; official titles/sources stay intact.
+const englishTitles = await load('src/registry/service-title-translations.json');
 
 const reviewedAt = '2026-08-11';
 // Date of the last successful official-destination audit. This is kept
@@ -98,14 +100,14 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
   return {
     id,
     slug,
-    name: { ar: text(nameAr), en: text(nameEn) },
+    name: { ar: text(nameAr), en: text(englishTitles[slug] || nameEn) },
     emirate: normalizedEmirate(emirate),
     authority: normalizedAuthority(authorityId, authorityAr, authorityEn),
     classification: { main: mainCategory, sub: subCategory },
     economicActivity,
     licenseType,
     customerTypes,
-    keywords: terms(nameAr, nameEn, authorityAr, authorityEn, emirate, mainCategory, subCategory, keywords),
+    keywords: terms(nameAr, englishTitles[slug] || nameEn, authorityAr, authorityEn, emirate, mainCategory, subCategory, keywords),
     description: text(description),
     documents: { status: documentsPublished ? 'PUBLISHED' : unavailable, items: requirements || [] },
     governmentFees: { status: fees && fees !== unavailable ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(fees) },
