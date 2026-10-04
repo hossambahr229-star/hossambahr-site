@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {performance} from "node:perf_hooks";
+import {domesticResidenceClarification} from "../src/global/ai/clarification-quality.mjs";
 const endpoint=process.env.HB_AI_ENDPOINT||"https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge";
 const run="human-quality-"+Date.now();
 const groups=[
@@ -22,7 +23,7 @@ async function runCase(c,i){
  assert.equal(r.status,200,"HTTP "+i);const p=await r.json();const slug=p.result?.matches?.[0]?.service_slug||"";const ans=p.result?.answer?.text||"";
  if(!slug)fallback++;if(!ans||/لم أتمكن من مطابقة طلبك/.test(ans))dead++;
  if(c.expected){if(!c.expected.test(slug)){wrong++;console.error("WRONG",i,c.prompt,slug)}}
- else {if(!/(?:العامل|العاملة|عامل|عاملة)/.test(ans)||!/إمارة|الامارة|الإمارة/.test(ans)){wrong++;console.error("BAD_CLARIFY",i,c.prompt,ans)}}
+ else {if(!domesticResidenceClarification(ans)){wrong++;console.error("BAD_CLARIFY",i,c.prompt,ans)}}
  if(p.result?.grounding?.no_invention!==true)unsupported++;answers[i]=ans.replace(/\\s+/g," ").trim();
 }
 for(let i=0;i<cases.length;i+=10)await Promise.all(cases.slice(i,i+10).map((item,j)=>runCase(item,i+j)));
