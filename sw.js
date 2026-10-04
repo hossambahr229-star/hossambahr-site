@@ -1,7 +1,7 @@
-const CACHE_NAME="hb-public-v3";
+const CACHE_NAME="hb-public-v4";
 const PRECACHE=["/","/manifest.webmanifest","/icon.svg","/brand-tokens.css","/intent-first.css"];
 const SENSITIVE_PREFIXES=["/auth/","/account/","/os/","/en/auth/","/en/account/","/en/os/"];
-const AUTH_RUNTIME_PATHS=new Set(["/auth-client.js","/auth-config.js","/vendor/supabase.js"]);
+const AUTH_RUNTIME_PATHS=new Set(["/auth-client.js","/auth-config.js","/vendor/supabase.js","/os-client.js","/os-i18n.js","/customer-intake.js","/customer-jurisdiction.js"]);
 
 self.addEventListener("install",(event)=>{
   event.waitUntil(caches.open(CACHE_NAME).then((cache)=>cache.addAll(PRECACHE)).then(()=>self.skipWaiting()));

@@ -1,9 +1,11 @@
 import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
+import {createHash} from 'node:crypto';
 
 // Last build step: the desktop composition owns its cascade and must survive
 // authentication/header and generated-page materialization.
 const root = resolve(import.meta.dirname, '../..');
+const geometryVersion=createHash('sha256').update(await readFile(join(root,'home-geometry.css'))).digest('hex').slice(0,12);
 const summary = JSON.parse(await readFile(join(root,'platform-summary.json'),'utf8'));
 for (const route of ['index.html', 'en/index.html']) {
   const file = join(root, route);
@@ -13,7 +15,7 @@ for (const route of ['index.html', 'en/index.html']) {
     .replace(/<style id="approved-reference-hard-lock">[\s\S]*?<\/style>/g, '')
     .replace(/<body\b/, '<body data-home-geometry="approved-desktop"')
     .replace(/<link\b[^>]*href="\/home-geometry\.css[^" ]*"[^>]*>/g, '')
-    .replace('</head>', '<link rel="stylesheet" href="/home-geometry.css?v=20261004-geometry2"/></head>');
+    .replace('</head>', '<link rel="stylesheet" href="/home-geometry.css?v='+geometryVersion+'"/></head>');
   if (!html.includes('ai-showcase-robot')) html = html.replace(/(<aside class="premium-ai-showcase"[^>]*>)/,
     '$1<img class="ai-showcase-robot" src="/assets/hb-ai-robot.webp" alt="" width="160" height="205"/>');
   html = html.replace('/assets/hb-ai-robot.png','/assets/hb-ai-robot.webp');
