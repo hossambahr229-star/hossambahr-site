@@ -277,7 +277,8 @@ async function loadCatalog(admin: any) {
       .filter((r:any) => String(r.id || "").startsWith("requirement"))
       .map((r:any) => String(r.reason || "")).filter(Boolean);
     const requirements = [...new Set([...requirementTitles, ...ruleRequirements])].filter(hasDocumentedValue).slice(0, 10);
-    const conditions = rules.filter((r:any) => String(r.id || "") === "conditions").map((r:any) => String(r.reason || "")).filter(Boolean);
+    const verifiedConditions = documentedRule(rules, "conditions", safeSources);
+    const conditions = verifiedConditions ? [verifiedConditions.value] : [];
     const haystack = normalize([
       binding.service_slug,title,authority?.name_ar,authority?.name_en,jurisdiction?.name_ar,jurisdiction?.name_en,
       ...requirements,...conditions
