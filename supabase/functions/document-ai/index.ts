@@ -1,3 +1,4 @@
+import { completedProviderText, providerFailure } from "../public-ai-concierge/provider-status.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.57.4";
 const ALLOWED=new Set(["https://hossambahr.com","https://www.hossambahr.com"]);
 const MAX_BYTES=3*1024*1024;
@@ -21,7 +22,7 @@ function sniffMime(bytes:Uint8Array){
 Deno.serve(async(req)=>{
  if(req.method==="OPTIONS")return new Response(null,{status:204,headers:cors(req)});
  if(req.method!=="POST")return reply(req,{error:"method_not_allowed"},405);
- const bearer=(req.headers.get("authorization")||"").replace(/^Bearer\\s+/i,"").trim();
+ const bearer=(req.headers.get("authorization")||"").replace(/^Bearer\s+/i,"").trim();
  if(!bearer)return reply(req,{error:"authentication_required"},401);
  const supabaseUrl=Deno.env.get("SUPABASE_URL")||"";
  const serviceKey=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")||"";
@@ -44,8 +45,8 @@ Deno.serve(async(req)=>{
  if(isPdf)content.unshift({type:"input_file",filename,file_data:data}); else content.unshift({type:"input_image",image_url:data,detail:"high"});
  try{
   const res=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"Authorization":"Bearer "+key,"Content-Type":"application/json"},body:JSON.stringify({model:Deno.env.get("OPENAI_MODEL")||"gpt-5.6-sol",store:false,reasoning:{effort:"low"},max_output_tokens:900,input:[{role:"user",content}]})});
-  if(!res.ok){console.error("document-ai provider error",{status:res.status});return reply(req,{error:"analysis_unavailable"},502)}
-  const j=await res.json(),text=outputText(j); if(!text)return reply(req,{error:"empty_analysis"},502);
+  if(!res.ok){const detail=await res.json().catch(()=>({}));console.error("document-ai provider error",providerFailure(res.status,detail?.error?.code,detail?.error?.type));return reply(req,{error:"analysis_unavailable"},502)}
+  const j=await res.json(),text=completedProviderText(j); if(!text)return reply(req,{error:"empty_analysis"},502);
   return reply(req,{ok:true,analysis:text,file:{filename,mime_type:mime,stored:false},privacy:{persisted:false,provider_store:false}});
  }catch{return reply(req,{error:"analysis_unavailable"},503)}
 });

@@ -115,7 +115,8 @@
       analyzeButton.disabled = true;
       analyzeButton.textContent = "جارٍ التحليل…";
     }
-    if (file.size > MAX_PUBLIC_DOCUMENT_BYTES) {
+    const isText = TEXT_DOCUMENT_TYPES.has(file.type) || TEXT_DOCUMENT_EXTENSIONS.test(file.name);
+    if (isText && file.size > MAX_PUBLIC_DOCUMENT_BYTES) {
       addBubble("assistant", "لحماية الخصوصية وسرعة التحليل العام، الحد الحالي للمستند قبل تسجيل الدخول هو 2 MB. يمكنك وصف المعاملة هنا، أو تسجيل الدخول عند بدء المعاملة لرفع المستند ضمن مساحة المستندات الآمنة.");
       attachmentAnalysisInFlight = false;
       renderAttachmentTray();
@@ -671,7 +672,7 @@
       renderAttachmentTray();
     });
     attachLabel.append(attachmentInput);
-    const privacy = create("span", "hb-ai-local-analysis-note", "التحليل العام للنصوص يتم محليًا • الحفظ والرفع الآمن عند بدء المعاملة");
+    const privacy = create("span", "hb-ai-local-analysis-note", "عند التحليل يُرسل مقتطف نصي بعد إخفاء بعض البيانات • PDF والصور تتطلب تسجيل الدخول");
     toolRow.append(attachLabel, privacy);
     attachmentTray = create("div", "hb-ai-attachment-tray");
     attachmentTray.hidden = true;
