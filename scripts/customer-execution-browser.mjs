@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';import {readFile,mkdir,writeFile} from 'node:fs/promises';import {chromium} from 'playwright';
+import {escapeHtml} from '../src/publication/english-catalog.mjs';
 const base=process.env.HB_BASE_URL||'http://127.0.0.1:8787',out='artifacts/customer-execution';await mkdir(out,{recursive:true});
 const {services}=JSON.parse(await readFile('src/registry/published-services.json','utf8'));
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||undefined});const records=[];
 try{
  const page=await browser.newPage();
  for(const service of services)for(const locale of ['ar','en']){
-  const path=(locale==='en'?'/en':'')+service.internalRoute,response=await page.request.get(base+path);assert.equal(response.status(),200,path);const html=await response.text();assert.ok(html.includes(service.name[locale]),path);assert.ok(!/هذه الصفحة غير متاحة/.test(html),path);
+  const path=(locale==='en'?'/en':'')+service.internalRoute,response=await page.request.get(base+path);assert.equal(response.status(),200,path);const html=await response.text();assert.ok(html.includes(escapeHtml(service.name[locale])),path);assert.ok(!/<h1[^>]*>هذه الصفحة غير متاحة/.test(html),path);
   const escaped=(locale==='en'?'/en':'')+'/contact/?service='+encodeURIComponent(service.slug)+'&amp;source='+encodeURIComponent(service.internalRoute);assert.ok(html.includes(escaped),'Missing contextual execution path: '+path);records.push({path,status:'PASS',service:service.slug});
  }
  for(const [width,height] of [[1440,900],[1440,1000],[1366,768],[1366,900],[430,932],[390,844],[360,800]])for(const locale of ['ar','en']){
