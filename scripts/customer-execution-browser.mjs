@@ -12,9 +12,11 @@ try{
  for(const [width,height] of [[1440,900],[1440,1000],[1366,768],[1366,900],[430,932],[390,844],[360,800]])for(const locale of ['ar','en']){
   await page.setViewportSize({width,height});const prefix=locale==='en'?'/en':'';const service=services.find(s=>s.emirate==='دبي');
   await page.goto(base+prefix+'/contact/?service='+encodeURIComponent(service.slug)+'&source='+encodeURIComponent(service.internalRoute),{waitUntil:'networkidle'});
-  await page.locator('#intake-service').selectOption(service.slug);await page.locator('#intake-goal').fill(locale==='en'?'Review this transaction with the team':'راجع هذه المعاملة مع الفريق');await page.locator('form[data-customer-intake] button').click();
+  await page.locator('#intake-service').selectOption(service.slug);await page.locator('#intake-goal').fill(locale==='en'?'Review this transaction with the team':'راجع هذه المعاملة مع الفريق');
+  await page.locator('#intake-emirate').selectOption('أبوظبي');await page.locator('form[data-customer-intake] button').click();assert.equal(await page.locator('[data-intake-review]').isVisible(),false,'Mismatched local jurisdiction must not produce a handoff');
+  await page.locator('#intake-emirate').selectOption('دبي');await page.locator('form[data-customer-intake] button').click();
   assert.equal(await page.locator('[data-intake-review]').isVisible(),true);assert.match(await page.locator('[data-intake-workspace]').getAttribute('href'),/return=%2Fos%2F%3Fhandoff%3D1%23ai-intake/);
-  const context=await page.evaluate(()=>JSON.parse(sessionStorage.getItem('hb-public-ai-handoff-v1')));assert.equal(context.service_id,service.id);assert.equal(context.authority_key,service.authority.id);assert.equal(context.language,locale);assert.equal(context.transaction_state,'CUSTOMER_REVIEWED_DRAFT');assert.equal(context.source_page,service.internalRoute);
+  const context=await page.evaluate(()=>JSON.parse(sessionStorage.getItem('hb-public-ai-handoff-v1')));assert.equal(context.service_id,service.id);assert.equal(context.authority_key,service.authority.id);assert.equal(context.jurisdiction_code,'AE-DU');assert.equal(context.language,locale);assert.equal(context.transaction_state,'CUSTOMER_REVIEWED_DRAFT');assert.equal(context.source_page,service.internalRoute);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);await page.screenshot({path:`${out}/intake-${locale}-${width}-${height}.png`,fullPage:true});
   await page.goto(base+prefix+'/pricing/');assert.equal(await page.locator('h1').count(),1);assert.equal(await page.getByRole('link',{name:locale==='en'?'Request a scoped quotation':'اطلب عرض سعر محدد النطاق'}).count(),1);
  }
