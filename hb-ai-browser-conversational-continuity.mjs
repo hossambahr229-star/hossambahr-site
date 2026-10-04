@@ -13,8 +13,23 @@ const scenarios=[
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||undefined});const page=await browser.newPage({viewport:{width:430,height:900}});
 let lost_context=0,unnecessary_clarification=0,generic_fallback=0,wrong_route=0,dead_end=0,unsupported_claim=0;const records=[];
 const generic=/لم أتمكن من مطابقة|ما النتيجة التي تريد الوصول إليها|حدّد نوع المعاملة|حدد نوع المعاملة/i;
-async function send(q){const before=await page.locator('[data-chat-role="assistant"]').count();await page.locator("#government-search").fill(q);await page.locator(".hb-chat-send").click();await page.waitForFunction(n=>document.querySelectorAll('[data-chat-role="assistant"]').length>n,before,{timeout:25000});await page.waitForTimeout(250);const bubbles=page.locator('[data-chat-role="assistant"] .hb-chat-bubble');const answer=((await bubbles.last().innerText())||"").trim();const href=await page.locator('[data-chat-role="assistant"]').last().locator('a[href^="/services/"]').first().getAttribute("href").catch(()=>null);return {q,answer,service:href};}
-for(let i=0;i<scenarios.length;i++){await page.goto(base+"/ai/?continuity-browser="+i,{waitUntil:"networkidle"});await page.evaluate(()=>sessionStorage.clear());await page.reload({waitUntil:"networkidle"});const turns=[];let active=null;for(let j=0;j<scenarios[i].length;j++){const x=await send(scenarios[i][j]);turns.push(x);if(!x.answer)dead_end++;if(generic.test(x.answer)){generic_fallback++;if(j>0)unnecessary_clarification++;}if(j===0)active=x.service;else if(active&&x.service&&x.service!==active&&!/ولو|بدل|قصدي|actually|instead/i.test(x.q)){lost_context++;wrong_route++;}if(/غير موثق|لا توجد|لن أضع رقم/.test(x.answer)&&/\b\d{3,6}\s*(?:درهم|aed)\b/i.test(x.answer))unsupported_claim++;}records.push({conversation:i+1,turns});}
+async function send(q){
+ const completed='[data-chat-role="assistant"]:not([data-pending])';
+ const before=await page.locator(completed).count();
+ await page.locator("#government-search").fill(q);await page.locator(".hb-chat-send").click();
+ await page.waitForFunction(n=>{
+  const send=document.querySelector(".hb-chat-send");
+  const replies=document.querySelectorAll('[data-chat-role="assistant"]:not([data-pending])');
+  return send && !send.disabled && !document.querySelector('[data-chat-role="assistant"][data-pending]') && replies.length>n && Boolean(replies[replies.length-1]?.querySelector('.hb-chat-bubble')?.textContent?.trim());
+ },before,{timeout:45000});
+ const reply=page.locator(completed).last();
+ const answer=((await reply.locator(".hb-chat-bubble").innerText())||"").trim();
+ assert.ok(!["أراجع طلبك…","أتحقق من المعلومات المتاحة…","أطابقها مع المصدر الرسمي…"].includes(answer),"A progress indicator is not a completed answer");
+ const href=await reply.locator('a[href^="/services/"]').first().getAttribute("href").catch(()=>null);
+ return {q,answer,service:href};
+}
+
+for(let i=0;i<scenarios.length;i++){await page.goto(base+"/ai/?continuity-browser="+i,{waitUntil:"networkidle"});await page.evaluate(()=>sessionStorage.clear());await page.reload({waitUntil:"networkidle"});const turns=[];let active=null;for(let j=0;j<scenarios[i].length;j++){const x=await send(scenarios[i][j]);turns.push(x);if(!x.answer)dead_end++;if(generic.test(x.answer)){generic_fallback++;if(j>0)unnecessary_clarification++;}if(j===0)active=x.service;else if(/ولو|بدل|قصدي|actually|instead/i.test(x.q)){active=x.service;}else if(active&&x.service&&x.service!==active){lost_context++;wrong_route++;}if(/غير موثق|لا توجد|لن أضع رقم/.test(x.answer)&&/\b\d{3,6}\s*(?:درهم|aed)\b/i.test(x.answer))unsupported_claim++;}records.push({conversation:i+1,turns});}
 await browser.close();const totalTurns=records.reduce((n,r)=>n+r.turns.length,0);const metrics={conversations:records.length,total_turns:totalTurns,lost_context_rate:lost_context/totalTurns,unnecessary_clarification_rate:unnecessary_clarification/totalTurns,generic_fallback_rate:generic_fallback/totalTurns,wrong_route_rate:wrong_route/totalTurns,dead_end_rate:dead_end/totalTurns,unsupported_claim_rate:unsupported_claim/totalTurns};
 const status=[lost_context,unnecessary_clarification,generic_fallback,wrong_route,dead_end,unsupported_claim].some(count=>count>0)?"FAIL":"PASS";
 const report={status,metrics,conversations:records};
