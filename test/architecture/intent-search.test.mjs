@@ -152,3 +152,17 @@ test('final beginner journeys resolve to the correct legal service family', () =
 test('unmatched text does not return arbitrary verified services', () => {
   assert.deepEqual(rankServices('zzzz qqqq غير مفهوم إطلاقًا', services), []);
 });
+
+
+test('short company issuance wording stays on the requested emirate and issuance action', () => {
+  const scenarios = [
+    ['فتح شركة دبي', 'issue-trade-license-dubai'],
+    ['رخصة جديدة رأس الخيمة', /ras-al-khaimah.*(?:license.*issuance|issuance.*license)/],
+  ];
+  for (const [query, expected] of scenarios) {
+    const result = rankServices(query, services)[0];
+    assert.ok(result, query);
+    if (expected instanceof RegExp) assert.match(result.s, expected, query + ' => ' + result.s);
+    else assert.equal(result.s, expected, query);
+  }
+});

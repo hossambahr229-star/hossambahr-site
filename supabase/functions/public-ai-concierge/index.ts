@@ -299,8 +299,8 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const amend = has(goal, ["تعديل","عدل","amend","modify"]);
   const company = has(goal, ["شركه","رخصه","رخصتي","ترخيص","بزنس","business","company","license","licence"]);
   const partnerChange = has(goal, ["اضيف شريك","أضيف شريك","اضافه شريك","إضافة شريك","ادخل شريك","أدخل شريك","ادخال شريك","إدخال شريك","شريك جديد","new partner","add partner","add shareholder","new shareholder"]);
-  const open = has(goal, ["افتح","تاسيس","اصدار","ابدأ","ابدا","open","start","issue","establish","new"]);
-  const directLicenseRequest = has(goal, ["اريد رخصه","عايز رخصه","احتاج رخصه","ابغي رخصه","ابي رخصه","want a license","need a license","need licence","want licence"]);
+  const open = has(goal, ["افتح","فتح","تاسيس","تأسيس","اصدار","إصدار","ابدأ","ابدا","open","opening","start","issue","establish","new"]);
+  const directLicenseRequest = has(goal, ["اريد رخصه","عايز رخصه","احتاج رخصه","ابغي رخصه","ابي رخصه","رخصه جديده","رخصة جديدة","new license","new licence","want a license","need a license","need licence","want licence"]);
   const employee = has(goal, ["موظف","عامل","employee","worker"]);
   const workDomain = has(goal, ["تصريح عمل","تصريح العمل","وظيفه","وظيفة","توظيف","موظف","عامل","work permit","employment","employee","worker","hire"]);
   const transfer = has(goal, ["انقله","نقل","تحويل","transfer","move"]);
