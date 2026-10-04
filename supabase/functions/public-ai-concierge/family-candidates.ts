@@ -7,8 +7,8 @@ export function familyCandidate(row:any, relationship:FamilyRelationship|null, a
  const generalICP=row.authority?.authority_key==='icp' && /(?:اصدار|تجديد) تصريح اقامه عبر icp/.test(normalize(row.title));
  if(relationship && residenceRequest && generalICP) domain=4;
  const relation=relationshipCompatibility(identity,relationship);
- const newborn=/(?:^| )(?:ل?مولود|newborn|new born)(?: |$)/.test(identity);
- const requestedNewborn=/(?:^| )(?:ل?مولود|newborn|new born)(?: |$)/.test(normalize(requestedGoal));
+ const newborn=/(?:^| )(?:ل?مولود|المولود|newborn|new born)(?: |$)/.test(identity);
+ const requestedNewborn=/(?:^| )(?:ل?مولود|المولود|newborn|new born)(?: |$)/.test(normalize(requestedGoal));
  const child=["children","son","daughter"].includes(String(relationship));
  const wrongNewborn=Boolean(relationship && residenceRequest && newborn && (!child || !requestedNewborn));
  const actions={issue:/اصدار|\b(?:issue|issuance|new)\b/,renew:/تجديد|\brenew(?:al)?\b/,amend:/تعديل|\b(?:amend|modify)\b/,cancel:/الغاء|\bcancel(?:lation)?\b/,transfer:/نقل|تحويل|\btransfer\b/};
