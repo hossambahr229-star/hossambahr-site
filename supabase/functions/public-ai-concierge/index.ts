@@ -280,11 +280,11 @@ async function loadCatalog(admin: any) {
     const verifiedConditions = documentedRule(rules, "conditions", safeSources);
     const conditions = verifiedConditions ? [verifiedConditions.value] : [];
     const haystack = normalize([
-      binding.service_slug,title,authority?.name_ar,authority?.name_en,jurisdiction?.name_ar,jurisdiction?.name_en,
+      binding.service_slug,title,binding.metadata?.name_en,authority?.name_ar,authority?.name_en,jurisdiction?.name_ar,jurisdiction?.name_en,
       ...requirements,...conditions
     ].join(" "));
     return { binding, policy, workflow, authority, jurisdiction, safeSources, title, requirements, conditions, steps, haystack };
-  }).filter((row:any) => row.safeSources.length > 0);
+  }).filter((row:any) => row.safeSources.length > 0 && row.binding.metadata?.public_catalog !== false);
 
   catalogCache = { at: Date.now(), rows };
   return rows;
@@ -556,6 +556,7 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
     return {
       service_slug: row.binding.service_slug,
       service_name: row.title,
+      service_name_en: row.binding.metadata?.name_en || null,
       service_url: "/services/"+encodeURIComponent(row.binding.service_slug)+"/",
       jurisdiction: row.jurisdiction ? { code: row.jurisdiction.code, name_ar: row.jurisdiction.name_ar, name_en: row.jurisdiction.name_en } : { code:"AE", name_ar:"دولة الإمارات", name_en:"United Arab Emirates" },
       authority: row.authority ? {
