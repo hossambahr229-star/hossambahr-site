@@ -358,6 +358,12 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "umm-al-quwain-mainland-licensing-official-path") score += 16000;
     else if (/employment-contract|work-permit/.test(slug)) score -= 12000;
   }
+  const rtaNoc = has(goal,["noc","no objection","عدم ممانعه","عدم ممانعة"]) && has(goal,["rta","طرق","الطرق","transport"]);
+  if (rtaNoc && slug.startsWith("rta-") && /trade-license-noc/.test(slug)) {
+    if (renew && slug==="rta-renew-trade-license-noc-dubai") return 100000;
+    else if (amend && slug==="rta-modify-trade-license-noc-dubai") return 100000;
+    else if (!renew && !amend && slug==="rta-new-trade-license-noc-dubai") return 100000;
+  }
   const tradeLicense = has(goal, ["رخصه تجاريه","الرخصه التجاريه","رخصة تجارية","الرخصة التجارية","trade license","business license","economic license","رخصه الشركه","رخصة الشركة"]);
   if (tradeLicense && renew) {
     if (/(renew-business-license-dubai|economic-license-renewal|commercial-license-renewal)/.test(slug)) score += 6500;
@@ -416,6 +422,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const childRelationship = relationship === "children" || relationship === "son" || relationship === "daughter";
   return rows.map((row:any) => {
     let score = specialBoost(normalized, row.binding.service_slug, row.jurisdiction?.code || null);
+    // Exact catalog identity must outrank a neighboring generic transaction.
+    if ([row.title,row.binding.metadata?.name_en].filter(Boolean).some(title=>normalize(String(title))===normalized)) score += 100000;
     const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));
     const familyCompatibility = familyCandidate(row,relationship,action,familyResidenceSponsorship);
     const domainCompatibility = familyCompatibility.domain;
