@@ -1,0 +1,38 @@
+name: Customer execution browser checks
+on:
+  pull_request:
+    paths:
+      - 'src/publication/customer-execution.mjs'
+      - 'src/publication/generate-customer-execution.mjs'
+      - 'customer-intake.*'
+      - 'scripts/customer-execution-browser.mjs'
+      - '.github/workflows/customer-execution.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  customer-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm run build
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - name: Verify both execution paths and reviewed customer drafts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m http.server 8787 --bind 127.0.0.1 > /tmp/hb-customer-server.log 2>&1 &
+          export HB_BASE_URL='http://127.0.0.1:8787'
+          export HB_BROWSER_PATH="$(command -v chrome)"
+          node scripts/customer-execution-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: customer-execution
+          path: artifacts/customer-execution
+          retention-days: 14
