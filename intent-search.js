@@ -121,6 +121,7 @@ export function rankServices(query, services = []) {
   const changeCompanyName = company && includesAny(normalized, ['أغير','اغير','تغيير','تعديل','change','amend']) && includesAny(normalized, ['اسم','name']);
   const requestsNoc = includesAny(normalized, ['rta','noc','عدم ممانعة']);
   const renewFamilyResidence = spouseOrFamily && residence && includesAny(normalized, ['تجديد','أجدد','اجدد','تجدد','تجدديد','renew']);
+  const issueFamilyResidence = spouseOrFamily && residence && includesAny(normalized, ['اصدار','إصدار','issue','issuance','new']);
   const renewResidence = residence && includesAny(normalized, ['تجديد','أجدد','اجدد','تجدد','تجدديد','renew']);
   const investorResidence = residence && includesAny(normalized, ['مستثمر','شريك','ذهبية','خضراء','investor','partner','golden','green']);
   const labourComplaint = includesAny(normalized, ['راتب','شكوى','أشتكي','اشتكي','salary','complaint']);
@@ -201,6 +202,7 @@ export function rankServices(query, services = []) {
     if (company && includesAny(name, ['تاشيره','visa']) && !includesAny(normalized, ['تاشيره','visa'])) score -= 120;
     if (includesAny(normalized, ['اقامه ذهبيه','golden visa','golden residence']) && service.s === 'issuance-of-a-new-work-permit-golden-visa-holders') score += includesAny(normalized, ['عمل','وظف','work']) ? 170 : 0;
     if (spouseOrFamily && residence && !renewFamilyResidence && includesAny(name, ['إصدار إقامة لأفراد الأسرة','family residence'])) score += 260;
+    if (issueFamilyResidence && service.s === 'تجديد-إقامة-أفراد-الأسرة-في-دبي') score -= 700;
     if (visitRelative && includesAny(name, ['زيارة قريب','زيارة صديق','visit relative','visit friend'])) score += 260;
     if (employee && residence && includesAny(name, ['إصدار إقامة موظف','إصدار تصريح إقامة','employee residence','issue residence permit'])) score += 260;
     if (openCompany && emirate === 'دبي' && service.s === 'issue-trade-license-dubai') score += 420;
