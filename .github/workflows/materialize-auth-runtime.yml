@@ -9,11 +9,18 @@ on:
       - "_headers"
       - "supabase/config.toml"
       - "auth-client.js"
+      - "public-ai-concierge.js"
+      - "ui-i18n.js"
+      - "english-experience.css"
+      - "src/publication/*english*"
+      - "src/publication/update-ai-runtime-version.mjs"
+      - "package.json"
       - ".github/workflows/materialize-auth-runtime.yml"
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: materialize-auth-runtime-main
@@ -32,7 +39,7 @@ jobs:
         with:
           node-version: "24"
       - name: Materialize Supabase/Auth runtime into static HTML
-        run: node src/auth/apply-auth-runtime.mjs
+        run: npm run build
       - name: Reject legacy Supabase project references
         shell: bash
         run: |
@@ -43,14 +50,26 @@ jobs:
           fi
           grep -q 'ngcrkuykfqmiqhsnpcrc' auth/index.html
           grep -q '/auth-client.js' os/index.html
+      - name: Confirm native English pages were materialized
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f en/ai/index.html
+          test -f en/auth/index.html
+          grep -q 'lang="en" dir="ltr"' en/ai/index.html
+          grep -q '/ui-i18n.js' en/ai/index.html
       - name: Commit synchronized runtime
         run: |
           git config user.name "HossamBahr Auth Runtime"
           git config user.email "auth-runtime@users.noreply.github.com"
-          git add auth account owner os services
+          git add -- '*.html' english-catalog-data.json intent-search-data.js
           if git diff --cached --quiet; then
             echo "Auth runtime is already synchronized."
           else
             git commit -m "Synchronize Supabase auth runtime [auth runtime sync] [skip ci]"
             git push origin HEAD:main
           fi
+      - name: Publish the synchronized static tree
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${{ github.repository }}/pages/builds" --silent
