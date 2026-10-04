@@ -129,6 +129,7 @@ export function rankServices(query, services = []) {
   const changeCompanyName = company && includesAny(normalized, ['أغير','اغير','تغيير','تعديل','change','amend']) && includesAny(normalized, ['اسم','name']);
   const requestsNoc = includesAny(normalized, ['rta','noc','عدم ممانعة']);
   const renewFamilyResidence = spouseOrFamily && residence && includesAny(normalized, ['تجديد','أجدد','اجدد','تجدد','تجدديد','renew']);
+  const issueFamilyResidence = spouseOrFamily && residence && includesAny(normalized, ['اصدار','إصدار','issue','issuance','new']);
   const renewResidence = residence && includesAny(normalized, ['تجديد','أجدد','اجدد','تجدد','تجدديد','renew']);
   const investorResidence = residence && includesAny(normalized, ['مستثمر','شريك','ذهبية','خضراء','investor','partner','golden','green']);
   const labourComplaint = includesAny(normalized, ['راتب','شكوى','أشتكي','اشتكي','salary','complaint']);
@@ -186,8 +187,10 @@ export function rankServices(query, services = []) {
     if (spouseOrFamily && includesAny(name, ['family','اسره','افراد الاسره'])) score += 90;
     if (parentResidence) score += includesAny(name, ['والدين','parents','parent residence']) ? 1200 : -900;
     if (goldenResidence) score += includesAny(name, ['اقامه ذهبيه','الاقامه الذهبيه','golden residence','golden residency']) && !includesAny(name, ['تصريح عمل','work permit']) ? 900 : -700;
-    if (spouseOrFamily && includesAny(normalized, ['تجديد','اجدد','renew']) && service.s === 'تجديد-إقامة-أفراد-الأسرة-في-دبي') score += 190;
+    if (renewFamilyResidence && emirate === 'دبي' && service.s === 'تجديد-إقامة-أفراد-الأسرة-في-دبي') score += 760;
     if (renewResidence && !spouseOrFamily && emirate === 'دبي' && service.s === 'تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي') score += 560;
+    if (renewResidence && employee && !spouseOrFamily && emirate === 'دبي' && service.s === 'تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي') score += 540;
+    if (renewResidence && employee && !includesAny(normalized, ['تصريح عمل','work permit']) && includesAny(haystack, ['work permit','تصريح عمل'])) score -= 900;
     if (renewResidence && !investorResidence && service.s === 'green-residence-partner-investor-dubai') score -= 420;
     if (insideUae && service.s === 'transfer-work-permit-uae') score += 180;
     if (transferEmployee && service.s === 'transfer-work-permit-uae') score += 520;
@@ -207,6 +210,7 @@ export function rankServices(query, services = []) {
     if (company && includesAny(name, ['تاشيره','visa']) && !includesAny(normalized, ['تاشيره','visa'])) score -= 120;
     if (includesAny(normalized, ['اقامه ذهبيه','golden visa','golden residence']) && service.s === 'issuance-of-a-new-work-permit-golden-visa-holders') score += includesAny(normalized, ['عمل','وظف','work']) ? 170 : 0;
     if (spouseOrFamily && residence && !renewFamilyResidence && includesAny(name, ['إصدار إقامة لأفراد الأسرة','family residence'])) score += 260;
+    if (issueFamilyResidence && service.s === 'تجديد-إقامة-أفراد-الأسرة-في-دبي') score -= 700;
     if (visitRelative && includesAny(name, ['زيارة قريب','زيارة صديق','visit relative','visit friend'])) score += 260;
     if (employee && residence && includesAny(name, ['إصدار إقامة موظف','إصدار تصريح إقامة','employee residence','issue residence permit'])) score += 260;
     if (openCompany && emirate === 'دبي' && service.s === 'issue-trade-license-dubai') score += 420;
@@ -488,3 +492,4 @@ if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootstrapIntentSearch, { once: true });
   else bootstrapIntentSearch();
 }
+
