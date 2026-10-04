@@ -6,7 +6,25 @@
     auth: { flowType: "pkce", persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, storageKey: "hossambahr-auth" }
   });
   window.HB_AUTH = client;
-  const safeReturnPath = (value) => (!value || typeof value !== "string" || !value.startsWith("/") || value.startsWith("//")) ? "/account/" : value;
+  function safeReturnPath(value) {
+    const visited = new Set();
+    for (let depth=0; depth<5; depth++) {
+      if (typeof value!=="string" || !value.startsWith("/") || value.startsWith("//") || /[\\\u0000-\u001f\u007f]/.test(value) || visited.has(value)) return "/account/";
+      visited.add(value);
+      try {
+        const url=new URL(value,"https://hossambahr.com");
+        if(url.origin!=="https://hossambahr.com") return "/account/";
+        if(/^\/auth(?:\/|$)/.test(url.pathname)) {value=url.searchParams.get("return");continue;}
+        return url.pathname+url.search+url.hash;
+      } catch {return "/account/";}
+    }
+    return "/account/";
+  }
+  function navigationReturnPath(location) {
+    return safeReturnPath(/^\/auth(?:\/|$)/.test(location.pathname)
+      ? new URLSearchParams(location.search).get("return")
+      : location.pathname+location.search+(location.hash||""));
+  }
   const message = (text, state = "info") => { const target = document.querySelector("[data-auth-message]"); if (target) { target.textContent = text; target.dataset.state = state; target.hidden = false; } };
   const setBusy = (form, busy) => { form?.querySelectorAll("button,input").forEach((field) => { field.disabled = busy; }); form?.setAttribute("aria-busy", String(busy)); };
   const passwordValid = (value) => value.length >= 10 && /[a-zA-Z]/.test(value) && /\d/.test(value);
@@ -24,7 +42,7 @@
     if (!actions) return;
     let link = actions.querySelector("[data-account-link]");
     if (!link) { link = document.createElement("a"); link.className = "login-action"; link.dataset.accountLink = "true"; actions.append(link); }
-    link.href = session ? "/account/" : `/auth/?return=${encodeURIComponent(location.pathname + location.search)}`;
+    link.href = session ? "/account/" : `/auth/?return=${encodeURIComponent(navigationReturnPath(location))}`;
     link.textContent = session ? "حسابي" : "تسجيل الدخول";
   }
 
