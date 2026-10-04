@@ -76,14 +76,14 @@ jobs:
           deno check --config supabase/functions/global-os-worker/deno.json supabase/functions/global-os-worker/index.ts
           deno check supabase/functions/document-ai/index.ts
           deno check supabase/functions/public-ai-concierge/index.ts
+      - name: Materialize current sources before architecture tests
+        run: npm run build
       - name: Architecture tests
         run: npm run test:architecture
       - name: Migration safety audit
         run: npm run audit:global-os-migrations
       - name: Secret leakage audit
         run: npm run audit:secrets
-      - name: Full static build compatibility
-        run: npm run build
       - name: Verify Global OS runtime injection
         shell: bash
         run: |
