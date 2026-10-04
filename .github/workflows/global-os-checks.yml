@@ -13,6 +13,7 @@ on:
       - "src/auth/apply-auth-runtime.mjs"
       - "test/architecture/**"
       - "scripts/hb-ai-human-semantic-production.mjs"
+      - "hb-ai-browser-conversational-continuity.mjs"
       - ".github/workflows/global-os-checks.yml"
   workflow_dispatch:
 
@@ -47,6 +48,7 @@ jobs:
           node --check global-os-client.js
           node --check src/auth/apply-auth-runtime.mjs
           node --check scripts/hb-ai-human-semantic-production.mjs
+          node --check hb-ai-browser-conversational-continuity.mjs
           node --check os-client.js
           node --check os-automation-client.js
           node --check pwa-runtime.js
