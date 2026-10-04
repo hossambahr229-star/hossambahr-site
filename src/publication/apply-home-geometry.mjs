@@ -31,6 +31,7 @@ for (const route of ['index.html', 'en/index.html']) {
     if (!html.includes('premium-consult-cta')) html = html.replace(/(<section class="premium-how[\s\S]*?<\/ol>)/,
       '$1<a class="premium-consult-cta" href="/contact/"><b>تحتاج استشارة متخصصة؟</b><span>تواصل مع فريقنا الآن ←</span></a>');
     html = html.replace('<h2>من اختيار الخدمة حتى النتيجة</h2>', '<h2>كيف نساعدك؟</h2>');
+    html = html.replace(/(<div class="premium-popular">)([\s\S]*?)(<\/div>)/,(_,open,links,close)=>open+links+(links.includes('q=عقود عمل')?'':'<a href="/services/?q=عقود عمل">عقود عمل</a>')+close);
   }
   const icon = name => `<svg class="home-line-icon" aria-hidden="true"><use href="/assets/home-icons.svg#${name}"/></svg>`;
   if(route==='index.html') html = html.replace(/<div class="header-actions">([\s\S]*?)<\/div>/,(_,actions)=>{

@@ -2,7 +2,7 @@ import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {createHash} from 'node:crypto';
 import {customerContext,executionHref,executionPage} from './customer-execution.mjs';
-import {englishServiceRoute} from './english-catalog.mjs';
+import {englishServiceRoute,escapeHtml} from './english-catalog.mjs';
 const root=resolve(import.meta.dirname,'../..');
 const {services}=JSON.parse(await readFile(join(root,'src/registry/published-services.json'),'utf8'));
 const runtimeVersion=createHash('sha256').update(await readFile(join(root,'customer-intake.js'))).update(await readFile(join(root,'customer-jurisdiction.js'))).digest('hex').slice(0,12);
@@ -14,6 +14,7 @@ for(const locale of ['ar','en'])for(const pricing of [false,true]){
 for(const service of services)for(const locale of ['ar','en']){
  const path=join(root,'.'+(locale==='en'?englishServiceRoute(service):service.internalRoute),'index.html');
  let html=await readFile(path,'utf8'),href=executionHref(service,locale);
+ html=html.replace(/(<h1\b[^>]*>)[\s\S]*?(<\/h1>)/,(_,open,close)=>open+escapeHtml(locale==='en'?service.name.en:service.name.ar)+close);
  if(locale==='ar')html=html.replace(/(<a\b[^>]*class="execute-with-us-cta"[^>]*href=")[^"]*("[^>]*>)/g,'$1'+href.replaceAll('&','&amp;')+'$2').replace(/(<a\b[^>]*class="execute-with-us-cta"[^>]*?)\s+target="_blank"/g,'$1');
  else if(!html.includes('data-customer-execution'))html=html.replace('</main>',`<section data-customer-execution><h2>Ask Hossam Bahr to handle it</h2><p>Get help with preparation, execution and follow-up within an agreed scope. Review your service and authority before continuing.</p><a href="${href.replaceAll('&','&amp;')}">Review my transaction request →</a></section></main>`);
  await writeFile(path,html);

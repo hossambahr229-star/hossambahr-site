@@ -23,8 +23,9 @@ for(const route of ['ai','auth','auth/callback','auth/reset','account','os']){
  html=html.replaceAll('https://hossambahr.com/'+route+'/','https://hossambahr.com/en/'+route+'/');
  html=html.replace(/href="\/auth\//g,'href="/en/auth/').replace(/href="\/account\//g,'href="/en/account/').replace(/href="\/services\//g,'href="/en/services/').replace(/href="\/contact\//g,'href="/en/contact/').replace(/href="\/command-center\//g,'href="/en/os/').replace(/href="\/"/g,'href="/en/"');
  html=html.replace(/<script src="\/auth-client\.js(?:\?[^\"]*)?"/,match=>'<script src="/ui-i18n.js" defer></script>'+match);
- html=html.replace(/href="\/os\//g,'href="/en/os/').replaceAll('return=%2Fai%2F','return=%2Fen%2Fai%2F');
+ html=html.replace(/href="\/os\/(?=[?#"])/g,'href="/en/os/').replaceAll('return=%2Fai%2F','return=%2Fen%2Fai%2F');
  if(route==='os')html=html.replace(/<script src="\/os-client\.js(?:\?[^\"]*)?"/,match=>'<script src="/os-i18n.js" defer></script>'+match);
+ html=html.replace(/(<a\b[^>]*href="\/os\/automation\/"[^>]*>)([\s\S]*?)(<\/a>)/,(_,open,label,close)=>open+label+' (Arabic)'+close);
  html=html.replace('</head>','<link rel="stylesheet" href="/english-experience.css"></head>');
  const dir=join(root,'en',route);await mkdir(dir,{recursive:true});await writeFile(join(dir,'index.html'),html);
 }
