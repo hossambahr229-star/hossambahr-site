@@ -584,7 +584,7 @@
 
   function authStartUrl(payload, destination = "ai-intake") {
     rememberHandoff(payload);
-    const returnPath = "/os/?handoff=1&start=1#" + encodeURIComponent(destination);
+    const returnPath = (english ? "/en" : "") + "/os/?handoff=1&start=1#" + encodeURIComponent(destination);
     return (english ? "/en/auth/?return=" : "/auth/?return=") + encodeURIComponent(returnPath);
   }
 
@@ -790,13 +790,13 @@
       }
       if (action === "follow") {
         const s = await session();
-        if (s) location.assign("/os/#action-center");
+        if (s) location.assign((english ? "/en" : "") + "/os/#action-center");
         else if (state.last_payload) location.assign(authStartUrl(state.last_payload, "action-center"));
         return;
       }
       if (action === "completion") {
         const s = await session();
-        if (s && await hasSavedCase()) location.assign("/os/#case-progress");
+        if (s && await hasSavedCase()) location.assign((english ? "/en" : "") + "/os/#case-progress");
         else if (state.last_payload) location.assign(authStartUrl(state.last_payload, "ai-intake"));
       }
     }, true);

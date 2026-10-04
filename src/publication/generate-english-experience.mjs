@@ -1,5 +1,7 @@
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
+import vm from 'node:vm';
+const translations={window:{},document:{documentElement:{lang:'en'}}};
 const root=resolve(import.meta.dirname,'../..');
 const phrases={
  'مساعد المعاملات الذكي في الإمارات':'UAE transactions assistant','مساحة ذكاء لمعاملات الإمارات: افهم معاملتك، الجهة، المستندات، الخطوات والمصادر الرسمية ثم انتقل إلى التنفيذ.':'understand your UAE transaction, authority, documents, steps and official sources before starting a transaction.',
@@ -11,13 +13,17 @@ const phrases={
  'تأكيد الحساب':'Verify account','جارٍ تأكيد حسابك':'Verifying your account','انتظر لحظات…':'Please wait…','تعيين كلمة مرور جديدة':'Set a new password','كلمة المرور الجديدة':'New password','حفظ كلمة المرور':'Save password','يجب أن تتكون من 10 أحرف على الأقل وتضم حروفًا وأرقامًا.':'Use at least 10 characters, including letters and numbers.',
  'حسابك الآمن':'Your secure account','مرحبًا بك':'Welcome','البريد:':'Email:','فتح مركز التشغيل':'Open your workspace','لوحة المالك':'Owner dashboard','تسجيل الخروج':'Sign out','تسجيل الدخول يحفظ الخدمات التي تختارها فقط. لا نخزن كلمات مرور المواقع الحكومية.':'Sign-in saves the services you choose. We do not store passwords for government websites.','المعاملات المحفوظة':'Saved transactions','جارٍ التحميل…':'Loading…','مركز القيادة':'Workspace','تسجيل الدخول':'Sign in','حسابي':'My account','الخدمات':'Services','بحث':'Search'
 };
-for(const route of ['ai','auth','auth/callback','auth/reset','account']){
+vm.runInNewContext(await readFile(join(root,'os-i18n.js'),'utf8'),translations);
+Object.assign(phrases,translations.window.HB_OS_LABELS);
+for(const route of ['ai','auth','auth/callback','auth/reset','account','os']){
  let html=await readFile(join(root,route,'index.html'),'utf8');
  html=html.replace('lang="ar" dir="rtl"','lang="en" dir="ltr"');
  for(const [ar,en] of Object.entries(phrases).sort((a,b)=>b[0].length-a[0].length)) html=html.replaceAll(ar,en);
  html=html.replaceAll('https://hossambahr.com/'+route+'/','https://hossambahr.com/en/'+route+'/');
  html=html.replace(/href="\/auth\//g,'href="/en/auth/').replace(/href="\/account\//g,'href="/en/account/').replace(/href="\/services\//g,'href="/en/services/').replace(/href="\/"/g,'href="/en/"');
  html=html.replace(/<script src="\/auth-client\.js(?:\?[^\"]*)?"/,match=>'<script src="/ui-i18n.js" defer></script>'+match);
+ html=html.replace(/href="\/os\//g,'href="/en/os/').replaceAll('return=%2Fai%2F','return=%2Fen%2Fai%2F');
+ if(route==='os')html=html.replace(/<script src="\/os-client\.js(?:\?[^\"]*)?"/,match=>'<script src="/os-i18n.js" defer></script>'+match);
  html=html.replace('</head>','<link rel="stylesheet" href="/english-experience.css"></head>');
  const dir=join(root,'en',route);await mkdir(dir,{recursive:true});await writeFile(join(dir,'index.html'),html);
 }

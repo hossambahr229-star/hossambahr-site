@@ -16,6 +16,7 @@ for(const width of [1440,1366,430,390,360]){const page=await browser.newPage({vi
  assert.equal(dimensions.width,width,route+' actual viewport');assert.ok(dimensions.scroll<=width+1,route+' horizontal overflow at '+width);assert.equal(dimensions.lang,'en');assert.equal(dimensions.dir,'ltr');assert.ok(!/[\u0600-\u06ff]/.test(dimensions.heading));
  layouts.push({route,width,...dimensions});await page.screenshot({path:out+'/'+route.replaceAll('/','_')+width+'.png',fullPage:true});
 }assert.deepEqual(errors,[]);await page.close();}
+for(const width of [1440,1366,430,390,360]){const p=await browser.newPage({viewport:{width,height:844}});await p.goto(base+'/en/os/?handoff=1#ai-intake');await p.waitForURL('**/en/auth/?return=*');assert.equal(new URL(p.url()).searchParams.get('return'),'/en/os/?handoff=1#ai-intake');await p.close();}
 const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto(base+'/en/ai/?hb_qa=1',{waitUntil:'networkidle'});
 let documentUploads=0;page.on('request',request=>{if(request.url().includes('/functions/v1/document-ai'))documentUploads++;});
 const picker=page.waitForEvent('filechooser');await page.getByRole('button',{name:'＋ Attach',exact:true}).click();await (await picker).setFiles({name:'synthetic.pdf',mimeType:'application/pdf',buffer:Buffer.from('%PDF-1.4\n%%EOF')});
