@@ -33,19 +33,26 @@ const expected={
 };
 const results=[];
 try{
- for(const width of [1440,1366,430,390,360]){
-  const page=await browser.newPage({viewport:{width,height:width>1000?960:844},deviceScaleFactor:1,reducedMotion:'reduce'});
+ for(const [width,height] of [[1440,960],[1440,900],[1440,1000],[1366,768],[1366,900],[430,932],[390,844],[360,800]]){
+  const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1,reducedMotion:'reduce'});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(base,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+  await page.goto(base,{waitUntil:'domcontentloaded'});
+  const lifecycle=[];
+  async function sample(stage){lifecycle.push({stage,boxes:await page.evaluate(()=>Object.fromEntries(['.visual-target-hero','.premium-hero-main','.premium-hero-copy h1','.premium-intent-search','.premium-ai-showcase','.premium-category-grid'].map(s=>{const r=document.querySelector(s).getBoundingClientRect();return [s,[r.x,r.y,r.width,r.height]]})))})}
+  await sample('DOMContentLoaded');await page.evaluate(()=>document.fonts.ready);await sample('fonts.ready');
+  await page.evaluate(()=>Promise.all([...document.images].filter(img=>img.loading!=='lazy').map(img=>img.decode().catch(()=>{}))));await sample('images.ready');
+  await page.waitForTimeout(1000);await sample('+1s');await page.waitForTimeout(2000);await sample('+3s');
   const layout=await page.evaluate(selectors=>({
    width:innerWidth,scrollWidth:document.documentElement.scrollWidth,
    fontLoaded:document.fonts.check('16px Cairo'),
    legacyMarks:[...document.querySelectorAll('.brand b,.hb-master-mark')].filter(e=>e.textContent.trim()==='ح').length,
    images:[...document.querySelectorAll('img')].filter(e=>!e.complete||!e.naturalWidth).map(e=>e.getAttribute('src')),
+   content:(()=>{const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,w:r.width,h:r.height}};return {headline:rect('.premium-hero-copy h1'),support:rect('.premium-hero-copy>p'),search:rect('.premium-intent-search'),chips:rect('.premium-popular'),hero:rect('.visual-target-hero'),categories:rect('.premium-category-grid'),aiActions:[...document.querySelectorAll('.ai-showcase-actions a')].map(e=>({scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}))}})(),
    boxes:Object.fromEntries(selectors.map(s=>{const r=document.querySelector(s).getBoundingClientRect();return[s,[r.x,r.y,r.width,r.height]]}))
   }),Object.keys(expected));
-  await page.screenshot({path:join(output,`${width}.png`),fullPage:true});
-  if(width===1440) await page.screenshot({path:join(output,'viewport-1440.png'),fullPage:false});
+  await page.screenshot({path:join(output,`${width}-${height}-full.png`),fullPage:true});
+  await page.screenshot({path:join(output,`${width}-${height}-viewport.png`),fullPage:false});
+  if(width===1440&&height===960) await page.screenshot({path:join(output,'viewport-1440.png'),fullPage:false});
   await page.locator('.ai-showcase-cta').click();
   const ai=await page.locator('#premium-ai-panel').evaluate(e=>e.classList.contains('is-open')&&getComputedStyle(e).visibility==='visible');
   await page.keyboard.press('Escape');
@@ -56,13 +63,21 @@ try{
   if(layout.legacyMarks)failures.push('Legacy brand mark');
   if(!ai)failures.push('AI panel did not open');
   if(errors.length)failures.push('JavaScript errors');
-  if(width===1440){
+  if(width===1440&&height===960){
    for(const [s,target] of Object.entries(expected))if(layout.boxes[s].some((n,i)=>Math.abs(n-target[i])>5))failures.push(`Geometry outside 5px tolerance: ${s}`);
    await page.locator('#premium-government-search').fill('إقامة');
    await Promise.all([page.waitForURL('**/services/?q=*'),page.locator('#premium-government-search').press('Enter')]);
    if(new URL(page.url()).searchParams.get('q')!=='إقامة')failures.push('Search query not preserved');
   }
-  results.push({width,layout,ai,errors,failures});await page.close();
+  const c=layout.content;
+  if(c.headline.bottom>c.support.y+1)failures.push('Headline overlaps supporting copy');
+  if(c.support.bottom>c.search.y+1)failures.push('Supporting copy overlaps search');
+  if(c.search.bottom>c.chips.y+1)failures.push('Search overlaps popular searches');
+  if(c.chips.bottom>c.hero.bottom+1)failures.push('Hero content escapes its container');
+  if(c.categories.y<c.hero.bottom-1||c.categories.y-c.hero.bottom>30)failures.push('Hero-to-category alignment is broken');
+  if(c.aiActions.some(a=>a.scrollHeight>a.clientHeight+2||a.scrollWidth>a.clientWidth+2))failures.push('AI action text is clipped');
+  const stable=lifecycle.slice(2);if(stable.some(s=>Object.entries(s.boxes).some(([key,box])=>box.some((n,i)=>Math.abs(n-stable[0].boxes[key][i])>2))))failures.push('Layout moves after fonts and images are ready');
+  results.push({width,height,layout,lifecycle,ai,errors,failures});await page.close();
  }
  const reference=await sharp(join(root,'qa/reference/approved-desktop.jpeg')).resize(1440,960).removeAlpha().raw().toBuffer();
  const actual=await sharp(join(output,'viewport-1440.png')).removeAlpha().raw().toBuffer();
@@ -72,7 +87,7 @@ try{
  await sharp(reference,{raw}).png().toFile(join(output,'reference-1440.png'));
  await sharp(overlay,{raw}).png().toFile(join(output,'overlay-50.png'));
  await sharp(diff,{raw}).png().toFile(join(output,'image-diff.png'));
- const report={base,geometryPassed:results.every(r=>!r.failures.length),pixelFidelity:'NOT_DECLARED',meanAbsolutePixelDifference:total/reference.length,changedPixelPercent:changed/(1440*960)*100,results};
+ const report={base,geometryPassed:results.every(r=>!r.failures.length),pixelFidelity:'NOT_DECLARED',humanVisualAcceptance:'NOT_ACCEPTED',scope:'Measured layout and image comparison do not establish founder acceptance.',meanAbsolutePixelDifference:total/reference.length,changedPixelPercent:changed/(1440*960)*100,results};
  await writeFile(join(output,'report.json'),JSON.stringify(report,null,2));
  console.log(JSON.stringify(report,null,2));
  if(!report.geometryPassed)process.exitCode=1;
