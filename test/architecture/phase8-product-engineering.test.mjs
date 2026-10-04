@@ -60,7 +60,7 @@ test('Phase 8 desktop search keeps the query field wider than the submit action'
   assert.match(css, /white-space: nowrap;/);
   assert.match(homepage, /intent-first\.css\?v=phase(?:8-20260916a|9-20260917a|9-1-20260917a)/);
   assert.equal((homepage.match(/intent-first\.css/g) || []).length, 1);
-  assert.match(homepage, /zero-defect-routing\.js\?v=phase(?:8-20260916b|9-20260917a|9-1-20260917a)/);
+  assert.match(homepage, /zero-defect-routing\.js\?v=[a-f0-9]{12}/);
   assert.equal((homepage.match(/zero-defect-routing\.js/g) || []).length, 1);
 });
 

@@ -4,6 +4,7 @@ import vm from 'node:vm';
 const translations={window:{},document:{documentElement:{lang:'en'}}};
 const root=resolve(import.meta.dirname,'../..');
 const phrases={
+ 'الرئيسية':'Home','الشركات والرخص':'Companies and licences','العمل والموظفون':'Employment','الشركات والمنشآت':'Companies and establishments','جميع الخدمات':'All services','الأفراد والإقامة':'Individuals and residence','الجهات':'Authorities (Arabic)','التحديثات':'Updates (Arabic)','الأسئلة والحلول':'Help (Arabic)','الشركات':'Companies','العمل':'Employment','الأنشطة':'Activities (Arabic)',
  'مساعد المعاملات الذكي في الإمارات':'UAE transactions assistant','مساحة ذكاء لمعاملات الإمارات: افهم معاملتك، الجهة، المستندات، الخطوات والمصادر الرسمية ثم انتقل إلى التنفيذ.':'understand your UAE transaction, authority, documents, steps and official sources before starting a transaction.',
  'أدوات HOSSAM BAHR AI':'HOSSAM BAHR AI tools','محادثة جديدة':'New conversation','العودة إلى المنصة':'Back to the platform','مساعدك الذكي للمعاملات في الإمارات':'Your UAE transactions assistant','كيف يمكنني مساعدتك اليوم؟':'How can I help you today?','محادثة مع HOSSAM BAHR AI':'Chat with HOSSAM BAHR AI','اسأل HOSSAM BAHR AI':'Ask HOSSAM BAHR AI','استشارة عامة بدون تسجيل دخول':'General guidance without signing in','اسألني عن أي معاملة في الإمارات':'Ask about any UAE transaction','إرسال':'Send','بدايات سريعة':'Quick prompts','الإقامة والتأشيرات':'Residence and visas','تأسيس شركة':'Set up a company','معاملات العمل':'Employment transactions','تحليل مستند':'Analyse a document','عن HOSSAM BAHR AI':'About HOSSAM BAHR AI',
  'HOSSAM BAHR AI هو طبقة الذكاء في منظومة HOSSAM BAHR. يساعد الأفراد والشركات على فهم المعاملة والجهة المختصة والخطوات والمستندات والمعلومات الموثقة، مع الانتقال إلى HOSSAM BAHR OS عند بدء التنفيذ.':'HOSSAM BAHR AI helps individuals and businesses understand transactions, responsible authorities, steps, documents and verified information. Start a transaction to continue into HOSSAM BAHR OS.',
@@ -20,7 +21,7 @@ for(const route of ['ai','auth','auth/callback','auth/reset','account','os']){
  html=html.replace('lang="ar" dir="rtl"','lang="en" dir="ltr"');
  for(const [ar,en] of Object.entries(phrases).sort((a,b)=>b[0].length-a[0].length)) html=html.replaceAll(ar,en);
  html=html.replaceAll('https://hossambahr.com/'+route+'/','https://hossambahr.com/en/'+route+'/');
- html=html.replace(/href="\/auth\//g,'href="/en/auth/').replace(/href="\/account\//g,'href="/en/account/').replace(/href="\/services\//g,'href="/en/services/').replace(/href="\/"/g,'href="/en/"');
+ html=html.replace(/href="\/auth\//g,'href="/en/auth/').replace(/href="\/account\//g,'href="/en/account/').replace(/href="\/services\//g,'href="/en/services/').replace(/href="\/contact\//g,'href="/en/contact/').replace(/href="\/command-center\//g,'href="/en/os/').replace(/href="\/"/g,'href="/en/"');
  html=html.replace(/<script src="\/auth-client\.js(?:\?[^\"]*)?"/,match=>'<script src="/ui-i18n.js" defer></script>'+match);
  html=html.replace(/href="\/os\//g,'href="/en/os/').replaceAll('return=%2Fai%2F','return=%2Fen%2Fai%2F');
  if(route==='os')html=html.replace(/<script src="\/os-client\.js(?:\?[^\"]*)?"/,match=>'<script src="/os-i18n.js" defer></script>'+match);
