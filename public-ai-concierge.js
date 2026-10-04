@@ -115,7 +115,8 @@
       analyzeButton.disabled = true;
       analyzeButton.textContent = "جارٍ التحليل…";
     }
-    if (file.size > MAX_PUBLIC_DOCUMENT_BYTES) {
+    const isText = TEXT_DOCUMENT_TYPES.has(file.type) || TEXT_DOCUMENT_EXTENSIONS.test(file.name);
+    if (isText && file.size > MAX_PUBLIC_DOCUMENT_BYTES) {
       addBubble("assistant", "لحماية الخصوصية وسرعة التحليل العام، الحد الحالي للمستند قبل تسجيل الدخول هو 2 MB. يمكنك وصف المعاملة هنا، أو تسجيل الدخول عند بدء المعاملة لرفع المستند ضمن مساحة المستندات الآمنة.");
       attachmentAnalysisInFlight = false;
       renderAttachmentTray();
