@@ -1,0 +1,20 @@
+import {rankServices} from './intent-search.js';
+const form=document.querySelector('[data-en-search]');
+if(form){
+ const input=form.querySelector('input'),status=document.querySelector('[data-en-search-status]'),empty=document.querySelector('[data-en-search-empty]');
+ const cards=[...document.querySelectorAll('[data-service-slug]')];
+ let services;
+ async function search(event){
+  event?.preventDefault();
+  try{
+   if(!services){const response=await fetch('/english-catalog-data.json');if(!response.ok)throw Error('catalog');services=await response.json();}
+   const query=input.value.trim(),results=query?rankServices(query,services):services;
+   const order=new Map(results.map((item,index)=>[item.s,index]));
+   for(const card of cards){card.hidden=!order.has(card.dataset.serviceSlug);card.style.order=String(order.get(card.dataset.serviceSlug)??cards.length);}
+   status.textContent=results.length+' matching services';empty.hidden=results.length>0;
+   const url=new URL(location.href);if(query)url.searchParams.set('q',query);else url.searchParams.delete('q');history.replaceState(null,'',url);
+  }catch{status.textContent='Search is temporarily unavailable. You can still browse the service directory below.';for(const card of cards)card.hidden=false;empty.hidden=true;}
+ }
+ form.addEventListener('submit',search);
+ const query=new URLSearchParams(location.search).get('q');if(query){input.value=query;search();}
+}
