@@ -37,8 +37,8 @@ test("fee and duration answers fail closed instead of inventing values", () => {
   assert.match(edge, /لا توجد في المعرفة الموثقة الحالية قيمة رسوم محددة/);
   assert.match(edge, /لن أضع رقمًا تقديريًا/);
   assert.match(edge, /لا توجد مدة تنفيذ محددة وموثقة/);
-  assert.match(edge, /ruleFact\(rules, "fees"\)/);
-  assert.match(edge, /ruleFact\(rules, "duration"\)/);
+  assert.match(edge, /documentedRule\(rules, "fees", row\.safeSources \|\| \[\]\)/);
+  assert.match(edge, /documentedRule\(rules, "duration", row\.safeSources \|\| \[\]\)/);
 });
 
 test("follow-up focus uses latest turn while full goal retains conversation context", () => {

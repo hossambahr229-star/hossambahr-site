@@ -2,6 +2,7 @@ import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 import { providerFailure, completedProviderText } from "./provider-status.ts";
 import { responseContext, jurisdictionCandidates } from "./response-context.ts";
+import { documentedRule, hasDocumentedValue, serviceIntroduction } from "./grounded-facts.ts";
 
 const ALLOWED_ORIGINS = new Set([
   "https://hossambahr.com",
@@ -132,19 +133,13 @@ function answerFocus(text: string) {
   return "overview";
 }
 
-function ruleFact(rules: any[], id: string) {
-  const rule = rules.find((item:any) => String(item?.id || "") === id);
-  if (!rule?.reason) return null;
-  return { value: String(rule.reason), source_refs: Array.isArray(rule.sourceRefs) ? rule.sourceRefs : [] };
-}
-
 function groundedAnswer(goal: string, row: any, focus: string) {
   const source = row.safeSources?.[0] || null;
   const rules = Array.isArray(row.policy?.rules) ? row.policy.rules : [];
-  const fees = ruleFact(rules, "fees");
-  const duration = ruleFact(rules, "duration");
-  const conditions = ruleFact(rules, "conditions");
-  const special = ruleFact(rules, "special-cases");
+  const fees = documentedRule(rules, "fees", row.safeSources || []);
+  const duration = documentedRule(rules, "duration", row.safeSources || []);
+  const conditions = documentedRule(rules, "conditions", row.safeSources || []);
+  const special = documentedRule(rules, "special-cases", row.safeSources || []);
   const authority = row.authority?.name_ar || null;
   const jurisdiction = row.jurisdiction?.name_ar || null;
   const verified = Boolean(source?.source_url);
@@ -198,7 +193,7 @@ function groundedAnswer(goal: string, row: any, focus: string) {
     text = "الخدمة محددة. يمكنك الانتقال إلى بدء المعاملة مع الاحتفاظ بالخدمة والإمارة والجهة في سياقك الحالي.";
     factStatus = "DERIVED_GUIDANCE";
   } else {
-    text = "المسار المناسب لطلبك هو «" + row.title + "»" + (authority ? " لدى " + authority : "") + (jurisdiction ? " في " + jurisdiction : "") + ".";
+    text = serviceIntroduction(row.title, authority, jurisdiction);
     if (conditions?.value && !reviewPending) text += " " + conditions.value;
   }
 
@@ -280,7 +275,7 @@ async function loadCatalog(admin: any) {
     const ruleRequirements = rules
       .filter((r:any) => String(r.id || "").startsWith("requirement"))
       .map((r:any) => String(r.reason || "")).filter(Boolean);
-    const requirements = [...new Set([...requirementTitles, ...ruleRequirements])].slice(0, 10);
+    const requirements = [...new Set([...requirementTitles, ...ruleRequirements])].filter(hasDocumentedValue).slice(0, 10);
     const conditions = rules.filter((r:any) => String(r.id || "") === "conditions").map((r:any) => String(r.reason || "")).filter(Boolean);
     const haystack = normalize([
       binding.service_slug,title,authority?.name_ar,authority?.name_en,jurisdiction?.name_ar,jurisdiction?.name_en,
