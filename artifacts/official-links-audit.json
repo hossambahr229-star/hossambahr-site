@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-04T12:15:46.355Z",
+  "generatedAt": "2026-10-04T12:23:59.627Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 167,
+    "REACHABLE": 166,
     "ACCESS_RESTRICTED": 9,
-    "TEMPORARILY_UNAVAILABLE": 0,
+    "TEMPORARILY_UNAVAILABLE": 1,
     "NETWORK_UNVERIFIED": 71,
     "BROKEN": 0
   },
@@ -1388,9 +1388,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
+      "status": 503,
       "finalUrl": "https://backoffice.mohre.gov.ae/mohre.complaints.app/TwafouqAnonymous2/CallerVerification?lang=en",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 503"
     },
     {
       "url": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
