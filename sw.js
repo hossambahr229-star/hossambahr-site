@@ -1,6 +1,6 @@
-const CACHE_NAME="hb-public-v2";
+const CACHE_NAME="hb-public-v3";
 const PRECACHE=["/","/manifest.webmanifest","/icon.svg","/brand-tokens.css","/intent-first.css"];
-const SENSITIVE_PREFIXES=["/auth/","/account/","/os/"];
+const SENSITIVE_PREFIXES=["/auth/","/account/","/os/","/en/auth/","/en/account/","/en/os/"];
 const AUTH_RUNTIME_PATHS=new Set(["/auth-client.js","/auth-config.js","/vendor/supabase.js"]);
 
 self.addEventListener("install",(event)=>{

@@ -6,11 +6,13 @@
   const HANDOFF_KEY = "hb-public-ai-handoff-v1";
   const TTL = 30 * 60 * 1000;
 
+  const english = document.documentElement.lang === "en";
+  const tr = (value) => window.HB_UI_T ? window.HB_UI_T(value) : String(value);
   const $ = (selector, root = document) => root.querySelector(selector);
   const create = (tag, className, value) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
-    if (value != null) node.textContent = String(value);
+    if (value != null) node.textContent = tr(value);
     return node;
   };
 
@@ -113,7 +115,7 @@
     const analyzeButton = attachmentTray?.querySelector(".hb-ai-document-analyze");
     if (analyzeButton) {
       analyzeButton.disabled = true;
-      analyzeButton.textContent = "جارٍ التحليل…";
+      analyzeButton.textContent = tr("جارٍ التحليل…");
     }
     const isText = TEXT_DOCUMENT_TYPES.has(file.type) || TEXT_DOCUMENT_EXTENSIONS.test(file.name);
     if (isText && file.size > MAX_PUBLIC_DOCUMENT_BYTES) {
@@ -135,7 +137,7 @@
         const res=await fetch("https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/document-ai",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+s.access_token},body:JSON.stringify({filename:file.name,mime_type:file.type,data_url:dataUrl})});
         const out=await res.json();removePending(pending);
         if(!res.ok||!out?.analysis)throw new Error("document_analysis_failed");
-        addBubble("user","حلّل هذا المستند: "+file.name);addBubble("assistant",out.analysis);
+        addBubble("user",(english ? "Analyse this document: " : "حلّل هذا المستند: ")+file.name);addBubble("assistant",out.analysis);
         pendingAttachment=null;if(attachmentInput)attachmentInput.value="";renderAttachmentTray();
       }catch{removePending(pending);addBubble("assistant","تعذر تحليل المستند الآن. لم يتم حفظ نسخة منه بواسطة خدمة التحليل.");}
       finally{attachmentAnalysisInFlight=false;renderAttachmentTray();}
@@ -150,11 +152,11 @@
         addBubble("assistant", "لم أجد نصًا قابلًا للتحليل داخل هذا المستند.");
         return;
       }
-      addBubble("user", "حلّل هذا المستند: " + file.name);
+      addBubble("user", (english ? "Analyse this document: " : "حلّل هذا المستند: ") + file.name);
       pendingAttachment = null;
       if (attachmentInput) attachmentInput.value = "";
       renderAttachmentTray();
-      await analyze("محتوى مستند " + file.name + ": " + cleaned, { fromDocument: true, suppressUserBubble: true });
+      await analyze((english ? "Document content " : "محتوى مستند ") + file.name + ": " + cleaned, { fromDocument: true, suppressUserBubble: true });
     } catch {
       removePending(pending);
       addBubble("assistant", "تعذر قراءة هذا المستند محليًا. لم يتم رفعه أو حفظه. يمكنك وصف محتواه أو بدء المعاملة لرفعه ضمن المساحة الآمنة.");
@@ -241,7 +243,7 @@
       if (!bubble?.isConnected) return window.clearInterval(timer);
       index = Math.min(index + 1, statuses.length - 1);
       const p = body?.querySelector("p");
-      if (p) p.textContent = statuses[index];
+      if (p) p.textContent = tr(statuses[index]);
       if (index === statuses.length - 1) window.clearInterval(timer);
     }, 260);
     bubble._hbThinkingTimer = timer;
@@ -259,7 +261,7 @@
     const block = create(options.disclosure ? "details" : "section", "hb-chat-info-block" + (options.disclosure ? " hb-chat-disclosure" : ""));
     if (options.disclosure) {
       const summary = create("summary", "", label);
-      summary.setAttribute("aria-label", "عرض " + label);
+      summary.setAttribute("aria-label", tr("عرض") + " " + tr(label));
       block.append(summary);
     } else {
       block.append(create("strong", "", label));
@@ -291,22 +293,22 @@
   function effectiveQuestion(payload) {
     const base = scrubLocal(state.original_goal).toLowerCase();
     const combined = scrubLocal([state.original_goal,...(state.answers||[])].join(" ")).toLowerCase();
-    const answeredIntent = (state.answers || []).some((answer) => /تجديد|إصدار|اصدار|إلغاء|الغاء|رفض|تأخير/.test(answer));
-    const hasEmirate = /دبي|ابوظبي|أبوظبي|الشارقه|الشارقة|عجمان|راس الخيمه|رأس الخيمة|الفجيره|الفجيرة|ام القيوين|أم القيوين/.test(combined);
+    const answeredIntent = (state.answers || []).some((answer) => /تجديد|إصدار|اصدار|إلغاء|الغاء|رفض|تأخير|renew|issu|cancel|reject|delay/i.test(answer));
+    const hasEmirate = /(?:دبي|ابو ?ظبي|أبوظبي|الشارقه|الشارقة|عجمان|راس الخيمه|رأس الخيمة|الفجيره|الفجيرة|ام القيوين|أم القيوين|\bdubai\b|\babu\s*dhabi\b|\bsharjah\b|\bajman\b|\bras\s*al\s*khaimah\b|\bfujairah\b|\bumm\s*al\s*quwain\b)/i.test(combined);
     const residency = /اقامه|إقامة|residence|residency/.test(base);
     if (/مشكله|مشكلة|problem/.test(base) && residency && !answeredIntent) {
-      return "ما نوع المشكلة أو النتيجة التي تريدها في الإقامة؟";
+      return tr("ما نوع المشكلة أو النتيجة التي تريدها في الإقامة؟");
     }
     if (residency && !hasEmirate) {
-      return "في أي إمارة تتم معاملة الإقامة؟";
+      return tr("في أي إمارة تتم معاملة الإقامة؟");
     }
-    return payload?.result?.follow_up_questions?.[0] || "";
+    return tr(payload?.result?.follow_up_questions?.[0] || "");
   }
 
   function quickRepliesFor(question, payload) {
     const q = String(question || "");
-    if (/نوع المشكلة|النتيجة التي تريدها/.test(q)) return ["تجديد", "إصدار جديد", "إلغاء", "رفض أو تأخير"];
-    if (/إمارة|الامارة|الإماره|اماره/.test(q)) return ["دبي", "أبوظبي", "الشارقة", "إمارة أخرى"];
+    if (/نوع المشكلة|النتيجة التي تريدها|problem or outcome|transaction or outcome/i.test(q)) return ["تجديد", "إصدار جديد", "إلغاء", "رفض أو تأخير"];
+    if (/إمارة|الامارة|الإماره|اماره|emirate|jurisdiction/i.test(q)) return ["دبي", "أبوظبي", "الشارقة", "إمارة أخرى"];
     if (/سارية|انتهت|منتهية|صلاحية/.test(q)) return ["سارية", "منتهية", "لست متأكدًا"];
     if (/الكفيل|الشركة/.test(q)) return ["أنا الكفيل", "الشركة هي الكفيل", "لست متأكدًا"];
     if (/داخل الإمارات|خارجها|خارج الإمارات/.test(q)) return ["داخل الإمارات", "خارج الإمارات", "لست متأكدًا"];
@@ -404,12 +406,12 @@
     if ((state.answers || []).length >= 2) return false;
     const combined = normalizeIntent([state.original_goal,...(state.answers||[])].join(" "));
     const parentCase = /والد|والدتي|والدين|parent/.test(combined);
-    const hasEmirate = /دبي|ابوظبي|ابو ظبي|الشارقه|الشارقة|عجمان|راس الخيمه|الفجيره|ام القيوين/.test(combined);
+    const hasEmirate = /(?:دبي|ابو ?ظبي|أبوظبي|الشارقه|الشارقة|عجمان|راس الخيمه|رأس الخيمة|الفجيره|الفجيرة|ام القيوين|أم القيوين|\bdubai\b|\babu\s*dhabi\b|\bsharjah\b|\bajman\b|\bras\s*al\s*khaimah\b|\bfujairah\b|\bumm\s*al\s*quwain\b)/i.test(combined);
     if (parentCase && hasEmirate) return false;
     if (payload?.result?.matches?.[0]?.service_slug && payload?.result?.grounding?.source_backed && hasEmirate) return false;
     const forced = effectiveQuestion(payload);
     if (!forced) return false;
-    if (/نوع المشكلة|النتيجة التي تريدها/.test(forced)) return true;
+    if (/نوع المشكلة|النتيجة التي تريدها|problem or outcome/i.test(forced)) return true;
     return payload?.result?.confidence !== "high";
   }
 
@@ -428,9 +430,9 @@
       if (!uncertain) body.append(create("p", "", "أحتاج معلومة إضافية واحدة حتى أحدد الخدمة الموثقة المناسبة بدل التخمين."));
     } else {
       const facts = create("div", "hb-chat-facts");
-      if (match.service_name) facts.append(makeInfoBlock("الخدمة المطابقة", match.service_name));
-      if (match.authority?.name_ar) facts.append(makeInfoBlock("الجهة المختصة", match.authority.name_ar));
-      if (match.jurisdiction?.name_ar) facts.append(makeInfoBlock("الإمارة / الاختصاص", match.jurisdiction.name_ar));
+      if (match.service_name) facts.append(makeInfoBlock("الخدمة المطابقة", english ? (match.service_name_en || match.service_name) : match.service_name));
+      if (match.authority?.name_ar) facts.append(makeInfoBlock("الجهة المختصة", (english ? match.authority.name_en || match.authority.name_ar : match.authority.name_ar)));
+      if (match.jurisdiction?.name_ar) facts.append(makeInfoBlock("الإمارة / الاختصاص", (english ? match.jurisdiction.name_en || tr(match.jurisdiction.name_ar) : match.jurisdiction.name_ar)));
       body.append(facts);
 
       const detailChips = create("div", "hb-chat-detail-chips");
@@ -446,7 +448,7 @@
       if (detailChips.childElementCount) body.append(detailChips);
       const fees = create("button", "hb-chat-context-chip", "الرسوم");
       fees.type = "button";
-      fees.dataset.contextPrompt = "كم الرسوم الحكومية الموثقة لهذه المعاملة؟";
+      fees.dataset.contextPrompt = english ? "What are the verified government fees for this transaction?" : "كم الرسوم الحكومية الموثقة لهذه المعاملة؟";
       detailChips.append(fees);
 
       if (match.official_source?.url) {
@@ -461,16 +463,16 @@
         const badge = create("summary", "hb-ai-source-badge", "✓ مصدر رسمي");
         source.append(badge);
         const copy = create("div", "hb-chat-source-copy");
-        copy.append(create("strong", "", match.authority?.name_ar || "الجهة الحكومية المختصة"));
+        copy.append(create("strong", "", (english ? match.authority?.name_en : match.authority?.name_ar) || "الجهة الحكومية المختصة"));
         if (match.official_source.last_verified_at) {
           const verifiedAt = new Date(match.official_source.last_verified_at);
-          if (!Number.isNaN(verifiedAt.getTime())) copy.append(create("small", "", "تم التحقق من المعلومة • آخر تحقق: " + verifiedAt.toLocaleDateString("ar-AE")));
+          if (!Number.isNaN(verifiedAt.getTime())) copy.append(create("small", "", tr("تم التحقق من المعلومة • آخر تحقق: ") + verifiedAt.toLocaleDateString(english ? "en-AE" : "ar-AE")));
         }
         const link = document.createElement("a");
         link.href = match.official_source.url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.textContent = "فتح المصدر";
+        link.textContent = tr("فتح المصدر");
         copy.append(link);
         source.append(copy);
         body.append(source);
@@ -487,7 +489,7 @@
         replies.forEach((answer) => {
           const button = create("button", "", answer);
           button.type = "button";
-          button.dataset.quickReply = answer;
+          button.dataset.quickReply = tr(answer);
           row.append(button);
         });
         q.append(row);
@@ -500,19 +502,19 @@
       if (match.service_url) {
         const details = document.createElement("a");
         details.className = "hb-chat-secondary";
-        details.href = match.service_url;
-        details.textContent = "تفاصيل الخدمة";
+        details.href = english && match.service_url.startsWith("/services/") ? "/en" + match.service_url : match.service_url;
+        details.textContent = tr("تفاصيل الخدمة");
         actions.append(details);
       }
       const start = document.createElement("a");
       start.className = "hb-chat-primary";
       start.href = authStartUrl(payload, "ai-intake");
-      start.textContent = "ابدأ معاملتي";
+      start.textContent = tr("ابدأ معاملتي");
       actions.append(start);
       const save = document.createElement("a");
       save.className = "hb-chat-secondary hb-chat-save-plan";
       save.href = authStartUrl(payload, "ai-intake");
-      save.textContent = "احفظ الخطة";
+      save.textContent = tr("احفظ الخطة");
       actions.append(save);
       body.append(actions);
     }
@@ -533,7 +535,7 @@
     const query=buildResolvedQuery(); state.resolved_query=query; saveState();
     let streamBubble = null;
     try{
-      const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn: displayed,history:state.history.slice(-8),stream:true,context:{active_service_id:state.active_service_id||state.service_slug,service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key,relationship:state.relationship,family_members:state.family_members,entity:state.entity,intent:state.intent,service_family:state.service_family,action:state.action,subject_role:state.subject_role,last_answer_topic:state.last_answer_topic,pending_clarification:state.pending_clarification,known_facts:state.known_facts}}),credentials:"omit"});
+      const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn: displayed,locale:english ? "en" : "ar",history:state.history.slice(-8),stream:true,context:{active_service_id:state.active_service_id||state.service_slug,service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key,relationship:state.relationship,family_members:state.family_members,entity:state.entity,intent:state.intent,service_family:state.service_family,action:state.action,subject_role:state.subject_role,last_answer_topic:state.last_answer_topic,pending_clarification:state.pending_clarification,known_facts:state.known_facts}}),credentials:"omit"});
       if(response.status===429){removePending(pending);addBubble("assistant","وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");return;}
       let streamP=null,ttft=null;
       const {readAIResponse}=await import("/ai-response-protocol.mjs");
@@ -583,7 +585,7 @@
   function authStartUrl(payload, destination = "ai-intake") {
     rememberHandoff(payload);
     const returnPath = "/os/?handoff=1&start=1#" + encodeURIComponent(destination);
-    return "/auth/?return=" + encodeURIComponent(returnPath);
+    return (english ? "/en/auth/?return=" : "/auth/?return=") + encodeURIComponent(returnPath);
   }
 
   async function session() {
@@ -608,7 +610,7 @@
   }
 
   function setupConversationUI() {
-    if (!["/","/index.html","/ai","/ai/","/ai/index.html"].includes(location.pathname)) return;
+    if (!["/","/index.html","/ai","/ai/","/ai/index.html","/en/","/en/index.html","/en/ai/","/en/ai/index.html"].includes(location.pathname)) return;
     loadState();
 
     const isAIProduct = document.body.dataset.hbAiProduct === "true";
@@ -630,7 +632,7 @@
     }
     form.classList.add("hb-conversation-composer");
     form.setAttribute("role", "form");
-    form.setAttribute("aria-label", "محادثة مع HOSSAM BAHR AI");
+    form.setAttribute("aria-label", tr("محادثة مع HOSSAM BAHR AI"));
 
     const oldInput = $("#government-search") || $("#premium-ai-seed");
     const textarea = document.createElement("textarea");
@@ -639,28 +641,29 @@
     textarea.rows = 1;
     textarea.maxLength = 800;
     textarea.autocomplete = "off";
-    textarea.placeholder = isAIProduct ? "اسألني عن أي معاملة في الإمارات" : "اسألني عن أي معاملة في الإمارات…";
-    textarea.setAttribute("aria-label", "اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات");
+    textarea.placeholder = tr(isAIProduct ? "اسألني عن أي معاملة في الإمارات" : "اسألني عن أي معاملة في الإمارات…");
+    textarea.setAttribute("aria-label", tr("اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات"));
     oldInput?.replaceWith(textarea);
     composer = textarea;
 
     const label = form.querySelector("label");
-    if (label) label.textContent = "اسأل HOSSAM BAHR AI";
+    if (label) label.textContent = tr("اسأل HOSSAM BAHR AI");
     const overline = form.querySelector(".search-overline");
-    if (overline) overline.textContent = "اكتب سؤالك بطريقتك — لا تحتاج لاختيار خدمة أو جهة مسبقًا";
+    if (overline) overline.textContent = tr("اكتب سؤالك بطريقتك — لا تحتاج لاختيار خدمة أو جهة مسبقًا");
 
     const row = form.querySelector(".search-row");
     row?.querySelectorAll("button").forEach((button) => button.remove());
     sendButton = create("button", "hb-chat-send", "➤");
     sendButton.type = "submit";
-    sendButton.setAttribute("aria-label", "إرسال السؤال إلى HOSSAM BAHR AI");
-    sendButton.title = "إرسال";
+    sendButton.setAttribute("aria-label", tr("إرسال السؤال إلى HOSSAM BAHR AI"));
+    sendButton.title = tr("إرسال");
     row?.append(sendButton);
 
     const toolRow = create("div", "hb-ai-composer-tools");
-    const attachLabel = create("label", "hb-ai-attach-control");
-    attachLabel.setAttribute("for", "hb-ai-document-input");
-    attachLabel.textContent = "＋ إرفاق";
+    const attachLabel = create("button", "hb-ai-attach-control");
+    attachLabel.type = "button";
+    attachLabel.addEventListener("click", () => attachmentInput?.click());
+    attachLabel.textContent = tr("＋ إرفاق");
     attachmentInput = document.createElement("input");
     attachmentInput.id = "hb-ai-document-input";
     attachmentInput.type = "file";
@@ -670,7 +673,7 @@
       pendingAttachment = attachmentInput.files?.[0] || null;
       renderAttachmentTray();
     });
-    attachLabel.append(attachmentInput);
+    toolRow.append(attachmentInput);
     const privacy = create("span", "hb-ai-local-analysis-note", "عند التحليل يُرسل مقتطف نصي بعد إخفاء بعض البيانات • PDF والصور تتطلب تسجيل الدخول");
     toolRow.append(attachLabel, privacy);
     attachmentTray = create("div", "hb-ai-attachment-tray");
@@ -684,20 +687,22 @@
     thread = create("div", "hb-chat-thread");
     thread.dataset.chatThread = "true";
     thread.setAttribute("aria-live", "polite");
-    thread.setAttribute("aria-label", "محادثة HOSSAM BAHR AI");
+    thread.setAttribute("aria-label", tr("محادثة HOSSAM BAHR AI"));
     shell.append(thread);
     form.insertAdjacentElement("afterend", shell);
 
     if (isAIProduct && state.original_goal) document.body.classList.add("hb-chat-engaged");
     if (!isAIProduct) addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
     const incoming = new URLSearchParams(location.search).get("q");
-    if (isAIProduct && incoming) { composer.value = scrubLocal(incoming); setTimeout(() => form.requestSubmit(), 80); }
+    if (isAIProduct && incoming) {
+      state = { expires_at: Date.now() + TTL, original_goal: "", resolved_query: "", answers: [], service_slug: null, active_service_id: null, jurisdiction_code: null, authority_key: null, relationship: null, family_members: [], entity: null, intent: null, service_family: null, action: null, subject_role: null, last_answer_topic: null, pending_clarification: null, known_facts: {}, last_payload: null, history: [] };
+      saveState(); composer.value = scrubLocal(incoming); setTimeout(() => form.requestSubmit(), 80); }
 
     const prompts = stage.querySelector(".examples");
     if (prompts) {
       prompts.classList.add("hb-chat-prompts");
       const span = prompts.querySelector("span");
-      if (span) span.textContent = "أمثلة:";
+      if (span) span.textContent = tr("أمثلة:");
       const labels = isAIProduct ? ["الإقامة والتأشيرات","تأسيس شركة","معاملات العمل","تحليل مستند"] : [
         "أريد أجدد إقامة زوجتي",
         "أريد أفتح شركة في دبي",
@@ -705,9 +710,9 @@
         "ما الأوراق المطلوبة لإقامة الوالدين؟"
       ];
       [...prompts.querySelectorAll("button")].forEach((button, index) => {
-        button.textContent = labels[index] || button.textContent;
+        button.textContent = tr(labels[index] || button.textContent);
         button.onclick = () => {
-          if (isAIProduct && button.textContent === "تحليل مستند") { attachmentInput?.click(); return; }
+          if (isAIProduct && index === 3) { attachmentInput?.click(); return; }
           composer.value = button.textContent;
           composer.focus();
         };

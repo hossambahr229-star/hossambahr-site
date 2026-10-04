@@ -1,5 +1,15 @@
 (() => {
   "use strict";
+  const wantsEnglishCallback = new URLSearchParams(location.search).get("locale") === "en";
+  if (wantsEnglishCallback && ["/auth/callback/","/auth/reset/"].includes(location.pathname)) {
+    location.replace("/en" + location.pathname + location.search + (location.hash || ""));
+    return;
+  }
+  const english = document.documentElement?.lang === "en";
+  const tr = (value) => window.HB_UI_T ? window.HB_UI_T(value) : String(value);
+  const route = location.pathname.replace(/^\/en(?=\/)/, "");
+  const accountPath = english ? "/en/account/" : "/account/";
+  const authPath = english ? "/en/auth/" : "/auth/";
   const config = window.HB_AUTH_CONFIG;
   if (!config?.url || !config?.publishableKey || !window.supabase?.createClient) return;
   const client = window.supabase.createClient(config.url, config.publishableKey, {
@@ -14,18 +24,18 @@
       try {
         const url=new URL(value,"https://hossambahr.com");
         if(url.origin!=="https://hossambahr.com") return "/account/";
-        if(/^\/auth(?:\/|$)/.test(url.pathname)) {value=url.searchParams.get("return");continue;}
+        if(/^\/(?:en\/)?auth(?:\/|$)/.test(url.pathname)) {value=url.searchParams.get("return");continue;}
         return url.pathname+url.search+url.hash;
       } catch {return "/account/";}
     }
     return "/account/";
   }
   function navigationReturnPath(location) {
-    return safeReturnPath(/^\/auth(?:\/|$)/.test(location.pathname)
+    return safeReturnPath(/^\/(?:en\/)?auth(?:\/|$)/.test(location.pathname)
       ? new URLSearchParams(location.search).get("return")
       : location.pathname+location.search+(location.hash||""));
   }
-  const message = (text, state = "info") => { const target = document.querySelector("[data-auth-message]"); if (target) { target.textContent = text; target.dataset.state = state; target.hidden = false; } };
+  const message = (text, state = "info") => { const target = document.querySelector("[data-auth-message]"); if (target) { target.textContent = tr(text); target.dataset.state = state; target.hidden = false; } };
   const setBusy = (form, busy) => { form?.querySelectorAll("button,input").forEach((field) => { field.disabled = busy; }); form?.setAttribute("aria-busy", String(busy)); };
   const passwordValid = (value) => value.length >= 10 && /[a-zA-Z]/.test(value) && /\d/.test(value);
   const authDebugEnabled = new URLSearchParams(location.search).get("authdebug") === "1";
@@ -42,8 +52,8 @@
     if (!actions) return;
     let link = actions.querySelector("[data-account-link]");
     if (!link) { link = document.createElement("a"); link.className = "login-action"; link.dataset.accountLink = "true"; actions.append(link); }
-    link.href = session ? "/account/" : `/auth/?return=${encodeURIComponent(navigationReturnPath(location))}`;
-    link.textContent = session ? "حسابي" : "تسجيل الدخول";
+    link.href = session ? accountPath : `${authPath}?return=${encodeURIComponent(navigationReturnPath(location))}`;
+    link.textContent = tr(session ? "حسابي" : "تسجيل الدخول");
   }
 
   async function setupAuthPage() {
@@ -61,7 +71,7 @@
     signup?.addEventListener("submit", async (event) => {
       event.preventDefault(); const data = new FormData(signup); setBusy(signup, true); const password = String(data.get("password") || "");
       if (!passwordValid(password)) { setBusy(signup, false); return message("استخدم كلمة مرور من 10 أحرف على الأقل وتضم حروفًا وأرقامًا.", "error"); }
-      const { data: result, error } = await client.auth.signUp({ email: String(data.get("email") || "").trim(), password, options: { emailRedirectTo: `${config.siteUrl}/auth/callback/?return=${encodeURIComponent(returnPath)}`, data: { display_name: String(data.get("name") || "").trim() } } });
+      const { data: result, error } = await client.auth.signUp({ email: String(data.get("email") || "").trim(), password, options: { emailRedirectTo: `${config.siteUrl}/auth/callback/?${english ? "locale=en&" : ""}return=${encodeURIComponent(returnPath)}`, data: { display_name: String(data.get("name") || "").trim() } } });
       setBusy(signup, false); if (error) return message("تعذر إنشاء الحساب. تحقق من البريد أو حاول لاحقًا.", "error");
       if (result.session) location.assign(returnPath); else message("تم إنشاء الحساب. افتح رسالة التحقق المرسلة إلى بريدك ثم سجّل الدخول.", "success");
     });
@@ -73,7 +83,7 @@
         email,
         options: {
           shouldCreateUser: true,
-          emailRedirectTo: `${config.siteUrl}/auth/callback/?return=${encodeURIComponent(returnPath)}`
+          emailRedirectTo: `${config.siteUrl}/auth/callback/?${english ? "locale=en&" : ""}return=${encodeURIComponent(returnPath)}`
         }
       });
       setBusy(magic, false);
@@ -82,7 +92,7 @@
     });
     forgot?.addEventListener("submit", async (event) => {
       event.preventDefault(); const data = new FormData(forgot); setBusy(forgot, true);
-      const { error } = await client.auth.resetPasswordForEmail(String(data.get("email") || "").trim(), { redirectTo: `${config.siteUrl}/auth/reset/` });
+      const { error } = await client.auth.resetPasswordForEmail(String(data.get("email") || "").trim(), { redirectTo: `${config.siteUrl}/auth/reset/${english ? "?locale=en" : ""}` });
       setBusy(forgot, false); if (error) return message("تعذر إرسال رسالة الاستعادة الآن. حاول لاحقًا.", "error"); message("إذا كان البريد مسجلًا فستصلك رسالة استعادة آمنة.", "success");
     });
     reset?.addEventListener("submit", async (event) => {
@@ -90,20 +100,20 @@
       if (!passwordValid(password)) { setBusy(reset, false); return message("استخدم كلمة مرور من 10 أحرف على الأقل وتضم حروفًا وأرقامًا.", "error"); }
       const { error } = await client.auth.updateUser({ password }); setBusy(reset, false);
       if (error) return message("رابط الاستعادة غير صالح أو انتهت صلاحيته. اطلب رابطًا جديدًا.", "error");
-      message("تم تحديث كلمة المرور بنجاح. سيتم تحويلك إلى حسابك.", "success"); setTimeout(() => location.assign("/account/"), 1000);
+      message("تم تحديث كلمة المرور بنجاح. سيتم تحويلك إلى حسابك.", "success"); setTimeout(() => location.assign(accountPath), 1000);
     });
   }
 
   async function setupCallback() {
-    if (location.pathname !== "/auth/callback/") return;
+    if (route !== "/auth/callback/") return;
     const code = new URLSearchParams(location.search).get("code");
     if (code) { const { error } = await client.auth.exchangeCodeForSession(code); if (error) return message("تعذر إكمال التحقق. اطلب رسالة تحقق جديدة.", "error"); }
     location.replace(safeReturnPath(new URLSearchParams(location.search).get("return")));
   }
 
   async function setupAccount(session) {
-    if (location.pathname !== "/account/") return;
-    if (!session) { location.replace(`/auth/?return=${encodeURIComponent("/account/")}`); return; }
+    if (route !== "/account/") return;
+    if (!session) { location.replace(`${authPath}?return=${encodeURIComponent(accountPath)}`); return; }
     const email = document.querySelector("[data-account-email]"); if (email) email.textContent = session.user.email || "";
     const { data: isOwner } = await client.rpc("hb_is_platform_owner");
     if (isOwner === true) {
@@ -113,16 +123,16 @@
         link.dataset.ownerDashboardLink = "true";
         link.className = "save-service-action";
         link.href = "/owner/";
-        link.textContent = "لوحة إدارة المنصة (المالك)";
+        link.textContent = tr("لوحة إدارة المنصة (المالك)");
         panel.append(link);
       }
     }
-    document.querySelector("[data-logout]")?.addEventListener("click", async () => { await client.auth.signOut(); location.replace("/"); });
+    document.querySelector("[data-logout]")?.addEventListener("click", async () => { await client.auth.signOut(); location.replace(english ? "/en/" : "/"); });
     const { data, error } = await client.from("user_transactions").select("id,service_slug,service_name,status,created_at").order("created_at", { ascending: false }).limit(50);
     const list = document.querySelector("[data-transactions]"); if (!list) return;
-    if (error) { list.innerHTML = "<p>تعذر تحميل العناصر المحفوظة الآن.</p>"; return; }
-    if (!data.length) { list.innerHTML = "<p>لا توجد معاملات محفوظة. افتح أي خدمة واضغط حفظ في حسابي.</p>"; return; }
-    list.replaceChildren(...data.map((item) => { const article = document.createElement("article"); const link = document.createElement("a"); const status = document.createElement("span"); link.href = `/services/${encodeURIComponent(item.service_slug)}/`; link.textContent = item.service_name; status.textContent = item.status === "saved" ? "محفوظة" : item.status; article.append(link, status); return article; }));
+    if (error) { list.textContent = english ? "Saved transactions could not be loaded." : "تعذر تحميل العناصر المحفوظة الآن."; return; }
+    if (!data.length) { list.textContent = english ? "No saved transactions yet. Open a service to save it to your account." : "لا توجد معاملات محفوظة. افتح أي خدمة واضغط حفظ في حسابي."; return; }
+    list.replaceChildren(...data.map((item) => { const article = document.createElement("article"); const link = document.createElement("a"); const status = document.createElement("span"); link.href = `${english ? "/en" : ""}/services/${encodeURIComponent(item.service_slug)}/`; link.textContent = item.service_name; status.textContent = item.status === "saved" ? tr("محفوظة") : item.status; article.append(link, status); return article; }));
   }
 
   async function setupServiceSave(session) {

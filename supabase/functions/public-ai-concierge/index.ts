@@ -2,6 +2,7 @@ import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 import { providerFailure, completedProviderText } from "./provider-status.ts";
 import { responseContext, jurisdictionCandidates } from "./response-context.ts";
+import { englishResult } from "./english-response.ts";
 import { documentedRule, hasDocumentedValue, serviceIntroduction } from "./grounded-facts.ts";
 import { familyCandidate } from "./family-candidates.ts";
 
@@ -881,6 +882,7 @@ export default {
           follow_up_questions:["في أي إمارة صادرة إقامة الكفيل؟"]
         };
       }
+      if (body?.locale === "en" || (/\b[a-z]{2,}\b/i.test(latestTurn) && !/[\u0600-\u06ff]/.test(latestTurn))) deterministic = englishResult(deterministic);
       if (wantsStream) { const streamed=makeStreamingResponse(req,latestTurn,history,deterministic,rate,semanticGoal,requestStarted,catalogMs,semantic); if(streamed) return streamed; }
       const intelligenceStarted = performance.now();
       const intelligent = await conversationalResult(latestTurn, history, deterministic);
