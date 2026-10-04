@@ -1,6 +1,23 @@
 -- Reconcile the published public catalog without disabling historical transaction bindings.
 -- New source reviews confirm service identity/navigation only; no new fee, duration or eligibility fact is asserted.
 begin;
+-- Reconstruct missing authority identities on a clean database; preserve existing Production authorities.
+insert into public.hb_authorities(country_pack_id,jurisdiction_id,authority_key,name_ar,name_en,scope,official_base_url,active,metadata)
+select cp.id,j.id,v.authority_key,v.name_ar,v.name_en,'local',v.base_url,true,'{"bootstrap":"published_catalog_identity"}'::jsonb
+from (values
+ ('ajman-ded','AE-AJ','دائرة التنمية الاقتصادية في عجمان','Ajman DED','https://eservices.ajmanded.ae'),
+ ('dld-rera','AE-DU','دائرة الأراضي والأملاك / RERA','Dubai Land Department / RERA','https://dubailand.gov.ae'),
+ ('det-dubai','AE-DU','دائرة الاقتصاد والسياحة في دبي','Dubai Department of Economy and Tourism','https://www.dubaidet.gov.ae'),
+ ('rta-dubai','AE-DU','هيئة الطرق والمواصلات في دبي','Dubai Roads and Transport Authority','https://www.rta.ae')
+) v(authority_key,jurisdiction_code,name_ar,name_en,base_url)
+join public.hb_jurisdictions j on j.code=v.jurisdiction_code
+cross join lateral (
+ select p.id from public.hb_country_packs p join public.hb_jurisdictions country on country.id=p.country_jurisdiction_id
+ where country.code='AE' and p.status='active'
+ order by case p.pack_key when 'country:AE' then 0 when 'uae' then 1 else 2 end,p.version desc limit 1
+) cp
+where not exists(select 1 from public.hb_authorities existing where existing.authority_key=v.authority_key and existing.active)
+on conflict(country_pack_id,authority_key) do nothing;
 insert into public.hb_policy_sources(jurisdiction_id,authority_key,title,source_url,source_type,last_verified_at,active,metadata,country_pack_id,authority_id)
 values((select id from public.hb_jurisdictions where code='AE-AJ'),'ajman-ded','الاستعلام عن الأنشطة الاقتصادية في عجمان — دائرة التنمية الاقتصادية في عجمان','https://eservices.ajmanded.ae/en/activitiesapprovalsinquiry','official','2026-10-04T00:00:00Z',true,'{"service_slug":"ajman-business-activity-inquiry","review_result":"approved_for_user_navigation","verification_scope":"service_identity_and_navigation_only","publication_registry":"published-services"}'::jsonb,(select country_pack_id from public.hb_authorities where authority_key='ajman-ded' and active=true),(select id from public.hb_authorities where authority_key='ajman-ded' and active=true))
 on conflict(authority_key,source_url) do nothing;
