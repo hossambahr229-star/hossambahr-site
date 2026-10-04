@@ -1,3 +1,4 @@
+import {recordedDetailTranslations} from './recorded-detail-translations.mjs';
 export const emirateEnglish = value => ({'دبي':'Dubai','أبوظبي':'Abu Dhabi','الشارقة':'Sharjah','عجمان':'Ajman','رأس الخيمة':'Ras Al Khaimah','الفجيرة':'Fujairah','أم القيوين':'Umm Al Quwain','اتحادي':'Federal UAE','الإمارات عدا دبي':'UAE outside Dubai','الإمارات الخاضعة لمسار ICP (خارج دبي)':'ICP jurisdictions outside Dubai','اتحادي مع استثناءات الجهات التعليمية المحلية المنشورة':'Federal UAE; published local education exceptions apply'}[value] || value);
 export const englishServiceRoute = service => '/en'+service.internalRoute;
 export const escapeHtml = value => String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
@@ -8,7 +9,9 @@ export function serviceCard(service){
  return `<article class="en-service-card" data-service-slug="${escapeHtml(service.slug)}"><p>${escapeHtml(service.authority.en)} · ${escapeHtml(emirateEnglish(service.emirate))}</p><h2><a href="${englishServiceRoute(service)}">${escapeHtml(service.name.en)}</a></h2><a href="${englishServiceRoute(service)}">View requirements and official pathway →</a></article>`;
 }
 export function officialExcerpt(label,value){
- const values=(Array.isArray(value)?value:[value]).filter(item=>item&&item!=='NOT_OFFICIALLY_PUBLISHED'&&!/^(غير موثق بعد|غير متوفر|TBD)$/i.test(item));
+ const values=(Array.isArray(value)?value:[value]).filter(item=>item&&item!=='NOT_OFFICIALLY_PUBLISHED'&&!/^(غير موثق بعد|غير موثق في سجل الكتالوج|غير متوفر|TBD)$/i.test(item));
  if(!values.length)return `<section><h2>${escapeHtml(label)}</h2><p>A verified detail is not available in the platform record. Check the official source before applying.</p></section>`;
- return `<section><h2>${escapeHtml(label)}</h2><p>Verified record in its original language. The official authority is the final reference.</p><blockquote lang="ar" dir="rtl">${values.map(item=>`<p>${escapeHtml(item)}</p>`).join('')}</blockquote></section>`;
+ const translated=values.map(item=>recordedDetailTranslations[item]);
+ if(translated.every(Boolean))return `<section><h2>${escapeHtml(label)}</h2><p>HOSSAM BAHR explanatory translation of the recorded Arabic details. This is not the authority's official English wording.</p><div lang="en" dir="ltr" data-platform-detail-translation>${translated.map(item=>`<p>${escapeHtml(item)}</p>`).join('')}</div><details><summary>Read the recorded Arabic text</summary><blockquote lang="ar" dir="rtl">${values.map(item=>`<p>${escapeHtml(item)}</p>`).join('')}</blockquote></details></section>`;
+ return `<section><h2>${escapeHtml(label)}</h2><p>An English translation is not yet available. Verified record in its original language. The official authority is the final reference.</p><blockquote lang="ar" dir="rtl">${values.map(item=>`<p>${escapeHtml(item)}</p>`).join('')}</blockquote></section>`;
 }
