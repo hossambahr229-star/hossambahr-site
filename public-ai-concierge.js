@@ -122,7 +122,6 @@
       renderAttachmentTray();
       return;
     }
-    const isText = TEXT_DOCUMENT_TYPES.has(file.type) || TEXT_DOCUMENT_EXTENSIONS.test(file.name);
     if (!isText) {
       const isPdf=file.type==="application/pdf"||/\.pdf$/i.test(file.name);
       const isImage=/^image\/(png|jpeg|jpg|webp|gif)$/i.test(file.type);
