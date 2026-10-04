@@ -17,7 +17,7 @@
   const officialDestinations = {
     'دبي': 'https://app.invest.dubai.ae/search-business-activities',
     'أبوظبي': 'https://www.tamm.abudhabi/journeys/start-a-business/',
-    'الشارقة': 'https://sedd.ae/en/web/sedd/home',
+    'الشارقة': 'https://digital.sedd.gov.ae/digital/activity/activity',
     'عجمان': 'https://www.ajmanded.ae/en/services',
     'رأس الخيمة': 'https://www.rak.ae/wps/portal/rak/government-entities/department-of-economic-development',
     'أم القيوين': 'https://ded.uaq.ae/',
@@ -238,7 +238,11 @@
     document.getElementById('dialogActivityGroup').textContent = `${activity.groupAr}${activity.groupEn ? ` — ${activity.groupEn}` : ''}`;
     document.getElementById('dialogActivityDescription').textContent = activity.descAr || 'لا يتوفر وصف عربي في مجموعة البيانات.';
     document.getElementById('dialogActivityDescriptionEn').textContent = activity.descEn || 'No English description is available in the dataset.';
-    const message = `مرحباً، أحتاج مراجعة نشاط: ${activity.nameAr} — رقم النشاط: ${activity.code}`;
+    const emirate = els.advisorEmirate.value || 'دبي';
+    const official = document.querySelector('#activityDialog .dialog-actions a[rel*="nofollow"]');
+    official.href = officialDestinations[emirate] || officialDestinations['دبي'];
+    official.textContent = `تحقق رسميًا لدى جهة ${emirate} ↗`;
+    const message = `مرحباً، أحتاج مراجعة نشاط في ${emirate}: ${activity.nameAr} — رقم النشاط في بيانات دبي: ${activity.code} — وصف المشروع: ${els.idea.value || 'غير محدد'}`;
     document.getElementById('dialogWhatsapp').href = `https://wa.me/971503780460?text=${encodeURIComponent(message)}`;
     if (typeof els.dialog.showModal === 'function') els.dialog.showModal(); else els.dialog.setAttribute('open', '');
     track('activity_detail_open', { activity_code: activity.code });
