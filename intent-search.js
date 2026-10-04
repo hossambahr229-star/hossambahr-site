@@ -90,7 +90,7 @@ export function rankServices(query, services = []) {
     return exactCodeMatches.map((service) => ({ ...service, score: 5000 }));
   }
   const exactNames = normalized && services.filter(service =>
-    [service.a, service.e].some(name => name && normalizeIntent(name) === normalized));
+    [service.a, /[a-z]/i.test(service.e || '') ? service.e : null].some(name => name && normalizeIntent(name) === normalized));
   if (exactNames?.length) return exactNames.map(service => ({ ...service, score: 10000 }));
   const terms = new Set(words(query));
   for (const group of QUERY_SYNONYMS) {
