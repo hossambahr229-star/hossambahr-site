@@ -3,7 +3,7 @@ const source=readFileSync(new URL('../../supabase/functions/document-ai/index.ts
 test('document authentication strips a real Bearer prefix before validating the user',()=>{
  const match=source.match(/const bearer=([^;]+);/);assert.ok(match);
  const parse=Function('req','return '+match[1]);
- for(const header of ['Bearer actual-token','bearer\\tactual-token']) assert.equal(parse({headers:new Headers({authorization:header})}),'actual-token');
+ for(const header of ['Bearer actual-token','bearer\tactual-token']) assert.equal(parse({headers:new Headers({authorization:header})}),'actual-token');
  assert.equal(parse({headers:new Headers()}),'');
  assert.ok(source.includes('admin.auth.getUser(bearer)'));
  assert.ok(source.includes('if(userError||!userData?.user?.id)'));

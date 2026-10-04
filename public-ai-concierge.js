@@ -672,7 +672,7 @@
       renderAttachmentTray();
     });
     attachLabel.append(attachmentInput);
-    const privacy = create("span", "hb-ai-local-analysis-note", "التحليل العام للنصوص يتم محليًا • الحفظ والرفع الآمن عند بدء المعاملة");
+    const privacy = create("span", "hb-ai-local-analysis-note", "عند التحليل يُرسل مقتطف نصي بعد إخفاء بعض البيانات • PDF والصور تتطلب تسجيل الدخول");
     toolRow.append(attachLabel, privacy);
     attachmentTray = create("div", "hb-ai-attachment-tray");
     attachmentTray.hidden = true;
