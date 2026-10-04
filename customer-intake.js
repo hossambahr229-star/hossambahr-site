@@ -21,7 +21,7 @@ import {compatibleEmirate,jurisdictionCode} from './customer-jurisdiction.js?v=2
   const review=document.querySelector('[data-intake-review]');review.hidden=false;
   review.querySelector('[data-intake-summary]').textContent=[goal,context.emirate,row?.authority?.[en?'en':'ar']].filter(Boolean).join(' · ');
   review.querySelector('[data-intake-requirements]').textContent=row?.requirements_verified?(en?'Verified requirements remain available in the service guide.':'المتطلبات الموثقة متاحة في دليل الخدمة.'):(en?'A complete verified requirement list is not available for this request. Confirm it with the official source.':'لا تتوفر قائمة متطلبات كاملة موثقة لهذا الطلب؛ أكدها من المصدر الرسمي.');
-  review.querySelector('[data-intake-workspace]').href=prefix+'/auth/?return='+encodeURIComponent('/os/?handoff=1#ai-intake');
+  review.querySelector('[data-intake-workspace]').href=prefix+'/auth/?return='+encodeURIComponent(prefix+'/os/?handoff=1#ai-intake');
   const message=[en?'Please help me handle this transaction:':'أريد مساعدة في إنجاز هذه المعاملة:',goal,context.emirate,row?.authority?.[en?'en':'ar'],row?'https://hossambahr.com'+row.source_page:''].filter(Boolean).join('\n');
   review.querySelector('[data-intake-whatsapp]').href='https://wa.me/971503780460?text='+encodeURIComponent(message);
   const official=review.querySelector('[data-intake-official]');official.hidden=!row?.official_url;if(row)official.href=row.official_url;
