@@ -170,7 +170,7 @@ for (const file of files) {
   }
   if (isHomepage && reviewDate) {
     const before = html;
-    html = html.replace(/آخر مراجعة تشغيلية: [^.]+\./g, 'آخر مراجعة تشغيلية: 28 يوليو 2026.');
+    html = html.replace(/(<small\b[^>]*class="footer-legal"[^>]*>)[\s\S]*?(<\/small>)/g, `$1آخر مراجعة مسجلة لمحتوى الخدمات: ${reviewDate}. تختلف عن تاريخ فحص الروابط والتحديث التقني. حسام بحر خدمة مستقلة لتجهيز وإنجاز ومتابعة المعاملات ضمن نطاق الخدمات. تُطلب بيانات المعاملة ضمن مسارها المحمي. القرار النهائي وشروط القبول لدى الجهة الحكومية المختصة.$2`);
     if (html !== before) replacements += 1;
   }
   if (isHydratedExport && hasHydrationBundles && !html.includes('data-registry-count-guard')) {

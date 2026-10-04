@@ -4,7 +4,17 @@ const base=process.env.HB_BASE_URL||'http://127.0.0.1:8787',out='artifacts/custo
 const {services}=JSON.parse(await readFile('src/registry/published-services.json','utf8'));
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||undefined});const records=[];
 try{
- const page=await browser.newPage();
+ const page=await browser.newPage({viewport:{width:1440,height:900}});
+ await page.goto(base+'/',{waitUntil:'networkidle'});
+ await page.waitForTimeout(1500); // Shared runtime must not restore the old directory-only identity.
+ assert.equal(await page.locator('.desktop-nav').getByRole('link',{name:'الأسعار',exact:true}).getAttribute('href'),'/pricing/');
+ const footer=await page.locator('.footer-legal').innerText();
+ assert.ok(footer.includes('لتجهيز وإنجاز ومتابعة المعاملات'));
+ assert.ok(!footer.includes('لا تطلب المنصة بيانات شخصية'));
+ assert.ok(!footer.includes('لا تنفذ المعاملة'));
+ await page.locator('.desktop-nav').getByRole('link',{name:'الأسعار',exact:true}).click();
+ assert.equal(new URL(page.url()).pathname,'/pricing/');
+ assert.equal(await page.getByRole('heading',{name:'نطاق الخدمة والأسعار',exact:true}).count(),1);
  for(const service of services)for(const locale of ['ar','en']){
   const path=(locale==='en'?'/en':'')+service.internalRoute,response=await page.request.get(base+path);assert.equal(response.status(),200,path);const html=await response.text();assert.ok(html.includes(escapeHtml(service.name[locale])),path);assert.ok(!/<h1[^>]*>هذه الصفحة غير متاحة/.test(html),path);
   const escaped=(locale==='en'?'/en':'')+'/contact/?service='+encodeURIComponent(service.slug)+'&amp;source='+encodeURIComponent(service.internalRoute);assert.ok(html.includes(escaped),'Missing contextual execution path: '+path);records.push({path,status:'PASS',service:service.slug});
