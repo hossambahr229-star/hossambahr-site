@@ -425,7 +425,7 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
     // Exact catalog identity must outrank a neighboring generic transaction.
     if ([row.title,row.binding.metadata?.name_en].filter(Boolean).some(title=>normalize(String(title))===normalized)) score += 100000;
     const relationshipIdentity = normalize(row.binding.service_slug+" "+row.title+" "+(row.binding.metadata?.category||""));
-    const familyCompatibility = familyCandidate(row,relationship,action,familyResidenceSponsorship);
+    const familyCompatibility = familyCandidate(row,relationship,action,familyResidenceSponsorship,goal);
     const domainCompatibility = familyCompatibility.domain;
     score += domainCompatibility * 3000;
     score += relationshipCompatibility(relationshipIdentity, relationship) * 1800;

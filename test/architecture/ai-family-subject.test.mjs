@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {familyCandidate} from '../../supabase/functions/public-ai-concierge/family-candidates.ts';
+const newborn={title:'إصدار إقامة لمولود جديد عبر ICP (خارج دبي)',binding:{service_slug:'إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي',metadata:{category:'family-sponsorship'}},authority:{authority_key:'icp'}};
+test('switching emirate does not turn spouse or parent residence into newborn residence',()=>{for(const r of ['wife','husband','spouse','mother','father','parents'])assert.equal(familyCandidate(newborn,r,'sponsor',true,'إقامة لزوجتي في أبوظبي').allowed,false);});
+test('child alone does not assert newborn eligibility; explicit newborn can use its identity',()=>{assert.equal(familyCandidate(newborn,'son','issue',true,'إقامة لابني').allowed,false);assert.equal(familyCandidate(newborn,'son','issue',true,'إقامة لابني المولود الجديد').allowed,true);});
+test('general ICP family issuance remains available',()=>{const general={...newborn,title:'إصدار تصريح إقامة عبر ICP (خارج دبي)',binding:{service_slug:'إصدار-تصريح-إقامة-عبر-icp-خارج-دبي',metadata:{category:'residency-visas'}}};assert.equal(familyCandidate(general,'wife','sponsor',true,'إقامة زوجتي في أبوظبي').allowed,true);});
