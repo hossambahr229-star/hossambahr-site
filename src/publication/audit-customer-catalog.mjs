@@ -1,0 +1,8 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';import {resolve,join} from 'node:path';
+import {auditCustomerService,summarizeCustomerAudit} from './customer-catalog-audit.mjs';
+import {englishDiscoveryRecords,emirateEnglish} from './english-catalog.mjs';import {rankServices} from '../../intent-search.js';
+const root=resolve(import.meta.dirname,'../..'),out=resolve(process.env.HB_OUTPUT_DIR||join(root,'artifacts/customer-catalog-audit'));await mkdir(out,{recursive:true});const {services}=JSON.parse(await readFile(join(root,'src/registry/published-services.json'),'utf8'));const discovery=englishDiscoveryRecords(services);
+const records=[];for(const service of services){
+ const ar=rankServices(service.name.ar+' '+service.emirate,discovery)[0],en=rankServices(service.name.en+' '+emirateEnglish(service.emirate),discovery)[0];
+ const record=auditCustomerService(service,{searchMatch:[ar?.s,en?.s].filter(Boolean).join(' / '),searchCorrect:ar?.s===service.slug&&en?.s===service.slug});record.search={arabic:ar?.s||null,english:en?.s||null,correct:ar?.s===service.slug&&en?.s===service.slug};records.push(record);
+}const report={generatedAt:new Date().toISOString(),...summarizeCustomerAudit(records),recordedDetailsVerifiedFlags:services.filter(s=>s.verification?.detailsVerified).length,exactSearchIdentityPass:records.filter(r=>r.search.correct).length,scope:'All published registry service fields and deterministic AR/EN identity discovery. Live routes, authenticated journeys, official content freshness and human acceptance require independent evidence.',records};await writeFile(join(out,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({...report,records:undefined}));
