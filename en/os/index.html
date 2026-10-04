@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://ngcrkuykfqmiqhsnpcrc.supabase.co wss://ngcrkuykfqmiqhsnpcrc.supabase.co; upgrade-insecure-requests">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>HOSSAM BAHR OS | Workspace</title>
+<meta name="description" content="Manage your goals, companies, transactions and obligations in one HOSSAM BAHR workspace.">
+<link rel="canonical" href="https://hossambahr.com/en/os/">
+<link rel="icon" href="/icon.svg">
+<link rel="stylesheet" href="/_next/static/chunks/31fdelqs9pqq6.css">
+<link rel="stylesheet" href="/auth.css">
+<script src="/pwa-runtime.js?v=pwa-20260918a" defer></script><script src="/vendor/supabase.js" defer></script><script src="/auth-config.js" defer></script><script src="/ui-i18n.js?v=english-continuity-20261004" defer></script><script src="/auth-client.js?v=english-continuity-20261004" defer></script><link rel="stylesheet" href="/global-os.css?v=global-os-20260928a"><script src="/global-os-api-client.js?v=global-os-20260928a" defer></script><script src="/global-os-client.js?v=global-os-20260930d" defer></script><link rel="stylesheet" href="/os.css?v=global-os-20260928a"><script src="/os-i18n.js" defer></script><script src="/os-client.js?v=global-os-20260930e" defer></script><meta property="og:image" content="https://hossambahr.com/artifacts/phase9-1-visual-quality/homepage-desktop-1440.png"><script src="/analytics-client.js?v=analytics-20260928b" defer data-hb-analytics="v1"></script><meta property="og:title" content="HOSSAM BAHR OS | Workspace"><meta property="og:description" content="Manage your goals, companies, transactions and obligations in one HOSSAM BAHR workspace."><meta property="og:url" content="https://hossambahr.com/en/os/"><meta property="og:image:alt" content="HOSSAM BAHR OS | Workspace"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="HOSSAM BAHR OS | Workspace"><meta name="twitter:description" content="Manage your goals, companies, transactions and obligations in one HOSSAM BAHR workspace."><meta name="twitter:image" content="https://hossambahr.com/artifacts/phase9-1-visual-quality/homepage-desktop-1440.png"><link rel="stylesheet" href="/english-experience.css"></head>
+<body class="hb-os-page">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en/"><b class="hb-master-mark" aria-hidden="true">HB</b><span>HOSSAM BAHR<small>Business & Government Operations OS</small></span></a>
+  <nav class="desktop-nav">
+    <a href="/en/services/">Services</a>
+    <a href="/en/account/">My account</a>
+    <a href="/en/os/automation/">Automation</a>
+    <a href="/command-center/">Workspace</a>
+  </nav>
+  <div class="header-actions"><a data-account-link class="login-action" href="/en/account/">My account</a></div>
+</header>
+<main id="main-content" class="hb-os-shell">
+  <section class="hb-os-hero" id="ai-intake">
+    <span class="eyebrow">HOSSAM BAHR OS</span>
+    <h1>Describe the outcome you want to achieve.</h1>
+    <p>Turn your goal into a transaction plan. Sensitive actions remain subject to your approval.</p>
+    <form data-os-goal-form class="hb-os-goal-form">
+      <label for="os-goal">What do you want to achieve?</label>
+      <div class="hb-os-goal-row">
+        <textarea id="os-goal" name="goal" rows="3" maxlength="1200" placeholder="For example: set up a company in Dubai, obtain investor residence and hire employees." required></textarea>
+        <button type="submit">Start transaction</button>
+      </div>
+      <input type="hidden" name="service_slug" data-os-selected-service>
+      <label class="hb-os-country-field">Country
+        <select name="country_pack_key" data-os-country-pack>
+          <option value="">Loading available countries…</option>
+        </select>
+      </label>
+      <div data-os-goal-selection class="hb-os-goal-selection" hidden></div>
+      <div data-os-goal-suggestions class="hb-os-goal-suggestions" hidden aria-live="polite"></div>
+      <p data-os-message class="auth-message" hidden aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section class="hb-os-grid" aria-label="Workspace">
+    <article class="hb-os-panel">
+      <div class="hb-os-panel-heading"><div><span class="eyebrow">Companies</span><h2>My organizations</h2></div><button type="button" data-toggle-organization>+ Add organization</button></div>
+      <form data-organization-form class="hb-os-inline-form" hidden>
+        <label>Legal name<input name="legal_name" maxlength="180" required></label>
+        <label>Trade name<input name="trade_name" maxlength="180"></label>
+        <label>Emirate
+          <select name="jurisdiction_id" data-jurisdiction-select>
+            <option value="">Choose emirate</option>
+          </select>
+        </label>
+        <label>Licence / registration number<input name="registration_number" maxlength="120" inputmode="text"></label>
+        <button type="submit">Save organization</button>
+      </form>
+      <div data-os-organizations class="hb-os-list"><p>Loading…</p></div>
+    </article>
+
+    <article class="hb-os-panel" id="case-progress">
+      <div class="hb-os-panel-heading"><div><span class="eyebrow">Cases</span><h2>Open transactions</h2></div><a href="/en/services/">Service catalog</a></div>
+      <div data-os-cases class="hb-os-list"><p>Loading…</p></div>
+    </article>
+
+    <article class="hb-os-panel" id="action-center">
+      <div class="hb-os-panel-heading"><div><span class="eyebrow">Action Center</span><h2>Needs your attention</h2></div></div>
+      <div data-os-attention class="hb-os-list"><p>Loading…</p></div>
+    </article>
+
+    <article class="hb-os-panel">
+      <div class="hb-os-panel-heading"><div><span class="eyebrow">60 days</span><h2>Upcoming obligations</h2></div></div>
+      <div data-os-obligations class="hb-os-list"><p>Loading…</p></div>
+    </article>
+
+    <article class="hb-os-panel hb-os-panel-wide" id="private-vault">
+      <div class="hb-os-panel-heading"><div><span class="eyebrow">Private Vault</span><h2>My documents</h2></div><button type="button" data-toggle-document>+ Upload document</button></div>
+      <form data-document-upload-form class="hb-os-document-form" hidden>
+        <label>Document type
+          <select name="document_type" required>
+            <option value="">Choose type</option>
+            <option value="passport">Passport</option>
+            <option value="residency">Residence</option>
+            <option value="emirates_id">Emirates ID</option>
+            <option value="trade_license">Trade licence</option>
+            <option value="contract">Contract</option>
+            <option value="other">Other document</option>
+          </select>
+        </label>
+        <label>Associated organization
+          <select name="organization_id" data-document-organization>
+            <option value="">No organization</option>
+          </select>
+        </label>
+        <label>Associated transaction
+          <select name="case_id" data-document-case>
+            <option value="">No transaction</option>
+          </select>
+        </label>
+        <label>Expiry date, if applicable<input name="expires_at" type="date"></label>
+        <label class="hb-os-file-label">File<input name="file" type="file" accept=".pdf,image/jpeg,image/png,image/webp" required></label>
+        <label class="hb-os-consent"><input name="consent" type="checkbox" required> I consent to private storage of this document and its use to review and prepare my transactions within HOSSAM BAHR OS.</label>
+        <button type="submit">Upload to private vault</button>
+      </form>
+      <div data-os-documents class="hb-os-list"><p>Loading…</p></div>
+    </article>
+  </section>
+
+  <section class="hb-os-trust">
+    <b>You remain in control</b>
+    <p>Payments, signatures, irreversible actions and sensitive external submissions require the appropriate approval.</p>
+  </section>
+</main>
+</body>
+</html>
