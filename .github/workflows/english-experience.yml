@@ -1,0 +1,44 @@
+name: English experience browser checks
+on:
+  pull_request:
+    paths:
+      - 'src/publication/*english*'
+      - 'src/publication/update-ai-runtime-version.mjs'
+      - 'public-ai-concierge.js'
+      - 'ui-i18n.js'
+      - 'auth-client.js'
+      - 'english-experience.css'
+      - 'scripts/english-experience-browser.mjs'
+      - '.github/workflows/english-experience.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: english-experience-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  english-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm run build
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - name: Verify generated English journeys and measured responsive layouts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m http.server 8787 --bind 127.0.0.1 > /tmp/hb-english-server.log 2>&1 &
+          export HB_BASE_URL='http://127.0.0.1:8787'
+          export HB_BROWSER_PATH="$(command -v chrome)"
+          node scripts/english-experience-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: english-experience
+          path: artifacts/english-experience
+          retention-days: 14
