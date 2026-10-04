@@ -6,7 +6,7 @@
   const query = new URLSearchParams(location.search);
   if (query.get("hb_qa") === "1") return;
 
-  const privatePrefixes = ["/owner/", "/account/", "/auth/", "/os/"];
+  const privatePrefixes = ["/owner/", "/account/", "/auth/", "/os/", "/en/owner/", "/en/account/", "/en/auth/", "/en/os/"];
   if (privatePrefixes.some((prefix) => location.pathname.startsWith(prefix))) return;
 
   const endpoint = "https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/web-analytics";
