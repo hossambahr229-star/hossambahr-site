@@ -761,7 +761,7 @@
     let requestSeq=0;
     let englishCatalog;
     async function englishCandidates(value){
-      if(!englishCatalog)englishCatalog=Promise.all([import('/intent-search.js?v=english-os-20261004'),fetch('/english-catalog-data.json').then(r=>{if(!r.ok)throw Error('catalog unavailable');return r.json();})]);
+      if(!englishCatalog)englishCatalog=Promise.all([import('/intent-search.js?v=c5c68fd51193'),fetch('/english-catalog-data.json').then(r=>{if(!r.ok)throw Error('catalog unavailable');return r.json();})]);
       const [search,rows]=await englishCatalog;
       return search.rankServices(value,rows).slice(0,5).map(row=>({service_slug:row.s,service_name:row.e,emirate:row.emirate,authority_key:row.i,authority_label:row.n,service_type:null}));
     }
