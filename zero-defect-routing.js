@@ -1210,7 +1210,8 @@
     loadIntentFirstStyles();
     // The homepage is a canonical static render. All discovery functionality
     // is loaded above, but its presentation must never be replaced after paint.
-    if (isHomepagePath() || document.documentElement.lang === 'en') return;
+    if (isHomepagePath()) return;
+    if (document.documentElement.lang === 'en') return;
     setupFilter();
     alignGlobalCounts();
     isolateHomepageGovernmentCtas();
