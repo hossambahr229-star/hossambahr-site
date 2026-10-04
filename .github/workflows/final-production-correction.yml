@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: '24'
       - name: Install browser audit runtime
-        run: npm install --no-save --no-package-lock playwright@1.55.0
+        run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
       - name: Build from the central registry
         run: npm run build
       - name: Type and architecture gates
@@ -93,3 +93,36 @@ jobs:
       # production-browser-verification.yml on main to avoid duplicate public-AI
       # traffic and race/rate-limit noise across concurrent release gates.
 
+
+      - name: Capture actual Production geometry and reference comparison
+        if: github.ref_name == 'main'
+        env:
+          HB_BASE_URL: https://hossambahr.com/
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+          HB_OUTPUT_DIR: artifacts/production-reference
+        run: |
+          export HB_DEPLOYED_SHA="$(git rev-parse HEAD)"
+          node scripts/reference-geometry-gate.mjs
+      - name: Preserve actual Production evidence
+        if: github.ref_name == 'main'
+        run: |
+          git fetch origin main
+          EXPECTED_HEAD="$(git rev-parse HEAD)"
+          REMOTE_HEAD="$(git rev-parse origin/main)"
+          if [ "$REMOTE_HEAD" != "$EXPECTED_HEAD" ]; then
+            echo "A newer release owns Production; evidence is not committed."
+            exit 0
+          fi
+          git config user.name "HossamBahr Release Gate"
+          git config user.email "release-gate@users.noreply.github.com"
+          git add artifacts/production-reference
+          if ! git diff --cached --quiet; then
+            git commit -m "Record live Production geometry evidence [verified generated site] [skip ci]"
+            git push origin HEAD:main
+          fi
+      - name: Upload live comparison evidence
+        if: always() && github.ref_name == 'main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: actual-production-reference
+          path: artifacts/production-reference
