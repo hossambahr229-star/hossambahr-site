@@ -36,6 +36,7 @@ test('common renewal misspelling retains renewal action',()=>{
 test('natural Arabic family intent resolves to Dubai family renewal', () => {
   assert.equal(rankServices('أريد أجدد إقامة زوجتي في دبي', services)[0].s, 'تجديد-إقامة-أفراد-الأسرة-في-دبي');
   assert.equal(rankServices('تجديد إقامة زوجتي', services)[0].s, 'تجديد-إقامة-أفراد-الأسرة-في-دبي');
+  assert.equal(rankServices("renew my wife's residence in Dubai", services)[0].s, 'تجديد-إقامة-أفراد-الأسرة-في-دبي');
 });
 
 test('English family residence issuance cannot rank renewal first', () => {
