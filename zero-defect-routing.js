@@ -1210,7 +1210,7 @@
     loadIntentFirstStyles();
     // The homepage is a canonical static render. All discovery functionality
     // is loaded above, but its presentation must never be replaced after paint.
-    if (isHomepagePath()) return;
+    if (isHomepagePath() || document.documentElement.lang === 'en') return;
     setupFilter();
     alignGlobalCounts();
     isolateHomepageGovernmentCtas();
@@ -1249,7 +1249,15 @@
     path.startsWith('/services/') ? 'service' : path.includes('command-center') ? 'command' :
     path.includes('dashboard') ? 'dashboard' : path.includes('dubai-business-activities') ? 'activities' : 'standard';
 
-  const goals = [
+  const english = html.lang === 'en';
+  const goals = english ? [
+    ['Set up and run a company','/en/services/?q=set+up+a+company'],
+    ['Licences and activities','/en/services/?q=business+licence'],
+    ['Employment transactions','/en/services/?q=employment'],
+    ['Residence and visas','/en/services/?q=residence'],
+    ['Emirates ID and passports','/en/services/?q=Emirates+ID'],
+    ['Family sponsorship','/en/services/?q=family+sponsorship']
+  ] : [
     ['تأسيس وتشغيل شركة','/categories/companies-establishments/'],
     ['الرخص والأنشطة','/dubai-business-activities.html'],
     ['العمل والموظفون','/categories/work-employees/'],
@@ -1263,12 +1271,12 @@
     if (!header || header.dataset.hbEnhanced === 'true') return false;
     header.dataset.hbEnhanced = 'true';
     if (!document.querySelector('.hb-trustbar')) {
-      header.insertAdjacentHTML('beforebegin', '<div class="hb-trustbar"><span>منصة مستقلة لإرشادك إلى خدمات الإمارات</span><span>المصدر الحكومي هو المرجع النهائي</span></div>');
+      header.insertAdjacentHTML('beforebegin', english ? '<div class="hb-trustbar"><span>Independent help with UAE transactions</span><span>The government authority is the final reference</span></div>' : '<div class="hb-trustbar"><span>منصة مستقلة لإرشادك إلى خدمات الإمارات</span><span>المصدر الحكومي هو المرجع النهائي</span></div>');
     }
     if (!header.querySelector('.mobile-menu')) {
       const mobileMenu = document.createElement('details');
       mobileMenu.className = 'mobile-menu';
-      mobileMenu.innerHTML = '<summary aria-label="فتح قائمة التنقل">القائمة</summary><nav aria-label="التنقل للهاتف"><a href="/">الرئيسية</a><a href="/services/">الخدمات</a><a href="/categories/companies-establishments/">الشركات والرخص</a><a href="/categories/work-employees/">العمل والموظفون</a><a href="/categories/residency-visas/">الإقامة والتأشيرات</a><a href="/dubai-business-activities.html">الأنشطة</a><a href="/updates/">التحديثات</a><a href="/auth/">تسجيل الدخول</a></nav>';
+      mobileMenu.innerHTML = english ? '<summary aria-label="Open navigation">Menu</summary><nav aria-label="Mobile navigation"><a href="/en/">Home</a><a href="/en/services/">Services</a><a href="/en/ai/">HOSSAM BAHR AI</a><a href="/en/contact/">Ask Hossam Bahr to handle it</a><a href="/en/pricing/">Pricing</a><a href="/en/os/">Workspace</a><a href="/en/auth/">Sign in</a></nav>' : '<summary aria-label="فتح قائمة التنقل">القائمة</summary><nav aria-label="التنقل للهاتف"><a href="/">الرئيسية</a><a href="/services/">الخدمات</a><a href="/categories/companies-establishments/">الشركات والرخص</a><a href="/categories/work-employees/">العمل والموظفون</a><a href="/categories/residency-visas/">الإقامة والتأشيرات</a><a href="/dubai-business-activities.html">الأنشطة</a><a href="/updates/">التحديثات</a><a href="/auth/">تسجيل الدخول</a></nav>';
       header.append(mobileMenu);
     }
     const nav = header.querySelector('.desktop-nav');
@@ -1276,10 +1284,10 @@
       const trigger = document.createElement('button');
       trigger.type = 'button'; trigger.className = 'hb-mega-trigger';
       trigger.setAttribute('aria-expanded','false'); trigger.setAttribute('aria-controls','hb-global-mega');
-      trigger.textContent = 'استكشف المعاملات  ⌄'; nav.prepend(trigger);
+      trigger.textContent = english ? 'Explore transactions  ⌄' : 'استكشف المعاملات  ⌄'; nav.prepend(trigger);
       const mega = document.createElement('section');
       mega.id = 'hb-global-mega'; mega.className = 'hb-mega'; mega.hidden = true;
-      mega.innerHTML = `<div class="hb-mega-intro"><small>مسارات العملاء</small><h2>ابدأ من هدفك، لا من اسم الجهة</h2><p>اختر ما تريد إنجازه للوصول إلى المعاملة والجهة والخطوة التالية.</p></div><div class="hb-mega-goals">${goals.map(([label,href]) => `<a href="${href}">${label}<span>←</span></a>`).join('')}</div><div class="hb-mega-tools"><b>أدوات احترافية</b><a href="/services/">دليل الخدمات الكامل</a><a href="/dubai-business-activities.html">بحث النشاط ورمزه</a><a href="/authorities/">تصفح الجهات</a></div>`;
+      mega.innerHTML = english ? `<div class="hb-mega-intro"><small>Customer journeys</small><h2>Start with your goal</h2><p>Choose your task to find the service, authority and next step.</p></div><div class="hb-mega-goals">${goals.map(([label,href]) => `<a href="${href}">${label}<span>→</span></a>`).join('')}</div><div class="hb-mega-tools"><b>Transaction tools</b><a href="/en/services/">All services</a><a href="/en/ai/">Ask HOSSAM BAHR AI</a><a href="/en/contact/">Ask Hossam Bahr to handle it</a></div>` : `<div class="hb-mega-intro"><small>مسارات العملاء</small><h2>ابدأ من هدفك، لا من اسم الجهة</h2><p>اختر ما تريد إنجازه للوصول إلى المعاملة والجهة والخطوة التالية.</p></div><div class="hb-mega-goals">${goals.map(([label,href]) => `<a href="${href}">${label}<span>←</span></a>`).join('')}</div><div class="hb-mega-tools"><b>أدوات احترافية</b><a href="/services/">دليل الخدمات الكامل</a><a href="/dubai-business-activities.html">بحث النشاط ورمزه</a><a href="/authorities/">تصفح الجهات</a></div>`;
       header.insertAdjacentElement('afterend', mega);
       trigger.addEventListener('click', () => {
         mega.hidden = !mega.hidden;

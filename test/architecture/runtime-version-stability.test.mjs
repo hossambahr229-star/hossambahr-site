@@ -3,7 +3,7 @@ const run=promisify(execFile);
 test('runtime publication is stable across repeated builds and invalidates after a real asset change',async()=>{
  const root=await mkdtemp(join(tmpdir(),'hb-runtime-version-'));try{
   const dir=join(root,'src/publication');await mkdir(dir,{recursive:true});await writeFile(join(dir,'update-ai-runtime-version.mjs'),await readFile(new URL('../../src/publication/update-ai-runtime-version.mjs',import.meta.url)));
-  for(const name of ['public-ai-concierge','auth-client','ui-i18n','os-client','os-i18n','english-catalog','intent-search','activities'])await writeFile(join(root,name+'.js'),name==='os-client'?"import('/intent-search.js?v=old');":'// '+name);
+  for(const name of ['public-ai-concierge','auth-client','ui-i18n','os-client','os-i18n','english-catalog','intent-search','activities','zero-defect-routing'])await writeFile(join(root,name+'.js'),name==='os-client'?"import('/intent-search.js?v=old');":'// '+name);
   await writeFile(join(root,'index.html'),'<script src="/os-client.js?v=old"></script><script src="/auth-client.js"></script><script src="activities.js"></script>');
   await run(process.execPath,[join(dir,'update-ai-runtime-version.mjs')]);const first=await readFile(join(root,'index.html'),'utf8');assert.match(first,/v=[a-f0-9]{12}/);
   await run(process.execPath,[join(dir,'update-ai-runtime-version.mjs')]);assert.equal(await readFile(join(root,'index.html'),'utf8'),first,'Second build must not churn runtime URLs');
