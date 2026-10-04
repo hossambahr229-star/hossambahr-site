@@ -259,7 +259,7 @@
       const footerReview = document.querySelector(".footer-legal");
       if (footerReview && summary.lastOperationalReview) {
         const date = String(summary.lastOperationalReview).slice(0, 10);
-        footerReview.textContent = `آخر مراجعة لمحتوى الخدمات: ${date}. تختلف عن تاريخ فحص الروابط والتحديث التقني. لا تطلب المنصة بيانات شخصية ولا تنفذ المعاملة نيابة عن الجهة الحكومية.`;
+        footerReview.textContent = `آخر مراجعة مسجلة لمحتوى الخدمات: ${date}. تختلف عن تاريخ فحص الروابط والتحديث التقني. حسام بحر خدمة مستقلة لتجهيز وإنجاز ومتابعة المعاملات ضمن نطاق الخدمات. تُطلب بيانات المعاملة ضمن مسارها المحمي. القرار النهائي وشروط القبول لدى الجهة الحكومية المختصة.`;
       }
 
       for (const anchor of document.querySelectorAll('.audience-grid a[href^="/for/"]')) {

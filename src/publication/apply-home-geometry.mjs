@@ -22,6 +22,7 @@ for (const route of ['index.html', 'en/index.html']) {
   if (route === 'index.html') {
     html = html.replace(/(<a class="brand"[^>]*>[\s\S]*?<\/b>)<span>[\s\S]*?<\/span>/,
       '$1<span>HOSSAM BAHR AI<small>المنصة الذكية للمعاملات الحكومية</small></span>');
+    html = html.replace(/(<nav class="desktop-nav"[^>]*>)([\s\S]*?)(<\/nav>)/, (_, open, links, close) => open + links.replace(/<a href="\/services\/">الأسعار<\/a>/g, '<a href="/pricing/">الأسعار</a>') + close);
     html = html.replace('معاملتك في الإمارات<br>', 'معاملاتك في الإمارات<br>')
       .replace('placeholder="مثال: إقامة، رخصة تجارية، تأسيس شركة، نقل كفالة…"', 'placeholder="ما المعاملة التي تريد إنجازها اليوم؟"');
     html = html.replace('منصة ذكية للوصول إلى معاملات الأفراد والشركات والجهات الحكومية في الإمارات بسهولة ووضوح.',
