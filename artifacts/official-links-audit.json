@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-05T06:16:43.935Z",
+  "generatedAt": "2026-10-05T06:32:34.740Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 161,
+    "REACHABLE": 167,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 77,
+    "NETWORK_UNVERIFIED": 71,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1277,8 +1277,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/adding-or-removing-a-partner",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/change-addition-or-removal-of-activities",
@@ -1290,8 +1291,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/change-addition-or-removal-of-activities",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees",
@@ -1305,8 +1307,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-cancellation",
@@ -1318,8 +1321,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-cancellation",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rak.ae/wps/portal/rak/e-services/govt/ded/license-issuance",
@@ -1331,8 +1335,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/e-services/govt/ded/license-issuance",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-renewal",
@@ -1344,8 +1349,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-renewal",
+      "result": "REACHABLE"
     },
     {
       "url": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/",
