@@ -1,3 +1,4 @@
+import {hasRecordedFact} from './recorded-fact-state.mjs';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
@@ -85,10 +86,10 @@ function safeFaq(destinationKind) {
 
 function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt }) {
   const normalizedDestinationKind = verificationStatus === 'VERIFIED' ? destinationKind : 'CTA_DISABLED';
-  const documentsPublished = Boolean(requirements?.length);
-  const feesPublished = Boolean(fees && fees !== unavailable);
-  const durationPublished = Boolean(duration && duration !== unavailable);
-  const conditionsPublished = Boolean(text(conditions) !== unavailable);
+  const documentsPublished = hasRecordedFact(requirements);
+  const feesPublished = hasRecordedFact(fees);
+  const durationPublished = hasRecordedFact(duration);
+  const conditionsPublished = hasRecordedFact(conditions);
   const officialLinkVerified = verificationStatus === 'VERIFIED' && Boolean(officialCtaUrl);
   const detailVerification = {
     requirementsVerified: documentsPublished,
@@ -110,9 +111,9 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
     keywords: terms(nameAr, englishTitles[slug] || nameEn, authorityAr, authorityEn, emirate, mainCategory, subCategory, keywords),
     description: text(description),
     documents: { status: documentsPublished ? 'PUBLISHED' : unavailable, items: requirements || [] },
-    governmentFees: { status: fees && fees !== unavailable ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(fees) },
+    governmentFees: { status: feesPublished ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(fees) },
     serviceFees: { status: unavailable, text: unavailable },
-    processingTime: { status: duration && duration !== unavailable ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(duration) },
+    processingTime: { status: durationPublished ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(duration) },
     conditions: text(conditions),
     steps: safeExecutionSteps(normalizedDestinationKind),
     faq: faq.length ? faq : safeFaq(normalizedDestinationKind),

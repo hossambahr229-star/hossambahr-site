@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {hasRecordedFact} from '../../src/registry/recorded-fact-state.mjs';
+const {services}=JSON.parse(readFileSync(new URL('../../src/registry/published-services.json',import.meta.url),'utf8'));
+test('all 200 generated services reject placeholder detail verification',()=>{assert.equal(services.length,200);for(const service of services){for(const [field,value] of [['feesVerified',service.governmentFees.text],['durationVerified',service.processingTime.text],['eligibilityVerified',service.conditions],['requirementsVerified',service.documents.items]])if(service.verification[field])assert.ok(hasRecordedFact(value),service.id+': '+field);}});
