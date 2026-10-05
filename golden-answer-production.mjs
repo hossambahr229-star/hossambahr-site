@@ -11,6 +11,7 @@ async function ask(goal, latestTurn = goal, context = {}) {
 }
 const cases = [
  ["golden-investor-canonical-en","Issuing a golden residence permit (investors) in Dubai",{jurisdiction:"AE-DU",authority:"gdrfa-dubai",slug:"golden-residency-uae"}],
+ ["golden-non-investor-en","golden residence for scientists in Dubai",{unsupported:true}],
  ["wife-dubai","أريد أجدد إقامة زوجتي في دبي",{jurisdiction:"AE-DU",authority:"gdrfa-dubai"}],
  ["company-dubai","أريد أفتح شركة في دبي",{jurisdiction:"AE-DU",authority:"det-dubai"}],
  ["employee-transfer","كيف أنقل موظف لشركتي؟",{authority:"mohre",slug:"transfer-work-permit-uae"}],

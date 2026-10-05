@@ -381,7 +381,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   if (has(goal, ["wps","نظام حمايه الاجور","نظام حماية الأجور","حمايه الاجور","حماية الأجور","نظام الاجور","نظام الأجور","wage protection"])) {
     if (slug === "التسجيل-والمتابعة-في-wps") score += 9000; else if (/work-permit|تصريح/.test(slug)) score -= 3500;
   }
-  if (has(goal, ["الاقامه الذهبيه","الإقامة الذهبية","اقامه ذهبيه","إقامة ذهبية","جولدن فيزا","جولدن","golden residency","golden residence","golden visa"])) {
+  if (has(goal, ["الاقامه الذهبيه","الإقامة الذهبية","اقامه ذهبيه","إقامة ذهبية","جولدن فيزا","جولدن","golden residency","golden visa"]) || (has(goal, ["golden residence"]) && has(goal, ["investor"]))) {
     if (slug === "golden-residency-uae") score += 9000; else if (/family|اسر|والد/.test(slug)) score -= 4000;
   }
   const economicLicense = has(goal, ["رخصه اقتصاديه","رخصة اقتصادية","الرخصه الاقتصاديه","الرخصة الاقتصادية","economic license","economic licence","رخصه تجاريه","رخصة تجارية","الرخصه التجاريه","الرخصة التجارية","trade license","trade licence"]);
