@@ -60,26 +60,41 @@ jobs:
           HB_EXTERNAL_CONCURRENCY: 16
         run: node src/publication/audit-official-links.mjs
       - name: Commit the verified generated site
+        id: sync_generated
         if: (github.ref_name == 'agent/final-production-correction' || github.ref_name == 'main') && !contains(github.event.head_commit.message, '[verified generated site]')
         run: |
           git config user.name "HossamBahr Release Gate"
           git config user.email "release-gate@users.noreply.github.com"
+          git fetch origin ${{ github.ref_name }}
+          REMOTE_HEAD="$(git rev-parse origin/${{ github.ref_name }})"
+          if [ "$REMOTE_HEAD" != "${{ github.sha }}" ]; then
+            # A retry can start from the source merge while its generated release
+            # is already public. Keep rebuilt files, but label captures with the
+            # actual published HEAD. Never label a capture with an unpushed commit.
+            if git merge-base --is-ancestor "${{ github.sha }}" "$REMOTE_HEAD" \
+              && ! git log --format=%s "${{ github.sha }}..$REMOTE_HEAD" | grep -qv '\[verified generated site\]' \
+              && git diff --quiet "${{ github.sha }}" "$REMOTE_HEAD" -- src scripts supabase test .github service-matrix.json package.json '*.mjs' '*.js'; then
+              git reset --mixed "$REMOTE_HEAD"
+              echo "Reusing already-published generated release $REMOTE_HEAD."
+              echo "release_current=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "A newer source release owns Production; skipping old-release evidence."
+            echo "release_current=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "release_current=true" >> "$GITHUB_OUTPUT"
           git add -A
           if git diff --cached --quiet; then
             echo "Generated site is already synchronized."
           else
             git commit -m "Synchronize verified generated site [verified generated site] [skip ci]"
-            git fetch origin ${{ github.ref_name }}
-            REMOTE_HEAD="$(git rev-parse origin/${{ github.ref_name }})"
-            if [ "$REMOTE_HEAD" != "${{ github.sha }}" ]; then
-              echo "Remote branch advanced to $REMOTE_HEAD; a newer release gate owns synchronization."
-              exit 0
-            fi
             if ! git push origin HEAD:${{ github.ref_name }}; then
               git fetch origin ${{ github.ref_name }}
               REMOTE_HEAD="$(git rev-parse origin/${{ github.ref_name }})"
               if [ "$REMOTE_HEAD" != "${{ github.sha }}" ]; then
                 echo "Remote branch advanced during push; treating this run as superseded."
+                echo "release_current=false" >> "$GITHUB_OUTPUT"
                 exit 0
               fi
               echo "Generated-site push failed without a newer remote commit."
@@ -88,7 +103,7 @@ jobs:
           fi
       - name: Wait for and byte-verify live Production
         id: live_bytes
-        if: github.ref_name == 'main'
+        if: github.ref_name == 'main' && steps.sync_generated.outputs.release_current == 'true'
         run: node src/publication/verify-live-production.mjs
       # Live conversational/customer-journey verification is owned by
       # production-browser-verification.yml on main to avoid duplicate public-AI
@@ -96,7 +111,7 @@ jobs:
 
 
       - name: Audit all live public routes and 200 bilingual customer service paths
-        if: github.ref_name == 'main'
+        if: github.ref_name == 'main' && steps.live_bytes.outcome == 'success'
         env:
           HB_BASE_URL: https://hossambahr.com
           HB_OUTPUT_DIR: artifacts/production-reference
@@ -130,7 +145,7 @@ jobs:
             git push origin HEAD:main
           fi
       - name: Upload live comparison evidence
-        if: always() && github.ref_name == 'main'
+        if: always() && github.ref_name == 'main' && steps.live_bytes.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
           name: actual-production-reference
