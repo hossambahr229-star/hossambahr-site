@@ -52,3 +52,5 @@ test("Production human variants resolve stable semantic roles and actions",()=>{
  assert.equal(detectSubjectRole("add shareholder Dubai license"),"partner");
  for(const q of ["ابي اجدد اقامة الخادمة","إقامة العاملة المنزلية قربت تنتهي","domestic worker visa renewal","تجديد اقامة عامل مساعد"]) assert.equal(detectSubjectRole(q),"domestic_worker",q);
 });
+
+ test("Published English investor title preserves issue action, investor role and Dubai",()=>{const q="Issuing a golden residence permit (investors) in Dubai";const s=mergeSemanticContext(q,null,q);assert.equal(s.action,"issue");assert.equal(s.subject_role,"investor");assert.equal(s.jurisdiction,"AE-DU");assert.equal(s.relationship,null);});

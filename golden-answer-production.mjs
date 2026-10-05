@@ -10,6 +10,7 @@ async function ask(goal, latestTurn = goal, context = {}) {
   return json;
 }
 const cases = [
+ ["golden-investor-canonical-en","Issuing a golden residence permit (investors) in Dubai",{jurisdiction:"AE-DU",authority:"gdrfa-dubai",slug:"golden-residency-uae"}],
  ["wife-dubai","أريد أجدد إقامة زوجتي في دبي",{jurisdiction:"AE-DU",authority:"gdrfa-dubai"}],
  ["company-dubai","أريد أفتح شركة في دبي",{jurisdiction:"AE-DU",authority:"det-dubai"}],
  ["employee-transfer","كيف أنقل موظف لشركتي؟",{authority:"mohre",slug:"transfer-work-permit-uae"}],
@@ -46,5 +47,14 @@ for(const follow of ["كم الرسوم؟","والأوراق؟","كم تستغر
  assert.ok(a.text?.length>15,"follow-up answer missing: "+follow);
  if(follow.includes("الرسوم") && a.fact_status==="MISSING_INFORMATION") assert.doesNotMatch(a.text,/\b\d{2,}\b/,"invented fee");
  results.push({name:"follow-up",q:follow,focus:a.focus,status:a.fact_status,answer:a.text,service:m.service_slug,authority:m.authority?.key});
+}
+const investorGoal="Issuing a golden residence permit (investors) in Dubai";
+const investorContext={service_slug:"golden-residency-uae",jurisdiction_code:"AE-DU",authority_key:"gdrfa-dubai",action:"issue",subject_role:"investor"};
+for(const [question,focus,pattern] of [["What are the fees?","fees",/1[,.]?100/],["How long does it take?","duration",/5/]]){
+ const p=await ask(investorGoal+" — "+question,question,investorContext),m=p.result?.matches?.[0],a=p.result?.answer;
+ assert.equal(m?.service_slug,"golden-residency-uae",question+" changed service");
+ assert.equal(a?.focus,focus);assert.equal(a?.fact_status,"VERIFIED_FACT",question+" missing reviewed source rule");assert.match(a.text,pattern);
+ assert.ok(a.evidence?.supporting_rule?.source_refs?.includes("https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8"));
+ results.push({name:"golden-investor-follow-up",q:question,focus,status:a.fact_status,answer:a.text,service:m.service_slug,authority:m.authority?.key});
 }
 console.log(JSON.stringify({total:results.length,results},null,2));
