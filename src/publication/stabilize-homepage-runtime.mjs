@@ -193,6 +193,14 @@ if (secondarySections.length && !/class=["'][^"']*\bphase7-secondary-home\b/.tes
   html = legalCallout ? html.replace(legalCallout, `${disclosure}${legalCallout}`) : html.replace('</main>', `${disclosure}</main>`);
 }
 
+// Premium homepage is the current visual/product source of truth. The legacy
+// directory homepage remains available through its dedicated routes, but must
+// not be appended after the premium composition.
+const premiumHomepage = html.includes('premium-home-hero');
+if (premiumHomepage) {
+  html = html.replace(/(<section id="search-results" class="result"[^>]*><\/section>)[\s\S]*?(?=<footer\b)/i, '$1');
+}
+
 const forbidden = [
   ['loading shell', /class=["'][^"']*loading-shell/],
   ['React suspense boundary', /id=["'](?:B|S):0["']/],
@@ -205,9 +213,9 @@ for (const [label, pattern] of forbidden) {
 if (!/data-home-render=["']static-stable["']/.test(html)) throw new Error('Stable homepage marker is missing.');
 if (!/data-account-link=["']true["']/.test(html)) throw new Error('Stable authentication action is missing.');
 if (!/data-phase7=["']true["']/.test(html)) throw new Error('Phase 7 homepage marker is missing.');
-if (!/class=["']phase7-trust-strip["']/.test(html)) throw new Error('Compact Phase 7 trust strip is missing.');
+if (!premiumHomepage && !/class=["']phase7-trust-strip["']/.test(html)) throw new Error('Compact Phase 7 trust strip is missing.');
 const phase9Cards = html.match(/data-phase9-card=["']compact-dual-path["']/g) || [];
-if (phase9Cards.length < 4) throw new Error('Phase 9 compact dual-path homepage cards are incomplete.');
+if (!premiumHomepage && phase9Cards.length < 4) throw new Error('Phase 9 compact dual-path homepage cards are incomplete.');
 if ((html.match(/class=["'][^"']*service-assist-action/g) || []).length !== phase9Cards.length) throw new Error('Every Phase 9 card must expose the assisted execution path.');
 if ((html.match(/class=["'][^"']*platform-hero/g) || []).length !== 1) throw new Error('Homepage must contain exactly one platform hero.');
 
