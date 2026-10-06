@@ -41,6 +41,10 @@ for (const route of ['index.html', 'en/index.html']) {
   });
   if(route==='index.html') html = html.replace(/<section class="premium-proof target-proof"[^>]*>[\s\S]*?<\/section>/,
     `<section class="premium-proof target-proof" aria-label="نطاق المنصة"><span>${icon('document')}<span><b>${summary.services}</b> خدمة فعلية في سجل المنصة</span></span><span>${icon('people')}<span><b>${summary.coveredEmirates}/7</b> إمارات مغطاة</span></span><span>${icon('shield')}<span><b>مصادر رسمية</b> روابط حكومية موثقة</span></span><span>${icon('clock')}<span><b>خطوات واضحة</b> من البحث إلى المعاملة</span></span><span>${icon('government')}<span><b>${summary.authorities}</b> جهة في سجل المنصة</span></span></section>`);
+  const pathwayCta = route === 'index.html'
+    ? '<section class="premium-final-cta premium-two-pathways" aria-labelledby="two-pathways-title"><div><span>اختر طريقة الإنجاز</span><h2 id="two-pathways-title">المسار الحكومي أو HOSSAM BAHR</h2><p>اختر التنفيذ بنفسك عبر الجهة الرسمية أو دعنا نجهز ونتابع المعاملة معك.</p></div><div class="premium-pathway-actions"><a class="premium-primary government-path-action" href="/services/">المسار الحكومي</a><a class="managed-path-action" href="/contact/">أنجزها مع HOSSAM BAHR</a><button type="button" data-premium-ai-open>اسأل HB AI</button></div></section>'
+    : '<section class="premium-final-cta premium-two-pathways" aria-labelledby="two-pathways-title"><div><span>CHOOSE HOW TO PROCEED</span><h2 id="two-pathways-title">Government Self-Service or HOSSAM BAHR</h2><p>Continue through the official channel yourself, or let us prepare and follow up the transaction with you.</p></div><div class="premium-pathway-actions"><a class="premium-primary government-path-action" href="/en/services/">Government Self-Service</a><a class="managed-path-action" href="/en/contact/">HOSSAM BAHR Managed Path</a><button type="button" data-premium-ai-open>Ask HB AI</button></div></section>';
+  html = html.replace(/<section class="premium-final-cta\b[\s\S]*?<\/section>/, pathwayCta);
   const authorityAssets = [
     ['icp.webp','ICP','/authorities/icp/'],
     ['mohre.webp','MOHRE','/authorities/mohre/'],
