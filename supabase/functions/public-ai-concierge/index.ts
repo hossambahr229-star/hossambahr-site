@@ -264,9 +264,9 @@ async function loadCatalog(admin: any) {
     const safeSources = (policy?.source_ids || []).map((id:string) => sources.get(id)).filter((source:any) => {
       if (!source) return false;
       if (!source.review_required) return true;
-      const recentlyVerified = source.last_verified_at && Date.now() - Date.parse(source.last_verified_at) <= 72 * 60 * 60 * 1000;
+      const recentlyVerified = source.last_verified_at && Date.now() - Date.parse(source.last_verified_at) <= 7 * 24 * 60 * 60 * 1000;
       const healthy = Number(source.last_http_status) >= 200 && Number(source.last_http_status) < 400 && Number(source.monitor_failures || 0) === 0;
-      const approvedIdentity = source.metadata?.review_result === "approved_for_user_navigation" || source.metadata?.verification_state === "official_source_reverified";
+      const approvedIdentity = source.metadata?.review_result === "approved_for_user_navigation" || source.metadata?.verification_state === "official_source_reverified" || source.metadata?.verification_state === "OFFICIAL_LINK_AND_DETAILS_VERIFIED";
       return Boolean(recentlyVerified && healthy && approvedIdentity);
     });
     const def = workflow?.definition || {};

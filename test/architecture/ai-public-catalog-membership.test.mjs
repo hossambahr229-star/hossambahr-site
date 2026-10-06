@@ -9,3 +9,5 @@ test('public AI excludes historical-only bindings while keeping English discover
  assert.ok(source.includes('binding.metadata?.name_en,authority?.name_ar'));
  assert.ok(source.includes('service_name_en: row.binding.metadata?.name_en || null'));
 });
+
+test("manually reverified monitored sources remain eligible for public AI catalog",()=>{assert.match(source,/7 \* 24 \* 60 \* 60 \* 1000/);assert.match(source,/OFFICIAL_LINK_AND_DETAILS_VERIFIED/);assert.match(source,/source\.review_required/);assert.match(source,/monitor_failures/);});
