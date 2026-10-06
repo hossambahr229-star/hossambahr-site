@@ -211,30 +211,9 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{margin-i
 html[lang="en"].hb-phase8 body[data-home-geometry] .premium-intent-search input{text-align:left}
 html[lang="en"].hb-phase8 body[data-home-geometry] .target-proof{grid-template-columns:repeat(4,minmax(0,1fr))!important}
 
-/* TWO PATHWAYS — product architecture, integrated with approved reference geometry */
-html.hb-phase8 body[data-home-geometry] .premium-two-pathways{width:100%;max-width:none;margin:0;padding:16px var(--page-gutter) 18px;background:#f4f8fb}
-html.hb-phase8 body[data-home-geometry] .premium-two-pathways .section-heading{margin:0 0 10px;text-align:center;justify-content:center}
-html.hb-phase8 body[data-home-geometry] .premium-two-pathways .section-heading>div{max-width:820px;margin:auto}
-html.hb-phase8 body[data-home-geometry] .premium-two-pathways .section-heading h2{margin:2px 0 4px;font-size:20px;color:#082b43}
-html.hb-phase8 body[data-home-geometry] .premium-two-pathways .section-heading p{margin:0;font-size:12px;line-height:1.6;color:#526878}
-html.hb-phase8 body[data-home-geometry] .premium-pathway-grid{display:grid;grid-template-columns:1fr 1fr .78fr;gap:var(--card-gap);direction:ltr}
-html.hb-phase8 body[data-home-geometry] .premium-pathway{direction:rtl;min-height:132px;padding:15px 17px;border:1px solid #d9e2e6;border-radius:var(--card-radius);background:#fff;position:relative}
-html.hb-phase8 body[data-home-geometry] .premium-pathway>span{font-size:11px;font-weight:800;color:#a77419}
-html.hb-phase8 body[data-home-geometry] .premium-pathway h3{margin:3px 0 5px;font-size:16px;color:#082b43}
-html.hb-phase8 body[data-home-geometry] .premium-pathway p{margin:0 0 9px;font-size:11px;line-height:1.55;color:#526878;max-width:92%}
-html.hb-phase8 body[data-home-geometry] .premium-pathway a,html.hb-phase8 body[data-home-geometry] .premium-pathway button{display:inline-flex;align-items:center;justify-content:center;min-height:31px;padding:5px 13px;border-radius:99px;border:0;font:700 11px Arial,Tahoma,sans-serif;text-decoration:none;cursor:pointer}
-html.hb-phase8 body[data-home-geometry] .government-path{border-top:3px solid #0b684f}
-html.hb-phase8 body[data-home-geometry] .government-path a{background:#0b684f;color:#fff}
-html.hb-phase8 body[data-home-geometry] .managed-path{border-top:3px solid #b58a3a}
-html.hb-phase8 body[data-home-geometry] .managed-path a{background:#b58a3a;color:#fff}
-html.hb-phase8 body[data-home-geometry] .ai-path{direction:rtl;background:linear-gradient(135deg,#073c43,#09263a);border-color:#b58a3a}
-html.hb-phase8 body[data-home-geometry] .ai-path h3,html.hb-phase8 body[data-home-geometry] .ai-path>span{color:#fff}
-html.hb-phase8 body[data-home-geometry] .ai-path p{color:#dce8e8}
-html.hb-phase8 body[data-home-geometry] .ai-path button{background:#fff;color:#082b43}
-html[dir="ltr"].hb-phase8 body[data-home-geometry] .premium-pathway{direction:ltr}
-@media(max-width:720px){
- html.hb-phase8 body[data-home-geometry] .premium-two-pathways{padding:14px 12px}
- html.hb-phase8 body[data-home-geometry] .premium-pathway-grid{grid-template-columns:1fr}
- html.hb-phase8 body[data-home-geometry] .premium-pathway{min-height:0}
- html.hb-phase8 body[data-home-geometry] .premium-pathway p{max-width:none}
-}
+/* TWO PATHWAYS — reuse approved final CTA geometry without shifting the reference layout */
+html.hb-phase8 body[data-home-geometry] .premium-final-cta.premium-two-pathways .premium-pathway-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+html.hb-phase8 body[data-home-geometry] .premium-final-cta.premium-two-pathways .premium-pathway-actions a,html.hb-phase8 body[data-home-geometry] .premium-final-cta.premium-two-pathways .premium-pathway-actions button{min-height:31px;height:31px;padding:4px 12px;border-radius:99px;font-size:11px;font-weight:800;white-space:nowrap;text-decoration:none}
+html.hb-phase8 body[data-home-geometry] .premium-final-cta.premium-two-pathways .managed-path-action{background:#b58a3a;color:#fff;border:0}
+html.hb-phase8 body[data-home-geometry] .premium-final-cta.premium-two-pathways .government-path-action{background:#0b684f;color:#fff;border:0}
+@media(max-width:720px){html.hb-phase8 body[data-home-geometry] .premium-final-cta.premium-two-pathways .premium-pathway-actions{justify-content:center}html.hb-phase8 body[data-home-geometry] .premium-final-cta.premium-two-pathways .premium-pathway-actions a,html.hb-phase8 body[data-home-geometry] .premium-final-cta.premium-two-pathways .premium-pathway-actions button{white-space:normal;height:auto}}
