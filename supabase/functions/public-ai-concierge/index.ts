@@ -375,6 +375,8 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (/(issue|issuance|renew|partner)/.test(slug)) score -= 5000;
   }
   if (partnerChange) { if (slug === "add-remove-partner-dubai") score += 14000; else if (/issue-trade-license|license-issuance/.test(slug)) score -= 8000; }
+  const tenancyRegistration = has(goal, ["عقد ايجار","عقد إيجار","عقد ايجاري","عقد إيجاري","tenancy contract","rental contract"]) && (has(goal, ["دبي","dubai","تسجيل","اسجل","سجل","register","renew","تجديد"]) || jurisdictionCode === "AE-DU");
+  if (tenancyRegistration) { if (slug === "register-renew-ejari-contract-dubai") score += 12000; else if (/marriage|زواج|lease-cancellation|الغاء/.test(slug)) score -= 7000; }
   if (has(goal, ["ايجاري","إيجاري","اجاري","ejari"])) {
     if (slug === "register-renew-ejari-contract-dubai") score += 9000; else score -= 2500;
   }
