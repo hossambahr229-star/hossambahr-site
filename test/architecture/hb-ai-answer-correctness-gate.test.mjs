@@ -96,4 +96,4 @@ test("document intelligence requires a real authenticated user and uses valid mu
   assert.match(documentAi, /provider_store:false|store:false/);
 });
 
-test("Arabic tenancy-contract wording resolves to the Ejari service family",async()=>{const source=await read("supabase/functions/public-ai-concierge/index.ts");assert.match(source,/const tenancyRegistration/);assert.match(source,/عقد ايجار/);assert.match(source,/register-renew-ejari-contract-dubai/);assert.match(source,/score \+= 12000/);});
+test("Arabic tenancy-contract wording resolves to the Ejari service family",()=>{const source=edge;assert.match(source,/const tenancyRegistration/);assert.match(source,/عقد ايجار/);assert.match(source,/register-renew-ejari-contract-dubai/);assert.match(source,/score \+= 12000/);});
