@@ -79,6 +79,13 @@ for (const route of ['index.html', 'en/index.html']) {
     `$1<span class="home-search-icon">${icon('search')}</span>`);
   if (!html.includes('ai-showcase-actions')) html = html.replace(/(<div class="ai-showcase-links">)/,
     `<div class="ai-showcase-actions"><a href="${route==='index.html'?'/contact/':'/en/contact/'}">${route==='index.html'?'احصل على استشارة فورية':'Get expert help'} ←</a><a href="${route==='index.html'?'/account/':'/en/account/'}">${route==='index.html'?'تابع حالة طلبك':'Track your request'} ←</a></div>$1`);
+  // Decorative affordances keep the original button/link and its accessible name.
+  const aiActionIcon = '<span class="home-ai-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m8 5 5 5-5 5"/></svg></span>';
+  html = html.replace(/(<button\b[^>]*class="ai-showcase-cta"[^>]*>)([\s\S]*?)(<\/button>)/,
+    (_,open,text,close)=>open+text+(text.includes('home-ai-action-icon')?'':aiActionIcon)+close);
+  html = html.replace(/(<div class="ai-showcase-actions">)([\s\S]*?)(<\/div>)/,
+    (_,open,links,close)=>open+links.replace(/(<a\b[^>]*>)([\s\S]*?)(<\/a>)/g,
+      (_,start,text,end)=>start+text.replace(/\s*←\s*$/,'')+(text.includes('home-ai-action-icon')?'':aiActionIcon)+end)+close);
   await writeFile(file, html);
 }
 
