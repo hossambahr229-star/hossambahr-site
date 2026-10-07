@@ -29,7 +29,9 @@ if(typeof document!=='undefined'){
     if(!records){const response=await fetch('/transaction-discovery-data.json');if(!response.ok)throw Error('catalog');records=await response.json();}
     const selection={query:form.elements.q.value,emirate:form.elements.emirate.value,authority:form.elements.authority.value,category:form.elements.category.value};
     const found=discoverServices(records,selection),order=new Map(found.map((s,i)=>[s.s,i]));
-    for(const card of cards){card.hidden=!order.has(card.dataset.canonicalService);card.style.order=String(order.get(card.dataset.canonicalService)||0);}
+    for(const card of cards)card.hidden=!order.has(card.dataset.canonicalService);
+    const bySlug=new Map(cards.map(card=>[card.dataset.canonicalService,card]));
+    for(const record of found){const card=bySlug.get(record.s);if(card)card.parentElement.append(card);}
     status.textContent=en?`${found.length} matching services`:`${found.length} خدمة مطابقة`;
     empty.hidden=!!found.length;
     const url=new URL(location.href);for(const [key,value] of Object.entries({q:selection.query,emirate:selection.emirate,authority:selection.authority,category:selection.category})){if(value)url.searchParams.set(key,value);else url.searchParams.delete(key);}history.replaceState(null,'',url);
@@ -38,3 +40,4 @@ if(typeof document!=='undefined'){
   form.addEventListener('submit',render);form.addEventListener('change',render);render();
  }
 }
+
