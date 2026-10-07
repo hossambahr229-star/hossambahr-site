@@ -124,9 +124,10 @@ try{
  await sharp(reference,{raw}).png().toFile(join(output,'reference-1440.png'));
  await sharp(overlay,{raw}).png().toFile(join(output,'overlay-50.png'));
  await sharp(diff,{raw}).png().toFile(join(output,'image-diff.png'));
- const report={base,deployedCommit:process.env.HB_DEPLOYED_SHA||null,captureSource:process.env.HB_BASE_URL?'LIVE_PRODUCTION':'LOCAL_BUILD',geometryPassed:results.every(r=>!r.failures.length),pixelFidelity:'NOT_DECLARED',humanVisualAcceptance:'NOT_ACCEPTED',scope:'Measured layout and image comparison do not establish founder acceptance.',meanAbsolutePixelDifference:total/reference.length,changedPixelPercent:changed/(1440*960)*100,results};
+ const report={base,deployedCommit:process.env.HB_DEPLOYED_SHA||null,captureSource:process.env.HB_BASE_URL?'LIVE_PRODUCTION':'LOCAL_BUILD',geometryPassed:results.every(r=>!r.failures.length)&&englishResults.every(r=>!r.failures.length),englishResults,pixelFidelity:'NOT_DECLARED',humanVisualAcceptance:'NOT_ACCEPTED',scope:'Measured layout and image comparison do not establish founder acceptance.',meanAbsolutePixelDifference:total/reference.length,changedPixelPercent:changed/(1440*960)*100,results};
  await writeFile(join(output,'report.json'),JSON.stringify(report,null,2));
  console.log(JSON.stringify(report,null,2));
  if(!report.geometryPassed)process.exitCode=1;
 }finally{await browser.close();server.close()}
+
 
