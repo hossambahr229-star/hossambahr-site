@@ -51,7 +51,7 @@ for (const route of ['index.html', 'en/index.html']) {
     .replaceAll('href="/authorities/mohre/"','href="/en/services/?q=MOHRE"')
     .replaceAll('href="/authorities/dld-rera/"','href="/en/services/?q=DLD%20RERA"')
     .replaceAll('href="/authorities/dubai-municipality/"','href="/en/services/?q=Dubai%20Municipality"')
-    .replaceAll('href="/authorities/"','href="/en/services/");
+    .replaceAll('href="/authorities/"','href="/en/services/');
   if(route==='index.html') html = html.replace(/<section class="premium-proof target-proof"[^>]*>[\s\S]*?<\/section>/,
     `<section class="premium-proof target-proof" aria-label="نطاق المنصة"><span>${icon('document')}<span><b>${summary.services}</b> خدمة فعلية في سجل المنصة</span></span><span>${icon('people')}<span><b>${summary.coveredEmirates}/7</b> إمارات مغطاة</span></span><span>${icon('shield')}<span><b>مصادر رسمية</b> روابط حكومية موثقة</span></span><span>${icon('clock')}<span><b>خطوات واضحة</b> من البحث إلى المعاملة</span></span><span>${icon('government')}<span><b>${summary.authorities}</b> جهة في سجل المنصة</span></span></section>`);
   const pathwayCta = route === 'index.html'
