@@ -52,4 +52,15 @@ export const recordedDetailTranslations = Object.freeze({
   "لمستثمر التحصيل الضريبي: خطاب من الهيئة الاتحادية للضرائب يثبت مساهمة ضريبية لا تقل عن 250,000 درهم سنويًا، ورخصة تجارية مع ملحق الشركاء.": "For a tax investor: a Federal Tax Authority letter confirming an annual tax contribution of at least AED 250,000, and a trade licence with the partners' appendix.",
   "رسوم تصريح الإقامة المنشورة 1,100 درهم، ورسوم المعرفة 10 دراهم والابتكار 10 دراهم؛ وتعرض البطاقة 500 درهم للطلب داخل الدولة و20 درهمًا للتوصيل. وتنص على زيادة رسم الإصدار 100 درهم سنويًا عندما تتجاوز الإقامة سنتين. لا يُحسب إجمالي ثابت هنا؛ راجع المبلغ المستحق في المعاملة الرسمية بحسب الحالة.": "The published residence permit fee is AED 1,100, plus AED 10 knowledge and AED 10 innovation fees. The card lists AED 500 for an in-country application and AED 20 delivery. It also states an AED 100 annual issuance-fee increase where residence exceeds two years. No fixed total is calculated here; confirm the amount payable for the actual case.",
   "5 أيام وفق المدة المتوقعة المنشورة في بطاقة الخدمة الرسمية؛ ولا تمثل ضمانًا للقبول.": "The official service card lists an expected completion time of five days; this is not an approval guarantee."
+  "تحديد النشاط الاقتصادي": "Select the economic activity",
+  "اختيار الشكل القانوني": "Choose the legal form",
+  "تسجيل الاسم التجاري": "Register the trade name",
+  "استكمال الموافقة المبدئية والعقود والموقع والموافقات بحسب النشاط": "Complete the initial approval, contracts, premises and any activity-specific approvals",
+  "قد تتطلب الأنشطة المنظمة موافقات من البلدية أو دائرة الصحة أو جهات أخرى قبل إصدار الرخصة النهائية": "Regulated activities may require approvals from the municipality, Department of Health or other authorities before the final licence is issued",
+  "بيانات الرخصة القائمة": "Existing licence details",
+  "المرفقات الخاصة بنوع التعديل": "Attachments required for the selected amendment type",
+  "الموافقات الرسمية بحسب النشاط أو الموقع عند انطباقها": "Official approvals based on the activity or location, where applicable",
+  "هذه صفحة إرشاد رسمية تجمع معاملات تعديل منفصلة؛ يجب اختيار نوع التعديل المطابق داخل SEDD": "This official guidance page groups separate amendment transactions; select the matching amendment type within SEDD",
+  "تختلف حسب نوع التعديل؛ تعرض SEDD رسوم السجل والطباعة والنشاط والشريك والتقييم الفني في بطاقة المعاملة المختارة": "Fees vary by amendment type; SEDD shows registry, printing, activity, partner and technical-assessment fees in the selected transaction card",
+  "بحسب نوع التعديل والموافقات المرتبطة": "The time depends on the amendment type and related approvals",
 });
