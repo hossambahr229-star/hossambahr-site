@@ -1,10 +1,10 @@
 name: Approved Reference Geometry
 on:
   pull_request:
-    paths: ['home-geometry.css','index.html','en/index.html','assets/**','src/publication/apply-home-geometry.mjs','scripts/reference-geometry-gate.mjs','qa/reference/**','package.json','.github/workflows/reference-geometry.yml']
+    paths: ['home-geometry.css','index.html','en/index.html','assets/**','src/publication/**','transaction-discovery.*','customer-intake.js','public-ai-concierge.js','scripts/reference-geometry-gate.mjs','scripts/transaction-discovery-gate.mjs','qa/reference/**','package.json','.github/workflows/reference-geometry.yml']
   push:
     branches: [main]
-    paths: ['home-geometry.css','index.html','en/index.html','assets/**','src/publication/apply-home-geometry.mjs','scripts/reference-geometry-gate.mjs','qa/reference/**','package.json','.github/workflows/reference-geometry.yml']
+    paths: ['home-geometry.css','index.html','en/index.html','assets/**','src/publication/**','transaction-discovery.*','customer-intake.js','public-ai-concierge.js','scripts/reference-geometry-gate.mjs','scripts/transaction-discovery-gate.mjs','qa/reference/**','package.json','.github/workflows/reference-geometry.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -25,6 +25,8 @@ jobs:
       - name: Measure rebuilt homepage against approved desktop coordinates
         shell: bash
         run: HB_BROWSER_PATH="$(which chrome)" node scripts/reference-geometry-gate.mjs
+      - name: Verify beginner and expert discovery and context-preserving execution
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/transaction-discovery-gate.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

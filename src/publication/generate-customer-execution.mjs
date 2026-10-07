@@ -32,10 +32,11 @@ async function positioning(dir){for(const item of await readdir(dir,{withFileTyp
    if(!/(?:data-commercial-cta|service-assist-action)/.test(anchor)||!anchor.includes('https://wa.me/'))return anchor;
    const encoded=anchor.match(/href="https:\/\/wa\.me\/[^"?]+\?text=([^"]*)"/)?.[1];let message='';try{message=decodeURIComponent(encoded||'');}catch{}
    const matched=services.find(s=>message.includes('https://hossambahr.com'+s.internalRoute));
-   const en=html.includes('lang="en"');const href=matched?executionHref(matched,en?'en':'ar'):genericExecutionHref(en?'en':'ar');
+   const en=/<html\b[^>]*\blang="en"/i.test(html);const href=matched?executionHref(matched,en?'en':'ar'):genericExecutionHref(en?'en':'ar');
    return anchor.replace(/href="[^"]*"/,'href="'+href.replaceAll('&','&amp;')+'"').replace(/\s+target="_blank"/,'');
   });
   if(html!==before)await writeFile(file,html);
  }
 }}await positioning(root);
+await import('./generate-transaction-discovery.mjs');
 console.log(JSON.stringify({customerExecutionServices:services.length,locales:['ar','en'],pricing:'SCOPE_QUOTATION_NOT_INVENTED'}));

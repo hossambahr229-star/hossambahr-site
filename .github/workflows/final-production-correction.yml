@@ -127,6 +127,13 @@ jobs:
         run: |
           export HB_DEPLOYED_SHA="$(git rev-parse HEAD)"
           node scripts/reference-geometry-gate.mjs
+      - name: Verify actual Production discovery and context handoff
+        if: github.ref_name == 'main' && steps.live_bytes.outcome == 'success'
+        env:
+          HB_BASE_URL: https://hossambahr.com
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+          HB_OUTPUT_DIR: artifacts/production-reference
+        run: node scripts/transaction-discovery-gate.mjs
       - name: Preserve actual Production evidence
         if: always() && github.ref_name == 'main' && steps.live_bytes.outcome == 'success'
         run: |

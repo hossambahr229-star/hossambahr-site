@@ -31,6 +31,6 @@ for(const route of ['ai','auth','auth/callback','auth/reset','account','os']){
 }
 let home=await readFile(join(root,'en/index.html'),'utf8');
 home=home.replace(/href="\/ai\//g,'href="/en/ai/').replace(/href="\/auth\//g,'href="/en/auth/');
-if(!home.includes('/ui-i18n.js')) home=home.replace(/<script src="\/auth-client\.js(?:\?[^\"]*)?"/,match=>'<script src="/ui-i18n.js" defer></script>'+match);
+if(!home.includes('/ui-i18n.js')) home=home.replace('<head>','<head><script src="/ui-i18n.js" defer></script>');
 await writeFile(join(root,'en/index.html'),home);
 console.log('Native English AI and authentication routes generated.');

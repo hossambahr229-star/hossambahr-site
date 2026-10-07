@@ -508,9 +508,18 @@
       }
       const start = document.createElement("a");
       start.className = "hb-chat-primary";
-      start.href = authStartUrl(payload, "ai-intake");
-      start.textContent = tr("ابدأ معاملتي");
+      start.href = (english ? "/en" : "") + "/contact/?handoff=1&service=" + encodeURIComponent(match.service_slug || state.service_slug || "");
+      start.addEventListener("click", () => rememberHandoff(payload));
+      start.textContent = english ? "Let HOSSAM BAHR handle it" : "دع HOSSAM BAHR ينجزها لي";
       actions.append(start);
+      const officialUrl = match.official_cta?.url || match.official_service_url || match.official_source?.url;
+      if (officialUrl && /^https:\/\//.test(officialUrl)) {
+        const official = document.createElement("a");
+        official.className = "hb-chat-secondary";
+        official.href = officialUrl; official.target = "_blank"; official.rel = "noopener noreferrer";
+        official.textContent = english ? "Government self-service" : "أنجزها بنفسي رسميًا";
+        actions.append(official);
+      }
       const save = document.createElement("a");
       save.className = "hb-chat-secondary hb-chat-save-plan";
       save.href = authStartUrl(payload, "ai-intake");
@@ -562,17 +571,26 @@
   }
 
   function rememberHandoff(payload = state.last_payload) {
-    const match = payload?.result?.matches?.[0] || null;
+    const match = selectPresentationMatch(payload);
     const context = {
       id: crypto.randomUUID(),
       expires_at: Date.now() + TTL,
       goal: scrubLocal(state.original_goal || payload?.goal_context?.safe_goal || ""),
       resolved_query: scrubLocal(state.resolved_query || payload?.goal_context?.safe_goal || ""),
       service_slug: match?.service_slug || state.service_slug || null,
+      service_id: match?.service_id || state.active_service_id || null,
+      service_name: { ar: match?.service_name || "", en: match?.service_name_en || "" },
+      language: english ? "en" : "ar",
+      relationship: state.relationship || null,
+      family_members: state.family_members || [],
+      entity: state.entity || null,
+      action: state.action || null,
+      known_facts: state.known_facts || {},
       jurisdiction_code: match?.jurisdiction?.code || state.jurisdiction_code || "AE",
       authority_key: match?.authority?.key || state.authority_key || null,
       conversation_context: {
         answers: (state.answers || []).slice(-6).map(scrubLocal),
+        turns: (state.history || []).slice(-8).map(turn => ({role:turn.role,content:scrubLocal(turn.content)})),
         last_question: effectiveQuestion(payload) || null,
         assistant_summary: payload?.result?.understood_intent || null
       }
