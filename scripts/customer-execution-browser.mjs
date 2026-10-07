@@ -19,6 +19,12 @@ try{
   const path=(locale==='en'?'/en':'')+service.internalRoute,response=await page.request.get(base+path);assert.equal(response.status(),200,path);const html=await response.text();assert.ok(html.includes(escapeHtml(service.name[locale])),path);assert.ok(!/<h1[^>]*>هذه الصفحة غير متاحة/.test(html),path);
   const href=html.match(/href="([^"]*\/contact\/\?service=[^"]+)"/)?.[1]?.replaceAll('&amp;','&');assert.ok(href,'Missing public execution review: '+path);const review=new URL(href,base);assert.equal(review.pathname,(locale==='en'?'/en':'')+'/contact/');assert.equal(review.searchParams.get('service'),service.slug,'Review must preserve canonical service');assert.equal(review.searchParams.get('source'),path,'Review must preserve localized service URL');assert.equal(review.searchParams.get('handoff'),'1');records.push({path,status:'PASS',service:service.slug});
  }
+ for(const slug of ['family-residency-uae','transfer-work-permit-uae','issue-trade-license-dubai'])for(const locale of ['ar','en']){
+  const service=services.find(s=>s.slug===slug);assert.ok(service);const prefix=locale==='en'?'/en':'';
+  await page.goto(base+prefix+service.internalRoute,{waitUntil:'networkidle'});
+  const link=page.locator('[data-commercial-cta="verified"], [data-customer-execution] a').first();const target=new URL(await link.getAttribute('href'),base);
+  assert.equal(target.pathname,prefix+'/contact/','Runtime must preserve public review');assert.equal(target.searchParams.get('service'),slug);assert.equal(target.searchParams.get('handoff'),'1');assert.notEqual(await link.getAttribute('target'),'_blank');
+ }
  for(const [width,height] of [[1440,900],[1440,1000],[1366,768],[1366,900],[430,932],[390,844],[360,800]])for(const locale of ['ar','en']){
   await page.setViewportSize({width,height});const prefix=locale==='en'?'/en':'';const service=services.find(s=>s.emirate==='دبي');
   await page.goto(base+prefix+'/contact/?service='+encodeURIComponent(service.slug)+'&source='+encodeURIComponent(service.internalRoute),{waitUntil:'networkidle'});
