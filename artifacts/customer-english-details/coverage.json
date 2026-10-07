@@ -1,26 +1,26 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 200,
-  "fullyTranslatedRecordedSections": 1,
+  "fullyTranslatedRecordedSections": 3,
   "fieldCounts": {
     "documents": {
-      "ORIGINAL_LANGUAGE_ONLY": 117,
-      "MISSING_INFORMATION": 81,
-      "PLATFORM_TRANSLATION": 2
+      "PLATFORM_TRANSLATION": 4,
+      "ORIGINAL_LANGUAGE_ONLY": 115,
+      "MISSING_INFORMATION": 81
     },
     "eligibility": {
-      "ORIGINAL_LANGUAGE_ONLY": 116,
-      "PLATFORM_TRANSLATION": 16,
+      "PLATFORM_TRANSLATION": 18,
+      "ORIGINAL_LANGUAGE_ONLY": 114,
       "MISSING_INFORMATION": 68
     },
     "fees": {
-      "PLATFORM_TRANSLATION": 23,
-      "ORIGINAL_LANGUAGE_ONLY": 102,
+      "PLATFORM_TRANSLATION": 24,
+      "ORIGINAL_LANGUAGE_ONLY": 101,
       "MISSING_INFORMATION": 75
     },
     "duration": {
-      "PLATFORM_TRANSLATION": 41,
-      "ORIGINAL_LANGUAGE_ONLY": 84,
+      "PLATFORM_TRANSLATION": 42,
+      "ORIGINAL_LANGUAGE_ONLY": 83,
       "MISSING_INFORMATION": 75
     }
   },
@@ -31,8 +31,8 @@
       "slug": "abu-dhabi-business-establishment-guide",
       "route": "/en/services/abu-dhabi-business-establishment-guide/",
       "fields": {
-        "documents": "ORIGINAL_LANGUAGE_ONLY",
-        "eligibility": "ORIGINAL_LANGUAGE_ONLY",
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
         "fees": "PLATFORM_TRANSLATION",
         "duration": "PLATFORM_TRANSLATION"
       }
@@ -1274,10 +1274,10 @@
       "slug": "sharjah-economic-license-amendment",
       "route": "/en/services/sharjah-economic-license-amendment/",
       "fields": {
-        "documents": "ORIGINAL_LANGUAGE_ONLY",
-        "eligibility": "ORIGINAL_LANGUAGE_ONLY",
-        "fees": "ORIGINAL_LANGUAGE_ONLY",
-        "duration": "ORIGINAL_LANGUAGE_ONLY"
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
