@@ -239,7 +239,7 @@ await scenario("verified-service-handoff", { width: 390, height: 844 }, async (p
     handoffNote: await page.locator('.official-handoff-note').count() === 1,
     handoffLabel: (await page.locator('[data-government-cta="verified"]').textContent())?.includes('ابدأ التقديم الرسمي'),
     executeWithUs: await page.locator('[data-commercial-cta="verified"]').count() === 1,
-    executeWithUsDestination: (await page.locator('[data-commercial-cta="verified"]').getAttribute('href'))?.startsWith('https://wa.me/971503780460?text='),
+    executeWithUsDestination: new URL(await page.locator('[data-commercial-cta="verified"]').getAttribute('href'),baseUrl).pathname === '/contact/',
     officialDestinationUnchanged: await page.locator('[data-government-cta="verified"]').getAttribute('href').then((href) => /gdrfad\.gov\.ae/.test(href || '')),
   };
 });
@@ -384,3 +384,4 @@ const report = { generatedAt: new Date().toISOString(), baseUrl, summary: { scen
 await writeFile(resolve(output, "zero-defect-smoke.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(JSON.stringify(report.summary));
 if (failed.length) process.exitCode = 1;
+
