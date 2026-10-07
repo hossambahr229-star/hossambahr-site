@@ -2,8 +2,20 @@ import {escapeHtml,emirateEnglish} from './english-catalog.mjs';
 export function customerContext(service){
  return {service_id:service.id,service_slug:service.slug,service_name:service.name,emirate:service.emirate,authority:service.authority,source_page:service.internalRoute,official_url:service.officialInformationUrl,requirements:service.verification?.requirementsVerified?service.documents?.items||[]:[],requirements_verified:!!service.verification?.requirementsVerified};
 }
+// Managed execution remains direct-to-WhatsApp; structured contact intake is secondary.\nexport const managedWhatsAppNumber='971503780460';
 export function executionHref(service,locale='ar'){
- return `${locale==='en'?'/en':''}/contact/?service=${encodeURIComponent(service.slug)}&source=${encodeURIComponent(service.internalRoute)}`;
+ const en=locale==='en',prefix=en?'/en':'';
+ const name=service.name?.[en?'en':'ar']||service.slug;
+ const message=en
+  ? ['Hello, I would like HOSSAM BAHR to handle this transaction:',name,'Service: https://hossambahr.com'+prefix+service.internalRoute].join('\n')
+  : ['مرحباً، أريد إنجاز معاملة مع HOSSAM BAHR:',name,'رابط الخدمة: https://hossambahr.com'+service.internalRoute].join('\n');
+ return 'https://wa.me/'+managedWhatsAppNumber+'?text='+encodeURIComponent(message);
+}
+export function genericExecutionHref(locale='ar'){
+ const message=locale==='en'
+  ? 'Hello, I would like HOSSAM BAHR to handle my UAE transaction.'
+  : 'مرحباً، أريد أن ينجز HOSSAM BAHR معاملتي في الإمارات.';
+ return 'https://wa.me/'+managedWhatsAppNumber+'?text='+encodeURIComponent(message);
 }
 export function executionPage(locale='ar',pricing=false){
  const en=locale==='en',prefix=en?'/en':'',route=prefix+(pricing?'/pricing/':'/contact/');
