@@ -18,3 +18,24 @@ if(form){
  form.addEventListener('submit',search);
  const query=new URLSearchParams(location.search).get('q');if(query){input.value=query;search();}
 }
+
+
+// Normalize English service pages without waiting for full catalog rematerialization.
+const executionSection=document.querySelector('[data-customer-execution]');
+if(executionSection){
+ const action=executionSection.querySelector('a[href]');
+ const title=document.querySelector('main h1')?.textContent?.trim()||'UAE transaction';
+ if(action){
+  const message=['Hello, I would like HOSSAM BAHR to handle this transaction:',title,'Service: '+location.origin+location.pathname].join('\n');
+  action.href='https://wa.me/971503780460?text='+encodeURIComponent(message);
+  action.target='_blank';action.rel='noopener noreferrer';action.dataset.commercialCta='verified';
+ }
+}
+for(const section of document.querySelectorAll('main section')){
+ const notice=[...section.querySelectorAll(':scope > p')].find(p=>p.textContent.includes('English translation is not yet available'));
+ const quote=section.querySelector(':scope > blockquote[lang="ar"]');
+ if(!notice||!quote)continue;
+ const details=document.createElement('details'),summary=document.createElement('summary');
+ summary.textContent='Read the verified recorded Arabic text';
+ quote.replaceWith(details);details.append(summary,quote);
+}
