@@ -90,6 +90,32 @@ try{
   const stable=lifecycle.slice(2);if(stable.some(s=>Object.entries(s.boxes).some(([key,box])=>box.some((n,i)=>Math.abs(n-stable[0].boxes[key][i])>2))))failures.push('Layout moves after fonts and images are ready');
   results.push({width,height,layout,lifecycle,ai,errors,failures});await page.close();
  }
+ const englishResults=[];
+ for(const [width,height] of [[1440,960],[1366,768],[430,932],[390,844],[360,800]]){
+  const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto(base+'/en/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+  const layout=await page.evaluate(()=>{
+   const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,bottom:r.bottom}};
+   return {scrollWidth:document.documentElement.scrollWidth,phase:document.documentElement.classList.contains('hb-phase8'),hero:rect('.visual-target-hero'),photo:rect('.premium-hero-main'),assistant:rect('.premium-ai-showcase'),headline:rect('.premium-hero-copy h1'),support:rect('.premium-hero-copy>p'),search:rect('.premium-intent-search'),chips:rect('.premium-popular')};
+  });
+  const failures=[];
+  if(!layout.phase)failures.push('English shared geometry scope is absent');
+  if(layout.scrollWidth>width)failures.push('English horizontal overflow');
+  if(width>820&&(Math.abs(layout.photo.w/width-.742)>.01||Math.abs(layout.assistant.w/width-.258)>.01||Math.abs(layout.assistant.x-layout.photo.w)>2))failures.push('English hero column proportions/order');
+  if(layout.headline.bottom>layout.support.y+1||layout.support.bottom>layout.search.y+1||layout.search.bottom>layout.chips.y+1||layout.chips.bottom>layout.hero.bottom+1)failures.push('English hero content overlap');
+  await page.screenshot({path:join(output,`en-${width}-${height}-full.png`),fullPage:true});
+  await page.getByRole('button',{name:'Ask about any transaction',exact:true}).click();
+  const ai=await page.locator('#premium-ai-panel').evaluate(e=>e.classList.contains('is-open')&&getComputedStyle(e).visibility==='visible');
+  if(!ai)failures.push('English native AI control did not open');
+  await page.keyboard.press('Escape');
+  await page.locator('#premium-government-search').fill('residence');
+  await Promise.all([page.waitForURL(/\/en\/services\/\?q=residence/,{timeout:15000}),page.getByRole('button',{name:'Search',exact:true}).click()]);
+  if(errors.length)failures.push('English JavaScript errors');
+  englishResults.push({width,height,layout,ai,errors,failures});await page.close();
+ }
+ await writeFile(join(output,'english-home.json'),JSON.stringify(englishResults,null,2));
+ if(englishResults.some(r=>r.failures.length))process.exitCode=1;
  const reference=await sharp(join(root,'qa/reference/approved-desktop.jpeg')).resize(1440,960).removeAlpha().raw().toBuffer();
  const actual=await sharp(join(output,'viewport-1440.png')).removeAlpha().raw().toBuffer();
  const overlay=Buffer.alloc(reference.length),diff=Buffer.alloc(reference.length);let total=0,changed=0;
@@ -103,3 +129,4 @@ try{
  console.log(JSON.stringify(report,null,2));
  if(!report.geometryPassed)process.exitCode=1;
 }finally{await browser.close();server.close()}
+

@@ -11,6 +11,14 @@ for (const route of ['index.html', 'en/index.html']) {
   const file = join(root, route);
   let html = await readFile(file, 'utf8');
   if (!html.includes('premium-home-hero')) continue;
+  // Both localized homepages use the same scoped layout; the Arabic runtime
+  // stabilizer does not visit /en/. Preserve other classes on repeated builds.
+  html = html.replace(/<html\b([^>]*)>/i, (tag, attributes) => {
+    if (/\bclass=["'][^"']*\bhb-phase8\b/.test(tag)) return tag;
+    if (/\bclass="/.test(tag)) return tag.replace(/class="([^"]*)"/, 'class="$1 hb-phase8"');
+    if (/\bclass='/.test(tag)) return tag.replace(/class='([^']*)'/, "class='$1 hb-phase8'");
+    return `<html${attributes} class="hb-phase8">`;
+  });
   html = html.replace(/\sdata-home-geometry="[^"]*"/g, '')
     .replace(/<style id="approved-reference-hard-lock">[\s\S]*?<\/style>/g, '')
     .replace(/<body\b/, '<body data-home-geometry="approved-desktop"')
