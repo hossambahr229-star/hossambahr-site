@@ -17,7 +17,7 @@ try{
  assert.equal(await page.getByRole('heading',{name:'نطاق الخدمة والأسعار',exact:true}).count(),1);
  for(const service of services)for(const locale of ['ar','en']){
   const path=(locale==='en'?'/en':'')+service.internalRoute,response=await page.request.get(base+path);assert.equal(response.status(),200,path);const html=await response.text();assert.ok(html.includes(escapeHtml(service.name[locale])),path);assert.ok(!/<h1[^>]*>هذه الصفحة غير متاحة/.test(html),path);
-  const wa=html.match(/href="(https:\/\/wa\.me\/971503780460\?text=[^"]+)"/)?.[1]?.replaceAll('&amp;','&');assert.ok(wa,'Missing direct WhatsApp execution path: '+path);const message=new URL(wa).searchParams.get('text')||'';assert.ok(message.includes(escapeHtml(service.name[locale]).replaceAll('&amp;','&'))||message.includes(service.name[locale]),'WhatsApp handoff must identify service: '+path);assert.ok(message.includes('https://hossambahr.com'+(locale==='en'?'/en':'')+service.internalRoute),'WhatsApp handoff must preserve service URL: '+path);records.push({path,status:'PASS',service:service.slug});
+  const href=html.match(/href="([^"]*\/contact\/\?service=[^"]+)"/)?.[1]?.replaceAll('&amp;','&');assert.ok(href,'Missing public execution review: '+path);const review=new URL(href,base);assert.equal(review.pathname,(locale==='en'?'/en':'')+'/contact/');assert.equal(review.searchParams.get('service'),service.slug,'Review must preserve canonical service');assert.equal(review.searchParams.get('source'),path,'Review must preserve localized service URL');assert.equal(review.searchParams.get('handoff'),'1');records.push({path,status:'PASS',service:service.slug});
  }
  for(const [width,height] of [[1440,900],[1440,1000],[1366,768],[1366,900],[430,932],[390,844],[360,800]])for(const locale of ['ar','en']){
   await page.setViewportSize({width,height});const prefix=locale==='en'?'/en':'';const service=services.find(s=>s.emirate==='دبي');
@@ -34,3 +34,4 @@ try{
  }
  await writeFile(out+'/report.json',JSON.stringify({status:'PASS',serviceHandoffs:records.length,responsiveCustomerJourneys:14,scope:'Built routes and reviewed draft handoff; no authenticated case, government submission, payment or WhatsApp send performed.',records},null,2));console.log(JSON.stringify({status:'PASS',serviceHandoffs:records.length,responsiveCustomerJourneys:14}));
 }finally{await browser.close();}
+

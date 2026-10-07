@@ -7,7 +7,7 @@ test('customer draft never pairs a local service with a different emirate or ICP
 });
 test('assisted handoff retains service identity and includes only verified requirements',()=>{
  const service={id:'test:family',slug:'family',name:{ar:'أسرة',en:'Family'},emirate:'دبي',authority:{id:'gdrfa',ar:'الإدارة',en:'GDRFA'},internalRoute:'/services/family/',officialInformationUrl:'https://gdrfad.gov.ae/',documents:{items:['unverified']},verification:{requirementsVerified:false}};
- const c=customerContext(service);assert.equal(c.service_id,service.id);assert.equal(c.authority.id,'gdrfa');assert.deepEqual(c.requirements,[]);const href=executionHref(service,'en');assert.ok(href.startsWith('https://wa.me/971503780460?text='));const message=new URL(href).searchParams.get('text')||'';assert.ok(message.includes('Family'));assert.ok(message.includes('https://hossambahr.com/en/services/family/'));
+ const c=customerContext(service);assert.equal(c.service_id,service.id);assert.equal(c.authority.id,'gdrfa');assert.deepEqual(c.requirements,[]);const href=executionHref(service,'en');const target=new URL(href,'https://hossambahr.com');assert.equal(target.pathname,'/en/contact/');assert.equal(target.searchParams.get('service'),'family');assert.equal(target.searchParams.get('source'),'/en/services/family/');assert.equal(target.searchParams.get('handoff'),'1');assert.equal(target.origin,'https://hossambahr.com');
  service.verification.requirementsVerified=true;assert.deepEqual(customerContext(service).requirements,['unverified']);
 });
 test('contact is a customer intake in both languages and pricing does not invent charges',()=>{

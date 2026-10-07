@@ -21,6 +21,10 @@ const reviewedAt = '2026-08-11';
 const officialLinkAuditAt = '2026-09-03';
 const unavailable = 'NOT_OFFICIALLY_PUBLISHED';
 const authorityProfiles = new Map([
+  ['mofa', { ar: 'وزارة الخارجية', en: 'Ministry of Foreign Affairs' }],
+  ['moe', { ar: 'وزارة التربية والتعليم', en: 'Ministry of Education' }],
+  ['fta', { ar: 'الهيئة الاتحادية للضرائب (FTA)', en: 'Federal Tax Authority' }],
+  ['fujairah-free-zone', { ar: 'هيئة المنطقة الحرة بالفجيرة', en: 'Fujairah Free Zone Authority' }],
   ['det-dubai', { ar: 'دائرة الاقتصاد والسياحة في دبي (DET)', en: 'Dubai Department of Economy and Tourism (DET)' }],
   ['gdrfa-dubai', { ar: 'الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)', en: 'General Directorate of Residency and Foreigners Affairs Dubai' }],
   ['mohre', { ar: 'وزارة الموارد البشرية والتوطين (MOHRE)', en: 'Ministry of Human Resources and Emiratisation' }],
