@@ -2,7 +2,7 @@ import {escapeHtml,emirateEnglish} from './english-catalog.mjs';
 export function customerContext(service){
  return {service_id:service.id,service_slug:service.slug,service_name:service.name,emirate:service.emirate,authority:service.authority,source_page:service.internalRoute,official_url:service.officialInformationUrl,requirements:service.verification?.requirementsVerified?service.documents?.items||[]:[],requirements_verified:!!service.verification?.requirementsVerified};
 }
-// Managed execution remains direct-to-WhatsApp; structured contact intake is secondary.
+// Managed execution remains direct-to-WhatsApp; structured contact intake remains secondary.
 export const managedWhatsAppNumber='971503780460';
 export function executionHref(service,locale='ar'){
  const en=locale==='en',prefix=en?'/en':'';
