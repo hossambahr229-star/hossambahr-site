@@ -202,6 +202,10 @@ async function runConversationalJourney(index) {
     const primaryLabel = await primary.count() ? (await primary.textContent() || "").trim() : "";
     const saveLabel = await save.count() ? (await save.textContent() || "").trim() : "";
     const primaryHref = await primary.count() ? await primary.getAttribute("href") : "";
+    const saveHref = await save.count() ? await save.getAttribute("href") : "";
+    const reviewTarget = new URL(primaryHref || "/", "https://hossambahr.com");
+    const canonicalSlug = decodeURIComponent((route || "").split("/").filter(Boolean).at(-1) || "");
+    const publicReview = reviewTarget.pathname === "/contact/" && reviewTarget.searchParams.get("handoff") === "1" && reviewTarget.searchParams.get("service") === canonicalSlug;
     const homepageOverflowAfter = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
 
     let navigated = false;
@@ -223,7 +227,7 @@ async function runConversationalJourney(index) {
       requirements = await page.locator("h2").filter({ hasText: /المستندات|المتطلبات|ما الذي تحتاجه/ }).count() > 0;
       const official = page.locator('[data-government-cta="verified"][href^="https://"]').first();
       officialCount = await official.count();
-      const contact = page.locator('[data-commercial-cta="verified"][href^="https://wa.me/"]').first();
+      const contact = page.locator('[data-commercial-cta="verified"][href^="/contact/?service="]').first();
       contactCount = await contact.count();
       officialLabel = officialCount ? (await official.innerText()).trim() : "";
       contactLabel = contactCount ? (await contact.innerText()).trim() : "";
@@ -243,9 +247,10 @@ async function runConversationalJourney(index) {
       && Boolean(sourceHref?.startsWith("https://"))
       && /مصدر رسمي/.test(sourceBadge || "")
       && /(?:معلومة موثقة|مستند إلى مصدر رسمي)/.test(trustBadge || "")
-      && primaryLabel === "ابدأ معاملتي"
+      && primaryLabel === "دع HOSSAM BAHR ينجزها لي"
       && saveLabel === "احفظ الخطة"
-      && Boolean(primaryHref?.startsWith("/auth/?return="));
+      && publicReview
+      && Boolean(saveHref?.startsWith("/auth/?return="));
 
     const servicePass = correct && navigated && requirements && officialCount === 1 && contactCount === 1
       && /(?:اذهب للجهة الرسمية|ابدأ التنفيذ الحكومي الرسمي|افتح صفحة الخدمة الحكومية|افتح الدليل الحكومي الرسمي|افتح بوابة التنفيذ الحكومية|التقديم الرسمي)/.test(officialLabel)
@@ -260,7 +265,7 @@ async function runConversationalJourney(index) {
       authorityText: (authorityText || "").replace(/\s+/g, " ").trim(), sourceHref,
       sourceBadge: (sourceBadge || "").trim(), trustBadge: (trustBadge || "").trim(),
       authBeforeAnalysis, composerInFirstViewport, homepageOverflowBefore, homepageOverflowAfter,
-      primaryLabel, saveLabel, authGatedAfterResult: Boolean(primaryHref?.startsWith("/auth/?return=")),
+      primaryLabel, saveLabel, publicReview, savePlanRequiresAuth: Boolean(saveHref?.startsWith("/auth/?return=")), authGatedAfterResult: Boolean(primaryHref?.startsWith("/auth/?return=")),
       officialCta: officialCount === 1, contactCta: contactCount === 1, officialLabel, contactLabel,
       noOverflow, rtl, errors, pass
     };
@@ -370,3 +375,4 @@ if (registry.services.length !== 200 || summary.services !== 200 || activities.l
 
 
 await import("./hb-ai-browser-conversational-continuity.mjs");
+
