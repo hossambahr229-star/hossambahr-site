@@ -65,7 +65,7 @@ for (const route of ['index.html', 'en/index.html']) {
   if (!html.includes('home-search-icon')) html = html.replace(/(<form class="premium-intent-search"[^>]*>)/,
     `$1<span class="home-search-icon">${icon('search')}</span>`);
   if (!html.includes('ai-showcase-actions')) html = html.replace(/(<div class="ai-showcase-links">)/,
-    `<div class="ai-showcase-actions"><a href="/contact/">${route==='index.html'?'احصل على استشارة فورية':'Get expert help'} ←</a><a href="/account/">${route==='index.html'?'تابع حالة طلبك':'Track your request'} ←</a></div>$1`);
+    `<div class="ai-showcase-actions"><a href="${route==='index.html'?'/contact/':'/en/contact/'}">${route==='index.html'?'احصل على استشارة فورية':'Get expert help'} ←</a><a href="${route==='index.html'?'/account/':'/en/account/'}">${route==='index.html'?'تابع حالة طلبك':'Track your request'} ←</a></div>$1`);
   await writeFile(file, html);
 }
 
