@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "captureSource": "LIVE_PRODUCTION",
+  "base": "https://hossambahr.com",
+  "checks": [
+    {
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS",
+      "scope": "Canonical discovery, authority and emirate filters, native AI locale, natural-language entry routing"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "status": "PASS",
+      "scope": "Canonical discovery, authority and emirate filters, native AI locale, natural-language entry routing"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "status": "PASS",
+      "scope": "Canonical discovery, authority and emirate filters, native AI locale, natural-language entry routing"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "status": "PASS",
+      "scope": "Canonical discovery, authority and emirate filters, native AI locale, natural-language entry routing"
+    },
+    {
+      "status": "PASS",
+      "scope": "Synthetic public browser handoff preserves canonical service, jurisdiction, family context and prior conversation. No authenticated execution or government submission tested."
+    }
+  ]
+}
