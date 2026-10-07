@@ -39,6 +39,19 @@ for (const route of ['index.html', 'en/index.html']) {
     const link = name => actions.match(new RegExp(`<a class="${name}"[^>]*>[\\s\\S]*?<\\/a>`))?.[0] || '';
     return `<div class="header-actions"><a class="header-utility" href="/accessibility/" aria-label="إمكانية الوصول">${icon('shield')}</a>${link('language-action')}<a class="header-utility" href="/en/" aria-label="تغيير اللغة">${icon('globe')}</a><a class="header-utility" href="/account/" aria-label="متابعة الطلبات">${icon('bell')}</a>${link('login-action').replace('تسجيل الدخول','دخول')}${link('signup-action')}${link('header-search-icon')}</div>`;
   });
+  if(route==='en/index.html') html = html
+    .replaceAll('href="/contact/"','href="/en/contact/"')
+    .replaceAll('href="/account/"','href="/en/account/"')
+    .replaceAll('href="/for/resident/"','href="/en/services/?q=residence%20family"')
+    .replaceAll('href="/categories/companies-establishments/"','href="/en/services/?q=company%20licence"')
+    .replaceAll('href="/categories/contracts-notarization/"','href="/en/services/?q=attestation%20contract"')
+    .replaceAll('href="/categories/work-employees/"','href="/en/services/?q=work%20permit"')
+    .replaceAll('href="/categories/residency-visas/"','href="/en/services/?q=residence%20visa"')
+    .replaceAll('href="/authorities/icp/"','href="/en/services/?q=ICP"')
+    .replaceAll('href="/authorities/mohre/"','href="/en/services/?q=MOHRE"')
+    .replaceAll('href="/authorities/dld-rera/"','href="/en/services/?q=DLD%20RERA"')
+    .replaceAll('href="/authorities/dubai-municipality/"','href="/en/services/?q=Dubai%20Municipality"')
+    .replaceAll('href="/authorities/"','href="/en/services/");
   if(route==='index.html') html = html.replace(/<section class="premium-proof target-proof"[^>]*>[\s\S]*?<\/section>/,
     `<section class="premium-proof target-proof" aria-label="نطاق المنصة"><span>${icon('document')}<span><b>${summary.services}</b> خدمة فعلية في سجل المنصة</span></span><span>${icon('people')}<span><b>${summary.coveredEmirates}/7</b> إمارات مغطاة</span></span><span>${icon('shield')}<span><b>مصادر رسمية</b> روابط حكومية موثقة</span></span><span>${icon('clock')}<span><b>خطوات واضحة</b> من البحث إلى المعاملة</span></span><span>${icon('government')}<span><b>${summary.authorities}</b> جهة في سجل المنصة</span></span></section>`);
   const pathwayCta = route === 'index.html'
