@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 // Last build step: desktop composition and localized routes own their output and must survive
 // authentication/header and generated-page materialization.
 const root = resolve(import.meta.dirname, '../..');
-const geometryVersion=createHash('sha256').update(await readFile(join(root,'home-geometry.css'))).digest('hex').slice(0,12);
+const geometryVersion='zoomfix-20261007b-'+createHash('sha256').update(await readFile(join(root,'home-geometry.css'))).digest('hex').slice(0,12);
 const summary = JSON.parse(await readFile(join(root,'platform-summary.json'),'utf8'));
 for (const route of ['index.html', 'en/index.html']) {
   const file = join(root, route);
