@@ -1,7 +1,7 @@
 import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {createHash} from 'node:crypto';
-import {customerContext,executionHref,executionPage} from './customer-execution.mjs';
+import {customerContext,executionHref,executionPage,genericExecutionHref} from './customer-execution.mjs';
 import {englishServiceRoute,escapeHtml} from './english-catalog.mjs';
 const root=resolve(import.meta.dirname,'../..');
 const {services}=JSON.parse(await readFile(join(root,'src/registry/published-services.json'),'utf8'));
@@ -31,7 +31,7 @@ async function positioning(dir){for(const item of await readdir(dir,{withFileTyp
    if(!/(?:data-commercial-cta|service-assist-action)/.test(anchor)||!anchor.includes('https://wa.me/'))return anchor;
    const encoded=anchor.match(/href="https:\/\/wa\.me\/[^"?]+\?text=([^"]*)"/)?.[1];let message='';try{message=decodeURIComponent(encoded||'');}catch{}
    const matched=services.find(s=>message.includes('https://hossambahr.com'+s.internalRoute));
-   const en=html.includes('lang="en"');const href=matched?executionHref(matched,en?'en':'ar'):(en?'/en/contact/':'/contact/');
+   const en=html.includes('lang="en"');const href=matched?executionHref(matched,en?'en':'ar'):genericExecutionHref(en?'en':'ar');
    return anchor.replace(/href="[^"]*"/,'href="'+href.replaceAll('&','&amp;')+'"').replace(/\s+target="_blank"/,'');
   });
   if(html!==before)await writeFile(file,html);
