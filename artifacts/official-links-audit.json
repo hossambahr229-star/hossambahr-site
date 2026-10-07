@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-07T15:25:32.697Z",
+  "generatedAt": "2026-10-07T17:14:07.924Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 165,
+    "REACHABLE": 167,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 73,
+    "NETWORK_UNVERIFIED": 71,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -54,8 +54,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://www.tamm.abudhabi/journeys/start-a-business?lang=ar",
+      "result": "REACHABLE"
     },
     {
       "url": "https://added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
@@ -67,8 +68,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
+      "result": "REACHABLE"
     },
     {
       "url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
