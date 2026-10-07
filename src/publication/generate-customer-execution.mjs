@@ -16,7 +16,8 @@ for(const service of services)for(const locale of ['ar','en']){
  let html=await readFile(path,'utf8'),href=executionHref(service,locale);
  html=html.replace(/(<h1\b[^>]*>)[\s\S]*?(<\/h1>)/,(_,open,close)=>open+escapeHtml(locale==='en'?service.name.en:service.name.ar)+close);
  if(locale==='ar')html=html.replace(/(<a\b[^>]*class="execute-with-us-cta"[^>]*href=")[^"]*("[^>]*>)/g,'$1'+href.replaceAll('&','&amp;')+'$2').replace(/(<a\b[^>]*class="execute-with-us-cta"[^>]*?)\s+target="_blank"/g,'$1');
- else if(!html.includes('data-customer-execution'))html=html.replace('</main>',`<section data-customer-execution><h2>Ask Hossam Bahr to handle it</h2><p>Get help with preparation, execution and follow-up within an agreed scope. Review your service and authority before continuing.</p><a href="${href.replaceAll('&','&amp;')}">Review my transaction request →</a></section></main>`);
+ else if(html.includes('data-customer-execution'))html=html.replace(/(<section\b[^>]*data-customer-execution[^>]*>[\s\S]*?<a\b[^>]*href=")[^"]*("[^>]*>)/,'$1'+href.replaceAll('&','&amp;')+'$2');
+ else html=html.replace('</main>',`<section data-customer-execution><h2>Ask Hossam Bahr to handle it</h2><p>Get help with preparation, execution and follow-up within an agreed scope. Review your service and authority before continuing.</p><a href="${href.replaceAll('&','&amp;')}">Review my transaction request →</a></section></main>`);
  await writeFile(path,html);
 }
 // Replace directory-only positioning in published customer pages without changing government facts.
