@@ -10,7 +10,7 @@ export function executionHref(service,locale='ar'){
  const message=en
   ? ['Hello, I would like HOSSAM BAHR to handle this transaction:',name,'Service: https://hossambahr.com'+prefix+service.internalRoute].join('\n')
   : ['مرحباً، أريد إنجاز معاملة مع HOSSAM BAHR:',name,'رابط الخدمة: https://hossambahr.com'+service.internalRoute].join('\n');
- return 'https://wa.me/'+managedWhatsAppNumber+'?text='+encodeURIComponent(message);
+ return 'https://wa.me/'+managedWhatsAppNumber+'?text='+encodeURIComponent(message).replaceAll("'",'%27');
 }
 export function genericExecutionHref(locale='ar'){
  const message=locale==='en'
