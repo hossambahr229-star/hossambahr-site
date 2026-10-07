@@ -136,16 +136,19 @@ jobs:
             const dubaiVisible=await page.locator('[data-directory-card]:visible').count();
             const mismatches=await page.locator('[data-directory-card]:visible').evaluateAll(cards=>cards.filter(card=>!(card.dataset.emirate||'').includes('دبي')).length);
             await page.goto('https://hossambahr.com/services/issue-trade-license-dubai/?production-paths=1',{waitUntil:'networkidle'});
-            const commercial=await page.locator('[data-commercial-cta="verified"][href^="https://wa.me/971503780460"]').count();
+            const assisted=page.locator('[data-commercial-cta="verified"][href^="/contact/?service="]');
+            const commercial=await assisted.count();
+            const review=new URL(await assisted.first().getAttribute('href'),'https://hossambahr.com');
+            const canonicalReview=review.pathname==='/contact/'&&review.searchParams.get('service')==='issue-trade-license-dubai'&&review.searchParams.get('handoff')==='1';
             const official=await page.locator('[data-government-cta="verified"][href^="https://"]').count();
             await page.goto('https://hossambahr.com/command-center/?production-paths=1',{waitUntil:'networkidle'});
             const commandActions=await page.locator('.command-action-grid a').count();
             const text=(await page.locator('.metric-grid').textContent()).replaceAll(',','');
             const liveMetrics=['200','2610','7','20'].every(value=>text.includes(value));
-            const result={dubaiVisible,mismatches,commercial,official,commandActions,liveMetrics,errors};
+            const result={dubaiVisible,mismatches,commercial,canonicalReview,official,commandActions,liveMetrics,errors};
             console.log(result);
             await browser.close();
-            if(dubaiVisible<1||mismatches||commercial!==1||official<1||commandActions!==4||!liveMetrics||errors.length)process.exit(1);
+            if(dubaiVisible<1||mismatches||commercial!==1||!canonicalReview||official<1||commandActions!==4||!liveMetrics||errors.length)process.exit(1);
           })();
           JS
       - name: Full-page responsive production layout audit
@@ -222,4 +225,5 @@ jobs:
             artifacts/phase9-1-visual-quality
             qa/ux-production-result.json
           retention-days: 14
+
 
