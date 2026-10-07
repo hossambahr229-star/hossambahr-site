@@ -49,7 +49,7 @@ try{
    legacyMarks:[...document.querySelectorAll('.brand b,.hb-master-mark')].filter(e=>e.textContent.trim()==='ح').length,
    images:[...document.querySelectorAll('img')].filter(e=>!e.complete||!e.naturalWidth).map(e=>e.getAttribute('src')),
    categoryWidths:[...document.querySelectorAll('.premium-category-grid>a')].map(e=>e.getBoundingClientRect().width),howTitle:(()=>{const r=document.querySelector('.premium-how .section-heading').getBoundingClientRect();return {center:r.x+r.width/2}})(),
-   content:(()=>{const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,w:r.width,h:r.height}};return {headline:rect('.premium-hero-copy h1'),accent:rect('.premium-hero-copy h1 em'),accentFont:parseFloat(getComputedStyle(document.querySelector('.premium-hero-copy h1 em')).fontSize),support:rect('.premium-hero-copy>p'),search:rect('.premium-intent-search'),chips:rect('.premium-popular'),hero:rect('.visual-target-hero'),categories:rect('.premium-category-grid'),aiActions:[...document.querySelectorAll('.ai-showcase-actions a')].map(e=>({scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}))}})(),
+   content:(()=>{const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,w:r.width,h:r.height}};return {headline:rect('.premium-hero-copy h1'),accent:rect('.premium-hero-copy h1 em'),accentFont:parseFloat(getComputedStyle(document.querySelector('.premium-hero-copy h1 em')).fontSize),support:rect('.premium-hero-copy>p'),welcome:rect('.ai-showcase-welcome'),actionDecorations:[...document.querySelectorAll('.premium-ai-showcase .home-ai-action-icon')].map(e=>e.getAttribute('aria-hidden')),search:rect('.premium-intent-search'),chips:rect('.premium-popular'),hero:rect('.visual-target-hero'),categories:rect('.premium-category-grid'),aiActions:[...document.querySelectorAll('.ai-showcase-actions a')].map(e=>({scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}))}})(),
    boxes:Object.fromEntries(selectors.map(s=>{const r=document.querySelector(s).getBoundingClientRect();return[s,[r.x,r.y,r.width,r.height]]}))
   }),Object.keys(expected));
   await page.screenshot({path:join(output,`${width}-${height}-full.png`),fullPage:true});
@@ -74,6 +74,11 @@ try{
    if(new URL(page.url()).searchParams.get('q')!=='إقامة')failures.push('Search query not preserved');
   }
   const c=layout.content;
+  if(c.actionDecorations.length!==3||c.actionDecorations.some(v=>v!=='true'))failures.push('AI controls need one decorative icon per native action');
+  if(width===1440){
+   if(Math.abs(c.support.w-359)>12)failures.push('Desktop support copy differs from reference width');
+   if(Math.abs(c.welcome.y-92)>5||Math.abs(c.welcome.h-62)>5)failures.push('AI welcome panel differs from reference bounds');
+  }
   if(width>1100&&Math.abs(c.accentFont-42)>0.1)failures.push('Golden headline emphasis does not match the reference typography scale');
   if(width===1440&&Math.abs(c.accent.w-210)>12)failures.push('Golden headline width differs from the measured reference');
   if(c.headline.bottom>c.support.y+1)failures.push('Headline overlaps supporting copy');
