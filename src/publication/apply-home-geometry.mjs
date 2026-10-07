@@ -2,7 +2,7 @@ import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import {createHash} from 'node:crypto';
 
-// Last build step: the desktop composition owns its cascade and must survive
+// Last build step: desktop composition and localized routes own their output and must survive
 // authentication/header and generated-page materialization.
 const root = resolve(import.meta.dirname, '../..');
 const geometryVersion=createHash('sha256').update(await readFile(join(root,'home-geometry.css'))).digest('hex').slice(0,12);
