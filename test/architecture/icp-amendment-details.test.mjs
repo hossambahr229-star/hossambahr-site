@@ -13,6 +13,9 @@ test('ICP amendment records keep separate identity and category-dependent docume
   assert.equal(row.verification.requirementsVerified,true);
   assert.equal(row.verification.durationVerified,true);
   assert.equal(row.verification.feesVerified,true);
+  const ar=await readFile(new URL('../../services/'+slug+'/index.html',import.meta.url),'utf8');
+  for(const detail of [...source.requirements,source.fees,source.duration,source.conditions])assert.ok(ar.includes(detail),'Arabic generated page must retain '+detail);
+  assert.doesNotMatch(ar,/غير موثق في سجل الكتالوج/);
   const en=await readFile(new URL('../../en/services/'+slug+'/index.html',import.meta.url),'utf8');
   assert.match(en,/Passport/);assert.match(en,/Personal photo/);assert.match(en,/UAE Pass/);
   assert.doesNotMatch(en,/An English translation is not yet available/);
