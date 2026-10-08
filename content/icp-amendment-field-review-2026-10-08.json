@@ -1,0 +1,46 @@
+{
+  "reviewedAt": "2026-10-08",
+  "scope": "Requirements, fees, duration, access control and selected conditions of two ICP amendment cards. Categories remain conditional; no exact fine or expiry policy is inferred.",
+  "records": [
+    {
+      "id": "catalog:تعديل بيانات التأشيرة",
+      "slug": "amendment-of-visa-data",
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions",
+        "loginRequired"
+      ],
+      "status": "OFFICIAL_CARD_READ_AND_RECORDED"
+    },
+    {
+      "id": "catalog:تعديل بيانات تصريح الإقامة",
+      "slug": "amendment-of-residency-permit-data",
+      "officialUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions",
+        "loginRequired"
+      ],
+      "status": "OFFICIAL_CARD_READ_AND_RECORDED"
+    }
+  ],
+  "otherSourceAccess": [
+    {
+      "url": "https://eservices.ajmanded.ae/en/activitiesapprovalsinquiry",
+      "result": "Redirected to acknowledgement surface; no new facts recorded."
+    },
+    {
+      "url": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+      "result": "Web tool timeout; no new facts recorded."
+    },
+    {
+      "url": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
+      "result": "Script-dependent surface exposed no service facts; no new facts recorded."
+    }
+  ]
+}
