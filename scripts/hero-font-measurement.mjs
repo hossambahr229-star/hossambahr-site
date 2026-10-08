@@ -1,6 +1,7 @@
 import {chromium} from 'playwright';import sharp from 'sharp';import {readFile,writeFile,mkdir} from 'node:fs/promises';
 const out='artifacts/hero-font-measurement';await mkdir(out,{recursive:true});const fonts=[["Almarai700","almarai/Almarai-Bold.ttf",700],["Almarai800","almarai/Almarai-ExtraBold.ttf",800],["Tajawal700","tajawal/Tajawal-Bold.ttf",700],["Tajawal800","tajawal/Tajawal-ExtraBold.ttf",800],["Noto700","notosansarabic/NotoSansArabic%5Bwdth%2Cwght%5D.ttf",700],["Noto800","notosansarabic/NotoSansArabic%5Bwdth%2Cwght%5D.ttf",800]];
 for(const [name,path] of fonts){const response=await fetch('https://raw.githubusercontent.com/google/fonts/2eb0b48d5f760f62e286216f0859a8c540dbc1bd/ofl/'+path);if(!response.ok)throw Error('Font download '+response.status);await writeFile(out+'/'+name+'.ttf',Buffer.from(await response.arrayBuffer()));}
+for(const family of ['almarai','tajawal','notosansarabic']){const response=await fetch('https://raw.githubusercontent.com/google/fonts/2eb0b48d5f760f62e286216f0859a8c540dbc1bd/ofl/'+family+'/OFL.txt');if(!response.ok)throw Error('Font licence missing');await writeFile(out+'/'+family+'-OFL.txt',await response.text());}
 const reference=await sharp('qa/reference/approved-desktop.jpeg').resize(1440,960).extract({left:435,top:100,width:597,height:244}).removeAlpha().raw().toBuffer();
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH}),rows=[];
 try{for(const [name,path,weight] of [['Cairo800',null,800],...fonts]){
