@@ -4,6 +4,8 @@ import { chromium } from 'playwright';
 import sharp from 'sharp';
 
 const output='artifacts/live-regional-visual';
+const target=process.env.HB_BASE_URL||'https://hossambahr.com/';
+if(!['https://hossambahr.com/','http://127.0.0.1:8765/'].includes(target))throw Error('Unexpected capture target');
 await mkdir(output,{recursive:true});
 const referenceFile='qa/reference/approved-desktop.jpeg';
 const reference=await sharp(referenceFile).resize(1440,960).removeAlpha().raw().toBuffer();
@@ -12,7 +14,7 @@ try {
  const page=await browser.newPage({viewport:{width:1440,height:960},deviceScaleFactor:1,reducedMotion:'reduce'});
  const errors=[];
  page.on('pageerror',error=>errors.push(error.message));
- const response=await page.goto('https://hossambahr.com/',{waitUntil:'networkidle'});
+ const response=await page.goto(target,{waitUntil:'networkidle'});
  await page.evaluate(()=>document.fonts.ready);
  await page.evaluate(()=>Promise.all([...document.images].filter(image=>image.loading!=='lazy').map(image=>image.decode().catch(()=>{}))));
  const screenshot=await page.screenshot({fullPage:false});
@@ -52,11 +54,11 @@ try {
   return {width:innerWidth,scrollWidth:document.documentElement.scrollWidth,regions:Object.fromEntries(selectors.map(selector=>{
    const element=document.querySelector(selector);if(!element)return[selector,null];
    const rect=element.getBoundingClientRect(),style=getComputedStyle(element);
-   return[selector,{x:rect.x,y:rect.y,width:rect.width,height:rect.height,font:style.font,fontFamily:style.fontFamily,lineHeight:style.lineHeight}];
+   return[selector,{x:rect.x,y:rect.y,width:rect.width,height:rect.height,font:style.font,fontFamily:style.fontFamily,lineHeight:style.lineHeight,backgroundColor:style.backgroundColor,backgroundImage:style.backgroundImage}];
   }))};
  });
  const report={
-  capturedAt:new Date().toISOString(),source:'LIVE_PRODUCTION',url:page.url(),httpStatus:response.status(),
+  capturedAt:new Date().toISOString(),source:target.startsWith('https:')?'LIVE_PRODUCTION':'BUILT_CANDIDATE',url:page.url(),httpStatus:response.status(),
   diagnosticSourceCommit:process.env.GITHUB_SHA||null,
   productionShaBoundary:'Capture is live; diagnostic commit is not asserted to be the deployed SHA.',
   referenceSha256:createHash('sha256').update(await readFile(referenceFile)).digest('hex'),
