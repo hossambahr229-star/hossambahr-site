@@ -1,7 +1,7 @@
 name: Live Regional Visual Diagnosis
 on:
   push:
-    branches: [agent/hero-overlay-alignment]
+    branches: [agent/hero-caption-typography]
     paths:
       - home-geometry.css
       - scripts/live-regional-visual-diagnosis.mjs
@@ -22,6 +22,13 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
       - name: Install capture runtime
         run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - name: Stage licensed caption font from verified upstream blobs
+        run: |
+          mkdir -p assets/fonts
+          curl --fail --location 'https://raw.githubusercontent.com/google/fonts/main/ofl/notonaskharabic/NotoNaskhArabic%5Bwght%5D.ttf' -o assets/fonts/noto-naskh-arabic.ttf
+          curl --fail --location 'https://raw.githubusercontent.com/google/fonts/main/ofl/notonaskharabic/OFL.txt' -o assets/fonts/noto-naskh-arabic-OFL.txt
+          test "$(git hash-object assets/fonts/noto-naskh-arabic.ttf)" = a8d2867262dc7bb28492ad746de5d56235735c8b
+          test "$(git hash-object assets/fonts/noto-naskh-arabic-OFL.txt)" = d4e170557fc8bcf8d1dcb317d9f1accaf8acf223
       - name: Build the candidate from its true generators
         run: npm run build
       - name: Capture built candidate without deploying
@@ -34,14 +41,14 @@ jobs:
           name: live-regional-visual-diagnosis
           path: artifacts/live-regional-visual
       - name: Preserve only new visual evidence on the diagnosis branch
-        if: github.ref == 'refs/heads/agent/hero-overlay-alignment'
+        if: github.ref == 'refs/heads/agent/hero-caption-typography'
         run: |
           git config user.name "HossamBahr Visual Diagnosis"
           git config user.email "visual-diagnosis@users.noreply.github.com"
-          git fetch origin agent/hero-overlay-alignment
-          git reset --mixed origin/agent/hero-overlay-alignment
-          git add artifacts/live-regional-visual
+          git fetch origin agent/hero-caption-typography
+          git reset --mixed origin/agent/hero-caption-typography
+          git add artifacts/live-regional-visual assets/fonts/noto-naskh-arabic.ttf assets/fonts/noto-naskh-arabic-OFL.txt
           if ! git diff --cached --quiet; then
             git commit -m "Record regional live Production visual evidence [skip ci]"
-            git push origin HEAD:agent/hero-overlay-alignment
+            git push origin HEAD:agent/hero-caption-typography
           fi
