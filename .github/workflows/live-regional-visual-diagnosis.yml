@@ -1,8 +1,10 @@
 name: Live Regional Visual Diagnosis
 on:
   push:
-    branches: [agent/live-regional-visual-diagnosis]
+    branches: [agent/reference-ai-illustration]
     paths:
+      - home-geometry.css
+      - src/publication/apply-home-geometry.mjs
       - scripts/live-regional-visual-diagnosis.mjs
       - .github/workflows/live-regional-visual-diagnosis.yml
       - src/publication/generate-transaction-discovery.mjs
@@ -21,6 +23,8 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
       - name: Install capture runtime
         run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - name: Encode the transparent reference asset for web delivery
+        run: node --input-type=module -e "import sharp from 'sharp'; await sharp('assets/hb-ai-reference-robot.png').webp({quality:88,effort:6}).toFile('assets/hb-ai-reference-robot.webp');"
       - name: Build the candidate from its true generators
         run: npm run build
       - name: Capture built candidate without deploying
@@ -33,12 +37,14 @@ jobs:
           name: live-regional-visual-diagnosis
           path: artifacts/live-regional-visual
       - name: Preserve only new visual evidence on the diagnosis branch
-        if: github.ref == 'refs/heads/agent/live-regional-visual-diagnosis'
+        if: github.ref == 'refs/heads/agent/reference-ai-illustration'
         run: |
           git config user.name "HossamBahr Visual Diagnosis"
           git config user.email "visual-diagnosis@users.noreply.github.com"
-          git add artifacts/live-regional-visual
+          git fetch origin agent/reference-ai-illustration
+          git reset --mixed origin/agent/reference-ai-illustration
+          git add artifacts/live-regional-visual assets/hb-ai-reference-robot.webp
           if ! git diff --cached --quiet; then
             git commit -m "Record regional live Production visual evidence [skip ci]"
-            git push origin HEAD:agent/live-regional-visual-diagnosis
+            git push origin HEAD:agent/reference-ai-illustration
           fi
