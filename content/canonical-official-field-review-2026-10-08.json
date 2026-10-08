@@ -1,0 +1,66 @@
+{
+  "reviewedAt": "2026-10-08",
+  "scope": "Field-specific review of four canonical service cards. This does not certify the entire catalog or reset historical full-record review dates.",
+  "records": [
+    {
+      "id": "rta-new-trade-license-noc-dubai",
+      "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496",
+      "status": "FIELDS_CORRECTED",
+      "fields": [
+        "description",
+        "eligibility",
+        "documents.items",
+        "conditions[0]"
+      ],
+      "findings": [
+        "DET route requires a trade licence with inactive commercial transport activities; the free-zone route uses initial approval.",
+        "Member identity and residence requirements are scoped to free-zone members; no general sponsor NOC is asserted.",
+        "Fees remain activity-dependent; no universal price was substituted."
+      ]
+    },
+    {
+      "id": "dld-real-estate-ad-permit-dubai",
+      "url": "https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/",
+      "status": "FIELDS_COMPLETED",
+      "fields": [
+        "governmentFees.items.notes",
+        "documents.items",
+        "conditions"
+      ],
+      "findings": [
+        "Knowledge and Innovation surcharge is retained for permit prices.",
+        "Exhibition participant list, platform dimensions, exhibition spacing and escrow registration qualification are retained."
+      ]
+    },
+    {
+      "id": "rta-modify-trade-license-noc-dubai",
+      "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+      "status": "SELECTED_FIELDS_CONFIRMED",
+      "fields": [
+        "governmentFees.notes",
+        "duration",
+        "conditions"
+      ],
+      "findings": [
+        "Activity removal total is AED 220; other prices remain conditional on the activity or modification.",
+        "Published service time is 3–15 working days."
+      ]
+    },
+    {
+      "id": "rta-renew-trade-license-noc-dubai",
+      "url": "https://rta.ae/wps/portal/rta/ae/home/rta-services/service-details?lang=en&serviceId=438",
+      "status": "SELECTED_FIELDS_CONFIRMED",
+      "fields": [
+        "documents.status",
+        "documents.notes",
+        "conditions",
+        "governmentFees.notes"
+      ],
+      "findings": [
+        "The official card explicitly lists no service requirements.",
+        "Company account and activity-specific approvals remain relevant; auto-renewal exceptions are not generalized to all activities.",
+        "Initial access failed in the web tool; the alternate official English URL was successfully read."
+      ]
+    }
+  ]
+}
