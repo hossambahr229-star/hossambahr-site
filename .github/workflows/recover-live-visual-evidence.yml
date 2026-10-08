@@ -1,0 +1,31 @@
+name: Preserve Completed Visual Evidence
+on:
+  push:
+    branches: [agent/live-regional-visual-diagnosis]
+    paths: [.github/workflows/recover-live-visual-evidence.yml]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: live-regional-visual-diagnosis
+          run-id: 37802065812
+          github-token: ${{ github.token }}
+          path: artifacts/live-regional-visual
+      - name: Preserve the completed capture only
+        run: |
+          git config user.name "HossamBahr Visual Evidence"
+          git config user.email "visual-evidence@users.noreply.github.com"
+          git fetch origin agent/live-regional-visual-diagnosis
+          git reset --mixed origin/agent/live-regional-visual-diagnosis
+          git add artifacts/live-regional-visual
+          if ! git diff --cached --quiet; then
+            git commit -m "Preserve passed candidate visual evidence [skip ci]"
+            git push origin HEAD:agent/live-regional-visual-diagnosis
+          fi
