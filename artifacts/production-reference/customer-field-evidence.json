@@ -2,7 +2,7 @@
   "auditedServices": 200,
   "fullyVerifiedServices": 0,
   "servicesWithMissingFields": 200,
-  "missingFieldCount": 1160,
+  "missingFieldCount": 1150,
   "status": "PARTIAL PASS",
   "scope": "Public route/source identity, canonical, locale, internal href/referrer and scoped CTA checks. This does not verify external government availability, authenticated execution, documents, eligibility correctness or human visual acceptance.",
   "records": [
@@ -1024,7 +1024,7 @@
       "id": "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
       "slug": "attestation-of-commercial-invoices-via-edas-2-0",
       "source": "https://www.mofa.gov.ae/services/edas-attestation-v2",
-      "lastRecordedReview": "2026-07-27",
+      "lastRecordedReview": "2026-10-08",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -1038,8 +1038,8 @@
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
         "eligibility": "VERIFIED",
-        "requirements": "MISSING",
-        "documents": "MISSING",
+        "requirements": "VERIFIED",
+        "documents": "VERIFIED",
         "steps": "NOT_VERIFIED",
         "fees": "VERIFIED",
         "duration": "VERIFIED",
@@ -1062,8 +1062,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "requirements",
-        "documents",
         "ai_discoverability"
       ],
       "verificationBoundary": "VERIFIED government fields describe the existing recorded source review, not a new independent official-source verification. Publication and HTTP success do not prove customer acceptance."
@@ -1394,7 +1392,7 @@
       "id": "catalog:التحقق من صحة المعادلة أو التصديق",
       "slug": "confirming-the-authenticity-of-equivalency",
       "source": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
-      "lastRecordedReview": "2026-07-27",
+      "lastRecordedReview": "2026-10-08",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -1408,8 +1406,8 @@
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
         "eligibility": "VERIFIED",
-        "requirements": "MISSING",
-        "documents": "MISSING",
+        "requirements": "VERIFIED",
+        "documents": "VERIFIED",
         "steps": "NOT_VERIFIED",
         "fees": "VERIFIED",
         "duration": "VERIFIED",
@@ -1432,8 +1430,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "requirements",
-        "documents",
         "ai_discoverability"
       ],
       "verificationBoundary": "VERIFIED government fields describe the existing recorded source review, not a new independent official-source verification. Publication and HTTP success do not prove customer acceptance."
@@ -2086,7 +2082,7 @@
       "id": "catalog:معادلة شهادة الثانوية من خارج الإمارات",
       "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
       "source": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
-      "lastRecordedReview": "2026-07-27",
+      "lastRecordedReview": "2026-10-08",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -2100,8 +2096,8 @@
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
         "eligibility": "VERIFIED",
-        "requirements": "MISSING",
-        "documents": "MISSING",
+        "requirements": "VERIFIED",
+        "documents": "VERIFIED",
         "steps": "NOT_VERIFIED",
         "fees": "VERIFIED",
         "duration": "VERIFIED",
@@ -2124,8 +2120,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "requirements",
-        "documents",
         "ai_discoverability"
       ],
       "verificationBoundary": "VERIFIED government fields describe the existing recorded source review, not a new independent official-source verification. Publication and HTTP success do not prove customer acceptance."
@@ -2134,7 +2128,7 @@
       "id": "catalog:معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات",
       "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
       "source": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
-      "lastRecordedReview": "2026-07-27",
+      "lastRecordedReview": "2026-10-08",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -2148,11 +2142,11 @@
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
         "eligibility": "VERIFIED",
-        "requirements": "MISSING",
-        "documents": "MISSING",
+        "requirements": "VERIFIED",
+        "documents": "VERIFIED",
         "steps": "NOT_VERIFIED",
-        "fees": "MISSING",
-        "duration": "MISSING",
+        "fees": "VERIFIED",
+        "duration": "VERIFIED",
         "official_source": "VERIFIED",
         "official_url": "VERIFIED",
         "verification_state": "NOT_VERIFIED",
@@ -2172,10 +2166,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "requirements",
-        "documents",
-        "fees",
-        "duration",
         "ai_discoverability"
       ],
       "verificationBoundary": "VERIFIED government fields describe the existing recorded source review, not a new independent official-source verification. Publication and HTTP success do not prove customer acceptance."
