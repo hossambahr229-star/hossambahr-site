@@ -1,0 +1,308 @@
+{
+  "capturedAt": "2026-10-08T15:26:34.894Z",
+  "source": "LIVE_PRODUCTION",
+  "url": "https://hossambahr.com/",
+  "httpStatus": 200,
+  "diagnosticSourceCommit": "9b4b53426eae087833c1e239aace6baec5a868f2",
+  "productionShaBoundary": "Capture is live; diagnostic commit is not asserted to be the deployed SHA.",
+  "referenceSha256": "97dc3758fb786a116109381f05d272a2891af014935ec00b181db02b9d5012d7",
+  "viewport": {
+    "width": 1440,
+    "height": 960,
+    "deviceScaleFactor": 1
+  },
+  "regions": [
+    {
+      "name": "header",
+      "bounds": {
+        "left": 0,
+        "top": 0,
+        "width": 1440,
+        "height": 61
+      },
+      "meanAbsoluteDifference": 26.01546372191864,
+      "changedPixelPercent": 18.12841530054645
+    },
+    {
+      "name": "hero-photo",
+      "bounds": {
+        "left": 0,
+        "top": 61,
+        "width": 1069,
+        "height": 302
+      },
+      "meanAbsoluteDifference": 46.151979217646826,
+      "changedPixelPercent": 47.417899999380495
+    },
+    {
+      "name": "hero-copy-search",
+      "bounds": {
+        "left": 435,
+        "top": 100,
+        "width": 597,
+        "height": 244
+      },
+      "meanAbsoluteDifference": 48.607662630090346,
+      "changedPixelPercent": 49.87574484444078
+    },
+    {
+      "name": "ai-panel",
+      "bounds": {
+        "left": 1069,
+        "top": 61,
+        "width": 371,
+        "height": 302
+      },
+      "meanAbsoluteDifference": 66.11400784229724,
+      "changedPixelPercent": 44.02099212795202
+    },
+    {
+      "name": "categories",
+      "bounds": {
+        "left": 31,
+        "top": 367,
+        "width": 1378,
+        "height": 116
+      },
+      "meanAbsoluteDifference": 20.05818444188646,
+      "changedPixelPercent": 12.993593914218508
+    },
+    {
+      "name": "featured",
+      "bounds": {
+        "left": 31,
+        "top": 496,
+        "width": 1378,
+        "height": 127
+      },
+      "meanAbsoluteDifference": 42.49316594859605,
+      "changedPixelPercent": 39.32322320377587
+    },
+    {
+      "name": "metrics",
+      "bounds": {
+        "left": 31,
+        "top": 641,
+        "width": 1378,
+        "height": 67
+      },
+      "meanAbsoluteDifference": 31.51573771202045,
+      "changedPixelPercent": 18.886337543053962
+    },
+    {
+      "name": "how-it-works",
+      "bounds": {
+        "left": 31,
+        "top": 722,
+        "width": 1054,
+        "height": 89
+      },
+      "meanAbsoluteDifference": 18.409131612050402,
+      "changedPixelPercent": 10.500394431059847
+    },
+    {
+      "name": "consultation",
+      "bounds": {
+        "left": 1106,
+        "top": 722,
+        "width": 303,
+        "height": 89
+      },
+      "meanAbsoluteDifference": 43.75996588422887,
+      "changedPixelPercent": 38.04279304334928
+    },
+    {
+      "name": "authorities",
+      "bounds": {
+        "left": 31,
+        "top": 805,
+        "width": 1378,
+        "height": 70
+      },
+      "meanAbsoluteDifference": 22.630599903241414,
+      "changedPixelPercent": 17.330499688990255
+    },
+    {
+      "name": "cta",
+      "bounds": {
+        "left": 0,
+        "top": 888,
+        "width": 1440,
+        "height": 72
+      },
+      "meanAbsoluteDifference": 67.35009002057613,
+      "changedPixelPercent": 59.41840277777778
+    }
+  ],
+  "layout": {
+    "width": 1440,
+    "scrollWidth": 1440,
+    "regions": {
+      ".site-header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 61,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".site-header .brand": {
+        "x": 1104.046875,
+        "y": 0,
+        "width": 305,
+        "height": 61,
+        "font": "800 16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".site-header .brand>b": {
+        "x": 1104.046875,
+        "y": -1.5,
+        "width": 84,
+        "height": 84,
+        "font": "900 0px / 0px Arial, sans-serif",
+        "fontFamily": "Arial, sans-serif",
+        "lineHeight": "0px"
+      },
+      ".desktop-nav": {
+        "x": 474.953125,
+        "y": 6.796875,
+        "width": 617.09375,
+        "height": 47.390625,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".visual-target-hero": {
+        "x": 0,
+        "y": 61,
+        "width": 1440,
+        "height": 302,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".premium-hero-main": {
+        "x": 0,
+        "y": 61,
+        "width": 1068.46875,
+        "height": 302,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".premium-hero-copy h1": {
+        "x": 433.828125,
+        "y": 103,
+        "width": 598.328125,
+        "height": 81.890625,
+        "font": "800 36px / 37.8px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "37.8px"
+      },
+      ".premium-hero-copy>p": {
+        "x": 673.171875,
+        "y": 193.890625,
+        "width": 358.984375,
+        "height": 42,
+        "font": "14px / 21px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "21px"
+      },
+      ".premium-intent-search": {
+        "x": 433.828125,
+        "y": 248,
+        "width": 598.328125,
+        "height": 47,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".premium-ai-showcase": {
+        "x": 1068.46875,
+        "y": 61,
+        "width": 371.515625,
+        "height": 302,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".ai-showcase-mark": {
+        "x": 1114.46875,
+        "y": 143,
+        "width": 88,
+        "height": 88,
+        "font": "900 0px / 0px Arial, sans-serif",
+        "fontFamily": "Arial, sans-serif",
+        "lineHeight": "0px"
+      },
+      ".ai-showcase-welcome": {
+        "x": 1219.875,
+        "y": 92,
+        "width": 196.109375,
+        "height": 62,
+        "font": "14px / 21px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "21px"
+      },
+      ".premium-category-grid": {
+        "x": 30.953125,
+        "y": 367,
+        "width": 1378.09375,
+        "height": 116,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".premium-story": {
+        "x": 30.953125,
+        "y": 497,
+        "width": 1378.09375,
+        "height": 127,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".target-proof": {
+        "x": 30.96875,
+        "y": 643,
+        "width": 1378.078125,
+        "height": 66,
+        "font": "12.16px / 20.064px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "20.064px"
+      },
+      ".premium-how": {
+        "x": 0,
+        "y": 723,
+        "width": 1440,
+        "height": 80,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".premium-authorities": {
+        "x": 0,
+        "y": 803,
+        "width": 1440,
+        "height": 85,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      },
+      ".premium-final-cta": {
+        "x": 0,
+        "y": 888,
+        "width": 1440,
+        "height": 85,
+        "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
+        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
+        "lineHeight": "26.4px"
+      }
+    }
+  },
+  "errors": [],
+  "pixelFidelity": "NOT_DECLARED",
+  "scope": "Regional pixel differences locate visual mismatches. No functional regression, authenticated journey, or external-model acceptance is asserted. Differences in factual copy and the preserved HB master mark must not be repaired by copying unverified mockup claims."
+}
