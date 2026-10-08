@@ -1,0 +1,50 @@
+name: Live ICP Amendment Acceptance
+on:
+  push:
+    branches: [agent/live-icp-amendment-acceptance]
+    paths: [scripts/live-icp-amendment-acceptance.mjs, .github/workflows/live-icp-amendment-acceptance.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the newly generated service content to reach Production
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let attempt=0;attempt<60;attempt++){
+            const urls=['https://hossambahr.com/en/services/amendment-of-visa-data/','https://hossambahr.com/en/services/amendment-of-residency-permit-data/'];
+            const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
+            ready=responses[0].includes('passport valid for more than six months')&&responses[1].includes('AED 150 for replacing');
+            if(ready)break;
+            console.log('Waiting for new source content, attempt '+(attempt+1));
+            await new Promise(resolve=>setTimeout(resolve,10000));
+          }
+          if(!ready)throw Error('New generated service content did not reach Production before the wait deadline');
+          NODE
+      - name: Verify actual deployed ICP amendment details and pathways
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-icp-amendment-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-icp-amendment
+          path: artifacts/live-icp-amendment
+      - name: Preserve live evidence only
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-icp-amendment-acceptance
+          git reset --mixed origin/agent/live-icp-amendment-acceptance
+          git add artifacts/live-icp-amendment
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual ICP amendment Production acceptance [skip ci]"
+            git push origin HEAD:agent/live-icp-amendment-acceptance
+          fi
