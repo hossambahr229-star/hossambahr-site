@@ -285,3 +285,10 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @media(min-width:821px){
  html.hb-phase8 body[data-home-geometry] .premium-final-cta{background:linear-gradient(90deg,transparent 28%,#fff4e6b3 43%,#fff4e6d9 63%,transparent 83%),url('/assets/cta-reference-panorama.webp') center/cover no-repeat!important}
 }
+
+/* Arabic headline font measured against the approved 1440px reference.
+   Noto source: google/fonts 2eb0b48d5f760f62e286216f0859a8c540dbc1bd, SIL OFL. */
+@font-face{font-family:'HB Sans Arabic';src:url('/assets/fonts/hb-sans-arabic-700.woff2') format('woff2');font-weight:700;font-display:swap}
+@media(min-width:821px){
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-family:'HB Sans Arabic',Cairo,sans-serif!important;font-weight:700!important}
+}
