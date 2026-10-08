@@ -1,9 +1,9 @@
 {
-  "capturedAt": "2026-10-08T16:11:52.991Z",
+  "capturedAt": "2026-10-08T16:11:55.376Z",
   "source": "BUILT_CANDIDATE",
   "url": "http://127.0.0.1:8765/",
   "httpStatus": 200,
-  "diagnosticSourceCommit": "8d4b04aceb1e8716b948f211a4e75652ff85dfdf",
+  "diagnosticSourceCommit": "0e896a2b89811d3b42d3fa463c77d6032e9cf6ed",
   "productionShaBoundary": "Capture is live; diagnostic commit is not asserted to be the deployed SHA.",
   "referenceSha256": "97dc3758fb786a116109381f05d272a2891af014935ec00b181db02b9d5012d7",
   "viewport": {
@@ -12,6 +12,17 @@
     "deviceScaleFactor": 1
   },
   "regions": [
+    {
+      "name": "hero-caption",
+      "bounds": {
+        "left": 45,
+        "top": 162,
+        "width": 230,
+        "height": 140
+      },
+      "meanAbsoluteDifference": 54.241894409937885,
+      "changedPixelPercent": 51.40372670807454
+    },
     {
       "name": "header",
       "bounds": {
