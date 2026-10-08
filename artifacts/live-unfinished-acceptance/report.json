@@ -1,0 +1,89 @@
+{
+  "capturedAt": "2026-10-08T15:37:08.043Z",
+  "source": "LIVE_PRODUCTION",
+  "externalModel": "EXTERNAL_MODEL_NOT_USED",
+  "privateWorkspace": "AUTH_SESSION_UNAVAILABLE",
+  "documentIntelligence": "AUTHENTICATED_ANALYSIS_NOT_VERIFIED",
+  "tracking": "AUTH_SESSION_UNAVAILABLE",
+  "finalPass": false,
+  "aiResponse": {
+    "httpStatus": 200,
+    "metadata": [
+      {
+        "path": "root.type",
+        "value": "meta"
+      },
+      {
+        "path": "root.result.grounding.status",
+        "value": "VERIFIED_FACT"
+      },
+      {
+        "path": "root.result.matches.0.jurisdiction.code",
+        "value": "AE-DU"
+      },
+      {
+        "path": "root.result.engine.mode",
+        "value": "grounded-conversational-ai-pending"
+      },
+      {
+        "path": "root.result.engine.external_model_used",
+        "value": false
+      },
+      {
+        "path": "root.type",
+        "value": "fallback"
+      },
+      {
+        "path": "root.result.grounding.status",
+        "value": "VERIFIED_FACT"
+      },
+      {
+        "path": "root.result.matches.0.jurisdiction.code",
+        "value": "AE-DU"
+      },
+      {
+        "path": "root.result.engine.mode",
+        "value": "deterministic-policy-resolver"
+      },
+      {
+        "path": "root.result.engine.external_model_used",
+        "value": false
+      },
+      {
+        "path": "root.result.engine.provider_failure",
+        "value": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      {
+        "path": "root.result.engine.provider_failure.status",
+        "value": 200
+      },
+      {
+        "path": "root.result.engine.provider_failure.code",
+        "value": "credit_balance_exhausted"
+      },
+      {
+        "path": "root.result.engine.provider_failure.type",
+        "value": "insufficient_quota"
+      }
+    ],
+    "providerAcceptance": "A single observation does not close the full strict semantic gate."
+  },
+  "anonymousDocumentBoundary": {
+    "loginRequiredMessageVisible": true,
+    "documentRequests": 0,
+    "syntheticFile": true
+  },
+  "accountBoundary": {
+    "url": "https://hossambahr.com/auth/?return=%2Faccount%2F",
+    "passwordFields": 2,
+    "emailFields": 4,
+    "authenticatedSessionProvided": false
+  },
+  "terminalFrame": "fallback",
+  "preservedBoundaryEvidenceAt": "2026-10-08T15:34:59.492Z"
+}

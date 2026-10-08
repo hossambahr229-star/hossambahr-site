@@ -1,0 +1,35 @@
+name: Live Unfinished Acceptance Evidence
+on:
+  push:
+    branches: [agent/live-regional-visual-diagnosis]
+    paths: [scripts/live-unfinished-acceptance.mjs, .github/workflows/live-unfinished-acceptance.yml]
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Observe actual live unfinished acceptance boundaries
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-unfinished-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-unfinished-acceptance
+          path: artifacts/live-unfinished-acceptance
+      - name: Preserve evidence without claiming acceptance or touching Production
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance-evidence@users.noreply.github.com"
+          git fetch origin agent/live-regional-visual-diagnosis
+          git reset --mixed origin/agent/live-regional-visual-diagnosis
+          git add artifacts/live-unfinished-acceptance
+          if ! git diff --cached --quiet; then
+            git commit -m "Record unfinished live acceptance evidence [skip ci]"
+            git push origin HEAD:agent/live-regional-visual-diagnosis
+          fi
