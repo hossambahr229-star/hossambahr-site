@@ -16,7 +16,7 @@ const official=await paths.locator('.hb-path-official').getAttribute('href');
 const wa=await paths.locator('[data-hb-direct-whatsapp]').getAttribute('href'),url=new URL(wa);
 if(official!==source.official)failures.push('Wrong official service identity');
 if(url.hostname!=='wa.me'||url.pathname!=='/971503780460'||!url.searchParams.get('text')?.includes(source.id))failures.push('Missing direct WhatsApp service context');
-if(locale==='en'&&await page.locator('[data-recorded-english-detail]').count()!==4)failures.push('Incomplete English recorded sections');
+if(locale==='en'&&await page.locator('[data-recorded-english-detail], [data-platform-detail-translation]').count()!==4)failures.push('Incomplete English recorded sections');
 const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);
 if(overflow)failures.push('Horizontal overflow');
 if(response.status()!==200)failures.push('HTTP '+response.status());
