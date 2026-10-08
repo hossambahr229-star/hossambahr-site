@@ -1911,15 +1911,19 @@
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
       "status": "verified",
       "description": "تعديل البيانات المسموح بها في تصريح الإقامة الصادر.",
-      "requirements": [],
-      "fees": "غير موثق في سجل الكتالوج",
-      "duration": "غير موثق في سجل الكتالوج",
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "requirements": [
+        "جواز السفر",
+        "صورة شخصية",
+        "بطاقة العمل عند تغيير المهنة، وخطاب الجهة الحكومية للقطاع الحكومي، بحسب الفئة."
+      ],
+      "fees": "تعرض البطاقة 150 درهمًا لاستبدال الهوية لتحديث المعلومات المعروضة، و100 درهم للخدمات الذكية؛ راجع الفئة المختارة.",
+      "duration": "يومان",
+      "conditions": "يجب استكمال الإجراءات وتعديلات الطلب المعاد خلال المهلة المحددة لتجنب إلغائه؛ يلزم تسجيل الدخول عبر UAE Pass.",
       "specialCases": "بطاقة مستقلة للتعديل وبها زر بدء الخدمة.",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-08",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
       "nextService": "/services/amendment-of-visa-data/",
       "relatedServices": [
@@ -1939,11 +1943,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "تعرض البطاقة 150 درهمًا لاستبدال الهوية لتحديث المعلومات المعروضة، و100 درهم للخدمات الذكية؛ راجع الفئة المختارة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "يومان"
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -1980,15 +1984,19 @@
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
       "status": "verified",
       "description": "تعديل البيانات المسموح بها في إذن الدخول الصادر.",
-      "requirements": [],
+      "requirements": [
+        "جواز السفر",
+        "صورة شخصية",
+        "مستندات إضافية بحسب فئة الطلب: خطاب يحدد نوع التعديل، أو شهادة عمل للمناطق الحرة، أو إذن دخول معدل للقطاع الخاص."
+      ],
       "fees": "50 درهماً للطلب و100 درهم للخدمة الذكية",
       "duration": "يومان",
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "يلزم جواز سفر صالح لأكثر من ستة أشهر، وتسجيل الدخول عبر UAE Pass؛ تحدد الفئة المختارة المستندات الإضافية.",
       "specialCases": "بطاقة مستقلة للتعديل وبها زر بدء الخدمة.",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-08",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/amendment-of-residency-permit-data/",
       "nextService": "/services/تمديد-التأشيرة-أو-إذن-الدخول/",
       "relatedServices": [
