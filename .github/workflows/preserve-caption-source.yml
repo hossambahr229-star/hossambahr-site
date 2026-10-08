@@ -1,0 +1,27 @@
+name: Preserve Measured Caption Source
+on:
+  push:
+    branches: [agent/hero-caption-typography]
+    paths: [.github/workflows/preserve-caption-source.yml]
+permissions:
+  contents: write
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Copy only accepted source and licensed font to the review branch
+        run: |
+          test "$(git hash-object assets/fonts/noto-naskh-arabic.ttf)" = a8d2867262dc7bb28492ad746de5d56235735c8b
+          test "$(git hash-object assets/fonts/noto-naskh-arabic-OFL.txt)" = d4e170557fc8bcf8d1dcb317d9f1accaf8acf223
+          git fetch origin agent/approved-caption-source
+          git worktree add /tmp/hb-caption-source origin/agent/approved-caption-source
+          cp home-geometry.css /tmp/hb-caption-source/home-geometry.css
+          cp assets/fonts/noto-naskh-arabic.ttf assets/fonts/noto-naskh-arabic-OFL.txt /tmp/hb-caption-source/assets/fonts/
+          cd /tmp/hb-caption-source
+          git config user.name "HossamBahr Visual Source"
+          git config user.email "visual-source@users.noreply.github.com"
+          git add home-geometry.css assets/fonts/noto-naskh-arabic.ttf assets/fonts/noto-naskh-arabic-OFL.txt
+          git commit -m "Restore measured Arabic hero caption typography with licensed local font"
+          git push origin HEAD:agent/approved-caption-source
