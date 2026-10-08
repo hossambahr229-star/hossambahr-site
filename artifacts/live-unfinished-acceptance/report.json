@@ -1,0 +1,25 @@
+{
+  "capturedAt": "2026-10-08T15:34:59.492Z",
+  "source": "LIVE_PRODUCTION",
+  "externalModel": "NOT_VERIFIED",
+  "privateWorkspace": "AUTH_SESSION_UNAVAILABLE",
+  "documentIntelligence": "AUTHENTICATED_ANALYSIS_NOT_VERIFIED",
+  "tracking": "AUTH_SESSION_UNAVAILABLE",
+  "finalPass": false,
+  "aiResponse": {
+    "httpStatus": 200,
+    "metadata": [],
+    "providerAcceptance": "A single observation does not close the full strict semantic gate."
+  },
+  "anonymousDocumentBoundary": {
+    "loginRequiredMessageVisible": true,
+    "documentRequests": 0,
+    "syntheticFile": true
+  },
+  "accountBoundary": {
+    "url": "https://hossambahr.com/auth/?return=%2Faccount%2F",
+    "passwordFields": 2,
+    "emailFields": 4,
+    "authenticatedSessionProvided": false
+  }
+}
