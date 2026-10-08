@@ -13,7 +13,7 @@ for(const emirate of ['الشارقة','عجمان','أبوظبي'])featured.pus
 if(featured.some(s=>!s))throw Error('Canonical homepage transaction missing');
 for(const locale of ['ar','en']){
  const en=locale==='en',p=en?'/en':'',file=join(root,en?'en/index.html':'index.html');let html=await readFile(file,'utf8');
- const emirateMarkup=`<section class="premium-emirates content-section compact-emirates" data-hb-emirates><h2>${en?'Choose your emirate':'اختر إمارتك'}</h2><div class="hb-emirate-grid">${emirates.map(e=>`<a href="${p}/discover/?emirate=${encodeURIComponent(e)}">${en?emirateEnglish(e):e}</a>`).join('')}</div></section>`;
+ const emirateMarkup=`<section class="premium-emirates content-section compact-emirates" data-hb-emirates><h2>${en?'Choose your emirate':'اختر الإمارة'}</h2><div class="hb-emirate-grid">${emirates.map(e=>`<a href="${p}/discover/?emirate=${encodeURIComponent(e)}">${en?emirateEnglish(e):e}</a>`).join('')}</div></section>`;
  html=html.replace(/<section\b[^>]*class="premium-emirates[^>]*>[\s\S]*?<\/section>/g,'');
  html=html.replace(/<section\b[^>]*data-hb-capabilities[^>]*>[\s\S]*?<\/section>/g,'');
  const cards=featured.map(s=>`<article><h3><a href="${p+s.internalRoute}">${esc(s.name[locale])}</a></h3><p>${esc(s.authority[locale])} · ${esc(en?emirateEnglish(s.emirate):s.emirate)}</p>${pathwayMarkup({...s,emirate_en:emirateEnglish(s.emirate)},locale)}</article>`).join('');
