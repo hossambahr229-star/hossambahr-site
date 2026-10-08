@@ -709,7 +709,7 @@
     shell.append(thread);
     form.insertAdjacentElement("afterend", shell);
 
-    if (isAIProduct && state.original_goal) document.body.classList.add("hb-chat-engaged");
+    if (isAIProduct && state.original_goal && state.history?.length) document.body.classList.add("hb-chat-engaged");
     if (!isAIProduct) addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
     const incoming = new URLSearchParams(location.search).get("q");
     if (!incoming && state.history?.length) {

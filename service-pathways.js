@@ -35,7 +35,9 @@ if(typeof document!=='undefined'){
    for(const prompt of prompts){const b=document.createElement('button');b.type='button';b.textContent=prompt;b.onclick=()=>{const input=form.querySelector('textarea');if(input){input.value=prompt;form.requestSubmit();}};examples.append(b);}
    welcome.append(title,note,examples);shell.prepend(welcome);
    const tools=document.createElement('nav');tools.className='hb-ai-conversation-tools';
-   const expand=document.createElement('a');expand.href=(locale==='en'?'/en':'')+'/ai/';expand.textContent=locale==='en'?'Open full conversation ↗':'افتح المحادثة الكاملة ↗';tools.append(expand);shell.prepend(tools);
+   const expand=document.createElement('a');expand.href=(locale==='en'?'/en':'')+'/ai/';expand.textContent=locale==='en'?'Open full conversation ↗':'افتح المحادثة الكاملة ↗';tools.append(expand);
+   const fresh=document.createElement('button');fresh.type='button';fresh.textContent=locale==='en'?'New conversation':'محادثة جديدة';fresh.onclick=()=>document.querySelector('[data-ai-new]')?.click();
+   if(document.querySelector('[data-ai-new]'))tools.append(fresh);shell.prepend(tools);
   }
   document.addEventListener('click',event=>{
    const button=event.target.closest('.hb-chat-primary');if(!button)return;
