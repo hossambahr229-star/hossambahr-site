@@ -58,7 +58,7 @@ try {
   }))};
  });
  const candidateChecks=[];
- if(target.startsWith('http:')){
+ if(target.startsWith('http:')||process.env.HB_VERIFY_DISCOVERY==='1'){
   for(const locale of ['ar','en'])for(const width of [1440,1366,430,390,360]){
    const candidate=await browser.newPage({viewport:{width,height:960},deviceScaleFactor:1});
    await candidate.goto(target+(locale==='en'?'en/':''),{waitUntil:'networkidle'});
