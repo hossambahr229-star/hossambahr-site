@@ -1,27 +1,31 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 200,
-  "fullyTranslatedRecordedSections": 8,
+  "fullyTranslatedRecordedSections": 12,
   "fieldCounts": {
     "documents": {
       "PLATFORM_TRANSLATION": 9,
-      "ORIGINAL_LANGUAGE_ONLY": 110,
-      "MISSING_INFORMATION": 81
+      "ORIGINAL_LANGUAGE_ONLY": 107,
+      "MISSING_INFORMATION": 80,
+      "RECORDED_ENGLISH": 4
     },
     "eligibility": {
       "PLATFORM_TRANSLATION": 23,
       "ORIGINAL_LANGUAGE_ONLY": 109,
-      "MISSING_INFORMATION": 68
+      "RECORDED_ENGLISH": 4,
+      "MISSING_INFORMATION": 64
     },
     "fees": {
       "PLATFORM_TRANSLATION": 29,
       "ORIGINAL_LANGUAGE_ONLY": 96,
-      "MISSING_INFORMATION": 75
+      "MISSING_INFORMATION": 71,
+      "RECORDED_ENGLISH": 4
     },
     "duration": {
       "PLATFORM_TRANSLATION": 47,
       "ORIGINAL_LANGUAGE_ONLY": 78,
-      "MISSING_INFORMATION": 75
+      "MISSING_INFORMATION": 71,
+      "RECORDED_ENGLISH": 4
     }
   },
   "scope": "Translation coverage of recorded verified sections only. This does not reverify government facts, fill missing information or grant overall English acceptance.",
@@ -405,10 +409,10 @@
       "slug": "dld-real-estate-ad-permit-dubai",
       "route": "/en/services/dld-real-estate-ad-permit-dubai/",
       "fields": {
-        "documents": "ORIGINAL_LANGUAGE_ONLY",
-        "eligibility": "MISSING_INFORMATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "documents": "RECORDED_ENGLISH",
+        "eligibility": "RECORDED_ENGLISH",
+        "fees": "RECORDED_ENGLISH",
+        "duration": "RECORDED_ENGLISH"
       }
     },
     {
@@ -1230,10 +1234,10 @@
       "slug": "rta-modify-trade-license-noc-dubai",
       "route": "/en/services/rta-modify-trade-license-noc-dubai/",
       "fields": {
-        "documents": "ORIGINAL_LANGUAGE_ONLY",
-        "eligibility": "MISSING_INFORMATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "documents": "RECORDED_ENGLISH",
+        "eligibility": "RECORDED_ENGLISH",
+        "fees": "RECORDED_ENGLISH",
+        "duration": "RECORDED_ENGLISH"
       }
     },
     {
@@ -1241,10 +1245,10 @@
       "slug": "rta-new-trade-license-noc-dubai",
       "route": "/en/services/rta-new-trade-license-noc-dubai/",
       "fields": {
-        "documents": "ORIGINAL_LANGUAGE_ONLY",
-        "eligibility": "MISSING_INFORMATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "documents": "RECORDED_ENGLISH",
+        "eligibility": "RECORDED_ENGLISH",
+        "fees": "RECORDED_ENGLISH",
+        "duration": "RECORDED_ENGLISH"
       }
     },
     {
@@ -1252,10 +1256,10 @@
       "slug": "rta-renew-trade-license-noc-dubai",
       "route": "/en/services/rta-renew-trade-license-noc-dubai/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "documents": "RECORDED_ENGLISH",
+        "eligibility": "RECORDED_ENGLISH",
+        "fees": "RECORDED_ENGLISH",
+        "duration": "RECORDED_ENGLISH"
       }
     },
     {
