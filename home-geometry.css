@@ -272,3 +272,11 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
  html.hb-phase8 body[data-home-geometry] .ai-showcase-kicker,html.hb-phase8 body[data-home-geometry] .premium-ai-showcase h2{position:relative;left:-16px;top:-7px}
  html.hb-phase8 body[data-home-geometry] .ai-showcase-welcome{margin-right:-7px}
 }
+
+/* The source photos already contain their navy text area. Avoid a second
+   inset shade that changes the approved photographic proportions. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide{box-shadow:none!important}
+ html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide p{color:#fff!important;font-weight:600;max-width:82%}
+ html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide>a{background:linear-gradient(135deg,#deb957,#bd8b2d)!important;border:1px solid #e8c36e;box-shadow:0 1px 3px #0002}
+}
