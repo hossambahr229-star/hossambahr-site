@@ -261,3 +261,5 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @font-face{font-family:'HB Naskh';src:url('/assets/fonts/noto-naskh-arabic.ttf') format('truetype');font-weight:400 700;font-display:swap}
 @media(min-width:821px){html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-family:'HB Naskh',serif!important;background:linear-gradient(90deg,#deb456,#a77823) left bottom/54px 3px no-repeat!important}}
 @media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:26px!important;line-height:1.42!important}}
+
+@media(min-width:821px){html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{width:60%;height:205px;right:-20px;object-fit:contain;object-position:right bottom}}
