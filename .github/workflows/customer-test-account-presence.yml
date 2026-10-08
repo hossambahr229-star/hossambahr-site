@@ -1,0 +1,21 @@
+name: Customer Test Account Configuration
+on:
+  push:
+    branches: [agent/live-regional-visual-diagnosis]
+    paths: [.github/workflows/customer-test-account-presence.yml]
+permissions:
+  contents: read
+jobs:
+  presence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Report only whether standard customer test credential pairs are configured
+        env:
+          HB_PAIR: ${{ secrets.HB_E2E_EMAIL != '' && secrets.HB_E2E_PASSWORD != '' }}
+          E2E_PAIR: ${{ secrets.E2E_EMAIL != '' && secrets.E2E_PASSWORD != '' }}
+          TEST_USER_PAIR: ${{ secrets.TEST_USER_EMAIL != '' && secrets.TEST_USER_PASSWORD != '' }}
+        run: |
+          printf 'HB_E2E_EMAIL/HB_E2E_PASSWORD configured: %s\n' "$HB_PAIR"
+          printf 'E2E_EMAIL/E2E_PASSWORD configured: %s\n' "$E2E_PAIR"
+          printf 'TEST_USER_EMAIL/TEST_USER_PASSWORD configured: %s\n' "$TEST_USER_PAIR"
