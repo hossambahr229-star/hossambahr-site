@@ -6,8 +6,8 @@
     "services": 200,
     "verified": 200,
     "officialLinksVerified": 200,
-    "fullyVerifiedDetails": 120,
-    "partiallyVerifiedDetails": 80,
+    "fullyVerifiedDetails": 122,
+    "partiallyVerifiedDetails": 78,
     "pendingVerification": 0,
     "authorities": 20,
     "emirates": [
@@ -2880,22 +2880,26 @@
       ],
       "description": "تعديل البيانات المسموح بها في تصريح الإقامة الصادر.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "جواز السفر",
+          "صورة شخصية",
+          "بطاقة العمل عند تغيير المهنة، وخطاب الجهة الحكومية للقطاع الحكومي، بحسب الفئة."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق في سجل الكتالوج"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تعرض البطاقة 150 درهمًا لاستبدال الهوية لتحديث المعلومات المعروضة، و100 درهم للخدمات الذكية؛ راجع الفئة المختارة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق في سجل الكتالوج"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان"
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "يجب استكمال الإجراءات وتعديلات الطلب المعاد خلال المهلة المحددة لتجنب إلغائه؛ يلزم تسجيل الدخول عبر UAE Pass.",
       "steps": [
         {
           "order": 1,
@@ -2926,11 +2930,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "تعرض البطاقة 150 درهمًا لاستبدال الهوية لتحديث المعلومات المعروضة، و100 درهم للخدمات الذكية؛ راجع الفئة المختارة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "يومان"
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -2952,22 +2956,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
         "eligibilityVerified": true,
-        "detailsVerified": false,
-        "verifiedDetailCount": 1,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-08",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-08",
+      "lastReviewedAt": "2026-10-08",
       "internalRoute": "/services/amendment-of-residency-permit-data/",
       "sourceRegistry": "service-matrix"
     },
@@ -3017,8 +3021,12 @@
       ],
       "description": "تعديل البيانات المسموح بها في إذن الدخول الصادر.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "جواز السفر",
+          "صورة شخصية",
+          "مستندات إضافية بحسب فئة الطلب: خطاب يحدد نوع التعديل، أو شهادة عمل للمناطق الحرة، أو إذن دخول معدل للقطاع الخاص."
+        ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
@@ -3032,7 +3040,7 @@
         "status": "PUBLISHED_OR_CONDITIONAL",
         "text": "يومان"
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "يلزم جواز سفر صالح لأكثر من ستة أشهر، وتسجيل الدخول عبر UAE Pass؛ تحدد الفئة المختارة المستندات الإضافية.",
       "steps": [
         {
           "order": 1,
@@ -3089,22 +3097,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": true,
         "durationVerified": true,
         "eligibilityVerified": true,
-        "detailsVerified": false,
-        "verifiedDetailCount": 3,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-08",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-08",
+      "lastReviewedAt": "2026-10-08",
       "internalRoute": "/services/amendment-of-visa-data/",
       "sourceRegistry": "service-matrix"
     },

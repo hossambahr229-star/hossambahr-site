@@ -1,12 +1,12 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 200,
-  "fullyTranslatedRecordedSections": 12,
+  "fullyTranslatedRecordedSections": 14,
   "fieldCounts": {
     "documents": {
-      "PLATFORM_TRANSLATION": 9,
+      "PLATFORM_TRANSLATION": 11,
       "ORIGINAL_LANGUAGE_ONLY": 107,
-      "MISSING_INFORMATION": 80,
+      "MISSING_INFORMATION": 78,
       "RECORDED_ENGLISH": 4
     },
     "eligibility": {
@@ -16,16 +16,16 @@
       "MISSING_INFORMATION": 64
     },
     "fees": {
-      "PLATFORM_TRANSLATION": 29,
+      "PLATFORM_TRANSLATION": 30,
       "ORIGINAL_LANGUAGE_ONLY": 96,
-      "MISSING_INFORMATION": 71,
-      "RECORDED_ENGLISH": 4
+      "RECORDED_ENGLISH": 4,
+      "MISSING_INFORMATION": 70
     },
     "duration": {
-      "PLATFORM_TRANSLATION": 47,
+      "PLATFORM_TRANSLATION": 48,
       "ORIGINAL_LANGUAGE_ONLY": 78,
-      "MISSING_INFORMATION": 71,
-      "RECORDED_ENGLISH": 4
+      "RECORDED_ENGLISH": 4,
+      "MISSING_INFORMATION": 70
     }
   },
   "scope": "Translation coverage of recorded verified sections only. This does not reverify government facts, fill missing information or grant overall English acceptance.",
@@ -255,10 +255,10 @@
       "slug": "amendment-of-residency-permit-data",
       "route": "/en/services/amendment-of-residency-permit-data/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
         "eligibility": "PLATFORM_TRANSLATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -266,7 +266,7 @@
       "slug": "amendment-of-visa-data",
       "route": "/en/services/amendment-of-visa-data/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
         "eligibility": "PLATFORM_TRANSLATION",
         "fees": "PLATFORM_TRANSLATION",
         "duration": "PLATFORM_TRANSLATION"
