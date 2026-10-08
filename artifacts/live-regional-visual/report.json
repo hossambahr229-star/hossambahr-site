@@ -1,9 +1,9 @@
 {
-  "capturedAt": "2026-10-08T15:26:34.894Z",
-  "source": "LIVE_PRODUCTION",
-  "url": "https://hossambahr.com/",
+  "capturedAt": "2026-10-08T15:32:37.227Z",
+  "source": "BUILT_CANDIDATE",
+  "url": "http://127.0.0.1:8765/",
   "httpStatus": 200,
-  "diagnosticSourceCommit": "9b4b53426eae087833c1e239aace6baec5a868f2",
+  "diagnosticSourceCommit": "65fb3f305e20e828a9274c874af84962af7bcc75",
   "productionShaBoundary": "Capture is live; diagnostic commit is not asserted to be the deployed SHA.",
   "referenceSha256": "97dc3758fb786a116109381f05d272a2891af014935ec00b181db02b9d5012d7",
   "viewport": {
@@ -31,8 +31,8 @@
         "width": 1069,
         "height": 302
       },
-      "meanAbsoluteDifference": 46.151979217646826,
-      "changedPixelPercent": 47.417899999380495
+      "meanAbsoluteDifference": 47.107583369987424,
+      "changedPixelPercent": 48.11825125914545
     },
     {
       "name": "hero-copy-search",
@@ -42,8 +42,8 @@
         "width": 597,
         "height": 244
       },
-      "meanAbsoluteDifference": 48.607662630090346,
-      "changedPixelPercent": 49.87574484444078
+      "meanAbsoluteDifference": 50.72351053994929,
+      "changedPixelPercent": 51.42241260949556
     },
     {
       "name": "ai-panel",
@@ -145,7 +145,9 @@
         "height": 61,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundImage": "none"
       },
       ".site-header .brand": {
         "x": 1104.046875,
@@ -154,7 +156,9 @@
         "height": 61,
         "font": "800 16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none"
       },
       ".site-header .brand>b": {
         "x": 1104.046875,
@@ -163,7 +167,9 @@
         "height": 84,
         "font": "900 0px / 0px Arial, sans-serif",
         "fontFamily": "Arial, sans-serif",
-        "lineHeight": "0px"
+        "lineHeight": "0px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundImage": "none"
       },
       ".desktop-nav": {
         "x": 474.953125,
@@ -172,7 +178,9 @@
         "height": 47.390625,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none"
       },
       ".visual-target-hero": {
         "x": 0,
@@ -181,7 +189,9 @@
         "height": 302,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgb(237, 243, 245)",
+        "backgroundImage": "none"
       },
       ".premium-hero-main": {
         "x": 0,
@@ -190,7 +200,9 @@
         "height": 302,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "linear-gradient(90deg, rgba(0, 0, 0, 0) 36%, rgba(255, 253, 241, 0.22) 59%, rgba(255, 253, 241, 0.85) 100%), url(\"http://127.0.0.1:8765/assets/approved-hero-background.webp\")"
       },
       ".premium-hero-copy h1": {
         "x": 433.828125,
@@ -199,7 +211,9 @@
         "height": 81.890625,
         "font": "800 36px / 37.8px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "37.8px"
+        "lineHeight": "37.8px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none"
       },
       ".premium-hero-copy>p": {
         "x": 673.171875,
@@ -208,7 +222,9 @@
         "height": 42,
         "font": "14px / 21px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "21px"
+        "lineHeight": "21px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none"
       },
       ".premium-intent-search": {
         "x": 433.828125,
@@ -217,7 +233,9 @@
         "height": 47,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundImage": "none"
       },
       ".premium-ai-showcase": {
         "x": 1068.46875,
@@ -226,7 +244,9 @@
         "height": 302,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "radial-gradient(at 35% 40%, rgb(27, 102, 103), rgb(3, 45, 59) 70%)"
       },
       ".ai-showcase-mark": {
         "x": 1114.46875,
@@ -235,7 +255,9 @@
         "height": 88,
         "font": "900 0px / 0px Arial, sans-serif",
         "fontFamily": "Arial, sans-serif",
-        "lineHeight": "0px"
+        "lineHeight": "0px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "url(\"http://127.0.0.1:8765/icon.svg\")"
       },
       ".ai-showcase-welcome": {
         "x": 1219.875,
@@ -244,7 +266,9 @@
         "height": 62,
         "font": "14px / 21px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "21px"
+        "lineHeight": "21px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none"
       },
       ".premium-category-grid": {
         "x": 30.953125,
@@ -253,7 +277,9 @@
         "height": 116,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none"
       },
       ".premium-story": {
         "x": 30.953125,
@@ -262,7 +288,9 @@
         "height": 127,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none"
       },
       ".target-proof": {
         "x": 30.96875,
@@ -271,7 +299,9 @@
         "height": 66,
         "font": "12.16px / 20.064px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "20.064px"
+        "lineHeight": "20.064px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "linear-gradient(100deg, rgb(8, 55, 82), rgb(3, 42, 66))"
       },
       ".premium-how": {
         "x": 0,
@@ -280,7 +310,9 @@
         "height": 80,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgb(245, 248, 247)",
+        "backgroundImage": "none"
       },
       ".premium-authorities": {
         "x": 0,
@@ -289,7 +321,9 @@
         "height": 85,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundImage": "none"
       },
       ".premium-final-cta": {
         "x": 0,
@@ -298,7 +332,9 @@
         "height": 85,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "26.4px"
+        "lineHeight": "26.4px",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "linear-gradient(100deg, rgba(225, 232, 237, 0.875), rgba(255, 244, 227, 0.78)), url(\"http://127.0.0.1:8765/assets/approved-hero-background.webp\")"
       }
     }
   },
