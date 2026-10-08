@@ -3,12 +3,15 @@ on:
   push:
     branches: [agent/live-moe-edas-acceptance]
     paths: [scripts/live-moe-edas-acceptance.mjs, .github/workflows/live-moe-edas-acceptance.yml]
+concurrency:
+  group: live-moe-edas-acceptance
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,10 +22,10 @@ jobs:
         run: |
           node --input-type=module <<'NODE'
           let ready=false;
-          for(let attempt=0;attempt<60;attempt++){
+          for(let attempt=0;attempt<120;attempt++){
             const urls=['https://hossambahr.com/en/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/','https://hossambahr.com/services/attestation-of-commercial-invoices-via-edas-2-0/'];
             const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
-            ready=responses[0].includes('competent local educational regulator')&&responses[1].includes('رخصة تجارية معتمدة لتسجيل الحساب الرئيسي للشركة.');
+            ready=responses[0].includes('within 7 days; the Ministry contacts')&&responses[1].includes('رخصة تجارية معتمدة لتسجيل الحساب الرئيسي للشركة.');
             if(ready)break;
             console.log('Waiting for new source content, attempt '+(attempt+1));
             await new Promise(resolve=>setTimeout(resolve,10000));
