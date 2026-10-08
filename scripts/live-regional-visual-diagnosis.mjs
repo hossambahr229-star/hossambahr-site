@@ -23,7 +23,7 @@ try {
  const actual=await sharp(screenshot).removeAlpha().raw().toBuffer();
  if(actual.length!==reference.length)throw new Error('Viewport/reference dimensions differ');
  const regions=[
- ['header',0,0,1440,61],['hero-photo',0,61,1069,302],
+ ['hero-caption',45,162,230,140],['header',0,0,1440,61],['hero-photo',0,61,1069,302],
  ['hero-copy-search',435,100,597,244],['ai-panel',1069,61,371,302],
  ['categories',31,367,1378,116],['featured',31,496,1378,127],
  ['metrics',31,641,1378,67],['how-it-works',31,722,1054,89],
