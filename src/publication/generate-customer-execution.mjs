@@ -39,4 +39,6 @@ async function positioning(dir){for(const item of await readdir(dir,{withFileTyp
  }
 }}await positioning(root);
 await import('./generate-transaction-discovery.mjs');
+await import('./generate-service-pathways.mjs');
 console.log(JSON.stringify({customerExecutionServices:services.length,locales:['ar','en'],pricing:'SCOPE_QUOTATION_NOT_INVENTED'}));
+

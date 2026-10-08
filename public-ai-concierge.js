@@ -709,9 +709,16 @@
     shell.append(thread);
     form.insertAdjacentElement("afterend", shell);
 
-    if (isAIProduct && state.original_goal) document.body.classList.add("hb-chat-engaged");
+    if (isAIProduct && state.original_goal && state.history?.length) document.body.classList.add("hb-chat-engaged");
     if (!isAIProduct) addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
     const incoming = new URLSearchParams(location.search).get("q");
+    if (!incoming && state.history?.length) {
+      thread.replaceChildren();
+      for (const message of state.history.slice(-8)) {
+        if (["user", "assistant"].includes(message.role) && typeof message.content === "string") addBubble(message.role, scrubLocal(message.content), { instant: true });
+      }
+      document.body.classList.add("hb-chat-engaged");
+    }
     if (isAIProduct && incoming) {
       state = { expires_at: Date.now() + TTL, original_goal: "", resolved_query: "", answers: [], service_slug: null, active_service_id: null, jurisdiction_code: null, authority_key: null, relationship: null, family_members: [], entity: null, intent: null, service_family: null, action: null, subject_role: null, last_answer_topic: null, pending_clarification: null, known_facts: {}, last_payload: null, history: [] };
       saveState(); composer.value = scrubLocal(incoming); setTimeout(() => form.requestSubmit(), 80); }
@@ -733,6 +740,7 @@
           if (isAIProduct && index === 3) { attachmentInput?.click(); return; }
           composer.value = button.textContent;
           composer.focus();
+          form.requestSubmit();
         };
       });
     }
@@ -828,3 +836,4 @@
     getContext: () => ({ ...state, last_payload: undefined })
   });
 })();
+
