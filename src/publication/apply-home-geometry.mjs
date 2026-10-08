@@ -25,8 +25,8 @@ for (const route of ['index.html', 'en/index.html']) {
     .replace(/<link\b[^>]*href="\/home-geometry\.css[^" ]*"[^>]*>/g, '')
     .replace('</head>', '<link rel="stylesheet" href="/home-geometry.css?v='+geometryVersion+'"/></head>');
   if (!html.includes('ai-showcase-robot')) html = html.replace(/(<aside class="premium-ai-showcase"[^>]*>)/,
-    '$1<img class="ai-showcase-robot" src="/assets/hb-ai-robot.webp" alt="" width="160" height="205"/>');
-  html = html.replace('/assets/hb-ai-robot.png','/assets/hb-ai-robot.webp');
+    '$1<img class="ai-showcase-robot" src="/assets/hb-ai-reference-robot.webp" alt="" width="160" height="205"/>');
+  html = html.replace('/assets/hb-ai-robot.png','/assets/hb-ai-reference-robot.webp').replace('/assets/hb-ai-robot.webp','/assets/hb-ai-reference-robot.webp');
   if (route === 'index.html') {
     html = html.replace(/(<a class="brand"[^>]*>[\s\S]*?<\/b>)<span>[\s\S]*?<\/span>/,
       '$1<span>HOSSAM BAHR AI<small>المنصة الذكية للمعاملات الحكومية</small></span>');
