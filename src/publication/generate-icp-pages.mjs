@@ -17,6 +17,28 @@ function shell(title, description, body) {
 function page(service) {
   return shell(service.nameAr, service.description, `<main id="main-content" class="page-shell" data-publication-state="VERIFIED" data-icp-audit-state="VERIFIED"><nav class="breadcrumbs"><a href="/">الرئيسية</a><span>←</span><a href="/authorities/icp/">ICP</a><span>←</span><span>${esc(service.nameAr)}</span></nav><header class="page-hero"><span class="eyebrow">الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ</span><h1>${esc(service.nameAr)}</h1><p>${esc(service.description)}</p><p class="official-name">الاسم الرسمي: ${esc(service.nameEn)}</p></header><div class="scope-note"><b>نطاق اتحادي متحقق:</b> هذه بطاقة ICP الرسمية. معاملات الإقامة الصادرة من دبي تتبع GDRFA Dubai ولا تُحوّل إلى هذا المسار.</div><div class="detail-layout"><div class="detail-content"><section class="detail-section"><h2>المستندات والمتطلبات</h2>${list(service.requirements)}</section><section class="detail-section"><h2>الشروط</h2><p>${esc(service.conditions)}</p></section><section class="detail-section"><h2>الرسوم الرسمية المنشورة</h2><p>${esc(service.fees)}</p></section><section class="detail-section"><h2>مدة الإنجاز</h2><p>${esc(service.duration)}</p></section><section class="detail-section"><h2>خطوات التنفيذ</h2><ol><li>فتح بطاقة الخدمة الرسمية.</li><li>اختيار الفئة الصحيحة وتسجيل الدخول عبر UAE Pass عند الطلب.</li><li>مراجعة البيانات وإرفاق ما لم يسترجع بالربط المؤسسي.</li><li>سداد الرسوم واستلام نتيجة الطلب.</li></ol></section><section class="detail-section"><h2>الأسئلة الشائعة</h2><details><summary>هل تصلح الخدمة لإقامة صادرة من دبي؟</summary><p>لا. يجب استخدام GDRFA Dubai للخدمة المناظرة عند صدور ملف الإقامة من دبي.</p></details><details><summary>هل يعرض الرابط صفحة المعاملة نفسها؟</summary><p>نعم، الرابط هو بطاقة ICP المحددة لهذه المعاملة وليس الصفحة الرئيسية أو دليلًا عامًا.</p></details></section></div><aside class="service-aside"><span class="status-good">الرابط الحكومي الرسمي متحقق</span><dl><dt>النطاق</dt><dd>اتحادي / اختصاص ICP</dd><dt>الجهة</dt><dd>ICP</dd><dt>الفئة</dt><dd>${esc(service.category)}</dd><dt>نوع الطلب</dt><dd>${esc(service.type)}</dd></dl><div class="actions"><a data-government-cta="verified" href="${esc(service.officialUrl)}" rel="noopener noreferrer">فتح بطاقة خدمة ICP الرسمية</a><a class="secondary" href="/authorities/icp/">العودة إلى خدمات ICP</a></div></aside></div></main>`);
 }
+
+const refreshedLegacySlugs = new Set(['amendment-of-visa-data', 'amendment-of-residency-permit-data']);
+for (const service of legacy.filter(item => refreshedLegacySlugs.has(item.slug))) {
+  const destination = resolve(root, 'services', service.slug, 'index.html');
+  let html = await readFile(destination, 'utf8');
+  for (const [heading, body] of [
+    ['المتطلبات والمستندات', list(service.requirements)],
+    ['الرسوم', '<p>'+esc(service.fees)+'</p>'],
+    ['المدة المتوقعة', '<p>'+esc(service.duration)+'</p>'],
+    ['الشروط', '<p>'+esc(service.conditions)+'</p>'],
+  ]) {
+    const section = new RegExp('(<section[^>]*><h2>'+heading+'</h2>)[\\s\\S]*?</section>', 'g');
+    let matches = 0;
+    html = html.replace(section, (_, opening) => { matches++; return opening+body+'</section>'; });
+    if (matches !== 1) throw new Error(service.slug+': expected one '+heading+' section, found '+matches);
+  }
+  for (const [question, answer] of [['ما الرسوم؟',service.fees],['كم تستغرق المعاملة؟',service.duration]]) {
+    html = html.replace(new RegExp('(<details><summary>'+question.replace(/[.*+?^${}()|[\]\\]/g,'\\for (const service of additions) {')+'</summary>)[\\s\\S]*?</details>','g'),(_,opening)=>opening+'<p>'+esc(answer)+'</p></details>');
+  }
+  await writeFile(destination, html, 'utf8');
+}
+
 for (const service of additions) {
   const destination = resolve(root, 'services', service.slug, 'index.html');
   await mkdir(dirname(destination), { recursive: true });
