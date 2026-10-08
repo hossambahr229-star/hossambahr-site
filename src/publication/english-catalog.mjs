@@ -9,9 +9,11 @@ export function englishDiscoveryRecords(services){
 export function serviceCard(service){
  return `<article class="en-service-card" data-service-slug="${escapeHtml(service.slug)}"><p>${escapeHtml(service.authority.en)} · ${escapeHtml(emirateEnglish(service.emirate))}</p><h2><a href="${englishServiceRoute(service)}">${escapeHtml(service.name.en)}</a></h2><a href="${englishServiceRoute(service)}">View requirements and official pathway →</a></article>`;
 }
-export function officialExcerpt(label,value){
+export function officialExcerpt(label,value,recordedEnglish){
  const values=(Array.isArray(value)?value:[value]).filter(hasRecordedFact);
  if(!values.length)return `<section><h2>${escapeHtml(label)}</h2><p>A verified detail is not available in the platform record. Check the official source before applying.</p></section>`;
+ const nativeValues=(Array.isArray(recordedEnglish)?recordedEnglish:[recordedEnglish]).filter(hasRecordedFact);
+ if(nativeValues.length)return `<section><h2>${escapeHtml(label)}</h2><p>English details from the platform's recorded source. Check the linked authority for current requirements.</p><div lang="en" dir="ltr" data-recorded-english-detail>${nativeValues.map(item=>`<p>${escapeHtml(item)}</p>`).join('')}</div></section>`;
  const translated=values.map(item=>recordedDetailTranslations[item]);
  if(translated.every(Boolean))return `<section><h2>${escapeHtml(label)}</h2><p>HOSSAM BAHR explanatory translation of the recorded Arabic details. This is not the authority's official English wording.</p><div lang="en" dir="ltr" data-platform-detail-translation>${translated.map(item=>`<p>${escapeHtml(item)}</p>`).join('')}</div><details><summary>Read the recorded Arabic text</summary><blockquote lang="ar" dir="rtl">${values.map(item=>`<p>${escapeHtml(item)}</p>`).join('')}</blockquote></details></section>`;
  return `<section><h2>${escapeHtml(label)}</h2><p>An English translation is not yet available. This verified detail remains available in its original language below; use the official source above as the final reference.</p><details><summary>Read the verified recorded Arabic text</summary><blockquote lang="ar" dir="rtl">${values.map(item=>`<p>${escapeHtml(item)}</p>`).join('')}</blockquote></details></section>`;
