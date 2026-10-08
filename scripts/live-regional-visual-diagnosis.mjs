@@ -57,14 +57,42 @@ try {
    return[selector,{x:rect.x,y:rect.y,width:rect.width,height:rect.height,font:style.font,fontFamily:style.fontFamily,lineHeight:style.lineHeight,backgroundColor:style.backgroundColor,backgroundImage:style.backgroundImage}];
   }))};
  });
+ const candidateChecks=[];
+ if(target.startsWith('http:')){
+  for(const locale of ['ar','en'])for(const width of [1440,1366,430,390,360]){
+   const candidate=await browser.newPage({viewport:{width,height:960},deviceScaleFactor:1});
+   await candidate.goto(target+(locale==='en'?'en/':''),{waitUntil:'networkidle'});
+   await candidate.evaluate(()=>document.fonts.ready);
+   const check=await candidate.evaluate(()=>{
+    const modes=[...document.querySelectorAll('.discovery-entry>a')];
+    const chips=document.querySelector('.home-popular-chips');
+    const bounds=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,w:r.width,h:r.height}};
+    return {overflow:document.documentElement.scrollWidth>innerWidth,
+     chipsVisible:getComputedStyle(chips).display!=='none',
+     chips:bounds(chips),photo:bounds(document.querySelector('.premium-hero-main')),
+     modeBounds:modes.map(bounds),modeVisible:modes.every(e=>e.getBoundingClientRect().width>0),
+     modeHrefs:modes.map(e=>e.getAttribute('href')),chipCount:chips.querySelectorAll('a').length};
+   });
+   const failures=[];
+   if(check.overflow)failures.push('Horizontal overflow');
+   if(!check.modeVisible)failures.push('A discovery mode was hidden');
+   if(width>820){
+    if(!check.chipsVisible||check.chipCount!==(locale==='ar'?7:6))failures.push('Desktop popular chips missing');
+    if(check.modeBounds.some(r=>r.right>check.chips.x||r.bottom>check.photo.bottom))failures.push('Discovery modes overlap search chips or escape hero');
+   }else if(check.chipsVisible)failures.push('Desktop chips changed the preserved mobile navigation');
+   candidateChecks.push({locale,width,...check,failures});
+   await candidate.close();
+  }
+ }
  const report={
   capturedAt:new Date().toISOString(),source:target.startsWith('https:')?'LIVE_PRODUCTION':'BUILT_CANDIDATE',url:page.url(),httpStatus:response.status(),
   diagnosticSourceCommit:process.env.GITHUB_SHA||null,
   productionShaBoundary:'Capture is live; diagnostic commit is not asserted to be the deployed SHA.',
   referenceSha256:createHash('sha256').update(await readFile(referenceFile)).digest('hex'),
-  viewport:{width:1440,height:960,deviceScaleFactor:1},regions:measured,layout,errors,
+  viewport:{width:1440,height:960,deviceScaleFactor:1},regions:measured,layout,errors,candidateChecks,
   pixelFidelity:'NOT_DECLARED',scope:'Regional pixel differences locate visual mismatches. No functional regression, authenticated journey, or external-model acceptance is asserted. Differences in factual copy and the preserved HB master mark must not be repaired by copying unverified mockup claims.'
  };
  await writeFile(output+'/report.json',JSON.stringify(report,null,2));
  console.log(JSON.stringify(report,null,2));
+ if(candidateChecks.some(check=>check.failures.length))process.exitCode=1;
 }finally{await browser.close();}
