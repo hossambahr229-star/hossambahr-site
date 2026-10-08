@@ -37,8 +37,8 @@ if(typeof document!=='undefined'){
    welcome.append(title,note,examples);shell.prepend(welcome);
    const tools=document.createElement('nav');tools.className='hb-ai-conversation-tools';
    const expand=document.createElement('a');expand.href=(locale==='en'?'/en':'')+'/ai/';expand.textContent=locale==='en'?'Open full conversation ↗':'افتح المحادثة الكاملة ↗';tools.append(expand);
-   const fresh=document.createElement('button');fresh.type='button';fresh.textContent=locale==='en'?'New conversation':'محادثة جديدة';fresh.onclick=()=>document.querySelector('[data-ai-new]')?.click();
-   if(document.querySelector('[data-ai-new]'))tools.append(fresh);shell.prepend(tools);
+   const fresh=document.createElement('button');fresh.type='button';fresh.textContent=locale==='en'?'New conversation':'محادثة جديدة';fresh.onclick=()=>document.dispatchEvent(new Event('hb-ai-new-conversation'));
+   tools.append(fresh);shell.prepend(tools);
   }
   document.addEventListener('click',event=>{
    const button=event.target.closest('.hb-chat-primary');if(!button)return;
