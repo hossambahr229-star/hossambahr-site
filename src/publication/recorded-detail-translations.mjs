@@ -43,7 +43,7 @@ export const recordedDetailTranslations = Object.freeze({
   "هذه بطاقة خدمة المستثمرين في دبي فقط، وليست مسارًا للمواهب أو العلماء أو رواد الأعمال أو فئات الإقامة الذهبية الأخرى.": "This service record is for investors in Dubai only. It is not the pathway for talented individuals, scientists, entrepreneurs or other Golden Residence categories.",
   "تعرض GDRFA الرسوم الرسمية الخاصة بخدمة المستثمرين قبل السداد.": "GDRFA displays the official fees for the investor service before payment.",
   "تعتمد على التحقق من أهلية المستثمر واكتمال أدلة الاستثمار.": "The time depends on verification of the investor's eligibility and completion of investment evidence.",
-  "يومان": "Two days",
+  "يومان": "Two days.",
   "يوم عمل واحد": "One working day",
   "10 دقائق": "10 minutes",
   "14 يوم عمل": "14 working days",
@@ -74,7 +74,7 @@ export const recordedDetailTranslations = Object.freeze({
   "تعرض TAMM الرسوم النهائية بحسب نوع الرخصة والنشاط والموافقات.": "TAMM displays the final fees according to the licence type, activity and approvals.",
   "تعرضها GDRFA بحسب نوع الطلب والقناة قبل السداد.": "GDRFA displays the fees according to the application type and channel before payment.",
   "جواز السفر": "Passport",
-  "صورة شخصية": "Personal photograph",
+  "صورة شخصية": "Personal photo",
   "الهوية الإماراتية": "Emirates ID",
   "تختلف حسب نوع الرخصة والموافقات الإضافية": "The time varies according to the licence type and additional approvals",
   "بحسب نوع التعديل والموافقات المطلوبة": "The time depends on the amendment type and required approvals",
@@ -101,5 +101,9 @@ export const recordedDetailTranslations = Object.freeze({
   "قد تتطلب الأنشطة المنظمة موافقات من البلدية أو دائرة الصحة أو جهات أخرى قبل إصدار الرخصة النهائية.": "Regulated activities may require approvals from the municipality, Department of Health or other authorities before the final licence is issued.",
   "هذه صفحة إرشاد رسمية تجمع معاملات تعديل منفصلة؛ يجب اختيار نوع التعديل المطابق داخل SEDD.": "This official guidance page groups separate amendment transactions; select the matching amendment type within SEDD.",
   "تختلف حسب نوع التعديل؛ تعرض SEDD رسوم السجل والطباعة والنشاط والشريك والتقييم الفني في بطاقة المعاملة المختارة.": "Fees vary by amendment type; SEDD shows registry, printing, activity, partner and technical-assessment fees in the selected transaction card.",
+  "مستندات إضافية بحسب فئة الطلب: خطاب يحدد نوع التعديل، أو شهادة عمل للمناطق الحرة، أو إذن دخول معدل للقطاع الخاص.": "Additional documents depend on the selected category: an amendment-type letter, a free-zone employment certificate, or an amended private-sector entry permit.",
+  "يلزم جواز سفر صالح لأكثر من ستة أشهر، وتسجيل الدخول عبر UAE Pass؛ تحدد الفئة المختارة المستندات الإضافية.": "A passport valid for more than six months and UAE Pass sign-in are required. The selected category determines additional documents.",
+  "بطاقة العمل عند تغيير المهنة، وخطاب الجهة الحكومية للقطاع الحكومي، بحسب الفئة.": "A work card when changing profession and a government-agency letter for the government sector, according to the selected category.",
+  "تعرض البطاقة 150 درهمًا لاستبدال الهوية لتحديث المعلومات المعروضة، و100 درهم للخدمات الذكية؛ راجع الفئة المختارة.": "The card lists AED 150 for replacing the Emirates ID to update displayed information and AED 100 for smart services. Check the selected category.",
+  "يجب استكمال الإجراءات وتعديلات الطلب المعاد خلال المهلة المحددة لتجنب إلغائه؛ يلزم تسجيل الدخول عبر UAE Pass.": "Complete procedures and requested corrections within the specified deadline to avoid cancellation. UAE Pass sign-in is required."
 });
-
