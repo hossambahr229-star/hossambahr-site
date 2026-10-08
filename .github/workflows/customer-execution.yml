@@ -6,6 +6,9 @@ on:
       - 'src/publication/generate-customer-execution.mjs'
       - 'customer-intake.*'
       - 'scripts/customer-execution-browser.mjs'
+      - 'scripts/service-pathways-browser.mjs'
+      - 'service-pathways.*'
+      - 'src/publication/generate-service-pathways.mjs'
       - '.github/workflows/customer-execution.yml'
   workflow_dispatch:
 permissions:
@@ -30,9 +33,13 @@ jobs:
           export HB_BASE_URL='http://127.0.0.1:8787'
           export HB_BROWSER_PATH="$(command -v chrome)"
           node scripts/customer-execution-browser.mjs
+          node scripts/service-pathways-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: customer-execution
-          path: artifacts/customer-execution
+          path: |
+            artifacts/customer-execution
+            artifacts/service-pathways
           retention-days: 14
+
