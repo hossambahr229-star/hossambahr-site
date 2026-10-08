@@ -20,9 +20,9 @@ jobs:
           node --input-type=module <<'NODE'
           let ready=false;
           for(let attempt=0;attempt<60;attempt++){
-            const urls=['https://hossambahr.com/en/services/amendment-of-visa-data/','https://hossambahr.com/en/services/amendment-of-residency-permit-data/'];
+            const urls=['https://hossambahr.com/en/services/amendment-of-visa-data/','https://hossambahr.com/en/services/amendment-of-residency-permit-data/','https://hossambahr.com/services/amendment-of-residency-permit-data/'];
             const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
-            ready=responses[0].includes('passport valid for more than six months')&&responses[1].includes('AED 150 for replacing');
+            ready=responses[0].includes('passport valid for more than six months')&&responses[1].includes('AED 150 for replacing')&&responses[2].includes('تعرض البطاقة 150');
             if(ready)break;
             console.log('Waiting for new source content, attempt '+(attempt+1));
             await new Promise(resolve=>setTimeout(resolve,10000));
