@@ -13,7 +13,7 @@ try {
   await page.evaluate(()=>document.fonts.ready);
   const body=await page.locator('body').innerText();
   const details=canonicalDetails(source,locale), failures=[];
-  const expected=[source.duration[locale],...source.conditions.map(item=>item[locale]),source.governmentFees.notes[locale],...source.governmentFees.items.flatMap(item=>[String(item.amount),item.label[locale],item.notes[locale]])].filter(Boolean);
+  const expected=[source.duration[locale],...[...source.eligibility,...source.conditions].map(item=>item[locale]),...source.documents.items.flatMap(item=>[item.name[locale],item.notes?.[locale]]),source.governmentFees.notes[locale],...source.governmentFees.items.flatMap(item=>[String(item.amount),item.label[locale],item.notes[locale]])].filter(Boolean);
   for(const text of expected)if(!body.includes(text))failures.push('Missing recorded fragment: '+text);
   if(locale==='en' && await page.locator('[data-recorded-english-detail]').count()!==4)failures.push('English canonical sections not published');
   const paths=page.locator('[data-hb-pathways="'+source.slug+'"]').first();
