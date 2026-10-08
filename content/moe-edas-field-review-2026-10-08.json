@@ -1,0 +1,49 @@
+{
+  "reviewedAt": "2026-10-08",
+  "method": "Read-only rendered official service cards",
+  "evidenceBranch": "agent/official-missing-detail-evidence",
+  "capturedAt": "2026-10-08T16:49:47.056Z",
+  "scope": "Only listed document, eligibility, fee and time fields. No approval of the whole catalog or authenticated transaction.",
+  "records": [
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "source": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ]
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "source": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ]
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "source": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ]
+    },
+    {
+      "slug": "confirming-the-authenticity-of-equivalency",
+      "source": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ]
+    }
+  ]
+}
