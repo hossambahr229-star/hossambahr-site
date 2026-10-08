@@ -25,7 +25,7 @@ function shell(title, description, body) {
 function feeSection(section) {
   if (section.status === 'free') return `<p>${esc(ar(section.notes))}</p>`;
   if (!section.items.length) return `<p>${esc(ar(section.notes))}</p>`;
-  return `<table class="fee-table"><thead><tr><th>البند</th><th>القيمة</th></tr></thead><tbody>${section.items.map((item) => `<tr><td>${esc(ar(item.label))}</td><td>${item.amount === null ? 'متغير' : `${esc(item.amount)} ${esc(item.currency)}`}</td></tr>`).join('')}</tbody></table><p class="document-note">${esc(ar(section.notes))}</p>`;
+  return `<table class="fee-table"><thead><tr><th>البند</th><th>القيمة</th></tr></thead><tbody>${section.items.map((item) => `<tr><td>${esc(ar(item.label))}${ar(item.notes) ? `<p class="document-note">${esc(ar(item.notes))}</p>` : ''}</td><td>${item.amount === null ? 'متغير' : `${esc(item.amount)} ${esc(item.currency)}`}</td></tr>`).join('')}</tbody></table><p class="document-note">${esc(ar(section.notes))}</p>`;
 }
 
 function servicePage(service) {

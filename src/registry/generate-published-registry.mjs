@@ -1,3 +1,4 @@
+import {canonicalDetails} from './canonical-details.mjs';
 import {hasRecordedFact} from './recorded-fact-state.mjs';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -88,7 +89,7 @@ function safeFaq(destinationKind) {
   ];
 }
 
-function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt }) {
+function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null }) {
   const normalizedDestinationKind = verificationStatus === 'VERIFIED' ? destinationKind : 'CTA_DISABLED';
   const documentsPublished = hasRecordedFact(requirements);
   const feesPublished = hasRecordedFact(fees);
@@ -114,6 +115,7 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
     customerTypes,
     keywords: terms(nameAr, englishTitles[slug] || nameEn, authorityAr, authorityEn, emirate, mainCategory, subCategory, keywords),
     description: text(description),
+    ...(localizedDetails ? {localizedDetails} : {}),
     documents: { status: documentsPublished ? 'PUBLISHED' : unavailable, items: requirements || [] },
     governmentFees: { status: feesPublished ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(fees) },
     serviceFees: { status: unavailable, text: unavailable },
@@ -179,6 +181,7 @@ for (const service of matrix.services.filter((item) => !normalizedSourceIds.has(
 }
 
 for (const service of canonical.services) {
+  const details = canonicalDetails(service);
   services.push(base({
     id: service.id,
     slug: service.slug,
@@ -191,10 +194,11 @@ for (const service of canonical.services) {
     mainCategory: service.category.mainId,
     subCategory: service.category.subId,
     description: service.description.ar,
-    requirements: service.documents.items.map((item) => item.name?.ar || item.name?.en || item.id),
-    fees: service.governmentFees.summary?.ar || service.governmentFees.summary?.en,
-    duration: service.duration.summary?.ar || service.duration.summary?.en,
-    conditions: (service.conditions || []).map((item) => item.text?.ar || item.text?.en),
+    requirements: details.documents,
+    fees: details.fees,
+    duration: details.duration,
+    conditions: details.eligibility,
+    localizedDetails: {en: canonicalDetails(service, 'en')},
     officialInformationUrl: service.officialGovernmentLink.url,
     officialCtaUrl: service.officialGovernmentLink.url,
     sourceRegistry: 'canonical-registry',
