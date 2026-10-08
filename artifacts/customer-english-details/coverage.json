@@ -1,26 +1,26 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 200,
-  "fullyTranslatedRecordedSections": 3,
+  "fullyTranslatedRecordedSections": 8,
   "fieldCounts": {
     "documents": {
-      "PLATFORM_TRANSLATION": 4,
-      "ORIGINAL_LANGUAGE_ONLY": 115,
+      "PLATFORM_TRANSLATION": 9,
+      "ORIGINAL_LANGUAGE_ONLY": 110,
       "MISSING_INFORMATION": 81
     },
     "eligibility": {
-      "PLATFORM_TRANSLATION": 18,
-      "ORIGINAL_LANGUAGE_ONLY": 114,
+      "PLATFORM_TRANSLATION": 23,
+      "ORIGINAL_LANGUAGE_ONLY": 109,
       "MISSING_INFORMATION": 68
     },
     "fees": {
-      "PLATFORM_TRANSLATION": 24,
-      "ORIGINAL_LANGUAGE_ONLY": 101,
+      "PLATFORM_TRANSLATION": 29,
+      "ORIGINAL_LANGUAGE_ONLY": 96,
       "MISSING_INFORMATION": 75
     },
     "duration": {
-      "PLATFORM_TRANSLATION": 42,
-      "ORIGINAL_LANGUAGE_ONLY": 83,
+      "PLATFORM_TRANSLATION": 47,
+      "ORIGINAL_LANGUAGE_ONLY": 78,
       "MISSING_INFORMATION": 75
     }
   },
@@ -339,10 +339,10 @@
       "slug": "cancel-work-permit-uae",
       "route": "/en/services/cancel-work-permit-uae/",
       "fields": {
-        "documents": "ORIGINAL_LANGUAGE_ONLY",
-        "eligibility": "ORIGINAL_LANGUAGE_ONLY",
-        "fees": "ORIGINAL_LANGUAGE_ONLY",
-        "duration": "ORIGINAL_LANGUAGE_ONLY"
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -559,10 +559,10 @@
       "slug": "family-residency-uae",
       "route": "/en/services/family-residency-uae/",
       "fields": {
-        "documents": "ORIGINAL_LANGUAGE_ONLY",
-        "eligibility": "ORIGINAL_LANGUAGE_ONLY",
-        "fees": "ORIGINAL_LANGUAGE_ONLY",
-        "duration": "ORIGINAL_LANGUAGE_ONLY"
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -801,10 +801,10 @@
       "slug": "issue-trade-license-dubai",
       "route": "/en/services/issue-trade-license-dubai/",
       "fields": {
-        "documents": "ORIGINAL_LANGUAGE_ONLY",
-        "eligibility": "ORIGINAL_LANGUAGE_ONLY",
-        "fees": "ORIGINAL_LANGUAGE_ONLY",
-        "duration": "ORIGINAL_LANGUAGE_ONLY"
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -1120,10 +1120,10 @@
       "slug": "renew-business-license-dubai",
       "route": "/en/services/renew-business-license-dubai/",
       "fields": {
-        "documents": "ORIGINAL_LANGUAGE_ONLY",
-        "eligibility": "ORIGINAL_LANGUAGE_ONLY",
-        "fees": "ORIGINAL_LANGUAGE_ONLY",
-        "duration": "ORIGINAL_LANGUAGE_ONLY"
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -1395,10 +1395,10 @@
       "slug": "transfer-work-permit-uae",
       "route": "/en/services/transfer-work-permit-uae/",
       "fields": {
-        "documents": "ORIGINAL_LANGUAGE_ONLY",
-        "eligibility": "ORIGINAL_LANGUAGE_ONLY",
-        "fees": "ORIGINAL_LANGUAGE_ONLY",
-        "duration": "ORIGINAL_LANGUAGE_ONLY"
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
