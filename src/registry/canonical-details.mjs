@@ -26,8 +26,12 @@ export function canonicalFees(fees, language = 'ar') {
 }
 
 export function canonicalDetails(service, language = 'ar') {
+  const documents = (service.documents?.items || []).map(item => [canonicalText(item.name, language), canonicalText(item.notes, language)].filter(Boolean).join(' — ')).filter(Boolean);
+  const note = canonicalText(service.documents?.notes, language);
+  // Explicitly no required documents is a recorded fact, not missing information.
+  if (note && (documents.length || service.documents?.status === 'not-required')) documents.push(note);
   return {
-    documents: (service.documents?.items || []).map(item => [canonicalText(item.name, language), canonicalText(item.notes, language)].filter(Boolean).join(' — ')).filter(Boolean),
+    documents,
     fees: canonicalFees(service.governmentFees, language),
     duration: canonicalText(service.duration, language),
     eligibility: canonicalText([...(service.eligibility || []), ...(service.conditions || [])], language),
