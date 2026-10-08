@@ -747,14 +747,16 @@
 
     stage.querySelector(".homepage-secondary-actions")?.remove();
 
-    document.querySelector("[data-ai-new]")?.addEventListener("click", () => {
+    const resetConversation = () => {
       try { sessionStorage.removeItem(STATE_KEY); } catch {}
       state = { expires_at: Date.now() + TTL, original_goal: "", resolved_query: "", answers: [], active_service_id:null, service_slug: null, jurisdiction_code: null, authority_key: null, relationship: null, family_members: [], entity: null, intent: null, service_family: null, action: null, subject_role:null, last_answer_topic:null, pending_clarification:null, known_facts:{}, last_payload: null, history:[] };
       thread?.replaceChildren();
       document.body.classList.remove("hb-chat-engaged");
       composer.value = "";
       composer.focus();
-    });
+    };
+    document.querySelector("[data-ai-new]")?.addEventListener("click", resetConversation);
+    document.addEventListener("hb-ai-new-conversation", resetConversation);
 
     const submitComposer = () => {
       const value = composer.value.trim();

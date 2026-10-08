@@ -1,7 +1,8 @@
 const escape=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 export const WHATSAPP_NUMBER='971503780460';
 export function pathwayRecord(service){
- return {slug:service.service_slug||service.slug,id:service.service_id||service.id,name:service.service_name||service.name,emirate:service.emirate,emirate_en:service.emirate_en,authority:service.authority,route:service.source_page||service.internalRoute,official:service.official_execution_url||service.officialCtaUrl||service.official_url};
+ const emirates={'دبي':'Dubai','أبوظبي':'Abu Dhabi','الشارقة':'Sharjah','عجمان':'Ajman','رأس الخيمة':'Ras Al Khaimah','الفجيرة':'Fujairah','أم القيوين':'Umm Al Quwain','اتحادي':'Federal'};
+ return {slug:service.service_slug||service.slug,id:service.service_id||service.id,name:service.service_name||service.name,emirate:service.emirate,emirate_en:service.emirate_en||emirates[service.emirate]||'See service jurisdiction',authority:service.authority,route:service.source_page||service.internalRoute,official:service.official_execution_url||service.officialCtaUrl||service.official_url};
 }
 export function whatsappHref(service,locale='ar',summary=''){
  const s=pathwayRecord(service),en=locale==='en';
@@ -36,8 +37,8 @@ if(typeof document!=='undefined'){
    welcome.append(title,note,examples);shell.prepend(welcome);
    const tools=document.createElement('nav');tools.className='hb-ai-conversation-tools';
    const expand=document.createElement('a');expand.href=(locale==='en'?'/en':'')+'/ai/';expand.textContent=locale==='en'?'Open full conversation ↗':'افتح المحادثة الكاملة ↗';tools.append(expand);
-   const fresh=document.createElement('button');fresh.type='button';fresh.textContent=locale==='en'?'New conversation':'محادثة جديدة';fresh.onclick=()=>document.querySelector('[data-ai-new]')?.click();
-   if(document.querySelector('[data-ai-new]'))tools.append(fresh);shell.prepend(tools);
+   const fresh=document.createElement('button');fresh.type='button';fresh.textContent=locale==='en'?'New conversation':'محادثة جديدة';fresh.onclick=()=>document.dispatchEvent(new Event('hb-ai-new-conversation'));
+   tools.append(fresh);shell.prepend(tools);
   }
   document.addEventListener('click',event=>{
    const button=event.target.closest('.hb-chat-primary');if(!button)return;
@@ -56,7 +57,7 @@ if(typeof document!=='undefined'){
   let queued=false;
   function decorate(){queued=false;
    for(let card of document.querySelectorAll('main article,main .card,main .service-card,main .service-row,main .service-list li,[data-canonical-service],[data-service-slug],.intent-result-card')){
-    if(card.closest('.hb-service-pathways,.hb-pathway-card')||card.querySelector('[data-hb-pathways]'))continue;
+    if(card.closest('.hb-service-pathways,.hb-pathway-card,.hb-chat-thread')||card.querySelector('[data-hb-pathways]'))continue;
     const links=[...(card.matches('a[href]')?[card]:[]),...card.querySelectorAll('a[href]')];
     const matches=[...new Map(links.map(rowFor).filter(Boolean).map(s=>[s.service_slug,s])).values()];
     if(matches.length!==1)continue;
