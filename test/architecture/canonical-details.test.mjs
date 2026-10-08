@@ -53,3 +53,16 @@ test('rebuilt Arabic fee tables retain each recorded per-item note', async () =>
   }
  }
 });
+
+test('applicant eligibility and document qualifications are never omitted from localized guides', () => {
+ for(const source of services)for(const language of ['ar','en']){
+  const detail=canonicalDetails(source,language);
+  for(const item of [...(source.eligibility||[]),...(source.conditions||[])]) {
+   assert.ok(detail.eligibility.includes(item[language]),source.id+' eligibility '+language);
+  }
+  for(const item of source.documents.items) {
+   assert.ok(detail.documents.some(text=>text.includes(item.name[language])));
+   if(item.notes?.[language])assert.ok(detail.documents.some(text=>text.includes(item.notes[language])),source.id+' document qualification');
+  }
+ }
+});
