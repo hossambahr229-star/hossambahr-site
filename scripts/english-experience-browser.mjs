@@ -8,7 +8,9 @@ const routes=[];for(let offset=0;offset<services.length;offset+=8){await Promise
  const query=encodeURIComponent(service.name.en+' in '+emirateEnglish(service.emirate));assert.ok(html.includes('/en/ai/?q='+query),route+' contextual AI handoff');routes.push({route,identity:service.name.en,source:service.officialInformationUrl});
 }));}
 assert.equal(routes.length,200);
+const priority=['cancel-work-permit-uae','family-residency-uae','issue-trade-license-dubai','renew-business-license-dubai','transfer-work-permit-uae'];
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||undefined});const layouts=[];
+for(const slug of priority){const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto(base+'/en/services/'+slug+'/?hb_qa=1',{waitUntil:'networkidle'});assert.equal(await page.locator('[data-platform-detail-translation]').count(),4,slug+' four translated recorded sections');const translations=(await page.locator('[data-platform-detail-translation]').allTextContents()).join(' ');assert.ok(!/[\u0600-\u06ff]/.test(translations));assert.equal(await page.locator('details blockquote').count(),4,slug+' preserves source disclosures');assert.ok(await page.locator('main').innerText().then(text=>text.includes("not the authority's official English wording")));assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,slug+' overflow');await page.close();}
 for(const width of [1440,1366,430,390,360]){const page=await browser.newPage({viewport:{width,height:900}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(base+'/en/services/golden-residency-uae/?hb_qa=1',{waitUntil:'networkidle'});
  assert.equal(await page.locator('[data-platform-detail-translation]').count(),4,'Golden Residence investor details need native English in all four recorded sections');
@@ -33,3 +35,4 @@ let documentUploads=0;page.on('request',request=>{if(request.url().includes('/fu
 const picker=page.waitForEvent('filechooser');await page.getByRole('button',{name:'＋ Attach',exact:true}).click();await (await picker).setFiles({name:'synthetic.pdf',mimeType:'application/pdf',buffer:Buffer.from('%PDF-1.4\n%%EOF')});
 await page.getByRole('button',{name:'Analyse document',exact:true}).click();await page.getByText(/requires sign-in/).waitFor();assert.equal(documentUploads,0,'Anonymous PDF must not be uploaded');await page.getByRole('button',{name:'Remove',exact:true}).click();assert.equal(await page.getByText('synthetic.pdf',{exact:true}).count(),0);
 await browser.close();const report={status:'PASS',scope:'200 English route identities/source/CTA/context links, native layouts at five measured widths, anonymous attachment privacy',routes,layouts,anonymous_document_uploads:documentUploads};await writeFile(out+'/report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,routes:routes.length},null,2));
+
