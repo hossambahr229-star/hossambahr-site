@@ -66,3 +66,9 @@ test('applicant eligibility and document qualifications are never omitted from l
   }
  }
 });
+
+test('explicit no-document requirement stays a fact while unknown remains missing', () => {
+ const renewal=services.find(item=>item.id==='rta-renew-trade-license-noc-dubai');
+ for(const language of ['ar','en'])assert.ok(canonicalDetails(renewal,language).documents.includes(renewal.documents.notes[language]));
+ assert.deepEqual(canonicalDetails({documents:{status:'unknown',items:[],notes:{ar:'NOT_OFFICIALLY_PUBLISHED'}}}).documents,[]);
+});
