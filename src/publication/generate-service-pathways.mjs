@@ -14,12 +14,12 @@ if(featured.some(s=>!s))throw Error('Canonical homepage transaction missing');
 for(const locale of ['ar','en']){
  const en=locale==='en',p=en?'/en':'',file=join(root,en?'en/index.html':'index.html');let html=await readFile(file,'utf8');
  const emirateMarkup=`<section class="premium-emirates content-section compact-emirates" data-hb-emirates><h2>${en?'Choose your emirate':'اختر إمارتك'}</h2><div class="hb-emirate-grid">${emirates.map(e=>`<a href="${p}/discover/?emirate=${encodeURIComponent(e)}">${en?emirateEnglish(e):e}</a>`).join('')}</div></section>`;
- html=html.replace(/<section\b[^>]*class="premium-emirates[^>]*>[\s\S]*?<\/section>/,emirateMarkup);
+ html=html.replace(/<section\b[^>]*class="premium-emirates[^>]*>[\s\S]*?<\/section>/g,'');
  html=html.replace(/<section\b[^>]*data-hb-capabilities[^>]*>[\s\S]*?<\/section>/g,'');
  const cards=featured.map(s=>`<article><h3><a href="${p+s.internalRoute}">${esc(s.name[locale])}</a></h3><p>${esc(s.authority[locale])} · ${esc(en?emirateEnglish(s.emirate):s.emirate)}</p>${pathwayMarkup({...s,emirate_en:emirateEnglish(s.emirate)},locale)}</article>`).join('');
  const section=`<section class="hb-capability-showcase" data-hb-capabilities><h2>${en?'Choose your transaction and how to proceed':'اختر معاملتك وطريقة إنجازها'}</h2><p>${en?'Use the government channel directly or ask HOSSAM BAHR for assistance. Requirements and decisions remain with the responsible authority.':'استخدم القناة الحكومية مباشرة أو اطلب مساعدة حسام بحر. الشروط والقرارات لدى الجهة المختصة.'}</p><div class="hb-featured-transactions">${cards}</div></section>`;
- if(html.includes('</main>'))html=html.replace('</main>',section+'</main>');
- else if(html.includes('<footer'))html=html.replace('<footer',section+'<footer');
+ if(html.includes('</main>'))html=html.replace('</main>',emirateMarkup+section+'</main>');
+ else if(html.includes('<footer'))html=html.replace('<footer',emirateMarkup+section+'<footer');
  else throw Error('Homepage insertion anchor missing: '+locale);
  await writeFile(file,html);
 }
