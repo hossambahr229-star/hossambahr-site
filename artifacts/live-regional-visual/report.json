@@ -1,9 +1,9 @@
 {
-  "capturedAt": "2026-10-08T16:26:30.129Z",
+  "capturedAt": "2026-10-08T16:29:23.698Z",
   "source": "BUILT_CANDIDATE",
   "url": "http://127.0.0.1:8765/",
   "httpStatus": 200,
-  "diagnosticSourceCommit": "fbfe6c3b0570589f0f6bb092005bc6cb6461c5fd",
+  "diagnosticSourceCommit": "e825a278ffcd82082ee49df7c1271ecc060cdf4f",
   "productionShaBoundary": "Capture is live; diagnostic commit is not asserted to be the deployed SHA.",
   "referenceSha256": "97dc3758fb786a116109381f05d272a2891af014935ec00b181db02b9d5012d7",
   "viewport": {
@@ -53,8 +53,8 @@
         "width": 371,
         "height": 302
       },
-      "meanAbsoluteDifference": 61.31981459333702,
-      "changedPixelPercent": 45.87565377269238
+      "meanAbsoluteDifference": 61.12738080362721,
+      "changedPixelPercent": 42.071723103836064
     },
     {
       "name": "categories",
@@ -246,7 +246,7 @@
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
         "lineHeight": "26.4px",
         "backgroundColor": "rgba(0, 0, 0, 0)",
-        "backgroundImage": "radial-gradient(at 23% 38%, rgb(51, 119, 120), rgb(0, 32, 50) 68%)"
+        "backgroundImage": "radial-gradient(at 35% 40%, rgb(27, 102, 103), rgb(3, 45, 59) 70%)"
       },
       ".ai-showcase-mark": {
         "x": 1114.46875,
