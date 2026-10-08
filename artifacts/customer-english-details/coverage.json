@@ -1,11 +1,11 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 200,
-  "fullyTranslatedRecordedSections": 122,
+  "fullyTranslatedRecordedSections": 126,
   "fieldCounts": {
     "documents": {
-      "PLATFORM_TRANSLATION": 118,
-      "MISSING_INFORMATION": 78,
+      "PLATFORM_TRANSLATION": 122,
+      "MISSING_INFORMATION": 74,
       "RECORDED_ENGLISH": 4
     },
     "eligibility": {
@@ -14,14 +14,14 @@
       "MISSING_INFORMATION": 64
     },
     "fees": {
-      "PLATFORM_TRANSLATION": 126,
+      "PLATFORM_TRANSLATION": 127,
       "RECORDED_ENGLISH": 4,
-      "MISSING_INFORMATION": 70
+      "MISSING_INFORMATION": 69
     },
     "duration": {
-      "PLATFORM_TRANSLATION": 126,
+      "PLATFORM_TRANSLATION": 127,
       "RECORDED_ENGLISH": 4,
-      "MISSING_INFORMATION": 70
+      "MISSING_INFORMATION": 69
     }
   },
   "scope": "Translation coverage of recorded verified sections only. This does not reverify government facts, fill missing information or grant overall English acceptance.",
@@ -273,7 +273,7 @@
       "slug": "attestation-of-commercial-invoices-via-edas-2-0",
       "route": "/en/services/attestation-of-commercial-invoices-via-edas-2-0/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
         "eligibility": "PLATFORM_TRANSLATION",
         "fees": "PLATFORM_TRANSLATION",
         "duration": "PLATFORM_TRANSLATION"
@@ -361,7 +361,7 @@
       "slug": "confirming-the-authenticity-of-equivalency",
       "route": "/en/services/confirming-the-authenticity-of-equivalency/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
         "eligibility": "PLATFORM_TRANSLATION",
         "fees": "PLATFORM_TRANSLATION",
         "duration": "PLATFORM_TRANSLATION"
@@ -526,7 +526,7 @@
       "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
       "route": "/en/services/equivalency-of-general-education-certificate-from-abroad-grade-12/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
         "eligibility": "PLATFORM_TRANSLATION",
         "fees": "PLATFORM_TRANSLATION",
         "duration": "PLATFORM_TRANSLATION"
@@ -537,10 +537,10 @@
       "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
       "route": "/en/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
         "eligibility": "PLATFORM_TRANSLATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {

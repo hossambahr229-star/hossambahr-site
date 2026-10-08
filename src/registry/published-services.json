@@ -6,8 +6,8 @@
     "services": 200,
     "verified": 200,
     "officialLinksVerified": 200,
-    "fullyVerifiedDetails": 122,
-    "partiallyVerifiedDetails": 78,
+    "fullyVerifiedDetails": 126,
+    "partiallyVerifiedDetails": 74,
     "pendingVerification": 0,
     "authorities": 20,
     "emirates": [
@@ -3161,12 +3161,15 @@
       ],
       "description": "الخدمة الرقمية المستقلة لتصديق الفواتير التجارية وشهادات المنشأ الصادرة داخل الدولة أو خارجها.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "الفاتورة التجارية أو شهادة المنشأ المراد تصديقها.",
+          "رخصة تجارية معتمدة لتسجيل الحساب الرئيسي للشركة."
+        ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "150 درهماً لكل فاتورة أو شهادة منشأ"
+        "text": "150 درهماً لكل فاتورة أو شهادة منشأ."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -3174,9 +3177,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "دقيقتان وفق بطاقة الخدمة"
+        "text": "دقيقتان وفق بطاقة الخدمة."
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "الخدمة للشركات المسجلة في eDAS 2.0؛ يعتمد الحساب الرئيسي أولًا، ويستخدم كل مستخدم حساب الهوية الرقمية. يجب تقديم بيانات صحيحة.",
       "steps": [
         {
           "order": 1,
@@ -3207,11 +3210,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "150 درهماً لكل فاتورة أو شهادة منشأ"
+          "answer": "150 درهماً لكل فاتورة أو شهادة منشأ."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "دقيقتان وفق بطاقة الخدمة"
+          "answer": "دقيقتان وفق بطاقة الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -3232,22 +3235,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": true,
         "durationVerified": true,
         "eligibilityVerified": true,
-        "detailsVerified": false,
-        "verifiedDetailCount": 3,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-08",
         "sourceAuthority": "mofa",
         "sourceUrl": "https://www.mofa.gov.ae/services/edas-attestation-v2"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-08",
+      "lastReviewedAt": "2026-10-08",
       "internalRoute": "/services/attestation-of-commercial-invoices-via-edas-2-0/",
       "sourceRegistry": "service-matrix"
     },
@@ -4313,12 +4316,14 @@
       ],
       "description": "تحقق فوري باستخدام رقم التحقق ورقم المستند في الوثيقة الإلكترونية.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "رقم التحقق ورقم المستند في وثيقة المعادلة أو التصديق الإلكترونية."
+        ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "مجانية"
+        "text": "مجانية."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -4326,9 +4331,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "فورية"
+        "text": "فورية بعد إدخال البيانات الصحيحة."
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "التحقق متاح للوثائق الإلكترونية فقط بعد تسجيل الدخول أو إنشاء حساب. للحصول على نسخة إلكترونية لوثيقة ورقية سابقة، اتبع تعليمات وزارة التربية والتعليم؛ صيغة المرفق PDF بحد أقصى 2 ميجابايت عند طلبه.",
       "steps": [
         {
           "order": 1,
@@ -4359,11 +4364,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "مجانية"
+          "answer": "مجانية."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "فورية"
+          "answer": "فورية بعد إدخال البيانات الصحيحة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -4384,22 +4389,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": true,
         "durationVerified": true,
         "eligibilityVerified": true,
-        "detailsVerified": false,
-        "verifiedDetailCount": 3,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-08",
         "sourceAuthority": "moe",
         "sourceUrl": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-08",
+      "lastReviewedAt": "2026-10-08",
       "internalRoute": "/services/confirming-the-authenticity-of-equivalency/",
       "sourceRegistry": "service-matrix"
     },
@@ -6488,12 +6493,17 @@
       ],
       "description": "معادلة الصف الثاني عشر الصادر من خارج الدولة بعد التحقق والتصديقات المطلوبة.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "شهادة الثانوية المصدقة وشهادتا السنتين السابقتين المصدقتان.",
+          "نسخة جواز السفر.",
+          "عرض عمل لغرض العمل أو قبول جامعي لغرض الدراسة، بحسب الطلب.",
+          "ترجمة قانونية مصدقة للشهادات غير العربية أو الإنجليزية."
+        ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "50 درهماً"
+        "text": "50 درهماً."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -6501,9 +6511,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "3–30 يوم عمل حسب المراسلة واللجنة"
+        "text": "من 3 إلى 30 يوم عمل بحسب اكتمال الشروط والحاجة إلى المراسلات أو مراجعة اللجنة؛ لا تحتسب فترة النواقص ضمن مدة الإنجاز."
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "يلزم تصديق شهادة وكشف درجات الصف الثاني عشر لدى وزارة الخارجية. الملفات PDF بحد أقصى 5 ميجابايت لكل ملف، وتدمج مستندات المتطلب الواحد. تحدد متطلبات إضافية بحسب المنهاج؛ لا تعادل شهادات التعليم عن بعد أو المدارس المفتوحة أو GED. تسجيل الدخول عبر UAE Pass.",
       "steps": [
         {
           "order": 1,
@@ -6534,11 +6544,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "50 درهماً"
+          "answer": "50 درهماً."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "3–30 يوم عمل حسب المراسلة واللجنة"
+          "answer": "من 3 إلى 30 يوم عمل بحسب اكتمال الشروط والحاجة إلى المراسلات أو مراجعة اللجنة؛ لا تحتسب فترة النواقص ضمن مدة الإنجاز."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -6559,22 +6569,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": true,
         "durationVerified": true,
         "eligibilityVerified": true,
-        "detailsVerified": false,
-        "verifiedDetailCount": 3,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-08",
         "sourceAuthority": "moe",
         "sourceUrl": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-08",
+      "lastReviewedAt": "2026-10-08",
       "internalRoute": "/services/equivalency-of-general-education-certificate-from-abroad-grade-12/",
       "sourceRegistry": "service-matrix"
     },
@@ -6633,22 +6643,27 @@
       ],
       "description": "معادلة الصف الثاني عشر من مدرسة خاصة تطبق منهاجًا أجنبيًا داخل الدولة.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "شهادة التخرج وكشوف درجات السنوات الدراسية الثلاث الأخيرة.",
+          "تصديق شهادة وكشف درجات الصف الثاني عشر لدى الجهة التعليمية المحلية المختصة.",
+          "إثبات دراسة التربية الإسلامية للطلبة المسلمين واللغة العربية للطلبة العرب في السنوات الثلاث الأخيرة.",
+          "ترجمة قانونية للشهادات غير العربية أو الإنجليزية."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق في سجل الكتالوج"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "50 درهماً."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق في سجل الكتالوج"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "5 أيام عمل وفق بطاقة الخدمة."
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "المعادلة لشهادة منهاج أجنبي صادرة من مدرسة داخل الإمارات. الملفات PDF بحد أقصى 5 ميجابايت لكل ملف وتدمج مستندات المتطلب الواحد؛ توجد متطلبات بحسب المنهاج. لا تقبل الدراسة عن بعد أو المدارس المفتوحة. قد تحال الحالات الاستثنائية إلى اللجنة، ويغلق الطلب عند عدم توفير النواقص خلال 7 أيام بعد ثلاث محاولات تواصل. يلزم UAE Pass.",
       "steps": [
         {
           "order": 1,
@@ -6679,11 +6694,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "50 درهماً."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "5 أيام عمل وفق بطاقة الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -6704,22 +6719,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
         "eligibilityVerified": true,
-        "detailsVerified": false,
-        "verifiedDetailCount": 1,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-08",
         "sourceAuthority": "moe",
         "sourceUrl": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-08",
+      "lastReviewedAt": "2026-10-08",
       "internalRoute": "/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/",
       "sourceRegistry": "service-matrix"
     },
