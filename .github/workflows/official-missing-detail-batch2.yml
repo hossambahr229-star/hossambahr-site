@@ -1,0 +1,36 @@
+name: Official Missing Detail Batch 2
+on:
+  push:
+    branches: [agent/official-missing-detail-batch2]
+    paths: [scripts/official-missing-detail-batch2.mjs, .github/workflows/official-missing-detail-batch2.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Read official cards without applying or signing in
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/official-missing-detail-batch2.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: official-missing-details
+          path: artifacts/official-missing-details-batch2
+      - name: Preserve live evidence only
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/official-missing-detail-batch2
+          git reset --mixed origin/agent/official-missing-detail-batch2
+          git add artifacts/official-missing-details-batch2
+          if ! git diff --cached --quiet; then
+            git commit -m "Record read-only official card evidence [skip ci]"
+            git push origin HEAD:agent/official-missing-detail-batch2
+          fi
