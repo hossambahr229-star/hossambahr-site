@@ -27,9 +27,9 @@ export function canonicalFees(fees, language = 'ar') {
 
 export function canonicalDetails(service, language = 'ar') {
   return {
-    documents: (service.documents?.items || []).map(item => canonicalText(item.name, language)).filter(Boolean),
+    documents: (service.documents?.items || []).map(item => [canonicalText(item.name, language), canonicalText(item.notes, language)].filter(Boolean).join(' — ')).filter(Boolean),
     fees: canonicalFees(service.governmentFees, language),
     duration: canonicalText(service.duration, language),
-    eligibility: canonicalText(service.conditions, language),
+    eligibility: canonicalText([...(service.eligibility || []), ...(service.conditions || [])], language),
   };
 }
