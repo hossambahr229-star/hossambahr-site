@@ -6,6 +6,7 @@ import {rankServices} from '../../intent-search.js';
 import {englishServiceRoute,emirateEnglish} from './english-catalog.mjs';
 import {executionHref,customerContext} from './customer-execution.mjs';
 import {auditCustomerService,summarizeCustomerAudit} from './customer-catalog-audit.mjs';
+import {fetchMaterializedPage} from './fetch-materialized-page.mjs';
 const root=resolve(import.meta.dirname,'../..');let base=(process.env.HB_BASE_URL||'https://hossambahr.com').replace(/\/$/,'');
 let localServer;
 if(process.env.HB_AUDIT_LOCAL==='1'){localServer=createServer(async(req,res)=>{try{let route=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(route.endsWith('/'))route+='index.html';const file=resolve(root,'.'+route);if(relative(root,file).startsWith('..'))throw Error('Outside site');res.setHeader('Content-Type',file.endsWith('.html')?'text/html; charset=utf-8':file.endsWith('.json')?'application/json':'application/octet-stream');res.end(await readFile(file));}catch{res.writeHead(404).end();}});await new Promise(r=>localServer.listen(0,'127.0.0.1',r));base='http://127.0.0.1:'+localServer.address().port;}
@@ -25,17 +26,18 @@ const targets=new Map([...pages].map(([route])=>[route,{referrers:[]}]));
 let internalReferences=0;for(const [route,p] of pages)for(const href of hrefs(p.html)){if(!href||href.startsWith('#'))continue;let url;try{url=new URL(href,base+route);}catch{continue;}if(url.origin!==new URL(base).origin)continue;internalReferences++;const key=url.pathname;if(!targets.has(key))targets.set(key,{referrers:[]});targets.get(key).referrers.push({page:route,href});}
 const results=[],bodies=new Map();let cursor=0;const entries=[...targets];const release=process.env.HB_DEPLOYED_SHA||process.env.GITHUB_SHA||'live-audit';
 const hash=html=>createHash('sha256').update(html.replace(/آخر تحديث تلقائي:\s*[^<]+/g,'آخر تحديث تلقائي: [BUILD_TIMESTAMP]')).digest('hex');
-async function worker(){while(cursor<entries.length){const [route,target]=entries[cursor++];const failures=[];let response,body='',error;
-for(let attempt=0;attempt<3;attempt++){try{const url=new URL(route,base);url.searchParams.set('hb_live_audit',release);response=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(30000),headers:{'cache-control':'no-cache'}});body=await response.text();error=null;if(response.status===200)break;}catch(e){error=e.name;}if(attempt<2)await new Promise(r=>setTimeout(r,2000));}
-if(error)failures.push('HTTP transport: '+error);else if(response?.status!==200)failures.push('HTTP '+response?.status);
+async function worker(){while(cursor<entries.length){const [route,target]=entries[cursor++];const failures=[];
 const local=pages.get(route),is404=['/404.html','/404/','/_not-found/'].includes(route);
+const url=new URL(route,base);url.searchParams.set('hb_live_audit',release);
+const {response,body,error,attempts}=await fetchMaterializedPage(url,{expectedHash:local&&!is404?hash(local.html):null,hash});
+if(error)failures.push('HTTP transport: '+error);else if(response?.status!==200)failures.push('HTTP '+response?.status);
 if(response?.status===200&&response.headers.get('content-type')?.includes('text/html')&&!is404){if(/^(?:404|page not found|لم يتم العثور|الصفحة غير موجودة)/i.test(heading(body)))failures.push('Soft 404 heading');if(!pages.has(new URL(response.url).pathname))failures.push('Final HTML target is not in the published inventory');}
 if(local&&response?.status===200){if(hash(body)!==hash(local.html)&&!is404)failures.push('Live page bytes differ from the materialized source');
 const c=canonical(body),expected=canonical(local.html);if(!is404&&!c)failures.push('Canonical missing');if(c!==expected)failures.push('Canonical differs from source');
 if(route.startsWith('/en/')&&lang(body)!=='en')failures.push('English route has wrong document language');
 if(!is404&&/^(?:404|page not found|لم يتم العثور|الصفحة غير موجودة)/i.test(heading(body)))failures.push('Soft 404 heading');
 bodies.set(route,body);}
-results.push({route,status:response?.status||null,finalUrl:response?.url||null,canonical:local?canonical(body):null,lang:local?lang(body):null,failures,referrers:target.referrers});}}
+results.push({route,status:response?.status||null,attempts,finalUrl:response?.url||null,canonical:local?canonical(body):null,lang:local?lang(body):null,failures,referrers:target.referrers});}}
 await Promise.all(Array.from({length:8},worker));
 const services=JSON.parse(await readFile(join(root,'src/registry/published-services.json'),'utf8')).services,serviceResults=[],records=[];
 let intakeCatalog;try{const r=await fetch(base+'/customer-execution-data.json?hb_live_audit='+release,{signal:AbortSignal.timeout(30000)});if(r.status!==200)throw Error('Intake catalog HTTP '+r.status);intakeCatalog=await r.json();}catch(e){intakeCatalog=null;}
@@ -60,3 +62,4 @@ await writeFile(join(output,'customer-field-evidence.json'),JSON.stringify({...s
 console.log(JSON.stringify({...report,results:report.results.filter(r=>r.failures.length),serviceResults:report.serviceResults.filter(r=>r.failures.length)},null,2));if(report.status!=='PASS')process.exitCode=1;
 
 }finally{localServer?.close();}
+
