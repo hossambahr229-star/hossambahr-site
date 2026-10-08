@@ -1,8 +1,9 @@
 name: Live Regional Visual Diagnosis
 on:
   push:
-    branches: [agent/live-regional-visual-diagnosis]
+    branches: [agent/hero-overlay-alignment]
     paths:
+      - home-geometry.css
       - scripts/live-regional-visual-diagnosis.mjs
       - .github/workflows/live-regional-visual-diagnosis.yml
       - src/publication/generate-transaction-discovery.mjs
@@ -33,12 +34,14 @@ jobs:
           name: live-regional-visual-diagnosis
           path: artifacts/live-regional-visual
       - name: Preserve only new visual evidence on the diagnosis branch
-        if: github.ref == 'refs/heads/agent/live-regional-visual-diagnosis'
+        if: github.ref == 'refs/heads/agent/hero-overlay-alignment'
         run: |
           git config user.name "HossamBahr Visual Diagnosis"
           git config user.email "visual-diagnosis@users.noreply.github.com"
+          git fetch origin agent/hero-overlay-alignment
+          git reset --mixed origin/agent/hero-overlay-alignment
           git add artifacts/live-regional-visual
           if ! git diff --cached --quiet; then
             git commit -m "Record regional live Production visual evidence [skip ci]"
-            git push origin HEAD:agent/live-regional-visual-diagnosis
+            git push origin HEAD:agent/hero-overlay-alignment
           fi
