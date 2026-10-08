@@ -1,12 +1,13 @@
 name: Live Regional Visual Diagnosis
 on:
   push:
-    branches: [agent/live-regional-visual-diagnosis]
+    branches: [agent/hero-noto-reference]
     paths:
       - scripts/live-regional-visual-diagnosis.mjs
       - .github/workflows/live-regional-visual-diagnosis.yml
       - src/publication/generate-transaction-discovery.mjs
       - transaction-discovery.css
+      - home-geometry.css
   workflow_dispatch:
 permissions:
   contents: write
@@ -21,6 +22,26 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
       - name: Install capture runtime
         run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - name: Prepare the licensed static Arabic headline font
+        run: |
+          python3 -m pip install --quiet fonttools brotli
+          python3 - <<'PY'
+          import urllib.request,io
+          from fontTools.ttLib import TTFont
+          from fontTools.varLib.instancer import instantiateVariableFont
+          from fontTools import subset
+          base='https://raw.githubusercontent.com/google/fonts/2eb0b48d5f760f62e286216f0859a8c540dbc1bd/ofl/notosansarabic/'
+          font=TTFont(io.BytesIO(urllib.request.urlopen(base+'NotoSansArabic%5Bwdth%2Cwght%5D.ttf').read()))
+          instantiateVariableFont(font,{'wght':700,'wdth':100},inplace=True)
+          options=subset.Options()
+          options.flavor='woff2'
+          sub=subset.Subsetter(options=options)
+          sub.populate(unicodes=list(range(0x20,0x7f))+list(range(0x600,0x700))+list(range(0x750,0x780))+list(range(0x8a0,0x900))+list(range(0x2000,0x2070))+list(range(0xfb50,0xfe00))+list(range(0xfe70,0xff00)))
+          sub.subset(font)
+          font.flavor='woff2'
+          font.save('assets/fonts/hb-sans-arabic-700.woff2')
+          urllib.request.urlretrieve(base+'OFL.txt','assets/fonts/hb-sans-arabic-OFL.txt')
+          PY
       - name: Build the candidate from its true generators
         run: npm run build
       - name: Capture built candidate without deploying
@@ -33,12 +54,12 @@ jobs:
           name: live-regional-visual-diagnosis
           path: artifacts/live-regional-visual
       - name: Preserve only new visual evidence on the diagnosis branch
-        if: github.ref == 'refs/heads/agent/live-regional-visual-diagnosis'
+        if: github.ref == 'refs/heads/agent/hero-noto-reference'
         run: |
           git config user.name "HossamBahr Visual Diagnosis"
           git config user.email "visual-diagnosis@users.noreply.github.com"
-          git add artifacts/live-regional-visual
+          git add artifacts/live-regional-visual assets/fonts/hb-sans-arabic-700.woff2 assets/fonts/hb-sans-arabic-OFL.txt
           if ! git diff --cached --quiet; then
             git commit -m "Record regional live Production visual evidence [skip ci]"
-            git push origin HEAD:agent/live-regional-visual-diagnosis
+            git push origin HEAD:agent/hero-noto-reference
           fi
