@@ -44,3 +44,12 @@ test('English details use recorded English and escape markup', () => {
  assert.doesNotMatch(html,/translation is not yet available/);
  assert.doesNotMatch(officialExcerpt('Fees',null,'orphan text'),/orphan text/);
 });
+
+test('rebuilt Arabic fee tables retain each recorded per-item note', async () => {
+ for(const source of services) {
+  const html=await readFile(new URL('../../services/'+source.slug+'/index.html',import.meta.url),'utf8');
+  for(const item of source.governmentFees.items || []) {
+   if(item.notes?.ar)assert.ok(html.includes(item.notes.ar),source.id+' fee note');
+  }
+ }
+});
