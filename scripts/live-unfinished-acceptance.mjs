@@ -1,9 +1,10 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 const output='artifacts/live-unfinished-acceptance';
 await mkdir(output,{recursive:true});
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||undefined});
-const report={capturedAt:new Date().toISOString(),source:'LIVE_PRODUCTION',externalModel:'NOT_VERIFIED',privateWorkspace:'AUTH_SESSION_UNAVAILABLE',documentIntelligence:'NOT_VERIFIED',tracking:'AUTH_SESSION_UNAVAILABLE',finalPass:false};
+const prior=JSON.parse(await readFile(output+'/report.json','utf8').catch(()=>'{}'));
+const report={...prior,capturedAt:new Date().toISOString(),source:'LIVE_PRODUCTION',externalModel:'NOT_VERIFIED',privateWorkspace:'AUTH_SESSION_UNAVAILABLE',documentIntelligence:'NOT_VERIFIED',tracking:'AUTH_SESSION_UNAVAILABLE',finalPass:false};
 try{
  const context=await browser.newContext({viewport:{width:1440,height:960}});
  const page=await context.newPage();page.setDefaultTimeout(20000);
@@ -15,8 +16,8 @@ try{
  const text=await response.text();
  const payloads=[];
  try{payloads.push(JSON.parse(text));}catch{
-  for(const line of text.split('\n').filter(line=>line.startsWith('data:'))){
-   try{payloads.push(JSON.parse(line.slice(5).trim()));}catch{}
+  for(const line of text.split('\n').filter(line=>line.trim())){
+   try{payloads.push(JSON.parse(line.startsWith('data:')?line.slice(5).trim():line.trim()));}catch{}
   }
  }
  const evidence=[];
@@ -28,11 +29,14 @@ try{
   }
  }
  payloads.forEach(value=>scan(value));
- const external=evidence.filter(item=>item.path.endsWith('.external_model_used'));
- report.externalModel=external.some(item=>item.value===true)?'EXTERNAL_MODEL_OBSERVED':external.some(item=>item.value===false)?'EXTERNAL_MODEL_NOT_USED':'NOT_VERIFIED';
+ const terminal=payloads.filter(value=>['done','fallback'].includes(value.type)).at(-1);
+ const finalEngine=terminal?.engine||terminal?.result?.engine||payloads.at(-1)?.result?.engine;
+ report.externalModel=finalEngine?.external_model_used===true?'EXTERNAL_MODEL_OBSERVED':finalEngine?.external_model_used===false?'EXTERNAL_MODEL_NOT_USED':'NOT_VERIFIED';
+ report.terminalFrame=terminal?.type||null;
  report.aiResponse={httpStatus:response.status(),metadata:evidence,providerAcceptance:'A single observation does not close the full strict semantic gate.'};
  await page.locator('.hb-chat-message--assistant:not([data-pending])').last().waitFor({timeout:90000});
  await page.screenshot({path:output+'/ai-response.png',fullPage:true});
+ if(!prior.anonymousDocumentBoundary){
  // Synthetic PDF only; verify the anonymous client does not upload it.
  let documentRequests=0;
  page.on('request',request=>{if(request.method()==='POST'&&request.url().includes('/document-ai'))documentRequests++;});
@@ -46,5 +50,6 @@ try{
  await page.goto('https://hossambahr.com/account/',{waitUntil:'networkidle'});
  report.accountBoundary={url:page.url(),passwordFields:await page.locator('input[type=password]').count(),emailFields:await page.locator('input[type=email]').count(),authenticatedSessionProvided:false};
  await page.screenshot({path:output+'/account-anonymous.png',fullPage:true});
+ }else{report.anonymousDocumentBoundary=prior.anonymousDocumentBoundary;report.accountBoundary=prior.accountBoundary;report.documentIntelligence=prior.documentIntelligence;report.preservedBoundaryEvidenceAt=prior.capturedAt;}
 }catch(error){report.captureError=String(error);}
 finally{await writeFile(output+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));await browser.close();}
