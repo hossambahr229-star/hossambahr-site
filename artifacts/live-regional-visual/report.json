@@ -1,9 +1,9 @@
 {
-  "capturedAt": "2026-10-08T15:36:38.081Z",
+  "capturedAt": "2026-10-08T16:50:04.226Z",
   "source": "BUILT_CANDIDATE",
   "url": "http://127.0.0.1:8765/",
   "httpStatus": 200,
-  "diagnosticSourceCommit": "484a31696b8629d152273e004773dcad8d825955",
+  "diagnosticSourceCommit": "958f9b4343fc6748b94cf39a91306506a053278e",
   "productionShaBoundary": "Capture is live; diagnostic commit is not asserted to be the deployed SHA.",
   "referenceSha256": "97dc3758fb786a116109381f05d272a2891af014935ec00b181db02b9d5012d7",
   "viewport": {
@@ -31,8 +31,8 @@
         "width": 1069,
         "height": 302
       },
-      "meanAbsoluteDifference": 49.28662053413787,
-      "changedPixelPercent": 47.39590754496063
+      "meanAbsoluteDifference": 44.164148375759154,
+      "changedPixelPercent": 36.866168171033145
     },
     {
       "name": "hero-copy-search",
@@ -42,8 +42,8 @@
         "width": 597,
         "height": 244
       },
-      "meanAbsoluteDifference": 46.790468737128265,
-      "changedPixelPercent": 47.45311255732213
+      "meanAbsoluteDifference": 41.0700085125079,
+      "changedPixelPercent": 32.40244940549743
     },
     {
       "name": "ai-panel",
@@ -53,8 +53,8 @@
         "width": 371,
         "height": 302
       },
-      "meanAbsoluteDifference": 66.11400784229724,
-      "changedPixelPercent": 44.02099212795202
+      "meanAbsoluteDifference": 61.12738080362721,
+      "changedPixelPercent": 42.071723103836064
     },
     {
       "name": "categories",
@@ -75,8 +75,8 @@
         "width": 1378,
         "height": 127
       },
-      "meanAbsoluteDifference": 42.49316594859605,
-      "changedPixelPercent": 39.32322320377587
+      "meanAbsoluteDifference": 41.874474779912305,
+      "changedPixelPercent": 38.74781436065049
     },
     {
       "name": "metrics",
@@ -250,7 +250,7 @@
       },
       ".ai-showcase-mark": {
         "x": 1114.46875,
-        "y": 143,
+        "y": 135,
         "width": 88,
         "height": 88,
         "font": "900 0px / 0px Arial, sans-serif",
@@ -260,7 +260,7 @@
         "backgroundImage": "url(\"http://127.0.0.1:8765/icon.svg\")"
       },
       ".ai-showcase-welcome": {
-        "x": 1219.875,
+        "x": 1226.875,
         "y": 92,
         "width": 196.109375,
         "height": 62,
