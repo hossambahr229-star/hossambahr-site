@@ -251,3 +251,9 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @media(min-width:821px) and (max-width:1399px){
  html.hb-phase8 body[data-home-geometry] .ai-showcase-cta,html.hb-phase8 body[data-home-geometry] .ai-showcase-actions a{font-size:9px!important}
 }
+
+/* Keep the photographic shade on the left: legacy logical RTL insets
+   otherwise anchor this 34% layer to the copy and create a hard seam. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .premium-hero-main::after{inset-inline-start:auto!important;inset-inline-end:auto!important;left:0!important;right:auto!important;pointer-events:none!important}
+}
