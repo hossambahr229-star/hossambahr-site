@@ -94,6 +94,11 @@ for (const route of ['index.html', 'en/index.html']) {
   html = html.replace(/(<div class="ai-showcase-actions">)([\s\S]*?)(<\/div>)/,
     (_,open,links,close)=>open+links.replace(/(<a\b[^>]*>)([\s\S]*?)(<\/a>)/g,
       (_,start,text,end)=>start+text.replace(/\s*←\s*$/,'')+(text.includes('home-ai-action-icon')?'':aiActionIcon)+end)+close);
+  // Keep featured summaries concise without adding mockup claims.
+  if (route === 'index.html') {
+    const summaries = [["من الفكرة إلى تحديد الرخصة والجهة والمسار المناسب.","دليلك للرخصة والجهة والمسار المناسب."],["خدمات الإقامة والزيارة والتجديد والإلغاء عبر المسارات الفعلية.","خدمات الإقامة والزيارة والتجديد والإلغاء."],["التوكيلات والتصديقات ومسارات العقود لدى الجهات المختصة.","التوكيلات والتصديقات لدى الجهات المختصة."],["مسارات الشركات والإقامة والخدمات الحكومية المرتبطة بأعمالك.","مسارات الشركات والإقامة لأعمالك."]];
+    for (const [previous, current] of summaries) html = html.replace('<p>'+previous+'</p>', '<p>'+current+'</p>');
+  }
   await writeFile(file, html);
 }
 
