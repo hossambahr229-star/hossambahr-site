@@ -266,7 +266,7 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 
 /* Measured desktop AI hierarchy: welcome, master mark, title and controls. */
 @media(min-width:821px){
- html.hb-phase8 body[data-home-geometry] .premium-ai-showcase{--ai-action-width:44%;--ai-action-indent:69px;background:radial-gradient(ellipse at 23% 38%,#337778,#002032 68%)!important}
+ html.hb-phase8 body[data-home-geometry] .premium-ai-showcase{--ai-action-width:44%;--ai-action-indent:69px}
  html.hb-phase8 body[data-home-geometry] .premium-ai-showcase::before{display:none!important}
  html.hb-phase8 body[data-home-geometry] .ai-showcase-mark{position:relative;top:-8px;box-shadow:0 0 0 6px #ffffff15,0 0 23px 9px #b4ecec6b!important}
  html.hb-phase8 body[data-home-geometry] .ai-showcase-kicker,html.hb-phase8 body[data-home-geometry] .premium-ai-showcase h2{position:relative;left:-16px;top:-7px}
