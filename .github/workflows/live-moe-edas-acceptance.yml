@@ -1,0 +1,50 @@
+name: Live MOE eDAS Acceptance
+on:
+  push:
+    branches: [agent/live-moe-edas-acceptance]
+    paths: [scripts/live-moe-edas-acceptance.mjs, .github/workflows/live-moe-edas-acceptance.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the newly generated service content to reach Production
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let attempt=0;attempt<60;attempt++){
+            const urls=['https://hossambahr.com/en/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/','https://hossambahr.com/services/attestation-of-commercial-invoices-via-edas-2-0/'];
+            const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
+            ready=responses[0].includes('competent local educational regulator')&&responses[1].includes('رخصة تجارية معتمدة لتسجيل الحساب الرئيسي للشركة.');
+            if(ready)break;
+            console.log('Waiting for new source content, attempt '+(attempt+1));
+            await new Promise(resolve=>setTimeout(resolve,10000));
+          }
+          if(!ready)throw Error('New generated service content did not reach Production before the wait deadline');
+          NODE
+      - name: Verify actual deployed canonical details and pathways
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-moe-edas-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-moe-edas
+          path: artifacts/live-moe-edas
+      - name: Preserve live evidence only
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-moe-edas-acceptance
+          git reset --mixed origin/agent/live-moe-edas-acceptance
+          git add artifacts/live-moe-edas
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual MOE eDAS Production acceptance [skip ci]"
+            git push origin HEAD:agent/live-moe-edas-acceptance
+          fi
