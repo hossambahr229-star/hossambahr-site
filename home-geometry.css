@@ -285,3 +285,8 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @media(min-width:821px){
  html.hb-phase8 body[data-home-geometry] .premium-final-cta{background:linear-gradient(90deg,transparent 28%,#fff4e6b3 43%,#fff4e6d9 63%,transparent 83%),url('/assets/cta-reference-panorama.webp') center/cover no-repeat!important}
 }
+
+@media(min-width:1400px){
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:34px!important;font-weight:700!important;line-height:1.1!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:57%;font-weight:600!important}
+}
