@@ -1,0 +1,49 @@
+{
+  "capturedAt": "2026-10-09T12:59:02.339Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {},
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 28.67907616406257,
+      "changed": 21.569596616964603
+    },
+    {
+      "name": "display38",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:38px!important}",
+      "mad": 27.80743883351182,
+      "changed": 21.04168382898097
+    },
+    {
+      "name": "display40",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:40px!important}",
+      "mad": 30.531942499382158,
+      "changed": 22.53343218826372
+    },
+    {
+      "name": "right5",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy{right:5%!important}",
+      "mad": 28.91546759297398,
+      "changed": 22.326797924046463
+    },
+    {
+      "name": "right5-display38",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy{right:5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:38px!important}",
+      "mad": 30.710158259420968,
+      "changed": 23.185600131806574
+    },
+    {
+      "name": "right5-display40",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy{right:5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:40px!important}",
+      "mad": 31.888092557505196,
+      "changed": 23.808935387319107
+    },
+    {
+      "name": "copy-width",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:58%!important}",
+      "mad": 28.55137481579116,
+      "changed": 21.4659362385699
+    }
+  ]
+}
