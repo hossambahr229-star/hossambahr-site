@@ -1,0 +1,39 @@
+name: Live Three DLD AI Acceptance
+on:
+  push:
+    branches: [agent/live-three-dld-ai-acceptance]
+    paths: [scripts/live-three-dld-ai-acceptance.mjs, .github/workflows/live-three-dld-ai-acceptance.yml]
+concurrency:
+  group: live-three-dld-ai-acceptance
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Verify actual deployed canonical details and pathways
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-three-dld-ai-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-three-dld-ai
+          path: artifacts/live-three-dld-ai
+      - name: Preserve live evidence only
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-three-dld-ai-acceptance
+          git reset --mixed origin/agent/live-three-dld-ai-acceptance
+          git add artifacts/live-three-dld-ai
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual Three DLD AI Production acceptance [skip ci]"
+            git push origin HEAD:agent/live-three-dld-ai-acceptance
+          fi
