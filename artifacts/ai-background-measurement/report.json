@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-09T06:54:13.253Z",
+  "capturedAt": "2026-10-09T06:55:37.376Z",
   "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
   "results": [
     {
@@ -9,34 +9,28 @@
       "changed": 42.071723103836064
     },
     {
-      "name": "navy",
-      "background": "radial-gradient(ellipse at 22% 40%,#28696c 0%,#123f49 42%,#001e2d 80%)",
-      "mad": 60.316423008038655,
-      "changed": 41.85662519412363
-    },
-    {
-      "name": "navy-soft",
-      "background": "radial-gradient(ellipse at 22% 40%,#397775 0%,#16424a 42%,#002031 80%)",
-      "mad": 61.39256707306189,
-      "changed": 45.67929883436568
-    },
-    {
       "name": "navy-deep",
       "background": "radial-gradient(ellipse at 20% 35%,#2c6567 0%,#113c43 38%,#001725 70%)",
-      "mad": 59.596559028459566,
-      "changed": 41.460345227682474
+      "mad": 61.12738080362721,
+      "changed": 42.071723103836064
     },
     {
-      "name": "navy-left-glow",
-      "background": "radial-gradient(ellipse at 13% 40%,#4b8a85 0%,#19494e 32%,#001d2b 68%)",
-      "mad": 60.643910319344535,
-      "changed": 44.28160868245836
+      "name": "robot-left",
+      "background": "radial-gradient(ellipse at 20% 35%,#2c6567 0%,#113c43 38%,#001725 70%)|right:0px!important;",
+      "mad": 61.073026186608594,
+      "changed": 41.8851859124257
     },
     {
-      "name": "navy-low-glow",
-      "background": "radial-gradient(ellipse at 12% 48%,#366f70 0%,#113741 37%,#001624 77%)",
-      "mad": 60.06964352653469,
-      "changed": 42.543867478267074
+      "name": "robot-high-left",
+      "background": "radial-gradient(ellipse at 20% 35%,#2c6567 0%,#113c43 38%,#001725 70%)|right:0px!important;height:215px!important;",
+      "mad": 61.073035111833065,
+      "changed": 41.88607843487264
+    },
+    {
+      "name": "robot-left-welcome",
+      "background": "radial-gradient(ellipse at 20% 35%,#2c6567 0%,#113c43 38%,#001725 70%)|right:0px!important;|background:#001c2b66!important;border-color:#5b8789!important;",
+      "mad": 60.248484199377614,
+      "changed": 41.741489798468436
     }
   ]
 }
