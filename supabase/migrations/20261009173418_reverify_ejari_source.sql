@@ -11,16 +11,21 @@ declare
  wv integer;
  reviewed timestamptz := '2026-10-09T17:34:18Z';
 begin
- select * into strict s from public.hb_policy_sources
+ select * into s from public.hb_policy_sources
  where authority_key='dld-rera' and source_url='https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/' and active for update;
+ if not found then raise notice 'Exact Ejari source is absent in this catalog; no review state changed'; return; end if;
  if s.metadata->>'review_checkpoint'='ejari-official-card-2026-10-09' then return; end if;
+ begin
  select v.* into strict p from public.hb_policy_versions v
  join public.hb_service_bindings b on b.policy_key=v.policy_key
  where b.service_slug='register-renew-ejari-contract-dubai' and b.active and v.status='active' for update of v;
+ exception when no_data_found then raise notice 'Ejari policy is absent; no review state changed'; return; end;
  if not(s.id=any(p.source_ids)) then raise exception 'Ejari source binding mismatch'; end if;
+ begin
  select v.* into strict w from public.hb_workflow_templates v
  join public.hb_service_bindings b on b.workflow_key=v.workflow_key
  where b.service_slug='register-renew-ejari-contract-dubai' and b.active and v.status='active' for update of v;
+ exception when no_data_found then raise notice 'Ejari workflow is absent; no review state changed'; return; end;
  select coalesce(max(version),0)+1 into pv from public.hb_policy_versions where policy_key=p.policy_key and jurisdiction_id is not distinct from p.jurisdiction_id;
  select coalesce(max(version),0)+1 into wv from public.hb_workflow_templates where workflow_key=w.workflow_key and jurisdiction_id is not distinct from w.jurisdiction_id;
  select jsonb_agg(case
