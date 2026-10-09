@@ -1,0 +1,53 @@
+name: Live RTA Renewal Reviewed Acceptance
+on:
+  push:
+    branches: [agent/live-rta-renewal-reviewed-acceptance]
+    paths: [scripts/live-rta-renewal-reviewed-acceptance.mjs, .github/workflows/live-rta-renewal-reviewed-acceptance.yml]
+concurrency:
+  group: live-rta-renewal-reviewed-acceptance
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the newly generated service content to reach Production
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let attempt=0;attempt<120;attempt++){
+            const urls=['https://hossambahr.com/en/services/renew-vehicle-ownership-dubai/','https://hossambahr.com/services/renew-vehicle-ownership-dubai/'];
+            const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
+            ready=responses[0].includes('Valid vehicle insurance verified electronically by RTA.')&&responses[1].includes('تأمين مركبة ساري تتحقق منه RTA إلكترونيًا.'); the Ministry contacts')&&responses[1].includes('رخصة تجارية معتمدة لتسجيل الحساب الرئيسي للشركة.');
+            if(ready)break;
+            console.log('Waiting for new source content, attempt '+(attempt+1));
+            await new Promise(resolve=>setTimeout(resolve,10000));
+          }
+          if(!ready)throw Error('New generated service content did not reach Production before the wait deadline');
+          NODE
+      - name: Verify actual deployed canonical details and pathways
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-rta-renewal-reviewed-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-rta-renewal-reviewed
+          path: artifacts/live-rta-renewal-reviewed
+      - name: Preserve live evidence only
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-rta-renewal-reviewed-acceptance
+          git reset --mixed origin/agent/live-rta-renewal-reviewed-acceptance
+          git add artifacts/live-rta-renewal-reviewed
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual RTA Renewal Reviewed Production acceptance [skip ci]"
+            git push origin HEAD:agent/live-rta-renewal-reviewed-acceptance
+          fi
