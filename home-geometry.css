@@ -330,3 +330,9 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
  html.hb-phase8 body[data-home-geometry] .ai-showcase-actions{width:47.6%!important;margin-left:61px!important}
  html.hb-phase8 body[data-home-geometry] .ai-showcase-actions a:last-child{width:79.2%!important;align-self:flex-end}
 }
+
+/* Keep the reference consultation column aligned with the common page grid. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .premium-how{grid-template-columns:minmax(0,1fr) 303px!important;column-gap:21px!important}
+ html.hb-phase8 body[data-home-geometry] .premium-consult-cta span{height:31px!important;width:154px!important;min-height:31px!important;right:22px!important;bottom:9px!important;padding:0!important;display:flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important}
+}
