@@ -341,6 +341,64 @@
       "reviewedAt": "2026-10-09",
       "method": "Official ICP card text retrieved through web source access; separate read-only browser returned HTTP 500.",
       "scope": "Only recorded fields. Missing fees for exemption/refund remain unrecorded. Category-specific document list and option-specific charges must be checked on ICP."
+    },
+    {
+      "slug": "issue-emirates-id-uae",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+      "fieldSources": {
+        "requirements": [
+          "https://icp.gov.ae/services-details/?serviceid=64afe3c1035448005bd52e5a"
+        ],
+        "conditions": [
+          "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+          "https://icp.gov.ae/services-details/?serviceid=64afe3c1035448005bd52e5a"
+        ],
+        "fees": [
+          "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+          "https://icp.gov.ae/services-details/?serviceid=64afe3c1035448005bd52e5a"
+        ],
+        "duration": [
+          "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a"
+        ]
+      },
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ],
+      "reviewedAt": "2026-10-09",
+      "method": "Official Arabic and English ICP card text retrieved through web source access.",
+      "scope": "Category-dependent document summary and itemized fee options, not a universal checklist or all-inclusive price. Select the official applicant category before applying. Calendar/working-day distinction is not specified by ICP."
+    },
+    {
+      "slug": "renew-emirates-id-uae",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+      "fieldSources": {
+        "requirements": [
+          "https://icp.gov.ae/services-details/?serviceid=64afe3c1035448005bd52e5d"
+        ],
+        "conditions": [
+          "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+          "https://icp.gov.ae/services-details/?serviceid=64afe3c1035448005bd52e5d"
+        ],
+        "fees": [
+          "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+          "https://icp.gov.ae/services-details/?serviceid=64afe3c1035448005bd52e5d"
+        ],
+        "duration": [
+          "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d"
+        ]
+      },
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ],
+      "reviewedAt": "2026-10-09",
+      "method": "Official Arabic and English ICP card text retrieved through web source access.",
+      "scope": "Category-dependent document summary and itemized fee options, not a universal checklist or all-inclusive price. Select the official applicant category before applying. Calendar/working-day distinction is not specified by ICP."
     }
   ],
   "deferredRecords": [
