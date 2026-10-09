@@ -3,7 +3,7 @@ const out='artifacts/ai-control-scale-measurement';await mkdir(out,{recursive:tr
 const page=await browser.newPage({viewport:{width:1440,height:960},deviceScaleFactor:1});const bounds={left:1069,top:61,width:371,height:302};
 const ref=await sharp(await readFile('qa/reference/approved-desktop.jpeg')).resize(1440,960).extract(bounds).removeAlpha().raw().toBuffer();
 const root='html.hb-phase8 body[data-home-geometry] ';
-const controls=root+'.ai-showcase-cta{margin-left:72px!important}'+root+'.ai-showcase-actions{width:154px!important;margin-left:61px!important}'+root+'.ai-showcase-actions a:last-child{width:122px!important;align-self:flex-end}';
+const controls=root+'.ai-showcase-cta{margin-left:72px!important}'+root+'.ai-showcase-actions{width:47.6%!important;margin-left:61px!important}'+root+'.ai-showcase-actions a:last-child{width:79.2%!important;align-self:flex-end}';
 const mark=root+'.ai-showcase-mark{top:-14px!important;width:95px!important;height:95px!important}';
 const variants=[['baseline',''],['controls',controls],['mark',mark],['controls-mark',controls+mark]];
 const results=[];try{await page.goto('https://hossambahr.com/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
