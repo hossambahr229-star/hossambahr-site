@@ -25,7 +25,7 @@ jobs:
           for(let attempt=0;attempt<120;attempt++){
             const urls=['https://hossambahr.com/en/services/fujairah-economic-license-issuance/','https://hossambahr.com/services/fujairah-economic-license-issuance/'];
             const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
-            ready=responses[0].includes('The card displays a current average completion time')&&responses[1].includes('ظهور صفر بجوار تصنيف الرسوم في البطاقة لا يعني'); the Ministry contacts')&&responses[1].includes('رخصة تجارية معتمدة لتسجيل الحساب الرئيسي للشركة.');
+            ready=responses[0].includes('The card displays a current average completion time')&&responses[1].includes('ظهور صفر بجوار تصنيف الرسوم في البطاقة لا يعني');
             if(ready)break;
             console.log('Waiting for new source content, attempt '+(attempt+1));
             await new Promise(resolve=>setTimeout(resolve,10000));
