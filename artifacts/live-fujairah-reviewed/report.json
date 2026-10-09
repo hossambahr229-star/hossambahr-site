@@ -1,0 +1,131 @@
+{
+  "capturedAt": "2026-10-09T18:03:39.489Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "fujairah-economic-license-issuance",
+      "locale": "ar",
+      "width": 1440,
+      "status": 200,
+      "url": "https://hossambahr.com/services/fujairah-economic-license-issuance/",
+      "official": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "fujairah-economic-license-issuance",
+      "locale": "ar",
+      "width": 390,
+      "status": 200,
+      "url": "https://hossambahr.com/services/fujairah-economic-license-issuance/",
+      "official": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "fujairah-economic-license-issuance",
+      "locale": "en",
+      "width": 1440,
+      "status": 200,
+      "url": "https://hossambahr.com/en/services/fujairah-economic-license-issuance/",
+      "official": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "fujairah-economic-license-issuance",
+      "locale": "en",
+      "width": 390,
+      "status": 200,
+      "url": "https://hossambahr.com/en/services/fujairah-economic-license-issuance/",
+      "official": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157",
+      "overflow": false,
+      "failures": []
+    }
+  ],
+  "apiChecks": [
+    {
+      "locale": "ar",
+      "prompt": "أريد إصدار رخصة اقتصادية جديدة في الفجيرة",
+      "status": 200,
+      "ok": true,
+      "slug": "fujairah-economic-license-issuance",
+      "grounded": true,
+      "answer": {
+        "text": "المسار المناسب لطلبك هو «إصدار رخصة اقتصادية في الفجيرة» لدى خدمات الأعمال – الفجيرة. تطبق شروط العمر أو الإذن القضائي، وشروط الوكيل للجنسية المعنية، والموقع والنشاط وفق بطاقة البلدية؛ تحقق من انطباق الحالة قبل التقديم.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:fujairah-economic-license-issuance",
+          "policy_version": 2,
+          "workflow_key": "service:fujairah-economic-license-issuance",
+          "source_title": "إصدار رخصة اقتصادية في الفجيرة",
+          "source_url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157",
+          "last_verified_at": "2026-10-09T17:48:49+00:00",
+          "supporting_rule": {
+            "value": "تطبق شروط العمر أو الإذن القضائي، وشروط الوكيل للجنسية المعنية، والموقع والنشاط وفق بطاقة البلدية؛ تحقق من انطباق الحالة قبل التقديم.",
+            "source_refs": [
+              "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "prompt": "I need to issue a new economic licence in Fujairah",
+      "status": 200,
+      "ok": true,
+      "slug": "fujairah-economic-license-issuance",
+      "grounded": true,
+      "answer": {
+        "text": "The matching service is Issue Economic Licence through Fujairah Business Services.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:fujairah-economic-license-issuance",
+          "policy_version": 2,
+          "workflow_key": "service:fujairah-economic-license-issuance",
+          "source_title": "إصدار رخصة اقتصادية في الفجيرة",
+          "source_url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157",
+          "last_verified_at": "2026-10-09T17:48:49+00:00",
+          "supporting_rule": {
+            "value": "تطبق شروط العمر أو الإذن القضائي، وشروط الوكيل للجنسية المعنية، والموقع والنشاط وفق بطاقة البلدية؛ تحقق من انطباق الحالة قبل التقديم.",
+            "source_refs": [
+              "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    }
+  ],
+  "externalModelGate": "NOT_PASSED_UNLESS_EXTERNAL_MODEL_USED_TRUE",
+  "scope": "Reviewed Fujairah official details and public adjacent pathways only. No government submission, WhatsApp message, login or private upload."
+}
