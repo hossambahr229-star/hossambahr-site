@@ -1,7 +1,7 @@
 name: Live Regional Visual Diagnosis
 on:
   push:
-    branches: [agent/live-regional-visual-diagnosis]
+    branches: [agent/live-post-noto-reference]
     paths:
       - scripts/live-regional-visual-diagnosis.mjs
       - .github/workflows/live-regional-visual-diagnosis.yml
@@ -21,24 +21,20 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
       - name: Install capture runtime
         run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
-      - name: Build the candidate from its true generators
-        run: npm run build
-      - name: Capture built candidate without deploying
-        run: |
-          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/hb-visual-preview.log 2>&1 &
-          HB_BASE_URL=http://127.0.0.1:8765/ HB_BROWSER_PATH="$(which chrome)" node scripts/live-regional-visual-diagnosis.mjs
+      - name: Capture actual post-font Production and reference overlays
+        run: HB_BASE_URL=https://hossambahr.com/ HB_BROWSER_PATH="$(which chrome)" node scripts/live-regional-visual-diagnosis.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: live-regional-visual-diagnosis
           path: artifacts/live-regional-visual
       - name: Preserve only new visual evidence on the diagnosis branch
-        if: github.ref == 'refs/heads/agent/live-regional-visual-diagnosis'
+        if: github.ref == 'refs/heads/agent/live-post-noto-reference'
         run: |
           git config user.name "HossamBahr Visual Diagnosis"
           git config user.email "visual-diagnosis@users.noreply.github.com"
           git add artifacts/live-regional-visual
           if ! git diff --cached --quiet; then
             git commit -m "Record regional live Production visual evidence [skip ci]"
-            git push origin HEAD:agent/live-regional-visual-diagnosis
+            git push origin HEAD:agent/live-post-noto-reference
           fi
