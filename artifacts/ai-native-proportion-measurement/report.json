@@ -1,0 +1,55 @@
+{
+  "capturedAt": "2026-10-09T17:54:06.114Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "bounds": {
+      "x": 1225.078125,
+      "y": 158,
+      "width": 222.90625,
+      "height": 205,
+      "top": 158,
+      "right": 1447.984375,
+      "bottom": 363,
+      "left": 1225.078125
+    },
+    "style": ""
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 40.764261021164685,
+      "changed": 30.84825333357134
+    },
+    {
+      "name": "native190",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:190px!important;width:55%!important}",
+      "mad": 45.51960871815926,
+      "changed": 33.584727155887975
+    },
+    {
+      "name": "native195",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:195px!important;width:56%!important}",
+      "mad": 44.99751878759751,
+      "changed": 33.326788168722445
+    },
+    {
+      "name": "native185",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:185px!important;width:55%!important}",
+      "mad": 45.75060840280133,
+      "changed": 33.7275307473983
+    },
+    {
+      "name": "native190-dark",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:190px!important;width:55%!important;filter:brightness(.9)!important}",
+      "mad": 44.45299679286934,
+      "changed": 33.183092054765176
+    },
+    {
+      "name": "native195-right4",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:195px!important;width:56%!important;right:-4px!important}",
+      "mad": 44.8964019445089,
+      "changed": 33.223255564877455
+    }
+  ]
+}
