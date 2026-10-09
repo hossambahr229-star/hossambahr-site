@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-09T07:07:45.321Z",
+  "capturedAt": "2026-10-09T07:09:30.747Z",
   "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
   "styles": {
     "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
@@ -19,7 +19,24 @@
       "bottom": 483,
       "left": 30.953125
     },
-    "title": "700 13px / 16.9px Cairo, Arial, Tahoma, sans-serif"
+    "title": "700 13px / 16.9px Cairo, Arial, Tahoma, sans-serif",
+    "heroShadows": [
+      {
+        "class": "premium-home-hero platform-hero visual-target-hero",
+        "shadow": "rgba(19, 61, 52, 0.14) 0px 24px 64px 0px",
+        "filter": "none"
+      },
+      {
+        "class": "premium-hero-main",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-ai-showcase",
+        "shadow": "none",
+        "filter": "none"
+      }
+    ]
   },
   "results": [
     {
@@ -37,8 +54,8 @@
     {
       "name": "internal",
       "css": "html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a{padding:5px 6px 5px!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a b{font-size:12px!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a::after{content:\"→\"!important}",
-      "mad": 18.58660936222745,
-      "changed": 11.954481757669786
+      "mad": 18.410512903925397,
+      "changed": 11.777438566638306
     },
     {
       "name": "internal-navy",
@@ -47,10 +64,16 @@
       "changed": 11.209398928982534
     },
     {
+      "name": "internal-navy-no-hero-shadow",
+      "css": "html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a{padding:5px 6px 5px!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a b{font-size:12px!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a::after{content:\"→\"!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(2) i{color:#123849!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(5) i{color:#123849!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(6) i{color:#123849!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(7) i{color:#123849!important}html.hb-phase8 body[data-home-geometry] .visual-target-hero,html.hb-phase8 body[data-home-geometry] .premium-hero-main,html.hb-phase8 body[data-home-geometry] .premium-ai-showcase{box-shadow:none!important;filter:none!important}",
+      "mad": 14.252790150643111,
+      "changed": 11.283844652419798
+    },
+    {
       "name": "rhythm-navy",
       "css": "html.hb-phase8 body[data-home-geometry] .target-discovery{padding-block:1px 17px!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a b{font-size:12px!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a::after{content:\"→\"!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(2) i{color:#123849!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(5) i{color:#123849!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(6) i{color:#123849!important}html.hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(7) i{color:#123849!important}",
-      "mad": 17.786017550005838,
-      "changed": 11.302612481857766
+      "mad": 18.43495070316801,
+      "changed": 11.634803062909764
     }
   ]
 }
