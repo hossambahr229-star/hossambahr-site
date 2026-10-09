@@ -6,8 +6,8 @@
     "services": 200,
     "verified": 200,
     "officialLinksVerified": 200,
-    "fullyVerifiedDetails": 140,
-    "partiallyVerifiedDetails": 60,
+    "fullyVerifiedDetails": 141,
+    "partiallyVerifiedDetails": 59,
     "pendingVerification": 0,
     "authorities": 20,
     "emirates": [
@@ -23609,22 +23609,26 @@
       ],
       "description": "إصدار تأشيرة زيارة لاستكشاف فرص العمل لدخول واحد أو عدة دخولات دون كفيل أو مستضيف داخل الدولة.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "صورة شخصية ملونة.",
+          "نسخة جواز سفر صالح لستة أشهر على الأقل.",
+          "شهادة جامعية."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "200 درهم لمدة 60 يومًا أو 300 درهم لمدة 90 يومًا أو 400 درهم لمدة 120 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان مالي 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "48 ساعة وفق بطاقة الخدمة."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "يلزم استيفاء أحد مسارين: عمالة ماهرة في المستوى المهني الأول أو الثاني أو الثالث، أو التخرج من إحدى أفضل 500 جامعة وفق التصنيف المعتمد خلال العامين السابقين للطلب. في الحالتين يلزم البكالوريوس أو ما يعادله والضمان المالي المقرر. لا يشترط ضامن أو مستضيف داخل الدولة وفق المادتين 20 و21 من اللائحة التنفيذية.",
       "steps": [
         {
           "order": 1,
@@ -23655,11 +23659,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "200 درهم لمدة 60 يومًا أو 300 درهم لمدة 90 يومًا أو 400 درهم لمدة 120 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان مالي 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "48 ساعة وفق بطاقة الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -23681,22 +23685,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/تأشيرة-استكشاف-فرص-عمل-في-دبي/",
       "sourceRegistry": "service-matrix"
     },
