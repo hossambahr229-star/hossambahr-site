@@ -6,8 +6,8 @@
     "services": 200,
     "verified": 200,
     "officialLinksVerified": 200,
-    "fullyVerifiedDetails": 141,
-    "partiallyVerifiedDetails": 59,
+    "fullyVerifiedDetails": 142,
+    "partiallyVerifiedDetails": 58,
     "pendingVerification": 0,
     "authorities": 20,
     "emirates": [
@@ -21927,8 +21927,10 @@
       ],
       "description": "طلب استرداد رسوم الإصدار عند عدم اكتمال الخدمة وفق قواعد الهيئة.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "شهادة بنكية تتضمن رقم حساب المتعامل ورقم IBAN."
+        ]
       },
       "governmentFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -21939,10 +21941,10 @@
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "الاسترداد يخص رسوم الإصدار فقط عند عدم اكتمال الخدمة؛ رسوم تقديم الطلب والخدمات الذكية غير قابلة للاسترداد. يحدد إيصال الخدمة المبالغ القابلة للاسترداد، والتحويل البنكي بعد قبول الطلب.",
       "steps": [
         {
           "order": 1,
@@ -21999,22 +22001,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
+        "durationVerified": true,
+        "eligibilityVerified": true,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 3,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/استرداد-رسوم-إصدار-الهوية-غير-المكتمل/",
       "sourceRegistry": "service-matrix"
     },
@@ -22074,8 +22076,10 @@
       ],
       "description": "طلب إعفاء من رسوم التأخير المرتبطة بالهوية للحالات التي تنطبق عليها قرارات الإعفاء.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "مستندات تثبت سبب الإعفاء وفق شروط الهيئة."
+        ]
       },
       "governmentFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -22086,10 +22090,10 @@
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنهما يوما عمل."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "يقدم طلب الإعفاء مع طلب الهوية. الأهلية وفق حالات الإعفاء المعتمدة في بطاقة الهيئة؛ تتطلب حالات الإبعاد أو حجز الجواز القضائي إثباتًا من الجهة المختصة.",
       "steps": [
         {
           "order": 1,
@@ -22146,22 +22150,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
+        "durationVerified": true,
+        "eligibilityVerified": true,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 3,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/الإعفاء-من-غرامة-تأخير-الهوية/",
       "sourceRegistry": "service-matrix"
     },
@@ -22501,22 +22505,24 @@
       ],
       "description": "إصدار بطاقة بديلة بنفس مدة صلاحية البطاقة الأصلية.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "صورة شخصية، وجواز سفر أو إثبات إقامة داخل الإمارات بحسب فئة مقدم الطلب؛ اختر الفئة في بطاقة الهيئة للقائمة الخاصة بها."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "300 درهم لبدل فاقد أو تالف و100 درهم للخدمات الذكية. تسرد البطاقة 150 درهماً للخدمة العاجلة بالمراكز و150 درهماً للاستبدال مع تحديث البيانات بالمراكز. تحقّق من الرسوم المنطبقة على الخيار قبل الدفع."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "تصدر البطاقة البديلة بالمدة المتبقية نفسها. يلزم استكمال البصمة والتوقيع لمن أتم 15 عامًا، وصورة مطابقة لمعايير ICAO. الخدمة العاجلة تتطلب زيارة مركز الهيئة، وتطبق مواعيد استكمال الطلب المعتمدة.",
       "steps": [
         {
           "order": 1,
@@ -22573,22 +22579,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/بدل-فاقد-أو-تالف-للهوية/",
       "sourceRegistry": "service-matrix"
     },

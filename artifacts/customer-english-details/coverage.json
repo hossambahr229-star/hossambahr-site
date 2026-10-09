@@ -1,27 +1,27 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 200,
-  "fullyTranslatedRecordedSections": 141,
+  "fullyTranslatedRecordedSections": 142,
   "fieldCounts": {
     "documents": {
-      "PLATFORM_TRANSLATION": 141,
-      "MISSING_INFORMATION": 55,
+      "PLATFORM_TRANSLATION": 144,
+      "MISSING_INFORMATION": 52,
       "RECORDED_ENGLISH": 4
     },
     "eligibility": {
-      "PLATFORM_TRANSLATION": 149,
+      "PLATFORM_TRANSLATION": 152,
       "RECORDED_ENGLISH": 4,
-      "MISSING_INFORMATION": 47
+      "MISSING_INFORMATION": 44
     },
     "fees": {
-      "PLATFORM_TRANSLATION": 143,
+      "PLATFORM_TRANSLATION": 144,
       "RECORDED_ENGLISH": 4,
-      "MISSING_INFORMATION": 53
+      "MISSING_INFORMATION": 52
     },
     "duration": {
-      "PLATFORM_TRANSLATION": 141,
+      "PLATFORM_TRANSLATION": 144,
       "RECORDED_ENGLISH": 4,
-      "MISSING_INFORMATION": 55
+      "MISSING_INFORMATION": 52
     }
   },
   "scope": "Translation coverage of recorded verified sections only. This does not reverify government facts, fill missing information or grant overall English acceptance.",
@@ -1725,10 +1725,10 @@
       "slug": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
       "route": "/en/services/استرداد-رسوم-إصدار-الهوية-غير-المكتمل/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
         "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -1736,10 +1736,10 @@
       "slug": "الإعفاء-من-غرامة-تأخير-الهوية",
       "route": "/en/services/الإعفاء-من-غرامة-تأخير-الهوية/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
         "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -1769,10 +1769,10 @@
       "slug": "بدل-فاقد-أو-تالف-للهوية",
       "route": "/en/services/بدل-فاقد-أو-تالف-للهوية/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
