@@ -1,0 +1,53 @@
+name: Live GDRFA Reviewed Acceptance
+on:
+  push:
+    branches: [agent/live-gdrfa-reviewed-acceptance]
+    paths: [scripts/live-gdrfa-reviewed-acceptance.mjs, .github/workflows/live-gdrfa-reviewed-acceptance.yml]
+concurrency:
+  group: live-gdrfa-reviewed-acceptance
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the newly generated service content to reach Production
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let attempt=0;attempt<120;attempt++){
+            const urls=["https://hossambahr.com/en/services/%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%85%D9%88%D8%B8%D9%81-%D9%81%D9%8A-%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/","https://hossambahr.com/en/services/%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%84%D9%84%D9%88%D8%A7%D9%84%D8%AF%D9%8A%D9%86-%D8%B6%D9%85%D9%86-%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A5%D9%86%D8%B3%D8%A7%D9%86%D9%8A%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/"];
+            const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
+            ready=responses[0].includes('48 hours according to the service card.')&&responses[1].includes('AED 5,000 per request');
+            if(ready)break;
+            console.log('Waiting for new source content, attempt '+(attempt+1));
+            await new Promise(resolve=>setTimeout(resolve,10000));
+          }
+          if(!ready)throw Error('New generated service content did not reach Production before the wait deadline');
+          NODE
+      - name: Verify actual deployed canonical details and pathways
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-gdrfa-reviewed-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-gdrfa-reviewed
+          path: artifacts/live-gdrfa-reviewed
+      - name: Preserve live evidence only
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-gdrfa-reviewed-acceptance
+          git reset --mixed origin/agent/live-gdrfa-reviewed-acceptance
+          git add artifacts/live-gdrfa-reviewed
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual GDRFA reviewed Production acceptance [skip ci]"
+            git push origin HEAD:agent/live-gdrfa-reviewed-acceptance
+          fi
