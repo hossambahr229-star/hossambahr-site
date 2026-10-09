@@ -365,3 +365,8 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @media(min-width:1280px){
  html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:38px!important}
 }
+
+/* Reference robot placement measured independently of the preserved HB artwork. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{right:-8px!important}
+}
