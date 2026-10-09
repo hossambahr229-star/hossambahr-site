@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-09T17:54:06.114Z",
+  "capturedAt": "2026-10-09T17:55:00.921Z",
   "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
   "styles": {
     "bounds": {
@@ -22,34 +22,34 @@
       "changed": 30.84825333357134
     },
     {
-      "name": "native190",
-      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:190px!important;width:55%!important}",
-      "mad": 45.51960871815926,
-      "changed": 33.584727155887975
+      "name": "native190-top",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:190px!important;width:55%!important;bottom:15px!important}",
+      "mad": 38.595883686474714,
+      "changed": 28.898984309455383
     },
     {
-      "name": "native195",
-      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:195px!important;width:56%!important}",
-      "mad": 44.99751878759751,
-      "changed": 33.326788168722445
+      "name": "native195-top",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:195px!important;width:56%!important;bottom:10px!important}",
+      "mad": 39.135996620315,
+      "changed": 29.46395101836811
     },
     {
-      "name": "native185",
-      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:185px!important;width:55%!important}",
-      "mad": 45.75060840280133,
-      "changed": 33.7275307473983
+      "name": "native190-top-dark",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:190px!important;width:55%!important;bottom:15px!important;filter:brightness(.9)!important}",
+      "mad": 38.187167907272865,
+      "changed": 28.57589118366327
     },
     {
-      "name": "native190-dark",
-      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:190px!important;width:55%!important;filter:brightness(.9)!important}",
-      "mad": 44.45299679286934,
-      "changed": 33.183092054765176
+      "name": "baseline-dark",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{filter:brightness(.9)!important}",
+      "mad": 39.98815325205429,
+      "changed": 30.59834704842827
     },
     {
-      "name": "native195-right4",
-      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{height:195px!important;width:56%!important;right:-4px!important}",
-      "mad": 44.8964019445089,
-      "changed": 33.223255564877455
+      "name": "baseline-light-dark",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{filter:brightness(.95)!important}",
+      "mad": 40.26128594634155,
+      "changed": 30.564431195444563
     }
   ]
 }
