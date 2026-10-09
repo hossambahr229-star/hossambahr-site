@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-10-09T07:31:04.712Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {},
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 41.874474779912305,
+      "changed": 38.74781436065049
+    },
+    {
+      "name": "text-scale",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide h2{font-size:15px!important}html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide p{font-size:11px!important}",
+      "mad": 41.115618893066525,
+      "changed": 38.507251179959546
+    },
+    {
+      "name": "button",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide>a{bottom:16px!important;right:12px!important;min-width:122px!important;font-size:11px!important;font-weight:600!important}",
+      "mad": 39.45083978073133,
+      "changed": 36.38846668114236
+    },
+    {
+      "name": "text-button",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide h2{font-size:15px!important}html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide p{font-size:11px!important}html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide>a{bottom:16px!important;right:12px!important;min-width:122px!important;font-size:11px!important;font-weight:600!important}",
+      "mad": 38.69198389388554,
+      "changed": 36.14790350045141
+    }
+  ]
+}
