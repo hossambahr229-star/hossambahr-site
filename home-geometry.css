@@ -316,3 +316,10 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @media(min-width:821px){
  html.hb-phase8 body[data-home-geometry] .premium-hero-main{background:linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%),url('/assets/hero-reference-restored.webp') center/cover no-repeat!important}
 }
+
+/* Approved desktop featured card text and action proportions. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide h2{font-size:var(--type-h3)!important}
+ html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide p{font-size:var(--type-micro)!important}
+ html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide>a{bottom:16px!important;right:12px!important;min-width:122px!important;font-size:var(--type-micro)!important;font-weight:600!important}
+}
