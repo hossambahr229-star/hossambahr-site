@@ -14889,14 +14889,14 @@
       "documents": {
         "status": "PUBLISHED",
         "items": [
-          "تأمين مركبة ساري",
-          "اجتياز الفحص الفني عند طلبه",
-          "بيانات المركبة والملف المروري"
+          "تأمين مركبة ساري تتحقق منه RTA إلكترونيًا.",
+          "اجتياز الفحص الفني عند طلبه وتحديث نتيجته عبر مركز الفحص.",
+          "بيانات المركبة والملف المروري للدخول وتحديد المركبة."
         ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "تعرض RTA الرسوم النهائية حسب فئة المركبة وخيار اللوحة والتوصيل، وتطبق رسوم تأخير عند انطباقها."
+        "text": "تعرض RTA الرسوم النهائية حسب فئة المركبة وخيار اللوحة والتوصيل، وتطبق رسوم تأخير عند انطباقها؛ لا يوجد إجمالي موحد لجميع الحالات."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -14904,9 +14904,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "فوري عبر القنوات الرقمية بعد اكتمال التأمين والفحص"
+        "text": "فوري عبر القنوات الرقمية بعد اكتمال التأمين والفحص والبيانات وسداد الرسوم."
       },
-      "conditions": "صلاحية الملكية سنة واحدة؛ يجب اجتياز فحص السلامة وتسوية المخالفات والرسوم.",
+      "conditions": "للمركبات المسجلة في دبي؛ الملكية صالحة لسنة، ويلزم اجتياز فحص السلامة وتسوية المخالفات والرسوم. يتحقق النظام من التأمين والفحص، وقد تنطبق استثناءات الفحص للمركبات الجديدة وشروط إضافية بحسب الحالة.",
       "steps": [
         {
           "order": 1,
@@ -14968,13 +14968,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-08-11",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "rta-dubai",
         "sourceUrl": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-08-11",
-      "lastReviewedAt": "2026-08-11",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/renew-vehicle-ownership-dubai/",
       "sourceRegistry": "government-coverage-expansion"
     },
