@@ -25,7 +25,7 @@ jobs:
           for(let attempt=0;attempt<120;attempt++){
             const urls=['https://hossambahr.com/en/services/renew-vehicle-ownership-dubai/','https://hossambahr.com/services/renew-vehicle-ownership-dubai/'];
             const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
-            ready=responses[0].includes('Valid vehicle insurance verified electronically by RTA.')&&responses[1].includes('تأمين مركبة ساري تتحقق منه RTA إلكترونيًا.'); the Ministry contacts')&&responses[1].includes('رخصة تجارية معتمدة لتسجيل الحساب الرئيسي للشركة.');
+            ready=responses[0].includes('Valid vehicle insurance verified electronically by RTA.')&&responses[1].includes('تأمين مركبة ساري تتحقق منه RTA إلكترونيًا.');
             if(ready)break;
             console.log('Waiting for new source content, attempt '+(attempt+1));
             await new Promise(resolve=>setTimeout(resolve,10000));
