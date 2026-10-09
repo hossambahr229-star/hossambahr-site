@@ -1,0 +1,37 @@
+{
+  "capturedAt": "2026-10-09T17:31:07.657Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {},
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 43.36746636677913,
+      "changed": 32.413737705503294
+    },
+    {
+      "name": "right-8",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{right:-8px!important}",
+      "mad": 40.764261021164685,
+      "changed": 30.84825333357134
+    },
+    {
+      "name": "right-12",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{right:-12px!important}",
+      "mad": 40.83073906808756,
+      "changed": 30.980346655718392
+    },
+    {
+      "name": "right-16",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{right:-16px!important}",
+      "mad": 41.756567477672064,
+      "changed": 31.704182360186355
+    },
+    {
+      "name": "right-20",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{right:-20px!important}",
+      "mad": 43.249968761714356,
+      "changed": 32.65382624373003
+    }
+  ]
+}
