@@ -16,7 +16,7 @@ test('five priority journeys translate every recorded detail without dropping th
    }
   }
  }
- const unknown=services.find(row=>row.slug==='تمديد-التأشيرة-أو-إذن-الدخول');assert.ok(unknown);assert.equal(unknown.verification.feesVerified,false);assert.ok(!officialExcerpt('Fees',unknown.governmentFees.text).includes('data-platform-detail-translation'));
+ const unknown=services.find(row=>row.slug==='إصدار-بطاقة-مندوب-علاقات-عامة-pro');assert.ok(unknown);assert.equal(unknown.verification.feesVerified,false);assert.ok(!officialExcerpt('Fees',unknown.governmentFees.text).includes('data-platform-detail-translation'));
 });
 test('platform translations preserve the original and do not claim official English wording',()=>{const source='200 درهم للطلب و100 درهم للخدمات الذكية.';const html=officialExcerpt('Government fees',source);assert.ok(html.includes('AED 200 for the application and AED 100 for smart services.'));assert.ok(html.includes("not the authority's official English wording"));assert.ok(html.includes(source));assert.ok(html.includes('<details>'));});
 test('unknown and unverified details never receive invented translations',()=>{assert.ok(!officialExcerpt('Government fees','غير موثق في سجل الكتالوج').includes('blockquote'));const original='نص رسمي بلا ترجمة معتمدة في المنصة';const html=officialExcerpt('Eligibility',original);assert.ok(html.includes(original));assert.ok(html.includes('English translation is not yet available'));assert.ok(!html.includes('data-platform-detail-translation'));});
