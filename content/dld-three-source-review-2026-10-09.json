@@ -1,0 +1,41 @@
+{
+  "reviewedAt": "2026-10-09T17:37:49Z",
+  "method": "Exact official DLD card text retrieved via web source access today, matched by service identity and recorded fields.",
+  "records": [
+    {
+      "slug": "property-valuation-dubai",
+      "source": "https://dubailand.gov.ae/en/eservices/property-valuation",
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ],
+      "requirementCount": 5
+    },
+    {
+      "slug": "real-estate-professional-practice-card-dubai",
+      "source": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/",
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ],
+      "requirementCount": 3
+    },
+    {
+      "slug": "title-transfer-dubai",
+      "source": "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/",
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ],
+      "requirementCount": 4
+    }
+  ],
+  "scope": "Category-qualified summaries, not universal checklists or totals. Preserve historical policy/workflow contents; completed review flags clear only for these reviewed sources. Source monitoring, auth and customer data remain untouched.",
+  "validation": "Scoped three-service database review passed real-catalog rollback validation. Actual Production acceptance pending."
+}
