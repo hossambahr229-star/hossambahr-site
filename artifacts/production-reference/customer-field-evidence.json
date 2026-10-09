@@ -2,7 +2,7 @@
   "auditedServices": 200,
   "fullyVerifiedServices": 0,
   "servicesWithMissingFields": 200,
-  "missingFieldCount": 1150,
+  "missingFieldCount": 1146,
   "status": "PARTIAL PASS",
   "scope": "Public route/source identity, canonical, locale, internal href/referrer and scoped CTA checks. This does not verify external government availability, authenticated execution, documents, eligibility correctness or human visual acceptance.",
   "records": [
@@ -8447,7 +8447,7 @@
       "id": "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
       "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
       "source": "https://www.mofa.gov.ae/services/attestation",
-      "lastRecordedReview": "2026-07-27",
+      "lastRecordedReview": "2026-10-08",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -8461,8 +8461,8 @@
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
         "eligibility": "VERIFIED",
-        "requirements": "MISSING",
-        "documents": "MISSING",
+        "requirements": "VERIFIED",
+        "documents": "VERIFIED",
         "steps": "NOT_VERIFIED",
         "fees": "VERIFIED",
         "duration": "VERIFIED",
@@ -8485,8 +8485,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "requirements",
-        "documents",
         "ai_discoverability"
       ],
       "verificationBoundary": "VERIFIED government fields describe the existing recorded source review, not a new independent official-source verification. Publication and HTTP success do not prove customer acceptance."
@@ -8495,7 +8493,7 @@
       "id": "catalog:تصديق مستند شخصي داخل الإمارات",
       "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
       "source": "https://www.mofa.gov.ae/Account/Login?returnUrl=%2Far-ae%2FServices%2FForms%2Fattestation",
-      "lastRecordedReview": "2026-07-27",
+      "lastRecordedReview": "2026-10-08",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -8509,8 +8507,8 @@
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
         "eligibility": "VERIFIED",
-        "requirements": "MISSING",
-        "documents": "MISSING",
+        "requirements": "VERIFIED",
+        "documents": "VERIFIED",
         "steps": "NOT_VERIFIED",
         "fees": "VERIFIED",
         "duration": "VERIFIED",
@@ -8533,8 +8531,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "requirements",
-        "documents",
         "ai_discoverability"
       ],
       "verificationBoundary": "VERIFIED government fields describe the existing recorded source review, not a new independent official-source verification. Publication and HTTP success do not prove customer acceptance."
