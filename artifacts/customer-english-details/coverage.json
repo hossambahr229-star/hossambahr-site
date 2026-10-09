@@ -1,27 +1,27 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 200,
-  "fullyTranslatedRecordedSections": 137,
+  "fullyTranslatedRecordedSections": 140,
   "fieldCounts": {
     "documents": {
-      "PLATFORM_TRANSLATION": 134,
-      "MISSING_INFORMATION": 62,
+      "PLATFORM_TRANSLATION": 140,
+      "MISSING_INFORMATION": 56,
       "RECORDED_ENGLISH": 4
     },
     "eligibility": {
+      "PLATFORM_TRANSLATION": 148,
+      "RECORDED_ENGLISH": 4,
+      "MISSING_INFORMATION": 48
+    },
+    "fees": {
       "PLATFORM_TRANSLATION": 142,
       "RECORDED_ENGLISH": 4,
       "MISSING_INFORMATION": 54
     },
-    "fees": {
-      "PLATFORM_TRANSLATION": 137,
-      "RECORDED_ENGLISH": 4,
-      "MISSING_INFORMATION": 59
-    },
     "duration": {
-      "PLATFORM_TRANSLATION": 136,
+      "PLATFORM_TRANSLATION": 140,
       "RECORDED_ENGLISH": 4,
-      "MISSING_INFORMATION": 60
+      "MISSING_INFORMATION": 56
     }
   },
   "scope": "Translation coverage of recorded verified sections only. This does not reverify government facts, fill missing information or grant overall English acceptance.",
@@ -1560,10 +1560,10 @@
       "slug": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
       "route": "/en/services/إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -1747,8 +1747,8 @@
       "slug": "الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي",
       "route": "/en/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
         "fees": "MISSING_INFORMATION",
         "duration": "MISSING_INFORMATION"
       }
@@ -1879,10 +1879,10 @@
       "slug": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
       "route": "/en/services/تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -1945,10 +1945,10 @@
       "slug": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
       "route": "/en/services/تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -2077,9 +2077,9 @@
       "slug": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
       "route": "/en/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
-        "fees": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
+        "fees": "PLATFORM_TRANSLATION",
         "duration": "MISSING_INFORMATION"
       }
     },
@@ -2189,8 +2189,8 @@
       "fields": {
         "documents": "MISSING_INFORMATION",
         "eligibility": "MISSING_INFORMATION",
-        "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "fees": "PLATFORM_TRANSLATION",
+        "duration": "PLATFORM_TRANSLATION"
       }
     },
     {
@@ -2209,8 +2209,8 @@
       "slug": "متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي",
       "route": "/en/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
         "fees": "MISSING_INFORMATION",
         "duration": "MISSING_INFORMATION"
       }

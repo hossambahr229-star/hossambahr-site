@@ -6,8 +6,8 @@
     "services": 200,
     "verified": 200,
     "officialLinksVerified": 200,
-    "fullyVerifiedDetails": 137,
-    "partiallyVerifiedDetails": 63,
+    "fullyVerifiedDetails": 140,
+    "partiallyVerifiedDetails": 60,
     "pendingVerification": 0,
     "authorities": 20,
     "emirates": [
@@ -19797,22 +19797,26 @@
       ],
       "description": "إصدار بطاقة منشأة تتضمن بيانات منشأة القطاع الخاص أو المنطقة الحرة في دبي.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "نسخة ملحق أسماء الشركاء.",
+          "نسخ جوازات سفر المخولين بالتوقيع.",
+          "نسخة التفويض المصدق لدى الكاتب العدل للمخولين، في حالة المدير."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تذكر البطاقة 200 درهم للإصدار إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً للخدمة، و100 درهم للاستعجال. يضاف 100 درهم عند التقديم عبر آمر. وتذكر ملاحظة البطاقة أن رسم الإصدار أو التجديد 100 درهم عن كل سنة؛ تحدد الجهة الإجمالي وفق المدة والقناة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "48 ساعة وفق بطاقة الخدمة."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "تختلف المتطلبات الإضافية بحسب النشاط، ومنها مستندات الترخيص أو الملكية أو موافقة الجهة المختصة. تعرض بطاقة الجهة القائمة التفصيلية لكل فئة؛ لا تطبق مستندات فئة على جميع المنشآت.",
       "steps": [
         {
           "order": 1,
@@ -19843,11 +19847,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "تذكر البطاقة 200 درهم للإصدار إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً للخدمة، و100 درهم للاستعجال. يضاف 100 درهم عند التقديم عبر آمر. وتذكر ملاحظة البطاقة أن رسم الإصدار أو التجديد 100 درهم عن كل سنة؛ تحدد الجهة الإجمالي وفق المدة والقناة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "48 ساعة وفق بطاقة الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -19869,22 +19873,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -22214,8 +22218,11 @@
       ],
       "description": "الاستعلام عن الغرامات المرتبطة بالملف الشخصي أو المكفولين باستخدام رقم الملف أو الهوية أو الجواز أو الرقم الموحد.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "بيانات البحث بحسب الخيار: رقم الملف أو الرقم الموحد أو الهوية الإماراتية أو رقم جواز السفر.",
+          "تاريخ الميلاد والجنس وبيانات نوع الملف وجهة الإصدار بحسب نموذج البحث."
+        ]
       },
       "governmentFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -22229,7 +22236,7 @@
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "غير موثق بعد"
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "اختيار نوع البحث الصحيح واستكمال التحقق الأمني في نموذج الجهة.",
       "steps": [
         {
           "order": 1,
@@ -22285,22 +22292,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": false,
         "durationVerified": false,
-        "eligibilityVerified": false,
+        "eligibilityVerified": true,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://www.gdrfad.gov.ae/en/fines-inquiry-service"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -23894,22 +23901,27 @@
       ],
       "description": "إصدار تأشيرة زيارة لدخول واحد لمدة 30 أو 60 أو 90 يومًا لزيارة قريب أو صديق.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "صورتان شخصيتان ونسخة جواز سفر صالح لستة أشهر على الأقل.",
+          "عقد الزواج وشهادة الميلاد بحسب إثبات القرابة المطلوب.",
+          "شهادة راتب للجهات الحكومية وشبه الحكومية والمناطق الحرة، أو عقد عمل للشركات الخاصة، أو عقد شراكة للشريك.",
+          "بطاقة هوية بلد الأصل لبعض الجنسيات: العراق وباكستان وإيران وأفغانستان."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "200 درهم لمدة 30 يومًا أو 300 درهم لمدة 60 يومًا أو 400 درهم لمدة 90 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. التأمين الطبي: 40 أو 60 أو 90 درهماً بحسب المدة. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "48 ساعة وفق بطاقة الخدمة."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "يكون الزائر قريبًا أو صديقًا لمواطن أو أجنبي مقيم في الدولة، مع إثبات العلاقة ومبررات الزيارة وسداد الضمان المحدد. لزيارة الزوجة الأجنبية لزوج خليجي: يلزمها إقامة سارية في دولة جنسية الزوج.",
       "steps": [
         {
           "order": 1,
@@ -23940,11 +23952,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "200 درهم لمدة 30 يومًا أو 300 درهم لمدة 60 يومًا أو 400 درهم لمدة 90 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. التأمين الطبي: 40 أو 60 أو 90 درهماً بحسب المدة. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "48 ساعة وفق بطاقة الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -23966,22 +23978,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -24743,22 +24755,26 @@
       ],
       "description": "تجديد بطاقة المنشأة الحكومية أو الخاصة أو المنطقة الحرة أو الشركة الوطنية في دبي.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "للقطاع الحكومي: رسالة من الجهة الحكومية المعنية.",
+          "للقطاع الخاص أو المنطقة الحرة: ملحق أسماء الشركاء وجوازات المخولين بالتوقيع والتفويض المصدق للمخولين في حالة المدير.",
+          "للأعمال الوطنية: جواز الكفيل والرخصة التجارية، وخطاب رسمي من برنامج دعم المشاريع الصغيرة للمنشآت التي حصلت على دعمه."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تذكر البطاقة 200 درهم للتجديد إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً للخدمة، و100 درهم للاستعجال. وتذكر ملاحظة البطاقة أن رسم الإصدار أو التجديد 100 درهم عن كل سنة؛ تحدد الجهة الإجمالي وفق المدة والقناة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "48 ساعة وفق بطاقة الخدمة."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "تختلف المتطلبات الإضافية بحسب النشاط، ومنها مستندات الترخيص أو الملكية أو موافقة الجهة المختصة. تعرض بطاقة الجهة القائمة التفصيلية لكل فئة؛ لا تطبق مستندات فئة على جميع المنشآت.",
       "steps": [
         {
           "order": 1,
@@ -24789,11 +24805,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "تذكر البطاقة 200 درهم للتجديد إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً للخدمة، و100 درهم للاستعجال. وتذكر ملاحظة البطاقة أن رسم الإصدار أو التجديد 100 درهم عن كل سنة؛ تحدد الجهة الإجمالي وفق المدة والقناة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "48 ساعة وفق بطاقة الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -24815,22 +24831,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
       "sourceRegistry": "service-matrix"
     },
@@ -26437,12 +26453,15 @@
       ],
       "description": "تعديل البيانات المسجلة على تصريح إقامة صادر من دبي وفق المستند المؤيد لنوع التعديل.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "صورة شخصية حديثة للمكفول بخلفية بيضاء.",
+          "جواز سفر المكفول."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تذكر البطاقة 100 درهم للخدمة العاجلة، و10 دراهم للابتكار، و100 درهم للطباعة عند التقديم عبر مركز توصيل زاجل؛ لا يحدد هذا النص إجمالي الرسوم لكل حالة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -26452,7 +26471,7 @@
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "غير موثق بعد"
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "يجب أن تزيد صلاحية جواز السفر على ستة أشهر. للمستثمر أو الشريك: تقدم بطاقة المنشأة. للكفيل الحكومي: رسالة تغيير المهنة؛ وللكفيل في القطاع الخاص: عقد العمل أو بطاقة العمل.",
       "steps": [
         {
           "order": 1,
@@ -26483,7 +26502,7 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "تذكر البطاقة 100 درهم للخدمة العاجلة، و10 دراهم للابتكار، و100 درهم للطباعة عند التقديم عبر مركز توصيل زاجل؛ لا يحدد هذا النص إجمالي الرسوم لكل حالة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
@@ -26509,22 +26528,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
+        "requirementsVerified": true,
+        "feesVerified": true,
         "durationVerified": false,
-        "eligibilityVerified": false,
+        "eligibilityVerified": true,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 3,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -27832,16 +27851,16 @@
         "items": []
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "لا توجد رسوم للخدمة؛ يسدد مبلغ المخالفات المستحق فقط وفق بطاقة الجهة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "48 ساعة وفق بطاقة الخدمة."
       },
       "conditions": "غير موثق بعد",
       "steps": [
@@ -27874,11 +27893,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "لا توجد رسوم للخدمة؛ يسدد مبلغ المخالفات المستحق فقط وفق بطاقة الجهة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "48 ساعة وفق بطاقة الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -27900,21 +27919,21 @@
       "verification": {
         "officialLinkVerified": true,
         "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
+        "feesVerified": true,
+        "durationVerified": true,
         "eligibilityVerified": false,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -28118,8 +28137,10 @@
       ],
       "description": "تتبع طلب أو ملف أو خدمة كاونتر أو منشأة أو طلب إعادة نظر باستخدام بيانات المعاملة الرسمية.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "عند البحث عن طلب: رقم الطلب ورقم المعاملة وتاريخ الدفع كما تظهر في نموذج الجهة."
+        ]
       },
       "governmentFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -28133,7 +28154,7 @@
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "غير موثق بعد"
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "اختيار البحث عن طلب أو ملف أو منشأة أو طلب إعادة نظر أو خدمة تقديم طلبات الكاونتر، ثم استكمال حقول الخيار المحدد.",
       "steps": [
         {
           "order": 1,
@@ -28189,22 +28210,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": false,
         "durationVerified": false,
-        "eligibilityVerified": false,
+        "eligibilityVerified": true,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
       "sourceRegistry": "service-matrix"
     },
