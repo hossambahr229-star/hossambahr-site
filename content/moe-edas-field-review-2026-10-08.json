@@ -284,16 +284,32 @@
       "evidenceBranch": "agent/official-gdrfa-remaining-details",
       "capturedAt": "2026-10-09T06:58:08.434Z",
       "scope": "Only listed fields; missing fees, documents or duration remain unrecorded. Public forms were read without submitting personal data."
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "source": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ],
+      "reviewedAt": "2026-10-09",
+      "evidenceBranch": "agent/official-gdrfa-remaining-details",
+      "capturedAt": "2026-10-09T06:58:08.434Z",
+      "fieldSources": {
+        "conditions": [
+          "https://uaelegislation.gov.ae/ar/legislations/1601/download",
+          "https://u.ae/ar/information-and-services/visa-and-emirates-id/residence-visas/jobseeker-visit-visa"
+        ]
+      },
+      "clarification": "Article 21 explicitly requires one of the two pathways, plus a bachelor's degree or equivalent and financial guarantee. The GDRFA English card's numbered list must not be interpreted as requiring both pathways. The current portal route was unavailable to the read-only browser; the indexed official statutory text supplied the clarification."
     }
   ],
   "deferredRecords": [
     {
       "slug": "إصدار-إقامة-لمولود-جديد-في-دبي",
       "reason": "The linked general family card includes entrepreneur-specific conditions inconsistent with a newborn-specific claim; no requirements inferred."
-    },
-    {
-      "slug": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
-      "reason": "Eligibility alternatives require clarification against an additional official source before simplifying the card's wording."
     }
   ]
 }
