@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-10-09T12:38:16.362Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {},
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 31.51573771202045,
+      "changed": 18.886337543053962
+    },
+    {
+      "name": "align",
+      "css": "html.hb-phase8 body[data-home-geometry] .target-proof>span>span{text-align:left!important}",
+      "mad": 30.976611860869816,
+      "changed": 18.60472672919871
+    },
+    {
+      "name": "navy",
+      "css": "html.hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#0a304c,#03243c)!important}",
+      "mad": 31.078767988793334,
+      "changed": 18.74769837315599
+    },
+    {
+      "name": "skyline",
+      "css": "html.hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#083752e8,#032a42e8),url(\"/premium-uae-hero.svg\") center/auto 90px repeat-x!important}",
+      "mad": 41.665536613016194,
+      "changed": 24.56079544223729
+    },
+    {
+      "name": "align-navy",
+      "css": "html.hb-phase8 body[data-home-geometry] .target-proof>span>span{text-align:left!important}html.hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#0a304c,#03243c)!important}",
+      "mad": 30.538746759670442,
+      "changed": 18.47475250741936
+    },
+    {
+      "name": "align-skyline",
+      "css": "html.hb-phase8 body[data-home-geometry] .target-proof>span>span{text-align:left!important}html.hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#083752e8,#032a42e8),url(\"/premium-uae-hero.svg\") center/auto 90px repeat-x!important}",
+      "mad": 36.61174172677974,
+      "changed": 20.72655589974655
+    }
+  ]
+}
