@@ -380,6 +380,16 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   if (has(goal, ["ايجاري","إيجاري","اجاري","ejari"])) {
     if (slug === "register-renew-ejari-contract-dubai") score += 9000; else score -= 2500;
   }
+  // Exact property intents must remain resolvable when the provider is unavailable.
+  // Restrict these Dubai cards to an explicit Dubai jurisdiction and preserve
+  // the distinction between government-letter title transfer and an ordinary sale.
+  if (emirate === "AE-DU") {
+    const valuation = has(goal, ["تقييم عقار","تقييم العقار","تثمين عقار","property valuation","real estate valuation"]);
+    if (valuation && slug === "property-valuation-dubai") score += 9000;
+    const deedTransfer = has(goal, ["انتقال سند","نقل سند","انتقال ملكيه","نقل ملكيه","title transfer","title deed"]);
+    const governmentLetter = has(goal, ["خطاب حكومي","خطابات حكوميه","خطاب رسمي","government letter","government letters","official government"]);
+    if (deedTransfer && governmentLetter && slug === "title-transfer-dubai") score += 9000;
+  }
   if (has(goal, ["wps","نظام حمايه الاجور","نظام حماية الأجور","حمايه الاجور","حماية الأجور","نظام الاجور","نظام الأجور","wage protection"])) {
     if (slug === "التسجيل-والمتابعة-في-wps") score += 9000; else if (/work-permit|تصريح/.test(slug)) score -= 3500;
   }
