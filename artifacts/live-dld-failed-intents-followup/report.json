@@ -1,0 +1,87 @@
+{
+  "capturedAt": "2026-10-09T18:00:01.803Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "externalModelGate": "NOT_PASSED_UNLESS_EXTERNAL_MODEL_USED_TRUE",
+  "checks": [
+    {
+      "slug": "property-valuation-dubai",
+      "locale": "ar",
+      "prompt": "أريد تقييم عقار في دبي لدى دائرة الأراضي والأملاك",
+      "status": 200,
+      "ok": true,
+      "actualSlug": null,
+      "passed": false,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "slug": "property-valuation-dubai",
+      "locale": "en",
+      "prompt": "I need a property valuation from Dubai Land Department",
+      "status": 200,
+      "ok": true,
+      "actualSlug": null,
+      "passed": false,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "slug": "title-transfer-dubai",
+      "locale": "ar",
+      "prompt": "أريد انتقال سند الملكية في دبي بموجب خطاب حكومي رسمي وليس بيع عقار",
+      "status": 200,
+      "ok": true,
+      "actualSlug": null,
+      "passed": false,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    }
+  ],
+  "scope": "Only the three previously failed DLD public AI cases, after Production function deployment. No normal customer account, private document, official submission or WhatsApp message."
+}
