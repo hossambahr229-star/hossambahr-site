@@ -1,0 +1,29 @@
+{
+  "reviewedAt": "2026-10-09",
+  "method": "Read official English ICP service-card text via web source access; no transaction submitted",
+  "records": [
+    {
+      "slug": "تحديث-بيانات-الهوية",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
+      "fields": [
+        "requirements",
+        "conditions"
+      ],
+      "reviewedAt": "2026-10-09",
+      "scope": "Official card supports documents and conditions only; fees and duration remain unverified."
+    },
+    {
+      "slug": "تمديد-التأشيرة-أو-إذن-الدخول",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
+      "fields": [
+        "requirements",
+        "conditions",
+        "fees",
+        "duration"
+      ],
+      "reviewedAt": "2026-10-09",
+      "scope": "Category-qualified summary; official card remains authoritative for other visa types and exclusions."
+    }
+  ],
+  "omitted": "Data-update fees and duration are not supplied in retrieved card text; not newly verified. Visa extension is a category-qualified summary, not all categories or a universal total."
+}
