@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-10-09T12:51:16.018Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {},
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 22.609793351302784,
+      "changed": 17.298362015343148
+    },
+    {
+      "name": "padded",
+      "css": "html.hb-phase8 body[data-home-geometry] .authority-pills{padding-inline:40px!important}",
+      "mad": 23.01935862879259,
+      "changed": 17.578270785817956
+    },
+    {
+      "name": "labels",
+      "css": "html.hb-phase8 body[data-home-geometry] .authority-pills a>span{font-family:Arial,sans-serif;font-size:10px;max-width:125px}html.hb-phase8 body[data-home-geometry] .authority-pills small{display:block;font-size:9px;font-weight:400;line-height:1.2;direction:rtl;text-align:right;margin-top:2px}",
+      "mad": 25.319455387379914,
+      "changed": 19.760522496371554
+    },
+    {
+      "name": "padded-labels",
+      "css": "html.hb-phase8 body[data-home-geometry] .authority-pills{padding-inline:40px!important}html.hb-phase8 body[data-home-geometry] .authority-pills a>span{font-family:Arial,sans-serif;font-size:10px;max-width:125px}html.hb-phase8 body[data-home-geometry] .authority-pills small{display:block;font-size:9px;font-weight:400;line-height:1.2;direction:rtl;text-align:right;margin-top:2px}",
+      "mad": 24.95341765153086,
+      "changed": 19.52311839104292
+    },
+    {
+      "name": "logos",
+      "css": "html.hb-phase8 body[data-home-geometry] .authority-pills img[src$=\"municipality.svg\"]{width:145px!important;height:42px!important;object-fit:contain!important}html.hb-phase8 body[data-home-geometry] .authority-pills img[src$=\"municipality.svg\"]+span{display:none!important}html.hb-phase8 body[data-home-geometry] .authority-pills img[src$=\"fta.webp\"]{width:145px!important;height:42px!important;object-fit:contain!important}html.hb-phase8 body[data-home-geometry] .authority-pills img[src$=\"fta.webp\"]+span{display:none!important}",
+      "mad": 24.760795493814364,
+      "changed": 18.852374041053285
+    },
+    {
+      "name": "padded-labels-logos",
+      "css": "html.hb-phase8 body[data-home-geometry] .authority-pills{padding-inline:40px!important}html.hb-phase8 body[data-home-geometry] .authority-pills a>span{font-family:Arial,sans-serif;font-size:10px;max-width:125px}html.hb-phase8 body[data-home-geometry] .authority-pills small{display:block;font-size:9px;font-weight:400;line-height:1.2;direction:rtl;text-align:right;margin-top:2px}html.hb-phase8 body[data-home-geometry] .authority-pills img[src$=\"municipality.svg\"]{width:145px!important;height:42px!important;object-fit:contain!important}html.hb-phase8 body[data-home-geometry] .authority-pills img[src$=\"municipality.svg\"]+span{display:none!important}html.hb-phase8 body[data-home-geometry] .authority-pills img[src$=\"fta.webp\"]{width:145px!important;height:42px!important;object-fit:contain!important}html.hb-phase8 body[data-home-geometry] .authority-pills img[src$=\"fta.webp\"]+span{display:none!important}",
+      "mad": 26.676052249637156,
+      "changed": 20.573294629898403
+    }
+  ]
+}
