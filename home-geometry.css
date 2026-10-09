@@ -311,3 +311,8 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
  html[lang="ar"].hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(6) i,
  html[lang="ar"].hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(7) i{color:#123849!important}
 }
+
+/* Reference photographic restoration; native cover preserves the asset ratio. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .premium-hero-main{background:linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%),url('/assets/hero-reference-restored.webp') center/cover no-repeat!important}
+}
