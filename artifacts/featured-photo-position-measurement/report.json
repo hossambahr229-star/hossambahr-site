@@ -1,0 +1,37 @@
+{
+  "capturedAt": "2026-10-09T12:35:59.078Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {},
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 38.6918905637521,
+      "changed": 36.14790350045141
+    },
+    {
+      "name": "city",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide:nth-of-type(1){background-position:50% 65%!important}",
+      "mad": 38.69019347908072,
+      "changed": 36.15304618127379
+    },
+    {
+      "name": "documents",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide:nth-of-type(3){background-position:50% 35%!important}",
+      "mad": 38.69125629978401,
+      "changed": 36.14790350045141
+    },
+    {
+      "name": "investors",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide:nth-of-type(4){background-position:50% 40%!important}",
+      "mad": 38.69125629978401,
+      "changed": 36.14790350045141
+    },
+    {
+      "name": "combined",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide:nth-of-type(1){background-position:50% 65%!important}html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide:nth-of-type(3){background-position:50% 35%!important}html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide:nth-of-type(4){background-position:50% 40%!important}",
+      "mad": 38.689559215112624,
+      "changed": 36.15304618127379
+    }
+  ]
+}
