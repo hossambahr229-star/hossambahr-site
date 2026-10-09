@@ -7896,16 +7896,16 @@
       "documents": {
         "status": "PUBLISHED",
         "items": [
-          "اسم تجاري ساري",
-          "استمارة الترخيص موقعة",
-          "هوية وجواز أصحاب العلاقة",
-          "عقد إيجار أو ملكية الموقع",
-          "الموافقات الخارجية بحسب النشاط"
+          "اعتماد اسم تجاري ساري واستمارة ترخيص مكتملة وموقعة.",
+          "هوية وجواز مالك الرخصة؛ وتطلب البطاقة للأجانب جوازَي وكيل الخدمات والمدير ساريين.",
+          "نسخة عقد إيجار ساري مع الأصل، أو ملكية العقار أو مخطط الأرض إذا كان الموقع باسم صاحب الرخصة.",
+          "عقد وكيل خدمات محلي مصدق في الحالات المسموح بها، وكتاب عدم ممانعة من الإقامة للأجانب بحسب البطاقة.",
+          "موافقات الجهات المختصة للنشاط؛ وموافقة التخطيط لإيجار فيلا واعتماد توقيع صاحب الرخصة عند عدم حضوره."
         ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "تعتمد على نوع النشاط وطبيعة الترخيص وتظهر في المعاملة الرسمية."
+        "text": "الرسوم تعتمد على النشاط وطبيعة الترخيص؛ ظهور صفر بجوار تصنيف الرسوم في البطاقة لا يعني أن إصدار الرخصة مجاني."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -7913,9 +7913,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "بحسب اكتمال المستندات والموافقات؛ تعرض البطاقة متوسط الإنجاز الحالي"
+        "text": "تعرض البطاقة متوسط الإنجاز الحالي؛ ليس مدة مضمونة للطلب، وتتوقف الحالة على اكتمال المستندات والموافقات."
       },
-      "conditions": "تطبق متطلبات العمر والوكيل والموقع والموافقات الخارجية بحسب جنسية صاحب الرخصة ونوع النشاط.",
+      "conditions": "تطبق شروط العمر أو الإذن القضائي، وشروط الوكيل للجنسية المعنية، والموقع والنشاط وفق بطاقة البلدية؛ تحقق من انطباق الحالة قبل التقديم.",
       "steps": [
         {
           "order": 1,
@@ -7977,13 +7977,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-08-11",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "fujairah-business",
         "sourceUrl": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-08-11",
-      "lastReviewedAt": "2026-08-11",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/fujairah-economic-license-issuance/",
       "sourceRegistry": "government-coverage-expansion"
     },
