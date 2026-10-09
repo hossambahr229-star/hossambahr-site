@@ -6,8 +6,8 @@
     "services": 200,
     "verified": 200,
     "officialLinksVerified": 200,
-    "fullyVerifiedDetails": 142,
-    "partiallyVerifiedDetails": 58,
+    "fullyVerifiedDetails": 143,
+    "partiallyVerifiedDetails": 57,
     "pendingVerification": 0,
     "authorities": 20,
     "emirates": [
@@ -25184,8 +25184,10 @@
       ],
       "description": "تحديث الهاتف أو البريد الإلكتروني أو العنوان والبيانات غير الأساسية.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "لا تسرد بطاقة الهيئة مستندات مرفقة لهذه الخدمة (N/A)."
+        ]
       },
       "governmentFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -25199,7 +25201,7 @@
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "غير موثق بعد"
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "لتحديث الهاتف أو البريد أو العنوان غير الأساسي: استخدم حسابك الشخصي، ولأفراد الأسرة حساب الكفيل أو رب الأسرة. يجب تعديل واحد على الأقل من هذه البيانات. المسار العام متاح فقط للزائر حامل التأشيرة وفق البطاقة.",
       "steps": [
         {
           "order": 1,
@@ -25256,22 +25258,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": false,
         "durationVerified": false,
-        "eligibilityVerified": false,
+        "eligibilityVerified": true,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/تحديث-بيانات-الهوية/",
       "sourceRegistry": "service-matrix"
     },
@@ -27289,12 +27291,14 @@
       ],
       "description": "تمديد الفئات المؤهلة وفق نوع إذن الدخول ومدته.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "جواز السفر والصورة الشخصية، ومستندات الإصدار نفسها بحسب نوع التأشيرة."
+        ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "100 درهم طلب و500 درهم تمديد؛ قد تختلف حسب الحالة"
+        "text": "تسرد الهيئة 100 درهم للطلب و500 للتمديد المعتاد. توجد رسوم مختلفة للفئات الخاصة وتمديد الصلاحية قبل الوصول؛ راجع فئتك والإجمالي الرسمي قبل الدفع."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -27302,9 +27306,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "يومان"
+        "text": "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل."
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "التمديد حسب الفئة: الزيارة أو السياحة بحد إجمالي 120 يومًا؛ زيارة قريب أو صديق واستكشاف العمل أو الأعمال بحد 180 يومًا. تشمل البطاقة فئات أخرى واستثناءات؛ اختر فئتك الرسمية.",
       "steps": [
         {
           "order": 1,
@@ -27361,22 +27365,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": true,
         "durationVerified": true,
         "eligibilityVerified": true,
-        "detailsVerified": false,
-        "verifiedDetailCount": 3,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/تمديد-التأشيرة-أو-إذن-الدخول/",
       "sourceRegistry": "service-matrix"
     },

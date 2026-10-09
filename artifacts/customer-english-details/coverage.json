@@ -1,17 +1,17 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 200,
-  "fullyTranslatedRecordedSections": 142,
+  "fullyTranslatedRecordedSections": 143,
   "fieldCounts": {
     "documents": {
-      "PLATFORM_TRANSLATION": 144,
-      "MISSING_INFORMATION": 52,
+      "PLATFORM_TRANSLATION": 146,
+      "MISSING_INFORMATION": 50,
       "RECORDED_ENGLISH": 4
     },
     "eligibility": {
-      "PLATFORM_TRANSLATION": 152,
+      "PLATFORM_TRANSLATION": 153,
       "RECORDED_ENGLISH": 4,
-      "MISSING_INFORMATION": 44
+      "MISSING_INFORMATION": 43
     },
     "fees": {
       "PLATFORM_TRANSLATION": 144,
@@ -1978,8 +1978,8 @@
       "slug": "تحديث-بيانات-الهوية",
       "route": "/en/services/تحديث-بيانات-الهوية/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
+        "eligibility": "PLATFORM_TRANSLATION",
         "fees": "MISSING_INFORMATION",
         "duration": "MISSING_INFORMATION"
       }
@@ -2143,7 +2143,7 @@
       "slug": "تمديد-التأشيرة-أو-إذن-الدخول",
       "route": "/en/services/تمديد-التأشيرة-أو-إذن-الدخول/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
         "eligibility": "PLATFORM_TRANSLATION",
         "fees": "PLATFORM_TRANSLATION",
         "duration": "PLATFORM_TRANSLATION"
