@@ -1,0 +1,14 @@
+{
+  "reviewedAt": "2026-10-09",
+  "slug": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+  "officialCard": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
+  "transactionSource": "https://smartservices.icp.gov.ae/echannels/web/client/lookups.js",
+  "officialTransactionNames": {
+    "refundFees": 375,
+    "refundDeposit": 376
+  },
+  "evidenceBranch": "agent/official-icp-refund-route-identity",
+  "capturedAt": "2026-10-09T12:47:14.827Z",
+  "decision": "Open the exact issuance-fee refund card. Do not send this service to depositRefund/376 or infer an unverified direct URL for transaction 375.",
+  "availability": "Read-only browser returned HTTP 500 from the cards and public form; the public official lookup asset returned HTTP 200."
+}
