@@ -29,7 +29,11 @@ async function walk(dir){for(const entry of await readdir(dir,{withFileTypes:tru
  const file=join(dir,entry.name);let html=await readFile(file,'utf8');if(!html.includes('<main'))continue;
  const locale=/<html\b[^>]*lang="en"/.test(html)?'en':'ar';
  const relative='.'+dir.slice(root.length).replaceAll('\\','/')+'/';const service=routes.get(relative);
- if(service&&!html.includes('data-hb-pathways='))html=html.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/,'$1'+pathwayMarkup(service,locale));
+ if(service){
+  // Existing Arabic pages survive builds, so always refresh their canonical pathway block.
+  html=html.replace(/<div\\b[^>]*data-hb-pathways="[^"]*"[^>]*>[\\s\\S]*?<\\/div>/g,'');
+  html=html.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/,'$1'+pathwayMarkup(service,locale));
+ }
  html=html.replace(/<link\b[^>]*href="\/service-pathways\.css[^>]*>/g,'').replace(/<script\b[^>]*src="\/service-pathways\.js[^>]*><\/script>/g,'');
  html=html.replace('</head>',`<link rel="stylesheet" href="/service-pathways.css?v=${version}"><script type="module" src="/service-pathways.js?v=${version}"></script></head>`);
  await writeFile(file,html);
