@@ -1,0 +1,49 @@
+{
+  "capturedAt": "2026-10-09T17:59:43.044Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {},
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 27.80743883351182,
+      "changed": 21.04168382898097
+    },
+    {
+      "name": "headline37",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:37px!important}",
+      "mad": 29.035194185865574,
+      "changed": 21.646483785045444
+    },
+    {
+      "name": "headline37half",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:37.5px!important}",
+      "mad": 28.024159961922546,
+      "changed": 21.181041821127494
+    },
+    {
+      "name": "support-sans",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{font-family:\"HB Sans Arabic\",Cairo,sans-serif!important;font-size:14px!important;font-weight:700!important}",
+      "mad": 28.353504773411686,
+      "changed": 21.247631600626082
+    },
+    {
+      "name": "support-cairo600",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{font-weight:600!important}",
+      "mad": 27.983080246405066,
+      "changed": 21.220171897740066
+    },
+    {
+      "name": "support-cairo700",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{font-weight:700!important}",
+      "mad": 28.50744844440783,
+      "changed": 21.452892879699043
+    },
+    {
+      "name": "headline37-support-sans",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:37px!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{font-family:\"HB Sans Arabic\",Cairo,sans-serif!important;font-size:14px!important;font-weight:700!important}",
+      "mad": 29.290324573688114,
+      "changed": 21.71307356454403
+    }
+  ]
+}
