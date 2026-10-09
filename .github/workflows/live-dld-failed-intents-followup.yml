@@ -1,0 +1,31 @@
+name: Live DLD Failed Intent Followup
+on:
+  push:
+    branches: [agent/live-dld-failed-intents-followup]
+    paths: [scripts/live-dld-failed-intents-followup.mjs, .github/workflows/live-dld-failed-intents-followup.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-dld-failed-intents-followup.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-dld-failed-intents-followup
+          path: artifacts/live-dld-failed-intents-followup
+      - name: Preserve actual followup evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add artifacts/live-dld-failed-intents-followup
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual failed DLD intent followup [skip ci]"
+            git push origin HEAD:agent/live-dld-failed-intents-followup
+          fi
