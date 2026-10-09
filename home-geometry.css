@@ -336,3 +336,11 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
  html.hb-phase8 body[data-home-geometry] .premium-how{grid-template-columns:minmax(0,1fr) 303px!important;column-gap:21px!important}
  html.hb-phase8 body[data-home-geometry] .premium-consult-cta span{height:31px!important;width:154px!important;min-height:31px!important;right:22px!important;bottom:9px!important;padding:0!important;display:flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important}
 }
+
+/* Arabic desktop reference places the CTA copy before the action group. */
+@media(min-width:1280px){
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-final-cta{direction:ltr!important;justify-content:flex-end!important;padding-inline:14%!important;gap:50px!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-final-cta>div:first-child{direction:rtl;text-align:center}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-final-cta>div:last-child{direction:rtl}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-final-cta>div{position:relative;top:-8px}
+}
