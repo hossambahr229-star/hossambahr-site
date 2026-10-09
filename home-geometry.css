@@ -370,3 +370,9 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @media(min-width:821px){
  html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{right:-8px!important}
 }
+
+/* Native robot proportions measured against the approved 1440px panel.
+   Keep the head aligned while reducing the artwork's width and height. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{width:55%!important;height:190px!important;bottom:15px!important;filter:brightness(.9)!important}
+}
