@@ -28,7 +28,7 @@ async function walk(dir){for(const entry of await readdir(dir,{withFileTypes:tru
  if(entry.name!=='index.html')continue;
  const file=join(dir,entry.name);let html=await readFile(file,'utf8');if(!html.includes('<main'))continue;
  const locale=/<html\b[^>]*lang="en"/.test(html)?'en':'ar';
- const relative='.'+dir.slice(root.length).replaceAll('\','/')+'/';const service=routes.get(relative);
+ const relative='.'+dir.slice(root.length).replaceAll('\\','/')+'/';const service=routes.get(relative);
  if(service){
   // Existing Arabic pages survive builds, so always refresh their canonical pathway block.
   html=html.replace(/<div\b[^>]*data-hb-pathways="[^"]*"[^>]*>[\s\S]*?<\/div>/g,'');
