@@ -837,5 +837,11 @@ export const recordedDetailTranslations = Object.freeze({
   "رخصة تجارية للشركات.": "Trade licence for companies.",
   "انتقال سند الملكية وفق الخطابات الرسمية الحكومية، عبر المقر الرئيسي للدائرة والتدقيق والاعتماد.": "Title transfer according to official government letters, through DLD headquarters and its review and approval.",
   "250 درهمًا لكل سند؛ الخرائط 100 أو225 للأرض، و250 للشقة أو الفيلا بحسب الفئة، مع 10 دراهم معرفة و10 ابتكار لكل رسم.": "AED 250 per title deed; maps AED 100/225 for land or AED 250 for an apartment/villa by category, plus AED 10 knowledge and AED 10 innovation per drawing.",
-  "25 دقيقة وفق بطاقة الجهة.": "25 minutes according to the official card."
+  "25 دقيقة وفق بطاقة الجهة.": "25 minutes according to the official card.",
+  "تأمين مركبة ساري تتحقق منه RTA إلكترونيًا.": "Valid vehicle insurance verified electronically by RTA.",
+  "اجتياز الفحص الفني عند طلبه وتحديث نتيجته عبر مركز الفحص.": "Pass the technical inspection when required; the inspection centre updates its result.",
+  "بيانات المركبة والملف المروري للدخول وتحديد المركبة.": "Vehicle and Traffic File details to sign in and select the vehicle.",
+  "للمركبات المسجلة في دبي؛ الملكية صالحة لسنة، ويلزم اجتياز فحص السلامة وتسوية المخالفات والرسوم. يتحقق النظام من التأمين والفحص، وقد تنطبق استثناءات الفحص للمركبات الجديدة وشروط إضافية بحسب الحالة.": "For vehicles registered in Dubai. Ownership is valid for one year; pass the safety test and settle fines and fees. The system verifies insurance and inspection; new-vehicle inspection exemptions and case-specific conditions may apply.",
+  "تعرض RTA الرسوم النهائية حسب فئة المركبة وخيار اللوحة والتوصيل، وتطبق رسوم تأخير عند انطباقها؛ لا يوجد إجمالي موحد لجميع الحالات.": "RTA displays the final fees by vehicle category, plate option and delivery; late fees apply where relevant. There is no universal total.",
+  "فوري عبر القنوات الرقمية بعد اكتمال التأمين والفحص والبيانات وسداد الرسوم.": "Instant through digital channels after insurance, inspection, information and fee payment are complete."
 });
