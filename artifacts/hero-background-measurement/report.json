@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-09T07:17:26.166Z",
+  "capturedAt": "2026-10-09T07:18:32.489Z",
   "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
   "results": [
     {
@@ -8,52 +8,81 @@
       "changed": 36.68744075976186
     },
     {
-      "name": "restored-center",
+      "name": "cover-30",
       "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
-      "position": "center",
+      "position": "center 30%",
+      "after": true,
+      "mad": 34.947631113231196,
+      "changed": 27.272192245026915
+    },
+    {
+      "name": "cover-40",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
+      "position": "center 40%",
+      "after": true,
+      "mad": 31.935706659893405,
+      "changed": 24.28369646695866
+    },
+    {
+      "name": "cover-50",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
+      "position": "center 50%",
       "after": true,
       "mad": 29.74508577057224,
       "changed": 21.993383678501292
     },
     {
-      "name": "restored-top",
+      "name": "cover-60",
       "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
-      "position": "center top",
+      "position": "center 60%",
       "after": true,
-      "mad": 41.52370951787997,
-      "changed": 33.437823304567615
+      "mad": 33.14303355449689,
+      "changed": 25.95729127302238
     },
     {
-      "name": "cream-center",
-      "shade": "linear-gradient(90deg,transparent 36%,#fffdf170 65%,#fffdf1e8 100%)",
-      "position": "center",
-      "after": true,
-      "mad": 30.457814755388153,
-      "changed": 23.47957799267744
-    },
-    {
-      "name": "cream-top",
-      "shade": "linear-gradient(90deg,transparent 36%,#fffdf170 65%,#fffdf1e8 100%)",
-      "position": "center top",
-      "after": true,
-      "mad": 41.29797917221641,
-      "changed": 33.72217644763008
-    },
-    {
-      "name": "cream-top-no-extra-shade",
-      "shade": "linear-gradient(90deg,transparent 36%,#fffdf170 65%,#fffdf1e8 100%)",
-      "position": "center top",
-      "after": false,
-      "mad": 41.8404029265452,
-      "changed": 34.27880237146804
-    },
-    {
-      "name": "restored-top-no-extra-shade",
+      "name": "native-102-40",
       "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
-      "position": "center top",
-      "after": false,
-      "mad": 42.066133272208766,
-      "changed": 33.99444922840558
+      "position": "left 40%",
+      "size": "102% auto",
+      "after": true,
+      "mad": 35.464706756949305,
+      "changed": 28.01219187332346
+    },
+    {
+      "name": "native-102-50",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
+      "position": "left 50%",
+      "size": "102% auto",
+      "after": true,
+      "mad": 34.85873306942388,
+      "changed": 27.872803077704607
+    },
+    {
+      "name": "native-105-30",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
+      "position": "left 30%",
+      "size": "105% auto",
+      "after": true,
+      "mad": 40.50306758601321,
+      "changed": 32.46086272371902
+    },
+    {
+      "name": "native-105-40",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
+      "position": "left 40%",
+      "size": "105% auto",
+      "after": true,
+      "mad": 39.11068089877895,
+      "changed": 31.728606917401297
+    },
+    {
+      "name": "native-105-50",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
+      "position": "left 50%",
+      "size": "105% auto",
+      "after": true,
+      "mad": 39.95372808240253,
+      "changed": 32.94779424974755
     }
   ]
 }
