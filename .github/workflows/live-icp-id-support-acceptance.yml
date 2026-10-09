@@ -1,0 +1,53 @@
+name: Live ICP ID Support Acceptance
+on:
+  push:
+    branches: [agent/live-icp-id-support-acceptance]
+    paths: [scripts/live-icp-id-support-acceptance.mjs, .github/workflows/live-icp-id-support-acceptance.yml]
+concurrency:
+  group: live-icp-id-support-acceptance
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the newly generated service content to reach Production
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let attempt=0;attempt<120;attempt++){
+            const urls=["https://hossambahr.com/en/services/%D8%A8%D8%AF%D9%84-%D9%81%D8%A7%D9%82%D8%AF-%D8%A3%D9%88-%D8%AA%D8%A7%D9%84%D9%81-%D9%84%D9%84%D9%87%D9%88%D9%8A%D8%A9/","https://hossambahr.com/services/%D8%A7%D8%B3%D8%AA%D8%B1%D8%AF%D8%A7%D8%AF-%D8%B1%D8%B3%D9%88%D9%85-%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9-%D8%BA%D9%8A%D8%B1-%D8%A7%D9%84%D9%85%D9%83%D8%AA%D9%85%D9%84/"];
+            const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
+            ready=responses[0].includes('Replacement retains the original validity')&&responses[1].includes('شهادة بنكية تتضمن');
+            if(ready)break;
+            console.log('Waiting for new source content, attempt '+(attempt+1));
+            await new Promise(resolve=>setTimeout(resolve,10000));
+          }
+          if(!ready)throw Error('New generated service content did not reach Production before the wait deadline');
+          NODE
+      - name: Verify actual deployed canonical details and pathways
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-icp-id-support-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-icp-id-support
+          path: artifacts/live-icp-id-support
+      - name: Preserve live evidence only
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-icp-id-support-acceptance
+          git reset --mixed origin/agent/live-icp-id-support-acceptance
+          git add artifacts/live-icp-id-support
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual MOE eDAS Production acceptance [skip ci]"
+            git push origin HEAD:agent/live-icp-id-support-acceptance
+          fi
