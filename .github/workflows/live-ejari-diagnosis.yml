@@ -1,0 +1,23 @@
+name: Live Ejari Failure Diagnosis
+on:
+  push:
+    branches: [agent/live-ejari-failure-diagnosis]
+    paths: [scripts/live-ejari-diagnosis.mjs, .github/workflows/live-ejari-diagnosis.yml]
+permissions: {contents: write}
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-ejari-diagnosis.mjs
+      - uses: actions/upload-artifact@v4
+        with: {name: live-ejari-diagnosis, path: artifacts/live-ejari-diagnosis}
+      - run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add artifacts/live-ejari-diagnosis
+          git commit -m "Record failed-case Ejari response [skip ci]"
+          git push origin HEAD:agent/live-ejari-failure-diagnosis
