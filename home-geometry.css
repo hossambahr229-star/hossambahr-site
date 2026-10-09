@@ -360,3 +360,8 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @media(min-width:821px){
  html.hb-phase8 body[data-home-geometry] .premium-consult-cta{background:url('/assets/consultation-reference-restored.webp') 50% 33%/cover no-repeat!important}
 }
+
+/* Measured approved Arabic desktop headline scale; accent and mobile retain their own tokens. */
+@media(min-width:1280px){
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:38px!important}
+}
