@@ -1,0 +1,36 @@
+name: Official GDRFA Expanded Details
+on:
+  push:
+    branches: [agent/official-icp-refund-route-identity]
+    paths: [scripts/official-icp-refund-route-identity.mjs, .github/workflows/official-icp-refund-route-identity.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Read official cards without applying or signing in
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/official-icp-refund-route-identity.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: official-missing-details
+          path: artifacts/official-icp-refund-identity
+      - name: Preserve live evidence only
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/official-icp-refund-route-identity
+          git reset --mixed origin/agent/official-icp-refund-route-identity
+          git add artifacts/official-icp-refund-identity
+          if ! git diff --cached --quiet; then
+            git commit -m "Record read-only official card evidence [skip ci]"
+            git push origin HEAD:agent/official-icp-refund-route-identity
+          fi
