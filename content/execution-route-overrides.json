@@ -458,11 +458,11 @@
       "note": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول."
     },
     "استرداد-رسوم-إصدار-الهوية-غير-المكتمل": {
-      "mode": "direct-execution",
-      "executionUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/depositRefund/376/request/step1?administrativeRegionId=1&withException=false",
+      "mode": "official-service-card",
+      "executionUrl": null,
       "officialCardUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
       "selectorLabel": "استرداد رسوم إصدار الهوية غير المكتمل",
-      "note": "رابط بدء معاملة منفصل ومتحقق منه."
+      "note": "تفتح بطاقة استرداد رسوم الإصدار عند عدم اكتمال الخدمة؛ ملف معاملات ICP يميز refundFees (375) عن refundDeposit (376). يبدأ الطلب الصحيح من بطاقة الجهة."
     },
     "إصدار-تصريح-إقامة-عبر-icp-خارج-دبي": {
       "mode": "official-bundle-selector",
