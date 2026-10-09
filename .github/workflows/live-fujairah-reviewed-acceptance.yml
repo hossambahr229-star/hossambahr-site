@@ -1,0 +1,53 @@
+name: Live Fujairah Reviewed Acceptance
+on:
+  push:
+    branches: [agent/live-fujairah-reviewed-acceptance]
+    paths: [scripts/live-fujairah-reviewed-acceptance.mjs, .github/workflows/live-fujairah-reviewed-acceptance.yml]
+concurrency:
+  group: live-fujairah-reviewed-acceptance
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the newly generated service content to reach Production
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let attempt=0;attempt<120;attempt++){
+            const urls=['https://hossambahr.com/en/services/fujairah-economic-license-issuance/','https://hossambahr.com/services/fujairah-economic-license-issuance/'];
+            const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
+            ready=responses[0].includes('The card displays a current average completion time')&&responses[1].includes('ظهور صفر بجوار تصنيف الرسوم في البطاقة لا يعني'); the Ministry contacts')&&responses[1].includes('رخصة تجارية معتمدة لتسجيل الحساب الرئيسي للشركة.');
+            if(ready)break;
+            console.log('Waiting for new source content, attempt '+(attempt+1));
+            await new Promise(resolve=>setTimeout(resolve,10000));
+          }
+          if(!ready)throw Error('New generated service content did not reach Production before the wait deadline');
+          NODE
+      - name: Verify actual deployed canonical details and pathways
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-fujairah-reviewed-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-fujairah-reviewed
+          path: artifacts/live-fujairah-reviewed
+      - name: Preserve live evidence only
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-fujairah-reviewed-acceptance
+          git reset --mixed origin/agent/live-fujairah-reviewed-acceptance
+          git add artifacts/live-fujairah-reviewed
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual Fujairah Reviewed Production acceptance [skip ci]"
+            git push origin HEAD:agent/live-fujairah-reviewed-acceptance
+          fi
