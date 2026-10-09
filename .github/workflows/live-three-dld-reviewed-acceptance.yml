@@ -25,7 +25,7 @@ jobs:
           for(let attempt=0;attempt<120;attempt++){
             const urls=['https://hossambahr.com/en/services/property-valuation-dubai/','https://hossambahr.com/services/title-transfer-dubai/'];
             const responses=await Promise.all(urls.map(url=>fetch(url,{cache:'no-store'}).then(r=>r.text()).catch(()=>'')));
-            ready=responses[0].includes('Municipality map valid for one year')&&responses[1].includes('خطاب من المحيل شخصًا أو جهة.'); the Ministry contacts')&&responses[1].includes('رخصة تجارية معتمدة لتسجيل الحساب الرئيسي للشركة.');
+            ready=responses[0].includes('Municipality map valid for one year')&&responses[1].includes('خطاب من المحيل شخصًا أو جهة.');
             if(ready)break;
             console.log('Waiting for new source content, attempt '+(attempt+1));
             await new Promise(resolve=>setTimeout(resolve,10000));
