@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-10-09T12:40:57.893Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {},
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 26.01546372191864,
+      "changed": 18.12841530054645
+    },
+    {
+      "name": "serif20",
+      "css": "html.hb-phase8 body[data-home-geometry] .site-header .brand span{font-family:\"Times New Roman\",serif!important;font-size:20px!important}",
+      "mad": 25.8971273527626,
+      "changed": 18.069216757741348
+    },
+    {
+      "name": "serif21",
+      "css": "html.hb-phase8 body[data-home-geometry] .site-header .brand span{font-family:\"Times New Roman\",serif!important;font-size:21px!important}",
+      "mad": 25.86419626593807,
+      "changed": 18.047586520947174
+    },
+    {
+      "name": "serif22",
+      "css": "html.hb-phase8 body[data-home-geometry] .site-header .brand span{font-family:\"Times New Roman\",serif!important;font-size:22px!important}",
+      "mad": 25.783041135397692,
+      "changed": 18.013433515482696
+    },
+    {
+      "name": "nav-naskh",
+      "css": "html.hb-phase8 body[data-home-geometry] .desktop-nav>a{font-family:\"HB Naskh\",serif!important;font-size:13px!important}",
+      "mad": 25.121019277474197,
+      "changed": 17.547814207650273
+    },
+    {
+      "name": "serif21-nav",
+      "css": "html.hb-phase8 body[data-home-geometry] .site-header .brand span{font-family:\"Times New Roman\",serif!important;font-size:21px!important}html.hb-phase8 body[data-home-geometry] .desktop-nav>a{font-family:\"HB Naskh\",serif!important;font-size:13px!important}",
+      "mad": 24.969880843958713,
+      "changed": 17.466985428051
+    }
+  ]
+}
