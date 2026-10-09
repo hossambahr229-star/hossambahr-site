@@ -292,3 +292,10 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @media(min-width:821px){
  html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-family:'HB Sans Arabic',Cairo,sans-serif!important;font-weight:700!important}
 }
+
+/* Restored reference background remains behind the real HB brand and controls. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .premium-ai-showcase{background:url('/assets/ai-reference-backdrop.webp') center/100% 100% no-repeat!important;border-radius:0!important;border-left:0!important}
+ html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{right:0!important}
+ html.hb-phase8 body[data-home-geometry] .ai-showcase-welcome{background:#001c2b66!important;border-color:#5b8789!important}
+}
