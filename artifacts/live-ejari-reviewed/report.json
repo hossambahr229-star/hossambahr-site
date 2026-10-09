@@ -1,0 +1,131 @@
+{
+  "capturedAt": "2026-10-09T17:50:05.270Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "register-renew-ejari-contract-dubai",
+      "locale": "ar",
+      "width": 1440,
+      "status": 200,
+      "url": "https://hossambahr.com/services/register-renew-ejari-contract-dubai/",
+      "official": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "register-renew-ejari-contract-dubai",
+      "locale": "ar",
+      "width": 390,
+      "status": 200,
+      "url": "https://hossambahr.com/services/register-renew-ejari-contract-dubai/",
+      "official": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "register-renew-ejari-contract-dubai",
+      "locale": "en",
+      "width": 1440,
+      "status": 200,
+      "url": "https://hossambahr.com/en/services/register-renew-ejari-contract-dubai/",
+      "official": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "register-renew-ejari-contract-dubai",
+      "locale": "en",
+      "width": 390,
+      "status": 200,
+      "url": "https://hossambahr.com/en/services/register-renew-ejari-contract-dubai/",
+      "official": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+      "overflow": false,
+      "failures": []
+    }
+  ],
+  "apiChecks": [
+    {
+      "locale": "ar",
+      "prompt": "أريد تسجيل عقد إيجاري في دبي",
+      "status": 200,
+      "ok": true,
+      "slug": "register-renew-ejari-contract-dubai",
+      "grounded": true,
+      "answer": {
+        "text": "المسار المناسب لطلبك هو «تسجيل أو تجديد عقد إيجاري في دبي» لدى دائرة الأراضي والأملاك / RERA. التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:register-renew-ejari-contract-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:register-renew-ejari-contract-dubai",
+          "source_title": "تسجيل أو تجديد عقد إيجاري في دبي",
+          "source_url": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+          "last_verified_at": "2026-10-09T17:34:18+00:00",
+          "supporting_rule": {
+            "value": "التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام.",
+            "source_refs": [
+              "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "prompt": "I need to register an Ejari tenancy contract in Dubai",
+      "status": 200,
+      "ok": true,
+      "slug": "register-renew-ejari-contract-dubai",
+      "grounded": true,
+      "answer": {
+        "text": "The matching service is Register / Renew Tenancy Contract through Dubai Land Department / RERA.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:register-renew-ejari-contract-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:register-renew-ejari-contract-dubai",
+          "source_title": "تسجيل أو تجديد عقد إيجاري في دبي",
+          "source_url": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+          "last_verified_at": "2026-10-09T17:34:18+00:00",
+          "supporting_rule": {
+            "value": "التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام.",
+            "source_refs": [
+              "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    }
+  ],
+  "externalModelGate": "NOT_PASSED_UNLESS_EXTERNAL_MODEL_USED_TRUE",
+  "scope": "Reviewed Ejari official details and public adjacent pathways only. No government submission, WhatsApp message, login or private upload."
+}
