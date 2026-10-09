@@ -1,0 +1,54 @@
+name: Live AI Native Proportion Acceptance
+on:
+  push:
+    branches: [agent/live-ai-native-proportion-acceptance]
+    paths:
+      - scripts/live-ai-native-proportion-acceptance.mjs
+      - .github/workflows/live-ai-native-proportion-acceptance.yml
+      - src/publication/generate-transaction-discovery.mjs
+      - transaction-discovery.css
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - name: Install capture runtime
+        run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - name: Wait for current geometry stylesheet on Production
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {createHash} from 'node:crypto';
+          const hash=createHash('sha256').update(fs.readFileSync('home-geometry.css')).digest('hex').slice(0,12);
+          let ready=false;
+          for(let attempt=0;attempt<120;attempt++){
+            const html=await fetch('https://hossambahr.com/?visual='+Date.now(),{cache:'no-store'}).then(r=>r.text()).catch(()=>'');
+            if(html.includes('/home-geometry.css?v='+hash)){ready=true;break;}
+            await new Promise(r=>setTimeout(r,10000));
+          }
+          if(!ready)throw Error('Current geometry stylesheet not deployed');
+          NODE
+      - name: Capture actual published hero and regional reference overlays
+        run: HB_BASE_URL=https://hossambahr.com/ HB_BROWSER_PATH="$(which chrome)" node scripts/live-ai-native-proportion-acceptance.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-regional-visual-diagnosis
+          path: artifacts/live-regional-visual
+      - name: Preserve only new visual evidence on the diagnosis branch
+        if: github.ref == 'refs/heads/agent/live-ai-native-proportion-acceptance'
+        run: |
+          git config user.name "HossamBahr Visual Diagnosis"
+          git config user.email "visual-diagnosis@users.noreply.github.com"
+          git add artifacts/live-regional-visual
+          if ! git diff --cached --quiet; then
+            git commit -m "Record regional live Production visual evidence [skip ci]"
+            git push origin HEAD:agent/live-ai-native-proportion-acceptance
+          fi
