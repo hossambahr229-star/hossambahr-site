@@ -1,0 +1,78 @@
+{
+  "capturedAt": "2026-10-09T17:30:30.374Z",
+  "source": "LIVE_PRODUCTION",
+  "prompt": "أريد تسجيل عقد إيجاري في دبي",
+  "status": 200,
+  "body": {
+    "ok": true,
+    "goal_context": {
+      "active_service_id": null,
+      "last_answer_topic": "clarification",
+      "pending_clarification": "ما النتيجة التي تريد الوصول إليها تحديدًا؟",
+      "known_facts": {},
+      "jurisdiction_hint": "AE-DU",
+      "relationship": null,
+      "relationship_group": null,
+      "family_members": [],
+      "subject_role": null,
+      "entity": {
+        "kind": "unknown",
+        "relationship": null,
+        "relationship_group": null
+      },
+      "service_slug": null,
+      "authority_key": null,
+      "action": null,
+      "turn_type": "new_topic",
+      "topic": null,
+      "intent": null,
+      "service_family": null,
+      "business_activity": null,
+      "semantic_confidence": "low",
+      "safe_goal": "أريد تسجيل عقد إيجاري في دبي"
+    },
+    "result": {
+      "understood_intent": "لم أستطع تحديد خدمة موثقة بدقة من وصفك الحالي.",
+      "confidence": "low",
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "grounding": {
+        "status": "NEEDS_CLARIFICATION",
+        "source_backed": false,
+        "no_invention": true,
+        "ambiguity_detected": true
+      },
+      "matches": [],
+      "missing_information": [
+        "اكتب نوع المعاملة والجهة أو الإمارة إن كنت تعرفها."
+      ],
+      "follow_up_questions": [
+        "ما النتيجة التي تريد الوصول إليها تحديدًا؟"
+      ],
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "privacy": {
+        "case_created": false,
+        "personal_data_persisted": false
+      }
+    },
+    "rate_limit": {
+      "remaining": 119,
+      "reset_at": "2026-10-09T18:00:00+00:00"
+    }
+  },
+  "scope": "One previously failed public Ejari catalog case only; no auth, upload or transaction."
+}
