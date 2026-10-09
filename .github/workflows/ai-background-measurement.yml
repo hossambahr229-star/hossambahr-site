@@ -1,0 +1,40 @@
+name: AI Background Measurement
+on:
+  push:
+    branches: [agent/live-post-noto-reference]
+    paths:
+      - scripts/ai-background-measurement.mjs
+      - .github/workflows/ai-background-measurement.yml
+      - src/publication/generate-transaction-discovery.mjs
+      - transaction-discovery.css
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - name: Install capture runtime
+        run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - name: Measure temporary AI background styles against the approved reference
+        run: HB_BASE_URL=https://hossambahr.com/ HB_BROWSER_PATH="$(which chrome)" node scripts/ai-background-measurement.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ai-background-measurement
+          path: artifacts/ai-background-measurement
+      - name: Preserve only new visual evidence on the diagnosis branch
+        if: github.ref == 'refs/heads/agent/live-post-noto-reference'
+        run: |
+          git config user.name "HossamBahr Visual Diagnosis"
+          git config user.email "visual-diagnosis@users.noreply.github.com"
+          git add artifacts/ai-background-measurement
+          if ! git diff --cached --quiet; then
+            git commit -m "Record regional live Production visual evidence [skip ci]"
+            git push origin HEAD:agent/live-post-noto-reference
+          fi
