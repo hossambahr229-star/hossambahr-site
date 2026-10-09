@@ -1,0 +1,131 @@
+{
+  "capturedAt": "2026-10-09T17:56:33.982Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "renew-vehicle-ownership-dubai",
+      "locale": "ar",
+      "width": 1440,
+      "status": 200,
+      "url": "https://hossambahr.com/services/renew-vehicle-ownership-dubai/",
+      "official": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "renew-vehicle-ownership-dubai",
+      "locale": "ar",
+      "width": 390,
+      "status": 200,
+      "url": "https://hossambahr.com/services/renew-vehicle-ownership-dubai/",
+      "official": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "renew-vehicle-ownership-dubai",
+      "locale": "en",
+      "width": 1440,
+      "status": 200,
+      "url": "https://hossambahr.com/en/services/renew-vehicle-ownership-dubai/",
+      "official": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "renew-vehicle-ownership-dubai",
+      "locale": "en",
+      "width": 390,
+      "status": 200,
+      "url": "https://hossambahr.com/en/services/renew-vehicle-ownership-dubai/",
+      "official": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582",
+      "overflow": false,
+      "failures": []
+    }
+  ],
+  "apiChecks": [
+    {
+      "locale": "ar",
+      "prompt": "أريد تجديد ملكية مركبتي في دبي",
+      "status": 200,
+      "ok": true,
+      "slug": "renew-vehicle-ownership-dubai",
+      "grounded": true,
+      "answer": {
+        "text": "المسار المناسب لطلبك هو «تجديد ملكية السيارة أو المركبة في دبي» لدى هيئة الطرق والمواصلات في دبي. للمركبات المسجلة في دبي؛ الملكية صالحة لسنة، ويلزم اجتياز فحص السلامة وتسوية المخالفات والرسوم. يتحقق النظام من التأمين والفحص، وقد تنطبق استثناءات الفحص للمركبات الجديدة وشروط إضافية بحسب الحالة.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:renew-vehicle-ownership-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:renew-vehicle-ownership-dubai",
+          "source_title": "تجديد ملكية السيارة أو المركبة في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582",
+          "last_verified_at": "2026-10-09T17:46:00+00:00",
+          "supporting_rule": {
+            "value": "للمركبات المسجلة في دبي؛ الملكية صالحة لسنة، ويلزم اجتياز فحص السلامة وتسوية المخالفات والرسوم. يتحقق النظام من التأمين والفحص، وقد تنطبق استثناءات الفحص للمركبات الجديدة وشروط إضافية بحسب الحالة.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "prompt": "I need to renew my Dubai vehicle ownership",
+      "status": 200,
+      "ok": true,
+      "slug": "renew-vehicle-ownership-dubai",
+      "grounded": true,
+      "answer": {
+        "text": "A possible pathway is Renew Vehicle Ownership through Dubai Roads and Transport Authority.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:renew-vehicle-ownership-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:renew-vehicle-ownership-dubai",
+          "source_title": "تجديد ملكية السيارة أو المركبة في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582",
+          "last_verified_at": "2026-10-09T17:46:00+00:00",
+          "supporting_rule": {
+            "value": "للمركبات المسجلة في دبي؛ الملكية صالحة لسنة، ويلزم اجتياز فحص السلامة وتسوية المخالفات والرسوم. يتحقق النظام من التأمين والفحص، وقد تنطبق استثناءات الفحص للمركبات الجديدة وشروط إضافية بحسب الحالة.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    }
+  ],
+  "externalModelGate": "NOT_PASSED_UNLESS_EXTERNAL_MODEL_USED_TRUE",
+  "scope": "Reviewed RTA renewal official details and public adjacent pathways only. No government submission, WhatsApp message, login or private upload."
+}
