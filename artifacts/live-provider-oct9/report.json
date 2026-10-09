@@ -1,0 +1,98 @@
+{
+  "capturedAt": "2026-10-09T06:55:06.340Z",
+  "source": "LIVE_PUBLIC_AI_ENDPOINT",
+  "externalModelGate": "NOT_PASSED",
+  "checks": [
+    {
+      "message": "عايز أكفل مراتي في دبي",
+      "httpStatus": 200,
+      "ok": true,
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "provider": null,
+      "answer": {
+        "text": "بالنسبة إلى زوجتك: المسار المناسب لطلبك هو «إصدار إقامة لأفراد الأسرة في دبي» لدى الإدارة العامة للإقامة وشؤون الأجانب في دبي. هذه الخدمة مخصصة لإصدار إقامة أفراد الأسرة عندما يكون ملف الكفيل في دبي؛ لا تستخدمها لمسارات ICP في الإمارات الأخرى.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:family-residency-uae",
+          "policy_version": 1,
+          "workflow_key": "service:family-residency-uae",
+          "source_title": "إصدار إقامة لأفراد الأسرة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-02T07:34:29.987715+00:00",
+          "supporting_rule": {
+            "value": "هذه الخدمة مخصصة لإصدار إقامة أفراد الأسرة عندما يكون ملف الكفيل في دبي؛ لا تستخدمها لمسارات ICP في الإمارات الأخرى.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8"
+            ]
+          },
+          "special_case": "استخدام مستند قرابة غير مصدق أو اختيار مسار دبي مع ملف كفيل صادر من ICP يؤدي إلى رفض أو تأخير.",
+          "review_pending": false
+        }
+      },
+      "matches": [
+        {
+          "service_slug": "family-residency-uae",
+          "authority": "gdrfa-dubai"
+        }
+      ],
+      "error": null
+    },
+    {
+      "message": "I need to renew my trade licence in Dubai",
+      "httpStatus": 200,
+      "ok": true,
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "provider": null,
+      "answer": {
+        "text": "The matching service is Renew a Trade Licence in Dubai through Dubai Department of Economy and Tourism.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:renew-business-license-dubai",
+          "policy_version": 1,
+          "workflow_key": "service:renew-business-license-dubai",
+          "source_title": "DET verified service source",
+          "source_url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+          "last_verified_at": "2026-09-03T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "التجديد يحافظ على سريان الرخصة ويمنع تعطل المعاملات المرتبطة بها، لكنه قد يتوقف إذا انتهى عقد المقر أو موافقة نشاط منظم.",
+            "source_refs": [
+              "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence"
+            ]
+          },
+          "special_case": "البدء بالسداد قبل التأكد من صلاحية الإيجار والموافقات قد يترك الطلب معلقاً أو يحتاج إعادة استكمال.",
+          "review_pending": false
+        }
+      },
+      "matches": [
+        {
+          "service_slug": "renew-business-license-dubai",
+          "authority": "det-dubai"
+        }
+      ],
+      "error": null
+    }
+  ],
+  "scope": "Two public non-authenticated probes; no customer data or private upload. Provider failure is separate from product behavior."
+}
