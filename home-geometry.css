@@ -344,3 +344,14 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
  html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-final-cta>div:last-child{direction:rtl}
  html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-final-cta>div{position:relative;top:-8px}
 }
+
+/* Reference metric palette and figure alignment; published facts are unchanged. */
+@media(min-width:821px){
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#0a304c,#03243c)!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .target-proof>span>span{text-align:left!important}
+}
+
+/* Approved Arabic navigation uses the same bundled Naskh family as the hero caption. */
+@media(min-width:821px){
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .desktop-nav>a{font-family:'HB Naskh',serif!important;font-size:13px!important}
+}
