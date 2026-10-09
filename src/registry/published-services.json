@@ -6,8 +6,8 @@
     "services": 200,
     "verified": 200,
     "officialLinksVerified": 200,
-    "fullyVerifiedDetails": 128,
-    "partiallyVerifiedDetails": 72,
+    "fullyVerifiedDetails": 130,
+    "partiallyVerifiedDetails": 70,
     "pendingVerification": 0,
     "authorities": 20,
     "emirates": [
@@ -18938,22 +18938,27 @@
       ],
       "description": "إصدار إقامة للوالدين لمدة سنة قابلة للتجديد بعد دراسة الحالة واستيفاء متطلبات الدخل والسكن والضمان.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "نسخة جواز سفر الوالد أو الوالدة المكفول.",
+          "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص براتب لا يقل عن 10,000 درهم؛ للشريك أو المستثمر: عقد الشراكة والرخصة التجارية وملحق الشركاء.",
+          "نسخة عقد إيجار مصدق يناسب عدد أفراد الأسرة.",
+          "كشف حساب بنكي لآخر ثلاثة أشهر."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "200 درهم لتصريح الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. عند الموافقة: ضمان مالي 5,000 درهم لكل طلب، على ألا يتجاوز مجموع الضمان 15,000 درهم."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "14 يومًا وفق بطاقة الخدمة."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "إقامة لمدة سنة قابلة للتجديد، مع إثبات القرابة واستيفاء شرط الإعالة للوالدين. تراجع اللجنة كل طلب وتقيمه بحسب الحالة؛ الدخول عبر UAE Pass أو اسم المستخدم.",
       "steps": [
         {
           "order": 1,
@@ -18984,11 +18989,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "200 درهم لتصريح الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. عند الموافقة: ضمان مالي 5,000 درهم لكل طلب، على ألا يتجاوز مجموع الضمان 15,000 درهم."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "14 يومًا وفق بطاقة الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -19009,22 +19014,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-08",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-08",
+      "lastReviewedAt": "2026-10-08",
       "internalRoute": "/services/إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -19361,22 +19366,26 @@
       ],
       "description": "إصدار تصريح إقامة لمدة سنتين قابلة للتجديد لموظف قطاع خاص يكون ملفه تابعًا لدبي.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "نسخة جواز سفر المكفول.",
+          "صورة شخصية حديثة للمكفول بخلفية بيضاء.",
+          "فحص طبي معتمد من الجهات المختصة لمن تجاوز 18 عامًا."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "200 درهم لتصريح الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. تنص البطاقة على زيادة 100 درهم سنويًا عند تجاوز مدة الإقامة سنتين."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "48 ساعة وفق بطاقة الخدمة."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "إقامة موظف القطاع الخاص لمدة سنتين قابلة للتجديد وفق الشروط نفسها. الدخول إلى الخدمات الذكية عبر UAE Pass أو اسم المستخدم.",
       "steps": [
         {
           "order": 1,
@@ -19407,11 +19416,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "200 درهم لتصريح الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. تنص البطاقة على زيادة 100 درهم سنويًا عند تجاوز مدة الإقامة سنتين."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "48 ساعة وفق بطاقة الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -19433,22 +19442,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-08",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-08",
+      "lastReviewedAt": "2026-10-08",
       "internalRoute": "/services/إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
       "sourceRegistry": "service-matrix"
     },
