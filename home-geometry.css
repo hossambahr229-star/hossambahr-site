@@ -299,3 +299,15 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
  html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{right:0!important}
  html.hb-phase8 body[data-home-geometry] .ai-showcase-welcome{background:#001c2b66!important;border-color:#5b8789!important}
 }
+
+/* The legacy hero shadow darkened the aligned category row below it. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .visual-target-hero{box-shadow:none!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a{padding:5px 6px 5px!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a b{font-size:var(--type-small)!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a::after{content:'→'!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(2) i,
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(5) i,
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(6) i,
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .target-discovery .premium-category-grid>a:nth-child(7) i{color:#123849!important}
+}
