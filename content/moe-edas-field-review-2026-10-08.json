@@ -3,7 +3,7 @@
   "method": "Read-only rendered official service cards",
   "evidenceBranch": "agent/official-missing-detail-evidence",
   "capturedAt": "2026-10-08T16:49:47.056Z",
-  "scope": "Only listed document, eligibility, fee and time fields. No approval of the whole catalog or authenticated transaction.",
+  "scope": "Only listed document, eligibility, fee and time fields. No approval of the whole catalog or authenticated transaction. MOFA entries refresh the three listed fields only; prior fee records are preserved.",
   "records": [
     {
       "slug": "attestation-of-commercial-invoices-via-edas-2-0",
@@ -44,6 +44,26 @@
         "fees",
         "duration"
       ]
+    },
+    {
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "source": "https://www.mofa.gov.ae/services/attestation",
+      "fields": [
+        "requirements",
+        "conditions",
+        "duration"
+      ],
+      "feeReview": "Existing fee text retained; no new fee verification asserted."
+    },
+    {
+      "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "source": "https://www.mofa.gov.ae/services/attestation",
+      "fields": [
+        "requirements",
+        "conditions",
+        "duration"
+      ],
+      "feeReview": "Existing fee text retained; no new fee verification asserted."
     }
   ]
 }
