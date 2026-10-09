@@ -1,0 +1,59 @@
+{
+  "capturedAt": "2026-10-09T07:17:26.166Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "results": [
+    {
+      "name": "baseline",
+      "mad": 43.91633471483117,
+      "changed": 36.68744075976186
+    },
+    {
+      "name": "restored-center",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
+      "position": "center",
+      "after": true,
+      "mad": 29.74508577057224,
+      "changed": 21.993383678501292
+    },
+    {
+      "name": "restored-top",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
+      "position": "center top",
+      "after": true,
+      "mad": 41.52370951787997,
+      "changed": 33.437823304567615
+    },
+    {
+      "name": "cream-center",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf170 65%,#fffdf1e8 100%)",
+      "position": "center",
+      "after": true,
+      "mad": 30.457814755388153,
+      "changed": 23.47957799267744
+    },
+    {
+      "name": "cream-top",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf170 65%,#fffdf1e8 100%)",
+      "position": "center top",
+      "after": true,
+      "mad": 41.29797917221641,
+      "changed": 33.72217644763008
+    },
+    {
+      "name": "cream-top-no-extra-shade",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf170 65%,#fffdf1e8 100%)",
+      "position": "center top",
+      "after": false,
+      "mad": 41.8404029265452,
+      "changed": 34.27880237146804
+    },
+    {
+      "name": "restored-top-no-extra-shade",
+      "shade": "linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1d9 100%)",
+      "position": "center top",
+      "after": false,
+      "mad": 42.066133272208766,
+      "changed": 33.99444922840558
+    }
+  ]
+}
