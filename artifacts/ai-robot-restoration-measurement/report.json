@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-10-09T17:30:03.549Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {},
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 43.36746636677913,
+      "changed": 32.413737705503294
+    },
+    {
+      "name": "restored-native",
+      "css": "",
+      "mad": 44.25887911080964,
+      "changed": 32.480676889023755
+    },
+    {
+      "name": "restored142",
+      "css": "html.hb-phase8 body[data-home-geometry] .ai-showcase-robot{width:142px!important;height:205px!important}",
+      "mad": 44.10893533972379,
+      "changed": 31.964798914692704
+    },
+    {
+      "name": "restored152",
+      "css": "html.hb-phase8 body[data-home-geometry] .ai-showcase-robot{width:152px!important;height:205px!important}",
+      "mad": 45.03102408025562,
+      "changed": 32.4298031095482
+    }
+  ]
+}
