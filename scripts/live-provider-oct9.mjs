@@ -1,0 +1,7 @@
+import {mkdir,writeFile}from'node:fs/promises';
+const endpoint='https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge';
+const checks=[];for(const message of ['عايز أكفل مراتي في دبي','I need to renew my trade licence in Dubai']){
+ const response=await fetch(endpoint,{method:'POST',headers:{'content-type':'application/json',origin:'https://hossambahr.com','x-hb-qa-run':'provider-recheck-oct9-'+Date.now()},body:JSON.stringify({goal:message,latest_turn:message,history:[],context:{},stream:false}),signal:AbortSignal.timeout(90000)});
+ const p=await response.json();checks.push({message,httpStatus:response.status,ok:p.ok,engine:p.result?.engine,provider:p.provider_status??p.result?.provider_status??null,answer:p.result?.answer,matches:p.result?.matches?.map(m=>({service_slug:m.service_slug,authority:m.authority?.key})),error:p.error??null});
+}
+const report={capturedAt:new Date().toISOString(),source:'LIVE_PUBLIC_AI_ENDPOINT',externalModelGate:checks.every(c=>c.ok&&c.engine?.external_model_used===true)?'PASS':'NOT_PASSED',checks,scope:'Two public non-authenticated probes; no customer data or private upload. Provider failure is separate from product behavior.'};await mkdir('artifacts/live-provider-oct9',{recursive:true});await writeFile('artifacts/live-provider-oct9/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(checks.some(c=>c.httpStatus!==200||c.ok!==true))process.exitCode=1;
