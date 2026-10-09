@@ -533,8 +533,8 @@ export const recordedDetailTranslations = Object.freeze({
   "عقد الإيجار الموحد": "Unified tenancy contract",
   "هوية مقدم الطلب": "Applicant's identity document",
   "وكالة رسمية عند التقديم بواسطة ممثل": "Official power of attorney when applying through a representative",
-  "177.75 درهمًا عبر التطبيق أو الموقع، أو 220 درهمًا عبر مركز أمين الخدمات العقارية وفق الرسوم المنشورة.": "AED 177.75 through the app or website, or AED 220 through a real estate services trustee centre, according to the published fees.",
-  "25 دقيقة عبر مركز الخدمة، بخلاف الانتظار": "25 minutes through the service centre, excluding waiting time",
+  "177.75 درهمًا عبر التطبيق أو الموقع، أو 220 درهمًا عبر مركز أمين الخدمات العقارية وفق الرسوم المنشورة.": "AED 177.75 through the app/website or AED 220 through a real-estate trustee center, as published.",
+  "25 دقيقة عبر مركز الخدمة، بخلاف الانتظار": "25 minutes at a trustee center, excluding waiting.",
   "تختلف قناة التقديم حسب إدارة العقار وصفة المالك والمستأجر، ويتطلب اعتماد الطرف الآخر في بعض القنوات.": "The application channel varies by property management and the owner's and tenant's status. Some channels require the other party's approval.",
   "رقم وبيانات الرخصة": "Licence number and details",
   "وثيقة مقر سارية عند انطباقها": "Valid premises document where applicable",
@@ -812,5 +812,9 @@ export const recordedDetailTranslations = Object.freeze({
   "جواز السفر والصورة الشخصية، ومستندات الإصدار نفسها بحسب نوع التأشيرة.": "Passport, personal photograph and the original issuance documents for the visa type.",
   "التمديد حسب الفئة: الزيارة أو السياحة بحد إجمالي 120 يومًا؛ زيارة قريب أو صديق واستكشاف العمل أو الأعمال بحد 180 يومًا. تشمل البطاقة فئات أخرى واستثناءات؛ اختر فئتك الرسمية.": "Category-specific: visit/tourism up to 120 total days; relative/friend visits and job/business exploration up to 180 days. The card includes other categories and exclusions; select yours.",
   "تسرد الهيئة 100 درهم للطلب و500 للتمديد المعتاد. توجد رسوم مختلفة للفئات الخاصة وتمديد الصلاحية قبل الوصول؛ راجع فئتك والإجمالي الرسمي قبل الدفع.": "ICP lists AED 100 application and AED 500 standard extension. Special categories and pre-arrival validity have different fees; check your official category and total.",
-  "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.": "2 days according to the ICP card; working days are not specified."
+  "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.": "2 days according to the ICP card; working days are not specified.",
+  "نسخة العقد الموحد عبر التطبيق، وأصله عبر مركز أمين الخدمات.": "A unified contract copy for the app, or the original at a trustee center.",
+  "إبراز هوية مقدم الطلب في المركز.": "Present the applicant's Emirates ID at the center.",
+  "للممثل وكالة؛ يكفي رقم وكالة دبي، وترفق وكالة الإمارة الأخرى.": "Representatives need a power of attorney: the Dubai number suffices; attach one issued elsewhere.",
+  "التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام.": "App: individual tenant and landlord, with current owner data. Centers: property not managed by a company or an owner using Ejari. Check the card for system-user eligibility."
 });
