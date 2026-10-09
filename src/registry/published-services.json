@@ -6,8 +6,8 @@
     "services": 200,
     "verified": 200,
     "officialLinksVerified": 200,
-    "fullyVerifiedDetails": 126,
-    "partiallyVerifiedDetails": 74,
+    "fullyVerifiedDetails": 128,
+    "partiallyVerifiedDetails": 72,
     "pendingVerification": 0,
     "authorities": 20,
     "emirates": [
@@ -6663,7 +6663,7 @@
         "status": "PUBLISHED_OR_CONDITIONAL",
         "text": "5 أيام عمل وفق بطاقة الخدمة."
       },
-      "conditions": "المعادلة لشهادة منهاج أجنبي صادرة من مدرسة داخل الإمارات. الملفات PDF بحد أقصى 5 ميجابايت لكل ملف وتدمج مستندات المتطلب الواحد؛ توجد متطلبات بحسب المنهاج. لا تقبل الدراسة عن بعد أو المدارس المفتوحة. قد تحال الحالات الاستثنائية إلى اللجنة، ويغلق الطلب عند عدم توفير النواقص خلال 7 أيام بعد ثلاث محاولات تواصل. يلزم UAE Pass.",
+      "conditions": "المعادلة لشهادة منهاج أجنبي صادرة من مدرسة داخل الإمارات. الملفات PDF بحد أقصى 5 ميجابايت لكل ملف وتدمج مستندات المتطلب الواحد؛ توجد متطلبات بحسب المنهاج. لا تقبل الدراسة عن بعد أو المدارس المفتوحة. قد تحال الحالات الاستثنائية إلى اللجنة، ويغلق الطلب عند عدم توفير النواقص خلال 7 أيام، وتتواصل الوزارة ثلاث مرات قبل الإغلاق. يلزم UAE Pass.",
       "steps": [
         {
           "order": 1,
@@ -25276,8 +25276,11 @@
       ],
       "description": "تصديق العقود والتراخيص والقرارات والوثائق التجارية؛ أما الفواتير التجارية وشهادات المنشأ فلها خدمة eDAS 2.0 مستقلة.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "للتصديق الرقمي: مستند صادر من الإمارات ضمن الأنواع المؤهلة ومزود برمز أو رقم يمكن التحقق منه.",
+          "للتوصيل: أصل المستند بالعربية أو الإنجليزية أو بترجمة قانونية، مصدق من الجهات المختصة وغير مغلف حراريًا."
+        ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
@@ -25289,9 +25292,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "1–3 أيام عمل حسب التوصيل"
+        "text": "داخل الإمارات: الرقمي للمستندات المؤهلة خلال ساعتين ضمن الدوام، والتوصيل من 1 إلى 3 أيام عمل. خارج الإمارات: قد يستغرق التوصيل نحو 15 يوم عمل بحسب المزود."
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "تختلف آلية التصديق بحسب جهة إصدار المستند ونوعه؛ يلزم تقديم معلومات صحيحة واستكمال الطلب بطريقة صحيحة، وتستخدم القنوات الرسمية وتسجيل الدخول المحدد من الوزارة أو UAE Pass.",
       "steps": [
         {
           "order": 1,
@@ -25326,7 +25329,7 @@
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "1–3 أيام عمل حسب التوصيل"
+          "answer": "داخل الإمارات: الرقمي للمستندات المؤهلة خلال ساعتين ضمن الدوام، والتوصيل من 1 إلى 3 أيام عمل. خارج الإمارات: قد يستغرق التوصيل نحو 15 يوم عمل بحسب المزود."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -25347,22 +25350,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": true,
         "durationVerified": true,
         "eligibilityVerified": true,
-        "detailsVerified": false,
-        "verifiedDetailCount": 3,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-08",
         "sourceAuthority": "mofa",
         "sourceUrl": "https://www.mofa.gov.ae/services/attestation"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-08",
+      "lastReviewedAt": "2026-10-08",
       "internalRoute": "/services/تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ/",
       "sourceRegistry": "service-matrix"
     },
@@ -25408,8 +25411,11 @@
       ],
       "description": "تصديق الشهادات والوثائق الشخصية ورقيًا عبر التوصيل أو رقميًا للمستند المؤهل.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "للتصديق الرقمي: مستند صادر من الإمارات ضمن الأنواع المؤهلة ومزود برمز أو رقم يمكن التحقق منه.",
+          "للتوصيل: أصل المستند بالعربية أو الإنجليزية أو بترجمة قانونية، مصدق من الجهات المختصة وغير مغلف حراريًا."
+        ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
@@ -25421,9 +25427,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "1–3 أيام عمل؛ الرقمي خلال ساعتين ضمن الدوام"
+        "text": "داخل الإمارات: الرقمي للمستندات المؤهلة خلال ساعتين ضمن الدوام، والتوصيل من 1 إلى 3 أيام عمل. خارج الإمارات: قد يستغرق التوصيل نحو 15 يوم عمل بحسب المزود."
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "تختلف آلية التصديق بحسب جهة إصدار المستند ونوعه؛ يلزم تقديم معلومات صحيحة واستكمال الطلب بطريقة صحيحة، وتستخدم القنوات الرسمية وتسجيل الدخول المحدد من الوزارة أو UAE Pass.",
       "steps": [
         {
           "order": 1,
@@ -25458,7 +25464,7 @@
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "1–3 أيام عمل؛ الرقمي خلال ساعتين ضمن الدوام"
+          "answer": "داخل الإمارات: الرقمي للمستندات المؤهلة خلال ساعتين ضمن الدوام، والتوصيل من 1 إلى 3 أيام عمل. خارج الإمارات: قد يستغرق التوصيل نحو 15 يوم عمل بحسب المزود."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -25479,22 +25485,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": true,
         "durationVerified": true,
         "eligibilityVerified": true,
-        "detailsVerified": false,
-        "verifiedDetailCount": 3,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-08",
         "sourceAuthority": "mofa",
         "sourceUrl": "https://www.mofa.gov.ae/Account/Login?returnUrl=%2Far-ae%2FServices%2FForms%2Fattestation"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-08",
+      "lastReviewedAt": "2026-10-08",
       "internalRoute": "/services/تصديق-مستند-شخصي-داخل-الإمارات/",
       "sourceRegistry": "service-matrix"
     },
