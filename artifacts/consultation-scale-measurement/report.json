@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-09T12:26:19.359Z",
+  "capturedAt": "2026-10-09T12:27:51.462Z",
   "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
   "styles": [
     {
@@ -74,10 +74,16 @@
       "changed": 30.84881521860051
     },
     {
-      "name": "button-bottom2",
-      "css": "html.hb-phase8 body[data-home-geometry] .premium-consult-cta span{height:31px!important;width:154px!important;min-height:31px!important;right:22px!important;bottom:9px!important;padding:0!important;display:flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important}html.hb-phase8 body[data-home-geometry] .premium-consult-cta span{bottom:2px!important}",
-      "mad": 42.171790212729135,
-      "changed": 36.18496681128787
+      "name": "geometry",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-how{grid-template-columns:minmax(0,1fr) 303px!important;column-gap:21px!important}",
+      "mad": 42.775355063596244,
+      "changed": 36.915489301739164
+    },
+    {
+      "name": "geometry-button",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-how{grid-template-columns:minmax(0,1fr) 303px!important;column-gap:21px!important}html.hb-phase8 body[data-home-geometry] .premium-consult-cta span{height:31px!important;width:154px!important;min-height:31px!important;right:22px!important;bottom:9px!important;padding:0!important;display:flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important}",
+      "mad": 35.09130913091309,
+      "changed": 29.721511476990397
     }
   ]
 }
