@@ -799,5 +799,7 @@ export const recordedDetailTranslations = Object.freeze({
   "يقدم طلب الإعفاء مع طلب الهوية. الأهلية وفق حالات الإعفاء المعتمدة في بطاقة الهيئة؛ تتطلب حالات الإبعاد أو حجز الجواز القضائي إثباتًا من الجهة المختصة.": "Submit the exemption with the ID application. Eligibility follows the official exemption categories; deportation or court-held passport cases require evidence from the competent authority.",
   "يومان وفق بطاقة الهيئة؛ لم تحدد البطاقة أنهما يوما عمل.": "2 days according to the ICP card; it does not specify working days.",
   "شهادة بنكية تتضمن رقم حساب المتعامل ورقم IBAN.": "Bank certificate showing the customer's account number and IBAN.",
-  "الاسترداد يخص رسوم الإصدار فقط عند عدم اكتمال الخدمة؛ رسوم تقديم الطلب والخدمات الذكية غير قابلة للاسترداد. يحدد إيصال الخدمة المبالغ القابلة للاسترداد، والتحويل البنكي بعد قبول الطلب.": "Only issuance fees for an uncompleted service are refundable. Application and smart-service fees are excluded. The receipt identifies refundable amounts; bank transfer follows approval."
+  "الاسترداد يخص رسوم الإصدار فقط عند عدم اكتمال الخدمة؛ رسوم تقديم الطلب والخدمات الذكية غير قابلة للاسترداد. يحدد إيصال الخدمة المبالغ القابلة للاسترداد، والتحويل البنكي بعد قبول الطلب.": "Only issuance fees for an uncompleted service are refundable. Application and smart-service fees are excluded. The receipt identifies refundable amounts; bank transfer follows approval.",
+  "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.": "5 days according to the ICP card; working days are not specified.",
+  "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنهما يوما عمل.": "2 days according to the ICP card; it does not specify working days."
 });
