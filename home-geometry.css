@@ -355,3 +355,8 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @media(min-width:821px){
  html[lang="ar"].hb-phase8 body[data-home-geometry] .desktop-nav>a{font-family:'HB Naskh',serif!important;font-size:13px!important}
 }
+
+/* Restored reference photograph; live copy and consultation action remain accessible. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .premium-consult-cta{background:url('/assets/consultation-reference-restored.webp') 50% 33%/cover no-repeat!important}
+}
