@@ -57,7 +57,7 @@ async function worker() {
       let contentMatch = false;
       let lastError = null;
 
-      for (let attempt = 1; attempt <= 6; attempt += 1) {
+      for (let attempt = 1; attempt <= 24; attempt += 1) {
         try {
           const separator = route.includes('?') ? '&' : '?';
           const response = await fetch(
@@ -78,7 +78,7 @@ async function worker() {
           lastError = error;
         }
 
-        if (attempt < 6) await new Promise((done) => setTimeout(done, 5000));
+        if (attempt < 24) await new Promise((done) => setTimeout(done, 15000));
       }
 
       // GitHub Pages can update edge objects shortly after the homepage flips to
@@ -96,5 +96,5 @@ async function worker() {
   }
 }
 await Promise.all(Array.from({ length: 12 }, worker));
-console.log(JSON.stringify({ production: 'BYTE_VERIFIED', baseUrl, routes: routes.length, passed: routes.length - failures.length, failed: failures.length, failures: failures.slice(0, 20) }));
+console.log(JSON.stringify({ production: failures.length ? 'BYTE_MISMATCH' : 'BYTE_VERIFIED', baseUrl, routes: routes.length, passed: routes.length - failures.length, failed: failures.length, failures: failures.slice(0, 20) }));
 if (failures.length) process.exitCode = 1;
