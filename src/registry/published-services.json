@@ -12225,16 +12225,16 @@
       "documents": {
         "status": "PUBLISHED",
         "items": [
-          "نموذج طلب التقييم",
-          "خطاب المالك وهوية أو جواز ساري",
-          "خريطة بلدية أو تخطيط حديثة",
-          "صور حديثة للعقار",
-          "المستندات الإضافية حسب نوع العقار"
+          "نموذج طلب التقييم.",
+          "خطاب المالك وهوية إماراتية أو جواز ساري.",
+          "خريطة بلدية سارية لسنة أو خريطة تخطيط.",
+          "صور حديثة للعقار.",
+          "مستندات إضافية بحسب نوع العقار، ومنها المساحات والعقود والبيانات المالية عند انطباقها."
         ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "تبدأ من 2,000 درهم وتختلف حسب نوع العقار حتى 15,000 درهم، إضافة إلى رسوم المعرفة والابتكار ورسوم الشريك عند انطباقها."
+        "text": "تتراوح الرسوم الأساسية المنشورة من 2,000 إلى 15,000 درهم بحسب نوع التقييم، مع رسوم المعرفة والابتكار والشريك عند انطباقها؛ ليست سعرًا موحدًا."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -12242,9 +12242,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "فوري للوحدات السكنية والفلل الملحقة؛ 7 أيام عمل للأنواع الأخرى"
+        "text": "فوري للوحدات السكنية والفلل الملحقة؛ 7 أيام عمل للأنواع الأخرى."
       },
-      "conditions": "تحدد المستندات والرسوم حسب نوع العقار والغرض من التقييم.",
+      "conditions": "اختر نوع العقار والغرض؛ تختلف المستندات الإضافية والرسوم بحسب الفئة.",
       "steps": [
         {
           "order": 1,
@@ -12306,13 +12306,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-08-11",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "dld-rera",
         "sourceUrl": "https://dubailand.gov.ae/en/eservices/property-valuation"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-08-11",
-      "lastReviewedAt": "2026-08-11",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/property-valuation-dubai/",
       "sourceRegistry": "government-coverage-expansion"
     },
@@ -13494,14 +13494,14 @@
       "documents": {
         "status": "PUBLISHED",
         "items": [
-          "صورة شخصية",
-          "هوية إماراتية",
-          "متطلبات الخبرة أو الاختبار حسب نوع البطاقة"
+          "صورة شخصية.",
+          "نسخة الهوية الإماراتية.",
+          "لبطاقة مُقيّم العقارات: شهادة خبرة سنتين للمواطن وخمس سنوات للوافد."
         ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "500 درهم لمعظم البطاقات، و5,000 درهم لبطاقة المقيم العقاري، إضافة إلى رسوم الاختبار والمعرفة والابتكار عند انطباقها."
+        "text": "500 درهم لمعظم البطاقات و5,000 لبطاقة مُقيّم العقارات. رسوم الاختبار والمعرفة والابتكار وERES تضاف بحسب الفئة؛ تحقق من الإجمالي الرسمي."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -13509,9 +13509,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "5 دقائق بعد اكتمال الاعتماد"
+        "text": "5 دقائق وفق بطاقة الجهة."
       },
-      "conditions": "تتطلب شهادة حسن سيرة وسلوك واجتياز الاختبار السنوي للفئات الخاضعة له؛ ترتبط صلاحية البطاقة بصلاحية الرخصة.",
+      "conditions": "حسن سيرة من شرطة دبي واختبار الوساطة السنوي مع الاستثناءات الرسمية. صلاحية البطاقة مرتبطة بالرخصة؛ توجد شروط إضافية للمُقيّم والمتدرب في البطاقة.",
       "steps": [
         {
           "order": 1,
@@ -13573,13 +13573,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-08-11",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "dld-rera",
         "sourceUrl": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-08-11",
-      "lastReviewedAt": "2026-08-11",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/real-estate-professional-practice-card-dubai/",
       "sourceRegistry": "government-coverage-expansion"
     },
@@ -13770,9 +13770,9 @@
       "documents": {
         "status": "PUBLISHED",
         "items": [
-          "عقد الإيجار الموحد",
-          "هوية مقدم الطلب",
-          "وكالة رسمية عند التقديم بواسطة ممثل"
+          "نسخة العقد الموحد عبر التطبيق، وأصله عبر مركز أمين الخدمات.",
+          "إبراز هوية مقدم الطلب في المركز.",
+          "للممثل وكالة؛ يكفي رقم وكالة دبي، وترفق وكالة الإمارة الأخرى."
         ]
       },
       "governmentFees": {
@@ -13787,7 +13787,7 @@
         "status": "PUBLISHED_OR_CONDITIONAL",
         "text": "25 دقيقة عبر مركز الخدمة، بخلاف الانتظار"
       },
-      "conditions": "تختلف قناة التقديم حسب إدارة العقار وصفة المالك والمستأجر، ويتطلب اعتماد الطرف الآخر في بعض القنوات.",
+      "conditions": "التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام.",
       "steps": [
         {
           "order": 1,
@@ -13849,13 +13849,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-08-11",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "dld-rera",
         "sourceUrl": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-08-11",
-      "lastReviewedAt": "2026-08-11",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/register-renew-ejari-contract-dubai/",
       "sourceRegistry": "government-coverage-expansion"
     },
@@ -17380,15 +17380,15 @@
       "documents": {
         "status": "PUBLISHED",
         "items": [
-          "خطاب من المحيل شخصًا أو جهة",
-          "هوية المالك أو وكالة رسمية",
-          "جوازات سارية للمالكين غير المقيمين",
-          "رخصة تجارية للشركات"
+          "خطاب من المحيل شخصًا أو جهة.",
+          "هوية المالك أو وكالة رسمية عند غيابه.",
+          "جوازات سارية للمالكين غير المقيمين.",
+          "رخصة تجارية للشركات."
         ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "250 درهمًا لإصدار كل سند ملكية، ورسوم الخرائط بحسب نوع العقار، إضافة إلى 10 دراهم معرفة و10 دراهم ابتكار لكل رسم."
+        "text": "250 درهمًا لكل سند؛ الخرائط 100 أو225 للأرض، و250 للشقة أو الفيلا بحسب الفئة، مع 10 دراهم معرفة و10 ابتكار لكل رسم."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -17396,9 +17396,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "25 دقيقة بعد اكتمال المستندات"
+        "text": "25 دقيقة وفق بطاقة الجهة."
       },
-      "conditions": "تقدم عبر المقر الرئيسي لدائرة الأراضي وتخضع للتدقيق والاعتماد.",
+      "conditions": "انتقال سند الملكية وفق الخطابات الرسمية الحكومية، عبر المقر الرئيسي للدائرة والتدقيق والاعتماد.",
       "steps": [
         {
           "order": 1,
@@ -17460,13 +17460,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-08-11",
+        "dataLastReviewedAt": "2026-10-09",
         "sourceAuthority": "dld-rera",
         "sourceUrl": "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-08-11",
-      "lastReviewedAt": "2026-08-11",
+      "lastUpdated": "2026-10-09",
+      "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/title-transfer-dubai/",
       "sourceRegistry": "government-coverage-expansion"
     },

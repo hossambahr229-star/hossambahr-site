@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-09T17:40:05.341Z",
+  "generatedAt": "2026-10-09T17:49:14.268Z",
   "services": 200,
   "uniqueOfficialUrls": 246,
   "counts": {
-    "REACHABLE": 158,
+    "REACHABLE": 160,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 79,
+    "NETWORK_UNVERIFIED": 77,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -853,8 +853,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
+      "result": "REACHABLE"
     },
     {
       "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3485",
@@ -1161,8 +1162,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
