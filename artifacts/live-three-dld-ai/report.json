@@ -1,0 +1,210 @@
+{
+  "capturedAt": "2026-10-09T17:50:46.205Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "externalModelGate": "NOT_PASSED_UNLESS_EXTERNAL_MODEL_USED_TRUE",
+  "checks": [
+    {
+      "expectedSlug": "property-valuation-dubai",
+      "locale": "ar",
+      "prompt": "أريد تقييم عقار في دبي لدى دائرة الأراضي والأملاك",
+      "status": 200,
+      "ok": true,
+      "slug": null,
+      "passed": false,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "expectedSlug": "property-valuation-dubai",
+      "locale": "en",
+      "prompt": "I need a property valuation from Dubai Land Department",
+      "status": 200,
+      "ok": true,
+      "slug": null,
+      "passed": false,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "expectedSlug": "real-estate-professional-practice-card-dubai",
+      "locale": "ar",
+      "prompt": "أريد إصدار بطاقة مزاولة نشاط عقاري في دبي",
+      "status": 200,
+      "ok": true,
+      "slug": "real-estate-professional-practice-card-dubai",
+      "passed": true,
+      "answer": {
+        "text": "المسار المناسب لطلبك هو «إصدار بطاقة مزاولة مهنة لنشاط عقاري» لدى دائرة الأراضي والأملاك / RERA في دبي. حسن سيرة من شرطة دبي واختبار الوساطة السنوي مع الاستثناءات الرسمية. صلاحية البطاقة مرتبطة بالرخصة؛ توجد شروط إضافية للمُقيّم والمتدرب في البطاقة.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:real-estate-professional-practice-card-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:real-estate-professional-practice-card-dubai",
+          "source_title": "إصدار بطاقة مزاولة مهنة لنشاط عقاري",
+          "source_url": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/",
+          "last_verified_at": "2026-10-09T17:37:49+00:00",
+          "supporting_rule": {
+            "value": "حسن سيرة من شرطة دبي واختبار الوساطة السنوي مع الاستثناءات الرسمية. صلاحية البطاقة مرتبطة بالرخصة؛ توجد شروط إضافية للمُقيّم والمتدرب في البطاقة.",
+            "source_refs": [
+              "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "expectedSlug": "real-estate-professional-practice-card-dubai",
+      "locale": "en",
+      "prompt": "I need to issue a Dubai real estate activity practice card",
+      "status": 200,
+      "ok": true,
+      "slug": "real-estate-professional-practice-card-dubai",
+      "passed": true,
+      "answer": {
+        "text": "The matching service is Issuance of a Real Estate Professional Practice Card through Dubai Land Department / RERA.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:real-estate-professional-practice-card-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:real-estate-professional-practice-card-dubai",
+          "source_title": "إصدار بطاقة مزاولة مهنة لنشاط عقاري",
+          "source_url": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/",
+          "last_verified_at": "2026-10-09T17:37:49+00:00",
+          "supporting_rule": {
+            "value": "حسن سيرة من شرطة دبي واختبار الوساطة السنوي مع الاستثناءات الرسمية. صلاحية البطاقة مرتبطة بالرخصة؛ توجد شروط إضافية للمُقيّم والمتدرب في البطاقة.",
+            "source_refs": [
+              "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "expectedSlug": "title-transfer-dubai",
+      "locale": "ar",
+      "prompt": "أريد انتقال سند الملكية في دبي بموجب خطاب حكومي رسمي وليس بيع عقار",
+      "status": 200,
+      "ok": true,
+      "slug": null,
+      "passed": false,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "expectedSlug": "title-transfer-dubai",
+      "locale": "en",
+      "prompt": "I need transfer of a Dubai title deed according to official government letters, not a property sale",
+      "status": 200,
+      "ok": true,
+      "slug": "title-transfer-dubai",
+      "passed": true,
+      "answer": {
+        "text": "A possible pathway is Title Transfer Application through Dubai Land Department / RERA.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:title-transfer-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:title-transfer-dubai",
+          "source_title": "طلب انتقال ملكية عقار في دبي",
+          "source_url": "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/",
+          "last_verified_at": "2026-10-09T17:37:49+00:00",
+          "supporting_rule": {
+            "value": "انتقال سند الملكية وفق الخطابات الرسمية الحكومية، عبر المقر الرئيسي للدائرة والتدقيق والاعتماد.",
+            "source_refs": [
+              "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    }
+  ],
+  "scope": "Actual public AI service identity after exact official source review. No customer login, private document, government submission or WhatsApp message."
+}
