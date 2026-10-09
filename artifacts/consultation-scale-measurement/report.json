@@ -1,0 +1,83 @@
+{
+  "capturedAt": "2026-10-09T12:26:19.359Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": [
+    {
+      "tag": "A",
+      "bounds": {
+        "x": 1109.046875,
+        "y": 723,
+        "width": 300,
+        "height": 87,
+        "top": 723,
+        "right": 1409.046875,
+        "bottom": 810,
+        "left": 1109.046875
+      },
+      "css": "",
+      "height": "87px",
+      "bottom": "0px",
+      "top": "0px",
+      "position": "relative",
+      "transform": "none"
+    },
+    {
+      "tag": "B",
+      "bounds": {
+        "x": 1256.609375,
+        "y": 735,
+        "width": 134.4375,
+        "height": 15.59375,
+        "top": 735,
+        "right": 1391.046875,
+        "bottom": 750.59375,
+        "left": 1256.609375
+      },
+      "css": "",
+      "height": "15.5938px",
+      "bottom": "59.4062px",
+      "top": "12px",
+      "position": "absolute",
+      "transform": "none"
+    },
+    {
+      "tag": "SPAN",
+      "bounds": {
+        "x": 1246.71875,
+        "y": 763.109375,
+        "width": 144.328125,
+        "height": 28.296875,
+        "top": 763.109375,
+        "right": 1391.046875,
+        "bottom": 791.40625,
+        "left": 1246.71875
+      },
+      "css": "",
+      "height": "28.2969px",
+      "bottom": "9px",
+      "top": "30.1094px",
+      "position": "absolute",
+      "transform": "none"
+    }
+  ],
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 43.75996588422887,
+      "changed": 38.04279304334928
+    },
+    {
+      "name": "button",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-consult-cta span{height:31px!important;width:154px!important;min-height:31px!important;right:22px!important;bottom:9px!important;padding:0!important;display:flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important}",
+      "mad": 36.10928171468832,
+      "changed": 30.84881521860051
+    },
+    {
+      "name": "button-bottom2",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-consult-cta span{height:31px!important;width:154px!important;min-height:31px!important;right:22px!important;bottom:9px!important;padding:0!important;display:flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important}html.hb-phase8 body[data-home-geometry] .premium-consult-cta span{bottom:2px!important}",
+      "mad": 42.171790212729135,
+      "changed": 36.18496681128787
+    }
+  ]
+}
