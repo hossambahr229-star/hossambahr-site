@@ -1,0 +1,33 @@
+name: Live Customs Vehicle Facts
+on:
+  push:
+    branches: [agent/live-customs-vehicle-facts]
+    paths: [scripts/live-customs-vehicle-facts.mjs, .github/workflows/live-customs-vehicle-facts.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-customs-vehicle-facts.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-customs-vehicle-facts
+          path: artifacts/live-customs-vehicle-facts
+      - name: Preserve live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-customs-vehicle-facts
+          git reset --mixed origin/agent/live-customs-vehicle-facts
+          git add artifacts/live-customs-vehicle-facts
+          if ! git diff --cached --quiet; then
+            git commit -m "Record newly reviewed customs vehicle Production facts [skip ci]"
+            git push origin HEAD:agent/live-customs-vehicle-facts
+          fi
