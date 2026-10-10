@@ -13,3 +13,7 @@ test('localized execution survives customer handoff data while existing services
 test('published facts distinguish the inquiry from unavailable licence procedures and document uploads',()=>{
  assert.match(s.fees,/الاستعلام مجاني/);assert.match(s.duration,/ليست مدة إصدار/);assert.match(s.requirements[0],/لا تتطلب.*مستندات/);assert.match(s.conditions,/التجديد والتعديل قيد التطوير/);assert.ok(a.officialDomains.includes('ajded.gov.ae'));
 });
+
+test('an officially document-free inquiry never creates a customer upload requirement',()=>{
+ const context=customerContext({...record,verification:{requirementsVerified:true},documents:{items:[s.requirements[0]],noDocumentsRequired:true}});assert.deepEqual(context.requirements,[]);assert.equal(context.requirements_verified,true);assert.equal(context.no_documents_required,true);
+});
