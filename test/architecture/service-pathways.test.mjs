@@ -9,7 +9,7 @@ test('every canonical service has adjacent official and WhatsApp execution paths
   assert.equal(url.hostname,'wa.me');assert.equal(url.pathname,'/971503780460');
   const message=url.searchParams.get('text');assert.ok(message.includes(service.name[locale]));assert.ok(message.includes(service.id));
   assert.ok(message.includes('https://hossambahr.com'+(locale==='en'?'/en':'')+service.internalRoute));
-  const markup=pathwayMarkup(service,locale);assert.ok(markup.includes('data-hb-direct-whatsapp'));assert.ok(markup.includes(service.officialCtaUrl.replaceAll('&','&amp;')));
+  const markup=pathwayMarkup(service,locale);assert.ok(markup.includes('data-hb-direct-whatsapp'));assert.ok(markup.includes((locale==='en'?(service.officialCtaUrlEn||service.officialCtaUrl):service.officialCtaUrl).replaceAll('&','&amp;')));
  }
 });
 test('handoff excludes arbitrary conversation and private document fields',()=>{
