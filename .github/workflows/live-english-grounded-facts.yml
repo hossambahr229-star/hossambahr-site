@@ -1,0 +1,32 @@
+name: Live English Grounded Facts Acceptance
+on:
+  push:
+    branches: [agent/live-english-grounded-facts]
+    paths: [scripts/live-english-grounded-facts.mjs, .github/workflows/live-english-grounded-facts.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Verify actual deployed English grounded answers
+        run: node scripts/live-english-grounded-facts.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-english-grounded-facts
+          path: artifacts/live-english-grounded-facts
+      - name: Preserve actual targeted evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Acceptance"
+          git config user.email "production-acceptance@users.noreply.github.com"
+          git add artifacts/live-english-grounded-facts
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual English grounded fact acceptance [skip ci]"
+            git push origin HEAD:agent/live-english-grounded-facts
+          fi
