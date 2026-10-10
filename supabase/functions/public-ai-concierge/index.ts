@@ -118,7 +118,7 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
 function isContextualFollowUp(text:string){
   const n=normalize(text); if(!n)return false;
   if(detectJurisdiction(text)||detectRelationship(text)) return /^(ولو|و|طيب|طب|لا|but|what about)/.test(n)||n.split(" ").length<=5;
-  return hasPhrase(n,["الاوراق","الأوراق","المستندات","الشروط","الرسوم","الخطوات","المدة","الموافقة","الجهة","الرابط","ابدأ","ابدا","عايز اعملها","ليه","ازاي","إزاي","documents","requirements","conditions","fees","steps","duration","approval","authority","link","start","why","how"]) || n.split(" ").length<=3 && has(n,["اوراق","مستندات","شروط","رسوم","خطوات","مده","مدة","موافقه","موافقة","جهه","جهة","رابط","ابدأ","ابدا","ليه","ازاي","إزاي","documents","fees","steps","link","why","how"]);
+  return hasPhrase(n,["الاوراق","الأوراق","المستندات","الشروط","الرسوم","الخطوات","المدة","الموافقة","الجهة","الرابط","ابدأ","ابدا","عايز اعملها","ليه","ازاي","إزاي","documents","requirements","conditions","fees","steps","duration","processing time","turnaround time","approval","authority","link","start","why","how"]) || n.split(" ").length<=3 && has(n,["اوراق","مستندات","شروط","رسوم","خطوات","مده","مدة","موافقه","موافقة","جهه","جهة","رابط","ابدأ","ابدا","ليه","ازاي","إزاي","documents","fees","steps","link","why","how"]);
 }
 
 function answerFocus(text: string) {
