@@ -393,3 +393,6 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 @media(min-width:821px){
  html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide{background-position:left center!important}
 }
+
+/* Match the approved desktop step rhythm while preserving total section height. */
+@media(min-width:821px){html.hb-phase8 body[data-home-geometry] .premium-how{row-gap:0!important;padding-bottom:13px!important}}
