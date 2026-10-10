@@ -1,0 +1,33 @@
+name: Live Ajman Duration Followup
+on:
+  push:
+    branches: [agent/live-ajman-duration-followup]
+    paths: [scripts/live-ajman-duration-followup.mjs, .github/workflows/live-ajman-duration-followup.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-ajman-duration-followup.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-ajman-duration-followup
+          path: artifacts/live-ajman-duration-followup
+      - name: Preserve live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-ajman-duration-followup
+          git reset --mixed origin/agent/live-ajman-duration-followup
+          git add artifacts/live-ajman-duration-followup
+          if ! git diff --cached --quiet; then
+            git commit -m "Record remaining Ajman duration Production case [skip ci]"
+            git push origin HEAD:agent/live-ajman-duration-followup
+          fi
