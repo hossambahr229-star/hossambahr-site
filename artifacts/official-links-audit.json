@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-10T05:55:31.599Z",
+  "generatedAt": "2026-10-10T10:39:54.429Z",
   "services": 200,
-  "uniqueOfficialUrls": 246,
+  "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 159,
+    "REACHABLE": 161,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 78,
+    "NETWORK_UNVERIFIED": 77,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -107,17 +107,29 @@
       "reason": "official server rejected automated audit traffic"
     },
     {
-      "url": "https://eservices.ajmanded.ae/en/activitiesapprovalsinquiry",
+      "url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
       "services": [
         "ajman-business-activity-inquiry"
       ],
       "kinds": [
-        "official-information",
+        "official-information"
+      ],
+      "status": 200,
+      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+      "result": "REACHABLE"
+    },
+    {
+      "url": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
+      "services": [
+        "ajman-business-activity-inquiry"
+      ],
+      "kinds": [
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",

@@ -1,12 +1,12 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 200,
-  "fullyTranslatedRecordedSections": 143,
+  "fullyTranslatedRecordedSections": 144,
   "fieldCounts": {
     "documents": {
-      "PLATFORM_TRANSLATION": 146,
-      "MISSING_INFORMATION": 50,
-      "RECORDED_ENGLISH": 4
+      "PLATFORM_TRANSLATION": 147,
+      "RECORDED_ENGLISH": 4,
+      "MISSING_INFORMATION": 49
     },
     "eligibility": {
       "PLATFORM_TRANSLATION": 153,
@@ -163,7 +163,7 @@
       "slug": "ajman-business-activity-inquiry",
       "route": "/en/services/ajman-business-activity-inquiry/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
+        "documents": "PLATFORM_TRANSLATION",
         "eligibility": "PLATFORM_TRANSLATION",
         "fees": "PLATFORM_TRANSLATION",
         "duration": "PLATFORM_TRANSLATION"
