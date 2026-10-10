@@ -1,0 +1,45 @@
+{
+  "capturedAt": "2026-10-10T05:46:05.878Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "scope": "Native cover crop positions only; no stretched images or copied claims"
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 37.59123687187868,
+      "changed": 35.43592791104305
+    },
+    {
+      "name": "top",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide{background-position:center top!important}",
+      "mad": 37.595373872895784,
+      "changed": 35.4507845445299
+    },
+    {
+      "name": "bottom",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide{background-position:center bottom!important}",
+      "mad": 37.58488089932155,
+      "changed": 35.401643372227234
+    },
+    {
+      "name": "left",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide{background-position:left center!important}",
+      "mad": 35.52324872671032,
+      "changed": 33.07943727643624
+    },
+    {
+      "name": "right",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide{background-position:right center!important}",
+      "mad": 38.991421246509645,
+      "changed": 37.13358399140601
+    },
+    {
+      "name": "companies-top",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide:nth-of-type(1){background-position:center top!important}",
+      "mad": 37.59535292123318,
+      "changed": 35.45021313554964
+    }
+  ]
+}
