@@ -1,0 +1,33 @@
+name: Live Customs Vehicle Failed Followup
+on:
+  push:
+    branches: [agent/live-customs-vehicle-failed-followup]
+    paths: [scripts/live-customs-vehicle-failed-followup.mjs, .github/workflows/live-customs-vehicle-failed-followup.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-customs-vehicle-failed-followup.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-customs-vehicle-failed-followup
+          path: artifacts/live-customs-vehicle-failed-followup
+      - name: Preserve live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-customs-vehicle-failed-followup
+          git reset --mixed origin/agent/live-customs-vehicle-failed-followup
+          git add artifacts/live-customs-vehicle-failed-followup
+          if ! git diff --cached --quiet; then
+            git commit -m "Record only failed customs vehicle Production cases [skip ci]"
+            git push origin HEAD:agent/live-customs-vehicle-failed-followup
+          fi
