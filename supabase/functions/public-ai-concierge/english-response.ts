@@ -1,3 +1,16 @@
+import {recordedFactTranslations} from './recorded-fact-translations.ts';
+function recordedTranslation(text: string): string | null {
+ return Object.prototype.hasOwnProperty.call(recordedFactTranslations,text)?recordedFactTranslations[text]:null;
+}
+function recordedEnglish(value: unknown): string | null {
+ const text=String(value??'').trim();
+ const exact=recordedTranslation(text)||recordedTranslation(text.replace(/[.]+$/,''));
+ if(exact)return exact;
+ const lines=text.split('\n').filter(Boolean);
+ if(lines.length<2)return null;
+ const translated=lines.map(line=>recordedTranslation(line.trim())||recordedTranslation(line.trim().replace(/[.]+$/,'')));
+ return translated.every(Boolean)?translated.join('\n'):null;
+}
 export function englishQuestion(value: string) {
  const text=String(value||'');
  if (/هل الموظف من خارج/.test(text)) return 'Is the employee arriving from outside the UAE, transferring within the UAE, or on a family residence?';
@@ -12,6 +25,8 @@ export function englishResult(result: any) {
  const answer=result?.answer||{};
  let text='';
  const missing=answer.fact_status==='MISSING_INFORMATION';
+ const verified=answer.fact_status==='VERIFIED_FACT'&&answer.grounded===true;
+ const recorded=verified?recordedEnglish(answer.text):null;
  if(answer.fact_status==='NEEDS_CLARIFICATION' && /إقامة عامل\/عاملة مساعدة/.test(result.understood_intent||'')) text='For the domestic worker’s residence, which emirate issued it? This is a residence transaction, separate from employment contracts and work permits.';
  else if(answer.evidence?.review_pending && missing) text='The official source is available, but its changed details are awaiting review. I cannot confirm earlier fees, times, documents or conditions until that review is complete.';
  else if(answer.focus==='fees' && missing) text='I cannot confirm a government fee for this case from the current verified record. I will not estimate a figure. Check the official source before applying or paying.';
@@ -28,6 +43,9 @@ export function englishResult(result: any) {
   const identity=match.service_name_en;
   if(!identity) return result;
   text=(result.confidence==='high'?'The matching service is ':'A possible pathway is ')+identity+(match.authority?.name_en?' through '+match.authority.name_en:'')+'.';
- }else text='Verified source record, in its original language:\n'+String(answer.text||'');
+  const conditions=verified?recordedEnglish(answer.evidence?.supporting_rule?.value):null;
+  if(conditions)text+=' '+conditions;
+ }else if(recorded) text=recorded;
+ else text='Verified source record, in its original language:\n'+String(answer.text||'');
  return {...result,answer:{...answer,text},follow_up_questions:(result.follow_up_questions||[]).map(englishQuestion)};
 }
