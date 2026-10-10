@@ -39,6 +39,26 @@
     "url": "https://www.ajmanded.ae/assets/download/8c2679bc/service-catalog.aspx",
     "reason": "Old downloadable catalog was not used instead of the live matching service card."
   },
-  "finalAcceptance": "PENDING_LIVE_PUBLISHED_PAGES_AND_AI",
-  "noDocumentsRequired": true
+  "finalAcceptance": "SCOPED_PUBLIC_INQUIRY_PAGES_PATHWAYS_AND_GROUNDED_AI_PASS",
+  "noDocumentsRequired": true,
+  "liveEvidence": [
+    {
+      "branch": "agent/live-ajman-migrated-inquiry",
+      "report": "artifacts/live-ajman-migrated-inquiry/report.json",
+      "accepted": "4 public pages, localized read-only official clicks, WhatsApp context and document-free handoff"
+    },
+    {
+      "branch": "agent/live-ajman-ai-failed-cases",
+      "report": "artifacts/live-ajman-ai-failed-cases/report.json",
+      "accepted": "7 previously failed AI cases"
+    },
+    {
+      "branch": "agent/live-ajman-duration-followup",
+      "report": "artifacts/live-ajman-duration-followup/report.json",
+      "accepted": "remaining English duration AI case"
+    }
+  ],
+  "externalModelAcceptance": "NOT_PASSED_QUOTA_BILLING_429",
+  "external_model_used": false,
+  "overallProjectAcceptance": "NOT_DECLARED"
 }
