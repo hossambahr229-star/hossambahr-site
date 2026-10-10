@@ -1,0 +1,22 @@
+{
+  "project": "ngcrkuykfqmiqhsnpcrc",
+  "function": "public-ai-concierge",
+  "version": 116,
+  "sourceCommit": "de821b30bba425a000fa6e61056aea9dd96d522f",
+  "deployment": "AUTHORIZED_SUPABASE_CONNECTOR",
+  "verifyJwt": false,
+  "scope": "Only the explicit DLD property-intent ranking change; all seven supporting files matched the previous live version exactly.",
+  "actualAcceptance": {
+    "capturedAt": "2026-10-10T05:28:07.737Z",
+    "source": "LIVE_PRODUCTION",
+    "passed": 3,
+    "total": 3,
+    "report": "https://github.com/hossambahr229-star/hossambahr-site/blob/agent/live-dld-failed-intents-followup/artifacts/live-dld-failed-intents-followup/report.json"
+  },
+  "externalModelGate": {
+    "passed": false,
+    "external_model_used": false,
+    "providerFailure": "QUOTA_BILLING / 429 / credit_balance_exhausted"
+  },
+  "pipelineBoundary": "A successful database workflow does not prove Edge deployment when encrypted CLI credentials are unavailable. Public AI is now included in the credentialed path; connector deployment remains required while that path is deferred."
+}
