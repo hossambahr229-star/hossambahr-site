@@ -1,0 +1,33 @@
+name: Live Ajman Failed AI Cases
+on:
+  push:
+    branches: [agent/live-ajman-ai-failed-cases]
+    paths: [scripts/live-ajman-ai-failed-cases.mjs, .github/workflows/live-ajman-ai-failed-cases.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-ajman-ai-failed-cases.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-ajman-ai-failed-cases
+          path: artifacts/live-ajman-ai-failed-cases
+      - name: Preserve live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-ajman-ai-failed-cases
+          git reset --mixed origin/agent/live-ajman-ai-failed-cases
+          git add artifacts/live-ajman-ai-failed-cases
+          if ! git diff --cached --quiet; then
+            git commit -m "Record only failed Ajman AI Production cases [skip ci]"
+            git push origin HEAD:agent/live-ajman-ai-failed-cases
+          fi
