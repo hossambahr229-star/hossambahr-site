@@ -1,0 +1,194 @@
+{
+  "capturedAt": "2026-10-10T05:52:04.398Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "abu-dhabi-business-establishment-guide",
+      "prompt": "Set Up Your Business in Abu Dhabi",
+      "expected": "The link does not submit an application.",
+      "status": 200,
+      "answer": {
+        "text": "The matching service is Set Up Your Business in Abu Dhabi through Abu Dhabi Department of Economic Development. This guides business establishment and initial approval; agreements, premises and approvals depend on activity and legal form. The link does not submit an application.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:abu-dhabi-business-establishment-guide",
+          "policy_version": 2,
+          "workflow_key": "service:abu-dhabi-business-establishment-guide",
+          "source_title": "الموافقة المبدئية لتأسيس عمل في أبوظبي",
+          "source_url": "https://added.gov.ae/en/set-up/establish-your-business",
+          "last_verified_at": "2026-10-10T05:32:40+00:00",
+          "supporting_rule": {
+            "value": "هذا دليل لرحلة التأسيس والموافقة المبدئية؛ العقود والموقع والموافقات تعتمد على النشاط والشكل القانوني. الرابط لا يرسل طلب تنفيذ.",
+            "source_refs": [
+              "https://added.gov.ae/en/set-up/establish-your-business"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "abu-dhabi-economic-initial-approval-guide",
+      "prompt": "Initial Approval for Business Establishment in Abu Dhabi",
+      "expected": "Additional approvals for regulated activities, where applicable.",
+      "status": 200,
+      "answer": {
+        "text": "Additional approvals for regulated activities, where applicable.",
+        "focus": "approvals",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:abu-dhabi-economic-initial-approval-guide",
+          "policy_version": 2,
+          "workflow_key": "service:abu-dhabi-economic-initial-approval-guide",
+          "source_title": "الموافقة المبدئية لتأسيس عمل في أبوظبي",
+          "source_url": "https://added.gov.ae/en/set-up/establish-your-business",
+          "last_verified_at": "2026-10-10T05:32:40+00:00",
+          "supporting_rule": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "abu-dhabi-economic-license-mortgage-guide",
+      "prompt": "Mortgaging an Economic Licence in Abu Dhabi",
+      "expected": "confirm case conditions and documents in the matching TAMM service.",
+      "status": 200,
+      "answer": {
+        "text": "The matching service is Mortgaging an Economic Licence in Abu Dhabi through Abu Dhabi Department of Economic Development. The ADDED guide lists this licensing transaction. The link provides guidance; confirm case conditions and documents in the matching TAMM service.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:abu-dhabi-economic-license-mortgage-guide",
+          "policy_version": 2,
+          "workflow_key": "service:abu-dhabi-economic-license-mortgage-guide",
+          "source_title": "رهن رخصة اقتصادية في أبوظبي",
+          "source_url": "https://added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
+          "last_verified_at": "2026-10-10T05:32:40+00:00",
+          "supporting_rule": {
+            "value": "يذكر دليل ADDED هذه المعاملة ضمن خدمات الترخيص. الرابط للإرشاد؛ تؤكد شروط الحالة والمستندات في خدمة TAMM المطابقة.",
+            "source_refs": [
+              "https://added.gov.ae/en/set-up/establish-your-business/licensing-requirements"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "abu-dhabi-economic-licensing-requirements",
+      "prompt": "Abu Dhabi Licensing Requirements",
+      "expected": "confirm case conditions and documents in the matching TAMM service.",
+      "status": 200,
+      "answer": {
+        "text": "The ADDED guide lists this licensing transaction. The link provides guidance; confirm case conditions and documents in the matching TAMM service.",
+        "focus": "conditions",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:abu-dhabi-economic-licensing-requirements",
+          "policy_version": 2,
+          "workflow_key": "service:abu-dhabi-economic-licensing-requirements",
+          "source_title": "متطلبات الرخص الاقتصادية في أبوظبي",
+          "source_url": "https://www.added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
+          "last_verified_at": "2026-10-10T05:32:40+00:00",
+          "supporting_rule": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "sharjah-business-licensing-guide",
+      "prompt": "Sharjah Economic Licensing Services",
+      "expected": "Requirements vary by service, activity and case.",
+      "status": 200,
+      "answer": {
+        "text": "The matching service is Sharjah Economic Licensing Services through Sharjah DED. This SEDD guide helps choose a pathway; it is not one execution card. Requirements vary by service, activity and case.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:sharjah-business-licensing-guide",
+          "policy_version": 2,
+          "workflow_key": "service:sharjah-business-licensing-guide",
+          "source_title": "دليل إصدار وتجديد الرخص الاقتصادية في الشارقة",
+          "source_url": "https://sedd.ae/en/home",
+          "last_verified_at": "2026-10-10T05:32:40+00:00",
+          "supporting_rule": {
+            "value": "هذا دليل SEDD لاختيار المسار، وليس بطاقة تنفيذ واحدة؛ تختلف المتطلبات بحسب الخدمة والنشاط والحالة.",
+            "source_refs": [
+              "https://sedd.ae/en/home"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "externalModelGate": "NOT_PASSED",
+  "scope": "Targeted English regressions only. Recorded platform explanatory translations preserve original Arabic source evidence. No new government facts, authentication, messages or submissions."
+}
