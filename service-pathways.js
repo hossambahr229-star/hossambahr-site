@@ -1,11 +1,11 @@
 const escape=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 export const WHATSAPP_NUMBER='971503780460';
-export function pathwayRecord(service){
+export function pathwayRecord(service,locale='ar'){
  const emirates={'دبي':'Dubai','أبوظبي':'Abu Dhabi','الشارقة':'Sharjah','عجمان':'Ajman','رأس الخيمة':'Ras Al Khaimah','الفجيرة':'Fujairah','أم القيوين':'Umm Al Quwain','اتحادي':'Federal'};
- return {slug:service.service_slug||service.slug,id:service.service_id||service.id,name:service.service_name||service.name,emirate:service.emirate,emirate_en:service.emirate_en||emirates[service.emirate]||'See service jurisdiction',authority:service.authority,route:service.source_page||service.internalRoute,official:service.official_execution_url||service.officialCtaUrl||service.official_url};
+ return {slug:service.service_slug||service.slug,id:service.service_id||service.id,name:service.service_name||service.name,emirate:service.emirate,emirate_en:service.emirate_en||emirates[service.emirate]||'See service jurisdiction',authority:service.authority,route:service.source_page||service.internalRoute,official:(locale==='en'&&(service.official_execution_url_en||service.officialCtaUrlEn))||service.official_execution_url||service.officialCtaUrl||service.official_url};
 }
 export function whatsappHref(service,locale='ar',summary=''){
- const s=pathwayRecord(service),en=locale==='en';
+ const s=pathwayRecord(service,locale),en=locale==='en';
  const text=[en?'Hello HOSSAM BAHR, I would like help with this transaction:':'مرحبًا HOSSAM BAHR، أريد المساعدة في إنجاز المعاملة التالية:',
   (en?'Service: ':'الخدمة: ')+(s.name?.[locale]||s.name?.ar||s.slug),
   (en?'Emirate / jurisdiction: ':'الإمارة / الاختصاص: ')+(en?s.emirate_en||s.emirate:s.emirate),
@@ -17,7 +17,7 @@ export function whatsappHref(service,locale='ar',summary=''){
  return 'https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(text);
 }
 export function pathwayMarkup(service,locale='ar'){
- const s=pathwayRecord(service),en=locale==='en',p=en?'/en':'';
+ const s=pathwayRecord(service,locale),en=locale==='en',p=en?'/en':'';
  const review=p+'/contact/?service='+encodeURIComponent(s.slug)+'&source='+encodeURIComponent(p+s.route)+'&handoff=1';
  return `<div class="hb-service-pathways" data-hb-pathways="${escape(s.slug)}" aria-label="${en?'Choose how to proceed':'اختر طريقة إنجاز المعاملة'}"><a class="hb-path-official" href="${escape(s.official)}" target="_blank" rel="noopener noreferrer">${en?'Government self-service ↗':'أنجزها بنفسي رسميًا ↗'}</a><a class="hb-path-assisted" data-hb-direct-whatsapp href="${escape(whatsappHref(service,locale))}" target="_blank" rel="noopener noreferrer">${en?'With HOSSAM BAHR · WhatsApp':'أنجزها مع حسام بحر · واتساب'}</a><a class="hb-path-track" href="${escape(review)}">${en?'Or prepare a request and track it in the platform →':'أو جهّز طلبًا وتابعه داخل المنصة ←'}</a></div>`;
 }

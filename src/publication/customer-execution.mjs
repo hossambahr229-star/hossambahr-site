@@ -1,6 +1,6 @@
 import {escapeHtml,emirateEnglish} from './english-catalog.mjs';
 export function customerContext(service){
- return {service_id:service.id,service_slug:service.slug,service_name:service.name,emirate:service.emirate,emirate_en:emirateEnglish(service.emirate),official_execution_url:service.officialCtaUrl,authority:service.authority,source_page:service.internalRoute,official_url:service.officialInformationUrl,requirements:service.verification?.requirementsVerified?service.documents?.items||[]:[],requirements_verified:!!service.verification?.requirementsVerified};
+ return {service_id:service.id,service_slug:service.slug,service_name:service.name,emirate:service.emirate,emirate_en:emirateEnglish(service.emirate),official_execution_url:service.officialCtaUrl,...(service.officialCtaUrlEn?{official_execution_url_en:service.officialCtaUrlEn}:{}),authority:service.authority,source_page:service.internalRoute,official_url:service.officialInformationUrl,requirements:service.verification?.requirementsVerified?(service.documents?.noDocumentsRequired?[]:service.documents?.items||[]):[],...(service.documents?.noDocumentsRequired?{no_documents_required:true}:{}),requirements_verified:!!service.verification?.requirementsVerified};
 }
 // Review canonical context before choosing a communication or account channel.
 export const managedWhatsAppNumber='971503780460';
