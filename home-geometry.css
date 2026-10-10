@@ -376,3 +376,8 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 @media(min-width:821px){
  html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{width:55%!important;height:190px!important;bottom:15px!important;filter:brightness(.9)!important}
 }
+
+/* Measured desktop photographic tone; text, actions and native geometry remain independent. */
+@media(min-width:821px){
+ html.hb-phase8 body[data-home-geometry] .premium-featured .premium-slide{background-color:#e6e6e6!important;background-blend-mode:multiply!important}
+}
