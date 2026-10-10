@@ -2,7 +2,7 @@
   "auditedServices": 200,
   "fullyVerifiedServices": 0,
   "servicesWithMissingFields": 200,
-  "missingFieldCount": 1047,
+  "missingFieldCount": 1045,
   "status": "PARTIAL PASS",
   "scope": "Public route/source identity, canonical, locale, internal href/referrer and scoped CTA checks. This does not verify external government availability, authenticated execution, documents, eligibility correctness or human visual acceptance.",
   "records": [
@@ -561,8 +561,8 @@
     {
       "id": "ajman:business-activity-inquiry",
       "slug": "ajman-business-activity-inquiry",
-      "source": "https://eservices.ajmanded.ae/en/activitiesapprovalsinquiry",
-      "lastRecordedReview": "2026-08-11",
+      "source": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+      "lastRecordedReview": "2026-10-10",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -576,8 +576,8 @@
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
         "eligibility": "VERIFIED",
-        "requirements": "MISSING",
-        "documents": "MISSING",
+        "requirements": "VERIFIED",
+        "documents": "VERIFIED",
         "steps": "NOT_VERIFIED",
         "fees": "VERIFIED",
         "duration": "VERIFIED",
@@ -600,8 +600,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "requirements",
-        "documents",
         "ai_discoverability"
       ],
       "verificationBoundary": "VERIFIED government fields describe the existing recorded source review, not a new independent official-source verification. Publication and HTTP success do not prove customer acceptance."
