@@ -1,0 +1,32 @@
+{
+  "capturedAt": "2026-10-10T05:57:11.073Z",
+  "source": "LIVE_OFFICIAL_PUBLIC_BROWSER_READ",
+  "scope": "Read-only source recovery; no inquiry, transaction, login or user data submitted. Form visibility does not verify fee/time.",
+  "checks": [
+    {
+      "name": "new-execution-ar",
+      "status": 200,
+      "url": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
+      "title": "دائرة التنمية الاقتصادية - عجمان",
+      "text": "تسجيل الدخول\nالعودة إلى الخدمات\n\nالخدمات الذاتية والاستعلام\n\nالاستعلام عن الأنشطة\n\nاستعراض الأنشطة الاقتصادية وإجراءاتها والموافقات المطلوبة.\n\nالاستعلام عن الأنشطة\nاختر النشاط\nاختر الإجراء\nاختر الإجراء...\nإصدار رخصة\nتجديد رخصة (قيد التطوير)\nتعديل رخصة (قيد التطوير)\nتواصل معنا عبر الرقم\n+97180070\nالبريد الالكتروني\ninfo@ajded.gov.ae\n\nآخر تحديث: 22/12/2025 02:38م\n|\nعدد الزوار: 2142342\n\nالشروط والأحكام\n|\nسياسة الخصوصية\n\n© 2026 دائرة التنمية الاقتصادية بعجمان. جميع الحقوق محفوظة.\n\nمرحباً!\n\nأنا مساعدك الافتراضي، كيف يمكنني مساعدتك؟\n\nابدأ المحادثة ←\nمرحباً، تواصل معنا",
+      "links": [],
+      "forms": [
+        {
+          "action": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
+          "inputs": [
+            {
+              "type": "search",
+              "name": "",
+              "placeholder": "ابحث عن نشاط..."
+            },
+            {
+              "type": "select-one",
+              "name": "",
+              "placeholder": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
