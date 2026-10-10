@@ -1,0 +1,249 @@
+{
+  "capturedAt": "2026-10-10T23:52:32.597Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "checks": [
+    {
+      "slug": "dld-real-estate-ad-permit-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تصريح إعلان عقاري من دائرة الأراضي والأملاك في دبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "dld-real-estate-ad-permit-dubai",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تصريح إعلان عقاري من دائرة الأراضي والأملاك في دبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "dld-real-estate-ad-permit-dubai",
+      "locale": "ar",
+      "focus": "documents",
+      "prompt": "تصريح إعلان عقاري من دائرة الأراضي والأملاك في دبي. ما المستندات المطلوبة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "dld-real-estate-ad-permit-dubai",
+      "locale": "ar",
+      "focus": "conditions",
+      "prompt": "تصريح إعلان عقاري من دائرة الأراضي والأملاك في دبي. ما الشروط؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "dld-real-estate-ad-permit-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Real Estate Ad Permit from Dubai Land Department. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "dld-real-estate-ad-permit-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Real Estate Ad Permit from Dubai Land Department. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "dld-real-estate-ad-permit-dubai",
+      "locale": "en",
+      "focus": "documents",
+      "prompt": "Real Estate Ad Permit from Dubai Land Department. What documents are needed?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "dld-real-estate-ad-permit-dubai",
+      "locale": "en",
+      "focus": "conditions",
+      "prompt": "Real Estate Ad Permit from Dubai Land Department. What are the conditions?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    }
+  ],
+  "scope": "Newly reviewed DLD ad permit public AI facts only; conditional permit categories retained; no submissions or private account access.",
+  "externalModelGate": "NOT_PASSED"
+}
