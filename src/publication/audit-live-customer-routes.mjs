@@ -47,7 +47,7 @@ let shared=[],english=[];if(discoveryAssets.every(a=>a.bytesMatch)){const source
 for(const service of services){const ar=new URL(service.internalRoute,base).pathname,en=new URL(englishServiceRoute(service),base).pathname;const failures=[],arHtml=bodies.get(ar)||'',enHtml=bodies.get(en)||'';
 for(const [route,html,name,locale] of [[ar,arHtml,service.name.ar,'ar'],[en,enHtml,service.name.en,'en']]){
 if(heading(html)!==text(name))failures.push(locale+' service identity mismatch');
-const links=hrefs(html);if(!links.includes(service.officialInformationUrl))failures.push(locale+' official source link missing');if(!links.includes(service.officialCtaUrl))failures.push(locale+' government CTA missing');if(!links.includes(executionHref(service,locale)))failures.push(locale+' scoped Hossam CTA missing');
+const links=hrefs(html);if(!links.includes(service.officialInformationUrl))failures.push(locale+' official source link missing');if(!links.includes(locale==='en'?(service.officialCtaUrlEn||service.officialCtaUrl):service.officialCtaUrl))failures.push(locale+' government CTA missing');if(!links.includes(executionHref(service,locale)))failures.push(locale+' scoped Hossam CTA missing');
 }
 const context=contextRows.find(row=>row.service_slug===service.slug),expected=customerContext(service);const contextPresent=context&&JSON.stringify(context)===JSON.stringify(expected);
 if(!contextPresent)failures.push('Public intake context differs from registry');
