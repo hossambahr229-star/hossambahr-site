@@ -89,7 +89,7 @@ function safeFaq(destinationKind) {
   ];
 }
 
-function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null }) {
+function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null, officialCtaUrlEn = null }) {
   const normalizedDestinationKind = verificationStatus === 'VERIFIED' ? destinationKind : 'CTA_DISABLED';
   const documentsPublished = hasRecordedFact(requirements);
   const feesPublished = hasRecordedFact(fees);
@@ -127,6 +127,7 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
     alternativeServiceIds: [],
     officialInformationUrl: officialInformationUrl || null,
     officialCtaUrl: verificationStatus === 'VERIFIED' ? officialCtaUrl || null : null,
+    ...(verificationStatus === 'VERIFIED' && officialCtaUrlEn ? {officialCtaUrlEn} : {}),
     destinationKind: normalizedDestinationKind,
     verificationStatus,
     verification: {
@@ -261,8 +262,9 @@ function addSupplemental(service, authority) {
     fees: service.fees,
     duration: service.duration,
     conditions: service.conditions,
-    officialInformationUrl: service.officialUrl,
-    officialCtaUrl: service.officialUrl,
+    officialInformationUrl: service.officialCardUrl || service.officialUrl,
+    officialCtaUrl: service.executionUrl || service.officialUrl,
+    officialCtaUrlEn: service.executionUrlEn,
     destinationKind: service.destinationKind || 'DIRECT_SERVICE',
     sourceRegistry: authority.sourceRegistry,
     lastReviewedAt: service.lastVerified || reviewedAt,
