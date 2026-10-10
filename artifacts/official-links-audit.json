@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-10T23:47:56.958Z",
+  "generatedAt": "2026-10-10T23:55:57.404Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 161,
+    "REACHABLE": 148,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 77,
+    "NETWORK_UNVERIFIED": 90,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -54,9 +54,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.tamm.abudhabi/journeys/start-a-business?lang=ar",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
@@ -82,9 +81,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
@@ -114,9 +112,8 @@
       "kinds": [
         "official-information"
       ],
-      "status": 200,
-      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
@@ -127,9 +124,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",
@@ -141,9 +137,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license",
@@ -155,9 +150,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/future-investor/issue-trade-license",
@@ -169,9 +163,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/future-investor/issue-trade-license",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/renew-trade-license",
@@ -183,9 +176,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/renew-trade-license",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/future-investor/trade-name-reservation",
@@ -197,9 +189,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/future-investor/trade-name-reservation",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e77",
@@ -211,9 +202,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e77",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
@@ -225,9 +215,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/401?administrativeRegionId=1",
@@ -237,9 +226,8 @@
       "kinds": [
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
@@ -459,9 +447,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://mohre.gov.ae/en/services/payment-of-the-bank-guarantee-amount-of-employment-agency-2022",
