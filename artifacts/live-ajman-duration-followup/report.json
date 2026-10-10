@@ -1,0 +1,48 @@
+{
+  "capturedAt": "2026-10-10T10:51:03.509Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "apiChecks": [
+    {
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Business Activity Inquiry in Ajman. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "Two minutes for the inquiry according to service card DED03.005; this is not a licence issuance or amendment time.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:ajman-business-activity-inquiry",
+          "policy_version": 2,
+          "workflow_key": "service:ajman-business-activity-inquiry",
+          "source_title": "الاستعلام عن الأنشطة الاقتصادية في عجمان — دائرة التنمية الاقتصادية في عجمان",
+          "source_url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+          "last_verified_at": "2026-10-10T05:57:53+00:00",
+          "supporting_rule": {
+            "value": "دقيقتان للاستعلام وفق بطاقة DED03.005؛ ليست مدة إصدار أو تعديل رخصة.",
+            "source_refs": [
+              "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "scope": "Only the remaining English processing-time case; seven passed AI cases and passed page checks were not repeated.",
+  "externalModelGate": "NOT_PASSED"
+}
