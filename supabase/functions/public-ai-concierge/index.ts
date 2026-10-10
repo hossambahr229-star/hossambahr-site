@@ -128,7 +128,7 @@ function answerFocus(text: string) {
   if (has(normalized, ["الشروط","شروط","conditions","eligibility","requirements"])) return "conditions";
   if (has(normalized, ["الخطوات","خطوات","steps","how to apply"])) return "steps";
   if (has(normalized, ["الرابط","لينك","link","url"])) return "link";
-  if (has(normalized, ["كم تستغرق","المدة","مده","مدة","duration","how long"])) return "duration";
+  if (has(normalized, ["كم تستغرق","المدة","مده","مدة","duration","how long","processing time","turnaround time"])) return "duration";
   if (has(normalized, ["من الجهة","الجهه","الجهة","authority"])) return "authority";
   if (has(normalized, ["هل احتاج موافقه","هل أحتاج موافقة","موافقه","موافقة","approval"])) return "approvals";
   if (has(normalized, ["ابدأ معاملتي","ابدا معاملتي","start my transaction"])) return "start";
