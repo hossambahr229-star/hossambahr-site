@@ -4,7 +4,7 @@ const base=process.env.HB_BASE_URL||'http://127.0.0.1:8787';const out='artifacts
 const {services}=JSON.parse(await readFile('src/registry/published-services.json','utf8'));
 const routes=[];for(let offset=0;offset<services.length;offset+=8){await Promise.all(services.slice(offset,offset+8).map(async service=>{
  const route=englishServiceRoute(service);const response=await fetch(base+route+'?hb_qa=1');assert.equal(response.status,200,route);const html=await response.text();
- assert.ok(html.includes('<h1>'+escapeHtml(service.name.en)+'</h1>'),route+' title');assert.ok(html.includes('href="'+escapeHtml(service.officialInformationUrl)+'"'),route+' source');assert.ok(html.includes('href="'+escapeHtml(service.officialCtaUrl)+'"'),route+' official destination');
+ assert.ok(html.includes('<h1>'+escapeHtml(service.name.en)+'</h1>'),route+' title');assert.ok(html.includes('href="'+escapeHtml(service.officialInformationUrl)+'"'),route+' source');assert.ok(html.includes('href="'+escapeHtml(service.officialCtaUrlEn||service.officialCtaUrl)+'"'),route+' official destination');
  const query=encodeURIComponent(service.name.en+' in '+emirateEnglish(service.emirate));assert.ok(html.includes('/en/ai/?q='+query),route+' contextual AI handoff');routes.push({route,identity:service.name.en,source:service.officialInformationUrl});
 }));}
 assert.equal(routes.length,200);
