@@ -313,6 +313,8 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   // The migrated Ajman tool is an activity inquiry, never a licence application.
   const activityInquiry = has(goal, ["استعلام","الاستعلام","inquiry","enquiry"]) && has(goal, ["انشطه","الانشطه","نشاط","activity","activities"]);
   if (emirate === "AE-AJ" && activityInquiry && slug === "ajman-business-activity-inquiry") score += 9000;
+  const customsVehicleCertificate = has(goal, ["جمارك","customs"]) && has(goal, ["مركبه","مركبات","vehicle"]) && has(goal, ["تخليص","clearance"]) && has(goal, ["شهاده","certificate"]);
+  if (emirate === "AE-DU" && customsVehicleCertificate && slug === "vehicle-clearance-certificate-dubai-customs") score += 9000;
   const fiveYearTourist = has(goal,["سياحيه","سياحية","سياحه","سياحة","tourist","tourism"]) && (has(goal,["5 سنين","5 سنوات","خمس سنين","خمس سنوات","five years","5 years"]) || (has(goal,["متعدده","متعددة","multiple","multi"]) && has(goal,["دخول","entry"])));
   if (fiveYearTourist) {
     if (slug === "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp") score += 18000;
