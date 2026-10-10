@@ -28,7 +28,7 @@ for (const service of registry.services) {
     if (!html.includes(`data-normalization-resolution="${service.normalization.resolution}"`)) errors.push(`${service.slug}: normalization resolution not rendered`);
     if (!service.normalization.resolvedInto?.length) errors.push(`${service.slug}: normalization has no resolved targets`);
   } else if (service.classification === 'VERIFIED') {
-    if (!service.officialUrl || activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: verified CTA mismatch`);
+    if (!service.officialUrl || activeLinks.length !== 1 || activeLinks[0] !== (service.executionUrl || service.officialUrl)) errors.push(`${service.slug}: verified CTA mismatch`);
     if (!/^https:\/\/(?:www\.)?(?:investindubai|dubaidet)\.gov\.ae\//.test(service.officialUrl ?? '')) errors.push(`${service.slug}: active CTA is outside an official DET domain`);
   } else {
     if (service.officialUrl !== null) errors.push(`${service.slug}: unverified service must not retain an official URL`);
@@ -141,8 +141,10 @@ for (const authority of dubaiCoverage.authorities) {
     const expectedKind = service.destinationKind === 'OFFICIAL_GUIDANCE' ? 'OFFICIAL_GUIDANCE' : 'DIRECT_SERVICE';
     if (!html.includes(`data-destination-kind="${expectedKind}"`)) errors.push(`${service.slug}: destination kind is not disclosed`);
     try {
-      const hostname = new URL(service.officialUrl).hostname;
-      if (!authority.officialDomains.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))) errors.push(`${service.slug}: CTA outside ${authority.id} official domains`);
+      for (const url of new Set([service.officialUrl,service.executionUrl,service.executionUrlEn].filter(Boolean))) {
+        const hostname = new URL(url).hostname;
+        if (!authority.officialDomains.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))) errors.push(`${service.slug}: CTA outside ${authority.id} official domains`);
+      }
     } catch { errors.push(`${service.slug}: Dubai authority CTA is not an absolute URL`); }
   }
   if (canonicalCount + authority.newVerifiedServices.length !== authority.summary.realServices) errors.push(`${authority.id}: real-service denominator mismatch`);
