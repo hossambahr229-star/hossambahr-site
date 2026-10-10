@@ -1,0 +1,249 @@
+{
+  "capturedAt": "2026-10-10T11:17:20.470Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "checks": [
+    {
+      "slug": "dubai-customs-business-registration",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تسجيل منشأة لدى جمارك دبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "dubai-customs-business-registration",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تسجيل منشأة لدى جمارك دبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "dubai-customs-business-registration",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Request Business Registration from Dubai Customs. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "dubai-customs-business-registration",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Request Business Registration from Dubai Customs. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "submit-customs-declaration-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تقديم بيان جمركي في دبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "submit-customs-declaration-dubai",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تقديم بيان جمركي في دبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "submit-customs-declaration-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Submit Customs Declaration from Dubai Customs. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "submit-customs-declaration-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Submit Customs Declaration from Dubai Customs. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    }
+  ],
+  "scope": "Newly reviewed registration/declaration public AI fee/duration cases only; no submissions or private account access.",
+  "externalModelGate": "NOT_PASSED"
+}
