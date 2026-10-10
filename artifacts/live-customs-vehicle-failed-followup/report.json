@@ -1,0 +1,165 @@
+{
+  "capturedAt": "2026-10-10T11:03:41.018Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "شهادة تخليص مركبة من جمارك دبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "30 درهمًا لكل مركبة وفق بطاقة الخدمة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:vehicle-clearance-certificate-dubai-customs",
+          "policy_version": 2,
+          "workflow_key": "service:vehicle-clearance-certificate-dubai-customs",
+          "source_title": "شهادة تخليص مركبة من جمارك دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54",
+          "last_verified_at": "2026-10-10T10:53:15+00:00",
+          "supporting_rule": {
+            "value": "30 درهمًا لكل مركبة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "شهادة تخليص مركبة من جمارك دبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "فوري",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:vehicle-clearance-certificate-dubai-customs",
+          "policy_version": 2,
+          "workflow_key": "service:vehicle-clearance-certificate-dubai-customs",
+          "source_title": "شهادة تخليص مركبة من جمارك دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54",
+          "last_verified_at": "2026-10-10T10:53:15+00:00",
+          "supporting_rule": {
+            "value": "فوري",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Request Vehicle Clearance Certificate from Dubai Customs. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 30 per vehicle according to the service card.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:vehicle-clearance-certificate-dubai-customs",
+          "policy_version": 2,
+          "workflow_key": "service:vehicle-clearance-certificate-dubai-customs",
+          "source_title": "شهادة تخليص مركبة من جمارك دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54",
+          "last_verified_at": "2026-10-10T10:53:15+00:00",
+          "supporting_rule": {
+            "value": "30 درهمًا لكل مركبة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Request Vehicle Clearance Certificate from Dubai Customs. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "Immediate",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:vehicle-clearance-certificate-dubai-customs",
+          "policy_version": 2,
+          "workflow_key": "service:vehicle-clearance-certificate-dubai-customs",
+          "source_title": "شهادة تخليص مركبة من جمارك دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54",
+          "last_verified_at": "2026-10-10T10:53:15+00:00",
+          "supporting_rule": {
+            "value": "فوري",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "scope": "Actual newly completed public AI fee/duration rules only. No government transaction, login, message or upload submitted.",
+  "externalModelGate": "NOT_PASSED"
+}
