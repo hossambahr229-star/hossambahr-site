@@ -1,6 +1,6 @@
 begin;
 
-select plan(10);
+select plan(12);
 
 select is(
   (select count(*)::bigint from public.hb_service_bindings where active),
@@ -83,13 +83,28 @@ select is((select count(*)::bigint from public.hb_service_bindings b
  and exists(select 1 from public.hb_policy_sources s where s.id=any(p.source_ids) and s.authority_id=a.id and s.jurisdiction_id=b.jurisdiction_id and s.active and s.source_url=b.metadata->>'officialUrl')),
  8::bigint,'all eight restored identities retain authority, jurisdiction, policy, workflow and official source');
 
-select is((select count(*)::bigint from public.hb_policy_versions where policy_key in (select policy_key from public.hb_service_bindings where service_slug in ('ajman-business-activity-inquiry','dld-real-estate-ad-permit-dubai','legacy-service-67abe5ccf3','legacy-service-85a10469d8','legacy-service-e7f35a06d9','rta-modify-trade-license-noc-dubai','rta-new-trade-license-noc-dubai','rta-renew-trade-license-noc-dubai')) and status='active' and rules='[]'::jsonb),
- 8::bigint,'navigation verification does not invent new government fees or eligibility rules');
+select is((select count(*)::bigint from public.hb_policy_versions where policy_key in (select policy_key from public.hb_service_bindings where service_slug in ('ajman-business-activity-inquiry','legacy-service-67abe5ccf3','legacy-service-85a10469d8','legacy-service-e7f35a06d9','rta-modify-trade-license-noc-dubai','rta-new-trade-license-noc-dubai','rta-renew-trade-license-noc-dubai')) and status='active' and rules='[]'::jsonb),
+ 7::bigint,'navigation verification does not invent new government fees or eligibility rules');
 
 select is((select count(*)::bigint from public.hb_workflow_templates where service_slug in ('ajman-business-activity-inquiry','dld-real-estate-ad-permit-dubai','legacy-service-67abe5ccf3','legacy-service-85a10469d8','legacy-service-e7f35a06d9','rta-modify-trade-license-noc-dubai','rta-new-trade-license-noc-dubai','rta-renew-trade-license-noc-dubai') and status='active'
  and jsonb_path_exists(definition,'$.steps[*] ? (@.requiresApproval == true && @.risk.externalSubmission == true)')
  and jsonb_path_exists(definition,'$.steps[*] ? (@.taskType == "external" && @.assigneeType == "user" && @.metadata.executionMode == "manual-official-route")')),
  8::bigint,'all restored pathways retain user approval and manual external execution');
 
+select ok(exists(select 1 from public.hb_policy_versions p join public.hb_policy_sources s on s.id=any(p.source_ids)
+ where p.policy_key='service:dld-real-estate-ad-permit-dubai' and p.status='active' and p.version=2
+ and p.reviewed_by='official-dld-ad-card-review-2026-10-11'
+ and jsonb_array_length(p.rules)=8 and s.source_url='https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/'
+ and s.metadata->>'verification_scope'='documents_conditions_fees_duration' and s.monitor_enabled and not s.review_required
+ and not exists(select 1 from jsonb_array_elements(p.rules) r where not(r->'sourceRefs' ? s.source_url))
+ and exists(select 1 from jsonb_array_elements(p.rules) r where r->>'id'='fees' and r->>'reason' like '%5000 AED%' and r->>'reason' like '%1000 AED%' and r->>'reason' like '%10,200%' and r->>'reason' like '%1,020%')
+ and exists(select 1 from jsonb_array_elements(p.rules) r where r->>'id'='duration' and r->>'reason'='يوم عمل واحد.')),
+ 'reviewed DLD ad policy has exact official sources, distinct permit fees and documented duration');
+
+select ok(exists(select 1 from public.hb_policy_versions where policy_key='service:dld-real-estate-ad-permit-dubai'
+ and version=1 and status='retired' and rules='[]'::jsonb)
+ and exists(select 1 from public.hb_service_bindings where service_slug='dld-real-estate-ad-permit-dubai'
+ and active and metadata->>'governmentDetailsVerified'='true'),
+ 'DLD review retains the empty historical navigation policy and marks only its reviewed binding');
 select * from finish();
 rollback;
