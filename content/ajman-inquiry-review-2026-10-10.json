@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-10T05:57:53Z",
+  "service": "ajman-business-activity-inquiry",
+  "serviceCode": "DED03.005",
+  "sourceCard": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+  "executionUrls": {
+    "ar": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
+    "en": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=en"
+  },
+  "formerExecutionUrl": "https://eservices.ajmanded.ae/en/activitiesapprovalsinquiry",
+  "sourceEvidence": [
+    {
+      "kind": "actual_public_browser",
+      "branch": "agent/read-ajman-remaining-source",
+      "capture": "2026-10-10T05:54:24.026Z"
+    },
+    {
+      "kind": "actual_public_browser",
+      "branch": "agent/read-ajman-migrated-service",
+      "capture": "2026-10-10T05:56:03.383Z"
+    },
+    {
+      "kind": "actual_public_browser",
+      "branch": "agent/read-ajman-ar-route",
+      "capture": "2026-10-10T05:57:11.073Z"
+    }
+  ],
+  "scope": "Informational inquiry only. Free, no documents and two-minute duration apply to DED03.005 inquiry, not licence issuance/renewal/amendment.",
+  "procedureAvailability": {
+    "issueLicense": "shown",
+    "renewLicense": "under_development",
+    "amendLicense": "under_development"
+  },
+  "publicInquirySubmitted": false,
+  "licenseApplicationSubmitted": false,
+  "excludedCatalog": {
+    "year": 2023,
+    "url": "https://www.ajmanded.ae/assets/download/8c2679bc/service-catalog.aspx",
+    "reason": "Old downloadable catalog was not used instead of the live matching service card."
+  },
+  "finalAcceptance": "PENDING_LIVE_PUBLISHED_PAGES_AND_AI"
+}
