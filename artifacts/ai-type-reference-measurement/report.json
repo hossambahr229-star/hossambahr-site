@@ -1,0 +1,39 @@
+{
+  "capturedAt": "2026-10-10T05:37:45.275Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "scope": "AI typography and welcome border only; artwork and HB brand preserved"
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 38.18674544664798,
+      "changed": 28.57589118366327
+    },
+    {
+      "name": "action-regular",
+      "css": "html.hb-phase8 body[data-home-geometry] .ai-showcase-cta,html.hb-phase8 body[data-home-geometry] .ai-showcase-actions a{font-weight:400!important}",
+      "mad": 38.033261336522614,
+      "changed": 28.509844522589745
+    },
+    {
+      "name": "action-arial",
+      "css": "html.hb-phase8 body[data-home-geometry] .ai-showcase-cta,html.hb-phase8 body[data-home-geometry] .ai-showcase-actions a{font-family:Arial,Tahoma,sans-serif!important;font-weight:400!important;font-size:11px!important}",
+      "mad": 38.21325336332209,
+      "changed": 28.609807036646973
+    },
+    {
+      "name": "welcome-gold",
+      "css": "html.hb-phase8 body[data-home-geometry] .ai-showcase-welcome{border-color:#b8a877!important}",
+      "mad": 38.33640658562563,
+      "changed": 28.58838649792042
+    },
+    {
+      "name": "action-regular-welcome-gold",
+      "css": "html.hb-phase8 body[data-home-geometry] .ai-showcase-cta,html.hb-phase8 body[data-home-geometry] .ai-showcase-actions a{font-weight:400!important}html.hb-phase8 body[data-home-geometry] .ai-showcase-welcome{border-color:#b8a877!important}",
+      "mad": 38.182922475500256,
+      "changed": 28.5223398368469
+    }
+  ]
+}
