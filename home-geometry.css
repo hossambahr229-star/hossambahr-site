@@ -396,3 +396,6 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 
 /* Match the approved desktop step rhythm while preserving total section height. */
 @media(min-width:821px){html.hb-phase8 body[data-home-geometry] .premium-how{row-gap:0!important;padding-bottom:13px!important}}
+
+/* Approved desktop wordmark typography; the circular HB master remains unchanged. */
+@media(min-width:821px){html.hb-phase8 body[data-home-geometry] .site-header .brand span{font-family:"Times New Roman",serif!important;font-size:22px!important}}
