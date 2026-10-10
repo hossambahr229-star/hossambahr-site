@@ -1,0 +1,73 @@
+{
+  "capturedAt": "2026-10-10T11:05:12.603Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+    "boxShadow": "none",
+    "before": {
+      "content": "none",
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "position": "static"
+    },
+    "bounds": {
+      "x": 30.953125,
+      "y": 367,
+      "width": 155.125,
+      "height": 116,
+      "top": 367,
+      "right": 186.078125,
+      "bottom": 483,
+      "left": 30.953125
+    },
+    "title": "700 12px / 15.6px Cairo, Arial, Tahoma, sans-serif",
+    "heroShadows": [
+      {
+        "class": "premium-home-hero platform-hero visual-target-hero",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-hero-main",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-ai-showcase",
+        "shadow": "none",
+        "filter": "none"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 25.120396933819066,
+      "changed": 17.54553734061931
+    },
+    {
+      "name": "serif20",
+      "css": "html.hb-phase8 body[data-home-geometry] .site-header .brand span{font-family:\"Times New Roman\",serif!important;font-size:20px!important}",
+      "mad": 25.002060564663022,
+      "changed": 17.48633879781421
+    },
+    {
+      "name": "serif22",
+      "css": "html.hb-phase8 body[data-home-geometry] .site-header .brand span{font-family:\"Times New Roman\",serif!important;font-size:22px!important}",
+      "mad": 24.88784532483303,
+      "changed": 17.430555555555554
+    },
+    {
+      "name": "serif21",
+      "css": "html.hb-phase8 body[data-home-geometry] .site-header .brand span{font-family:\"Times New Roman\",serif!important;font-size:21px!important}",
+      "mad": 24.96925850030358,
+      "changed": 17.464708561020036
+    },
+    {
+      "name": "georgia20",
+      "css": "html.hb-phase8 body[data-home-geometry] .site-header .brand span{font-family:Georgia,serif!important;font-size:20px!important}",
+      "mad": 25.001931542197937,
+      "changed": 17.48633879781421
+    }
+  ]
+}
