@@ -87,6 +87,9 @@ for (const route of ['index.html', 'en/index.html']) {
     `$1<span class="home-search-icon">${icon('search')}</span>`);
   if (!html.includes('ai-showcase-actions')) html = html.replace(/(<div class="ai-showcase-links">)/,
     `<div class="ai-showcase-actions"><a href="${route==='index.html'?'/contact/':'/en/contact/'}">${route==='index.html'?'احصل على استشارة فورية':'Get expert help'} ←</a><a href="${route==='index.html'?'/account/':'/en/account/'}">${route==='index.html'?'تابع حالة طلبك':'Track your request'} ←</a></div>$1`);
+  // Keep the reference launch affordance functional through the existing panel toggle.
+  if (!html.includes('ai-showcase-orb')) html = html.replace(/(<aside class="premium-ai-showcase"[^>]*>)([\s\S]*?)(<\/aside>)/,
+    (_,open,contents,close)=>open+contents+'<button type="button" class="ai-showcase-orb" data-premium-ai-open aria-controls="premium-ai-panel" aria-expanded="false" aria-label="'+(route==='index.html'?'اسأل HB AI':'Ask HB AI')+'"><span aria-hidden="true">➜</span></button>'+close);
   // Decorative affordances keep the original button/link and its accessible name.
   const aiActionIcon = '<span class="home-ai-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m8 5 5 5-5 5"/></svg></span>';
   html = html.replace(/(<button\b[^>]*class="ai-showcase-cta"[^>]*>)([\s\S]*?)(<\/button>)/,
