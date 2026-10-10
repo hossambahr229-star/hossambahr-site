@@ -1,11 +1,14 @@
 import {recordedFactTranslations} from './recorded-fact-translations.ts';
+function recordedTranslation(text: string): string | null {
+ return Object.prototype.hasOwnProperty.call(recordedFactTranslations,text)?recordedFactTranslations[text]:null;
+}
 function recordedEnglish(value: unknown): string | null {
  const text=String(value??'').trim();
- const exact=recordedFactTranslations[text]||recordedFactTranslations[text.replace(/[.]+$/,'')];
+ const exact=recordedTranslation(text)||recordedTranslation(text.replace(/[.]+$/,''));
  if(exact)return exact;
  const lines=text.split('\n').filter(Boolean);
  if(lines.length<2)return null;
- const translated=lines.map(line=>recordedFactTranslations[line.trim()]||recordedFactTranslations[line.trim().replace(/[.]+$/,'')]);
+ const translated=lines.map(line=>recordedTranslation(line.trim())||recordedTranslation(line.trim().replace(/[.]+$/,'')));
  return translated.every(Boolean)?translated.join('\n'):null;
 }
 export function englishQuestion(value: string) {
