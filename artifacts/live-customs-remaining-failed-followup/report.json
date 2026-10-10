@@ -1,0 +1,329 @@
+{
+  "capturedAt": "2026-10-10T23:38:14.751Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "dubai-customs-business-registration",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تسجيل منشأة لدى جمارك دبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "100 درهم، إضافة إلى 20 درهمًا للمعرفة والابتكار وفق بطاقة الخدمة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:dubai-customs-business-registration",
+          "policy_version": 2,
+          "workflow_key": "service:dubai-customs-business-registration",
+          "source_title": "تسجيل منشأة لدى جمارك دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17",
+          "last_verified_at": "2026-10-10T11:10:00+00:00",
+          "supporting_rule": {
+            "value": "100 درهم، إضافة إلى 20 درهمًا للمعرفة والابتكار وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "dubai-customs-business-registration",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تسجيل منشأة لدى جمارك دبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "يوم عمل واحد",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:dubai-customs-business-registration",
+          "policy_version": 2,
+          "workflow_key": "service:dubai-customs-business-registration",
+          "source_title": "تسجيل منشأة لدى جمارك دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17",
+          "last_verified_at": "2026-10-10T11:10:00+00:00",
+          "supporting_rule": {
+            "value": "يوم عمل واحد",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "dubai-customs-business-registration",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Request Business Registration from Dubai Customs. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 100, plus AED 20 in knowledge and innovation fees, according to the service card.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:dubai-customs-business-registration",
+          "policy_version": 2,
+          "workflow_key": "service:dubai-customs-business-registration",
+          "source_title": "تسجيل منشأة لدى جمارك دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17",
+          "last_verified_at": "2026-10-10T11:10:00+00:00",
+          "supporting_rule": {
+            "value": "100 درهم، إضافة إلى 20 درهمًا للمعرفة والابتكار وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "dubai-customs-business-registration",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Request Business Registration from Dubai Customs. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "One working day",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:dubai-customs-business-registration",
+          "policy_version": 2,
+          "workflow_key": "service:dubai-customs-business-registration",
+          "source_title": "تسجيل منشأة لدى جمارك دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17",
+          "last_verified_at": "2026-10-10T11:10:00+00:00",
+          "supporting_rule": {
+            "value": "يوم عمل واحد",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "submit-customs-declaration-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تقديم بيان جمركي في دبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "من 15 إلى 100 درهم بحسب نوع البيان وقناة الشحن، مع إضافة رسوم المعرفة والابتكار عند انطباقها.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:submit-customs-declaration-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:submit-customs-declaration-dubai",
+          "source_title": "تقديم بيان جمركي في دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
+          "last_verified_at": "2026-10-10T11:10:00+00:00",
+          "supporting_rule": {
+            "value": "من 15 إلى 100 درهم بحسب نوع البيان وقناة الشحن، مع إضافة رسوم المعرفة والابتكار عند انطباقها.",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "submit-customs-declaration-dubai",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تقديم بيان جمركي في دبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "ساعتا عمل وفق بطاقة الخدمة",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:submit-customs-declaration-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:submit-customs-declaration-dubai",
+          "source_title": "تقديم بيان جمركي في دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
+          "last_verified_at": "2026-10-10T11:10:00+00:00",
+          "supporting_rule": {
+            "value": "ساعتا عمل وفق بطاقة الخدمة",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "submit-customs-declaration-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Submit Customs Declaration from Dubai Customs. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 15–100 according to declaration type and shipping channel, plus knowledge and innovation fees where applicable.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:submit-customs-declaration-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:submit-customs-declaration-dubai",
+          "source_title": "تقديم بيان جمركي في دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
+          "last_verified_at": "2026-10-10T11:10:00+00:00",
+          "supporting_rule": {
+            "value": "من 15 إلى 100 درهم بحسب نوع البيان وقناة الشحن، مع إضافة رسوم المعرفة والابتكار عند انطباقها.",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "submit-customs-declaration-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Submit Customs Declaration from Dubai Customs. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "Two working hours according to the service card",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:submit-customs-declaration-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:submit-customs-declaration-dubai",
+          "source_title": "تقديم بيان جمركي في دبي",
+          "source_url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
+          "last_verified_at": "2026-10-10T11:10:00+00:00",
+          "supporting_rule": {
+            "value": "ساعتا عمل وفق بطاقة الخدمة",
+            "source_refs": [
+              "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "scope": "Newly reviewed registration/declaration public AI fee/duration cases only; no submissions or private account access.",
+  "externalModelGate": "NOT_PASSED"
+}
