@@ -1,0 +1,73 @@
+{
+  "capturedAt": "2026-10-10T10:48:31.040Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "background": "rgb(237, 243, 247) none repeat scroll 0% 0% / auto padding-box border-box",
+    "boxShadow": "none",
+    "before": {
+      "content": "none",
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "position": "static"
+    },
+    "bounds": {
+      "x": 847.78125,
+      "y": 749,
+      "width": 237.265625,
+      "height": 44,
+      "top": 749,
+      "right": 1085.046875,
+      "bottom": 793,
+      "left": 847.78125
+    },
+    "title": "700 12px / 14.4px Cairo, Arial, Tahoma, sans-serif",
+    "heroShadows": [
+      {
+        "class": "premium-home-hero platform-hero visual-target-hero",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-hero-main",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-ai-showcase",
+        "shadow": "none",
+        "filter": "none"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 18.409131612050402,
+      "changed": 10.500394431059847
+    },
+    {
+      "name": "rhythm",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-how{row-gap:0!important;padding-bottom:13px!important}",
+      "mad": 17.203355862098373,
+      "changed": 9.736050998870008
+    },
+    {
+      "name": "type13",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-how li b{font-size:13px!important}html.hb-phase8 body[data-home-geometry] .premium-how li small{font-size:11px!important}",
+      "mad": 18.910009309994386,
+      "changed": 10.893759461015287
+    },
+    {
+      "name": "rhythm-type13",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-how{row-gap:0!important;padding-bottom:13px!important}html.hb-phase8 body[data-home-geometry] .premium-how li b{font-size:13px!important}html.hb-phase8 body[data-home-geometry] .premium-how li small{font-size:11px!important}",
+      "mad": 17.679068147737528,
+      "changed": 10.157132806003881
+    },
+    {
+      "name": "rhythm-type14",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-how{row-gap:0!important;padding-bottom:13px!important}html.hb-phase8 body[data-home-geometry] .premium-how li b{font-size:14px!important}html.hb-phase8 body[data-home-geometry] .premium-how li small{font-size:11px!important}",
+      "mad": 18.311668052505524,
+      "changed": 10.476941773447328
+    }
+  ]
+}
