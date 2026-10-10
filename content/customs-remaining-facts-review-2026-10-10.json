@@ -28,7 +28,18 @@
       "read": "official public card, current 2026-10-10"
     }
   ],
-  "transactionValidation": "Production transaction ending with rollback",
-  "liveAcceptance": "PENDING_AFTER_MERGE",
+  "transactionValidation": "Production policies applied and read back at version 2; public AI source verified against merged #412, then actual live cases accepted",
+  "liveAcceptance": {
+    "status": "PASS_SCOPED",
+    "capturedAt": "2026-10-10T23:38:14.751Z",
+    "publicAiVersion": 124,
+    "passedCases": 8,
+    "totalCases": 8,
+    "scope": "Registration and declaration fees/duration in Arabic and English only",
+    "evidence": "https://github.com/hossambahr229-star/hossambahr-site/blob/agent/live-customs-remaining-failed-followup/artifacts/live-customs-remaining-failed-followup/report.json",
+    "externalModelGate": "NOT_PASSED",
+    "providerBlocker": "QUOTA_BILLING / 429 / credit_balance_exhausted",
+    "overallAcceptance": "NOT_DECLARED"
+  },
   "externalSubmissionPerformed": false
 }
