@@ -1,0 +1,116 @@
+{
+  "capturedAt": "2026-10-10T05:56:03.383Z",
+  "source": "LIVE_OFFICIAL_PUBLIC_BROWSER_READ",
+  "scope": "Read-only source recovery; no inquiry, transaction, login or user data submitted. Form visibility does not verify fee/time.",
+  "checks": [
+    {
+      "name": "new-execution",
+      "status": 200,
+      "url": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=en",
+      "title": "Ajman Department of Economic Development",
+      "text": "Login\nBack to services\n\nSelf-services and inquiries\n\nActivities Inquiry\n\nReview economic activities, procedures, and required approvals.\n\nActivities inquiry\nChoose activity\nChoose procedure\nChoose procedure...\nIssue license\nRenew license (Under development)\nAmend license (Under development)\nContact us via\n+97180070\nEmail\ninfo@ajded.gov.ae\n\nLast Updated: 22/12/2025 02:38م\n|\nVisitors: 2142342\n\nTerms & Conditions\n|\nPrivacy Policy\n\n© 2026 Ajman Department of Economic Development. All Rights Reserved.\n\nHello!\n\nI'm your virtual assistant, how can I help you?\n\nStart Chat →\nHello, contact us",
+      "links": [],
+      "forms": [
+        {
+          "action": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=en",
+          "inputs": [
+            {
+              "type": "search",
+              "name": "",
+              "placeholder": "Search activities..."
+            },
+            {
+              "type": "select-one",
+              "name": "",
+              "placeholder": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "official-card",
+      "status": 200,
+      "url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+      "title": "Service to inquire about activities for a commercial license |...",
+      "text": "Services\nWhy Ajman\nLaws & Regulations\nOpen Data\nConsumer Protection\nContact & Support\nAbout AJDED\nDigital Participation\nعربي\nHome\nServices\nServices Directory\nService to inquire about activities for a commercial license\nService to inquire about activities for a commercial license\nAbout the Service\n\nIt is a service that allows establishments and individuals to search for activities for an economic license\n\n14000\nUser used this Service\nService Process\n1\nVisiting the website or the nearest service center.\n2\nSearching for and inquiring about activities\nService Fees\nFree\nTerms and Conditions\nNone\nDelivery Duration\n\n02 minutes\n\nChannels\nE-service\nService Code\nDED03.005\nService Structure\nComplementary\nService Type\nInformational\nService Package\nNone\nForms used in this Service\nNone\nService correlation with other Services\n\nReserve trade names - Issuance of commercial licenses - Amending the license information.\n\nLimitation of Service\n\nNone\n\nBeneficiary\nGovernmental entities - Business (companies/institutions) - Individuals\nService Rating\naverage rating : 5 from 555\nRequired Documents\nNone\nStart Service\n\nHaving Trouble? +971 800 70\n\nSend your feedback\n\n\nYes\nNo\nSuggest\nServices\nExisting Investor\nFuture Investor\nConsumer Protection\nIntellectual Property Protection\nInquiry & Self Services\nMedia Center\nPhoto Gallery\nVideo Gallery\nNews\nEvents\nMedia Kit\nQuick Links\nFAQs\nContact Us\nCareers\nCustomer Happiness Charter\nTenders & Procurement\nSitemap\nArchive\nFraud Report\nFeasibility Study\nContact Director General\nWorking Hours\nMonday to Thursday\n7:30am - 3:30pm\nFriday\n7:30am - 12:00pm\nNeed Help?\n+971 800 70\n\n\nAccessability Settings\nCopyright\nTerms & Conditions\nDisclaimer\nPrivacy Policy\n\nThe site has been updated on 09/10/2026 12:19 PM | This website is responsive and it adapts to different screen resolutions. It's compatible with Microsoft Edge 80+, Google Chrome 80+, Firefox 80+, Opera 70+, Safari 10+\n\n© Copyright 2026 Ajman DED. All Rights Reserved.\n\nVisitors Counter\n731",
+      "links": [
+        {
+          "text": "عربي",
+          "href": "https://www.ajmanded.ae/ar/services/services-directory/inquiry-services/business-activity-inquiry"
+        },
+        {
+          "text": "Start Service",
+          "href": "https://eservices.ajmanded.ae/en/activitiesapprovalsinquiry"
+        }
+      ],
+      "forms": [
+        {
+          "action": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+          "inputs": [
+            {
+              "type": "hidden",
+              "name": "__RequestVerificationToken",
+              "placeholder": null
+            },
+            {
+              "type": "hidden",
+              "name": "__VIEWSTATE",
+              "placeholder": null
+            },
+            {
+              "type": "checkbox",
+              "name": "",
+              "placeholder": null
+            },
+            {
+              "type": "text",
+              "name": "",
+              "placeholder": "Search everything"
+            },
+            {
+              "type": "select-one",
+              "name": "type",
+              "placeholder": null
+            },
+            {
+              "type": "text",
+              "name": "name",
+              "placeholder": "Name"
+            },
+            {
+              "type": "text",
+              "name": "email",
+              "placeholder": "Email"
+            },
+            {
+              "type": "hidden",
+              "name": "recaptchaval",
+              "placeholder": null
+            },
+            {
+              "type": "radio",
+              "name": "answers",
+              "placeholder": null
+            },
+            {
+              "type": "radio",
+              "name": "answers",
+              "placeholder": null
+            },
+            {
+              "type": "radio",
+              "name": "answers",
+              "placeholder": null
+            },
+            {
+              "type": "text",
+              "name": "",
+              "placeholder": "Subscribe to our Newsletter"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
