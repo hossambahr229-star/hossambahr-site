@@ -1,9 +1,9 @@
 {
-  "capturedAt": "2026-10-08T15:36:38.081Z",
-  "source": "BUILT_CANDIDATE",
-  "url": "http://127.0.0.1:8765/",
+  "capturedAt": "2026-10-10T11:15:16.431Z",
+  "source": "LIVE_PRODUCTION",
+  "url": "https://hossambahr.com/",
   "httpStatus": 200,
-  "diagnosticSourceCommit": "484a31696b8629d152273e004773dcad8d825955",
+  "diagnosticSourceCommit": "4b38026a062413814ba0330ae2a043d51a1af610",
   "productionShaBoundary": "Capture is live; diagnostic commit is not asserted to be the deployed SHA.",
   "referenceSha256": "97dc3758fb786a116109381f05d272a2891af014935ec00b181db02b9d5012d7",
   "viewport": {
@@ -20,8 +20,8 @@
         "width": 1440,
         "height": 61
       },
-      "meanAbsoluteDifference": 26.01546372191864,
-      "changedPixelPercent": 18.12841530054645
+      "meanAbsoluteDifference": 24.887928809957497,
+      "changedPixelPercent": 17.430555555555554
     },
     {
       "name": "hero-photo",
@@ -31,8 +31,8 @@
         "width": 1069,
         "height": 302
       },
-      "meanAbsoluteDifference": 49.28662053413787,
-      "changedPixelPercent": 47.39590754496063
+      "meanAbsoluteDifference": 29.351793572421254,
+      "changedPixelPercent": 21.755183714432626
     },
     {
       "name": "hero-copy-search",
@@ -42,8 +42,8 @@
         "width": 597,
         "height": 244
       },
-      "meanAbsoluteDifference": 46.790468737128265,
-      "changedPixelPercent": 47.45311255732213
+      "meanAbsoluteDifference": 27.80743883351182,
+      "changedPixelPercent": 21.04168382898097
     },
     {
       "name": "ai-panel",
@@ -53,8 +53,8 @@
         "width": 371,
         "height": 302
       },
-      "meanAbsoluteDifference": 66.11400784229724,
-      "changedPixelPercent": 44.02099212795202
+      "meanAbsoluteDifference": 37.298051921005815,
+      "changedPixelPercent": 28.150157976473107
     },
     {
       "name": "categories",
@@ -64,8 +64,8 @@
         "width": 1378,
         "height": 116
       },
-      "meanAbsoluteDifference": 20.05818444188646,
-      "changedPixelPercent": 12.993593914218508
+      "meanAbsoluteDifference": 14.252790150643111,
+      "changedPixelPercent": 11.283844652419798
     },
     {
       "name": "featured",
@@ -75,8 +75,8 @@
         "width": 1378,
         "height": 127
       },
-      "meanAbsoluteDifference": 42.49316594859605,
-      "changedPixelPercent": 39.32322320377587
+      "meanAbsoluteDifference": 35.52326777367633,
+      "changedPixelPercent": 33.07943727643624
     },
     {
       "name": "metrics",
@@ -86,8 +86,8 @@
         "width": 1378,
         "height": 67
       },
-      "meanAbsoluteDifference": 31.51573771202045,
-      "changedPixelPercent": 18.886337543053962
+      "meanAbsoluteDifference": 30.538746759670442,
+      "changedPixelPercent": 18.47475250741936
     },
     {
       "name": "how-it-works",
@@ -97,8 +97,8 @@
         "width": 1054,
         "height": 89
       },
-      "meanAbsoluteDifference": 18.409131612050402,
-      "changedPixelPercent": 10.500394431059847
+      "meanAbsoluteDifference": 17.203355862098373,
+      "changedPixelPercent": 9.736050998870008
     },
     {
       "name": "consultation",
@@ -108,8 +108,8 @@
         "width": 303,
         "height": 89
       },
-      "meanAbsoluteDifference": 43.75996588422887,
-      "changedPixelPercent": 38.04279304334928
+      "meanAbsoluteDifference": 25.218229688137352,
+      "changedPixelPercent": 19.008417695702153
     },
     {
       "name": "authorities",
@@ -119,8 +119,8 @@
         "width": 1378,
         "height": 70
       },
-      "meanAbsoluteDifference": 22.630599903241414,
-      "changedPixelPercent": 17.330499688990255
+      "meanAbsoluteDifference": 22.52921418204437,
+      "changedPixelPercent": 17.135600248807794
     },
     {
       "name": "cta",
@@ -130,8 +130,8 @@
         "width": 1440,
         "height": 72
       },
-      "meanAbsoluteDifference": 67.35009002057613,
-      "changedPixelPercent": 59.41840277777778
+      "meanAbsoluteDifference": 33.909262474279835,
+      "changedPixelPercent": 24.68846450617284
     }
   ],
   "layout": {
@@ -173,9 +173,9 @@
       },
       ".desktop-nav": {
         "x": 474.953125,
-        "y": 6.796875,
+        "y": 6.203125,
         "width": 617.09375,
-        "height": 47.390625,
+        "height": 48.59375,
         "font": "16px / 26.4px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
         "lineHeight": "26.4px",
@@ -202,22 +202,22 @@
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
         "lineHeight": "26.4px",
         "backgroundColor": "rgba(0, 0, 0, 0)",
-        "backgroundImage": "linear-gradient(90deg, rgba(0, 0, 0, 0) 36%, rgba(255, 253, 241, 0.22) 59%, rgba(255, 253, 241, 0.85) 100%), url(\"http://127.0.0.1:8765/assets/approved-hero-background.webp\")"
+        "backgroundImage": "linear-gradient(90deg, rgba(0, 0, 0, 0) 36%, rgba(255, 253, 241, 0.22) 59%, rgba(255, 253, 241, 0.85) 100%), url(\"https://hossambahr.com/assets/hero-reference-restored.webp\")"
       },
       ".premium-hero-copy h1": {
         "x": 433.828125,
         "y": 103,
         "width": 598.328125,
-        "height": 81.890625,
-        "font": "800 36px / 37.8px Cairo, Arial, Tahoma, sans-serif",
-        "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
-        "lineHeight": "37.8px",
+        "height": 83.984375,
+        "font": "700 38px / 39.9px \"HB Sans Arabic\", Cairo, sans-serif",
+        "fontFamily": "\"HB Sans Arabic\", Cairo, sans-serif",
+        "lineHeight": "39.9px",
         "backgroundColor": "rgba(0, 0, 0, 0)",
         "backgroundImage": "none"
       },
       ".premium-hero-copy>p": {
         "x": 673.171875,
-        "y": 193.890625,
+        "y": 195.984375,
         "width": 358.984375,
         "height": 42,
         "font": "14px / 21px Cairo, Arial, Tahoma, sans-serif",
@@ -246,28 +246,28 @@
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
         "lineHeight": "26.4px",
         "backgroundColor": "rgba(0, 0, 0, 0)",
-        "backgroundImage": "radial-gradient(at 35% 40%, rgb(27, 102, 103), rgb(3, 45, 59) 70%)"
+        "backgroundImage": "url(\"https://hossambahr.com/assets/ai-reference-backdrop.webp\")"
       },
       ".ai-showcase-mark": {
-        "x": 1114.46875,
-        "y": 143,
+        "x": 1112.46875,
+        "y": 135,
         "width": 88,
         "height": 88,
         "font": "900 0px / 0px Arial, sans-serif",
         "fontFamily": "Arial, sans-serif",
         "lineHeight": "0px",
         "backgroundColor": "rgba(0, 0, 0, 0)",
-        "backgroundImage": "url(\"http://127.0.0.1:8765/icon.svg\")"
+        "backgroundImage": "url(\"https://hossambahr.com/icon.svg\")"
       },
       ".ai-showcase-welcome": {
-        "x": 1219.875,
+        "x": 1225.640625,
         "y": 92,
-        "width": 196.109375,
+        "width": 197.34375,
         "height": 62,
         "font": "14px / 21px Cairo, Arial, Tahoma, sans-serif",
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
         "lineHeight": "21px",
-        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundColor": "rgba(0, 28, 43, 0.4)",
         "backgroundImage": "none"
       },
       ".premium-category-grid": {
@@ -301,7 +301,7 @@
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
         "lineHeight": "20.064px",
         "backgroundColor": "rgba(0, 0, 0, 0)",
-        "backgroundImage": "linear-gradient(100deg, rgb(8, 55, 82), rgb(3, 42, 66))"
+        "backgroundImage": "linear-gradient(100deg, rgb(10, 48, 76), rgb(3, 36, 60))"
       },
       ".premium-how": {
         "x": 0,
@@ -334,573 +334,12 @@
         "fontFamily": "Cairo, Arial, Tahoma, sans-serif",
         "lineHeight": "26.4px",
         "backgroundColor": "rgba(0, 0, 0, 0)",
-        "backgroundImage": "linear-gradient(100deg, rgba(225, 232, 237, 0.875), rgba(255, 244, 227, 0.78)), url(\"http://127.0.0.1:8765/assets/approved-hero-background.webp\")"
+        "backgroundImage": "linear-gradient(90deg, rgba(0, 0, 0, 0) 28%, rgba(255, 244, 230, 0.7) 43%, rgba(255, 244, 230, 0.85) 63%, rgba(0, 0, 0, 0) 83%), url(\"https://hossambahr.com/assets/cta-reference-panorama.webp\")"
       }
     }
   },
   "errors": [],
-  "candidateChecks": [
-    {
-      "locale": "ar",
-      "width": 1440,
-      "overflow": false,
-      "chipsVisible": true,
-      "chips": {
-        "x": 433.828125,
-        "y": 311,
-        "right": 1032.15625,
-        "bottom": 334,
-        "w": 598.328125,
-        "h": 23
-      },
-      "photo": {
-        "x": 0,
-        "y": 61,
-        "right": 1068.46875,
-        "bottom": 363,
-        "w": 1068.46875,
-        "h": 302
-      },
-      "modeBounds": [
-        {
-          "x": 31.046875,
-          "y": 311,
-          "right": 143.046875,
-          "bottom": 341,
-          "w": 112,
-          "h": 30
-        },
-        {
-          "x": 150.046875,
-          "y": 311,
-          "right": 249.046875,
-          "bottom": 341,
-          "w": 99,
-          "h": 30
-        },
-        {
-          "x": 256.046875,
-          "y": 311,
-          "right": 361.046875,
-          "bottom": 341,
-          "w": 105,
-          "h": 30
-        }
-      ],
-      "modeVisible": true,
-      "modeHrefs": [
-        "/ai/",
-        "/discover/",
-        "/authorities/"
-      ],
-      "chipCount": 7,
-      "failures": []
-    },
-    {
-      "locale": "ar",
-      "width": 1366,
-      "overflow": false,
-      "chipsVisible": true,
-      "chips": {
-        "x": 381.109375,
-        "y": 311,
-        "right": 979.109375,
-        "bottom": 334,
-        "w": 598,
-        "h": 23
-      },
-      "photo": {
-        "x": 0,
-        "y": 61,
-        "right": 1013.5625,
-        "bottom": 363,
-        "w": 1013.5625,
-        "h": 302
-      },
-      "modeBounds": [
-        {
-          "x": 31.015625,
-          "y": 311,
-          "right": 143.015625,
-          "bottom": 341,
-          "w": 112,
-          "h": 30
-        },
-        {
-          "x": 150.015625,
-          "y": 311,
-          "right": 249.015625,
-          "bottom": 341,
-          "w": 99,
-          "h": 30
-        },
-        {
-          "x": 256.015625,
-          "y": 311,
-          "right": 361.015625,
-          "bottom": 341,
-          "w": 105,
-          "h": 30
-        }
-      ],
-      "modeVisible": true,
-      "modeHrefs": [
-        "/ai/",
-        "/discover/",
-        "/authorities/"
-      ],
-      "chipCount": 7,
-      "failures": []
-    },
-    {
-      "locale": "ar",
-      "width": 430,
-      "overflow": false,
-      "chipsVisible": false,
-      "chips": {
-        "x": 0,
-        "y": 0,
-        "right": 0,
-        "bottom": 0,
-        "w": 0,
-        "h": 0
-      },
-      "photo": {
-        "x": 0,
-        "y": 64,
-        "right": 430,
-        "bottom": 477.78125,
-        "w": 430,
-        "h": 413.78125
-      },
-      "modeBounds": [
-        {
-          "x": 282.09375,
-          "y": 415.78125,
-          "right": 362.671875,
-          "bottom": 459.78125,
-          "w": 80.578125,
-          "h": 44
-        },
-        {
-          "x": 182.484375,
-          "y": 415.78125,
-          "right": 275.09375,
-          "bottom": 459.78125,
-          "w": 92.609375,
-          "h": 44
-        },
-        {
-          "x": 88.5625,
-          "y": 415.78125,
-          "right": 175.484375,
-          "bottom": 459.78125,
-          "w": 86.921875,
-          "h": 44
-        }
-      ],
-      "modeVisible": true,
-      "modeHrefs": [
-        "/ai/",
-        "/discover/",
-        "/authorities/"
-      ],
-      "chipCount": 7,
-      "failures": []
-    },
-    {
-      "locale": "ar",
-      "width": 390,
-      "overflow": false,
-      "chipsVisible": false,
-      "chips": {
-        "x": 0,
-        "y": 0,
-        "right": 0,
-        "bottom": 0,
-        "w": 0,
-        "h": 0
-      },
-      "photo": {
-        "x": 0,
-        "y": 64,
-        "right": 390,
-        "bottom": 477.78125,
-        "w": 390,
-        "h": 413.78125
-      },
-      "modeBounds": [
-        {
-          "x": 282.09375,
-          "y": 415.78125,
-          "right": 362.671875,
-          "bottom": 459.78125,
-          "w": 80.578125,
-          "h": 44
-        },
-        {
-          "x": 182.484375,
-          "y": 415.78125,
-          "right": 275.09375,
-          "bottom": 459.78125,
-          "w": 92.609375,
-          "h": 44
-        },
-        {
-          "x": 88.5625,
-          "y": 415.78125,
-          "right": 175.484375,
-          "bottom": 459.78125,
-          "w": 86.921875,
-          "h": 44
-        }
-      ],
-      "modeVisible": true,
-      "modeHrefs": [
-        "/ai/",
-        "/discover/",
-        "/authorities/"
-      ],
-      "chipCount": 7,
-      "failures": []
-    },
-    {
-      "locale": "ar",
-      "width": 360,
-      "overflow": false,
-      "chipsVisible": false,
-      "chips": {
-        "x": 0,
-        "y": 0,
-        "right": 0,
-        "bottom": 0,
-        "w": 0,
-        "h": 0
-      },
-      "photo": {
-        "x": 0,
-        "y": 64,
-        "right": 360,
-        "bottom": 514.921875,
-        "w": 360,
-        "h": 450.921875
-      },
-      "modeBounds": [
-        {
-          "x": 209.53125,
-          "y": 415.78125,
-          "right": 290.109375,
-          "bottom": 459.78125,
-          "w": 80.578125,
-          "h": 44
-        },
-        {
-          "x": 109.921875,
-          "y": 415.78125,
-          "right": 202.53125,
-          "bottom": 459.78125,
-          "w": 92.609375,
-          "h": 44
-        },
-        {
-          "x": 16,
-          "y": 415.78125,
-          "right": 102.921875,
-          "bottom": 459.78125,
-          "w": 86.921875,
-          "h": 44
-        }
-      ],
-      "modeVisible": true,
-      "modeHrefs": [
-        "/ai/",
-        "/discover/",
-        "/authorities/"
-      ],
-      "chipCount": 7,
-      "failures": []
-    },
-    {
-      "locale": "en",
-      "width": 1440,
-      "overflow": false,
-      "chipsVisible": true,
-      "chips": {
-        "x": 433.828125,
-        "y": 314,
-        "right": 1032.15625,
-        "bottom": 338,
-        "w": 598.328125,
-        "h": 24
-      },
-      "photo": {
-        "x": 0,
-        "y": 64,
-        "right": 1068.46875,
-        "bottom": 366,
-        "w": 1068.46875,
-        "h": 302
-      },
-      "modeBounds": [
-        {
-          "x": 31.046875,
-          "y": 314,
-          "right": 143.046875,
-          "bottom": 344,
-          "w": 112,
-          "h": 30
-        },
-        {
-          "x": 150.046875,
-          "y": 314,
-          "right": 249.046875,
-          "bottom": 356,
-          "w": 99,
-          "h": 42
-        },
-        {
-          "x": 256.046875,
-          "y": 314,
-          "right": 361.046875,
-          "bottom": 344,
-          "w": 105,
-          "h": 30
-        }
-      ],
-      "modeVisible": true,
-      "modeHrefs": [
-        "/en/ai/",
-        "/en/discover/",
-        "/en/authorities/"
-      ],
-      "chipCount": 6,
-      "failures": []
-    },
-    {
-      "locale": "en",
-      "width": 1366,
-      "overflow": false,
-      "chipsVisible": true,
-      "chips": {
-        "x": 381.109375,
-        "y": 314,
-        "right": 979.109375,
-        "bottom": 338,
-        "w": 598,
-        "h": 24
-      },
-      "photo": {
-        "x": 0,
-        "y": 64,
-        "right": 1013.5625,
-        "bottom": 366,
-        "w": 1013.5625,
-        "h": 302
-      },
-      "modeBounds": [
-        {
-          "x": 31.015625,
-          "y": 314,
-          "right": 143.015625,
-          "bottom": 344,
-          "w": 112,
-          "h": 30
-        },
-        {
-          "x": 150.015625,
-          "y": 314,
-          "right": 249.015625,
-          "bottom": 356,
-          "w": 99,
-          "h": 42
-        },
-        {
-          "x": 256.015625,
-          "y": 314,
-          "right": 361.015625,
-          "bottom": 344,
-          "w": 105,
-          "h": 30
-        }
-      ],
-      "modeVisible": true,
-      "modeHrefs": [
-        "/en/ai/",
-        "/en/discover/",
-        "/en/authorities/"
-      ],
-      "chipCount": 6,
-      "failures": []
-    },
-    {
-      "locale": "en",
-      "width": 430,
-      "overflow": false,
-      "chipsVisible": false,
-      "chips": {
-        "x": 0,
-        "y": 0,
-        "right": 0,
-        "bottom": 0,
-        "w": 0,
-        "h": 0
-      },
-      "photo": {
-        "x": 0,
-        "y": 64,
-        "right": 430,
-        "bottom": 516.78125,
-        "w": 430,
-        "h": 452.78125
-      },
-      "modeBounds": [
-        {
-          "x": 47.296875,
-          "y": 415.78125,
-          "right": 160.4375,
-          "bottom": 459.78125,
-          "w": 113.140625,
-          "h": 44
-        },
-        {
-          "x": 167.4375,
-          "y": 415.78125,
-          "right": 294.71875,
-          "bottom": 459.78125,
-          "w": 127.28125,
-          "h": 44
-        },
-        {
-          "x": 301.71875,
-          "y": 415.78125,
-          "right": 414,
-          "bottom": 459.78125,
-          "w": 112.28125,
-          "h": 44
-        }
-      ],
-      "modeVisible": true,
-      "modeHrefs": [
-        "/en/ai/",
-        "/en/discover/",
-        "/en/authorities/"
-      ],
-      "chipCount": 6,
-      "failures": []
-    },
-    {
-      "locale": "en",
-      "width": 390,
-      "overflow": false,
-      "chipsVisible": false,
-      "chips": {
-        "x": 0,
-        "y": 0,
-        "right": 0,
-        "bottom": 0,
-        "w": 0,
-        "h": 0
-      },
-      "photo": {
-        "x": 0,
-        "y": 64,
-        "right": 390,
-        "bottom": 528.78125,
-        "w": 390,
-        "h": 464.78125
-      },
-      "modeBounds": [
-        {
-          "x": 126.578125,
-          "y": 415.78125,
-          "right": 239.71875,
-          "bottom": 459.78125,
-          "w": 113.140625,
-          "h": 44
-        },
-        {
-          "x": 246.71875,
-          "y": 415.78125,
-          "right": 374,
-          "bottom": 459.78125,
-          "w": 127.28125,
-          "h": 44
-        },
-        {
-          "x": 151.5625,
-          "y": 466.78125,
-          "right": 263.84375,
-          "bottom": 510.78125,
-          "w": 112.28125,
-          "h": 44
-        }
-      ],
-      "modeVisible": true,
-      "modeHrefs": [
-        "/en/ai/",
-        "/en/discover/",
-        "/en/authorities/"
-      ],
-      "chipCount": 6,
-      "failures": []
-    },
-    {
-      "locale": "en",
-      "width": 360,
-      "overflow": false,
-      "chipsVisible": false,
-      "chips": {
-        "x": 0,
-        "y": 0,
-        "right": 0,
-        "bottom": 0,
-        "w": 0,
-        "h": 0
-      },
-      "photo": {
-        "x": 0,
-        "y": 64,
-        "right": 360,
-        "bottom": 528.78125,
-        "w": 360,
-        "h": 464.78125
-      },
-      "modeBounds": [
-        {
-          "x": 96.578125,
-          "y": 415.78125,
-          "right": 209.71875,
-          "bottom": 459.78125,
-          "w": 113.140625,
-          "h": 44
-        },
-        {
-          "x": 216.71875,
-          "y": 415.78125,
-          "right": 344,
-          "bottom": 459.78125,
-          "w": 127.28125,
-          "h": 44
-        },
-        {
-          "x": 121.5625,
-          "y": 466.78125,
-          "right": 233.84375,
-          "bottom": 510.78125,
-          "w": 112.28125,
-          "h": 44
-        }
-      ],
-      "modeVisible": true,
-      "modeHrefs": [
-        "/en/ai/",
-        "/en/discover/",
-        "/en/authorities/"
-      ],
-      "chipCount": 6,
-      "failures": []
-    }
-  ],
+  "candidateChecks": [],
   "pixelFidelity": "NOT_DECLARED",
   "scope": "Regional pixel differences locate visual mismatches. No functional regression, authenticated journey, or external-model acceptance is asserted. Differences in factual copy and the preserved HB master mark must not be repaired by copying unverified mockup claims."
 }
