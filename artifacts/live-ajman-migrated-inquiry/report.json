@@ -1,0 +1,308 @@
+{
+  "capturedAt": "2026-10-10T10:41:13.297Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "checks": [
+    {
+      "slug": "ajman-business-activity-inquiry",
+      "locale": "ar",
+      "width": 1440,
+      "status": 200,
+      "url": "https://hossambahr.com/services/ajman-business-activity-inquiry/",
+      "official": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "ajman-business-activity-inquiry",
+      "locale": "ar",
+      "width": 390,
+      "status": 200,
+      "url": "https://hossambahr.com/services/ajman-business-activity-inquiry/",
+      "official": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "ajman-business-activity-inquiry",
+      "locale": "en",
+      "width": 1440,
+      "status": 200,
+      "url": "https://hossambahr.com/en/services/ajman-business-activity-inquiry/",
+      "official": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=en",
+      "overflow": false,
+      "failures": []
+    },
+    {
+      "slug": "ajman-business-activity-inquiry",
+      "locale": "en",
+      "width": 390,
+      "status": 200,
+      "url": "https://hossambahr.com/en/services/ajman-business-activity-inquiry/",
+      "official": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=en",
+      "overflow": false,
+      "failures": []
+    }
+  ],
+  "contextCheck": {
+    "passed": true,
+    "service": {
+      "service_id": "ajman:business-activity-inquiry",
+      "service_slug": "ajman-business-activity-inquiry",
+      "service_name": {
+        "ar": "الاستعلام عن الأنشطة الاقتصادية في عجمان",
+        "en": "Business Activity Inquiry"
+      },
+      "emirate": "عجمان",
+      "emirate_en": "Ajman",
+      "official_execution_url": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
+      "official_execution_url_en": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=en",
+      "authority": {
+        "id": "ajman-ded",
+        "ar": "دائرة التنمية الاقتصادية في عجمان",
+        "en": "Ajman Department of Economic Development"
+      },
+      "source_page": "/services/ajman-business-activity-inquiry/",
+      "official_url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+      "requirements": [],
+      "no_documents_required": true,
+      "requirements_verified": true
+    }
+  },
+  "apiChecks": [
+    {
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "الاستعلام عن الأنشطة الاقتصادية في عجمان. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service or API failure",
+        "Grounding or focus mismatch",
+        "Reviewed fact absent",
+        "Reviewed source version absent"
+      ]
+    },
+    {
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "الاستعلام عن الأنشطة الاقتصادية في عجمان. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service or API failure",
+        "Grounding or focus mismatch",
+        "Reviewed fact absent",
+        "Reviewed source version absent"
+      ]
+    },
+    {
+      "locale": "ar",
+      "focus": "conditions",
+      "prompt": "الاستعلام عن الأنشطة الاقتصادية في عجمان. ما الشروط؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service or API failure",
+        "Grounding or focus mismatch",
+        "Reviewed fact absent",
+        "Reviewed source version absent"
+      ]
+    },
+    {
+      "locale": "ar",
+      "focus": "documents",
+      "prompt": "الاستعلام عن الأنشطة الاقتصادية في عجمان. ما المستندات المطلوبة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service or API failure",
+        "Grounding or focus mismatch",
+        "Reviewed fact absent",
+        "Reviewed source version absent"
+      ]
+    },
+    {
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Business Activity Inquiry in Ajman. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service or API failure",
+        "Grounding or focus mismatch",
+        "Reviewed fact absent",
+        "Reviewed source version absent"
+      ]
+    },
+    {
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Business Activity Inquiry in Ajman. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service or API failure",
+        "Grounding or focus mismatch",
+        "Reviewed fact absent",
+        "Reviewed source version absent"
+      ]
+    },
+    {
+      "locale": "en",
+      "focus": "conditions",
+      "prompt": "Business Activity Inquiry in Ajman. What are the conditions?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service or API failure",
+        "Grounding or focus mismatch",
+        "Reviewed fact absent",
+        "Reviewed source version absent"
+      ]
+    },
+    {
+      "locale": "en",
+      "focus": "documents",
+      "prompt": "Business Activity Inquiry in Ajman. What documents are required?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service or API failure",
+        "Grounding or focus mismatch",
+        "Reviewed fact absent",
+        "Reviewed source version absent"
+      ]
+    }
+  ],
+  "scope": "Specific informational inquiry and localized government links, HB direct WhatsApp context, document-free handoff and reviewed inquiry facts. Government destinations opened read-only. No activity inputs, licence applications, messages, account login or uploads submitted.",
+  "externalModelGate": "NOT_PASSED"
+}
