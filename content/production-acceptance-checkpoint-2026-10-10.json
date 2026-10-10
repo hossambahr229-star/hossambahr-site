@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-10T11:05:00Z",
+  "latestSourceMerge": "c844bd12f696539bbd7cb01b37510082201a7af3",
+  "mergedPullRequests": [
+    403,
+    404,
+    405,
+    406,
+    407,
+    408
+  ],
+  "publicAi": {
+    "deployedVersion": 122,
+    "codeSha256": "4ccaed51ef5e95223bc1c0e50e256d90118f28649cb60657cc9973eb9dc8b923",
+    "scopedAccepted": {
+      "ajmanInquiryFactCases": 8,
+      "customsVehicleFeeDurationCases": 4
+    },
+    "externalModelGate": "NOT_PASSED",
+    "external_model_used": false,
+    "providerFailure": {
+      "category": "QUOTA_BILLING",
+      "status": 429,
+      "code": "credit_balance_exhausted"
+    }
+  },
+  "visual": {
+    "captureSource": "LIVE_PRODUCTION",
+    "deployedCommit": "dfa6c64d2defdbe1e405354366ce3500664ee9f6",
+    "viewports": [
+      1440,
+      1366,
+      430,
+      390,
+      360
+    ],
+    "geometryPassed": true,
+    "meanAbsolutePixelDifference": 26.215031587577162,
+    "changedPixelPercent": 19.586516203703706,
+    "pixelFidelity": "NOT_DECLARED",
+    "regionalEvidence": {
+      "branch": "agent/live-how-rhythm-acceptance",
+      "report": "artifacts/live-regional-visual/report.json",
+      "capturedAt": "2026-10-10T10:57:08.378Z"
+    },
+    "remaining": "Reference typography, photographs, details and preserved factual-copy/master-brand differences remain. Geometry success does not assert Pixel-Fidelity."
+  },
+  "authenticatedAcceptance": {
+    "status": "BLOCKED_NO_AUTHORIZED_TEST_ACCOUNT_FOUND",
+    "evidenceDate": "2026-10-09",
+    "scope": "Previously inspected test credential pairs were unavailable and explicitly marked Auth test metadata returned zero. Real accounts, private documents and tracking were not claimed as passed. No admin bypass, real-user password reset or private upload performed."
+  },
+  "tools": {
+    "localExecution": "setup_refresh tool failure persists at 2026-10-10; remote GitHub Actions and database connectors remain available"
+  },
+  "overallAcceptance": "NOT_DECLARED",
+  "continuation": "Continue remaining visual/source gaps from latest main. Do not repeat accepted fixes; use actual failed-case follow-ups."
+}

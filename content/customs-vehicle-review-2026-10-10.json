@@ -12,6 +12,16 @@
   },
   "scope": "Existing published facts rechecked against the current official card. Add missing policy fee/duration rules without changing customer documents, account data or government execution.",
   "sourceRead": "Official public service card read 2026-10-10; matching identity and all four fact sections observed.",
-  "liveAcceptance": "PENDING_AFTER_MERGE",
-  "externalSubmissionPerformed": false
+  "liveAcceptance": "SCOPED_GROUNDED_AI_FEE_AND_DURATION_PASS",
+  "externalSubmissionPerformed": false,
+  "liveEvidence": {
+    "branch": "agent/live-customs-vehicle-failed-followup",
+    "report": "artifacts/live-customs-vehicle-failed-followup/report.json",
+    "capturedAt": "2026-10-10T11:03:41.018Z",
+    "casesPassed": 4,
+    "policyVersion": 2
+  },
+  "externalModelAcceptance": "NOT_PASSED_QUOTA_BILLING_429",
+  "external_model_used": false,
+  "overallProjectAcceptance": "NOT_DECLARED"
 }
