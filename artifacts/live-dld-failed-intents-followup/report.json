@@ -1,7 +1,7 @@
 {
-  "capturedAt": "2026-10-09T18:00:01.803Z",
+  "capturedAt": "2026-10-10T05:28:07.737Z",
   "source": "LIVE_PRODUCTION",
-  "passed": false,
+  "passed": true,
   "externalModelGate": "NOT_PASSED_UNLESS_EXTERNAL_MODEL_USED_TRUE",
   "checks": [
     {
@@ -10,14 +10,29 @@
       "prompt": "أريد تقييم عقار في دبي لدى دائرة الأراضي والأملاك",
       "status": 200,
       "ok": true,
-      "actualSlug": null,
-      "passed": false,
+      "actualSlug": "property-valuation-dubai",
+      "passed": true,
       "answer": {
-        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
-        "focus": "clarification",
-        "fact_status": "NEEDS_CLARIFICATION",
-        "grounded": false,
-        "evidence": {}
+        "text": "المسار المناسب لطلبك هو «طلب تقييم عقار في دبي» لدى دائرة الأراضي والأملاك / RERA. اختر نوع العقار والغرض؛ تختلف المستندات الإضافية والرسوم بحسب الفئة.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:property-valuation-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:property-valuation-dubai",
+          "source_title": "طلب تقييم عقار في دبي",
+          "source_url": "https://dubailand.gov.ae/en/eservices/property-valuation",
+          "last_verified_at": "2026-10-09T17:37:49+00:00",
+          "supporting_rule": {
+            "value": "اختر نوع العقار والغرض؛ تختلف المستندات الإضافية والرسوم بحسب الفئة.",
+            "source_refs": [
+              "https://dubailand.gov.ae/en/eservices/property-valuation"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
       },
       "engine": {
         "mode": "deterministic-policy-resolver",
@@ -36,14 +51,29 @@
       "prompt": "I need a property valuation from Dubai Land Department",
       "status": 200,
       "ok": true,
-      "actualSlug": null,
-      "passed": false,
+      "actualSlug": "property-valuation-dubai",
+      "passed": true,
       "answer": {
-        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
-        "focus": "clarification",
-        "fact_status": "NEEDS_CLARIFICATION",
-        "grounded": false,
-        "evidence": {}
+        "text": "The matching service is Property Valuation through Dubai Land Department / RERA.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:property-valuation-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:property-valuation-dubai",
+          "source_title": "طلب تقييم عقار في دبي",
+          "source_url": "https://dubailand.gov.ae/en/eservices/property-valuation",
+          "last_verified_at": "2026-10-09T17:37:49+00:00",
+          "supporting_rule": {
+            "value": "اختر نوع العقار والغرض؛ تختلف المستندات الإضافية والرسوم بحسب الفئة.",
+            "source_refs": [
+              "https://dubailand.gov.ae/en/eservices/property-valuation"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
       },
       "engine": {
         "mode": "deterministic-policy-resolver",
@@ -62,14 +92,29 @@
       "prompt": "أريد انتقال سند الملكية في دبي بموجب خطاب حكومي رسمي وليس بيع عقار",
       "status": 200,
       "ok": true,
-      "actualSlug": null,
-      "passed": false,
+      "actualSlug": "title-transfer-dubai",
+      "passed": true,
       "answer": {
-        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
-        "focus": "clarification",
-        "fact_status": "NEEDS_CLARIFICATION",
-        "grounded": false,
-        "evidence": {}
+        "text": "المسار المناسب لطلبك هو «طلب انتقال ملكية عقار في دبي» لدى دائرة الأراضي والأملاك / RERA. انتقال سند الملكية وفق الخطابات الرسمية الحكومية، عبر المقر الرئيسي للدائرة والتدقيق والاعتماد.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:title-transfer-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:title-transfer-dubai",
+          "source_title": "طلب انتقال ملكية عقار في دبي",
+          "source_url": "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/",
+          "last_verified_at": "2026-10-09T17:37:49+00:00",
+          "supporting_rule": {
+            "value": "انتقال سند الملكية وفق الخطابات الرسمية الحكومية، عبر المقر الرئيسي للدائرة والتدقيق والاعتماد.",
+            "source_refs": [
+              "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
       },
       "engine": {
         "mode": "deterministic-policy-resolver",
