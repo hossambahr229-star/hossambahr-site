@@ -866,5 +866,10 @@ export const recordedFactTranslations: Readonly<Record<string,string>> = Object.
   "استخدم أداتي النشاط والاسم التجاري للاستعداد قبل اختيار الخدمة.": "Use the activity and trade-name tools to prepare before choosing a service.",
   "أكد المستندات والموافقات من بطاقة الخدمة المطابقة لحالتك.": "Confirm documents and approvals in the service card matching your case.",
   "هذا دليل SEDD لاختيار المسار، وليس بطاقة تنفيذ واحدة؛ تختلف المتطلبات بحسب الخدمة والنشاط والحالة.": "This SEDD guide helps choose a pathway; it is not one execution card. Requirements vary by service, activity and case.",
-  "لا ينشر هذا الدليل إجماليًا موحدًا؛ الحاسبة للتقدير وتؤكد الخدمة المختارة الرسوم النهائية.": "The guide publishes no universal total. The calculator gives an estimate; confirm final fees in the selected service."
+  "لا ينشر هذا الدليل إجماليًا موحدًا؛ الحاسبة للتقدير وتؤكد الخدمة المختارة الرسوم النهائية.": "The guide publishes no universal total. The calculator gives an estimate; confirm final fees in the selected service.",
+  "لا تتطلب بطاقة الخدمة DED03.005 مستندات": "Service card DED03.005 requires no documents.",
+  "الاستعلام مجاني وفق بطاقة DED03.005؛ لا يشمل ذلك رسوم إصدار أو تعديل الرخصة.": "The inquiry is free according to service card DED03.005; this does not cover licence issuance or amendment fees.",
+  "دقيقتان للاستعلام وفق بطاقة DED03.005؛ ليست مدة إصدار أو تعديل رخصة.": "Two minutes for the inquiry according to service card DED03.005; this is not a licence issuance or amendment time.",
+  "الخدمة للاستعلام عن أنشطة الرخصة الاقتصادية. تعرض الأداة الحالية إجراء إصدار رخصة؛ ويظهر التجديد والتعديل قيد التطوير. لا ترسل هذه الصفحة طلب إصدار رخصة.": "This service queries economic-licence activities. The current tool offers the licence-issuance procedure; renewal and amendment are shown as under development. This page does not submit a licence application.",
+  "المتطلبات المسجلة لهذه الخدمة: لا تتطلب بطاقة الخدمة DED03.005 مستندات.": "Service card DED03.005 requires no documents."
 });
