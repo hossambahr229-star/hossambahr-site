@@ -1,0 +1,36 @@
+name: Read Ajman Official Catalog Source
+on:
+  push:
+    branches: [agent/read-ajman-catalog-source]
+    paths: [scripts/read-ajman-catalog-source.mjs, .github/workflows/read-ajman-catalog-source.yml]
+permissions:
+  contents: write
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Prepare public PDF text reader
+        run: |
+          if ! command -v pdftotext >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y poppler-utils
+          fi
+      - name: Read specific official inquiry card
+        run: node scripts/read-ajman-catalog-source.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ajman-catalog-source
+          path: artifacts/ajman-catalog-source
+      - name: Preserve specific public source evidence
+        run: |
+          git config user.name "HossamBahr Source Review"
+          git config user.email "source-review@users.noreply.github.com"
+          git add artifacts/ajman-catalog-source
+          if ! git diff --cached --quiet; then
+            git commit -m "Record specific official Ajman source evidence [skip ci]"
+            git push origin HEAD:agent/read-ajman-catalog-source
+          fi
