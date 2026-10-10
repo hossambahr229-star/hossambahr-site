@@ -8,7 +8,7 @@ begin
    select * into strict p from public.hb_policy_versions where policy_key='service:'||(item->>'slug') and status='active' for update;
    select * into strict s from public.hb_policy_sources where id=any(p.source_ids) and source_url=item->>'source' and authority_key='dubai-customs' and active for update;
   exception when no_data_found then raise notice 'Scoped customs records absent in clean seed: %',item->>'slug';continue;end;
-  select coalesce(jsonb_agg(value order by ordinality),'[]'::jsonb) into new_rules from jsonb_array_elements(p.rules) with ordinality where value->>'id' not in ('fees','duration');
+  select coalesce(jsonb_agg(value order by ordinality),'[]'::jsonb) into new_rules from jsonb_array_elements(p.rules) with ordinality where coalesce(value->>'id','') not in ('fees','duration');
   new_rules:=new_rules||jsonb_build_array(
    jsonb_build_object('id','fees','when','[]'::jsonb,'effect','review','reason',item->>'fees','actions',jsonb_build_array('review_fees'),'sourceRefs',jsonb_build_array(item->>'source')),
    jsonb_build_object('id','duration','when','[]'::jsonb,'effect','review','reason',item->>'duration','actions',jsonb_build_array('review_duration'),'sourceRefs',jsonb_build_array(item->>'source')));
