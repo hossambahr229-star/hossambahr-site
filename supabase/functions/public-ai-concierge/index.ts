@@ -118,7 +118,7 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
 function isContextualFollowUp(text:string){
   const n=normalize(text); if(!n)return false;
   if(detectJurisdiction(text)||detectRelationship(text)) return /^(ولو|و|طيب|طب|لا|but|what about)/.test(n)||n.split(" ").length<=5;
-  return hasPhrase(n,["الاوراق","الأوراق","المستندات","الشروط","الرسوم","الخطوات","المدة","الموافقة","الجهة","الرابط","ابدأ","ابدا","عايز اعملها","ليه","ازاي","إزاي","documents","requirements","conditions","fees","steps","duration","approval","authority","link","start","why","how"]) || n.split(" ").length<=3 && has(n,["اوراق","مستندات","شروط","رسوم","خطوات","مده","مدة","موافقه","موافقة","جهه","جهة","رابط","ابدأ","ابدا","ليه","ازاي","إزاي","documents","fees","steps","link","why","how"]);
+  return hasPhrase(n,["الاوراق","الأوراق","المستندات","الشروط","الرسوم","الخطوات","المدة","الموافقة","الجهة","الرابط","ابدأ","ابدا","عايز اعملها","ليه","ازاي","إزاي","documents","requirements","conditions","fees","steps","duration","processing time","turnaround time","approval","authority","link","start","why","how"]) || n.split(" ").length<=3 && has(n,["اوراق","مستندات","شروط","رسوم","خطوات","مده","مدة","موافقه","موافقة","جهه","جهة","رابط","ابدأ","ابدا","ليه","ازاي","إزاي","documents","fees","steps","link","why","how"]);
 }
 
 function answerFocus(text: string) {
@@ -128,7 +128,7 @@ function answerFocus(text: string) {
   if (has(normalized, ["الشروط","شروط","conditions","eligibility","requirements"])) return "conditions";
   if (has(normalized, ["الخطوات","خطوات","steps","how to apply"])) return "steps";
   if (has(normalized, ["الرابط","لينك","link","url"])) return "link";
-  if (has(normalized, ["كم تستغرق","المدة","مده","مدة","duration","how long"])) return "duration";
+  if (has(normalized, ["كم تستغرق","المدة","مده","مدة","duration","how long","processing time","turnaround time"])) return "duration";
   if (has(normalized, ["من الجهة","الجهه","الجهة","authority"])) return "authority";
   if (has(normalized, ["هل احتاج موافقه","هل أحتاج موافقة","موافقه","موافقة","approval"])) return "approvals";
   if (has(normalized, ["ابدأ معاملتي","ابدا معاملتي","start my transaction"])) return "start";
