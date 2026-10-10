@@ -1,0 +1,305 @@
+{
+  "capturedAt": "2026-10-10T10:46:10.451Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "apiChecks": [
+    {
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "الاستعلام عن الأنشطة الاقتصادية في عجمان. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "الاستعلام مجاني وفق بطاقة DED03.005؛ لا يشمل ذلك رسوم إصدار أو تعديل الرخصة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:ajman-business-activity-inquiry",
+          "policy_version": 2,
+          "workflow_key": "service:ajman-business-activity-inquiry",
+          "source_title": "الاستعلام عن الأنشطة الاقتصادية في عجمان — دائرة التنمية الاقتصادية في عجمان",
+          "source_url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+          "last_verified_at": "2026-10-10T05:57:53+00:00",
+          "supporting_rule": {
+            "value": "الاستعلام مجاني وفق بطاقة DED03.005؛ لا يشمل ذلك رسوم إصدار أو تعديل الرخصة.",
+            "source_refs": [
+              "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "الاستعلام عن الأنشطة الاقتصادية في عجمان. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "دقيقتان للاستعلام وفق بطاقة DED03.005؛ ليست مدة إصدار أو تعديل رخصة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:ajman-business-activity-inquiry",
+          "policy_version": 2,
+          "workflow_key": "service:ajman-business-activity-inquiry",
+          "source_title": "الاستعلام عن الأنشطة الاقتصادية في عجمان — دائرة التنمية الاقتصادية في عجمان",
+          "source_url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+          "last_verified_at": "2026-10-10T05:57:53+00:00",
+          "supporting_rule": {
+            "value": "دقيقتان للاستعلام وفق بطاقة DED03.005؛ ليست مدة إصدار أو تعديل رخصة.",
+            "source_refs": [
+              "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "locale": "ar",
+      "focus": "conditions",
+      "prompt": "الاستعلام عن الأنشطة الاقتصادية في عجمان. ما الشروط؟",
+      "status": 200,
+      "answer": {
+        "text": "الخدمة للاستعلام عن أنشطة الرخصة الاقتصادية. تعرض الأداة الحالية إجراء إصدار رخصة؛ ويظهر التجديد والتعديل قيد التطوير. لا ترسل هذه الصفحة طلب إصدار رخصة.",
+        "focus": "conditions",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:ajman-business-activity-inquiry",
+          "policy_version": 2,
+          "workflow_key": "service:ajman-business-activity-inquiry",
+          "source_title": "الاستعلام عن الأنشطة الاقتصادية في عجمان — دائرة التنمية الاقتصادية في عجمان",
+          "source_url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+          "last_verified_at": "2026-10-10T05:57:53+00:00",
+          "supporting_rule": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "locale": "ar",
+      "focus": "documents",
+      "prompt": "الاستعلام عن الأنشطة الاقتصادية في عجمان. ما المستندات المطلوبة؟",
+      "status": 200,
+      "answer": {
+        "text": "المتطلبات المسجلة لهذه الخدمة: لا تتطلب بطاقة الخدمة DED03.005 مستندات.",
+        "focus": "documents",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:ajman-business-activity-inquiry",
+          "policy_version": 2,
+          "workflow_key": "service:ajman-business-activity-inquiry",
+          "source_title": "الاستعلام عن الأنشطة الاقتصادية في عجمان — دائرة التنمية الاقتصادية في عجمان",
+          "source_url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+          "last_verified_at": "2026-10-10T05:57:53+00:00",
+          "supporting_rule": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Business Activity Inquiry in Ajman. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "The inquiry is free according to service card DED03.005; this does not cover licence issuance or amendment fees.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:ajman-business-activity-inquiry",
+          "policy_version": 2,
+          "workflow_key": "service:ajman-business-activity-inquiry",
+          "source_title": "الاستعلام عن الأنشطة الاقتصادية في عجمان — دائرة التنمية الاقتصادية في عجمان",
+          "source_url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+          "last_verified_at": "2026-10-10T05:57:53+00:00",
+          "supporting_rule": {
+            "value": "الاستعلام مجاني وفق بطاقة DED03.005؛ لا يشمل ذلك رسوم إصدار أو تعديل الرخصة.",
+            "source_refs": [
+              "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Business Activity Inquiry in Ajman. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "The matching service is Business Activity Inquiry through Ajman DED. This service queries economic-licence activities. The current tool offers the licence-issuance procedure; renewal and amendment are shown as under development. This page does not submit a licence application.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:ajman-business-activity-inquiry",
+          "policy_version": 2,
+          "workflow_key": "service:ajman-business-activity-inquiry",
+          "source_title": "الاستعلام عن الأنشطة الاقتصادية في عجمان — دائرة التنمية الاقتصادية في عجمان",
+          "source_url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+          "last_verified_at": "2026-10-10T05:57:53+00:00",
+          "supporting_rule": {
+            "value": "الخدمة للاستعلام عن أنشطة الرخصة الاقتصادية. تعرض الأداة الحالية إجراء إصدار رخصة؛ ويظهر التجديد والتعديل قيد التطوير. لا ترسل هذه الصفحة طلب إصدار رخصة.",
+            "source_refs": [
+              "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+              "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar"
+            ]
+          },
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Grounding or focus mismatch",
+        "Reviewed fact absent"
+      ]
+    },
+    {
+      "locale": "en",
+      "focus": "conditions",
+      "prompt": "Business Activity Inquiry in Ajman. What are the conditions?",
+      "status": 200,
+      "answer": {
+        "text": "This service queries economic-licence activities. The current tool offers the licence-issuance procedure; renewal and amendment are shown as under development. This page does not submit a licence application.",
+        "focus": "conditions",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:ajman-business-activity-inquiry",
+          "policy_version": 2,
+          "workflow_key": "service:ajman-business-activity-inquiry",
+          "source_title": "الاستعلام عن الأنشطة الاقتصادية في عجمان — دائرة التنمية الاقتصادية في عجمان",
+          "source_url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+          "last_verified_at": "2026-10-10T05:57:53+00:00",
+          "supporting_rule": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "locale": "en",
+      "focus": "documents",
+      "prompt": "Business Activity Inquiry in Ajman. What documents are required?",
+      "status": 200,
+      "answer": {
+        "text": "Service card DED03.005 requires no documents.",
+        "focus": "documents",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:ajman-business-activity-inquiry",
+          "policy_version": 2,
+          "workflow_key": "service:ajman-business-activity-inquiry",
+          "source_title": "الاستعلام عن الأنشطة الاقتصادية في عجمان — دائرة التنمية الاقتصادية في عجمان",
+          "source_url": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
+          "last_verified_at": "2026-10-10T05:57:53+00:00",
+          "supporting_rule": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "scope": "Only the eight AI identity/fact cases that failed previous live acceptance. Previously passed pages and official clicks were not repeated.",
+  "externalModelGate": "NOT_PASSED"
+}
