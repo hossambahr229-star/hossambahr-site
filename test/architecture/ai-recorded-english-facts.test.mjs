@@ -14,7 +14,7 @@ test('English overview retains qualified guidance boundaries instead of silently
  const result=englishResult(original(fact,'overview'));assert.match(result.answer.text,/depend on activity and legal form/);assert.match(result.answer.text,/does not submit an application/);
 });
 test('unknown or ungrounded facts are never presented as translated verified wording',()=>{
- const unknown='متطلب جديد غير مسجل.';assert.match(englishResult(original(unknown)).answer.text,/original language/);
+ for(const unknown of ['متطلب جديد غير مسجل.','constructor','toString'])assert.match(englishResult(original(unknown)).answer.text,/original language/);
  const known='الموافقات الإضافية للأنشطة المنظمة عند انطباقها';const ungrounded=englishResult(original(known,'approvals',false));assert.match(ungrounded.answer.text,/original language/);assert.match(ungrounded.answer.text,/الموافقات/);
 });
 test('deployed translation module remains identical to canonical explanatory publication wording',()=>{assert.deepEqual(recordedFactTranslations,recordedDetailTranslations);});
