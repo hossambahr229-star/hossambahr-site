@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-09T18:02:26.916Z",
+  "generatedAt": "2026-10-10T05:34:05.875Z",
   "services": 200,
   "uniqueOfficialUrls": 246,
   "counts": {
-    "REACHABLE": 154,
+    "REACHABLE": 160,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 83,
+    "NETWORK_UNVERIFIED": 77,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -82,8 +82,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
@@ -115,9 +116,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://eservices.ajmanded.ae/en/Home/AckMessage/UtN0VAm3wg",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",
@@ -129,8 +129,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license",
@@ -824,8 +825,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
@@ -952,8 +954,9 @@
       "kinds": [
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html",
+      "result": "REACHABLE"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/498?administrativeRegionId=1",
@@ -963,8 +966,9 @@
       "kinds": [
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e76",
@@ -976,8 +980,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e76",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e79",
@@ -2530,8 +2535,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
