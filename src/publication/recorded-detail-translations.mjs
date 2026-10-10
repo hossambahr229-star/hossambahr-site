@@ -851,5 +851,21 @@ export const recordedDetailTranslations = Object.freeze({
   "موافقات الجهات المختصة للنشاط؛ وموافقة التخطيط لإيجار فيلا واعتماد توقيع صاحب الرخصة عند عدم حضوره.": "Activity-specific authority approvals; planning approval for a villa lease, and the owner's attested signature if not attending.",
   "تطبق شروط العمر أو الإذن القضائي، وشروط الوكيل للجنسية المعنية، والموقع والنشاط وفق بطاقة البلدية؛ تحقق من انطباق الحالة قبل التقديم.": "Municipality-card conditions cover age or court permission, nationality-specific agent requirements, premises and activity. Confirm which conditions apply before applying.",
   "الرسوم تعتمد على النشاط وطبيعة الترخيص؛ ظهور صفر بجوار تصنيف الرسوم في البطاقة لا يعني أن إصدار الرخصة مجاني.": "Fees depend on activity and licence type; a zero shown beside the card's fee category does not mean licence issuance is free.",
-  "تعرض البطاقة متوسط الإنجاز الحالي؛ ليس مدة مضمونة للطلب، وتتوقف الحالة على اكتمال المستندات والموافقات.": "The card displays a current average completion time, not a guaranteed deadline; completion depends on documents and approvals."
+  "تعرض البطاقة متوسط الإنجاز الحالي؛ ليس مدة مضمونة للطلب، وتتوقف الحالة على اكتمال المستندات والموافقات.": "The card displays a current average completion time, not a guaranteed deadline; completion depends on documents and approvals.",
+  "هذا دليل لرحلة التأسيس والموافقة المبدئية؛ العقود والموقع والموافقات تعتمد على النشاط والشكل القانوني. الرابط لا يرسل طلب تنفيذ.": "This guides business establishment and initial approval; agreements, premises and approvals depend on activity and legal form. The link does not submit an application.",
+  "لا ينشر هذا الدليل رسمًا ثابتًا لهذه الحالة؛ تؤكد الرسوم النهائية داخل خدمة TAMM المختارة.": "The guide publishes no fixed fee for this case; confirm final fees in the selected TAMM service.",
+  "لا يقدم الدليل مدة ملزمة لكل حالة؛ تحقق من مدة الخدمة والموافقات داخل المعاملة المختارة.": "The guide gives no binding deadline for every case; check service timing and approvals in the selected transaction.",
+  "يسمي الدليل خدمة رهن الرخصة، لكنه لا يسرد وثائق الرهن التفصيلية.": "The guide lists economic-licence mortgaging but does not give its detailed document checklist.",
+  "اختر خدمة الرهن في TAMM وتحقق من متطلبات حالة الرخصة.": "Choose the mortgaging service in TAMM and confirm the requirements for the licence's case.",
+  "يذكر دليل ADDED هذه المعاملة ضمن خدمات الترخيص. الرابط للإرشاد؛ تؤكد شروط الحالة والمستندات في خدمة TAMM المطابقة.": "The ADDED guide lists this licensing transaction. The link provides guidance; confirm case conditions and documents in the matching TAMM service.",
+  "الدليل يحدد خدمة الترخيص؛ قائمة المستندات التفصيلية تؤكد في المعاملة المختارة.": "The guide identifies the licensing service; confirm the detailed document checklist in the selected transaction.",
+  "اختر نوع الرخصة والنشاط المناسبين من الدليل.": "Choose the relevant licence type and activity from the guide.",
+  "تابع الخدمة المحددة في TAMM لتأكيد المستندات والموافقات قبل التقديم.": "Continue to the selected TAMM service to confirm documents and approvals before applying.",
+  "اختر المعاملة المطابقة وبيانات الرخصة أو الاسم التجاري حسب الحالة.": "Choose the matching transaction and the licence or trade-name details for your case.",
+  "الدليل لا يقدم قائمة مستندات موحدة لكل معاملات الترخيص.": "The guide does not provide one document checklist for every licensing transaction.",
+  "اختر مسار بدء النشاط أو استمرار العمل أو التعديل أو الإغلاق.": "Choose starting a business, continuing operations, making a change or closing.",
+  "استخدم أداتي النشاط والاسم التجاري للاستعداد قبل اختيار الخدمة.": "Use the activity and trade-name tools to prepare before choosing a service.",
+  "أكد المستندات والموافقات من بطاقة الخدمة المطابقة لحالتك.": "Confirm documents and approvals in the service card matching your case.",
+  "هذا دليل SEDD لاختيار المسار، وليس بطاقة تنفيذ واحدة؛ تختلف المتطلبات بحسب الخدمة والنشاط والحالة.": "This SEDD guide helps choose a pathway; it is not one execution card. Requirements vary by service, activity and case.",
+  "لا ينشر هذا الدليل إجماليًا موحدًا؛ الحاسبة للتقدير وتؤكد الخدمة المختارة الرسوم النهائية.": "The guide publishes no universal total. The calculator gives an estimate; confirm final fees in the selected service."
 });
