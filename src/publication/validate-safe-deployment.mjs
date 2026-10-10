@@ -137,7 +137,7 @@ for (const authority of dubaiCoverage.authorities) {
     const html = await readFile(path, 'utf8');
     const activeLinks = [...html.matchAll(/<a\b[^>]*data-government-cta="verified"[^>]*href="([^"]+)"/gi)].map((match) => match[1].replaceAll('&amp;', '&'));
     if (!html.includes('data-heritage-identity=')) errors.push(`${service.slug}: historical identity marker missing`);
-    if (activeLinks.length !== 1 || activeLinks[0] !== service.officialUrl) errors.push(`${service.slug}: government authority CTA mismatch`);
+    if (activeLinks.length !== 1 || activeLinks[0] !== (service.executionUrl || service.officialUrl)) errors.push(`${service.slug}: government authority CTA mismatch`);
     const expectedKind = service.destinationKind === 'OFFICIAL_GUIDANCE' ? 'OFFICIAL_GUIDANCE' : 'DIRECT_SERVICE';
     if (!html.includes(`data-destination-kind="${expectedKind}"`)) errors.push(`${service.slug}: destination kind is not disclosed`);
     try {
