@@ -16,7 +16,35 @@
     "feesEn": "Residence permit fee: AED 200; AED 10 knowledge fee, AED 10 innovation fee, AED 500 in-country fee where applicable, and AED 20 delivery. The issuance fee increases by AED 100 annually when the residence exceeds two years.",
     "durationEn": "Officially published expected completion time: 48 hours."
   },
-  "liveAcceptance": "PENDING_DEPLOYMENT",
+  "liveAcceptance": {
+    "status": "PASS_SCOPED",
+    "run": 38137405377,
+    "branch": "agent/live-family-publication-consistency",
+    "ai": {
+      "passed": 2,
+      "total": 2,
+      "language": "en",
+      "capturedAt": "2026-10-11T11:56:58.687Z",
+      "report": "artifacts/live-family-publication-consistency/report.json",
+      "policyVersion": 1,
+      "external_model_used": false
+    },
+    "pages": {
+      "passed": 4,
+      "total": 4,
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "viewports": [
+        1440,
+        390
+      ],
+      "capturedAt": "2026-10-11T12:01:16.162Z",
+      "report": "artifacts/live-family-publication-consistency/page-report.json"
+    },
+    "priorArabicAiChecksRepeated": false
+  },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED"
 }
