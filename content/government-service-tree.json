@@ -875,15 +875,24 @@
         "إثبات صلة القرابة المصدق عند الحاجة",
         "إثبات السكن والدخل والتأمين بحسب الطلب"
       ],
-      "fees": "تعرض GDRFA الرسوم بحسب المدة ومكان المكفول والخدمات المرتبطة.",
-      "duration": "تعتمد على اكتمال إثبات القرابة والفحص والتأمين والهوية.",
+      "fees": "رسم تصريح الإقامة: 200 درهم، و10 دراهم درهم معرفة، و10 دراهم درهم ابتكار، و500 درهم رسم داخل الدولة عند انطباقه، و20 درهم توصيل. تزيد رسوم الإصدار 100 درهم سنويًا عندما تتجاوز الإقامة سنتين.",
+      "duration": "مدة الإنجاز المتوقعة المنشورة رسميًا: 48 ساعة.",
       "conditions": "هذه الخدمة مخصصة لإصدار إقامة أفراد الأسرة عندما يكون ملف الكفيل في دبي؛ لا تستخدمها لمسارات ICP في الإمارات الأخرى.",
       "specialCases": "استخدام مستند قرابة غير مصدق أو اختيار مسار دبي مع ملف كفيل صادر من ICP يؤدي إلى رفض أو تأخير.",
       "relatedServices": [],
       "officialUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
       "evidenceUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
-      "lastReviewed": "2026-07-27",
-      "reviewResult": "approved_for_user_navigation"
+      "lastReviewed": "2026-10-11",
+      "reviewResult": "approved_for_user_navigation",
+      "fieldReview": {
+        "fields": [
+          "fees",
+          "duration"
+        ],
+        "source": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+        "reviewedAt": "2026-10-11T11:52:09Z",
+        "scope": "Restore existing public AI policy fee/time facts to publication inputs; current Arabic/English official cards agree on these two fields. Eligibility differences between source languages are excluded."
+      }
     },
     {
       "id": "guide:golden-residency-uae",
