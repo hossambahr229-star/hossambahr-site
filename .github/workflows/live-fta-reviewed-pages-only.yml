@@ -1,0 +1,62 @@
+name: Live FTA Reviewed Pages Only
+on:
+  push:
+    branches: [agent/live-fta-reviewed-pages-only]
+    paths: [.github/workflows/live-fta-reviewed-pages-only.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for changed service facts on Production
+        run: |
+          node --input-type=module <<'NODE'
+          const cases=[['corporate-tax-registration-uae','25 دقيقة'],['vat-registration-uae','45 دقيقة']];
+          let ready=false;
+          for(let attempt=0;attempt<120;attempt++){
+            const checks=await Promise.all(cases.map(async([slug,time])=>{
+              const text=await fetch('https://hossambahr.com/services/'+slug+'/?facts='+Date.now(),{cache:'no-store'}).then(r=>r.text()).catch(()=>'');
+              return text.includes('خدمة التسجيل مجانية وفق بطاقة الهيئة.')&&text.includes('20 يوم عمل')&&text.includes(time);
+            }));
+            if(checks.every(Boolean)){ready=true;break;}
+            await new Promise(r=>setTimeout(r,10000));
+          }
+          if(!ready)throw Error('Changed FTA service facts are not deployed');
+          NODE
+      - name: Changed live pages and direct pathways
+        continue-on-error: true
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-fta-registration-reviewed-pages.mjs
+      - name: Require complete scoped acceptance
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          for(const name of ['page-report.json']){
+           const report=JSON.parse(fs.readFileSync('artifacts/live-fta-registration-reviewed-facts/'+name,'utf8'));
+           if(!report.passed)throw Error(name+' did not pass');
+          }
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-fta-registration-reviewed-facts
+          path: artifacts/live-fta-registration-reviewed-facts
+      - name: Preserve actual new evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-fta-reviewed-pages-only
+          git reset --mixed origin/agent/live-fta-reviewed-pages-only
+          git add artifacts/live-fta-registration-reviewed-facts
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual new FTA fact and page acceptance [skip ci]"
+            git push origin HEAD:agent/live-fta-reviewed-pages-only
+          fi
