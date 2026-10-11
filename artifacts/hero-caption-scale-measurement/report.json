@@ -1,0 +1,73 @@
+{
+  "capturedAt": "2026-10-11T12:05:26.200Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+    "boxShadow": "none",
+    "before": {
+      "content": "none",
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "position": "static"
+    },
+    "bounds": {
+      "x": 30.953125,
+      "y": 367,
+      "width": 155.125,
+      "height": 116,
+      "top": 367,
+      "right": 186.078125,
+      "bottom": 483,
+      "left": 30.953125
+    },
+    "title": "700 12px / 15.6px Cairo, Arial, Tahoma, sans-serif",
+    "heroShadows": [
+      {
+        "class": "premium-home-hero platform-hero visual-target-hero",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-hero-main",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-ai-showcase",
+        "shadow": "none",
+        "filter": "none"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 34.50055555555556,
+      "changed": 26.45897435897436
+    },
+    {
+      "name": "caption-30",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:30px!important;line-height:36.92px!important;width:205px!important}",
+      "mad": 34.50055555555556,
+      "changed": 26.45897435897436
+    },
+    {
+      "name": "caption-32",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:32px!important;line-height:36.92px!important;width:205px!important}",
+      "mad": 34.50055555555556,
+      "changed": 26.45897435897436
+    },
+    {
+      "name": "caption-34",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:34px!important;line-height:36.92px!important;width:205px!important}",
+      "mad": 34.50055555555556,
+      "changed": 26.45897435897436
+    },
+    {
+      "name": "caption-32-wide",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:32px!important;line-height:36.92px!important;width:230px!important}",
+      "mad": 34.50055555555556,
+      "changed": 26.45897435897436
+    }
+  ]
+}
