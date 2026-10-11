@@ -1,0 +1,85 @@
+{
+  "capturedAt": "2026-10-11T12:23:50.724Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+    "boxShadow": "none",
+    "before": {
+      "content": "none",
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "position": "static"
+    },
+    "bounds": {
+      "x": 30.953125,
+      "y": 367,
+      "width": 155.125,
+      "height": 116,
+      "top": 367,
+      "right": 186.078125,
+      "bottom": 483,
+      "left": 30.953125
+    },
+    "title": "700 12px / 15.6px Cairo, Arial, Tahoma, sans-serif",
+    "heroShadows": [
+      {
+        "class": "premium-home-hero platform-hero visual-target-hero",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-hero-main",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-ai-showcase",
+        "shadow": "none",
+        "filter": "none"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 32.713042735042734,
+      "changed": 25.648717948717948
+    },
+    {
+      "name": "native-all26",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{content:none!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test{display:block!important;position:absolute;top:107px;left:5.5%;width:205px;color:white;font:400 26px/36.92px \"HB Naskh\",serif;text-align:left;z-index:2;pointer-events:none;text-shadow:0 1px 5px #0009}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span{display:block;height:36.92px;line-height:36.92px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:first-child{font-size:26px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:last-child{font-size:26px}",
+      "mad": 33.04024786324786,
+      "changed": 26.3
+    },
+    {
+      "name": "first30",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{content:none!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test{display:block!important;position:absolute;top:107px;left:5.5%;width:205px;color:white;font:400 26px/36.92px \"HB Naskh\",serif;text-align:left;z-index:2;pointer-events:none;text-shadow:0 1px 5px #0009}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span{display:block;height:36.92px;line-height:36.92px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:first-child{font-size:30px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:last-child{font-size:26px}",
+      "mad": 33.85062393162393,
+      "changed": 26.72307692307692
+    },
+    {
+      "name": "first32",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{content:none!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test{display:block!important;position:absolute;top:107px;left:5.5%;width:205px;color:white;font:400 26px/36.92px \"HB Naskh\",serif;text-align:left;z-index:2;pointer-events:none;text-shadow:0 1px 5px #0009}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span{display:block;height:36.92px;line-height:36.92px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:first-child{font-size:32px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:last-child{font-size:26px}",
+      "mad": 33.92403418803419,
+      "changed": 26.787179487179486
+    },
+    {
+      "name": "first34",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{content:none!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test{display:block!important;position:absolute;top:107px;left:5.5%;width:205px;color:white;font:400 26px/36.92px \"HB Naskh\",serif;text-align:left;z-index:2;pointer-events:none;text-shadow:0 1px 5px #0009}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span{display:block;height:36.92px;line-height:36.92px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:first-child{font-size:34px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:last-child{font-size:26px}",
+      "mad": 34.09293162393163,
+      "changed": 26.884615384615383
+    },
+    {
+      "name": "first34-last28",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{content:none!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test{display:block!important;position:absolute;top:107px;left:5.5%;width:205px;color:white;font:400 26px/36.92px \"HB Naskh\",serif;text-align:left;z-index:2;pointer-events:none;text-shadow:0 1px 5px #0009}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span{display:block;height:36.92px;line-height:36.92px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:first-child{font-size:34px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:last-child{font-size:28px}",
+      "mad": 34.52917948717949,
+      "changed": 27.05128205128205
+    },
+    {
+      "name": "first36-last28",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{content:none!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test{display:block!important;position:absolute;top:107px;left:5.5%;width:205px;color:white;font:400 26px/36.92px \"HB Naskh\",serif;text-align:left;z-index:2;pointer-events:none;text-shadow:0 1px 5px #0009}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span{display:block;height:36.92px;line-height:36.92px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:first-child{font-size:36px}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-line-test>span:last-child{font-size:28px}",
+      "mad": 34.887752136752134,
+      "changed": 27.184615384615384
+    }
+  ]
+}
