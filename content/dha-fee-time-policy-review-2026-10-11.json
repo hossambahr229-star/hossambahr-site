@@ -1,0 +1,49 @@
+{
+  "reviewedAt": "2026-10-11T16:37:37Z",
+  "scope": "Add fee and processing-time rules to three existing DHA policies only. Preserve requirements, conditions, workflows, policy history and source URL health fields.",
+  "sourceEvidence": {
+    "run": 38155990337,
+    "branch": "agent/read-current-dha-service-cards",
+    "report": "artifacts/current-dha-service-cards/report.json",
+    "capturedAt": "2026-10-11T16:34:43.812Z",
+    "readableCards": 3,
+    "originalHostHealthReclassified": false,
+    "aliasVerificationExplicit": true
+  },
+  "facts": [
+    {
+      "slug": "new-healthcare-facility-license-dubai",
+      "source": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
+      "verifiedAlias": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
+      "fees": "رسوم الموافقة الأولية بحسب فئة المنشأة كما تظهر في بطاقة الخدمة؛ تطبق رسوم المعرفة والابتكار عند الدفع.",
+      "duration": "5 أيام عمل وفق بطاقة الخدمة الرسمية",
+      "feesEn": "Initial approval fees depend on the facility category as displayed in the service card. Knowledge and innovation fees apply at payment.",
+      "durationEn": "5 working days according to the official service card"
+    },
+    {
+      "slug": "activate-healthcare-facility-license-dubai",
+      "source": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
+      "verifiedAlias": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
+      "fees": "رسوم الترخيص والتفتيش تختلف بحسب فئة المنشأة ومدة الترخيص، وتعرض بالتفصيل في البطاقة الرسمية.",
+      "duration": "يوم عمل واحد وفق بطاقة الخدمة بعد اكتمال المتطلبات",
+      "feesEn": "Licensing and inspection fees vary by facility category and licence duration; the official card provides the breakdown.",
+      "durationEn": "One working day according to the service card, after the requirements are complete"
+    },
+    {
+      "slug": "health-professional-registration-dubai",
+      "source": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
+      "verifiedAlias": "https://dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
+      "fees": "200 درهم لرسوم الاعتماد وفق بطاقة الخدمة، إضافة إلى رسوم المعرفة والابتكار ورسوم التحقق أو التقييم عند انطباقها.",
+      "duration": "5 أيام عمل بعد اكتمال التحقق والتقييمات المطلوبة",
+      "feesEn": "AED 200 credentialing fee according to the service card, plus knowledge and innovation fees and verification or assessment fees where applicable.",
+      "durationEn": "5 working days after completing the required verification and assessments"
+    }
+  ],
+  "policyVersions": {
+    "previous": 1,
+    "expected": 2
+  },
+  "liveAcceptance": "PENDING_DEPLOYMENT",
+  "externalSubmissionPerformed": false,
+  "overallFinalGate": "NOT_DECLARED"
+}

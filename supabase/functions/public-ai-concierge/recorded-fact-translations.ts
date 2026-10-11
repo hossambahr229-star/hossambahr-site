@@ -376,7 +376,7 @@ export const recordedFactTranslations: Readonly<Record<string,string>> = Object.
   "نسخة جواز السفر": "Passport copy",
   "سجل عمليات للتخصصات الجراحية عند انطباقه": "Surgical procedure log for surgical specialties, where applicable",
   "نتيجة التحقق من المصدر واجتياز التقييم المطلوب": "Primary source verification result and completion of the required assessment",
-  "200 درهم لرسوم الاعتماد وفق بطاقة الخدمة، إضافة إلى رسوم المعرفة والابتكار ورسوم التحقق أو التقييم عند انطباقها.": "AED 200 approval fee according to the service card, plus knowledge and innovation fees and verification or assessment fees where applicable.",
+  "200 درهم لرسوم الاعتماد وفق بطاقة الخدمة، إضافة إلى رسوم المعرفة والابتكار ورسوم التحقق أو التقييم عند انطباقها.": "AED 200 credentialing fee according to the service card, plus knowledge and innovation fees and verification or assessment fees where applicable.",
   "5 أيام عمل بعد اكتمال التحقق والتقييمات المطلوبة": "5 working days after completing the required verification and assessments",
   "يجب اجتياز التحقق من المصدر والتقييمات المطلوبة وألا يكون المهني محظورًا؛ التسجيل لا يجيز الممارسة قبل تفعيل الترخيص من منشأة صحية.": "The professional must pass primary source verification and the required assessments and must not be banned. Registration does not permit practice until a healthcare facility activates the licence.",
   "بيانات المنشأة والنشاط المرخص": "Establishment and licensed activity details",
