@@ -1,0 +1,337 @@
+{
+  "capturedAt": "2026-10-11T06:59:35.278Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "corporate-tax-registration-uae",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "التسجيل في ضريبة الشركات بالإمارات. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "خدمة التسجيل مجانية وفق بطاقة الهيئة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:corporate-tax-registration-uae",
+          "policy_version": 2,
+          "workflow_key": "service:corporate-tax-registration-uae",
+          "source_title": "التسجيل في ضريبة الشركات بالإمارات — الهيئة الاتحادية للضرائب (FTA)",
+          "source_url": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
+          "last_verified_at": "2026-10-11T06:28:04+00:00",
+          "supporting_rule": {
+            "value": "خدمة التسجيل مجانية وفق بطاقة الهيئة.",
+            "source_refs": [
+              "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "استخدام بيانات رخصة قديمة أو تسجيل كيان واحد بدلاً من أشخاص قانونيين منفصلين يؤدي إلى طلب تصحيح.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "corporate-tax-registration-uae",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "التسجيل في ضريبة الشركات بالإمارات. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 25 دقيقة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:corporate-tax-registration-uae",
+          "policy_version": 2,
+          "workflow_key": "service:corporate-tax-registration-uae",
+          "source_title": "التسجيل في ضريبة الشركات بالإمارات — الهيئة الاتحادية للضرائب (FTA)",
+          "source_url": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
+          "last_verified_at": "2026-10-11T06:28:04+00:00",
+          "supporting_rule": {
+            "value": "مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 25 دقيقة.",
+            "source_refs": [
+              "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "استخدام بيانات رخصة قديمة أو تسجيل كيان واحد بدلاً من أشخاص قانونيين منفصلين يؤدي إلى طلب تصحيح.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "corporate-tax-registration-uae",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Corporate Tax Registration with the UAE Federal Tax Authority. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "Registration is free according to the FTA service card.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:corporate-tax-registration-uae",
+          "policy_version": 2,
+          "workflow_key": "service:corporate-tax-registration-uae",
+          "source_title": "التسجيل في ضريبة الشركات بالإمارات — الهيئة الاتحادية للضرائب (FTA)",
+          "source_url": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
+          "last_verified_at": "2026-10-11T06:28:04+00:00",
+          "supporting_rule": {
+            "value": "خدمة التسجيل مجانية وفق بطاقة الهيئة.",
+            "source_refs": [
+              "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "استخدام بيانات رخصة قديمة أو تسجيل كيان واحد بدلاً من أشخاص قانونيين منفصلين يؤدي إلى طلب تصحيح.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "corporate-tax-registration-uae",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Corporate Tax Registration with the UAE Federal Tax Authority. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "FTA review: 20 working days from receipt of a complete application. Expected application submission time: 25 minutes.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:corporate-tax-registration-uae",
+          "policy_version": 2,
+          "workflow_key": "service:corporate-tax-registration-uae",
+          "source_title": "التسجيل في ضريبة الشركات بالإمارات — الهيئة الاتحادية للضرائب (FTA)",
+          "source_url": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
+          "last_verified_at": "2026-10-11T06:28:04+00:00",
+          "supporting_rule": {
+            "value": "مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 25 دقيقة.",
+            "source_refs": [
+              "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "استخدام بيانات رخصة قديمة أو تسجيل كيان واحد بدلاً من أشخاص قانونيين منفصلين يؤدي إلى طلب تصحيح.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "vat-registration-uae",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "التسجيل في ضريبة القيمة المضافة بالإمارات. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "خدمة التسجيل مجانية وفق بطاقة الهيئة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:vat-registration-uae",
+          "policy_version": 2,
+          "workflow_key": "service:vat-registration-uae",
+          "source_title": "التسجيل في ضريبة القيمة المضافة بالإمارات — الهيئة الاتحادية للضرائب (FTA)",
+          "source_url": "https://tax.gov.ae/ar/services/vat.registration.aspx",
+          "last_verified_at": "2026-10-11T06:28:04+00:00",
+          "supporting_rule": {
+            "value": "خدمة التسجيل مجانية وفق بطاقة الهيئة.",
+            "source_refs": [
+              "https://tax.gov.ae/ar/services/vat.registration.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "رفع أرقام دون فواتير أو كشف منظم للفترة يؤدي إلى استفسارات وتأخير وربما رفض.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "vat-registration-uae",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "التسجيل في ضريبة القيمة المضافة بالإمارات. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 45 دقيقة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:vat-registration-uae",
+          "policy_version": 2,
+          "workflow_key": "service:vat-registration-uae",
+          "source_title": "التسجيل في ضريبة القيمة المضافة بالإمارات — الهيئة الاتحادية للضرائب (FTA)",
+          "source_url": "https://tax.gov.ae/ar/services/vat.registration.aspx",
+          "last_verified_at": "2026-10-11T06:28:04+00:00",
+          "supporting_rule": {
+            "value": "مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 45 دقيقة.",
+            "source_refs": [
+              "https://tax.gov.ae/ar/services/vat.registration.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "رفع أرقام دون فواتير أو كشف منظم للفترة يؤدي إلى استفسارات وتأخير وربما رفض.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "vat-registration-uae",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "VAT Registration with the UAE Federal Tax Authority. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "Registration is free according to the FTA service card.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:vat-registration-uae",
+          "policy_version": 2,
+          "workflow_key": "service:vat-registration-uae",
+          "source_title": "التسجيل في ضريبة القيمة المضافة بالإمارات — الهيئة الاتحادية للضرائب (FTA)",
+          "source_url": "https://tax.gov.ae/ar/services/vat.registration.aspx",
+          "last_verified_at": "2026-10-11T06:28:04+00:00",
+          "supporting_rule": {
+            "value": "خدمة التسجيل مجانية وفق بطاقة الهيئة.",
+            "source_refs": [
+              "https://tax.gov.ae/ar/services/vat.registration.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "رفع أرقام دون فواتير أو كشف منظم للفترة يؤدي إلى استفسارات وتأخير وربما رفض.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "vat-registration-uae",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "VAT Registration with the UAE Federal Tax Authority. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "FTA review: 20 working days from receipt of a complete application. Expected application submission time: 45 minutes.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:vat-registration-uae",
+          "policy_version": 2,
+          "workflow_key": "service:vat-registration-uae",
+          "source_title": "التسجيل في ضريبة القيمة المضافة بالإمارات — الهيئة الاتحادية للضرائب (FTA)",
+          "source_url": "https://tax.gov.ae/ar/services/vat.registration.aspx",
+          "last_verified_at": "2026-10-11T06:28:04+00:00",
+          "supporting_rule": {
+            "value": "مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 45 دقيقة.",
+            "source_refs": [
+              "https://tax.gov.ae/ar/services/vat.registration.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "رفع أرقام دون فواتير أو كشف منظم للفترة يؤدي إلى استفسارات وتأخير وربما رفض.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "scope": "Newly reviewed FTA registration fee and distinct submission/review times only; no tax liability determination, submissions or private account access.",
+  "externalModelGate": "NOT_PASSED"
+}
