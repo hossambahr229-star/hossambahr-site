@@ -1,0 +1,33 @@
+name: Live DLD Ad English Documents
+on:
+  push:
+    branches: [agent/live-dld-ad-english-documents]
+    paths: [scripts/live-dld-ad-english-documents.mjs, .github/workflows/live-dld-ad-english-documents.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-dld-ad-english-documents.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-dld-ad-english-documents
+          path: artifacts/live-dld-ad-english-documents
+      - name: Preserve live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-dld-ad-english-documents
+          git reset --mixed origin/agent/live-dld-ad-english-documents
+          git add artifacts/live-dld-ad-english-documents
+          if ! git diff --cached --quiet; then
+            git commit -m "Record only failed English DLD ad document Production cases [skip ci]"
+            git push origin HEAD:agent/live-dld-ad-english-documents
+          fi
