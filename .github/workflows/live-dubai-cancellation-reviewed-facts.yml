@@ -1,0 +1,65 @@
+name: Live Dubai Cancellation Reviewed Facts
+on:
+  push:
+    branches: [agent/live-dubai-cancellation-reviewed-facts]
+    paths: [.github/workflows/live-dubai-cancellation-reviewed-facts.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: New live public AI facts
+        continue-on-error: true
+        run: node scripts/live-dubai-cancellation-reviewed-facts.mjs
+      - name: Wait for changed service facts on Production
+        run: |
+          node --input-type=module <<'NODE'
+          const cases=[['cancel-residency-permit-uae','48 ساعة']];
+          let ready=false;
+          for(let attempt=0;attempt<120;attempt++){
+            const checks=await Promise.all(cases.map(async([slug,time])=>{
+              const text=await fetch('https://hossambahr.com/services/'+slug+'/?facts='+Date.now(),{cache:'no-store'}).then(r=>r.text()).catch(()=>'');
+              return text.includes('رسم إلغاء تصريح الإقامة 100 درهم')&&text.includes('10 دراهم للمعرفة')&&text.includes(time);
+            }));
+            if(checks.every(Boolean)){ready=true;break;}
+            await new Promise(r=>setTimeout(r,10000));
+          }
+          if(!ready)throw Error('Changed Dubai cancellation facts are not deployed');
+          NODE
+      - name: Changed live pages and direct pathways
+        continue-on-error: true
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-dubai-cancellation-reviewed-pages.mjs
+      - name: Require complete scoped acceptance
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          for(const name of ['report.json','page-report.json']){
+           const report=JSON.parse(fs.readFileSync('artifacts/live-dubai-cancellation-reviewed-facts/'+name,'utf8'));
+           if(!report.passed)throw Error(name+' did not pass');
+          }
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-dubai-cancellation-reviewed-facts
+          path: artifacts/live-dubai-cancellation-reviewed-facts
+      - name: Preserve actual new evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-dubai-cancellation-reviewed-facts
+          git reset --mixed origin/agent/live-dubai-cancellation-reviewed-facts
+          git add artifacts/live-dubai-cancellation-reviewed-facts
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual new Dubai cancellation fact and page acceptance [skip ci]"
+            git push origin HEAD:agent/live-dubai-cancellation-reviewed-facts
+          fi
