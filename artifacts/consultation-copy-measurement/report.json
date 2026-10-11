@@ -1,0 +1,67 @@
+{
+  "capturedAt": "2026-10-11T11:36:39.503Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+    "boxShadow": "none",
+    "before": {
+      "content": "none",
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "position": "static"
+    },
+    "bounds": {
+      "x": 30.953125,
+      "y": 367,
+      "width": 155.125,
+      "height": 116,
+      "top": 367,
+      "right": 186.078125,
+      "bottom": 483,
+      "left": 30.953125
+    },
+    "title": "700 12px / 15.6px Cairo, Arial, Tahoma, sans-serif",
+    "heroShadows": [
+      {
+        "class": "premium-home-hero platform-hero visual-target-hero",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-hero-main",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-ai-showcase",
+        "shadow": "none",
+        "filter": "none"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 25.218229688137352,
+      "changed": 19.008417695702153
+    },
+    {
+      "name": "caption",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-consult-cta b{top:4px!important}html.hb-phase8 body[data-home-geometry] .premium-consult-cta small{position:absolute;right:25px;top:26px;font-size:11px;line-height:1;color:white}",
+      "mad": 24.121457089529176,
+      "changed": 18.982460043757186
+    },
+    {
+      "name": "caption-button",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-consult-cta b{top:4px!important}html.hb-phase8 body[data-home-geometry] .premium-consult-cta small{position:absolute;right:25px;top:26px;font-size:11px;line-height:1;color:white}",
+      "mad": 23.780583676345163,
+      "changed": 18.53747172470056
+    },
+    {
+      "name": "title-top",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-consult-cta b{top:4px!important}",
+      "mad": 22.562020246968515,
+      "changed": 17.49916564690177
+    }
+  ]
+}
