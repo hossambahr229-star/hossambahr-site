@@ -353,6 +353,27 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (has(goal, ["ضريبه الشركات","corporate tax"]) && slug === "corporate-tax-registration-uae") score += 9000;
     if (has(goal, ["القيمه المضافه","value added tax","vat"]) && slug === "vat-registration-uae") score += 9000;
   }
+  // Preserve the education document type, certificate origin and eDAS operation.
+  const changedEducationOperation = has(goal, ["الغاء","الغي","تعديل","تجديد","استرداد","cancel","amend","modify","renew","refund"]);
+  const edasContext = hasPhrase(goal, ["eDAS","e DAS"]);
+  const edasDocument = has(goal, ["فاتورة تجارية","فواتير تجارية","شهادة منشأ","commercial invoice","certificate of origin"]);
+  if (edasContext && edasDocument && !changedEducationOperation && slug === "attestation-of-commercial-invoices-via-edas-2-0") score += 90000;
+  const equivalencyRequest = has(goal, ["معادلة","اعادل","equivalen"]);
+  const authenticityRequest = has(goal, ["التحقق من صحة المعادلة","صحة المعادلة","confirming the authenticity","authenticity of equivalency","authenticity of an equivalency","verify equivalency"]);
+  const uaeEducationContext = hasPhrase(goal, ["UAE","United Arab Emirates","الإمارات","الدولة"]);
+  const exactArabicAuthenticityName = has(goal, ["التحقق من صحة المعادلة أو التصديق"]);
+  const otherEducationAuthority = hasPhrase(goal, ["KHDA","ADEK","SPEA","هيئة المعرفة والتنمية البشرية","دائرة التعليم والمعرفة","هيئة الشارقة للتعليم الخاص"]);
+  const foreignEducationAuthority = has(goal, ["Saudi Ministry","Ministry of Education in Saudi","Qatar Ministry","Oman Ministry","Kuwait Ministry","Bahrain Ministry","Egypt Ministry","وزارة التعليم السعودية","وزارة التربية والتعليم السعودية","وزارة التربية والتعليم في قطر","وزارة التربية والتعليم في عمان","وزارة التربية والتعليم في مصر"]);
+  const secondaryEducation = !/\bgrade (?:[1-9]|10|11)\b/.test(goal) && has(goal, ["ثانوي","grade 12","general education","high school","secondary school"]);
+  const certificateFromAbroad = has(goal, ["من خارج الإمارات","من خارج الدولة","from abroad","certificate issued outside the UAE"]);
+  const certificateInsideUae = has(goal, ["داخل الإمارات","داخل الدولة","certificate in the UAE","certificate in UAE","certificate within the UAE","certificate within UAE"]);
+  if (equivalencyRequest && !changedEducationOperation && !otherEducationAuthority && !foreignEducationAuthority) {
+    if (authenticityRequest && (uaeEducationContext || exactArabicAuthenticityName) && slug === "confirming-the-authenticity-of-equivalency") score += 90000;
+    if (!authenticityRequest && secondaryEducation && uaeEducationContext) {
+      if (certificateFromAbroad && slug === "equivalency-of-general-education-certificate-from-abroad-grade-12") score += 90000;
+      if (!certificateFromAbroad && certificateInsideUae && slug === "equivalency-of-general-education-certificate-in-the-uae-grade-12") score += 90000;
+    }
+  }
   const fiveYearTourist = has(goal,["سياحيه","سياحية","سياحه","سياحة","tourist","tourism"]) && (has(goal,["5 سنين","5 سنوات","خمس سنين","خمس سنوات","five years","5 years"]) || (has(goal,["متعدده","متعددة","multiple","multi"]) && has(goal,["دخول","entry"])));
   if (fiveYearTourist) {
     if (slug === "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp") score += 18000;
