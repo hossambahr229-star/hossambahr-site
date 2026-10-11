@@ -640,11 +640,11 @@
         "إلغاء تصريح العمل إذا كانت إقامة موظف",
         "وثائق التابعين أو الالتزامات المرتبطة عند انطباقها"
       ],
-      "fees": "تعرضها GDRFA بحسب نوع الطلب والقناة قبل السداد.",
-      "duration": "تعتمد على خلو الملف من القيود واكتمال إلغاء العلاقة المرتبطة.",
+      "fees": "رسم إلغاء تصريح الإقامة 100 درهم، و10 دراهم للمعرفة و10 دراهم للابتكار، وفق بطاقة GDRFA.",
+      "duration": "48 ساعة وفق بطاقة GDRFA؛ لم تُحدد أنها ساعات عمل.",
       "conditions": "تغطي خدمة GDRFA الرسمية إلغاء جميع أنواع تصاريح الإقامة الصادرة من دبي. لا تستخدم هذا المسار لإقامة صادرة من ICP في إمارة أخرى.",
       "specialCases": "بدء إلغاء إقامة موظف قبل تسوية ملف MOHRE أو استخدام مسار دبي لإقامة صادرة من ICP يعرقل التسلسل الصحيح.",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-11",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -667,17 +667,26 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "تعرضها GDRFA بحسب نوع الطلب والقناة قبل السداد."
+          "answer": "رسم إلغاء تصريح الإقامة 100 درهم، و10 دراهم للمعرفة و10 دراهم للابتكار، وفق بطاقة GDRFA."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "تعتمد على خلو الملف من القيود واكتمال إلغاء العلاقة المرتبطة."
+          "answer": "48 ساعة وفق بطاقة GDRFA؛ لم تُحدد أنها ساعات عمل."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "fieldReview": {
+        "fields": [
+          "fees",
+          "duration"
+        ],
+        "source": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
+        "reviewedAt": "2026-10-11T11:32:31Z",
+        "scope": "Fees and expected duration only; no new documents, eligibility, grace-period or total-cost claims."
+      }
     },
     {
       "id": "guide:renew-business-license-sharjah",
