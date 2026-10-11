@@ -1,0 +1,22 @@
+begin;
+do $review$
+declare item jsonb;p public.hb_policy_versions%rowtype;s public.hb_policy_sources%rowtype;new_rules jsonb;
+ reviewed timestamptz := '2026-10-11T16:37:37Z';
+begin
+ for item in select value from jsonb_array_elements($plans$[{"slug":"new-healthcare-facility-license-dubai","source":"https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL","verifiedAlias":"https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL","fees":"رسوم الموافقة الأولية بحسب فئة المنشأة كما تظهر في بطاقة الخدمة؛ تطبق رسوم المعرفة والابتكار عند الدفع.","duration":"5 أيام عمل وفق بطاقة الخدمة الرسمية","feesEn":"Initial approval fees depend on the facility category as displayed in the service card. Knowledge and innovation fees apply at payment.","durationEn":"5 working days according to the official service card"},{"slug":"activate-healthcare-facility-license-dubai","source":"https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL","verifiedAlias":"https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL","fees":"رسوم الترخيص والتفتيش تختلف بحسب فئة المنشأة ومدة الترخيص، وتعرض بالتفصيل في البطاقة الرسمية.","duration":"يوم عمل واحد وفق بطاقة الخدمة بعد اكتمال المتطلبات","feesEn":"Licensing and inspection fees vary by facility category and licence duration; the official card provides the breakdown.","durationEn":"One working day according to the service card, after the requirements are complete"},{"slug":"health-professional-registration-dubai","source":"https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG","verifiedAlias":"https://dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG","fees":"200 درهم لرسوم الاعتماد وفق بطاقة الخدمة، إضافة إلى رسوم المعرفة والابتكار ورسوم التحقق أو التقييم عند انطباقها.","duration":"5 أيام عمل بعد اكتمال التحقق والتقييمات المطلوبة","feesEn":"AED 200 credentialing fee according to the service card, plus knowledge and innovation fees and verification or assessment fees where applicable.","durationEn":"5 working days after completing the required verification and assessments"}]$plans$::jsonb) loop
+  begin
+   select * into strict p from public.hb_policy_versions where policy_key='service:'||(item->>'slug') and status='active' for update;
+   select * into strict s from public.hb_policy_sources where id=any(p.source_ids) and source_url=item->>'source' and authority_key='dha-dubai' and active for update;
+  exception when no_data_found then raise notice 'Scoped DHA fee/time records absent in clean seed: %',item->>'slug';continue;end;
+  select coalesce(jsonb_agg(value order by ordinality),'[]'::jsonb) into new_rules from jsonb_array_elements(p.rules) with ordinality where coalesce(value->>'id','') not in ('fees','duration');
+  new_rules:=new_rules||jsonb_build_array(
+   jsonb_build_object('id','fees','when','[]'::jsonb,'effect','review','reason',item->>'fees','actions',jsonb_build_array('review_fees'),'sourceRefs',jsonb_build_array(item->>'source')),
+   jsonb_build_object('id','duration','when','[]'::jsonb,'effect','review','reason',item->>'duration','actions',jsonb_build_array('review_duration'),'sourceRefs',jsonb_build_array(item->>'source')));
+  if p.reviewed_by='official-dha-fee-time-review-2026-10-11' and p.rules=new_rules then continue;end if;
+  update public.hb_policy_versions set status='retired',effective_until=reviewed where id=p.id;
+  insert into public.hb_policy_versions(policy_key,jurisdiction_id,version,effective_from,status,rules,source_ids,reviewed_by,reviewed_at,country_pack_id)
+  values(p.policy_key,p.jurisdiction_id,p.version+1,reviewed,'active',new_rules,p.source_ids,'official-dha-fee-time-review-2026-10-11',reviewed,p.country_pack_id);
+  update public.hb_policy_sources set metadata=metadata||jsonb_build_object('fee_time_review_checkpoint','official-dha-fee-time-review-2026-10-11','fee_time_reviewed_at',reviewed,'fee_time_verified_alias',item->>'verifiedAlias','fee_time_verification_scope','fees_and_processing_time_only; original URL health and other facts not reclassified') where id=s.id;
+ end loop;
+end $review$;
+commit;
