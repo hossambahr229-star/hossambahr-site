@@ -260,7 +260,7 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-category-grid>a,html
 
 @font-face{font-family:'HB Naskh';src:url('/assets/fonts/noto-naskh-arabic.ttf') format('truetype');font-weight:400 700;font-display:swap}
 @media(min-width:821px){html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-family:'HB Naskh',serif!important;background:linear-gradient(90deg,#deb456,#a77823) left bottom/54px 3px no-repeat!important}}
-@media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:26px!important;line-height:1.42!important}}
+@media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:26px!important;line-height:1.42!important;top:107px!important;left:5.5%!important;font-weight:400!important;height:119px!important;box-sizing:border-box!important}}
 
 @media(min-width:821px){html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{width:60%;height:205px;right:-20px;object-fit:contain;object-position:right bottom}}
 
@@ -411,3 +411,7 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 @media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-consult-cta b{top:4px!important}}
 
 @media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry]{--type-h3:16px}html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-featured .premium-slide p{font-size:var(--type-small)!important}}
+
+/* Native accent is materialized by the publication step; hidden outside the approved desktop frame. */
+.hb-hero-caption-accent{display:none}
+@media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-hero-caption-accent{display:block!important;position:absolute;top:224px;left:5.5%;width:54px;height:3px;background:linear-gradient(90deg,#deb456,#a77823);border-radius:2px;z-index:3;pointer-events:none}}
