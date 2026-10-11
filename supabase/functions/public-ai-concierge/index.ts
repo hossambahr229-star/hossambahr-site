@@ -80,7 +80,7 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
     "new-healthcare-facility-license-dubai","activate-healthcare-facility-license-dubai","health-professional-registration-dubai",
     "attestation-of-commercial-invoices-via-edas-2-0","equivalency-of-general-education-certificate-from-abroad-grade-12",
     "equivalency-of-general-education-certificate-in-the-uae-grade-12","confirming-the-authenticity-of-equivalency"
-  ].some(slug=>specialBoost(latestNorm,slug,null)>=90000);
+  ].some(slug=>specialBoost(latestNorm,slug,detectJurisdiction(latestNorm))>=90000);
   const explicitNonFamilyTopic=(explicitReviewedServiceTopic || has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"])) && !detectRelationship(latestTurn);
   const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),family_members:Array.isArray(context?.family_members)?context.family_members:[],subject_role:context?.subject_role??null,entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null,action:context?.action??null};
   const merged=mergeSemanticContext(latestTurn,priorSemantic,fallbackGoal,{newTopic:explicitNonFamilyTopic});
