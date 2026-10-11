@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-11T12:08:38.905Z",
+  "capturedAt": "2026-10-11T12:10:07.481Z",
   "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
   "styles": {
     "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
@@ -46,28 +46,34 @@
       "changed": 26.45897435897436
     },
     {
-      "name": "caption-30",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:30px!important;line-height:36.92px!important;width:205px!important}",
-      "mad": 36.346478632478636,
-      "changed": 26.705128205128204
+      "name": "caption-position",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}",
+      "mad": 34.040188034188034,
+      "changed": 26.184615384615384
     },
     {
-      "name": "caption-32",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:32px!important;line-height:36.92px!important;width:205px!important}",
-      "mad": 38.16574358974359,
-      "changed": 27.435897435897438
+      "name": "caption-diacritics",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{content:\"معَكَ دائمًا\\\\a لإنجاز معاملاتك\\\\a في الإمارات\"!important}",
+      "mad": 33.52847863247863,
+      "changed": 26.53846153846154
     },
     {
-      "name": "caption-34",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:34px!important;line-height:36.92px!important;width:205px!important}",
-      "mad": 39.42231623931624,
-      "changed": 27.75641025641026
+      "name": "caption-28-position",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:28px!important;line-height:36.92px!important;width:205px!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}",
+      "mad": 35.17460683760684,
+      "changed": 26.315384615384612
     },
     {
-      "name": "caption-32-wide",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:32px!important;line-height:36.92px!important;width:230px!important}",
-      "mad": 38.16574358974359,
-      "changed": 27.435897435897438
+      "name": "caption-30-position",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:30px!important;line-height:36.92px!important;width:205px!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}",
+      "mad": 35.45482905982906,
+      "changed": 26.294871794871792
+    },
+    {
+      "name": "caption-26-weight400",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
+      "mad": 33.88817094017094,
+      "changed": 26.266666666666666
     }
   ]
 }
