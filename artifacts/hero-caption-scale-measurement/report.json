@@ -1,8 +1,14 @@
 {
-  "capturedAt": "2026-10-11T12:12:47.238Z",
+  "capturedAt": "2026-10-11T12:13:40.171Z",
   "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
   "styles": {
     "caption": {
+      "background-clip": "border-box",
+      "-webkit-background-clip": "border-box",
+      "opacity": "1",
+      "visibility": "visible",
+      "filter": "none",
+      "mask": "none",
       "content": "\"معك دائماً\\a لإنجاز معاملاتك\\a في الإمارات\"",
       "height": "122.719px",
       "width": "205px",
@@ -58,34 +64,22 @@
       "changed": 26.45897435897436
     },
     {
-      "name": "caption-box123",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:123px!important;box-sizing:border-box!important}",
+      "name": "caption-accent-paint",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{-webkit-background-clip:border-box!important;background-clip:border-box!important}",
       "mad": 34.50055555555556,
       "changed": 26.45897435897436
     },
     {
-      "name": "caption-box119-position-light",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:119px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
+      "name": "caption-position-light-accent",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:119px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{-webkit-background-clip:border-box!important;background-clip:border-box!important}",
       "mad": 32.80865811965812,
       "changed": 25.71025641025641
     },
     {
-      "name": "caption-box123-position-light",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:123px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
-      "mad": 33.235358974358974,
-      "changed": 25.976923076923075
-    },
-    {
-      "name": "caption-box119-light",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:119px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
-      "mad": 34.63126495726496,
-      "changed": 26.797435897435896
-    },
-    {
-      "name": "caption-box123-light",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:123px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
-      "mad": 33.88817094017094,
-      "changed": 26.266666666666666
+      "name": "caption-position-light",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:119px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
+      "mad": 32.80865811965812,
+      "changed": 25.71025641025641
     }
   ]
 }
