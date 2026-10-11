@@ -1,0 +1,501 @@
+{
+  "capturedAt": "2026-10-11T16:57:52.912Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "new-healthcare-facility-license-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "إصدار ترخيص منشأة صحية جديدة في دبي لدى هيئة الصحة بدبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "رسوم الموافقة الأولية بحسب فئة المنشأة كما تظهر في بطاقة الخدمة؛ تطبق رسوم المعرفة والابتكار عند الدفع.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:new-healthcare-facility-license-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:new-healthcare-facility-license-dubai",
+          "source_title": "إصدار ترخيص منشأة صحية جديدة في دبي",
+          "source_url": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "رسوم الموافقة الأولية بحسب فئة المنشأة كما تظهر في بطاقة الخدمة؛ تطبق رسوم المعرفة والابتكار عند الدفع.",
+            "source_refs": [
+              "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "new-healthcare-facility-license-dubai",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "إصدار ترخيص منشأة صحية جديدة في دبي لدى هيئة الصحة بدبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "5 أيام عمل وفق بطاقة الخدمة الرسمية",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:new-healthcare-facility-license-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:new-healthcare-facility-license-dubai",
+          "source_title": "إصدار ترخيص منشأة صحية جديدة في دبي",
+          "source_url": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "5 أيام عمل وفق بطاقة الخدمة الرسمية",
+            "source_refs": [
+              "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "new-healthcare-facility-license-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "New healthcare facility license in Dubai with DHA. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "Initial approval fees depend on the facility category as displayed in the service card. Knowledge and innovation fees apply at payment.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:new-healthcare-facility-license-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:new-healthcare-facility-license-dubai",
+          "source_title": "إصدار ترخيص منشأة صحية جديدة في دبي",
+          "source_url": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "رسوم الموافقة الأولية بحسب فئة المنشأة كما تظهر في بطاقة الخدمة؛ تطبق رسوم المعرفة والابتكار عند الدفع.",
+            "source_refs": [
+              "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "new-healthcare-facility-license-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "New healthcare facility license in Dubai with DHA. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "5 working days according to the official service card",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:new-healthcare-facility-license-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:new-healthcare-facility-license-dubai",
+          "source_title": "إصدار ترخيص منشأة صحية جديدة في دبي",
+          "source_url": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "5 أيام عمل وفق بطاقة الخدمة الرسمية",
+            "source_refs": [
+              "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "activate-healthcare-facility-license-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تفعيل ترخيص منشأة صحية في دبي لدى هيئة الصحة بدبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "رسوم الترخيص والتفتيش تختلف بحسب فئة المنشأة ومدة الترخيص، وتعرض بالتفصيل في البطاقة الرسمية.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:activate-healthcare-facility-license-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:activate-healthcare-facility-license-dubai",
+          "source_title": "تفعيل ترخيص منشأة صحية في دبي",
+          "source_url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "رسوم الترخيص والتفتيش تختلف بحسب فئة المنشأة ومدة الترخيص، وتعرض بالتفصيل في البطاقة الرسمية.",
+            "source_refs": [
+              "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "activate-healthcare-facility-license-dubai",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تفعيل ترخيص منشأة صحية في دبي لدى هيئة الصحة بدبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "يوم عمل واحد وفق بطاقة الخدمة بعد اكتمال المتطلبات",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:activate-healthcare-facility-license-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:activate-healthcare-facility-license-dubai",
+          "source_title": "تفعيل ترخيص منشأة صحية في دبي",
+          "source_url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "يوم عمل واحد وفق بطاقة الخدمة بعد اكتمال المتطلبات",
+            "source_refs": [
+              "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "activate-healthcare-facility-license-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Activate healthcare facility license in Dubai with DHA. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "Licensing and inspection fees vary by facility category and licence duration; the official card provides the breakdown.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:activate-healthcare-facility-license-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:activate-healthcare-facility-license-dubai",
+          "source_title": "تفعيل ترخيص منشأة صحية في دبي",
+          "source_url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "رسوم الترخيص والتفتيش تختلف بحسب فئة المنشأة ومدة الترخيص، وتعرض بالتفصيل في البطاقة الرسمية.",
+            "source_refs": [
+              "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "activate-healthcare-facility-license-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Activate healthcare facility license in Dubai with DHA. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "One working day according to the service card, after the requirements are complete",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:activate-healthcare-facility-license-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:activate-healthcare-facility-license-dubai",
+          "source_title": "تفعيل ترخيص منشأة صحية في دبي",
+          "source_url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "يوم عمل واحد وفق بطاقة الخدمة بعد اكتمال المتطلبات",
+            "source_refs": [
+              "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "health-professional-registration-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تسجيل مهني صحي في دبي لدى هيئة الصحة بدبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "200 درهم لرسوم الاعتماد وفق بطاقة الخدمة، إضافة إلى رسوم المعرفة والابتكار ورسوم التحقق أو التقييم عند انطباقها.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:health-professional-registration-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:health-professional-registration-dubai",
+          "source_title": "تسجيل مهني صحي لدى هيئة الصحة بدبي",
+          "source_url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لرسوم الاعتماد وفق بطاقة الخدمة، إضافة إلى رسوم المعرفة والابتكار ورسوم التحقق أو التقييم عند انطباقها.",
+            "source_refs": [
+              "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "health-professional-registration-dubai",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تسجيل مهني صحي في دبي لدى هيئة الصحة بدبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "5 أيام عمل بعد اكتمال التحقق والتقييمات المطلوبة",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:health-professional-registration-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:health-professional-registration-dubai",
+          "source_title": "تسجيل مهني صحي لدى هيئة الصحة بدبي",
+          "source_url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "5 أيام عمل بعد اكتمال التحقق والتقييمات المطلوبة",
+            "source_refs": [
+              "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "health-professional-registration-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Health professional registration in Dubai with DHA. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 200 credentialing fee according to the service card, plus knowledge and innovation fees and verification or assessment fees where applicable.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:health-professional-registration-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:health-professional-registration-dubai",
+          "source_title": "تسجيل مهني صحي لدى هيئة الصحة بدبي",
+          "source_url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لرسوم الاعتماد وفق بطاقة الخدمة، إضافة إلى رسوم المعرفة والابتكار ورسوم التحقق أو التقييم عند انطباقها.",
+            "source_refs": [
+              "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "health-professional-registration-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Health professional registration in Dubai with DHA. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "5 working days after completing the required verification and assessments",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:health-professional-registration-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:health-professional-registration-dubai",
+          "source_title": "تسجيل مهني صحي لدى هيئة الصحة بدبي",
+          "source_url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
+          "last_verified_at": "2026-09-30T08:29:11.824888+00:00",
+          "supporting_rule": {
+            "value": "5 أيام عمل بعد اكتمال التحقق والتقييمات المطلوبة",
+            "source_refs": [
+              "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "scope": "Only twelve previously failed DHA fee/time AI cases after the clinical identity correction; no repeat of the two accepted English pages or official source reads.",
+  "externalModelGate": "NOT_PASSED"
+}
