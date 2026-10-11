@@ -1,0 +1,35 @@
+name: Read Official RAK Fee Card
+on:
+  push:
+    branches: [agent/official-rak-fee-card-read]
+    paths: [scripts/official-rak-fee-card-read.mjs, .github/workflows/official-rak-fee-card-read.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/official-rak-fee-card-read.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: official-rak-fee-card-read
+          path: artifacts/official-rak-fee-card-read
+      - name: Preserve live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/official-rak-fee-card-read
+          git reset --mixed origin/agent/official-rak-fee-card-read
+          git add artifacts/official-rak-fee-card-read
+          if ! git diff --cached --quiet; then
+            git commit -m "Record read-only official RAK source evidence [skip ci]"
+            git push origin HEAD:agent/official-rak-fee-card-read
+          fi
