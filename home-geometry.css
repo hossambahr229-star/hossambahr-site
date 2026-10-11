@@ -399,3 +399,6 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 
 /* Approved desktop wordmark typography; the circular HB master remains unchanged. */
 @media(min-width:821px){html.hb-phase8 body[data-home-geometry] .site-header .brand span{font-family:"Times New Roman",serif!important;font-size:22px!important}}
+
+/* Align the approved photographic band independently of its readability shade. */
+@media(min-width:821px){html.hb-phase8 body[data-home-geometry] .premium-final-cta{background-position:center,center 54%!important}}
