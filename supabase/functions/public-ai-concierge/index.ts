@@ -311,6 +311,26 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const wantsCancel = has(goal, ["الغي","ألغي","إلغاء","الغاء","cancel"]);
   const sponsorship = has(goal, ["اكفل","أكفل","كفاله","كفالة","sponsor","sponsorship"]);
   const emirate = detectJurisdiction(goal);
+  // Clinical authorisation is a different service object from a business licence.
+  const dhaContext = hasPhrase(goal, ["DHA","Dubai Health Authority","هيئة الصحة بدبي","هيئة الصحة في دبي"]);
+  const otherHealthRegulator = hasPhrase(goal, ["DHCC","DHCA","Dubai Healthcare City","مدينة دبي الطبية"]);
+  const medicalFacility = hasPhrase(goal, ["healthcare facility","health care facility","medical facility","منشأة صحية","منشأة طبية","عيادة","مستشفى","clinic","hospital"]) || (dhaContext && hasPhrase(goal, ["facility","منشأة"]));
+  const medicalProfessional = hasPhrase(goal, ["health professional","healthcare professional","medical professional","مهني صحي","مهني طبي","طبيب","ممرض","ممرضة","physician","dentist","doctor","nurse"]);
+  const tradeLicenceContext = has(goal, ["trade license","trade licence","business license","economic license","رخصة تجارية","رخصة اقتصادية"]);
+  const dhaActivation = has(goal, ["تفعيل","activate","activation"]);
+  const dhaRegistration = has(goal, ["تسجيل","register","registration"]);
+  const dhaChangedOperation = renew || amend || wantsCancel || transfer;
+  if (emirate === "AE-DU" && dhaContext && !otherHealthRegulator && !tradeLicenceContext) {
+    if (!dhaChangedOperation) {
+      if (medicalProfessional && dhaRegistration && !dhaActivation && slug === "health-professional-registration-dubai") return 90000;
+      if (medicalFacility && !medicalProfessional && company && dhaActivation && slug === "activate-healthcare-facility-license-dubai") return 90000;
+      if (medicalFacility && !medicalProfessional && company && !dhaActivation && (open || has(goal, ["جديد","new"])) && slug === "new-healthcare-facility-license-dubai") return 90000;
+    }
+    if (medicalFacility || medicalProfessional) {
+      if (["new-healthcare-facility-license-dubai","activate-healthcare-facility-license-dubai","health-professional-registration-dubai"].includes(slug)) return -20000;
+    }
+  }
+  if (medicalFacility && company && !tradeLicenceContext && /(^issue-trade-license-|^renew-business-license-|^cancel-business-license-|(?:economic|commercial)-license-(?:issuance|renewal|amendment|cancellation)$|^ras-al-khaimah-license-)/.test(slug)) return -20000;
   // The migrated Ajman tool is an activity inquiry, never a licence application.
   const activityInquiry = has(goal, ["استعلام","الاستعلام","inquiry","enquiry"]) && has(goal, ["انشطه","الانشطه","نشاط","activity","activities"]);
   if (emirate === "AE-AJ" && activityInquiry && slug === "ajman-business-activity-inquiry") score += 9000;
