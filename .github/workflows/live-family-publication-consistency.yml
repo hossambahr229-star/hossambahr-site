@@ -1,0 +1,65 @@
+name: Live Family Publication Consistency
+on:
+  push:
+    branches: [agent/live-family-publication-consistency]
+    paths: [.github/workflows/live-family-publication-consistency.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: New live public AI facts
+        continue-on-error: true
+        run: node scripts/live-family-publication-consistency.mjs
+      - name: Wait for changed service facts on Production
+        run: |
+          node --input-type=module <<'NODE'
+          const cases=[['family-residency-uae','48 ساعة']];
+          let ready=false;
+          for(let attempt=0;attempt<120;attempt++){
+            const checks=await Promise.all(cases.map(async([slug,time])=>{
+              const text=await fetch('https://hossambahr.com/services/'+slug+'/?facts='+Date.now(),{cache:'no-store'}).then(r=>r.text()).catch(()=>'');
+              return text.includes('رسم تصريح الإقامة: 200 درهم')&&text.includes('500 درهم رسم داخل الدولة عند انطباقه')&&text.includes(time);
+            }));
+            if(checks.every(Boolean)){ready=true;break;}
+            await new Promise(r=>setTimeout(r,10000));
+          }
+          if(!ready)throw Error('Changed family residence publication facts are not deployed');
+          NODE
+      - name: Changed live pages and direct pathways
+        continue-on-error: true
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/live-family-publication-pages.mjs
+      - name: Require complete scoped acceptance
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          for(const name of ['report.json','page-report.json']){
+           const report=JSON.parse(fs.readFileSync('artifacts/live-family-publication-consistency/'+name,'utf8'));
+           if(!report.passed)throw Error(name+' did not pass');
+          }
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-family-publication-consistency
+          path: artifacts/live-family-publication-consistency
+      - name: Preserve actual new evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-family-publication-consistency
+          git reset --mixed origin/agent/live-family-publication-consistency
+          git add artifacts/live-family-publication-consistency
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual new family residence publication fact and page acceptance [skip ci]"
+            git push origin HEAD:agent/live-family-publication-consistency
+          fi
