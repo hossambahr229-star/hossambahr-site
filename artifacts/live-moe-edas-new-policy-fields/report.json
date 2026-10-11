@@ -1,0 +1,489 @@
+{
+  "capturedAt": "2026-10-11T16:58:07.625Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "checks": [
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Attestation of commercial invoices via eDAS 2.0 with MOFA. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Attestation of commercial invoices via eDAS 2.0 with MOFA. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "معادلة شهادة الثانوية من خارج الإمارات. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "معادلة شهادة الثانوية من خارج الإمارات. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Equivalency of a general education certificate from abroad Grade 12 with the UAE Ministry of Education. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Equivalency of a general education certificate from abroad Grade 12 with the UAE Ministry of Education. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Equivalency of a general education certificate in the UAE Grade 12 with the UAE Ministry of Education. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Equivalency of a general education certificate in the UAE Grade 12 with the UAE Ministry of Education. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "confirming-the-authenticity-of-equivalency",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "التحقق من صحة المعادلة أو التصديق. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "confirming-the-authenticity-of-equivalency",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "التحقق من صحة المعادلة أو التصديق. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "confirming-the-authenticity-of-equivalency",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Confirming the authenticity of an equivalency certificate with the UAE Ministry of Education. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "confirming-the-authenticity-of-equivalency",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Confirming the authenticity of an equivalency certificate with the UAE Ministry of Education. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    }
+  ],
+  "scope": "Only newly activated, previously reviewed education/eDAS fee and duration rules in Arabic and English. Accepted source/page checks are reused, not repeated; no submissions.",
+  "externalModelGate": "NOT_PASSED"
+}
