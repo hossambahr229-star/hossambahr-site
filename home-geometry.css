@@ -415,3 +415,6 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 /* Native accent is materialized by the publication step; hidden outside the approved desktop frame. */
 .hb-hero-caption-accent{display:none}
 @media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-hero-caption-accent{display:block!important;position:absolute;top:224px;left:5.5%;width:54px;height:3px;background:linear-gradient(90deg,#deb456,#a77823);border-radius:2px;z-index:3;pointer-events:none}}
+
+/* Measured native artwork size within the approved Arabic 1440px panel. */
+@media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{width:57%!important;height:205px!important;bottom:13px!important}}
