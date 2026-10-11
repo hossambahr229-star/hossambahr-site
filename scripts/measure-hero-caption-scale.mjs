@@ -6,7 +6,7 @@ const root='html.hb-phase8 body[data-home-geometry] ',card=root+'.target-discove
 const base=title+'{font-size:12px!important}'+card+'::after{content:"→"!important}';
 const internal=card+'{padding:5px 6px 5px!important}'+base;
 const navy=[2,5,6,7].map(n=>card+':nth-child('+n+') i{color:#123849!important}').join('');
-const caption=(n,width=205)=>root+'.premium-hero-main::before{font-size:'+n+'px!important;line-height:36.92px!important;width:'+width+'px!important}';
+const caption=(n,width=205)=>'html[lang="ar"].hb-phase8 body[data-home-geometry] '+'.premium-hero-main::before{font-size:'+n+'px!important;line-height:36.92px!important;width:'+width+'px!important}';
 const variants=[['baseline',''],['caption-30',caption(30)],['caption-32',caption(32)],['caption-34',caption(34)],['caption-32-wide',caption(32,230)]];
 const results=[];try{await page.goto('https://hossambahr.com/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
 const styles=await page.evaluate(()=>{const e=document.querySelector('.premium-category-grid>a'),c=getComputedStyle(e),b=getComputedStyle(e,'::before');return{background:c.background,boxShadow:c.boxShadow,before:{content:b.content,background:b.background,position:b.position},bounds:e.getBoundingClientRect().toJSON(),title:getComputedStyle(e.querySelector('b')).font,heroShadows:[...document.querySelectorAll('.premium-home-hero,.visual-target-hero,.premium-hero-main,.premium-ai-showcase')].map(n=>({class:n.className,shadow:getComputedStyle(n).boxShadow,filter:getComputedStyle(n).filter}))}});
