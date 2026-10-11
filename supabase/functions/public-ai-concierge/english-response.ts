@@ -26,7 +26,10 @@ export function englishResult(result: any) {
  let text='';
  const missing=answer.fact_status==='MISSING_INFORMATION';
  const verified=answer.fact_status==='VERIFIED_FACT'&&answer.grounded===true;
- const recorded=verified?recordedEnglish(answer.text):null;
+ const documentItems=verified&&answer.focus==='documents'&&Array.isArray(answer.evidence?.document_requirements)&&answer.evidence.document_requirements.length
+  ?answer.evidence.document_requirements.map((item:unknown)=>recordedEnglish(item)):null;
+ const documentText=documentItems&&documentItems.every(Boolean)?'Recorded requirements for this service:\n'+documentItems.join('\n'):null;
+ const recorded=verified?(documentText||recordedEnglish(answer.text)):null;
  if(answer.fact_status==='NEEDS_CLARIFICATION' && /إقامة عامل\/عاملة مساعدة/.test(result.understood_intent||'')) text='For the domestic worker’s residence, which emirate issued it? This is a residence transaction, separate from employment contracts and work permits.';
  else if(answer.evidence?.review_pending && missing) text='The official source is available, but its changed details are awaiting review. I cannot confirm earlier fees, times, documents or conditions until that review is complete.';
  else if(answer.focus==='fees' && missing) text='I cannot confirm a government fee for this case from the current verified record. I will not estimate a figure. Check the official source before applying or paying.';
