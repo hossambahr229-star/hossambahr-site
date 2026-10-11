@@ -212,6 +212,7 @@ function groundedAnswer(goal: string, row: any, focus: string) {
       source_url: source?.source_url || null,
       last_verified_at: source?.last_verified_at || null,
       supporting_rule: focus === "fees" ? fees : focus === "duration" ? duration : focus === "overview" ? conditions : null,
+      document_requirements: focus === "documents" && !reviewPending && factStatus === "VERIFIED_FACT" ? row.requirements.slice(0,6) : null,
       special_case: reviewPending ? null : (special?.value || null),
       review_pending: reviewPending
     }
