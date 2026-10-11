@@ -1,0 +1,91 @@
+{
+  "capturedAt": "2026-10-11T11:56:58.687Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "family-residency-uae",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Family residence permit issuance in Dubai with GDRFA. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "Residence permit fee: AED 200; AED 10 knowledge fee, AED 10 innovation fee, AED 500 in-country fee where applicable, and AED 20 delivery. The issuance fee increases by AED 100 annually when the residence exceeds two years.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:family-residency-uae",
+          "policy_version": 1,
+          "workflow_key": "service:family-residency-uae",
+          "source_title": "إصدار إقامة لأفراد الأسرة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-02T07:34:29.987715+00:00",
+          "supporting_rule": {
+            "value": "رسم تصريح الإقامة: 200 درهم، و10 دراهم درهم معرفة، و10 دراهم درهم ابتكار، و500 درهم رسم داخل الدولة عند انطباقه، و20 درهم توصيل. تزيد رسوم الإصدار 100 درهم سنويًا عندما تتجاوز الإقامة سنتين.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "استخدام مستند قرابة غير مصدق أو اختيار مسار دبي مع ملف كفيل صادر من ICP يؤدي إلى رفض أو تأخير.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "family-residency-uae",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Family residence permit issuance in Dubai with GDRFA. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "Officially published expected completion time: 48 hours.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:family-residency-uae",
+          "policy_version": 1,
+          "workflow_key": "service:family-residency-uae",
+          "source_title": "إصدار إقامة لأفراد الأسرة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-02T07:34:29.987715+00:00",
+          "supporting_rule": {
+            "value": "مدة الإنجاز المتوقعة المنشورة رسميًا: 48 ساعة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "استخدام مستند قرابة غير مصدق أو اختيار مسار دبي مع ملف كفيل صادر من ICP يؤدي إلى رفض أو تأخير.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "scope": "Only two newly translated English family residence fee/time answers from existing policy version 1; no re-test of accepted Arabic AI or changes to policy, eligibility, documents or workflows.",
+  "externalModelGate": "NOT_PASSED"
+}
