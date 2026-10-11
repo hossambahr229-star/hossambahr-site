@@ -326,6 +326,13 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const realEstateAdPermit = has(goal, ["عقاري","عقار","real estate","property"]) && has(goal, ["اعلان","advertis","ad permit"]) && has(goal, ["تصريح","permit"]);
   const changesAdPermit = has(goal, ["الغاء","الغي","تعديل","تجديد","cancel","amend","modify","renew"]);
   if (emirate === "AE-DU" && realEstateAdPermit && !changesAdPermit && slug === "dld-real-estate-ad-permit-dubai") score += 9000;
+  const taxRegistration = has(goal, ["تسجيل","register","registration"]);
+  const uaeTaxContext = has(goal, ["الامارات","uae","federal tax authority","fta","الهيئه الاتحاديه للضرائب"]) || Boolean(emirate);
+  const otherTaxOperation = has(goal, ["الغاء","الغي","تعديل","تجديد","اقرار","استرداد","cancel","deregister","amend","modify","renew","tax return","refund"]);
+  if (taxRegistration && uaeTaxContext && !otherTaxOperation) {
+    if (has(goal, ["ضريبه الشركات","corporate tax"]) && slug === "corporate-tax-registration-uae") score += 9000;
+    if (has(goal, ["القيمه المضافه","value added tax","vat"]) && slug === "vat-registration-uae") score += 9000;
+  }
   const fiveYearTourist = has(goal,["سياحيه","سياحية","سياحه","سياحة","tourist","tourism"]) && (has(goal,["5 سنين","5 سنوات","خمس سنين","خمس سنوات","five years","5 years"]) || (has(goal,["متعدده","متعددة","multiple","multi"]) && has(goal,["دخول","entry"])));
   if (fiveYearTourist) {
     if (slug === "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp") score += 18000;
