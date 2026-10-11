@@ -1,0 +1,91 @@
+{
+  "capturedAt": "2026-10-11T06:20:32.110Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+    "boxShadow": "none",
+    "before": {
+      "content": "none",
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "position": "static"
+    },
+    "bounds": {
+      "x": 30.953125,
+      "y": 367,
+      "width": 155.125,
+      "height": 116,
+      "top": 367,
+      "right": 186.078125,
+      "bottom": 483,
+      "left": 30.953125
+    },
+    "title": "700 12px / 15.6px Cairo, Arial, Tahoma, sans-serif",
+    "heroShadows": [
+      {
+        "class": "premium-home-hero platform-hero visual-target-hero",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-hero-main",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-ai-showcase",
+        "shadow": "none",
+        "filter": "none"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 33.909262474279835,
+      "changed": 24.68846450617284
+    },
+    {
+      "name": "image-51",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-final-cta{background-position:center,center 51%!important}",
+      "mad": 32.387204218106994,
+      "changed": 23.765432098765434
+    },
+    {
+      "name": "image-52",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-final-cta{background-position:center,center 52%!important}",
+      "mad": 30.562319958847738,
+      "changed": 22.688078703703702
+    },
+    {
+      "name": "image-53",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-final-cta{background-position:center,center 53%!important}",
+      "mad": 28.004449588477367,
+      "changed": 20.748456790123456
+    },
+    {
+      "name": "image-54",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-final-cta{background-position:center,center 54%!important}",
+      "mad": 27.189525462962962,
+      "changed": 20.162037037037038
+    },
+    {
+      "name": "image-55",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-final-cta{background-position:center,center 55%!important}",
+      "mad": 30.791718106995884,
+      "changed": 23.45196759259259
+    },
+    {
+      "name": "image-56",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-final-cta{background-position:center,center 56%!important}",
+      "mad": 33.32484567901235,
+      "changed": 26.078317901234566
+    },
+    {
+      "name": "image-58",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-final-cta{background-position:center,center 58%!important}",
+      "mad": 37.04829925411523,
+      "changed": 29.42611882716049
+    }
+  ]
+}
