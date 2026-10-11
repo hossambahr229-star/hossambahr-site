@@ -1,0 +1,91 @@
+{
+  "capturedAt": "2026-10-11T11:28:06.024Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+    "boxShadow": "none",
+    "before": {
+      "content": "none",
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "position": "static"
+    },
+    "bounds": {
+      "x": 30.953125,
+      "y": 367,
+      "width": 155.125,
+      "height": 116,
+      "top": 367,
+      "right": 186.078125,
+      "bottom": 483,
+      "left": 30.953125
+    },
+    "title": "700 12px / 15.6px Cairo, Arial, Tahoma, sans-serif",
+    "heroShadows": [
+      {
+        "class": "premium-home-hero platform-hero visual-target-hero",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-hero-main",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-ai-showcase",
+        "shadow": "none",
+        "filter": "none"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 27.648758363767836,
+      "changed": 19.418128895845346
+    },
+    {
+      "name": "copy-57",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:57%!important}",
+      "mad": 27.546537331466073,
+      "changed": 19.3302578466101
+    },
+    {
+      "name": "copy-58",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:58%!important}",
+      "mad": 27.546537331466073,
+      "changed": 19.3302578466101
+    },
+    {
+      "name": "chips",
+      "css": "html.hb-phase8 body[data-home-geometry] .home-popular-chips a{font-size:10.5px!important;font-weight:600!important;padding:6px 7px!important}",
+      "mad": 27.8644268702346,
+      "changed": 19.639865996649917
+    },
+    {
+      "name": "search-fill",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-intent-search{background:#f1f6f8!important}",
+      "mad": 27.27187165334871,
+      "changed": 19.398220611252988
+    },
+    {
+      "name": "copy-57-chips",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:57%!important}html.hb-phase8 body[data-home-geometry] .home-popular-chips a{font-size:10.5px!important;font-weight:600!important;padding:6px 7px!important}",
+      "mad": 27.762180666538523,
+      "changed": 19.55130845484252
+    },
+    {
+      "name": "copy-58-chips",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:58%!important}html.hb-phase8 body[data-home-geometry] .home-popular-chips a{font-size:10.5px!important;font-weight:600!important;padding:6px 7px!important}",
+      "mad": 27.762180666538523,
+      "changed": 19.55130845484252
+    },
+    {
+      "name": "copy-57-search",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:57%!important}html.hb-phase8 body[data-home-geometry] .premium-intent-search{background:#f1f6f8!important}",
+      "mad": 27.169650621046948,
+      "changed": 19.31034956201774
+    }
+  ]
+}
