@@ -1,7 +1,19 @@
 {
-  "capturedAt": "2026-10-11T12:11:23.663Z",
+  "capturedAt": "2026-10-11T12:12:47.238Z",
   "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
   "styles": {
+    "caption": {
+      "content": "\"معك دائماً\\a لإنجاز معاملاتك\\a في الإمارات\"",
+      "height": "122.719px",
+      "width": "205px",
+      "top": "103px",
+      "left": "56.625px",
+      "padding": "0px 0px 12px",
+      "box-sizing": "border-box",
+      "background": "rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(222, 180, 86), rgb(167, 120, 35)) no-repeat scroll 0% 100% / 54px 3px padding-box border-box",
+      "line-height": "36.92px",
+      "font": "500 26px / 36.92px \"HB Naskh\", serif"
+    },
     "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
     "boxShadow": "none",
     "before": {
@@ -46,34 +58,34 @@
       "changed": 26.45897435897436
     },
     {
-      "name": "caption-position-light",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
+      "name": "caption-box123",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:123px!important;box-sizing:border-box!important}",
+      "mad": 34.50055555555556,
+      "changed": 26.45897435897436
+    },
+    {
+      "name": "caption-box119-position-light",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:119px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
+      "mad": 32.80865811965812,
+      "changed": 25.71025641025641
+    },
+    {
+      "name": "caption-box123-position-light",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:123px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
       "mad": 33.235358974358974,
       "changed": 25.976923076923075
     },
     {
-      "name": "caption-28-position-light",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:28px!important;line-height:36.92px!important;width:205px!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
-      "mad": 34.327940170940174,
-      "changed": 26.07179487179487
+      "name": "caption-box119-light",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:119px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
+      "mad": 34.63126495726496,
+      "changed": 26.797435897435896
     },
     {
-      "name": "caption-30-position-light",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-size:30px!important;line-height:36.92px!important;width:205px!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
-      "mad": 34.215555555555554,
-      "changed": 25.882051282051282
-    },
-    {
-      "name": "caption-26-line34",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{line-height:34px!important}",
-      "mad": 34.63529914529914,
-      "changed": 26.692307692307693
-    },
-    {
-      "name": "caption-26-line38",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{line-height:38px!important}",
-      "mad": 32.961128205128205,
-      "changed": 26.04102564102564
+      "name": "caption-box123-light",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:123px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}",
+      "mad": 33.88817094017094,
+      "changed": 26.266666666666666
     }
   ]
 }
