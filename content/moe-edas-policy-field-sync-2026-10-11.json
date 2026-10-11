@@ -1,0 +1,90 @@
+{
+  "syncedAt": "2026-10-11T16:46:36Z",
+  "sourceReviewDate": "2026-10-08",
+  "scope": "Only activate already-reviewed published fees and duration in four AI policies. Preserve source-health fields, requirements, conditions, workflows and all earlier acceptance.",
+  "reusedEvidence": {
+    "manifest": "content/moe-edas-field-review-2026-10-08.json",
+    "branch": "agent/official-missing-detail-evidence",
+    "capturedAt": "2026-10-08T16:49:47.056Z",
+    "sourceReviewRepeated": false,
+    "pageAcceptanceRepeated": false
+  },
+  "facts": [
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "source": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+      "authority": "mofa",
+      "fields": [
+        "fees",
+        "duration"
+      ],
+      "fees": "150 درهماً لكل فاتورة أو شهادة منشأ.",
+      "duration": "دقيقتان وفق بطاقة الخدمة.",
+      "feesEn": "AED 150 per invoice or certificate of origin.",
+      "durationEn": "Two minutes according to the service card.",
+      "nameAr": "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+      "nameEn": "Attestation of commercial invoices via eDAS 2.0 with MOFA",
+      "sourceReviewedAt": "2026-10-08",
+      "evidenceBranch": "agent/official-missing-detail-evidence",
+      "evidenceCapturedAt": "2026-10-08T16:49:47.056Z"
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "source": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
+      "authority": "moe",
+      "fields": [
+        "fees",
+        "duration"
+      ],
+      "fees": "50 درهماً.",
+      "duration": "من 3 إلى 30 يوم عمل بحسب اكتمال الشروط والحاجة إلى المراسلات أو مراجعة اللجنة؛ لا تحتسب فترة النواقص ضمن مدة الإنجاز.",
+      "feesEn": "AED 50.",
+      "durationEn": "3–30 working days depending on complete requirements, correspondence and committee review. Time spent resolving missing documents is excluded.",
+      "nameAr": "معادلة شهادة الثانوية من خارج الإمارات",
+      "nameEn": "Equivalency of a general education certificate from abroad Grade 12 with the UAE Ministry of Education",
+      "sourceReviewedAt": "2026-10-08",
+      "evidenceBranch": "agent/official-missing-detail-evidence",
+      "evidenceCapturedAt": "2026-10-08T16:49:47.056Z"
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "source": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
+      "authority": "moe",
+      "fields": [
+        "fees",
+        "duration"
+      ],
+      "fees": "50 درهماً.",
+      "duration": "5 أيام عمل وفق بطاقة الخدمة.",
+      "feesEn": "AED 50.",
+      "durationEn": "5 working days according to the service card.",
+      "nameAr": "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات",
+      "nameEn": "Equivalency of a general education certificate in the UAE Grade 12 with the UAE Ministry of Education",
+      "sourceReviewedAt": "2026-10-08",
+      "evidenceBranch": "agent/official-missing-detail-evidence",
+      "evidenceCapturedAt": "2026-10-08T16:49:47.056Z"
+    },
+    {
+      "slug": "confirming-the-authenticity-of-equivalency",
+      "source": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
+      "authority": "moe",
+      "fields": [
+        "fees",
+        "duration"
+      ],
+      "fees": "مجانية.",
+      "duration": "فورية بعد إدخال البيانات الصحيحة.",
+      "feesEn": "Free of charge.",
+      "durationEn": "Immediate after entering the correct details.",
+      "nameAr": "التحقق من صحة المعادلة أو التصديق",
+      "nameEn": "Confirming the authenticity of an equivalency certificate with the UAE Ministry of Education",
+      "sourceReviewedAt": "2026-10-08",
+      "evidenceBranch": "agent/official-missing-detail-evidence",
+      "evidenceCapturedAt": "2026-10-08T16:49:47.056Z"
+    }
+  ],
+  "expectedPolicyVersion": 2,
+  "liveAcceptance": "PENDING_DEPLOYMENT",
+  "externalSubmissionPerformed": false,
+  "overallFinalGate": "NOT_DECLARED"
+}
