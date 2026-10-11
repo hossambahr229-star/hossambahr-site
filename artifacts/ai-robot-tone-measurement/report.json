@@ -1,0 +1,73 @@
+{
+  "capturedAt": "2026-10-11T11:44:43.755Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+    "boxShadow": "none",
+    "before": {
+      "content": "none",
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "position": "static"
+    },
+    "bounds": {
+      "x": 30.953125,
+      "y": 367,
+      "width": 155.125,
+      "height": 116,
+      "top": 367,
+      "right": 186.078125,
+      "bottom": 483,
+      "left": 30.953125
+    },
+    "title": "700 12px / 15.6px Cairo, Arial, Tahoma, sans-serif",
+    "heroShadows": [
+      {
+        "class": "premium-home-hero platform-hero visual-target-hero",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-hero-main",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-ai-showcase",
+        "shadow": "none",
+        "filter": "none"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 37.298051921005815,
+      "changed": 28.150157976473107
+    },
+    {
+      "name": "tone-0",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{filter:brightness(.85)!important}",
+      "mad": 37.324244479748664,
+      "changed": 28.63658271005516
+    },
+    {
+      "name": "tone-1",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{filter:brightness(.8)!important}",
+      "mad": 37.440935839536365,
+      "changed": 29.613002267007015
+    },
+    {
+      "name": "tone-2",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{filter:brightness(.9) contrast(.9)!important}",
+      "mad": 37.36936743959111,
+      "changed": 28.333125078095716
+    },
+    {
+      "name": "tone-3",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{filter:brightness(.85) contrast(.95)!important}",
+      "mad": 37.32399457346352,
+      "changed": 28.926652505310507
+    }
+  ]
+}
