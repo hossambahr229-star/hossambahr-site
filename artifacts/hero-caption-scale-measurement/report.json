@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-11T12:14:52.896Z",
+  "capturedAt": "2026-10-11T12:16:04.736Z",
   "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
   "styles": {
     "caption": {
@@ -68,28 +68,16 @@
       "changed": 26.45897435897436
     },
     {
-      "name": "caption-block-accent",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{display:block!important;position:absolute!important;background-image:linear-gradient(90deg,#deb456,#a77823)!important;background-size:54px 3px!important;background-repeat:no-repeat!important;background-position:left bottom!important}",
-      "mad": 34.50055555555556,
-      "changed": 26.45897435897436
+      "name": "caption-independent-accent",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-measure-accent{display:block!important;position:absolute;top:224px;left:5.5%;width:54px;height:3px;background:linear-gradient(90deg,#deb456,#a77823);border-radius:2px;z-index:3;pointer-events:none}",
+      "mad": 34.400820512820516,
+      "changed": 26.384615384615383
     },
     {
-      "name": "caption-border",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{border-bottom:3px solid #c99b3d!important}",
-      "mad": 35.331982905982905,
-      "changed": 27.43333333333333
-    },
-    {
-      "name": "caption-light-border",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:119px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{border-bottom:3px solid #c99b3d!important}",
-      "mad": 34.09700854700855,
-      "changed": 26.78974358974359
-    },
-    {
-      "name": "caption-light-block",
-      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:119px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{display:block!important;position:absolute!important;background-image:linear-gradient(90deg,#deb456,#a77823)!important;background-size:54px 3px!important;background-repeat:no-repeat!important;background-position:left bottom!important}",
-      "mad": 32.80865811965812,
-      "changed": 25.71025641025641
+      "name": "caption-position-light-accent",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{height:119px!important;box-sizing:border-box!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{top:107px!important;left:5.5%!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{font-weight:400!important}html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .hb-caption-measure-accent{display:block!important;position:absolute;top:224px;left:5.5%;width:54px;height:3px;background:linear-gradient(90deg,#deb456,#a77823);border-radius:2px;z-index:3;pointer-events:none}",
+      "mad": 32.713042735042734,
+      "changed": 25.648717948717948
     }
   ]
 }
