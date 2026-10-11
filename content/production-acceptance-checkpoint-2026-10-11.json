@@ -1,6 +1,6 @@
 {
-  "recordedAt": "2026-10-11 11:48:31 UTC",
-  "lastAcceptedDeployedCommit": "f9afc190cd55337548c30896f45beeaa77c41066",
+  "recordedAt": "2026-10-11T12:08:00Z",
+  "lastAcceptedDeployedCommit": "186e16cbc40f46fa0721d9603179608496d2a2e4",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -20,11 +20,14 @@
     424,
     425,
     426,
-    427
+    427,
+    428,
+    429,
+    430
   ],
   "production": {
     "publicationGate": {
-      "run": 38136499552,
+      "run": 38137381144,
       "status": "PASS"
     },
     "geometry": {
@@ -39,8 +42,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 25.526045042438273,
-      "changedPixelPercent": 18.92549189814815,
+      "meanAbsolutePixelDifference": 25.46711684992284,
+      "changedPixelPercent": 18.89236111111111,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -67,13 +70,28 @@
     "consultationTitle": {
       "run": 38136530917,
       "capturedAt": "2026-10-11T11:46:41.665Z"
+    },
+    "familyResidencePublication": {
+      "pages": 4,
+      "newEnglishAi": 2,
+      "priorArabicAiRepeated": false,
+      "policyVersion": 1,
+      "policyChanged": false,
+      "run": 38137405377,
+      "manifest": "content/family-residence-publication-review-2026-10-11.json"
+    },
+    "featuredTypography": {
+      "run": 38137406593,
+      "capturedAt": "2026-10-11T12:01:14.144Z",
+      "meanAbsolutePixelDifference": 35.0577847,
+      "changedPixelPercent": 32.817732
     }
   },
   "deployedAi": {
-    "version": 130,
+    "version": 131,
     "status": "ACTIVE",
     "sourceFilesMatched": 9,
-    "bundleSha256": "145d823c549fe93758143eae652e6b95697c462c5b2ae4c4b390d008fee86155"
+    "bundleSha256": "f0246045701c8c07a983fa195c0111b558068a05b43cbca8d64cd2dfe580a173"
   },
   "blockers": {
     "externalModel": {
@@ -96,13 +114,27 @@
       "error": "setup_refresh / helper_unknown_error",
       "productFailure": false,
       "workingAlternatives": "GitHub Actions, GitHub and Supabase connectors"
+    },
+    "rakFeeSource": {
+      "status": "BLOCKED_SOURCE_UNREADABLE",
+      "source": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees",
+      "web": "400 Timeout",
+      "browserRead": {
+        "run": 38137585890,
+        "capturedAt": "2026-10-11T12:00:49.798Z",
+        "readable": false,
+        "timeoutMs": 45000
+      },
+      "feesChanged": false,
+      "productFailure": false
     }
   },
   "excludedNewVisualCandidates": {
     "aiCornerBrand": "All three placements worsened the diff; none published.",
     "aiRobotTone": "All four brightness/contrast variants worsened the diff; none published.",
     "heroChips": "Smaller chip variant worsened the diff; none published.",
-    "consultationAdditionalCopy": "Title alignment alone outperformed added copy; additional copy not published."
+    "consultationAdditionalCopy": "Title alignment alone outperformed added copy; additional copy not published.",
+    "featuredTypography": "17px headings and alternate button gradients worsened the diff; only 16px heading and 12px body variant published."
   },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED"
