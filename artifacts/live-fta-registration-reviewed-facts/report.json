@@ -1,0 +1,249 @@
+{
+  "capturedAt": "2026-10-11T06:33:19.879Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "checks": [
+    {
+      "slug": "corporate-tax-registration-uae",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "التسجيل في ضريبة الشركات بالإمارات. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "corporate-tax-registration-uae",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "التسجيل في ضريبة الشركات بالإمارات. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "corporate-tax-registration-uae",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Corporate Tax Registration with the UAE Federal Tax Authority. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "corporate-tax-registration-uae",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Corporate Tax Registration with the UAE Federal Tax Authority. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "vat-registration-uae",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "التسجيل في ضريبة القيمة المضافة بالإمارات. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "vat-registration-uae",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "التسجيل في ضريبة القيمة المضافة بالإمارات. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "vat-registration-uae",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "VAT Registration with the UAE Federal Tax Authority. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "vat-registration-uae",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "VAT Registration with the UAE Federal Tax Authority. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    }
+  ],
+  "scope": "Newly reviewed FTA registration fee and distinct submission/review times only; no tax liability determination, submissions or private account access.",
+  "externalModelGate": "NOT_PASSED"
+}
