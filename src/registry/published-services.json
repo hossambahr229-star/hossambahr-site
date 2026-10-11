@@ -3895,7 +3895,7 @@
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "تعرضها GDRFA بحسب نوع الطلب والقناة قبل السداد."
+        "text": "رسم إلغاء تصريح الإقامة 100 درهم، و10 دراهم للمعرفة و10 دراهم للابتكار، وفق بطاقة GDRFA."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -3903,7 +3903,7 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "تعتمد على خلو الملف من القيود واكتمال إلغاء العلاقة المرتبطة."
+        "text": "48 ساعة وفق بطاقة GDRFA؛ لم تُحدد أنها ساعات عمل."
       },
       "conditions": "تغطي خدمة GDRFA الرسمية إلغاء جميع أنواع تصاريح الإقامة الصادرة من دبي. لا تستخدم هذا المسار لإقامة صادرة من ICP في إمارة أخرى.",
       "steps": [
@@ -3936,11 +3936,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "تعرضها GDRFA بحسب نوع الطلب والقناة قبل السداد."
+          "answer": "رسم إلغاء تصريح الإقامة 100 درهم، و10 دراهم للمعرفة و10 دراهم للابتكار، وفق بطاقة GDRFA."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "تعتمد على خلو الملف من القيود واكتمال إلغاء العلاقة المرتبطة."
+          "answer": "48 ساعة وفق بطاقة GDRFA؛ لم تُحدد أنها ساعات عمل."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -3971,13 +3971,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-11",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-11",
+      "lastReviewedAt": "2026-10-11",
       "internalRoute": "/services/cancel-residency-permit-uae/",
       "sourceRegistry": "service-matrix"
     },
