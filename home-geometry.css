@@ -237,7 +237,7 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .home-ai-action-icon svg{rota
 }
 
 @media(min-width:1400px){
- html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:60%;font-size:14px!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:57%;font-size:14px!important}
 }
 html[lang="ar"].hb-phase8 body[data-home-geometry] .ai-showcase-cta,html[lang="ar"].hb-phase8 body[data-home-geometry] .ai-showcase-actions a{direction:rtl}
 /* The English template has a different DOM order. Explicit grid areas keep the
@@ -405,3 +405,5 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 
 /* Measured reference photographic tone; keep native geometry and working controls. */
 @media(min-width:821px){html.hb-phase8 body[data-home-geometry] .premium-hero-main{background-image:linear-gradient(90deg,transparent 36%,#fffdf118 59%,#fffdf1c0 100%),url('/assets/hero-reference-restored.webp')!important}}
+
+@media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-intent-search{background:#f1f6f8!important}}
