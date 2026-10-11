@@ -1,0 +1,51 @@
+{
+  "capturedAt": "2026-10-11T06:18:41.055Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "dld-real-estate-ad-permit-dubai",
+      "locale": "en",
+      "focus": "documents",
+      "prompt": "Real Estate Ad Permit from Dubai Land Department. What documents are needed?",
+      "status": 200,
+      "answer": {
+        "text": "Recorded requirements for this service:\nCopy of the advertisement form — For advertisements, billboards and promotional campaigns.\nEvent-site evidence where applicable — Site tenancy contract or hotel NOC depending on the permit type.\nPlatform design or seminar documents where applicable — Platforms: a design showing dimensions and the site contract. Seminars: room booking and a topics letter.\nList of participating real estate companies — For real estate exhibition organization permits only.\nDocuments vary by advertisement type; the official DLD card lists the exact requirements for each type.",
+        "focus": "documents",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:dld-real-estate-ad-permit-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:dld-real-estate-ad-permit-dubai",
+          "source_title": "تصريح إعلان عقاري — دائرة الأراضي والأملاك في دبي / مؤسسة التنظيم العقاري",
+          "source_url": "https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/",
+          "last_verified_at": "2026-10-10T23:43:00+00:00",
+          "supporting_rule": null,
+          "document_requirements": [
+            "نسخة من نموذج الإعلان — للإعلانات واللوحات والحملات الترويجية.",
+            "مستند موقع الفعالية عند انطباقه — عقد إيجار موقع المعرض أو إطلاق المشروع، أو خطاب عدم ممانعة من الفندق، بحسب نوع التصريح.",
+            "تصميم المنصة أو مستندات الندوة عند انطباقها — للمنصة: تصميم يوضح المقاسات وعقد الموقع. للندوة: حجز القاعة وخطاب الموضوعات.",
+            "قائمة الشركات العقارية المشاركة في المعرض — لتصريح تنظيم المعارض العقارية فقط.",
+            "تختلف المستندات باختلاف نوع الإعلان؛ تعرض بطاقة DLD الرسمية القائمة الدقيقة لكل نوع."
+          ],
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "scope": "Only the previously failed English DLD ad document answer; conditional permit categories retained; no submissions or private account access.",
+  "externalModelGate": "NOT_PASSED"
+}
