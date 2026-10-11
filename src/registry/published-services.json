@@ -4468,7 +4468,7 @@
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "الخدمة الحكومية موضحة في بطاقة الهيئة؛ تحقق من البطاقة الرسمية قبل الإرسال."
+        "text": "خدمة التسجيل مجانية وفق بطاقة الهيئة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -4476,7 +4476,7 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "توضح الهيئة مدة التقديم والمراجعة في بطاقة الخدمة وتتأثر بالنواقص."
+        "text": "مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 25 دقيقة."
       },
       "conditions": "ينشئ التسجيل رقم ضريبة الشركات للشخص الخاضع، ويجب أن تتطابق بياناته مع الرخص والوثائق القانونية.",
       "steps": [
@@ -4509,11 +4509,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "الخدمة الحكومية موضحة في بطاقة الهيئة؛ تحقق من البطاقة الرسمية قبل الإرسال."
+          "answer": "خدمة التسجيل مجانية وفق بطاقة الهيئة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "توضح الهيئة مدة التقديم والمراجعة في بطاقة الخدمة وتتأثر بالنواقص."
+          "answer": "مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 25 دقيقة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -4541,13 +4541,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-11",
         "sourceAuthority": "fta",
         "sourceUrl": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-11",
+      "lastReviewedAt": "2026-10-11",
       "internalRoute": "/services/corporate-tax-registration-uae/",
       "sourceRegistry": "service-matrix"
     },
@@ -18535,7 +18535,7 @@
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "تعرض بطاقة الهيئة تكلفة الخدمة الحكومية الحالية قبل بدء الطلب."
+        "text": "خدمة التسجيل مجانية وفق بطاقة الهيئة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -18543,7 +18543,7 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "توضحها بطاقة الخدمة الرسمية وتتأثر بجودة أدلة الإيرادات والمصروفات."
+        "text": "مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 45 دقيقة."
       },
       "conditions": "التسجيل إلزامي أو اختياري بحسب القواعد والحدود، ويجب دعم الأرقام بمستندات واضحة للفترة المطلوبة.",
       "steps": [
@@ -18576,11 +18576,11 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "تعرض بطاقة الهيئة تكلفة الخدمة الحكومية الحالية قبل بدء الطلب."
+          "answer": "خدمة التسجيل مجانية وفق بطاقة الهيئة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "توضحها بطاقة الخدمة الرسمية وتتأثر بجودة أدلة الإيرادات والمصروفات."
+          "answer": "مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 45 دقيقة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -18608,13 +18608,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-11",
         "sourceAuthority": "fta",
         "sourceUrl": "https://tax.gov.ae/ar/services/vat.registration.aspx"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-11",
+      "lastReviewedAt": "2026-10-11",
       "internalRoute": "/services/vat-registration-uae/",
       "sourceRegistry": "service-matrix"
     },
