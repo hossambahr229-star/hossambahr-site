@@ -76,7 +76,12 @@ type SemanticState = {
 
 async function resolveSemanticState(latestTurn:string, history:any[], context:any, fallbackGoal:string):Promise<SemanticState>{
   const latestNorm=normalize(latestTurn);
-  const explicitNonFamilyTopic=has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"]) && !detectRelationship(latestTurn);
+  const explicitReviewedServiceTopic=[
+    "new-healthcare-facility-license-dubai","activate-healthcare-facility-license-dubai","health-professional-registration-dubai",
+    "attestation-of-commercial-invoices-via-edas-2-0","equivalency-of-general-education-certificate-from-abroad-grade-12",
+    "equivalency-of-general-education-certificate-in-the-uae-grade-12","confirming-the-authenticity-of-equivalency"
+  ].some(slug=>specialBoost(latestNorm,slug,null)>=90000);
+  const explicitNonFamilyTopic=(explicitReviewedServiceTopic || has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"])) && !detectRelationship(latestTurn);
   const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),family_members:Array.isArray(context?.family_members)?context.family_members:[],subject_role:context?.subject_role??null,entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null,action:context?.action??null};
   const merged=mergeSemanticContext(latestTurn,priorSemantic,fallbackGoal,{newTopic:explicitNonFamilyTopic});
   const fallback:SemanticState={active_service_id:context?.active_service_id??context?.service_slug??null,last_answer_topic:context?.last_answer_topic??null,pending_clarification:context?.pending_clarification??null,known_facts:(context?.known_facts&&typeof context.known_facts==="object")?context.known_facts:{},turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,family_members:merged.family_members,subject_role:merged.subject_role,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,action:merged.action,business_activity:null,confidence:"low"};
@@ -888,7 +893,7 @@ export default {
     const history = Array.isArray(body?.history) ? body.history.slice(-8) : [];
     const context = body?.context && typeof body.context === "object" ? body.context : {};
     const semantic = await resolveSemanticState(latestTurn, history, context, goal);
-    const contextualFollowUp = isContextualFollowUp(latestTurn) && Boolean(context?.active_service_id || context?.service_slug);
+    const contextualFollowUp = !["new_topic","service_switch"].includes(semantic.turn_type) && isContextualFollowUp(latestTurn) && Boolean(context?.active_service_id || context?.service_slug);
     const relationship = semantic.relationship;
     const semanticGoal = scrubGoal(semantic.resolved_query || goal);
     const wantsStream = body?.stream === true;
