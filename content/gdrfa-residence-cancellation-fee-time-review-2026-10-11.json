@@ -11,9 +11,46 @@
       "durationEn": "48 hours according to the GDRFA card; the card does not specify working hours."
     }
   ],
-  "application": "PENDING_MERGE",
-  "liveAcceptance": "PENDING_DEPLOYMENT",
+  "application": {
+    "status": "APPLIED",
+    "policyVersion": 2,
+    "rules": 8,
+    "sourceVerifiedAt": "2026-10-11T11:32:31Z",
+    "deployedAiVersion": 130,
+    "sourceFilesMatched": 9
+  },
+  "liveAcceptance": {
+    "status": "SCOPED_PASS",
+    "ai": {
+      "passed": 4,
+      "total": 4,
+      "capturedAt": "2026-10-11T11:42:51.475Z"
+    },
+    "pages": {
+      "passed": 4,
+      "total": 4,
+      "capturedAt": "2026-10-11T11:46:41.246Z",
+      "viewports": [
+        1440,
+        390
+      ],
+      "languages": [
+        "ar",
+        "en"
+      ],
+      "officialAndDirectWhatsApp": true
+    },
+    "run": 38136529648,
+    "branch": "agent/live-dubai-cancellation-reviewed-facts",
+    "reportDirectory": "artifacts/live-dubai-cancellation-reviewed-facts"
+  },
   "workflowChanged": false,
   "externalSubmissionPerformed": false,
-  "overallFinalGate": "NOT_DECLARED"
+  "overallFinalGate": "NOT_DECLARED",
+  "externalModelGate": {
+    "status": "BLOCKED",
+    "external_model_used": false,
+    "category": "QUOTA_BILLING",
+    "statusCode": 429
+  }
 }
