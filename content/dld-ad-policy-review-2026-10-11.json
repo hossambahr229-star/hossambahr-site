@@ -6,6 +6,33 @@
   "policyRules": 8,
   "workflowChanged": false,
   "externalSubmissionPerformed": false,
-  "application": "PENDING_MERGE",
-  "liveAcceptance": "PENDING_DEPLOYMENT"
+  "application": {
+    "status": "APPLIED_READ_BACK",
+    "policyVersion": 2,
+    "policyRules": 8,
+    "workflowVersion": 1,
+    "monitorEnabled": true
+  },
+  "liveAcceptance": {
+    "status": "PASS_SCOPED",
+    "passedCases": 8,
+    "totalCases": 8,
+    "initialAcceptedCases": {
+      "count": 7,
+      "publicAiVersion": 126,
+      "capturedAt": "2026-10-11T06:13:39.000Z",
+      "evidence": "https://github.com/hossambahr229-star/hossambahr-site/blob/agent/live-dld-ad-failed-followup/artifacts/live-dld-ad-failed-followup/report.json"
+    },
+    "failedCaseFollowup": {
+      "count": 1,
+      "publicAiVersion": 127,
+      "capturedAt": "2026-10-11T06:18:41.055Z",
+      "evidence": "https://github.com/hossambahr229-star/hossambahr-site/blob/agent/live-dld-ad-english-documents/artifacts/live-dld-ad-english-documents/report.json"
+    },
+    "deploymentSource": "All nine files matched their merged source at each deployment",
+    "scope": "Documents, conditions, fees, duration in Arabic and English only",
+    "externalModelGate": "NOT_PASSED",
+    "providerBlocker": "QUOTA_BILLING / 429 / credit_balance_exhausted",
+    "overallAcceptance": "NOT_DECLARED"
+  }
 }
