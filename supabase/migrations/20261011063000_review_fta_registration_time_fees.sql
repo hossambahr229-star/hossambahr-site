@@ -1,7 +1,7 @@
 begin;
 do $review$
 declare item jsonb;p public.hb_policy_versions%rowtype;s public.hb_policy_sources%rowtype;new_rules jsonb;
- reviewed timestamptz := '2026-10-11T06:30:00Z';
+ reviewed timestamptz := '2026-10-11T06:28:04Z';
 begin
  for item in select value from jsonb_array_elements($plans$[{"slug":"corporate-tax-registration-uae","source":"https://tax.gov.ae/ar/services/corporate.tax.registration.aspx","fees":"خدمة التسجيل مجانية وفق بطاقة الهيئة.","duration":"مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 25 دقيقة."},{"slug":"vat-registration-uae","source":"https://tax.gov.ae/ar/services/vat.registration.aspx","fees":"خدمة التسجيل مجانية وفق بطاقة الهيئة.","duration":"مراجعة الهيئة: 20 يوم عمل من استلام الطلب المكتمل. الزمن المتوقع لتقديم الطلب: 45 دقيقة."}]$plans$::jsonb) loop
   begin
