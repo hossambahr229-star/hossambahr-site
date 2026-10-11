@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {stripTypeScriptTypes} from 'node:module';
-import {detectJurisdiction,relationshipCompatibility,semanticDomainCompatibility} from '../../supabase/functions/public-ai-concierge/semantic-context.ts';
+import {detectJurisdiction,detectRelationship,relationshipGroup,mergeSemanticContext,relationshipCompatibility,semanticDomainCompatibility} from '../../supabase/functions/public-ai-concierge/semantic-context.ts';
 import {familyCandidate} from '../../supabase/functions/public-ai-concierge/family-candidates.ts';
 test('Reviewed education and eDAS identities preserve certificate origin and transaction',()=>{
  const source=fs.readFileSync(new URL('../../supabase/functions/public-ai-concierge/index.ts',import.meta.url),'utf8');
@@ -20,4 +20,32 @@ test('Reviewed education and eDAS identities preserve certificate origin and tra
  for(const slug of slugs)assert.equal(specialBoost(normalize(goal),slug,'AE'),0,goal+' must not force '+slug);
  assert.equal(specialBoost(normalize(positives[2][0]),'equivalency-of-general-education-certificate-in-the-uae-grade-12','AE'),0);
  assert.equal(specialBoost(normalize(positives[4][0]),'equivalency-of-general-education-certificate-from-abroad-grade-12','AE'),0);
+});
+
+test('Named reviewed services reset stale family context while short follow-ups preserve it',async()=>{
+ const source=fs.readFileSync(new URL('../../supabase/functions/public-ai-concierge/index.ts',import.meta.url),'utf8');
+ const utilities=source.slice(source.indexOf('function normalize('),source.indexOf('type SemanticState'));
+ const ranking=source.slice(source.indexOf('function specialBoost('),source.indexOf('async function selectSemanticCandidate'));
+ const start=source.indexOf('async function resolveSemanticState(');
+ const resolve=source.slice(start,source.indexOf('\nfunction isContextualFollowUp',start));
+ const compile=stripTypeScriptTypes(utilities+ranking+resolve,{mode:'strip'});
+ const run=Function('detectJurisdiction','detectRelationship','relationshipGroup','mergeSemanticContext','relationshipCompatibility','semanticDomainCompatibility','familyCandidate','providerConfig',compile+'return resolveSemanticState;')(detectJurisdiction,detectRelationship,relationshipGroup,mergeSemanticContext,relationshipCompatibility,semanticDomainCompatibility,familyCandidate,()=>null);
+ const context={active_service_id:'family-residency-uae',service_slug:'family-residency-uae',relationship:'wife',jurisdiction_code:'AE-DU',action:'sponsor',authority_key:'gdrfa'};
+ for(const name of ['تسجيل مهني صحي في دبي','Health professional registration with DHA Dubai',"تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0","Attestation of commercial invoices via eDAS 2.0 with MOFA","معادلة شهادة الثانوية من خارج الإمارات","Equivalency of a general education certificate from abroad Grade 12 with the UAE Ministry of Education","معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات","Equivalency of a general education certificate in the UAE Grade 12 with the UAE Ministry of Education","التحقق من صحة المعادلة أو التصديق","Confirming the authenticity of an equivalency certificate with the UAE Ministry of Education"]){
+  const latest=name+'. What are the government fees?';
+  const state=await run(latest,[],context,'إقامة زوجتي في دبي');
+  assert.equal(state.turn_type,'new_topic',latest);
+  assert.equal(state.relationship,null,latest);
+  assert.equal(state.service_slug,null,latest);
+  assert.equal(state.resolved_query,latest);
+ }
+ for(const latest of ['ما الرسوم؟','What are the fees?']){
+  const state=await run(latest,[],context,'إقامة زوجتي في دبي. '+latest);
+  assert.equal(state.turn_type,'follow_up');
+  assert.equal(state.relationship,'wife');
+  assert.equal(state.service_slug,'family-residency-uae');
+ }
+ const switched=await run('الشارقة',[],context,'إقامة زوجتي في الشارقة');
+ assert.equal(switched.turn_type,'jurisdiction_switch');
+ assert.equal(switched.relationship,'wife');
 });
