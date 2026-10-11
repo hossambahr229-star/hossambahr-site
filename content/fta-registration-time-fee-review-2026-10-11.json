@@ -17,7 +17,50 @@
   ],
   "canonicalSource": "content/government-service-tree.json",
   "workflowChanged": false,
-  "application": "PENDING_MERGE",
-  "liveAcceptance": "PENDING_DEPLOYMENT",
-  "externalSubmissionPerformed": false
+  "application": {
+    "status": "APPLIED",
+    "policyVersion": 2,
+    "reviewedRulesPerService": 8,
+    "sourceMonitoring": true,
+    "workflowChanged": false
+  },
+  "liveAcceptance": {
+    "status": "SCOPED_PASS",
+    "pages": {
+      "passed": 8,
+      "total": 8,
+      "capturedAt": "2026-10-11T06:54:54.399Z",
+      "run": 38119578446,
+      "branch": "agent/live-fta-reviewed-pages-only",
+      "report": "artifacts/live-fta-registration-reviewed-facts/page-report.json"
+    },
+    "ai": {
+      "passed": 8,
+      "total": 8,
+      "capturedAt": "2026-10-11T06:59:35.278Z",
+      "run": 38119827265,
+      "branch": "agent/live-fta-ai-failed-followup",
+      "report": "artifacts/live-fta-ai-failed-followup/report.json",
+      "deployedVersion": 129,
+      "sourceFilesMatched": 9
+    },
+    "initialFailedAiReport": {
+      "capturedAt": "2026-10-11T06:33:19.879Z",
+      "passed": 0,
+      "total": 8,
+      "fix": 423
+    },
+    "publicationFixes": [
+      421,
+      422
+    ]
+  },
+  "externalSubmissionPerformed": false,
+  "externalModelGate": {
+    "status": "BLOCKED",
+    "external_model_used": false,
+    "category": "QUOTA_BILLING",
+    "statusCode": 429
+  },
+  "overallFinalGate": "NOT_DECLARED"
 }
