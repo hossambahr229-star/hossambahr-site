@@ -1,0 +1,79 @@
+{
+  "capturedAt": "2026-10-11T06:34:39.144Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+    "boxShadow": "none",
+    "before": {
+      "content": "none",
+      "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+      "position": "static"
+    },
+    "bounds": {
+      "x": 30.953125,
+      "y": 367,
+      "width": 155.125,
+      "height": 116,
+      "top": 367,
+      "right": 186.078125,
+      "bottom": 483,
+      "left": 30.953125
+    },
+    "title": "700 12px / 15.6px Cairo, Arial, Tahoma, sans-serif",
+    "heroShadows": [
+      {
+        "class": "premium-home-hero platform-hero visual-target-hero",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-hero-main",
+        "shadow": "none",
+        "filter": "none"
+      },
+      {
+        "class": "premium-ai-showcase",
+        "shadow": "none",
+        "filter": "none"
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 29.351793572421254,
+      "changed": 21.755183714432626
+    },
+    {
+      "name": "middle-60",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-main{background-image:linear-gradient(90deg,transparent 36%,#fffdf160 59%,#fffdf1d9 100%),url(\"/assets/hero-reference-restored.webp\")!important}",
+      "mad": 30.14859981373527,
+      "changed": 23.32748932901331
+    },
+    {
+      "name": "middle-80",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-main{background-image:linear-gradient(90deg,transparent 36%,#fffdf180 59%,#fffdf1d9 100%),url(\"/assets/hero-reference-restored.webp\")!important}",
+      "mad": 31.04704836481455,
+      "changed": 24.175282959255107
+    },
+    {
+      "name": "middle-aa",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-main{background-image:linear-gradient(90deg,transparent 36%,#fffdf1aa 59%,#fffdf1d9 100%),url(\"/assets/hero-reference-restored.webp\")!important}",
+      "mad": 32.458483821607125,
+      "changed": 25.864984915034782
+    },
+    {
+      "name": "end-ed",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-main{background-image:linear-gradient(90deg,transparent 36%,#fffdf138 59%,#fffdf1ed 100%),url(\"/assets/hero-reference-restored.webp\")!important}",
+      "mad": 29.450875258385526,
+      "changed": 21.962718143465143
+    },
+    {
+      "name": "middle-80-end-ed",
+      "css": "html.hb-phase8 body[data-home-geometry] .premium-hero-main{background-image:linear-gradient(90deg,transparent 36%,#fffdf180 59%,#fffdf1ed 100%),url(\"/assets/hero-reference-restored.webp\")!important}",
+      "mad": 31.18959973732956,
+      "changed": 24.39149046890391
+    }
+  ]
+}
