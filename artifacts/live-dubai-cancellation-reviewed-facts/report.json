@@ -1,0 +1,173 @@
+{
+  "capturedAt": "2026-10-11T11:42:51.475Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "cancel-residency-permit-uae",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "إلغاء تصريح الإقامة الصادر من دبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "رسم إلغاء تصريح الإقامة 100 درهم، و10 دراهم للمعرفة و10 دراهم للابتكار، وفق بطاقة GDRFA.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:cancel-residency-permit-uae",
+          "policy_version": 2,
+          "workflow_key": "service:cancel-residency-permit-uae",
+          "source_title": "إلغاء تصريح الإقامة الصادر من دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-11T11:32:31+00:00",
+          "supporting_rule": {
+            "value": "رسم إلغاء تصريح الإقامة 100 درهم، و10 دراهم للمعرفة و10 دراهم للابتكار، وفق بطاقة GDRFA.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بدء إلغاء إقامة موظف قبل تسوية ملف MOHRE أو استخدام مسار دبي لإقامة صادرة من ICP يعرقل التسلسل الصحيح.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "cancel-residency-permit-uae",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "إلغاء تصريح الإقامة الصادر من دبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة GDRFA؛ لم تُحدد أنها ساعات عمل.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:cancel-residency-permit-uae",
+          "policy_version": 2,
+          "workflow_key": "service:cancel-residency-permit-uae",
+          "source_title": "إلغاء تصريح الإقامة الصادر من دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-11T11:32:31+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة GDRFA؛ لم تُحدد أنها ساعات عمل.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بدء إلغاء إقامة موظف قبل تسوية ملف MOHRE أو استخدام مسار دبي لإقامة صادرة من ICP يعرقل التسلسل الصحيح.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "cancel-residency-permit-uae",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Cancel a Dubai residence permit with GDRFA. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "The GDRFA card lists AED 100 for residence permit cancellation, AED 10 knowledge fee and AED 10 innovation fee.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:cancel-residency-permit-uae",
+          "policy_version": 2,
+          "workflow_key": "service:cancel-residency-permit-uae",
+          "source_title": "إلغاء تصريح الإقامة الصادر من دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-11T11:32:31+00:00",
+          "supporting_rule": {
+            "value": "رسم إلغاء تصريح الإقامة 100 درهم، و10 دراهم للمعرفة و10 دراهم للابتكار، وفق بطاقة GDRFA.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بدء إلغاء إقامة موظف قبل تسوية ملف MOHRE أو استخدام مسار دبي لإقامة صادرة من ICP يعرقل التسلسل الصحيح.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "cancel-residency-permit-uae",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Cancel a Dubai residence permit with GDRFA. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the GDRFA card; the card does not specify working hours.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:cancel-residency-permit-uae",
+          "policy_version": 2,
+          "workflow_key": "service:cancel-residency-permit-uae",
+          "source_title": "إلغاء تصريح الإقامة الصادر من دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-11T11:32:31+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة GDRFA؛ لم تُحدد أنها ساعات عمل.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بدء إلغاء إقامة موظف قبل تسوية ملف MOHRE أو استخدام مسار دبي لإقامة صادرة من ICP يعرقل التسلسل الصحيح.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "scope": "Only newly reviewed Dubai residence cancellation fees and expected hours; no documents, eligibility, grace periods, submissions or private account access.",
+  "externalModelGate": "NOT_PASSED"
+}
