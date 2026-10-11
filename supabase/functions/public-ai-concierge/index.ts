@@ -322,6 +322,9 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (businessRegistration && slug === "dubai-customs-business-registration") score += 9000;
     if (has(goal, ["بيان جمرك","customs declaration"]) && slug === "submit-customs-declaration-dubai") score += 9000;
   }
+  const realEstateAdPermit = has(goal, ["عقاري","عقار","real estate","property"]) && has(goal, ["اعلان","advertis","ad permit"]) && has(goal, ["تصريح","permit"]);
+  const changesAdPermit = has(goal, ["الغاء","الغي","تعديل","تجديد","cancel","amend","modify","renew"]);
+  if (emirate === "AE-DU" && realEstateAdPermit && !changesAdPermit && slug === "dld-real-estate-ad-permit-dubai") score += 9000;
   const fiveYearTourist = has(goal,["سياحيه","سياحية","سياحه","سياحة","tourist","tourism"]) && (has(goal,["5 سنين","5 سنوات","خمس سنين","خمس سنوات","five years","5 years"]) || (has(goal,["متعدده","متعددة","multiple","multi"]) && has(goal,["دخول","entry"])));
   if (fiveYearTourist) {
     if (slug === "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp") score += 18000;
