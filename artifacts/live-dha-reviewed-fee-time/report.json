@@ -1,0 +1,429 @@
+{
+  "capturedAt": "2026-10-11T16:44:19.491Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "checks": [
+    {
+      "slug": "new-healthcare-facility-license-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "إصدار ترخيص منشأة صحية جديدة في دبي لدى هيئة الصحة بدبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "تحددها البوابة حسب نوع الرخصة والنشاط؛ توثق البطاقة الرسمية 1,070 درهمًا إضافة إلى 300 درهم لعضوية غرفة دبي لرخصة تاجر إلكتروني.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issue-trade-license-dubai",
+          "policy_version": 1,
+          "workflow_key": "service:issue-trade-license-dubai",
+          "source_title": "DET verified service source",
+          "source_url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
+          "last_verified_at": "2026-09-03T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "تحددها البوابة حسب نوع الرخصة والنشاط؛ توثق البطاقة الرسمية 1,070 درهمًا إضافة إلى 300 درهم لعضوية غرفة دبي لرخصة تاجر إلكتروني.",
+            "source_refs": [
+              "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "الرخصة الفورية متاحة لمجموعة أنشطة لا تحتاج موافقات خارجية، وتشمل مزايا إضافية للأشكال القانونية المؤهلة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "new-healthcare-facility-license-dubai",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "إصدار ترخيص منشأة صحية جديدة في دبي لدى هيئة الصحة بدبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "10 دقائق للرخصة العادية، و5 دقائق للرخصة الفورية أو رخصة تاجر إلكتروني وفق البطاقة الرسمية.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issue-trade-license-dubai",
+          "policy_version": 1,
+          "workflow_key": "service:issue-trade-license-dubai",
+          "source_title": "DET verified service source",
+          "source_url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
+          "last_verified_at": "2026-09-03T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "10 دقائق للرخصة العادية، و5 دقائق للرخصة الفورية أو رخصة تاجر إلكتروني وفق البطاقة الرسمية.",
+            "source_refs": [
+              "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "الرخصة الفورية متاحة لمجموعة أنشطة لا تحتاج موافقات خارجية، وتشمل مزايا إضافية للأشكال القانونية المؤهلة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "new-healthcare-facility-license-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "New healthcare facility license in Dubai with DHA. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "The portal determines fees according to licence type and activity. The official service card records AED 1,070 plus AED 300 for Dubai Chamber membership for an eTrader licence.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issue-trade-license-dubai",
+          "policy_version": 1,
+          "workflow_key": "service:issue-trade-license-dubai",
+          "source_title": "DET verified service source",
+          "source_url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
+          "last_verified_at": "2026-09-03T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "تحددها البوابة حسب نوع الرخصة والنشاط؛ توثق البطاقة الرسمية 1,070 درهمًا إضافة إلى 300 درهم لعضوية غرفة دبي لرخصة تاجر إلكتروني.",
+            "source_refs": [
+              "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "الرخصة الفورية متاحة لمجموعة أنشطة لا تحتاج موافقات خارجية، وتشمل مزايا إضافية للأشكال القانونية المؤهلة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "new-healthcare-facility-license-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "New healthcare facility license in Dubai with DHA. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "According to the official service card: 10 minutes for a regular licence, and 5 minutes for an instant licence or eTrader licence.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issue-trade-license-dubai",
+          "policy_version": 1,
+          "workflow_key": "service:issue-trade-license-dubai",
+          "source_title": "DET verified service source",
+          "source_url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
+          "last_verified_at": "2026-09-03T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "10 دقائق للرخصة العادية، و5 دقائق للرخصة الفورية أو رخصة تاجر إلكتروني وفق البطاقة الرسمية.",
+            "source_refs": [
+              "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "الرخصة الفورية متاحة لمجموعة أنشطة لا تحتاج موافقات خارجية، وتشمل مزايا إضافية للأشكال القانونية المؤهلة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "activate-healthcare-facility-license-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تفعيل ترخيص منشأة صحية في دبي لدى هيئة الصحة بدبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "activate-healthcare-facility-license-dubai",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تفعيل ترخيص منشأة صحية في دبي لدى هيئة الصحة بدبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "activate-healthcare-facility-license-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Activate healthcare facility license in Dubai with DHA. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "activate-healthcare-facility-license-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Activate healthcare facility license in Dubai with DHA. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "health-professional-registration-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تسجيل مهني صحي في دبي لدى هيئة الصحة بدبي. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "health-professional-registration-dubai",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تسجيل مهني صحي في دبي لدى هيئة الصحة بدبي. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "health-professional-registration-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Health professional registration in Dubai with DHA. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    },
+    {
+      "slug": "health-professional-registration-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Health professional registration in Dubai with DHA. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong service identity or API failure",
+        "Wrong grounded fact focus",
+        "Reviewed policy/source absent",
+        "Reviewed recorded fact absent"
+      ]
+    }
+  ],
+  "scope": "Only newly grounded fees and processing times for three DHA services in Arabic and English; preserves requirements and workflows, no submissions.",
+  "externalModelGate": "NOT_PASSED"
+}
