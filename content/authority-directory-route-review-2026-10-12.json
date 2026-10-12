@@ -22,8 +22,15 @@
     "en": "Government authority directory"
   },
   "liveAcceptance": {
-    "status": "PENDING_DEPLOYMENT",
-    "newRouteCases": 4
+    "status": "PASS",
+    "run": 38278364426,
+    "capturedAt": "2026-10-12T16:40:20.615Z",
+    "branch": "agent/live-authority-directory-routes",
+    "report": "artifacts/live-authority-directory-routes/report.json",
+    "cases": 4,
+    "correctAuthorityAndLanguage": true,
+    "httpStatus": 200,
+    "publicationRun": 38278362135
   },
   "overallFinalGate": "NOT_DECLARED",
   "externalSubmissionPerformed": false

@@ -1,6 +1,6 @@
 {
   "recordedAt": "2026-10-12",
-  "lastAcceptedDeployedCommit": "d9d6e9fb0b6f75b4648b8d2c6f175f6ab0a0a48d",
+  "lastAcceptedDeployedCommit": "c784c8559d0153b0e525aec7a1841d8dddb81cfb",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -40,11 +40,12 @@
     444,
     445,
     446,
-    447
+    447,
+    448
   ],
   "production": {
     "publicationGate": {
-      "run": 38277506331,
+      "run": 38279235323,
       "status": "PASS"
     },
     "geometry": {
@@ -59,8 +60,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 24.824007282021604,
-      "changedPixelPercent": 18.59982638888889,
+      "meanAbsolutePixelDifference": 24.58748408564815,
+      "changedPixelPercent": 18.45160590277778,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -230,6 +231,76 @@
         "changedPercent": 18.59982638888889
       },
       "pixelFidelity": "NOT_DECLARED"
+    },
+    "authorityDirectoryRoutes": {
+      "status": "PASS",
+      "run": 38278364426,
+      "capturedAt": "2026-10-12T16:40:20.615Z",
+      "branch": "agent/live-authority-directory-routes",
+      "report": "artifacts/live-authority-directory-routes/report.json",
+      "cases": 4,
+      "correctAuthorityAndLanguage": true,
+      "httpStatus": 200,
+      "publicationRun": 38278362135
+    },
+    "howStepGrid": {
+      "status": "PASS",
+      "run": 38279238051,
+      "capturedAt": "2026-10-12T16:47:25.919Z",
+      "branch": "agent/live-how-step-grid-acceptance",
+      "report": "artifacts/live-regional-visual/report.json",
+      "nativeGrid": {
+        "width": 1054.09375,
+        "gap": "42px",
+        "steps": [
+          {
+            "width": 227.5,
+            "height": 44,
+            "top": 746
+          },
+          {
+            "width": 215.484375,
+            "height": 44,
+            "top": 746
+          },
+          {
+            "width": 225.515625,
+            "height": 44,
+            "top": 746
+          },
+          {
+            "width": 259.578125,
+            "height": 44,
+            "top": 746
+          }
+        ]
+      },
+      "region": {
+        "name": "how-it-works",
+        "bounds": {
+          "left": 31,
+          "top": 722,
+          "width": 1054,
+          "height": 89
+        },
+        "meanAbsoluteDifference": 11.357301238726734,
+        "changedPixelPercent": 7.881158987698016
+      },
+      "pageErrors": 0,
+      "publicationRun": 38279235323,
+      "geometryWidths": [
+        1440,
+        1366,
+        430,
+        390,
+        360
+      ],
+      "fullFrame": {
+        "deployedCommit": "c784c8559d0153b0e525aec7a1841d8dddb81cfb",
+        "mad": 24.58748408564815,
+        "changedPercent": 18.45160590277778,
+        "pixelFidelity": "NOT_DECLARED"
+      }
     }
   },
   "deployedAi": {
@@ -276,7 +347,26 @@
         "timeoutMs": 45000
       },
       "feesChanged": false,
-      "productFailure": false
+      "productFailure": false,
+      "newOfficialHostAlternatives": {
+        "run": 38279429294,
+        "branch": "agent/read-rak-official-alternative-source",
+        "capturedAt": "2026-10-12T16:45:15.645Z",
+        "urls": [
+          {
+            "url": "https://ded.rak.ae/en/pages/ded-websait.aspx",
+            "readable": false,
+            "timeoutMs": 30000
+          },
+          {
+            "url": "https://ded.rak.ae/ar/licenses/Pages/default.aspx",
+            "readable": false,
+            "timeoutMs": 30000
+          }
+        ],
+        "feesChanged": false,
+        "productFailure": false
+      }
     }
   },
   "excludedNewVisualCandidates": {
@@ -315,21 +405,26 @@
       "result": "Bundled alternative font appeared heavier than reference despite small numeric improvement; excluded after visual inspection."
     },
     "featuredButtonDetails": {
-      "run": 38277688145,
-      "result": "Negligible change or worse comparison; no change published."
+      "initialRun": 38277688145,
+      "correctedRun": 38279479266,
+      "result": "Corrected arrow-removal diagnostic confirms only negligible benefit; no featured CTA changes published."
+    },
+    "hbMasterHalo": {
+      "run": 38278981269,
+      "result": "All halo variants worsened comparison. Regular kicker weight had negligible benefit. No brand artwork or styling changes published."
     }
   },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED",
-  "pendingProductionAcceptance": {
-    "authorityDirectoryRoutes": {
-      "pr": 447,
-      "status": "PENDING_ACTUAL_PRODUCTION_CLICKS",
-      "cases": 4
-    },
-    "howStepGrid": {
-      "status": "CANDIDATE_ONLY",
-      "measurementRun": 38278316337
+  "uncompletedSourceReview": {
+    "mofaAttestationFees": {
+      "status": "CURRENT_GUIDE_READ_POLICY_NOT_CHANGED",
+      "initialReadRun": 38280056238,
+      "commercialOriginsRun": 38280263042,
+      "personalOriginsBranch": "agent/read-mofa-personal-fee-origins",
+      "source": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+      "note": "Commercial table contains an AED 150 exception within UAE-issued entries; do not publish a blanket AED 2000 rule. Personal table pagination is still being reviewed. Existing accepted duration cases are not repeated.",
+      "feesChanged": false
     }
   }
 }
