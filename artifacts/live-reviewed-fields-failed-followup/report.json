@@ -1,0 +1,423 @@
+{
+  "capturedAt": "2026-10-12T07:09:17.217Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "scope": "Only nine previously failed cases: four MOFA current-duration, two early stale GDRFA, three RTA English. Fifty residence/attestation and three RTA Arabic passes are reused.",
+  "checks": [
+    {
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "source": "https://www.mofa.gov.ae/services/attestation",
+      "authority": "mofa",
+      "policyVersion": 3,
+      "expected": "داخل الإمارات: التصديق الرقمي للمستندات الصادرة من الإمارات خلال ساعتين ضمن الدوام الرسمي، والتوصيل من 1 إلى 3 أيام عمل بحسب شركة التوصيل. خارج الإمارات: قد يستغرق التوصيل نحو 7 أيام عمل بحسب شركة التوصيل.",
+      "name": "تصديق مستند شخصي داخل الإمارات",
+      "status": 200,
+      "answer": {
+        "text": "داخل الإمارات: التصديق الرقمي للمستندات الصادرة من الإمارات خلال ساعتين ضمن الدوام الرسمي، والتوصيل من 1 إلى 3 أيام عمل بحسب شركة التوصيل. خارج الإمارات: قد يستغرق التوصيل نحو 7 أيام عمل بحسب شركة التوصيل.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تصديق-مستند-شخصي-داخل-الإمارات",
+          "policy_version": 3,
+          "workflow_key": "service:تصديق-مستند-شخصي-داخل-الإمارات",
+          "source_title": "تصديق مستند شخصي داخل الإمارات — وزارة الخارجية",
+          "source_url": "https://www.mofa.gov.ae/services/attestation",
+          "last_verified_at": "2026-10-12T06:47:12.633+00:00",
+          "supporting_rule": {
+            "value": "داخل الإمارات: التصديق الرقمي للمستندات الصادرة من الإمارات خلال ساعتين ضمن الدوام الرسمي، والتوصيل من 1 إلى 3 أيام عمل بحسب شركة التوصيل. خارج الإمارات: قد يستغرق التوصيل نحو 7 أيام عمل بحسب شركة التوصيل.",
+            "source_refs": [
+              "https://www.mofa.gov.ae/services/attestation"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة الخدمة تحدد المسار الرقمي أو التوصيل حسب نوع المستند وجهة الإصدار.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "source": "https://www.mofa.gov.ae/services/attestation",
+      "authority": "mofa",
+      "policyVersion": 3,
+      "expected": "Inside the UAE: digital attestation of documents issued in the UAE within two hours during official working hours; courier service takes 1–3 working days depending on the provider. Outside the UAE, courier processing may take around 7 working days depending on the provider.",
+      "name": "Attest a Personal Document in the UAE",
+      "status": 200,
+      "answer": {
+        "text": "Inside the UAE: digital attestation of documents issued in the UAE within two hours during official working hours; courier service takes 1–3 working days depending on the provider. Outside the UAE, courier processing may take around 7 working days depending on the provider.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تصديق-مستند-شخصي-داخل-الإمارات",
+          "policy_version": 3,
+          "workflow_key": "service:تصديق-مستند-شخصي-داخل-الإمارات",
+          "source_title": "تصديق مستند شخصي داخل الإمارات — وزارة الخارجية",
+          "source_url": "https://www.mofa.gov.ae/services/attestation",
+          "last_verified_at": "2026-10-12T06:47:12.633+00:00",
+          "supporting_rule": {
+            "value": "داخل الإمارات: التصديق الرقمي للمستندات الصادرة من الإمارات خلال ساعتين ضمن الدوام الرسمي، والتوصيل من 1 إلى 3 أيام عمل بحسب شركة التوصيل. خارج الإمارات: قد يستغرق التوصيل نحو 7 أيام عمل بحسب شركة التوصيل.",
+            "source_refs": [
+              "https://www.mofa.gov.ae/services/attestation"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة الخدمة تحدد المسار الرقمي أو التوصيل حسب نوع المستند وجهة الإصدار.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "source": "https://www.mofa.gov.ae/services/attestation",
+      "authority": "mofa",
+      "policyVersion": 3,
+      "expected": "داخل الإمارات: التصديق الرقمي للمستندات الصادرة من الإمارات خلال ساعتين ضمن الدوام الرسمي، والتوصيل من 1 إلى 3 أيام عمل بحسب شركة التوصيل. خارج الإمارات: قد يستغرق التوصيل نحو 7 أيام عمل بحسب شركة التوصيل.",
+      "name": "تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+      "status": 200,
+      "answer": {
+        "text": "داخل الإمارات: التصديق الرقمي للمستندات الصادرة من الإمارات خلال ساعتين ضمن الدوام الرسمي، والتوصيل من 1 إلى 3 أيام عمل بحسب شركة التوصيل. خارج الإمارات: قد يستغرق التوصيل نحو 7 أيام عمل بحسب شركة التوصيل.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+          "policy_version": 3,
+          "workflow_key": "service:تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+          "source_title": "تصديق مستند شخصي داخل الإمارات — وزارة الخارجية",
+          "source_url": "https://www.mofa.gov.ae/services/attestation",
+          "last_verified_at": "2026-10-12T06:47:12.633+00:00",
+          "supporting_rule": {
+            "value": "داخل الإمارات: التصديق الرقمي للمستندات الصادرة من الإمارات خلال ساعتين ضمن الدوام الرسمي، والتوصيل من 1 إلى 3 أيام عمل بحسب شركة التوصيل. خارج الإمارات: قد يستغرق التوصيل نحو 7 أيام عمل بحسب شركة التوصيل.",
+            "source_refs": [
+              "https://www.mofa.gov.ae/services/attestation"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "استثنيت الفواتير التجارية وشهادات المنشأ صراحة لأنها انتقلت إلى eDAS 2.0.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "source": "https://www.mofa.gov.ae/services/attestation",
+      "authority": "mofa",
+      "policyVersion": 3,
+      "expected": "Inside the UAE: digital attestation of documents issued in the UAE within two hours during official working hours; courier service takes 1–3 working days depending on the provider. Outside the UAE, courier processing may take around 7 working days depending on the provider.",
+      "name": "Attest an International Commercial Document (excluding invoices and certificates of origin)",
+      "status": 200,
+      "answer": {
+        "text": "Inside the UAE: digital attestation of documents issued in the UAE within two hours during official working hours; courier service takes 1–3 working days depending on the provider. Outside the UAE, courier processing may take around 7 working days depending on the provider.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+          "policy_version": 3,
+          "workflow_key": "service:تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+          "source_title": "تصديق مستند شخصي داخل الإمارات — وزارة الخارجية",
+          "source_url": "https://www.mofa.gov.ae/services/attestation",
+          "last_verified_at": "2026-10-12T06:47:12.633+00:00",
+          "supporting_rule": {
+            "value": "داخل الإمارات: التصديق الرقمي للمستندات الصادرة من الإمارات خلال ساعتين ضمن الدوام الرسمي، والتوصيل من 1 إلى 3 أيام عمل بحسب شركة التوصيل. خارج الإمارات: قد يستغرق التوصيل نحو 7 أيام عمل بحسب شركة التوصيل.",
+            "source_refs": [
+              "https://www.mofa.gov.ae/services/attestation"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "استثنيت الفواتير التجارية وشهادات المنشأ صراحة لأنها انتقلت إلى eDAS 2.0.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "source": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+      "authority": "gdrfa-dubai",
+      "policyVersion": 2,
+      "expected": "200 درهم لتصريح الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. تنص البطاقة على زيادة 100 درهم سنويًا عند تجاوز مدة الإقامة سنتين.",
+      "name": "إصدار إقامة موظف في القطاع الخاص في دبي",
+      "status": 200,
+      "answer": {
+        "text": "200 درهم لتصريح الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. تنص البطاقة على زيادة 100 درهم سنويًا عند تجاوز مدة الإقامة سنتين.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "source_title": "إصدار إقامة موظف في القطاع الخاص في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لتصريح الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. تنص البطاقة على زيادة 100 درهم سنويًا عند تجاوز مدة الإقامة سنتين.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "source": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+      "authority": "gdrfa-dubai",
+      "policyVersion": 2,
+      "expected": "48 ساعة وفق بطاقة الخدمة.",
+      "name": "إصدار إقامة موظف في القطاع الخاص في دبي",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "source_title": "إصدار إقامة موظف في القطاع الخاص في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "rta-modify-trade-license-noc-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "source": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+      "authority": "rta-dubai",
+      "policyVersion": 2,
+      "expected": "Fees vary by modification type and transport activity code; the official card provides the full table and currently lists AED 220 for removing an activity.",
+      "name": "Apply for an NOC to Modify a Trade Licence",
+      "status": 200,
+      "answer": {
+        "text": "Fees vary by modification type and transport activity code; the official card provides the full table and currently lists AED 220 for removing an activity.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:rta-modify-trade-license-noc-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:rta-modify-trade-license-noc-dubai",
+          "source_title": "طلب شهادة عدم ممانعة لتعديل رخصة تجارية من RTA — هيئة الطرق والمواصلات في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+          "last_verified_at": "2026-10-04T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "تختلف الرسوم حسب نوع التعديل ورمز نشاط النقل؛ تعرض بطاقة RTA جدول الرسوم التفصيلي، ورسوم حذف النشاط 220 درهمًا وفق البطاقة الحالية.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "rta-modify-trade-license-noc-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "source": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+      "authority": "rta-dubai",
+      "policyVersion": 2,
+      "expected": "3 to 15 working days depending on required approvals.",
+      "name": "Apply for an NOC to Modify a Trade Licence",
+      "status": 200,
+      "answer": {
+        "text": "3 to 15 working days depending on required approvals.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:rta-modify-trade-license-noc-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:rta-modify-trade-license-noc-dubai",
+          "source_title": "طلب شهادة عدم ممانعة لتعديل رخصة تجارية من RTA — هيئة الطرق والمواصلات في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+          "last_verified_at": "2026-10-04T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "من 3 إلى 15 يوم عمل بحسب الموافقات المطلوبة.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "rta-renew-trade-license-noc-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "source": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438",
+      "authority": "rta-dubai",
+      "policyVersion": 2,
+      "expected": "Fees vary by commercial transport activity code and appear in the official activity table and payment screen.",
+      "name": "Apply for an NOC to Renew a Trade Licence",
+      "status": 200,
+      "answer": {
+        "text": "Fees vary by commercial transport activity code and appear in the official activity table and payment screen.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:rta-renew-trade-license-noc-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:rta-renew-trade-license-noc-dubai",
+          "source_title": "طلب شهادة عدم ممانعة لتجديد رخصة تجارية من RTA — هيئة الطرق والمواصلات في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438",
+          "last_verified_at": "2026-10-04T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "externalModelGate": "NOT_PASSED"
+}
