@@ -1,6 +1,6 @@
 {
-  "recordedAt": "2026-10-12T06:30:16Z",
-  "lastAcceptedDeployedCommit": "5bb0ab159cb34947fb19b1ea930f1e0477e9de13",
+  "recordedAt": "2026-10-12",
+  "lastAcceptedDeployedCommit": "ebb6ce055bb148add210ea132237ab510a7e0423",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -31,11 +31,16 @@
     435,
     436,
     437,
-    438
+    438,
+    439,
+    440,
+    441,
+    442,
+    443
   ],
   "production": {
     "publicationGate": {
-      "run": 38211961496,
+      "run": 38215630079,
       "status": "PASS"
     },
     "geometry": {
@@ -50,8 +55,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 25.185320939429012,
-      "changedPixelPercent": 18.69509548611111,
+      "meanAbsolutePixelDifference": 25.10124614197531,
+      "changedPixelPercent": 18.65205439814815,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -123,13 +128,49 @@
       "run": 38211988318,
       "services": 8,
       "sourceAndPageChecksRepeated": false
+    },
+    "residenceAttestationFields": {
+      "initialRun": 38213727460,
+      "passedInitially": 50,
+      "total": 56,
+      "remainingCasesPassedRun": 38216133045,
+      "remainingCount": 6,
+      "status": "PASS",
+      "mofaSourceRefreshRun": 38214198303,
+      "mofaPolicyVersion": 3
+    },
+    "rtaNocFields": {
+      "initialRun": 38214279697,
+      "arabicPassed": 3,
+      "englishCorrectedPassed": 3,
+      "followupRun": 38216133045,
+      "status": "PASS"
+    },
+    "failedFieldsFollowup": {
+      "run": 38216133045,
+      "capturedAt": "2026-10-12T07:09:17.217Z",
+      "passed": 9,
+      "total": 9,
+      "status": "PASS",
+      "report": "artifacts/live-reviewed-fields-failed-followup/report.json",
+      "branch": "agent/live-reviewed-fields-failed-followup",
+      "repeatedPriorPasses": false
+    },
+    "mofaChangedPages": {
+      "status": "PASS",
+      "arabicPassed": 4,
+      "arabicRun": 38216135040,
+      "englishPassed": 4,
+      "englishRun": 38216419159,
+      "englishCapturedAt": "2026-10-12T07:12:28.141Z",
+      "note": "Initial English test incorrectly expected a FAQ absent from the English template. Corrected test verifies actual Processing time translation and recorded Arabic; four Arabic passes reused."
     }
   },
   "deployedAi": {
-    "version": 134,
+    "version": 135,
     "status": "ACTIVE",
     "sourceFilesMatched": 9,
-    "bundleSha256": "f0e5f7df9ae011bfb15310a6160ac54574e191904729498cb62e9c274a3acb54"
+    "bundleSha256": "5bbe14a3d5a23f3f6c7dfa31a36a5491912878e67e5e09cda46bd4eaaad2e5f4"
   },
   "blockers": {
     "externalModel": {
@@ -145,7 +186,12 @@
       "nameOnlyInspectionRun": 38047602262,
       "nameOnlyInspectionStatus": "action_required",
       "nameOnlyInspectionExecuted": false,
-      "reasonForActionRequired": "Not returned; do not guess or bypass."
+      "reasonForActionRequired": "Not returned; do not guess or bypass.",
+      "latestNamesOnlyAttempt": {
+        "date": "2026-10-12",
+        "result": "GitHub connector rejects secrets-list endpoint: URL not allowed",
+        "valuesRead": false
+      }
     },
     "localExecution": {
       "status": "TOOL_FAILURE",
@@ -172,7 +218,20 @@
     "aiRobotTone": "All four brightness/contrast variants worsened the diff; none published.",
     "heroChips": "Smaller chip variant worsened the diff; none published.",
     "consultationAdditionalCopy": "Title alignment alone outperformed added copy; additional copy not published.",
-    "featuredTypography": "17px headings and alternate button gradients worsened the diff; only 16px heading and 12px body variant published."
+    "featuredTypography": "17px headings and alternate button gradients worsened the diff; only 16px heading and 12px body variant published.",
+    "metricsPhotographicDepth": {
+      "run": 38213175143,
+      "result": "All six variants worsened pixel difference; not published"
+    },
+    "ftaMarkCrop": {
+      "run": 38213687755,
+      "result": "All three variants worsened pixel difference; not published"
+    },
+    "policeOfficialWhiteVector": {
+      "run": 38216144605,
+      "result": "Official SVG is entirely white. Visually blank on the approved white authority strip; lower pixel error came from disappearing artwork, not fidelity. No product change.",
+      "published": false
+    }
   },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED"

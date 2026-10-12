@@ -281,12 +281,15 @@
   ],
   "expectedPolicyVersion": 2,
   "liveAcceptance": {
-    "status": "PENDING_LIVE_RESULT",
-    "allSixteenPolicyVersions": 2,
-    "allPriorRulesPreserved": true,
-    "sourceHealthFieldsUnchanged": true,
-    "authorityKeyCorrection": "gdrfa-dubai; initial publication skipped GDRFA policies instead of matching a different authority",
-    "sourceAndPageChecksRepeated": false
+    "status": "PASS",
+    "initialRun": 38213727460,
+    "initialPassed": 50,
+    "initialTotal": 56,
+    "followupRun": 38216133045,
+    "followupPassed": 6,
+    "repeatedInitialPasses": false,
+    "mofaCurrentPolicyVersion": 3,
+    "gdrfaCurrentPolicyVersion": 2
   },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED"

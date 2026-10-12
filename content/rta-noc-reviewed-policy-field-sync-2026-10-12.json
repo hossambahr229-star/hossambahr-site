@@ -38,8 +38,13 @@
   ],
   "expectedPolicyVersion": 2,
   "liveAcceptance": {
-    "status": "PENDING_DEPLOYMENT",
-    "acceptedSourceAndPageChecksRepeated": false
+    "status": "PASS",
+    "arabicRun": 38214279697,
+    "arabicPassed": 3,
+    "englishRun": 38216133045,
+    "englishPassed": 3,
+    "repeatedArabicPasses": false,
+    "policyVersion": 2
   },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED"

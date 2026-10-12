@@ -45,10 +45,28 @@
   ],
   "expectedPolicyVersion": 3,
   "liveAcceptance": {
-    "status": "PENDING_DEPLOYMENT",
-    "failedAiCasesToRepeat": 4,
-    "changedPagesToCheck": 8,
-    "previousFiftyPassingAiCasesRepeated": false
+    "status": "PASS",
+    "policyVersion": 3,
+    "ai": {
+      "run": 38216133045,
+      "passed": 4
+    },
+    "pages": {
+      "status": "PASS",
+      "arabicPassed": 4,
+      "arabicRun": 38216135040,
+      "englishPassed": 4,
+      "englishRun": 38216419159,
+      "englishCapturedAt": "2026-10-12T07:12:28.141Z",
+      "note": "Initial English test incorrectly expected a FAQ absent from the English template. Corrected test verifies actual Processing time translation and recorded Arabic; four Arabic passes reused."
+    },
+    "aiDeployment": {
+      "version": 135,
+      "matchedSourceFiles": 9,
+      "bundleSha256": "5bbe14a3d5a23f3f6c7dfa31a36a5491912878e67e5e09cda46bd4eaaad2e5f4"
+    },
+    "publicationRun": 38215630079,
+    "externalModelGate": "BLOCKED_QUOTA_BILLING_429"
   },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED"
