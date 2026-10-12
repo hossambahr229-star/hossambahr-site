@@ -1,0 +1,61 @@
+{
+  "capturedAt": "2026-10-12T06:34:55.369Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "background": "rgba(0, 0, 0, 0) linear-gradient(100deg, rgb(10, 48, 76), rgb(3, 36, 60)) repeat scroll 0% 0% / auto padding-box border-box",
+    "bounds": {
+      "x": 30.96875,
+      "y": 643,
+      "width": 1378.078125,
+      "height": 66,
+      "top": 643,
+      "right": 1409.046875,
+      "bottom": 709,
+      "left": 30.96875
+    }
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 28.965133922681094,
+      "changed": 17.250516778818668
+    },
+    {
+      "name": "hero-e6",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#0a304ce6,#03243ce6),url('/assets/hero-reference-restored.webp') center 65%/cover no-repeat!important}",
+      "mad": 31.871501663954493,
+      "changed": 17.436337247658003
+    },
+    {
+      "name": "hero-f0",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#0a304cf0,#03243cf0),url('/assets/hero-reference-restored.webp') center 65%/cover no-repeat!important}",
+      "mad": 30.202177801234406,
+      "changed": 17.26700971983991
+    },
+    {
+      "name": "hero-f7",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#0a304cf7,#03243cf7),url('/assets/hero-reference-restored.webp') center 65%/cover no-repeat!important}",
+      "mad": 29.358505226429756,
+      "changed": 17.20873466156485
+    },
+    {
+      "name": "cta-e6",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#0a304ce6,#03243ce6),url('/assets/cta-reference-panorama.webp') center 65%/cover no-repeat!important}",
+      "mad": 33.3376508187829,
+      "changed": 17.946518889915115
+    },
+    {
+      "name": "cta-f0",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#0a304cf0,#03243cf0),url('/assets/cta-reference-panorama.webp') center 65%/cover no-repeat!important}",
+      "mad": 30.881936197973936,
+      "changed": 17.412147600826845
+    },
+    {
+      "name": "cta-f7",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .target-proof{background:linear-gradient(100deg,#0a304cf7,#03243cf7),url('/assets/cta-reference-panorama.webp') center 65%/cover no-repeat!important}",
+      "mad": 29.619134010643446,
+      "changed": 17.259313014029996
+    }
+  ]
+}
