@@ -6,7 +6,7 @@ test('Current MOFA duration preserves issued-document and courier conditions acr
  for(const fact of manifest.facts){const s=matrix.find(s=>s.slug===fact.slug),t=tree.find(t=>t.id===s.id),p=published.find(p=>p.slug===fact.slug);
  assert.equal(s.duration,fact.duration);assert.equal(t.duration,fact.duration);assert.equal(p.processingTime.text,fact.duration);
  const englishHtml=fs.readFileSync(new URL('../../en/services/'+fact.slug+'/index.html',import.meta.url),'utf8');assert.ok(englishHtml.includes(fact.durationEn),fact.slug+' actual generated English page');assert.equal(recordedDetailTranslations[fact.duration],fact.durationEn);
- assert.match(fact.duration,/7 أيام عمل/);assert.match(fact.duration,/المستندات الصادرة من الإمارات/);assert.ok(!fact.duration.includes('15 يوم'));
+ assert.match(fact.duration,/7 أيام عمل/);assert.match(fact.duration,/مستندات الصادرة من الإمارات/);assert.ok(!fact.duration.includes('15 يوم'));
  }
 });
 test('Reviewed RTA NOC fee and time rules have complete explanatory English translations',()=>{
