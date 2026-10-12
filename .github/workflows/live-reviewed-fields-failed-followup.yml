@@ -1,0 +1,33 @@
+name: Live Reviewed Fields Failed Followup
+on:
+  push:
+    branches: [agent/live-reviewed-fields-failed-followup]
+    paths: [scripts/live-reviewed-fields-failed-followup.mjs, .github/workflows/live-reviewed-fields-failed-followup.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-reviewed-fields-failed-followup.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-reviewed-fields-failed-followup
+          path: artifacts/live-reviewed-fields-failed-followup
+      - name: Preserve live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-reviewed-fields-failed-followup
+          git reset --mixed origin/agent/live-reviewed-fields-failed-followup
+          git add artifacts/live-reviewed-fields-failed-followup
+          if ! git diff --cached --quiet; then
+            git commit -m "Record newly grounded MOE eDAS AI Production fields [skip ci]"
+            git push origin HEAD:agent/live-reviewed-fields-failed-followup
+          fi
