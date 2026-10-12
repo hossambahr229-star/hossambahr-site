@@ -424,3 +424,6 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 
 /* Measured internal authority-strip alignment within the unchanged shared page grid. */
 @media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry]{--authority-inset-left:40px;--authority-inset-right:90px}html[lang="ar"].hb-phase8 body[data-home-geometry] .authority-pills{margin-left:var(--authority-inset-left)!important;margin-right:var(--authority-inset-right)!important}}
+
+/* Measured section and card surfaces for the approved Arabic desktop frame. */
+@media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry]{--surface-how:#fff;--surface-how-step:#f1f5fa}html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-how{background:var(--surface-how)!important}html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-how li{background:var(--surface-how-step)!important}}
