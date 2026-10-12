@@ -1,0 +1,18 @@
+{
+  "capturedAt": "2026-10-12T16:45:15.645Z",
+  "scope": "Read-only new official DED host alternatives, not a retry of the previously blocked rak.ae fee-card URL. No fee values or source-health status are changed.",
+  "checks": [
+    {
+      "url": "https://ded.rak.ae/en/pages/ded-websait.aspx",
+      "readable": false,
+      "error": "TimeoutError: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://ded.rak.ae/en/pages/ded-websait.aspx\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "url": "https://ded.rak.ae/ar/licenses/Pages/default.aspx",
+      "readable": false,
+      "error": "TimeoutError: page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://ded.rak.ae/ar/licenses/Pages/default.aspx\", waiting until \"domcontentloaded\"\n"
+    }
+  ],
+  "feesChanged": false,
+  "productFailure": false
+}
