@@ -1,0 +1,23 @@
+begin;
+do $review$
+declare item jsonb;p public.hb_policy_versions%rowtype;s public.hb_policy_sources%rowtype;new_rules jsonb;
+ reviewed timestamptz := '2026-10-12T06:47:12.633Z';
+begin
+ for item in select value from jsonb_array_elements($plans$[{"slug":"تصديق-مستند-شخصي-داخل-الإمارات","source":"https://www.mofa.gov.ae/services/attestation","authority":"mofa","fields":["duration"],"duration":"داخل الإمارات: التصديق الرقمي للمستندات الصادرة من الإمارات خلال ساعتين ضمن الدوام الرسمي، والتوصيل من 1 إلى 3 أيام عمل بحسب شركة التوصيل. خارج الإمارات: قد يستغرق التوصيل نحو 7 أيام عمل بحسب شركة التوصيل.","durationEn":"Inside the UAE: digital attestation of documents issued in the UAE within two hours during official working hours; courier service takes 1–3 working days depending on the provider. Outside the UAE, courier processing may take around 7 working days depending on the provider.","nameAr":"تصديق مستند شخصي داخل الإمارات","nameEn":"Attest a Personal Document in the UAE","sourceReviewedAt":"2026-10-12","evidenceBranch":"agent/read-mofa-attestation-source-health","evidenceScope":"Only listed document, eligibility, fee and time fields. No approval of the whole catalog or authenticated transaction. MOFA entries refresh the three listed fields only; prior fee records are preserved."},{"slug":"تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ","source":"https://www.mofa.gov.ae/services/attestation","authority":"mofa","fields":["duration"],"duration":"داخل الإمارات: التصديق الرقمي للمستندات الصادرة من الإمارات خلال ساعتين ضمن الدوام الرسمي، والتوصيل من 1 إلى 3 أيام عمل بحسب شركة التوصيل. خارج الإمارات: قد يستغرق التوصيل نحو 7 أيام عمل بحسب شركة التوصيل.","durationEn":"Inside the UAE: digital attestation of documents issued in the UAE within two hours during official working hours; courier service takes 1–3 working days depending on the provider. Outside the UAE, courier processing may take around 7 working days depending on the provider.","nameAr":"تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)","nameEn":"Attest an International Commercial Document (excluding invoices and certificates of origin)","sourceReviewedAt":"2026-10-12","evidenceBranch":"agent/read-mofa-attestation-source-health","evidenceScope":"Only listed document, eligibility, fee and time fields. No approval of the whole catalog or authenticated transaction. MOFA entries refresh the three listed fields only; prior fee records are preserved."}]$plans$::jsonb) loop
+  begin
+   select * into strict p from public.hb_policy_versions where policy_key='service:'||(item->>'slug') and status='active' for update;
+   select * into strict s from public.hb_policy_sources where id=any(p.source_ids) and source_url=item->>'source' and authority_key='mofa' and active for update;
+  exception when no_data_found then raise notice 'MOFA duration source absent in clean seed: %',item->>'slug';continue;end;
+  select coalesce(jsonb_agg(value order by ordinality),'[]'::jsonb) into new_rules from jsonb_array_elements(p.rules) with ordinality where value->>'id'<>'duration';
+  new_rules:=new_rules||jsonb_build_array(jsonb_build_object('id','duration','when','[]'::jsonb,'effect','review','reason',item->>'duration','actions',jsonb_build_array('review_duration'),'sourceRefs',jsonb_build_array(item->>'source')));
+  if not(p.reviewed_by='official-mofa-duration-review-2026-10-12' and p.rules=new_rules) then
+   update public.hb_policy_versions set status='retired',effective_until=reviewed where id=p.id;
+   insert into public.hb_policy_versions(policy_key,jurisdiction_id,version,effective_from,status,rules,source_ids,reviewed_by,reviewed_at,country_pack_id)
+   values(p.policy_key,p.jurisdiction_id,p.version+1,reviewed,'active',new_rules,p.source_ids,'official-mofa-duration-review-2026-10-12',reviewed,p.country_pack_id);
+  end if;
+  update public.hb_policy_sources set last_verified_at=reviewed,review_required=false,last_http_status=200,monitor_failures=0,
+   metadata=metadata||jsonb_build_object('verification_state','official_source_reverified','verification_scope','current_public_health_and_processing_time_only','verified_fields',jsonb_build_array('duration'),'duration_reviewed_at',reviewed,'duration_evidence_branch','agent/read-mofa-attestation-source-health','duration_evidence_run',38214198303,'duration_verification_scope','Current official public card: digital attestation of UAE-issued documents within two hours during official working hours; UAE courier 1–3 working days; outside-UAE courier approximately 7 working days depending on provider. No fee or authenticated execution review.')
+  where id=s.id;
+ end loop;
+end $review$;
+commit;
