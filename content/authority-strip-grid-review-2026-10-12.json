@@ -1,0 +1,25 @@
+{
+  "measuredAt": "2026-10-12T16:15:36.184Z",
+  "scope": "Arabic approved 1440 desktop authority-strip internal layout only; section boundaries, logos, copy and links unchanged",
+  "reference": "qa/reference/approved-desktop.jpeg",
+  "measurement": {
+    "branch": "agent/measure-authority-grid-insets",
+    "run": 38276072540,
+    "report": "artifacts/measure-authority-grid-insets/report.json",
+    "baseline": {
+      "mad": 19.156595860566448,
+      "changedPercent": 14.195261437908496
+    },
+    "selected": {
+      "left": 40,
+      "right": 90,
+      "mad": 18.24502723311547,
+      "changedPercent": 13.57516339869281
+    }
+  },
+  "liveAcceptance": {
+    "status": "PENDING_DEPLOYMENT"
+  },
+  "pixelFidelity": "NOT_DECLARED",
+  "externalSubmissionPerformed": false
+}
