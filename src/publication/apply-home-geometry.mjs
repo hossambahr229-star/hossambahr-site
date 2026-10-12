@@ -66,17 +66,20 @@ for (const route of ['index.html', 'en/index.html']) {
     ? '<section class="premium-final-cta premium-two-pathways" aria-labelledby="two-pathways-title"><div><span>اختر طريقة الإنجاز</span><h2 id="two-pathways-title">المسار الحكومي أو HOSSAM BAHR</h2><p>اختر التنفيذ بنفسك عبر الجهة الرسمية أو دعنا نجهز ونتابع المعاملة معك.</p></div><div class="premium-pathway-actions"><a class="premium-primary government-path-action" href="/services/">المسار الحكومي</a><a class="managed-path-action" data-commercial-cta="verified" href="https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A3%D9%86%20%D9%8A%D9%86%D8%AC%D8%B2%20HOSSAM%20BAHR%20%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA." target="_blank" rel="noopener noreferrer">أنجزها مع HOSSAM BAHR</a><button type="button" data-premium-ai-open>اسأل HB AI</button></div></section>'
     : '<section class="premium-final-cta premium-two-pathways" aria-labelledby="two-pathways-title"><div><span>CHOOSE HOW TO PROCEED</span><h2 id="two-pathways-title">Government Self-Service or HOSSAM BAHR</h2><p>Continue through the official channel yourself, or let us prepare and follow up the transaction with you.</p></div><div class="premium-pathway-actions"><a class="premium-primary government-path-action" href="/en/services/">Government Self-Service</a><a class="managed-path-action" data-commercial-cta="verified" href="https://wa.me/971503780460?text=Hello%2C%20I%20would%20like%20HOSSAM%20BAHR%20to%20handle%20my%20UAE%20transaction." target="_blank" rel="noopener noreferrer">HOSSAM BAHR Managed Path</a><button type="button" data-premium-ai-open>Ask HB AI</button></div></section>';
   html = html.replace(/<section class="premium-final-cta\b[\s\S]*?<\/section>/, pathwayCta);
+  // This directory includes authorities awaiting fully published services; do not imply coverage or partnership.
+  html = html.replace(/(<section class="premium-authorities\b[\s\S]*?<h2>)[\s\S]*?(<\/h2>)/,
+    (_,open,close)=>open+(route==='index.html'?'الجهات الحكومية في دليل المنصة':'Government authority directory')+close);
   const authorityAssets = [
     ['icp.webp','ICP','/authorities/icp/'],
     ['mohre.webp','MOHRE','/authorities/mohre/'],
-    ['det.svg','DET','/authorities/'],
+    ['det.svg','DET','/authorities/det-dubai/'],
     ['dld.png','DLD','/authorities/dld-rera/'],
     ['municipality.svg','Dubai Municipality','/authorities/dubai-municipality/'],
-    ['fta.webp','Federal Tax Authority','/authorities/'],
+    ['fta.webp','Federal Tax Authority','/authorities/fta/'],
     ['police.ico','Dubai Police','/authorities/']
   ];
   html = html.replace(/<div class="authority-pills">[\s\S]*?<\/div>/,
-    `<div class="authority-pills">${authorityAssets.map(([image,label,href])=>`<a href="${href}"><img src="/assets/authorities/${image}" alt="" width="42" height="42"/><span>${label}</span></a>`).join('')}</div>`);
+    `<div class="authority-pills">${authorityAssets.map(([image,label,href])=>`<a href="${route==='index.html'?href:'/en'+href}"><img src="/assets/authorities/${image}" alt="" width="42" height="42"/><span>${label}</span></a>`).join('')}</div>`);
   const categoryIcons = ['people','buildings','document','work','government','plane','house','grid'];
   let category = 0;
   html = html.replace(/(<div class="premium-category-grid">)([\s\S]*?)(<\/div>)/,
