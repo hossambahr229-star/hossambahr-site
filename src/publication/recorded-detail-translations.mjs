@@ -887,5 +887,8 @@ export const recordedDetailTranslations = Object.freeze({
   "رسم إلغاء تصريح الإقامة 100 درهم، و10 دراهم للمعرفة و10 دراهم للابتكار، وفق بطاقة GDRFA.": "The GDRFA card lists AED 100 for residence permit cancellation, AED 10 knowledge fee and AED 10 innovation fee.",
   "48 ساعة وفق بطاقة GDRFA؛ لم تُحدد أنها ساعات عمل.": "48 hours according to the GDRFA card; the card does not specify working hours.",
   "رسم تصريح الإقامة: 200 درهم، و10 دراهم درهم معرفة، و10 دراهم درهم ابتكار، و500 درهم رسم داخل الدولة عند انطباقه، و20 درهم توصيل. تزيد رسوم الإصدار 100 درهم سنويًا عندما تتجاوز الإقامة سنتين.": "Residence permit fee: AED 200; AED 10 knowledge fee, AED 10 innovation fee, AED 500 in-country fee where applicable, and AED 20 delivery. The issuance fee increases by AED 100 annually when the residence exceeds two years.",
-  "مدة الإنجاز المتوقعة المنشورة رسميًا: 48 ساعة.": "Officially published expected completion time: 48 hours."
+  "مدة الإنجاز المتوقعة المنشورة رسميًا: 48 ساعة.": "Officially published expected completion time: 48 hours.",
+  "تختلف الرسوم حسب نوع التعديل ورمز نشاط النقل؛ تعرض بطاقة RTA جدول الرسوم التفصيلي، ورسوم حذف النشاط 220 درهمًا وفق البطاقة الحالية.": "Fees vary by modification type and transport activity code; the official card provides the full table and currently lists AED 220 for removing an activity.",
+  "من 3 إلى 15 يوم عمل بحسب الموافقات المطلوبة.": "3 to 15 working days depending on required approvals.",
+  "تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.": "Fees vary by commercial transport activity code and appear in the official activity table and payment screen."
 });
