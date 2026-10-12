@@ -18,7 +18,34 @@
     }
   },
   "liveAcceptance": {
-    "status": "PENDING_DEPLOYMENT"
+    "status": "PASS",
+    "run": 38276300903,
+    "capturedAt": "2026-10-12T16:25:11.279Z",
+    "branch": "agent/live-authority-strip-grid-acceptance",
+    "report": "artifacts/live-regional-visual/report.json",
+    "regional": {
+      "previousMad": 21.324310595065313,
+      "mad": 20.16871587531965,
+      "previousChangedPercent": 16.51876,
+      "changedPercent": 15.732946298984036
+    },
+    "nativeInsets": {
+      "left": "40px",
+      "right": "90px"
+    },
+    "visibleOriginalLogos": 7,
+    "pageErrors": 0,
+    "publicationGate": {
+      "run": 38276505783,
+      "status": "PASS"
+    },
+    "fullFrame": {
+      "deployedCommit": "9bec27f8c4c2940933c640a2c60adbe86f1d9fed",
+      "mad": 25.020534336419754,
+      "changedPercent": 18.59714988425926,
+      "geometryPassed": true
+    },
+    "pixelFidelity": "NOT_DECLARED"
   },
   "pixelFidelity": "NOT_DECLARED",
   "externalSubmissionPerformed": false
