@@ -1,0 +1,90 @@
+{
+  "capturedAt": "2026-10-12T16:25:30.131Z",
+  "source": "LIVE_PRODUCTION_TEMPORARY_LABEL_PRESENTATION",
+  "labels": [
+    [
+      "الهيئة الاتحادية للهوية والجنسية",
+      "ICP"
+    ],
+    [
+      "وزارة الموارد البشرية والتوطين",
+      "MOHRE"
+    ],
+    [
+      "دائرة الاقتصاد والسياحة",
+      "DET"
+    ],
+    [
+      "دائرة الأراضي والأملاك",
+      "DLD"
+    ],
+    [
+      "بلدية دبي",
+      "Dubai Municipality"
+    ],
+    [
+      "الهيئة الاتحادية للضرائب",
+      "Federal Tax Authority"
+    ],
+    [
+      "شرطة دبي",
+      "Dubai Police"
+    ]
+  ],
+  "results": [
+    {
+      "name": "baseline",
+      "mad": 34.44339325134027,
+      "changed": 25.99828635690188,
+      "overflow": false
+    },
+    {
+      "name": "native-thirteen",
+      "font": 13,
+      "mad": 34.27807429356848,
+      "changed": 25.89207618571607,
+      "overflow": false
+    },
+    {
+      "name": "noto-thirteen",
+      "font": 13,
+      "noto": true,
+      "mad": 34.11637302678162,
+      "changed": 25.80817907570375,
+      "overflow": false
+    },
+    {
+      "name": "noto-fourteen",
+      "font": 14,
+      "noto": true,
+      "mad": 35.0012733320243,
+      "changed": 26.269613180771493,
+      "overflow": false
+    },
+    {
+      "name": "noto-twelve",
+      "font": 12,
+      "noto": true,
+      "mad": 34.45550180587042,
+      "changed": 25.944735010085502,
+      "overflow": false
+    },
+    {
+      "name": "native-thirteen-gold",
+      "font": 13,
+      "border": true,
+      "mad": 34.32079339295383,
+      "changed": 25.91260420199568,
+      "overflow": false
+    },
+    {
+      "name": "noto-thirteen-gold",
+      "font": 13,
+      "noto": true,
+      "border": true,
+      "mad": 34.159095101241796,
+      "changed": 25.828707091983365,
+      "overflow": false
+    }
+  ]
+}
