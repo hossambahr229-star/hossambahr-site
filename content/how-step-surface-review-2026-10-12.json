@@ -1,0 +1,24 @@
+{
+  "measuredAt": "2026-10-12T16:19:39.917Z",
+  "scope": "Only Arabic approved desktop 1440 section and card background colors. No copy, routes, numbers or geometry changed.",
+  "measurement": {
+    "branch": "agent/measure-how-step-surfaces",
+    "run": 38276555277,
+    "report": "artifacts/measure-how-step-surfaces/report.json",
+    "baseline": {
+      "mad": 17.489339701085218,
+      "changedPercent": 9.947124917382684
+    },
+    "selected": {
+      "section": "#fff",
+      "card": "#f1f5fa",
+      "mad": 14.751220604225743,
+      "changedPercent": 9.984435963584419
+    }
+  },
+  "liveAcceptance": {
+    "status": "PENDING_DEPLOYMENT"
+  },
+  "pixelFidelity": "NOT_DECLARED",
+  "externalSubmissionPerformed": false
+}
