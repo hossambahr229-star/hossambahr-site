@@ -43,7 +43,32 @@
     "previous": 1,
     "expected": 2
   },
-  "liveAcceptance": "PENDING_DEPLOYMENT",
+  "liveAcceptance": {
+    "status": "PASS_SCOPED",
+    "pages": {
+      "passed": 2,
+      "run": 38156627180,
+      "capturedAt": "2026-10-11T16:48:45.115Z",
+      "viewports": [
+        1440,
+        390
+      ]
+    },
+    "initialAi": {
+      "passed": 0,
+      "total": 12,
+      "run": 38156627180
+    },
+    "correctedAi": {
+      "passed": 12,
+      "total": 12,
+      "run": 38157579032,
+      "capturedAt": "2026-10-11T16:57:52.912Z",
+      "policyVersion": 2
+    },
+    "acceptedSourceAndPagesRepeated": false,
+    "externalModelGate": "NOT_PASSED"
+  },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED"
 }
