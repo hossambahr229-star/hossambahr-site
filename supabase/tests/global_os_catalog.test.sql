@@ -1,6 +1,6 @@
 begin;
 
-select plan(12);
+select plan(14);
 
 select is(
   (select count(*)::bigint from public.hb_service_bindings where active),
@@ -83,8 +83,8 @@ select is((select count(*)::bigint from public.hb_service_bindings b
  and exists(select 1 from public.hb_policy_sources s where s.id=any(p.source_ids) and s.authority_id=a.id and s.jurisdiction_id=b.jurisdiction_id and s.active and s.source_url=b.metadata->>'officialUrl')),
  8::bigint,'all eight restored identities retain authority, jurisdiction, policy, workflow and official source');
 
-select is((select count(*)::bigint from public.hb_policy_versions where policy_key in (select policy_key from public.hb_service_bindings where service_slug in ('ajman-business-activity-inquiry','legacy-service-67abe5ccf3','legacy-service-85a10469d8','legacy-service-e7f35a06d9','rta-modify-trade-license-noc-dubai','rta-new-trade-license-noc-dubai','rta-renew-trade-license-noc-dubai')) and status='active' and rules='[]'::jsonb),
- 7::bigint,'navigation verification does not invent new government fees or eligibility rules');
+select is((select count(*)::bigint from public.hb_policy_versions where policy_key in (select policy_key from public.hb_service_bindings where service_slug in ('ajman-business-activity-inquiry','legacy-service-67abe5ccf3','legacy-service-85a10469d8','legacy-service-e7f35a06d9','rta-new-trade-license-noc-dubai')) and status='active' and rules='[]'::jsonb),
+ 5::bigint,'navigation-only identities without reviewed field publication retain empty policies');
 
 select is((select count(*)::bigint from public.hb_workflow_templates where service_slug in ('ajman-business-activity-inquiry','dld-real-estate-ad-permit-dubai','legacy-service-67abe5ccf3','legacy-service-85a10469d8','legacy-service-e7f35a06d9','rta-modify-trade-license-noc-dubai','rta-new-trade-license-noc-dubai','rta-renew-trade-license-noc-dubai') and status='active'
  and jsonb_path_exists(definition,'$.steps[*] ? (@.requiresApproval == true && @.risk.externalSubmission == true)')
@@ -106,5 +106,26 @@ select ok(exists(select 1 from public.hb_policy_versions where policy_key='servi
  and exists(select 1 from public.hb_service_bindings where service_slug='dld-real-estate-ad-permit-dubai'
  and active and metadata->>'governmentDetailsVerified'='true'),
  'DLD review retains the empty historical navigation policy and marks only its reviewed binding');
+select ok(exists(select 1 from public.hb_policy_versions p join public.hb_policy_sources s on s.id=any(p.source_ids)
+ where p.policy_key='service:rta-modify-trade-license-noc-dubai' and p.status='active' and p.version=2
+ and p.reviewed_by='reviewed-rta-noc-field-sync-2026-10-12'
+ and jsonb_array_length(p.rules)=2
+ and s.source_url='https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534' and s.authority_key='rta-dubai'
+ and not exists(select 1 from jsonb_array_elements(p.rules) r where not(r->'sourceRefs' ? s.source_url))
+ and not exists(select 1 from jsonb_array_elements(p.rules) r where r->>'id' not in ('fees','duration'))
+ and exists(select 1 from jsonb_array_elements(p.rules) r where r->>'id'='fees' and r->>'reason'='تختلف الرسوم حسب نوع التعديل ورمز نشاط النقل؛ تعرض بطاقة RTA جدول الرسوم التفصيلي، ورسوم حذف النشاط 220 درهمًا وفق البطاقة الحالية.')
+ and exists(select 1 from jsonb_array_elements(p.rules) r where r->>'id'='duration' and r->>'reason'='من 3 إلى 15 يوم عمل بحسب الموافقات المطلوبة.')
+ ) and exists(select 1 from public.hb_policy_versions where policy_key='service:rta-modify-trade-license-noc-dubai' and version=1 and status='retired' and rules='[]'::jsonb),
+ 'RTA modification publishes exact conditional fee notes and duration and retains the empty navigation history');
+select ok(exists(select 1 from public.hb_policy_versions p join public.hb_policy_sources s on s.id=any(p.source_ids)
+ where p.policy_key='service:rta-renew-trade-license-noc-dubai' and p.status='active' and p.version=2
+ and p.reviewed_by='reviewed-rta-noc-field-sync-2026-10-12'
+ and jsonb_array_length(p.rules)=1
+ and s.source_url='https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438' and s.authority_key='rta-dubai'
+ and not exists(select 1 from jsonb_array_elements(p.rules) r where not(r->'sourceRefs' ? s.source_url))
+ and not exists(select 1 from jsonb_array_elements(p.rules) r where r->>'id' not in ('fees'))
+ and exists(select 1 from jsonb_array_elements(p.rules) r where r->>'id'='fees' and r->>'reason'='تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.')
+ ) and exists(select 1 from public.hb_policy_versions where policy_key='service:rta-renew-trade-license-noc-dubai' and version=1 and status='retired' and rules='[]'::jsonb),
+ 'RTA renewal publishes only exact conditional fee notes, without duration or eligibility and retains the empty navigation history');
 select * from finish();
 rollback;

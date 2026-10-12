@@ -1,0 +1,46 @@
+{
+  "syncedAt": "2026-10-12",
+  "scope": "Reuse October 8 field-specific official RTA card review. Publish modification fee notes and duration plus renewal fee notes only. AED 220 applies only to activity removal; no universal NOC price or renewal duration is inferred. Preserve source health; successful renewal alias access does not reclassify the original host.",
+  "facts": [
+    {
+      "slug": "rta-modify-trade-license-noc-dubai",
+      "source": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+      "verifiedAlias": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+      "authority": "rta-dubai",
+      "fields": [
+        "fees",
+        "duration"
+      ],
+      "fees": "تختلف الرسوم حسب نوع التعديل ورمز نشاط النقل؛ تعرض بطاقة RTA جدول الرسوم التفصيلي، ورسوم حذف النشاط 220 درهمًا وفق البطاقة الحالية.",
+      "feesEn": "Fees vary by modification type and transport activity code; the official card provides the full table and currently lists AED 220 for removing an activity.",
+      "duration": "من 3 إلى 15 يوم عمل بحسب الموافقات المطلوبة.",
+      "durationEn": "3 to 15 working days depending on required approvals.",
+      "nameAr": "طلب شهادة عدم ممانعة لتعديل رخصة تجارية من RTA",
+      "nameEn": "Apply for an NOC to Modify a Trade Licence",
+      "sourceReviewedAt": "2026-10-08",
+      "evidenceScope": "Field-specific review of four canonical service cards. This does not certify the entire catalog or reset historical full-record review dates."
+    },
+    {
+      "slug": "rta-renew-trade-license-noc-dubai",
+      "source": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438",
+      "verifiedAlias": "https://rta.ae/wps/portal/rta/ae/home/rta-services/service-details?lang=en&serviceId=438",
+      "authority": "rta-dubai",
+      "fields": [
+        "fees"
+      ],
+      "fees": "تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.",
+      "feesEn": "Fees vary by commercial transport activity code and appear in the official activity table and payment screen.",
+      "nameAr": "طلب شهادة عدم ممانعة لتجديد رخصة تجارية من RTA",
+      "nameEn": "Apply for an NOC to Renew a Trade Licence",
+      "sourceReviewedAt": "2026-10-08",
+      "evidenceScope": "Field-specific review of four canonical service cards. This does not certify the entire catalog or reset historical full-record review dates."
+    }
+  ],
+  "expectedPolicyVersion": 2,
+  "liveAcceptance": {
+    "status": "PENDING_DEPLOYMENT",
+    "acceptedSourceAndPageChecksRepeated": false
+  },
+  "externalSubmissionPerformed": false,
+  "overallFinalGate": "NOT_DECLARED"
+}
