@@ -1,0 +1,28 @@
+{
+  "measuredAt": "2026-10-12T16:34:40.612Z",
+  "scope": "Arabic approved 1440 desktop internal step widths and gap only; unchanged outer page grid, text, steps, routes and mobile/English layouts",
+  "measurement": {
+    "branch": "agent/measure-how-step-grid-proportions",
+    "run": 38278316337,
+    "baseline": {
+      "mad": 14.751220604225743,
+      "changedPercent": 9.984435963584419
+    },
+    "selected": {
+      "gap": 42,
+      "weightsInDomOrder": [
+        227,
+        215,
+        225,
+        259
+      ],
+      "mad": 11.400258689920332,
+      "changedPercent": 7.912073854550881
+    }
+  },
+  "liveAcceptance": {
+    "status": "PENDING_DEPLOYMENT"
+  },
+  "pixelFidelity": "NOT_DECLARED",
+  "externalSubmissionPerformed": false
+}
