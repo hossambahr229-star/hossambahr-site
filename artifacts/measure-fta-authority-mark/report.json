@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-10-12T06:40:57.288Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "font": "700 14px \"HB Sans Arabic\", sans-serif",
+    "title": {
+      "x": 609.75,
+      "y": 798,
+      "width": 220.515625,
+      "height": 29,
+      "top": 798,
+      "right": 830.265625,
+      "bottom": 827,
+      "left": 609.75
+    },
+    "section": {
+      "x": 0,
+      "y": 803,
+      "width": 1440,
+      "height": 85,
+      "top": 803,
+      "right": 1440,
+      "bottom": 888,
+      "left": 0
+    }
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 19.156595860566448,
+      "changed": 14.195261437908496
+    },
+    {
+      "name": "cover-right",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-authorities .authority-pills a:nth-child(6) img{object-fit:cover!important;object-position:right!important}",
+      "mad": 19.936906318082787,
+      "changed": 14.834967320261438
+    },
+    {
+      "name": "cover-right40",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-authorities .authority-pills a:nth-child(6) img{object-fit:cover!important;object-position:right!important;width:40px!important;height:40px!important}",
+      "mad": 19.866348039215687,
+      "changed": 14.754901960784315
+    },
+    {
+      "name": "cover-right38",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-authorities .authority-pills a:nth-child(6) img{object-fit:cover!important;object-position:right!important;width:38px!important;height:38px!important}",
+      "mad": 19.808676470588235,
+      "changed": 14.712418300653596
+    }
+  ]
+}
