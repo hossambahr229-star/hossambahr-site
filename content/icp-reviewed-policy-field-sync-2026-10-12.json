@@ -147,8 +147,51 @@
     "استرداد-رسوم-إصدار-الهوية-غير-المكتمل"
   ],
   "liveAcceptance": {
-    "status": "PENDING_POLICY_DEPLOYMENT",
-    "sourceAndPageChecksRepeated": false
+    "status": "PASS_SCOPED",
+    "policyVersions": [
+      {
+        "policyKey": "service:amendment-of-residency-permit-data",
+        "version": 2
+      },
+      {
+        "policyKey": "service:amendment-of-visa-data",
+        "version": 2
+      },
+      {
+        "policyKey": "service:issue-emirates-id-uae",
+        "version": 2
+      },
+      {
+        "policyKey": "service:renew-emirates-id-uae",
+        "version": 2
+      },
+      {
+        "policyKey": "service:استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+        "version": 2
+      },
+      {
+        "policyKey": "service:الإعفاء-من-غرامة-تأخير-الهوية",
+        "version": 2
+      },
+      {
+        "policyKey": "service:بدل-فاقد-أو-تالف-للهوية",
+        "version": 2
+      },
+      {
+        "policyKey": "service:تمديد-التأشيرة-أو-إذن-الدخول",
+        "version": 2
+      }
+    ],
+    "newAiFields": {
+      "passed": 28,
+      "total": 28,
+      "run": 38211988318,
+      "capturedAt": "2026-10-12T06:21:18.191Z"
+    },
+    "allPriorRulesPreserved": true,
+    "sourceHealthFieldsUnchanged": true,
+    "sourceAndPageChecksRepeated": false,
+    "externalModelGate": "NOT_PASSED"
   },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED"

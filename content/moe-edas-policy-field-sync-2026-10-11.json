@@ -84,7 +84,29 @@
     }
   ],
   "expectedPolicyVersion": 2,
-  "liveAcceptance": "PENDING_DEPLOYMENT",
+  "liveAcceptance": {
+    "status": "PASS_SCOPED",
+    "initialAi": {
+      "passed": 0,
+      "total": 16,
+      "run": 38157580513
+    },
+    "correctedAi": {
+      "passed": 16,
+      "total": 16,
+      "run": 38211493574,
+      "capturedAt": "2026-10-12T06:15:02.199Z",
+      "policyVersion": 2
+    },
+    "newConversationJourneys": {
+      "passed": 20,
+      "total": 20,
+      "run": 38211495485,
+      "capturedAt": "2026-10-12T06:15:00.953Z"
+    },
+    "acceptedSourceAndPagesRepeated": false,
+    "externalModelGate": "NOT_PASSED"
+  },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED"
 }
