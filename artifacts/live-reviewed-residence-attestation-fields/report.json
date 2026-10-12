@@ -1,0 +1,2259 @@
+{
+  "capturedAt": "2026-10-12T06:43:45.374Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "scope": "Only newly published reviewed residence/attestation fields in explicit selected-service contexts, Arabic and English. Reuse accepted source/page checks. No unreviewed MOFA fees or missing GDRFA durations are asserted.",
+  "checks": [
+    {
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Selected service context or API failure",
+        "Wrong grounded focus",
+        "Reviewed policy/source absent",
+        "Reviewed fact absent"
+      ]
+    },
+    {
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Selected service context or API failure",
+        "Wrong grounded focus",
+        "Reviewed policy/source absent",
+        "Reviewed fact absent"
+      ]
+    },
+    {
+      "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Selected service context or API failure",
+        "Wrong grounded focus",
+        "Reviewed policy/source absent",
+        "Reviewed fact absent"
+      ]
+    },
+    {
+      "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Selected service context or API failure",
+        "Wrong grounded focus",
+        "Reviewed policy/source absent",
+        "Reviewed fact absent"
+      ]
+    },
+    {
+      "slug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لا توجد في المعرفة الموثقة الحالية قيمة رسوم محددة يمكنني تأكيدها لهذه الحالة. لن أضع رقمًا تقديريًا؛ راجع المصدر الرسمي أو ابدأ المعاملة للتحقق من الرسوم الحالية.",
+        "focus": "fees",
+        "fact_status": "MISSING_INFORMATION",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "policy_version": 1,
+          "workflow_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "source_title": "إصدار إقامة موظف في القطاع الخاص في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": null,
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong grounded focus",
+        "Reviewed policy/source absent",
+        "Reviewed fact absent"
+      ]
+    },
+    {
+      "slug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "لا توجد مدة تنفيذ محددة وموثقة في البيانات الحالية لهذه الحالة، لذلك لن أذكر مدة تقديرية.",
+        "focus": "duration",
+        "fact_status": "MISSING_INFORMATION",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "policy_version": 1,
+          "workflow_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "source_title": "إصدار إقامة موظف في القطاع الخاص في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": null,
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Wrong grounded focus",
+        "Reviewed policy/source absent",
+        "Reviewed fact absent"
+      ]
+    },
+    {
+      "slug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 200 residence permit fee, AED 10 Knowledge Dirham, AED 10 Innovation Dirham, AED 500 for an application from inside the UAE, and AED 20 delivery. The card states an additional AED 100 annually for a residence period exceeding two years.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "source_title": "إصدار إقامة موظف في القطاع الخاص في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لتصريح الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. تنص البطاقة على زيادة 100 درهم سنويًا عند تجاوز مدة الإقامة سنتين.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "source_title": "إصدار إقامة موظف في القطاع الخاص في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "200 درهم لتجديد الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. تذكر البطاقة زيادة 100 درهم سنويًا إذا تجاوزت مدة الإقامة سنتين.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "source_title": "تجديد إقامة موظف في القطاع الخاص في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لتجديد الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. تذكر البطاقة زيادة 100 درهم سنويًا إذا تجاوزت مدة الإقامة سنتين.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "source_title": "تجديد إقامة موظف في القطاع الخاص في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 200 residence renewal fee, AED 10 Knowledge Dirham, AED 10 Innovation Dirham, AED 500 for an application from inside the UAE, and AED 20 delivery. The card states an additional AED 100 annually if the residence period exceeds two years.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "source_title": "تجديد إقامة موظف في القطاع الخاص في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لتجديد الإقامة، و10 دراهم للمعرفة، و10 دراهم للابتكار، و500 درهم إذا كان الطلب من داخل الدولة، و20 درهماً للتوصيل. تذكر البطاقة زيادة 100 درهم سنويًا إذا تجاوزت مدة الإقامة سنتين.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+          "source_title": "تجديد إقامة موظف في القطاع الخاص في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تعديل-الوضع-داخل-الدولة-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "500 درهم لتسجيل تعديل الوضع، و10 دراهم للمعرفة، و10 دراهم للابتكار؛ تذكر البطاقة 15 درهماً للأفراد و50 درهماً للمنشآت.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تعديل-الوضع-داخل-الدولة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تعديل-الوضع-داخل-الدولة-في-دبي",
+          "source_title": "تعديل الوضع داخل الدولة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "500 درهم لتسجيل تعديل الوضع، و10 دراهم للمعرفة، و10 دراهم للابتكار؛ تذكر البطاقة 15 درهماً للأفراد و50 درهماً للمنشآت.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تعديل-الوضع-داخل-الدولة-في-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تعديل-الوضع-داخل-الدولة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تعديل-الوضع-داخل-الدولة-في-دبي",
+          "source_title": "تعديل الوضع داخل الدولة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تعديل-الوضع-داخل-الدولة-في-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 500 status amendment registration fee, AED 10 Knowledge Dirham and AED 10 Innovation Dirham. The card also lists AED 15 for individuals and AED 50 for establishments.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تعديل-الوضع-داخل-الدولة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تعديل-الوضع-داخل-الدولة-في-دبي",
+          "source_title": "تعديل الوضع داخل الدولة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "500 درهم لتسجيل تعديل الوضع، و10 دراهم للمعرفة، و10 دراهم للابتكار؛ تذكر البطاقة 15 درهماً للأفراد و50 درهماً للمنشآت.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تعديل-الوضع-داخل-الدولة-في-دبي",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تعديل-الوضع-داخل-الدولة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تعديل-الوضع-داخل-الدولة-في-دبي",
+          "source_title": "تعديل الوضع داخل الدولة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "50 درهماً للإلغاء؛ تضاف 10 دراهم للمعرفة و10 دراهم للابتكار إذا كان المكفول داخل الدولة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+          "source_title": "إلغاء إذن دخول أو تأشيرة صادرة من دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "50 درهماً للإلغاء؛ تضاف 10 دراهم للمعرفة و10 دراهم للابتكار إذا كان المكفول داخل الدولة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+          "source_title": "إلغاء إذن دخول أو تأشيرة صادرة من دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 50 cancellation fee. AED 10 Knowledge Dirham and AED 10 Innovation Dirham are added if the sponsored person is inside the UAE.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+          "source_title": "إلغاء إذن دخول أو تأشيرة صادرة من دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "50 درهماً للإلغاء؛ تضاف 10 دراهم للمعرفة و10 دراهم للابتكار إذا كان المكفول داخل الدولة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+          "source_title": "إلغاء إذن دخول أو تأشيرة صادرة من دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-سياحية-لدخول-واحد-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "200 درهم لتأشيرة 30 يومًا أو 300 درهم لتأشيرة 60 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. لا يوجد ضمان مالي لهذا النوع. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-سياحية-لدخول-واحد-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-سياحية-لدخول-واحد-في-دبي",
+          "source_title": "تأشيرة سياحية لدخول واحد في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لتأشيرة 30 يومًا أو 300 درهم لتأشيرة 60 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. لا يوجد ضمان مالي لهذا النوع. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-سياحية-لدخول-واحد-في-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-سياحية-لدخول-واحد-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-سياحية-لدخول-واحد-في-دبي",
+          "source_title": "تأشيرة سياحية لدخول واحد في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-سياحية-لدخول-واحد-في-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 200 for a 30-day visa or AED 300 for a 60-day visa, plus 5% VAT. There is no security deposit for this visa type. If the sponsored person is inside the UAE: AED 10 Knowledge Dirham, AED 10 Innovation Dirham and AED 500 inside-country fee. The total may vary by case.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-سياحية-لدخول-واحد-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-سياحية-لدخول-واحد-في-دبي",
+          "source_title": "تأشيرة سياحية لدخول واحد في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لتأشيرة 30 يومًا أو 300 درهم لتأشيرة 60 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. لا يوجد ضمان مالي لهذا النوع. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-سياحية-لدخول-واحد-في-دبي",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-سياحية-لدخول-واحد-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-سياحية-لدخول-واحد-في-دبي",
+          "source_title": "تأشيرة سياحية لدخول واحد في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "200 درهم لمدة 60 يومًا أو 300 درهم لمدة 90 يومًا أو 400 درهم لمدة 120 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان مالي 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+          "source_title": "تأشيرة استكشاف فرص تأسيس الأعمال في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لمدة 60 يومًا أو 300 درهم لمدة 90 يومًا أو 400 درهم لمدة 120 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان مالي 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+          "source_title": "تأشيرة استكشاف فرص تأسيس الأعمال في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 200 for 60 days, AED 300 for 90 days or AED 400 for 120 days, plus 5% VAT. Security deposit of AED 1,000, AED 20 guarantee service fee and AED 40 collection and return fee. If the sponsored person is inside the UAE: AED 10 Knowledge Dirham, AED 10 Innovation Dirham and AED 500 inside-country fee. The total may vary by case.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+          "source_title": "تأشيرة استكشاف فرص تأسيس الأعمال في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لمدة 60 يومًا أو 300 درهم لمدة 90 يومًا أو 400 درهم لمدة 120 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان مالي 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+          "source_title": "تأشيرة استكشاف فرص تأسيس الأعمال في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "100 درهم لتعديل بطاقة المنشأة، إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً رسم خدمة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "policy_version": 2,
+          "workflow_key": "service:تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "source_title": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "100 درهم لتعديل بطاقة المنشأة، إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً رسم خدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "policy_version": 2,
+          "workflow_key": "service:تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "source_title": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 100 establishment card amendment fee, plus 5% VAT, AED 10 Knowledge Dirham, AED 10 Innovation Dirham and AED 50 service fee.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "policy_version": 2,
+          "workflow_key": "service:تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "source_title": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "100 درهم لتعديل بطاقة المنشأة، إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً رسم خدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "policy_version": 2,
+          "workflow_key": "service:تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "source_title": "تعديل بيانات بطاقة المنشأة في دبي لجميع الفئات — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "تذكر البطاقة عمولة تحصيل 20 درهماً لكل معاملة عبر بنك دبي التجاري، أو 50 درهماً للشركات و15 درهماً للأفراد عبر إماراتك. يضاف 100 درهم عند تقديم الطلب عبر مراكز آمر.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "policy_version": 2,
+          "workflow_key": "service:إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "source_title": "إلغاء بطاقة المنشأة في دبي لجميع الفئات — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تذكر البطاقة عمولة تحصيل 20 درهماً لكل معاملة عبر بنك دبي التجاري، أو 50 درهماً للشركات و15 درهماً للأفراد عبر إماراتك. يضاف 100 درهم عند تقديم الطلب عبر مراكز آمر.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "The card lists an AED 20 collection commission per transaction through Commercial Bank of Dubai, or AED 50 for companies and AED 15 for individuals through Emaratec. An additional AED 100 applies when submitting through Amer centres.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "policy_version": 2,
+          "workflow_key": "service:إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "source_title": "إلغاء بطاقة المنشأة في دبي لجميع الفئات — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تذكر البطاقة عمولة تحصيل 20 درهماً لكل معاملة عبر بنك دبي التجاري، أو 50 درهماً للشركات و15 درهماً للأفراد عبر إماراتك. يضاف 100 درهم عند تقديم الطلب عبر مراكز آمر.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "تذكر البطاقة 100 درهم للخدمة العاجلة، و10 دراهم للابتكار، و100 درهم للطباعة عند التقديم عبر مركز توصيل زاجل؛ لا يحدد هذا النص إجمالي الرسوم لكل حالة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+          "source_title": "تعديل بيانات جميع أنواع الإقامة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تذكر البطاقة 100 درهم للخدمة العاجلة، و10 دراهم للابتكار، و100 درهم للطباعة عند التقديم عبر مركز توصيل زاجل؛ لا يحدد هذا النص إجمالي الرسوم لكل حالة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "The card lists AED 100 for urgent service, AED 10 innovation fee, and AED 100 printing fee when submitted through ZAJEL Courier Center. This text does not establish the total fee for every case.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+          "source_title": "تعديل بيانات جميع أنواع الإقامة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تذكر البطاقة 100 درهم للخدمة العاجلة، و10 دراهم للابتكار، و100 درهم للطباعة عند التقديم عبر مركز توصيل زاجل؛ لا يحدد هذا النص إجمالي الرسوم لكل حالة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "200 درهم لمدة 30 يومًا أو 300 درهم لمدة 60 يومًا أو 400 درهم لمدة 90 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. التأمين الطبي: 40 أو 60 أو 90 درهماً بحسب المدة. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+          "source_title": "تأشيرة زيارة قريب أو صديق لدخول واحد في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لمدة 30 يومًا أو 300 درهم لمدة 60 يومًا أو 400 درهم لمدة 90 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. التأمين الطبي: 40 أو 60 أو 90 درهماً بحسب المدة. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+          "source_title": "تأشيرة زيارة قريب أو صديق لدخول واحد في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 200 for 30 days, AED 300 for 60 days or AED 400 for 90 days, plus 5% VAT. Security deposit of AED 1,000, AED 20 guarantee service fee and AED 40 collection and return fee. Medical insurance is AED 40, AED 60 or AED 90 according to the duration. If the sponsored person is inside the UAE: AED 10 Knowledge Dirham, AED 10 Innovation Dirham and AED 500 inside-country fee. The total may vary by case.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+          "source_title": "تأشيرة زيارة قريب أو صديق لدخول واحد في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لمدة 30 يومًا أو 300 درهم لمدة 60 يومًا أو 400 درهم لمدة 90 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. التأمين الطبي: 40 أو 60 أو 90 درهماً بحسب المدة. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+          "source_title": "تأشيرة زيارة قريب أو صديق لدخول واحد في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "تذكر البطاقة 200 درهم للإصدار إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً للخدمة، و100 درهم للاستعجال. يضاف 100 درهم عند التقديم عبر آمر. وتذكر ملاحظة البطاقة أن رسم الإصدار أو التجديد 100 درهم عن كل سنة؛ تحدد الجهة الإجمالي وفق المدة والقناة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+          "source_title": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تذكر البطاقة 200 درهم للإصدار إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً للخدمة، و100 درهم للاستعجال. يضاف 100 درهم عند التقديم عبر آمر. وتذكر ملاحظة البطاقة أن رسم الإصدار أو التجديد 100 درهم عن كل سنة؛ تحدد الجهة الإجمالي وفق المدة والقناة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+          "source_title": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "The card lists AED 200 issuance fee plus 5% VAT, AED 10 Knowledge Dirham, AED 10 Innovation Dirham, AED 50 service fee and AED 100 urgent fee. An additional AED 100 applies through Amer. The card also notes an issuance or renewal fee of AED 100 per year; the authority determines the total for the period and channel.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+          "source_title": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تذكر البطاقة 200 درهم للإصدار إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً للخدمة، و100 درهم للاستعجال. يضاف 100 درهم عند التقديم عبر آمر. وتذكر ملاحظة البطاقة أن رسم الإصدار أو التجديد 100 درهم عن كل سنة؛ تحدد الجهة الإجمالي وفق المدة والقناة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+          "source_title": "إصدار بطاقة منشأة للقطاع الخاص أو المنطقة الحرة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "تذكر البطاقة 200 درهم للتجديد إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً للخدمة، و100 درهم للاستعجال. وتذكر ملاحظة البطاقة أن رسم الإصدار أو التجديد 100 درهم عن كل سنة؛ تحدد الجهة الإجمالي وفق المدة والقناة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "source_title": "تجديد بطاقة المنشأة في دبي لجميع الفئات — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تذكر البطاقة 200 درهم للتجديد إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً للخدمة، و100 درهم للاستعجال. وتذكر ملاحظة البطاقة أن رسم الإصدار أو التجديد 100 درهم عن كل سنة؛ تحدد الجهة الإجمالي وفق المدة والقناة.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "source_title": "تجديد بطاقة المنشأة في دبي لجميع الفئات — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "The card lists AED 200 renewal fee plus 5% VAT, AED 10 Knowledge Dirham, AED 10 Innovation Dirham, AED 50 service fee and AED 100 urgent fee. The card also notes an issuance or renewal fee of AED 100 per year; the authority determines the total for the period and channel.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "source_title": "تجديد بطاقة المنشأة في دبي لجميع الفئات — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تذكر البطاقة 200 درهم للتجديد إضافة إلى ضريبة القيمة المضافة 5%، و10 دراهم للمعرفة، و10 دراهم للابتكار، و50 درهماً للخدمة، و100 درهم للاستعجال. وتذكر ملاحظة البطاقة أن رسم الإصدار أو التجديد 100 درهم عن كل سنة؛ تحدد الجهة الإجمالي وفق المدة والقناة.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "source_title": "تجديد بطاقة المنشأة في دبي لجميع الفئات — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "لا توجد رسوم للخدمة؛ يسدد مبلغ المخالفات المستحق فقط وفق بطاقة الجهة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+          "source_title": "سداد غرامات مخالفي قانون الإقامة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "لا توجد رسوم للخدمة؛ يسدد مبلغ المخالفات المستحق فقط وفق بطاقة الجهة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+          "source_title": "سداد غرامات مخالفي قانون الإقامة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "There are no service fees; only the outstanding violation fines are payable according to the official card.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+          "source_title": "سداد غرامات مخالفي قانون الإقامة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "لا توجد رسوم للخدمة؛ يسدد مبلغ المخالفات المستحق فقط وفق بطاقة الجهة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+          "source_title": "سداد غرامات مخالفي قانون الإقامة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "200 درهم لمدة 60 يومًا أو 300 درهم لمدة 90 يومًا أو 400 درهم لمدة 120 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان مالي 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-استكشاف-فرص-عمل-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-استكشاف-فرص-عمل-في-دبي",
+          "source_title": "تأشيرة استكشاف فرص عمل في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لمدة 60 يومًا أو 300 درهم لمدة 90 يومًا أو 400 درهم لمدة 120 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان مالي 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "48 ساعة وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-استكشاف-فرص-عمل-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-استكشاف-فرص-عمل-في-دبي",
+          "source_title": "تأشيرة استكشاف فرص عمل في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 200 for 60 days, AED 300 for 90 days or AED 400 for 120 days, plus 5% VAT. Security deposit of AED 1,000, AED 20 guarantee service fee and AED 40 collection and return fee. If the sponsored person is inside the UAE: AED 10 Knowledge Dirham, AED 10 Innovation Dirham and AED 500 inside-country fee. The total may vary by case.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-استكشاف-فرص-عمل-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-استكشاف-فرص-عمل-في-دبي",
+          "source_title": "تأشيرة استكشاف فرص عمل في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "200 درهم لمدة 60 يومًا أو 300 درهم لمدة 90 يومًا أو 400 درهم لمدة 120 يومًا، إضافة إلى ضريبة القيمة المضافة 5%. ضمان مالي 1,000 درهم، و20 درهماً لخدمة الضمان و40 درهماً لتحصيله ورده. إذا كان المكفول داخل الدولة: 10 دراهم للمعرفة و10 دراهم للابتكار و500 درهم رسم داخل الدولة. قد يختلف الإجمالي بحسب الحالة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "48 hours according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تأشيرة-استكشاف-فرص-عمل-في-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تأشيرة-استكشاف-فرص-عمل-في-دبي",
+          "source_title": "تأشيرة استكشاف فرص عمل في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+          "source_url": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "48 ساعة وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "GDRFA Dubai",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "externalModelGate": "NOT_PASSED"
+}
