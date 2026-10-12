@@ -890,5 +890,6 @@ export const recordedDetailTranslations = Object.freeze({
   "مدة الإنجاز المتوقعة المنشورة رسميًا: 48 ساعة.": "Officially published expected completion time: 48 hours.",
   "تختلف الرسوم حسب نوع التعديل ورمز نشاط النقل؛ تعرض بطاقة RTA جدول الرسوم التفصيلي، ورسوم حذف النشاط 220 درهمًا وفق البطاقة الحالية.": "Fees vary by modification type and transport activity code; the official card provides the full table and currently lists AED 220 for removing an activity.",
   "من 3 إلى 15 يوم عمل بحسب الموافقات المطلوبة.": "3 to 15 working days depending on required approvals.",
-  "تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.": "Fees vary by commercial transport activity code and appear in the official activity table and payment screen."
+  "تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.": "Fees vary by commercial transport activity code and appear in the official activity table and payment screen.",
+  "يعرض دليل الوزارة رسمًا قدره 2000 درهم للفئات التجارية المدرجة الصادرة داخل الإمارات أو خارجها، باستثناء فئة «مستند مصدق في الخارج» ضمن الصادر من الإمارات ورسومها 150 درهمًا. راجع فئة المستند والإجمالي قبل الدفع. الفواتير التجارية وشهادات المنشأ خارج نطاق هذه الخدمة.": "The Ministry's guide lists AED 2,000 for the listed commercial categories issued inside or outside the UAE, except Document Attested outside among UAE-issued documents, listed at AED 150. Confirm the document category and total before payment. Commercial invoices and certificates of origin are outside this service."
 });
