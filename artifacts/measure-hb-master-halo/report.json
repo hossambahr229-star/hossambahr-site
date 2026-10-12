@@ -1,0 +1,78 @@
+{
+  "capturedAt": "2026-10-12T16:40:30.911Z",
+  "source": "LIVE_PRODUCTION_TEMPORARY_LABEL_PRESENTATION",
+  "labels": [
+    [
+      "الهيئة الاتحادية للهوية والجنسية",
+      "ICP"
+    ],
+    [
+      "وزارة الموارد البشرية والتوطين",
+      "MOHRE"
+    ],
+    [
+      "دائرة الاقتصاد والسياحة",
+      "DET"
+    ],
+    [
+      "دائرة الأراضي والأملاك",
+      "DLD"
+    ],
+    [
+      "بلدية دبي",
+      "Dubai Municipality"
+    ],
+    [
+      "الهيئة الاتحادية للضرائب",
+      "Federal Tax Authority"
+    ],
+    [
+      "شرطة دبي",
+      "Dubai Police"
+    ]
+  ],
+  "results": [
+    {
+      "name": "baseline",
+      "mad": 34.44339325134027,
+      "changed": 25.99828635690188,
+      "overflow": false
+    },
+    {
+      "name": "white-halo",
+      "shadow": "0 0 0 6px #ffffff15,0 0 23px 9px #ffffffa3",
+      "mad": 35.50564074186466,
+      "changed": 27.757448099819708,
+      "overflow": false
+    },
+    {
+      "name": "white-gold-halo",
+      "shadow": "0 0 0 6px #ffffff15,0 0 18px 6px #ffffffb8,0 0 28px 10px #d6b36780",
+      "mad": 35.752806983095624,
+      "changed": 27.749415397797257,
+      "overflow": false
+    },
+    {
+      "name": "warm-halo",
+      "shadow": "0 0 0 6px #ffffff15,0 0 23px 9px #f4e2ae9e",
+      "mad": 34.899213390216765,
+      "changed": 26.96310312204352,
+      "overflow": false
+    },
+    {
+      "name": "regular-kicker",
+      "weight": 400,
+      "mad": 34.29610622207149,
+      "changed": 25.934917263169165,
+      "overflow": false
+    },
+    {
+      "name": "white-gold-regular",
+      "shadow": "0 0 0 6px #ffffff15,0 0 18px 6px #ffffffb8,0 0 28px 10px #d6b36780",
+      "weight": 400,
+      "mad": 35.606843862123135,
+      "changed": 27.703896753003338,
+      "overflow": false
+    }
+  ]
+}
