@@ -1,0 +1,33 @@
+name: Live Reviewed ICP Policy Fields
+on:
+  push:
+    branches: [agent/live-reviewed-icp-policy-fields]
+    paths: [scripts/live-reviewed-icp-policy-fields.mjs, .github/workflows/live-reviewed-icp-policy-fields.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-reviewed-icp-policy-fields.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-reviewed-icp-policy-fields
+          path: artifacts/live-reviewed-icp-policy-fields
+      - name: Preserve live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git fetch origin agent/live-reviewed-icp-policy-fields
+          git reset --mixed origin/agent/live-reviewed-icp-policy-fields
+          git add artifacts/live-reviewed-icp-policy-fields
+          if ! git diff --cached --quiet; then
+            git commit -m "Record newly grounded MOE eDAS AI Production fields [skip ci]"
+            git push origin HEAD:agent/live-reviewed-icp-policy-fields
+          fi
