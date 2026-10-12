@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-12T16:31:52.308Z",
+  "generatedAt": "2026-10-12T16:39:32.937Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
-    "REACHABLE": 161,
+    "REACHABLE": 162,
     "ACCESS_RESTRICTED": 9,
-    "TEMPORARILY_UNAVAILABLE": 1,
+    "TEMPORARILY_UNAVAILABLE": 0,
     "NETWORK_UNVERIFIED": 76,
     "BROKEN": 0
   },
@@ -127,10 +127,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 500,
+      "status": 200,
       "finalUrl": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
-      "result": "TEMPORARILY_UNAVAILABLE",
-      "reason": "HTTP 500"
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",
