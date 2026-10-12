@@ -1,0 +1,264 @@
+{
+  "capturedAt": "2026-10-12T06:48:00.574Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": false,
+  "scope": "Only newly published reviewed RTA NOC fee notes and modification time in selected-service contexts, Arabic and English. Accepted source/pages are reused; no universal price or renewal duration is asserted.",
+  "checks": [
+    {
+      "slug": "rta-modify-trade-license-noc-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "تختلف الرسوم حسب نوع التعديل ورمز نشاط النقل؛ تعرض بطاقة RTA جدول الرسوم التفصيلي، ورسوم حذف النشاط 220 درهمًا وفق البطاقة الحالية.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:rta-modify-trade-license-noc-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:rta-modify-trade-license-noc-dubai",
+          "source_title": "طلب شهادة عدم ممانعة لتعديل رخصة تجارية من RTA — هيئة الطرق والمواصلات في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+          "last_verified_at": "2026-10-04T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "تختلف الرسوم حسب نوع التعديل ورمز نشاط النقل؛ تعرض بطاقة RTA جدول الرسوم التفصيلي، ورسوم حذف النشاط 220 درهمًا وفق البطاقة الحالية.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "rta-modify-trade-license-noc-dubai",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "من 3 إلى 15 يوم عمل بحسب الموافقات المطلوبة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:rta-modify-trade-license-noc-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:rta-modify-trade-license-noc-dubai",
+          "source_title": "طلب شهادة عدم ممانعة لتعديل رخصة تجارية من RTA — هيئة الطرق والمواصلات في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+          "last_verified_at": "2026-10-04T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "من 3 إلى 15 يوم عمل بحسب الموافقات المطلوبة.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "rta-modify-trade-license-noc-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "Verified source record, in its original language:\nتختلف الرسوم حسب نوع التعديل ورمز نشاط النقل؛ تعرض بطاقة RTA جدول الرسوم التفصيلي، ورسوم حذف النشاط 220 درهمًا وفق البطاقة الحالية.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:rta-modify-trade-license-noc-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:rta-modify-trade-license-noc-dubai",
+          "source_title": "طلب شهادة عدم ممانعة لتعديل رخصة تجارية من RTA — هيئة الطرق والمواصلات في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+          "last_verified_at": "2026-10-04T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "تختلف الرسوم حسب نوع التعديل ورمز نشاط النقل؛ تعرض بطاقة RTA جدول الرسوم التفصيلي، ورسوم حذف النشاط 220 درهمًا وفق البطاقة الحالية.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Reviewed fact absent",
+        "English translation absent"
+      ]
+    },
+    {
+      "slug": "rta-modify-trade-license-noc-dubai",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "Verified source record, in its original language:\nمن 3 إلى 15 يوم عمل بحسب الموافقات المطلوبة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:rta-modify-trade-license-noc-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:rta-modify-trade-license-noc-dubai",
+          "source_title": "طلب شهادة عدم ممانعة لتعديل رخصة تجارية من RTA — هيئة الطرق والمواصلات في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534",
+          "last_verified_at": "2026-10-04T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "من 3 إلى 15 يوم عمل بحسب الموافقات المطلوبة.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Reviewed fact absent",
+        "English translation absent"
+      ]
+    },
+    {
+      "slug": "rta-renew-trade-license-noc-dubai",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:rta-renew-trade-license-noc-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:rta-renew-trade-license-noc-dubai",
+          "source_title": "طلب شهادة عدم ممانعة لتجديد رخصة تجارية من RTA — هيئة الطرق والمواصلات في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438",
+          "last_verified_at": "2026-10-04T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "rta-renew-trade-license-noc-dubai",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "Verified source record, in its original language:\nتختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:rta-renew-trade-license-noc-dubai",
+          "policy_version": 2,
+          "workflow_key": "service:rta-renew-trade-license-noc-dubai",
+          "source_title": "طلب شهادة عدم ممانعة لتجديد رخصة تجارية من RTA — هيئة الطرق والمواصلات في دبي",
+          "source_url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438",
+          "last_verified_at": "2026-10-04T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.",
+            "source_refs": [
+              "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": [
+        "Reviewed fact absent",
+        "English translation absent"
+      ]
+    }
+  ],
+  "externalModelGate": "NOT_PASSED"
+}
