@@ -21,7 +21,63 @@
     }
   },
   "liveAcceptance": {
-    "status": "PENDING_DEPLOYMENT"
+    "status": "PASS",
+    "run": 38279238051,
+    "capturedAt": "2026-10-12T16:47:25.919Z",
+    "branch": "agent/live-how-step-grid-acceptance",
+    "report": "artifacts/live-regional-visual/report.json",
+    "nativeGrid": {
+      "width": 1054.09375,
+      "gap": "42px",
+      "steps": [
+        {
+          "width": 227.5,
+          "height": 44,
+          "top": 746
+        },
+        {
+          "width": 215.484375,
+          "height": 44,
+          "top": 746
+        },
+        {
+          "width": 225.515625,
+          "height": 44,
+          "top": 746
+        },
+        {
+          "width": 259.578125,
+          "height": 44,
+          "top": 746
+        }
+      ]
+    },
+    "region": {
+      "name": "how-it-works",
+      "bounds": {
+        "left": 31,
+        "top": 722,
+        "width": 1054,
+        "height": 89
+      },
+      "meanAbsoluteDifference": 11.357301238726734,
+      "changedPixelPercent": 7.881158987698016
+    },
+    "pageErrors": 0,
+    "publicationRun": 38279235323,
+    "geometryWidths": [
+      1440,
+      1366,
+      430,
+      390,
+      360
+    ],
+    "fullFrame": {
+      "deployedCommit": "c784c8559d0153b0e525aec7a1841d8dddb81cfb",
+      "mad": 24.58748408564815,
+      "changedPercent": 18.45160590277778,
+      "pixelFidelity": "NOT_DECLARED"
+    }
   },
   "pixelFidelity": "NOT_DECLARED",
   "externalSubmissionPerformed": false
