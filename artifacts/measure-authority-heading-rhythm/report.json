@@ -1,0 +1,65 @@
+{
+  "capturedAt": "2026-10-12T06:18:51.035Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_BROWSER_STYLE",
+  "styles": {
+    "font": "700 15px / 18.3px Cairo, Arial, Tahoma, sans-serif",
+    "title": {
+      "x": 596.921875,
+      "y": 808.703125,
+      "width": 246.15625,
+      "height": 18.296875,
+      "top": 808.703125,
+      "right": 843.078125,
+      "bottom": 827,
+      "left": 596.921875
+    },
+    "section": {
+      "x": 0,
+      "y": 803,
+      "width": 1440,
+      "height": 85,
+      "top": 803,
+      "right": 1440,
+      "bottom": 888,
+      "left": 0
+    }
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "css": "",
+      "mad": 20.10614651416122,
+      "changed": 14.681372549019608
+    },
+    {
+      "name": "title14",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-authorities .section-heading h2{font-size:14px!important}",
+      "mad": 19.944648692810457,
+      "changed": 14.584150326797385
+    },
+    {
+      "name": "title14-noto",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-authorities .section-heading h2{font:700 14px \"HB Sans Arabic\",sans-serif!important}",
+      "mad": 19.156595860566448,
+      "changed": 14.195261437908496
+    },
+    {
+      "name": "title15-noto",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-authorities .section-heading h2{font:700 15px \"HB Sans Arabic\",sans-serif!important}",
+      "mad": 19.497363834422657,
+      "changed": 14.38480392156863
+    },
+    {
+      "name": "title14-up2",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-authorities .section-heading h2{font-size:14px!important;position:relative;top:-2px}",
+      "mad": 19.64083605664488,
+      "changed": 14.447712418300654
+    },
+    {
+      "name": "title15-up2",
+      "css": "html[lang=\"ar\"].hb-phase8 body[data-home-geometry] .premium-authorities .section-heading h2{position:relative;top:-2px}",
+      "mad": 19.910002723311546,
+      "changed": 14.588235294117647
+    }
+  ]
+}
