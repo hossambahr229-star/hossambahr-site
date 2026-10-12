@@ -421,3 +421,6 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 
 /* Measured compact authority heading; preserve verified coverage wording and the shared section grid. */
 @media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry]{--type-section-compact:14px}html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-authorities .section-heading h2{font:700 var(--type-section-compact) "HB Sans Arabic",sans-serif!important}}
+
+/* Measured internal authority-strip alignment within the unchanged shared page grid. */
+@media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry]{--authority-inset-left:40px;--authority-inset-right:90px}html[lang="ar"].hb-phase8 body[data-home-geometry] .authority-pills{margin-left:var(--authority-inset-left)!important;margin-right:var(--authority-inset-right)!important}}
