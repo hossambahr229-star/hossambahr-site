@@ -1,0 +1,54 @@
+{
+  "capturedAt": "2026-10-12T16:40:20.615Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "scope": "Only four changed DET/FTA logo-click journeys and neutral directory heading. Existing accepted service pathways, WhatsApp and other authority journeys are not repeated.",
+  "checks": [
+    {
+      "locale": "ar",
+      "image": "det.svg",
+      "href": "/authorities/det-dubai/",
+      "title": "دائرة الاقتصاد والسياحة",
+      "heading": "الجهات الحكومية في دليل المنصة",
+      "url": "https://hossambahr.com/authorities/det-dubai/",
+      "httpStatus": 200,
+      "h1": "دائرة الاقتصاد والسياحة - دبي",
+      "failures": []
+    },
+    {
+      "locale": "ar",
+      "image": "fta.webp",
+      "href": "/authorities/fta/",
+      "title": "الهيئة الاتحادية للضرائب",
+      "heading": "الجهات الحكومية في دليل المنصة",
+      "url": "https://hossambahr.com/authorities/fta/",
+      "httpStatus": 200,
+      "h1": "الهيئة الاتحادية للضرائب (FTA)",
+      "failures": []
+    },
+    {
+      "locale": "en",
+      "image": "det.svg",
+      "href": "/en/authorities/det-dubai/",
+      "title": "Economy",
+      "heading": "Government authority directory",
+      "url": "https://hossambahr.com/en/authorities/det-dubai/",
+      "httpStatus": 200,
+      "h1": "Dubai Department of Economy and Tourism (DET)",
+      "failures": []
+    },
+    {
+      "locale": "en",
+      "image": "fta.webp",
+      "href": "/en/authorities/fta/",
+      "title": "Federal Tax Authority",
+      "heading": "Government authority directory",
+      "url": "https://hossambahr.com/en/authorities/fta/",
+      "httpStatus": 200,
+      "h1": "Federal Tax Authority",
+      "failures": []
+    }
+  ],
+  "externalSubmissionPerformed": false,
+  "overallFinalGate": "NOT_DECLARED"
+}
