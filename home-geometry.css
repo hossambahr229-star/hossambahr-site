@@ -418,3 +418,6 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 
 /* Measured native artwork size within the approved Arabic 1440px panel. */
 @media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{width:57%!important;height:205px!important;bottom:13px!important}}
+
+/* Measured compact authority heading; preserve verified coverage wording and the shared section grid. */
+@media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry]{--type-section-compact:14px}html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-authorities .section-heading h2{font:700 var(--type-section-compact) "HB Sans Arabic",sans-serif!important}}
