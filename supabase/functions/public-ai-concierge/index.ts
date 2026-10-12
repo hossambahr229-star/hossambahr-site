@@ -76,7 +76,12 @@ type SemanticState = {
 
 async function resolveSemanticState(latestTurn:string, history:any[], context:any, fallbackGoal:string):Promise<SemanticState>{
   const latestNorm=normalize(latestTurn);
-  const explicitNonFamilyTopic=has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"]) && !detectRelationship(latestTurn);
+  const explicitReviewedServiceTopic=[
+    "new-healthcare-facility-license-dubai","activate-healthcare-facility-license-dubai","health-professional-registration-dubai",
+    "attestation-of-commercial-invoices-via-edas-2-0","equivalency-of-general-education-certificate-from-abroad-grade-12",
+    "equivalency-of-general-education-certificate-in-the-uae-grade-12","confirming-the-authenticity-of-equivalency"
+  ].some(slug=>specialBoost(latestNorm,slug,detectJurisdiction(latestNorm))>=90000);
+  const explicitNonFamilyTopic=(explicitReviewedServiceTopic || has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"])) && !detectRelationship(latestTurn);
   const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),family_members:Array.isArray(context?.family_members)?context.family_members:[],subject_role:context?.subject_role??null,entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null,action:context?.action??null};
   const merged=mergeSemanticContext(latestTurn,priorSemantic,fallbackGoal,{newTopic:explicitNonFamilyTopic});
   const fallback:SemanticState={active_service_id:context?.active_service_id??context?.service_slug??null,last_answer_topic:context?.last_answer_topic??null,pending_clarification:context?.pending_clarification??null,known_facts:(context?.known_facts&&typeof context.known_facts==="object")?context.known_facts:{},turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,family_members:merged.family_members,subject_role:merged.subject_role,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,action:merged.action,business_activity:null,confidence:"low"};
@@ -352,6 +357,27 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   if (taxRegistration && uaeTaxContext && !otherTaxOperation) {
     if (has(goal, ["ضريبه الشركات","corporate tax"]) && slug === "corporate-tax-registration-uae") score += 9000;
     if (has(goal, ["القيمه المضافه","value added tax","vat"]) && slug === "vat-registration-uae") score += 9000;
+  }
+  // Preserve the education document type, certificate origin and eDAS operation.
+  const changedEducationOperation = has(goal, ["الغاء","الغي","تعديل","تجديد","استرداد","cancel","amend","modify","renew","refund"]);
+  const edasContext = hasPhrase(goal, ["eDAS","e DAS"]);
+  const edasDocument = has(goal, ["فاتورة تجارية","فواتير تجارية","شهادة منشأ","commercial invoice","certificate of origin"]);
+  if (edasContext && edasDocument && !changedEducationOperation && slug === "attestation-of-commercial-invoices-via-edas-2-0") score += 90000;
+  const equivalencyRequest = has(goal, ["معادلة","اعادل","equivalen"]);
+  const authenticityRequest = has(goal, ["التحقق من صحة المعادلة","صحة المعادلة","confirming the authenticity","authenticity of equivalency","authenticity of an equivalency","verify equivalency"]);
+  const uaeEducationContext = hasPhrase(goal, ["UAE","United Arab Emirates","الإمارات","الدولة"]);
+  const exactArabicAuthenticityName = has(goal, ["التحقق من صحة المعادلة أو التصديق"]);
+  const otherEducationAuthority = hasPhrase(goal, ["KHDA","ADEK","SPEA","هيئة المعرفة والتنمية البشرية","دائرة التعليم والمعرفة","هيئة الشارقة للتعليم الخاص"]);
+  const foreignEducationAuthority = has(goal, ["Saudi Ministry","Ministry of Education in Saudi","Qatar Ministry","Oman Ministry","Kuwait Ministry","Bahrain Ministry","Egypt Ministry","وزارة التعليم السعودية","وزارة التربية والتعليم السعودية","وزارة التربية والتعليم في قطر","وزارة التربية والتعليم في عمان","وزارة التربية والتعليم في مصر"]);
+  const secondaryEducation = !/\bgrade (?:[1-9]|10|11)\b/.test(goal) && has(goal, ["ثانوي","grade 12","general education","high school","secondary school"]);
+  const certificateFromAbroad = has(goal, ["من خارج الإمارات","من خارج الدولة","from abroad","certificate issued outside the UAE"]);
+  const certificateInsideUae = has(goal, ["داخل الإمارات","داخل الدولة","certificate in the UAE","certificate in UAE","certificate within the UAE","certificate within UAE"]);
+  if (equivalencyRequest && !changedEducationOperation && !otherEducationAuthority && !foreignEducationAuthority) {
+    if (authenticityRequest && (uaeEducationContext || exactArabicAuthenticityName) && slug === "confirming-the-authenticity-of-equivalency") score += 90000;
+    if (!authenticityRequest && secondaryEducation && uaeEducationContext) {
+      if (certificateFromAbroad && slug === "equivalency-of-general-education-certificate-from-abroad-grade-12") score += 90000;
+      if (!certificateFromAbroad && certificateInsideUae && slug === "equivalency-of-general-education-certificate-in-the-uae-grade-12") score += 90000;
+    }
   }
   const fiveYearTourist = has(goal,["سياحيه","سياحية","سياحه","سياحة","tourist","tourism"]) && (has(goal,["5 سنين","5 سنوات","خمس سنين","خمس سنوات","five years","5 years"]) || (has(goal,["متعدده","متعددة","multiple","multi"]) && has(goal,["دخول","entry"])));
   if (fiveYearTourist) {
@@ -867,7 +893,7 @@ export default {
     const history = Array.isArray(body?.history) ? body.history.slice(-8) : [];
     const context = body?.context && typeof body.context === "object" ? body.context : {};
     const semantic = await resolveSemanticState(latestTurn, history, context, goal);
-    const contextualFollowUp = isContextualFollowUp(latestTurn) && Boolean(context?.active_service_id || context?.service_slug);
+    const contextualFollowUp = !["new_topic","service_switch"].includes(semantic.turn_type) && isContextualFollowUp(latestTurn) && Boolean(context?.active_service_id || context?.service_slug);
     const relationship = semantic.relationship;
     const semanticGoal = scrubGoal(semantic.resolved_query || goal);
     const wantsStream = body?.stream === true;
