@@ -1,6 +1,6 @@
 {
   "recordedAt": "2026-10-12",
-  "lastAcceptedDeployedCommit": "ebb6ce055bb148add210ea132237ab510a7e0423",
+  "lastAcceptedDeployedCommit": "d9d6e9fb0b6f75b4648b8d2c6f175f6ab0a0a48d",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -36,11 +36,15 @@
     440,
     441,
     442,
-    443
+    443,
+    444,
+    445,
+    446,
+    447
   ],
   "production": {
     "publicationGate": {
-      "run": 38215630079,
+      "run": 38277506331,
       "status": "PASS"
     },
     "geometry": {
@@ -55,8 +59,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 25.10124614197531,
-      "changedPixelPercent": 18.65205439814815,
+      "meanAbsolutePixelDifference": 24.824007282021604,
+      "changedPixelPercent": 18.59982638888889,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -164,6 +168,68 @@
       "englishRun": 38216419159,
       "englishCapturedAt": "2026-10-12T07:12:28.141Z",
       "note": "Initial English test incorrectly expected a FAQ absent from the English template. Corrected test verifies actual Processing time translation and recorded Arabic; four Arabic passes reused."
+    },
+    "authorityStripGrid": {
+      "status": "PASS",
+      "run": 38276300903,
+      "capturedAt": "2026-10-12T16:25:11.279Z",
+      "branch": "agent/live-authority-strip-grid-acceptance",
+      "report": "artifacts/live-regional-visual/report.json",
+      "regional": {
+        "previousMad": 21.324310595065313,
+        "mad": 20.16871587531965,
+        "previousChangedPercent": 16.51876,
+        "changedPercent": 15.732946298984036
+      },
+      "nativeInsets": {
+        "left": "40px",
+        "right": "90px"
+      },
+      "visibleOriginalLogos": 7,
+      "pageErrors": 0,
+      "publicationGate": {
+        "run": 38276505783,
+        "status": "PASS"
+      },
+      "fullFrame": {
+        "deployedCommit": "9bec27f8c4c2940933c640a2c60adbe86f1d9fed",
+        "mad": 25.020534336419754,
+        "changedPercent": 18.59714988425926,
+        "geometryPassed": true
+      },
+      "pixelFidelity": "NOT_DECLARED"
+    },
+    "howStepSurface": {
+      "status": "PASS",
+      "run": 38277509003,
+      "capturedAt": "2026-10-12T16:32:58.309Z",
+      "report": "artifacts/live-regional-visual/report.json",
+      "branch": "agent/live-how-step-surface-acceptance",
+      "region": {
+        "name": "how-it-works",
+        "bounds": {
+          "left": 31,
+          "top": 722,
+          "width": 1054,
+          "height": 89
+        },
+        "meanAbsoluteDifference": 14.751220604225743,
+        "changedPixelPercent": 9.984435963584419
+      },
+      "publicationRun": 38277506331,
+      "geometryWidths": [
+        1440,
+        1366,
+        430,
+        390,
+        360
+      ],
+      "fullFrame": {
+        "deployedCommit": "d9d6e9fb0b6f75b4648b8d2c6f175f6ab0a0a48d",
+        "mad": 24.824007282021604,
+        "changedPercent": 18.59982638888889
+      },
+      "pixelFidelity": "NOT_DECLARED"
     }
   },
   "deployedAi": {
@@ -231,8 +297,39 @@
       "run": 38216144605,
       "result": "Official SVG is entirely white. Visually blank on the approved white authority strip; lower pixel error came from disappearing artwork, not fidelity. No product change.",
       "published": false
+    },
+    "bilingualAuthorityLabels": {
+      "run": 38275928147,
+      "result": "All measured variants increased regional error; not published."
+    },
+    "howStepTypography": {
+      "run": 38276415420,
+      "result": "Numeral, contrast and heading-font variants worsened comparison; not published."
+    },
+    "categoryLinkTypography": {
+      "run": 38276820417,
+      "result": "Removing text decoration made no image change; color changes had negligible benefit. No change published."
+    },
+    "aiWelcomeTypography": {
+      "run": 38277230250,
+      "result": "Bundled alternative font appeared heavier than reference despite small numeric improvement; excluded after visual inspection."
+    },
+    "featuredButtonDetails": {
+      "run": 38277688145,
+      "result": "Negligible change or worse comparison; no change published."
     }
   },
   "externalSubmissionPerformed": false,
-  "overallFinalGate": "NOT_DECLARED"
+  "overallFinalGate": "NOT_DECLARED",
+  "pendingProductionAcceptance": {
+    "authorityDirectoryRoutes": {
+      "pr": 447,
+      "status": "PENDING_ACTUAL_PRODUCTION_CLICKS",
+      "cases": 4
+    },
+    "howStepGrid": {
+      "status": "CANDIDATE_ONLY",
+      "measurementRun": 38278316337
+    }
+  }
 }
