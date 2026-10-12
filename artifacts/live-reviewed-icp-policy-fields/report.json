@@ -1,0 +1,1157 @@
+{
+  "capturedAt": "2026-10-12T06:21:18.191Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "scope": "Only newly published reviewed ICP fee/time facts within explicitly selected public service contexts, Arabic and English. Accepted source/pages and unrelated service identity tests are not repeated; exemption/refund fees remain unverified and absent.",
+  "checks": [
+    {
+      "slug": "بدل-فاقد-أو-تالف-للهوية",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "300 درهم لبدل فاقد أو تالف و100 درهم للخدمات الذكية. تسرد البطاقة 150 درهماً للخدمة العاجلة بالمراكز و150 درهماً للاستبدال مع تحديث البيانات بالمراكز. تحقّق من الرسوم المنطبقة على الخيار قبل الدفع.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:بدل-فاقد-أو-تالف-للهوية",
+          "policy_version": 2,
+          "workflow_key": "service:بدل-فاقد-أو-تالف-للهوية",
+          "source_title": "بدل فاقد أو تالف للهوية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "300 درهم لبدل فاقد أو تالف و100 درهم للخدمات الذكية. تسرد البطاقة 150 درهماً للخدمة العاجلة بالمراكز و150 درهماً للاستبدال مع تحديث البيانات بالمراكز. تحقّق من الرسوم المنطبقة على الخيار قبل الدفع.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP / مركز خدمة",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "بدل-فاقد-أو-تالف-للهوية",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:بدل-فاقد-أو-تالف-للهوية",
+          "policy_version": 2,
+          "workflow_key": "service:بدل-فاقد-أو-تالف-للهوية",
+          "source_title": "بدل فاقد أو تالف للهوية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP / مركز خدمة",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "بدل-فاقد-أو-تالف-للهوية",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 300 replacement and AED 100 smart services. The card separately lists AED 150 urgent-center service and AED 150 replacement with data update at centers. Confirm the applicable option before payment.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:بدل-فاقد-أو-تالف-للهوية",
+          "policy_version": 2,
+          "workflow_key": "service:بدل-فاقد-أو-تالف-للهوية",
+          "source_title": "بدل فاقد أو تالف للهوية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "300 درهم لبدل فاقد أو تالف و100 درهم للخدمات الذكية. تسرد البطاقة 150 درهماً للخدمة العاجلة بالمراكز و150 درهماً للاستبدال مع تحديث البيانات بالمراكز. تحقّق من الرسوم المنطبقة على الخيار قبل الدفع.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP / مركز خدمة",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "بدل-فاقد-أو-تالف-للهوية",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "5 days according to the ICP card; working days are not specified.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:بدل-فاقد-أو-تالف-للهوية",
+          "policy_version": 2,
+          "workflow_key": "service:بدل-فاقد-أو-تالف-للهوية",
+          "source_title": "بدل فاقد أو تالف للهوية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP / مركز خدمة",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "الإعفاء-من-غرامة-تأخير-الهوية",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنهما يوما عمل.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:الإعفاء-من-غرامة-تأخير-الهوية",
+          "policy_version": 2,
+          "workflow_key": "service:الإعفاء-من-غرامة-تأخير-الهوية",
+          "source_title": "الإعفاء من غرامة تأخير الهوية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنهما يوما عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "الإعفاء-من-غرامة-تأخير-الهوية",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "2 days according to the ICP card; it does not specify working days.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:الإعفاء-من-غرامة-تأخير-الهوية",
+          "policy_version": 2,
+          "workflow_key": "service:الإعفاء-من-غرامة-تأخير-الهوية",
+          "source_title": "الإعفاء من غرامة تأخير الهوية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنهما يوما عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+          "policy_version": 2,
+          "workflow_key": "service:استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+          "source_title": "استرداد رسوم إصدار الهوية غير المكتمل — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "5 days according to the ICP card; working days are not specified.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+          "policy_version": 2,
+          "workflow_key": "service:استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+          "source_title": "استرداد رسوم إصدار الهوية غير المكتمل — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "issue-emirates-id-uae",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "للمقيمين: 100 درهم عن كل سنة إقامة و100 درهم للخدمات الذكية. لمواطني الخليج: 100 درهم لبطاقة 5 سنوات و100 درهم للخدمات الذكية. للمواطنين: 100 درهم لمدة 5 سنوات أو 200 درهم لمدة 10 سنوات بحسب فئة العمر في البطاقة. تسرد الهيئة 150 درهماً للخدمة العاجلة بالمراكز عند انطباقها؛ تحقق من الإجمالي والخيار قبل الدفع.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issue-emirates-id-uae",
+          "policy_version": 2,
+          "workflow_key": "service:issue-emirates-id-uae",
+          "source_title": "إصدار الهوية الإماراتية لأول مرة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "للمقيمين: 100 درهم عن كل سنة إقامة و100 درهم للخدمات الذكية. لمواطني الخليج: 100 درهم لبطاقة 5 سنوات و100 درهم للخدمات الذكية. للمواطنين: 100 درهم لمدة 5 سنوات أو 200 درهم لمدة 10 سنوات بحسب فئة العمر في البطاقة. تسرد الهيئة 150 درهماً للخدمة العاجلة بالمراكز عند انطباقها؛ تحقق من الإجمالي والخيار قبل الدفع.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "اختلاف الاسم أو رقم الجواز بين طلب الإقامة والهوية يسبب تأخيراً وتصحيحاً إضافياً.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "issue-emirates-id-uae",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issue-emirates-id-uae",
+          "policy_version": 2,
+          "workflow_key": "service:issue-emirates-id-uae",
+          "source_title": "إصدار الهوية الإماراتية لأول مرة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "اختلاف الاسم أو رقم الجواز بين طلب الإقامة والهوية يسبب تأخيراً وتصحيحاً إضافياً.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "issue-emirates-id-uae",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "Residents: AED 100 per residence year and AED 100 smart services. GCC citizens: AED 100 for 5 years and AED 100 smart services. UAE nationals: AED 100 for 5 years or AED 200 for 10 years according to the card's age category. ICP lists AED 150 urgent-center service where applicable; confirm the total and option before payment.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issue-emirates-id-uae",
+          "policy_version": 2,
+          "workflow_key": "service:issue-emirates-id-uae",
+          "source_title": "إصدار الهوية الإماراتية لأول مرة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "للمقيمين: 100 درهم عن كل سنة إقامة و100 درهم للخدمات الذكية. لمواطني الخليج: 100 درهم لبطاقة 5 سنوات و100 درهم للخدمات الذكية. للمواطنين: 100 درهم لمدة 5 سنوات أو 200 درهم لمدة 10 سنوات بحسب فئة العمر في البطاقة. تسرد الهيئة 150 درهماً للخدمة العاجلة بالمراكز عند انطباقها؛ تحقق من الإجمالي والخيار قبل الدفع.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "اختلاف الاسم أو رقم الجواز بين طلب الإقامة والهوية يسبب تأخيراً وتصحيحاً إضافياً.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "issue-emirates-id-uae",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "5 days according to the ICP card; working days are not specified.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issue-emirates-id-uae",
+          "policy_version": 2,
+          "workflow_key": "service:issue-emirates-id-uae",
+          "source_title": "إصدار الهوية الإماراتية لأول مرة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "اختلاف الاسم أو رقم الجواز بين طلب الإقامة والهوية يسبب تأخيراً وتصحيحاً إضافياً.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "renew-emirates-id-uae",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "للمقيمين: 100 درهم عن كل سنة إقامة و100 درهم للخدمات الذكية. لمواطني الخليج: 100 درهم لبطاقة 5 سنوات و100 درهم للخدمات الذكية. للمواطنين: 100 درهم لمدة 5 سنوات أو 200 درهم لمدة 10 سنوات بحسب فئة العمر في البطاقة. تسرد الهيئة 150 درهماً للخدمة العاجلة بالمراكز عند انطباقها؛ تحقق من الإجمالي والخيار قبل الدفع.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:renew-emirates-id-uae",
+          "policy_version": 2,
+          "workflow_key": "service:renew-emirates-id-uae",
+          "source_title": "تجديد الهوية الإماراتية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "للمقيمين: 100 درهم عن كل سنة إقامة و100 درهم للخدمات الذكية. لمواطني الخليج: 100 درهم لبطاقة 5 سنوات و100 درهم للخدمات الذكية. للمواطنين: 100 درهم لمدة 5 سنوات أو 200 درهم لمدة 10 سنوات بحسب فئة العمر في البطاقة. تسرد الهيئة 150 درهماً للخدمة العاجلة بالمراكز عند انطباقها؛ تحقق من الإجمالي والخيار قبل الدفع.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "تجديد الإقامة دون متابعة طلب الهوية أو استخدام عنوان قديم يؤدي إلى تأخير الاستلام.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "renew-emirates-id-uae",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:renew-emirates-id-uae",
+          "policy_version": 2,
+          "workflow_key": "service:renew-emirates-id-uae",
+          "source_title": "تجديد الهوية الإماراتية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "تجديد الإقامة دون متابعة طلب الهوية أو استخدام عنوان قديم يؤدي إلى تأخير الاستلام.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "renew-emirates-id-uae",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "Residents: AED 100 per residence year and AED 100 smart services. GCC citizens: AED 100 for 5 years and AED 100 smart services. UAE nationals: AED 100 for 5 years or AED 200 for 10 years according to the card's age category. ICP lists AED 150 urgent-center service where applicable; confirm the total and option before payment.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:renew-emirates-id-uae",
+          "policy_version": 2,
+          "workflow_key": "service:renew-emirates-id-uae",
+          "source_title": "تجديد الهوية الإماراتية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "للمقيمين: 100 درهم عن كل سنة إقامة و100 درهم للخدمات الذكية. لمواطني الخليج: 100 درهم لبطاقة 5 سنوات و100 درهم للخدمات الذكية. للمواطنين: 100 درهم لمدة 5 سنوات أو 200 درهم لمدة 10 سنوات بحسب فئة العمر في البطاقة. تسرد الهيئة 150 درهماً للخدمة العاجلة بالمراكز عند انطباقها؛ تحقق من الإجمالي والخيار قبل الدفع.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "تجديد الإقامة دون متابعة طلب الهوية أو استخدام عنوان قديم يؤدي إلى تأخير الاستلام.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "renew-emirates-id-uae",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "5 days according to the ICP card; working days are not specified.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:renew-emirates-id-uae",
+          "policy_version": 2,
+          "workflow_key": "service:renew-emirates-id-uae",
+          "source_title": "تجديد الهوية الإماراتية — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "5 أيام وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "تجديد الإقامة دون متابعة طلب الهوية أو استخدام عنوان قديم يؤدي إلى تأخير الاستلام.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تمديد-التأشيرة-أو-إذن-الدخول",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "تسرد الهيئة 100 درهم للطلب و500 للتمديد المعتاد. توجد رسوم مختلفة للفئات الخاصة وتمديد الصلاحية قبل الوصول؛ راجع فئتك والإجمالي الرسمي قبل الدفع.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تمديد-التأشيرة-أو-إذن-الدخول",
+          "policy_version": 2,
+          "workflow_key": "service:تمديد-التأشيرة-أو-إذن-الدخول",
+          "source_title": "تمديد التأشيرة أو إذن الدخول — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تسرد الهيئة 100 درهم للطلب و500 للتمديد المعتاد. توجد رسوم مختلفة للفئات الخاصة وتمديد الصلاحية قبل الوصول؛ راجع فئتك والإجمالي الرسمي قبل الدفع.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "نوع الطلب واحد: التمديد. تختلف الأهلية والحدود حسب فئة الإذن، وتعرضها بطاقة الخدمة الرسمية.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تمديد-التأشيرة-أو-إذن-الدخول",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تمديد-التأشيرة-أو-إذن-الدخول",
+          "policy_version": 2,
+          "workflow_key": "service:تمديد-التأشيرة-أو-إذن-الدخول",
+          "source_title": "تمديد التأشيرة أو إذن الدخول — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "نوع الطلب واحد: التمديد. تختلف الأهلية والحدود حسب فئة الإذن، وتعرضها بطاقة الخدمة الرسمية.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تمديد-التأشيرة-أو-إذن-الدخول",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "ICP lists AED 100 application and AED 500 standard extension. Special categories and pre-arrival validity have different fees; check your official category and total.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تمديد-التأشيرة-أو-إذن-الدخول",
+          "policy_version": 2,
+          "workflow_key": "service:تمديد-التأشيرة-أو-إذن-الدخول",
+          "source_title": "تمديد التأشيرة أو إذن الدخول — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تسرد الهيئة 100 درهم للطلب و500 للتمديد المعتاد. توجد رسوم مختلفة للفئات الخاصة وتمديد الصلاحية قبل الوصول؛ راجع فئتك والإجمالي الرسمي قبل الدفع.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "نوع الطلب واحد: التمديد. تختلف الأهلية والحدود حسب فئة الإذن، وتعرضها بطاقة الخدمة الرسمية.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تمديد-التأشيرة-أو-إذن-الدخول",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "2 days according to the ICP card; working days are not specified.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تمديد-التأشيرة-أو-إذن-الدخول",
+          "policy_version": 2,
+          "workflow_key": "service:تمديد-التأشيرة-أو-إذن-الدخول",
+          "source_title": "تمديد التأشيرة أو إذن الدخول — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "يومان (2) وفق بطاقة الهيئة؛ لم تحدد البطاقة أنها أيام عمل.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "نوع الطلب واحد: التمديد. تختلف الأهلية والحدود حسب فئة الإذن، وتعرضها بطاقة الخدمة الرسمية.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "amendment-of-visa-data",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "50 درهماً للطلب و100 درهم للخدمة الذكية",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:amendment-of-visa-data",
+          "policy_version": 2,
+          "workflow_key": "service:amendment-of-visa-data",
+          "source_title": "تعديل بيانات التأشيرة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "50 درهماً للطلب و100 درهم للخدمة الذكية",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة للتعديل وبها زر بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "amendment-of-visa-data",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "يومان",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:amendment-of-visa-data",
+          "policy_version": 2,
+          "workflow_key": "service:amendment-of-visa-data",
+          "source_title": "تعديل بيانات التأشيرة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "يومان",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة للتعديل وبها زر بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "amendment-of-visa-data",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 50 for the application and AED 100 for the smart service",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:amendment-of-visa-data",
+          "policy_version": 2,
+          "workflow_key": "service:amendment-of-visa-data",
+          "source_title": "تعديل بيانات التأشيرة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "50 درهماً للطلب و100 درهم للخدمة الذكية",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة للتعديل وبها زر بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "amendment-of-visa-data",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "Two days.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:amendment-of-visa-data",
+          "policy_version": 2,
+          "workflow_key": "service:amendment-of-visa-data",
+          "source_title": "تعديل بيانات التأشيرة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "يومان",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة للتعديل وبها زر بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "amendment-of-residency-permit-data",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "تعرض البطاقة 150 درهمًا لاستبدال الهوية لتحديث المعلومات المعروضة، و100 درهم للخدمات الذكية؛ راجع الفئة المختارة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:amendment-of-residency-permit-data",
+          "policy_version": 2,
+          "workflow_key": "service:amendment-of-residency-permit-data",
+          "source_title": "تعديل بيانات تصريح الإقامة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تعرض البطاقة 150 درهمًا لاستبدال الهوية لتحديث المعلومات المعروضة، و100 درهم للخدمات الذكية؛ راجع الفئة المختارة.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة للتعديل وبها زر بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "amendment-of-residency-permit-data",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "يومان",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:amendment-of-residency-permit-data",
+          "policy_version": 2,
+          "workflow_key": "service:amendment-of-residency-permit-data",
+          "source_title": "تعديل بيانات تصريح الإقامة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "يومان",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة للتعديل وبها زر بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "amendment-of-residency-permit-data",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "The card lists AED 150 for replacing the Emirates ID to update displayed information and AED 100 for smart services. Check the selected category.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:amendment-of-residency-permit-data",
+          "policy_version": 2,
+          "workflow_key": "service:amendment-of-residency-permit-data",
+          "source_title": "تعديل بيانات تصريح الإقامة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "تعرض البطاقة 150 درهمًا لاستبدال الهوية لتحديث المعلومات المعروضة، و100 درهم للخدمات الذكية؛ راجع الفئة المختارة.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة للتعديل وبها زر بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "amendment-of-residency-permit-data",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "Two days.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:amendment-of-residency-permit-data",
+          "policy_version": 2,
+          "workflow_key": "service:amendment-of-residency-permit-data",
+          "source_title": "تعديل بيانات تصريح الإقامة — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "يومان",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة للتعديل وبها زر بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "externalModelGate": "NOT_PASSED"
+}
