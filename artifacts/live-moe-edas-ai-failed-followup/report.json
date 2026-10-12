@@ -1,0 +1,665 @@
+{
+  "capturedAt": "2026-10-12T06:15:02.199Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "checks": [
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "150 درهماً لكل فاتورة أو شهادة منشأ.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:attestation-of-commercial-invoices-via-edas-2-0",
+          "policy_version": 2,
+          "workflow_key": "service:attestation-of-commercial-invoices-via-edas-2-0",
+          "source_title": "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0 — وزارة الخارجية",
+          "source_url": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "150 درهماً لكل فاتورة أو شهادة منشأ.",
+            "source_refs": [
+              "https://www.mofa.gov.ae/services/edas-attestation-v2"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "eDAS 2.0 هو البديل الإلزامي بعد إيقاف eDAS 1.0 في 8 يونيو 2026.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "دقيقتان وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:attestation-of-commercial-invoices-via-edas-2-0",
+          "policy_version": 2,
+          "workflow_key": "service:attestation-of-commercial-invoices-via-edas-2-0",
+          "source_title": "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0 — وزارة الخارجية",
+          "source_url": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "دقيقتان وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.mofa.gov.ae/services/edas-attestation-v2"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "eDAS 2.0 هو البديل الإلزامي بعد إيقاف eDAS 1.0 في 8 يونيو 2026.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Attestation of commercial invoices via eDAS 2.0 with MOFA. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 150 per invoice or certificate of origin.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:attestation-of-commercial-invoices-via-edas-2-0",
+          "policy_version": 2,
+          "workflow_key": "service:attestation-of-commercial-invoices-via-edas-2-0",
+          "source_title": "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0 — وزارة الخارجية",
+          "source_url": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "150 درهماً لكل فاتورة أو شهادة منشأ.",
+            "source_refs": [
+              "https://www.mofa.gov.ae/services/edas-attestation-v2"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "eDAS 2.0 هو البديل الإلزامي بعد إيقاف eDAS 1.0 في 8 يونيو 2026.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Attestation of commercial invoices via eDAS 2.0 with MOFA. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "Two minutes according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:attestation-of-commercial-invoices-via-edas-2-0",
+          "policy_version": 2,
+          "workflow_key": "service:attestation-of-commercial-invoices-via-edas-2-0",
+          "source_title": "تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0 — وزارة الخارجية",
+          "source_url": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "دقيقتان وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://www.mofa.gov.ae/services/edas-attestation-v2"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "eDAS 2.0 هو البديل الإلزامي بعد إيقاف eDAS 1.0 في 8 يونيو 2026.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "معادلة شهادة الثانوية من خارج الإمارات. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "50 درهماً.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:equivalency-of-general-education-certificate-from-abroad-grade-12",
+          "policy_version": 2,
+          "workflow_key": "service:equivalency-of-general-education-certificate-from-abroad-grade-12",
+          "source_title": "معادلة شهادة الثانوية من خارج الإمارات — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "50 درهماً.",
+            "source_refs": [
+              "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة خدمة مستقلة وبها بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "معادلة شهادة الثانوية من خارج الإمارات. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "من 3 إلى 30 يوم عمل بحسب اكتمال الشروط والحاجة إلى المراسلات أو مراجعة اللجنة؛ لا تحتسب فترة النواقص ضمن مدة الإنجاز.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:equivalency-of-general-education-certificate-from-abroad-grade-12",
+          "policy_version": 2,
+          "workflow_key": "service:equivalency-of-general-education-certificate-from-abroad-grade-12",
+          "source_title": "معادلة شهادة الثانوية من خارج الإمارات — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "من 3 إلى 30 يوم عمل بحسب اكتمال الشروط والحاجة إلى المراسلات أو مراجعة اللجنة؛ لا تحتسب فترة النواقص ضمن مدة الإنجاز.",
+            "source_refs": [
+              "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة خدمة مستقلة وبها بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Equivalency of a general education certificate from abroad Grade 12 with the UAE Ministry of Education. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 50.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:equivalency-of-general-education-certificate-from-abroad-grade-12",
+          "policy_version": 2,
+          "workflow_key": "service:equivalency-of-general-education-certificate-from-abroad-grade-12",
+          "source_title": "معادلة شهادة الثانوية من خارج الإمارات — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "50 درهماً.",
+            "source_refs": [
+              "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة خدمة مستقلة وبها بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Equivalency of a general education certificate from abroad Grade 12 with the UAE Ministry of Education. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "3–30 working days depending on complete requirements, correspondence and committee review. Time spent resolving missing documents is excluded.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:equivalency-of-general-education-certificate-from-abroad-grade-12",
+          "policy_version": 2,
+          "workflow_key": "service:equivalency-of-general-education-certificate-from-abroad-grade-12",
+          "source_title": "معادلة شهادة الثانوية من خارج الإمارات — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "من 3 إلى 30 يوم عمل بحسب اكتمال الشروط والحاجة إلى المراسلات أو مراجعة اللجنة؛ لا تحتسب فترة النواقص ضمن مدة الإنجاز.",
+            "source_refs": [
+              "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة خدمة مستقلة وبها بدء الخدمة.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "50 درهماً.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:equivalency-of-general-education-certificate-in-the-uae-grade-12",
+          "policy_version": 2,
+          "workflow_key": "service:equivalency-of-general-education-certificate-in-the-uae-grade-12",
+          "source_title": "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "50 درهماً.",
+            "source_refs": [
+              "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة خدمة مستقلة؛ يجب إبقاء استثناءات أبوظبي ودبي والشارقة ورأس الخيمة ظاهرة في المحتوى.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "5 أيام عمل وفق بطاقة الخدمة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:equivalency-of-general-education-certificate-in-the-uae-grade-12",
+          "policy_version": 2,
+          "workflow_key": "service:equivalency-of-general-education-certificate-in-the-uae-grade-12",
+          "source_title": "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "5 أيام عمل وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة خدمة مستقلة؛ يجب إبقاء استثناءات أبوظبي ودبي والشارقة ورأس الخيمة ظاهرة في المحتوى.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Equivalency of a general education certificate in the UAE Grade 12 with the UAE Ministry of Education. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "AED 50.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:equivalency-of-general-education-certificate-in-the-uae-grade-12",
+          "policy_version": 2,
+          "workflow_key": "service:equivalency-of-general-education-certificate-in-the-uae-grade-12",
+          "source_title": "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "50 درهماً.",
+            "source_refs": [
+              "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة خدمة مستقلة؛ يجب إبقاء استثناءات أبوظبي ودبي والشارقة ورأس الخيمة ظاهرة في المحتوى.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Equivalency of a general education certificate in the UAE Grade 12 with the UAE Ministry of Education. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "5 working days according to the service card.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:equivalency-of-general-education-certificate-in-the-uae-grade-12",
+          "policy_version": 2,
+          "workflow_key": "service:equivalency-of-general-education-certificate-in-the-uae-grade-12",
+          "source_title": "معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "5 أيام عمل وفق بطاقة الخدمة.",
+            "source_refs": [
+              "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة خدمة مستقلة؛ يجب إبقاء استثناءات أبوظبي ودبي والشارقة ورأس الخيمة ظاهرة في المحتوى.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "confirming-the-authenticity-of-equivalency",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "التحقق من صحة المعادلة أو التصديق. ما الرسوم الحكومية؟",
+      "status": 200,
+      "answer": {
+        "text": "مجانية.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:confirming-the-authenticity-of-equivalency",
+          "policy_version": 2,
+          "workflow_key": "service:confirming-the-authenticity-of-equivalency",
+          "source_title": "التحقق من صحة المعادلة أو التصديق — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "مجانية.",
+            "source_refs": [
+              "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة؛ التحقق فوري ومجاني وفق المصدر الرسمي.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "confirming-the-authenticity-of-equivalency",
+      "locale": "ar",
+      "focus": "duration",
+      "prompt": "التحقق من صحة المعادلة أو التصديق. كم المدة؟",
+      "status": 200,
+      "answer": {
+        "text": "فورية بعد إدخال البيانات الصحيحة.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:confirming-the-authenticity-of-equivalency",
+          "policy_version": 2,
+          "workflow_key": "service:confirming-the-authenticity-of-equivalency",
+          "source_title": "التحقق من صحة المعادلة أو التصديق — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "فورية بعد إدخال البيانات الصحيحة.",
+            "source_refs": [
+              "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة؛ التحقق فوري ومجاني وفق المصدر الرسمي.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "confirming-the-authenticity-of-equivalency",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "Confirming the authenticity of an equivalency certificate with the UAE Ministry of Education. What are the government fees?",
+      "status": 200,
+      "answer": {
+        "text": "Free of charge.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:confirming-the-authenticity-of-equivalency",
+          "policy_version": 2,
+          "workflow_key": "service:confirming-the-authenticity-of-equivalency",
+          "source_title": "التحقق من صحة المعادلة أو التصديق — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "مجانية.",
+            "source_refs": [
+              "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة؛ التحقق فوري ومجاني وفق المصدر الرسمي.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "confirming-the-authenticity-of-equivalency",
+      "locale": "en",
+      "focus": "duration",
+      "prompt": "Confirming the authenticity of an equivalency certificate with the UAE Ministry of Education. What is the processing time?",
+      "status": 200,
+      "answer": {
+        "text": "Immediate after entering the correct details.",
+        "focus": "duration",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:confirming-the-authenticity-of-equivalency",
+          "policy_version": 2,
+          "workflow_key": "service:confirming-the-authenticity-of-equivalency",
+          "source_title": "التحقق من صحة المعادلة أو التصديق — وزارة التربية والتعليم",
+          "source_url": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "فورية بعد إدخال البيانات الصحيحة.",
+            "source_refs": [
+              "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة مستقلة؛ التحقق فوري ومجاني وفق المصدر الرسمي.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "scope": "Only the 16 previously failed education/eDAS fee and duration cases after the scoped service identity fix. Accepted source/page checks are reused, not repeated; no submissions.",
+  "externalModelGate": "NOT_PASSED"
+}
