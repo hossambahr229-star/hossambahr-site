@@ -427,3 +427,6 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 
 /* Measured section and card surfaces for the approved Arabic desktop frame. */
 @media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry]{--surface-how:#fff;--surface-how-step:#f1f5fa}html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-how{background:var(--surface-how)!important}html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-how li{background:var(--surface-how-step)!important}}
+
+/* Reference-measured step proportions inside the unchanged shared page grid. */
+@media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry]{--how-step-gap:42px;--how-step-columns:minmax(0,227fr) minmax(0,215fr) minmax(0,225fr) minmax(0,259fr)}html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-how ol{gap:var(--how-step-gap)!important;grid-template-columns:var(--how-step-columns)!important}}
