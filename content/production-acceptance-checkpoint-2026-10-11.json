@@ -1,6 +1,6 @@
 {
-  "recordedAt": "2026-10-11T12:08:00Z",
-  "lastAcceptedDeployedCommit": "186e16cbc40f46fa0721d9603179608496d2a2e4",
+  "recordedAt": "2026-10-12T06:30:16Z",
+  "lastAcceptedDeployedCommit": "5bb0ab159cb34947fb19b1ea930f1e0477e9de13",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -23,11 +23,19 @@
     427,
     428,
     429,
-    430
+    430,
+    431,
+    432,
+    433,
+    434,
+    435,
+    436,
+    437,
+    438
   ],
   "production": {
     "publicationGate": {
-      "run": 38137381144,
+      "run": 38211961496,
       "status": "PASS"
     },
     "geometry": {
@@ -42,8 +50,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 25.46711684992284,
-      "changedPixelPercent": 18.89236111111111,
+      "meanAbsolutePixelDifference": 25.185320939429012,
+      "changedPixelPercent": 18.69509548611111,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -85,13 +93,43 @@
       "capturedAt": "2026-10-11T12:01:14.144Z",
       "meanAbsolutePixelDifference": 35.0577847,
       "changedPixelPercent": 32.817732
+    },
+    "heroCaption": {
+      "run": 38138712205,
+      "capturedAt": "2026-10-11T12:23:46.577Z",
+      "mad": 32.71304
+    },
+    "aiRobotProportion": {
+      "run": 38155844715,
+      "capturedAt": "2026-10-11T16:38:10.222Z",
+      "mad": 34.44339325134027
+    },
+    "dhaFeeTime": {
+      "pages": 2,
+      "ai": 12,
+      "pageRun": 38156627180,
+      "aiRun": 38157579032
+    },
+    "educationEdasFields": {
+      "ai": 16,
+      "run": 38211493574
+    },
+    "reviewedServiceTopicJourneys": {
+      "steps": 20,
+      "run": 38211495485
+    },
+    "icpReviewedFields": {
+      "ai": 28,
+      "run": 38211988318,
+      "services": 8,
+      "sourceAndPageChecksRepeated": false
     }
   },
   "deployedAi": {
-    "version": 131,
+    "version": 134,
     "status": "ACTIVE",
     "sourceFilesMatched": 9,
-    "bundleSha256": "f0246045701c8c07a983fa195c0111b558068a05b43cbca8d64cd2dfe580a173"
+    "bundleSha256": "f0e5f7df9ae011bfb15310a6160ac54574e191904729498cb62e9c274a3acb54"
   },
   "blockers": {
     "externalModel": {
