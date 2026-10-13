@@ -1,27 +1,27 @@
 {
-  "capturedAt": "2026-10-13T06:21:52.274Z",
+  "capturedAt": "2026-10-13T10:22:19.700Z",
   "source": "LIVE_PRODUCTION_WITH_ISOLATED_TEMPORARY_PHOTO",
   "productionChanged": false,
   "bounds": {
     "left": 31,
     "top": 496,
-    "width": 384,
+    "width": 1378,
     "height": 127
   },
   "results": [
     {
       "name": "baseline",
       "sprite": null,
-      "mad": 42.87982556867892,
-      "changed": 45.13615485564305
+      "mad": 35.05778468547745,
+      "changed": 32.81773196347554
     },
     {
-      "name": "candidate",
+      "name": "first",
       "sprite": {
         "display": "block",
         "visibility": "visible",
         "opacity": "1",
-        "zIndex": "3",
+        "zIndex": "1",
         "x": 30.953125,
         "y": 497,
         "width": 160,
@@ -40,8 +40,36 @@
         },
         "background": "url(\"https://hossambahr.com/assets/hb-approved-reference-photo-source.jpeg\")"
       },
-      "mad": 20.485680500874892,
-      "changed": 17.01320538057743
+      "mad": 28.817326263099552,
+      "changed": 24.98085779916117
+    },
+    {
+      "name": "all",
+      "sprite": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "zIndex": "1",
+        "x": 30.953125,
+        "y": 497,
+        "width": 160,
+        "height": 127,
+        "decoded": {
+          "width": 1536,
+          "height": 1024
+        },
+        "before": {
+          "z": "auto",
+          "bg": "none"
+        },
+        "after": {
+          "z": "auto",
+          "bg": "none"
+        },
+        "background": "url(\"https://hossambahr.com/assets/hb-approved-reference-photo-source.jpeg\")"
+      },
+      "mad": 21.50739593690121,
+      "changed": 16.34572528941865
     }
   ],
   "overallFinalGate": "NOT_DECLARED"
