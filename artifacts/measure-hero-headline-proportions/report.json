@@ -1,6 +1,6 @@
 {
-  "capturedAt": "2026-10-13T05:30:46.461Z",
-  "source": "LIVE_PRODUCTION_TEMPORARY_LABEL_PRESENTATION",
+  "capturedAt": "2026-10-13T05:31:45.840Z",
+  "source": "LIVE_PRODUCTION_TEMPORARY_NATIVE_HEADLINE_MEASUREMENT",
   "labels": [
     [
       "الهيئة الاتحادية للهوية والجنسية",
@@ -34,6 +34,10 @@
   "results": [
     {
       "name": "baseline",
+      "measuredStyle": {
+        "headline": "38px",
+        "copy": "14px"
+      },
       "mad": 27.169650621046948,
       "changed": 19.31034956201774,
       "overflow": false
@@ -41,38 +45,58 @@
     {
       "name": "headline-37",
       "size": 37,
-      "mad": 27.169650621046948,
-      "changed": 19.31034956201774,
+      "measuredStyle": {
+        "headline": "37px",
+        "copy": "14px"
+      },
+      "mad": 28.382703590813815,
+      "changed": 19.904852129499957,
       "overflow": false
     },
     {
       "name": "headline-36",
       "size": 36,
-      "mad": 27.169650621046948,
-      "changed": 19.31034956201774,
+      "measuredStyle": {
+        "headline": "36px",
+        "copy": "14px"
+      },
+      "mad": 28.008620058397636,
+      "changed": 19.81217563225966,
       "overflow": false
     },
     {
       "name": "headline-35",
       "size": 35,
-      "mad": 27.169650621046948,
-      "changed": 19.31034956201774,
+      "measuredStyle": {
+        "headline": "35px",
+        "copy": "14px"
+      },
+      "mad": 27.797750135010205,
+      "changed": 19.76000219677623,
       "overflow": false
     },
     {
       "name": "headline-36-copy-14",
       "size": 36,
       "copy": 14,
-      "mad": 27.169650621046948,
-      "changed": 19.31034956201774,
+      "measuredStyle": {
+        "headline": "36px",
+        "copy": "14px"
+      },
+      "mad": 28.008620058397636,
+      "changed": 19.81217563225966,
       "overflow": false
     },
     {
       "name": "headline-37-copy-14",
       "size": 37,
       "copy": 14,
-      "mad": 27.169650621046948,
-      "changed": 19.31034956201774,
+      "measuredStyle": {
+        "headline": "37px",
+        "copy": "14px"
+      },
+      "mad": 28.382703590813815,
+      "changed": 19.904852129499957,
       "overflow": false
     }
   ]
