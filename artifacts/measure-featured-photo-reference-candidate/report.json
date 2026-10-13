@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-13T06:17:34.047Z",
+  "capturedAt": "2026-10-13T06:18:48.796Z",
   "source": "LIVE_PRODUCTION_WITH_ISOLATED_TEMPORARY_PHOTO",
   "productionChanged": false,
   "bounds": {
@@ -11,11 +11,23 @@
   "results": [
     {
       "name": "baseline",
+      "sprite": null,
       "mad": 42.87982556867892,
       "changed": 45.13615485564305
     },
     {
       "name": "candidate",
+      "sprite": {
+        "display": "block",
+        "visibility": "visible",
+        "opacity": "1",
+        "zIndex": "1",
+        "x": 30.953125,
+        "y": 497,
+        "width": 160,
+        "height": 127,
+        "background": "url(\"https://hossambahr.com/assets/hb-approved-reference-photo-source.jpeg\")"
+      },
       "mad": 42.87979139326334,
       "changed": 45.13615485564305
     }
