@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-13T06:18:48.796Z",
+  "capturedAt": "2026-10-13T06:21:52.274Z",
   "source": "LIVE_PRODUCTION_WITH_ISOLATED_TEMPORARY_PHOTO",
   "productionChanged": false,
   "bounds": {
@@ -21,15 +21,27 @@
         "display": "block",
         "visibility": "visible",
         "opacity": "1",
-        "zIndex": "1",
+        "zIndex": "3",
         "x": 30.953125,
         "y": 497,
         "width": 160,
         "height": 127,
+        "decoded": {
+          "width": 1536,
+          "height": 1024
+        },
+        "before": {
+          "z": "auto",
+          "bg": "none"
+        },
+        "after": {
+          "z": "auto",
+          "bg": "none"
+        },
         "background": "url(\"https://hossambahr.com/assets/hb-approved-reference-photo-source.jpeg\")"
       },
-      "mad": 42.87979139326334,
-      "changed": 45.13615485564305
+      "mad": 20.485680500874892,
+      "changed": 17.01320538057743
     }
   ],
   "overallFinalGate": "NOT_DECLARED"
