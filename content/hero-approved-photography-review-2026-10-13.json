@@ -1,0 +1,79 @@
+{
+  "reviewedAt": "2026-10-13",
+  "scope": "Original hero photographic pixels only, Arabic 1280px+ with CSS-mask support. Existing UI, HB master, mobile and English presentation preserved.",
+  "sourceAsset": "assets/approved-featured-photography-source.jpeg",
+  "mask": "assets/approved-hero-photography-mask.svg",
+  "sourceReference": "qa/reference/approved-desktop.jpeg",
+  "referenceViewport": {
+    "width": 1440,
+    "height": 960
+  },
+  "photoWindow": {
+    "x": 0,
+    "y": 61,
+    "width": 1069,
+    "height": 302
+  },
+  "referenceUiAlphaGuards": [
+    {
+      "name": "caption",
+      "x": 58,
+      "y": 111,
+      "w": 150,
+      "h": 118,
+      "maxAlpha": 0
+    },
+    {
+      "name": "headline",
+      "x": 675,
+      "y": 43,
+      "w": 360,
+      "h": 82,
+      "maxAlpha": 0
+    },
+    {
+      "name": "support",
+      "x": 686,
+      "y": 136,
+      "w": 343,
+      "h": 38,
+      "maxAlpha": 0
+    },
+    {
+      "name": "search",
+      "x": 434,
+      "y": 187,
+      "w": 600,
+      "h": 48,
+      "maxAlpha": 0
+    },
+    {
+      "name": "chips",
+      "x": 449,
+      "y": 250,
+      "w": 582,
+      "h": 27,
+      "maxAlpha": 0
+    }
+  ],
+  "measurement": {
+    "branch": "agent/measure-approved-hero-photography",
+    "capturedAt": "2026-10-13T10:46:52.124Z",
+    "baseline": {
+      "name": "baseline",
+      "mad": 28.628783889546252,
+      "changed": 20.437804719394865
+    },
+    "candidate": {
+      "name": "reference-polished",
+      "mad": 21.414080746380538,
+      "changed": 13.013028206097177
+    }
+  },
+  "fallback": "Original background remains when mask support is unavailable; new layer hidden outside scoped desktop viewports.",
+  "liveAcceptance": {
+    "status": "PENDING_PUBLICATION"
+  },
+  "pixelFidelity": "NOT_DECLARED",
+  "overallFinalGate": "NOT_DECLARED"
+}
