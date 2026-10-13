@@ -1,0 +1,487 @@
+{
+  "capturedAt": "2026-10-13T11:11:31.498Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_NATIVE_FLUID_TYPOGRAPHY",
+  "productionChanged": false,
+  "palette": {
+    "gold": "rgb(172,116,31)",
+    "copy": "rgb(43,47,56)"
+  },
+  "results": [
+    {
+      "name": "baseline-1440",
+      "width": 1440,
+      "state": {
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 83.984375
+        },
+        "accent": {
+          "x": 829.078125,
+          "y": 119.890625,
+          "right": 1032.15625,
+          "width": 203.078125,
+          "height": 89
+        },
+        "copy": {
+          "x": 685.140625,
+          "y": 195.984375,
+          "right": 1032.15625,
+          "width": 347.015625,
+          "height": 42
+        },
+        "search": {
+          "x": 433.828125,
+          "y": 248,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 47
+        },
+        "primaryFont": "38px",
+        "accentFont": "42px",
+        "copyFont": "14px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": {
+        "mad": 25.088145646264106,
+        "changed": 17.191146991789548
+      }
+    },
+    {
+      "name": "fixed44-pad6",
+      "width": 1440,
+      "fixed": true,
+      "accent": 44,
+      "state": {
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 84
+        },
+        "accent": {
+          "x": 813.40625,
+          "y": 118.90625,
+          "right": 1026.15625,
+          "width": 212.75,
+          "height": 92
+        },
+        "copy": {
+          "x": 679.15625,
+          "y": 194,
+          "right": 1032.15625,
+          "width": 353,
+          "height": 42
+        },
+        "search": {
+          "x": 433.828125,
+          "y": 248,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 47
+        },
+        "primaryFont": "35px",
+        "accentFont": "44px",
+        "copyFont": "14px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": {
+        "mad": 23.835040411529413,
+        "changed": 16.620671664332594
+      }
+    },
+    {
+      "name": "fixed44_5-pad6",
+      "width": 1440,
+      "fixed": true,
+      "accent": 44.5,
+      "state": {
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 84
+        },
+        "accent": {
+          "x": 810.984375,
+          "y": 117.90625,
+          "right": 1026.15625,
+          "width": 215.171875,
+          "height": 94
+        },
+        "copy": {
+          "x": 679.15625,
+          "y": 194,
+          "right": 1032.15625,
+          "width": 353,
+          "height": 42
+        },
+        "search": {
+          "x": 433.828125,
+          "y": 248,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 47
+        },
+        "primaryFont": "35px",
+        "accentFont": "44.5px",
+        "copyFont": "14px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": {
+        "mad": 23.919668927515538,
+        "changed": 16.69412636955268
+      }
+    },
+    {
+      "name": "fluid-1440",
+      "width": 1440,
+      "fluid": true,
+      "state": {
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 84
+        },
+        "accent": {
+          "x": 813.40625,
+          "y": 118.90625,
+          "right": 1026.15625,
+          "width": 212.75,
+          "height": 92
+        },
+        "copy": {
+          "x": 679.140625,
+          "y": 194,
+          "right": 1032.15625,
+          "width": 353.015625,
+          "height": 42
+        },
+        "search": {
+          "x": 433.828125,
+          "y": 248,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 47
+        },
+        "primaryFont": "35px",
+        "accentFont": "44px",
+        "copyFont": "14px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": {
+        "mad": 23.78677311878152,
+        "changed": 16.593211961446578
+      }
+    },
+    {
+      "name": "fluid-palette-1440",
+      "width": 1440,
+      "fluid": true,
+      "palette": true,
+      "state": {
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 84
+        },
+        "accent": {
+          "x": 813.40625,
+          "y": 118.90625,
+          "right": 1026.15625,
+          "width": 212.75,
+          "height": 92
+        },
+        "copy": {
+          "x": 679.140625,
+          "y": 194,
+          "right": 1032.15625,
+          "width": 353.015625,
+          "height": 42
+        },
+        "search": {
+          "x": 433.828125,
+          "y": 248,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 47
+        },
+        "primaryFont": "35px",
+        "accentFont": "44px",
+        "copyFont": "14px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": {
+        "mad": 23.69503253974792,
+        "changed": 16.552022407117555
+      }
+    },
+    {
+      "name": "baseline-1366",
+      "width": 1366,
+      "state": {
+        "heading": {
+          "x": 381.109375,
+          "y": 103,
+          "right": 979.109375,
+          "width": 598,
+          "height": 83.984375
+        },
+        "accent": {
+          "x": 776.03125,
+          "y": 119.890625,
+          "right": 979.109375,
+          "width": 203.078125,
+          "height": 89
+        },
+        "copy": {
+          "x": 548.5625,
+          "y": 195.984375,
+          "right": 979.109375,
+          "width": 430.546875,
+          "height": 45
+        },
+        "search": {
+          "x": 381.109375,
+          "y": 248,
+          "right": 979.109375,
+          "width": 598,
+          "height": 47
+        },
+        "primaryFont": "38px",
+        "accentFont": "42px",
+        "copyFont": "15px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": null
+    },
+    {
+      "name": "fluid-1366",
+      "width": 1366,
+      "fluid": true,
+      "state": {
+        "heading": {
+          "x": 381.109375,
+          "y": 103,
+          "right": 979.109375,
+          "width": 598,
+          "height": 84
+        },
+        "accent": {
+          "x": 771.703125,
+          "y": 120.90625,
+          "right": 973.421875,
+          "width": 201.71875,
+          "height": 88
+        },
+        "copy": {
+          "x": 644.25,
+          "y": 194,
+          "right": 979.109375,
+          "width": 334.859375,
+          "height": 42
+        },
+        "search": {
+          "x": 381.109375,
+          "y": 248,
+          "right": 979.109375,
+          "width": 598,
+          "height": 47
+        },
+        "primaryFont": "33.2014px",
+        "accentFont": "41.7389px",
+        "copyFont": "13.2806px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": null
+    },
+    {
+      "name": "baseline-1280",
+      "width": 1280,
+      "state": {
+        "heading": {
+          "x": 357.125,
+          "y": 103,
+          "right": 917.46875,
+          "width": 560.34375,
+          "height": 83.984375
+        },
+        "accent": {
+          "x": 714.390625,
+          "y": 119.890625,
+          "right": 917.46875,
+          "width": 203.078125,
+          "height": 89
+        },
+        "copy": {
+          "x": 514.03125,
+          "y": 195.984375,
+          "right": 917.46875,
+          "width": 403.4375,
+          "height": 45
+        },
+        "search": {
+          "x": 357.125,
+          "y": 248,
+          "right": 917.46875,
+          "width": 560.34375,
+          "height": 47
+        },
+        "primaryFont": "38px",
+        "accentFont": "42px",
+        "copyFont": "15px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": null
+    },
+    {
+      "name": "fluid-1280",
+      "width": 1280,
+      "fluid": true,
+      "state": {
+        "heading": {
+          "x": 357.125,
+          "y": 103,
+          "right": 917.46875,
+          "width": 560.34375,
+          "height": 84
+        },
+        "accent": {
+          "x": 723.03125,
+          "y": 122.90625,
+          "right": 912.140625,
+          "width": 189.109375,
+          "height": 83
+        },
+        "copy": {
+          "x": 603.6875,
+          "y": 194,
+          "right": 917.46875,
+          "width": 313.78125,
+          "height": 42
+        },
+        "search": {
+          "x": 357.125,
+          "y": 248,
+          "right": 917.46875,
+          "width": 560.34375,
+          "height": 47
+        },
+        "primaryFont": "31.1111px",
+        "accentFont": "39.1111px",
+        "copyFont": "12.4444px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": null
+    },
+    {
+      "name": "baseline-390",
+      "width": 390,
+      "state": {
+        "heading": {
+          "x": 16,
+          "y": 219,
+          "right": 374,
+          "width": 358,
+          "height": 76.78125
+        },
+        "accent": {
+          "x": 213.515625,
+          "y": 246.390625,
+          "right": 374,
+          "width": 160.484375,
+          "height": 60
+        },
+        "copy": {
+          "x": 16,
+          "y": 304.78125,
+          "right": 374,
+          "width": 358,
+          "height": 39
+        },
+        "search": {
+          "x": 16,
+          "y": 355.78125,
+          "right": 374,
+          "width": 358,
+          "height": 48
+        },
+        "primaryFont": "32px",
+        "accentFont": "32px",
+        "copyFont": "13px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": null
+    },
+    {
+      "name": "fluid-390",
+      "width": 390,
+      "fluid": true,
+      "state": {
+        "heading": {
+          "x": 16,
+          "y": 219,
+          "right": 374,
+          "width": 358,
+          "height": 76.78125
+        },
+        "accent": {
+          "x": 213.515625,
+          "y": 246.390625,
+          "right": 374,
+          "width": 160.484375,
+          "height": 60
+        },
+        "copy": {
+          "x": 16,
+          "y": 304.78125,
+          "right": 374,
+          "width": 358,
+          "height": 39
+        },
+        "search": {
+          "x": 16,
+          "y": 355.78125,
+          "right": 374,
+          "width": 358,
+          "height": 48
+        },
+        "primaryFont": "32px",
+        "accentFont": "32px",
+        "copyFont": "13px",
+        "copyLines": 2,
+        "overflow": false
+      },
+      "geometryStable": true,
+      "metrics": null
+    }
+  ]
+}
