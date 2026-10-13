@@ -11,7 +11,31 @@
   "candidateChangedPercent": 16.28429030397891,
   "selection": "Visual inspection favors the original Noto accent shape over Cairo; Cairo is retained for supporting copy.",
   "liveAcceptance": {
-    "status": "PENDING_PUBLICATION"
+    "status": "PASS",
+    "actualRun": 38455800432,
+    "publicationRun": 38455712636,
+    "branch": "agent/live-native-hero-type-rhythm",
+    "report": "artifacts/live-regional-visual/report.json",
+    "capturedAt": "2026-10-13T19:38:30.892Z",
+    "viewportsArabic": [
+      1440,
+      1366,
+      1280,
+      430,
+      390,
+      360
+    ],
+    "viewportsEnglish": [
+      1440,
+      390
+    ],
+    "headingHeightPx": 84,
+    "desktopSearchY": 248,
+    "copyLines": 2,
+    "pageErrors": 0,
+    "regionalMad": 23.292720432764916,
+    "regionalChangedPercent": 16.28429030397891,
+    "deployedCommit": "db9b78ace0b9b5de3761189e2c9c1e83f024b8ae"
   },
   "pixelFidelity": "NOT_DECLARED",
   "overallFinalGate": "NOT_DECLARED"

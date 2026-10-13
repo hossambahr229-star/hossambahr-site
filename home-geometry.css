@@ -467,3 +467,14 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-intent-search input{
  html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1 em{font-family:"HB Sans Arabic",sans-serif!important;font-size:var(--hero-accent-size)!important;line-height:44.1px!important;font-style:normal!important}
  html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:var(--hero-copy-width)!important;height:42px!important;min-height:42px!important;box-sizing:border-box;padding-right:var(--hero-type-inset)!important;font-family:Cairo,sans-serif!important;font-size:var(--hero-copy-size)!important;line-height:22px!important;font-weight:600!important;position:relative;top:-3px}
 }
+
+/* Approved robot photograph only; native HB master and assistant controls remain independent. */
+.hb-approved-ai-photography{display:none}
+@supports(mask-image:linear-gradient(#000,#000)){
+ @media(min-width:1366px){
+  html[lang="ar"].hb-phase8 body[data-home-geometry]{--ai-photographic-frame:min(100vw,1440px)}
+  html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-approved-ai-photography{display:block;position:absolute;right:0;bottom:0;width:calc(var(--ai-photographic-frame) * 371 / 1440);height:calc(var(--ai-photographic-frame) * 302 / 1440);background-image:url('/assets/approved-featured-photography-source.jpeg');background-size:var(--ai-photographic-frame) calc(var(--ai-photographic-frame) * 2 / 3);background-position:calc(var(--ai-photographic-frame) * -1069 / 1440) calc(var(--ai-photographic-frame) * -61 / 1440);background-repeat:no-repeat;mask-image:url('/assets/approved-ai-photography-mask.svg');mask-size:100% 100%;mask-repeat:no-repeat;pointer-events:none;z-index:1}
+  html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-ai-showcase .ai-showcase-robot{visibility:hidden}
+  html[lang="ar"].hb-phase8 body[data-home-geometry] .ai-showcase-mark,html[lang="ar"].hb-phase8 body[data-home-geometry] .ai-showcase-kicker,html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-ai-showcase h2{z-index:2}
+ }
+}
