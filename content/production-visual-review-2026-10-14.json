@@ -1,0 +1,66 @@
+{
+  "recordedAt": "2026-10-14",
+  "deployedCommit": "16c6eba98491a9714c5938313553d8f1d2e52235",
+  "reference": "qa/reference/approved-desktop.jpeg",
+  "viewport": {
+    "width": 1440,
+    "height": 960,
+    "deviceScaleFactor": 1
+  },
+  "actualEvidence": {
+    "publicationRun": 38460508200,
+    "fullReport": "artifacts/production-reference/report.json",
+    "overlay": "artifacts/production-reference/overlay-50.png",
+    "imageDiff": "artifacts/production-reference/image-diff.png",
+    "meanAbsolutePixelDifference": 20.21160373263889,
+    "changedPixelPercent": 13.959129050925926,
+    "geometryPassed": true,
+    "viewports": [
+      1440,
+      1366,
+      430,
+      390,
+      360
+    ]
+  },
+  "acceptedNewProductPullRequests": [
+    458,
+    459,
+    460,
+    461
+  ],
+  "nativeUiKept": true,
+  "referenceUiRenderedAsBitmap": false,
+  "brand": "Circular HB master preserved; original reference UI excluded by alpha masks.",
+  "intentionalDifferences": [
+    {
+      "reference": "500 services",
+      "production": "200 catalog services",
+      "reason": "Preserve verified catalog count."
+    },
+    {
+      "reference": "50000 customers / 98% satisfaction / under 24 hours",
+      "production": "Seven-emirate coverage / official sources / clear transaction steps",
+      "reason": "No verified evidence supports the mockup performance claims."
+    },
+    {
+      "reference": "30 authorities",
+      "production": "20 authorities in the current platform directory",
+      "reason": "Preserve the verified directory count."
+    },
+    {
+      "reference": "Legacy rendered brand treatment",
+      "production": "Current circular HB master",
+      "reason": "User requires preserving the master brand."
+    }
+  ],
+  "pixelFidelity": "NOT_DECLARED",
+  "overallFinalGate": "NOT_DECLARED",
+  "remainingGates": {
+    "visual": "Full pixel-fidelity acceptance remains open; regional improvements and geometry alone do not establish it.",
+    "externalModel": "BLOCKED_QUOTA_BILLING_429; external_model_used=false in latest actual evidence",
+    "authenticatedAccountDocumentsTracking": "BLOCKED_NO_AUTHORIZED_TEST_CREDENTIALS",
+    "rakFees": "BLOCKED_CURRENT_SOURCE_UNVERIFIED; legacy indexed table is not newly verified current evidence"
+  },
+  "notRepeated": "Accepted manual service/AI/route journeys were reused; new targeted captures cover the changed presentation only."
+}

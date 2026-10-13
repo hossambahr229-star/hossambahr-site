@@ -1,6 +1,6 @@
 {
-  "recordedAt": "2026-10-13",
-  "lastAcceptedDeployedCommit": "63fd8a5083bc2d142a63642680076a4dbd62ebf0",
+  "recordedAt": "2026-10-14",
+  "lastAcceptedDeployedCommit": "16c6eba98491a9714c5938313553d8f1d2e52235",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -53,11 +53,12 @@
     457,
     458,
     459,
-    460
+    460,
+    461
   ],
   "production": {
     "publicationGate": {
-      "run": 38457682945,
+      "run": 38460508200,
       "status": "PASS"
     },
     "geometry": {
@@ -72,8 +73,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 20.259887635030864,
-      "changedPixelPercent": 13.954788773148147,
+      "meanAbsolutePixelDifference": 20.21160373263889,
+      "changedPixelPercent": 13.959129050925926,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -750,6 +751,242 @@
       },
       "pixelFidelity": "NOT_DECLARED",
       "overallFinalGate": "NOT_DECLARED"
+    },
+    "heroNativeCaptionLines": {
+      "reviewedAt": "2026-10-14",
+      "reference": "qa/reference/approved-desktop.jpeg",
+      "scope": "Arabic 1366px+ native three-line photographic caption. English/mobile and narrower desktop fallback preserved.",
+      "method": "Real text spans, bundled Naskh family, separate fluid font sizes and common native line height. No raster text, zoom or transform scaling.",
+      "diagnosis": {
+        "branch": "agent/measure-native-hero-caption-final",
+        "selected": "lines35-down2",
+        "capturedAt": "2026-10-13T20:02:43.248Z",
+        "source": "LIVE_PRODUCTION_TEMPORARY_NATIVE_CAPTION",
+        "productionChanged": false,
+        "results": [
+          {
+            "name": "baseline",
+            "state": {
+              "heading": {
+                "x": 433.828125,
+                "y": 103,
+                "right": 1032.15625,
+                "width": 598.328125,
+                "height": 84
+              },
+              "accent": {
+                "x": 812.984375,
+                "y": 117.90625,
+                "right": 1028.15625,
+                "width": 215.171875,
+                "height": 94
+              },
+              "copy": {
+                "x": 679.15625,
+                "y": 193,
+                "right": 1032.15625,
+                "width": 353,
+                "height": 42
+              },
+              "copyLines": [
+                {
+                  "y": 191,
+                  "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+                },
+                {
+                  "y": 213,
+                  "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+                }
+              ],
+              "searchY": 248,
+              "overflow": false
+            },
+            "stable": true,
+            "mad": 31.46230261269021,
+            "changed": 21.429801894918175
+          },
+          {
+            "name": "lines35-down2",
+            "lines": [
+              35,
+              24,
+              30
+            ],
+            "top": 110,
+            "firstOffset": 2,
+            "state": {
+              "heading": {
+                "x": 433.828125,
+                "y": 103,
+                "right": 1032.15625,
+                "width": 598.328125,
+                "height": 84
+              },
+              "accent": {
+                "x": 812.984375,
+                "y": 117.90625,
+                "right": 1028.15625,
+                "width": 215.171875,
+                "height": 94
+              },
+              "copy": {
+                "x": 679.15625,
+                "y": 193,
+                "right": 1032.15625,
+                "width": 353,
+                "height": 42
+              },
+              "copyLines": [
+                {
+                  "y": 191,
+                  "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+                },
+                {
+                  "y": 213,
+                  "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+                }
+              ],
+              "searchY": 248,
+              "overflow": false
+            },
+            "stable": true,
+            "mad": 29.132862474877978,
+            "changed": 21.64341085271318
+          },
+          {
+            "name": "diacritics-first-down2",
+            "lines": [
+              35,
+              24,
+              30
+            ],
+            "top": 110,
+            "diacritics": true,
+            "firstOffset": 2,
+            "state": {
+              "heading": {
+                "x": 433.828125,
+                "y": 103,
+                "right": 1032.15625,
+                "width": 598.328125,
+                "height": 84
+              },
+              "accent": {
+                "x": 812.984375,
+                "y": 117.90625,
+                "right": 1028.15625,
+                "width": 215.171875,
+                "height": 94
+              },
+              "copy": {
+                "x": 679.15625,
+                "y": 193,
+                "right": 1032.15625,
+                "width": 353,
+                "height": 42
+              },
+              "copyLines": [
+                {
+                  "y": 191,
+                  "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+                },
+                {
+                  "y": 213,
+                  "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+                }
+              ],
+              "searchY": 248,
+              "overflow": false
+            },
+            "stable": true,
+            "mad": 29.3282802182027,
+            "changed": 21.77433247200689
+          },
+          {
+            "name": "diacritics-first36-down2",
+            "lines": [
+              36,
+              24,
+              30
+            ],
+            "top": 110,
+            "diacritics": true,
+            "firstOffset": 2,
+            "state": {
+              "heading": {
+                "x": 433.828125,
+                "y": 103,
+                "right": 1032.15625,
+                "width": 598.328125,
+                "height": 84
+              },
+              "accent": {
+                "x": 812.984375,
+                "y": 117.90625,
+                "right": 1028.15625,
+                "width": 215.171875,
+                "height": 94
+              },
+              "copy": {
+                "x": 679.15625,
+                "y": 193,
+                "right": 1032.15625,
+                "width": 353,
+                "height": 42
+              },
+              "copyLines": [
+                {
+                  "y": 191,
+                  "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+                },
+                {
+                  "y": 213,
+                  "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+                }
+              ],
+              "searchY": 248,
+              "overflow": false
+            },
+            "stable": true,
+            "mad": 30.4851794430089,
+            "changed": 22.167097329888026
+          }
+        ]
+      },
+      "liveAcceptance": {
+        "status": "PASS",
+        "actualRun": 38460442167,
+        "publicationRun": 38460508200,
+        "branch": "agent/live-native-caption-line-proportions",
+        "report": "artifacts/live-regional-visual/report.json",
+        "capturedAt": "2026-10-13T20:14:17.946Z",
+        "cases": 8,
+        "desktopArabic": [
+          1440,
+          1366
+        ],
+        "narrowerDesktopFallback": [
+          1280
+        ],
+        "mobileFallback": [
+          430,
+          390,
+          360
+        ],
+        "englishPreserved": [
+          1440,
+          390
+        ],
+        "searchY": 248,
+        "realText": true,
+        "zoomOrTransformScale": false,
+        "pageErrors": 0,
+        "regionalMad": 29.159609532012635,
+        "regionalChangedPercent": 21.636520241171404,
+        "deployedCommit": "16c6eba98491a9714c5938313553d8f1d2e52235"
+      },
+      "pixelFidelity": "NOT_DECLARED",
+      "overallFinalGate": "NOT_DECLARED"
     }
   },
   "deployedAi": {
@@ -919,6 +1156,16 @@
       "reason": "Alternate bundled families worsened comparison; smaller Cairo titles had only a small benefit and did not justify reducing readability. No product change.",
       "published": false,
       "diagnosticBoundary": "scroll/client-size mismatch alone is not evidence of visual clipping; the diagnostic did not establish a ProductFailure."
+    },
+    "assistantWordmarkFamily": {
+      "run": 38460780794,
+      "reason": "All serif family/size variants worsened comparison. Existing sans wordmark matches the actual reference crop; no product change.",
+      "published": false
+    },
+    "categoryIconStroke": {
+      "run": 38461217155,
+      "reason": "All thicker native vector variants worsened comparison; no product change.",
+      "published": false
     }
   },
   "externalSubmissionPerformed": false,
