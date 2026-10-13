@@ -1,0 +1,193 @@
+{
+  "capturedAt": "2026-10-13T05:23:29.453Z",
+  "source": "LIVE_PRODUCTION",
+  "passed": true,
+  "scope": "Four newly grounded MOFA fee cases; accepted duration cases are reused.",
+  "checks": [
+    {
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "source": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+      "authority": "mofa",
+      "policyVersion": 4,
+      "expected": "150 درهماً للمستند الشخصي",
+      "name": "تصديق مستند شخصي داخل الإمارات",
+      "status": 200,
+      "answer": {
+        "text": "150 درهماً للمستند الشخصي",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تصديق-مستند-شخصي-داخل-الإمارات",
+          "policy_version": 4,
+          "workflow_key": "service:تصديق-مستند-شخصي-داخل-الإمارات",
+          "source_title": "MOFA official attestation fee guide",
+          "source_url": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+          "last_verified_at": "2026-10-12T16:54:03.346+00:00",
+          "supporting_rule": {
+            "value": "150 درهماً للمستند الشخصي",
+            "source_refs": [
+              "https://www.mofa.gov.ae/en/services/forms/attestations-guide"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة الخدمة تحدد المسار الرقمي أو التوصيل حسب نوع المستند وجهة الإصدار.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "source": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+      "authority": "mofa",
+      "policyVersion": 4,
+      "expected": "AED 150 per personal document",
+      "name": "Attest a Personal Document in the UAE",
+      "status": 200,
+      "answer": {
+        "text": "AED 150 per personal document",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تصديق-مستند-شخصي-داخل-الإمارات",
+          "policy_version": 4,
+          "workflow_key": "service:تصديق-مستند-شخصي-داخل-الإمارات",
+          "source_title": "MOFA official attestation fee guide",
+          "source_url": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+          "last_verified_at": "2026-10-12T16:54:03.346+00:00",
+          "supporting_rule": {
+            "value": "150 درهماً للمستند الشخصي",
+            "source_refs": [
+              "https://www.mofa.gov.ae/en/services/forms/attestations-guide"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة الخدمة تحدد المسار الرقمي أو التوصيل حسب نوع المستند وجهة الإصدار.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "locale": "ar",
+      "focus": "fees",
+      "prompt": "ما الرسوم الحكومية؟",
+      "source": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+      "authority": "mofa",
+      "policyVersion": 4,
+      "expected": "يعرض دليل الوزارة رسمًا قدره 2000 درهم للفئات التجارية المدرجة الصادرة داخل الإمارات أو خارجها، باستثناء فئة «مستند مصدق في الخارج» ضمن الصادر من الإمارات ورسومها 150 درهمًا. راجع فئة المستند والإجمالي قبل الدفع. الفواتير التجارية وشهادات المنشأ خارج نطاق هذه الخدمة.",
+      "name": "تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+      "status": 200,
+      "answer": {
+        "text": "يعرض دليل الوزارة رسمًا قدره 2000 درهم للفئات التجارية المدرجة الصادرة داخل الإمارات أو خارجها، باستثناء فئة «مستند مصدق في الخارج» ضمن الصادر من الإمارات ورسومها 150 درهمًا. راجع فئة المستند والإجمالي قبل الدفع. الفواتير التجارية وشهادات المنشأ خارج نطاق هذه الخدمة.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+          "policy_version": 4,
+          "workflow_key": "service:تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+          "source_title": "MOFA official attestation fee guide",
+          "source_url": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+          "last_verified_at": "2026-10-12T16:54:03.346+00:00",
+          "supporting_rule": {
+            "value": "يعرض دليل الوزارة رسمًا قدره 2000 درهم للفئات التجارية المدرجة الصادرة داخل الإمارات أو خارجها، باستثناء فئة «مستند مصدق في الخارج» ضمن الصادر من الإمارات ورسومها 150 درهمًا. راجع فئة المستند والإجمالي قبل الدفع. الفواتير التجارية وشهادات المنشأ خارج نطاق هذه الخدمة.",
+            "source_refs": [
+              "https://www.mofa.gov.ae/en/services/forms/attestations-guide"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "استثنيت الفواتير التجارية وشهادات المنشأ صراحة لأنها انتقلت إلى eDAS 2.0.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    },
+    {
+      "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "locale": "en",
+      "focus": "fees",
+      "prompt": "What are the government fees?",
+      "source": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+      "authority": "mofa",
+      "policyVersion": 4,
+      "expected": "The Ministry's guide lists AED 2,000 for the listed commercial categories issued inside or outside the UAE, except Document Attested outside among UAE-issued documents, listed at AED 150. Confirm the document category and total before payment. Commercial invoices and certificates of origin are outside this service.",
+      "name": "Attest an International Commercial Document (excluding invoices and certificates of origin)",
+      "status": 200,
+      "answer": {
+        "text": "The Ministry's guide lists AED 2,000 for the listed commercial categories issued inside or outside the UAE, except Document Attested outside among UAE-issued documents, listed at AED 150. Confirm the document category and total before payment. Commercial invoices and certificates of origin are outside this service.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+          "policy_version": 4,
+          "workflow_key": "service:تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+          "source_title": "MOFA official attestation fee guide",
+          "source_url": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+          "last_verified_at": "2026-10-12T16:54:03.346+00:00",
+          "supporting_rule": {
+            "value": "يعرض دليل الوزارة رسمًا قدره 2000 درهم للفئات التجارية المدرجة الصادرة داخل الإمارات أو خارجها، باستثناء فئة «مستند مصدق في الخارج» ضمن الصادر من الإمارات ورسومها 150 درهمًا. راجع فئة المستند والإجمالي قبل الدفع. الفواتير التجارية وشهادات المنشأ خارج نطاق هذه الخدمة.",
+            "source_refs": [
+              "https://www.mofa.gov.ae/en/services/forms/attestations-guide"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "استثنيت الفواتير التجارية وشهادات المنشأ صراحة لأنها انتقلت إلى eDAS 2.0.",
+          "review_pending": false
+        }
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "failures": []
+    }
+  ],
+  "externalModelGate": "NOT_PASSED"
+}
