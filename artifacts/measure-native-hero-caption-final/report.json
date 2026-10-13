@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-13T19:54:59.155Z",
+  "capturedAt": "2026-10-13T19:57:33.916Z",
   "source": "LIVE_PRODUCTION_TEMPORARY_NATIVE_CAPTION",
   "productionChanged": false,
   "results": [
@@ -45,8 +45,12 @@
       "changed": 21.429801894918175
     },
     {
-      "name": "naskh28",
-      "size": 28,
+      "name": "lines35-24-30",
+      "lines": [
+        35,
+        24,
+        30
+      ],
       "top": 107,
       "state": {
         "heading": {
@@ -84,55 +88,16 @@
         "overflow": false
       },
       "stable": true,
-      "mad": 32.95323571633649,
-      "changed": 21.6916451335056
+      "mad": 31.682538041917887,
+      "changed": 22.79414298018949
     },
     {
-      "name": "naskh30",
-      "size": 30,
-      "top": 107,
-      "state": {
-        "heading": {
-          "x": 433.828125,
-          "y": 103,
-          "right": 1032.15625,
-          "width": 598.328125,
-          "height": 84
-        },
-        "accent": {
-          "x": 812.984375,
-          "y": 117.90625,
-          "right": 1028.15625,
-          "width": 215.171875,
-          "height": 94
-        },
-        "copy": {
-          "x": 679.15625,
-          "y": 193,
-          "right": 1032.15625,
-          "width": 353,
-          "height": 42
-        },
-        "copyLines": [
-          {
-            "y": 191,
-            "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
-          },
-          {
-            "y": 213,
-            "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
-          }
-        ],
-        "searchY": 248,
-        "overflow": false
-      },
-      "stable": true,
-      "mad": 32.99563594602354,
-      "changed": 21.83634797588286
-    },
-    {
-      "name": "naskh30-down3",
-      "size": 30,
+      "name": "lines35-24-30-down3",
+      "lines": [
+        35,
+        24,
+        30
+      ],
       "top": 110,
       "state": {
         "heading": {
@@ -170,13 +135,17 @@
         "overflow": false
       },
       "stable": true,
-      "mad": 31.142520815389034,
-      "changed": 20.926787252368648
+      "mad": 29.904013781223085,
+      "changed": 22.03273040482343
     },
     {
-      "name": "naskh32",
-      "size": 32,
-      "top": 107,
+      "name": "lines34-24-30-down3",
+      "lines": [
+        34,
+        24,
+        30
+      ],
+      "top": 110,
       "state": {
         "heading": {
           "x": 433.828125,
@@ -213,8 +182,8 @@
         "overflow": false
       },
       "stable": true,
-      "mad": 35.25599770312949,
-      "changed": 23.04909560723514
+      "mad": 30.219420040195235,
+      "changed": 22.163652024117138
     }
   ]
 }
