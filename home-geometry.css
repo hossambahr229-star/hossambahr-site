@@ -430,3 +430,6 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 
 /* Reference-measured step proportions inside the unchanged shared page grid. */
 @media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry]{--how-step-gap:42px;--how-step-columns:minmax(0,227fr) minmax(0,215fr) minmax(0,225fr) minmax(0,259fr)}html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-how ol{gap:var(--how-step-gap)!important;grid-template-columns:var(--how-step-columns)!important}}
+
+/* Reference-measured navigation rhythm within the unchanged Arabic desktop header grid. */
+@media(min-width:1400px){html[lang="ar"].hb-phase8 body[data-home-geometry]{--header-nav-gap:20px;--header-nav-inset:48px}html[lang="ar"].hb-phase8 body[data-home-geometry] .desktop-nav{gap:var(--header-nav-gap)!important;padding-right:var(--header-nav-inset)!important}html[lang="ar"].hb-phase8 body[data-home-geometry] .desktop-nav>a[aria-current="page"]{position:relative}html[lang="ar"].hb-phase8 body[data-home-geometry] .desktop-nav>a[aria-current="page"]::after{content:""!important;display:block!important;position:absolute!important;right:0!important;bottom:8px!important;width:32px!important;height:2px!important;background:#be963a!important;border-radius:1px!important;opacity:1!important;visibility:visible!important;transform:none!important}}
