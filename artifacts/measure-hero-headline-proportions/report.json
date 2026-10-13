@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-13T05:32:55.048Z",
+  "capturedAt": "2026-10-13T05:33:52.877Z",
   "source": "LIVE_PRODUCTION_TEMPORARY_NATIVE_HEADLINE_MEASUREMENT",
   "labels": [
     [
@@ -43,63 +43,51 @@
       "overflow": false
     },
     {
-      "name": "headline-36-inset-12",
-      "size": 36,
-      "inset": 12,
-      "measuredStyle": {
-        "headline": "36px",
-        "copy": "14px"
-      },
-      "mad": 26.983819370074414,
-      "changed": 19.417442403273196,
-      "overflow": false
-    },
-    {
-      "name": "headline-36-inset-16",
-      "size": 36,
-      "inset": 16,
-      "measuredStyle": {
-        "headline": "36px",
-        "copy": "14px"
-      },
-      "mad": 26.931689412453892,
-      "changed": 19.357717549496115,
-      "overflow": false
-    },
-    {
-      "name": "headline-37-inset-12",
-      "size": 37,
-      "inset": 12,
-      "measuredStyle": {
-        "headline": "37px",
-        "copy": "14px"
-      },
-      "mad": 28.6835337891644,
-      "changed": 20.23986050470934,
-      "overflow": false
-    },
-    {
-      "name": "headline-38-inset-12",
-      "size": 38,
-      "inset": 12,
+      "name": "copy-cairo-600",
+      "weight": 600,
       "measuredStyle": {
         "headline": "38px",
         "copy": "14px"
       },
-      "mad": 28.744368472599792,
-      "changed": 20.256336326440948,
+      "mad": 27.416625477112337,
+      "changed": 19.514237855946398,
       "overflow": false
     },
     {
-      "name": "headline-36-inset-20",
-      "size": 36,
-      "inset": 20,
+      "name": "copy-cairo-700",
+      "weight": 700,
       "measuredStyle": {
-        "headline": "36px",
+        "headline": "38px",
         "copy": "14px"
       },
-      "mad": 27.584875653312096,
-      "changed": 19.75794271905978,
+      "mad": 27.868914243347888,
+      "changed": 19.674877117829585,
+      "overflow": false
+    },
+    {
+      "name": "copy-noto-13",
+      "weight": 700,
+      "family": "HB Sans Arabic",
+      "copy": 13,
+      "measuredStyle": {
+        "headline": "38px",
+        "copy": "13px"
+      },
+      "mad": 27.317383822573706,
+      "changed": 19.326825383749348,
+      "overflow": false
+    },
+    {
+      "name": "copy-noto-14",
+      "weight": 700,
+      "family": "HB Sans Arabic",
+      "copy": 14,
+      "measuredStyle": {
+        "headline": "38px",
+        "copy": "14px"
+      },
+      "mad": 27.814585221187908,
+      "changed": 19.589752038882942,
       "overflow": false
     }
   ]
