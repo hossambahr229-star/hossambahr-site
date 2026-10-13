@@ -45,7 +45,31 @@
     "candidateChangedPercent": 15.667462829845835
   },
   "liveAcceptance": {
-    "status": "PENDING_PUBLICATION"
+    "status": "PASS",
+    "publicationRun": 38384132862,
+    "actualRun": 38384140502,
+    "branch": "agent/live-approved-featured-photography",
+    "capturedAt": "2026-10-13T10:38:25.144Z",
+    "assetMatchesApproved": true,
+    "checks": 7,
+    "desktopArabic": [
+      1440,
+      1366
+    ],
+    "mobileFallback": [
+      430,
+      390,
+      360
+    ],
+    "englishPreserved": [
+      1440,
+      390
+    ],
+    "actionsUnobstructed": true,
+    "pageErrors": 0,
+    "regionalMad": 20.303781965570703,
+    "regionalChangedPercent": 15.667462829845835,
+    "deployedCommit": "c058b196a4d77cc3967e68e1c8dc48c2c557d2d1"
   },
   "overallFinalGate": "NOT_DECLARED"
 }
