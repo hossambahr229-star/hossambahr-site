@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2026-10-13T06:14:12.721Z",
+  "source": "LIVE_PRODUCTION_WITH_ISOLATED_TEMPORARY_PHOTO",
+  "productionChanged": false,
+  "bounds": {
+    "left": 31,
+    "top": 496,
+    "width": 384,
+    "height": 127
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "mad": 42.87982556867892,
+      "changed": 45.13615485564305
+    },
+    {
+      "name": "candidate",
+      "mad": 43.51724491469816,
+      "changed": 46.3746719160105
+    }
+  ],
+  "overallFinalGate": "NOT_DECLARED"
+}
