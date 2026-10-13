@@ -81,6 +81,11 @@ try {
  const consultationChecks=[];
  for(const[locale,width]of[['ar',1440],['ar',1366],['ar',1280],['ar',430],['ar',390],['ar',360],['en',1440],['en',390]]){
   const p=await browser.newPage({viewport:{width,height:960},deviceScaleFactor:1});p.on('pageerror',e=>errors.push(e.message));await p.goto(target+(locale==='en'?'en/':''),{waitUntil:'networkidle'});await p.evaluate(()=>document.fonts.ready);
+  if(locale==='en'){
+   const state=await p.evaluate(()=>({count:document.querySelectorAll('.hb-approved-consult-photo').length,arabicConsultationCount:document.querySelectorAll('.premium-consult-cta').length,contactLinks:document.querySelectorAll('a[href="/en/contact/"]').length,overflow:document.documentElement.scrollWidth>innerWidth}));
+   const failures=[];if(state.count!==0||state.arabicConsultationCount!==0||state.contactLinks<1||state.overflow)failures.push('preserved English presentation or contact links');
+   await p.screenshot({path:output+'/consult-fallback-en-'+width+'.png'});consultationChecks.push({locale,width,...state,scope:'Existing English template has no Arabic consultation card',failures});await p.close();continue;
+  }
   await p.locator('.premium-consult-cta').scrollIntoViewIfNeeded();
   const state=await p.evaluate(()=>{
    const c=document.querySelector('.premium-consult-cta'),photo=c.querySelector('.hb-approved-consult-photo'),r=c.getBoundingClientRect(),a=photo?.getBoundingClientRect(),style=photo?getComputedStyle(photo):null,button=c.querySelector('span'),b=button.getBoundingClientRect(),hit=document.elementFromPoint(b.x+b.width/2,b.y+b.height/2);
