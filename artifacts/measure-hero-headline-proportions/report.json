@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-13T05:41:23.681Z",
+  "capturedAt": "2026-10-13T05:54:51.744Z",
   "source": "LIVE_PRODUCTION_TEMPORARY_NATIVE_HEADLINE_MEASUREMENT",
   "labels": [
     [
@@ -36,25 +36,6 @@
       "name": "baseline",
       "measuredStyle": {
         "marker": {
-          "content": "none",
-          "display": "block",
-          "opacity": "1",
-          "transform": "none"
-        },
-        "headline": "38px",
-        "copy": "14px"
-      },
-      "mad": 24.887928809957497,
-      "changed": 17.430555555555554,
-      "overflow": false
-    },
-    {
-      "name": "nav-gap20-inset48",
-      "bottom": 8,
-      "gap": 20,
-      "inset": 48,
-      "measuredStyle": {
-        "marker": {
           "content": "\"\"",
           "display": "block",
           "opacity": "1",
@@ -68,10 +49,8 @@
       "overflow": false
     },
     {
-      "name": "nav-gap20-inset44",
-      "bottom": 8,
-      "gap": 20,
-      "inset": 44,
+      "name": "short-home-login",
+      "short": true,
       "measuredStyle": {
         "marker": {
           "content": "\"\"",
@@ -82,27 +61,8 @@
         "headline": "38px",
         "copy": "14px"
       },
-      "mad": 24.30245522161506,
-      "changed": 17.02185792349727,
-      "overflow": false
-    },
-    {
-      "name": "nav-gap20-inset52",
-      "bottom": 8,
-      "gap": 20,
-      "inset": 52,
-      "measuredStyle": {
-        "marker": {
-          "content": "\"\"",
-          "display": "block",
-          "opacity": "1",
-          "transform": "none"
-        },
-        "headline": "38px",
-        "copy": "14px"
-      },
-      "mad": 24.189757893139042,
-      "changed": 16.970628415300546,
+      "mad": 23.16379022465088,
+      "changed": 15.943761384335156,
       "overflow": false
     }
   ]
