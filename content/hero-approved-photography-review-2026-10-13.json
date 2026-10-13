@@ -1,6 +1,6 @@
 {
   "reviewedAt": "2026-10-13",
-  "scope": "Original hero photographic pixels only, Arabic 1280px+ with CSS-mask support. Existing UI, HB master, mobile and English presentation preserved.",
+  "scope": "Original hero photographic pixels only, Arabic 1366px+ with CSS-mask support. Narrower desktops retain the shaded background for text contrast.",
   "sourceAsset": "assets/approved-featured-photography-source.jpeg",
   "mask": "assets/approved-hero-photography-mask.svg",
   "sourceReference": "qa/reference/approved-desktop.jpeg",
@@ -72,7 +72,19 @@
   },
   "fallback": "Original background remains when mask support is unavailable; new layer hidden outside scoped desktop viewports.",
   "liveAcceptance": {
-    "status": "PENDING_PUBLICATION"
+    "status": "PASS",
+    "actualRun": 38386464083,
+    "publicationRun": 38386455351,
+    "branch": "agent/live-approved-hero-photography",
+    "capturedAt": "2026-10-13T10:59:05.728Z",
+    "maskMatchesSource": true,
+    "referenceUiAlpha": 0,
+    "checks": 7,
+    "pageErrors": 0,
+    "regionalMad": 21.414080746380538,
+    "regionalChangedPercent": 13.013028206097177,
+    "deployedCommit": "974f5e96478311044ecae84c5ee9f5a8552b52f3",
+    "note": "Original acceptance covered 1440/1366 and mobile/English. The new 1280 shaded fallback is pending typography acceptance."
   },
   "pixelFidelity": "NOT_DECLARED",
   "overallFinalGate": "NOT_DECLARED"

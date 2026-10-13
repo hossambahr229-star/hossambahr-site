@@ -1,6 +1,6 @@
 {
   "recordedAt": "2026-10-13",
-  "lastAcceptedDeployedCommit": "c058b196a4d77cc3967e68e1c8dc48c2c557d2d1",
+  "lastAcceptedDeployedCommit": "974f5e96478311044ecae84c5ee9f5a8552b52f3",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -49,11 +49,13 @@
     453,
     454,
     455,
-    456
+    456,
+    457,
+    458
   ],
   "production": {
     "publicationGate": {
-      "run": 38384132862,
+      "run": 38386455351,
       "status": "PASS"
     },
     "geometry": {
@@ -68,8 +70,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 22.562966820987654,
-      "changedPixelPercent": 16.156394675925924,
+      "meanAbsolutePixelDifference": 20.87808521412037,
+      "changedPixelPercent": 14.422453703703702,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -507,6 +509,97 @@
         "regionalChangedPercent": 15.667462829845835,
         "deployedCommit": "c058b196a4d77cc3967e68e1c8dc48c2c557d2d1"
       },
+      "overallFinalGate": "NOT_DECLARED"
+    },
+    "heroApprovedPhotography": {
+      "reviewedAt": "2026-10-13",
+      "scope": "Original hero photographic pixels only, Arabic 1366px+ with CSS-mask support. Narrower desktops retain the shaded background for text contrast.",
+      "sourceAsset": "assets/approved-featured-photography-source.jpeg",
+      "mask": "assets/approved-hero-photography-mask.svg",
+      "sourceReference": "qa/reference/approved-desktop.jpeg",
+      "referenceViewport": {
+        "width": 1440,
+        "height": 960
+      },
+      "photoWindow": {
+        "x": 0,
+        "y": 61,
+        "width": 1069,
+        "height": 302
+      },
+      "referenceUiAlphaGuards": [
+        {
+          "name": "caption",
+          "x": 58,
+          "y": 111,
+          "w": 150,
+          "h": 118,
+          "maxAlpha": 0
+        },
+        {
+          "name": "headline",
+          "x": 675,
+          "y": 43,
+          "w": 360,
+          "h": 82,
+          "maxAlpha": 0
+        },
+        {
+          "name": "support",
+          "x": 686,
+          "y": 136,
+          "w": 343,
+          "h": 38,
+          "maxAlpha": 0
+        },
+        {
+          "name": "search",
+          "x": 434,
+          "y": 187,
+          "w": 600,
+          "h": 48,
+          "maxAlpha": 0
+        },
+        {
+          "name": "chips",
+          "x": 449,
+          "y": 250,
+          "w": 582,
+          "h": 27,
+          "maxAlpha": 0
+        }
+      ],
+      "measurement": {
+        "branch": "agent/measure-approved-hero-photography",
+        "capturedAt": "2026-10-13T10:46:52.124Z",
+        "baseline": {
+          "name": "baseline",
+          "mad": 28.628783889546252,
+          "changed": 20.437804719394865
+        },
+        "candidate": {
+          "name": "reference-polished",
+          "mad": 21.414080746380538,
+          "changed": 13.013028206097177
+        }
+      },
+      "fallback": "Original background remains when mask support is unavailable; new layer hidden outside scoped desktop viewports.",
+      "liveAcceptance": {
+        "status": "PASS",
+        "actualRun": 38386464083,
+        "publicationRun": 38386455351,
+        "branch": "agent/live-approved-hero-photography",
+        "capturedAt": "2026-10-13T10:59:05.728Z",
+        "maskMatchesSource": true,
+        "referenceUiAlpha": 0,
+        "checks": 7,
+        "pageErrors": 0,
+        "regionalMad": 21.414080746380538,
+        "regionalChangedPercent": 13.013028206097177,
+        "deployedCommit": "974f5e96478311044ecae84c5ee9f5a8552b52f3",
+        "note": "Original acceptance covered 1440/1366 and mobile/English. The new 1280 shaded fallback is pending typography acceptance."
+      },
+      "pixelFidelity": "NOT_DECLARED",
       "overallFinalGate": "NOT_DECLARED"
     }
   },

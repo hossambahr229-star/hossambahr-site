@@ -1,0 +1,18 @@
+{
+  "reviewedAt": "2026-10-13",
+  "scope": "Arabic desktop native fluid headline and two-line supporting copy, fixed 84px/42px blocks and preserved 248px search baseline.",
+  "reference": "qa/reference/approved-desktop.jpeg",
+  "diagnosticBranch": "agent/measure-hero-type-family-rhythm",
+  "capturedAt": "2026-10-13T11:26:57.299Z",
+  "selectedCandidate": "noto44_5-cairo14",
+  "baselineMad": 25.088145646264106,
+  "candidateMad": 23.280068374660186,
+  "baselineChangedPercent": 17.191146991789548,
+  "candidateChangedPercent": 16.28429030397891,
+  "selection": "Visual inspection favors the original Noto accent shape over Cairo; Cairo is retained for supporting copy.",
+  "liveAcceptance": {
+    "status": "PENDING_PUBLICATION"
+  },
+  "pixelFidelity": "NOT_DECLARED",
+  "overallFinalGate": "NOT_DECLARED"
+}
