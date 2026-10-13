@@ -51,25 +51,47 @@
       "fields": [
         "requirements",
         "conditions",
-        "duration"
+        "duration",
+        "fees"
       ],
-      "feeReview": "Existing fee text retained; no new fee verification asserted.",
+      "feeReview": "Current official fee-guide tables reviewed: personal categories AED 150; listed commercial categories AED 2000 with the explicitly retained AED 150 Document Attested outside exception. No blanket commercial price.",
       "fieldReviewDates": {
         "requirements": "2026-10-08",
         "conditions": "2026-10-08",
-        "duration": "2026-10-12"
+        "duration": "2026-10-12",
+        "fees": "2026-10-12"
       },
       "reviewedAt": "2026-10-12",
       "latestFieldReview": {
         "fields": [
-          "duration"
+          "fees"
         ],
-        "source": "https://www.mofa.gov.ae/services/attestation",
-        "capturedAt": "2026-10-12T06:47:12.633Z",
-        "evidenceBranch": "agent/read-mofa-attestation-source-health",
-        "run": 38214198303,
-        "scope": "Current source health and duration only. Outside-UAE courier estimate changed from approximately 15 to 7 working days. Previous reviewed requirements/conditions are retained; no fee or authenticated route review."
-      }
+        "source": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+        "capturedAt": "2026-10-12T16:54:03.346Z",
+        "runs": [
+          38280056238,
+          38280263042,
+          38280523746
+        ],
+        "personalEvidenceBranch": "agent/read-mofa-personal-fee-origins",
+        "commercialEvidenceBranch": "agent/read-mofa-commercial-fee-origins",
+        "scope": "Fee tables only. Existing requirements, conditions and reviewed duration are preserved; authenticated execution is not reviewed."
+      },
+      "fieldSources": {
+        "fees": "https://www.mofa.gov.ae/en/services/forms/attestations-guide"
+      },
+      "previousFieldReviews": [
+        {
+          "fields": [
+            "duration"
+          ],
+          "source": "https://www.mofa.gov.ae/services/attestation",
+          "capturedAt": "2026-10-12T06:47:12.633Z",
+          "evidenceBranch": "agent/read-mofa-attestation-source-health",
+          "run": 38214198303,
+          "scope": "Current source health and duration only. Outside-UAE courier estimate changed from approximately 15 to 7 working days. Previous reviewed requirements/conditions are retained; no fee or authenticated route review."
+        }
+      ]
     },
     {
       "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
@@ -77,25 +99,47 @@
       "fields": [
         "requirements",
         "conditions",
-        "duration"
+        "duration",
+        "fees"
       ],
-      "feeReview": "Existing fee text retained; no new fee verification asserted.",
+      "feeReview": "Current official fee-guide tables reviewed: personal categories AED 150; listed commercial categories AED 2000 with the explicitly retained AED 150 Document Attested outside exception. No blanket commercial price.",
       "fieldReviewDates": {
         "requirements": "2026-10-08",
         "conditions": "2026-10-08",
-        "duration": "2026-10-12"
+        "duration": "2026-10-12",
+        "fees": "2026-10-12"
       },
       "reviewedAt": "2026-10-12",
       "latestFieldReview": {
         "fields": [
-          "duration"
+          "fees"
         ],
-        "source": "https://www.mofa.gov.ae/services/attestation",
-        "capturedAt": "2026-10-12T06:47:12.633Z",
-        "evidenceBranch": "agent/read-mofa-attestation-source-health",
-        "run": 38214198303,
-        "scope": "Current source health and duration only. Outside-UAE courier estimate changed from approximately 15 to 7 working days. Previous reviewed requirements/conditions are retained; no fee or authenticated route review."
-      }
+        "source": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+        "capturedAt": "2026-10-12T16:54:03.346Z",
+        "runs": [
+          38280056238,
+          38280263042,
+          38280523746
+        ],
+        "personalEvidenceBranch": "agent/read-mofa-personal-fee-origins",
+        "commercialEvidenceBranch": "agent/read-mofa-commercial-fee-origins",
+        "scope": "Fee tables only. Existing requirements, conditions and reviewed duration are preserved; authenticated execution is not reviewed."
+      },
+      "fieldSources": {
+        "fees": "https://www.mofa.gov.ae/en/services/forms/attestations-guide"
+      },
+      "previousFieldReviews": [
+        {
+          "fields": [
+            "duration"
+          ],
+          "source": "https://www.mofa.gov.ae/services/attestation",
+          "capturedAt": "2026-10-12T06:47:12.633Z",
+          "evidenceBranch": "agent/read-mofa-attestation-source-health",
+          "run": 38214198303,
+          "scope": "Current source health and duration only. Outside-UAE courier estimate changed from approximately 15 to 7 working days. Previous reviewed requirements/conditions are retained; no fee or authenticated route review."
+        }
+      ]
     },
     {
       "slug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",

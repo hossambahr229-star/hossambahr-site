@@ -1,0 +1,60 @@
+{
+  "reviewedAt": "2026-10-12",
+  "scope": "Current public MOFA fee tables only; preserve accepted duration, requirements, conditions, routes and source health.",
+  "feeGuide": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+  "sourceEvidence": {
+    "initialGuideRun": 38280056238,
+    "commercial": {
+      "run": 38280263042,
+      "branch": "agent/read-mofa-commercial-fee-origins",
+      "capturedAt": "2026-10-12T16:51:51.882Z",
+      "pages": 13,
+      "rows": 65,
+      "exception": [
+        [
+          "Commercial Issued from UAE",
+          "Document Attested outside",
+          "150"
+        ]
+      ]
+    },
+    "personal": {
+      "run": 38280523746,
+      "branch": "agent/read-mofa-personal-fee-origins",
+      "capturedAt": "2026-10-12T16:54:03.346Z",
+      "pages": 7,
+      "rows": 35,
+      "listedAmountAed": 150
+    }
+  },
+  "facts": [
+    {
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "id": "catalog:تصديق مستند شخصي داخل الإمارات",
+      "authority": "mofa",
+      "cardSource": "https://www.mofa.gov.ae/services/attestation",
+      "feeSource": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+      "fees": "150 درهماً للمستند الشخصي",
+      "feesEn": "AED 150 per personal document"
+    },
+    {
+      "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "id": "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+      "authority": "mofa",
+      "cardSource": "https://www.mofa.gov.ae/services/attestation",
+      "feeSource": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+      "fees": "يعرض دليل الوزارة رسمًا قدره 2000 درهم للفئات التجارية المدرجة الصادرة داخل الإمارات أو خارجها، باستثناء فئة «مستند مصدق في الخارج» ضمن الصادر من الإمارات ورسومها 150 درهمًا. راجع فئة المستند والإجمالي قبل الدفع. الفواتير التجارية وشهادات المنشأ خارج نطاق هذه الخدمة.",
+      "feesEn": "The Ministry's guide lists AED 2,000 for the listed commercial categories issued inside or outside the UAE, except Document Attested outside among UAE-issued documents, listed at AED 150. Confirm the document category and total before payment. Commercial invoices and certificates of origin are outside this service."
+    }
+  ],
+  "expectedPolicyVersion": 4,
+  "liveAcceptance": {
+    "status": "PENDING_DEPLOYMENT",
+    "newAiFeeCases": 4,
+    "changedCommercialPageCases": 4,
+    "acceptedDurationCasesRepeated": false,
+    "unchangedPersonalPageCasesRepeated": false
+  },
+  "externalSubmissionPerformed": false,
+  "overallFinalGate": "NOT_DECLARED"
+}

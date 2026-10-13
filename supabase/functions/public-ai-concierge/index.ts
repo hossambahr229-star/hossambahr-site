@@ -204,6 +204,11 @@ function groundedAnswer(goal: string, row: any, focus: string) {
     if (conditions?.value && !reviewPending) text += " " + conditions.value;
   }
 
+  // Cite the approved source of the displayed fact, preserving the primary service route and review guard.
+  const supportingRule = focus === "fees" ? fees : focus === "duration" ? duration : focus === "overview" ? conditions : null;
+  const evidenceSource = (factStatus === "VERIFIED_FACT" && supportingRule
+    ? (row.safeSources || []).find((candidate:any) => !candidate.review_required && supportingRule.source_refs.includes(candidate.source_url))
+    : null) || source;
   return {
     text,
     focus,
@@ -213,10 +218,10 @@ function groundedAnswer(goal: string, row: any, focus: string) {
       policy_key: row.policy?.policy_key || row.binding?.policy_key || null,
       policy_version: row.policy?.version || null,
       workflow_key: row.workflow?.workflow_key || row.binding?.workflow_key || null,
-      source_title: source?.title || null,
-      source_url: source?.source_url || null,
-      last_verified_at: source?.last_verified_at || null,
-      supporting_rule: focus === "fees" ? fees : focus === "duration" ? duration : focus === "overview" ? conditions : null,
+      source_title: evidenceSource?.title || null,
+      source_url: evidenceSource?.source_url || null,
+      last_verified_at: evidenceSource?.last_verified_at || null,
+      supporting_rule: supportingRule,
       document_requirements: focus === "documents" && !reviewPending && factStatus === "VERIFIED_FACT" ? row.requirements.slice(0,6) : null,
       special_case: reviewPending ? null : (special?.value || null),
       review_pending: reviewPending
