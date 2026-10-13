@@ -1,6 +1,6 @@
 {
   "recordedAt": "2026-10-13",
-  "lastAcceptedDeployedCommit": "974f5e96478311044ecae84c5ee9f5a8552b52f3",
+  "lastAcceptedDeployedCommit": "db9b78ace0b9b5de3761189e2c9c1e83f024b8ae",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -51,11 +51,12 @@
     455,
     456,
     457,
-    458
+    458,
+    459
   ],
   "production": {
     "publicationGate": {
-      "run": 38386455351,
+      "run": 38455712636,
       "status": "PASS"
     },
     "geometry": {
@@ -70,8 +71,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 20.87808521412037,
-      "changedPixelPercent": 14.422453703703702,
+      "meanAbsolutePixelDifference": 20.688895399305554,
+      "changedPixelPercent": 14.32689525462963,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -597,7 +598,50 @@
         "regionalMad": 21.414080746380538,
         "regionalChangedPercent": 13.013028206097177,
         "deployedCommit": "974f5e96478311044ecae84c5ee9f5a8552b52f3",
-        "note": "Original acceptance covered 1440/1366 and mobile/English. The new 1280 shaded fallback is pending typography acceptance."
+        "note": "Original acceptance covered 1440/1366 and mobile/English. The new 1280 shaded fallback is pending typography acceptance.",
+        "narrowFallbackValidatedRun": 38455800432
+      },
+      "pixelFidelity": "NOT_DECLARED",
+      "overallFinalGate": "NOT_DECLARED"
+    },
+    "heroNativeTypeRhythm": {
+      "reviewedAt": "2026-10-13",
+      "scope": "Arabic desktop native fluid headline and two-line supporting copy, fixed 84px/42px blocks and preserved 248px search baseline.",
+      "reference": "qa/reference/approved-desktop.jpeg",
+      "diagnosticBranch": "agent/measure-hero-type-family-rhythm",
+      "capturedAt": "2026-10-13T11:26:57.299Z",
+      "selectedCandidate": "noto44_5-cairo14",
+      "baselineMad": 25.088145646264106,
+      "candidateMad": 23.280068374660186,
+      "baselineChangedPercent": 17.191146991789548,
+      "candidateChangedPercent": 16.28429030397891,
+      "selection": "Visual inspection favors the original Noto accent shape over Cairo; Cairo is retained for supporting copy.",
+      "liveAcceptance": {
+        "status": "PASS",
+        "actualRun": 38455800432,
+        "publicationRun": 38455712636,
+        "branch": "agent/live-native-hero-type-rhythm",
+        "report": "artifacts/live-regional-visual/report.json",
+        "capturedAt": "2026-10-13T19:38:30.892Z",
+        "viewportsArabic": [
+          1440,
+          1366,
+          1280,
+          430,
+          390,
+          360
+        ],
+        "viewportsEnglish": [
+          1440,
+          390
+        ],
+        "headingHeightPx": 84,
+        "desktopSearchY": 248,
+        "copyLines": 2,
+        "pageErrors": 0,
+        "regionalMad": 23.292720432764916,
+        "regionalChangedPercent": 16.28429030397891,
+        "deployedCommit": "db9b78ace0b9b5de3761189e2c9c1e83f024b8ae"
       },
       "pixelFidelity": "NOT_DECLARED",
       "overallFinalGate": "NOT_DECLARED"

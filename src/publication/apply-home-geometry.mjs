@@ -65,6 +65,10 @@ for (const route of ['index.html', 'en/index.html']) {
   if (route === 'index.html' && !html.includes('hb-approved-hero-photography')) html = html.replace(
     /(<div class="premium-hero-main"[^>]*>)/,
     '$1<div class="hb-approved-hero-photography" aria-hidden="true"></div>');
+  // The approved assistant photograph is decorative and cannot replace live controls.
+  if (route === 'index.html' && !html.includes('hb-approved-ai-photography')) html = html.replace(
+    /(<(?:aside|div|section)\b[^>]*\bclass="premium-ai-showcase[^"]*"[^>]*>)/,
+    '$1<div class="hb-approved-ai-photography" aria-hidden="true"></div>');
   const icon = name => `<svg class="home-line-icon" aria-hidden="true"><use href="/assets/home-icons.svg#${name}"/></svg>`;
   if(route==='index.html') html = html.replace(/<div class="header-actions">([\s\S]*?)<\/div>/,(_,actions)=>{
     const link = name => actions.match(new RegExp(`<a class="${name}"[^>]*>[\\s\\S]*?<\\/a>`))?.[0] || '';
