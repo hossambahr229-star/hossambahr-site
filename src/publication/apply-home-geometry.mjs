@@ -73,6 +73,10 @@ for (const route of ['index.html', 'en/index.html']) {
   if (route === 'index.html' && !html.includes('hb-native-hero-caption')) html = html.replace(
     /(<div class="premium-hero-main"[^>]*>)/,
     '$1<div class="hb-native-hero-caption" aria-hidden="true"><span>معك دائماً</span><span>لإنجاز معاملاتك</span><span>في الإمارات</span></div>');
+  // Restore a bounded photographic region before the reference contact text/buttons.
+  if (route === 'index.html' && !html.includes('hb-approved-consult-photo')) html = html.replace(
+    /(<a\b[^>]*\bclass="premium-consult-cta[^"]*"[^>]*>)/,
+    '$1<div class="hb-approved-consult-photo" aria-hidden="true"></div>');
   const icon = name => `<svg class="home-line-icon" aria-hidden="true"><use href="/assets/home-icons.svg#${name}"/></svg>`;
   if(route==='index.html') html = html.replace(/<div class="header-actions">([\s\S]*?)<\/div>/,(_,actions)=>{
     const link = name => actions.match(new RegExp(`<a class="${name}"[^>]*>[\\s\\S]*?<\\/a>`))?.[0] || '';
