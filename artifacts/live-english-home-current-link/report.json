@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2026-10-13T05:57:46.616Z",
+  "source": "LIVE_PRODUCTION",
+  "scope": "Only current English homepage brand link at desktop/mobile; accepted journeys reused.",
+  "passed": true,
+  "checks": [
+    {
+      "width": 1440,
+      "href": "/en/",
+      "current": "page",
+      "visible": true,
+      "scroll": 1440,
+      "failures": []
+    },
+    {
+      "width": 390,
+      "href": "/en/",
+      "current": "page",
+      "visible": true,
+      "scroll": 390,
+      "failures": []
+    }
+  ]
+}
