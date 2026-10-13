@@ -437,3 +437,16 @@ html.hb-phase8 body[data-home-geometry] .ai-showcase-orb:focus-visible{outline:3
 /* Keep the English leading action clear of its decorative search icon. */
 html[lang="en"].hb-phase8 body[data-home-geometry] .home-search-icon{left:auto!important;right:13px!important}
 html[lang="en"].hb-phase8 body[data-home-geometry] .premium-intent-search input{padding:0 30px 0 12px!important}
+
+/* Original approved photography, clipped before reference UI text; real card content stays independent. */
+.hb-featured-reference-photo{display:none}
+@media(min-width:1280px){
+ html[lang="ar"].hb-phase8 body[data-home-geometry]{--featured-inner-inset:4px}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-featured .premium-story{box-sizing:border-box!important;padding-left:var(--featured-inner-inset)!important;padding-right:var(--featured-inner-inset)!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-featured .hb-featured-reference-photo{display:block!important;position:absolute;left:0;top:0;width:var(--featured-photo-width);height:127px;max-height:100%;background-image:url('/assets/approved-featured-photography-source.jpeg');background-size:1440px 960px;background-position:var(--featured-photo-source-x) -497px;background-repeat:no-repeat;mask-image:linear-gradient(90deg,#000 0%,#000 85%,transparent 100%);border-radius:var(--card-radius) 0 0 var(--card-radius);pointer-events:none;z-index:1}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-featured-reference-photo-0{--featured-photo-width:160px;--featured-photo-source-x:-35px}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-featured-reference-photo-1{--featured-photo-width:120px;--featured-photo-source-x:-423px}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-featured-reference-photo-2{--featured-photo-width:100px;--featured-photo-source-x:-758px}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-featured-reference-photo-3{--featured-photo-width:120px;--featured-photo-source-x:-1093px}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-featured .premium-slide>h2,html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-featured .premium-slide>p{position:relative;z-index:2}
+}
