@@ -200,7 +200,36 @@
     ]
   },
   "liveAcceptance": {
-    "status": "PENDING_PUBLICATION"
+    "status": "PASS",
+    "actualRun": 38460442167,
+    "publicationRun": 38460508200,
+    "branch": "agent/live-native-caption-line-proportions",
+    "report": "artifacts/live-regional-visual/report.json",
+    "capturedAt": "2026-10-13T20:14:17.946Z",
+    "cases": 8,
+    "desktopArabic": [
+      1440,
+      1366
+    ],
+    "narrowerDesktopFallback": [
+      1280
+    ],
+    "mobileFallback": [
+      430,
+      390,
+      360
+    ],
+    "englishPreserved": [
+      1440,
+      390
+    ],
+    "searchY": 248,
+    "realText": true,
+    "zoomOrTransformScale": false,
+    "pageErrors": 0,
+    "regionalMad": 29.159609532012635,
+    "regionalChangedPercent": 21.636520241171404,
+    "deployedCommit": "16c6eba98491a9714c5938313553d8f1d2e52235"
   },
   "pixelFidelity": "NOT_DECLARED",
   "overallFinalGate": "NOT_DECLARED"
