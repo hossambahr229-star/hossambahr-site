@@ -50,6 +50,17 @@ for (const route of ['index.html', 'en/index.html']) {
       attributes.includes('href="' + homeHref + '"')
         ? '<a' + attributes.replace(/\saria-current="[^"]*"/g, '') + ' aria-current="page">'
         : tag) + close);
+  // Render only bounded photographic areas from the approved reference.
+  // Existing semantic headings, descriptions and actions remain real HTML.
+  if (route === 'index.html') html = html.replace(
+    /(<article\b[^>]*\bclass="premium-slide[^"]*"[^>]*>)([\s\S]*?)(?=<\/article>)/g,
+    (_, open, content) => {
+      const slide = open.match(/\bdata-slide="([0-3])"/)?.[1];
+      const photo = slide !== undefined && !content.includes('hb-featured-reference-photo')
+        ? '<div class="hb-featured-reference-photo hb-featured-reference-photo-' + slide + '" aria-hidden="true"></div>'
+        : '';
+      return open + photo + content;
+    });
   const icon = name => `<svg class="home-line-icon" aria-hidden="true"><use href="/assets/home-icons.svg#${name}"/></svg>`;
   if(route==='index.html') html = html.replace(/<div class="header-actions">([\s\S]*?)<\/div>/,(_,actions)=>{
     const link = name => actions.match(new RegExp(`<a class="${name}"[^>]*>[\\s\\S]*?<\\/a>`))?.[0] || '';

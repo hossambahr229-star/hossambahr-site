@@ -1,0 +1,51 @@
+{
+  "reviewedAt": "2026-10-13",
+  "source": "qa/reference/approved-desktop.jpeg",
+  "sourceBlobSha": "d5a7db0d15c0f35655d9f7664e549787abdbe77b",
+  "asset": "assets/approved-featured-photography-source.jpeg",
+  "method": "Original reference bytes plus bounded native CSS photographic clipping; no bitmap reconstruction, reference UI labels, buttons, figures or claims are rendered.",
+  "normalizedReference": {
+    "width": 1440,
+    "height": 960
+  },
+  "sourcePhotoWindows": [
+    {
+      "x": 35,
+      "y": 497,
+      "width": 160,
+      "height": 127
+    },
+    {
+      "x": 423,
+      "y": 497,
+      "width": 120,
+      "height": 127
+    },
+    {
+      "x": 758,
+      "y": 497,
+      "width": 100,
+      "height": 127
+    },
+    {
+      "x": 1093,
+      "y": 497,
+      "width": 120,
+      "height": 127
+    }
+  ],
+  "nativeInnerInsetPx": 4,
+  "scope": "Arabic desktop from 1280px; English and mobile retain their existing photographic presentation.",
+  "measurement": {
+    "branch": "agent/measure-featured-photo-reference-candidate",
+    "capturedAt": "2026-10-13T10:26:59.434Z",
+    "baselineMad": 35.05778468547745,
+    "candidateMad": 20.303888628580353,
+    "baselineChangedPercent": 32.81773196347554,
+    "candidateChangedPercent": 15.667462829845835
+  },
+  "liveAcceptance": {
+    "status": "PENDING_PUBLICATION"
+  },
+  "overallFinalGate": "NOT_DECLARED"
+}
