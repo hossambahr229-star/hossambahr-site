@@ -1,0 +1,35 @@
+{
+  "diagnosedAt": "2026-10-13T20:54:36.795Z",
+  "source": "LOCAL_STATIC_DOM_IN_ACTIONS_CHROME",
+  "productionRequests": 0,
+  "defaultLocatorTimeoutMs": 600,
+  "productionHarnessDefaultTimeoutMs": 30000,
+  "results": [
+    {
+      "present": false,
+      "reader": "current",
+      "href": null,
+      "elapsedMs": 603.3868640000001
+    },
+    {
+      "present": false,
+      "reader": "immediate",
+      "href": null,
+      "elapsedMs": 19.46569599999998
+    },
+    {
+      "present": true,
+      "reader": "current",
+      "href": "/services/known/",
+      "elapsedMs": 2.522111999999879
+    },
+    {
+      "present": true,
+      "reader": "immediate",
+      "href": "/services/known/",
+      "elapsedMs": 5.3287370000000465
+    }
+  ],
+  "status": "PASS",
+  "assertionsUnchanged": true
+}
