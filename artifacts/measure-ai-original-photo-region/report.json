@@ -1,0 +1,51 @@
+{
+  "capturedAt": "2026-10-13T11:54:22.988Z",
+  "source": "LIVE_PRODUCTION_TEMPORARY_PHOTOGRAPHIC_CANDIDATE",
+  "productionChanged": false,
+  "guards": [
+    {
+      "name": "master",
+      "x": 0,
+      "y": 65,
+      "w": 180,
+      "h": 135,
+      "maxAlpha": 0
+    },
+    {
+      "name": "welcome",
+      "x": 155,
+      "y": 25,
+      "w": 205,
+      "h": 70,
+      "maxAlpha": 0
+    },
+    {
+      "name": "actions",
+      "x": 84,
+      "y": 201,
+      "w": 156,
+      "h": 95,
+      "maxAlpha": 0
+    },
+    {
+      "name": "orb",
+      "x": 288,
+      "y": 243,
+      "w": 56,
+      "h": 56,
+      "maxAlpha": 0
+    }
+  ],
+  "results": [
+    {
+      "name": "baseline",
+      "mad": 34.44339325134027,
+      "changed": 25.99828635690188
+    },
+    {
+      "name": "original-photo",
+      "mad": 28.36388140161725,
+      "changed": 20.69134788739937
+    }
+  ]
+}
