@@ -71,7 +71,33 @@
     ]
   },
   "liveAcceptance": {
-    "status": "PENDING_PUBLICATION"
+    "status": "PASS",
+    "actualRun": 38457612962,
+    "publicationRun": 38457682945,
+    "branch": "agent/live-approved-ai-photography",
+    "report": "artifacts/live-regional-visual/report.json",
+    "capturedAt": "2026-10-13T19:53:53.910Z",
+    "maskMatchesSource": true,
+    "uiAlphaMax": 0,
+    "cases": 8,
+    "nativeLaunchPassed": [
+      1440,
+      1366
+    ],
+    "fallbackPreservedArabic": [
+      1280,
+      430,
+      390,
+      360
+    ],
+    "englishPreserved": [
+      1440,
+      390
+    ],
+    "pageErrors": 0,
+    "regionalMad": 29.15019665244581,
+    "regionalChangedPercent": 21.407150889844882,
+    "deployedCommit": "63fd8a5083bc2d142a63642680076a4dbd62ebf0"
   },
   "pixelFidelity": "NOT_DECLARED",
   "overallFinalGate": "NOT_DECLARED"

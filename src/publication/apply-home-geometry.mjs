@@ -69,6 +69,10 @@ for (const route of ['index.html', 'en/index.html']) {
   if (route === 'index.html' && !html.includes('hb-approved-ai-photography')) html = html.replace(
     /(<(?:aside|div|section)\b[^>]*\bclass="premium-ai-showcase[^"]*"[^>]*>)/,
     '$1<div class="hb-approved-ai-photography" aria-hidden="true"></div>');
+  // Native caption lines preserve text and independently measured reference proportions.
+  if (route === 'index.html' && !html.includes('hb-native-hero-caption')) html = html.replace(
+    /(<div class="premium-hero-main"[^>]*>)/,
+    '$1<div class="hb-native-hero-caption" aria-hidden="true"><span>معك دائماً</span><span>لإنجاز معاملاتك</span><span>في الإمارات</span></div>');
   const icon = name => `<svg class="home-line-icon" aria-hidden="true"><use href="/assets/home-icons.svg#${name}"/></svg>`;
   if(route==='index.html') html = html.replace(/<div class="header-actions">([\s\S]*?)<\/div>/,(_,actions)=>{
     const link = name => actions.match(new RegExp(`<a class="${name}"[^>]*>[\\s\\S]*?<\\/a>`))?.[0] || '';
