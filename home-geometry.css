@@ -454,8 +454,16 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-intent-search input{
 /* Only original photographic pixels are exposed; the reference UI is fully transparent in the mask. */
 .hb-approved-hero-photography{display:none}
 @supports (mask-image:linear-gradient(#000,#000)){
- @media(min-width:1280px){
+ @media(min-width:1366px){
   html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-approved-hero-photography{display:block;position:absolute;inset:0;height:302px;max-height:100%;background-image:url('/assets/approved-featured-photography-source.jpeg');background-size:1440px 960px;background-position:0 -61px;background-repeat:no-repeat;mask-image:url('/assets/approved-hero-photography-mask.svg');mask-size:1069px 302px;mask-position:0 0;mask-repeat:no-repeat;pointer-events:none;z-index:0}
   html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-main>.premium-hero-copy{z-index:2}
  }
+}
+
+/* Reference-measured native type rhythm; fixed block heights preserve the shared search baseline. */
+@media(min-width:1280px){
+ html[lang="ar"].hb-phase8 body[data-home-geometry]{--hero-primary-size:clamp(31.111px,2.430556vw,35px);--hero-accent-size:clamp(39.5556px,3.090278vw,44.5px);--hero-type-inset:clamp(3.5556px,.277778vw,4px);--hero-primary-indent:clamp(15.5556px,1.215278vw,17.5px);--hero-copy-size:clamp(12.444px,.972222vw,14px);--hero-copy-width:clamp(313.778px,24.513889vw,353px)}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1{font-size:var(--hero-primary-size)!important;line-height:39.9px!important;height:84px!important;padding-right:var(--hero-type-inset)!important;text-indent:var(--hero-primary-indent)!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy h1 em{font-family:"HB Sans Arabic",sans-serif!important;font-size:var(--hero-accent-size)!important;line-height:44.1px!important;font-style:normal!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-copy>p{width:var(--hero-copy-width)!important;height:42px!important;min-height:42px!important;box-sizing:border-box;padding-right:var(--hero-type-inset)!important;font-family:Cairo,sans-serif!important;font-size:var(--hero-copy-size)!important;line-height:22px!important;font-weight:600!important;position:relative;top:-3px}
 }
