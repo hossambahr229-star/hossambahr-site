@@ -108,3 +108,5 @@ try {
  console.log(JSON.stringify(report,null,2));
  if(errors.length||typographyChecks.some(check=>check.failures.length)||candidateChecks.some(check=>check.failures.length))process.exitCode=1;
 }finally{await browser.close();}
+
+// Resume capture after source PR #459 was merged; prior wait expired before publication.
