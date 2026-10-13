@@ -1,0 +1,396 @@
+{
+  "analyzedAt": "2026-10-13T11:16:39.724Z",
+  "source": "EXISTING_MEASURED_PNGS_NO_BROWSER_RETEST",
+  "results": [
+    {
+      "name": "reference",
+      "fields": {
+        "primary": {
+          "left": 684,
+          "right": 1008,
+          "top": 105,
+          "bottom": 141,
+          "width": 325,
+          "height": 37,
+          "lines": [
+            {
+              "top": 105,
+              "bottom": 141,
+              "left": 684,
+              "right": 1008
+            }
+          ]
+        },
+        "gold": {
+          "left": 816,
+          "right": 1026,
+          "top": 145,
+          "bottom": 184,
+          "width": 211,
+          "height": 40,
+          "lines": [
+            {
+              "top": 145,
+              "bottom": 145,
+              "left": 962,
+              "right": 965
+            },
+            {
+              "top": 149,
+              "bottom": 150,
+              "left": 960,
+              "right": 966
+            },
+            {
+              "top": 153,
+              "bottom": 184,
+              "left": 816,
+              "right": 1026
+            }
+          ]
+        },
+        "copy": {
+          "left": 691,
+          "right": 1026,
+          "top": 198,
+          "bottom": 233,
+          "width": 336,
+          "height": 36,
+          "lines": [
+            {
+              "top": 198,
+              "bottom": 211,
+              "left": 691,
+              "right": 1026
+            },
+            {
+              "top": 220,
+              "bottom": 233,
+              "left": 698,
+              "right": 1026
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "baseline-1440",
+      "fields": {
+        "primary": {
+          "left": 678,
+          "right": 1029,
+          "top": 103,
+          "bottom": 141,
+          "width": 352,
+          "height": 39,
+          "lines": [
+            {
+              "top": 103,
+              "bottom": 141,
+              "left": 678,
+              "right": 1029
+            }
+          ]
+        },
+        "gold": {
+          "left": 832,
+          "right": 1029,
+          "top": 141,
+          "bottom": 184,
+          "width": 198,
+          "height": 44,
+          "lines": [
+            {
+              "top": 141,
+              "bottom": 141,
+              "left": 966,
+              "right": 968
+            },
+            {
+              "top": 143,
+              "bottom": 184,
+              "left": 828,
+              "right": 1030
+            }
+          ]
+        },
+        "copy": {
+          "left": 715,
+          "right": 1030,
+          "top": 201,
+          "bottom": 235,
+          "width": 316,
+          "height": 35,
+          "lines": [
+            {
+              "top": 201,
+              "bottom": 214,
+              "left": 704,
+              "right": 1030
+            },
+            {
+              "top": 222,
+              "bottom": 235,
+              "left": 715,
+              "right": 1030
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "fixed44-pad6",
+      "fields": {
+        "primary": {
+          "left": 686,
+          "right": 1009,
+          "top": 105,
+          "bottom": 141,
+          "width": 324,
+          "height": 37,
+          "lines": [
+            {
+              "top": 105,
+              "bottom": 141,
+              "left": 686,
+              "right": 1009
+            }
+          ]
+        },
+        "gold": {
+          "left": 816,
+          "right": 1023,
+          "top": 140,
+          "bottom": 184,
+          "width": 208,
+          "height": 45,
+          "lines": [
+            {
+              "top": 140,
+              "bottom": 184,
+              "left": 816,
+              "right": 1024
+            }
+          ]
+        },
+        "copy": {
+          "left": 690,
+          "right": 1024,
+          "top": 199,
+          "bottom": 233,
+          "width": 335,
+          "height": 35,
+          "lines": [
+            {
+              "top": 199,
+              "bottom": 212,
+              "left": 690,
+              "right": 1024
+            },
+            {
+              "top": 220,
+              "bottom": 233,
+              "left": 706,
+              "right": 1024
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "fixed44_5-pad6",
+      "fields": {
+        "primary": {
+          "left": 686,
+          "right": 1009,
+          "top": 105,
+          "bottom": 141,
+          "width": 324,
+          "height": 37,
+          "lines": [
+            {
+              "top": 105,
+              "bottom": 141,
+              "left": 686,
+              "right": 1009
+            }
+          ]
+        },
+        "gold": {
+          "left": 814,
+          "right": 1023,
+          "top": 141,
+          "bottom": 184,
+          "width": 210,
+          "height": 44,
+          "lines": [
+            {
+              "top": 141,
+              "bottom": 184,
+              "left": 814,
+              "right": 1024
+            }
+          ]
+        },
+        "copy": {
+          "left": 690,
+          "right": 1024,
+          "top": 199,
+          "bottom": 233,
+          "width": 335,
+          "height": 35,
+          "lines": [
+            {
+              "top": 199,
+              "bottom": 212,
+              "left": 690,
+              "right": 1024
+            },
+            {
+              "top": 220,
+              "bottom": 233,
+              "left": 706,
+              "right": 1024
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "fluid-1440",
+      "fields": {
+        "primary": {
+          "left": 686,
+          "right": 1009,
+          "top": 105,
+          "bottom": 141,
+          "width": 324,
+          "height": 37,
+          "lines": [
+            {
+              "top": 105,
+              "bottom": 141,
+              "left": 686,
+              "right": 1009
+            }
+          ]
+        },
+        "gold": {
+          "left": 816,
+          "right": 1023,
+          "top": 140,
+          "bottom": 184,
+          "width": 208,
+          "height": 45,
+          "lines": [
+            {
+              "top": 140,
+              "bottom": 184,
+              "left": 816,
+              "right": 1024
+            }
+          ]
+        },
+        "copy": {
+          "left": 699,
+          "right": 1024,
+          "top": 199,
+          "bottom": 233,
+          "width": 326,
+          "height": 35,
+          "lines": [
+            {
+              "top": 199,
+              "bottom": 212,
+              "left": 691,
+              "right": 1024
+            },
+            {
+              "top": 218,
+              "bottom": 218,
+              "left": 728,
+              "right": 730
+            },
+            {
+              "top": 220,
+              "bottom": 233,
+              "left": 703,
+              "right": 1024
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "fluid-palette-1440",
+      "fields": {
+        "primary": {
+          "left": 686,
+          "right": 1009,
+          "top": 105,
+          "bottom": 141,
+          "width": 324,
+          "height": 37,
+          "lines": [
+            {
+              "top": 105,
+              "bottom": 141,
+              "left": 686,
+              "right": 1009
+            }
+          ]
+        },
+        "gold": {
+          "left": 816,
+          "right": 1023,
+          "top": 140,
+          "bottom": 184,
+          "width": 208,
+          "height": 45,
+          "lines": [
+            {
+              "top": 140,
+              "bottom": 141,
+              "left": 957,
+              "right": 959
+            },
+            {
+              "top": 143,
+              "bottom": 184,
+              "left": 816,
+              "right": 1024
+            }
+          ]
+        },
+        "copy": {
+          "left": 699,
+          "right": 1024,
+          "top": 199,
+          "bottom": 233,
+          "width": 326,
+          "height": 35,
+          "lines": [
+            {
+              "top": 199,
+              "bottom": 212,
+              "left": 691,
+              "right": 1024
+            },
+            {
+              "top": 218,
+              "bottom": 218,
+              "left": 728,
+              "right": 730
+            },
+            {
+              "top": 220,
+              "bottom": 233,
+              "left": 703,
+              "right": 1024
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
