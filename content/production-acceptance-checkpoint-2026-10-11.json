@@ -1,6 +1,6 @@
 {
-  "recordedAt": "2026-10-13T06:08:00Z",
-  "lastAcceptedDeployedCommit": "94dbb66e900b15a7e51613337991d47c5fdf7c06",
+  "recordedAt": "2026-10-13",
+  "lastAcceptedDeployedCommit": "c058b196a4d77cc3967e68e1c8dc48c2c557d2d1",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -47,11 +47,13 @@
     451,
     452,
     453,
-    454
+    454,
+    455,
+    456
   ],
   "production": {
     "publicationGate": {
-      "run": 38354504430,
+      "run": 38384132862,
       "status": "PASS"
     },
     "geometry": {
@@ -66,8 +68,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 24.4779296875,
-      "changedPixelPercent": 18.35713252314815,
+      "meanAbsolutePixelDifference": 22.562966820987654,
+      "changedPixelPercent": 16.156394675925924,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -431,6 +433,81 @@
       "pixelFidelity": "NOT_DECLARED",
       "authenticatedAccountGate": "BLOCKED_NO_AUTHORIZED_TEST_CREDENTIALS",
       "overallFinalGate": "NOT_DECLARED"
+    },
+    "featuredApprovedPhotography": {
+      "reviewedAt": "2026-10-13",
+      "source": "qa/reference/approved-desktop.jpeg",
+      "sourceBlobSha": "d5a7db0d15c0f35655d9f7664e549787abdbe77b",
+      "asset": "assets/approved-featured-photography-source.jpeg",
+      "method": "Original reference bytes plus bounded native CSS photographic clipping; no bitmap reconstruction, reference UI labels, buttons, figures or claims are rendered.",
+      "normalizedReference": {
+        "width": 1440,
+        "height": 960
+      },
+      "sourcePhotoWindows": [
+        {
+          "x": 35,
+          "y": 497,
+          "width": 160,
+          "height": 127
+        },
+        {
+          "x": 423,
+          "y": 497,
+          "width": 120,
+          "height": 127
+        },
+        {
+          "x": 758,
+          "y": 497,
+          "width": 100,
+          "height": 127
+        },
+        {
+          "x": 1093,
+          "y": 497,
+          "width": 120,
+          "height": 127
+        }
+      ],
+      "nativeInnerInsetPx": 4,
+      "scope": "Arabic desktop from 1280px; English and mobile retain their existing photographic presentation.",
+      "measurement": {
+        "branch": "agent/measure-featured-photo-reference-candidate",
+        "capturedAt": "2026-10-13T10:26:59.434Z",
+        "baselineMad": 35.05778468547745,
+        "candidateMad": 20.303888628580353,
+        "baselineChangedPercent": 32.81773196347554,
+        "candidateChangedPercent": 15.667462829845835
+      },
+      "liveAcceptance": {
+        "status": "PASS",
+        "publicationRun": 38384132862,
+        "actualRun": 38384140502,
+        "branch": "agent/live-approved-featured-photography",
+        "capturedAt": "2026-10-13T10:38:25.144Z",
+        "assetMatchesApproved": true,
+        "checks": 7,
+        "desktopArabic": [
+          1440,
+          1366
+        ],
+        "mobileFallback": [
+          430,
+          390,
+          360
+        ],
+        "englishPreserved": [
+          1440,
+          390
+        ],
+        "actionsUnobstructed": true,
+        "pageErrors": 0,
+        "regionalMad": 20.303781965570703,
+        "regionalChangedPercent": 15.667462829845835,
+        "deployedCommit": "c058b196a4d77cc3967e68e1c8dc48c2c557d2d1"
+      },
+      "overallFinalGate": "NOT_DECLARED"
     }
   },
   "deployedAi": {
@@ -572,6 +649,17 @@
         37.786626363286594
       ],
       "reason": "All native-size photo variants worsened comparison.",
+      "published": false
+    },
+    "coarseHeroReferenceMasks": {
+      "branch": "agent/measure-approved-hero-photography",
+      "capturedAt": "2026-10-13T10:36:09.568Z",
+      "reason": "Numerical improvement was insufficient: visible photographic seams, so not published.",
+      "published": false
+    },
+    "generatedFeaturedPhoto": {
+      "branch": "agent/measure-featured-photo-reference-candidate",
+      "reason": "Generated candidate was not adopted; final accepted solution uses original reference bytes. Early temporary transport lacked a decode guard, so its image metrics are not used as acceptance evidence.",
       "published": false
     }
   },
