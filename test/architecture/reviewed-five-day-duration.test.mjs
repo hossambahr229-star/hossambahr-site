@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{reviewedFiveDayDurationPattern}from'../../qa/reviewed-five-day-duration.mjs';
+test('reviewed five-day duration accepts the actual English answer and equivalent digits',()=>{for(const text of['The official service card lists an expected completion time of five days; this is not an approval guarantee.','Expected completion time: 5 days.','Five working days','5 business days'])assert.match(text,reviewedFiveDayDurationPattern);});
+test('a different amount or unit cannot pass the reviewed duration contract',()=>{for(const text of['15 days','50 days','5 months','five hours','AED 500','5 to 10 days'])assert.doesNotMatch(text,reviewedFiveDayDurationPattern);});
