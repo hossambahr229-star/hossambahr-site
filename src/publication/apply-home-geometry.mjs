@@ -42,6 +42,13 @@ for (const route of ['index.html', 'en/index.html']) {
     html = html.replace('<h2>من اختيار الخدمة حتى النتيجة</h2>', '<h2>كيف نساعدك؟</h2>');
     html = html.replace(/(<div class="premium-popular">)([\s\S]*?)(<\/div>)/,(_,open,links,close)=>open+links+(links.includes('q=عقود عمل')?'':'<a href="/services/?q=عقود عمل">عقود عمل</a>')+close);
   }
+  // Current-page semantics survive both localized homepage rebuilds.
+  const homeHref = route === 'index.html' ? '/' : '/en/';
+  html = html.replace(/(<nav class="desktop-nav"[^>]*>)([\s\S]*?)(<\/nav>)/, (_, open, links, close) =>
+    open + links.replace(/<a\b([^>]*)>/g, (tag, attributes) =>
+      attributes.includes('href="' + homeHref + '"')
+        ? '<a' + attributes.replace(/\saria-current="[^"]*"/g, '') + ' aria-current="page">'
+        : tag) + close);
   const icon = name => `<svg class="home-line-icon" aria-hidden="true"><use href="/assets/home-icons.svg#${name}"/></svg>`;
   if(route==='index.html') html = html.replace(/<div class="header-actions">([\s\S]*?)<\/div>/,(_,actions)=>{
     const link = name => actions.match(new RegExp(`<a class="${name}"[^>]*>[\\s\\S]*?<\\/a>`))?.[0] || '';
