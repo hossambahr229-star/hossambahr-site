@@ -44,6 +44,7 @@ for (const route of ['index.html', 'en/index.html']) {
   }
   // Current-page semantics survive both localized homepage rebuilds.
   const homeHref = route === 'index.html' ? '/' : '/en/';
+  if (route === 'en/index.html') html = html.replace(/<a class="premium-en-brand" href="\/en\/"(?: aria-current="page")?>/, '<a class="premium-en-brand" href="/en/" aria-current="page">');
   html = html.replace(/(<nav class="desktop-nav"[^>]*>)([\s\S]*?)(<\/nav>)/, (_, open, links, close) =>
     open + links.replace(/<a\b([^>]*)>/g, (tag, attributes) =>
       attributes.includes('href="' + homeHref + '"')
