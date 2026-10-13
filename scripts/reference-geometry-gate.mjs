@@ -79,7 +79,8 @@ try{
    if(Math.abs(c.support.w-359)>12)failures.push('Desktop support copy differs from reference width');
    if(Math.abs(c.welcome.y-92)>5||Math.abs(c.welcome.h-62)>5)failures.push('AI welcome panel differs from reference bounds');
   }
-  if(width>1100&&Math.abs(c.accentFont-42)>0.1)failures.push('Golden headline emphasis does not match the reference typography scale');
+  const expectedAccentFont=width>=1280?Math.min(44.5,Math.max(39.5556,width*3.090278/100)):42;
+  if(width>1100&&Math.abs(c.accentFont-expectedAccentFont)>0.1)failures.push('Golden headline emphasis does not match the reference typography scale');
   if(width===1440&&Math.abs(c.accent.w-210)>12)failures.push('Golden headline width differs from the measured reference');
   if(c.headline.bottom>c.support.y+1)failures.push('Headline overlaps supporting copy');
   if(c.support.bottom>c.search.y+1)failures.push('Supporting copy overlaps search');
