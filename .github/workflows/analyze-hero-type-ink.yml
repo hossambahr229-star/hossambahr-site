@@ -1,0 +1,30 @@
+name: Analyze Hero Type Ink
+on:
+  push:
+    branches: [agent/analyze-hero-type-ink]
+    paths: [scripts/analyze-hero-type-ink.mjs, .github/workflows/analyze-hero-type-ink.yml]
+permissions:
+  contents: write
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: npm install --no-save --no-package-lock sharp@0.35.4
+      - run: node scripts/analyze-hero-type-ink.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: analyze-hero-type-ink
+          path: artifacts/analyze-hero-type-ink
+      - name: Preserve analysis
+        run: |
+          git config user.name "HossamBahr Visual Evidence"
+          git config user.email "visual-evidence@users.noreply.github.com"
+          git add artifacts/analyze-hero-type-ink
+          if ! git diff --cached --quiet; then
+            git commit -m "Record measured ink bounds [skip ci]"
+            git push origin HEAD:agent/analyze-hero-type-ink
+          fi
