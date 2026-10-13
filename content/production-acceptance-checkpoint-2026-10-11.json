@@ -1,6 +1,6 @@
 {
   "recordedAt": "2026-10-13",
-  "lastAcceptedDeployedCommit": "db9b78ace0b9b5de3761189e2c9c1e83f024b8ae",
+  "lastAcceptedDeployedCommit": "63fd8a5083bc2d142a63642680076a4dbd62ebf0",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -52,11 +52,12 @@
     456,
     457,
     458,
-    459
+    459,
+    460
   ],
   "production": {
     "publicationGate": {
-      "run": 38455712636,
+      "run": 38457682945,
       "status": "PASS"
     },
     "geometry": {
@@ -71,8 +72,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 20.688895399305554,
-      "changedPixelPercent": 14.32689525462963,
+      "meanAbsolutePixelDifference": 20.259887635030864,
+      "changedPixelPercent": 13.954788773148147,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -645,6 +646,110 @@
       },
       "pixelFidelity": "NOT_DECLARED",
       "overallFinalGate": "NOT_DECLARED"
+    },
+    "aiApprovedPhotography": {
+      "reviewedAt": "2026-10-13",
+      "sourceReference": "qa/reference/approved-desktop.jpeg",
+      "sourceAsset": "assets/approved-featured-photography-source.jpeg",
+      "mask": "assets/approved-ai-photography-mask.svg",
+      "scope": "Arabic desktop 1366px+ with mask support; original robot remains the fallback elsewhere. Real native master brand and controls are excluded from the photograph.",
+      "normalizedReference": {
+        "width": 1440,
+        "height": 960
+      },
+      "sourceWindow": {
+        "x": 1069,
+        "y": 61,
+        "width": 371,
+        "height": 302
+      },
+      "diagnosis": {
+        "branch": "agent/measure-ai-original-photo-region",
+        "run": 38456850461,
+        "capturedAt": "2026-10-13T19:42:09.703Z",
+        "source": "LIVE_PRODUCTION_TEMPORARY_PHOTOGRAPHIC_CANDIDATE",
+        "productionChanged": false,
+        "guards": [
+          {
+            "name": "master",
+            "x": 0,
+            "y": 65,
+            "w": 180,
+            "h": 135,
+            "maxAlpha": 0
+          },
+          {
+            "name": "welcome",
+            "x": 155,
+            "y": 25,
+            "w": 205,
+            "h": 70,
+            "maxAlpha": 0
+          },
+          {
+            "name": "actions",
+            "x": 84,
+            "y": 201,
+            "w": 156,
+            "h": 95,
+            "maxAlpha": 0
+          },
+          {
+            "name": "orb",
+            "x": 288,
+            "y": 245,
+            "w": 54,
+            "h": 54,
+            "cx": 315,
+            "cy": 272,
+            "r": 27,
+            "maxAlpha": 0
+          }
+        ],
+        "results": [
+          {
+            "name": "baseline",
+            "mad": 34.44339325134027,
+            "changed": 25.99828635690188
+          },
+          {
+            "name": "original-photo",
+            "mad": 29.149536185835075,
+            "changed": 21.407150889844882
+          }
+        ]
+      },
+      "liveAcceptance": {
+        "status": "PASS",
+        "actualRun": 38457612962,
+        "publicationRun": 38457682945,
+        "branch": "agent/live-approved-ai-photography",
+        "report": "artifacts/live-regional-visual/report.json",
+        "capturedAt": "2026-10-13T19:53:53.910Z",
+        "maskMatchesSource": true,
+        "uiAlphaMax": 0,
+        "cases": 8,
+        "nativeLaunchPassed": [
+          1440,
+          1366
+        ],
+        "fallbackPreservedArabic": [
+          1280,
+          430,
+          390,
+          360
+        ],
+        "englishPreserved": [
+          1440,
+          390
+        ],
+        "pageErrors": 0,
+        "regionalMad": 29.15019665244581,
+        "regionalChangedPercent": 21.407150889844882,
+        "deployedCommit": "63fd8a5083bc2d142a63642680076a4dbd62ebf0"
+      },
+      "pixelFidelity": "NOT_DECLARED",
+      "overallFinalGate": "NOT_DECLARED"
     }
   },
   "deployedAi": {
@@ -724,6 +829,15 @@
         ],
         "feesChanged": false,
         "productFailure": false
+      },
+      "latestAlternativeSearch": {
+        "date": "2026-10-14",
+        "officialIndexedTable": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees/",
+        "indexedBodyReadable": true,
+        "directOpen": "Internal Error",
+        "currentFeeScheduleVerified": false,
+        "feesChanged": false,
+        "note": "Search returned the legacy table; no newly verified current fee schedule. Indexed content is not live-browser evidence."
       }
     }
   },
@@ -798,6 +912,13 @@
       "branch": "agent/measure-featured-photo-reference-candidate",
       "reason": "Generated candidate was not adopted; final accepted solution uses original reference bytes. Early temporary transport lacked a decode guard, so its image metrics are not used as acceptance evidence.",
       "published": false
+    },
+    "categoryFontVariants": {
+      "run": 38457875580,
+      "capturedAt": "2026-10-13T19:49:51.212Z",
+      "reason": "Alternate bundled families worsened comparison; smaller Cairo titles had only a small benefit and did not justify reducing readability. No product change.",
+      "published": false,
+      "diagnosticBoundary": "scroll/client-size mismatch alone is not evidence of visual clipping; the diagnostic did not establish a ProductFailure."
     }
   },
   "externalSubmissionPerformed": false,

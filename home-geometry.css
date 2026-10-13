@@ -478,3 +478,16 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-intent-search input{
   html[lang="ar"].hb-phase8 body[data-home-geometry] .ai-showcase-mark,html[lang="ar"].hb-phase8 body[data-home-geometry] .ai-showcase-kicker,html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-ai-showcase h2{z-index:2}
  }
 }
+
+/* Three native caption lines reproduce the reference's distinct proportions without raster text. */
+.hb-native-hero-caption{display:none}
+@media(min-width:1366px){
+ html[lang="ar"].hb-phase8 body[data-home-geometry]{--caption-first-size:clamp(33.2014px,2.430556vw,35px);--caption-second-size:clamp(22.7667px,1.666667vw,24px);--caption-third-size:clamp(28.4583px,2.083333vw,30px);--caption-line-height:36.92px}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .premium-hero-main::before{display:none!important}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-native-hero-caption{display:block;position:absolute;left:5.5%;top:110px;width:205px;font-family:"HB Naskh",serif;font-weight:400;color:#fff;text-align:left;pointer-events:none;z-index:3}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-native-hero-caption>span{display:block;line-height:var(--caption-line-height);white-space:nowrap}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-native-hero-caption>span:nth-child(1){font-size:var(--caption-first-size);position:relative;top:2px}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-native-hero-caption>span:nth-child(2){font-size:var(--caption-second-size)}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-native-hero-caption>span:nth-child(3){font-size:var(--caption-third-size)}
+ html[lang="ar"].hb-phase8 body[data-home-geometry] .hb-hero-caption-accent{display:block!important;position:absolute;top:224px;left:5.5%;width:clamp(51.225px,3.75vw,54px);height:3px;background:linear-gradient(90deg,#deb456,#a77823);border-radius:2px;z-index:3;pointer-events:none}
+}
