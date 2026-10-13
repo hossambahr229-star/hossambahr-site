@@ -1,6 +1,6 @@
 {
-  "recordedAt": "2026-10-12",
-  "lastAcceptedDeployedCommit": "c784c8559d0153b0e525aec7a1841d8dddb81cfb",
+  "recordedAt": "2026-10-13T06:08:00Z",
+  "lastAcceptedDeployedCommit": "94dbb66e900b15a7e51613337991d47c5fdf7c06",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -41,11 +41,17 @@
     445,
     446,
     447,
-    448
+    448,
+    449,
+    450,
+    451,
+    452,
+    453,
+    454
   ],
   "production": {
     "publicationGate": {
-      "run": 38279235323,
+      "run": 38354504430,
       "status": "PASS"
     },
     "geometry": {
@@ -60,8 +66,8 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 24.58748408564815,
-      "changedPixelPercent": 18.45160590277778,
+      "meanAbsolutePixelDifference": 24.4779296875,
+      "changedPixelPercent": 18.35713252314815,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
@@ -301,20 +307,152 @@
         "changedPercent": 18.45160590277778,
         "pixelFidelity": "NOT_DECLARED"
       }
+    },
+    "mofaCurrentFeeGuide": {
+      "reviewedAt": "2026-10-12",
+      "scope": "Current public MOFA fee tables only; preserve accepted duration, requirements, conditions, routes and source health.",
+      "feeGuide": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+      "sourceEvidence": {
+        "initialGuideRun": 38280056238,
+        "commercial": {
+          "run": 38280263042,
+          "branch": "agent/read-mofa-commercial-fee-origins",
+          "capturedAt": "2026-10-12T16:51:51.882Z",
+          "pages": 13,
+          "rows": 65,
+          "exception": [
+            [
+              "Commercial Issued from UAE",
+              "Document Attested outside",
+              "150"
+            ]
+          ]
+        },
+        "personal": {
+          "run": 38280523746,
+          "branch": "agent/read-mofa-personal-fee-origins",
+          "capturedAt": "2026-10-12T16:54:03.346Z",
+          "pages": 7,
+          "rows": 35,
+          "listedAmountAed": 150
+        }
+      },
+      "facts": [
+        {
+          "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+          "id": "catalog:تصديق مستند شخصي داخل الإمارات",
+          "authority": "mofa",
+          "cardSource": "https://www.mofa.gov.ae/services/attestation",
+          "feeSource": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+          "fees": "150 درهماً للمستند الشخصي",
+          "feesEn": "AED 150 per personal document"
+        },
+        {
+          "slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+          "id": "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+          "authority": "mofa",
+          "cardSource": "https://www.mofa.gov.ae/services/attestation",
+          "feeSource": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
+          "fees": "يعرض دليل الوزارة رسمًا قدره 2000 درهم للفئات التجارية المدرجة الصادرة داخل الإمارات أو خارجها، باستثناء فئة «مستند مصدق في الخارج» ضمن الصادر من الإمارات ورسومها 150 درهمًا. راجع فئة المستند والإجمالي قبل الدفع. الفواتير التجارية وشهادات المنشأ خارج نطاق هذه الخدمة.",
+          "feesEn": "The Ministry's guide lists AED 2,000 for the listed commercial categories issued inside or outside the UAE, except Document Attested outside among UAE-issued documents, listed at AED 150. Confirm the document category and total before payment. Commercial invoices and certificates of origin are outside this service."
+        }
+      ],
+      "expectedPolicyVersion": 4,
+      "liveAcceptance": {
+        "status": "PASS",
+        "aiRun": 38351109627,
+        "aiCases": 4,
+        "aiCapturedAt": "2026-10-13T05:23:29.453Z",
+        "pagesRun": 38351137428,
+        "pageCases": 4,
+        "pagesCapturedAt": "2026-10-13T05:27:27.113Z",
+        "publicationRun": 38351056306,
+        "deployedCommit": "3fb4a70f001be868d831b1cd0d319408dda5ad78",
+        "aiVersion": 136,
+        "exactSourceFiles": 9,
+        "aiSha256": "7b5c10449f24a68d70569efc0b77c8cef132d7d4740377b3003bf80b9bb21f55",
+        "externalModelGate": "BLOCKED_QUOTA_BILLING_429",
+        "acceptedDurationCasesRepeated": false,
+        "unchangedPersonalPageCasesRepeated": false
+      },
+      "externalSubmissionPerformed": false,
+      "overallFinalGate": "NOT_DECLARED"
+    },
+    "headerAndSearchControls": {
+      "pullRequests": [
+        452,
+        453,
+        454
+      ],
+      "arabicNavigation": {
+        "measurementRun": 38352644635,
+        "actualRun": 38353509318,
+        "branch": "agent/live-header-current-page-grid",
+        "gapPx": 20,
+        "nativeInsetPx": 48,
+        "ariaCurrent": "page",
+        "regionalMadBefore": 24.887928809957497,
+        "regionalMadAfter": 24.16207877959927
+      },
+      "englishCurrentBrand": {
+        "actualRun": 38353686499,
+        "branch": "agent/live-english-home-current-link",
+        "viewports": [
+          1440,
+          390
+        ],
+        "passed": true
+      },
+      "latestControlAcceptance": {
+        "actualRun": 38354522716,
+        "branch": "agent/live-home-control-separation",
+        "capturedAt": "2026-10-13T06:07:41.406Z",
+        "arabicLoginLabel": "دخول",
+        "englishSearchViewports": [
+          1440,
+          1366,
+          430,
+          390,
+          360
+        ],
+        "iconButtonOverlap": false,
+        "horizontalOverflow": false,
+        "pageErrors": 0,
+        "regionalHeaderMad": 23.163794019429265,
+        "regionalHeaderChangedPercent": 15.943761384335156
+      },
+      "publication": {
+        "run": 38354504430,
+        "deployedCommit": "94dbb66e900b15a7e51613337991d47c5fdf7c06",
+        "geometryPassed": true,
+        "meanAbsolutePixelDifference": 24.4779296875,
+        "changedPixelPercent": 18.35713252314815
+      },
+      "pixelFidelity": "NOT_DECLARED",
+      "authenticatedAccountGate": "BLOCKED_NO_AUTHORIZED_TEST_CREDENTIALS",
+      "overallFinalGate": "NOT_DECLARED"
     }
   },
   "deployedAi": {
-    "version": 135,
+    "version": 136,
     "status": "ACTIVE",
     "sourceFilesMatched": 9,
-    "bundleSha256": "5bbe14a3d5a23f3f6c7dfa31a36a5491912878e67e5e09cda46bd4eaaad2e5f4"
+    "bundleSha256": "7b5c10449f24a68d70569efc0b77c8cef132d7d4740377b3003bf80b9bb21f55"
   },
   "blockers": {
     "externalModel": {
       "external_model_used": false,
       "category": "QUOTA_BILLING",
       "httpStatus": 429,
-      "status": "BLOCKED"
+      "status": "BLOCKED",
+      "latestEvidence": {
+        "run": 38351109627,
+        "capturedAt": "2026-10-13T05:23:29.453Z",
+        "cases": 4,
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "external_model_used": false
+      }
     },
     "authenticatedAccountsDocumentsTracking": {
       "status": "BLOCKED_NO_AUTHORIZED_TEST_CREDENTIALS",
@@ -334,7 +472,13 @@
       "status": "TOOL_FAILURE",
       "error": "setup_refresh / helper_unknown_error",
       "productFailure": false,
-      "workingAlternatives": "GitHub Actions, GitHub and Supabase connectors"
+      "workingAlternatives": "GitHub Actions, GitHub and Supabase connectors",
+      "latestAttempt": "2026-10-13: helper_unknown_error / setup refresh had errors; connectors and Actions remain usable",
+      "latestBrowserAttempt": {
+        "date": "2026-10-13",
+        "error": "node_repl kernel exited unexpectedly; windows sandbox helper_unknown_error: setup refresh had errors",
+        "productFailure": false
+      }
     },
     "rakFeeSource": {
       "status": "BLOCKED_SOURCE_UNREADABLE",
@@ -412,19 +556,26 @@
     "hbMasterHalo": {
       "run": 38278981269,
       "result": "All halo variants worsened comparison. Regular kicker weight had negligible benefit. No brand artwork or styling changes published."
+    },
+    "heroHeadlineSizes": {
+      "date": "2026-10-13",
+      "branch": "agent/measure-hero-headline-proportions",
+      "reason": "Smaller headline alone and supporting-copy font/weight variants worsened comparison; size/inset combinations produced only negligible mixed improvement.",
+      "published": false
+    },
+    "featuredNativePhotoScale": {
+      "date": "2026-10-13",
+      "branch": "agent/measure-hero-headline-proportions",
+      "baselineMad": 35.05778468547745,
+      "candidateMadRange": [
+        36.25295132738306,
+        37.786626363286594
+      ],
+      "reason": "All native-size photo variants worsened comparison.",
+      "published": false
     }
   },
   "externalSubmissionPerformed": false,
   "overallFinalGate": "NOT_DECLARED",
-  "uncompletedSourceReview": {
-    "mofaAttestationFees": {
-      "status": "CURRENT_GUIDE_READ_POLICY_NOT_CHANGED",
-      "initialReadRun": 38280056238,
-      "commercialOriginsRun": 38280263042,
-      "personalOriginsBranch": "agent/read-mofa-personal-fee-origins",
-      "source": "https://www.mofa.gov.ae/en/services/forms/attestations-guide",
-      "note": "Commercial table contains an AED 150 exception within UAE-issued entries; do not publish a blanket AED 2000 rule. Personal table pagination is still being reviewed. Existing accepted duration cases are not repeated.",
-      "feesChanged": false
-    }
-  }
+  "uncompletedSourceReview": {}
 }
