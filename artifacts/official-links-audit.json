@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-13T10:58:16.806Z",
+  "generatedAt": "2026-10-13T19:37:31.834Z",
   "services": 200,
   "uniqueOfficialUrls": 247,
   "counts": {
     "REACHABLE": 156,
     "ACCESS_RESTRICTED": 9,
-    "TEMPORARILY_UNAVAILABLE": 3,
-    "NETWORK_UNVERIFIED": 79,
+    "TEMPORARILY_UNAVAILABLE": 6,
+    "NETWORK_UNVERIFIED": 76,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -82,10 +82,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 500,
+      "status": 200,
       "finalUrl": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
-      "result": "TEMPORARILY_UNAVAILABLE",
-      "reason": "HTTP 500"
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
@@ -115,9 +114,10 @@
       "kinds": [
         "official-information"
       ],
-      "status": 200,
+      "status": 502,
       "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 502"
     },
     {
       "url": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
@@ -142,9 +142,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
+      "status": 502,
       "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 502"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license",
@@ -156,9 +157,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
+      "status": 502,
       "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 502"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/future-investor/issue-trade-license",
@@ -170,9 +172,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
+      "status": 502,
       "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/future-investor/issue-trade-license",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 502"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/renew-trade-license",
@@ -184,9 +187,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
+      "status": 502,
       "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/renew-trade-license",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 502"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/future-investor/trade-name-reservation",
@@ -198,9 +202,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
+      "status": 502,
       "finalUrl": "https://www.ajmanded.ae/en/services/services-directory/future-investor/trade-name-reservation",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 502"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e77",
@@ -212,8 +217,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e77",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
@@ -277,8 +283,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.mofa.gov.ae/services/edas-attestation-v2",
+      "result": "REACHABLE"
     },
     {
       "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=4191",
@@ -586,8 +593,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx",
+      "result": "REACHABLE"
     },
     {
       "url": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx",
@@ -863,10 +871,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 500,
+      "status": 200,
       "finalUrl": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG",
-      "result": "TEMPORARILY_UNAVAILABLE",
-      "reason": "HTTP 500"
+      "result": "REACHABLE"
     },
     {
       "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3485",
@@ -1173,10 +1180,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 500,
+      "status": 200,
       "finalUrl": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
-      "result": "TEMPORARILY_UNAVAILABLE",
-      "reason": "HTTP 500"
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
