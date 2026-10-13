@@ -1,0 +1,57 @@
+{
+  "capturedAt": "2026-10-13T21:04:52.910Z",
+  "source": "LIVE_PRODUCTION",
+  "scope": "Only the final previously failed Golden duration assertion. No earlier successful cases or browser journeys repeated.",
+  "requests": 1,
+  "status": "PASS",
+  "httpStatus": 200,
+  "question": "How long does it take?",
+  "service": "golden-residency-uae",
+  "authority": "gdrfa-dubai",
+  "answer": {
+    "text": "The official service card lists an expected completion time of five days; this is not an approval guarantee.",
+    "focus": "duration",
+    "fact_status": "VERIFIED_FACT",
+    "grounded": true,
+    "evidence": {
+      "policy_key": "service:golden-residency-uae",
+      "policy_version": 3,
+      "workflow_key": "service:golden-residency-uae",
+      "source_title": "إصدار الإقامة الذهبية للمستثمرين في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+      "source_url": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
+      "last_verified_at": "2026-10-05T06:12:35.793264+00:00",
+      "supporting_rule": {
+        "value": "5 أيام وفق المدة المتوقعة المنشورة في بطاقة الخدمة الرسمية؛ ولا تمثل ضمانًا للقبول.",
+        "source_refs": [
+          "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8"
+        ]
+      },
+      "document_requirements": null,
+      "special_case": "هذه الخدمة لا تصلح لفئة أخرى من فئات الإقامة الذهبية حتى لو كانت قريبة بالاسم.",
+      "review_pending": false
+    }
+  },
+  "engine": {
+    "mode": "deterministic-policy-resolver",
+    "external_model_used": false,
+    "provider_failure": {
+      "category": "QUOTA_BILLING",
+      "status": 429,
+      "code": "credit_balance_exhausted",
+      "type": "insufficient_quota"
+    }
+  },
+  "failures": [],
+  "reusedEvidence": {
+    "run": 38463290039,
+    "rankingPassed": 100,
+    "primaryJourneysPassed": 5,
+    "responsiveAiProfilesPassed": 6,
+    "continuityConversations": 30,
+    "continuityTurns": 69,
+    "continuityErrorRates": 0,
+    "goldenCasesBeforeFailedAssertion": 20
+  },
+  "combinedGoldenCases": 21,
+  "externalModelGate": "NOT_PASSED"
+}
