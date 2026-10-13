@@ -25,7 +25,8 @@ async function send(q){
  const reply=page.locator(completed).last();
  const answer=((await reply.locator(".hb-chat-bubble").innerText())||"").trim();
  assert.ok(!["أراجع طلبك…","أتحقق من المعلومات المتاحة…","أطابقها مع المصدر الرسمي…"].includes(answer),"A progress indicator is not a completed answer");
- const href=await reply.locator('a[href^="/services/"]').first().getAttribute("href").catch(()=>null);
+ // The reply is already complete; an optional route card must not add a locator timeout.
+ const href=await reply.evaluate(node=>node.querySelector('a[href^="/services/"]')?.getAttribute("href")??null);
  return {q,answer,service:href};
 }
 

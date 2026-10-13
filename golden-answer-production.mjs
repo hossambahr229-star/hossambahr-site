@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { reviewedFiveDayDurationPattern } from "./qa/reviewed-five-day-duration.mjs";
 
 const endpoint = process.env.HB_AI_ENDPOINT || "https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge";
 
@@ -51,7 +52,7 @@ for(const follow of ["كم الرسوم؟","والأوراق؟","كم تستغر
 }
 const investorGoal="Issuing a golden residence permit (investors) in Dubai";
 const investorContext={service_slug:"golden-residency-uae",jurisdiction_code:"AE-DU",authority_key:"gdrfa-dubai",action:"issue",subject_role:"investor"};
-for(const [question,focus,pattern] of [["What are the fees?","fees",/1[,.]?100/],["How long does it take?","duration",/5/]]){
+for(const [question,focus,pattern] of [["What are the fees?","fees",/1[,.]?100/],["How long does it take?","duration",reviewedFiveDayDurationPattern]]){
  const p=await ask(investorGoal+" — "+question,question,investorContext),m=p.result?.matches?.[0],a=p.result?.answer;
  assert.equal(m?.service_slug,"golden-residency-uae",question+" changed service");
  assert.equal(a?.focus,focus);assert.equal(a?.fact_status,"VERIFIED_FACT",question+" missing reviewed source rule");assert.match(a.text,pattern);
