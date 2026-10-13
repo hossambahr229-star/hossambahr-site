@@ -1,0 +1,183 @@
+{
+  "capturedAt": "2026-10-13T10:53:47.169Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_NATIVE_TYPE_TOKENS",
+  "productionChanged": false,
+  "results": [
+    {
+      "name": "baseline",
+      "measured": {
+        "font": "38px",
+        "lineHeight": "39.9px",
+        "indent": "0px",
+        "accentFont": "700 42px / 44.1px \"HB Sans Arabic\", Cairo, sans-serif",
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "width": 598.328125,
+          "height": 83.984375
+        },
+        "accent": {
+          "x": 829.078125,
+          "y": 119.890625,
+          "right": 1032.15625,
+          "width": 203.078125,
+          "height": 89
+        },
+        "supportY": 195.984375,
+        "overflow": false
+      },
+      "mad": 27.169650621046948,
+      "changed": 19.31034956201774
+    },
+    {
+      "name": "first35-cairo40",
+      "size": 35,
+      "indent": 16,
+      "accent": 40,
+      "family": "Cairo",
+      "measured": {
+        "font": "35px",
+        "lineHeight": "39.9px",
+        "indent": "16px",
+        "accentFont": "700 40px / 42px Cairo, sans-serif",
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "width": 598.328125,
+          "height": 84.8125
+        },
+        "accent": {
+          "x": 832.546875,
+          "y": 125.90625,
+          "right": 1028.15625,
+          "width": 195.609375,
+          "height": 75
+        },
+        "supportY": 196.8125,
+        "overflow": false
+      },
+      "mad": 26.607877731096284,
+      "changed": 19.119504626959934
+    },
+    {
+      "name": "first35-noto40",
+      "size": 35,
+      "indent": 16,
+      "accent": 40,
+      "family": "HB Sans Arabic",
+      "measured": {
+        "font": "35px",
+        "lineHeight": "39.9px",
+        "indent": "16px",
+        "accentFont": "700 40px / 42px \"HB Sans Arabic\", sans-serif",
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "width": 598.328125,
+          "height": 82.8125
+        },
+        "accent": {
+          "x": 834.75,
+          "y": 120.90625,
+          "right": 1028.15625,
+          "width": 193.40625,
+          "height": 85
+        },
+        "supportY": 194.8125,
+        "overflow": false
+      },
+      "mad": 26.4440897566155,
+      "changed": 18.989757530823518
+    },
+    {
+      "name": "first36-cairo40",
+      "size": 36,
+      "indent": 14,
+      "accent": 40,
+      "family": "Cairo",
+      "measured": {
+        "font": "36px",
+        "lineHeight": "39.9px",
+        "indent": "14px",
+        "accentFont": "700 40px / 42px Cairo, sans-serif",
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "width": 598.328125,
+          "height": 84.8125
+        },
+        "accent": {
+          "x": 832.546875,
+          "y": 125.90625,
+          "right": 1028.15625,
+          "width": 195.609375,
+          "height": 75
+        },
+        "supportY": 196.8125,
+        "overflow": false
+      },
+      "mad": 27.302665421826802,
+      "changed": 19.464810390751573
+    },
+    {
+      "name": "first35-cairo42",
+      "size": 35,
+      "indent": 16,
+      "accent": 42,
+      "family": "Cairo",
+      "measured": {
+        "font": "35px",
+        "lineHeight": "39.9px",
+        "indent": "16px",
+        "accentFont": "700 42px / 42px Cairo, sans-serif",
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "width": 598.328125,
+          "height": 85.8125
+        },
+        "accent": {
+          "x": 822.765625,
+          "y": 123.90625,
+          "right": 1028.15625,
+          "width": 205.390625,
+          "height": 79
+        },
+        "supportY": 197.8125,
+        "overflow": false
+      },
+      "mad": 26.713295530475694,
+      "changed": 19.201197243045833
+    },
+    {
+      "name": "first35-noto42",
+      "size": 35,
+      "indent": 16,
+      "accent": 42,
+      "family": "HB Sans Arabic",
+      "measured": {
+        "font": "35px",
+        "lineHeight": "39.9px",
+        "indent": "16px",
+        "accentFont": "700 42px / 42px \"HB Sans Arabic\", sans-serif",
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "width": 598.328125,
+          "height": 83.8125
+        },
+        "accent": {
+          "x": 825.078125,
+          "y": 118.90625,
+          "right": 1028.15625,
+          "width": 203.078125,
+          "height": 89
+        },
+        "supportY": 195.8125,
+        "overflow": false
+      },
+      "mad": 26.29750757430138,
+      "changed": 18.897767526155366
+    }
+  ]
+}
