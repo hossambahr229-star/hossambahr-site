@@ -1,13 +1,55 @@
 {
-  "capturedAt": "2026-10-13T10:42:08.420Z",
+  "capturedAt": "2026-10-13T10:46:52.124Z",
   "source": "LIVE_PRODUCTION_WITH_ISOLATED_PHOTOGRAPHIC_MASK",
   "productionChanged": false,
+  "uiAlphaGuards": [
+    {
+      "name": "caption",
+      "x": 58,
+      "y": 111,
+      "w": 150,
+      "h": 118,
+      "maxAlpha": 0
+    },
+    {
+      "name": "headline",
+      "x": 675,
+      "y": 43,
+      "w": 360,
+      "h": 82,
+      "maxAlpha": 0
+    },
+    {
+      "name": "support",
+      "x": 686,
+      "y": 136,
+      "w": 343,
+      "h": 38,
+      "maxAlpha": 0
+    },
+    {
+      "name": "search",
+      "x": 434,
+      "y": 187,
+      "w": 600,
+      "h": 48,
+      "maxAlpha": 0
+    },
+    {
+      "name": "chips",
+      "x": 449,
+      "y": 250,
+      "w": 582,
+      "h": 27,
+      "maxAlpha": 0
+    }
+  ],
   "maskedReferenceUi": {
     "caption": [
-      45,
-      103,
-      175,
-      132
+      34,
+      87,
+      186,
+      164
     ],
     "headlineSearchChips": "staircase polygon with 8px+ UI margins; reference contains no left discovery buttons"
   },
@@ -18,16 +60,9 @@
       "changed": 20.437804719394865
     },
     {
-      "name": "reference-sharp",
-      "blur": 0,
-      "mad": 21.303695145346374,
-      "changed": 12.983911435456793
-    },
-    {
-      "name": "reference-feather",
-      "blur": 1.5,
-      "mad": 21.414676504418107,
-      "changed": 13.04338398825417
+      "name": "reference-polished",
+      "mad": 21.414080746380538,
+      "changed": 13.013028206097177
     }
   ],
   "overallFinalGate": "NOT_DECLARED"
