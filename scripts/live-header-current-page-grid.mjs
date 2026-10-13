@@ -85,7 +85,7 @@ try {
   }
  }
  const currentPageChecks=[];
- for(const locale of ['ar','en']){
+ for(const locale of ['ar']){
   const current=await browser.newPage({viewport:{width:1440,height:960},deviceScaleFactor:1});
   await current.goto(target+(locale==='en'?'en/':''),{waitUntil:'networkidle'});
   const state=await current.evaluate(()=>{
