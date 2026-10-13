@@ -53,7 +53,8 @@
     let link = actions.querySelector("[data-account-link]");
     if (!link) { link = document.createElement("a"); link.className = "login-action"; link.dataset.accountLink = "true"; actions.append(link); }
     link.href = session ? accountPath : `${authPath}?return=${encodeURIComponent(navigationReturnPath(location))}`;
-    link.textContent = tr(session ? "حسابي" : "تسجيل الدخول");
+    const loginLabel = !english && route === "/" && document.body.hasAttribute("data-home-geometry") ? "دخول" : "تسجيل الدخول";
+    link.textContent = tr(session ? "حسابي" : loginLabel);
   }
 
   async function setupAuthPage() {
