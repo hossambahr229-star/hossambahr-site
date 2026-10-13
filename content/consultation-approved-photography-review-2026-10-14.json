@@ -1,0 +1,198 @@
+{
+  "reviewedAt": "2026-10-14",
+  "scope": "Arabic 1366px+ consultation photography only. Existing contact label/link and all other viewport/locale presentations preserved.",
+  "source": "qa/reference/approved-desktop.jpeg",
+  "asset": "assets/approved-featured-photography-source.jpeg",
+  "photoWindow": {
+    "x": 1106,
+    "y": 723,
+    "width": 110,
+    "height": 87
+  },
+  "referenceUiBoundary": "Photographic window ends before the reference CTA (about 126px) and heading (about 145px) within the 303px card; fade starts at 88px.",
+  "diagnosis": {
+    "branch": "agent/measure-approved-consultation-photo",
+    "run": 38462141284,
+    "selectedCandidate": "photo110-y723",
+    "capturedAt": "2026-10-13T20:21:39.762Z",
+    "source": "LIVE_PRODUCTION_TEMPORARY_CONSULTATION_PHOTO",
+    "productionChanged": false,
+    "results": [
+      {
+        "name": "baseline",
+        "state": {
+          "heading": {
+            "x": 433.828125,
+            "y": 103,
+            "right": 1032.15625,
+            "width": 598.328125,
+            "height": 84
+          },
+          "accent": {
+            "x": 812.984375,
+            "y": 117.90625,
+            "right": 1028.15625,
+            "width": 215.171875,
+            "height": 94
+          },
+          "copy": {
+            "x": 679.15625,
+            "y": 193,
+            "right": 1032.15625,
+            "width": 353,
+            "height": 42
+          },
+          "copyLines": [
+            {
+              "y": 191,
+              "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+            },
+            {
+              "y": 213,
+              "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+            }
+          ],
+          "searchY": 248,
+          "overflow": false
+        },
+        "stable": true,
+        "mad": 22.55671746949976,
+        "changed": 17.506582118886048
+      },
+      {
+        "name": "photo125-y723",
+        "width": 125,
+        "y": 723,
+        "state": {
+          "heading": {
+            "x": 433.828125,
+            "y": 103,
+            "right": 1032.15625,
+            "width": 598.328125,
+            "height": 84
+          },
+          "accent": {
+            "x": 812.984375,
+            "y": 117.90625,
+            "right": 1028.15625,
+            "width": 215.171875,
+            "height": 94
+          },
+          "copy": {
+            "x": 679.15625,
+            "y": 193,
+            "right": 1032.15625,
+            "width": 353,
+            "height": 42
+          },
+          "copyLines": [
+            {
+              "y": 191,
+              "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+            },
+            {
+              "y": 213,
+              "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+            }
+          ],
+          "searchY": 248,
+          "overflow": false
+        },
+        "stable": true,
+        "mad": 19.603639015586953,
+        "changed": 15.693254718730302
+      },
+      {
+        "name": "photo110-y723",
+        "width": 110,
+        "y": 723,
+        "state": {
+          "heading": {
+            "x": 433.828125,
+            "y": 103,
+            "right": 1032.15625,
+            "width": 598.328125,
+            "height": 84
+          },
+          "accent": {
+            "x": 812.984375,
+            "y": 117.90625,
+            "right": 1028.15625,
+            "width": 215.171875,
+            "height": 94
+          },
+          "copy": {
+            "x": 679.15625,
+            "y": 193,
+            "right": 1032.15625,
+            "width": 353,
+            "height": 42
+          },
+          "copyLines": [
+            {
+              "y": 191,
+              "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+            },
+            {
+              "y": 213,
+              "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+            }
+          ],
+          "searchY": 248,
+          "overflow": false
+        },
+        "stable": true,
+        "mad": 19.87420427436002,
+        "changed": 15.693254718730302
+      },
+      {
+        "name": "photo125-y722",
+        "width": 125,
+        "y": 722,
+        "state": {
+          "heading": {
+            "x": 433.828125,
+            "y": 103,
+            "right": 1032.15625,
+            "width": 598.328125,
+            "height": 84
+          },
+          "accent": {
+            "x": 812.984375,
+            "y": 117.90625,
+            "right": 1028.15625,
+            "width": 215.171875,
+            "height": 94
+          },
+          "copy": {
+            "x": 679.15625,
+            "y": 193,
+            "right": 1032.15625,
+            "width": 353,
+            "height": 42
+          },
+          "copyLines": [
+            {
+              "y": 191,
+              "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+            },
+            {
+              "y": 213,
+              "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+            }
+          ],
+          "searchY": 248,
+          "overflow": false
+        },
+        "stable": true,
+        "mad": 21.624541105795974,
+        "changed": 17.41758445507472
+      }
+    ]
+  },
+  "liveAcceptance": {
+    "status": "PENDING_PUBLICATION"
+  },
+  "pixelFidelity": "NOT_DECLARED",
+  "overallFinalGate": "NOT_DECLARED"
+}
