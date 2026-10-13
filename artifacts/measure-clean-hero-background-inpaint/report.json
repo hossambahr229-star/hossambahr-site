@@ -1,0 +1,104 @@
+{
+  "capturedAt": "2026-10-13T21:16:22.935Z",
+  "source": "LIVE_PRODUCTION_WITH_TEMPORARY_CLEAN_BACKGROUND",
+  "productionChanged": false,
+  "input": {
+    "width": 2166,
+    "height": 726,
+    "bytes": 2423771
+  },
+  "webpBytes": 465834,
+  "scope": "Only the photographic background beneath the existing original-photo alpha mask; native UI and original photographic overlay remain unchanged.",
+  "results": [
+    {
+      "name": "baseline",
+      "state": {
+        "searchY": 248,
+        "overflow": false,
+        "originalPhoto": "url(\"https://hossambahr.com/assets/approved-featured-photography-source.jpeg\")",
+        "captionLines": 3
+      },
+      "mad": 20.39721263709146,
+      "changed": 12.622429825485229
+    },
+    {
+      "name": "clean1069-top0",
+      "size": 1069,
+      "top": 0,
+      "state": {
+        "searchY": 248,
+        "overflow": false,
+        "originalPhoto": "url(\"https://hossambahr.com/assets/approved-featured-photography-source.jpeg\")",
+        "captionLines": 3
+      },
+      "mad": 24.052440129931007,
+      "changed": 17.018752439303924
+    },
+    {
+      "name": "clean1069-up10",
+      "size": 1069,
+      "top": -10,
+      "state": {
+        "searchY": 248,
+        "overflow": false,
+        "originalPhoto": "url(\"https://hossambahr.com/assets/approved-featured-photography-source.jpeg\")",
+        "captionLines": 3
+      },
+      "mad": 23.003208007318428,
+      "changed": 15.777882405416957
+    },
+    {
+      "name": "clean1100-up10",
+      "size": 1100,
+      "top": -10,
+      "state": {
+        "searchY": 248,
+        "overflow": false,
+        "originalPhoto": "url(\"https://hossambahr.com/assets/approved-featured-photography-source.jpeg\")",
+        "captionLines": 3
+      },
+      "mad": 24.02427946317761,
+      "changed": 17.054064267527366
+    },
+    {
+      "name": "clean1100-top0",
+      "size": 1100,
+      "top": 0,
+      "state": {
+        "searchY": 248,
+        "overflow": false,
+        "originalPhoto": "url(\"https://hossambahr.com/assets/approved-featured-photography-source.jpeg\")",
+        "captionLines": 3
+      },
+      "mad": 24.512655470132596,
+      "changed": 17.586839219670548
+    },
+    {
+      "name": "clean1100-up15",
+      "size": 1100,
+      "top": -15,
+      "state": {
+        "searchY": 248,
+        "overflow": false,
+        "originalPhoto": "url(\"https://hossambahr.com/assets/approved-featured-photography-source.jpeg\")",
+        "captionLines": 3
+      },
+      "mad": 23.48494394505397,
+      "changed": 16.411017290405713
+    },
+    {
+      "name": "clean1100-up10-lighter",
+      "size": 1100,
+      "top": -10,
+      "shade": "e6",
+      "state": {
+        "searchY": 248,
+        "overflow": false,
+        "originalPhoto": "url(\"https://hossambahr.com/assets/approved-featured-photography-source.jpeg\")",
+        "captionLines": 3
+      },
+      "mad": 23.81467588491235,
+      "changed": 17.132121993073927
+    }
+  ]
+}
