@@ -1,0 +1,45 @@
+{
+  "capturedAt": "2026-10-13T10:36:09.568Z",
+  "source": "LIVE_PRODUCTION_WITH_ISOLATED_PHOTOGRAPHIC_MASK",
+  "productionChanged": false,
+  "maskedReferenceUi": {
+    "caption": [
+      45,
+      103,
+      175,
+      132
+    ],
+    "headlineSearchChips": [
+      425,
+      25,
+      620,
+      260
+    ],
+    "discoveryButtons": [
+      20,
+      240,
+      355,
+      55
+    ]
+  },
+  "results": [
+    {
+      "name": "baseline",
+      "mad": 28.628783889546252,
+      "changed": 20.437804719394865
+    },
+    {
+      "name": "reference-sharp",
+      "blur": 0,
+      "mad": 23.2010316835895,
+      "changed": 14.873403998290163
+    },
+    {
+      "name": "reference-feather",
+      "blur": 1.5,
+      "mad": 23.305535077448546,
+      "changed": 14.903450027568008
+    }
+  ],
+  "overallFinalGate": "NOT_DECLARED"
+}
