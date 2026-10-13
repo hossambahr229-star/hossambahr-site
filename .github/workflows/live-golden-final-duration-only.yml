@@ -1,0 +1,38 @@
+name: Golden Final Duration Only
+on:
+  push:
+    branches: [agent/live-golden-final-duration-only]
+    paths: [scripts/live-golden-final-duration-only.mjs, .github/workflows/live-golden-final-duration-only.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  remaining:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Verify exact duration semantics without Product requests
+        run: |
+          node --check golden-answer-production.mjs
+          node --check hb-ai-browser-conversational-continuity.mjs
+          node --test test/architecture/reviewed-five-day-duration.test.mjs
+      - name: Verify only the previously failed final Golden case on Production
+        run: node scripts/live-golden-final-duration-only.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: golden-final-duration-only
+          path: artifacts/live-golden-final-duration-only
+      - name: Preserve focused acceptance evidence
+        if: always() && github.ref == 'refs/heads/agent/live-golden-final-duration-only'
+        run: |
+          git config user.name "HossamBahr Focused Acceptance"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add artifacts/live-golden-final-duration-only
+          if ! git diff --cached --quiet; then
+            git commit -m "Record only remaining Golden duration acceptance [skip ci]"
+            git push origin HEAD:agent/live-golden-final-duration-only
+          fi
