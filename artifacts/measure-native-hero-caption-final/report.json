@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-13T19:59:57.656Z",
+  "capturedAt": "2026-10-13T20:02:43.248Z",
   "source": "LIVE_PRODUCTION_TEMPORARY_NATIVE_CAPTION",
   "productionChanged": false,
   "results": [
@@ -45,13 +45,14 @@
       "changed": 21.429801894918175
     },
     {
-      "name": "lines35-24-30-down3",
+      "name": "lines35-down2",
       "lines": [
         35,
         24,
         30
       ],
       "top": 110,
+      "firstOffset": 2,
       "state": {
         "heading": {
           "x": 433.828125,
@@ -88,108 +89,11 @@
         "overflow": false
       },
       "stable": true,
-      "mad": 29.904013781223085,
-      "changed": 22.03273040482343
+      "mad": 29.132862474877978,
+      "changed": 21.64341085271318
     },
     {
-      "name": "diacritics",
-      "lines": [
-        35,
-        24,
-        30
-      ],
-      "top": 110,
-      "diacritics": true,
-      "state": {
-        "heading": {
-          "x": 433.828125,
-          "y": 103,
-          "right": 1032.15625,
-          "width": 598.328125,
-          "height": 84
-        },
-        "accent": {
-          "x": 812.984375,
-          "y": 117.90625,
-          "right": 1028.15625,
-          "width": 215.171875,
-          "height": 94
-        },
-        "copy": {
-          "x": 679.15625,
-          "y": 193,
-          "right": 1032.15625,
-          "width": 353,
-          "height": 42
-        },
-        "copyLines": [
-          {
-            "y": 191,
-            "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
-          },
-          {
-            "y": 213,
-            "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
-          }
-        ],
-        "searchY": 248,
-        "overflow": false
-      },
-      "stable": true,
-      "mad": 30.162595463680734,
-      "changed": 22.211886304909562
-    },
-    {
-      "name": "diacritics-last-up4",
-      "lines": [
-        35,
-        24,
-        30
-      ],
-      "top": 110,
-      "diacritics": true,
-      "lastOffset": -4,
-      "state": {
-        "heading": {
-          "x": 433.828125,
-          "y": 103,
-          "right": 1032.15625,
-          "width": 598.328125,
-          "height": 84
-        },
-        "accent": {
-          "x": 812.984375,
-          "y": 117.90625,
-          "right": 1028.15625,
-          "width": 215.171875,
-          "height": 94
-        },
-        "copy": {
-          "x": 679.15625,
-          "y": 193,
-          "right": 1032.15625,
-          "width": 353,
-          "height": 42
-        },
-        "copyLines": [
-          {
-            "y": 191,
-            "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
-          },
-          {
-            "y": 213,
-            "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
-          }
-        ],
-        "searchY": 248,
-        "overflow": false
-      },
-      "stable": true,
-      "mad": 32.28241171403962,
-      "changed": 23.190353143841516
-    },
-    {
-      "name": "diacritics-first-down2-last-up4",
+      "name": "diacritics-first-down2",
       "lines": [
         35,
         24,
@@ -198,7 +102,6 @@
       "top": 110,
       "diacritics": true,
       "firstOffset": 2,
-      "lastOffset": -4,
       "state": {
         "heading": {
           "x": 433.828125,
@@ -235,8 +138,57 @@
         "overflow": false
       },
       "stable": true,
-      "mad": 31.448096468561584,
-      "changed": 22.752799310938844
+      "mad": 29.3282802182027,
+      "changed": 21.77433247200689
+    },
+    {
+      "name": "diacritics-first36-down2",
+      "lines": [
+        36,
+        24,
+        30
+      ],
+      "top": 110,
+      "diacritics": true,
+      "firstOffset": 2,
+      "state": {
+        "heading": {
+          "x": 433.828125,
+          "y": 103,
+          "right": 1032.15625,
+          "width": 598.328125,
+          "height": 84
+        },
+        "accent": {
+          "x": 812.984375,
+          "y": 117.90625,
+          "right": 1028.15625,
+          "width": 215.171875,
+          "height": 94
+        },
+        "copy": {
+          "x": 679.15625,
+          "y": 193,
+          "right": 1032.15625,
+          "width": 353,
+          "height": 42
+        },
+        "copyLines": [
+          {
+            "y": 191,
+            "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+          },
+          {
+            "y": 213,
+            "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+          }
+        ],
+        "searchY": 248,
+        "overflow": false
+      },
+      "stable": true,
+      "mad": 30.4851794430089,
+      "changed": 22.167097329888026
     }
   ]
 }
