@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-13T05:54:51.744Z",
+  "capturedAt": "2026-10-13T06:07:00.169Z",
   "source": "LIVE_PRODUCTION_TEMPORARY_NATIVE_HEADLINE_MEASUREMENT",
   "labels": [
     [
@@ -44,13 +44,18 @@
         "headline": "38px",
         "copy": "14px"
       },
-      "mad": 24.16207877959927,
-      "changed": 16.9603825136612,
+      "mad": 35.05778468547745,
+      "changed": 32.81773196347554,
       "overflow": false
     },
     {
-      "name": "short-home-login",
-      "short": true,
+      "name": "native-width",
+      "sizes": [
+        100,
+        100,
+        100,
+        100
+      ],
       "measuredStyle": {
         "marker": {
           "content": "\"\"",
@@ -61,8 +66,96 @@
         "headline": "38px",
         "copy": "14px"
       },
-      "mad": 23.16379022465088,
-      "changed": 15.943761384335156,
+      "mad": 36.25295132738306,
+      "changed": 34.51710227077929,
+      "overflow": false
+    },
+    {
+      "name": "first-85",
+      "sizes": [
+        85,
+        null,
+        null,
+        null
+      ],
+      "measuredStyle": {
+        "marker": {
+          "content": "\"\"",
+          "display": "block",
+          "opacity": "1",
+          "transform": "none"
+        },
+        "headline": "38px",
+        "copy": "14px"
+      },
+      "mad": 36.64085421833156,
+      "changed": 33.24743151663371,
+      "overflow": false
+    },
+    {
+      "name": "first-90",
+      "sizes": [
+        90,
+        null,
+        null,
+        null
+      ],
+      "measuredStyle": {
+        "marker": {
+          "content": "\"\"",
+          "display": "block",
+          "opacity": "1",
+          "transform": "none"
+        },
+        "headline": "38px",
+        "copy": "14px"
+      },
+      "mad": 36.27365347473801,
+      "changed": 33.350856542061415,
+      "overflow": false
+    },
+    {
+      "name": "first85-native-rest",
+      "sizes": [
+        85,
+        100,
+        100,
+        100
+      ],
+      "measuredStyle": {
+        "marker": {
+          "content": "\"\"",
+          "display": "block",
+          "opacity": "1",
+          "transform": "none"
+        },
+        "headline": "38px",
+        "copy": "14px"
+      },
+      "mad": 37.786626363286594,
+      "changed": 34.94223055209535,
+      "overflow": false
+    },
+    {
+      "name": "first90-native-rest",
+      "sizes": [
+        90,
+        100,
+        100,
+        100
+      ],
+      "measuredStyle": {
+        "marker": {
+          "content": "\"\"",
+          "display": "block",
+          "opacity": "1",
+          "transform": "none"
+        },
+        "headline": "38px",
+        "copy": "14px"
+      },
+      "mad": 37.41942561969304,
+      "changed": 35.04565557752306,
       "overflow": false
     }
   ]
