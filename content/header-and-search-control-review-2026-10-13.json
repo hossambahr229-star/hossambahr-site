@@ -1,0 +1,54 @@
+{
+  "pullRequests": [
+    452,
+    453,
+    454
+  ],
+  "arabicNavigation": {
+    "measurementRun": 38352644635,
+    "actualRun": 38353509318,
+    "branch": "agent/live-header-current-page-grid",
+    "gapPx": 20,
+    "nativeInsetPx": 48,
+    "ariaCurrent": "page",
+    "regionalMadBefore": 24.887928809957497,
+    "regionalMadAfter": 24.16207877959927
+  },
+  "englishCurrentBrand": {
+    "actualRun": 38353686499,
+    "branch": "agent/live-english-home-current-link",
+    "viewports": [
+      1440,
+      390
+    ],
+    "passed": true
+  },
+  "latestControlAcceptance": {
+    "actualRun": 38354522716,
+    "branch": "agent/live-home-control-separation",
+    "capturedAt": "2026-10-13T06:07:41.406Z",
+    "arabicLoginLabel": "دخول",
+    "englishSearchViewports": [
+      1440,
+      1366,
+      430,
+      390,
+      360
+    ],
+    "iconButtonOverlap": false,
+    "horizontalOverflow": false,
+    "pageErrors": 0,
+    "regionalHeaderMad": 23.163794019429265,
+    "regionalHeaderChangedPercent": 15.943761384335156
+  },
+  "publication": {
+    "run": 38354504430,
+    "deployedCommit": "94dbb66e900b15a7e51613337991d47c5fdf7c06",
+    "geometryPassed": true,
+    "meanAbsolutePixelDifference": 24.4779296875,
+    "changedPixelPercent": 18.35713252314815
+  },
+  "pixelFidelity": "NOT_DECLARED",
+  "authenticatedAccountGate": "BLOCKED_NO_AUTHORIZED_TEST_CREDENTIALS",
+  "overallFinalGate": "NOT_DECLARED"
+}
