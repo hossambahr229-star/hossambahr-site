@@ -6,11 +6,13 @@ import {createHash} from 'node:crypto';
 // authentication/header and generated-page materialization.
 const root = resolve(import.meta.dirname, '../..');
 const geometryVersion=createHash('sha256').update(await readFile(join(root,'home-geometry.css'))).digest('hex').slice(0,12);
+const premiumRuntimeVersion=createHash('sha256').update(await readFile(join(root,'premium-platform.js'))).update(await readFile(join(root,'premium-platform.css'))).digest('hex').slice(0,12);
 const summary = JSON.parse(await readFile(join(root,'platform-summary.json'),'utf8'));
 for (const route of ['index.html', 'en/index.html']) {
   const file = join(root, route);
   let html = await readFile(file, 'utf8');
   if (!html.includes('premium-home-hero')) continue;
+  html=html.replace(/src="\/premium-platform\.js(?:\?[^"]*)?"/g,'src="/premium-platform.js?v='+premiumRuntimeVersion+'"').replace(/href="\/premium-platform\.css(?:\?[^"]*)?"/g,'href="/premium-platform.css?v='+premiumRuntimeVersion+'"');
   // Both localized homepages use the same scoped layout; the Arabic runtime
   // stabilizer does not visit /en/. Preserve other classes on repeated builds.
   html = html.replace(/<html\b([^>]*)>/i, (tag, attributes) => {
