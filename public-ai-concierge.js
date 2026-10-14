@@ -659,10 +659,11 @@
     textarea.rows = 1;
     textarea.maxLength = 800;
     textarea.autocomplete = "off";
-    textarea.placeholder = tr(isAIProduct ? "اسألني عن أي معاملة في الإمارات" : "اسألني عن أي معاملة في الإمارات…");
+    textarea.placeholder = isAIProduct ? (english ? "Describe your transaction…" : "اكتب معاملتك هنا…") : tr("اسألني عن أي معاملة في الإمارات…");
     textarea.setAttribute("aria-label", tr("اسأل HOSSAM BAHR AI عن أي معاملة في الإمارات"));
     oldInput?.replaceWith(textarea);
     composer = textarea;
+    if (isAIProduct && location.hash === "#government-search") requestAnimationFrame(() => { composer.scrollIntoView({block:"center"}); composer.focus({preventScroll:true}); });
 
     const label = form.querySelector("label");
     if (label) label.textContent = tr("اسأل HOSSAM BAHR AI");

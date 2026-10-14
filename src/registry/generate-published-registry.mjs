@@ -22,6 +22,7 @@ const reviewedAt = '2026-08-11';
 const officialLinkAuditAt = '2026-09-03';
 const unavailable = 'NOT_OFFICIALLY_PUBLISHED';
 const authorityProfiles = new Map([
+  ['sira-dubai', { ar: 'مؤسسة تنظيم الصناعة الأمنية (SIRA)', en: 'Security Industry Regulatory Agency (SIRA)' }],
   ['mofa', { ar: 'وزارة الخارجية', en: 'Ministry of Foreign Affairs' }],
   ['moe', { ar: 'وزارة التربية والتعليم', en: 'Ministry of Education' }],
   ['fta', { ar: 'الهيئة الاتحادية للضرائب (FTA)', en: 'Federal Tax Authority' }],
@@ -266,6 +267,8 @@ function addSupplemental(service, authority) {
     officialCtaUrl: service.executionUrl || service.officialUrl,
     officialCtaUrlEn: service.executionUrlEn,
     noDocumentsRequired: service.noDocumentsRequired === true,
+    keywords: service.keywords || [],
+    localizedDetails: service.localizedDetails || null,
     destinationKind: service.destinationKind || 'DIRECT_SERVICE',
     sourceRegistry: authority.sourceRegistry,
     lastReviewedAt: service.lastVerified || reviewedAt,
