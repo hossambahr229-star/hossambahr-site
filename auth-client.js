@@ -137,11 +137,11 @@
   }
 
   async function setupServiceSave(session) {
-    if (!session || !location.pathname.startsWith("/services/") || location.pathname === "/services/") return;
-    const main = document.querySelector("main"); const title = main?.querySelector("h1")?.textContent?.trim(); const slug = location.pathname.split("/").filter(Boolean)[1]; const hero = main?.querySelector(".service-hero,.page-hero");
+    if (!session || !route.startsWith("/services/") || route === "/services/") return;
+    const main = document.querySelector("main"); const title = main?.querySelector("h1")?.textContent?.trim(); const slug = decodeURIComponent(route.split("/").filter(Boolean)[1]); const hero = main?.querySelector(".service-hero,.page-hero");
     if (!title || !slug || !hero || hero.querySelector("[data-save-service]")) return;
-    const button = document.createElement("button"); button.type = "button"; button.className = "save-service-action"; button.dataset.saveService = "true"; button.textContent = "حفظ في حسابي";
-    button.addEventListener("click", async () => { button.disabled = true; const { error } = await client.from("user_transactions").upsert({ user_id: session.user.id, service_slug: slug, service_name: title, status: "saved" }, { onConflict: "user_id,service_slug" }); button.disabled = false; button.textContent = error ? "تعذر الحفظ" : "تم الحفظ في حسابك"; });
+    const button = document.createElement("button"); button.type = "button"; button.className = "save-service-action"; button.dataset.saveService = "true"; button.textContent = english ? "Save to my account" : "حفظ في حسابي";
+    button.addEventListener("click", async () => { button.disabled = true; const { error } = await client.from("user_transactions").upsert({ user_id: session.user.id, service_slug: slug, service_name: title, status: "saved" }, { onConflict: "user_id,service_slug" }); button.disabled = false; button.textContent = error ? (english ? "Could not save" : "تعذر الحفظ") : (english ? "Saved to your account" : "تم الحفظ في حسابك"); });
     hero.append(button);
   }
 
