@@ -1,0 +1,20 @@
+name: Check Final SIRA Edge Retrieval
+on:
+  push:
+    branches: [agent/check-sira-final-edge]
+    paths: [.github/workflows/check-sira-final-edge.yml]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: denoland/setup-deno@v2
+        with: {deno-version: v2.x}
+      - run: deno check supabase/functions/public-ai-concierge/index.ts
+      - run: npm run build
+      - run: node --test test/architecture/sira-discovery-regression.test.mjs test/architecture/ai-education-edas-identities.test.mjs
