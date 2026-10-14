@@ -1,0 +1,31 @@
+name: Current Production Byte Parity Oct14
+on:
+  push:
+    branches: [agent/verify-current-production-byte-parity-oct14]
+    paths: [scripts/verify-current-production-byte-parity-oct14.mjs, .github/workflows/verify-current-production-byte-parity-oct14.yml]
+permissions:
+  contents: write
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/verify-current-production-byte-parity-oct14.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: current-production-byte-parity
+          path: artifacts/current-production-byte-parity-2026-10-14
+      - name: Preserve freshness evidence
+        if: always() && github.ref == 'refs/heads/agent/verify-current-production-byte-parity-oct14'
+        run: |
+          git config user.name "HossamBahr Evidence"
+          git config user.email "evidence@users.noreply.github.com"
+          git add artifacts/current-production-byte-parity-2026-10-14
+          if ! git diff --cached --quiet; then
+            git commit -m "Record current Production byte parity [skip ci]"
+            git push origin HEAD:agent/verify-current-production-byte-parity-oct14
+          fi
