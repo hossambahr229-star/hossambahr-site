@@ -1,0 +1,30 @@
+name: Mobile Assistant Control Overlap
+on:
+  pull_request:
+    paths:
+      - 'premium-platform.*'
+      - 'src/publication/apply-home-geometry.mjs'
+      - 'scripts/mobile-assistant-overlap.mjs'
+      - '.github/workflows/mobile-assistant-overlap.yml'
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm run build
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Verify concealment, reappearance and real panel controls
+        run: |
+          python -m http.server 8787 --bind 127.0.0.1 > /tmp/hb-mobile-overlap-server.log 2>&1 &
+          HB_BASE_URL=http://127.0.0.1:8787 HB_BROWSER_PATH="$(which chrome)" node scripts/mobile-assistant-overlap.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobile-assistant-overlap
+          path: artifacts/mobile-assistant-overlap
