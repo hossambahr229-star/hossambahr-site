@@ -307,6 +307,7 @@
 
   function quickRepliesFor(question, payload) {
     const q = String(question || "");
+    if (/ترخيص نشاط أمني أم اعتماد|security activity licence or security system certification/i.test(q)) return english ? ["New security activity licence in Dubai", "Security system certification in Dubai"] : ["ترخيص نشاط أمني جديد في دبي", "اعتماد نظام أمني لمنشأة في دبي"];
     if (/نوع المشكلة|النتيجة التي تريدها|problem or outcome|transaction or outcome/i.test(q)) return ["تجديد", "إصدار جديد", "إلغاء", "رفض أو تأخير"];
     if (/إمارة|الامارة|الإماره|اماره|emirate|jurisdiction/i.test(q)) return ["دبي", "أبوظبي", "الشارقة", "إمارة أخرى"];
     if (/سارية|انتهت|منتهية|صلاحية/.test(q)) return ["سارية", "منتهية", "لست متأكدًا"];
@@ -528,6 +529,13 @@
       body.append(actions);
     }
 
+    if (!match) {
+      const actions=create("div","hb-chat-actions");
+      const review=document.createElement("a");review.className="hb-chat-secondary hb-chat-request-review";
+      review.href=(english?"/en":"")+"/contact/?handoff=1";
+      review.textContent=english?"Ask HOSSAM BAHR to review this request":"اطلب مراجعة معاملتك مع حسام بحر";
+      review.addEventListener("click",()=>rememberHandoff(payload,true));actions.append(review);body.append(actions);
+    }
     return body;
   }
 
@@ -570,16 +578,16 @@
       analysisInFlight = false;if(sendButton)sendButton.disabled=false;composer?.focus();}
   }
 
-  function rememberHandoff(payload = state.last_payload) {
+  function rememberHandoff(payload = state.last_payload, unresolved = false) {
     const match = selectPresentationMatch(payload);
     const context = {
       id: crypto.randomUUID(),
       expires_at: Date.now() + TTL,
-      goal: scrubLocal(state.original_goal || payload?.goal_context?.safe_goal || ""),
+      goal: scrubLocal(payload?.goal_context?.safe_goal || state.resolved_query || state.original_goal || ""),
       resolved_query: scrubLocal(state.resolved_query || payload?.goal_context?.safe_goal || ""),
-      service_slug: match?.service_slug || state.service_slug || null,
-      service_id: match?.service_id || state.active_service_id || null,
-      service_name: { ar: match?.service_name || "", en: match?.service_name_en || "" },
+      service_slug: unresolved ? null : (match?.service_slug || state.service_slug || null),
+      service_id: unresolved ? null : (match?.service_id || state.active_service_id || null),
+      service_name: { ar: unresolved ? "" : (match?.service_name || ""), en: unresolved ? "" : (match?.service_name_en || "") },
       language: english ? "en" : "ar",
       relationship: state.relationship || null,
       family_members: state.family_members || [],
@@ -587,7 +595,7 @@
       action: state.action || null,
       known_facts: state.known_facts || {},
       jurisdiction_code: match?.jurisdiction?.code || state.jurisdiction_code || "AE",
-      authority_key: match?.authority?.key || state.authority_key || null,
+      authority_key: unresolved ? null : (match?.authority?.key || state.authority_key || null),
       conversation_context: {
         answers: (state.answers || []).slice(-6).map(scrubLocal),
         turns: (state.history || []).slice(-8).map(turn => ({role:turn.role,content:scrubLocal(turn.content)})),
