@@ -1,4 +1,5 @@
 import { readFile, readdir, writeFile } from 'node:fs/promises';
+import {createHash} from 'node:crypto';
 import { join, resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '../..');
@@ -80,6 +81,9 @@ async function synchronizeServiceDirectory() {
     /يضم الدليل الخدمات المتحققة، إضافة إلى خدمات DET قيد التحقق بصفحات داخلية آمنة وأزرار حكومية معطّلة\./g,
     `يضم الدليل ${registry.services.length} خدمة موثقة من سجل نشر مركزي واحد، ولكل خدمة صفحة داخلية ومسار حكومي مصنّف بوضوح.`,
   );
+  const searchVersion=createHash('sha256').update(await readFile(resolve(root,'service-directory-search.js'))).digest('hex').slice(0,12);
+  html=html.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/g,(tag,body)=>body.includes('#det-search')&&body.includes('function run')?'':tag);
+  html=html.replace(/<script\b[^>]*src="\/service-directory-search\.js[^"]*"[^>]*><\/script>/g,'').replace('</head>',`<script type="module" src="/service-directory-search.js?v=${searchVersion}"></script></head>`);
   if (html !== original) await writeFile(file, html, 'utf8');
   return { cards: seen.size, removed };
 }

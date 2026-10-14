@@ -5,6 +5,9 @@ on:
       - 'src/publication/customer-execution.mjs'
       - 'src/publication/generate-customer-execution.mjs'
       - 'customer-intake.*'
+      - 'service-directory-search.js'
+      - 'src/publication/synchronize-static-counters.mjs'
+      - 'scripts/sira-directory-browser.mjs'
       - 'scripts/customer-execution-browser.mjs'
       - 'scripts/service-pathways-browser.mjs'
       - 'service-pathways.*'
@@ -34,6 +37,7 @@ jobs:
           export HB_BROWSER_PATH="$(command -v chrome)"
           node scripts/customer-execution-browser.mjs
           node scripts/service-pathways-browser.mjs
+          node scripts/sira-directory-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -41,5 +45,6 @@ jobs:
           path: |
             artifacts/customer-execution
             artifacts/service-pathways
+            artifacts/sira-directory
           retention-days: 14
 
