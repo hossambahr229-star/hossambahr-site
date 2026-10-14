@@ -1,41 +1,280 @@
 {
-  "at": "2026-10-14T16:03:12.005Z",
-  "status": "FAIL",
+  "at": "2026-10-14T16:06:08.714Z",
+  "status": "PASS",
   "source": "LIVE_PRODUCTION",
+  "reusedLayouts": {
+    "run": 38592801097,
+    "cases": [
+      {
+        "locale": "ar",
+        "width": 1440,
+        "controls": [
+          {
+            "text": "اشرح ما تريد",
+            "href": "/ai/#government-search",
+            "width": 112,
+            "height": 30,
+            "hit": true
+          },
+          {
+            "text": "أعرف معاملتي",
+            "href": "/discover/",
+            "width": 99,
+            "height": 30,
+            "hit": true
+          },
+          {
+            "text": "تصفح الجهات",
+            "href": "/authorities/",
+            "width": 105,
+            "height": 30,
+            "hit": true
+          }
+        ],
+        "composer": {
+          "x": 382,
+          "y": 755.90625,
+          "width": 737,
+          "height": 66,
+          "fontSize": "16.32px",
+          "placeholder": "اكتب معاملتك هنا…",
+          "viewportWidth": 1440,
+          "viewportHeight": 960
+        },
+        "panelOpenClose": true,
+        "errors": []
+      },
+      {
+        "locale": "ar",
+        "width": 1366,
+        "controls": [
+          {
+            "text": "اشرح ما تريد",
+            "href": "/ai/#government-search",
+            "width": 112,
+            "height": 30,
+            "hit": true
+          },
+          {
+            "text": "أعرف معاملتي",
+            "href": "/discover/",
+            "width": 99,
+            "height": 30,
+            "hit": true
+          },
+          {
+            "text": "تصفح الجهات",
+            "href": "/authorities/",
+            "width": 105,
+            "height": 30,
+            "hit": true
+          }
+        ],
+        "composer": {
+          "x": 345,
+          "y": 756.7008666992188,
+          "width": 737,
+          "height": 66,
+          "fontSize": "16.32px",
+          "placeholder": "اكتب معاملتك هنا…",
+          "viewportWidth": 1366,
+          "viewportHeight": 960
+        },
+        "panelOpenClose": true,
+        "errors": []
+      }
+    ]
+  },
   "layouts": [
     {
       "locale": "ar",
-      "width": 1440,
+      "width": 430,
       "controls": [
         {
           "text": "اشرح ما تريد",
           "href": "/ai/#government-search",
-          "width": 112,
-          "height": 30,
+          "width": 80.578125,
+          "height": 44,
           "hit": true
         },
         {
           "text": "أعرف معاملتي",
           "href": "/discover/",
-          "width": 99,
-          "height": 30,
+          "width": 92.609375,
+          "height": 44,
           "hit": true
         },
         {
           "text": "تصفح الجهات",
           "href": "/authorities/",
+          "width": 86.921875,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "composer": {
+        "x": 74,
+        "y": 698.2609252929688,
+        "width": 339,
+        "height": 58,
+        "fontSize": "16px",
+        "placeholder": "اكتب معاملتك هنا…",
+        "viewportWidth": 430,
+        "viewportHeight": 844
+      },
+      "panelOpenClose": true,
+      "errors": []
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "controls": [
+        {
+          "text": "اشرح ما تريد",
+          "href": "/ai/#government-search",
+          "width": 80.578125,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "أعرف معاملتي",
+          "href": "/discover/",
+          "width": 92.609375,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "تصفح الجهات",
+          "href": "/authorities/",
+          "width": 86.921875,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "composer": {
+        "x": 74,
+        "y": 714.9883422851562,
+        "width": 299,
+        "height": 58,
+        "fontSize": "16px",
+        "placeholder": "اكتب معاملتك هنا…",
+        "viewportWidth": 390,
+        "viewportHeight": 844
+      },
+      "panelOpenClose": true,
+      "errors": []
+    },
+    {
+      "locale": "ar",
+      "width": 360,
+      "controls": [
+        {
+          "text": "اشرح ما تريد",
+          "href": "/ai/#government-search",
+          "width": 80.578125,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "أعرف معاملتي",
+          "href": "/discover/",
+          "width": 92.609375,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "تصفح الجهات",
+          "href": "/authorities/",
+          "width": 86.921875,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "composer": {
+        "x": 74,
+        "y": 731.3624267578125,
+        "width": 269,
+        "height": 58,
+        "fontSize": "16px",
+        "placeholder": "اكتب معاملتك هنا…",
+        "viewportWidth": 360,
+        "viewportHeight": 844
+      },
+      "panelOpenClose": true,
+      "errors": []
+    },
+    {
+      "locale": "ar",
+      "width": 320,
+      "controls": [
+        {
+          "text": "اشرح ما تريد",
+          "href": "/ai/#government-search",
+          "width": 80.578125,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "أعرف معاملتي",
+          "href": "/discover/",
+          "width": 92.609375,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "تصفح الجهات",
+          "href": "/authorities/",
+          "width": 86.921875,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "composer": {
+        "x": 74,
+        "y": 733.5073852539062,
+        "width": 229,
+        "height": 58,
+        "fontSize": "16px",
+        "placeholder": "اكتب معاملتك هنا…",
+        "viewportWidth": 320,
+        "viewportHeight": 844
+      },
+      "panelOpenClose": true,
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "controls": [
+        {
+          "text": "Describe your need",
+          "href": "/en/ai/#government-search",
+          "width": 112,
+          "height": 30,
+          "hit": true
+        },
+        {
+          "text": "I know my transaction",
+          "href": "/en/discover/",
+          "width": 99,
+          "height": 42,
+          "hit": true
+        },
+        {
+          "text": "Browse authorities",
+          "href": "/en/authorities/",
           "width": 105,
           "height": 30,
           "hit": true
         }
       ],
       "composer": {
-        "x": 382,
-        "y": 755.90625,
+        "x": 321,
+        "y": 756.9287719726562,
         "width": 737,
         "height": 66,
         "fontSize": "16.32px",
-        "placeholder": "اكتب معاملتك هنا…",
+        "placeholder": "Describe your transaction…",
         "viewportWidth": 1440,
         "viewportHeight": 960
       },
@@ -43,51 +282,1561 @@
       "errors": []
     },
     {
-      "locale": "ar",
+      "locale": "en",
       "width": 1366,
       "controls": [
         {
-          "text": "اشرح ما تريد",
-          "href": "/ai/#government-search",
+          "text": "Describe your need",
+          "href": "/en/ai/#government-search",
           "width": 112,
           "height": 30,
           "hit": true
         },
         {
-          "text": "أعرف معاملتي",
-          "href": "/discover/",
+          "text": "I know my transaction",
+          "href": "/en/discover/",
           "width": 99,
-          "height": 30,
+          "height": 42,
           "hit": true
         },
         {
-          "text": "تصفح الجهات",
-          "href": "/authorities/",
+          "text": "Browse authorities",
+          "href": "/en/authorities/",
           "width": 105,
           "height": 30,
           "hit": true
         }
       ],
       "composer": {
-        "x": 345,
-        "y": 756.7008666992188,
+        "x": 284,
+        "y": 755.925048828125,
         "width": 737,
         "height": 66,
         "fontSize": "16.32px",
-        "placeholder": "اكتب معاملتك هنا…",
+        "placeholder": "Describe your transaction…",
         "viewportWidth": 1366,
         "viewportHeight": 960
       },
       "panelOpenClose": true,
       "errors": []
+    },
+    {
+      "locale": "en",
+      "width": 430,
+      "controls": [
+        {
+          "text": "Describe your need",
+          "href": "/en/ai/#government-search",
+          "width": 113.140625,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "I know my transaction",
+          "href": "/en/discover/",
+          "width": 127.28125,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "Browse authorities",
+          "href": "/en/authorities/",
+          "width": 112.28125,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "composer": {
+        "x": 17,
+        "y": 731.01123046875,
+        "width": 339,
+        "height": 58,
+        "fontSize": "16px",
+        "placeholder": "Describe your transaction…",
+        "viewportWidth": 430,
+        "viewportHeight": 844
+      },
+      "panelOpenClose": true,
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "controls": [
+        {
+          "text": "Describe your need",
+          "href": "/en/ai/#government-search",
+          "width": 113.140625,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "I know my transaction",
+          "href": "/en/discover/",
+          "width": 127.28125,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "Browse authorities",
+          "href": "/en/authorities/",
+          "width": 112.28125,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "composer": {
+        "x": 17,
+        "y": 732.5740356445312,
+        "width": 299,
+        "height": 58,
+        "fontSize": "16px",
+        "placeholder": "Describe your transaction…",
+        "viewportWidth": 390,
+        "viewportHeight": 844
+      },
+      "panelOpenClose": true,
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "width": 360,
+      "controls": [
+        {
+          "text": "Describe your need",
+          "href": "/en/ai/#government-search",
+          "width": 113.140625,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "I know my transaction",
+          "href": "/en/discover/",
+          "width": 127.28125,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "Browse authorities",
+          "href": "/en/authorities/",
+          "width": 112.28125,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "composer": {
+        "x": 17,
+        "y": 732.5752563476562,
+        "width": 269,
+        "height": 58,
+        "fontSize": "16px",
+        "placeholder": "Describe your transaction…",
+        "viewportWidth": 360,
+        "viewportHeight": 844
+      },
+      "panelOpenClose": true,
+      "errors": []
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "controls": [
+        {
+          "text": "Describe your need",
+          "href": "/en/ai/#government-search",
+          "width": 113.140625,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "I know my transaction",
+          "href": "/en/discover/",
+          "width": 127.28125,
+          "height": 44,
+          "hit": true
+        },
+        {
+          "text": "Browse authorities",
+          "href": "/en/authorities/",
+          "width": 112.28125,
+          "height": 44,
+          "hit": true
+        }
+      ],
+      "composer": {
+        "x": 17,
+        "y": 732.5748291015625,
+        "width": 229,
+        "height": 58,
+        "fontSize": "16px",
+        "placeholder": "Describe your transaction…",
+        "viewportWidth": 320,
+        "viewportHeight": 844
+      },
+      "panelOpenClose": true,
+      "errors": []
     }
   ],
-  "search": [],
-  "pages": [],
-  "conversations": [],
-  "provider": [],
+  "search": [
+    {
+      "query": "موافقة سيرا",
+      "found": [
+        {
+          "slug": "sira-new-security-activity-license-dubai",
+          "title": "إصدار ترخيص نشاط أمني جديد في دبي"
+        },
+        {
+          "slug": "sira-security-system-certification-dubai",
+          "title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي"
+        }
+      ]
+    },
+    {
+      "query": "موافقة SIRA دبي",
+      "found": [
+        {
+          "slug": "sira-new-security-activity-license-dubai",
+          "title": "إصدار ترخيص نشاط أمني جديد في دبي"
+        },
+        {
+          "slug": "sira-security-system-certification-dubai",
+          "title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي"
+        }
+      ]
+    },
+    {
+      "query": "ترخيص نشاط أمني",
+      "found": [
+        {
+          "slug": "sira-new-security-activity-license-dubai",
+          "title": "إصدار ترخيص نشاط أمني جديد في دبي"
+        }
+      ]
+    },
+    {
+      "query": "موافقة كاميرات مراقبة",
+      "found": [
+        {
+          "slug": "sira-security-system-certification-dubai",
+          "title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي"
+        }
+      ]
+    },
+    {
+      "query": "موافقة الأنظمة الأمنية",
+      "found": [
+        {
+          "slug": "sira-security-system-certification-dubai",
+          "title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي"
+        }
+      ]
+    },
+    {
+      "query": "Security Industry Regulatory Agency",
+      "found": [
+        {
+          "slug": "sira-new-security-activity-license-dubai",
+          "title": "إصدار ترخيص نشاط أمني جديد في دبي"
+        },
+        {
+          "slug": "sira-security-system-certification-dubai",
+          "title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي"
+        }
+      ]
+    },
+    {
+      "query": "Security system certification Dubai",
+      "found": [
+        {
+          "slug": "sira-security-system-certification-dubai",
+          "title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي"
+        }
+      ]
+    },
+    {
+      "query": "Security activity licence",
+      "found": [
+        {
+          "slug": "sira-new-security-activity-license-dubai",
+          "title": "إصدار ترخيص نشاط أمني جديد في دبي"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "locale": "ar",
+      "slug": "sira-new-security-activity-license-dubai",
+      "official": "https://www.sira.gov.ae/ar/services/noc-security-license",
+      "whatsAppInternational": "/971503780460",
+      "contextPreserved": true,
+      "track": "/contact/?service=sira-new-security-activity-license-dubai&source=%2Fservices%2Fsira-new-security-activity-license-dubai%2F&handoff=1"
+    },
+    {
+      "locale": "ar",
+      "slug": "sira-security-system-certification-dubai",
+      "official": "https://www.sira.gov.ae/ar/services/security-system-certification",
+      "whatsAppInternational": "/971503780460",
+      "contextPreserved": true,
+      "track": "/contact/?service=sira-security-system-certification-dubai&source=%2Fservices%2Fsira-security-system-certification-dubai%2F&handoff=1"
+    },
+    {
+      "locale": "en",
+      "slug": "sira-new-security-activity-license-dubai",
+      "official": "https://www.sira.gov.ae/en/services/noc-security-license",
+      "whatsAppInternational": "/971503780460",
+      "contextPreserved": true,
+      "track": "/en/contact/?service=sira-new-security-activity-license-dubai&source=%2Fen%2Fservices%2Fsira-new-security-activity-license-dubai%2F&handoff=1"
+    },
+    {
+      "locale": "en",
+      "slug": "sira-security-system-certification-dubai",
+      "official": "https://www.sira.gov.ae/en/services/security-system-certification",
+      "whatsAppInternational": "/971503780460",
+      "contextPreserved": true,
+      "track": "/en/contact/?service=sira-security-system-certification-dubai&source=%2Fen%2Fservices%2Fsira-security-system-certification-dubai%2F&handoff=1"
+    }
+  ],
+  "conversations": [
+    {
+      "locale": "ar",
+      "turns": [
+        {
+          "question": "محتاج موافقة سيرا",
+          "payload": {
+            "ok": true,
+            "goal_context": {
+              "active_service_id": null,
+              "last_answer_topic": "clarification",
+              "pending_clarification": "هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",
+              "known_facts": {},
+              "jurisdiction_hint": "AE-DU",
+              "relationship": null,
+              "relationship_group": null,
+              "family_members": [],
+              "subject_role": null,
+              "entity": {
+                "kind": "unknown",
+                "relationship": null,
+                "relationship_group": null
+              },
+              "service_slug": null,
+              "authority_key": null,
+              "action": null,
+              "turn_type": "new_topic",
+              "topic": null,
+              "intent": null,
+              "service_family": null,
+              "business_activity": null,
+              "semantic_confidence": "low",
+              "safe_goal": "محتاج موافقة سيرا"
+            },
+            "result": {
+              "understood_intent": "موافقات SIRA",
+              "confidence": "low",
+              "answer": {
+                "text": "SIRA هي مؤسسة تنظيم الصناعة الأمنية في دبي. ترخيص النشاط الأمني واعتماد النظام الأمني للمنشأة معاملتان مختلفتان. هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",
+                "focus": "clarification",
+                "fact_status": "NEEDS_CLARIFICATION",
+                "grounded": false,
+                "evidence": {}
+              },
+              "grounding": {
+                "status": "NEEDS_CLARIFICATION",
+                "source_backed": false,
+                "no_invention": true,
+                "ambiguity_detected": true
+              },
+              "matches": [],
+              "missing_information": [
+                "نوع موافقة SIRA"
+              ],
+              "follow_up_questions": [
+                "هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟"
+              ],
+              "engine": {
+                "mode": "deterministic-policy-resolver",
+                "external_model_used": false,
+                "provider_failure": {
+                  "category": "QUOTA_BILLING",
+                  "status": 429,
+                  "code": "credit_balance_exhausted",
+                  "type": "insufficient_quota"
+                }
+              },
+              "privacy": {
+                "case_created": false,
+                "personal_data_persisted": false
+              }
+            },
+            "rate_limit": {
+              "remaining": 118,
+              "reset_at": "2026-10-14T17:00:00+00:00"
+            }
+          }
+        },
+        {
+          "question": "ترخيص نشاط أمني في دبي",
+          "payload": {
+            "ok": true,
+            "goal_context": {
+              "active_service_id": "sira-new-security-activity-license-dubai",
+              "last_answer_topic": "overview",
+              "pending_clarification": null,
+              "known_facts": {},
+              "jurisdiction_hint": "AE-DU",
+              "relationship": null,
+              "relationship_group": null,
+              "family_members": [],
+              "subject_role": null,
+              "entity": {
+                "kind": "unknown",
+                "relationship": null,
+                "relationship_group": null
+              },
+              "service_slug": "sira-new-security-activity-license-dubai",
+              "authority_key": "sira-dubai",
+              "action": null,
+              "turn_type": "new_topic",
+              "topic": null,
+              "intent": null,
+              "service_family": null,
+              "business_activity": null,
+              "semantic_confidence": "low",
+              "safe_goal": "ترخيص نشاط أمني في دبي"
+            },
+            "result": {
+              "understood_intent": "إصدار ترخيص نشاط أمني جديد في دبي",
+              "confidence": "high",
+              "answer": {
+                "text": "المسار المناسب لطلبك هو «إصدار ترخيص نشاط أمني جديد في دبي» لدى مؤسسة تنظيم الصناعة الأمنية. لأنشطة الأمن في دبي فقط. لا تبدأ ممارسة النشاط قبل استيفاء الاشتراطات الأمنية أو الكوادر المطلوبة للنشاط. هذه خدمة إصدار جديد؛ التجديد والتعديل والإلغاء معاملات مختلفة.",
+                "focus": "overview",
+                "fact_status": "VERIFIED_FACT",
+                "grounded": true,
+                "evidence": {
+                  "policy_key": "service:sira-new-security-activity-license-dubai",
+                  "policy_version": 1,
+                  "workflow_key": "service:sira-new-security-activity-license-dubai",
+                  "source_title": "إصدار ترخيص نشاط أمني جديد في دبي",
+                  "source_url": "https://www.sira.gov.ae/en/services/noc-security-license",
+                  "last_verified_at": "2026-10-14T15:49:21.541926+00:00",
+                  "supporting_rule": {
+                    "value": "لأنشطة الأمن في دبي فقط. لا تبدأ ممارسة النشاط قبل استيفاء الاشتراطات الأمنية أو الكوادر المطلوبة للنشاط. هذه خدمة إصدار جديد؛ التجديد والتعديل والإلغاء معاملات مختلفة.",
+                    "source_refs": [
+                      "https://www.sira.gov.ae/en/services/noc-security-license"
+                    ]
+                  },
+                  "document_requirements": null,
+                  "special_case": null,
+                  "review_pending": false
+                }
+              },
+              "grounding": {
+                "status": "VERIFIED_FACT",
+                "source_backed": true,
+                "no_invention": true,
+                "ambiguity_detected": false
+              },
+              "matches": [
+                {
+                  "service_slug": "sira-new-security-activity-license-dubai",
+                  "service_name": "إصدار ترخيص نشاط أمني جديد في دبي",
+                  "service_name_en": "New Security Activity License",
+                  "service_url": "/services/sira-new-security-activity-license-dubai/",
+                  "jurisdiction": {
+                    "code": "AE-DU",
+                    "name_ar": "دبي",
+                    "name_en": "Dubai"
+                  },
+                  "authority": {
+                    "key": "sira-dubai",
+                    "name_ar": "مؤسسة تنظيم الصناعة الأمنية",
+                    "name_en": "Security Industry Regulatory Agency (SIRA)",
+                    "public_url": "/authorities/sira-dubai/"
+                  },
+                  "requirements": [
+                    "رخصة تجارية، أو حجز اسم تجاري ووصل الموافقة المبدئية، أو خطاب عدم ممانعة من المنطقة الحرة، بحسب الحالة.",
+                    "اشتراطات ومستندات وكوادر إضافية حسب رمز النشاط في جدول SIRA؛ لا توجد قائمة موحدة لجميع الأنشطة."
+                  ],
+                  "general_documents": [
+                    "رخصة تجارية، أو حجز اسم تجاري ووصل الموافقة المبدئية، أو خطاب عدم ممانعة من المنطقة الحرة، بحسب الحالة.",
+                    "اشتراطات ومستندات وكوادر إضافية حسب رمز النشاط في جدول SIRA؛ لا توجد قائمة موحدة لجميع الأنشطة."
+                  ],
+                  "main_steps": [
+                    "تحديد نوع الخدمة والمنشأة ورمز النشاط",
+                    "مراجعة المتطلبات المحددة في بطاقة SIRA الرسمية",
+                    "التقديم والسداد والمتابعة عبر بوابة SIRA الرسمية"
+                  ],
+                  "conditions": [
+                    "لأنشطة الأمن في دبي فقط. لا تبدأ ممارسة النشاط قبل استيفاء الاشتراطات الأمنية أو الكوادر المطلوبة للنشاط. هذه خدمة إصدار جديد؛ التجديد والتعديل والإلغاء معاملات مختلفة."
+                  ],
+                  "official_source": {
+                    "title": "إصدار ترخيص نشاط أمني جديد في دبي",
+                    "url": "https://www.sira.gov.ae/en/services/noc-security-license",
+                    "last_verified_at": "2026-10-14T15:49:21.541926+00:00"
+                  }
+                }
+              ],
+              "missing_information": [],
+              "follow_up_questions": [],
+              "engine": {
+                "mode": "deterministic-policy-resolver",
+                "external_model_used": false,
+                "provider_failure": {
+                  "category": "QUOTA_BILLING",
+                  "status": 429,
+                  "code": "credit_balance_exhausted",
+                  "type": "insufficient_quota"
+                }
+              },
+              "privacy": {
+                "case_created": false,
+                "personal_data_persisted": false
+              }
+            },
+            "rate_limit": {
+              "remaining": 117,
+              "reset_at": "2026-10-14T17:00:00+00:00"
+            }
+          }
+        },
+        {
+          "question": "الأوراق إيه؟",
+          "payload": {
+            "ok": true,
+            "goal_context": {
+              "active_service_id": "sira-new-security-activity-license-dubai",
+              "last_answer_topic": "documents",
+              "pending_clarification": null,
+              "known_facts": {},
+              "jurisdiction_hint": "AE-DU",
+              "relationship": null,
+              "relationship_group": null,
+              "family_members": [],
+              "subject_role": null,
+              "entity": {
+                "kind": "unknown",
+                "relationship": null,
+                "relationship_group": null
+              },
+              "service_slug": "sira-new-security-activity-license-dubai",
+              "authority_key": "sira-dubai",
+              "action": null,
+              "turn_type": "follow_up",
+              "topic": null,
+              "intent": null,
+              "service_family": null,
+              "business_activity": null,
+              "semantic_confidence": "low",
+              "safe_goal": "ترخيص نشاط أمني في دبي الأوراق إيه؟"
+            },
+            "result": {
+              "understood_intent": "إصدار ترخيص نشاط أمني جديد في دبي",
+              "confidence": "high",
+              "answer": {
+                "text": "المتطلبات المسجلة لهذه الخدمة: رخصة تجارية، أو حجز اسم تجاري ووصل الموافقة المبدئية، أو خطاب عدم ممانعة من المنطقة الحرة، بحسب الحالة.، اشتراطات ومستندات وكوادر إضافية حسب رمز النشاط في جدول SIRA؛ لا توجد قائمة موحدة لجميع الأنشطة..",
+                "focus": "documents",
+                "fact_status": "VERIFIED_FACT",
+                "grounded": true,
+                "evidence": {
+                  "policy_key": "service:sira-new-security-activity-license-dubai",
+                  "policy_version": 1,
+                  "workflow_key": "service:sira-new-security-activity-license-dubai",
+                  "source_title": "إصدار ترخيص نشاط أمني جديد في دبي",
+                  "source_url": "https://www.sira.gov.ae/en/services/noc-security-license",
+                  "last_verified_at": "2026-10-14T15:49:21.541926+00:00",
+                  "supporting_rule": null,
+                  "document_requirements": [
+                    "رخصة تجارية، أو حجز اسم تجاري ووصل الموافقة المبدئية، أو خطاب عدم ممانعة من المنطقة الحرة، بحسب الحالة.",
+                    "اشتراطات ومستندات وكوادر إضافية حسب رمز النشاط في جدول SIRA؛ لا توجد قائمة موحدة لجميع الأنشطة."
+                  ],
+                  "special_case": null,
+                  "review_pending": false
+                }
+              },
+              "grounding": {
+                "status": "VERIFIED_FACT",
+                "source_backed": true,
+                "no_invention": true,
+                "ambiguity_detected": false
+              },
+              "matches": [
+                {
+                  "service_slug": "sira-new-security-activity-license-dubai",
+                  "service_name": "إصدار ترخيص نشاط أمني جديد في دبي",
+                  "service_name_en": "New Security Activity License",
+                  "service_url": "/services/sira-new-security-activity-license-dubai/",
+                  "jurisdiction": {
+                    "code": "AE-DU",
+                    "name_ar": "دبي",
+                    "name_en": "Dubai"
+                  },
+                  "authority": {
+                    "key": "sira-dubai",
+                    "name_ar": "مؤسسة تنظيم الصناعة الأمنية",
+                    "name_en": "Security Industry Regulatory Agency (SIRA)",
+                    "public_url": "/authorities/sira-dubai/"
+                  },
+                  "requirements": [
+                    "رخصة تجارية، أو حجز اسم تجاري ووصل الموافقة المبدئية، أو خطاب عدم ممانعة من المنطقة الحرة، بحسب الحالة.",
+                    "اشتراطات ومستندات وكوادر إضافية حسب رمز النشاط في جدول SIRA؛ لا توجد قائمة موحدة لجميع الأنشطة."
+                  ],
+                  "general_documents": [
+                    "رخصة تجارية، أو حجز اسم تجاري ووصل الموافقة المبدئية، أو خطاب عدم ممانعة من المنطقة الحرة، بحسب الحالة.",
+                    "اشتراطات ومستندات وكوادر إضافية حسب رمز النشاط في جدول SIRA؛ لا توجد قائمة موحدة لجميع الأنشطة."
+                  ],
+                  "main_steps": [
+                    "تحديد نوع الخدمة والمنشأة ورمز النشاط",
+                    "مراجعة المتطلبات المحددة في بطاقة SIRA الرسمية",
+                    "التقديم والسداد والمتابعة عبر بوابة SIRA الرسمية"
+                  ],
+                  "conditions": [
+                    "لأنشطة الأمن في دبي فقط. لا تبدأ ممارسة النشاط قبل استيفاء الاشتراطات الأمنية أو الكوادر المطلوبة للنشاط. هذه خدمة إصدار جديد؛ التجديد والتعديل والإلغاء معاملات مختلفة."
+                  ],
+                  "official_source": {
+                    "title": "إصدار ترخيص نشاط أمني جديد في دبي",
+                    "url": "https://www.sira.gov.ae/en/services/noc-security-license",
+                    "last_verified_at": "2026-10-14T15:49:21.541926+00:00"
+                  }
+                }
+              ],
+              "missing_information": [],
+              "follow_up_questions": [],
+              "engine": {
+                "mode": "deterministic-policy-resolver",
+                "external_model_used": false,
+                "provider_failure": {
+                  "category": "QUOTA_BILLING",
+                  "status": 429,
+                  "code": "credit_balance_exhausted",
+                  "type": "insufficient_quota"
+                }
+              },
+              "privacy": {
+                "case_created": false,
+                "personal_data_persisted": false
+              }
+            },
+            "rate_limit": {
+              "remaining": 116,
+              "reset_at": "2026-10-14T17:00:00+00:00"
+            }
+          }
+        },
+        {
+          "question": "والرسوم؟",
+          "payload": {
+            "ok": true,
+            "goal_context": {
+              "active_service_id": "sira-new-security-activity-license-dubai",
+              "last_answer_topic": "fees",
+              "pending_clarification": null,
+              "known_facts": {},
+              "jurisdiction_hint": "AE-DU",
+              "relationship": null,
+              "relationship_group": null,
+              "family_members": [],
+              "subject_role": null,
+              "entity": {
+                "kind": "unknown",
+                "relationship": null,
+                "relationship_group": null
+              },
+              "service_slug": "sira-new-security-activity-license-dubai",
+              "authority_key": "sira-dubai",
+              "action": null,
+              "turn_type": "follow_up",
+              "topic": null,
+              "intent": null,
+              "service_family": null,
+              "business_activity": null,
+              "semantic_confidence": "low",
+              "safe_goal": "ترخيص نشاط أمني في دبي الأوراق إيه؟ والرسوم؟"
+            },
+            "result": {
+              "understood_intent": "إصدار ترخيص نشاط أمني جديد في دبي",
+              "confidence": "high",
+              "answer": {
+                "text": "تعرض البطاقة 100 درهم للخدمة و10 معرفة و10 ابتكار، إضافة إلى جدول رسوم مختلف حسب النشاط؛ لا تعتبر 120 درهمًا إجمالي ترخيص كل نشاط. طابق رمز النشاط والإجمالي في المصدر الرسمي قبل الدفع.",
+                "focus": "fees",
+                "fact_status": "VERIFIED_FACT",
+                "grounded": true,
+                "evidence": {
+                  "policy_key": "service:sira-new-security-activity-license-dubai",
+                  "policy_version": 1,
+                  "workflow_key": "service:sira-new-security-activity-license-dubai",
+                  "source_title": "إصدار ترخيص نشاط أمني جديد في دبي",
+                  "source_url": "https://www.sira.gov.ae/en/services/noc-security-license",
+                  "last_verified_at": "2026-10-14T15:49:21.541926+00:00",
+                  "supporting_rule": {
+                    "value": "تعرض البطاقة 100 درهم للخدمة و10 معرفة و10 ابتكار، إضافة إلى جدول رسوم مختلف حسب النشاط؛ لا تعتبر 120 درهمًا إجمالي ترخيص كل نشاط. طابق رمز النشاط والإجمالي في المصدر الرسمي قبل الدفع.",
+                    "source_refs": [
+                      "https://www.sira.gov.ae/en/services/noc-security-license"
+                    ]
+                  },
+                  "document_requirements": null,
+                  "special_case": null,
+                  "review_pending": false
+                }
+              },
+              "grounding": {
+                "status": "VERIFIED_FACT",
+                "source_backed": true,
+                "no_invention": true,
+                "ambiguity_detected": false
+              },
+              "matches": [
+                {
+                  "service_slug": "sira-new-security-activity-license-dubai",
+                  "service_name": "إصدار ترخيص نشاط أمني جديد في دبي",
+                  "service_name_en": "New Security Activity License",
+                  "service_url": "/services/sira-new-security-activity-license-dubai/",
+                  "jurisdiction": {
+                    "code": "AE-DU",
+                    "name_ar": "دبي",
+                    "name_en": "Dubai"
+                  },
+                  "authority": {
+                    "key": "sira-dubai",
+                    "name_ar": "مؤسسة تنظيم الصناعة الأمنية",
+                    "name_en": "Security Industry Regulatory Agency (SIRA)",
+                    "public_url": "/authorities/sira-dubai/"
+                  },
+                  "requirements": [
+                    "رخصة تجارية، أو حجز اسم تجاري ووصل الموافقة المبدئية، أو خطاب عدم ممانعة من المنطقة الحرة، بحسب الحالة.",
+                    "اشتراطات ومستندات وكوادر إضافية حسب رمز النشاط في جدول SIRA؛ لا توجد قائمة موحدة لجميع الأنشطة."
+                  ],
+                  "general_documents": [
+                    "رخصة تجارية، أو حجز اسم تجاري ووصل الموافقة المبدئية، أو خطاب عدم ممانعة من المنطقة الحرة، بحسب الحالة.",
+                    "اشتراطات ومستندات وكوادر إضافية حسب رمز النشاط في جدول SIRA؛ لا توجد قائمة موحدة لجميع الأنشطة."
+                  ],
+                  "main_steps": [
+                    "تحديد نوع الخدمة والمنشأة ورمز النشاط",
+                    "مراجعة المتطلبات المحددة في بطاقة SIRA الرسمية",
+                    "التقديم والسداد والمتابعة عبر بوابة SIRA الرسمية"
+                  ],
+                  "conditions": [
+                    "لأنشطة الأمن في دبي فقط. لا تبدأ ممارسة النشاط قبل استيفاء الاشتراطات الأمنية أو الكوادر المطلوبة للنشاط. هذه خدمة إصدار جديد؛ التجديد والتعديل والإلغاء معاملات مختلفة."
+                  ],
+                  "official_source": {
+                    "title": "إصدار ترخيص نشاط أمني جديد في دبي",
+                    "url": "https://www.sira.gov.ae/en/services/noc-security-license",
+                    "last_verified_at": "2026-10-14T15:49:21.541926+00:00"
+                  }
+                }
+              ],
+              "missing_information": [],
+              "follow_up_questions": [],
+              "engine": {
+                "mode": "deterministic-policy-resolver",
+                "external_model_used": false,
+                "provider_failure": {
+                  "category": "QUOTA_BILLING",
+                  "status": 429,
+                  "code": "credit_balance_exhausted",
+                  "type": "insufficient_quota"
+                }
+              },
+              "privacy": {
+                "case_created": false,
+                "personal_data_persisted": false
+              }
+            },
+            "rate_limit": {
+              "remaining": 115,
+              "reset_at": "2026-10-14T17:00:00+00:00"
+            }
+          }
+        },
+        {
+          "question": "ولو في الشارقة؟",
+          "payload": {
+            "ok": true,
+            "goal_context": {
+              "active_service_id": "sira-new-security-activity-license-dubai",
+              "last_answer_topic": "overview",
+              "pending_clarification": null,
+              "known_facts": {},
+              "jurisdiction_hint": "AE-SH",
+              "relationship": null,
+              "relationship_group": null,
+              "family_members": [],
+              "subject_role": null,
+              "entity": {
+                "kind": "unknown",
+                "relationship": null,
+                "relationship_group": null
+              },
+              "service_slug": "sira-new-security-activity-license-dubai",
+              "authority_key": "sira-dubai",
+              "action": null,
+              "turn_type": "jurisdiction_switch",
+              "topic": null,
+              "intent": null,
+              "service_family": null,
+              "business_activity": null,
+              "semantic_confidence": "low",
+              "safe_goal": "ترخيص نشاط أمني في دبي الأوراق إيه؟ والرسوم؟ ولو في الشارقة؟"
+            },
+            "result": {
+              "understood_intent": "مسار SIRA غير متحقق لهذه الحالة",
+              "confidence": "low",
+              "answer": {
+                "text": "المسارات المتحققة المتاحة لدى SIRA تخص دبي وإصدار ترخيص نشاط أمني جديد أو شهادة اعتماد نظام أمني. لا أملك مسارًا متحققًا للعملية أو الإمارة التي طلبتها، ولن أحولك إلى معاملة أخرى أو أعرض رسومًا غير مؤكدة.",
+                "focus": "overview",
+                "fact_status": "MISSING_INFORMATION",
+                "grounded": false,
+                "evidence": {}
+              },
+              "grounding": {
+                "status": "NEEDS_CLARIFICATION",
+                "source_backed": false,
+                "no_invention": true,
+                "ambiguity_detected": true
+              },
+              "matches": [],
+              "missing_information": [
+                "مسار موثق لهذه الإمارة أو العملية"
+              ],
+              "follow_up_questions": [],
+              "engine": {
+                "mode": "deterministic-policy-resolver",
+                "external_model_used": false,
+                "provider_failure": {
+                  "category": "QUOTA_BILLING",
+                  "status": 429,
+                  "code": "credit_balance_exhausted",
+                  "type": "insufficient_quota"
+                }
+              },
+              "privacy": {
+                "case_created": false,
+                "personal_data_persisted": false
+              }
+            },
+            "rate_limit": {
+              "remaining": 114,
+              "reset_at": "2026-10-14T17:00:00+00:00"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "turns": [
+        {
+          "question": "Security Industry Regulatory Agency",
+          "payload": {
+            "ok": true,
+            "goal_context": {
+              "active_service_id": null,
+              "last_answer_topic": "clarification",
+              "pending_clarification": "Do you need a security activity licence or security system certification for an establishment or building?",
+              "known_facts": {},
+              "jurisdiction_hint": "AE-DU",
+              "relationship": null,
+              "relationship_group": null,
+              "family_members": [],
+              "subject_role": null,
+              "entity": {
+                "kind": "unknown",
+                "relationship": null,
+                "relationship_group": null
+              },
+              "service_slug": null,
+              "authority_key": null,
+              "action": null,
+              "turn_type": "new_topic",
+              "topic": null,
+              "intent": null,
+              "service_family": null,
+              "business_activity": null,
+              "semantic_confidence": "low",
+              "safe_goal": "Security Industry Regulatory Agency"
+            },
+            "result": {
+              "understood_intent": "موافقات SIRA",
+              "confidence": "low",
+              "answer": {
+                "text": "SIRA is the Security Industry Regulatory Agency in Dubai. Security activity licensing and establishment security system certification are different transactions. Do you need a security activity licence or security system certification for an establishment or building?",
+                "focus": "clarification",
+                "fact_status": "NEEDS_CLARIFICATION",
+                "grounded": false,
+                "evidence": {}
+              },
+              "grounding": {
+                "status": "NEEDS_CLARIFICATION",
+                "source_backed": false,
+                "no_invention": true,
+                "ambiguity_detected": true
+              },
+              "matches": [],
+              "missing_information": [
+                "نوع موافقة SIRA"
+              ],
+              "follow_up_questions": [
+                "Do you need a security activity licence or security system certification for an establishment or building?"
+              ],
+              "engine": {
+                "mode": "deterministic-policy-resolver",
+                "external_model_used": false,
+                "provider_failure": {
+                  "category": "QUOTA_BILLING",
+                  "status": 429,
+                  "code": "credit_balance_exhausted",
+                  "type": "insufficient_quota"
+                }
+              },
+              "privacy": {
+                "case_created": false,
+                "personal_data_persisted": false
+              }
+            },
+            "rate_limit": {
+              "remaining": 113,
+              "reset_at": "2026-10-14T17:00:00+00:00"
+            }
+          }
+        },
+        {
+          "question": "Security system certification Dubai",
+          "payload": {
+            "ok": true,
+            "goal_context": {
+              "active_service_id": "sira-security-system-certification-dubai",
+              "last_answer_topic": "overview",
+              "pending_clarification": null,
+              "known_facts": {},
+              "jurisdiction_hint": "AE-DU",
+              "relationship": null,
+              "relationship_group": null,
+              "family_members": [],
+              "subject_role": null,
+              "entity": {
+                "kind": "unknown",
+                "relationship": null,
+                "relationship_group": null
+              },
+              "service_slug": "sira-security-system-certification-dubai",
+              "authority_key": "sira-dubai",
+              "action": null,
+              "turn_type": "new_topic",
+              "topic": null,
+              "intent": null,
+              "service_family": null,
+              "business_activity": null,
+              "semantic_confidence": "low",
+              "safe_goal": "Security system certification Dubai"
+            },
+            "result": {
+              "understood_intent": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+              "confidence": "high",
+              "answer": {
+                "text": "The matching service is New Security System Certification through Security Industry Regulatory Agency (SIRA). Dubai establishments and buildings, according to the applicable category. An approved security plan is required before requesting the audit. Do not operate before a successful audit report; check the activity or building-specific requirements.",
+                "focus": "overview",
+                "fact_status": "VERIFIED_FACT",
+                "grounded": true,
+                "evidence": {
+                  "policy_key": "service:sira-security-system-certification-dubai",
+                  "policy_version": 1,
+                  "workflow_key": "service:sira-security-system-certification-dubai",
+                  "source_title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+                  "source_url": "https://www.sira.gov.ae/en/services/security-system-certification",
+                  "last_verified_at": "2026-10-14T15:49:21.541926+00:00",
+                  "supporting_rule": {
+                    "value": "للمنشآت والمباني في دبي حسب الفئة. شهادة اعتماد المخطط الأمني إلزامية قبل طلب التدقيق، ولا يبدأ النشاط قبل الحصول على تقرير تدقيق ناجح. راجع الاشتراطات الخاصة بالنشاط أو المبنى.",
+                    "source_refs": [
+                      "https://www.sira.gov.ae/en/services/security-system-certification"
+                    ]
+                  },
+                  "document_requirements": null,
+                  "special_case": null,
+                  "review_pending": false
+                }
+              },
+              "grounding": {
+                "status": "VERIFIED_FACT",
+                "source_backed": true,
+                "no_invention": true,
+                "ambiguity_detected": false
+              },
+              "matches": [
+                {
+                  "service_slug": "sira-security-system-certification-dubai",
+                  "service_name": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+                  "service_name_en": "New Security System Certification",
+                  "service_url": "/services/sira-security-system-certification-dubai/",
+                  "jurisdiction": {
+                    "code": "AE-DU",
+                    "name_ar": "دبي",
+                    "name_en": "Dubai"
+                  },
+                  "authority": {
+                    "key": "sira-dubai",
+                    "name_ar": "مؤسسة تنظيم الصناعة الأمنية",
+                    "name_en": "Security Industry Regulatory Agency (SIRA)",
+                    "public_url": "/authorities/sira-dubai/"
+                  },
+                  "requirements": [
+                    "للمنشآت التجارية: حجز الاسم ووصل الموافقة الأولية أو الرخصة التجارية؛ وللمناطق الحرة خطاب طلب الموافقة المبدئية بحسب البطاقة.",
+                    "للمباني: مخطط الأرض أو الرخصة التجارية.",
+                    "شهادة اعتماد مخطط أمني مختومة من الاستشاري وشركة تركيب الأنظمة، وتقرير تدقيق أمني ناجح."
+                  ],
+                  "general_documents": [
+                    "للمنشآت التجارية: حجز الاسم ووصل الموافقة الأولية أو الرخصة التجارية؛ وللمناطق الحرة خطاب طلب الموافقة المبدئية بحسب البطاقة."
+                  ],
+                  "main_steps": [
+                    "تحديد نوع الخدمة والمنشأة ورمز النشاط",
+                    "مراجعة المتطلبات المحددة في بطاقة SIRA الرسمية",
+                    "التقديم والسداد والمتابعة عبر بوابة SIRA الرسمية"
+                  ],
+                  "conditions": [
+                    "للمنشآت والمباني في دبي حسب الفئة. شهادة اعتماد المخطط الأمني إلزامية قبل طلب التدقيق، ولا يبدأ النشاط قبل الحصول على تقرير تدقيق ناجح. راجع الاشتراطات الخاصة بالنشاط أو المبنى."
+                  ],
+                  "official_source": {
+                    "title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+                    "url": "https://www.sira.gov.ae/en/services/security-system-certification",
+                    "last_verified_at": "2026-10-14T15:49:21.541926+00:00"
+                  }
+                }
+              ],
+              "missing_information": [],
+              "follow_up_questions": [],
+              "engine": {
+                "mode": "deterministic-policy-resolver",
+                "external_model_used": false,
+                "provider_failure": {
+                  "category": "QUOTA_BILLING",
+                  "status": 429,
+                  "code": "credit_balance_exhausted",
+                  "type": "insufficient_quota"
+                }
+              },
+              "privacy": {
+                "case_created": false,
+                "personal_data_persisted": false
+              }
+            },
+            "rate_limit": {
+              "remaining": 112,
+              "reset_at": "2026-10-14T17:00:00+00:00"
+            }
+          }
+        },
+        {
+          "question": "What documents are required?",
+          "payload": {
+            "ok": true,
+            "goal_context": {
+              "active_service_id": "sira-security-system-certification-dubai",
+              "last_answer_topic": "documents",
+              "pending_clarification": null,
+              "known_facts": {},
+              "jurisdiction_hint": "AE-DU",
+              "relationship": null,
+              "relationship_group": null,
+              "family_members": [],
+              "subject_role": null,
+              "entity": {
+                "kind": "unknown",
+                "relationship": null,
+                "relationship_group": null
+              },
+              "service_slug": "sira-security-system-certification-dubai",
+              "authority_key": "sira-dubai",
+              "action": null,
+              "turn_type": "follow_up",
+              "topic": null,
+              "intent": null,
+              "service_family": null,
+              "business_activity": null,
+              "semantic_confidence": "low",
+              "safe_goal": "Security system certification Dubai What documents are required?"
+            },
+            "result": {
+              "understood_intent": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+              "confidence": "high",
+              "answer": {
+                "text": "Recorded requirements for this service:\nBusiness establishments: trade-name reservation and initial approval receipt, or trade licence; free zones use the initial approval request letter as listed.\nBuildings: plot affection plan or trade licence.\nApproved security plan stamped by the consultancy and installation company, and a successful security audit report.",
+                "focus": "documents",
+                "fact_status": "VERIFIED_FACT",
+                "grounded": true,
+                "evidence": {
+                  "policy_key": "service:sira-security-system-certification-dubai",
+                  "policy_version": 1,
+                  "workflow_key": "service:sira-security-system-certification-dubai",
+                  "source_title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+                  "source_url": "https://www.sira.gov.ae/en/services/security-system-certification",
+                  "last_verified_at": "2026-10-14T15:49:21.541926+00:00",
+                  "supporting_rule": null,
+                  "document_requirements": [
+                    "للمنشآت التجارية: حجز الاسم ووصل الموافقة الأولية أو الرخصة التجارية؛ وللمناطق الحرة خطاب طلب الموافقة المبدئية بحسب البطاقة.",
+                    "للمباني: مخطط الأرض أو الرخصة التجارية.",
+                    "شهادة اعتماد مخطط أمني مختومة من الاستشاري وشركة تركيب الأنظمة، وتقرير تدقيق أمني ناجح."
+                  ],
+                  "special_case": null,
+                  "review_pending": false
+                }
+              },
+              "grounding": {
+                "status": "VERIFIED_FACT",
+                "source_backed": true,
+                "no_invention": true,
+                "ambiguity_detected": false
+              },
+              "matches": [
+                {
+                  "service_slug": "sira-security-system-certification-dubai",
+                  "service_name": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+                  "service_name_en": "New Security System Certification",
+                  "service_url": "/services/sira-security-system-certification-dubai/",
+                  "jurisdiction": {
+                    "code": "AE-DU",
+                    "name_ar": "دبي",
+                    "name_en": "Dubai"
+                  },
+                  "authority": {
+                    "key": "sira-dubai",
+                    "name_ar": "مؤسسة تنظيم الصناعة الأمنية",
+                    "name_en": "Security Industry Regulatory Agency (SIRA)",
+                    "public_url": "/authorities/sira-dubai/"
+                  },
+                  "requirements": [
+                    "للمنشآت التجارية: حجز الاسم ووصل الموافقة الأولية أو الرخصة التجارية؛ وللمناطق الحرة خطاب طلب الموافقة المبدئية بحسب البطاقة.",
+                    "للمباني: مخطط الأرض أو الرخصة التجارية.",
+                    "شهادة اعتماد مخطط أمني مختومة من الاستشاري وشركة تركيب الأنظمة، وتقرير تدقيق أمني ناجح."
+                  ],
+                  "general_documents": [
+                    "للمنشآت التجارية: حجز الاسم ووصل الموافقة الأولية أو الرخصة التجارية؛ وللمناطق الحرة خطاب طلب الموافقة المبدئية بحسب البطاقة."
+                  ],
+                  "main_steps": [
+                    "تحديد نوع الخدمة والمنشأة ورمز النشاط",
+                    "مراجعة المتطلبات المحددة في بطاقة SIRA الرسمية",
+                    "التقديم والسداد والمتابعة عبر بوابة SIRA الرسمية"
+                  ],
+                  "conditions": [
+                    "للمنشآت والمباني في دبي حسب الفئة. شهادة اعتماد المخطط الأمني إلزامية قبل طلب التدقيق، ولا يبدأ النشاط قبل الحصول على تقرير تدقيق ناجح. راجع الاشتراطات الخاصة بالنشاط أو المبنى."
+                  ],
+                  "official_source": {
+                    "title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+                    "url": "https://www.sira.gov.ae/en/services/security-system-certification",
+                    "last_verified_at": "2026-10-14T15:49:21.541926+00:00"
+                  }
+                }
+              ],
+              "missing_information": [],
+              "follow_up_questions": [],
+              "engine": {
+                "mode": "deterministic-policy-resolver",
+                "external_model_used": false,
+                "provider_failure": {
+                  "category": "QUOTA_BILLING",
+                  "status": 429,
+                  "code": "credit_balance_exhausted",
+                  "type": "insufficient_quota"
+                }
+              },
+              "privacy": {
+                "case_created": false,
+                "personal_data_persisted": false
+              }
+            },
+            "rate_limit": {
+              "remaining": 111,
+              "reset_at": "2026-10-14T17:00:00+00:00"
+            }
+          }
+        },
+        {
+          "question": "And the fees?",
+          "payload": {
+            "ok": true,
+            "goal_context": {
+              "active_service_id": "sira-security-system-certification-dubai",
+              "last_answer_topic": "fees",
+              "pending_clarification": null,
+              "known_facts": {},
+              "jurisdiction_hint": "AE-DU",
+              "relationship": null,
+              "relationship_group": null,
+              "family_members": [],
+              "subject_role": null,
+              "entity": {
+                "kind": "unknown",
+                "relationship": null,
+                "relationship_group": null
+              },
+              "service_slug": "sira-security-system-certification-dubai",
+              "authority_key": "sira-dubai",
+              "action": null,
+              "turn_type": "follow_up",
+              "topic": null,
+              "intent": null,
+              "service_family": null,
+              "business_activity": null,
+              "semantic_confidence": "low",
+              "safe_goal": "Security system certification Dubai What documents are required? And the fees?"
+            },
+            "result": {
+              "understood_intent": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+              "confidence": "high",
+              "answer": {
+                "text": "AED 100 service fee, AED 10 knowledge and AED 10 innovation according to the card. Other security work or services are not included.",
+                "focus": "fees",
+                "fact_status": "VERIFIED_FACT",
+                "grounded": true,
+                "evidence": {
+                  "policy_key": "service:sira-security-system-certification-dubai",
+                  "policy_version": 1,
+                  "workflow_key": "service:sira-security-system-certification-dubai",
+                  "source_title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+                  "source_url": "https://www.sira.gov.ae/en/services/security-system-certification",
+                  "last_verified_at": "2026-10-14T15:49:21.541926+00:00",
+                  "supporting_rule": {
+                    "value": "100 درهم للخدمة و10 دراهم معرفة و10 دراهم ابتكار وفق البطاقة؛ لا يشمل ذلك أي خدمات أو أعمال أمنية أخرى غير مدرجة.",
+                    "source_refs": [
+                      "https://www.sira.gov.ae/en/services/security-system-certification"
+                    ]
+                  },
+                  "document_requirements": null,
+                  "special_case": null,
+                  "review_pending": false
+                }
+              },
+              "grounding": {
+                "status": "VERIFIED_FACT",
+                "source_backed": true,
+                "no_invention": true,
+                "ambiguity_detected": false
+              },
+              "matches": [
+                {
+                  "service_slug": "sira-security-system-certification-dubai",
+                  "service_name": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+                  "service_name_en": "New Security System Certification",
+                  "service_url": "/services/sira-security-system-certification-dubai/",
+                  "jurisdiction": {
+                    "code": "AE-DU",
+                    "name_ar": "دبي",
+                    "name_en": "Dubai"
+                  },
+                  "authority": {
+                    "key": "sira-dubai",
+                    "name_ar": "مؤسسة تنظيم الصناعة الأمنية",
+                    "name_en": "Security Industry Regulatory Agency (SIRA)",
+                    "public_url": "/authorities/sira-dubai/"
+                  },
+                  "requirements": [
+                    "للمنشآت التجارية: حجز الاسم ووصل الموافقة الأولية أو الرخصة التجارية؛ وللمناطق الحرة خطاب طلب الموافقة المبدئية بحسب البطاقة.",
+                    "للمباني: مخطط الأرض أو الرخصة التجارية.",
+                    "شهادة اعتماد مخطط أمني مختومة من الاستشاري وشركة تركيب الأنظمة، وتقرير تدقيق أمني ناجح."
+                  ],
+                  "general_documents": [
+                    "للمنشآت التجارية: حجز الاسم ووصل الموافقة الأولية أو الرخصة التجارية؛ وللمناطق الحرة خطاب طلب الموافقة المبدئية بحسب البطاقة."
+                  ],
+                  "main_steps": [
+                    "تحديد نوع الخدمة والمنشأة ورمز النشاط",
+                    "مراجعة المتطلبات المحددة في بطاقة SIRA الرسمية",
+                    "التقديم والسداد والمتابعة عبر بوابة SIRA الرسمية"
+                  ],
+                  "conditions": [
+                    "للمنشآت والمباني في دبي حسب الفئة. شهادة اعتماد المخطط الأمني إلزامية قبل طلب التدقيق، ولا يبدأ النشاط قبل الحصول على تقرير تدقيق ناجح. راجع الاشتراطات الخاصة بالنشاط أو المبنى."
+                  ],
+                  "official_source": {
+                    "title": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+                    "url": "https://www.sira.gov.ae/en/services/security-system-certification",
+                    "last_verified_at": "2026-10-14T15:49:21.541926+00:00"
+                  }
+                }
+              ],
+              "missing_information": [],
+              "follow_up_questions": [],
+              "engine": {
+                "mode": "deterministic-policy-resolver",
+                "external_model_used": false,
+                "provider_failure": {
+                  "category": "QUOTA_BILLING",
+                  "status": 429,
+                  "code": "credit_balance_exhausted",
+                  "type": "insufficient_quota"
+                }
+              },
+              "privacy": {
+                "case_created": false,
+                "personal_data_persisted": false
+              }
+            },
+            "rate_limit": {
+              "remaining": 110,
+              "reset_at": "2026-10-14T17:00:00+00:00"
+            }
+          }
+        },
+        {
+          "question": "What about Sharjah?",
+          "payload": {
+            "ok": true,
+            "goal_context": {
+              "active_service_id": "sira-security-system-certification-dubai",
+              "last_answer_topic": "overview",
+              "pending_clarification": null,
+              "known_facts": {},
+              "jurisdiction_hint": "AE-SH",
+              "relationship": null,
+              "relationship_group": null,
+              "family_members": [],
+              "subject_role": null,
+              "entity": {
+                "kind": "unknown",
+                "relationship": null,
+                "relationship_group": null
+              },
+              "service_slug": "sira-security-system-certification-dubai",
+              "authority_key": "sira-dubai",
+              "action": null,
+              "turn_type": "jurisdiction_switch",
+              "topic": null,
+              "intent": null,
+              "service_family": null,
+              "business_activity": null,
+              "semantic_confidence": "low",
+              "safe_goal": "Security system certification Dubai What documents are required? And the fees? What about Sharjah?"
+            },
+            "result": {
+              "understood_intent": "مسار SIRA غير متحقق لهذه الحالة",
+              "confidence": "low",
+              "answer": {
+                "text": "The verified SIRA pathways currently cover Dubai and new security activity licensing or security system certification. I do not have a verified pathway for the requested operation or emirate, and will not substitute another service or invent fees.",
+                "focus": "overview",
+                "fact_status": "MISSING_INFORMATION",
+                "grounded": false,
+                "evidence": {}
+              },
+              "grounding": {
+                "status": "NEEDS_CLARIFICATION",
+                "source_backed": false,
+                "no_invention": true,
+                "ambiguity_detected": true
+              },
+              "matches": [],
+              "missing_information": [
+                "مسار موثق لهذه الإمارة أو العملية"
+              ],
+              "follow_up_questions": [],
+              "engine": {
+                "mode": "deterministic-policy-resolver",
+                "external_model_used": false,
+                "provider_failure": {
+                  "category": "QUOTA_BILLING",
+                  "status": 429,
+                  "code": "credit_balance_exhausted",
+                  "type": "insufficient_quota"
+                }
+              },
+              "privacy": {
+                "case_created": false,
+                "personal_data_persisted": false
+              }
+            },
+            "rate_limit": {
+              "remaining": 109,
+              "reset_at": "2026-10-14T17:00:00+00:00"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "provider": [
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    }
+  ],
   "privateAccountsTested": false,
   "governmentSubmission": false,
   "whatsAppMessageSent": false,
-  "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('.ai-showcase-orb')\n    - locator resolved to <button type=\"button\" aria-expanded=\"false\" class=\"ai-showcase-orb\" data-premium-ai-open=\"\" aria-label=\"اسأل HB AI\" aria-controls=\"premium-ai-panel\">…</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    58 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n"
+  "roleSwitch": {
+    "source": "REAL_API_WITH_SYNTHETIC_PRIOR_CLIENT_CONTEXT",
+    "payload": {
+      "ok": true,
+      "goal_context": {
+        "active_service_id": null,
+        "last_answer_topic": "clarification",
+        "pending_clarification": "هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": null,
+        "authority_key": null,
+        "action": null,
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "موافقة سيرا"
+      },
+      "result": {
+        "understood_intent": "موافقات SIRA",
+        "confidence": "low",
+        "answer": {
+          "text": "SIRA هي مؤسسة تنظيم الصناعة الأمنية في دبي. ترخيص النشاط الأمني واعتماد النظام الأمني للمنشأة معاملتان مختلفتان. هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",
+          "focus": "clarification",
+          "fact_status": "NEEDS_CLARIFICATION",
+          "grounded": false,
+          "evidence": {}
+        },
+        "grounding": {
+          "status": "NEEDS_CLARIFICATION",
+          "source_backed": false,
+          "no_invention": true,
+          "ambiguity_detected": true
+        },
+        "matches": [],
+        "missing_information": [
+          "نوع موافقة SIRA"
+        ],
+        "follow_up_questions": [
+          "هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟"
+        ],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "rate_limit": {
+        "remaining": 119,
+        "reset_at": "2026-10-14T17:00:00+00:00"
+      }
+    }
+  },
+  "browserAnswer": "SIRA هي مؤسسة تنظيم الصناعة الأمنية في دبي. ترخيص النشاط الأمني واعتماد النظام الأمني للمنشأة معاملتان مختلفتان. هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",
+  "realBrowserReply": true
 }
