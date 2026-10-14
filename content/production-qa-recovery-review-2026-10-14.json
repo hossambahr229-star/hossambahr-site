@@ -1,0 +1,124 @@
+{
+  "recordedAt": "2026-10-14",
+  "scope": "Actual completed functional evidence plus only the previously failed final Golden assertion. No Product, service-fact or AI-backend change.",
+  "originalProductionRun": {
+    "run": 38463290039,
+    "conclusion": "failure",
+    "failedStep": "Run live Golden Answer Correctness gate",
+    "failure": "Digit-only /5/ rejected the correct reviewed answer 'five days'.",
+    "productFailure": false,
+    "historicalRunStatusChanged": false
+  },
+  "reusedAcceptedScopes": {
+    "productionHtmlRoutes": 561,
+    "encodingErrors": 0,
+    "representativeBrowserRoutes": 13,
+    "ranking": {
+      "total": 100,
+      "passed": 100,
+      "failed": []
+    },
+    "primaryJourneys": {
+      "total": 5,
+      "passed": 5,
+      "failed": []
+    },
+    "activitySearch": {
+      "total": 5,
+      "passed": 5
+    },
+    "activityAdvisor": {
+      "total": 10,
+      "passed": 10
+    },
+    "responsiveAi": {
+      "total": 6,
+      "passed": 6
+    },
+    "continuity": {
+      "status": "PASS",
+      "conversations": 30,
+      "total_turns": 69,
+      "lost_context_rate": 0,
+      "unnecessary_clarification_rate": 0,
+      "generic_fallback_rate": 0,
+      "wrong_route_rate": 0,
+      "dead_end_rate": 0,
+      "unsupported_claim_rate": 0
+    },
+    "priorGoldenCases": 20
+  },
+  "focusedRecovery": {
+    "run": 38467837004,
+    "branch": "agent/live-golden-final-duration-only",
+    "report": "artifacts/live-golden-final-duration-only/report.json",
+    "capturedAt": "2026-10-13T21:04:52.910Z",
+    "status": "PASS",
+    "requests": 1,
+    "unitContractsPassed": 2,
+    "question": "How long does it take?",
+    "answer": {
+      "text": "The official service card lists an expected completion time of five days; this is not an approval guarantee.",
+      "focus": "duration",
+      "fact_status": "VERIFIED_FACT",
+      "grounded": true,
+      "evidence": {
+        "policy_key": "service:golden-residency-uae",
+        "policy_version": 3,
+        "workflow_key": "service:golden-residency-uae",
+        "source_title": "إصدار الإقامة الذهبية للمستثمرين في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+        "source_url": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
+        "last_verified_at": "2026-10-05T06:12:35.793264+00:00",
+        "supporting_rule": {
+          "value": "5 أيام وفق المدة المتوقعة المنشورة في بطاقة الخدمة الرسمية؛ ولا تمثل ضمانًا للقبول.",
+          "source_refs": [
+            "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8"
+          ]
+        },
+        "document_requirements": null,
+        "special_case": "هذه الخدمة لا تصلح لفئة أخرى من فئات الإقامة الذهبية حتى لو كانت قريبة بالاسم.",
+        "review_pending": false
+      }
+    },
+    "engine": {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 429,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    }
+  },
+  "combinedGoldenAcceptance": {
+    "status": "PASS",
+    "total": 21,
+    "previousPassesReused": 20,
+    "remainingPassed": 1,
+    "fullSuiteRepeated": false
+  },
+  "qaOnlyPullRequest": 464,
+  "optionalLinkLatency": {
+    "benchmarkRun": 38466480642,
+    "productionRequests": 0,
+    "run": 38463290039,
+    "totalTurns": 69,
+    "optionalLinksAbsent": 16,
+    "oldDefaultWaitPerAbsentLinkMs": 30000,
+    "avoidableDefaultWaitMs": 480000,
+    "productErrors": {
+      "conversations": 30,
+      "total_turns": 69,
+      "lost_context_rate": 0,
+      "unnecessary_clarification_rate": 0,
+      "generic_fallback_rate": 0,
+      "wrong_route_rate": 0,
+      "dead_end_rate": 0,
+      "unsupported_claim_rate": 0
+    }
+  },
+  "externalModelGate": "BLOCKED_QUOTA_BILLING_429",
+  "pixelFidelity": "NOT_DECLARED",
+  "overallFinalGate": "NOT_DECLARED"
+}

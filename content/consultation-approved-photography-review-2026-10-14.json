@@ -191,7 +191,39 @@
     ]
   },
   "liveAcceptance": {
-    "status": "PENDING_PUBLICATION"
+    "status": "PASS",
+    "actualRun": 38464819674,
+    "initialDiagnosticRun": 38462962035,
+    "initialDiagnosticBoundary": "The first test incorrectly expected the Arabic consultation component in the distinct English template. Test corrected; no product fix or ProductFailure asserted.",
+    "publicationRun": 38463290092,
+    "branch": "agent/live-approved-consultation-photography",
+    "report": "artifacts/live-regional-visual/report.json",
+    "capturedAt": "2026-10-13T20:42:08.970Z",
+    "cases": 8,
+    "desktopArabic": [
+      1440,
+      1366
+    ],
+    "narrowerDesktopFallback": [
+      1280
+    ],
+    "mobileFallback": [
+      430,
+      390,
+      360
+    ],
+    "englishPreserved": [
+      1440,
+      390
+    ],
+    "nativeContactHref": "/contact/",
+    "contactActionClear": true,
+    "photoWidthPx": 110,
+    "cardHeightPx": 87,
+    "pageErrors": 0,
+    "regionalMad": 19.869235238130553,
+    "regionalChangedPercent": 15.693254718730302,
+    "deployedCommit": "a6b2aa208c1946db7cb44fb74ebef72affae6f77"
   },
   "pixelFidelity": "NOT_DECLARED",
   "overallFinalGate": "NOT_DECLARED"
