@@ -4,8 +4,8 @@ import {rankServices} from '../../intent-search.js';
 const registry=JSON.parse(readFileSync(new URL('../../src/registry/published-services.json',import.meta.url),'utf8'));
 const translations=JSON.parse(readFileSync(new URL('../../src/registry/service-title-translations.json',import.meta.url),'utf8'));
 const services=registry.services.map(service=>({...service,name:{...service.name,en:translations[service.slug]||service.name.en}}));
-test('English search preserves service identity and locale for all 200 services',()=>{
- const records=englishDiscoveryRecords(services);assert.equal(records.length,200);
+test('English search preserves service identity and locale for all 202 services',()=>{
+ const records=englishDiscoveryRecords(services);assert.equal(records.length,202);
  for(const service of services){
   const found=rankServices(service.name.en,records).find(item=>item.s===service.slug);
   assert.ok(found,service.slug);assert.equal(found.u,englishServiceRoute(service));

@@ -1,3 +1,4 @@
+import {siraIntent,SIRA_SLUGS} from './sira-intent.js';
 const CP1252 = { 'â‚¬':128, 'â€š':130, 'Æ’':131, 'â€ž':132, 'â€¦':133, 'â€ ':134, 'â€¡':135, 'Ë†':136, 'â€°':137, 'Å ':138, 'â€¹':139, 'Å’':140, 'Å½':142, 'â€˜':145, 'â€™':146, 'â€œ':147, 'â€':148, 'â€¢':149, 'â€“':150, 'â€”':151, 'Ëœ':152, 'â„¢':153, 'Å¡':154, 'â€º':155, 'Å“':156, 'Å¾':158, 'Å¸':159 };
 
 export function repairText(input) {
@@ -83,6 +84,12 @@ function matchesEmirate(serviceEmirate, requestedEmirate) {
 
 export function rankServices(query, services = []) {
   const normalized = normalizeIntent(query);
+  const sira = siraIntent(query);
+  if (sira) {
+    const emirate = queryEmirate(query);
+    if (sira === 'unsupported' || (emirate && emirate !== 'دبي')) return [];
+    return services.filter(service => service.i === 'sira-dubai' && (sira === 'general' || service.s === SIRA_SLUGS[sira])).map(service => ({...service,score:12000}));
+  }
   const exactCodeMatches = services.filter((service) =>
     (service.x || []).some((code) => normalizeIntent(code) === normalized)
   );

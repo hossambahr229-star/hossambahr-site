@@ -1,23 +1,23 @@
 begin;
 
-select plan(14);
+select plan(16);
 
 select is(
   (select count(*)::bigint from public.hb_service_bindings where active),
-  114::bigint,
-  'all 114 seeded services (106 existing plus eight published identities) are bound to Global OS'
+  116::bigint,
+  'all 116 seeded services (114 preserved plus two reviewed SIRA identities) are bound to Global OS'
 );
 
 select is(
   (select count(*)::bigint from public.hb_workflow_templates where status='active'),
-  114::bigint,
-  'all 114 seeded services (106 existing plus eight published identities) have active workflows'
+  116::bigint,
+  'all 116 seeded services (114 preserved plus two reviewed SIRA identities) have active workflows'
 );
 
 select is(
   (select count(*)::bigint from public.hb_policy_versions where status='active'),
-  114::bigint,
-  'all 114 seeded services (106 existing plus eight published identities) have active policy versions'
+  116::bigint,
+  'all 116 seeded services (114 preserved plus two reviewed SIRA identities) have active policy versions'
 );
 
 select is(
@@ -127,5 +127,21 @@ select ok(exists(select 1 from public.hb_policy_versions p join public.hb_policy
  and exists(select 1 from jsonb_array_elements(p.rules) r where r->>'id'='fees' and r->>'reason'='تختلف الرسوم حسب رمز نشاط النقل التجاري وتظهر في جدول النشاط وصفحة الدفع الرسمية.')
  ) and exists(select 1 from public.hb_policy_versions where policy_key='service:rta-renew-trade-license-noc-dubai' and version=1 and status='retired' and rules='[]'::jsonb),
  'RTA renewal publishes only exact conditional fee notes, without duration or eligibility and retains the empty navigation history');
+
+select is((select count(*)::bigint from public.hb_service_bindings b
+ join public.hb_authorities a on a.id=b.authority_id and a.authority_key='sira-dubai'
+ join public.hb_jurisdictions j on j.id=b.jurisdiction_id and j.code='AE-DU'
+ join public.hb_policy_versions p on p.policy_key=b.policy_key and p.jurisdiction_id=b.jurisdiction_id and p.status='active'
+ join public.hb_policy_sources src on src.id=any(p.source_ids) and src.authority_id=a.id and src.active
+ where b.active and b.service_slug in ('sira-new-security-activity-license-dubai','sira-security-system-certification-dubai')
+ and src.source_url=b.metadata->>'officialUrl'
+ and not exists(select 1 from jsonb_array_elements(p.rules) rule where not(rule->'sourceRefs' ? src.source_url))),
+ 2::bigint,'both SIRA transactions retain Dubai authority, exact official card and fact-specific source references');
+select ok(exists(select 1 from public.hb_policy_versions where policy_key='service:sira-new-security-activity-license-dubai' and status='active'
+ and exists(select 1 from jsonb_array_elements(rules) r where r->>'id'='fees' and r->>'reason' like '%لا تعتبر 120%' and r->>'reason' like '%حسب النشاط%'))
+ and exists(select 1 from public.hb_policy_versions where policy_key='service:sira-security-system-certification-dubai' and status='active'
+ and exists(select 1 from jsonb_array_elements(rules) r where r->>'id'='conditions' and r->>'reason' like '%للمنشآت والمباني في دبي%')),
+ 'activity-dependent licence charges are not a universal total or substituted for establishment certification');
+
 select * from finish();
 rollback;

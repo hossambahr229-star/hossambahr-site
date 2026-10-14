@@ -22,6 +22,7 @@ const reviewedAt = '2026-08-11';
 const officialLinkAuditAt = '2026-09-03';
 const unavailable = 'NOT_OFFICIALLY_PUBLISHED';
 const authorityProfiles = new Map([
+  ['sira-dubai', { ar: 'مؤسسة تنظيم الصناعة الأمنية (SIRA)', en: 'Security Industry Regulatory Agency (SIRA)' }],
   ['mofa', { ar: 'وزارة الخارجية', en: 'Ministry of Foreign Affairs' }],
   ['moe', { ar: 'وزارة التربية والتعليم', en: 'Ministry of Education' }],
   ['fta', { ar: 'الهيئة الاتحادية للضرائب (FTA)', en: 'Federal Tax Authority' }],
@@ -89,7 +90,7 @@ function safeFaq(destinationKind) {
   ];
 }
 
-function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null, officialCtaUrlEn = null, noDocumentsRequired = false }) {
+function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null, officialCtaUrlEn = null, noDocumentsRequired = false, officialLinkCheckedAt = officialLinkAuditAt }) {
   const normalizedDestinationKind = verificationStatus === 'VERIFIED' ? destinationKind : 'CTA_DISABLED';
   const documentsPublished = hasRecordedFact(requirements);
   const feesPublished = hasRecordedFact(fees);
@@ -139,7 +140,7 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
       label: verifiedDetailCount === Object.keys(detailVerification).length
         ? 'OFFICIAL_LINK_AND_DETAILS_VERIFIED'
         : 'OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL',
-      officialLinkLastCheckedAt: officialLinkVerified ? officialLinkAuditAt : null,
+      officialLinkLastCheckedAt: officialLinkVerified ? officialLinkCheckedAt : null,
       dataLastReviewedAt: lastReviewedAt,
       sourceAuthority: normalizedAuthority(authorityId, authorityAr, authorityEn).id,
       sourceUrl: officialInformationUrl || officialCtaUrl || null,
@@ -266,6 +267,9 @@ function addSupplemental(service, authority) {
     officialCtaUrl: service.executionUrl || service.officialUrl,
     officialCtaUrlEn: service.executionUrlEn,
     noDocumentsRequired: service.noDocumentsRequired === true,
+    officialLinkCheckedAt: service.officialLinkCheckedAt || officialLinkAuditAt,
+    keywords: service.keywords || [],
+    localizedDetails: service.localizedDetails || null,
     destinationKind: service.destinationKind || 'DIRECT_SERVICE',
     sourceRegistry: authority.sourceRegistry,
     lastReviewedAt: service.lastVerified || reviewedAt,

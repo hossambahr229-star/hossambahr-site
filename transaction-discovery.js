@@ -17,6 +17,11 @@ if(typeof document!=='undefined'){
   const q=home.querySelector('input')?.value.trim();
   if(q&&entryMode(q)==='describe'){event.preventDefault();location.assign(prefix+'/ai/?q='+encodeURIComponent(q));}
  },true);
+ document.querySelector('.discovery-entry>a[href*="/ai/"]')?.addEventListener('click',event=>{
+  const draft=home?.querySelector('input')?.value.trim().slice(0,800);
+  if(!draft)return;
+  event.preventDefault();location.assign(prefix+'/ai/?q='+encodeURIComponent(draft)+'#government-search');
+ });
  const form=document.querySelector('[data-discovery-form]');
  if(form){
   const cards=[...document.querySelectorAll('[data-canonical-service]')],status=document.querySelector('[data-discovery-status]'),empty=document.querySelector('[data-discovery-empty]');

@@ -5,6 +5,7 @@ const root = resolve(import.meta.dirname, '../..');
 const registry = JSON.parse(await readFile(resolve(root, 'src/registry/published-services.json'), 'utf8'));
 
 const categoryAliases = new Map([
+  ['government-approvals', 'other-government'],
   ['business-licensing', 'companies-establishments'],
   ['companies-establishments', 'companies-establishments'],
   ['contracts-notarization', 'contracts-notarization'],
