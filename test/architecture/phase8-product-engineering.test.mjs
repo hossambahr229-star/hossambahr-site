@@ -10,7 +10,7 @@ const registry = JSON.parse(await read('src/registry/published-services.json'));
 test('Phase 8 keeps the verified inventory unchanged', async () => {
   const activities = await read('dubai-activities-data.js');
   const activityRows = JSON.parse(activities.slice(activities.indexOf('=') + 1).replace(/;\s*$/, ''));
-  assert.equal(registry.services.length, 200);
+  assert.equal(registry.services.length, 202);
   assert.equal(activityRows.length, 2610);
   assert.equal(new Set(registry.services.map((service) => service.emirate).filter((value) => /دبي|أبوظبي|الشارقة|عجمان|رأس الخيمة|أم القيوين|الفجيرة/.test(value))).size >= 7, true);
 });
@@ -93,7 +93,7 @@ test('all published services preserve distinct official and assistance paths', a
     assert.match(html, /data-commercial-cta="verified"|phase2-commercial-path/, service.internalRoute);
     checked += 1;
   }
-  assert.equal(checked, 200);
+  assert.equal(checked, 202);
 });
 
 test('assistance handoff never sends fabricated unknown metadata', async () => {

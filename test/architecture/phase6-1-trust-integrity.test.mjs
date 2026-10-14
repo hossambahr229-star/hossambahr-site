@@ -7,7 +7,7 @@ const registry = JSON.parse(await readFile(new URL('../../src/registry/published
 const summary = JSON.parse(await readFile(new URL('../../platform-summary.json', import.meta.url), 'utf8'));
 
 test('every published service exposes field-level truthful verification', () => {
-  assert.equal(registry.services.length, 200);
+  assert.equal(registry.services.length, 202);
   for (const service of registry.services) {
     const verification = service.verification;
     assert.ok(verification, service.slug);
