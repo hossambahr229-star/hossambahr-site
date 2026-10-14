@@ -1,0 +1,130 @@
+{
+  "at": "2026-10-14T16:34:39.724Z",
+  "status": "PASS",
+  "source": "REAL_PRODUCTION_BROWSER_NATIVE_CLICKS",
+  "cases": [
+    {
+      "locale": "ar",
+      "width": 320,
+      "choices": [
+        "ترخيص نشاط أمني جديد في دبي",
+        "اعتماد نظام أمني لمنشأة في دبي"
+      ],
+      "correctServiceChosen": true,
+      "unverifiedJurisdictionNotRouted": true,
+      "serviceCleared": true,
+      "emirate": "Sharjah",
+      "conversationTurns": 6,
+      "goal": "موافقة سيرا — اعتماد نظام أمني لمنشأة في دبي — ولو في الشارقة؟",
+      "whatsApp": "/971503780460",
+      "reviewedDraft": true,
+      "protectedRequests": 0
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "choices": [
+        "New security activity licence in Dubai",
+        "Security system certification in Dubai"
+      ],
+      "correctServiceChosen": true,
+      "unverifiedJurisdictionNotRouted": true,
+      "serviceCleared": true,
+      "emirate": "Sharjah",
+      "conversationTurns": 6,
+      "goal": "Security Industry Regulatory Agency — Security system certification in Dubai — What about Sharjah?",
+      "whatsApp": "/971503780460",
+      "reviewedDraft": true,
+      "protectedRequests": 0
+    }
+  ],
+  "provider": [
+    {
+      "mode": "grounded-conversational-ai-pending",
+      "external_model_used": false
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 200,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "grounded-conversational-ai-pending",
+      "external_model_used": false
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 200,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "grounded-conversational-ai-pending",
+      "external_model_used": false
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 200,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "grounded-conversational-ai-pending",
+      "external_model_used": false
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 200,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "grounded-conversational-ai-pending",
+      "external_model_used": false
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 200,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    },
+    {
+      "mode": "grounded-conversational-ai-pending",
+      "external_model_used": false
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 200,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    }
+  ],
+  "accountsTested": false,
+  "governmentSubmission": false,
+  "whatsAppMessageSent": false
+}
