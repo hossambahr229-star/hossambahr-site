@@ -17,7 +17,7 @@ try{for(const locale of ['ar','en'])for(const width of [1440,1366,430,390,360]){
  assert.ok(await page.locator('[data-hb-capabilities]').isVisible());
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  await page.goto(base+p+'/discover/',{waitUntil:'networkidle'});
- assert.equal(await page.locator('[data-canonical-service] [data-hb-direct-whatsapp]').count(),200);
+ assert.equal(await page.locator('[data-canonical-service] [data-hb-direct-whatsapp]').count(),202);
  const service=services.find(s=>s.slug==='family-residency-uae');
  await page.goto(base+p+service.internalRoute,{waitUntil:'networkidle'});
  const paths=page.locator('[data-hb-pathways]').first();await paths.waitFor();
