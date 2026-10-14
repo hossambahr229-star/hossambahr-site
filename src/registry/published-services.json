@@ -3,13 +3,13 @@
   "generatedAt": "2026-08-11",
   "policy": "Single derived publication registry. Only independently approved records enter this file; normalized historical aliases remain outside the real-service denominator.",
   "summary": {
-    "services": 200,
-    "verified": 200,
-    "officialLinksVerified": 200,
-    "fullyVerifiedDetails": 144,
+    "services": 202,
+    "verified": 202,
+    "officialLinksVerified": 202,
+    "fullyVerifiedDetails": 146,
     "partiallyVerifiedDetails": 56,
     "pendingVerification": 0,
-    "authorities": 20,
+    "authorities": 21,
     "emirates": [
       "أبوظبي",
       "أم القيوين",
@@ -17059,6 +17059,317 @@
       "lastUpdated": "2026-08-11",
       "lastReviewedAt": "2026-08-11",
       "internalRoute": "/services/sharjah-trade-name-renewal/",
+      "sourceRegistry": "government-coverage-expansion"
+    },
+    {
+      "id": "sira:new-security-activity-license",
+      "slug": "sira-new-security-activity-license-dubai",
+      "name": {
+        "ar": "إصدار ترخيص نشاط أمني جديد في دبي",
+        "en": "New Security Activity License"
+      },
+      "emirate": "دبي",
+      "authority": {
+        "id": "sira-dubai",
+        "ar": "مؤسسة تنظيم الصناعة الأمنية (SIRA)",
+        "en": "Security Industry Regulatory Agency (SIRA)"
+      },
+      "classification": {
+        "main": "government-approvals",
+        "sub": "ترخيص نشاط أمني جديد"
+      },
+      "economicActivity": null,
+      "licenseType": null,
+      "customerTypes": [
+        "business",
+        "individual"
+      ],
+      "keywords": [
+        "إصدار",
+        "ترخيص",
+        "نشاط",
+        "أمني",
+        "جديد",
+        "في",
+        "دبي",
+        "New",
+        "Security",
+        "Activity",
+        "License",
+        "مؤسسة",
+        "تنظيم",
+        "الصناعة",
+        "الأمنية",
+        "SIRA",
+        "Industry",
+        "Regulatory",
+        "Agency",
+        "government-approvals",
+        "سيرا",
+        "موافقة",
+        "activity",
+        "licence"
+      ],
+      "description": "ترخيص النشاط الأمني لدى SIRA لاستكمال إصدار الرخصة التجارية لدى جهة الترخيص في دبي؛ ليس اعتماد نظام كاميرات لمنشأة.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Trade licence, or trade-name reservation and initial approval inquiry receipt, or a free-zone NOC, as applicable.",
+            "Additional requirements and security staff depend on the activity code in SIRA's official table."
+          ],
+          "fees": "The card lists AED 100 service, AED 10 knowledge and AED 10 innovation fees, alongside separate activity-specific amounts. AED 120 is not a universal activity licence total; check the activity code and final official amount.",
+          "duration": "Two business days according to the service card; not an approval guarantee.",
+          "eligibility": "Dubai security activities only. Meet the activity-specific security or personnel conditions before operating. This is new issuance; renewal, amendment and cancellation are distinct transactions.",
+          "sourceUrl": "https://www.sira.gov.ae/en/services/noc-security-license"
+        }
+      },
+      "documents": {
+        "status": "PUBLISHED",
+        "items": [
+          "رخصة تجارية، أو حجز اسم تجاري ووصل الموافقة المبدئية، أو خطاب عدم ممانعة من المنطقة الحرة، بحسب الحالة.",
+          "اشتراطات ومستندات وكوادر إضافية حسب رمز النشاط في جدول SIRA؛ لا توجد قائمة موحدة لجميع الأنشطة."
+        ]
+      },
+      "governmentFees": {
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تعرض البطاقة 100 درهم للخدمة و10 معرفة و10 ابتكار، إضافة إلى جدول رسوم مختلف حسب النشاط؛ لا تعتبر 120 درهمًا إجمالي ترخيص كل نشاط. طابق رمز النشاط والإجمالي في المصدر الرسمي قبل الدفع."
+      },
+      "serviceFees": {
+        "status": "NOT_OFFICIALLY_PUBLISHED",
+        "text": "NOT_OFFICIALLY_PUBLISHED"
+      },
+      "processingTime": {
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان عمل وفق بطاقة الخدمة؛ ليست ضمانًا للقبول."
+      },
+      "conditions": "لأنشطة الأمن في دبي فقط. لا تبدأ ممارسة النشاط قبل استيفاء الاشتراطات الأمنية أو الكوادر المطلوبة للنشاط. هذه خدمة إصدار جديد؛ التجديد والتعديل والإلغاء معاملات مختلفة.",
+      "steps": [
+        {
+          "order": 1,
+          "title": "فتح المصدر الرسمي",
+          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+        },
+        {
+          "order": 2,
+          "title": "تأكيد نطاق المعاملة",
+          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+        },
+        {
+          "order": 3,
+          "title": "مراجعة المتطلبات الحالية",
+          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+        },
+        {
+          "order": 4,
+          "title": "تقديم الطلب رسميًا",
+          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
+        },
+        {
+          "order": 5,
+          "title": "السداد والمتابعة",
+          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+        }
+      ],
+      "faq": [
+        {
+          "question": "هل ينقلني الرابط إلى المعاملة الصحيحة؟",
+          "answer": "نعم، تمت مطابقة الرابط مع بطاقة الخدمة الرسمية، وليس مع صفحة رئيسية أو خدمة مشابهة."
+        },
+        {
+          "question": "هل الرسوم والمدة نهائيتان؟",
+          "answer": "المصدر الحكومي الرسمي هو المرجع النهائي؛ راجع القيمة والمدة المعروضتين فيه قبل إرسال الطلب أو السداد."
+        }
+      ],
+      "relatedServiceIds": [
+        "sira:security-system-certification"
+      ],
+      "alternativeServiceIds": [
+        "sira:security-system-certification"
+      ],
+      "officialInformationUrl": "https://www.sira.gov.ae/ar/services/noc-security-license",
+      "officialCtaUrl": "https://www.sira.gov.ae/ar/services/noc-security-license",
+      "officialCtaUrlEn": "https://www.sira.gov.ae/en/services/noc-security-license",
+      "destinationKind": "DIRECT_SERVICE",
+      "verificationStatus": "VERIFIED",
+      "verification": {
+        "officialLinkVerified": true,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
+        "totalDetailFields": 4,
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
+        "officialLinkLastCheckedAt": "2026-10-14T08:08:02.622Z",
+        "dataLastReviewedAt": "2026-10-14",
+        "sourceAuthority": "sira-dubai",
+        "sourceUrl": "https://www.sira.gov.ae/ar/services/noc-security-license"
+      },
+      "businessAcceptanceStatus": "APPROVED",
+      "lastUpdated": "2026-10-14",
+      "lastReviewedAt": "2026-10-14",
+      "internalRoute": "/services/sira-new-security-activity-license-dubai/",
+      "sourceRegistry": "government-coverage-expansion"
+    },
+    {
+      "id": "sira:security-system-certification",
+      "slug": "sira-security-system-certification-dubai",
+      "name": {
+        "ar": "إصدار شهادة اعتماد نظام أمني للمنشأة في دبي",
+        "en": "New Security System Certification"
+      },
+      "emirate": "دبي",
+      "authority": {
+        "id": "sira-dubai",
+        "ar": "مؤسسة تنظيم الصناعة الأمنية (SIRA)",
+        "en": "Security Industry Regulatory Agency (SIRA)"
+      },
+      "classification": {
+        "main": "government-approvals",
+        "sub": "اعتماد نظام أمني لمنشأة"
+      },
+      "economicActivity": null,
+      "licenseType": null,
+      "customerTypes": [
+        "business",
+        "individual"
+      ],
+      "keywords": [
+        "إصدار",
+        "شهادة",
+        "اعتماد",
+        "نظام",
+        "أمني",
+        "للمنشأة",
+        "في",
+        "دبي",
+        "New",
+        "Security",
+        "System",
+        "Certification",
+        "مؤسسة",
+        "تنظيم",
+        "الصناعة",
+        "الأمنية",
+        "SIRA",
+        "Industry",
+        "Regulatory",
+        "Agency",
+        "government-approvals",
+        "لمنشأة",
+        "سيرا",
+        "موافقة",
+        "كاميرات",
+        "مراقبة",
+        "الأنظمة",
+        "system",
+        "certification",
+        "Dubai",
+        "CCTV"
+      ],
+      "description": "اعتماد مطابقة النظام الأمني للمنشأة لاشتراطات SIRA في دبي. تختلف مستندات المنشآت التجارية عن المباني؛ لا تحل الشهادة محل ترخيص شركة أمنية.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Business establishments: trade-name reservation and initial approval receipt, or trade licence; free zones use the initial approval request letter as listed.",
+            "Buildings: plot affection plan or trade licence.",
+            "Approved security plan stamped by the consultancy and installation company, and a successful security audit report."
+          ],
+          "fees": "AED 100 service fee, AED 10 knowledge and AED 10 innovation according to the card. Other security work or services are not included.",
+          "duration": "Two business days according to the service card; not an approval guarantee.",
+          "eligibility": "Dubai establishments and buildings, according to the applicable category. An approved security plan is required before requesting the audit. Do not operate before a successful audit report; check the activity or building-specific requirements.",
+          "sourceUrl": "https://www.sira.gov.ae/en/services/security-system-certification"
+        }
+      },
+      "documents": {
+        "status": "PUBLISHED",
+        "items": [
+          "للمنشآت التجارية: حجز الاسم ووصل الموافقة الأولية أو الرخصة التجارية؛ وللمناطق الحرة خطاب طلب الموافقة المبدئية بحسب البطاقة.",
+          "للمباني: مخطط الأرض أو الرخصة التجارية.",
+          "شهادة اعتماد مخطط أمني مختومة من الاستشاري وشركة تركيب الأنظمة، وتقرير تدقيق أمني ناجح."
+        ]
+      },
+      "governmentFees": {
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "100 درهم للخدمة و10 دراهم معرفة و10 دراهم ابتكار وفق البطاقة؛ لا يشمل ذلك أي خدمات أو أعمال أمنية أخرى غير مدرجة."
+      },
+      "serviceFees": {
+        "status": "NOT_OFFICIALLY_PUBLISHED",
+        "text": "NOT_OFFICIALLY_PUBLISHED"
+      },
+      "processingTime": {
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان عمل وفق بطاقة الخدمة؛ ليست ضمانًا للقبول."
+      },
+      "conditions": "للمنشآت والمباني في دبي حسب الفئة. شهادة اعتماد المخطط الأمني إلزامية قبل طلب التدقيق، ولا يبدأ النشاط قبل الحصول على تقرير تدقيق ناجح. راجع الاشتراطات الخاصة بالنشاط أو المبنى.",
+      "steps": [
+        {
+          "order": 1,
+          "title": "فتح المصدر الرسمي",
+          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+        },
+        {
+          "order": 2,
+          "title": "تأكيد نطاق المعاملة",
+          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+        },
+        {
+          "order": 3,
+          "title": "مراجعة المتطلبات الحالية",
+          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+        },
+        {
+          "order": 4,
+          "title": "تقديم الطلب رسميًا",
+          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
+        },
+        {
+          "order": 5,
+          "title": "السداد والمتابعة",
+          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+        }
+      ],
+      "faq": [
+        {
+          "question": "هل ينقلني الرابط إلى المعاملة الصحيحة؟",
+          "answer": "نعم، تمت مطابقة الرابط مع بطاقة الخدمة الرسمية، وليس مع صفحة رئيسية أو خدمة مشابهة."
+        },
+        {
+          "question": "هل الرسوم والمدة نهائيتان؟",
+          "answer": "المصدر الحكومي الرسمي هو المرجع النهائي؛ راجع القيمة والمدة المعروضتين فيه قبل إرسال الطلب أو السداد."
+        }
+      ],
+      "relatedServiceIds": [
+        "sira:new-security-activity-license"
+      ],
+      "alternativeServiceIds": [
+        "sira:new-security-activity-license"
+      ],
+      "officialInformationUrl": "https://www.sira.gov.ae/ar/services/security-system-certification",
+      "officialCtaUrl": "https://www.sira.gov.ae/ar/services/security-system-certification",
+      "officialCtaUrlEn": "https://www.sira.gov.ae/en/services/security-system-certification",
+      "destinationKind": "DIRECT_SERVICE",
+      "verificationStatus": "VERIFIED",
+      "verification": {
+        "officialLinkVerified": true,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
+        "totalDetailFields": 4,
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
+        "officialLinkLastCheckedAt": "2026-10-14T08:08:02.622Z",
+        "dataLastReviewedAt": "2026-10-14",
+        "sourceAuthority": "sira-dubai",
+        "sourceUrl": "https://www.sira.gov.ae/ar/services/security-system-certification"
+      },
+      "businessAcceptanceStatus": "APPROVED",
+      "lastUpdated": "2026-10-14",
+      "lastReviewedAt": "2026-10-14",
+      "internalRoute": "/services/sira-security-system-certification-dubai/",
       "sourceRegistry": "government-coverage-expansion"
     },
     {

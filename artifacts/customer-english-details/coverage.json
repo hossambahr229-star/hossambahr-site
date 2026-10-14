@@ -1,26 +1,26 @@
 {
   "status": "PARTIAL PASS",
-  "auditedServices": 200,
-  "fullyTranslatedRecordedSections": 144,
+  "auditedServices": 202,
+  "fullyTranslatedRecordedSections": 146,
   "fieldCounts": {
     "documents": {
       "PLATFORM_TRANSLATION": 147,
-      "RECORDED_ENGLISH": 4,
+      "RECORDED_ENGLISH": 6,
       "MISSING_INFORMATION": 49
     },
     "eligibility": {
       "PLATFORM_TRANSLATION": 153,
-      "RECORDED_ENGLISH": 4,
+      "RECORDED_ENGLISH": 6,
       "MISSING_INFORMATION": 43
     },
     "fees": {
       "PLATFORM_TRANSLATION": 144,
-      "RECORDED_ENGLISH": 4,
+      "RECORDED_ENGLISH": 6,
       "MISSING_INFORMATION": 52
     },
     "duration": {
       "PLATFORM_TRANSLATION": 144,
-      "RECORDED_ENGLISH": 4,
+      "RECORDED_ENGLISH": 6,
       "MISSING_INFORMATION": 52
     }
   },
@@ -1344,6 +1344,28 @@
         "eligibility": "PLATFORM_TRANSLATION",
         "fees": "PLATFORM_TRANSLATION",
         "duration": "PLATFORM_TRANSLATION"
+      }
+    },
+    {
+      "id": "sira:new-security-activity-license",
+      "slug": "sira-new-security-activity-license-dubai",
+      "route": "/en/services/sira-new-security-activity-license-dubai/",
+      "fields": {
+        "documents": "RECORDED_ENGLISH",
+        "eligibility": "RECORDED_ENGLISH",
+        "fees": "RECORDED_ENGLISH",
+        "duration": "RECORDED_ENGLISH"
+      }
+    },
+    {
+      "id": "sira:security-system-certification",
+      "slug": "sira-security-system-certification-dubai",
+      "route": "/en/services/sira-security-system-certification-dubai/",
+      "fields": {
+        "documents": "RECORDED_ENGLISH",
+        "eligibility": "RECORDED_ENGLISH",
+        "fees": "RECORDED_ENGLISH",
+        "duration": "RECORDED_ENGLISH"
       }
     },
     {
