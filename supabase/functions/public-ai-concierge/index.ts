@@ -1,3 +1,4 @@
+import {siraIntent,SIRA_SLUGS} from '../../../sira-intent.js';
 import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole, mergeSemanticContext, relationshipCompatibility, relationshipGroup, semanticDomainCompatibility, type FamilyRelationship, type SemanticEntity, type SubjectRole } from "./semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 import { providerFailure, completedProviderText } from "./provider-status.ts";
@@ -915,7 +916,13 @@ export default {
         : null;
       const inheritedServiceId = String(context?.active_service_id || context?.service_slug || "");
       const inherited = contextualFollowUp && inheritedServiceId ? catalog.find((row:any)=>row.binding.service_slug===inheritedServiceId) : null;
-      if(exactDubaiFamilySponsorship){
+      const siraLatest=siraIntent(latestTurn);
+      const inheritedSira=contextualFollowUp && Object.values(SIRA_SLUGS).includes(inheritedServiceId);
+      const siraKind=siraLatest || (inheritedSira ? (inheritedServiceId===SIRA_SLUGS.system?'system':'activity') : siraIntent(semanticGoal));
+      const siraJurisdiction=detectJurisdiction(latestTurn)||semantic.jurisdiction||detectJurisdiction(semanticGoal);
+      if(siraKind){
+        ranked=(siraKind==='unsupported'||(siraJurisdiction&&siraJurisdiction!=='AE-DU'))?[]:catalog.filter((row:any)=>row.authority?.authority_key==='sira-dubai'&&(siraKind==='general'||row.binding.service_slug===(siraKind==='system'?SIRA_SLUGS.system:SIRA_SLUGS.activity))).map((row:any)=>({...row,score:12000}));
+      } else if(exactDubaiFamilySponsorship){
         ranked=[exactDubaiFamilySponsorship];
       } else if(inherited){
         const explicitJ=detectJurisdiction(latestTurn);
@@ -929,6 +936,11 @@ export default {
         ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
       }
       let deterministic:any = publicResult(semanticGoal, ranked, latestTurn);
+      if(siraKind==='general' && (!siraJurisdiction||siraJurisdiction==='AE-DU')){
+        deterministic={...publicResult(semanticGoal,[],latestTurn),understood_intent:"موافقات SIRA",answer:{text:"SIRA هي مؤسسة تنظيم الصناعة الأمنية في دبي. ترخيص النشاط الأمني واعتماد النظام الأمني للمنشأة معاملتان مختلفتان. هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",focus:"clarification",fact_status:"NEEDS_CLARIFICATION",grounded:false,evidence:{}},missing_information:["نوع موافقة SIRA"],follow_up_questions:["هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟"]};
+      } else if(siraKind && !ranked.length){
+        deterministic={...publicResult(semanticGoal,[],latestTurn),understood_intent:"مسار SIRA غير متحقق لهذه الحالة",answer:{text:"المسارات المتحققة المتاحة لدى SIRA تخص دبي وإصدار ترخيص نشاط أمني جديد أو شهادة اعتماد نظام أمني. لا أملك مسارًا متحققًا للعملية أو الإمارة التي طلبتها، ولن أحولك إلى معاملة أخرى أو أعرض رسومًا غير مؤكدة.",focus:answerFocus(latestTurn),fact_status:"MISSING_INFORMATION",grounded:false,evidence:{}},missing_information:["مسار موثق لهذه الإمارة أو العملية"],follow_up_questions:[]};
+      }
       const currentFocus = answerFocus(latestTurn);
       const selectedIdentity = normalize((deterministic?.matches?.[0]?.service_slug || "")+" "+(deterministic?.matches?.[0]?.service_name || ""));
       const broadWorkPermit = has(normalize(semanticGoal),["تصريح عمل","work permit"]) && !has(normalize(semanticGoal),["نقل","تحويل","transfer","الغاء","إلغاء","cancel","خارج الامارات","من الخارج","overseas","طالب","student","تدريب","trainee","مدرس خصوصي","tutor","كفالة ذويه","family sponsored"]);
