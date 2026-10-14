@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-14T06:06:32.113Z",
+  "sourceBaseCommit": "8f9547d555919e9c42f9c0ad0d3af942e4f56f52",
+  "source": "LIVE_PRODUCTION_HTTP_BYTES",
+  "scope": "Freshness check only: preserve earlier real browser captures and functional passes when customer-facing source bytes are unchanged. No screenshots or AI journeys repeated.",
+  "productionShaBoundary": "Exact HTML/CSS byte parity is verified; no deployed Git SHA is inferred.",
+  "productRequests": 3,
+  "aiRequests": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "path": "index.html",
+      "url": "https://hossambahr.com/",
+      "status": 200,
+      "expectedSha256": "d80ec36a36a02f1b6637d740c7ff79456460bfdf0a437443c2639ebaba57da5a",
+      "actualSha256": "d80ec36a36a02f1b6637d740c7ff79456460bfdf0a437443c2639ebaba57da5a",
+      "matches": true
+    },
+    {
+      "path": "en/index.html",
+      "url": "https://hossambahr.com/en/",
+      "status": 200,
+      "expectedSha256": "e635218aa6aa9970d444dfa5d85a5d83b6ac686ea0dda1063a84b875bd44274c",
+      "actualSha256": "e635218aa6aa9970d444dfa5d85a5d83b6ac686ea0dda1063a84b875bd44274c",
+      "matches": true
+    },
+    {
+      "path": "home-geometry.css",
+      "url": "https://hossambahr.com/home-geometry.css",
+      "status": 200,
+      "expectedSha256": "633c3546bb41065da6c16c6571a418a63b79b320078e42698cfb9c2eeb581f1d",
+      "actualSha256": "633c3546bb41065da6c16c6571a418a63b79b320078e42698cfb9c2eeb581f1d",
+      "matches": true
+    }
+  ]
+}

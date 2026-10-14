@@ -1,6 +1,6 @@
 {
   "recordedAt": "2026-10-14",
-  "lastAcceptedDeployedCommit": "16c6eba98491a9714c5938313553d8f1d2e52235",
+  "lastAcceptedDeployedCommit": "a6b2aa208c1946db7cb44fb74ebef72affae6f77",
   "scope": "Continue latest main; preserve previously accepted fixes and avoid repeating their tests. This is a factual checkpoint, not a final acceptance.",
   "mergedPullRequests": [
     410,
@@ -54,11 +54,14 @@
     458,
     459,
     460,
-    461
+    461,
+    462,
+    463,
+    464
   ],
   "production": {
     "publicationGate": {
-      "run": 38460508200,
+      "run": 38463290092,
       "status": "PASS"
     },
     "geometry": {
@@ -73,11 +76,49 @@
     },
     "pixelFidelity": {
       "status": "NOT_DECLARED",
-      "meanAbsolutePixelDifference": 20.21160373263889,
-      "changedPixelPercent": 13.959129050925926,
+      "meanAbsolutePixelDifference": 20.159177999614197,
+      "changedPixelPercent": 13.923755787037036,
       "reference": "qa/reference/approved-desktop.jpeg",
       "report": "artifacts/production-reference/report.json",
       "requires": "Further visual refinement and evidence; geometry success alone is insufficient."
+    },
+    "currentByteParity": {
+      "run": 38520274259,
+      "branch": "agent/verify-current-production-byte-parity-oct14",
+      "checkedAt": "2026-10-14T06:06:32.113Z",
+      "sourceBaseCommit": "8f9547d555919e9c42f9c0ad0d3af942e4f56f52",
+      "source": "LIVE_PRODUCTION_HTTP_BYTES",
+      "scope": "Freshness check only: preserve earlier real browser captures and functional passes when customer-facing source bytes are unchanged. No screenshots or AI journeys repeated.",
+      "productionShaBoundary": "Exact HTML/CSS byte parity is verified; no deployed Git SHA is inferred.",
+      "productRequests": 3,
+      "aiRequests": 0,
+      "status": "PASS",
+      "checks": [
+        {
+          "path": "index.html",
+          "url": "https://hossambahr.com/",
+          "status": 200,
+          "expectedSha256": "d80ec36a36a02f1b6637d740c7ff79456460bfdf0a437443c2639ebaba57da5a",
+          "actualSha256": "d80ec36a36a02f1b6637d740c7ff79456460bfdf0a437443c2639ebaba57da5a",
+          "matches": true
+        },
+        {
+          "path": "en/index.html",
+          "url": "https://hossambahr.com/en/",
+          "status": 200,
+          "expectedSha256": "e635218aa6aa9970d444dfa5d85a5d83b6ac686ea0dda1063a84b875bd44274c",
+          "actualSha256": "e635218aa6aa9970d444dfa5d85a5d83b6ac686ea0dda1063a84b875bd44274c",
+          "matches": true
+        },
+        {
+          "path": "home-geometry.css",
+          "url": "https://hossambahr.com/home-geometry.css",
+          "status": 200,
+          "expectedSha256": "633c3546bb41065da6c16c6571a418a63b79b320078e42698cfb9c2eeb581f1d",
+          "actualSha256": "633c3546bb41065da6c16c6571a418a63b79b320078e42698cfb9c2eeb581f1d",
+          "matches": true
+        }
+      ]
     }
   },
   "latestAcceptedScopes": {
@@ -987,6 +1028,360 @@
       },
       "pixelFidelity": "NOT_DECLARED",
       "overallFinalGate": "NOT_DECLARED"
+    },
+    "consultationApprovedPhotography": {
+      "reviewedAt": "2026-10-14",
+      "scope": "Arabic 1366px+ consultation photography only. Existing contact label/link and all other viewport/locale presentations preserved.",
+      "source": "qa/reference/approved-desktop.jpeg",
+      "asset": "assets/approved-featured-photography-source.jpeg",
+      "photoWindow": {
+        "x": 1106,
+        "y": 723,
+        "width": 110,
+        "height": 87
+      },
+      "referenceUiBoundary": "Photographic window ends before the reference CTA (about 126px) and heading (about 145px) within the 303px card; fade starts at 88px.",
+      "diagnosis": {
+        "branch": "agent/measure-approved-consultation-photo",
+        "run": 38462141284,
+        "selectedCandidate": "photo110-y723",
+        "capturedAt": "2026-10-13T20:21:39.762Z",
+        "source": "LIVE_PRODUCTION_TEMPORARY_CONSULTATION_PHOTO",
+        "productionChanged": false,
+        "results": [
+          {
+            "name": "baseline",
+            "state": {
+              "heading": {
+                "x": 433.828125,
+                "y": 103,
+                "right": 1032.15625,
+                "width": 598.328125,
+                "height": 84
+              },
+              "accent": {
+                "x": 812.984375,
+                "y": 117.90625,
+                "right": 1028.15625,
+                "width": 215.171875,
+                "height": 94
+              },
+              "copy": {
+                "x": 679.15625,
+                "y": 193,
+                "right": 1032.15625,
+                "width": 353,
+                "height": 42
+              },
+              "copyLines": [
+                {
+                  "y": 191,
+                  "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+                },
+                {
+                  "y": 213,
+                  "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+                }
+              ],
+              "searchY": 248,
+              "overflow": false
+            },
+            "stable": true,
+            "mad": 22.55671746949976,
+            "changed": 17.506582118886048
+          },
+          {
+            "name": "photo125-y723",
+            "width": 125,
+            "y": 723,
+            "state": {
+              "heading": {
+                "x": 433.828125,
+                "y": 103,
+                "right": 1032.15625,
+                "width": 598.328125,
+                "height": 84
+              },
+              "accent": {
+                "x": 812.984375,
+                "y": 117.90625,
+                "right": 1028.15625,
+                "width": 215.171875,
+                "height": 94
+              },
+              "copy": {
+                "x": 679.15625,
+                "y": 193,
+                "right": 1032.15625,
+                "width": 353,
+                "height": 42
+              },
+              "copyLines": [
+                {
+                  "y": 191,
+                  "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+                },
+                {
+                  "y": 213,
+                  "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+                }
+              ],
+              "searchY": 248,
+              "overflow": false
+            },
+            "stable": true,
+            "mad": 19.603639015586953,
+            "changed": 15.693254718730302
+          },
+          {
+            "name": "photo110-y723",
+            "width": 110,
+            "y": 723,
+            "state": {
+              "heading": {
+                "x": 433.828125,
+                "y": 103,
+                "right": 1032.15625,
+                "width": 598.328125,
+                "height": 84
+              },
+              "accent": {
+                "x": 812.984375,
+                "y": 117.90625,
+                "right": 1028.15625,
+                "width": 215.171875,
+                "height": 94
+              },
+              "copy": {
+                "x": 679.15625,
+                "y": 193,
+                "right": 1032.15625,
+                "width": 353,
+                "height": 42
+              },
+              "copyLines": [
+                {
+                  "y": 191,
+                  "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+                },
+                {
+                  "y": 213,
+                  "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+                }
+              ],
+              "searchY": 248,
+              "overflow": false
+            },
+            "stable": true,
+            "mad": 19.87420427436002,
+            "changed": 15.693254718730302
+          },
+          {
+            "name": "photo125-y722",
+            "width": 125,
+            "y": 722,
+            "state": {
+              "heading": {
+                "x": 433.828125,
+                "y": 103,
+                "right": 1032.15625,
+                "width": 598.328125,
+                "height": 84
+              },
+              "accent": {
+                "x": 812.984375,
+                "y": 117.90625,
+                "right": 1028.15625,
+                "width": 215.171875,
+                "height": 94
+              },
+              "copy": {
+                "x": 679.15625,
+                "y": 193,
+                "right": 1032.15625,
+                "width": 353,
+                "height": 42
+              },
+              "copyLines": [
+                {
+                  "y": 191,
+                  "text": "منصة ذكية موثوقة لإنجاز جميع معاملات الأفراد والشركات"
+                },
+                {
+                  "y": 213,
+                  "text": "مع الجهات الحكومية في الإمارات بسهولة وسرعة وأمان."
+                }
+              ],
+              "searchY": 248,
+              "overflow": false
+            },
+            "stable": true,
+            "mad": 21.624541105795974,
+            "changed": 17.41758445507472
+          }
+        ]
+      },
+      "liveAcceptance": {
+        "status": "PASS",
+        "actualRun": 38464819674,
+        "initialDiagnosticRun": 38462962035,
+        "initialDiagnosticBoundary": "The first test incorrectly expected the Arabic consultation component in the distinct English template. Test corrected; no product fix or ProductFailure asserted.",
+        "publicationRun": 38463290092,
+        "branch": "agent/live-approved-consultation-photography",
+        "report": "artifacts/live-regional-visual/report.json",
+        "capturedAt": "2026-10-13T20:42:08.970Z",
+        "cases": 8,
+        "desktopArabic": [
+          1440,
+          1366
+        ],
+        "narrowerDesktopFallback": [
+          1280
+        ],
+        "mobileFallback": [
+          430,
+          390,
+          360
+        ],
+        "englishPreserved": [
+          1440,
+          390
+        ],
+        "nativeContactHref": "/contact/",
+        "contactActionClear": true,
+        "photoWidthPx": 110,
+        "cardHeightPx": 87,
+        "pageErrors": 0,
+        "regionalMad": 19.869235238130553,
+        "regionalChangedPercent": 15.693254718730302,
+        "deployedCommit": "a6b2aa208c1946db7cb44fb74ebef72affae6f77"
+      },
+      "pixelFidelity": "NOT_DECLARED",
+      "overallFinalGate": "NOT_DECLARED"
+    },
+    "productionBrowserRecovery": {
+      "recordedAt": "2026-10-14",
+      "scope": "Actual completed functional evidence plus only the previously failed final Golden assertion. No Product, service-fact or AI-backend change.",
+      "originalProductionRun": {
+        "run": 38463290039,
+        "conclusion": "failure",
+        "failedStep": "Run live Golden Answer Correctness gate",
+        "failure": "Digit-only /5/ rejected the correct reviewed answer 'five days'.",
+        "productFailure": false,
+        "historicalRunStatusChanged": false
+      },
+      "reusedAcceptedScopes": {
+        "productionHtmlRoutes": 561,
+        "encodingErrors": 0,
+        "representativeBrowserRoutes": 13,
+        "ranking": {
+          "total": 100,
+          "passed": 100,
+          "failed": []
+        },
+        "primaryJourneys": {
+          "total": 5,
+          "passed": 5,
+          "failed": []
+        },
+        "activitySearch": {
+          "total": 5,
+          "passed": 5
+        },
+        "activityAdvisor": {
+          "total": 10,
+          "passed": 10
+        },
+        "responsiveAi": {
+          "total": 6,
+          "passed": 6
+        },
+        "continuity": {
+          "status": "PASS",
+          "conversations": 30,
+          "total_turns": 69,
+          "lost_context_rate": 0,
+          "unnecessary_clarification_rate": 0,
+          "generic_fallback_rate": 0,
+          "wrong_route_rate": 0,
+          "dead_end_rate": 0,
+          "unsupported_claim_rate": 0
+        },
+        "priorGoldenCases": 20
+      },
+      "focusedRecovery": {
+        "run": 38467837004,
+        "branch": "agent/live-golden-final-duration-only",
+        "report": "artifacts/live-golden-final-duration-only/report.json",
+        "capturedAt": "2026-10-13T21:04:52.910Z",
+        "status": "PASS",
+        "requests": 1,
+        "unitContractsPassed": 2,
+        "question": "How long does it take?",
+        "answer": {
+          "text": "The official service card lists an expected completion time of five days; this is not an approval guarantee.",
+          "focus": "duration",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:golden-residency-uae",
+            "policy_version": 3,
+            "workflow_key": "service:golden-residency-uae",
+            "source_title": "إصدار الإقامة الذهبية للمستثمرين في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+            "source_url": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
+            "last_verified_at": "2026-10-05T06:12:35.793264+00:00",
+            "supporting_rule": {
+              "value": "5 أيام وفق المدة المتوقعة المنشورة في بطاقة الخدمة الرسمية؛ ولا تمثل ضمانًا للقبول.",
+              "source_refs": [
+                "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": "هذه الخدمة لا تصلح لفئة أخرى من فئات الإقامة الذهبية حتى لو كانت قريبة بالاسم.",
+            "review_pending": false
+          }
+        },
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        }
+      },
+      "combinedGoldenAcceptance": {
+        "status": "PASS",
+        "total": 21,
+        "previousPassesReused": 20,
+        "remainingPassed": 1,
+        "fullSuiteRepeated": false
+      },
+      "qaOnlyPullRequest": 464,
+      "optionalLinkLatency": {
+        "benchmarkRun": 38466480642,
+        "productionRequests": 0,
+        "run": 38463290039,
+        "totalTurns": 69,
+        "optionalLinksAbsent": 16,
+        "oldDefaultWaitPerAbsentLinkMs": 30000,
+        "avoidableDefaultWaitMs": 480000,
+        "productErrors": {
+          "conversations": 30,
+          "total_turns": 69,
+          "lost_context_rate": 0,
+          "unnecessary_clarification_rate": 0,
+          "generic_fallback_rate": 0,
+          "wrong_route_rate": 0,
+          "dead_end_rate": 0,
+          "unsupported_claim_rate": 0
+        }
+      },
+      "externalModelGate": "BLOCKED_QUOTA_BILLING_429",
+      "pixelFidelity": "NOT_DECLARED",
+      "overallFinalGate": "NOT_DECLARED"
     }
   },
   "deployedAi": {
@@ -1002,11 +1397,12 @@
       "httpStatus": 429,
       "status": "BLOCKED",
       "latestEvidence": {
-        "run": 38351109627,
-        "capturedAt": "2026-10-13T05:23:29.453Z",
-        "cases": 4,
+        "run": 38467837004,
+        "capturedAt": "2026-10-13T21:04:52.910Z",
+        "cases": 1,
         "category": "QUOTA_BILLING",
         "status": 429,
+        "code": "credit_balance_exhausted",
         "external_model_used": false
       }
     },
@@ -1022,6 +1418,14 @@
         "date": "2026-10-12",
         "result": "GitHub connector rejects secrets-list endpoint: URL not allowed",
         "valuesRead": false
+      },
+      "latestNamesOnlyStatusRead": {
+        "checkedAt": "2026-10-14",
+        "run": 38047602262,
+        "status": "completed",
+        "conclusion": "action_required",
+        "updatedAt": "2026-10-10T11:12:42Z",
+        "valuesRead": false
       }
     },
     "localExecution": {
@@ -1029,11 +1433,17 @@
       "error": "setup_refresh / helper_unknown_error",
       "productFailure": false,
       "workingAlternatives": "GitHub Actions, GitHub and Supabase connectors",
-      "latestAttempt": "2026-10-13: helper_unknown_error / setup refresh had errors; connectors and Actions remain usable",
+      "latestAttempt": "2026-10-14: read-only skill access still failed with helper_unknown_error / setup refresh; GitHub and Actions alternatives continued.",
       "latestBrowserAttempt": {
         "date": "2026-10-13",
         "error": "node_repl kernel exited unexpectedly; windows sandbox helper_unknown_error: setup refresh had errors",
         "productFailure": false
+      },
+      "latestToolAttempt": {
+        "date": "2026-10-14",
+        "error": "helper_unknown_error: setup refresh had errors",
+        "productFailure": false,
+        "context": "Read-only skill-file access failed; GitHub/Actions alternatives continue."
       }
     },
     "rakFeeSource": {
@@ -1075,7 +1485,29 @@
         "currentFeeScheduleVerified": false,
         "feesChanged": false,
         "note": "Search returned the legacy table; no newly verified current fee schedule. Indexed content is not live-browser evidence."
+      },
+      "newPublicBlsAlternative": {
+        "run": 38465253815,
+        "branch": "agent/read-rak-public-bls-alternative",
+        "readAt": "2026-10-13T20:45:47.229Z",
+        "source": "https://bls.rak.ae/en/QZone/OnlineAccounts/ServicesFree",
+        "status": null,
+        "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://bls.rak.ae/en/QZone/OnlineAccounts/ServicesFree\", waiting until \"domcontentloaded\"\n",
+        "credentialsEntered": false,
+        "feesChanged": false,
+        "productFailure": false
       }
+    },
+    "visualFidelitySource": {
+      "status": "AWAITING_EXACT_CLEAN_HERO_SOURCE",
+      "pixelFidelity": "NOT_DECLARED",
+      "reason": "No exact clean Hero photographic original identified among available repository assets. The approved reference is a flattened image with UI; tested reconstructions and existing backup do not meet final fidelity.",
+      "availableAssetsCompared": [
+        "assets/hero-reference-restored.webp",
+        "assets/approved-hero-background.webp"
+      ],
+      "questionPending": "Asked user for the name/path of an exact pre-UI Hero original; no upload or approval requested.",
+      "publishedReconstruction": false
     }
   },
   "excludedNewVisualCandidates": {
@@ -1165,6 +1597,46 @@
     "categoryIconStroke": {
       "run": 38461217155,
       "reason": "All thicker native vector variants worsened comparison; no product change.",
+      "published": false
+    },
+    "cleanHeroBackgroundInpaint": {
+      "run": 38469263191,
+      "branch": "agent/measure-clean-hero-background-inpaint",
+      "capturedAt": "2026-10-13T21:16:22.935Z",
+      "baselineMad": 20.39721263709146,
+      "candidateMadRange": [
+        23.003208007318428,
+        24.512655470132596
+      ],
+      "reason": "Every reconstructed-background candidate worsened comparison and introduced photographic seams. Generated candidate retained only on a QA branch; no Product change.",
+      "published": false
+    },
+    "nativeHeroBackdropAlignment": {
+      "run": 38519442160,
+      "branch": "agent/measure-native-hero-backdrop-alignment",
+      "capturedAt": "2026-10-14T05:58:00.287Z",
+      "baseline": {
+        "name": "baseline",
+        "mad": 20.39721263709146,
+        "changed": 12.622429825485229
+      },
+      "best": {
+        "name": "current-e6-y50",
+        "shade": "e6",
+        "position": 50,
+        "asset": "hero-reference-restored.webp",
+        "mad": 20.375599113693763,
+        "changed": 12.90244642823955
+      },
+      "backup": {
+        "name": "existing-approved-backup",
+        "shade": "c0",
+        "position": 50,
+        "asset": "approved-hero-background.webp",
+        "mad": 23.46808719337046,
+        "changed": 16.71085807742583
+      },
+      "reason": "Native position/shade changes gave no meaningful gain and increased changed-pixel percentage. Existing backup asset was farther from the reference. Current published background preserved.",
       "published": false
     }
   },
