@@ -1,0 +1,93 @@
+{
+  "at": "2026-10-14T16:03:12.005Z",
+  "status": "FAIL",
+  "source": "LIVE_PRODUCTION",
+  "layouts": [
+    {
+      "locale": "ar",
+      "width": 1440,
+      "controls": [
+        {
+          "text": "اشرح ما تريد",
+          "href": "/ai/#government-search",
+          "width": 112,
+          "height": 30,
+          "hit": true
+        },
+        {
+          "text": "أعرف معاملتي",
+          "href": "/discover/",
+          "width": 99,
+          "height": 30,
+          "hit": true
+        },
+        {
+          "text": "تصفح الجهات",
+          "href": "/authorities/",
+          "width": 105,
+          "height": 30,
+          "hit": true
+        }
+      ],
+      "composer": {
+        "x": 382,
+        "y": 755.90625,
+        "width": 737,
+        "height": 66,
+        "fontSize": "16.32px",
+        "placeholder": "اكتب معاملتك هنا…",
+        "viewportWidth": 1440,
+        "viewportHeight": 960
+      },
+      "panelOpenClose": true,
+      "errors": []
+    },
+    {
+      "locale": "ar",
+      "width": 1366,
+      "controls": [
+        {
+          "text": "اشرح ما تريد",
+          "href": "/ai/#government-search",
+          "width": 112,
+          "height": 30,
+          "hit": true
+        },
+        {
+          "text": "أعرف معاملتي",
+          "href": "/discover/",
+          "width": 99,
+          "height": 30,
+          "hit": true
+        },
+        {
+          "text": "تصفح الجهات",
+          "href": "/authorities/",
+          "width": 105,
+          "height": 30,
+          "hit": true
+        }
+      ],
+      "composer": {
+        "x": 345,
+        "y": 756.7008666992188,
+        "width": 737,
+        "height": 66,
+        "fontSize": "16.32px",
+        "placeholder": "اكتب معاملتك هنا…",
+        "viewportWidth": 1366,
+        "viewportHeight": 960
+      },
+      "panelOpenClose": true,
+      "errors": []
+    }
+  ],
+  "search": [],
+  "pages": [],
+  "conversations": [],
+  "provider": [],
+  "privateAccountsTested": false,
+  "governmentSubmission": false,
+  "whatsAppMessageSent": false,
+  "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('.ai-showcase-orb')\n    - locator resolved to <button type=\"button\" aria-expanded=\"false\" class=\"ai-showcase-orb\" data-premium-ai-open=\"\" aria-label=\"اسأل HB AI\" aria-controls=\"premium-ai-panel\">…</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    58 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n"
+}
