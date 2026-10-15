@@ -1,0 +1,10 @@
+{
+  "run": 38768706247,
+  "attempt": 2,
+  "nativeTestStep": "PASS",
+  "workflowConclusion": "failure",
+  "failedStep": "Preserve only new visual evidence on the diagnosis branch",
+  "reason": "Evidence branch advanced since the rerun checkout; git push rejected as non-fast-forward.",
+  "originalUploadedArtifact": "https://github.com/hossambahr229-star/hossambahr-site/actions/runs/38768706247/artifacts/11991057179",
+  "recovery": "Exact report recovered from completed real browser job log and persisted through expected-head GitHub API. No test replay."
+}

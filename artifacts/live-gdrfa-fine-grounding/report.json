@@ -1,0 +1,190 @@
+{
+  "at": "2026-10-15T16:35:06.469Z",
+  "status": "PASS",
+  "source": "REAL_PRODUCTION_NATIVE_AI",
+  "scope": "Two new document answers from the existing GDRFA fine policy version 3. External model status remains separate.",
+  "turns": [
+    {
+      "locale": "ar",
+      "httpStatus": 200,
+      "result": {
+        "understood_intent": "سداد غرامات مخالفي قانون الإقامة في دبي",
+        "confidence": "high",
+        "answer": {
+          "text": "المتطلبات المسجلة لهذه الخدمة: لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية..",
+          "focus": "documents",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+            "policy_version": 3,
+            "workflow_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+            "source_title": "سداد غرامات مخالفي قانون الإقامة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+            "source_url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+            "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+            "supporting_rule": null,
+            "document_requirements": [
+              "لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية."
+            ],
+            "special_case": "GDRFA Dubai",
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+            "service_name": "سداد غرامات مخالفي قانون الإقامة في دبي",
+            "service_name_en": "Pay Residence Law Violation Fines in Dubai",
+            "service_url": "/services/%D8%B3%D8%AF%D8%A7%D8%AF-%D8%BA%D8%B1%D8%A7%D9%85%D8%A7%D8%AA-%D9%85%D8%AE%D8%A7%D9%84%D9%81%D9%8A-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "gdrfa-dubai",
+              "name_ar": "الإدارة العامة للإقامة وشؤون الأجانب في دبي",
+              "name_en": "GDRFA Dubai",
+              "public_url": "/authorities/gdrfa-dubai/"
+            },
+            "requirements": [
+              "لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية."
+            ],
+            "general_documents": [
+              "لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "لا تفرض بطاقة الخدمة الرسمية شروطًا إضافية لهذه الخدمة؛ يظل مبلغ الغرامة المستحق محددًا لدى الجهة."
+            ],
+            "official_source": {
+              "title": "سداد غرامات مخالفي قانون الإقامة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+              "url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+              "last_verified_at": "2026-10-01T22:19:32.894064+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 200,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "httpStatus": 200,
+      "result": {
+        "understood_intent": "سداد غرامات مخالفي قانون الإقامة في دبي",
+        "confidence": "high",
+        "answer": {
+          "text": "Recorded requirements for this service:\nThe official service card requires no documents.",
+          "focus": "documents",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+            "policy_version": 3,
+            "workflow_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+            "source_title": "سداد غرامات مخالفي قانون الإقامة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+            "source_url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+            "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+            "supporting_rule": null,
+            "document_requirements": [
+              "لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية."
+            ],
+            "special_case": "GDRFA Dubai",
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+            "service_name": "سداد غرامات مخالفي قانون الإقامة في دبي",
+            "service_name_en": "Pay Residence Law Violation Fines in Dubai",
+            "service_url": "/services/%D8%B3%D8%AF%D8%A7%D8%AF-%D8%BA%D8%B1%D8%A7%D9%85%D8%A7%D8%AA-%D9%85%D8%AE%D8%A7%D9%84%D9%81%D9%8A-%D9%82%D8%A7%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "gdrfa-dubai",
+              "name_ar": "الإدارة العامة للإقامة وشؤون الأجانب في دبي",
+              "name_en": "GDRFA Dubai",
+              "public_url": "/authorities/gdrfa-dubai/"
+            },
+            "requirements": [
+              "لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية."
+            ],
+            "general_documents": [
+              "لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "لا تفرض بطاقة الخدمة الرسمية شروطًا إضافية لهذه الخدمة؛ يظل مبلغ الغرامة المستحق محددًا لدى الجهة."
+            ],
+            "official_source": {
+              "title": "سداد غرامات مخالفي قانون الإقامة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+              "url": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+              "last_verified_at": "2026-10-01T22:19:32.894064+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 200,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      }
+    }
+  ]
+}
