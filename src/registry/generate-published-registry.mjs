@@ -90,7 +90,7 @@ function safeFaq(destinationKind) {
   ];
 }
 
-function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null, officialCtaUrlEn = null, noDocumentsRequired = false, officialLinkCheckedAt = officialLinkAuditAt }) {
+function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null, officialCtaUrlEn = null, noDocumentsRequired = false, officialLinkCheckedAt = officialLinkAuditAt, recordedSteps = null, stepsReviewedAt = null }) {
   const normalizedDestinationKind = verificationStatus === 'VERIFIED' ? destinationKind : 'CTA_DISABLED';
   const documentsPublished = hasRecordedFact(requirements);
   const feesPublished = hasRecordedFact(fees);
@@ -122,7 +122,8 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
     serviceFees: { status: unavailable, text: unavailable },
     processingTime: { status: durationPublished ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(duration) },
     conditions: text(conditions),
-    steps: safeExecutionSteps(normalizedDestinationKind),
+    steps: Array.isArray(recordedSteps) && stepsReviewedAt ? recordedSteps : safeExecutionSteps(normalizedDestinationKind),
+    ...(stepsReviewedAt ? {stepsReviewedAt} : {}),
     faq: faq.length ? faq : safeFaq(normalizedDestinationKind),
     relatedServiceIds,
     alternativeServiceIds: [],
@@ -169,6 +170,9 @@ for (const service of matrix.services.filter((item) => !normalizedSourceIds.has(
     subCategory: service.type,
     description: service.description,
     requirements: service.requirements,
+    localizedDetails: service.localizedDetails || null,
+    recordedSteps: service.recordedSteps || null,
+    stepsReviewedAt: service.stepsReviewedAt || null,
     fees: service.fees,
     duration: service.duration,
     conditions: service.conditions,
