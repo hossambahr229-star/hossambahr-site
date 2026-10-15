@@ -332,7 +332,7 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   const sponsorship = has(goal, ["اكفل","أكفل","كفاله","كفالة","sponsor","sponsorship"]);
   const emirate = detectJurisdiction(goal);
   const finePayment = has(goal, ["سداد","دفع","pay","payment","collection"]) && has(goal, ["غرام","fine"]) && has(goal, ["قانون الإقامة","قانون دخول","residency law","residence law","immigration law"]);
-  const otherFineOperation = has(goal, ["إعفاء","تخفيض","استرداد","إعادة نظر","waiver","exemption","appeal","refund","reduction","استعلام عن الغرامات","fines inquiry","check my fines"]);
+  const otherFineOperation = has(goal, ["إعفاء","تخفيض","استرداد","إعادة نظر","waiv","exempt","appeal","refund","reduc","اعف","خفض","استعلام عن الغرامات","fines inquiry","check my fines"]);
   if (emirate === "AE-DU" && finePayment && !otherFineOperation && slug === "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي") return 90000;
   // Clinical authorisation is a different service object from a business licence.
   const dhaContext = hasPhrase(goal, ["DHA","Dubai Health Authority","هيئة الصحة بدبي","هيئة الصحة في دبي"]);
