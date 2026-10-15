@@ -6,8 +6,8 @@
     "services": 202,
     "verified": 202,
     "officialLinksVerified": 202,
-    "fullyVerifiedDetails": 146,
-    "partiallyVerifiedDetails": 56,
+    "fullyVerifiedDetails": 153,
+    "partiallyVerifiedDetails": 49,
     "pendingVerification": 0,
     "authorities": 21,
     "emirates": [
@@ -19960,58 +19960,75 @@
         "المنشآت"
       ],
       "description": "إصدار بطاقة المنشأة الإلكترونية التي تتضمن الاسم التجاري والرخصة والشركاء والنشاط.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Trade licence, signatory authorization, partnership MoA and local requirements.",
+            "Government: founding decree, board decision, request and authorization."
+          ],
+          "fees": "Listed AED: application 100; yearly issuance 100; smart services 100; system subscription 2000. Conditional guarantees: subscription 1000; deposit fee 20; tourism establishment 75000. Select category; no universal total.",
+          "duration": "2 days; not an approval guarantee.",
+          "eligibility": "Valid licence and authorized signatory ID/unified number. Apply through approved providers; free-zone establishments through their authority.",
+          "steps": [
+            "Select the establishment category in ICP.",
+            "Review data; supply documents not retrieved electronically.",
+            "Check applicable fees and pay.",
+            "Track ICP's decision and card update."
+          ],
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d"
+        }
+      },
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "رخصة تجارية وتفويض توقيع وعقد تأسيس للشراكة؛ متطلبات الإمارة حسب الحالة.",
+          "للجهة الحكومية: مرسوم التأسيس وقرار المجلس وخطاب الطلب والتفويض."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "البنود المنشورة: 100 درهم للطلب، 100 للسنة، 100 للخدمات الذكية، و2000 لاشتراك النظام. ترد ضمانات مشروطة: 1000 للاشتراك و20 للإيداع و75000 للمنشأة السياحية؛ لا تجمعها دون تحديد الفئة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "رخصة سارية وهوية أو رقم موحد للمفوض. التقديم عبر مقدم معتمد؛ منشأة المنطقة الحرة تقدم عبر سلطتها.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "ادخل إلى قناة ICP الرسمية وحدد فئة المنشأة.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "راجع البيانات وأرفق المستندات التي لم يسترجعها الربط.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "راجع الرسوم المشروطة وسدد ما ينطبق.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "تابع قرار الهيئة وإصدار البطاقة أو تحديثها.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-15",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "البنود المنشورة: 100 درهم للطلب، 100 للسنة، 100 للخدمات الذكية، و2000 لاشتراك النظام. ترد ضمانات مشروطة: 1000 للاشتراك و20 للإيداع و75000 للمنشأة السياحية؛ لا تجمعها دون تحديد الفئة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -20033,22 +20050,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-15",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-15",
+      "lastReviewedAt": "2026-10-15",
       "internalRoute": "/services/إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -21110,58 +21127,73 @@
         "المنشآت"
       ],
       "description": "إلغاء بطاقة المنشأة الحكومية أو الخاصة أو العاملة في منطقة حرة بعد إلغاء الرخصة وتسوية العمال والغرامات.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Licence; cancelled licence for private establishments, plus applicable local requirements."
+          ],
+          "fees": "AED 50 card cancellation; 50 system subscription cancellation application; 100 smart services. Confirm category-specific applicability.",
+          "duration": "2 days; not an approval guarantee.",
+          "eligibility": "Cancel the trade licence first; settle fines, clear workers and complete returned requirements.",
+          "steps": [
+            "Select establishment card cancellation in ICP.",
+            "Review data and supply required documents.",
+            "Pay applicable fees.",
+            "Track the cancellation decision."
+          ],
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f"
+        }
+      },
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "الرخصة؛ للقطاع الخاص نسخة الرخصة الملغاة، ومتطلبات الجهة المحلية بحسب الإمارة."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "50 درهم لإلغاء البطاقة، و50 لطلب إلغاء اشتراك النظام، و100 للخدمات الذكية؛ راجع البنود المنطبقة على فئة المنشأة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "ألغ الرخصة التجارية أولًا، وسدد الغرامات وسوِّ أوضاع العمال واستكمل النواقص.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "اختر إلغاء بطاقة المنشأة عبر ICP.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "راجع البيانات والمستندات المطلوبة.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "سدد الرسوم المنطبقة.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "تابع قرار الهيئة ونتيجة الإلغاء.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-15",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "50 درهم لإلغاء البطاقة، و50 لطلب إلغاء اشتراك النظام، و100 للخدمات الذكية؛ راجع البنود المنطبقة على فئة المنشأة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -21183,22 +21215,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-15",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-15",
+      "lastReviewedAt": "2026-10-15",
       "internalRoute": "/services/إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -21533,58 +21565,73 @@
         "الدخول"
       ],
       "description": "إلغاء إذن دخول صادر من ICP قبل انتهاء صلاحيته ووفق شروط الدخول المنشورة.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Passport, photo; free-zone letter where applicable."
+          ],
+          "fees": "AED 50 entry permit cancellation and 100 smart services. Overstay: 50/day after the applicable grace period.",
+          "duration": "2 days; not an approval guarantee.",
+          "eligibility": "Passport valid over 6 months. Cancel before entry and within visa validity; post-entry tourist cancellation is linked to status adjustment.",
+          "steps": [
+            "Apply in ICP; review the entry permit.",
+            "Attach documents not retrieved electronically.",
+            "Pay applicable fees.",
+            "Track the cancellation decision."
+          ],
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63"
+        }
+      },
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "جواز السفر وصورة شخصية؛ خطاب المنطقة الحرة عند انطباقه."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "50 درهم لإلغاء إذن الدخول و100 للخدمات الذكية؛ غرامة التجاوز 50 لليوم بعد المهلة الخاصة بنوع الإذن."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "جواز صالح لأكثر من 6 أشهر. الإلغاء قبل الدخول وخلال صلاحية التأشيرة؛ استثناء التأشيرة السياحية بعد الدخول مرتبط بطلب تعديل الوضع.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "قدم طلب إلغاء إذن الدخول وراجع بياناته لدى ICP.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "أرفق المستندات غير المسترجعة إلكترونيًا.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "سدد الرسوم المنطبقة.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "تابع قرار الهيئة ونتيجة الإلغاء.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-15",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "50 درهم لإلغاء إذن الدخول و100 للخدمات الذكية؛ غرامة التجاوز 50 لليوم بعد المهلة الخاصة بنوع الإذن."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -21606,22 +21653,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-15",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-15",
+      "lastReviewedAt": "2026-10-15",
       "internalRoute": "/services/إلغاء-تأشيرة-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -23220,58 +23267,79 @@
         "companies-establishments"
       ],
       "description": "طلب تسجيل الرخصة التجارية في المنطقة الحرة.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Passport copies for directors/shareholders/responsible person, photos and application/incorporation forms.",
+            "UAE residents: visa and Emirates ID.",
+            "Parent company, as applicable: attested board decision, power of attorney, incorporation certificate, memorandum, valid licence and ultimate ownership evidence.",
+            "Branch: latest audit report; the official list also includes a good-conduct certificate."
+          ],
+          "fees": "Depends on activity and establishment; no fixed amount is published.",
+          "duration": "One working hour for the registration service; not total company setup or an approval guarantee.",
+          "eligibility": "Security approval before registration; identify owners, name and activity. A parent company must be at least 12 months old for a branch.",
+          "steps": [
+            "Obtain the required security approval.",
+            "Apply for commercial licence registration online.",
+            "Licensing team reviews data and requests missing information.",
+            "After initial approval, pay requested fees and complete documents."
+          ],
+          "sourceUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1"
+        }
+      },
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "صور جوازات أعضاء المجلس والمساهمين والمسؤول وصور شخصية واستمارات الطلب والتأسيس.",
+          "للمقيم: نسخة التأشيرة والهوية الإماراتية.",
+          "للشركة الأم بحسب الشكل القانوني: قرار المجلس والوكالة وشهادة التأسيس والعقد والرخصة السارية ومستند الملكية النهائية، مصدقة حسب البطاقة.",
+          "للفرع: آخر تقرير تدقيق؛ وترد شهادة حسن سلوك ضمن القائمة الرسمية."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق في سجل الكتالوج"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تعتمد الرسوم على النشاط والمنشأة؛ لا تنشر البطاقة مبلغًا ثابتًا."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق في سجل الكتالوج"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "ساعة عمل واحدة لتقديم خدمة تسجيل الرخصة وفق البطاقة؛ لا تمثل كامل تأسيس الشركة أو ضمان صدور الموافقة."
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "الموافقة الأمنية مطلوبة قبل تسجيل الرخصة. يلزم تحديد الملاك والاسم والنشاط. الشركة الأم بعمر 12 شهرًا على الأقل للتأهل لفرع.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "احصل على الموافقة الأمنية المطلوبة قبل تسجيل الرخصة.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "قدم بيانات التسجيل عبر موقع هيئة المنطقة الحرة.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "يراجع قسم التراخيص البيانات ويطلب استكمال النواقص.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "بعد الموافقة المبدئية، سدد الرسوم المطلوبة وأكمل المستندات.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-15",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "تعتمد الرسوم على النشاط والمنشأة؛ لا تنشر البطاقة مبلغًا ثابتًا."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "ساعة عمل واحدة لتقديم خدمة تسجيل الرخصة وفق البطاقة؛ لا تمثل كامل تأسيس الشركة أو ضمان صدور الموافقة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -23293,22 +23361,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
         "eligibilityVerified": true,
-        "detailsVerified": false,
-        "verifiedDetailCount": 1,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-15",
         "sourceAuthority": "fujairah-free-zone",
         "sourceUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-15",
+      "lastReviewedAt": "2026-10-15",
       "internalRoute": "/services/تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة/",
       "sourceRegistry": "service-matrix"
     },
@@ -24933,58 +25001,75 @@
         "المنشآت"
       ],
       "description": "تجديد بطاقة المنشأة الإلكترونية بعد التحقق من الرخصة والغرامات والمتطلبات.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Licence/LLC partners, signatory authorization, partnership MoA and local requirements as applicable.",
+            "Government: founding decree, board decision, request and authorization."
+          ],
+          "fees": "AED 100 per renewal year; system subscription 1000; smart services 100. An application fee of 100 appears for a category. Confirm category; no universal total.",
+          "duration": "2 days; not an approval guarantee.",
+          "eligibility": "Valid licence, outstanding fines paid and missing requirements completed. Notify ICP of establishment changes.",
+          "steps": [
+            "Select the establishment category in ICP.",
+            "Review data; supply documents not retrieved electronically.",
+            "Check applicable fees and pay.",
+            "Track ICP's decision and card update."
+          ],
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e"
+        }
+      },
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "الرخصة وشركاء LLC، تفويض التوقيع، وعقد الشراكة والمتطلبات المحلية بحسب الفئة.",
+          "للجهة الحكومية: مرسوم التأسيس وقرار المجلس وخطاب الطلب والتفويض."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "100 درهم لكل سنة تجديد، و1000 لاشتراك النظام و100 خدمات ذكية. يظهر رسم طلب 100 لفئة في البطاقة؛ حدد الفئة ولا تعتبر البنود إجماليًا موحدًا."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "رخصة سارية وسداد الغرامات واستكمال النواقص. أبلغ الهيئة بتغييرات بيانات المنشأة.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "ادخل إلى قناة ICP الرسمية وحدد فئة المنشأة.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "راجع البيانات وأرفق المستندات التي لم يسترجعها الربط.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "راجع الرسوم المشروطة وسدد ما ينطبق.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "تابع قرار الهيئة وإصدار البطاقة أو تحديثها.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-15",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "100 درهم لكل سنة تجديد، و1000 لاشتراك النظام و100 خدمات ذكية. يظهر رسم طلب 100 لفئة في البطاقة؛ حدد الفئة ولا تعتبر البنود إجماليًا موحدًا."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -25006,22 +25091,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-15",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-15",
+      "lastReviewedAt": "2026-10-15",
       "internalRoute": "/services/تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -25929,58 +26014,73 @@
         "الإقامة"
       ],
       "description": "إصدار تصريح للمقيم الذي بقي خارج الدولة أكثر من ستة أشهر بسبب مقبول، ولا يشمل المقيمين في دبي.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Evidence explaining the absence beyond six months."
+          ],
+          "fees": "AED 100 per delay month after six months, plus 100 smart services. Conditions specify each 30 days or less; confirm calculation.",
+          "duration": "2 days; not an approval guarantee.",
+          "eligibility": "Apply abroad after 180 days; residence remaining over 30 days; valid reason. Enter within 30 days including approval date. Excludes Dubai. Source exemptions: valid Golden/Green/Blue residence and a UAE woman's husband sponsored by her.",
+          "steps": [
+            "Apply abroad through ICP.",
+            "Provide the reason/evidence and review data.",
+            "Pay applicable fees.",
+            "Track the decision and approved entry deadline."
+          ],
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc"
+        }
+      },
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "إثبات سبب البقاء خارج الدولة لأكثر من ستة أشهر."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "100 درهم لكل شهر تأخير بعد ستة أشهر، و100 للخدمات الذكية. تذكر الشروط 100 لكل 30 يومًا أو أقل؛ راجع احتساب المدة لدى الهيئة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "خارج الدولة بعد 180 يومًا، وباقي الإقامة أكثر من 30 يومًا وسبب مقبول؛ الدخول خلال 30 يومًا من الموافقة شاملًا يومها. لا يشمل دبي. يستثني المصدر الإقامات الذهبية والخضراء والزرقاء وزوج المواطنة المكفول لديها مع إقامة سارية.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "قدم الطلب من خارج الدولة عبر ICP.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "أرفق إثبات السبب وراجع البيانات.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "سدد الرسوم المنطبقة.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "تابع القرار والتزم بموعد الدخول عند الموافقة.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-15",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "100 درهم لكل شهر تأخير بعد ستة أشهر، و100 للخدمات الذكية. تذكر الشروط 100 لكل 30 يومًا أو أقل؛ راجع احتساب المدة لدى الهيئة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -26002,22 +26102,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-15",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-15",
+      "lastReviewedAt": "2026-10-15",
       "internalRoute": "/services/تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp/",
       "sourceRegistry": "service-matrix"
     },
@@ -26347,58 +26447,75 @@
         "المنشآت"
       ],
       "description": "تعديل اسم المنشأة أو الملكية أو الشركاء أو إضافة امتيازات الخدمة في بطاقة المنشأة.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Licence and signatory authorization; initial approval for partner/activity changes; power of attorney when delegated.",
+            "Partner list or latest decree and amendment letter according to category."
+          ],
+          "fees": "Operation-specific AED: electronic service amendment/addition 200; category addition 100; visit visa privilege 5000; quota increase 500; smart services 100. Do not combine all items.",
+          "duration": "2 days; not an approval guarantee.",
+          "eligibility": "Existing establishment card; settle fines, clear workers and complete returned requirements as applicable.",
+          "steps": [
+            "Select the establishment category in ICP.",
+            "Review data; supply documents not retrieved electronically.",
+            "Check applicable fees and pay.",
+            "Track ICP's decision and card update."
+          ],
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70"
+        }
+      },
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "الرخصة وتفويض التوقيع؛ موافقة مبدئية عند إضافة شريك أو تغيير النشاط، ووكالة عند التفويض.",
+          "مستند الشركاء أو المرسوم الأحدث وخطاب التعديل بحسب فئة المنشأة."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "بحسب العملية: 200 درهم لتعديل/إضافة خدمة إلكترونية؛ 100 لإضافة فئة خدمة؛ 5000 لامتياز تأشيرة زيارة؛ 500 لزيادة عددها؛ و100 خدمات ذكية. ليست بنودًا تجمع لكل تعديل."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "بطاقة منشأة قائمة؛ سداد الغرامات وتسوية أوضاع العمال واستكمال النواقص وفق الحالة.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "ادخل إلى قناة ICP الرسمية وحدد فئة المنشأة.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "راجع البيانات وأرفق المستندات التي لم يسترجعها الربط.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "راجع الرسوم المشروطة وسدد ما ينطبق.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "تابع قرار الهيئة وإصدار البطاقة أو تحديثها.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-15",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "بحسب العملية: 200 درهم لتعديل/إضافة خدمة إلكترونية؛ 100 لإضافة فئة خدمة؛ 5000 لامتياز تأشيرة زيارة؛ 500 لزيادة عددها؛ و100 خدمات ذكية. ليست بنودًا تجمع لكل تعديل."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان وفق البطاقة الرسمية؛ ليست ضمان قبول."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -26420,22 +26537,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-15",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-15",
+      "lastReviewedAt": "2026-10-15",
       "internalRoute": "/services/تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
