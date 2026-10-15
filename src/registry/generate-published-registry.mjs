@@ -92,7 +92,7 @@ function safeFaq(destinationKind) {
 
 function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null, officialCtaUrlEn = null, noDocumentsRequired = false, officialLinkCheckedAt = officialLinkAuditAt, recordedSteps = null, stepsReviewedAt = null }) {
   const normalizedDestinationKind = verificationStatus === 'VERIFIED' ? destinationKind : 'CTA_DISABLED';
-  const documentsPublished = noDocumentsRequired || hasRecordedFact(requirements);
+  const documentsPublished = hasRecordedFact(requirements) || (sourceRegistry === 'service-matrix' && noDocumentsRequired);
   const feesPublished = hasRecordedFact(fees);
   const durationPublished = hasRecordedFact(duration);
   const conditionsPublished = hasRecordedFact(conditions);
