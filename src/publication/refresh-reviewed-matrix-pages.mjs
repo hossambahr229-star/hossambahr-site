@@ -3,13 +3,15 @@ import {resolve} from 'node:path';
 const root=resolve(import.meta.dirname,'../..');
 const matrix=JSON.parse(await readFile(resolve(root,'service-matrix.json'),'utf8'));
 const reviews=await Promise.all(['content/moe-edas-field-review-2026-10-08.json','content/partial-service-field-review-2026-10-15.json'].map(async path=>JSON.parse(await readFile(resolve(root,path),'utf8'))));
-const review={records:reviews.flatMap(source=>source.records.map(record=>({...record,reviewedAt:record.reviewedAt??source.reviewedAt})))};
+const latestReviewBySlug=new Map();
+for(const source of reviews)for(const record of source.records){const dated={...record,reviewedAt:record.reviewedAt??source.reviewedAt};const previous=latestReviewBySlug.get(record.slug);if(!previous||dated.reviewedAt>=previous.reviewedAt)latestReviewBySlug.set(record.slug,dated);}
+const review={records:[...latestReviewBySlug.values()]};
 const esc=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 for(const record of review.records){
  const service=matrix.services.find(s=>s.slug===record.slug);
  if(!service||service.lastReviewed!==(record.reviewedAt??review.reviewedAt))throw Error('Missing reviewed source: '+record.slug);
  const file=resolve(root,'services',service.slug,'index.html');let html=await readFile(file,'utf8');
- const sections=[['requirements','(?:المتطلبات والمستندات|المستندات والمتطلبات)','<ul>'+service.requirements.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>'],['fees','الرسوم','<p>'+esc(service.fees)+'</p>'],['duration','(?:المدة المتوقعة|مدة الإنجاز)','<p>'+esc(service.duration)+'</p>'],['conditions','الشروط','<p>'+esc(service.conditions)+'</p>'],['specialCases','الحالات الخاصة وأسباب التعطل','<p>'+esc(service.specialCases)+'</p>']];
+ const sections=[['requirements','(?:المتطلبات والمستندات|المستندات والمتطلبات)',service.noDocumentsRequired?'<p>لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية.</p>':'<ul>'+service.requirements.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>'],['fees','الرسوم','<p>'+esc(service.fees)+'</p>'],['duration','(?:المدة المتوقعة|مدة الإنجاز)','<p>'+esc(service.duration)+'</p>'],['conditions','الشروط','<p>'+esc(service.conditions)+'</p>'],['specialCases','الحالات الخاصة وأسباب التعطل','<p>'+esc(service.specialCases)+'</p>']];
  for(const [field,heading,body] of sections){
   if(!record.fields.includes(field))continue;
   let matches=0;

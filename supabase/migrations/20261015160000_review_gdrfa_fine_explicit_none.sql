@@ -1,0 +1,23 @@
+-- Record explicit GDRFA fine-collection requirements from the bilingual official service card; preserve execution approvals.
+begin;
+do $review$
+declare item jsonb;b public.hb_service_bindings%rowtype;p public.hb_policy_versions%rowtype;new_rules jsonb;source_url text;review_tag text:='gdrfa-fine-explicit-none-2026-10-15';
+begin
+ for item in select value from jsonb_array_elements($facts$[{"slug":"سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي","sourceUrl":"https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8","requirements":["لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية."],"fees":"لا توجد رسوم للخدمة؛ يسدد مبلغ المخالفات المستحق فقط وفق بطاقة الجهة.","duration":"48 ساعة وفق بطاقة الخدمة.","conditions":"لا تفرض بطاقة الخدمة الرسمية شروطًا إضافية لهذه الخدمة؛ يظل مبلغ الغرامة المستحق محددًا لدى الجهة.","specialCases":"GDRFA Dubai","scopeUnresolved":false,"officialSteps":["زر مركز آمر خلال ساعات العمل الرسمية.","احصل على تذكرة الدور وانتظر الموظف المختص.","قدم طلب تحصيل الغرامة للموظف؛ البطاقة لا تطلب مستندات.","سدد مبلغ الغرامة المستحق وتابع إشعار حالة الطلب."]}]$facts$::jsonb) loop
+  select * into strict b from public.hb_service_bindings where service_slug=item->>'slug' and active;
+  if exists(select 1 from public.hb_policy_versions where policy_key=b.policy_key and jurisdiction_id is not distinct from b.jurisdiction_id and version=3 and reviewed_by=review_tag) then continue;end if;
+  select * into strict p from public.hb_policy_versions where policy_key=b.policy_key and jurisdiction_id is not distinct from b.jurisdiction_id and status='active' for update;
+  if p.version<>2 then raise exception 'Unexpected active policy version for %: %',b.service_slug,p.version;end if;
+  select s.source_url into strict source_url from public.hb_policy_sources s where s.id=any(p.source_ids) and s.active and s.authority_key=b.authority_key and (s.source_url=item->>'sourceUrl' or (s.source_url ~ '^https://(www\\.)?icp\\.gov\\.ae/' and item->>'sourceUrl' ~ '^https://icp\\.gov\\.ae/' and substring(s.source_url from '[?&]serviceid=([^&]+)')=substring(item->>'sourceUrl' from '[?&]serviceid=([^&]+)')));
+  select coalesce(jsonb_agg(value),'[]'::jsonb) into new_rules from jsonb_array_elements(p.rules) where value->>'id' not in ('fees','duration','conditions','special-cases','official-steps') and (value->>'id') not like 'requirement%';
+  select new_rules||coalesce(jsonb_agg(jsonb_build_object('id','requirement-reviewed-'||ordinality,'when','[]'::jsonb,'effect','review','reason',value#>>'{}','actions',jsonb_build_array('review_documents'),'sourceRefs',jsonb_build_array(source_url))),'[]'::jsonb) into new_rules from jsonb_array_elements(item->'requirements') with ordinality;
+  new_rules:=new_rules||jsonb_build_array(jsonb_build_object('id','fees','when','[]'::jsonb,'effect','review','reason',item->>'fees','actions',jsonb_build_array('review_fees'),'sourceRefs',jsonb_build_array(source_url)),jsonb_build_object('id','duration','when','[]'::jsonb,'effect','review','reason',item->>'duration','actions',jsonb_build_array('review_duration'),'sourceRefs',jsonb_build_array(source_url)),jsonb_build_object('id','conditions','when','[]'::jsonb,'effect','review','reason',item->>'conditions','actions',jsonb_build_array('review_conditions'),'sourceRefs',jsonb_build_array(source_url)),jsonb_build_object('id','special-cases','when','[]'::jsonb,'effect','review','reason',item->>'specialCases','actions',jsonb_build_array('review_special_cases'),'sourceRefs',jsonb_build_array(source_url)));
+  if jsonb_array_length(item->'officialSteps')>0 then
+   new_rules:=new_rules||jsonb_build_array(jsonb_build_object('id','official-steps','when','[]'::jsonb,'effect','review','reason',(select string_agg(value#>>'{}',' ← ' order by ordinality) from jsonb_array_elements(item->'officialSteps') with ordinality),'actions',jsonb_build_array('review_official_steps'),'sourceRefs',jsonb_build_array(source_url)));
+  end if;
+  update public.hb_policy_versions set status='retired',effective_until=now() where id=p.id;
+  insert into public.hb_policy_versions(policy_key,jurisdiction_id,version,effective_from,status,rules,source_ids,reviewed_by,reviewed_at,country_pack_id) values(p.policy_key,p.jurisdiction_id,3,now(),'active',new_rules,p.source_ids,review_tag,now(),p.country_pack_id);
+  update public.hb_service_bindings set metadata=metadata||jsonb_build_object('fees',item->>'fees','duration',item->>'duration','lastReviewed','2026-10-15','source_scope_unresolved',(item->>'scopeUnresolved')::boolean,'recorded_detail_review','gdrfa-fine-explicit-none-2026-10-15') where id=b.id;
+ end loop;
+end $review$;
+commit;

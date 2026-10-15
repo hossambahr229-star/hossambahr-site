@@ -6,7 +6,7 @@ test('partial Dubai source reviews preserve unavailable fields and publish only 
  for(const value of row.ar)assert.ok(ar.includes(value),row.slug+': '+value);
  assert.doesNotMatch(en,/An English translation is not yet available/);
  if(row.slug.startsWith('الاستعلام')||row.slug.startsWith('متابعة')){assert.equal(s.fees,'غير موثق بعد');assert.equal(s.duration,'غير موثق بعد');}
- if(row.slug.startsWith('سداد')){assert.equal(s.requirements.length,0);assert.equal(s.conditions,'غير موثق بعد');assert.match(en,/only the outstanding violation fines are payable/);}
+ if(row.slug.startsWith('سداد')){assert.equal(s.requirements.length,0);assert.equal(s.noDocumentsRequired,true);assert.match(s.conditions,/شروطًا إضافية/);assert.match(en,/Only the outstanding fine is collected/);}
  if(row.slug.startsWith('تعديل-بيانات-جميع')){assert.equal(s.duration,'غير موثق بعد');assert.match(en,/more than six months/);assert.match(en,/does not establish the total fee for every case/);}
  if(row.slug.startsWith('تأشيرة-زيارة')){assert.match(en,/Medical insurance is AED 40, AED 60 or AED 90/);assert.match(en,/valid residence in the country of the husband/);assert.match(en,/total may vary by case/);}
  if(row.slug.includes('بطاقة-منشأة')||row.slug.includes('تجديد-بطاقة')){assert.match(en,/one category/);assert.match(en,/AED 100 per year/);}

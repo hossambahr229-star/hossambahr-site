@@ -7297,9 +7297,9 @@
       "requirements": [],
       "fees": "لا توجد رسوم للخدمة؛ يسدد مبلغ المخالفات المستحق فقط وفق بطاقة الجهة.",
       "duration": "48 ساعة وفق بطاقة الخدمة.",
-      "conditions": "غير موثق بعد",
+      "conditions": "لا تفرض بطاقة الخدمة الرسمية شروطًا إضافية لهذه الخدمة؛ يظل مبلغ الغرامة المستحق محددًا لدى الجهة.",
       "specialCases": "GDRFA Dubai",
-      "lastReviewed": "2026-10-09",
+      "lastReviewed": "2026-10-15",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -7328,7 +7328,47 @@
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "noDocumentsRequired": true,
+      "recordedSteps": [
+        {
+          "order": 1,
+          "title": "زر مركز آمر خلال ساعات العمل الرسمية.",
+          "description": ""
+        },
+        {
+          "order": 2,
+          "title": "احصل على تذكرة الدور وانتظر الموظف المختص.",
+          "description": ""
+        },
+        {
+          "order": 3,
+          "title": "قدم طلب تحصيل الغرامة للموظف؛ البطاقة لا تطلب مستندات.",
+          "description": ""
+        },
+        {
+          "order": 4,
+          "title": "سدد مبلغ الغرامة المستحق وتابع إشعار حالة الطلب.",
+          "description": ""
+        }
+      ],
+      "stepsReviewedAt": "2026-10-15",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "The official service card requires no documents."
+          ],
+          "fees": "The service has no service fee. Only the outstanding fine is collected.",
+          "duration": "48 hours, as stated on the official service card.",
+          "eligibility": "The official service card lists no additional conditions. The authority determines the outstanding fine.",
+          "steps": [
+            "Visit an Amer centre during its official working hours.",
+            "Take a queue ticket and wait for the service employee.",
+            "Submit the fine-collection request; the card requires no documents.",
+            "Pay the outstanding fine and follow the application-status notification."
+          ]
+        }
+      }
     },
     {
       "id": "directory:residency:54",

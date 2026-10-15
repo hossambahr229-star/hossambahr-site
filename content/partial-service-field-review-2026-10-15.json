@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "reviewedAt": "2026-10-15",
-  "scope": "Seven existing partial records complete the four recorded detail fields; four more receive scoped documents/fees/duration while eligibility stays unverified. No new services, invented totals or guaranteed end-to-end execution.",
+  "scope": "Eight existing partial records now have four reviewed detail fields; four more have scoped common facts while eligibility remains unverified.",
   "evidence": {
     "readOnlyOfficialBrowserRun": 38691429951,
     "providerSingleCheckRun": 38691200549,
@@ -159,6 +159,19 @@
         "specialCases"
       ],
       "scopeNote": "تذكر البطاقة إقامة 90 يومًا وتمديدًا إلى 180، وتذكر أيضًا حد 90 يومًا في السنة. لم نحسم التعارض؛ أكد مدة الإقامة مع ICP قبل التخطيط."
+    },
+    {
+      "slug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "supplementarySourceUrl": "https://www.gdrfad.gov.ae/ar/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions"
+      ],
+      "scopeNote": "Arabic official card explicitly states no documents and no conditions; no service fee, but the actual fine remains payable. Preserve source-defined 48-hour duration and Amer procedure."
     }
   ],
   "remainingSourceBoundary": "Other partial records retain unknown fields where official sources are inaccessible, do not publish the field, have conflicting statements, or do not identify the transaction subtype."

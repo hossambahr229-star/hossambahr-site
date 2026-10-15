@@ -972,5 +972,12 @@ export const recordedDetailTranslations = Object.freeze({
   "100 درهم طلب، 500 إصدار، 100 خدمات ذكية، وضمان مالي 3000 و20 رسم إيداع؛ افصل الضمان عن الرسوم.": "AED 100 application, 500 issuance, 100 smart services, financial guarantee 3000 and deposit fee 20. Guarantee is separate from fees.",
   "يومان وفق البطاقة الرسمية؛ لا يمثل ضمان قبول.": "2 days; not approval assurance.",
   "تذكر البطاقة إقامة 90 يومًا وتمديدًا إلى 180، وتذكر أيضًا حد 90 يومًا في السنة. لم نحسم التعارض؛ أكد مدة الإقامة مع ICP قبل التخطيط.": "The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning.",
-  "تنبيه حدود المصدر: تذكر البطاقة إقامة 90 يومًا وتمديدًا إلى 180، وتذكر أيضًا حد 90 يومًا في السنة. لم نحسم التعارض؛ أكد مدة الإقامة مع ICP قبل التخطيط.": "Official source limits: The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning."
+  "تنبيه حدود المصدر: تذكر البطاقة إقامة 90 يومًا وتمديدًا إلى 180، وتذكر أيضًا حد 90 يومًا في السنة. لم نحسم التعارض؛ أكد مدة الإقامة مع ICP قبل التخطيط.": "Official source limits: The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning.",
+  "لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية.": "The official service card requires no documents.",
+  "لا تفرض بطاقة الخدمة الرسمية شروطًا إضافية لهذه الخدمة؛ يظل مبلغ الغرامة المستحق محددًا لدى الجهة.": "The official service card lists no additional conditions. The authority determines the outstanding fine.",
+  "زر مركز آمر خلال ساعات العمل الرسمية.": "Visit an Amer centre during its official working hours.",
+  "احصل على تذكرة الدور وانتظر الموظف المختص.": "Take a queue ticket and wait for the service employee.",
+  "قدم طلب تحصيل الغرامة للموظف؛ البطاقة لا تطلب مستندات.": "Submit the fine-collection request; the card requires no documents.",
+  "سدد مبلغ الغرامة المستحق وتابع إشعار حالة الطلب.": "Pay the outstanding fine and follow the application-status notification.",
+  "زر مركز آمر خلال ساعات العمل الرسمية. ← احصل على تذكرة الدور وانتظر الموظف المختص. ← قدم طلب تحصيل الغرامة للموظف؛ البطاقة لا تطلب مستندات. ← سدد مبلغ الغرامة المستحق وتابع إشعار حالة الطلب.": "Visit an Amer centre during its official working hours. ← Take a queue ticket and wait for the service employee. ← Submit the fine-collection request; the card requires no documents. ← Pay the outstanding fine and follow the application-status notification."
 });
