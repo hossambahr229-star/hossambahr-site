@@ -53,5 +53,6 @@ export function englishResult(result: any) {
   if(conditions)text+=' '+conditions;
  }else if(recorded) text=recorded;
  else text='Verified source record, in its original language:\n'+String(answer.text||'');
+ if(answer.evidence?.source_scope_unresolved&&!answer.evidence?.review_pending){const note=recordedEnglish(answer.evidence.special_case);if(note&&!text.includes(note))text+="\nOfficial source limits: "+note;}
  return {...result,answer:{...answer,text},follow_up_questions:(result.follow_up_questions||[]).map(englishQuestion)};
 }
