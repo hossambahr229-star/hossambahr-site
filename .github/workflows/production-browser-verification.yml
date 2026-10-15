@@ -144,7 +144,8 @@ jobs:
             await page.goto('https://hossambahr.com/command-center/?production-paths=1',{waitUntil:'networkidle'});
             const commandActions=await page.locator('.command-action-grid a').count();
             const text=(await page.locator('.metric-grid').textContent()).replaceAll(',','');
-            const liveMetrics=['200','2610','7','20'].every(value=>text.includes(value));
+            const summary=await (await fetch('https://hossambahr.com/platform-summary.json?production-paths=1')).json();
+            const liveMetrics=[summary.services,summary.activities,summary.coveredEmirates,summary.authorities].every(value=>Number.isInteger(value)&&text.includes(String(value)));
             const result={dubaiVisible,mismatches,commercial,canonicalReview,official,commandActions,liveMetrics,errors};
             console.log(result);
             await browser.close();
