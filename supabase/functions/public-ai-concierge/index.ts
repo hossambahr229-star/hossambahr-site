@@ -151,6 +151,7 @@ function groundedAnswer(goal: string, row: any, focus: string) {
   const duration = documentedRule(rules, "duration", row.safeSources || []);
   const conditions = documentedRule(rules, "conditions", row.safeSources || []);
   const special = documentedRule(rules, "special-cases", row.safeSources || []);
+  const officialSteps = documentedRule(rules, "official-steps", row.safeSources || []);
   const authority = row.authority?.name_ar || null;
   const jurisdiction = row.jurisdiction?.name_ar || null;
   const verified = Boolean(source?.source_url);
@@ -184,7 +185,8 @@ function groundedAnswer(goal: string, row: any, focus: string) {
     else { text = "الشروط التفصيلية لهذه الجزئية غير موثقة في المعرفة الرسمية الحالية؛ ما زلت محتفظًا بنفس الخدمة ولن أعيد تحديد المعاملة."; factStatus = "MISSING_INFORMATION"; }
   } else if (focus === "steps") {
     const processSteps = row.steps?.filter((s:any)=>["intake","review","approval","external","completion"].includes(String(s.taskType||""))).map((s:any)=>String(s.title||"")).filter(Boolean).slice(0,6) || [];
-    if(processSteps.length) text = "الخطوات المسجلة: " + processSteps.join(" ← ") + ".";
+    if(officialSteps?.value) text = "الخطوات المسجلة: " + officialSteps.value + ".";
+    else if(processSteps.length) text = "الخطوات المسجلة: " + processSteps.join(" ← ") + ".";
     else { text="الخطوات التفصيلية غير موثقة لهذه الخدمة حاليًا؛ الخدمة نفسها ما زالت محددة."; factStatus="MISSING_INFORMATION"; }
   } else if (focus === "link") {
     if(source?.source_url) text = "الرابط الرسمي للخدمة: " + source.source_url;
@@ -208,8 +210,11 @@ function groundedAnswer(goal: string, row: any, focus: string) {
     if (conditions?.value && !reviewPending) text += " " + conditions.value;
   }
 
+  const scopeUnresolved = Boolean(row.binding?.metadata?.source_scope_unresolved);
+  if(scopeUnresolved && special?.value && !reviewPending) text += "\nتنبيه حدود المصدر: " + special.value;
+
   // Cite the approved source of the displayed fact, preserving the primary service route and review guard.
-  const supportingRule = focus === "fees" ? fees : focus === "duration" ? duration : focus === "overview" ? conditions : null;
+  const supportingRule = focus === "fees" ? fees : focus === "duration" ? duration : focus === "overview" ? conditions : focus === "steps" ? officialSteps : null;
   const evidenceSource = (factStatus === "VERIFIED_FACT" && supportingRule
     ? (row.safeSources || []).find((candidate:any) => !candidate.review_required && supportingRule.source_refs.includes(candidate.source_url))
     : null) || source;
@@ -228,6 +233,7 @@ function groundedAnswer(goal: string, row: any, focus: string) {
       supporting_rule: supportingRule,
       document_requirements: focus === "documents" && !reviewPending && factStatus === "VERIFIED_FACT" ? row.requirements.slice(0,6) : null,
       special_case: reviewPending ? null : (special?.value || null),
+      source_scope_unresolved: scopeUnresolved,
       review_pending: reviewPending
     }
   };
