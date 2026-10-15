@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "reviewedAt": "2026-10-15",
-  "scope": "Seven existing partial records: fill recorded documents/fees/duration/conditions and source-specific steps. No new services or guaranteed end-to-end execution.",
+  "scope": "Seven existing partial records complete the four recorded detail fields; four more receive scoped documents/fees/duration while eligibility stays unverified. No new services, invented totals or guaranteed end-to-end execution.",
   "evidence": {
     "readOnlyOfficialBrowserRun": 38691429951,
     "providerSingleCheckRun": 38691200549,
@@ -111,6 +111,54 @@
         "conditions"
       ],
       "scopeNote": "LIC0001 registration step, not all company setup; source-dependent fees and prior security approval."
+    },
+    {
+      "slug": "إصدار-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "specialCases"
+      ],
+      "scopeNote": "هذه بيانات البطاقة العامة فقط؛ لم تُحسم متطلبات كل فئة. لا تستخدمها لإثبات أهلية إقامة الوالدين أو المولود أو العمل."
+    },
+    {
+      "slug": "إصدار-تأشيرة-عبر-icp-خارج-دبي",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "specialCases"
+      ],
+      "scopeNote": "البطاقة تضم أغراضًا وفئات متعددة. هذه بيانات مشتركة ومشروطة؛ لا تحسم أهلية استكشاف العمل أو الأعمال أو زيارة قريب."
+    },
+    {
+      "slug": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "specialCases"
+      ],
+      "scopeNote": "لم يُستكمل توثيق شروط كل فئة. مدد السماح تختلف باختلاف الإقامة، ولا تعني مدة الإنجاز مهلة البقاء القانونية."
+    },
+    {
+      "slug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "specialCases"
+      ],
+      "scopeNote": "تذكر البطاقة إقامة 90 يومًا وتمديدًا إلى 180، وتذكر أيضًا حد 90 يومًا في السنة. لم نحسم التعارض؛ أكد مدة الإقامة مع ICP قبل التخطيط."
     }
   ],
   "remainingSourceBoundary": "Other partial records retain unknown fields where official sources are inaccessible, do not publish the field, have conflicting statements, or do not identify the transaction subtype."

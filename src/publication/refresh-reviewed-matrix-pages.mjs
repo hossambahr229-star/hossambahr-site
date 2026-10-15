@@ -9,7 +9,7 @@ for(const record of review.records){
  const service=matrix.services.find(s=>s.slug===record.slug);
  if(!service||service.lastReviewed!==(record.reviewedAt??review.reviewedAt))throw Error('Missing reviewed source: '+record.slug);
  const file=resolve(root,'services',service.slug,'index.html');let html=await readFile(file,'utf8');
- const sections=[['requirements','(?:المتطلبات والمستندات|المستندات والمتطلبات)','<ul>'+service.requirements.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>'],['fees','الرسوم','<p>'+esc(service.fees)+'</p>'],['duration','(?:المدة المتوقعة|مدة الإنجاز)','<p>'+esc(service.duration)+'</p>'],['conditions','الشروط','<p>'+esc(service.conditions)+'</p>']];
+ const sections=[['requirements','(?:المتطلبات والمستندات|المستندات والمتطلبات)','<ul>'+service.requirements.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>'],['fees','الرسوم','<p>'+esc(service.fees)+'</p>'],['duration','(?:المدة المتوقعة|مدة الإنجاز)','<p>'+esc(service.duration)+'</p>'],['conditions','الشروط','<p>'+esc(service.conditions)+'</p>'],['specialCases','الحالات الخاصة وأسباب التعطل','<p>'+esc(service.specialCases)+'</p>']];
  for(const [field,heading,body] of sections){
   if(!record.fields.includes(field))continue;
   let matches=0;
