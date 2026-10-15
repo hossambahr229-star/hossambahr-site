@@ -18,7 +18,7 @@ for(const q of ['تجديد الاسم التجاري في الشارقة','تج
 });
 test('rank constrains explicit ICP card identity before emirate and generic renewal boosts',()=>{
 const start=source.indexOf('function rank('),end=source.indexOf('async function selectSemanticCandidate',start),body=source.slice(start,end);
-const rank=new Function('normalize','detectJurisdiction','explicitIcpEstablishmentService',stripTypeScriptTypes(body)+';return rank')(s=>s,s=>s.includes('دبي')?'AE-DU':'AE-SH',resolve);
+const rank=new Function('normalize','detectJurisdiction','explicitIcpEstablishmentService',stripTypeScriptTypes(body)+';return rank')(s=>s,actualJurisdiction,resolve);
 const slug='تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي';
 const rows=[{binding:{service_slug:'sharjah-trade-name-renewal'},authority:{authority_key:'sedd'}},{binding:{service_slug:slug},authority:{authority_key:'icp'}}];
 assert.equal(rank('رسوم تجديد بطاقة المنشأة ICP في الشارقة',rows)[0].binding.service_slug,slug);
