@@ -501,10 +501,27 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
 
 function actionCompatibility(identity:string, action:ReturnType<typeof detectAction>){if(!action)return 0;const t=normalize(identity);const map={issue:/issue|issuance|اصدار|إصدار|new/,renew:/renew|تجديد/,amend:/amend|modify|تعديل/,cancel:/cancel|cancellation|الغاء|إلغاء/,transfer:/transfer|نقل|تحويل/,sponsor:/family|sponsor|كفال|residen/};return map[action].test(t)?5:-2;}
 
+function explicitIcpEstablishmentService(goal: string) {
+  const text = normalize(goal);
+  const card = has(text, ["بطاقة منشأة","بطاقة المنشأة","establishment card"]);
+  const icp = hasPhrase(text, ["ICP","الهيئة الاتحادية للهوية والجنسية","الهيئة الاتحادية"]);
+  const competing = hasPhrase(text, ["MOHRE","GDRFA","وزارة الموارد البشرية","الإدارة العامة للإقامة"]);
+  if (!card || !icp || competing) return null;
+  const operations = [
+    [has(text, ["تجديد","اجدد","renew"]), "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي"],
+    [has(text, ["إلغاء","الغي","cancel"]), "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي"],
+    [has(text, ["تعديل","إضافة بيانات","amend","modify","update"]), "تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي"],
+    [has(text, ["إصدار","استخراج","issue","new establishment card"]), "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي"]
+  ].filter(([matched]) => matched);
+  return operations.length === 1 ? operations[0][1] as string : null;
+}
+
 function rank(goal: string, rows: any[], relationship: FamilyRelationship | null = null, action: ReturnType<typeof detectAction> = null) {
   const normalized = normalize(goal);
   const terms = normalized.split(" ").filter((t) => t.length > 1);
   const detected = detectJurisdiction(normalized);
+  const establishmentService = explicitIcpEstablishmentService(normalized);
+  if (establishmentService) return detected === "AE-DU" ? [] : rows.filter((row:any) => row.authority?.authority_key === "icp" && row.binding.service_slug === establishmentService).map((row:any) => ({...row, score:100000}));
 
   const residencyDomain = has(normalized, ["اقامه","إقامة","اقامتي","إقامتي","residence","residency"]);
   const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","ابني","ابنتي","بنتي","اولادي","ابنائي","عيالي","اسره","عائله","family","wife","spouse","parent","son","daughter","children","kids"]);
