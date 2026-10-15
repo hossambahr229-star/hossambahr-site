@@ -50,6 +50,8 @@ for (const service of registry.services) {
   const file = resolve(root, `.${service.internalRoute}`, 'index.html');
   let html = await readFile(file, 'utf8');
   const original = html;
+  // Refresh only source-reviewed native steps; keep all existing generic sections otherwise.
+  if (service.stepsReviewedAt) html=html.replace(/<section\b[^>]*\bdata-registry-steps[^>]*>[\s\S]*?<\/section>/g,'');
   const hasSteps = /<h2[^>]*>[^<]*(?:خطوات التنفيذ|خطوات الخدمة|الإجراءات)[^<]*<\/h2>/i.test(html);
   if (!hasSteps) {
     const items = (service.steps || [])

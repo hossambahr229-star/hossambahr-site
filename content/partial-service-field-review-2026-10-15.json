@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.0.0",
+  "reviewedAt": "2026-10-15",
+  "scope": "Seven existing partial records: fill recorded documents/fees/duration/conditions and source-specific steps. No new services or guaranteed end-to-end execution.",
+  "evidence": {
+    "readOnlyOfficialBrowserRun": 38691429951,
+    "providerSingleCheckRun": 38691200549,
+    "providerStatus": {
+      "at": "2026-10-15T06:14:39.181Z",
+      "httpStatus": 200,
+      "requests": 1,
+      "engines": [
+        {
+          "mode": "grounded-conversational-ai-pending",
+          "external_model_used": false
+        },
+        {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 200,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        }
+      ]
+    }
+  },
+  "records": [
+    {
+      "slug": "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions"
+      ],
+      "scopeNote": "ICP service card; keep category-specific/operation-specific fees separate; no single invented total."
+    },
+    {
+      "slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions"
+      ],
+      "scopeNote": "ICP service card; keep category-specific/operation-specific fees separate; no single invented total."
+    },
+    {
+      "slug": "تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions"
+      ],
+      "scopeNote": "ICP service card; keep category-specific/operation-specific fees separate; no single invented total."
+    },
+    {
+      "slug": "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions"
+      ],
+      "scopeNote": "ICP service card; keep category-specific/operation-specific fees separate; no single invented total."
+    },
+    {
+      "slug": "إلغاء-تأشيرة-عبر-icp-خارج-دبي",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions"
+      ],
+      "scopeNote": "ICP service card; keep category-specific/operation-specific fees separate; no single invented total."
+    },
+    {
+      "slug": "تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions"
+      ],
+      "scopeNote": "ICP service card; keep category-specific/operation-specific fees separate; no single invented total."
+    },
+    {
+      "slug": "تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة",
+      "reviewedAt": "2026-10-15",
+      "sourceUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions"
+      ],
+      "scopeNote": "LIC0001 registration step, not all company setup; source-dependent fees and prior security approval."
+    }
+  ],
+  "remainingSourceBoundary": "Other partial records retain unknown fields where official sources are inaccessible, do not publish the field, have conflicting statements, or do not identify the transaction subtype."
+}
