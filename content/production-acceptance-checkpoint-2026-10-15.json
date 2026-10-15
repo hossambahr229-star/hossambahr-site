@@ -1,21 +1,28 @@
 {
-  "updatedAt": "2026-10-15",
-  "status": "FINAL_PASS_NOT_DECLARED",
-  "sourceMergeSha": "38b2f1c746d25a9cb5abc0b845e7514180356898",
+  "updatedAt": "2026-10-16",
+  "status": "PARTIAL_VERIFIED_NO_FINAL_ACCEPTANCE",
+  "sourceMergeSha": "3aba29dc9d3ad774a2245cd454bea96341efdab4",
   "mergedPullRequests": [
     470,
     471,
     472,
     473,
-    474
+    474,
+    475,
+    476,
+    477,
+    478,
+    479,
+    480,
+    481
   ],
   "inventory": {
     "services": 202,
     "authorities": 21,
     "activities": 2610,
     "coveredEmirates": 7,
-    "fullyVerifiedDetails": 146,
-    "partiallyVerifiedDetails": 56
+    "fullyVerifiedDetails": 154,
+    "partiallyVerifiedDetails": 48
   },
   "accepted": {
     "siraOfficialSources": {
@@ -331,22 +338,129 @@
       "brokenInternalTargets": 0,
       "bilingualServiceRoutePairs": 202,
       "scope": "Public routes, source byte parity, discovery handoffs and affected browser journeys; not authenticated private execution or all government facts."
+    },
+    "reviewedServices": {
+      "completedRecordedDetailFields": 8,
+      "additionalScopedPartialFacts": 4,
+      "remainingPartial": 48,
+      "sourceReview": "content/partial-service-field-review-2026-10-15.json",
+      "architecture": {
+        "run": 38769458627,
+        "tests": 400,
+        "passed": 400,
+        "failed": 0
+      },
+      "databaseRun": 38769458179,
+      "englishRun": 38769458453,
+      "geometryRun": 38769458550,
+      "databaseDeployment": "Versioned public-fact DML was applied through the Supabase connector and queried back. CLI deployment was deferred; green deferred workflow was not used as deployment proof. Committed SQL is idempotent."
+    },
+    "reviewedNativeGrounding": {
+      "newTargetedTurns": 8,
+      "reviewedFacts": {
+        "run": 38765126445,
+        "turns": 4
+      },
+      "outsideDubai": {
+        "run": 38770173661,
+        "turns": 2
+      },
+      "fineDocuments": {
+        "run": 38768706247,
+        "attempt": 2,
+        "turns": 2,
+        "nativeStep": "PASS",
+        "overallWorkflow": "failure",
+        "failedStep": "Evidence git push conflict after successful tests",
+        "recoveredReport": "agent/live-gdrfa-fine-grounding:artifacts/live-gdrfa-fine-grounding/report.json",
+        "uploadedArtifact": "https://github.com/hossambahr229-star/hossambahr-site/actions/runs/38768706247/artifacts/11991057179"
+      },
+      "scope": "Actual public conversations; no protected account, private upload, payment or government submission. External model remained false."
+    },
+    "reviewedPublicPages": {
+      "uniqueCases": 48,
+      "services": 12,
+      "locales": [
+        "ar",
+        "en"
+      ],
+      "widths": [
+        1440,
+        320
+      ],
+      "firstElevenServices": {
+        "uniqueCases": 44,
+        "runs": [
+          38695886164,
+          38696505793,
+          38764157816
+        ],
+        "note": "Completed cases from earlier failed runs were reused; final English review explicitly selects Sharjah and preserves service, source, language, WhatsApp 971503780460 and protected workspace."
+      },
+      "fineService": {
+        "run": 38770636070,
+        "status": "PASS",
+        "cases": 4,
+        "aiRequests": 0,
+        "reusedGrounding": {
+          "run": 38768706247,
+          "attempt": 2
+        }
+      }
+    },
+    "publicationMismatchResolution": {
+      "originalRun": 38770082736,
+      "originalConclusion": "failure",
+      "originalFinding": "Only English fine page differed from materialized source during propagation; 322 byte checks and 202 bilingual service pairs otherwise passed.",
+      "targetedRun": 38771475160,
+      "targetedStatus": "PASS",
+      "sha256": "c4b08afaa9408339326569565b8d621488facd4134b342f137f02d79f93c1a2d",
+      "normalAndNoCacheAndIndexBytesMatch": true,
+      "note": "Original workflow remains failed. Current failed route was closed with exact-byte HTTP proof and native desktop/mobile cases, without replaying accepted routes."
     }
   },
   "ai": {
-    "edgeVersion": 137,
-    "bundleSha256": "7634f3f503570edd42b36b8ed063300c07f38846a39e425fab5fedb9c00b0d28",
+    "edgeVersion": 141,
+    "bundleSha256": "c64b73d837085309ba377ba73bc8dcebfefa878073d65cb85808f1b8cb96c17f",
     "externalModelUsed": false,
     "externalDependency": "QUOTA_BILLING / credit_balance_exhausted / insufficient_quota",
-    "note": "Grounded fallback is not an external-model AI PASS."
+    "currentProviderCheck": {
+      "run": 38821793032,
+      "at": "2026-10-15T23:09:39.265Z",
+      "source": "REAL_PRODUCTION_NATIVE_REQUEST",
+      "requests": 1,
+      "httpStatus": 200,
+      "engines": [
+        {
+          "mode": "grounded-conversational-ai-pending",
+          "external_model_used": false
+        },
+        {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 200,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        }
+      ],
+      "external_model_used": false,
+      "scope": "Provider status only; workflow success is not external-model acceptance."
+    },
+    "note": "400 code checks and targeted native grounding pass do not establish external-model acceptance. Edge bundle unchanged from accepted deployment."
   },
   "remaining": {
-    "pixelFidelity": "NOT_DECLARED; current overlay inspected, mean absolute difference 20.1530249 and changed pixels 13.9196325%. Clean original hero photographic asset unavailable; human acceptance absent.",
-    "authenticatedAccountsDocumentsTracking": "NOT_LIVE_VERIFIED; no authorized test credentials available; names-only workflow requires GitHub approval. Public review handoff tested without private API access.",
-    "regionalFees": "Unknown fees remain explicit; official RAK details previously unreadable/timeouts; no invented amounts."
+    "pixelFidelity": "13.906611689814815% changed pixels and MAD 20.14147087191358. Human acceptance absent; original clean hero photo unavailable. Preserved circular HB and truthful metrics; no layout zoom/scale workaround.",
+    "authenticatedAccountsDocumentsTracking": "NOT_LIVE_VERIFIED. No local test credential settings found. Names-only workflow 38047602262 remains action_required; no approval tool available. Do not create an account or use an unauthorized one.",
+    "regionalFees": "Unknown fees remain explicit; official RAK details previously unreadable/timeouts; no invented amounts.",
+    "serviceFields": "48 services retain partial fields, including four newly enriched common fact records. See qa/remaining-partial-services-2026-10-15.json. Source capture failure is not proof that a field is unpublished; no blanket external-blocker claim.",
+    "externalModel": "Current real request at 2026-10-15T23:09:39.265Z still QUOTA_BILLING, external_model_used=false. No repeated provider retries.",
+    "governmentAvailability": "Correct official public URLs are preserved. ICP popup availability was not established because navigation destroyed reading context. MOHRE PRO official card again timed out during current continuation."
   },
-  "generatedReleaseSha": "db699a2aa12fff49cf72f2a34c783b38efee073f",
-  "productionEvidenceSha": "66a329c2349ef4bb99408ad9b70ed017c2310f2e",
+  "generatedReleaseSha": "f62aa0fbda5fc4ee776ece9114e802c8455f57d7",
+  "productionEvidenceSha": "470b1efa07d1ec31ce0d93993425a790ed3fb5a6",
   "visual": {
     "geometryPassed": true,
     "viewports": [
@@ -383,11 +497,18 @@
         "height": 800
       }
     ],
-    "meanAbsolutePixelDifference": 20.153024932484566,
-    "changedPixelPercent": 13.919632523148149,
+    "meanAbsolutePixelDifference": 20.14147087191358,
+    "changedPixelPercent": 13.906611689814815,
     "pixelFidelity": "NOT_DECLARED",
     "humanVisualAcceptance": "NOT_ACCEPTED",
     "previewBranch": "agent/preview-current-production-comparison",
-    "review": "Overlay inspected. Remaining text/icon/photographic and hierarchy differences prevent declaring near-identical visual acceptance."
+    "review": "Overlay inspected. Remaining text/icon/photographic and hierarchy differences prevent declaring near-identical visual acceptance.",
+    "evidenceRelease": "f62aa0fbda5fc4ee776ece9114e802c8455f57d7"
+  },
+  "continuation": {
+    "noRestart": true,
+    "preserveAcceptedChecks": true,
+    "localCheckout": "work/hossambahr-site is old and dirty at b898040. It was inspected, not changed or reset. Use current GitHub main or an isolated checkout.",
+    "next": "Only remaining source-field gaps, reference fidelity/human acceptance, provider restoration and authorized accounts/documents execution remain open."
   }
 }
