@@ -1,0 +1,238 @@
+{
+  "at": "2026-10-15T16:35:21.631Z",
+  "status": "IN_PROGRESS",
+  "turns": [
+    {
+      "locale": "ar",
+      "index": 0,
+      "message": "رسوم تجديد بطاقة المنشأة لدى ICP خارج دبي",
+      "httpStatus": 200,
+      "answer": {
+        "text": "100 درهم لكل سنة تجديد، و1000 لاشتراك النظام و100 خدمات ذكية. يظهر رسم طلب 100 لفئة في البطاقة؛ حدد الفئة ولا تعتبر البنود إجماليًا موحدًا.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "source_title": "تجديد بطاقة المنشأة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "100 درهم لكل سنة تجديد، و1000 لاشتراك النظام و100 خدمات ذكية. يظهر رسم طلب 100 لفئة في البطاقة؛ حدد الفئة ولا تعتبر البنود إجماليًا موحدًا.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "matches": [
+        {
+          "service_slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "service_name": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
+          "service_name_en": "Renew an Establishment Card through ICP outside Dubai",
+          "service_url": "/services/%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D8%A8%D8%B7%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/",
+          "jurisdiction": {
+            "code": "AE",
+            "name_ar": "الإمارات العربية المتحدة",
+            "name_en": "United Arab Emirates"
+          },
+          "authority": {
+            "key": "icp",
+            "name_ar": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ",
+            "name_en": "ICP",
+            "public_url": "/authorities/icp/"
+          },
+          "requirements": [
+            "الرخصة وشركاء LLC، تفويض التوقيع، وعقد الشراكة والمتطلبات المحلية بحسب الفئة.",
+            "للجهة الحكومية: مرسوم التأسيس وقرار المجلس وخطاب الطلب والتفويض."
+          ],
+          "general_documents": [
+            "الرخصة وشركاء LLC، تفويض التوقيع، وعقد الشراكة والمتطلبات المحلية بحسب الفئة.",
+            "للجهة الحكومية: مرسوم التأسيس وقرار المجلس وخطاب الطلب والتفويض."
+          ],
+          "main_steps": [
+            "تأكيد بيانات الطلب والحالة",
+            "مراجعة اكتمال المستندات والمتطلبات",
+            "اعتماد الانتقال إلى مسار التنفيذ",
+            "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+            "توثيق النتيجة وإغلاق المعاملة"
+          ],
+          "conditions": [
+            "رخصة سارية وسداد الغرامات واستكمال النواقص. أبلغ الهيئة بتغييرات بيانات المنشأة."
+          ],
+          "official_source": {
+            "title": "تجديد بطاقة المنشأة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+            "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+            "last_verified_at": "2026-10-01T22:19:32.894064+00:00"
+          }
+        }
+      ],
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "context": {
+        "expires_at": 1792083915381,
+        "original_goal": "رسوم تجديد بطاقة المنشأة لدى ICP خارج دبي",
+        "resolved_query": "رسوم تجديد بطاقة المنشأة لدى ICP خارج دبي",
+        "answers": [],
+        "service_slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "active_service_id": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "jurisdiction_code": "AE",
+        "authority_key": "icp",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": "renew",
+        "subject_role": null,
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "رسوم تجديد بطاقة المنشأة لدى ICP خارج دبي"
+          },
+          {
+            "role": "assistant",
+            "content": "100 درهم لكل سنة تجديد، و1000 لاشتراك النظام و100 خدمات ذكية. يظهر رسم طلب 100 لفئة في البطاقة؛ حدد الفئة ولا تعتبر البنود إجماليًا موحدًا."
+          }
+        ]
+      }
+    },
+    {
+      "locale": "en",
+      "index": 0,
+      "message": "Fees to renew establishment card through ICP outside Dubai",
+      "httpStatus": 200,
+      "answer": {
+        "text": "AED 100 per renewal year; system subscription 1000; smart services 100. An application fee of 100 appears for a category. Confirm category; no universal total.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "source_title": "تجديد بطاقة المنشأة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "100 درهم لكل سنة تجديد، و1000 لاشتراك النظام و100 خدمات ذكية. يظهر رسم طلب 100 لفئة في البطاقة؛ حدد الفئة ولا تعتبر البنود إجماليًا موحدًا.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "matches": [
+        {
+          "service_slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "service_name": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
+          "service_name_en": "Renew an Establishment Card through ICP outside Dubai",
+          "service_url": "/services/%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D8%A8%D8%B7%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/",
+          "jurisdiction": {
+            "code": "AE",
+            "name_ar": "الإمارات العربية المتحدة",
+            "name_en": "United Arab Emirates"
+          },
+          "authority": {
+            "key": "icp",
+            "name_ar": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ",
+            "name_en": "ICP",
+            "public_url": "/authorities/icp/"
+          },
+          "requirements": [
+            "الرخصة وشركاء LLC، تفويض التوقيع، وعقد الشراكة والمتطلبات المحلية بحسب الفئة.",
+            "للجهة الحكومية: مرسوم التأسيس وقرار المجلس وخطاب الطلب والتفويض."
+          ],
+          "general_documents": [
+            "الرخصة وشركاء LLC، تفويض التوقيع، وعقد الشراكة والمتطلبات المحلية بحسب الفئة.",
+            "للجهة الحكومية: مرسوم التأسيس وقرار المجلس وخطاب الطلب والتفويض."
+          ],
+          "main_steps": [
+            "تأكيد بيانات الطلب والحالة",
+            "مراجعة اكتمال المستندات والمتطلبات",
+            "اعتماد الانتقال إلى مسار التنفيذ",
+            "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+            "توثيق النتيجة وإغلاق المعاملة"
+          ],
+          "conditions": [
+            "رخصة سارية وسداد الغرامات واستكمال النواقص. أبلغ الهيئة بتغييرات بيانات المنشأة."
+          ],
+          "official_source": {
+            "title": "تجديد بطاقة المنشأة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+            "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+            "last_verified_at": "2026-10-01T22:19:32.894064+00:00"
+          }
+        }
+      ],
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "context": {
+        "expires_at": 1792083921586,
+        "original_goal": "Fees to renew establishment card through ICP outside Dubai",
+        "resolved_query": "Fees to renew establishment card through ICP outside Dubai",
+        "answers": [],
+        "service_slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "active_service_id": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "jurisdiction_code": "AE",
+        "authority_key": "icp",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": "renew",
+        "subject_role": "company",
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "Fees to renew establishment card through ICP outside Dubai"
+          },
+          {
+            "role": "assistant",
+            "content": "AED 100 per renewal year; system subscription 1000; smart services 100. An application fee of 100 appears for a category. Confirm category; no universal total."
+          }
+        ]
+      }
+    }
+  ]
+}
