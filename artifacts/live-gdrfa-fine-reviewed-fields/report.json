@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-15T16:43:28.184Z",
+  "status": "PASS",
+  "scope": "Four real affected service pages and two new public grounded document answers; no account, private upload, payment or government submission.",
+  "cases": [
+    {
+      "locale": "ar",
+      "width": 1440,
+      "governmentUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "explicitNoDocuments": true,
+      "fineStillPayable": true,
+      "overflow": false,
+      "pageErrors": []
+    },
+    {
+      "locale": "ar",
+      "width": 320,
+      "governmentUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "explicitNoDocuments": true,
+      "fineStillPayable": true,
+      "overflow": false,
+      "pageErrors": []
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "governmentUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "explicitNoDocuments": true,
+      "fineStillPayable": true,
+      "overflow": false,
+      "pageErrors": []
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "governmentUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
+      "explicitNoDocuments": true,
+      "fineStillPayable": true,
+      "overflow": false,
+      "pageErrors": []
+    }
+  ],
+  "turns": [],
+  "aiRequests": 0,
+  "reusedGrounding": {
+    "run": 38768706247,
+    "attempt": 2,
+    "scope": "Both native document answers already passed; workflow artifact push failure was recovered without replay."
+  }
+}
