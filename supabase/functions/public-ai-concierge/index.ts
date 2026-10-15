@@ -511,7 +511,7 @@ function explicitIcpEstablishmentService(goal: string) {
     [has(text, ["تجديد","اجدد","renew"]), "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي"],
     [has(text, ["إلغاء","الغي","cancel"]), "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي"],
     [has(text, ["تعديل","إضافة بيانات","amend","modify","update"]), "تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي"],
-    [has(text, ["إصدار","استخراج","issue","new establishment card"]), "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي"]
+    [hasPhrase(text, ["إصدار","استخراج","issue","new establishment card"]), "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي"]
   ].filter(([matched]) => matched);
   return operations.length === 1 ? operations[0][1] as string : null;
 }
