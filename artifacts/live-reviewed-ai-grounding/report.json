@@ -1,0 +1,482 @@
+{
+  "at": "2026-10-15T16:00:07.482Z",
+  "status": "PASS",
+  "source": "REAL_PRODUCTION_NATIVE_AI_CONVERSATIONS",
+  "scope": "Four targeted turns validate new grounded facts, official procedures, policy version 2, source uncertainty and conversation service context. External-model status is reported separately.",
+  "requests": 4,
+  "turns": [
+    {
+      "locale": "ar",
+      "index": 0,
+      "message": "رسوم تجديد بطاقة المنشأة لدى الهيئة الاتحادية ICP في الشارقة",
+      "httpStatus": 200,
+      "answer": {
+        "text": "100 درهم لكل سنة تجديد، و1000 لاشتراك النظام و100 خدمات ذكية. يظهر رسم طلب 100 لفئة في البطاقة؛ حدد الفئة ولا تعتبر البنود إجماليًا موحدًا.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "source_title": "تجديد بطاقة المنشأة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "100 درهم لكل سنة تجديد، و1000 لاشتراك النظام و100 خدمات ذكية. يظهر رسم طلب 100 لفئة في البطاقة؛ حدد الفئة ولا تعتبر البنود إجماليًا موحدًا.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "matches": [
+        {
+          "service_slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "service_name": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
+          "service_name_en": "Renew an Establishment Card through ICP outside Dubai",
+          "service_url": "/services/%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D8%A8%D8%B7%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/",
+          "jurisdiction": {
+            "code": "AE",
+            "name_ar": "الإمارات العربية المتحدة",
+            "name_en": "United Arab Emirates"
+          },
+          "authority": {
+            "key": "icp",
+            "name_ar": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ",
+            "name_en": "ICP",
+            "public_url": "/authorities/icp/"
+          },
+          "requirements": [
+            "الرخصة وشركاء LLC، تفويض التوقيع، وعقد الشراكة والمتطلبات المحلية بحسب الفئة.",
+            "للجهة الحكومية: مرسوم التأسيس وقرار المجلس وخطاب الطلب والتفويض."
+          ],
+          "general_documents": [
+            "الرخصة وشركاء LLC، تفويض التوقيع، وعقد الشراكة والمتطلبات المحلية بحسب الفئة.",
+            "للجهة الحكومية: مرسوم التأسيس وقرار المجلس وخطاب الطلب والتفويض."
+          ],
+          "main_steps": [
+            "تأكيد بيانات الطلب والحالة",
+            "مراجعة اكتمال المستندات والمتطلبات",
+            "اعتماد الانتقال إلى مسار التنفيذ",
+            "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+            "توثيق النتيجة وإغلاق المعاملة"
+          ],
+          "conditions": [
+            "رخصة سارية وسداد الغرامات واستكمال النواقص. أبلغ الهيئة بتغييرات بيانات المنشأة."
+          ],
+          "official_source": {
+            "title": "تجديد بطاقة المنشأة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+            "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+            "last_verified_at": "2026-10-01T22:19:32.894064+00:00"
+          }
+        }
+      ],
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "context": {
+        "expires_at": 1792081794890,
+        "original_goal": "رسوم تجديد بطاقة المنشأة لدى الهيئة الاتحادية ICP في الشارقة",
+        "resolved_query": "رسوم تجديد بطاقة المنشأة لدى الهيئة الاتحادية ICP في الشارقة",
+        "answers": [],
+        "service_slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "active_service_id": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "jurisdiction_code": "AE-SH",
+        "authority_key": "icp",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": "renew",
+        "subject_role": null,
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "رسوم تجديد بطاقة المنشأة لدى الهيئة الاتحادية ICP في الشارقة"
+          },
+          {
+            "role": "assistant",
+            "content": "100 درهم لكل سنة تجديد، و1000 لاشتراك النظام و100 خدمات ذكية. يظهر رسم طلب 100 لفئة في البطاقة؛ حدد الفئة ولا تعتبر البنود إجماليًا موحدًا."
+          }
+        ]
+      }
+    },
+    {
+      "locale": "ar",
+      "index": 1,
+      "message": "والخطوات؟",
+      "httpStatus": 200,
+      "answer": {
+        "text": "الخطوات المسجلة: ادخل إلى قناة ICP الرسمية وحدد فئة المنشأة. ← راجع البيانات وأرفق المستندات التي لم يسترجعها الربط. ← راجع الرسوم المشروطة وسدد ما ينطبق. ← تابع قرار الهيئة وإصدار البطاقة أو تحديثها..",
+        "focus": "steps",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "source_title": "تجديد بطاقة المنشأة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "ادخل إلى قناة ICP الرسمية وحدد فئة المنشأة. ← راجع البيانات وأرفق المستندات التي لم يسترجعها الربط. ← راجع الرسوم المشروطة وسدد ما ينطبق. ← تابع قرار الهيئة وإصدار البطاقة أو تحديثها.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "ICP",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "matches": [
+        {
+          "service_slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+          "service_name": "تجديد بطاقة المنشأة عبر ICP (خارج دبي)",
+          "service_name_en": "Renew an Establishment Card through ICP outside Dubai",
+          "service_url": "/services/%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D8%A8%D8%B7%D8%A7%D9%82%D8%A9-%D8%A7%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/",
+          "jurisdiction": {
+            "code": "AE",
+            "name_ar": "الإمارات العربية المتحدة",
+            "name_en": "United Arab Emirates"
+          },
+          "authority": {
+            "key": "icp",
+            "name_ar": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ",
+            "name_en": "ICP",
+            "public_url": "/authorities/icp/"
+          },
+          "requirements": [
+            "الرخصة وشركاء LLC، تفويض التوقيع، وعقد الشراكة والمتطلبات المحلية بحسب الفئة.",
+            "للجهة الحكومية: مرسوم التأسيس وقرار المجلس وخطاب الطلب والتفويض."
+          ],
+          "general_documents": [
+            "الرخصة وشركاء LLC، تفويض التوقيع، وعقد الشراكة والمتطلبات المحلية بحسب الفئة.",
+            "للجهة الحكومية: مرسوم التأسيس وقرار المجلس وخطاب الطلب والتفويض."
+          ],
+          "main_steps": [
+            "تأكيد بيانات الطلب والحالة",
+            "مراجعة اكتمال المستندات والمتطلبات",
+            "اعتماد الانتقال إلى مسار التنفيذ",
+            "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+            "توثيق النتيجة وإغلاق المعاملة"
+          ],
+          "conditions": [
+            "رخصة سارية وسداد الغرامات واستكمال النواقص. أبلغ الهيئة بتغييرات بيانات المنشأة."
+          ],
+          "official_source": {
+            "title": "تجديد بطاقة المنشأة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+            "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e",
+            "last_verified_at": "2026-10-01T22:19:32.894064+00:00"
+          }
+        }
+      ],
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "context": {
+        "expires_at": 1792081797436,
+        "original_goal": "رسوم تجديد بطاقة المنشأة لدى الهيئة الاتحادية ICP في الشارقة",
+        "resolved_query": "رسوم تجديد بطاقة المنشأة لدى الهيئة الاتحادية ICP في الشارقة — والخطوات؟",
+        "answers": [
+          "والخطوات؟"
+        ],
+        "service_slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "active_service_id": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "jurisdiction_code": "AE-SH",
+        "authority_key": "icp",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": "renew",
+        "subject_role": null,
+        "last_answer_topic": "steps",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "رسوم تجديد بطاقة المنشأة لدى الهيئة الاتحادية ICP في الشارقة"
+          },
+          {
+            "role": "assistant",
+            "content": "100 درهم لكل سنة تجديد، و1000 لاشتراك النظام و100 خدمات ذكية. يظهر رسم طلب 100 لفئة في البطاقة؛ حدد الفئة ولا تعتبر البنود إجماليًا موحدًا."
+          },
+          {
+            "role": "user",
+            "content": "والخطوات؟"
+          },
+          {
+            "role": "assistant",
+            "content": "الخطوات المسجلة: ادخل إلى قناة ICP الرسمية وحدد فئة المنشأة. ← راجع البيانات وأرفق المستندات التي لم يسترجعها الربط. ← راجع الرسوم المشروطة وسدد ما ينطبق. ← تابع قرار الهيئة وإصدار البطاقة أو تحديثها.."
+          }
+        ]
+      }
+    },
+    {
+      "locale": "en",
+      "index": 0,
+      "message": "What are the fees for the five-year multiple-entry tourist visa through ICP?",
+      "httpStatus": 200,
+      "answer": {
+        "text": "AED 100 application, 500 issuance, 100 smart services, financial guarantee 3000 and deposit fee 20. Guarantee is separate from fees.\nOfficial source limits: The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+          "policy_version": 2,
+          "workflow_key": "service:إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+          "source_title": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": {
+            "value": "100 درهم طلب، 500 إصدار، 100 خدمات ذكية، وضمان مالي 3000 و20 رسم إيداع؛ افصل الضمان عن الرسوم.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "تذكر البطاقة إقامة 90 يومًا وتمديدًا إلى 180، وتذكر أيضًا حد 90 يومًا في السنة. لم نحسم التعارض؛ أكد مدة الإقامة مع ICP قبل التخطيط.",
+          "source_scope_unresolved": true,
+          "review_pending": false
+        }
+      },
+      "matches": [
+        {
+          "service_slug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+          "service_name": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP",
+          "service_name_en": "Issue a Five-Year Multiple-Entry Tourist Visa through ICP",
+          "service_url": "/services/%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%B3%D9%8A%D8%A7%D8%AD%D9%8A%D8%A9-%D9%85%D8%AA%D8%B9%D8%AF%D8%AF%D8%A9-%D8%A7%D9%84%D8%AF%D8%AE%D9%88%D9%84-%D9%84%D9%85%D8%AF%D8%A9-5-%D8%B3%D9%86%D9%88%D8%A7%D8%AA-%D8%B9%D8%A8%D8%B1-icp/",
+          "jurisdiction": {
+            "code": "AE",
+            "name_ar": "الإمارات العربية المتحدة",
+            "name_en": "United Arab Emirates"
+          },
+          "authority": {
+            "key": "icp",
+            "name_ar": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ",
+            "name_en": "ICP",
+            "public_url": "/authorities/icp/"
+          },
+          "requirements": [
+            "جواز وصورة؛ كشف ستة أشهر برصيد 4000 دولار أو ما يعادله؛ تذكرة عودة وإثبات سكن.",
+            "نسخة هوية شخصية للأفغان والإيرانيين والعراقيين وفق البطاقة."
+          ],
+          "general_documents": [
+            "جواز وصورة؛ كشف ستة أشهر برصيد 4000 دولار أو ما يعادله؛ تذكرة عودة وإثبات سكن."
+          ],
+          "main_steps": [
+            "تأكيد بيانات الطلب والحالة",
+            "مراجعة اكتمال المستندات والمتطلبات",
+            "اعتماد الانتقال إلى مسار التنفيذ",
+            "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+            "توثيق النتيجة وإغلاق المعاملة"
+          ],
+          "conditions": [],
+          "official_source": {
+            "title": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+            "url": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+            "last_verified_at": "2026-10-01T22:19:32.894064+00:00"
+          }
+        }
+      ],
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "context": {
+        "expires_at": 1792081802464,
+        "original_goal": "What are the fees for the five-year multiple-entry tourist visa through ICP?",
+        "resolved_query": "What are the fees for the five-year multiple-entry tourist visa through ICP?",
+        "answers": [],
+        "service_slug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+        "active_service_id": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+        "jurisdiction_code": "AE",
+        "authority_key": "icp",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": "issue",
+        "subject_role": null,
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "What are the fees for the five-year multiple-entry tourist visa through ICP?"
+          },
+          {
+            "role": "assistant",
+            "content": "AED 100 application, 500 issuance, 100 smart services, financial guarantee 3000 and deposit fee 20. Guarantee is separate from fees.\nOfficial source limits: The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning."
+          }
+        ]
+      }
+    },
+    {
+      "locale": "en",
+      "index": 1,
+      "message": "What are the conditions?",
+      "httpStatus": 200,
+      "answer": {
+        "text": "Detailed conditions are not verified in the current record. I have kept the same service in this conversation.\nOfficial source limits: The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning.",
+        "focus": "conditions",
+        "fact_status": "MISSING_INFORMATION",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+          "policy_version": 2,
+          "workflow_key": "service:إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+          "source_title": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+          "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+          "supporting_rule": null,
+          "document_requirements": null,
+          "special_case": "تذكر البطاقة إقامة 90 يومًا وتمديدًا إلى 180، وتذكر أيضًا حد 90 يومًا في السنة. لم نحسم التعارض؛ أكد مدة الإقامة مع ICP قبل التخطيط.",
+          "source_scope_unresolved": true,
+          "review_pending": false
+        }
+      },
+      "matches": [
+        {
+          "service_slug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+          "service_name": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP",
+          "service_name_en": "Issue a Five-Year Multiple-Entry Tourist Visa through ICP",
+          "service_url": "/services/%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%B3%D9%8A%D8%A7%D8%AD%D9%8A%D8%A9-%D9%85%D8%AA%D8%B9%D8%AF%D8%AF%D8%A9-%D8%A7%D9%84%D8%AF%D8%AE%D9%88%D9%84-%D9%84%D9%85%D8%AF%D8%A9-5-%D8%B3%D9%86%D9%88%D8%A7%D8%AA-%D8%B9%D8%A8%D8%B1-icp/",
+          "jurisdiction": {
+            "code": "AE",
+            "name_ar": "الإمارات العربية المتحدة",
+            "name_en": "United Arab Emirates"
+          },
+          "authority": {
+            "key": "icp",
+            "name_ar": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ",
+            "name_en": "ICP",
+            "public_url": "/authorities/icp/"
+          },
+          "requirements": [
+            "جواز وصورة؛ كشف ستة أشهر برصيد 4000 دولار أو ما يعادله؛ تذكرة عودة وإثبات سكن.",
+            "نسخة هوية شخصية للأفغان والإيرانيين والعراقيين وفق البطاقة."
+          ],
+          "general_documents": [
+            "جواز وصورة؛ كشف ستة أشهر برصيد 4000 دولار أو ما يعادله؛ تذكرة عودة وإثبات سكن."
+          ],
+          "main_steps": [
+            "تأكيد بيانات الطلب والحالة",
+            "مراجعة اكتمال المستندات والمتطلبات",
+            "اعتماد الانتقال إلى مسار التنفيذ",
+            "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+            "توثيق النتيجة وإغلاق المعاملة"
+          ],
+          "conditions": [],
+          "official_source": {
+            "title": "إصدار تأشيرة سياحية متعددة الدخول لمدة 5 سنوات عبر ICP — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+            "url": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+            "last_verified_at": "2026-10-01T22:19:32.894064+00:00"
+          }
+        }
+      ],
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "context": {
+        "expires_at": 1792081807399,
+        "original_goal": "What are the fees for the five-year multiple-entry tourist visa through ICP?",
+        "resolved_query": "What are the fees for the five-year multiple-entry tourist visa through ICP? — What are the conditions?",
+        "answers": [
+          "What are the conditions?"
+        ],
+        "service_slug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+        "active_service_id": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+        "jurisdiction_code": "AE",
+        "authority_key": "icp",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": "issue",
+        "subject_role": null,
+        "last_answer_topic": "conditions",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "What are the fees for the five-year multiple-entry tourist visa through ICP?"
+          },
+          {
+            "role": "assistant",
+            "content": "AED 100 application, 500 issuance, 100 smart services, financial guarantee 3000 and deposit fee 20. Guarantee is separate from fees.\nOfficial source limits: The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning."
+          },
+          {
+            "role": "user",
+            "content": "What are the conditions?"
+          },
+          {
+            "role": "assistant",
+            "content": "Detailed conditions are not verified in the current record. I have kept the same service in this conversation.\nOfficial source limits: The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning."
+          }
+        ]
+      }
+    }
+  ]
+}
