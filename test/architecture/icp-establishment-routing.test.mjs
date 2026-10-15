@@ -22,4 +22,6 @@ const slug='تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي';
 const rows=[{binding:{service_slug:'sharjah-trade-name-renewal'},authority:{authority_key:'sedd'}},{binding:{service_slug:slug},authority:{authority_key:'icp'}}];
 assert.equal(rank('رسوم تجديد بطاقة المنشأة ICP في الشارقة',rows)[0].binding.service_slug,slug);
 assert.deepEqual(rank('تجديد بطاقة المنشأة ICP في دبي',rows),[]);
+assert.equal(rank('تجديد بطاقة المنشأة ICP خارج دبي',rows)[0].binding.service_slug,slug);
+assert.equal(rank('Renew establishment card through ICP outside Dubai',rows)[0].binding.service_slug,slug);
 });

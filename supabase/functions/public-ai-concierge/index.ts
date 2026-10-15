@@ -521,7 +521,8 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const terms = normalized.split(" ").filter((t) => t.length > 1);
   const detected = detectJurisdiction(normalized);
   const establishmentService = explicitIcpEstablishmentService(normalized);
-  if (establishmentService) return detected === "AE-DU" ? [] : rows.filter((row:any) => row.authority?.authority_key === "icp" && row.binding.service_slug === establishmentService).map((row:any) => ({...row, score:100000}));
+  const establishmentJurisdiction = establishmentService ? detectJurisdiction(normalized.replace(/outside dubai|خارج دبي/g, "")) : detected;
+  if (establishmentService) return establishmentJurisdiction === "AE-DU" ? [] : rows.filter((row:any) => row.authority?.authority_key === "icp" && row.binding.service_slug === establishmentService).map((row:any) => ({...row, score:100000}));
 
   const residencyDomain = has(normalized, ["اقامه","إقامة","اقامتي","إقامتي","residence","residency"]);
   const familyDomain = has(normalized, ["زوجه","زوجتي","زوج","والد","والدتي","والدين","ابني","ابنتي","بنتي","اولادي","ابنائي","عيالي","اسره","عائله","family","wife","spouse","parent","son","daughter","children","kids"]);
