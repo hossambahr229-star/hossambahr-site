@@ -6,8 +6,8 @@
     "services": 202,
     "verified": 202,
     "officialLinksVerified": 202,
-    "fullyVerifiedDetails": 153,
-    "partiallyVerifiedDetails": 49,
+    "fullyVerifiedDetails": 154,
+    "partiallyVerifiedDetails": 48,
     "pendingVerification": 0,
     "authorities": 21,
     "emirates": [
@@ -28343,9 +28343,26 @@
         "والتقارير"
       ],
       "description": "سداد الغرامة المالية المستحقة على مخالف قانون دخول وإقامة الأجانب في دبي.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "The official service card requires no documents."
+          ],
+          "fees": "The service has no service fee. Only the outstanding fine is collected.",
+          "duration": "48 hours, as stated on the official service card.",
+          "eligibility": "The official service card lists no additional conditions. The authority determines the outstanding fine.",
+          "steps": [
+            "Visit an Amer centre during its official working hours.",
+            "Take a queue ticket and wait for the service employee.",
+            "Submit the fine-collection request; the card requires no documents.",
+            "Pay the outstanding fine and follow the application-status notification."
+          ]
+        }
+      },
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [],
+        "noDocumentsRequired": true
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
@@ -28359,34 +28376,30 @@
         "status": "PUBLISHED_OR_CONDITIONAL",
         "text": "48 ساعة وفق بطاقة الخدمة."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "لا تفرض بطاقة الخدمة الرسمية شروطًا إضافية لهذه الخدمة؛ يظل مبلغ الغرامة المستحق محددًا لدى الجهة.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "زر مركز آمر خلال ساعات العمل الرسمية.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "احصل على تذكرة الدور وانتظر الموظف المختص.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "قدم طلب تحصيل الغرامة للموظف؛ البطاقة لا تطلب مستندات.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "سدد مبلغ الغرامة المستحق وتابع إشعار حالة الطلب.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-15",
       "faq": [
         {
           "question": "ما الرسوم؟",
@@ -28415,22 +28428,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": true,
         "durationVerified": true,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 2,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-10-09",
+        "dataLastReviewedAt": "2026-10-15",
         "sourceAuthority": "gdrfa-dubai",
         "sourceUrl": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-10-09",
-      "lastReviewedAt": "2026-10-09",
+      "lastUpdated": "2026-10-15",
+      "lastReviewedAt": "2026-10-15",
       "internalRoute": "/services/سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي/",
       "sourceRegistry": "service-matrix"
     },
