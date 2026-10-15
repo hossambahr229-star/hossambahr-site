@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-15T06:14:39.181Z",
+  "httpStatus": 200,
+  "requests": 1,
+  "engines": [
+    {
+      "mode": "grounded-conversational-ai-pending",
+      "external_model_used": false
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 200,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    }
+  ]
+}
