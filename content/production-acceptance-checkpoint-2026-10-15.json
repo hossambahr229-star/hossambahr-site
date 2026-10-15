@@ -1,0 +1,393 @@
+{
+  "updatedAt": "2026-10-15",
+  "status": "FINAL_PASS_NOT_DECLARED",
+  "sourceMergeSha": "38b2f1c746d25a9cb5abc0b845e7514180356898",
+  "mergedPullRequests": [
+    470,
+    471,
+    472,
+    473,
+    474
+  ],
+  "inventory": {
+    "services": 202,
+    "authorities": 21,
+    "activities": 2610,
+    "coveredEmirates": 7,
+    "fullyVerifiedDetails": 146,
+    "partiallyVerifiedDetails": 56
+  },
+  "accepted": {
+    "siraOfficialSources": {
+      "run": 38532906510,
+      "scope": "Four official Arabic/English SIRA source pages reviewed in Chrome; activity licence and system certification remain distinct."
+    },
+    "siraMobileAndContext": {
+      "run": 38594937969,
+      "reusedDesktopCasesRun": 38592801097,
+      "scope": "AR/EN 1440/1366/430/390/360/320 entry controls; locale/pathways; two five-turn conversations; role switch."
+    },
+    "siraDirectory": {
+      "run": 38594492741,
+      "scope": "Eight exact SIRA queries in both directories, native homepage searches, remaining five exact AI formulations."
+    },
+    "mobileOcclusionAndReview": {
+      "run": 38597672676,
+      "scope": "Eight mobile scroll sweeps plus two desktops; AR320/EN390 native clarification and unknown Sharjah handoff; no private API requests."
+    },
+    "directoryRepair": {
+      "pr": 474,
+      "ciRun": 38688140191,
+      "liveRun": 38688364354,
+      "liveReport": {
+        "at": "2026-10-15T05:45:17.110Z",
+        "status": "PASS",
+        "source": "REAL_PRODUCTION_NATIVE_FILTER_CLICKS",
+        "runtimeSha256": "f8374bc827ac815e205a2e821ec0d059f2f2cb8b9730686397618c102cdadea7",
+        "checks": [
+          {
+            "emirate": "دبي",
+            "cards": [
+              {
+                "emirate": "دبي",
+                "route": "/services/cancel-residency-permit-uae/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/family-residency-uae/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/golden-residency-uae/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/تعديل-الوضع-داخل-الدولة-في-دبي/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/تأشيرة-سياحية-لدخول-واحد-في-دبي/"
+              },
+              {
+                "emirate": "دبي",
+                "route": "/services/تأشيرة-استكشاف-فرص-عمل-في-دبي/"
+              }
+            ]
+          },
+          {
+            "emirate": "أبوظبي",
+            "cards": [
+              {
+                "emirate": "أبوظبي",
+                "route": "/services/abu-dhabi-economic-initial-approval-guide/"
+              },
+              {
+                "emirate": "أبوظبي",
+                "route": "/services/abu-dhabi-economic-license-mortgage-guide/"
+              },
+              {
+                "emirate": "أبوظبي",
+                "route": "/services/abu-dhabi-business-establishment-guide/"
+              },
+              {
+                "emirate": "أبوظبي",
+                "route": "/services/abu-dhabi-economic-licensing-requirements/"
+              },
+              {
+                "emirate": "أبوظبي",
+                "route": "/services/abu-dhabi-trade-name-reservation/"
+              },
+              {
+                "emirate": "أبوظبي",
+                "route": "/services/abu-dhabi-economic-license-issuance/"
+              },
+              {
+                "emirate": "أبوظبي",
+                "route": "/services/abu-dhabi-economic-license-renewal/"
+              },
+              {
+                "emirate": "أبوظبي",
+                "route": "/services/abu-dhabi-economic-license-amendment/"
+              },
+              {
+                "emirate": "أبوظبي",
+                "route": "/services/abu-dhabi-economic-license-cancellation/"
+              }
+            ]
+          },
+          {
+            "emirate": "الشارقة",
+            "cards": [
+              {
+                "emirate": "الشارقة",
+                "route": "/services/renew-business-license-sharjah/"
+              },
+              {
+                "emirate": "الشارقة",
+                "route": "/services/sharjah-trade-name-availability-inquiry/"
+              },
+              {
+                "emirate": "الشارقة",
+                "route": "/services/sharjah-business-licensing-guide/"
+              },
+              {
+                "emirate": "الشارقة",
+                "route": "/services/sharjah-trade-name-renewal/"
+              },
+              {
+                "emirate": "الشارقة",
+                "route": "/services/sharjah-issue-trade-name/"
+              },
+              {
+                "emirate": "الشارقة",
+                "route": "/services/sharjah-economic-license-issuance/"
+              },
+              {
+                "emirate": "الشارقة",
+                "route": "/services/sharjah-economic-license-renewal/"
+              },
+              {
+                "emirate": "الشارقة",
+                "route": "/services/sharjah-economic-license-amendment/"
+              },
+              {
+                "emirate": "الشارقة",
+                "route": "/services/sharjah-economic-license-cancellation/"
+              }
+            ]
+          },
+          {
+            "emirate": "عجمان",
+            "cards": [
+              {
+                "emirate": "عجمان",
+                "route": "/services/renew-business-license-ajman/"
+              },
+              {
+                "emirate": "عجمان",
+                "route": "/services/تأسيس-منشأة-جديدة-في-عجمان/"
+              },
+              {
+                "emirate": "عجمان",
+                "route": "/services/ajman-business-activity-inquiry/"
+              },
+              {
+                "emirate": "عجمان",
+                "route": "/services/ajman-trade-name-reservation/"
+              },
+              {
+                "emirate": "عجمان",
+                "route": "/services/ajman-commercial-license-issuance/"
+              },
+              {
+                "emirate": "عجمان",
+                "route": "/services/ajman-commercial-license-renewal/"
+              },
+              {
+                "emirate": "عجمان",
+                "route": "/services/ajman-commercial-license-amendment/"
+              },
+              {
+                "emirate": "عجمان",
+                "route": "/services/ajman-commercial-license-cancellation/"
+              }
+            ]
+          },
+          {
+            "emirate": "رأس الخيمة",
+            "cards": [
+              {
+                "emirate": "رأس الخيمة",
+                "route": "/services/ras-al-khaimah-trade-name-reservation/"
+              },
+              {
+                "emirate": "رأس الخيمة",
+                "route": "/services/ras-al-khaimah-economic-initial-approval/"
+              },
+              {
+                "emirate": "رأس الخيمة",
+                "route": "/services/ras-al-khaimah-license-issuance/"
+              },
+              {
+                "emirate": "رأس الخيمة",
+                "route": "/services/ras-al-khaimah-economic-licensing-fees/"
+              },
+              {
+                "emirate": "رأس الخيمة",
+                "route": "/services/ras-al-khaimah-license-renewal/"
+              },
+              {
+                "emirate": "رأس الخيمة",
+                "route": "/services/ras-al-khaimah-license-cancellation/"
+              },
+              {
+                "emirate": "رأس الخيمة",
+                "route": "/services/ras-al-khaimah-add-remove-partner/"
+              },
+              {
+                "emirate": "رأس الخيمة",
+                "route": "/services/ras-al-khaimah-change-license-activities/"
+              }
+            ]
+          },
+          {
+            "emirate": "أم القيوين",
+            "cards": [
+              {
+                "emirate": "أم القيوين",
+                "route": "/services/umm-al-quwain-trade-name-official-path/"
+              },
+              {
+                "emirate": "أم القيوين",
+                "route": "/services/umm-al-quwain-mainland-licensing-official-path/"
+              },
+              {
+                "emirate": "أم القيوين",
+                "route": "/services/umm-al-quwain-business-services-portal/"
+              },
+              {
+                "emirate": "أم القيوين",
+                "route": "/services/umm-al-quwain-free-zone-licensing-guide/"
+              }
+            ]
+          },
+          {
+            "emirate": "الفجيرة",
+            "cards": [
+              {
+                "emirate": "الفجيرة",
+                "route": "/services/تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة/"
+              },
+              {
+                "emirate": "الفجيرة",
+                "route": "/services/fujairah-mainland-business-setup-guide/"
+              },
+              {
+                "emirate": "الفجيرة",
+                "route": "/services/fujairah-free-zone-company-registration/"
+              },
+              {
+                "emirate": "الفجيرة",
+                "route": "/services/fujairah-trade-name-reservation/"
+              },
+              {
+                "emirate": "الفجيرة",
+                "route": "/services/fujairah-economic-initial-approval/"
+              },
+              {
+                "emirate": "الفجيرة",
+                "route": "/services/fujairah-economic-license-issuance/"
+              },
+              {
+                "emirate": "الفجيرة",
+                "route": "/services/fujairah-economic-license-renewal/"
+              },
+              {
+                "emirate": "الفجيرة",
+                "route": "/services/fujairah-economic-license-amendment/"
+              },
+              {
+                "emirate": "الفجيرة",
+                "route": "/services/fujairah-economic-license-cancellation/"
+              }
+            ]
+          }
+        ],
+        "pageErrors": [],
+        "aiRequests": 0
+      }
+    },
+    "currentRelease": {
+      "publisherRun": 38688417221,
+      "productionBrowserRun": 38688417351,
+      "generatedPagesRun": 38689179681,
+      "signatureRun": 38688417276,
+      "status": "PASS",
+      "publicPages": 571,
+      "brokenInternalTargets": 0,
+      "bilingualServiceRoutePairs": 202,
+      "scope": "Public routes, source byte parity, discovery handoffs and affected browser journeys; not authenticated private execution or all government facts."
+    }
+  },
+  "ai": {
+    "edgeVersion": 137,
+    "bundleSha256": "7634f3f503570edd42b36b8ed063300c07f38846a39e425fab5fedb9c00b0d28",
+    "externalModelUsed": false,
+    "externalDependency": "QUOTA_BILLING / credit_balance_exhausted / insufficient_quota",
+    "note": "Grounded fallback is not an external-model AI PASS."
+  },
+  "remaining": {
+    "pixelFidelity": "NOT_DECLARED; current overlay inspected, mean absolute difference 20.1530249 and changed pixels 13.9196325%. Clean original hero photographic asset unavailable; human acceptance absent.",
+    "authenticatedAccountsDocumentsTracking": "NOT_LIVE_VERIFIED; no authorized test credentials available; names-only workflow requires GitHub approval. Public review handoff tested without private API access.",
+    "regionalFees": "Unknown fees remain explicit; official RAK details previously unreadable/timeouts; no invented amounts."
+  },
+  "generatedReleaseSha": "db699a2aa12fff49cf72f2a34c783b38efee073f",
+  "productionEvidenceSha": "66a329c2349ef4bb99408ad9b70ed017c2310f2e",
+  "visual": {
+    "geometryPassed": true,
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 960
+      },
+      {
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 1366,
+        "height": 768
+      },
+      {
+        "width": 1366,
+        "height": 900
+      },
+      {
+        "width": 430,
+        "height": 932
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 360,
+        "height": 800
+      }
+    ],
+    "meanAbsolutePixelDifference": 20.153024932484566,
+    "changedPixelPercent": 13.919632523148149,
+    "pixelFidelity": "NOT_DECLARED",
+    "humanVisualAcceptance": "NOT_ACCEPTED",
+    "previewBranch": "agent/preview-current-production-comparison",
+    "review": "Overlay inspected. Remaining text/icon/photographic and hierarchy differences prevent declaring near-identical visual acceptance."
+  }
+}
