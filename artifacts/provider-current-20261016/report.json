@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-15T23:09:39.265Z",
+  "source": "REAL_PRODUCTION_NATIVE_REQUEST",
+  "requests": 1,
+  "httpStatus": 200,
+  "engines": [
+    {
+      "mode": "grounded-conversational-ai-pending",
+      "external_model_used": false
+    },
+    {
+      "mode": "deterministic-policy-resolver",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "status": 200,
+        "code": "credit_balance_exhausted",
+        "type": "insufficient_quota"
+      }
+    }
+  ],
+  "external_model_used": false,
+  "scope": "Provider status only; workflow success is not external-model acceptance."
+}
