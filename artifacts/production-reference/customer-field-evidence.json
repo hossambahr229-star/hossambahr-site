@@ -2,7 +2,7 @@
   "auditedServices": 202,
   "fullyVerifiedServices": 0,
   "servicesWithMissingFields": 202,
-  "missingFieldCount": 1003,
+  "missingFieldCount": 1002,
   "status": "PARTIAL PASS",
   "scope": "Public route/source identity, canonical, locale, internal href/referrer and scoped CTA checks. This does not verify external government availability, authenticated execution, documents, eligibility correctness or human visual acceptance.",
   "records": [
@@ -9298,7 +9298,7 @@
       "id": "directory:residency:53",
       "slug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
       "source": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8",
-      "lastRecordedReview": "2026-10-09",
+      "lastRecordedReview": "2026-10-15",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -9311,7 +9311,7 @@
         "emirate": "NOT_VERIFIED",
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
-        "eligibility": "MISSING",
+        "eligibility": "VERIFIED",
         "requirements": "MISSING",
         "documents": "MISSING",
         "steps": "NOT_VERIFIED",
@@ -9336,7 +9336,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "eligibility",
         "requirements",
         "documents",
         "ai_discoverability"
