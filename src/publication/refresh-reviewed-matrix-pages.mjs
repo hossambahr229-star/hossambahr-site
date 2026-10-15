@@ -3,7 +3,9 @@ import {resolve} from 'node:path';
 const root=resolve(import.meta.dirname,'../..');
 const matrix=JSON.parse(await readFile(resolve(root,'service-matrix.json'),'utf8'));
 const reviews=await Promise.all(['content/moe-edas-field-review-2026-10-08.json','content/partial-service-field-review-2026-10-15.json'].map(async path=>JSON.parse(await readFile(resolve(root,path),'utf8'))));
-const review={records:reviews.flatMap(source=>source.records.map(record=>({...record,reviewedAt:record.reviewedAt??source.reviewedAt})))};
+const latestReviewBySlug=new Map();
+for(const source of reviews)for(const record of source.records){const dated={...record,reviewedAt:record.reviewedAt??source.reviewedAt};const previous=latestReviewBySlug.get(record.slug);if(!previous||dated.reviewedAt>=previous.reviewedAt)latestReviewBySlug.set(record.slug,dated);}
+const review={records:[...latestReviewBySlug.values()]};
 const esc=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 for(const record of review.records){
  const service=matrix.services.find(s=>s.slug===record.slug);
