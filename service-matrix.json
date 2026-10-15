@@ -1733,7 +1733,7 @@
       "conditions": "الموافقة الأمنية مطلوبة قبل تسجيل الرخصة. يلزم تحديد الملاك والاسم والنشاط. الشركة الأم بعمر 12 شهرًا على الأقل للتأهل لفرع.",
       "specialCases": "المسار يحدد الجهة ومعرّف الخدمة، وليس الصفحة الرئيسية للحكومة الرقمية.",
       "lastReviewed": "2026-10-15",
-      "reviewResult": "official_fields_reviewed",
+      "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "department_and_service_parameter",
       "loginRequired": false,
       "previousService": "/services/تأسيس-منشأة-جديدة-في-عجمان/",
@@ -1770,7 +1770,8 @@
             "Licensing team reviews data and requests missing information.",
             "After initial approval, pay requested fees and complete documents."
           ],
-          "sourceUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1"
+          "sourceUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+          "sourceLanguage": "ar"
         }
       },
       "recordedSteps": [
@@ -4582,12 +4583,15 @@
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
       "status": "verified",
       "description": "إصدار تصريح إقامة جديد للملفات التابعة للهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ خارج دبي.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
+      "requirements": [
+        "المستندات المشتركة: جواز السفر وصورة شخصية.",
+        "مرفقات إضافية بحسب الفئة، مثل التأمين الصحي والسكن والقرابة أو تصريح العمل؛ القائمة النهائية في اختيار الفئة الرسمي."
+      ],
+      "fees": "البنود العامة: 100 درهم للطلب، 100 لكل سنة إقامة، و100 خدمات ذكية. ترد رسوم وضمانات إضافية لبعض الفئات، ومنها 500 لتعديل الوضع؛ لا يوجد إجمالي موحد.",
+      "duration": "يومان وفق بطاقة إصدار الإقامة العامة؛ لا يمثل ضمان قبول فئة بعينها.",
       "conditions": "غير موثق بعد",
-      "specialCases": "ICP",
-      "lastReviewed": "2026-07-27",
+      "specialCases": "هذه بيانات البطاقة العامة فقط؛ لم تُحسم متطلبات كل فئة. لا تستخدمها لإثبات أهلية إقامة الوالدين أو المولود أو العمل.",
+      "lastReviewed": "2026-10-15",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -4610,17 +4614,28 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "البنود العامة: 100 درهم للطلب، 100 لكل سنة إقامة، و100 خدمات ذكية. ترد رسوم وضمانات إضافية لبعض الفئات، ومنها 500 لتعديل الوضع؛ لا يوجد إجمالي موحد."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان وفق بطاقة إصدار الإقامة العامة؛ لا يمثل ضمان قبول فئة بعينها."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Common: passport and photo.",
+            "Category-specific additions can include insurance, housing, kinship or work permit. Use the official category for the final checklist."
+          ],
+          "fees": "General AED items: application 100; residence 100/year; smart services 100. Some categories add fees/guarantees, including status adjustment 500. No universal total.",
+          "duration": "2 days on the general residence issuance card; not category approval assurance.",
+          "notes": "General-card facts only; category eligibility remains unverified. Do not infer parent, newborn or employment eligibility."
+        }
+      }
     },
     {
       "id": "directory:residency:8",
@@ -4723,12 +4738,15 @@
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
       "status": "verified",
       "description": "تجديد تصريح الإقامة للملفات التابعة للهيئة الاتحادية خارج دبي وفق شروط الإصدار الأصلية.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
+      "requirements": [
+        "المستندات المشتركة: جواز السفر وصورة شخصية.",
+        "بحسب الفئة: التأمين والسكن والقرابة أو المستندات المهنية؛ طابق قائمة الفئة الرسمية قبل الإرسال."
+      ],
+      "fees": "100 درهم للطلب، و100 لكل سنة تجديد، و100 للخدمات الذكية وفق البطاقة؛ الغرامات والمبالغ الأخرى لا تدخل في هذه البنود.",
+      "duration": "يومان وفق بطاقة تجديد الإقامة العامة؛ لا يمثل ضمان قبول.",
       "conditions": "غير موثق بعد",
-      "specialCases": "ICP",
-      "lastReviewed": "2026-07-27",
+      "specialCases": "لم يُستكمل توثيق شروط كل فئة. مدد السماح تختلف باختلاف الإقامة، ولا تعني مدة الإنجاز مهلة البقاء القانونية.",
+      "lastReviewed": "2026-10-15",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -4751,17 +4769,28 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "100 درهم للطلب، و100 لكل سنة تجديد، و100 للخدمات الذكية وفق البطاقة؛ الغرامات والمبالغ الأخرى لا تدخل في هذه البنود."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان وفق بطاقة تجديد الإقامة العامة؛ لا يمثل ضمان قبول."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Common: passport and photo.",
+            "Category-specific insurance, housing, kinship or professional evidence; match the official checklist."
+          ],
+          "fees": "AED 100 application, 100 per renewal year and 100 smart services. Fines/other amounts are separate.",
+          "duration": "2 days on the general residence renewal card; not approval assurance.",
+          "notes": "Category eligibility remains unverified. Grace periods vary by residence type; processing time is not permission to stay."
+        }
+      }
     },
     {
       "id": "directory:residency:11",
@@ -4995,7 +5024,7 @@
       "conditions": "خارج الدولة بعد 180 يومًا، وباقي الإقامة أكثر من 30 يومًا وسبب مقبول؛ الدخول خلال 30 يومًا من الموافقة شاملًا يومها. لا يشمل دبي. يستثني المصدر الإقامات الذهبية والخضراء والزرقاء وزوج المواطنة المكفول لديها مع إقامة سارية.",
       "specialCases": "ICP",
       "lastReviewed": "2026-10-15",
-      "reviewResult": "official_fields_reviewed",
+      "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": true,
       "previousService": "/services/تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي/",
@@ -5507,12 +5536,15 @@
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
       "status": "verified",
       "description": "إصدار تأشيرة دخول عبر بطاقة ICP الرسمية، مع اختيار الفئة والغرض الصحيحين داخل المعاملة.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
+      "requirements": [
+        "المستندات المشتركة: جواز السفر وصورة شخصية.",
+        "تختلف الإضافات حسب الغرض: مثل إثبات القرابة أو برنامج الرحلة أو التقرير الطبي؛ راجع الفئة المحددة."
+      ],
+      "fees": "لبعض فئات الزيارة: 100 درهم للطلب، وإصدار 100 للشهر للدخول الواحد أو 200 للمتعدد، و100 خدمات ذكية؛ ضمان 1000 أو 2000 و20 للإيداع بحسب الفئة. ليست تسعيرة لكل غرض تأشيرة.",
+      "duration": "يومان وفق بطاقة إصدار التأشيرة العامة؛ لا يمثل ضمان قبول.",
       "conditions": "غير موثق بعد",
-      "specialCases": "ICP",
-      "lastReviewed": "2026-07-27",
+      "specialCases": "البطاقة تضم أغراضًا وفئات متعددة. هذه بيانات مشتركة ومشروطة؛ لا تحسم أهلية استكشاف العمل أو الأعمال أو زيارة قريب.",
+      "lastReviewed": "2026-10-15",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -5535,17 +5567,28 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "لبعض فئات الزيارة: 100 درهم للطلب، وإصدار 100 للشهر للدخول الواحد أو 200 للمتعدد، و100 خدمات ذكية؛ ضمان 1000 أو 2000 و20 للإيداع بحسب الفئة. ليست تسعيرة لكل غرض تأشيرة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان وفق بطاقة إصدار التأشيرة العامة؛ لا يمثل ضمان قبول."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Common: passport and photo.",
+            "Additional evidence depends on purpose, such as kinship, itinerary or medical report; use the selected category."
+          ],
+          "fees": "Some visit categories list AED: application 100; single-entry issuance 100/month or multiple-entry 200/month; smart services 100; guarantee 1000/2000 and deposit fee 20 as applicable. Not every visa purpose.",
+          "duration": "2 days on the general visa issuance card; not approval assurance.",
+          "notes": "Multiple purposes/categories share this card. These conditional facts do not establish job/business exploration or family-visit eligibility."
+        }
+      }
     },
     {
       "id": "directory:residency:26",
@@ -5584,7 +5627,7 @@
       "conditions": "جواز صالح لأكثر من 6 أشهر. الإلغاء قبل الدخول وخلال صلاحية التأشيرة؛ استثناء التأشيرة السياحية بعد الدخول مرتبط بطلب تعديل الوضع.",
       "specialCases": "ICP",
       "lastReviewed": "2026-10-15",
-      "reviewResult": "official_fields_reviewed",
+      "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
       "previousService": "/services/إصدار-تأشيرة-عبر-icp-خارج-دبي/",
@@ -6023,12 +6066,15 @@
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
       "status": "verified",
       "description": "إصدار تأشيرة سياحية طويلة الأمد متعددة الدخول لمدة خمس سنوات من بطاقة الخدمة الرسمية المستقلة لدى ICP.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
+      "requirements": [
+        "جواز وصورة؛ كشف ستة أشهر برصيد 4000 دولار أو ما يعادله؛ تذكرة عودة وإثبات سكن.",
+        "نسخة هوية شخصية للأفغان والإيرانيين والعراقيين وفق البطاقة."
+      ],
+      "fees": "100 درهم طلب، 500 إصدار، 100 خدمات ذكية، وضمان مالي 3000 و20 رسم إيداع؛ افصل الضمان عن الرسوم.",
+      "duration": "يومان وفق البطاقة الرسمية؛ لا يمثل ضمان قبول.",
       "conditions": "غير موثق بعد",
-      "specialCases": "ICP",
-      "lastReviewed": "2026-07-27",
+      "specialCases": "تذكر البطاقة إقامة 90 يومًا وتمديدًا إلى 180، وتذكر أيضًا حد 90 يومًا في السنة. لم نحسم التعارض؛ أكد مدة الإقامة مع ICP قبل التخطيط.",
+      "lastReviewed": "2026-10-15",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": true,
@@ -6051,17 +6097,28 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "100 درهم طلب، 500 إصدار، 100 خدمات ذكية، وضمان مالي 3000 و20 رسم إيداع؛ افصل الضمان عن الرسوم."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان وفق البطاقة الرسمية؛ لا يمثل ضمان قبول."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Passport, photo, six-month statement showing USD 4000/equivalent, return ticket and accommodation evidence.",
+            "Personal ID copy for Afghanistan/Iran/Iraq applicants."
+          ],
+          "fees": "AED 100 application, 500 issuance, 100 smart services, financial guarantee 3000 and deposit fee 20. Guarantee is separate from fees.",
+          "duration": "2 days; not approval assurance.",
+          "notes": "The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning."
+        }
+      }
     },
     {
       "id": "directory:residency:33",
@@ -6537,7 +6594,7 @@
       "conditions": "رخصة سارية وهوية أو رقم موحد للمفوض. التقديم عبر مقدم معتمد؛ منشأة المنطقة الحرة تقدم عبر سلطتها.",
       "specialCases": "ICP",
       "lastReviewed": "2026-10-15",
-      "reviewResult": "official_fields_reviewed",
+      "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
       "previousService": "/services/إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي/",
@@ -6722,7 +6779,7 @@
       "conditions": "رخصة سارية وسداد الغرامات واستكمال النواقص. أبلغ الهيئة بتغييرات بيانات المنشأة.",
       "specialCases": "ICP",
       "lastReviewed": "2026-10-15",
-      "reviewResult": "official_fields_reviewed",
+      "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
       "previousService": "/services/تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
@@ -6900,7 +6957,7 @@
       "conditions": "بطاقة منشأة قائمة؛ سداد الغرامات وتسوية أوضاع العمال واستكمال النواقص وفق الحالة.",
       "specialCases": "ICP",
       "lastReviewed": "2026-10-15",
-      "reviewResult": "official_fields_reviewed",
+      "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
       "previousService": "/services/تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
@@ -7078,7 +7135,7 @@
       "conditions": "ألغ الرخصة التجارية أولًا، وسدد الغرامات وسوِّ أوضاع العمال واستكمل النواقص.",
       "specialCases": "ICP",
       "lastReviewed": "2026-10-15",
-      "reviewResult": "official_fields_reviewed",
+      "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
       "previousService": "/services/إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
