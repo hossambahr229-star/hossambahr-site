@@ -13,6 +13,10 @@ for (const route of ['index.html', 'en/index.html']) {
   let html = await readFile(file, 'utf8');
   if (!html.includes('premium-home-hero')) continue;
   html=html.replace(/src="\/premium-platform\.js(?:\?[^"]*)?"/g,'src="/premium-platform.js?v='+premiumRuntimeVersion+'"').replace(/href="\/premium-platform\.css(?:\?[^"]*)?"/g,'href="/premium-platform.css?v='+premiumRuntimeVersion+'"');
+  if(route==='index.html'){
+    html=html.replace(/(<section class="premium-featured[\s\S]*?<\/section>)/,section=>section.replace(/(<a\b[^>]*>)([^<]*)←(<\/a>)/g,'$1$2$3'));
+    html=html.replace(/(<section class="premium-how[\s\S]*?<\/ol>)/,section=>section.replace(/<span>0([1-4])<\/span>/g,'<span>$1</span>'));
+  }
   // Both localized homepages use the same scoped layout; the Arabic runtime
   // stabilizer does not visit /en/. Preserve other classes on repeated builds.
   html = html.replace(/<html\b([^>]*)>/i, (tag, attributes) => {
