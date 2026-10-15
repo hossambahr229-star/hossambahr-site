@@ -1,0 +1,40 @@
+name: Read Partial Official Service Cards
+on:
+  push:
+    branches: [agent/read-partial-official-service-cards]
+    paths:
+      - scripts/read-partial-official-service-cards.mjs
+      - .github/workflows/partial-official-service-cards.yml
+      - src/publication/generate-transaction-discovery.mjs
+      - transaction-discovery.css
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - name: Install capture runtime
+        run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - name: Read official service cards without executing transactions
+        run: HB_BASE_URL=https://hossambahr.com/ HB_BROWSER_PATH="$(which chrome)" node scripts/read-partial-official-service-cards.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: partial-official-service-cards
+          path: artifacts/partial-official-service-cards
+      - name: Preserve only new visual evidence on the diagnosis branch
+        if: always() && github.ref == 'refs/heads/agent/read-partial-official-service-cards'
+        run: |
+          git config user.name "HossamBahr Visual Diagnosis"
+          git config user.email "visual-diagnosis@users.noreply.github.com"
+          git add artifacts/partial-official-service-cards
+          if ! git diff --cached --quiet; then
+            git commit -m "Record regional live Production visual evidence [skip ci]"
+            git push origin HEAD:agent/read-partial-official-service-cards
+          fi
