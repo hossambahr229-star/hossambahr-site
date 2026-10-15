@@ -559,17 +559,19 @@
       details.append(summary, content);
       historical.append(details);
     }
+    const initialQuery=new URLSearchParams(location.search).get("q");if(initialQuery)input.value=initialQuery;
+    const canonicalRoute=value=>{try{return decodeURIComponent(String(value||""));}catch{return String(value||"");}};
     const setupControls = () => {
-    const servicesByRoute = new Map((window.HB_INTENT_SERVICES || []).map((service) => [service.u, service]));
+    const servicesByRoute = new Map((window.HB_INTENT_SERVICES || []).map((service) => [canonicalRoute(service.u), service]));
     cards.forEach((card) => {
-      const route = card.querySelector('h3 a')?.getAttribute('href');
-      const service = servicesByRoute.get(route);
+      const route = card.querySelector('h2 a,h3 a,a[href^="/services/"]')?.getAttribute('href');
+      const service = servicesByRoute.get(canonicalRoute(route));
       if (!service) return;
       card.dataset.emirate = service.m || "";
       card.dataset.authority = service.i || service.r || "";
       card.dataset.category = service.c || "";
       card.dataset.userTypes = (service.t || []).join(" ");
-      card.dataset.route = route || "";
+      card.dataset.route = canonicalRoute(route);
       const action = card.querySelector('.actions a');
       if (action) action.textContent = "عرض الخدمة";
       const title = card.querySelector("h3");
@@ -702,23 +704,25 @@
       const category = categorySelect.value;
       const authority = authoritySelect.value;
       const userType = userSelect.value;
-      const ranked = query && typeof window.HB_rankServices === "function"
+      const canRank = Boolean(query && typeof window.HB_rankServices === "function");
+      const ranked = canRank
         ? window.HB_rankServices(query, window.HB_INTENT_SERVICES || [])
         : [];
-      const rankByRoute = new Map(ranked.map((service, index) => [service.u, index]));
+      const rankByRoute = new Map(ranked.map((service, index) => [canonicalRoute(service.u), index]));
       const matches = cards.filter((card) => {
         const haystack = (card.dataset.search || card.textContent || "").toLowerCase();
-        const matchesQuery = !query || (rankByRoute.size
+        const matchesQuery = !query || (canRank
           ? rankByRoute.has(card.dataset.route)
           : query.toLowerCase().split(/\s+/).every((term) => haystack.includes(term)));
         return matchesQuery
-          && (!emirate || (card.dataset.emirate || haystack).toLowerCase().includes(emirate.toLowerCase()))
+          && (!emirate || ((card.dataset.emirate || "").includes(emirate) && !(emirate === "دبي" && /خارج دبي|عدا دبي|outside dubai/i.test(card.dataset.emirate || ""))))
           && (!category || card.dataset.category === category)
           && (!authority || card.dataset.authority === authority)
           && (!userType || (card.dataset.userTypes || "").includes(userType));
       }).sort((left, right) => query
         ? (rankByRoute.get(left.dataset.route) ?? Number.MAX_SAFE_INTEGER) - (rankByRoute.get(right.dataset.route) ?? Number.MAX_SAFE_INTEGER)
         : 0);
+      const url=new URL(location.href);if(query)url.searchParams.set("q",query);else url.searchParams.delete("q");history.replaceState(null,"",url);
       const hasCriteria = Boolean(query || emirate || category || authority || userType);
       const visibleLimit = assisted && !hasCriteria ? 6 : limit;
       cards.forEach((card) => { card.hidden = true; card.style.order = ""; });
@@ -733,6 +737,7 @@
       count.hidden = false;
       more.hidden = assisted && !hasCriteria ? true : matches.length <= visibleLimit;
     };
+    form?.addEventListener("submit",event=>{event.preventDefault();limit=12;apply();});
     input.addEventListener("input", () => { limit = 12; apply(); });
     document.getElementById("det-search-button")?.addEventListener("click", apply);
     emirateSelect.addEventListener("change", () => { limit = 12; apply(); });
