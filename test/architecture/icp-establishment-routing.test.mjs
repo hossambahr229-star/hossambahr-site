@@ -1,3 +1,4 @@
+import {detectJurisdiction as actualJurisdiction} from '../../supabase/functions/public-ai-concierge/semantic-context.ts';
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {stripTypeScriptTypes} from 'node:module';
 const source=await readFile(new URL('../../supabase/functions/public-ai-concierge/index.ts',import.meta.url),'utf8');
 const normal=source.slice(source.indexOf('function normalize('),source.indexOf('function scrubGoal('));
@@ -25,3 +26,5 @@ assert.deepEqual(rank('تجديد بطاقة المنشأة ICP في دبي',row
 assert.equal(rank('تجديد بطاقة المنشأة ICP خارج دبي',rows)[0].binding.service_slug,slug);
 assert.equal(rank('Renew establishment card through ICP outside Dubai',rows)[0].binding.service_slug,slug);
 });
+
+test('outside Dubai is an exclusion, never a Dubai jurisdiction hint',()=>{for(const text of ['تجديد بطاقة المنشأة ICP خارج دبي','Renew establishment card through ICP outside Dubai'])assert.equal(actualJurisdiction(text),null);assert.equal(actualJurisdiction('خارج إمارة دبي في عجمان'),'AE-AJ');assert.equal(actualJurisdiction('outside the emirate of Dubai in Sharjah'),'AE-SH');assert.equal(actualJurisdiction('تجديد بطاقة المنشأة في دبي'),'AE-DU');});
