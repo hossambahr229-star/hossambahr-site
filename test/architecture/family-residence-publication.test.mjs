@@ -27,6 +27,7 @@ test('reviewed Dubai family residence pages are refreshed by the production page
   await writeFile(join(temp,'src/publication/refresh-reviewed-matrix-pages.mjs'),fs.readFileSync(new URL('src/publication/refresh-reviewed-matrix-pages.mjs',root)));
   await writeFile(join(temp,'service-matrix.json'),JSON.stringify(matrix));
   await writeFile(join(temp,'content/moe-edas-field-review-2026-10-08.json'),JSON.stringify({...review,records}));
+  await writeFile(join(temp,'content/partial-service-field-review-2026-10-15.json'),JSON.stringify({reviewedAt:'2026-10-15',records:[]}));
   for(const slug of slugs){await mkdir(join(temp,'services',slug),{recursive:true});await writeFile(join(temp,'services',slug,'index.html'),'<section><h2>الرسوم</h2><p>old fee</p></section><section><h2>المدة المتوقعة</h2><p>old time</p></section><section><h2>الشروط</h2><p>preserve eligibility</p></section><details><summary>ما الرسوم؟</summary><p>old fee</p></details><details><summary>كم تستغرق المعاملة؟</summary><p>old time</p></details>');}
   execFileSync(process.execPath,[join(temp,'src/publication/refresh-reviewed-matrix-pages.mjs')]);
   for(const slug of slugs){const html=await readFile(join(temp,'services',slug,'index.html'),'utf8');const service=matrix.services.find(x=>x.slug===slug);assert.equal(html.split(service.fees).length-1,2);assert.equal(html.split(service.duration).length-1,2);assert.ok(html.includes('preserve eligibility'));assert.ok(!html.includes('old fee')&&!html.includes('old time'));}
