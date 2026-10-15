@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-15T07:08:08.834Z",
+  "status": "IN_PROGRESS",
+  "turns": [
+    {
+      "locale": "ar",
+      "index": 0,
+      "message": "رسوم تجديد بطاقة المنشأة لدى الهيئة الاتحادية ICP في الشارقة",
+      "httpStatus": 200,
+      "answer": {
+        "text": "لا توجد في المعرفة الموثقة الحالية قيمة رسوم محددة يمكنني تأكيدها لهذه الحالة. لن أضع رقمًا تقديريًا؛ راجع المصدر الرسمي أو ابدأ المعاملة للتحقق من الرسوم الحالية.",
+        "focus": "fees",
+        "fact_status": "MISSING_INFORMATION",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:sharjah-trade-name-renewal",
+          "policy_version": 1,
+          "workflow_key": "service:sharjah-trade-name-renewal",
+          "source_title": "تجديد الاسم التجاري في الشارقة",
+          "source_url": "https://sedd.ae/w/trade-name-renewal",
+          "last_verified_at": "2026-09-30T08:27:46.568831+00:00",
+          "supporting_rule": null,
+          "document_requirements": null,
+          "special_case": null,
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "matches": [
+        {
+          "service_slug": "sharjah-trade-name-renewal",
+          "service_name": "تجديد الاسم التجاري في الشارقة",
+          "service_name_en": "Trade Name Renewal",
+          "service_url": "/services/sharjah-trade-name-renewal/",
+          "jurisdiction": {
+            "code": "AE-SH",
+            "name_ar": "الشارقة",
+            "name_en": "Sharjah"
+          },
+          "authority": {
+            "key": "sharjah-ded",
+            "name_ar": "دائرة التنمية الاقتصادية في الشارقة",
+            "name_en": "Sharjah DED",
+            "public_url": "/authorities/sharjah-ded/"
+          },
+          "requirements": [
+            "شهادة الاسم التجاري أو بياناتها",
+            "بيانات صاحب الطلب أو المنشأة"
+          ],
+          "general_documents": [],
+          "main_steps": [
+            "تأكيد بيانات الطلب والحالة",
+            "مراجعة اكتمال المستندات والمتطلبات",
+            "اعتماد الانتقال إلى مسار التنفيذ",
+            "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+            "توثيق النتيجة وإغلاق المعاملة"
+          ],
+          "conditions": [
+            "تختلف الرسوم باختلاف فئة الاسم ووقت التجديد، ويجب استخدام خدمة الشارقة لا خدمة إمارة أخرى."
+          ],
+          "official_source": {
+            "title": "تجديد الاسم التجاري في الشارقة",
+            "url": "https://sedd.ae/w/trade-name-renewal",
+            "last_verified_at": "2026-09-30T08:27:46.568831+00:00"
+          }
+        }
+      ],
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    }
+  ]
+}
