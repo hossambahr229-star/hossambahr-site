@@ -82,6 +82,16 @@ function explicitDomesticAbsenceReport(goal: string) {
   return domestic && absence && report && !otherOperation;
 }
 
+function explicitIcpAuxiliaryService(goal: string) {
+  if (!hasPhrase(goal, ["icp","الهيئه الاتحاديه للهويه والجنسيه"])) return null;
+  const report = has(goal, ["تقرير تفاصيل الاقامه","residence details report","residency details report"]);
+  const finePayment = has(goal, ["غرام","fine"]) && has(goal, ["سداد","دفع","payment","pay"]) && has(goal, ["تاشيره","اقامه","visa","residence","residency"]);
+  const differentFineOperation = has(goal, ["اعفاء","تخفيض","استرداد","اعاده نظر","waiv","exempt","appeal","refund","reduc","استعلام","inquiry","check"]);
+  if (!report && (!finePayment || differentFineOperation)) return null;
+  if (has(goal, ["gdrfa"])) return "__UNVERIFIED_SCOPE__";
+  return report ? "تقرير-تفاصيل-الإقامة-عبر-icp" : "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي";
+}
+
 type SemanticState = {
   active_service_id:string|null; last_answer_topic:string|null; pending_clarification:string|null; known_facts:Record<string,unknown>;
   turn_type:"new_topic"|"follow_up"|"correction"|"clarification"|"jurisdiction_switch"|"service_switch"|"entity_switch";
@@ -538,6 +548,10 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const normalized = normalize(goal);
   const terms = normalized.split(" ").filter((t) => t.length > 1);
   const detected = detectJurisdiction(normalized);
+  const icpAuxiliary = explicitIcpAuxiliaryService(normalized);
+  if (icpAuxiliary) return detected === "AE-DU" || icpAuxiliary === "__UNVERIFIED_SCOPE__" ? [] : rows
+    .filter((row:any) => row.binding.service_slug === icpAuxiliary && row.authority?.authority_key === "icp")
+    .map((row:any) => ({...row,score:100000}));
   const goldenWorkPermit = goldenHolderWorkPermit(normalized);
   if (goldenWorkPermit) return goldenWorkPermit === "unsupported-operation" ? [] : rows
     .filter((row:any) => row.binding.service_slug === "issuance-of-a-new-work-permit-golden-visa-holders" && row.authority?.authority_key === "mohre")
