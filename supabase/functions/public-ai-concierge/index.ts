@@ -74,6 +74,14 @@ function goldenHolderWorkPermit(goal: string) {
   return has(goal, ["تجديد","اجدد","renew","تعديل","عدل","amend","modify","الغاء","الغي","cancel","نقل","transfer","بدل","replacement","replace","تمديد","extension"]) ? "unsupported-operation" : "issuance";
 }
 
+function explicitDomesticAbsenceReport(goal: string) {
+  const domestic = has(goal, ["عامل مساعد","عامله مساعده","عامله منزليه","خادمه","domestic worker","domestic helper","housemaid"]);
+  const absence = has(goal, ["انقطاع","تغيب","absent from work","absence from work","absconding"]);
+  const report = has(goal, ["بلاغ","ابلاغ","report"]);
+  const otherOperation = has(goal, ["سحب","الغاء","cancel","withdraw","remove","شكوي","complaint"]);
+  return domestic && absence && report && !otherOperation;
+}
+
 type SemanticState = {
   active_service_id:string|null; last_answer_topic:string|null; pending_clarification:string|null; known_facts:Record<string,unknown>;
   turn_type:"new_topic"|"follow_up"|"correction"|"clarification"|"jurisdiction_switch"|"service_switch"|"entity_switch";
@@ -533,6 +541,9 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const goldenWorkPermit = goldenHolderWorkPermit(normalized);
   if (goldenWorkPermit) return goldenWorkPermit === "unsupported-operation" ? [] : rows
     .filter((row:any) => row.binding.service_slug === "issuance-of-a-new-work-permit-golden-visa-holders" && row.authority?.authority_key === "mohre")
+    .map((row:any) => ({...row,score:100000}));
+  if (explicitDomesticAbsenceReport(normalized)) return rows
+    .filter((row:any) => row.binding.service_slug === "بلاغ-انقطاع-عامل-مساعد" && row.authority?.authority_key === "mohre")
     .map((row:any) => ({...row,score:100000}));
   const establishmentService = explicitIcpEstablishmentService(normalized);
   if (establishmentService) return detected === "AE-DU" ? [] : rows.filter((row:any) => row.authority?.authority_key === "icp" && row.binding.service_slug === establishmentService).map((row:any) => ({...row, score:100000}));
