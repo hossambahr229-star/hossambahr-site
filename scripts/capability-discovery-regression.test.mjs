@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {findActivities,activityEmirate,activityHandoff} from '../activity-discovery.js';
 import {approvalType,recordedActivityApprovals,capabilityGroups} from '../service-capabilities.js';
+import {discoverServices} from '../transaction-discovery.js';
 const records=[{c:'1',a:'تجارة المواد الغذائية',e:'Foodstuff trading'},{c:'2',a:'كافتيريا',e:'Cafeteria'},{c:'3',a:'خدمات الترجمة',e:'Translation services'},{c:'4',a:'تجارة إلكترونية',e:'E-commerce'}];
 for(const [query,code] of [['عايز أفتح شركة مواد غذائية في دبي','1'],['Foodstuff company in Dubai','1'],['كافتيريا في دبي','2'],['Translation office in Dubai','3'],['تجارة إلكترونية في دبي','4'],['2','2']])test(query,()=>assert.equal(findActivities(records,{query,emirate:'دبي'})[0]?.c,code));
 test('Dubai records never become Ajman codes',()=>assert.deepEqual(findActivities(records,{query:'كافتيريا',emirate:'عجمان'}),[]));
@@ -13,3 +14,4 @@ for(const [authority,name,expected] of [['mohre','Work permit','work-permit'],['
 test('activity names and legacy fee fields do not establish approvals',()=>assert.deepEqual(recordedActivityApprovals({c:'1',a:'Security systems',x:822,o:1},'دبي'),[]));
 test('approval relationship must match the activity and emirate',()=>assert.deepEqual(recordedActivityApprovals({c:'1',verifiedApprovals:[{verified:true,activityCode:'1',emirate:'عجمان',authority:'sira',sourceUrl:'https://example.gov'}]},'دبي'),[]));
 test('categories retain all services exactly once',()=>{const g=capabilityGroups([{slug:'a',c:'work-employees'},{slug:'b',c:'business-licensing'}]);assert.deepEqual(g.flatMap(x=>x.services),['a','b']);});
+test('business approvals exclude work and residence until explicitly selected',()=>{const items=[{s:'a',ap:'external-approval'},{s:'b',ap:'work-permit'},{s:'c',ap:'residence-permit'}];assert.deepEqual(discoverServices(items,{approval:'business'}).map(x=>x.s),['a']);assert.deepEqual(discoverServices(items,{approval:'work-permit'}).map(x=>x.s),['b']);});
