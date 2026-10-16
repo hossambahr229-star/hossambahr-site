@@ -1,7 +1,7 @@
 name: Reviewed MOHRE Field Acceptance
 on:
   push:
-    branches: [agent/mohre-recorded-facts-oct16]
+    branches: [agent/mohre-recorded-facts-oct16, agent/mohre-field-completion-oct16]
 permissions:
   contents: read
 jobs:
@@ -14,4 +14,4 @@ jobs:
         with:
           node-version: '24'
       - run: npm run build
-      - run: node --test scripts/mohre-recorded-facts-oct16.test.mjs
+      - run: node --test scripts/mohre-recorded-facts-oct16.test.mjs scripts/mohre-remaining-fields-oct16.test.mjs

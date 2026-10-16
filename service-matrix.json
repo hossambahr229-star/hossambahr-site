@@ -2824,12 +2824,15 @@
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
       "status": "verified",
       "description": "طلب أو متابعة الحصة الإلكترونية وفق الرخصة والنشاط وحجم العمل وتقرير تقييم عند طلبه.",
-      "requirements": [],
+      "requirements": [
+        "الحصة الاستباقية: تمنح دون طلب أو مستندات وفق البطاقة.",
+        "الحصة الإلكترونية: دليل حجم العمل، والرخصة التجارية، وقائمة المركبات بحسب النشاط، وتقرير تقييم."
+      ],
       "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "duration": "يومان عمل.",
+      "conditions": "رخصة تجارية سارية، ومنشأة دون قيود، وتقرير تقييم سارٍ، وتوافق المهنة مع أنشطة المنشأة. فرّق بين الحصة الاستباقية والإلكترونية قبل تحديد المستندات.",
       "specialCases": "MOHRE / مركز خدمة",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": true,
@@ -2862,7 +2865,20 @@
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Proactive quota: awarded without an application or documentation, as stated by the card.",
+            "Electronic quota: work-volume evidence, trade licence, activity-relevant vehicle list and a Taqyeem report."
+          ],
+          "eligibility": "Valid trade licence, establishment without restrictions, a valid Taqyeem report and an occupation matching the business activities. Distinguish proactive from electronic quotas before requiring documents.",
+          "duration": "Two working days.",
+          "notes": "The card lists AED 406 as a Taqyeem fee and up to AED 72 as centre commission. No separate government quota fee is established or invented."
+        }
+      }
     },
     {
       "id": "directory:mohre:6",
@@ -3139,12 +3155,18 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
       "status": "verified",
       "description": "تصريح عمل لمن أتم الخامسة عشرة ولم يتجاوز الثامنة عشرة وفق الشروط والموافقات المطلوبة.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "requirements": [
+        "صورة شخصية ملونة بخلفية بيضاء.",
+        "موافقة خطية من الولي أو الوصي.",
+        "شهادة لياقة طبية للعمل من جهة مختصة.",
+        "نسختا جواز السفر والإقامة الساريين.",
+        "عقد الوزارة المعتمد موقع من صاحب العمل والعامل."
+      ],
+      "fees": "الرسم الاتحادي 50 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة.",
+      "duration": "2 أيام عمل لإتمام الخدمة. صلاحية التصريح سنة واحدة؛ ليست مدة المعالجة.",
+      "conditions": "من بلغ 15 عامًا ولم يتجاوز 18 وفق صياغة البطاقة الرسمية. تتوافق المهنة مع نشاط المنشأة، وتكون رخصتها سارية دون مخالفات توقفها، والطلب من المخول بالتوقيع. لا يوجد تصريح عمل فعال آخر، ولا يشترط ضمان مصرفي أو تأمين أو حصة إلكترونية. تطبق قيود أعمال الأحداث والأعمال الخطرة؛ يجب تأكيد أي استثناء مهني مع الوزارة، ولا نستنتج السماح بعمل خطر.",
       "specialCases": "MOHRE",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": true,
@@ -3167,17 +3189,34 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "الرسم الاتحادي 50 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "2 أيام عمل لإتمام الخدمة. صلاحية التصريح سنة واحدة؛ ليست مدة المعالجة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/juvenile-work-permit-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Colour photograph on a white background.",
+            "Written guardian or custodian consent.",
+            "Medical fitness certificate from a competent authority.",
+            "Copies of the valid passport and residence visa.",
+            "Ministry contract signed by the employer and worker."
+          ],
+          "eligibility": "The Arabic card describes workers who have reached 15 and have not exceeded 18. The occupation must match the establishment activity. A valid licence without violations suspending operations, an application by the authorised signatory and no other active work permit are required. No insurance, bank guarantee or electronic quota is required. Juvenile and dangerous-work restrictions apply; confirm any professional exception with MOHRE.",
+          "fees": "Federal fee: AED 50. Website/app use adds no ministry service charge above government fees. Business-centre commission is separate, capped at AED 72, and is not a government or HOSSAM BAHR fee. Tax and collection charges are excluded.",
+          "duration": "Two working days. Permit validity: one year.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:16",
@@ -3202,12 +3241,19 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022",
       "status": "verified",
       "description": "تصريح تدريب أو عمل طالب داخل منشأة مسجلة وفق الشروط والموافقات المطلوبة.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "MOHRE",
-      "lastReviewed": "2026-07-27",
+      "requirements": [
+        "صورة شخصية ملونة بخلفية بيضاء وبطاقة الهوية الإماراتية.",
+        "إثبات صفة الطالب؛ إقامة سارية للطالب غير المواطن.",
+        "موافقة خطية من الولي أو الوصي للطالب من سن 15 إلى 18 وفق البطاقة.",
+        "شهادة لياقة طبية للعمل من جهة طبية مختصة.",
+        "عدم ممانعة من المؤسسة التعليمية في حالة التدريب.",
+        "عقد الوزارة المعتمد موقع من صاحب العمل والطالب."
+      ],
+      "fees": "الرسم الاتحادي 50 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة.",
+      "duration": "2 أيام عمل لإتمام الخدمة. صلاحية التصريح ثلاثة أشهر؛ ليست مدة المعالجة.",
+      "conditions": "طالب بلغ 15 عامًا بحسب وصف البطاقة؛ لا تكون المنشأة موقوفة، وتكون رخصتها سارية دون مخالفات توقفها. المهنة متوافقة مع نشاطها، والطلب من المخول بالتوقيع، ولا يوجد تصريح عمل آخر فعال. لا يشترط ضمان مصرفي أو تأمين أو حصة إلكترونية. تطبق قيود أعمال الأحداث والأعمال الخطرة؛ يتطلب انطباق الاستثناءات المهنية المذكورة في البطاقة تأكيد الوزارة، ولا نستنتج إباحة عمل خطر.",
+      "specialCases": "MOHRE The Arabic card confirms the student permit, rather than the juvenile permit wording used in one English quota condition. The prohibited-work clause must not be read as a blanket permission for dangerous work.",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": true,
@@ -3230,17 +3276,35 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "الرسم الاتحادي 50 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "2 أيام عمل لإتمام الخدمة. صلاحية التصريح ثلاثة أشهر؛ ليست مدة المعالجة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/training-and-work-permit-for-students-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Colour photograph on a white background and Emirates ID copy.",
+            "Proof of student status; a valid residence visa for a non-national student.",
+            "Written guardian or custodian consent for a student aged 15–18 as specified by the card.",
+            "Medical fitness certificate from a competent authority.",
+            "Educational-institution NOC for training.",
+            "Ministry contract signed by the employer and student."
+          ],
+          "eligibility": "The Arabic description specifies students aged at least 15. The establishment must not be suspended and must have a valid licence without violations suspending operations. The occupation must match its activity, the authorised signatory applies, and no other active work permit may exist. No insurance, bank guarantee or electronic quota is required. Juvenile and dangerous-work restrictions apply; confirm any profession-specific exception with MOHRE rather than treating it as permission for dangerous work.",
+          "fees": "Federal fee: AED 50. Website/app use adds no ministry service charge above government fees. Business-centre commission is separate, capped at AED 72, and is not a government or HOSSAM BAHR fee. Tax and collection charges are excluded.",
+          "duration": "Two working days. Permit validity: three months.",
+          "notes": "The Arabic card confirms the student permit, rather than the juvenile permit wording used in one English quota condition. The prohibited-work clause must not be read as a blanket permission for dangerous work. Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:18",
@@ -3328,12 +3392,16 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
       "status": "verified",
       "description": "تعديل بيانات تصريح أو عقد العمل وفق نوع التغيير والموافقات التي تحددها بطاقة الخدمة.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "requirements": [
+        "عقد الوزارة المعتمد موقع من صاحب العمل والعامل.",
+        "المؤهل الدراسي وفق المستوى المهاري: جامعي للمستويين 1–2، دبلوم فأعلى للمستويين 3–4، ثانوية للمستوى 5، ولا شهادة للمستويات 6–9. يربط المصدر وصف العامل الماهر بالمؤهل وراتب لا يقل عن 4000 درهم.",
+        "ترخيص مزاولة من الجهة المختصة للمهن المنظمة عند انطباقه."
+      ],
+      "fees": "الرسم الاتحادي 50 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة.",
+      "duration": "2 أيام عمل لإتمام الخدمة.",
+      "conditions": "التعديل من المخول بالتوقيع، ورخصة المنشأة سارية دون مخالفات توقف النشاط. عند تغيير المهنة تتوافق المهنة الجديدة مع النشاط، وتطبق متطلبات ترخيص المهن المنظمة.",
       "specialCases": "MOHRE",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": true,
@@ -3356,17 +3424,32 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "الرسم الاتحادي 50 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "2 أيام عمل لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Ministry contract signed by the employer and worker.",
+            "Qualifications by skill level: degree for 1–2, diploma or higher for 3–4, secondary certificate for 5; none for 6–9. Skilled status also requires the stated qualification and monthly salary of at least AED 4,000.",
+            "A competent-authority professional licence where the occupation requires one."
+          ],
+          "eligibility": "The authorised signatory applies. The establishment licence must be valid without violations suspending operations. A new occupation must match its activity; regulated occupations retain their professional licensing requirements.",
+          "fees": "Federal fee: AED 50. Website/app use adds no ministry service charge above government fees. Business-centre commission is separate, capped at AED 72, and is not a government or HOSSAM BAHR fee. Tax and collection charges are excluded.",
+          "duration": "Two working days.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:21",
@@ -3630,12 +3713,15 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
       "status": "verified",
       "description": "تقديم أو متابعة بلاغ الانقطاع وفق الشروط والأدلة المعتمدة.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "requirements": [
+        "تقرير حركة دخول وخروج العامل صادر من ICP ولا يتجاوز 30 يومًا من تاريخ صدوره وفق البطاقة.",
+        "إثبات وجود العامل داخل الدولة من الجهة المختصة إذا لم تصل المعلومة إلى أنظمة الوزارة."
+      ],
+      "fees": "لا رسم للخدمة بحسب البطاقة؛ قد يلزم سداد غرامات مستقلة قائمة إن وجدت، دون اختراع مبلغ لها.",
+      "duration": "2 أيام عمل لإتمام الخدمة.",
+      "conditions": "انقطاع أكثر من سبعة أيام والعامل داخل الدولة، وصاحب العمل لا يعرف مكانه أو لا يستطيع التواصل معه. تسدد غرامات تأخر إصدار أو تجديد التصريح إن وجدت. يلغى التصريح آليًا بعد اعتماد البلاغ، مع استثناء تصاريح الاستقدام من الخارج والانتقال المذكورة في البطاقة.",
       "specialCases": "MOHRE",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -3658,17 +3744,31 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "لا رسم للخدمة بحسب البطاقة؛ قد يلزم سداد غرامات مستقلة قائمة إن وجدت، دون اختراع مبلغ لها."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "2 أيام عمل لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "ICP entry/exit movement report within 30 days of issue, as specified by the card.",
+            "Competent-authority evidence that the worker is inside the UAE if this information has not reached MOHRE systems."
+          ],
+          "eligibility": "The worker is inside the UAE, absent for more than seven days, and the employer does not know their location or cannot contact them. Existing late-issuance/non-renewal fines must be settled if applicable. Approval automatically cancels the permit, subject to the stated overseas-recruitment and transfer-permit exceptions.",
+          "fees": "No service fee. Existing permit-related fines may separately apply; no fine amount is invented.",
+          "duration": "Two working days.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:31",
@@ -3693,12 +3793,14 @@
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
       "status": "verified",
       "description": "طلب سحب أو إلغاء البلاغ من الطرف المخول عند توافر المبررات.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "requirements": [
+        "مستندات تدعم أسباب طلب الإلغاء، إن وجدت."
+      ],
+      "fees": "لا رسوم للخدمة بحسب البطاقة الرسمية.",
+      "duration": "14 أيام عمل لإتمام الخدمة.",
+      "conditions": "العامل مسجل في قاعدة بيانات الوزارة ويوجد بحقه بلاغ انقطاع عن العمل.",
       "specialCases": "MOHRE",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -3721,17 +3823,30 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "لا رسوم للخدمة بحسب البطاقة الرسمية."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "14 أيام عمل لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Evidence supporting the cancellation request, if available."
+          ],
+          "eligibility": "The worker must be registered with MOHRE and have an absence-from-work report recorded against them.",
+          "fees": "No service fee.",
+          "duration": "14 working days.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:32",
@@ -3756,12 +3871,15 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
       "status": "verified",
       "description": "إجراء مخصص للحالات المرتبطة بقضية عمالية وفق قرار الوزارة أو المحكمة.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "requirements": [
+        "الحكم القضائي إذا صدر حكم.",
+        "إذا كانت القضية متداولة: شهادة بحالة القضية، مع الحكم إن وجد."
+      ],
+      "fees": "لا رسوم للخدمة بحسب البطاقة الرسمية.",
+      "duration": "14 أيام عمل لإتمام الخدمة.",
+      "conditions": "العامل مسجل في نظام الوزارة ولديه تصريح عمل فعال وشكوى عمالية محالة إلى المحكمة، ولا يوجد بحقه بلاغ انقطاع عن العمل.",
       "specialCases": "MOHRE",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -3784,17 +3902,31 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "لا رسوم للخدمة بحسب البطاقة الرسمية."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "14 أيام عمل لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
+          "sourceLanguage": "en",
+          "documents": [
+            "The court judgment if a judgment has been issued.",
+            "For an ongoing case: a case-status certificate and any available court judgment."
+          ],
+          "eligibility": "The worker is registered with MOHRE, holds an active work permit, and has a labour complaint referred to court. No absence-from-work complaint may be recorded against the worker.",
+          "fees": "No service fee.",
+          "duration": "14 working days.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:34",
@@ -3819,12 +3951,20 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
       "status": "verified",
       "description": "إصدار تصريح عمل جديد لعامل مساعد من داخل الدولة أو خارجها.",
-      "requirements": [],
+      "requirements": [
+        "نسخة جواز صاحب العمل وصفحة الرقم الموحد للمواطن بحسب الفئة.",
+        "لصاحب العمل المقيم أو المستثمر: إثبات الحالة الزوجية وإقامة الزوج، وإثبات السكن بعقد إيجار أو ملكية.",
+        "لصاحب العمل الوافد: شهادة راتب حديثة تثبت دخل الأسرة بما لا يقل عن 25000 درهم؛ وللمستثمر أو صاحب العمل بحسب فئته كشف حساب آخر ثلاثة أشهر بدخل شهري لا يقل عن 25000 درهم وفق البطاقة.",
+        "نسخة جواز العامل المساعد وصورة ملونة له.",
+        "أصل هوية صاحب العمل السارية أو بطاقة تعريف الدبلوماسي بحسب الفئة.",
+        "للعامل داخل الدولة: التأشيرة السياحية وإلغاء التأشيرة السابقة بحسب الحالة.",
+        "إذا كان لدى صاحب العمل أكثر من خمسة عمال مساعدين: بيان مكتوب يوضح مبرر العامل الإضافي."
+      ],
       "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "duration": "يومان عمل.",
+      "conditions": "جواز وهوية صاحب العمل ساريان، وإقامة المقيم أو المستثمر سارية. لا يوجد تصريح عمل فعال للعامل، وجوازه صالح لثلاثة أشهر على الأقل، وعمره 18 سنة فأكثر. الحد المنشور 60 سنة مع استثناء العامل داخل الدولة الذي ألغى صاحب عمله إقامته منذ مدة لا تتجاوز ثلاثة أشهر وفق البطاقة. يلزم التأمين على ملف صاحب العمل وتوافق المهنة مع متطلباتها.",
       "specialCases": "MOHRE / مراكز تدبير",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -3857,7 +3997,25 @@
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Employer passport and the citizen employer unified-number page, as applicable.",
+            "For resident/investor employers: marital-status evidence, spouse residence and tenancy or ownership evidence.",
+            "Expatriate employer recent salary evidence of family income at least AED 25,000; investor/employer three-month bank statement meeting the stated monthly-income threshold, according to applicant category.",
+            "Domestic worker passport copy and colour photograph.",
+            "Original valid employer ID or applicable diplomatic identification.",
+            "For a worker inside the UAE: tourist visa and previous-visa cancellation, as applicable.",
+            "A written justification for an additional worker when more than five domestic workers are employed."
+          ],
+          "eligibility": "Valid employer passport and ID; valid residence for resident/investor employers. The worker has no active work permit, a passport valid for at least three months and age at least 18. The published upper age is 60 with the specified inside-UAE exception where the employer cancelled residence no more than three months earlier. Insurance on the employer file and occupation requirements apply.",
+          "duration": "Two working days.",
+          "notes": "Fee-category headings are visible in the current Arabic and English cards, but their government amounts are absent. No amount is invented from another service or a historical card."
+        }
+      }
     },
     {
       "id": "directory:mohre:35",
@@ -3882,12 +4040,17 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
       "status": "verified",
       "description": "إصدار عقد العمل الجديد للعامل المساعد بعد استكمال المتطلبات الرسمية.",
-      "requirements": [],
+      "requirements": [
+        "نسخة جواز صاحب العمل وصفحة الرقم الموحد للمواطن بحسب الفئة.",
+        "نسخة جواز العامل المساعد وصورة ملونة.",
+        "نسخة التأمين الطبي؛ توضح البطاقة إلزام التغطية الطبية في أبوظبي ودبي.",
+        "عقد العمل موقع من الطرفين."
+      ],
       "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "duration": "يوم عمل واحد.",
+      "conditions": "جواز صاحب العمل وهويته ساريان، وإقامة المقيم أو المستثمر سارية. جواز العامل صالح لثلاثة أشهر على الأقل، ونتيجة اللياقة الطبية سارية.",
       "specialCases": "MOHRE / مراكز تدبير",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -3920,7 +4083,22 @@
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Employer passport copy and citizen employer unified-number page, as applicable.",
+            "Domestic worker passport copy and colour photograph.",
+            "Medical insurance copy; adequate insurance is specified for Abu Dhabi and Dubai.",
+            "Domestic employment contract signed by both parties."
+          ],
+          "eligibility": "Valid employer passport and ID, valid residence for a resident/investor employer, worker passport valid for at least three months and a valid medical fitness result.",
+          "duration": "One working day.",
+          "notes": "Fee-category headings are visible in the current Arabic and English cards, but their government amounts are absent. No amount is invented from another service or a historical card."
+        }
+      }
     },
     {
       "id": "directory:mohre:36",
@@ -3945,12 +4123,18 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
       "status": "verified",
       "description": "تجديد عقد عمل العامل المساعد وفق مدة التصريح وصفة صاحب العمل.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "requirements": [
+        "صورة ملونة للعامل المساعد ونسخة جوازه.",
+        "أصل هوية صاحب العمل المواطن السارية.",
+        "نسخة التأمين الطبي؛ توضح البطاقة إلزام صاحب العمل بالتغطية الطبية في أبوظبي ودبي.",
+        "عقد العمل موقع من الطرفين.",
+        "نسخة وجهي الهوية الإماراتية السابقة للعامل المساعد."
+      ],
+      "fees": "خارج دبي: مواطنو الإمارات أو الخليج والدبلوماسيون لسنتين 265 درهمًا، ولسنة 165 درهمًا؛ دبلوماسي صاحب عمل 215؛ مقيم صاحب عمل 5215؛ مستثمر صاحب عمل 5265. دبي: مواطنو الإمارات أو الخليج والدبلوماسيون لسنتين 385.75؛ مقيم صاحب عمل 5335.75؛ مستثمر صاحب عمل 5385.75 درهمًا. لا تجمع هذه البدائل ولا تختَر فئة دون تأكيد ملف صاحب العمل ومدته. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة.",
+      "duration": "يوم عمل واحد لإتمام الخدمة.",
+      "conditions": "العامل المساعد داخل الدولة، وجوازه صالح لثلاثة أشهر على الأقل، ولديه نتيجة لياقة طبية سارية وتأمين طبي وطلب تجديد هوية. جواز صاحب العمل سارٍ.",
       "specialCases": "MOHRE / مراكز تدبير",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -3973,17 +4157,34 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "خارج دبي: مواطنو الإمارات أو الخليج والدبلوماسيون لسنتين 265 درهمًا، ولسنة 165 درهمًا؛ دبلوماسي صاحب عمل 215؛ مقيم صاحب عمل 5215؛ مستثمر صاحب عمل 5265. دبي: مواطنو الإمارات أو الخليج والدبلوماسيون لسنتين 385.75؛ مقيم صاحب عمل 5335.75؛ مستثمر صاحب عمل 5385.75 درهمًا. لا تجمع هذه البدائل ولا تختَر فئة دون تأكيد ملف صاحب العمل ومدته. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يوم عمل واحد لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Worker colour photograph and passport copy.",
+            "Citizen employer original valid Emirates ID.",
+            "Medical insurance copy; the card specifies adequate cover in Abu Dhabi and Dubai.",
+            "Employment contract signed by both parties.",
+            "Copies of both sides of the previous domestic worker Emirates ID."
+          ],
+          "eligibility": "The worker must be inside the UAE, with a passport valid for at least three months, valid medical fitness, medical insurance and an Emirates ID renewal application. The employer passport must be valid.",
+          "fees": "Outside Dubai: UAE/GCC citizens and diplomats, two years AED 265 or one year AED 165; diplomat/employer AED 215; resident/employer AED 5,215; investor/employer AED 5,265. Dubai: UAE/GCC citizens and diplomats, two years AED 385.75; resident/employer AED 5,335.75; investor/employer AED 5,385.75. These are alternatives, not a combined total. Confirm the employer category and duration. Website/app use adds no ministry service charge above government fees. Business-centre commission is separate, capped at AED 72, and is not a government or HOSSAM BAHR fee. Tax and collection charges are excluded.",
+          "duration": "One working day.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:37",
@@ -4008,12 +4209,15 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
       "status": "verified",
       "description": "تعديل بيانات عقد العمل وتصريح العامل المساعد وفق نوع التعديل.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "MOHRE / مراكز تدبير",
-      "lastReviewed": "2026-07-27",
+      "requirements": [
+        "نسخة جواز صاحب العمل وصفحة الرقم الموحد للمواطن بحسب فئته.",
+        "أصل الهوية السارية لمواطني الخليج والمقيمين والمستثمرين، أو بطاقة تعريف الدبلوماسي بحسب الفئة."
+      ],
+      "fees": "دبي وباقي الإمارات: 65 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة.",
+      "duration": "يوم عمل واحد لإتمام الخدمة.",
+      "conditions": "جواز صاحب العمل وهويته ساريان، وإقامة المقيم أو المستثمر سارية، وجواز العامل صالح لثلاثة أشهر على الأقل. تنص البطاقة على عدم وجود تصريح عمل فعال للعامل؛ يجب تأكيد انطباق هذا الشرط مع الوزارة عند تعديل تصريح قائم بدل افتراض استثناء.",
+      "specialCases": "MOHRE / مراكز تدبير The official card states no active work permit despite this being an amendment service. Confirm the case-specific interpretation with MOHRE; no invented exception is applied.",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -4036,17 +4240,31 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "دبي وباقي الإمارات: 65 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يوم عمل واحد لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Employer passport copy and the citizen employer unified-number page, as applicable.",
+            "Original valid ID for GCC, resident or investor employers, or diplomatic identification where applicable."
+          ],
+          "eligibility": "Valid employer passport and Emirates ID, valid residence for a resident/investor employer, and a worker passport valid for at least three months. The card states no active work permit despite this being an amendment service; confirm its case-specific interpretation with MOHRE.",
+          "fees": "Dubai and the other emirates: AED 65. Website/app use adds no ministry service charge above government fees. Business-centre commission is separate, capped at AED 72, and is not a government or HOSSAM BAHR fee. Tax and collection charges are excluded.",
+          "duration": "One working day.",
+          "notes": "The official card states no active work permit despite this being an amendment service. Confirm the case-specific interpretation with MOHRE; no invented exception is applied. Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:38",
@@ -4071,12 +4289,17 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
       "status": "verified",
       "description": "إلغاء عقد عمل العامل المساعد داخل الدولة أو خارجها.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "requirements": [
+        "نسخة جواز صاحب العمل وصفحة الرقم الموحد للمواطن بحسب فئته.",
+        "إقامة صاحب العمل المقيم أو المستثمر السارية.",
+        "نسخة جواز العامل المساعد وبطاقة هويته.",
+        "أصل هوية صاحب العمل السارية بحسب الفئة؛ بطاقة تعريف خاصة للدبلوماسي عند انطباقها."
+      ],
+      "fees": "جميع الإمارات عدا دبي: 65 درهمًا. دبي والعامل داخل الدولة: 85.75 درهمًا؛ دبي والعامل خارج الدولة: 185.75 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة.",
+      "duration": "يوم عمل واحد لإتمام الخدمة.",
+      "conditions": "جواز صاحب العمل وهويته ساريان؛ إقامة صاحب العمل المقيم أو المستثمر سارية. اختر حالة وجود العامل داخل الدولة أو خارجها لتحديد رسوم دبي.",
       "specialCases": "MOHRE / مراكز تدبير",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -4099,17 +4322,33 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "جميع الإمارات عدا دبي: 65 درهمًا. دبي والعامل داخل الدولة: 85.75 درهمًا؛ دبي والعامل خارج الدولة: 185.75 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يوم عمل واحد لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Employer passport copy and the citizen employer unified-number page, as applicable.",
+            "Valid residence copy for a resident or investor employer.",
+            "Domestic worker passport and Emirates ID copies.",
+            "Employer original valid ID according to category, or diplomatic identification where applicable."
+          ],
+          "eligibility": "The employer passport and ID must be valid; a resident or investor employer must have valid residence. The worker location inside or outside the UAE determines the Dubai fee.",
+          "fees": "Outside Dubai: AED 65. Dubai, worker inside the UAE: AED 85.75. Dubai, worker outside the UAE: AED 185.75. Website/app use adds no ministry service charge above government fees. Business-centre commission is separate, capped at AED 72, and is not a government or HOSSAM BAHR fee. Tax and collection charges are excluded.",
+          "duration": "One working day.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:39",
@@ -4134,12 +4373,17 @@
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
       "status": "verified",
       "description": "إلغاء تصريح عمل العامل المساعد داخل الدولة أو خارجها.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "requirements": [
+        "نسخة جواز صاحب العمل وصفحة الرقم الموحد للمواطن بحسب فئته.",
+        "نسخة إقامة صاحب العمل المقيم أو المستثمر السارية.",
+        "نسخة جواز العامل المساعد وإذن دخوله.",
+        "أصل هوية صاحب العمل السارية."
+      ],
+      "fees": "جميع الإمارات عدا دبي: 65 درهمًا. دبي: 85.75 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة.",
+      "duration": "يوم عمل واحد لإتمام الخدمة.",
+      "conditions": "جواز صاحب العمل وهويته ساريان؛ إقامة صاحب العمل المقيم أو المستثمر سارية.",
       "specialCases": "MOHRE / مراكز تدبير",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -4162,17 +4406,33 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "جميع الإمارات عدا دبي: 65 درهمًا. دبي: 85.75 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يوم عمل واحد لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Employer passport copy and the citizen employer unified-number page, as applicable.",
+            "Valid residence copy for a resident or investor employer.",
+            "Domestic worker passport copy and entry permit.",
+            "Employer original valid Emirates ID."
+          ],
+          "eligibility": "The employer passport and ID must be valid; a resident or investor employer must have a valid residence visa.",
+          "fees": "Outside Dubai: AED 65. Dubai: AED 85.75. Website/app use adds no ministry service charge above government fees. Business-centre commission is separate, capped at AED 72, and is not a government or HOSSAM BAHR fee. Tax and collection charges are excluded.",
+          "duration": "One working day.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:40",
@@ -4180,7 +4440,7 @@
       "name": "بلاغ انقطاع عامل مساعد",
       "officialName": "بلاغ انقطاع عامل مساعد",
       "type": "العمالة المساعدة",
-      "emirate": "اتحادي",
+      "emirate": "الإمارات عدا دبي",
       "authority": {
         "slug": "mohre",
         "name": "وزارة الموارد البشرية والتوطين (MOHRE)"
@@ -4193,16 +4453,18 @@
       "executionChoices": [],
       "officialRouteMode": "official-service-card",
       "officialSelectorLabel": "بلاغ انقطاع عامل مساعد",
-      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
+      "officialRouteNote": "بطاقة MOHRE لمسار خارج دبي؛ تشرح أن مسار دبي لدى GDRFA.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
       "status": "verified",
       "description": "تقديم بلاغ انقطاع العامل المساعد؛ أما سحب البلاغ فله خدمة مستقلة مرتبطة بهذه الصفحة.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "MOHRE / تدبير",
-      "lastReviewed": "2026-07-27",
+      "requirements": [
+        "جواز العامل المساعد أو تأشيرة عمله، إن توفرا."
+      ],
+      "fees": "الإمارات عدا دبي: 315 درهمًا. لا تنشر هذه البطاقة مبلغ دبي؛ مسار دبي لدى GDRFA. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة.",
+      "duration": "2 أيام عمل لإتمام الخدمة.",
+      "conditions": "انقطاع العامل المساعد عن العمل أكثر من سبعة أيام. هذا سجل مسار MOHRE خارج دبي؛ تحدد البطاقة أن دبي تتبع أنظمة GDRFA، ولا تعمم رسوم خارج دبي عليها.",
+      "specialCases": "MOHRE / تدبير لا تعمم رسوم هذا المسار أو جهة تنفيذه على دبي.",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -4225,17 +4487,30 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "الإمارات عدا دبي: 315 درهمًا. لا تنشر هذه البطاقة مبلغ دبي؛ مسار دبي لدى GDRFA. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "2 أيام عمل لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Domestic worker passport or employment visa, if available."
+          ],
+          "eligibility": "The domestic worker has been absent for more than seven days. This MOHRE record covers the pathway outside Dubai; the card directs Dubai to GDRFA systems.",
+          "fees": "Outside Dubai: AED 315. No Dubai amount is established by this card; Dubai uses GDRFA systems. Website/app use adds no ministry service charge above government fees. Business-centre commission is separate, capped at AED 72, and is not a government or HOSSAM BAHR fee. Tax and collection charges are excluded.",
+          "duration": "Two working days.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:41",
@@ -4260,12 +4535,15 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
       "status": "verified",
       "description": "سحب بلاغ الانقطاع بناءً على طلب صاحب العمل وفق شروط وزارة الموارد البشرية والتوطين.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
+      "requirements": [
+        "نسخة وجهي هوية العامل المساعد.",
+        "نسخة جواز العامل المساعد."
+      ],
+      "fees": "الرسم المنشور للخدمة: 115 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة.",
+      "duration": "3 أيام عمل لإتمام الخدمة.",
+      "conditions": "وجود بلاغ انقطاع مسجل بحق العامل المساعد؛ الطلب من مسار صاحب العمل.",
       "specialCases": "MOHRE / تدبير",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -4288,17 +4566,31 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "الرسم المنشور للخدمة: 115 درهمًا. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "3 أيام عمل لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Copies of both sides of the domestic worker Emirates ID.",
+            "Domestic worker passport copy."
+          ],
+          "eligibility": "An absence report must be recorded against the domestic worker. This is the employer-requested pathway.",
+          "fees": "Published service fee: AED 115. Website/app use adds no ministry service charge above government fees. Business-centre commission is separate, capped at AED 72, and is not a government or HOSSAM BAHR fee. Tax and collection charges are excluded.",
+          "duration": "Three working days.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:mohre:42",
@@ -4306,7 +4598,7 @@
       "name": "سحب بلاغ انقطاع بطلب العامل المساعد",
       "officialName": "سحب بلاغ انقطاع بطلب العامل المساعد",
       "type": "العمالة المساعدة",
-      "emirate": "اتحادي",
+      "emirate": "الإمارات عدا دبي",
       "authority": {
         "slug": "mohre",
         "name": "وزارة الموارد البشرية والتوطين (MOHRE)"
@@ -4319,16 +4611,19 @@
       "executionChoices": [],
       "officialRouteMode": "official-service-card",
       "officialSelectorLabel": "سحب بلاغ انقطاع بطلب العامل المساعد",
-      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
+      "officialRouteNote": "بطاقة MOHRE لمسار خارج دبي؛ تشرح أن مسار دبي لدى GDRFA.",
       "evidenceUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
       "status": "verified",
       "description": "طلب العامل المساعد سحب بلاغ الانقطاع والتحقق من صحة البلاغ لدى الوزارة.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "MOHRE / تدبير",
-      "lastReviewed": "2026-07-27",
+      "requirements": [
+        "نسخة وجهي هوية العامل المساعد.",
+        "نسخة جواز العامل المساعد."
+      ],
+      "fees": "الإمارات عدا دبي: 115 درهمًا. مبلغ دبي غير منشور بهذه البطاقة؛ تتبع دبي أنظمة GDRFA. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة.",
+      "duration": "3 أيام عمل لإتمام الخدمة.",
+      "conditions": "يوجد بلاغ انقطاع مسجل بحق العامل المساعد. تذكر البطاقة إقامته سواء كانت سارية أم غير سارية. هذا مسار العامل خارج دبي؛ تحدد البطاقة مسار دبي لدى GDRFA.",
+      "specialCases": "MOHRE / تدبير لا تعمم رسوم هذا المسار أو جهة تنفيذه على دبي.",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -4351,17 +4646,31 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "الإمارات عدا دبي: 115 درهمًا. مبلغ دبي غير منشور بهذه البطاقة؛ تتبع دبي أنظمة GDRFA. القناة الإلكترونية لا تضيف رسم خدمة للوزارة فوق الرسوم الحكومية. عمولة مركز الأعمال منفصلة بحد أقصى 72 درهمًا وليست رسمًا حكوميًا أو رسم حسام بحر؛ الضريبة ورسوم التحصيل غير مشمولة."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "3 أيام عمل لإتمام الخدمة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Copies of both sides of the domestic worker Emirates ID.",
+            "Domestic worker passport copy."
+          ],
+          "eligibility": "An absence report must be recorded against the domestic worker. The card refers to the residence visa whether valid or expired. This worker-requested MOHRE pathway is outside Dubai; the card directs Dubai to GDRFA.",
+          "fees": "Outside Dubai: AED 115. No Dubai amount is established by this card; Dubai uses GDRFA systems. Website/app use adds no ministry service charge above government fees. Business-centre commission is separate, capped at AED 72, and is not a government or HOSSAM BAHR fee. Tax and collection charges are excluded.",
+          "duration": "Three working days.",
+          "notes": "Published fees are alternatives, not an automatically calculated total. No HOSSAM BAHR fee is added."
+        }
+      }
     },
     {
       "id": "directory:residency:3",
