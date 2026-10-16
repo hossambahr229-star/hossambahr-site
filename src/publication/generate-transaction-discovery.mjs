@@ -48,7 +48,7 @@ for(const locale of ['ar','en']){
  }
  const homeFile=join(root,en?'en/index.html':'index.html');let home=await readFile(homeFile,'utf8');
  const compactExplorer=capabilityExplorer.replace('class="capability-explorer"','class="capability-explorer home-capability-explorer"').replace(t('استكشف جميع مجالات الخدمات','Explore all service areas'),t('الخدمات','Services'));
- home=home.replace(/<div class="premium-category-grid(?: home-domain-gateway)?"[^>]*>[\\s\\S]*?<\/div><\/section>/,()=>homeDomainGateway+'</section>');
+ home=home.replace(/<div class="premium-category-grid(?: home-domain-gateway)?"[^>]*>[\s\S]*?<\/div><\/section>/,()=>homeDomainGateway+'</section>');
  const markedExplorer='<!-- hb-capability-explorer:start -->'+compactExplorer+'<!-- hb-capability-explorer:end -->';
  home=home.replace(/<!-- hb-capability-explorer:start -->[\s\S]*?<!-- hb-capability-explorer:end -->/g,'<a href="'+p+'/services/">'+t('الخدمات','Services')+'</a>');
  home=home.replace(/(<nav class="desktop-nav"[^>]*>)([\s\S]*?)(<\/nav>)/,(_,open,body,close)=>open+body.replace(new RegExp('<a href="'+p+'/services/">[^<]*<\\/a>'),markedExplorer)+close);
