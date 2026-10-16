@@ -120,7 +120,12 @@
       "status": "EXTERNAL_BLOCKER_QUOTA_BILLING",
       "external_model_used": false,
       "code": "credit_balance_exhausted",
-      "allTargetedTurnsAffected": true
+      "allTargetedTurnsAffected": true,
+      "strictHumanBenchmark": {
+        "run": 38917096687,
+        "status": "FAIL_EXTERNAL_MODEL_REQUIREMENT",
+        "reason": "Live human benchmark requires the real external model for every curated turn; external_model_used remains false."
+      }
     },
     "security": {
       "codeAndDatabaseChecks": "PASS",
@@ -143,8 +148,61 @@
   },
   "productionPublisher": {
     "run": 38917095471,
-    "status": "PENDING_FINAL_CHECKPOINT_UPDATE"
+    "status": "PASS",
+    "deployedCommit": "d32d943a074d695acb8614ecdc5b9f7c7f95dcde",
+    "evidenceCommit": "9d0e5a3362dd8311b3f5985d58079154c55cb9ea"
   },
   "finalPass": "NOT_DECLARED",
-  "nextWork": "Preserve these fixes. Remaining work is visual/human reference acceptance, source-backed completion of 32 partial records, authorized private-account/document/tracking execution and external-model acceptance after the credit blocker is resolved. Do not repeat accepted tests absent regression."
+  "nextWork": "Preserve these fixes. Remaining work is visual/human reference acceptance, source-backed completion of 32 partial records, authorized private-account/document/tracking execution and external-model acceptance after the credit blocker is resolved. Do not repeat accepted tests absent regression.",
+  "mainAtEvidenceCapture": "9d0e5a3362dd8311b3f5985d58079154c55cb9ea",
+  "productionWorkflows": [
+    {
+      "id": 38917096021,
+      "name": "HB AI Free Human Response Quality",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38917095763,
+      "name": "Production browser verification",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38917096687,
+      "name": "HB AI human semantic production",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 38917095471,
+      "name": "Final Production Correction Gate",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38917095702,
+      "name": "HB AI global catalog production",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38917095171,
+      "name": "pages build and deployment",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38917095753,
+      "name": "Global OS Production Database Deploy",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38917095579,
+      "name": "HB AI Signature Visual Acceptance",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ]
 }
