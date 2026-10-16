@@ -3,8 +3,8 @@
   "sourceCheckpoint": "869b7eb106795319495a527805e7d801774a5cab",
   "sourceReviewMerge": "f1fb679a53acfd5f94f7f9b43d7540389f0389bb",
   "originalPartial": 56,
-  "completedRecordedDetailFields": 11,
-  "remaining": 45,
+  "completedRecordedDetailFields": 24,
+  "remaining": 32,
   "scope": "Missing recorded fields remain explicit. Capture failures are not evidence that a field is unpublished. Parent-category facts do not verify subtype eligibility. This is a continuation checklist, not a blanket external-blocker or final acceptance claim.",
   "sourceAccessEvidence": {
     "readOnlyBrowserRun": 38691429951,
@@ -157,17 +157,14 @@
       "authority": "mohre",
       "sourceUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
       "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
+        "fees"
       ],
       "newCommonFacts": false,
       "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
-        "status": null,
-        "at": "2026-10-15T06:18:14.987Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
+        "url": "https://www.mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
+        "at": "2026-10-16",
+        "method": "LIVE_BROWSER",
+        "note": "Fee-category headings are visible in the current Arabic and English cards, but their government amounts are absent. No amount is invented from another service or a historical card."
       }
     },
     {
@@ -175,17 +172,14 @@
       "authority": "mohre",
       "sourceUrl": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
       "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
+        "fees"
       ],
       "newCommonFacts": false,
       "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
-        "status": null,
-        "at": "2026-10-15T06:18:16.512Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
+        "url": "https://www.mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
+        "at": "2026-10-16",
+        "method": "LIVE_BROWSER",
+        "note": "Fee-category headings are visible in the current Arabic and English cards, but their government amounts are absent. No amount is invented from another service or a historical card."
       }
     },
     {
@@ -200,78 +194,6 @@
         "url": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
         "status": 200,
         "at": "2026-10-15T06:17:57.079Z"
-      }
-    },
-    {
-      "slug": "إلغاء-بلاغ-انقطاع-عن-العمل",
-      "authority": "mohre",
-      "sourceUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022",
-        "status": null,
-        "at": "2026-10-15T06:18:26.201Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
-      }
-    },
-    {
-      "slug": "إلغاء-تصريح-عمل-عامل-مساعد",
-      "authority": "mohre",
-      "sourceUrl": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022",
-        "status": null,
-        "at": "2026-10-15T06:18:41.834Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
-      }
-    },
-    {
-      "slug": "إلغاء-تصريح-لعامل-لديه-قضية-عمالية",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case",
-        "status": null,
-        "at": "2026-10-15T06:18:52.990Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
-      }
-    },
-    {
-      "slug": "إلغاء-عقد-عمل-عامل-مساعد",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022",
-        "status": null,
-        "at": "2026-10-15T06:18:54.513Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
       }
     },
     {
@@ -351,42 +273,6 @@
         "status": null,
         "at": "2026-10-15T06:19:08.004Z",
         "error": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system"
-      }
-    },
-    {
-      "slug": "بلاغ-انقطاع-عامل-مساعد",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
-        "status": null,
-        "at": "2026-10-15T06:19:35.483Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
-      }
-    },
-    {
-      "slug": "بلاغ-انقطاع-عن-العمل",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022",
-        "status": null,
-        "at": "2026-10-15T06:19:42.202Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
       }
     },
     {
@@ -488,24 +374,6 @@
       }
     },
     {
-      "slug": "تجديد-عقد-عمل-عامل-مساعد",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022",
-        "status": null,
-        "at": "2026-10-15T06:19:53.087Z",
-        "error": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022"
-      }
-    },
-    {
       "slug": "تحديث-بيانات-الهوية",
       "authority": "icp",
       "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
@@ -521,42 +389,6 @@
       }
     },
     {
-      "slug": "تصريح-تدريب-وعمل-طالب",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022",
-        "status": null,
-        "at": "2026-10-15T06:19:53.128Z",
-        "error": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022"
-      }
-    },
-    {
-      "slug": "تصريح-عمل-حدث",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
-        "status": null,
-        "at": "2026-10-15T06:20:13.483Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
-      }
-    },
-    {
       "slug": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
       "authority": "gdrfa-dubai",
       "sourceUrl": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
@@ -568,42 +400,6 @@
         "url": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
         "status": 200,
         "at": "2026-10-15T06:20:02.316Z"
-      }
-    },
-    {
-      "slug": "تعديل-تصاريح-وعقود-العمل",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022",
-        "status": null,
-        "at": "2026-10-15T06:20:29.907Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
-      }
-    },
-    {
-      "slug": "تعديل-عقد-وتصريح-عمل-عامل-مساعد",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022",
-        "status": null,
-        "at": "2026-10-15T06:20:29.920Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
       }
     },
     {
@@ -663,53 +459,14 @@
       "authority": "mohre",
       "sourceUrl": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
       "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
+        "fees"
       ],
       "newCommonFacts": false,
       "officialCapture": {
         "url": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
-        "status": null,
-        "at": "2026-10-15T06:20:17.626Z",
-        "error": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022"
-      }
-    },
-    {
-      "slug": "سحب-بلاغ-انقطاع-بطلب-العامل-المساعد",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022",
-        "status": null,
-        "at": "2026-10-15T06:20:55.626Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
-      }
-    },
-    {
-      "slug": "سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022",
-        "status": null,
-        "at": "2026-10-15T06:21:07.909Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
+        "at": "2026-10-16",
+        "method": "LIVE_BROWSER",
+        "note": "The card lists AED 406 as a Taqyeem fee and up to AED 72 as centre commission. No separate government quota fee is established or invented."
       }
     },
     {
