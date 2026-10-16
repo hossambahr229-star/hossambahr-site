@@ -1,0 +1,38 @@
+name: Homepage Business Domain Acceptance
+on:
+  push:
+    branches: [agent/home-business-domains]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  domains:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: npm run build
+      - run: node --test scripts/home-business-domains.test.mjs scripts/capability-generator-integration.test.mjs scripts/capability-discovery-regression.test.mjs
+      - run: node scripts/home-business-domains-browser.mjs
+        env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: homepage-business-domains
+          path: artifacts/home-business-domains
+      - name: Preserve selected review screenshots on the implementation branch
+        if: always() && github.ref_name == 'agent/home-business-domains'
+        run: |
+          git config user.name "HossamBahr Preview Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          for name in ar-320-areas.png ar-1440-areas.png en-390-areas.png report.json; do
+            file="artifacts/home-business-domains/$name"
+            if [ -f "$file" ]; then git add -- "$file"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual domain preview evidence [skip ci]"
+            git push origin HEAD:agent/home-business-domains || echo "Branch advanced; the uploaded workflow artifact remains available."
+          fi
