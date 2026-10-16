@@ -1,0 +1,127 @@
+{
+  "run": 38913500074,
+  "at": "2026-10-16T14:09:49.056Z",
+  "base": "https://hossambahr.com",
+  "sourceSha": "919dc15f36e3af2e6cddd71596be0865d0a41a6c",
+  "source": "REAL_PRODUCTION_NATIVE_BROWSER",
+  "scope": "DOMESTIC_EN_ONLY",
+  "pages": [],
+  "ai": [
+    {
+      "locale": "en",
+      "question": "I need to report a domestic worker absent from work in Sharjah",
+      "slug": "بلاغ-انقطاع-عامل-مساعد",
+      "answer": {
+        "text": "The matching service is Report a Domestic Worker's Absence from Work through MOHRE. The domestic worker has been absent for more than seven days. This MOHRE record covers the pathway outside Dubai; the card directs Dubai to GDRFA systems.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:بلاغ-انقطاع-عامل-مساعد",
+          "policy_version": 2,
+          "workflow_key": "service:بلاغ-انقطاع-عامل-مساعد",
+          "source_title": "بلاغ انقطاع عامل مساعد — وزارة الموارد البشرية والتوطين (MOHRE)",
+          "source_url": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "انقطاع العامل المساعد عن العمل أكثر من سبعة أيام. هذا سجل مسار MOHRE خارج دبي؛ تحدد البطاقة أن دبي تتبع أنظمة GDRFA، ولا تعمم رسوم خارج دبي عليها.",
+            "source_refs": [
+              "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "MOHRE / تدبير لا تعمم رسوم هذا المسار أو جهة تنفيذه على دبي.",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "بلاغ-انقطاع-عامل-مساعد",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-SH",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": "domestic_worker",
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "بلاغ-انقطاع-عامل-مساعد",
+        "authority_key": "mohre",
+        "action": null,
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "I need to report a domestic worker absent from work in Sharjah"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "question": "And if it is in Dubai?",
+      "slug": null,
+      "answer": {
+        "text": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "context": {
+        "active_service_id": "بلاغ-انقطاع-عامل-مساعد",
+        "last_answer_topic": "clarification",
+        "pending_clarification": "What transaction or outcome do you want to achieve?",
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": "domestic_worker",
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "بلاغ-انقطاع-عامل-مساعد",
+        "authority_key": "mohre",
+        "action": null,
+        "turn_type": "jurisdiction_switch",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "I need to report a domestic worker absent from work in Sharjah — And if it is in Dubai?"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    }
+  ],
+  "externalModel": "EXTERNAL_BLOCKER_QUOTA_BILLING",
+  "financialOrGovernmentSubmissions": 0,
+  "status": "PASS"
+}

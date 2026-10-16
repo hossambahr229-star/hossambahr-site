@@ -1,0 +1,455 @@
+{
+  "run": 38912754709,
+  "at": "2026-10-16T14:04:16.214Z",
+  "base": "https://hossambahr.com",
+  "sourceSha": "28ad66803b511dde52b51c9df91f9f8299fe2721",
+  "source": "REAL_PRODUCTION_NATIVE_BROWSER",
+  "scope": "AI_ONLY",
+  "pages": [],
+  "ai": [
+    {
+      "locale": "ar",
+      "question": "ما الرسوم الحكومية لتصريح عمل لحامل الإقامة الذهبية؟",
+      "slug": "issuance-of-a-new-work-permit-golden-visa-holders",
+      "answer": {
+        "text": "الرسم الاتحادي المنشور: 50 درهمًا. لا تضيف قناة الموقع أو التطبيق رسم خدمة للوزارة فوق الرسوم الحكومية. الضرائب ورسوم التحصيل غير مشمولة. عمولة مركز الأعمال، عند استخدامه، منفصلة وبحد أقصى 72 درهمًا؛ ليست رسمًا حكوميًا ولا رسم حسام بحر.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issuance-of-a-new-work-permit-golden-visa-holders",
+          "policy_version": 2,
+          "workflow_key": "service:issuance-of-a-new-work-permit-golden-visa-holders",
+          "source_title": "تصريح عمل لحامل الإقامة الذهبية — وزارة الموارد البشرية والتوطين (MOHRE) — Arabic card reviewed 2026-10-16",
+          "source_url": "https://mohre.gov.ae/ar/services/work-permits-of-golden-visa-holders-2022",
+          "last_verified_at": "2026-10-16T07:22:05.930758+00:00",
+          "supporting_rule": {
+            "value": "الرسم الاتحادي المنشور: 50 درهمًا. لا تضيف قناة الموقع أو التطبيق رسم خدمة للوزارة فوق الرسوم الحكومية. الضرائب ورسوم التحصيل غير مشمولة. عمولة مركز الأعمال، عند استخدامه، منفصلة وبحد أقصى 72 درهمًا؛ ليست رسمًا حكوميًا ولا رسم حسام بحر.",
+            "source_refs": [
+              "https://mohre.gov.ae/ar/services/work-permits-of-golden-visa-holders-2022"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة الخدمة الرسمية المطابقة.",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "issuance-of-a-new-work-permit-golden-visa-holders",
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": null,
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "issuance-of-a-new-work-permit-golden-visa-holders",
+        "authority_key": "mohre",
+        "action": null,
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "ما الرسوم الحكومية لتصريح عمل لحامل الإقامة الذهبية؟"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "ar",
+      "question": "والأوراق المطلوبة؟",
+      "slug": "issuance-of-a-new-work-permit-golden-visa-holders",
+      "answer": {
+        "text": "المتطلبات المسجلة لهذه الخدمة: صورة شخصية ملونة بخلفية بيضاء.، نسخة جواز السفر والإقامة الذهبية، وكلاهما ساري المفعول.، عرض العمل المعتمد من الوزارة وموقع من صاحب العمل والعامل.، المؤهل الدراسي المصدق بحسب المستوى المهاري: شهادة جامعية للمستويين 1–2، ودبلوم فأعلى للمستويين 3–4، وثانوية عامة للمستوى 5؛ لا تطلب شهادة للمستويات 6–9. يربط المصدر وصف العامل الماهر بالمؤهل وراتب لا يقل عن 4000 درهم.، ترخيص مزاولة المهنة من الجهة المختصة إذا كانت المهنة منظمة وتتطلب ترخيصًا..",
+        "focus": "documents",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issuance-of-a-new-work-permit-golden-visa-holders",
+          "policy_version": 2,
+          "workflow_key": "service:issuance-of-a-new-work-permit-golden-visa-holders",
+          "source_title": "تصريح عمل لحامل الإقامة الذهبية — وزارة الموارد البشرية والتوطين (MOHRE) — Arabic card reviewed 2026-10-16",
+          "source_url": "https://mohre.gov.ae/ar/services/work-permits-of-golden-visa-holders-2022",
+          "last_verified_at": "2026-10-16T07:22:05.930758+00:00",
+          "supporting_rule": null,
+          "document_requirements": [
+            "صورة شخصية ملونة بخلفية بيضاء.",
+            "نسخة جواز السفر والإقامة الذهبية، وكلاهما ساري المفعول.",
+            "عرض العمل المعتمد من الوزارة وموقع من صاحب العمل والعامل.",
+            "المؤهل الدراسي المصدق بحسب المستوى المهاري: شهادة جامعية للمستويين 1–2، ودبلوم فأعلى للمستويين 3–4، وثانوية عامة للمستوى 5؛ لا تطلب شهادة للمستويات 6–9. يربط المصدر وصف العامل الماهر بالمؤهل وراتب لا يقل عن 4000 درهم.",
+            "ترخيص مزاولة المهنة من الجهة المختصة إذا كانت المهنة منظمة وتتطلب ترخيصًا."
+          ],
+          "special_case": "بطاقة الخدمة الرسمية المطابقة.",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "issuance-of-a-new-work-permit-golden-visa-holders",
+        "last_answer_topic": "documents",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "issuance-of-a-new-work-permit-golden-visa-holders",
+        "authority_key": "mohre",
+        "action": null,
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "ما الرسوم الحكومية لتصريح عمل لحامل الإقامة الذهبية؟ — والأوراق المطلوبة؟"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "ar",
+      "question": "أريد تقديم بلاغ انقطاع عامل مساعد في الشارقة",
+      "slug": "بلاغ-انقطاع-عامل-مساعد",
+      "answer": {
+        "text": "المسار المناسب لطلبك هو «بلاغ انقطاع عامل مساعد» لدى وزارة الموارد البشرية والتوطين في الإمارات العربية المتحدة. انقطاع العامل المساعد عن العمل أكثر من سبعة أيام. هذا سجل مسار MOHRE خارج دبي؛ تحدد البطاقة أن دبي تتبع أنظمة GDRFA، ولا تعمم رسوم خارج دبي عليها.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:بلاغ-انقطاع-عامل-مساعد",
+          "policy_version": 2,
+          "workflow_key": "service:بلاغ-انقطاع-عامل-مساعد",
+          "source_title": "بلاغ انقطاع عامل مساعد — وزارة الموارد البشرية والتوطين (MOHRE)",
+          "source_url": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022",
+          "last_verified_at": "2026-07-27T00:00:00+00:00",
+          "supporting_rule": {
+            "value": "انقطاع العامل المساعد عن العمل أكثر من سبعة أيام. هذا سجل مسار MOHRE خارج دبي؛ تحدد البطاقة أن دبي تتبع أنظمة GDRFA، ولا تعمم رسوم خارج دبي عليها.",
+            "source_refs": [
+              "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "MOHRE / تدبير لا تعمم رسوم هذا المسار أو جهة تنفيذه على دبي.",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "بلاغ-انقطاع-عامل-مساعد",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-SH",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": "domestic_worker",
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "بلاغ-انقطاع-عامل-مساعد",
+        "authority_key": "mohre",
+        "action": null,
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "أريد تقديم بلاغ انقطاع عامل مساعد في الشارقة"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "ar",
+      "question": "ولو في دبي؟",
+      "slug": null,
+      "answer": {
+        "text": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.",
+        "focus": "clarification",
+        "fact_status": "NEEDS_CLARIFICATION",
+        "grounded": false,
+        "evidence": {}
+      },
+      "context": {
+        "active_service_id": "بلاغ-انقطاع-عامل-مساعد",
+        "last_answer_topic": "clarification",
+        "pending_clarification": "ما النتيجة التي تريد الوصول إليها تحديدًا؟",
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": "domestic_worker",
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "بلاغ-انقطاع-عامل-مساعد",
+        "authority_key": "mohre",
+        "action": null,
+        "turn_type": "jurisdiction_switch",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "أريد تقديم بلاغ انقطاع عامل مساعد في الشارقة — ولو في دبي؟"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "question": "What are the government fees for a Golden Visa holder work permit?",
+      "slug": "issuance-of-a-new-work-permit-golden-visa-holders",
+      "answer": {
+        "text": "Published federal fee: AED 50. Website/app use adds no ministry service charge above government fees. Tax and collection charges are excluded. A business centre may separately charge up to AED 72; this is not a government fee or a HOSSAM BAHR fee.\nOfficial source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issuance-of-a-new-work-permit-golden-visa-holders",
+          "policy_version": 2,
+          "workflow_key": "service:issuance-of-a-new-work-permit-golden-visa-holders",
+          "source_title": "تصريح عمل لحامل الإقامة الذهبية — وزارة الموارد البشرية والتوطين (MOHRE) — Arabic card reviewed 2026-10-16",
+          "source_url": "https://mohre.gov.ae/ar/services/work-permits-of-golden-visa-holders-2022",
+          "last_verified_at": "2026-10-16T07:22:05.930758+00:00",
+          "supporting_rule": {
+            "value": "الرسم الاتحادي المنشور: 50 درهمًا. لا تضيف قناة الموقع أو التطبيق رسم خدمة للوزارة فوق الرسوم الحكومية. الضرائب ورسوم التحصيل غير مشمولة. عمولة مركز الأعمال، عند استخدامه، منفصلة وبحد أقصى 72 درهمًا؛ ليست رسمًا حكوميًا ولا رسم حسام بحر.",
+            "source_refs": [
+              "https://mohre.gov.ae/ar/services/work-permits-of-golden-visa-holders-2022"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة الخدمة الرسمية المطابقة.",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "issuance-of-a-new-work-permit-golden-visa-holders",
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": null,
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "issuance-of-a-new-work-permit-golden-visa-holders",
+        "authority_key": "mohre",
+        "action": "issue",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "What are the government fees for a Golden Visa holder work permit?"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "question": "And which documents are required?",
+      "slug": "issuance-of-a-new-work-permit-golden-visa-holders",
+      "answer": {
+        "text": "Recorded requirements for this service:\nColour photograph on a white background.\nCopies of the valid passport and valid Golden Residence.\nThe ministry job-offer form signed by employer and worker.\nAn attested qualification by skill level: degree for levels 1–2, diploma or higher for 3–4, secondary certificate for 5, and no certificate for 6–9. The Arabic source also links skilled status to a qualification and a monthly salary of at least AED 4,000.\nA competent-authority professional licence where the regulated occupation requires one.\nOfficial source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.",
+        "focus": "documents",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:issuance-of-a-new-work-permit-golden-visa-holders",
+          "policy_version": 2,
+          "workflow_key": "service:issuance-of-a-new-work-permit-golden-visa-holders",
+          "source_title": "تصريح عمل لحامل الإقامة الذهبية — وزارة الموارد البشرية والتوطين (MOHRE) — Arabic card reviewed 2026-10-16",
+          "source_url": "https://mohre.gov.ae/ar/services/work-permits-of-golden-visa-holders-2022",
+          "last_verified_at": "2026-10-16T07:22:05.930758+00:00",
+          "supporting_rule": null,
+          "document_requirements": [
+            "صورة شخصية ملونة بخلفية بيضاء.",
+            "نسخة جواز السفر والإقامة الذهبية، وكلاهما ساري المفعول.",
+            "عرض العمل المعتمد من الوزارة وموقع من صاحب العمل والعامل.",
+            "المؤهل الدراسي المصدق بحسب المستوى المهاري: شهادة جامعية للمستويين 1–2، ودبلوم فأعلى للمستويين 3–4، وثانوية عامة للمستوى 5؛ لا تطلب شهادة للمستويات 6–9. يربط المصدر وصف العامل الماهر بالمؤهل وراتب لا يقل عن 4000 درهم.",
+            "ترخيص مزاولة المهنة من الجهة المختصة إذا كانت المهنة منظمة وتتطلب ترخيصًا."
+          ],
+          "special_case": "بطاقة الخدمة الرسمية المطابقة.",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "issuance-of-a-new-work-permit-golden-visa-holders",
+        "last_answer_topic": "documents",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "issuance-of-a-new-work-permit-golden-visa-holders",
+        "authority_key": "mohre",
+        "action": "issue",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "What are the government fees for a Golden Visa holder work permit? — And which documents are required?"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "question": "I need to report a domestic worker absent from work in Sharjah",
+      "slug": "domestic-worker-labour-complaint-mohre",
+      "answer": {
+        "text": "The matching service is Register Labor Complaint (Domestic Workers) through MOHRE. The service card publishes no additional conditions; the complaint remains subject to jurisdiction and legal procedures.",
+        "focus": "overview",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:domestic-worker-labour-complaint-mohre",
+          "policy_version": 1,
+          "workflow_key": "service:domestic-worker-labour-complaint-mohre",
+          "source_title": "تسجيل شكوى عمالية لعمال الخدمة المساعدة",
+          "source_url": "https://mohre.gov.ae/en/services/register-a-labor-complaint-domestic-workers",
+          "last_verified_at": "2026-09-30T08:27:00.269264+00:00",
+          "supporting_rule": {
+            "value": "لا توجد شروط إضافية منشورة في بطاقة الخدمة؛ تخضع الشكوى للاختصاص والإجراءات القانونية.",
+            "source_refs": [
+              "https://mohre.gov.ae/en/services/register-a-labor-complaint-domestic-workers"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": null,
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "domestic-worker-labour-complaint-mohre",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-SH",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": "domestic_worker",
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "domestic-worker-labour-complaint-mohre",
+        "authority_key": "mohre",
+        "action": null,
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "I need to report a domestic worker absent from work in Sharjah"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    }
+  ],
+  "externalModel": "EXTERNAL_BLOCKER_QUOTA_BILLING",
+  "financialOrGovernmentSubmissions": 0,
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'domestic-worker-labour-complaint-mohre'\n- 'بلاغ-انقطاع-عامل-مساعد'\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/live-mohre-grounding-oct16.mjs:34:150"
+}
