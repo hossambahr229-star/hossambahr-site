@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T16:39:35.703Z",
+  "generatedAt": "2026-10-16T00:37:27.586Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
@@ -1885,8 +1885,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://u.ae/en/information-and-services/business/important-digital-services/inquire-about-licences-names-and-activities",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022",
@@ -2574,9 +2575,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "TimeoutError"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
