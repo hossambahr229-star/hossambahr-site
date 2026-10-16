@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
-import {withoutJurisdictionExclusions} from '../supabase/functions/public-ai-concierge/response-context.ts';
+import {withoutJurisdictionExclusions,jurisdictionExcludesService} from '../supabase/functions/public-ai-concierge/response-context.ts';
 import {englishResult} from '../supabase/functions/public-ai-concierge/english-response.ts';
 const matrix=JSON.parse(await readFile('service-matrix.json','utf8'));
 const review=JSON.parse(await readFile('content/mohre-ai-grounding-review-2026-10-16.json','utf8'));
@@ -7,3 +7,5 @@ test('explicit Dubai excludes only the source-backed outside-Dubai pathways',()=
 for(const slug of review.services)test(slug+' has usable English grounded documents',()=>{const s=matrix.services.find(s=>s.slug===slug);const result=englishResult({matches:[{service_slug:slug}],answer:{focus:'documents',fact_status:'VERIFIED_FACT',grounded:true,text:s.requirements.join('\n'),evidence:{document_requirements:s.requirements}}});assert.doesNotMatch(result.answer.text,/[\u0600-\u06ff]/);assert.match(result.answer.text,/Recorded requirements/);});
 test('known Golden Residence government fee remains AED50, provider fees are separate',()=>{const s=matrix.services.find(s=>s.slug==='issuance-of-a-new-work-permit-golden-visa-holders');const result=englishResult({matches:[{service_slug:s.slug}],answer:{focus:'fees',fact_status:'VERIFIED_FACT',grounded:true,text:s.fees,evidence:{}}});assert.match(result.answer.text,/AED 50/);assert.match(result.answer.text,/not a government fee/);});
 test('unknown government fees remain honest in English',()=>{const result=englishResult({matches:[{service_slug:'إصدار-بطاقة-مندوب-علاقات-عامة-pro'}],answer:{focus:'fees',fact_status:'MISSING_INFORMATION',grounded:false,text:'غير موثق بعد',evidence:{}}});assert.match(result.answer.text,/cannot confirm a government fee/);assert.doesNotMatch(result.answer.text,/40|72/);});
+
+test('an excluded inherited service is a jurisdiction conflict, not a substitute transaction',()=>{assert.equal(jurisdictionExcludesService({binding:{metadata:{excluded_jurisdictions:['AE-DU']}}},'AE-DU'),true);assert.equal(jurisdictionExcludesService(undefined,'AE-DU'),false);assert.equal(jurisdictionExcludesService({binding:{metadata:{excluded_jurisdictions:['AE-DU']}}},'AE-SH'),false);});
