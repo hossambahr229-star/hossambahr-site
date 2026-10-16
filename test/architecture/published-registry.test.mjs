@@ -5,6 +5,7 @@ import { resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '../..');
 const registry = JSON.parse(await readFile(resolve(root, 'src/registry/published-services.json'), 'utf8'));
+const sourceMatrix=JSON.parse(await readFile(resolve(root,'service-matrix.json'),'utf8')).services;
 
 test('published registry is the normalized real-service inventory', async () => {
   assert.equal(registry.summary.services, registry.services.length);
@@ -26,7 +27,10 @@ test('every published record owns a dedicated internal page and safe CTA state',
     assert.ok(service.governmentFees?.status, service.id);
     assert.ok(service.processingTime?.status, service.id);
     assert.ok(service.conditions, service.id);
-    assert.ok(service.steps.length >= 4, service.id);
+    const reviewed=sourceMatrix.find(row=>row.slug===service.slug&&row.stepsReviewedAt&&Array.isArray(row.recordedSteps));
+    if(reviewed)assert.equal(service.steps.length,reviewed.recordedSteps.length,service.id+' preserves the exact reviewed official steps');
+    else assert.ok(service.steps.length >= 4, service.id);
+    assert.ok(service.steps.length>0&&service.steps.every(step=>step.title),service.id+' nonempty steps');
     assert.ok(service.faq.length >= 1, service.id);
     assert.ok(service.relatedServiceIds.length >= 1, service.id);
     assert.ok(service.alternativeServiceIds.length >= 1, service.id);

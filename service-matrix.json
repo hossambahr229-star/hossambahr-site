@@ -5533,11 +5533,11 @@
       "status": "verified",
       "description": "استخراج تقرير رسمي يبين بيانات الإقامة ومعلومات الملف النشط.",
       "requirements": [],
-      "fees": "غير موثق بعد",
+      "fees": "رسوم الطلب 100 درهم ورسوم الخدمات الذكية 100 درهم وفق بطاقة ICP. لا تتضمن هذه القيم أي رسوم لحسام بحر.",
       "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "ICP",
-      "lastReviewed": "2026-07-27",
+      "conditions": "يجب أن يكون لدى المتعامل ملف إقامة فعال وفق بطاقة ICP.",
+      "specialCases": "بطاقة ICP تعرض ضمن المستندات بنودًا مرتبطة بتغيير المهنة؛ لا نؤكد انطباقها على طباعة التقرير دون توضيح من الجهة. مدة الإنجاز غير منشورة في البطاقة المقروءة.",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": true,
@@ -5556,7 +5556,7 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "رسوم الطلب 100 درهم ورسوم الخدمات الذكية 100 درهم وفق بطاقة ICP. لا تتضمن هذه القيم أي رسوم لحسام بحر."
         },
         {
           "question": "كم تستغرق المعاملة؟",
@@ -5566,7 +5566,29 @@
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
-      ]
+      ],
+      "recordedSteps": [
+        "تقديم الطلب عبر القناة المختارة.",
+        "مراجعة النموذج وتصحيح البيانات المسترجعة عند الحاجة.",
+        "دفع الرسوم المطلوبة.",
+        "استلام التقرير النهائي."
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+          "sourceLanguage": "en",
+          "fees": "The ICP card lists an AED 100 application fee and AED 100 smart-services fee. These amounts include no HOSSAM BAHR fee.",
+          "steps": [
+            "Submit the application through the chosen channel.",
+            "Review the form and correct retrieved data if required.",
+            "Pay the required fees.",
+            "Receive the final report."
+          ],
+          "eligibility": "The customer must have an active residence file, according to the ICP card.",
+          "notes": "The ICP card includes occupation-change items in its document list; their applicability to printing this report requires confirmation from ICP. No processing duration is published in the reviewed card."
+        }
+      },
+      "stepsReviewedAt": "2026-10-16"
     },
     {
       "id": "directory:residency:18",
@@ -7811,14 +7833,14 @@
       "status": "verified",
       "description": "سداد الغرامات المفروضة على مخالفي التأشيرات أو الإقامة ضمن اختصاص ICP.",
       "requirements": [],
-      "fees": "غير موثق بعد",
+      "fees": "50 درهمًا عن كل يوم في حالات انتهاء مدة البقاء أو إلغاء/انتهاء التأشيرة أو الإقامة أو تصريح المغادرة أو تسجيل المولود المذكورة في البطاقة. سوء استخدام الخدمات الذكية: 2000 درهم عند انطباق المخالفة. رسم الخدمات الذكية: 100 درهم. هذه بنود مختلفة وليست مجموعًا ثابتًا، ويحدد سجل المخالفة المبلغ المستحق. لا تتضمن رسوم حسام بحر.",
       "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "ICP",
-      "lastReviewed": "2026-07-27",
+      "conditions": "يجب تعديل الوضع أو مغادرة دولة الإمارات بعد سداد الغرامات المتعلقة بالتأشيرة أو الإقامة. تتطلب القناة الرسمية تسجيل الدخول بالهوية الرقمية UAE Pass.",
+      "specialCases": "تظهر خانة المستندات في بطاقة ICP بصيغة N/A؛ لا نفسرها على أنها إعفاء مؤكد من كل متطلب. مدة الإنجاز غير منشورة في البطاقة المقروءة.",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
-      "loginRequired": false,
+      "loginRequired": true,
       "previousService": "/services/سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي/",
       "nextService": "/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
       "relatedServices": [
@@ -7834,7 +7856,7 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "50 درهمًا عن كل يوم في حالات انتهاء مدة البقاء أو إلغاء/انتهاء التأشيرة أو الإقامة أو تصريح المغادرة أو تسجيل المولود المذكورة في البطاقة. سوء استخدام الخدمات الذكية: 2000 درهم عند انطباق المخالفة. رسم الخدمات الذكية: 100 درهم. هذه بنود مختلفة وليست مجموعًا ثابتًا، ويحدد سجل المخالفة المبلغ المستحق. لا تتضمن رسوم حسام بحر."
         },
         {
           "question": "كم تستغرق المعاملة؟",
@@ -7844,7 +7866,27 @@
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "recordedSteps": [
+        "تقديم الطلب عبر القناة المختارة.",
+        "مراجعة النموذج وتصحيح البيانات المسترجعة عند الحاجة.",
+        "إتمام سداد الغرامة."
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+          "sourceLanguage": "en",
+          "fees": "The card lists AED 50 per day for the stated expiry/cancellation or permitted-stay cases involving a visa, residence, exit permit or newborn registration; AED 2,000 for misuse of smart services when that violation applies; and an AED 100 smart-services fee. These are separate items, not one fixed total. The violation record determines the amount due. No HOSSAM BAHR fee is included.",
+          "steps": [
+            "Submit the application through the chosen channel.",
+            "Review the form and correct retrieved data if required.",
+            "Complete payment of the fine."
+          ],
+          "eligibility": "The status must be adjusted or the individual must leave the UAE after paying visa/residence fines. The official channel requires UAE Pass sign-in.",
+          "notes": "The ICP card labels its documents field N/A; this does not establish an unconditional exemption from every requirement. No processing duration is published in the reviewed card."
+        }
+      },
+      "stepsReviewedAt": "2026-10-16"
     },
     {
       "id": "directory:residency:55",
