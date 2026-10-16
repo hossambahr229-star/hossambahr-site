@@ -6,7 +6,7 @@ import {readAIResponse} from '../ai-response-protocol.mjs';
 const {services}=JSON.parse(await readFile('src/registry/published-services.json','utf8'));
 const review=JSON.parse(await readFile('content/mohre-ai-grounding-review-2026-10-16.json','utf8'));
 const output='artifacts/live-mohre-oct16',base='https://hossambahr.com';await mkdir(output,{recursive:true});
-const report={at:new Date().toISOString(),base,sourceSha:process.env.GITHUB_SHA,source:'REAL_PRODUCTION_NATIVE_BROWSER',scope:process.env.HB_MOHRE_AI_ONLY?'AI_ONLY':process.env.HB_MOHRE_PAGES_ONLY?'PAGES_ONLY':'PAGES_AND_AI',pages:[],ai:[],externalModel:'NOT_DECLARED',financialOrGovernmentSubmissions:0};
+const report={at:new Date().toISOString(),base,sourceSha:process.env.GITHUB_SHA,source:'REAL_PRODUCTION_NATIVE_BROWSER',scope:process.env.HB_MOHRE_DOMESTIC_EN_ONLY?'DOMESTIC_EN_ONLY':process.env.HB_MOHRE_AI_ONLY?'AI_ONLY':process.env.HB_MOHRE_PAGES_ONLY?'PAGES_ONLY':'PAGES_AND_AI',pages:[],ai:[],externalModel:'NOT_DECLARED',financialOrGovernmentSubmissions:0};
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||'/usr/bin/google-chrome'});
 try{
  const page=await browser.newPage();
@@ -21,12 +21,14 @@ try{
   await page.locator('.hb-path-track').first().click();await page.waitForFunction(slug=>document.querySelector('[data-customer-intake] [name=service]')?.value===slug,slug);assert.ok(await page.locator('[data-customer-intake] [name=goal]').inputValue());assert.equal(await page.locator('html').getAttribute('lang'),locale);
   report.pages.push({slug,locale,width,result:'PASS',government,whatsapp:true,assistedContext:true});
  }}
- if(!process.env.HB_MOHRE_PAGES_ONLY)for(const locale of ['ar','en']){
+ if(!process.env.HB_MOHRE_PAGES_ONLY)for(const locale of (process.env.HB_MOHRE_DOMESTIC_EN_ONLY?['en']:['ar','en'])){
   const context=await browser.newContext({viewport:{width:locale==='en'?1440:390,height:1000}}),chat=await context.newPage(),prefix=locale==='en'?'/en':'';
   const ask=async question=>{const resultPromise=chat.waitForResponse(r=>r.url().includes('/functions/v1/public-ai-concierge')&&r.request().method()==='POST',{timeout:60000});await chat.locator('.primary-search textarea').fill(question);await chat.locator('.primary-search button[type=submit]').click();const response=await resultPromise,raw=await response.text();const parsed=await readAIResponse(new Response(raw,{status:response.status(),headers:{'content-type':response.headers()['content-type']||''}}));await chat.waitForFunction(()=>!document.querySelector('.primary-search button[type=submit]').disabled);const p=parsed.payload;report.ai.push({locale,question,slug:p.result.matches?.[0]?.service_slug||null,answer:p.result.answer,context:p.goal_context,engine:p.result.engine});return p;};
-  await chat.goto(base+prefix+'/ai/');
-  let p=await ask(locale==='en'?'What are the government fees for a Golden Visa holder work permit?':'ما الرسوم الحكومية لتصريح عمل لحامل الإقامة الذهبية؟');assert.equal(p.result.matches[0]?.service_slug,'issuance-of-a-new-work-permit-golden-visa-holders');assert.match(p.result.answer.text,/50/);
+  let p;
+  if(!process.env.HB_MOHRE_DOMESTIC_EN_ONLY){await chat.goto(base+prefix+'/ai/');
+  p=await ask(locale==='en'?'What are the government fees for a Golden Visa holder work permit?':'ما الرسوم الحكومية لتصريح عمل لحامل الإقامة الذهبية؟');assert.equal(p.result.matches[0]?.service_slug,'issuance-of-a-new-work-permit-golden-visa-holders');assert.match(p.result.answer.text,/50/);
   p=await ask(locale==='en'?'And which documents are required?':'والأوراق المطلوبة؟');assert.equal(p.result.matches[0]?.service_slug,'issuance-of-a-new-work-permit-golden-visa-holders');assert.equal(p.result.answer.focus,'documents');assert.ok(p.result.answer.evidence?.document_requirements?.length>=4);if(locale==='en')assert.doesNotMatch(p.result.answer.text,/[\u0600-\u06ff]/);
+  }
   await context.close();const other=await browser.newContext({viewport:{width:390,height:1000}}),scoped=await other.newPage();
   // A separate clean conversation preserves the real client history rather than constructing API state.
   await scoped.goto(base+prefix+'/ai/');
