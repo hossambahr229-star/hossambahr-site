@@ -1,0 +1,150 @@
+{
+  "capturedAt": "2026-10-16",
+  "repository": "hossambahr229-star/hossambahr-site",
+  "sourceMainSha": "759f04702cfd06e75d99d7082339a707bc623446",
+  "mergedPRs": [
+    {
+      "number": 483,
+      "scope": "Existing-registry capability and activity discovery"
+    },
+    {
+      "number": 484,
+      "scope": "First live-reviewed MOHRE facts"
+    },
+    {
+      "number": 485,
+      "scope": "Further live-reviewed MOHRE facts"
+    },
+    {
+      "number": 486,
+      "scope": "Versioned AI fact sync and outside-Dubai exclusions"
+    },
+    {
+      "number": 487,
+      "scope": "Discovery menu spacing"
+    },
+    {
+      "number": 488,
+      "scope": "Actual Arabic publication refresh and nonempty official steps"
+    },
+    {
+      "number": 489,
+      "sha": "46bba2cda2c4ef5f5fba0a720abc51d69925f960",
+      "scope": "Golden Residence holder work permit identity; Arabic primary source transparency"
+    },
+    {
+      "number": 490,
+      "sha": "ac89de6f71d6e7ec18969747f6ec1800a65e94cb",
+      "scope": "Domestic-worker absence report vs labour complaint"
+    },
+    {
+      "number": 491,
+      "sha": "425d12c7a8307467441b42576728d6feef64a39c",
+      "scope": "Conditional ICP report/fine fees and eligibility; duration/documents stay partial"
+    },
+    {
+      "number": 492,
+      "sha": "b8cd4b44e77af3c7bb1d3839778b543a6e4bcfb0",
+      "scope": "Exact ICP auxiliary object routing"
+    },
+    {
+      "number": 493,
+      "sha": "759f04702cfd06e75d99d7082339a707bc623446",
+      "scope": "Arabic punctuation boundary and strengthened exact-identity regression"
+    }
+  ],
+  "edge": {
+    "version": 148,
+    "status": "ACTIVE",
+    "hash": "8d1eda3a69e0f2793134f3caee701b0940e657dc2466dc74d06ff58f900ae52f",
+    "filesMatch": true
+  },
+  "acceptance": {
+    "code": "TARGETED_AND_REQUIRED_CI_PASS",
+    "liveServicePages": {
+      "status": "PASS_FOR_AFFECTED_SERVICES_ONLY",
+      "count": 88,
+      "composition": [
+        {
+          "run": 38869309372,
+          "count": 80
+        },
+        {
+          "run": 38915074653,
+          "count": 4
+        },
+        {
+          "run": 38915851822,
+          "attempt": 2,
+          "count": 4
+        }
+      ],
+      "widths": [
+        1440,
+        320
+      ],
+      "locales": [
+        "ar",
+        "en"
+      ],
+      "scope": "Actual published facts, responsive overflow, official href, international WhatsApp href and real assisted-contact context handoff. No government/financial submission."
+    },
+    "liveAI": {
+      "status": "TARGETED_GROUNDED_POLICY_PASS",
+      "count": 12,
+      "sourceFile": "artifacts/live-acceptance-oct16/accepted-ai-turns.json",
+      "externalModelUsed": false
+    },
+    "discovery": {
+      "preservedAcceptedJourneys": 30,
+      "responsiveViews": 64,
+      "note": "Previously accepted current-source discovery results preserved; no new all-platform claim."
+    },
+    "visual": {
+      "geometryPassed": true,
+      "changedPixelPercent": 13.906611689814815,
+      "humanVisualAcceptance": "NOT_ACCEPTED",
+      "pixelFidelity": "NOT_DECLARED",
+      "sourceReport": "artifacts/production-reference/report.json"
+    },
+    "accountsAndDocuments": {
+      "status": "BLOCKED_NO_CONFIRMED_AUTHORIZED_TEST_CREDENTIALS",
+      "presenceCheckRun": 38914827879,
+      "checkedCandidateNames": 16,
+      "matchedSecretNames": [],
+      "matchedVariableNames": [],
+      "fullSecretInventoryInspected": false,
+      "privateAccountOrDocumentExecutionTested": false
+    },
+    "externalDependency": {
+      "status": "EXTERNAL_BLOCKER_QUOTA_BILLING",
+      "external_model_used": false,
+      "code": "credit_balance_exhausted",
+      "allTargetedTurnsAffected": true
+    },
+    "security": {
+      "codeAndDatabaseChecks": "PASS",
+      "permissionsOrRlsWeakened": false,
+      "livePrivateAccountAcceptance": "NOT_TESTED"
+    },
+    "catalog": {
+      "services": 202,
+      "fourRecordedFields": 170,
+      "partial": 32,
+      "fourFieldsAreNotFullAcceptance": true,
+      "remainingFile": "qa/remaining-partial-services-2026-10-15.json",
+      "knownOfficialBoundaries": [
+        "ICP report document list includes occupation-change items whose applicability is unclear; duration absent.",
+        "ICP fine card says N/A for documents; duration absent. No unconditional no-document or instant-processing claim.",
+        "GDRFA establishment cancellation and residence amendment completion-time sections are empty after expanding all official sections.",
+        "Some remaining official cards have absent amounts, protected execution or broader scopes than the catalog subtype; retain explicit unverified fields rather than inventing facts."
+      ]
+    }
+  },
+  "productionPublisher": {
+    "run": 38917095471,
+    "status": "PENDING_FINAL_CHECKPOINT_UPDATE"
+  },
+  "finalPass": "NOT_DECLARED",
+  "nextWork": "Preserve these fixes. Remaining work is visual/human reference acceptance, source-backed completion of 32 partial records, authorized private-account/document/tracking execution and external-model acceptance after the credit blocker is resolved. Do not repeat accepted tests absent regression."
+}

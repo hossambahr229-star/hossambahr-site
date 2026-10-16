@@ -1,0 +1,317 @@
+{
+  "run": 38915851822,
+  "attempt": 2,
+  "at": "2026-10-16T14:36:57.652Z",
+  "sourceSha": "d51dec7831182fcfc30049f6bcf30113e8bd3223",
+  "base": "https://hossambahr.com",
+  "source": "REAL_PRODUCTION_NATIVE_BROWSER",
+  "scope": "REMAINING_JOURNEYS",
+  "preservedPageRun": 38915074653,
+  "pages": [
+    {
+      "slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS",
+      "government": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "whatsapp": true,
+      "assistedContext": true
+    },
+    {
+      "slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "locale": "ar",
+      "width": 320,
+      "status": "PASS",
+      "government": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "whatsapp": true,
+      "assistedContext": true
+    },
+    {
+      "slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "locale": "en",
+      "width": 1440,
+      "status": "PASS",
+      "government": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "whatsapp": true,
+      "assistedContext": true
+    },
+    {
+      "slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "locale": "en",
+      "width": 320,
+      "status": "PASS",
+      "government": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "whatsapp": true,
+      "assistedContext": true
+    }
+  ],
+  "ai": [
+    {
+      "locale": "ar",
+      "question": "ما رسوم تقرير تفاصيل الإقامة عبر ICP؟",
+      "expectedSlug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "answer": {
+        "text": "رسوم الطلب 100 درهم ورسوم الخدمات الذكية 100 درهم وفق بطاقة ICP. لا تتضمن هذه القيم أي رسوم لحسام بحر.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تقرير-تفاصيل-الإقامة-عبر-icp",
+          "policy_version": 2,
+          "workflow_key": "service:تقرير-تفاصيل-الإقامة-عبر-icp",
+          "source_title": "تقرير تفاصيل الإقامة عبر ICP — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+          "last_verified_at": "2026-10-16T14:15:06.154609+00:00",
+          "supporting_rule": {
+            "value": "رسوم الطلب 100 درهم ورسوم الخدمات الذكية 100 درهم وفق بطاقة ICP. لا تتضمن هذه القيم أي رسوم لحسام بحر.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة ICP تعرض ضمن المستندات بنودًا مرتبطة بتغيير المهنة؛ لا نؤكد انطباقها على طباعة التقرير دون توضيح من الجهة. مدة الإنجاز غير منشورة في البطاقة المقروءة.",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "تقرير-تفاصيل-الإقامة-عبر-icp",
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": null,
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+        "authority_key": "icp",
+        "action": null,
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "ما رسوم تقرير تفاصيل الإقامة عبر ICP؟"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "question": "What are the fees for the ICP residence details report?",
+      "expectedSlug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "answer": {
+        "text": "The ICP card lists an AED 100 application fee and AED 100 smart-services fee. These amounts include no HOSSAM BAHR fee.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:تقرير-تفاصيل-الإقامة-عبر-icp",
+          "policy_version": 2,
+          "workflow_key": "service:تقرير-تفاصيل-الإقامة-عبر-icp",
+          "source_title": "تقرير تفاصيل الإقامة عبر ICP — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+          "last_verified_at": "2026-10-16T14:15:06.154609+00:00",
+          "supporting_rule": {
+            "value": "رسوم الطلب 100 درهم ورسوم الخدمات الذكية 100 درهم وفق بطاقة ICP. لا تتضمن هذه القيم أي رسوم لحسام بحر.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "بطاقة ICP تعرض ضمن المستندات بنودًا مرتبطة بتغيير المهنة؛ لا نؤكد انطباقها على طباعة التقرير دون توضيح من الجهة. مدة الإنجاز غير منشورة في البطاقة المقروءة.",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "تقرير-تفاصيل-الإقامة-عبر-icp",
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": null,
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+        "authority_key": "icp",
+        "action": null,
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "What are the fees for the ICP residence details report?"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "ar",
+      "question": "ما رسوم سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP خارج دبي؟",
+      "expectedSlug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "answer": {
+        "text": "50 درهمًا عن كل يوم في حالات انتهاء مدة البقاء أو إلغاء/انتهاء التأشيرة أو الإقامة أو تصريح المغادرة أو تسجيل المولود المذكورة في البطاقة. سوء استخدام الخدمات الذكية: 2000 درهم عند انطباق المخالفة. رسم الخدمات الذكية: 100 درهم. هذه بنود مختلفة وليست مجموعًا ثابتًا، ويحدد سجل المخالفة المبلغ المستحق. لا تتضمن رسوم حسام بحر.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+          "source_title": "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+          "last_verified_at": "2026-10-16T14:15:06.154609+00:00",
+          "supporting_rule": {
+            "value": "50 درهمًا عن كل يوم في حالات انتهاء مدة البقاء أو إلغاء/انتهاء التأشيرة أو الإقامة أو تصريح المغادرة أو تسجيل المولود المذكورة في البطاقة. سوء استخدام الخدمات الذكية: 2000 درهم عند انطباق المخالفة. رسم الخدمات الذكية: 100 درهم. هذه بنود مختلفة وليست مجموعًا ثابتًا، ويحدد سجل المخالفة المبلغ المستحق. لا تتضمن رسوم حسام بحر.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "تظهر خانة المستندات في بطاقة ICP بصيغة N/A؛ لا نفسرها على أنها إعفاء مؤكد من كل متطلب. مدة الإنجاز غير منشورة في البطاقة المقروءة.",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": null,
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+        "authority_key": "icp",
+        "action": null,
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "ما رسوم سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP خارج دبي؟"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "question": "What are the fees for payment of visa or residence violation fines through ICP outside Dubai?",
+      "expectedSlug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "answer": {
+        "text": "The card lists AED 50 per day for the stated expiry/cancellation or permitted-stay cases involving a visa, residence, exit permit or newborn registration; AED 2,000 for misuse of smart services when that violation applies; and an AED 100 smart-services fee. These are separate items, not one fixed total. The violation record determines the amount due. No HOSSAM BAHR fee is included.",
+        "focus": "fees",
+        "fact_status": "VERIFIED_FACT",
+        "grounded": true,
+        "evidence": {
+          "policy_key": "service:سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+          "policy_version": 2,
+          "workflow_key": "service:سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+          "source_title": "سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+          "source_url": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+          "last_verified_at": "2026-10-16T14:15:06.154609+00:00",
+          "supporting_rule": {
+            "value": "50 درهمًا عن كل يوم في حالات انتهاء مدة البقاء أو إلغاء/انتهاء التأشيرة أو الإقامة أو تصريح المغادرة أو تسجيل المولود المذكورة في البطاقة. سوء استخدام الخدمات الذكية: 2000 درهم عند انطباق المخالفة. رسم الخدمات الذكية: 100 درهم. هذه بنود مختلفة وليست مجموعًا ثابتًا، ويحدد سجل المخالفة المبلغ المستحق. لا تتضمن رسوم حسام بحر.",
+            "source_refs": [
+              "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1"
+            ]
+          },
+          "document_requirements": null,
+          "special_case": "تظهر خانة المستندات في بطاقة ICP بصيغة N/A؛ لا نفسرها على أنها إعفاء مؤكد من كل متطلب. مدة الإنجاز غير منشورة في البطاقة المقروءة.",
+          "source_scope_unresolved": false,
+          "review_pending": false
+        }
+      },
+      "context": {
+        "active_service_id": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": null,
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+        "authority_key": "icp",
+        "action": "issue",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "What are the fees for payment of visa or residence violation fines through ICP outside Dubai?"
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      }
+    }
+  ],
+  "externalModel": "EXTERNAL_BLOCKER_QUOTA_BILLING",
+  "financialOrGovernmentSubmissions": 0,
+  "status": "PASS"
+}

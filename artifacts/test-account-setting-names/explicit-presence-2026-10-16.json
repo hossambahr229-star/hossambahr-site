@@ -1,0 +1,27 @@
+{
+  "run": 38914827879,
+  "capturedAt": "2026-10-16T14:19:33.598Z",
+  "secretNames": [],
+  "variableNames": [],
+  "candidateNames": [
+    "HB_E2E_EMAIL",
+    "HB_E2E_PASSWORD",
+    "E2E_USER_EMAIL",
+    "E2E_USER_PASSWORD",
+    "TEST_USER_EMAIL",
+    "TEST_USER_PASSWORD",
+    "HB_TEST_EMAIL",
+    "HB_TEST_PASSWORD",
+    "QA_USER_EMAIL",
+    "QA_USER_PASSWORD",
+    "TEST_EMAIL",
+    "TEST_PASSWORD",
+    "E2E_EMAIL",
+    "E2E_PASSWORD",
+    "PLAYWRIGHT_TEST_EMAIL",
+    "PLAYWRIGHT_TEST_PASSWORD"
+  ],
+  "valuesRead": false,
+  "valuesIncluded": false,
+  "scope": "Presence checks for explicit test-account candidate names only. No all-secrets context, authentication or private user data."
+}

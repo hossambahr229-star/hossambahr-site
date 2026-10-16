@@ -1,0 +1,43 @@
+{
+  "run": 38915074653,
+  "scope": "Only these four completed page assertions are accepted; the failed conversation is preserved separately in diagnostic history.",
+  "pages": [
+    {
+      "slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS",
+      "government": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/others/guestRequestDetails/447/step1?administrativeRegionId=1&withException=false",
+      "whatsapp": true,
+      "assistedContext": true
+    },
+    {
+      "slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "locale": "ar",
+      "width": 320,
+      "status": "PASS",
+      "government": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/others/guestRequestDetails/447/step1?administrativeRegionId=1&withException=false",
+      "whatsapp": true,
+      "assistedContext": true
+    },
+    {
+      "slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "locale": "en",
+      "width": 1440,
+      "status": "PASS",
+      "government": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/others/guestRequestDetails/447/step1?administrativeRegionId=1&withException=false",
+      "whatsapp": true,
+      "assistedContext": true
+    },
+    {
+      "slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "locale": "en",
+      "width": 320,
+      "status": "PASS",
+      "government": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/others/guestRequestDetails/447/step1?administrativeRegionId=1&withException=false",
+      "whatsapp": true,
+      "assistedContext": true
+    }
+  ],
+  "status": "PASS_FOR_THESE_PAGES_ONLY"
+}

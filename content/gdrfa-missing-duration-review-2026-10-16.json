@@ -1,0 +1,22 @@
+{
+  "reviewedAt": "2026-10-16",
+  "method": "LIVE_OFFICIAL_BROWSER_EXPAND_ALL",
+  "records": [
+    {
+      "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "sourceUrl": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "remaining": [
+        "duration"
+      ],
+      "finding": "Expected Completion Time section is empty after expanding all official details. 24/7 describes channel availability, not processing duration."
+    },
+    {
+      "slug": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+      "sourceUrl": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+      "remaining": [
+        "duration"
+      ],
+      "finding": "Expected Completion Time section is empty after expanding all official details. 24/7 is channel availability; 30 days is the missing-document deadline, not completion time."
+    }
+  ]
+}
