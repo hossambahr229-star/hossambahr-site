@@ -16,7 +16,7 @@ begin
    on conflict(authority_key,source_url) do nothing;
    select * into strict arabic_src from public.hb_policy_sources where authority_key=src.authority_key and source_url=item->>'arabicSourceUrl' and active and not review_required;
    review_source_url:=arabic_src.source_url;
-   if not arabic_src.id=any(refs) then refs:=array_append(refs,arabic_src.id); end if;
+   refs:=array_prepend(arabic_src.id,array_remove(refs,arabic_src.id));
   end if;
   select coalesce(jsonb_agg(value),'[]'::jsonb) into new_rules from jsonb_array_elements(p.rules)
    where value->>'id' not in ('fees','duration','conditions','special-cases') and value->>'id' not like 'requirement%'
@@ -34,4 +34,16 @@ begin
    case when jsonb_array_length(item->'excludedJurisdictions')>0 then jsonb_build_object('excluded_jurisdictions',item->'excludedJurisdictions','jurisdiction_scope_note','The official MOHRE card directs Dubai to GDRFA; outside-Dubai amounts are not applicable to Dubai.') else '{}'::jsonb end where id=b.id;
  end loop;
 end $review$;
+-- Prefer the reviewed Arabic card when its English counterpart contains mismatched details.
+do $source_order$
+declare item jsonb; b public.hb_service_bindings%rowtype; p public.hb_policy_versions%rowtype; primary_id uuid;
+begin
+ for item in select value from jsonb_array_elements($arabic$[{"slug":"issuance-of-a-new-work-permit-golden-visa-holders","sourceUrl":"https://mohre.gov.ae/ar/services/work-permits-of-golden-visa-holders-2022"},{"slug":"issuance-of-a-new-work-permit-mission-work-permit","sourceUrl":"https://www.mohre.gov.ae/ar/services/mission-work-permit-2022"},{"slug":"تصريح-تدريب-وعمل-طالب","sourceUrl":"https://mohre.gov.ae/ar/services/training-and-work-permit-for-students-2022"},{"slug":"تصريح-عمل-حدث","sourceUrl":"https://mohre.gov.ae/ar/services/juvenile-work-permit-2022"}]$arabic$::jsonb) loop
+  select * into strict b from public.hb_service_bindings where service_slug=item->>'slug' and active;
+  select * into strict p from public.hb_policy_versions where policy_key=b.policy_key and jurisdiction_id is not distinct from b.jurisdiction_id and status='active' for update;
+  if p.version<>2 or p.reviewed_by<>'mohre-live-fields-2026-10-16' then raise exception 'Unexpected policy for source ordering: %',b.service_slug; end if;
+  select id into strict primary_id from public.hb_policy_sources where authority_key=b.authority_key and source_url=item->>'sourceUrl' and active and not review_required and id=any(p.source_ids);
+  update public.hb_policy_versions set source_ids=array_prepend(primary_id,array_remove(source_ids,primary_id)) where id=p.id;
+ end loop;
+end $source_order$;
 commit;
