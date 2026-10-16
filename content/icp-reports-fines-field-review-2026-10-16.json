@@ -1,0 +1,40 @@
+{
+  "reviewedAt": "2026-10-16",
+  "scope": "Two existing ICP records; facts read from the live official card. Processing duration and unconfirmed document applicability remain unknown. No government or financial submission.",
+  "records": [
+    {
+      "slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "reviewedAt": "2026-10-16",
+      "method": "LIVE_OFFICIAL_BROWSER",
+      "fields": [
+        "fees",
+        "conditions",
+        "specialCases"
+      ],
+      "remaining": [
+        "documents",
+        "duration"
+      ],
+      "note": "بطاقة ICP تعرض ضمن المستندات بنودًا مرتبطة بتغيير المهنة؛ لا نؤكد انطباقها على طباعة التقرير دون توضيح من الجهة. مدة الإنجاز غير منشورة في البطاقة المقروءة."
+    },
+    {
+      "slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "reviewedAt": "2026-10-16",
+      "method": "LIVE_OFFICIAL_BROWSER",
+      "fields": [
+        "fees",
+        "conditions",
+        "specialCases"
+      ],
+      "remaining": [
+        "documents",
+        "duration"
+      ],
+      "note": "تظهر خانة المستندات في بطاقة ICP بصيغة N/A؛ لا نفسرها على أنها إعفاء مؤكد من كل متطلب. مدة الإنجاز غير منشورة في البطاقة المقروءة."
+    }
+  ],
+  "completed": [],
+  "remainingPartialCount": 32
+}
