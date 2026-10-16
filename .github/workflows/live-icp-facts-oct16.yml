@@ -18,6 +18,7 @@ jobs:
       - run: node scripts/live-icp-facts-oct16.mjs
         env:
           HB_BROWSER_PATH: /usr/bin/google-chrome
+          HB_ICP_REMAINING_ONLY: '1'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
