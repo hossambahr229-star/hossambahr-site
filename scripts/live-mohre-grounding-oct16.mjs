@@ -6,11 +6,11 @@ import {readAIResponse} from '../ai-response-protocol.mjs';
 const {services}=JSON.parse(await readFile('src/registry/published-services.json','utf8'));
 const review=JSON.parse(await readFile('content/mohre-ai-grounding-review-2026-10-16.json','utf8'));
 const output='artifacts/live-mohre-oct16',base='https://hossambahr.com';await mkdir(output,{recursive:true});
-const report={at:new Date().toISOString(),base,sourceSha:process.env.GITHUB_SHA,source:'REAL_PRODUCTION_NATIVE_BROWSER',pages:[],ai:[],externalModel:'NOT_DECLARED',financialOrGovernmentSubmissions:0};
+const report={at:new Date().toISOString(),base,sourceSha:process.env.GITHUB_SHA,source:'REAL_PRODUCTION_NATIVE_BROWSER',scope:process.env.HB_MOHRE_AI_ONLY?'AI_ONLY':process.env.HB_MOHRE_PAGES_ONLY?'PAGES_ONLY':'PAGES_AND_AI',pages:[],ai:[],externalModel:'NOT_DECLARED',financialOrGovernmentSubmissions:0};
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||'/usr/bin/google-chrome'});
 try{
  const page=await browser.newPage();
- for(const slug of review.services){const s=services.find(s=>s.slug===slug);assert.ok(s);for(const locale of ['ar','en'])for(const width of [1440,320]){
+ if(!process.env.HB_MOHRE_AI_ONLY)for(const slug of review.services){const s=services.find(s=>s.slug===slug);assert.ok(s);for(const locale of ['ar','en'])for(const width of [1440,320]){
   await page.setViewportSize({width,height:1000});const prefix=locale==='en'?'/en':'';const response=await page.goto(base+prefix+s.internalRoute);assert.equal(response.status(),200);
   await page.locator('.hb-path-track').first().waitFor();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,slug+locale+width);
   const text=await page.locator('body').innerText();const document=locale==='en'?s.localizedDetails.en.documents[0]:s.documents.items[0];assert.equal(typeof document,'string');assert.ok(text.includes(document),slug+' missing '+locale+' document');
@@ -21,7 +21,7 @@ try{
   await page.locator('.hb-path-track').first().click();await page.waitForFunction(slug=>document.querySelector('[data-customer-intake] [name=service]')?.value===slug,slug);assert.ok(await page.locator('[data-customer-intake] [name=goal]').inputValue());assert.equal(await page.locator('html').getAttribute('lang'),locale);
   report.pages.push({slug,locale,width,result:'PASS',government,whatsapp:true,assistedContext:true});
  }}
- for(const locale of ['ar','en']){
+ if(!process.env.HB_MOHRE_PAGES_ONLY)for(const locale of ['ar','en']){
   const context=await browser.newContext({viewport:{width:locale==='en'?1440:390,height:1000}}),chat=await context.newPage(),prefix=locale==='en'?'/en':'';
   const ask=async question=>{const resultPromise=chat.waitForResponse(r=>r.url().includes('/functions/v1/public-ai-concierge')&&r.request().method()==='POST',{timeout:60000});await chat.locator('.primary-search textarea').fill(question);await chat.locator('.primary-search button[type=submit]').click();const response=await resultPromise,raw=await response.text();const parsed=await readAIResponse(new Response(raw,{status:response.status(),headers:{'content-type':response.headers()['content-type']||''}}));await chat.waitForFunction(()=>!document.querySelector('.primary-search button[type=submit]').disabled);const p=parsed.payload;report.ai.push({locale,question,slug:p.result.matches?.[0]?.service_slug||null,answer:p.result.answer,context:p.goal_context,engine:p.result.engine});return p;};
   await chat.goto(base+prefix+'/ai/');
