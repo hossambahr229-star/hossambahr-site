@@ -43,6 +43,13 @@ html[lang="ar"].hb-phase8 body[data-home-geometry] .desktop-nav .home-capability
 .desktop-nav .home-capability-explorer:not([open])>.capability-grid{display:none}
 .mobile-menu>nav{max-height:calc(100dvh - 90px);overflow:auto}
 .mobile-menu .home-capability-explorer{margin:0;padding:8px;border:0;min-width:0}
+.premium-en-header{position:relative}
+.premium-en-header .home-capability-explorer{margin:0;padding:0;border:0;background:transparent}
+.premium-en-header .home-capability-explorer>summary{font:inherit;min-height:44px}
+.premium-en-header .home-capability-explorer>.capability-grid{display:grid;position:absolute;z-index:90;top:100%;inset-inline:16px;background:#fff;border:1px solid #cbd8d3;border-radius:12px;padding:12px}
+.premium-en-header .home-capability-explorer .capability-grid a{display:flex;font-size:14px;padding:10px;white-space:normal}
+.premium-en-header .home-capability-explorer:not([open])>.capability-grid{display:none}
+@media(max-width:720px){.premium-en-header>nav>a.premium-primary{display:none}.premium-en-header .home-capability-explorer>.capability-grid{grid-template-columns:1fr}}
 html.hb-phase8 body[data-home-geometry] .mobile-menu .capability-grid{position:static;width:100%;max-width:100%;inset:auto;grid-template-columns:1fr;padding:0;box-shadow:none}
 .activity-discovery-form{grid-template-columns:2fr 1fr auto}
 .activity-examples{display:flex;flex-wrap:wrap;gap:8px;margin-block:16px}
