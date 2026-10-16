@@ -122,7 +122,7 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
     serviceFees: { status: unavailable, text: unavailable },
     processingTime: { status: durationPublished ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(duration) },
     conditions: text(conditions),
-    steps: Array.isArray(recordedSteps) && stepsReviewedAt ? recordedSteps : safeExecutionSteps(normalizedDestinationKind),
+    steps: Array.isArray(recordedSteps) && stepsReviewedAt ? recordedSteps.map((step,index)=>typeof step==='string'?{order:index+1,title:step,description:''}:step) : safeExecutionSteps(normalizedDestinationKind),
     ...(stepsReviewedAt ? {stepsReviewedAt} : {}),
     faq: faq.length ? faq : safeFaq(normalizedDestinationKind),
     relatedServiceIds,
