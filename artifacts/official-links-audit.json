@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-16T14:08:19.262Z",
+  "generatedAt": "2026-10-16T14:19:58.221Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 164,
+    "REACHABLE": 162,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 76,
+    "NETWORK_UNVERIFIED": 78,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1422,9 +1422,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
@@ -2589,9 +2588,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/945/step1?administrativeRegionId=1&withException=false",

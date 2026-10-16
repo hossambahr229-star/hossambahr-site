@@ -27851,13 +27851,28 @@
         "justice-police"
       ],
       "description": "استخراج تقرير رسمي يبين بيانات الإقامة ومعلومات الملف النشط.",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+          "sourceLanguage": "en",
+          "fees": "The ICP card lists an AED 100 application fee and AED 100 smart-services fee. These amounts include no HOSSAM BAHR fee.",
+          "steps": [
+            "Submit the application through the chosen channel.",
+            "Review the form and correct retrieved data if required.",
+            "Pay the required fees.",
+            "Receive the final report."
+          ],
+          "eligibility": "The customer must have an active residence file, according to the ICP card.",
+          "notes": "The ICP card includes occupation-change items in its document list; their applicability to printing this report requires confirmation from ICP. No processing duration is published in the reviewed card."
+        }
+      },
       "documents": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "items": []
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "رسوم الطلب 100 درهم ورسوم الخدمات الذكية 100 درهم وفق بطاقة ICP. لا تتضمن هذه القيم أي رسوم لحسام بحر."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -27867,38 +27882,34 @@
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "غير موثق بعد"
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "يجب أن يكون لدى المتعامل ملف إقامة فعال وفق بطاقة ICP.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "تقديم الطلب عبر القناة المختارة.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "مراجعة النموذج وتصحيح البيانات المسترجعة عند الحاجة.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "دفع الرسوم المطلوبة.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "استلام التقرير النهائي.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-16",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "رسوم الطلب 100 درهم ورسوم الخدمات الذكية 100 درهم وفق بطاقة ICP. لا تتضمن هذه القيم أي رسوم لحسام بحر."
         },
         {
           "question": "كم تستغرق المعاملة؟",
@@ -27924,21 +27935,21 @@
       "verification": {
         "officialLinkVerified": true,
         "requirementsVerified": false,
-        "feesVerified": false,
+        "feesVerified": true,
         "durationVerified": false,
-        "eligibilityVerified": false,
+        "eligibilityVerified": true,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-16",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-16",
+      "lastReviewedAt": "2026-10-16",
       "internalRoute": "/services/تقرير-تفاصيل-الإقامة-عبر-icp/",
       "sourceRegistry": "service-matrix"
     },
@@ -28898,13 +28909,27 @@
         "والتقارير"
       ],
       "description": "سداد الغرامات المفروضة على مخالفي التأشيرات أو الإقامة ضمن اختصاص ICP.",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+          "sourceLanguage": "en",
+          "fees": "The card lists AED 50 per day for the stated expiry/cancellation or permitted-stay cases involving a visa, residence, exit permit or newborn registration; AED 2,000 for misuse of smart services when that violation applies; and an AED 100 smart-services fee. These are separate items, not one fixed total. The violation record determines the amount due. No HOSSAM BAHR fee is included.",
+          "steps": [
+            "Submit the application through the chosen channel.",
+            "Review the form and correct retrieved data if required.",
+            "Complete payment of the fine."
+          ],
+          "eligibility": "The status must be adjusted or the individual must leave the UAE after paying visa/residence fines. The official channel requires UAE Pass sign-in.",
+          "notes": "The ICP card labels its documents field N/A; this does not establish an unconditional exemption from every requirement. No processing duration is published in the reviewed card."
+        }
+      },
       "documents": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "items": []
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "50 درهمًا عن كل يوم في حالات انتهاء مدة البقاء أو إلغاء/انتهاء التأشيرة أو الإقامة أو تصريح المغادرة أو تسجيل المولود المذكورة في البطاقة. سوء استخدام الخدمات الذكية: 2000 درهم عند انطباق المخالفة. رسم الخدمات الذكية: 100 درهم. هذه بنود مختلفة وليست مجموعًا ثابتًا، ويحدد سجل المخالفة المبلغ المستحق. لا تتضمن رسوم حسام بحر."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -28914,38 +28939,29 @@
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "غير موثق بعد"
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "يجب تعديل الوضع أو مغادرة دولة الإمارات بعد سداد الغرامات المتعلقة بالتأشيرة أو الإقامة. تتطلب القناة الرسمية تسجيل الدخول بالهوية الرقمية UAE Pass.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "تقديم الطلب عبر القناة المختارة.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "مراجعة النموذج وتصحيح البيانات المسترجعة عند الحاجة.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
-        },
-        {
-          "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "إتمام سداد الغرامة.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-16",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "50 درهمًا عن كل يوم في حالات انتهاء مدة البقاء أو إلغاء/انتهاء التأشيرة أو الإقامة أو تصريح المغادرة أو تسجيل المولود المذكورة في البطاقة. سوء استخدام الخدمات الذكية: 2000 درهم عند انطباق المخالفة. رسم الخدمات الذكية: 100 درهم. هذه بنود مختلفة وليست مجموعًا ثابتًا، ويحدد سجل المخالفة المبلغ المستحق. لا تتضمن رسوم حسام بحر."
         },
         {
           "question": "كم تستغرق المعاملة؟",
@@ -28971,21 +28987,21 @@
       "verification": {
         "officialLinkVerified": true,
         "requirementsVerified": false,
-        "feesVerified": false,
+        "feesVerified": true,
         "durationVerified": false,
-        "eligibilityVerified": false,
+        "eligibilityVerified": true,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-16",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-16",
+      "lastReviewedAt": "2026-10-16",
       "internalRoute": "/services/سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
