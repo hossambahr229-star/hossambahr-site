@@ -61,3 +61,29 @@ html.hb-phase8 body[data-home-geometry] .mobile-menu .capability-grid{position:s
 .discovery-form[data-discovery-scope="approvals"]{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:900px){.capability-grid,.discovery-form[data-discovery-scope="approvals"]{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.capability-grid,.activity-discovery-form,.discovery-form[data-discovery-scope="approvals"]{grid-template-columns:1fr}.capability-explorer{padding:10px}.mobile-menu .capability-explorer>summary{font-size:14px;min-height:44px}}
+
+/* Owner-approved identity is frozen. Only the service-discovery area changes. */
+html.hb-phase8 body[data-home-geometry] .premium-category-grid.home-domain-gateway{display:block!important;direction:inherit;min-width:0}
+.home-domain-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:10px}
+.home-domain-heading h2{font-size:20px;line-height:1.4;margin:0}
+.home-domain-heading p{font-size:13px;line-height:1.5;margin:3px 0}
+.home-domain-heading>a,.home-domain-all{display:inline-flex;align-items:center;min-height:44px;color:#063f35;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.home-domain-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:start}
+.home-domain-card{min-width:0;border:1px solid #d9e2da;border-radius:var(--card-radius,12px);background:#fff;box-shadow:0 2px 6px #063f3506}
+.home-domain-card>summary{list-style:none;display:grid;grid-template-columns:22px minmax(0,1fr) 10px;gap:6px;align-items:center;min-height:88px;padding:10px;cursor:pointer;color:#063f35}
+.home-domain-card>summary::-webkit-details-marker{display:none}
+.home-domain-card>summary>.home-line-icon{width:22px;height:22px;color:#a77a2d}
+html.hb-phase8 body[data-home-geometry] .home-domain-card>summary>span{height:auto;max-width:none;font-size:inherit!important;min-width:0}
+html.hb-phase8 body[data-home-geometry] .home-domain-card b{display:block;font-size:14px!important;line-height:1.45!important;white-space:normal!important}
+.home-domain-card small{display:block;font-size:11px;line-height:1.5;color:#4f655b;margin-top:4px}
+.home-domain-card[open]{border-color:#a77a2d}
+.home-domain-card[open] .home-domain-toggle{font-weight:700}
+.home-domain-content{padding:0 12px 12px;border-top:1px solid #edf2ed}
+.home-domain-content p{font-size:12px;line-height:1.6;margin:10px 0}
+.home-domain-content ul{padding-inline-start:16px;margin:8px 0}
+.home-domain-content li{margin-block:10px;font-size:13px;line-height:1.6}
+.home-domain-content a{color:#063f35;overflow-wrap:anywhere}
+.home-domain-content li a{display:block;min-height:44px}
+.home-domain-card>summary:focus-visible{outline:3px solid #a77a2d;outline-offset:2px;border-radius:10px}
+@media(max-width:1100px){.home-domain-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.home-domain-heading{align-items:start;gap:8px}.home-domain-heading h2{font-size:17px}.home-domain-heading p{font-size:12px}.home-domain-heading>a{font-size:12px;max-width:110px;flex:none}.home-domain-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.home-domain-card>summary{grid-template-columns:18px minmax(0,1fr) 8px;gap:4px;padding:8px;min-height:88px}.home-domain-card>summary>.home-line-icon{width:18px;height:18px}html.hb-phase8 body[data-home-geometry] .home-domain-card b{font-size:12px!important}.home-domain-card small{font-size:10px}}

@@ -1,0 +1,1020 @@
+{
+  "reviewedAt": "2026-10-16",
+  "source": "LIVE_SUPABASE_PUBLIC_CATALOG_METADATA",
+  "activeBindings": 210,
+  "publicBindings": 202,
+  "protectedExecutionLiveVerified": false,
+  "services": [
+    {
+      "service_slug": "abu-dhabi-business-establishment-guide",
+      "authority_key": "added-abu-dhabi",
+      "workflow_key": "service:abu-dhabi-business-establishment-guide"
+    },
+    {
+      "service_slug": "abu-dhabi-economic-initial-approval-guide",
+      "authority_key": "added-abu-dhabi",
+      "workflow_key": "service:abu-dhabi-economic-initial-approval-guide"
+    },
+    {
+      "service_slug": "abu-dhabi-economic-license-amendment",
+      "authority_key": "added-abu-dhabi",
+      "workflow_key": "service:abu-dhabi-economic-license-amendment"
+    },
+    {
+      "service_slug": "abu-dhabi-economic-license-cancellation",
+      "authority_key": "added-abu-dhabi",
+      "workflow_key": "service:abu-dhabi-economic-license-cancellation"
+    },
+    {
+      "service_slug": "abu-dhabi-economic-license-issuance",
+      "authority_key": "added-abu-dhabi",
+      "workflow_key": "service:abu-dhabi-economic-license-issuance"
+    },
+    {
+      "service_slug": "abu-dhabi-economic-license-mortgage-guide",
+      "authority_key": "added-abu-dhabi",
+      "workflow_key": "service:abu-dhabi-economic-license-mortgage-guide"
+    },
+    {
+      "service_slug": "abu-dhabi-economic-license-renewal",
+      "authority_key": "added-abu-dhabi",
+      "workflow_key": "service:abu-dhabi-economic-license-renewal"
+    },
+    {
+      "service_slug": "abu-dhabi-economic-licensing-requirements",
+      "authority_key": "added-abu-dhabi",
+      "workflow_key": "service:abu-dhabi-economic-licensing-requirements"
+    },
+    {
+      "service_slug": "abu-dhabi-trade-name-reservation",
+      "authority_key": "added-abu-dhabi",
+      "workflow_key": "service:abu-dhabi-trade-name-reservation"
+    },
+    {
+      "service_slug": "activate-healthcare-facility-license-dubai",
+      "authority_key": "dha-dubai",
+      "workflow_key": "service:activate-healthcare-facility-license-dubai"
+    },
+    {
+      "service_slug": "add-business-activity-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:add-business-activity-dubai"
+    },
+    {
+      "service_slug": "add-remove-partner-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:add-remove-partner-dubai"
+    },
+    {
+      "service_slug": "ajman-business-activity-inquiry",
+      "authority_key": "ajman-ded",
+      "workflow_key": "service:ajman-business-activity-inquiry"
+    },
+    {
+      "service_slug": "ajman-commercial-license-amendment",
+      "authority_key": "ajman-ded",
+      "workflow_key": "service:ajman-commercial-license-amendment"
+    },
+    {
+      "service_slug": "ajman-commercial-license-cancellation",
+      "authority_key": "ajman-ded",
+      "workflow_key": "service:ajman-commercial-license-cancellation"
+    },
+    {
+      "service_slug": "ajman-commercial-license-issuance",
+      "authority_key": "ajman-ded",
+      "workflow_key": "service:ajman-commercial-license-issuance"
+    },
+    {
+      "service_slug": "ajman-commercial-license-renewal",
+      "authority_key": "ajman-ded",
+      "workflow_key": "service:ajman-commercial-license-renewal"
+    },
+    {
+      "service_slug": "ajman-trade-name-reservation",
+      "authority_key": "ajman-ded",
+      "workflow_key": "service:ajman-trade-name-reservation"
+    },
+    {
+      "service_slug": "amend-business-license-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:amend-business-license-dubai"
+    },
+    {
+      "service_slug": "amend-family-data-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:amend-family-data-icp"
+    },
+    {
+      "service_slug": "amendment-of-residency-permit-data",
+      "authority_key": "icp",
+      "workflow_key": "service:amendment-of-residency-permit-data"
+    },
+    {
+      "service_slug": "amendment-of-visa-data",
+      "authority_key": "icp",
+      "workflow_key": "service:amendment-of-visa-data"
+    },
+    {
+      "service_slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "authority_key": "mofa",
+      "workflow_key": "service:attestation-of-commercial-invoices-via-edas-2-0"
+    },
+    {
+      "service_slug": "building-completion-certificate-dubai",
+      "authority_key": "dubai-municipality",
+      "workflow_key": "service:building-completion-certificate-dubai"
+    },
+    {
+      "service_slug": "cancel-business-license-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:cancel-business-license-dubai"
+    },
+    {
+      "service_slug": "cancel-departure-permit-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:cancel-departure-permit-icp"
+    },
+    {
+      "service_slug": "cancel-residency-permit-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:cancel-residency-permit-icp"
+    },
+    {
+      "service_slug": "cancel-residency-permit-uae",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:cancel-residency-permit-uae"
+    },
+    {
+      "service_slug": "cancel-work-permit-uae",
+      "authority_key": "mohre",
+      "workflow_key": "service:cancel-work-permit-uae"
+    },
+    {
+      "service_slug": "change-company-manager-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:change-company-manager-dubai"
+    },
+    {
+      "service_slug": "confirming-the-authenticity-of-equivalency",
+      "authority_key": "moe",
+      "workflow_key": "service:confirming-the-authenticity-of-equivalency"
+    },
+    {
+      "service_slug": "corporate-tax-registration-uae",
+      "authority_key": "fta",
+      "workflow_key": "service:corporate-tax-registration-uae"
+    },
+    {
+      "service_slug": "det-event-permit-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:det-event-permit-dubai"
+    },
+    {
+      "service_slug": "det-tour-guide-licence-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:det-tour-guide-licence-dubai"
+    },
+    {
+      "service_slug": "dld-real-estate-ad-permit-dubai",
+      "authority_key": "dld-rera",
+      "workflow_key": "service:dld-real-estate-ad-permit-dubai"
+    },
+    {
+      "service_slug": "domestic-worker-labour-complaint-mohre",
+      "authority_key": "mohre",
+      "workflow_key": "service:domestic-worker-labour-complaint-mohre"
+    },
+    {
+      "service_slug": "dubai-customs-business-registration",
+      "authority_key": "dubai-customs",
+      "workflow_key": "service:dubai-customs-business-registration"
+    },
+    {
+      "service_slug": "employment-agency-bank-guarantee-payment-mohre",
+      "authority_key": "mohre",
+      "workflow_key": "service:employment-agency-bank-guarantee-payment-mohre"
+    },
+    {
+      "service_slug": "employment-agency-bank-guarantee-refund-mohre",
+      "authority_key": "mohre",
+      "workflow_key": "service:employment-agency-bank-guarantee-refund-mohre"
+    },
+    {
+      "service_slug": "employment-agency-branch-mohre",
+      "authority_key": "mohre",
+      "workflow_key": "service:employment-agency-branch-mohre"
+    },
+    {
+      "service_slug": "employment-agency-license-amendment-mohre",
+      "authority_key": "mohre",
+      "workflow_key": "service:employment-agency-license-amendment-mohre"
+    },
+    {
+      "service_slug": "employment-agency-license-cancellation-mohre",
+      "authority_key": "mohre",
+      "workflow_key": "service:employment-agency-license-cancellation-mohre"
+    },
+    {
+      "service_slug": "employment-agency-license-new-mohre",
+      "authority_key": "mohre",
+      "workflow_key": "service:employment-agency-license-new-mohre"
+    },
+    {
+      "service_slug": "employment-agency-license-renewal-mohre",
+      "authority_key": "mohre",
+      "workflow_key": "service:employment-agency-license-renewal-mohre"
+    },
+    {
+      "service_slug": "employment-contract-uae",
+      "authority_key": "mohre",
+      "workflow_key": "service:employment-contract-uae"
+    },
+    {
+      "service_slug": "equivalency-of-general-education-certificate-from-abroad-grade-12",
+      "authority_key": "moe",
+      "workflow_key": "service:equivalency-of-general-education-certificate-from-abroad-grade-12"
+    },
+    {
+      "service_slug": "equivalency-of-general-education-certificate-in-the-uae-grade-12",
+      "authority_key": "moe",
+      "workflow_key": "service:equivalency-of-general-education-certificate-in-the-uae-grade-12"
+    },
+    {
+      "service_slug": "establishment-card-mohre-uae",
+      "authority_key": "mohre",
+      "workflow_key": "service:establishment-card-mohre-uae"
+    },
+    {
+      "service_slug": "family-residency-uae",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:family-residency-uae"
+    },
+    {
+      "service_slug": "family-sponsored-work-permit-uae",
+      "authority_key": "mohre",
+      "workflow_key": "service:family-sponsored-work-permit-uae"
+    },
+    {
+      "service_slug": "food-establishment-layout-approval-dubai",
+      "authority_key": "dubai-municipality",
+      "workflow_key": "service:food-establishment-layout-approval-dubai"
+    },
+    {
+      "service_slug": "food-related-activity-permit-dubai",
+      "authority_key": "dubai-municipality",
+      "workflow_key": "service:food-related-activity-permit-dubai"
+    },
+    {
+      "service_slug": "fujairah-economic-initial-approval",
+      "authority_key": "fujairah-business",
+      "workflow_key": "service:fujairah-economic-initial-approval"
+    },
+    {
+      "service_slug": "fujairah-economic-license-amendment",
+      "authority_key": "fujairah-business",
+      "workflow_key": "service:fujairah-economic-license-amendment"
+    },
+    {
+      "service_slug": "fujairah-economic-license-cancellation",
+      "authority_key": "fujairah-business",
+      "workflow_key": "service:fujairah-economic-license-cancellation"
+    },
+    {
+      "service_slug": "fujairah-economic-license-issuance",
+      "authority_key": "fujairah-business",
+      "workflow_key": "service:fujairah-economic-license-issuance"
+    },
+    {
+      "service_slug": "fujairah-economic-license-renewal",
+      "authority_key": "fujairah-business",
+      "workflow_key": "service:fujairah-economic-license-renewal"
+    },
+    {
+      "service_slug": "fujairah-free-zone-company-registration",
+      "authority_key": "fujairah-free-zone",
+      "workflow_key": "service:fujairah-free-zone-company-registration"
+    },
+    {
+      "service_slug": "fujairah-mainland-business-setup-guide",
+      "authority_key": "fujairah-business",
+      "workflow_key": "service:fujairah-mainland-business-setup-guide"
+    },
+    {
+      "service_slug": "fujairah-trade-name-reservation",
+      "authority_key": "fujairah-business",
+      "workflow_key": "service:fujairah-trade-name-reservation"
+    },
+    {
+      "service_slug": "golden-residency-uae",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:golden-residency-uae"
+    },
+    {
+      "service_slug": "green-residence-partner-investor-dubai",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:green-residence-partner-investor-dubai"
+    },
+    {
+      "service_slug": "health-professional-registration-dubai",
+      "authority_key": "dha-dubai",
+      "workflow_key": "service:health-professional-registration-dubai"
+    },
+    {
+      "service_slug": "industrial-environmental-clearance-dubai",
+      "authority_key": "dubai-municipality",
+      "workflow_key": "service:industrial-environmental-clearance-dubai"
+    },
+    {
+      "service_slug": "issuance-of-a-new-work-permit-golden-visa-holders",
+      "authority_key": "mohre",
+      "workflow_key": "service:issuance-of-a-new-work-permit-golden-visa-holders"
+    },
+    {
+      "service_slug": "issuance-of-a-new-work-permit-mission-work-permit",
+      "authority_key": "mohre",
+      "workflow_key": "service:issuance-of-a-new-work-permit-mission-work-permit"
+    },
+    {
+      "service_slug": "issue-departure-permit-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:issue-departure-permit-icp"
+    },
+    {
+      "service_slug": "issue-emirates-id-uae",
+      "authority_key": "icp",
+      "workflow_key": "service:issue-emirates-id-uae"
+    },
+    {
+      "service_slug": "issue-family-data-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:issue-family-data-icp"
+    },
+    {
+      "service_slug": "issue-new-uae-passport-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:issue-new-uae-passport-icp"
+    },
+    {
+      "service_slug": "issue-trade-license-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:issue-trade-license-dubai"
+    },
+    {
+      "service_slug": "legacy-service-67abe5ccf3",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:legacy-service-67abe5ccf3"
+    },
+    {
+      "service_slug": "legacy-service-85a10469d8",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:legacy-service-85a10469d8"
+    },
+    {
+      "service_slug": "legacy-service-e7f35a06d9",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:legacy-service-e7f35a06d9"
+    },
+    {
+      "service_slug": "legal-notice-notarization-dubai",
+      "authority_key": "dubai-courts-notary",
+      "workflow_key": "service:legal-notice-notarization-dubai"
+    },
+    {
+      "service_slug": "marriage-contract-dubai-courts",
+      "authority_key": "dubai-courts-notary",
+      "workflow_key": "service:marriage-contract-dubai-courts"
+    },
+    {
+      "service_slug": "mohre-private-tutor-permit",
+      "authority_key": "mohre",
+      "workflow_key": "service:mohre-private-tutor-permit"
+    },
+    {
+      "service_slug": "mohre-uae-national-trainee-work-permit",
+      "authority_key": "mohre",
+      "workflow_key": "service:mohre-uae-national-trainee-work-permit"
+    },
+    {
+      "service_slug": "mohre-uae-nationals-gcc-work-permit",
+      "authority_key": "mohre",
+      "workflow_key": "service:mohre-uae-nationals-gcc-work-permit"
+    },
+    {
+      "service_slug": "new-building-permit-dubai",
+      "authority_key": "dubai-municipality",
+      "workflow_key": "service:new-building-permit-dubai"
+    },
+    {
+      "service_slug": "new-healthcare-facility-license-dubai",
+      "authority_key": "dha-dubai",
+      "workflow_key": "service:new-healthcare-facility-license-dubai"
+    },
+    {
+      "service_slug": "new-work-permit-overseas-uae",
+      "authority_key": "mohre",
+      "workflow_key": "service:new-work-permit-overseas-uae"
+    },
+    {
+      "service_slug": "open-farm-ranch-file-mohre",
+      "authority_key": "mohre",
+      "workflow_key": "service:open-farm-ranch-file-mohre"
+    },
+    {
+      "service_slug": "part-time-work-permit-uae",
+      "authority_key": "mohre",
+      "workflow_key": "service:part-time-work-permit-uae"
+    },
+    {
+      "service_slug": "pay-public-parking-fines-dubai",
+      "authority_key": "rta-dubai",
+      "workflow_key": "service:pay-public-parking-fines-dubai"
+    },
+    {
+      "service_slug": "power-of-attorney-ratification-dubai",
+      "authority_key": "dubai-courts-notary",
+      "workflow_key": "service:power-of-attorney-ratification-dubai"
+    },
+    {
+      "service_slug": "property-valuation-dubai",
+      "authority_key": "dld-rera",
+      "workflow_key": "service:property-valuation-dubai"
+    },
+    {
+      "service_slug": "ras-al-khaimah-add-remove-partner",
+      "authority_key": "rak-ded",
+      "workflow_key": "service:ras-al-khaimah-add-remove-partner"
+    },
+    {
+      "service_slug": "ras-al-khaimah-change-license-activities",
+      "authority_key": "rak-ded",
+      "workflow_key": "service:ras-al-khaimah-change-license-activities"
+    },
+    {
+      "service_slug": "ras-al-khaimah-economic-initial-approval",
+      "authority_key": "rak-ded",
+      "workflow_key": "service:ras-al-khaimah-economic-initial-approval"
+    },
+    {
+      "service_slug": "ras-al-khaimah-economic-licensing-fees",
+      "authority_key": "rak-ded",
+      "workflow_key": "service:ras-al-khaimah-economic-licensing-fees"
+    },
+    {
+      "service_slug": "ras-al-khaimah-license-cancellation",
+      "authority_key": "rak-ded",
+      "workflow_key": "service:ras-al-khaimah-license-cancellation"
+    },
+    {
+      "service_slug": "ras-al-khaimah-license-issuance",
+      "authority_key": "rak-ded",
+      "workflow_key": "service:ras-al-khaimah-license-issuance"
+    },
+    {
+      "service_slug": "ras-al-khaimah-license-renewal",
+      "authority_key": "rak-ded",
+      "workflow_key": "service:ras-al-khaimah-license-renewal"
+    },
+    {
+      "service_slug": "ras-al-khaimah-trade-name-reservation",
+      "authority_key": "rak-ded",
+      "workflow_key": "service:ras-al-khaimah-trade-name-reservation"
+    },
+    {
+      "service_slug": "real-estate-professional-practice-card-dubai",
+      "authority_key": "dld-rera",
+      "workflow_key": "service:real-estate-professional-practice-card-dubai"
+    },
+    {
+      "service_slug": "register-labour-complaints-private-sector-employees",
+      "authority_key": "mohre",
+      "workflow_key": "service:register-labour-complaints-private-sector-employees"
+    },
+    {
+      "service_slug": "register-renew-ejari-contract-dubai",
+      "authority_key": "dld-rera",
+      "workflow_key": "service:register-renew-ejari-contract-dubai"
+    },
+    {
+      "service_slug": "renew-business-license-ajman",
+      "authority_key": "ajman-ded",
+      "workflow_key": "service:renew-business-license-ajman"
+    },
+    {
+      "service_slug": "renew-business-license-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:renew-business-license-dubai"
+    },
+    {
+      "service_slug": "renew-business-license-sharjah",
+      "authority_key": "sharjah-ded",
+      "workflow_key": "service:renew-business-license-sharjah"
+    },
+    {
+      "service_slug": "renew-driving-license-dubai",
+      "authority_key": "rta-dubai",
+      "workflow_key": "service:renew-driving-license-dubai"
+    },
+    {
+      "service_slug": "renew-emirates-id-uae",
+      "authority_key": "icp",
+      "workflow_key": "service:renew-emirates-id-uae"
+    },
+    {
+      "service_slug": "renew-uae-passport-abroad-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:renew-uae-passport-abroad-icp"
+    },
+    {
+      "service_slug": "renew-uae-passport-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:renew-uae-passport-icp"
+    },
+    {
+      "service_slug": "renew-vehicle-ownership-dubai",
+      "authority_key": "rta-dubai",
+      "workflow_key": "service:renew-vehicle-ownership-dubai"
+    },
+    {
+      "service_slug": "replace-lost-damaged-uae-passport-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:replace-lost-damaged-uae-passport-icp"
+    },
+    {
+      "service_slug": "replace-uae-passport-data-or-pages-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:replace-uae-passport-data-or-pages-icp"
+    },
+    {
+      "service_slug": "reserve-trade-name-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:reserve-trade-name-dubai"
+    },
+    {
+      "service_slug": "rta-modify-trade-license-noc-dubai",
+      "authority_key": "rta-dubai",
+      "workflow_key": "service:rta-modify-trade-license-noc-dubai"
+    },
+    {
+      "service_slug": "rta-new-trade-license-noc-dubai",
+      "authority_key": "rta-dubai",
+      "workflow_key": "service:rta-new-trade-license-noc-dubai"
+    },
+    {
+      "service_slug": "rta-renew-trade-license-noc-dubai",
+      "authority_key": "rta-dubai",
+      "workflow_key": "service:rta-renew-trade-license-noc-dubai"
+    },
+    {
+      "service_slug": "sharjah-business-licensing-guide",
+      "authority_key": "sharjah-ded",
+      "workflow_key": "service:sharjah-business-licensing-guide"
+    },
+    {
+      "service_slug": "sharjah-economic-license-amendment",
+      "authority_key": "sharjah-ded",
+      "workflow_key": "service:sharjah-economic-license-amendment"
+    },
+    {
+      "service_slug": "sharjah-economic-license-cancellation",
+      "authority_key": "sharjah-ded",
+      "workflow_key": "service:sharjah-economic-license-cancellation"
+    },
+    {
+      "service_slug": "sharjah-economic-license-issuance",
+      "authority_key": "sharjah-ded",
+      "workflow_key": "service:sharjah-economic-license-issuance"
+    },
+    {
+      "service_slug": "sharjah-economic-license-renewal",
+      "authority_key": "sharjah-ded",
+      "workflow_key": "service:sharjah-economic-license-renewal"
+    },
+    {
+      "service_slug": "sharjah-issue-trade-name",
+      "authority_key": "sharjah-ded",
+      "workflow_key": "service:sharjah-issue-trade-name"
+    },
+    {
+      "service_slug": "sharjah-trade-name-availability-inquiry",
+      "authority_key": "sharjah-ded",
+      "workflow_key": "service:sharjah-trade-name-availability-inquiry"
+    },
+    {
+      "service_slug": "sharjah-trade-name-renewal",
+      "authority_key": "sharjah-ded",
+      "workflow_key": "service:sharjah-trade-name-renewal"
+    },
+    {
+      "service_slug": "sira-new-security-activity-license-dubai",
+      "authority_key": "sira-dubai",
+      "workflow_key": "service:sira-new-security-activity-license-dubai"
+    },
+    {
+      "service_slug": "sira-security-system-certification-dubai",
+      "authority_key": "sira-dubai",
+      "workflow_key": "service:sira-security-system-certification-dubai"
+    },
+    {
+      "service_slug": "submit-customs-declaration-dubai",
+      "authority_key": "dubai-customs",
+      "workflow_key": "service:submit-customs-declaration-dubai"
+    },
+    {
+      "service_slug": "temporary-work-permit-uae",
+      "authority_key": "mohre",
+      "workflow_key": "service:temporary-work-permit-uae"
+    },
+    {
+      "service_slug": "title-transfer-dubai",
+      "authority_key": "dld-rera",
+      "workflow_key": "service:title-transfer-dubai"
+    },
+    {
+      "service_slug": "transfer-company-ownership-dubai",
+      "authority_key": "det-dubai",
+      "workflow_key": "service:transfer-company-ownership-dubai"
+    },
+    {
+      "service_slug": "transfer-work-permit-uae",
+      "authority_key": "mohre",
+      "workflow_key": "service:transfer-work-permit-uae"
+    },
+    {
+      "service_slug": "umm-al-quwain-business-services-portal",
+      "authority_key": "uaq-business",
+      "workflow_key": "service:umm-al-quwain-business-services-portal"
+    },
+    {
+      "service_slug": "umm-al-quwain-free-zone-licensing-guide",
+      "authority_key": "uaq-business",
+      "workflow_key": "service:umm-al-quwain-free-zone-licensing-guide"
+    },
+    {
+      "service_slug": "umm-al-quwain-mainland-licensing-official-path",
+      "authority_key": "uaq-business",
+      "workflow_key": "service:umm-al-quwain-mainland-licensing-official-path"
+    },
+    {
+      "service_slug": "umm-al-quwain-trade-name-official-path",
+      "authority_key": "uaq-business",
+      "workflow_key": "service:umm-al-quwain-trade-name-official-path"
+    },
+    {
+      "service_slug": "update-establishment-file-mohre-uae",
+      "authority_key": "mohre",
+      "workflow_key": "service:update-establishment-file-mohre-uae"
+    },
+    {
+      "service_slug": "vat-registration-uae",
+      "authority_key": "fta",
+      "workflow_key": "service:vat-registration-uae"
+    },
+    {
+      "service_slug": "vehicle-clearance-certificate-dubai-customs",
+      "authority_key": "dubai-customs",
+      "workflow_key": "service:vehicle-clearance-certificate-dubai-customs"
+    },
+    {
+      "service_slug": "veterinary-activity-noc-dubai",
+      "authority_key": "dubai-municipality",
+      "workflow_key": "service:veterinary-activity-noc-dubai"
+    },
+    {
+      "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي"
+    },
+    {
+      "service_slug": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي"
+    },
+    {
+      "service_slug": "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
+      "authority_key": "mohre",
+      "workflow_key": "service:إصدار-بطاقة-مندوب-علاقات-عامة-pro"
+    },
+    {
+      "service_slug": "إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي"
+    },
+    {
+      "service_slug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp"
+    },
+    {
+      "service_slug": "إصدار-تأشيرة-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:إصدار-تأشيرة-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "إصدار-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:إصدار-تصريح-إقامة-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "إصدار-تصريح-عمل-جديد-لعامل-مساعد",
+      "authority_key": "mohre",
+      "workflow_key": "service:إصدار-تصريح-عمل-جديد-لعامل-مساعد"
+    },
+    {
+      "service_slug": "إصدار-عقد-عمل-جديد-لعامل-مساعد",
+      "authority_key": "mohre",
+      "workflow_key": "service:إصدار-عقد-عمل-جديد-لعامل-مساعد"
+    },
+    {
+      "service_slug": "إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي"
+    },
+    {
+      "service_slug": "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات"
+    },
+    {
+      "service_slug": "إلغاء-بلاغ-انقطاع-عن-العمل",
+      "authority_key": "mohre",
+      "workflow_key": "service:إلغاء-بلاغ-انقطاع-عن-العمل"
+    },
+    {
+      "service_slug": "إلغاء-تأشيرة-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:إلغاء-تأشيرة-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "إلغاء-تصريح-عمل-عامل-مساعد",
+      "authority_key": "mohre",
+      "workflow_key": "service:إلغاء-تصريح-عمل-عامل-مساعد"
+    },
+    {
+      "service_slug": "إلغاء-تصريح-لعامل-لديه-قضية-عمالية",
+      "authority_key": "mohre",
+      "workflow_key": "service:إلغاء-تصريح-لعامل-لديه-قضية-عمالية"
+    },
+    {
+      "service_slug": "إلغاء-عقد-عمل-عامل-مساعد",
+      "authority_key": "mohre",
+      "workflow_key": "service:إلغاء-عقد-عمل-عامل-مساعد"
+    },
+    {
+      "service_slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
+      "authority_key": "mohre",
+      "workflow_key": "service:إلغاء-ملف-أو-بطاقة-المنشأة"
+    },
+    {
+      "service_slug": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+      "authority_key": "icp",
+      "workflow_key": "service:استرداد-رسوم-إصدار-الهوية-غير-المكتمل"
+    },
+    {
+      "service_slug": "الإعفاء-من-غرامة-تأخير-الهوية",
+      "authority_key": "icp",
+      "workflow_key": "service:الإعفاء-من-غرامة-تأخير-الهوية"
+    },
+    {
+      "service_slug": "الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي"
+    },
+    {
+      "service_slug": "التسجيل-والمتابعة-في-wps",
+      "authority_key": "mohre",
+      "workflow_key": "service:التسجيل-والمتابعة-في-wps"
+    },
+    {
+      "service_slug": "بدل-فاقد-أو-تالف-للهوية",
+      "authority_key": "icp",
+      "workflow_key": "service:بدل-فاقد-أو-تالف-للهوية"
+    },
+    {
+      "service_slug": "بلاغ-انقطاع-عامل-مساعد",
+      "authority_key": "mohre",
+      "workflow_key": "service:بلاغ-انقطاع-عامل-مساعد"
+    },
+    {
+      "service_slug": "بلاغ-انقطاع-عن-العمل",
+      "authority_key": "mohre",
+      "workflow_key": "service:بلاغ-انقطاع-عن-العمل"
+    },
+    {
+      "service_slug": "تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة",
+      "authority_key": "fujairah-free-zone",
+      "workflow_key": "service:تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة"
+    },
+    {
+      "service_slug": "تأسيس-منشأة-جديدة-في-عجمان",
+      "authority_key": "ajman-ded",
+      "workflow_key": "service:تأسيس-منشأة-جديدة-في-عجمان"
+    },
+    {
+      "service_slug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي"
+    },
+    {
+      "service_slug": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:تأشيرة-استكشاف-فرص-عمل-في-دبي"
+    },
+    {
+      "service_slug": "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي"
+    },
+    {
+      "service_slug": "تأشيرة-سياحية-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:تأشيرة-سياحية-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "تأشيرة-سياحية-لدخول-واحد-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:تأشيرة-سياحية-لدخول-واحد-في-دبي"
+    },
+    {
+      "service_slug": "تجديد-إقامة-أفراد-الأسرة-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:تجديد-إقامة-أفراد-الأسرة-في-دبي"
+    },
+    {
+      "service_slug": "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي"
+    },
+    {
+      "service_slug": "تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات"
+    },
+    {
+      "service_slug": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:تجديد-تصريح-إقامة-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "تجديد-عقد-عمل-عامل-مساعد",
+      "authority_key": "mohre",
+      "workflow_key": "service:تجديد-عقد-عمل-عامل-مساعد"
+    },
+    {
+      "service_slug": "تحديث-بيانات-الهوية",
+      "authority_key": "icp",
+      "workflow_key": "service:تحديث-بيانات-الهوية"
+    },
+    {
+      "service_slug": "تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ",
+      "authority_key": "mofa",
+      "workflow_key": "service:تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ"
+    },
+    {
+      "service_slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "authority_key": "mofa",
+      "workflow_key": "service:تصديق-مستند-شخصي-داخل-الإمارات"
+    },
+    {
+      "service_slug": "تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp"
+    },
+    {
+      "service_slug": "تصريح-تدريب-وعمل-طالب",
+      "authority_key": "mohre",
+      "workflow_key": "service:تصريح-تدريب-وعمل-طالب"
+    },
+    {
+      "service_slug": "تصريح-عمل-حدث",
+      "authority_key": "mohre",
+      "workflow_key": "service:تصريح-عمل-حدث"
+    },
+    {
+      "service_slug": "تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "تعديل-الوضع-داخل-الدولة-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:تعديل-الوضع-داخل-الدولة-في-دبي"
+    },
+    {
+      "service_slug": "تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات"
+    },
+    {
+      "service_slug": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي"
+    },
+    {
+      "service_slug": "تعديل-تصاريح-وعقود-العمل",
+      "authority_key": "mohre",
+      "workflow_key": "service:تعديل-تصاريح-وعقود-العمل"
+    },
+    {
+      "service_slug": "تعديل-عقد-وتصريح-عمل-عامل-مساعد",
+      "authority_key": "mohre",
+      "workflow_key": "service:تعديل-عقد-وتصريح-عمل-عامل-مساعد"
+    },
+    {
+      "service_slug": "تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي"
+    },
+    {
+      "service_slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "authority_key": "icp",
+      "workflow_key": "service:تقرير-تفاصيل-الإقامة-عبر-icp"
+    },
+    {
+      "service_slug": "تقرير-تقييم-المنشأة",
+      "authority_key": "mohre",
+      "workflow_key": "service:تقرير-تقييم-المنشأة"
+    },
+    {
+      "service_slug": "تمديد-التأشيرة-أو-إذن-الدخول",
+      "authority_key": "icp",
+      "workflow_key": "service:تمديد-التأشيرة-أو-إذن-الدخول"
+    },
+    {
+      "service_slug": "حصة-تصاريح-العمل-للمنشأة",
+      "authority_key": "mohre",
+      "workflow_key": "service:حصة-تصاريح-العمل-للمنشأة"
+    },
+    {
+      "service_slug": "سحب-بلاغ-انقطاع-بطلب-العامل-المساعد",
+      "authority_key": "mohre",
+      "workflow_key": "service:سحب-بلاغ-انقطاع-بطلب-العامل-المساعد"
+    },
+    {
+      "service_slug": "سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل",
+      "authority_key": "mohre",
+      "workflow_key": "service:سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل"
+    },
+    {
+      "service_slug": "سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي"
+    },
+    {
+      "service_slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي"
+    },
+    {
+      "service_slug": "متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي",
+      "authority_key": "gdrfa-dubai",
+      "workflow_key": "service:متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي"
+    },
+    {
+      "service_slug": "متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي",
+      "authority_key": "icp",
+      "workflow_key": "service:متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي"
+    }
+  ],
+  "activeWorkflowBindings": 202
+}

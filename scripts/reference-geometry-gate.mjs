@@ -26,7 +26,7 @@ const browser=await chromium.launch({headless:true,executablePath:process.env.HB
 const expected={
  '.site-header':[0,0,1440,61],'.visual-target-hero':[0,61,1440,302],
  '.premium-hero-main':[0,61,1068.5,302],'.premium-ai-showcase':[1068.5,61,371.5,302],
- '.premium-intent-search':[435,248,597,47],'.premium-category-grid>a':[31,367,155,116],
+ '.premium-intent-search':[435,248,597,47],'.premium-category-grid':[31,367,1378,116],
  '.premium-story':[31,497,1378,127],'.target-proof':[31,643,1378,66],
  '.premium-how ol':[31,749,1054,44],'.premium-authorities':[0,803,1440,85],
  '.premium-final-cta':[0,888,1440,85]
@@ -48,7 +48,7 @@ try{
    fontLoaded:document.fonts.check('16px Cairo'),
    legacyMarks:[...document.querySelectorAll('.brand b,.hb-master-mark')].filter(e=>e.textContent.trim()==='ح').length,
    images:[...document.querySelectorAll('img')].filter(e=>!e.complete||!e.naturalWidth).map(e=>e.getAttribute('src')),
-   categoryWidths:[...document.querySelectorAll('.premium-category-grid>a')].map(e=>e.getBoundingClientRect().width),howTitle:(()=>{const r=document.querySelector('.premium-how .section-heading').getBoundingClientRect();return {center:r.x+r.width/2}})(),
+   domainGateway:!!document.querySelector('[data-home-domains]'),domainCards:document.querySelectorAll('.home-domain-card').length,categoryWidths:[...document.querySelectorAll('.premium-category-grid>a')].map(e=>e.getBoundingClientRect().width),howTitle:(()=>{const r=document.querySelector('.premium-how .section-heading').getBoundingClientRect();return {center:r.x+r.width/2}})(),
    content:(()=>{const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,w:r.width,h:r.height}};return {headline:rect('.premium-hero-copy h1'),accent:rect('.premium-hero-copy h1 em'),accentFont:parseFloat(getComputedStyle(document.querySelector('.premium-hero-copy h1 em')).fontSize),support:rect('.premium-hero-copy>p'),welcome:rect('.ai-showcase-welcome'),actionDecorations:[...document.querySelectorAll('.premium-ai-showcase .home-ai-action-icon')].map(e=>e.getAttribute('aria-hidden')),search:rect('.premium-intent-search'),chips:rect('.premium-popular'),hero:rect('.visual-target-hero'),categories:rect('.premium-category-grid'),aiActions:[...document.querySelectorAll('.ai-showcase-actions a')].map(e=>({scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}))}})(),
    boxes:Object.fromEntries(selectors.map(s=>{const r=document.querySelector(s).getBoundingClientRect();return[s,[r.x,r.y,r.width,r.height]]}))
   }),Object.keys(expected));
@@ -68,7 +68,9 @@ try{
   if(width===1440&&height===960){
    layout.categoryWidths.forEach((w,i)=>{if(Math.abs(w-categoryReference[i])>5)failures.push(`Reference category width ${i+1} is wrong`)});
    if(Math.abs(layout.howTitle.center-width/2)>3)failures.push('How-it-works title is not on the page centerline');
-   for(const [s,target] of Object.entries(expected))if(layout.boxes[s].some((n,i)=>Math.abs(n-target[i])>5))failures.push(`Geometry outside 5px tolerance: ${s}`);
+   const gatewayDelta=layout.domainGateway?layout.content.categories.h-116:0;
+   if(layout.domainGateway&&(layout.domainCards!==11||layout.content.categories.h>340))failures.push('Visible service gateway is incomplete or crowds the desktop fold');
+   for(const [s,original] of Object.entries(expected)){const target=[...original];if(layout.domainGateway&&s==='.premium-category-grid')target[3]+=gatewayDelta;else if(layout.domainGateway&&original[1]>367)target[1]+=gatewayDelta;if(layout.boxes[s].some((n,i)=>Math.abs(n-target[i])>5))failures.push(`Frozen identity/section rhythm outside 5px tolerance: ${s}`);}
    await page.locator('#premium-government-search').fill('إقامة');
    await Promise.all([page.waitForURL('**/services/?q=*'),page.locator('#premium-government-search').press('Enter')]);
    if(new URL(page.url()).searchParams.get('q')!=='إقامة')failures.push('Search query not preserved');
