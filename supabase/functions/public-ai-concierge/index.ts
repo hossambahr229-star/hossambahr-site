@@ -69,7 +69,7 @@ function hasPhrase(text: string, words: string[]) {
 
 // A Golden Residence holder asking for a work permit is not applying for residence.
 function goldenHolderWorkPermit(goal: string) {
-  if (!hasPhrase(goal, ["تصريح عمل","تصريح العمل","work permit","work permits"])) return null;
+  if (!has(goal, ["تصريح عمل","تصريح العمل"]) && !hasPhrase(goal, ["work permit","work permits"])) return null;
   if (!has(goal, ["الاقامه الذهبيه","اقامه ذهبيه","golden visa","golden residence","golden residency"])) return null;
   return has(goal, ["تجديد","اجدد","renew","تعديل","عدل","amend","modify","الغاء","الغي","cancel","نقل","transfer","بدل","replacement","replace","تمديد","extension"]) ? "unsupported-operation" : "issuance";
 }
