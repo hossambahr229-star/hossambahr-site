@@ -1,0 +1,17 @@
+name: ICP Auxiliary Service Identity Regression
+on:
+  push:
+    branches: [agent/icp-auxiliary-service-identity]
+permissions:
+  contents: read
+jobs:
+  identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm run build
+      - run: node --test test/architecture/icp-auxiliary-service-identity.test.mjs test/architecture/golden-work-permit-identity.test.mjs test/architecture/ai-restored-catalog-ranking.test.mjs
