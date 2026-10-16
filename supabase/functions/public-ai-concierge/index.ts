@@ -83,7 +83,7 @@ function explicitDomesticAbsenceReport(goal: string) {
 }
 
 function explicitIcpAuxiliaryService(goal: string) {
-  if (!hasPhrase(goal, ["icp","الهيئه الاتحاديه للهويه والجنسيه"])) return null;
+  if (!hasPhrase(goal.replace(/[،؛؟]/g, " "), ["icp","الهيئه الاتحاديه للهويه والجنسيه"])) return null;
   const report = has(goal, ["تقرير تفاصيل الاقامه","residence details report","residency details report"]);
   const finePayment = has(goal, ["غرام","fine"]) && has(goal, ["سداد","دفع","payment","pay"]) && has(goal, ["تاشيره","اقامه","visa","residence","residency"]);
   const differentFineOperation = has(goal, ["اعفاء","تخفيض","استرداد","اعاده نظر","waiv","exempt","appeal","refund","reduc","استعلام","inquiry","check"]);
