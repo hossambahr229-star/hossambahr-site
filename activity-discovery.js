@@ -22,7 +22,7 @@ export function findActivities(records,{query='',emirate='',category=''}={}){
  return records.filter(r=>!category||r.k===category).map(record=>{
   const name=normalizeIntent(record.a+' '+record.e),body=normalizeIntent(name+' '+(record.d||'')+' '+(record.q||'')+' '+(record.g||'')+' '+(record.ge||''));
   let score=q===String(record.c)?10000:0;
-  if(concepts.length){for(const group of concepts)if(group.some(term=>name.includes(term)))score+=100;}
+  if(concepts.length){for(const group of concepts){const matches=group.filter(term=>name.includes(term));if(matches.length)score+=matches.some(term=>term!=='اغذيه')?100:10;for(const term of matches)if(q.includes(term))score+=200;}}
   else for(const term of terms){if(name.includes(term))score+=20;else if(body.includes(term))score+=2;}
   return {record,score};
  }).filter(r=>!q||r.score>0).sort((a,b)=>b.score-a.score||String(a.record.c).localeCompare(String(b.record.c))).map(r=>r.record);
