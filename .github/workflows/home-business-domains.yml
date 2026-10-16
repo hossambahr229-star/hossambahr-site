@@ -4,7 +4,7 @@ on:
     branches: [agent/home-business-domains]
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   domains:
     runs-on: ubuntu-latest
@@ -23,3 +23,16 @@ jobs:
         with:
           name: homepage-business-domains
           path: artifacts/home-business-domains
+      - name: Preserve selected review screenshots on the implementation branch
+        if: always() && github.ref_name == 'agent/home-business-domains'
+        run: |
+          git config user.name "HossamBahr Preview Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          for name in ar-320-areas.png ar-1440-areas.png en-390-areas.png report.json; do
+            file="artifacts/home-business-domains/$name"
+            if [ -f "$file" ]; then git add -- "$file"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual domain preview evidence [skip ci]"
+            git push origin HEAD:agent/home-business-domains || echo "Branch advanced; the uploaded workflow artifact remains available."
+          fi
