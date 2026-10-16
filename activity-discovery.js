@@ -4,7 +4,7 @@ export const ACTIVITY_EMIRATES=[
  ['دبي','Dubai'],['أبوظبي','Abu Dhabi'],['الشارقة','Sharjah'],['عجمان','Ajman'],
  ['رأس الخيمة','Ras Al Khaimah'],['الفجيرة','Fujairah'],['أم القيوين','Umm Al Quwain']
 ];
-const aliases=[['كافتيريا','كافيتريا','cafeteria'],['مواد غذائيه','اغذيه','foodstuff','foodstuffs','groceries'],['ترجمه','translation'],['تجاره الكترونيه','الكتروني','e commerce','ecommerce','online trading'],['مطعم','restaurant']].map(g=>g.map(normalizeIntent));
+const aliases=[['كافتيريا','كافيتريا','cafeteria'],['مواد غذائيه','اغذيه','foodstuff','foodstuffs','groceries'],['ترجمه','translation'],['تجاره الكترونيه','التجاره الالكترونيه','e commerce','ecommerce','online trading'],['مطعم','restaurant']].map(g=>g.map(normalizeIntent));
 const stop=new Set(normalizeIntent('عايز عاوز عاوزه اريد ابغي ابي احتاج محتاج افتح فتح تاسيس شركه مشروع نشاط مكتب في دبي ابوظبي ابو ظبي الشارقه عجمان راس الخيمه الفجيره ام القيوين i want need open start set up setup a an the company business in dubai abu dhabi sharjah ajman ras al khaimah fujairah umm quwain').split(' '));
 
 export function activityEmirate(query){
