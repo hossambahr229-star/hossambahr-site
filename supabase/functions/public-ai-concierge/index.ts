@@ -2,7 +2,7 @@ import {siraIntent,SIRA_SLUGS} from '../../../sira-intent.js';
 import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole, mergeSemanticContext, relationshipCompatibility, relationshipGroup, semanticDomainCompatibility, type FamilyRelationship, type SemanticEntity, type SubjectRole } from "./semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 import { providerFailure, completedProviderText } from "./provider-status.ts";
-import { responseContext, jurisdictionCandidates } from "./response-context.ts";
+import { responseContext, jurisdictionCandidates, withoutJurisdictionExclusions } from "./response-context.ts";
 import { englishResult } from "./english-response.ts";
 import { documentedRule, hasDocumentedValue, serviceIntroduction } from "./grounded-facts.ts";
 import { familyCandidate } from "./family-candidates.ts";
@@ -937,7 +937,7 @@ export default {
     try {
       const requestStarted = performance.now();
       const catalogStarted = performance.now();
-      const catalog = await loadCatalog(ctx.supabaseAdmin);
+      const catalog = withoutJurisdictionExclusions(await loadCatalog(ctx.supabaseAdmin), detectJurisdiction(latestTurn) || semantic.jurisdiction || detectJurisdiction(semanticGoal));
       const catalogMs = performance.now() - catalogStarted;
       let ranked:any[];
       const exactDubaiFamilySponsorship = relationship && semantic.action === "sponsor" && semantic.jurisdiction === "AE-DU"

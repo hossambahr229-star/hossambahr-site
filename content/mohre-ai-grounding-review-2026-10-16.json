@@ -1,0 +1,43 @@
+{
+  "reviewedAt": "2026-10-16",
+  "services": [
+    "issuance-of-a-new-work-permit-golden-visa-holders",
+    "issuance-of-a-new-work-permit-mission-work-permit",
+    "register-labour-complaints-private-sector-employees",
+    "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
+    "إلغاء-بلاغ-انقطاع-عن-العمل",
+    "إلغاء-تصريح-لعامل-لديه-قضية-عمالية",
+    "تصريح-تدريب-وعمل-طالب",
+    "تصريح-عمل-حدث",
+    "إلغاء-تصريح-عمل-عامل-مساعد",
+    "إلغاء-عقد-عمل-عامل-مساعد",
+    "تجديد-عقد-عمل-عامل-مساعد",
+    "تعديل-عقد-وتصريح-عمل-عامل-مساعد",
+    "بلاغ-انقطاع-عامل-مساعد",
+    "بلاغ-انقطاع-عن-العمل",
+    "سحب-بلاغ-انقطاع-بطلب-العامل-المساعد",
+    "سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل",
+    "تعديل-تصاريح-وعقود-العمل",
+    "إصدار-تصريح-عمل-جديد-لعامل-مساعد",
+    "إصدار-عقد-عمل-جديد-لعامل-مساعد",
+    "حصة-تصاريح-العمل-للمنشأة"
+  ],
+  "database": "Versioned data-only policy sync, preserves RLS, source-health flags, operational workflows and previous policy history.",
+  "databaseDryRun": {
+    "reviewedRows": 20,
+    "rolledBack": true,
+    "rowsAfterRollback": 0
+  },
+  "newArabicSources": [
+    "Golden Residence work permit",
+    "Mission work permit",
+    "Student permit",
+    "Juvenile permit"
+  ],
+  "excludedDubaiServices": [
+    "بلاغ-انقطاع-عامل-مساعد",
+    "سحب-بلاغ-انقطاع-بطلب-العامل-المساعد"
+  ],
+  "englishTranslationsAdded": 94,
+  "externalModelAcceptance": "NOT_DECLARED; provider credit blocker is independent of grounded facts."
+}
