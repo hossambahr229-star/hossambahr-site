@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {findActivities,activityEmirate,activityHandoff} from '../activity-discovery.js';
+import {approvalType,recordedActivityApprovals,capabilityGroups} from '../service-capabilities.js';
+const records=[{c:'1',a:'تجارة المواد الغذائية',e:'Foodstuff trading'},{c:'2',a:'كافتيريا',e:'Cafeteria'},{c:'3',a:'خدمات الترجمة',e:'Translation services'},{c:'4',a:'تجارة إلكترونية',e:'E-commerce'}];
+for(const [query,code] of [['عايز أفتح شركة مواد غذائية في دبي','1'],['Foodstuff company in Dubai','1'],['كافتيريا في دبي','2'],['Translation office in Dubai','3'],['تجارة إلكترونية في دبي','4'],['2','2']])test(query,()=>assert.equal(findActivities(records,{query,emirate:'دبي'})[0]?.c,code));
+test('Dubai records never become Ajman codes',()=>assert.deepEqual(findActivities(records,{query:'كافتيريا',emirate:'عجمان'}),[]));
+test('unrelated queries have no invented match',()=>assert.deepEqual(findActivities(records,{query:'spaceship',emirate:'دبي'}),[]));
+test('emirate ambiguity stays unresolved',()=>{assert.equal(activityEmirate('كافتيريا في عجمان'),'عجمان');assert.equal(activityEmirate('Dubai or Ajman'),null);});
+test('handoff cannot carry a Dubai code outside Dubai',()=>{const h=activityHandoff({idea:'cafeteria',emirate:'عجمان',activity:records[1],sourcePage:'/en/business-activities/'},0);assert.equal(h.language,'en');assert.deepEqual(h.known_facts,{});assert.equal(h.authority_key,null);assert.equal(h.expires_at,1800000);});
+for(const [authority,name,expected] of [['mohre','Work permit','work-permit'],['icp','Entry permit','residence-permit'],['det-dubai','Initial approval','economic-initial'],['rta','No objection certificate','noc']])test(name,()=>assert.equal(approvalType({authority:{id:authority},name:{en:name}}),expected));
+test('activity names and legacy fee fields do not establish approvals',()=>assert.deepEqual(recordedActivityApprovals({c:'1',a:'Security systems',x:822,o:1},'دبي'),[]));
+test('approval relationship must match the activity and emirate',()=>assert.deepEqual(recordedActivityApprovals({c:'1',verifiedApprovals:[{verified:true,activityCode:'1',emirate:'عجمان',authority:'sira',sourceUrl:'https://example.gov'}]},'دبي'),[]));
+test('categories retain all services exactly once',()=>{const g=capabilityGroups([{slug:'a',c:'work-employees'},{slug:'b',c:'business-licensing'}]);assert.deepEqual(g.flatMap(x=>x.services),['a','b']);});

@@ -27,3 +27,23 @@ html.hb-phase8 body[data-home-geometry] .discovery-entry details{font-size:11px;
 
 @media(min-width:1101px) and (max-width:1399px){html.hb-phase8 body[data-home-geometry] .premium-popular.discovery-entry{--discovery-copy-offset:63.7288%}}
 @media(min-width:1101px){html[lang="en"].hb-phase8 body[data-home-geometry] .discovery-entry>a{white-space:normal!important;font-size:10px!important;line-height:1.3!important}}
+
+/* Progressive capability discovery stays collapsed in the approved home grid. */
+.capability-explorer{margin-block:16px;border:1px solid #cbd8d3;border-radius:12px;background:#fff;padding:12px;color:var(--hb-green)}
+.capability-explorer summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center;gap:8px}
+.capability-explorer summary::after{content:'⌄';margin-inline-start:auto}
+.capability-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding-block:12px;max-height:65dvh;overflow:auto}
+.capability-grid a{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:10px;border-radius:8px;background:#edf3f0;color:#103e36;text-decoration:none;min-height:44px;font-size:14px;white-space:normal}
+.desktop-nav .home-capability-explorer{position:static;margin:0;padding:0;border:0;background:transparent}
+.desktop-nav .home-capability-explorer>summary{font-size:12px;min-height:44px;white-space:nowrap;gap:4px}
+.desktop-nav .home-capability-explorer>summary::after{content:none}
+.desktop-nav .home-capability-explorer>.capability-grid{position:absolute;z-index:90;top:100%;inset-inline:24px;background:#fff;border:1px solid #cbd8d3;border-radius:12px;padding:16px;box-shadow:0 12px 28px #082b4326}
+.desktop-nav .home-capability-explorer:not([open])>.capability-grid{display:none}
+.mobile-menu>nav{max-height:calc(100dvh - 90px);overflow:auto}
+.activity-discovery-form{grid-template-columns:2fr 1fr auto}
+.activity-examples{display:flex;flex-wrap:wrap;gap:8px;margin-block:16px}
+.activity-examples button,[data-activity-more]{font:inherit;min-height:44px;padding:10px;border:1px solid #b8c9c0;border-radius:8px;background:#edf3f0;color:#103e36;cursor:pointer}
+.activity-source-limit{border-inline-start:3px solid #b58b39;padding-inline-start:10px}
+.discovery-form[data-discovery-scope="approvals"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.capability-grid,.discovery-form[data-discovery-scope="approvals"]{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.capability-grid,.activity-discovery-form,.discovery-form[data-discovery-scope="approvals"]{grid-template-columns:1fr}.capability-explorer{padding:10px}.mobile-menu .capability-explorer>summary{font-size:14px;min-height:44px}}
