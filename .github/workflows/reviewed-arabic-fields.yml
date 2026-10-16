@@ -1,0 +1,17 @@
+name: Reviewed Arabic Field Rendering
+on:
+  push:
+    branches: [agent/reviewed-arabic-field-refresh]
+permissions:
+  contents: read
+jobs:
+  fields:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm run build
+      - run: node --test scripts/reviewed-arabic-fields-oct16.test.mjs scripts/mohre-ai-grounding-oct16.test.mjs
