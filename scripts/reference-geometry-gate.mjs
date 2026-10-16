@@ -127,7 +127,7 @@ try{
  await sharp(reference,{raw}).png().toFile(join(output,'reference-1440.png'));
  await sharp(overlay,{raw}).png().toFile(join(output,'overlay-50.png'));
  await sharp(diff,{raw}).png().toFile(join(output,'image-diff.png'));
- const report={base,deployedCommit:process.env.HB_DEPLOYED_SHA||null,captureSource:process.env.HB_BASE_URL?'LIVE_PRODUCTION':'LOCAL_BUILD',geometryPassed:results.every(r=>!r.failures.length)&&englishResults.every(r=>!r.failures.length),englishResults,pixelFidelity:'NOT_DECLARED',humanVisualAcceptance:'NOT_ACCEPTED',scope:'Measured layout and image comparison do not establish founder acceptance.',meanAbsolutePixelDifference:total/reference.length,changedPixelPercent:changed/(1440*960)*100,results};
+ const report={base,deployedCommit:process.env.HB_DEPLOYED_SHA||null,captureSource:process.env.HB_BASE_URL?'LIVE_PRODUCTION':'LOCAL_BUILD',geometryPassed:results.every(r=>!r.failures.length)&&englishResults.every(r=>!r.failures.length),englishResults,pixelFidelity:'NOT_DECLARED',humanVisualAcceptance:'NOT_ACCEPTED',ownerApprovedGeneralIdentity:'CURRENT_PRODUCTION_IDENTITY_FROZEN_BY_OWNER_DIRECTIVE_2026_10_16',referenceComparisonScope:'HISTORICAL_DIAGNOSTIC; the owner-authorized visible discovery area supersedes the previous category-area composition.',scope:'Frozen header/hero geometry and downstream visual rhythm are checked; historical image diff does not authorize a redesign or establish human acceptance of this UX change.',meanAbsolutePixelDifference:total/reference.length,changedPixelPercent:changed/(1440*960)*100,results};
  await writeFile(join(output,'report.json'),JSON.stringify(report,null,2));
  console.log(JSON.stringify(report,null,2));
  if(!report.geometryPassed)process.exitCode=1;
