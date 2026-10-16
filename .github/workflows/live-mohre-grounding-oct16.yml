@@ -18,7 +18,7 @@ jobs:
       - run: node scripts/live-mohre-grounding-oct16.mjs
         env:
           HB_BROWSER_PATH: /usr/bin/google-chrome
-          HB_MOHRE_AI_ONLY: '1'
+          HB_MOHRE_PAGES_ONLY: '1'
       - uses: actions/upload-artifact@v4
         if: always()
         with:

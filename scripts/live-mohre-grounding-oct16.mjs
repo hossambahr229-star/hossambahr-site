@@ -34,5 +34,5 @@ try{
   p=await turn(locale==='en'?'I need to report a domestic worker absent from work in Sharjah':'أريد تقديم بلاغ انقطاع عامل مساعد في الشارقة');assert.equal(p.result.matches[0]?.service_slug,'بلاغ-انقطاع-عامل-مساعد');
   p=await turn(locale==='en'?'And if it is in Dubai?':'ولو في دبي؟');assert.equal(p.result.matches.length,0,'Excluded pathway must never be substituted');assert.equal(p.goal_context.jurisdiction_hint,'AE-DU');assert.doesNotMatch(p.result.answer.text,/315/);await other.close();
  }
- report.externalModel=report.ai.some(x=>x.engine?.provider_failure?.category==='QUOTA_BILLING')?'EXTERNAL_BLOCKER_QUOTA_BILLING':report.ai.every(x=>x.engine?.external_model_used===true)?'TRUE_FOR_TARGETED_TURNS_ONLY':'NOT_ALL_TURNS_EXTERNAL';report.status='PASS';
-}catch(error){report.status='FAIL';report.error=error.stack;process.exitCode=1;}finally{await writeFile(output+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));await browser.close();}
+ report.status='PASS';
+}catch(error){report.status='FAIL';report.error=error.stack;process.exitCode=1;}finally{report.externalModel=report.ai.length===0?'NOT_RUN':report.ai.some(x=>x.engine?.provider_failure?.category==='QUOTA_BILLING')?'EXTERNAL_BLOCKER_QUOTA_BILLING':report.ai.every(x=>x.engine?.external_model_used===true)?'TRUE_FOR_TARGETED_TURNS_ONLY':'NOT_ALL_TURNS_EXTERNAL';await writeFile(output+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));await browser.close();}
