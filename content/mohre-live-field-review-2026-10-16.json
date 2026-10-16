@@ -1,0 +1,54 @@
+{
+  "reviewedAt": "2026-10-16",
+  "method": "Live official MOHRE browser cards, Arabic and English compared; paraphrased facts. Earlier capture timeouts are superseded for these four cards only.",
+  "records": [
+    {
+      "slug": "issuance-of-a-new-work-permit-golden-visa-holders",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions",
+        "recordedSteps"
+      ],
+      "arabicSource": "https://www.mohre.gov.ae/ar/services/work-permits-of-golden-visa-holders-2022",
+      "englishSource": "https://www.mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
+      "notes": "HOSSAM BAHR explanatory translation of the reviewed Arabic MOHRE card. The English card currently mislabels process steps as required documents and incorrectly refers to no valid residence visa; the Arabic card specifies no active work permit and a valid Golden Residence. Do not treat the English wording as an additional eligibility restriction."
+    },
+    {
+      "slug": "issuance-of-a-new-work-permit-mission-work-permit",
+      "fields": [
+        "requirements",
+        "fees",
+        "duration",
+        "conditions",
+        "recordedSteps"
+      ],
+      "arabicSource": "https://www.mohre.gov.ae/ar/services/mission-work-permit-2022",
+      "englishSource": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
+      "notes": "The reviewed Arabic card identifies the quota as a mission-permit requirement. The English condition calls it temporary work; this guide follows the Arabic service-specific wording. Permit validity must not be confused with processing time."
+    },
+    {
+      "slug": "register-labour-complaints-private-sector-employees",
+      "fields": [
+        "requirements",
+        "conditions"
+      ],
+      "source": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
+      "note": "Supporting evidence is conditional: if available, not a fabricated mandatory document set."
+    },
+    {
+      "slug": "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
+      "fields": [
+        "requirements",
+        "duration",
+        "conditions"
+      ],
+      "source": "https://www.mohre.gov.ae/ar/services/issuance-of-a-public-relations-officer-card-pro-2022",
+      "remaining": [
+        "government_fee_amount"
+      ],
+      "note": "AED40 is explicitly provider fee; AED72 is a centre commission cap. Government amount remains unverified."
+    }
+  ]
+}

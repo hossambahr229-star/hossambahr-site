@@ -1,50 +1,16 @@
 {
-  "updatedAt": "2026-10-15",
+  "updatedAt": "2026-10-16",
   "sourceCheckpoint": "869b7eb106795319495a527805e7d801774a5cab",
   "sourceReviewMerge": "f1fb679a53acfd5f94f7f9b43d7540389f0389bb",
   "originalPartial": 56,
-  "completedRecordedDetailFields": 8,
-  "remaining": 48,
+  "completedRecordedDetailFields": 11,
+  "remaining": 45,
   "scope": "Missing recorded fields remain explicit. Capture failures are not evidence that a field is unpublished. Parent-category facts do not verify subtype eligibility. This is a continuation checklist, not a blanket external-blocker or final acceptance claim.",
   "sourceAccessEvidence": {
     "readOnlyBrowserRun": 38691429951,
     "supplementaryMohreAccess": "2026-10-15 official web access also timed out for golden-visa work permits, private-sector labour complaints and PRO cards. No facts were inferred."
   },
   "services": [
-    {
-      "slug": "issuance-of-a-new-work-permit-golden-visa-holders",
-      "authority": "mohre",
-      "sourceUrl": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
-        "status": null,
-        "at": "2026-10-15T06:17:32.195Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
-      }
-    },
-    {
-      "slug": "issuance-of-a-new-work-permit-mission-work-permit",
-      "authority": "mohre",
-      "sourceUrl": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
-        "status": null,
-        "at": "2026-10-15T06:17:32.209Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
-      }
-    },
     {
       "slug": "legacy-service-67abe5ccf3",
       "authority": "det-dubai",
@@ -96,21 +62,6 @@
       }
     },
     {
-      "slug": "register-labour-complaints-private-sector-employees",
-      "authority": "mohre",
-      "sourceUrl": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
-      "unverifiedFields": [
-        "documents"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
-        "status": null,
-        "at": "2026-10-15T06:17:35.015Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
-      }
-    },
-    {
       "slug": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
       "authority": "icp",
       "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
@@ -149,17 +100,14 @@
       "authority": "mohre",
       "sourceUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
       "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
+        "fees"
       ],
       "newCommonFacts": false,
       "officialCapture": {
-        "url": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
-        "status": null,
-        "at": "2026-10-15T06:17:44.220Z",
-        "error": "page.goto: Timeout 35000ms exceeded."
+        "url": "https://www.mohre.gov.ae/ar/services/issuance-of-a-public-relations-officer-card-pro-2022",
+        "at": "2026-10-16",
+        "method": "LIVE_BROWSER_AR_EN",
+        "note": "Documents, duration and conditions reviewed. Separate government fee amount not stated; provider fee is not relabelled."
       }
     },
     {
