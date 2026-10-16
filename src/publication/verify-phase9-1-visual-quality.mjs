@@ -61,17 +61,18 @@ for(const viewport of viewports){
     if(audit.brokenInteractive)failures.push(`${surface.name}/${viewport.name}: ${audit.brokenInteractive} visible zero-size critical controls`);
     if(runtime.length)failures.push(`${surface.name}/${viewport.name}: runtime errors ${runtime.join(' | ')}`);
     if(surface.name==='homepage'){
-      const card=page.locator('.target-discovery .premium-category-grid>a,.action-start-grid>a').first();
+      const card=page.locator('.home-domain-card>summary,.target-discovery .premium-category-grid>a,.action-start-grid>a').first();
       await card.waitFor({state:'visible'});
       const check=await card.evaluate(el=>{
-        const title=el.querySelector('b'),cta=el.querySelector('small,span'),bg=getComputedStyle(el).backgroundColor;
-        return {bg,title:getComputedStyle(title).color,cta:getComputedStyle(cta).color,titleText:title.textContent.trim(),ctaText:cta.textContent.trim()};
+        const title=el.querySelector('b'),cta=el.querySelector('small,span');
+        const surface=el.matches('summary')?el.parentElement:el,bg=getComputedStyle(surface).backgroundColor;
+        return {bg,title:getComputedStyle(title).color,cta:getComputedStyle(cta).color,titleText:title.textContent.trim(),ctaText:cta.textContent.trim(),ctaVisible:cta.checkVisibility({checkVisibilityCSS:true})};
       });
       if(ratio(check.title,check.bg)<4.5)failures.push(`homepage/${viewport.name}: start title contrast ${ratio(check.title,check.bg).toFixed(2)}`);
-      if(ratio(check.cta,check.bg)<4.5)failures.push(`homepage/${viewport.name}: start CTA contrast ${ratio(check.cta,check.bg).toFixed(2)}`);
+      if(check.ctaVisible&&ratio(check.cta,check.bg)<4.5)failures.push(`homepage/${viewport.name}: start CTA contrast ${ratio(check.cta,check.bg).toFixed(2)}`);
       await card.hover();
       const hoverTitle=await card.locator('b').evaluate(el=>getComputedStyle(el).color);
-      if(ratio(hoverTitle,await card.evaluate(el=>getComputedStyle(el).backgroundColor))<4.5)failures.push(`homepage/${viewport.name}: hover contrast`);
+      if(ratio(hoverTitle,await card.evaluate(el=>getComputedStyle(el.matches('summary')?el.parentElement:el).backgroundColor))<4.5)failures.push(`homepage/${viewport.name}: hover contrast`);
       await card.focus();
       if(!await card.evaluate(el=>getComputedStyle(el).outlineStyle!=='none'))failures.push(`homepage/${viewport.name}: focus ring missing`);
       const hero=page.locator('.platform-hero');
