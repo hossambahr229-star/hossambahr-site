@@ -1821,12 +1821,18 @@
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
       "status": "verified",
       "description": "استقدام عامل لعمل قصير المدى مرتبط بمشروع أو مهمة.",
-      "requirements": [],
-      "fees": "غير موثق في سجل الكتالوج",
-      "duration": "غير موثق في سجل الكتالوج",
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "requirements": [
+        "صورة شخصية ملونة بخلفية بيضاء.",
+        "نسخة جواز سفر صالح لمدة ستة أشهر على الأقل.",
+        "عرض العمل المعتمد من الوزارة وموقع من صاحب العمل والعامل.",
+        "المؤهل الدراسي المصدق بحسب المستوى المهاري: شهادة جامعية للمستويين 1–2، ودبلوم فأعلى للمستويين 3–4، وثانوية عامة للمستوى 5؛ لا تطلب شهادة للمستويات 6–9. يربط المصدر وصف العامل الماهر بالمؤهل وراتب لا يقل عن 4000 درهم.",
+        "ترخيص مزاولة المهنة من الجهة المختصة إذا كانت المهنة منظمة وتتطلب ترخيصًا."
+      ],
+      "fees": "الرسم الاتحادي المنشور: 50 درهمًا. لا تضيف قناة الموقع أو التطبيق رسم خدمة للوزارة فوق الرسوم الحكومية. الضرائب ورسوم التحصيل غير مشمولة. عمولة مركز الأعمال، عند استخدامه، منفصلة وبحد أقصى 72 درهمًا؛ ليست رسمًا حكوميًا ولا رسم حسام بحر.",
+      "duration": "يومان عمل لإتمام الخدمة. صلاحية تصريح المهمة ثلاثة أشهر، قابلة للتمديد مرة واحدة لمدة مماثلة؛ الصلاحية ليست مدة المعالجة.",
+      "conditions": "العمر 18 سنة فأكثر، وعدم وجود تصريح عمل فعال للعامل المستقدم. يلزم توافق المهنة مع نشاط المنشأة، ورخصة منشأة سارية دون مخالفات توقف النشاط، وتقديم المخول بالتوقيع. يشترط وجود حصة إلكترونية لتصريح المهمة؛ تطبق تراخيص المزاولة للمهن المنظمة.",
       "specialCases": "بطاقة الخدمة الرسمية المطابقة.",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": true,
@@ -1849,17 +1855,47 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "الرسم الاتحادي المنشور: 50 درهمًا. لا تضيف قناة الموقع أو التطبيق رسم خدمة للوزارة فوق الرسوم الحكومية. الضرائب ورسوم التحصيل غير مشمولة. عمولة مركز الأعمال، عند استخدامه، منفصلة وبحد أقصى 72 درهمًا؛ ليست رسمًا حكوميًا ولا رسم حسام بحر."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "يومان عمل لإتمام الخدمة. صلاحية تصريح المهمة ثلاثة أشهر، قابلة للتمديد مرة واحدة لمدة مماثلة؛ الصلاحية ليست مدة المعالجة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
-      ]
+      ],
+      "recordedSteps": [
+        "تسجيل الدخول بالهوية الرقمية عبر قناة معتمدة.",
+        "استكمال بيانات الطلب ومراجعة البيانات المسترجعة وإرفاق المستندات.",
+        "مراجعة تفاصيل الطلب وتسديد الرسوم المقررة.",
+        "إصدار التصريح بعد استيفاء المتطلبات؛ قد تطلب الوزارة استكمال نواقص."
+      ],
+      "stepsReviewedAt": "2026-10-16",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/ar/services/mission-work-permit-2022",
+          "sourceLanguage": "ar",
+          "documents": [
+            "Colour photograph on a white background.",
+            "Passport copy valid for at least six months.",
+            "The ministry job-offer form signed by employer and worker.",
+            "Attested qualifications by skill level: degree for 1–2, diploma or higher for 3–4, secondary certificate for 5; no certificate for 6–9. Skilled status also requires the stated qualification and monthly salary threshold of AED 4,000.",
+            "A professional licence from the competent authority for an occupation requiring one."
+          ],
+          "eligibility": "Age 18 or older and no active work permit. The occupation must match the establishment activity. A valid establishment licence without violations suspending operations and an application by its authorised signatory are required. Mission permits require an electronic quota. Regulated occupations require their professional licences.",
+          "fees": "Published federal fee: AED 50. Website/app use adds no ministry service charge above government fees. Tax and collection charges are excluded. A business centre may separately charge up to AED 72; this is not a government fee or a HOSSAM BAHR fee.",
+          "duration": "Processing: two working days. Permit validity: three months, extendable once for the same period.",
+          "steps": [
+            "Sign in with UAE Pass through an approved channel.",
+            "Complete and review the application information and attach the required documents.",
+            "Review the application and pay the prescribed fees.",
+            "The permit is issued after requirements are met; additional information may be requested."
+          ],
+          "notes": "The reviewed Arabic card identifies the quota as a mission-permit requirement. The English condition calls it temporary work; this guide follows the Arabic service-specific wording. Permit validity must not be confused with processing time."
+        }
+      }
     },
     {
       "id": "catalog:تصريح عمل لحامل الإقامة الذهبية",
@@ -1884,12 +1920,18 @@
       "evidenceUrl": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
       "status": "verified",
       "description": "تصريح عمل لحامل الإقامة الذهبية دون نقل كفالة الإقامة.",
-      "requirements": [],
-      "fees": "غير موثق في سجل الكتالوج",
-      "duration": "غير موثق في سجل الكتالوج",
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "requirements": [
+        "صورة شخصية ملونة بخلفية بيضاء.",
+        "نسخة جواز السفر والإقامة الذهبية، وكلاهما ساري المفعول.",
+        "عرض العمل المعتمد من الوزارة وموقع من صاحب العمل والعامل.",
+        "المؤهل الدراسي المصدق بحسب المستوى المهاري: شهادة جامعية للمستويين 1–2، ودبلوم فأعلى للمستويين 3–4، وثانوية عامة للمستوى 5؛ لا تطلب شهادة للمستويات 6–9. يربط المصدر وصف العامل الماهر بالمؤهل وراتب لا يقل عن 4000 درهم.",
+        "ترخيص مزاولة المهنة من الجهة المختصة إذا كانت المهنة منظمة وتتطلب ترخيصًا."
+      ],
+      "fees": "الرسم الاتحادي المنشور: 50 درهمًا. لا تضيف قناة الموقع أو التطبيق رسم خدمة للوزارة فوق الرسوم الحكومية. الضرائب ورسوم التحصيل غير مشمولة. عمولة مركز الأعمال، عند استخدامه، منفصلة وبحد أقصى 72 درهمًا؛ ليست رسمًا حكوميًا ولا رسم حسام بحر.",
+      "duration": "يومان عمل لإتمام الخدمة. صلاحية تصريح العمل سنتان؛ الصلاحية ليست مدة المعالجة.",
+      "conditions": "العمر 18 سنة فأكثر؛ إقامة ذهبية سارية وعدم وجود تصريح عمل فعال. يجب توافق المهنة مع نشاط المنشأة، وسريان رخصتها وعدم وجود مخالفات توقف نشاطها، وتقديم الطلب من المخول بالتوقيع. لا يشترط ضمان مصرفي أو تأمين أو حصة إلكترونية لهذا التصريح. المهن المنظمة تحتاج ترخيص مزاولة وفق تشريعاتها.",
       "specialCases": "بطاقة الخدمة الرسمية المطابقة.",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -1899,17 +1941,47 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "الرسم الاتحادي المنشور: 50 درهمًا. لا تضيف قناة الموقع أو التطبيق رسم خدمة للوزارة فوق الرسوم الحكومية. الضرائب ورسوم التحصيل غير مشمولة. عمولة مركز الأعمال، عند استخدامه، منفصلة وبحد أقصى 72 درهمًا؛ ليست رسمًا حكوميًا ولا رسم حسام بحر."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق في سجل الكتالوج"
+          "answer": "يومان عمل لإتمام الخدمة. صلاحية تصريح العمل سنتان؛ الصلاحية ليست مدة المعالجة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "recordedSteps": [
+        "تسجيل الدخول بالهوية الرقمية عبر قناة معتمدة.",
+        "استكمال بيانات الطلب ومراجعة البيانات المسترجعة وإرفاق المستندات.",
+        "مراجعة تفاصيل الطلب وتسديد الرسوم المقررة.",
+        "إصدار التصريح بعد استيفاء المتطلبات؛ قد تطلب الوزارة استكمال نواقص."
+      ],
+      "stepsReviewedAt": "2026-10-16",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/ar/services/work-permits-of-golden-visa-holders-2022",
+          "sourceLanguage": "ar",
+          "documents": [
+            "Colour photograph on a white background.",
+            "Copies of the valid passport and valid Golden Residence.",
+            "The ministry job-offer form signed by employer and worker.",
+            "An attested qualification by skill level: degree for levels 1–2, diploma or higher for 3–4, secondary certificate for 5, and no certificate for 6–9. The Arabic source also links skilled status to a qualification and a monthly salary of at least AED 4,000.",
+            "A competent-authority professional licence where the regulated occupation requires one."
+          ],
+          "eligibility": "Age 18 or older; valid Golden Residence and no active work permit. The occupation must match the establishment activity. Its licence must be valid without violations suspending operations; the authorised signatory submits. No bank guarantee, insurance or electronic quota is required for this permit. Regulated professions retain their licensing requirements.",
+          "fees": "Published federal fee: AED 50. Website/app use adds no ministry service charge above government fees. Tax and collection charges are excluded. A business centre may separately charge up to AED 72; this is not a government fee or a HOSSAM BAHR fee.",
+          "duration": "Processing: two working days. Permit validity: two years.",
+          "steps": [
+            "Sign in with UAE Pass through an approved channel.",
+            "Complete and review the application information and attach the required documents.",
+            "Review the application and pay the prescribed fees.",
+            "The permit is issued after requirements are met; additional information may be requested."
+          ],
+          "notes": "HOSSAM BAHR explanatory translation of the reviewed Arabic MOHRE card. The English card currently mislabels process steps as required documents and incorrectly refers to no valid residence visa; the Arabic card specifies no active work permit and a valid Golden Residence. Do not treat the English wording as an additional eligibility restriction."
+        }
+      }
     },
     {
       "id": "catalog:تسجيل شكوى عمالية للقطاع الخاص",
@@ -1934,12 +2006,14 @@
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
       "status": "verified",
       "description": "تسجيل المطالبات عند إخلال أحد طرفي العلاقة بالتزاماته.",
-      "requirements": [],
+      "requirements": [
+        "المستندات التي تدعم موضوع الشكوى، إن وجدت، مثل خطاب الاستقالة أو الفصل."
+      ],
       "fees": "دون رسوم",
       "duration": "14 يوم عمل",
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "يجب أن يكون العامل مسجلًا في قاعدة بيانات الوزارة. لا تقبل للعامل شكوى قائمة أو نزاع أمام المحكمة إلا في الاستثناءات التي تذكرها البطاقة: استمرار علاقة العمل أو طلب إلغاء تصريح العمل.",
       "specialCases": "بطاقة الخدمة الرسمية المطابقة.",
-      "lastReviewed": "2026-07-27",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -1959,7 +2033,19 @@
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
+          "sourceLanguage": "en",
+          "documents": [
+            "Evidence supporting the claim, if available, such as a resignation or dismissal letter."
+          ],
+          "eligibility": "The worker must be registered in the ministry database. An existing complaint or court dispute prevents another complaint, subject to the service-card exceptions for an ongoing employment relationship or a request to cancel the work permit.",
+          "fees": "No service fee.",
+          "duration": "14 working days."
+        }
+      }
     },
     {
       "id": "catalog:تعديل بيانات تصريح الإقامة",
@@ -2596,12 +2682,15 @@
       "evidenceUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
       "status": "verified",
       "description": "إصدار بطاقة اختيارية لمندوب المنشأة المخول بمتابعة معاملاتها.",
-      "requirements": [],
+      "requirements": [
+        "شهادة حسن السيرة والسلوك.",
+        "صورة شخصية للمندوب."
+      ],
       "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "MOHRE / مركز خدمة",
-      "lastReviewed": "2026-07-27",
+      "duration": "يومان عمل لإتمام الخدمة.",
+      "conditions": "ملف بالوزارة وتصريح عمل سارٍ، وحسن السيرة والسلوك. المندوب المواطن: حتى ثلاثة ملاك مختلفين؛ الأول لديه 100 عامل فأكثر، والثاني والثالث أقل من 100 لكل منهما. المندوب الأجنبي: مالك واحد لديه أقل من 100 عامل. يجب أن يقدم الطلب مالك المنشأة المخول بالتوقيع، مع سداد رسوم الطباعة وإصدار البطاقة.",
+      "specialCases": "البطاقة الرسمية تفصل رسوم مزود الخدمة (40 درهمًا) وعمولة مركز الأعمال (حتى 72 درهمًا) عن الرسوم الحكومية؛ لا تنشر مبلغًا حكوميًا مستقلًا. لا نعرض 40 أو 72 كرسم حكومي أو رسم حسام بحر.",
+      "lastReviewed": "2026-10-16",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": true,
@@ -2634,7 +2723,20 @@
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط بوابة الجهة الرسمية وقد يتطلب تسجيل الدخول قبل متابعة الطلب نفسه."
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.mohre.gov.ae/ar/services/issuance-of-a-public-relations-officer-card-pro-2022",
+          "sourceLanguage": "ar",
+          "documents": [
+            "Police clearance certificate.",
+            "Personal photograph of the PRO."
+          ],
+          "duration": "Two working days.",
+          "eligibility": "A ministry file with a valid work permit and good conduct are required. A UAE national PRO may represent three owners: the first with at least 100 workers and the other two with fewer than 100 each. An expatriate PRO may represent one owner with fewer than 100 workers. The application must be submitted by the establishment owner and authorised signatory, with typing and card-issuance charges paid.",
+          "notes": "HOSSAM BAHR explanatory translation of the Arabic service card. The card separately lists AED 40 as a service-provider fee and up to AED 72 business-centre commission. Neither is represented as a verified government fee or an automatically added HOSSAM BAHR fee. A separate government amount remains unverified."
+        }
+      }
     },
     {
       "id": "directory:mohre:4",
