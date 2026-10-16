@@ -2,7 +2,7 @@ import {siraIntent,SIRA_SLUGS} from '../../../sira-intent.js';
 import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole, mergeSemanticContext, relationshipCompatibility, relationshipGroup, semanticDomainCompatibility, type FamilyRelationship, type SemanticEntity, type SubjectRole } from "./semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
 import { providerFailure, completedProviderText } from "./provider-status.ts";
-import { responseContext, jurisdictionCandidates } from "./response-context.ts";
+import { responseContext, jurisdictionCandidates, withoutJurisdictionExclusions, jurisdictionExcludesService } from "./response-context.ts";
 import { englishResult } from "./english-response.ts";
 import { documentedRule, hasDocumentedValue, serviceIntroduction } from "./grounded-facts.ts";
 import { familyCandidate } from "./family-candidates.ts";
@@ -937,7 +937,9 @@ export default {
     try {
       const requestStarted = performance.now();
       const catalogStarted = performance.now();
-      const catalog = await loadCatalog(ctx.supabaseAdmin);
+      const completeCatalog = await loadCatalog(ctx.supabaseAdmin);
+      const currentJurisdiction = detectJurisdiction(latestTurn) || semantic.jurisdiction || detectJurisdiction(semanticGoal);
+      const catalog = withoutJurisdictionExclusions(completeCatalog, currentJurisdiction);
       const catalogMs = performance.now() - catalogStarted;
       let ranked:any[];
       const exactDubaiFamilySponsorship = relationship && semantic.action === "sponsor" && semantic.jurisdiction === "AE-DU"
@@ -949,7 +951,11 @@ export default {
       const inheritedSira=contextualFollowUp && Object.values(SIRA_SLUGS).includes(inheritedServiceId);
       const siraKind=siraLatest || (inheritedSira ? (inheritedServiceId===SIRA_SLUGS.system?'system':'activity') : siraIntent(semanticGoal));
       const siraJurisdiction=detectJurisdiction(latestTurn)||semantic.jurisdiction||detectJurisdiction(semanticGoal);
-      if(siraKind){
+      const inheritedJurisdictionConflict = contextualFollowUp && jurisdictionExcludesService(completeCatalog.find((row:any)=>row.binding.service_slug===inheritedServiceId), currentJurisdiction);
+      if(inheritedJurisdictionConflict){
+        // Never replace an excluded inherited transaction with a neighbouring service.
+        ranked=[];
+      } else if(siraKind){
         ranked=(siraKind==='unsupported'||(siraJurisdiction&&siraJurisdiction!=='AE-DU'))?[]:catalog.filter((row:any)=>row.authority?.authority_key==='sira-dubai'&&(siraKind==='general'||row.binding.service_slug===(siraKind==='system'?SIRA_SLUGS.system:SIRA_SLUGS.activity))).map((row:any)=>({...row,score:12000}));
       } else if(exactDubaiFamilySponsorship){
         ranked=[exactDubaiFamilySponsorship];

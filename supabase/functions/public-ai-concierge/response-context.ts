@@ -29,3 +29,13 @@ export function responseContext(semantic: any, result: any, safeGoal: string, fa
     safe_goal: safeGoal
   };
 }
+
+// Source-backed exclusions refine a federal row without inventing a local route.
+export function withoutJurisdictionExclusions(rows: any[], jurisdiction: string | null) {
+  if (!jurisdiction || jurisdiction === 'AE') return rows;
+  return rows.filter(row => !jurisdictionExcludesService(row, jurisdiction));
+}
+
+export function jurisdictionExcludesService(row: any, jurisdiction: string | null) {
+  return Boolean(jurisdiction && Array.isArray(row?.binding?.metadata?.excluded_jurisdictions) && row.binding.metadata.excluded_jurisdictions.includes(jurisdiction));
+}
