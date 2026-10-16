@@ -67,6 +67,13 @@ function hasPhrase(text: string, words: string[]) {
   return words.some((word) => padded.includes(" " + normalize(word) + " "));
 }
 
+// A Golden Residence holder asking for a work permit is not applying for residence.
+function goldenHolderWorkPermit(goal: string) {
+  if (!hasPhrase(goal, ["تصريح عمل","تصريح العمل","work permit","work permits"])) return null;
+  if (!has(goal, ["الاقامه الذهبيه","اقامه ذهبيه","golden visa","golden residence","golden residency"])) return null;
+  return has(goal, ["تجديد","اجدد","renew","تعديل","عدل","amend","modify","الغاء","الغي","cancel","نقل","transfer","بدل","replacement","replace","تمديد","extension"]) ? "unsupported-operation" : "issuance";
+}
+
 type SemanticState = {
   active_service_id:string|null; last_answer_topic:string|null; pending_clarification:string|null; known_facts:Record<string,unknown>;
   turn_type:"new_topic"|"follow_up"|"correction"|"clarification"|"jurisdiction_switch"|"service_switch"|"entity_switch";
@@ -523,6 +530,10 @@ function rank(goal: string, rows: any[], relationship: FamilyRelationship | null
   const normalized = normalize(goal);
   const terms = normalized.split(" ").filter((t) => t.length > 1);
   const detected = detectJurisdiction(normalized);
+  const goldenWorkPermit = goldenHolderWorkPermit(normalized);
+  if (goldenWorkPermit) return goldenWorkPermit === "unsupported-operation" ? [] : rows
+    .filter((row:any) => row.binding.service_slug === "issuance-of-a-new-work-permit-golden-visa-holders" && row.authority?.authority_key === "mohre")
+    .map((row:any) => ({...row,score:100000}));
   const establishmentService = explicitIcpEstablishmentService(normalized);
   if (establishmentService) return detected === "AE-DU" ? [] : rows.filter((row:any) => row.authority?.authority_key === "icp" && row.binding.service_slug === establishmentService).map((row:any) => ({...row, score:100000}));
 
