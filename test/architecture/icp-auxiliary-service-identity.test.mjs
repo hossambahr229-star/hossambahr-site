@@ -11,7 +11,7 @@ test('Exact ICP auxiliary service identities survive unavailable external select
  const rows=published.map(s=>({title:s.name.ar,binding:{service_slug:s.slug,metadata:{name_en:s.name.en,category:s.classification.main}},authority:{authority_key:s.authority.id},jurisdiction:{code:s.emirate==='عجمان'?'AE-AJ':s.emirate==='دبي'?'AE-DU':'AE'},haystack:[s.slug,s.name.ar,s.name.en,s.authority.ar,s.authority.en].join(' ')}));
 
 
- const resolve=Function(stripTypeScriptTypes(utilities,{mode:'strip'})+'return explicitIcpAuxiliaryService;')();
+ const resolve=Function(stripTypeScriptTypes(utilities,{mode:'strip'})+'return q=>explicitIcpAuxiliaryService(normalize(q));')();
  for(const q of ['ما رسوم تقرير تفاصيل الإقامة عبر ICP؟','What are the fees for the ICP residence details report?','تقرير تفاصيل الإقامة عبر ICP،','تقرير تفاصيل الإقامة عبر ICP؛']){assert.equal(resolve(q),'تقرير-تفاصيل-الإقامة-عبر-icp',q+' exact resolver');assert.equal(rank(q,rows)[0]?.binding.service_slug,'تقرير-تفاصيل-الإقامة-عبر-icp',q);assert.equal(rank(q,rows)[0]?.score,100000,q+' explicit identity must not depend on low lexical confidence');}
  for(const q of ['ما رسوم سداد غرامة مخالفة تأشيرة أو إقامة عبر ICP خارج دبي؟','What are the fees for payment of visa or residence violation fines through ICP outside Dubai?'])assert.equal(rank(q,rows)[0]?.binding.service_slug,'سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي',q);
  for(const q of ['تقرير تفاصيل الإقامة عبر ICP في دبي','Pay a residence fine through ICP in Dubai','ICP GDRFA residence details report'])assert.deepEqual(rank(q,rows),[],q);
