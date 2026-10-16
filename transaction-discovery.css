@@ -41,6 +41,9 @@ html.hb-phase8 body[data-home-geometry] .desktop-nav .home-capability-explorer>s
 html[lang="ar"].hb-phase8 body[data-home-geometry] .desktop-nav .home-capability-explorer>summary{font-family:'HB Naskh',serif!important;font-size:13px!important}
 .desktop-nav .home-capability-explorer>.capability-grid{position:absolute;z-index:90;top:100%;inset-inline:24px;background:#fff;border:1px solid #cbd8d3;border-radius:12px;padding:16px;box-shadow:0 12px 28px #082b4326}
 .desktop-nav .home-capability-explorer:not([open])>.capability-grid{display:none}
+html.hb-phase8 body[data-home-geometry] .desktop-nav .home-capability-explorer>.capability-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important}
+html.hb-phase8 body[data-home-geometry] .home-capability-explorer .capability-grid a{font-size:14px!important;line-height:1.5!important;padding:12px!important;gap:12px!important;border:0!important;white-space:normal!important;text-decoration:none!important;min-height:44px}
+.home-capability-explorer .capability-grid a>span{flex:none;font-variant-numeric:tabular-nums;opacity:.75}
 .mobile-menu>nav{max-height:calc(100dvh - 90px);overflow:auto}
 .mobile-menu .home-capability-explorer{margin:0;padding:8px;border:0;min-width:0}
 .premium-en-header{position:relative}

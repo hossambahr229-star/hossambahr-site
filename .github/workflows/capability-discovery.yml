@@ -1,7 +1,7 @@
 name: Capability Discovery Acceptance
 on:
   push:
-    branches: [agent/intent-first-capability-discovery]
+    branches: [agent/intent-first-capability-discovery, agent/capability-menu-spacing]
   workflow_dispatch:
 permissions:
   contents: read
@@ -20,6 +20,7 @@ jobs:
       - run: node scripts/capability-discovery-browser.mjs
         env:
           HB_BROWSER_PATH: /usr/bin/google-chrome
+          HB_DISCOVERY_VIEWS_ONLY: ${{ github.ref_name == 'agent/capability-menu-spacing' && '1' || '' }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
