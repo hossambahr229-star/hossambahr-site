@@ -1,0 +1,24 @@
+name: Current Homepage Visual Release Audit
+on:
+  push:
+    branches: [agent/domain-visual-gate-compatibility]
+    paths: ['src/publication/verify-phase9-1-visual-quality.mjs','.github/workflows/current-home-visual-audit.yml']
+permissions:
+  contents: read
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: npm run build
+      - run: npm run test:phase9-1-visual
+        env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: current-home-visual-audit
+          path: artifacts/phase9-1-visual-quality
