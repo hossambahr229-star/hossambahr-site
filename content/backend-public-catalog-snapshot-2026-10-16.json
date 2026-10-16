@@ -1016,5 +1016,103 @@
       "workflow_key": "service:متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي"
     }
   ],
-  "activeWorkflowBindings": 202
+  "activeWorkflowBindings": 202,
+  "historicalNonPublic": [
+    {
+      "slug": "إصدار-إقامة-لمولود-جديد-في-دبي",
+      "name": "إصدار إقامة لمولود جديد في دبي",
+      "route": "/services/إصدار-إقامة-لمولود-جديد-في-دبي/",
+      "businessDomain": "residence",
+      "publicCatalog": false,
+      "publicationState": "NORMALIZED",
+      "normalizationType": "NORMALIZED_SCOPE_NEEDS_REVIEW",
+      "independentExecutionEnabled": false,
+      "canonicalAlternative": null,
+      "source": "Existing normalized route and live Supabase public_catalog=false metadata; no reactivation."
+    },
+    {
+      "slug": "إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل",
+      "name": "إصدار عرض العمل ضمن طلب تصريح العمل",
+      "route": "/services/إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل/",
+      "businessDomain": "work",
+      "publicCatalog": false,
+      "publicationState": "NORMALIZED",
+      "normalizationType": "SUB_SERVICE",
+      "independentExecutionEnabled": false,
+      "canonicalAlternative": null,
+      "source": "Existing normalized route and live Supabase public_catalog=false metadata; no reactivation."
+    },
+    {
+      "slug": "التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني",
+      "name": "التفويض الإلكتروني للمنشأة (بديل بطاقة التوقيع الإلكتروني)",
+      "route": "/services/التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني/",
+      "businessDomain": "work",
+      "publicCatalog": false,
+      "publicationState": "NORMALIZED",
+      "normalizationType": "GUIDANCE",
+      "independentExecutionEnabled": false,
+      "canonicalAlternative": null,
+      "source": "Existing normalized route and live Supabase public_catalog=false metadata; no reactivation."
+    },
+    {
+      "slug": "تجديد-تصريح-العمل",
+      "name": "تجديد تصريح العمل",
+      "route": "/services/تجديد-تصريح-العمل/",
+      "businessDomain": "work",
+      "publicCatalog": false,
+      "publicationState": "NORMALIZED",
+      "normalizationType": "SUB_SERVICE",
+      "independentExecutionEnabled": false,
+      "canonicalAlternative": null,
+      "source": "Existing normalized route and live Supabase public_catalog=false metadata; no reactivation."
+    },
+    {
+      "slug": "تصريح-عمل-جزئي",
+      "name": "تصريح عمل جزئي",
+      "route": "/services/تصريح-عمل-جزئي/",
+      "businessDomain": "work",
+      "publicCatalog": false,
+      "publicationState": "NORMALIZED",
+      "normalizationType": "DUPLICATE",
+      "independentExecutionEnabled": false,
+      "canonicalAlternative": "/services/part-time-work-permit-uae/",
+      "source": "Existing normalized route and live Supabase public_catalog=false metadata; no reactivation."
+    },
+    {
+      "slug": "تصنيف-المنشأة",
+      "name": "تصنيف المنشأة",
+      "route": "/services/تصنيف-المنشأة/",
+      "businessDomain": "work",
+      "publicCatalog": false,
+      "publicationState": "NORMALIZED",
+      "normalizationType": "INFORMATIONAL",
+      "independentExecutionEnabled": false,
+      "canonicalAlternative": null,
+      "source": "Existing normalized route and live Supabase public_catalog=false metadata; no reactivation."
+    },
+    {
+      "slug": "خدمات-نافس-للمنشآت",
+      "name": "خدمات نافس للمنشآت",
+      "route": "/services/خدمات-نافس-للمنشآت/",
+      "businessDomain": "work",
+      "publicCatalog": false,
+      "publicationState": "NORMALIZED",
+      "normalizationType": "WRONG_AUTHORITY",
+      "independentExecutionEnabled": false,
+      "canonicalAlternative": null,
+      "source": "Existing normalized route and live Supabase public_catalog=false metadata; no reactivation."
+    },
+    {
+      "slug": "ضمان-أو-تأمين-العامل",
+      "name": "ضمان أو تأمين العامل",
+      "route": "/services/ضمان-أو-تأمين-العامل/",
+      "businessDomain": "work",
+      "publicCatalog": false,
+      "publicationState": "NORMALIZED",
+      "normalizationType": "GUIDANCE",
+      "independentExecutionEnabled": false,
+      "canonicalAlternative": null,
+      "source": "Existing normalized route and live Supabase public_catalog=false metadata; no reactivation."
+    }
+  ]
 }
