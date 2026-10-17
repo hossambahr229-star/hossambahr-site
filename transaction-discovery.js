@@ -6,6 +6,16 @@ export function entryMode(query){
  const q=normalizeIntent(query);
  return /(?:عايز|عاوزه|اريد|ابي|ابغي|احتاج|الرخصه انتهت|i want|i need|how do i|my licen[cs]e expired)/i.test(q)?'describe':'exact';
 }
+
+export function entryDestination(query){
+ const q=normalizeIntent(query);
+ const changing=/(?:تجديد|جدد|الغاء|الغي|تعديل|اضافه|اضيف|renew|cancel|amend|add activity)/i.test(q);
+ const starting=/(?:افتح|فتح|ابدا|تاسيس|انشاء|open|start|set up|setup)/i.test(q);
+ const idea=/(?:كافتيريا|كافيتريا|مطعم|مقهي|كافيه|صالون|بقاله|متجر|محل|تجاره الكترونيه|cafeteria|cafe|coffee shop|restaurant|salon|grocery|shop|store|ecommerce|e commerce)/i.test(q);
+ if(starting&&idea&&!changing)return 'business-activities';
+ return entryMode(query)==='describe'?'ai':'services';
+}
+
 export function discoverServices(records,{query='',emirate='',authority='',category='',domain='',approval=''}={}){
  const candidates=records.filter(s=>(!emirate||compatibleEmirate(s.m,emirate))&&(!authority||s.i===authority)&&(!category||s.c===category)&&(!domain||(s.bd||serviceBusinessDomain(s))===domain)&&(!approval||(approval==='business'?s.ap&&!['work-permit','residence-permit'].includes(s.ap):s.ap===approval)));
  return query.trim()?rankServices(query,candidates):candidates;
@@ -16,7 +26,7 @@ if(typeof document!=='undefined'){
  const home=document.querySelector('.premium-intent-search');
  home?.addEventListener('submit',event=>{
   const q=home.querySelector('input')?.value.trim();
-  if(q&&entryMode(q)==='describe'){event.preventDefault();location.assign(prefix+'/ai/?q='+encodeURIComponent(q));}
+  if(q){const destination=entryDestination(q);if(destination!=='services'){event.preventDefault();location.assign(prefix+'/'+destination+'/?q='+encodeURIComponent(q));}}
  },true);
  document.querySelector('.discovery-entry>a[href*="/ai/"]')?.addEventListener('click',event=>{
   const draft=home?.querySelector('input')?.value.trim().slice(0,800);
