@@ -1,0 +1,41 @@
+name: Live Novice Business Journeys
+on:
+  push:
+    branches: [agent/live-novice-business]
+    paths: ['.github/workflows/live-novice-business.yml']
+permissions: {contents: write}
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for published routing
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let n=0;n<60;n++){
+            const r=await fetch('https://hossambahr.com/transaction-discovery.js?release-check='+Date.now());
+            if(r.ok&&(await r.text()).includes("entryDestination")){ready=true;break;}
+            await new Promise(r=>setTimeout(r,20000));
+          }
+          if(!ready)throw Error('New routing not yet published; no live acceptance claimed');
+          NODE
+      - run: node scripts/novice-business-browser.mjs
+        env: {HB_BASE_URL: 'https://hossambahr.com',HB_BROWSER_PATH: /usr/bin/google-chrome,HB_OUTPUT_DIR: artifacts/live-novice-business}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: live-novice-business, path: artifacts/live-novice-business}
+      - name: Preserve live journey evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add artifacts/live-novice-business || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Preserve actual live novice business journeys"
+            git push origin HEAD:agent/live-novice-business
+          fi
