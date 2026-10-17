@@ -1,0 +1,51 @@
+name: Live Homepage Business Domains
+on:
+  push:
+    branches: [agent/live-home-business-domains]
+    paths: ['.github/workflows/home-business-domains-live.yml']
+permissions:
+  contents: write
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for actual published gateway
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let n=0;n<50;n++){
+            const response=await fetch('https://hossambahr.com/?domain-release-check='+Date.now());
+            const html=await response.text();
+            if(response.ok&&html.includes('data-home-domains')){ready=true;break;}
+            await new Promise(r=>setTimeout(r,20000));
+          }
+          if(!ready)throw Error('Reviewed gateway not yet published; no live acceptance claimed');
+          NODE
+      - run: node scripts/home-business-domains-browser.mjs
+        env:
+          HB_BASE_URL: https://hossambahr.com
+          HB_OUTPUT_DIR: artifacts/live-home-business-domains
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-home-business-domains
+          path: artifacts/live-home-business-domains
+      - name: Preserve actual live screenshots
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          for name in ar-320-areas.png ar-1440-areas.png en-390-areas.png report.json; do
+            file="artifacts/live-home-business-domains/$name"
+            if [ -f "$file" ]; then git add -- "$file"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "Preserve actual Production domain acceptance"
+            git push origin HEAD:agent/live-home-business-domains
+          fi
