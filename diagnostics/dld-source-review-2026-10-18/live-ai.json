@@ -1,0 +1,104 @@
+{
+  "status": "FAIL",
+  "scope": "Targeted live grounding after actual official-source review, independent of external-model acceptance",
+  "testedAt": "2026-10-18T07:17:31.746Z",
+  "results": [
+    {
+      "name": "ejari-ar",
+      "http": 200,
+      "expected": "register-renew-ejari-contract-dubai",
+      "slug": "register-renew-ejari-contract-dubai",
+      "answer": "المسار المناسب لطلبك هو «تسجيل أو تجديد عقد إيجاري في دبي» لدى دائرة الأراضي والأملاك / RERA. التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "valuation-ar",
+      "http": 200,
+      "expected": "property-valuation-dubai",
+      "slug": "property-valuation-dubai",
+      "answer": "المسار المناسب لطلبك هو «طلب تقييم عقار في دبي» لدى دائرة الأراضي والأملاك / RERA. اختر نوع العقار والغرض؛ تختلف المستندات الإضافية والرسوم بحسب الفئة.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "practice-en",
+      "http": 200,
+      "expected": "real-estate-professional-practice-card-dubai",
+      "slug": null,
+      "answer": "I need to confirm the transaction or jurisdiction before presenting government requirements or fees. What transaction or outcome do you want to achieve?",
+      "grounding": {
+        "status": "NEEDS_CLARIFICATION",
+        "source_backed": false,
+        "no_invention": true,
+        "ambiguity_detected": true
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "FAIL",
+      "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ null\n- 'real-estate-professional-practice-card-dubai'\n"
+    },
+    {
+      "name": "transfer-en",
+      "http": 200,
+      "expected": "title-transfer-dubai",
+      "slug": "title-transfer-dubai",
+      "answer": "A possible pathway is Title Transfer Application through Dubai Land Department / RERA. Title transfer according to official government letters, through DLD headquarters and its review and approval.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": true
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    }
+  ]
+}
