@@ -38,6 +38,8 @@ export function approvalType(service){
  const slug=service.slug||service.s||'';
  const authority=service.authority?.id||service.i||'';
  const text=normalizeIntent([service.name?.ar||service.a,service.name?.en||service.e,slug].filter(Boolean).join(' '));
+ // Payment and tracking operations do not issue an approval or permit.
+ if(/\bfines?\b|غرام|مخالف|\btracking\b|\btrack\b|متابعه حاله|استعلام عن حاله/.test(text))return null;
  if(slug===SIRA_SLUGS.system)return 'security-system';
  if(slug===SIRA_SLUGS.activity)return 'specialist-licence';
  if(authority==='mohre'&&/permit|تصريح/.test(text))return 'work-permit';
@@ -46,7 +48,7 @@ export function approvalType(service){
  if(/initial approval|موافقه مبدئيه/.test(text))return 'economic-initial';
  if(/approval|موافقه/.test(text))return 'external-approval';
  if(['sira-dubai','dha-dubai','mohap','khda','dld-rera'].includes(authority)&&/license|licence|registration|practice card|ترخيص|رخصه|بطاقه مزاوله/.test(text))return 'specialist-licence';
- if(/permit|تصريح|clearance/.test(text))return 'sector-permit';
+ if(/permit|تصريح/.test(text))return 'sector-permit';
  if((service.classification?.main||service.c)==='government-approvals')return 'other-permit';
  return null;
 }
