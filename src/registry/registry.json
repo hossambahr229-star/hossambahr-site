@@ -345,8 +345,8 @@
       },
       "audiences": [
         {
-          "ar": "طالبو تصاريح الإعلانات العقارية بحسب نوع الإعلان ومتطلبات الجهة",
-          "en": "Real estate advertising permit applicants, subject to the relevant permit requirements"
+          "ar": "الشركات والوسطاء والجهات المرخصة لممارسة نشاط عقاري في دبي",
+          "en": "Companies, brokers and entities licensed to conduct real estate activity in Dubai"
         }
       ],
       "requestType": {
@@ -496,10 +496,6 @@
       },
       "conditions": [
         {
-          "ar": "إذا كان مقدم الطلب وسيطًا عقاريًا، يلزم عقد تسويق مع مالك العقار لأنواع الإعلان المحددة في بطاقة الخدمة.",
-          "en": "If the applicant is a real estate broker, a marketing contract with the property owner is required for the ad types listed on the official card."
-        },
-        {
           "ar": "يجب تقديم مستندات المعرض قبل موعده بشهر على الأقل، ولا يسمح بالبيع أثناء المعرض بل بالحجوزات المبدئية فقط.",
           "en": "Exhibition documents must be submitted at least one month in advance, and sales are prohibited during the exhibition; only preliminary reservations are allowed."
         },
@@ -508,7 +504,12 @@
           "en": "Exhibitions from the same country need a 30-day gap. Dubai off-plan properties must be registered with the Escrow Account Department before display."
         }
       ],
-      "eligibility": [],
+      "eligibility": [
+        {
+          "ar": "إذا كان مقدم الطلب وسيطًا عقاريًا، يلزم عقد تسويق مع مالك العقار لأنواع الإعلان المحددة في بطاقة الخدمة.",
+          "en": "If the applicant is a real estate broker, a marketing contract with the property owner is required for the ad types listed on the official card."
+        }
+      ],
       "exceptions": [
         {
           "ar": "لا يجوز عرض عقارات على الخارطة في دبي غير مسجلة لدى إدارة حساب الضمان خلال المعارض.",
@@ -618,7 +619,7 @@
           }
         }
       ],
-      "lastUpdated": "2026-10-18",
+      "lastUpdated": "2026-10-08",
       "lastReviewedAt": "2026-08-08T18:25:00+04:00",
       "verification": {
         "status": "verified",
