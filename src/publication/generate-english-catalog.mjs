@@ -21,6 +21,8 @@ for(const service of services){
 }
 let home=await readFile(join(root,'en/index.html'),'utf8');
 home=home.replace(/(href|action)="\/services\//g,'$1="/en/services/').replace('"inLanguage":"ar-AE"','"inLanguage":"en"');
+home=home.replace(/(<b>)\d+(<\/b> live services in the registry)/,(_,open,close)=>open+services.length+close)
+ .replace(/(<b>)\d+(<\/b> authorities in the platform registry)/,(_,open,close)=>open+new Set(services.map(service=>service.authority.id)).size+close);
 await writeFile(join(root,'en/index.html'),home);
 console.log(`English catalog: ${services.length} services with stable localized routes.`);
 
