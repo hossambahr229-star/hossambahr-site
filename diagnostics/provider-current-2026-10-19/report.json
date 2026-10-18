@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-18T21:54:04.306Z",
+  "http": 200,
+  "ok": true,
+  "service": "real-estate-professional-practice-card-dubai",
+  "grounding": {
+    "status": "VERIFIED_FACT",
+    "source_backed": true,
+    "no_invention": true,
+    "ambiguity_detected": false
+  },
+  "engine": {
+    "mode": "deterministic-policy-resolver",
+    "external_model_used": false,
+    "provider_failure": {
+      "category": "QUOTA_BILLING",
+      "status": 429,
+      "code": "credit_balance_exhausted",
+      "type": "insufficient_quota"
+    }
+  },
+  "externalModelAcceptance": "NOT_PASSED",
+  "scope": "One current provider-status check only. A workflow completion is not external-model PASS."
+}
