@@ -38,6 +38,8 @@ if(typeof document!=='undefined'){
   const cards=[...document.querySelectorAll('[data-canonical-service]')],status=document.querySelector('[data-discovery-status]'),empty=document.querySelector('[data-discovery-empty]');
   const params=new URLSearchParams(location.search);
   for(const key of ['q','emirate','authority','category','domain','approval'])if(form.elements[key]){if(params.has(key)||key!=='approval')form.elements[key].value=params.get(key)||'';}
+  const advanced=form.querySelector('.discovery-advanced');
+  if(advanced&&['authority','domain','category'].some(key=>params.get(key)))advanced.open=true;
   let records;
   async function render(event){
    event?.preventDefault();
