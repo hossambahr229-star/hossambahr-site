@@ -1,0 +1,39 @@
+{
+  "reviewedAt": "2026-10-18",
+  "sourceOfFailure": "review_required remained true beyond the seven-day temporary acceptance period; source excluded from AI retrieval",
+  "sourceReviews": [
+    {
+      "slug": "register-renew-ejari-contract-dubai",
+      "id": "c7be65e8-8cf5-4679-8b50-0bde15cf4b3c",
+      "status": "REVERIFIED_AND_NATIVE_AI_MATCH_RESTORED"
+    },
+    {
+      "slug": "property-valuation-dubai",
+      "id": "d314ed6c-d3dd-4e4c-bed9-6c406219c942",
+      "status": "REVERIFIED_PENDING_TARGETED_AI"
+    },
+    {
+      "slug": "real-estate-professional-practice-card-dubai",
+      "id": "ab1b4f5b-2a0c-4dd6-9c53-757878ab3d18",
+      "status": "REVERIFIED_PENDING_TARGETED_AI"
+    },
+    {
+      "slug": "title-transfer-dubai",
+      "id": "7e737189-e352-427e-9367-0101b300221c",
+      "status": "REVERIFIED_PENDING_TARGETED_AI"
+    }
+  ],
+  "scope": "Actual official service tabs compared to the active policy. Only source review metadata updated; no schema, RLS, credentials, policy facts or Edge code changed.",
+  "checks": [
+    "Ejari source documents, channel totals, time and conditions; native matching restored",
+    "Valuation source type-dependent documents, fees and time match policy",
+    "Practice card documents, type-dependent fees, 5-minute duration and conditions match policy",
+    "Title transfer scope, documents, fees, main-building process and time match policy"
+  ],
+  "notApproved": [
+    "Real-estate ad permit still under review",
+    "Other expired sources require individual evidence",
+    "External-model AI acceptance",
+    "Private accounts and document execution"
+  ]
+}
