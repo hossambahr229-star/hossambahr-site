@@ -108,8 +108,10 @@ html a{text-underline-offset:4px}
 .hb-page-service .detail-section{margin:0!important;padding:26px 30px!important;border:0!important;border-radius:0!important;background:var(--hb-surface)!important;box-shadow:none!important}
 .hb-page-service .detail-section:first-child{grid-column:1/-1}
 .hb-page-service .detail-section h2{padding-bottom:10px;border-bottom:1px solid var(--hb-line);font-size:24px}
-.hb-page-service .service-aside{position:sticky;top:12px;margin:0!important;padding:28px 24px!important;border:0!important;border-inline-start:1px solid var(--hb-line)!important;border-radius:0!important;background:var(--hb-surface-2)!important;box-shadow:none!important}
+.hb-page-service .service-aside{position:sticky;top:12px;margin:0!important;padding:28px 24px!important;border:0!important;border-inline-start:1px solid var(--hb-line)!important;border-radius:0!important;background:var(--hb-surface-2)!important;box-shadow:none!important;color:var(--hb-ink)!important}
 .hb-page-service .service-aside:before{content:"NEXT ACTION";display:block;margin-bottom:14px;color:#89642e;font:700 10px monospace;letter-spacing:.15em}
+.hb-page-service .service-aside dt{color:var(--hb-green-800)!important}
+.hb-page-service .service-aside dd{color:var(--hb-ink)!important}
 .hb-page-service .service-aside dl>div,.hb-page-service .service-aside dl{border-color:var(--hb-line)!important}
 
 /* Command centre / dashboards */
