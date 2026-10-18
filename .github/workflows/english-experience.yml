@@ -2,6 +2,8 @@ name: English experience browser checks
 on:
   pull_request:
     paths:
+      - 'src/publication/generate-dubai-coverage-pages.mjs'
+      - 'scripts/arabic-coverage-detail-display.test.mjs'
       - 'content/government-coverage-expansion.json'
       - 'scripts/uaq-trade-name-source.test.mjs'
       - 'src/publication/*english*'
@@ -30,7 +32,7 @@ jobs:
         with:
           node-version: '24'
       - uses: browser-actions/setup-chrome@v1
-      - run: node --test scripts/uaq-trade-name-source.test.mjs
+      - run: node --test scripts/uaq-trade-name-source.test.mjs scripts/arabic-coverage-detail-display.test.mjs
       - run: npm run build
       - run: npm install --no-save --ignore-scripts playwright@1.55.0
       - name: Verify generated English journeys and measured responsive layouts
