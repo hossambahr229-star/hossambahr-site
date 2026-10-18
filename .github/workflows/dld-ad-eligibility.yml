@@ -2,7 +2,7 @@ name: DLD Ad Eligibility Source Regression
 on:
   push:
     branches: [agent/dld-ad-verified-eligibility]
-    paths: ['src/registry/registry.json','scripts/dld-ad-eligibility.test.mjs','.github/workflows/dld-ad-eligibility.yml']
+    paths: ['supabase/functions/public-ai-concierge/index.ts','test/architecture/ai-dld-practice-card.test.mjs','src/publication/recorded-detail-translations.mjs','src/registry/registry.json','scripts/dld-ad-eligibility.test.mjs','.github/workflows/dld-ad-eligibility.yml']
 permissions: {contents: read}
 jobs:
   regression:
@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: '24'}
-      - run: node --test scripts/dld-ad-eligibility.test.mjs
+      - run: node --test scripts/dld-ad-eligibility.test.mjs test/architecture/ai-dld-practice-card.test.mjs
       - run: npm run build
       - run: npm run typecheck

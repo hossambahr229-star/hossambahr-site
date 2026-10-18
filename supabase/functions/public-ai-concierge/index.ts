@@ -496,6 +496,9 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
   // Restrict these Dubai cards to an explicit Dubai jurisdiction and preserve
   // the distinction between government-letter title transfer and an ordinary sale.
   if (emirate === "AE-DU") {
+    const practiceCard = has(goal, ["real estate professional practice card","real estate activity practice card","بطاقة مزاولة مهنة لنشاط عقاري","بطاقة مزاولة مهنة عقارية"]);
+    const differentCardOperation = renew || amend || wantsCancel || transfer || has(goal, ["replacement","replace","lost card","damaged card","بدل","فاقد","تالف"]);
+    if (practiceCard && !differentCardOperation && slug === "real-estate-professional-practice-card-dubai") score += 9000;
     const valuation = has(goal, ["تقييم عقار","تقييم العقار","تثمين عقار","property valuation","real estate valuation"]);
     if (valuation && slug === "property-valuation-dubai") score += 9000;
     const deedTransfer = has(goal, ["انتقال سند","نقل سند","انتقال ملكيه","نقل ملكيه","title transfer","title deed"]);
