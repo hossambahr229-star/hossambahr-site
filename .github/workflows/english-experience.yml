@@ -2,6 +2,8 @@ name: English experience browser checks
 on:
   pull_request:
     paths:
+      - 'a-plus-plus.css'
+      - 'scripts/service-aside-contrast.mjs'
       - 'src/publication/generate-dubai-coverage-pages.mjs'
       - 'scripts/arabic-coverage-detail-display.test.mjs'
       - 'content/government-coverage-expansion.json'
@@ -43,10 +45,13 @@ jobs:
           export HB_BASE_URL='http://127.0.0.1:8787'
           export HB_BROWSER_PATH="$(command -v chrome)"
           node scripts/english-experience-browser.mjs
+          node scripts/service-aside-contrast.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: english-experience
-          path: artifacts/english-experience
+          path: |
+            artifacts/english-experience
+            artifacts/service-aside-contrast
           retention-days: 14
 
