@@ -1,0 +1,32 @@
+name: Targeted live UAQ service acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/uaq-live-responsive.mjs','.github/workflows/uaq-live-responsive.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - name: Verify actual Production widths and customer-facing facts
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/uaq-live-responsive.mjs
+      - name: Preserve measured Production evidence
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/uaq-local-card-2026-10-18/live-responsive
+          git diff --cached --quiet || git commit -m "Record targeted UAQ live responsive evidence [skip ci]"
+          git push
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: uaq-live-responsive
+          path: diagnostics/uaq-local-card-2026-10-18/live-responsive
