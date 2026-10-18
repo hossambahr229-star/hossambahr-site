@@ -1,0 +1,32 @@
+name: Live service sidebar contrast
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/service-aside-contrast.mjs','.github/workflows/live-service-aside.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - name: Measure actual live service fields
+        run: HB_BROWSER_PATH="$(which chrome)" HB_BASE_URL=https://hossambahr.com HB_ASIDE_OUTPUT=diagnostics/service-aside-live-2026-10-19 node scripts/service-aside-contrast.mjs
+      - name: Preserve actual live evidence
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/service-aside-live-2026-10-19
+          git diff --cached --quiet || git commit -m "Record live service-sidebar contrast [skip ci]"
+          git push
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-service-sidebar
+          path: diagnostics/service-aside-live-2026-10-19
