@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-17T06:34:57.064Z",
+  "generatedAt": "2026-10-18T07:27:50.271Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 154,
+    "REACHABLE": 155,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 1,
-    "NETWORK_UNVERIFIED": 85,
+    "NETWORK_UNVERIFIED": 84,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1550,8 +1550,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_SOCKET"
+      "status": 200,
+      "finalUrl": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7c",
