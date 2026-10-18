@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-18T22:06:40.008Z",
+  "generatedAt": "2026-10-18T22:39:09.377Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 153,
+    "REACHABLE": 154,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 1,
-    "NETWORK_UNVERIFIED": 86,
+    "NETWORK_UNVERIFIED": 85,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1913,8 +1913,9 @@
       "kinds": [
         "official-information"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://tax.gov.ae/ar/services/vat.registration.aspx",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.tax.gov.ae/sap/bc/ui5_ui5/sap/zmcf_fmca/index.html?saml2=disabled&sap-client=100&sap-language=AR&serviceId=6001&sCode=396-02-001-000",
