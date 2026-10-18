@@ -1,27 +1,27 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 202,
-  "fullyTranslatedRecordedSections": 170,
+  "fullyTranslatedRecordedSections": 169,
   "fieldCounts": {
     "documents": {
-      "PLATFORM_TRANSLATION": 147,
-      "RECORDED_ENGLISH": 38,
+      "PLATFORM_TRANSLATION": 146,
+      "RECORDED_ENGLISH": 39,
       "MISSING_INFORMATION": 17
     },
     "eligibility": {
-      "PLATFORM_TRANSLATION": 149,
-      "RECORDED_ENGLISH": 36,
+      "PLATFORM_TRANSLATION": 148,
+      "RECORDED_ENGLISH": 37,
       "MISSING_INFORMATION": 17
     },
     "fees": {
-      "PLATFORM_TRANSLATION": 142,
+      "PLATFORM_TRANSLATION": 141,
       "RECORDED_ENGLISH": 36,
-      "MISSING_INFORMATION": 24
+      "MISSING_INFORMATION": 25
     },
     "duration": {
-      "PLATFORM_TRANSLATION": 142,
+      "PLATFORM_TRANSLATION": 141,
       "RECORDED_ENGLISH": 38,
-      "MISSING_INFORMATION": 22
+      "MISSING_INFORMATION": 23
     }
   },
   "scope": "Translation coverage of recorded verified sections only. This does not reverify government facts, fill missing information or grant overall English acceptance.",
@@ -1461,10 +1461,10 @@
       "slug": "umm-al-quwain-trade-name-official-path",
       "route": "/en/services/umm-al-quwain-trade-name-official-path/",
       "fields": {
-        "documents": "PLATFORM_TRANSLATION",
-        "eligibility": "PLATFORM_TRANSLATION",
-        "fees": "PLATFORM_TRANSLATION",
-        "duration": "PLATFORM_TRANSLATION"
+        "documents": "RECORDED_ENGLISH",
+        "eligibility": "RECORDED_ENGLISH",
+        "fees": "MISSING_INFORMATION",
+        "duration": "MISSING_INFORMATION"
       }
     },
     {
