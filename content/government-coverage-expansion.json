@@ -1224,7 +1224,8 @@
       "officialDomains": [
         "portal.uaq.ae",
         "uaqftz.gov.ae",
-        "u.ae"
+        "u.ae",
+        "ded.uaq.ae"
       ],
       "summary": {
         "canonicalServices": 0,
@@ -1242,17 +1243,40 @@
           "nameEn": "Official Route to Book a Trade Name in Umm Al Quwain",
           "category": "business-licensing",
           "type": "حجز اسم تجاري",
-          "description": "مسار حكومي اتحادي محدث يحدد خدمة حجز الاسم التجاري لدى دائرة التنمية الاقتصادية في أم القيوين ويوجه إلى القناة المحلية المنشورة.",
+          "description": "بطاقة حجز الاسم التجاري لدى دائرة التنمية الاقتصادية في أم القيوين لبدء المشروع؛ تعرض المستندات بحسب صفة مقدم الطلب دون نشر مبلغ ثابت للرسوم أو مدة إنجاز.",
           "requirements": [
-            "اختيار اسم متوافق مع النشاط والشكل القانوني",
-            "التحقق من عدم تسجيل الاسم سابقًا",
-            "اتباع قناة دائرة التنمية الاقتصادية في أم القيوين من الدليل الرسمي"
+            "للمواطن أو مواطن مجلس التعاون: أصل الهوية وصورة جواز السفر والبريد الإلكتروني ورقم الهاتف لصاحب الرخصة.",
+            "للمدير المسؤول الوافد: أصل الهوية وصورة جواز السفر والإقامة والبريد الإلكتروني ورقم الهاتف.",
+            "خطاب عدم ممانعة مصدق من الكفيل أو صورة رخصة المستثمر بحسب الحالات المحددة في البطاقة، مع متطلبات إضافية لمدير الفرع عند اختلافه.",
+            "ثلاثة أسماء تجارية مكتوبة تدل على النشاط بالعربية ومترجمة إلى الإنجليزية.",
+            "وكالة عند غياب صاحب العلاقة.",
+            "طباعة الأنشطة المطلوبة والبريد الإلكتروني ورقم الهاتف المتعلقين بالرخصة.",
+            "تحديد ما إذا كانت الرخصة تتبع برنامج الشيخ سعود لمشاريع الشباب."
           ],
-          "fees": "تعرضها القناة المحلية عند تقديم الطلب؛ لم تُنشر قيمة ثابتة في المصدر الاتحادي.",
-          "duration": "تحددها القناة المحلية بعد تقديم الطلب",
-          "conditions": "الرابط دليل حكومي رسمي محدث وليس رابط تنفيذ عميقًا؛ لم يُخترع مسار محلي غير منشور.",
-          "officialUrl": "https://u.ae/en/information-and-services/business/important-digital-services/inquire-about-licences-names-and-activities",
-          "destinationKind": "OFFICIAL_GUIDANCE"
+          "fees": "NOT_OFFICIALLY_PUBLISHED",
+          "duration": "NOT_OFFICIALLY_PUBLISHED",
+          "conditions": "تختلف المستندات بحسب الجنسية وصفة المدير والفرع والتمثيل بوكالة؛ راجع الحالات المحددة في بطاقة الدائرة. حجز الاسم التجاري لا يمثل إصدار الرخصة. تذكر خانة الرسوم «حسب الطلب» دون مبلغ، ولا تُنشر مدة إنجاز محددة؛ أكد المبلغ والمدة مع الدائرة.",
+          "officialUrl": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html",
+          "destinationKind": "DIRECT_SERVICE",
+          "lastVerified": "2026-10-18",
+          "officialLinkCheckedAt": "2026-10-18T12:20:48.769Z",
+          "localizedDetails": {
+            "en": {
+              "documents": [
+                "For UAE or GCC citizens: original ID, passport copy, email and telephone number of the licence holder.",
+                "For the expatriate director in charge: original ID, passport and residence copies, email and telephone number.",
+                "Certified sponsor NOC or investor licence copy in the cases stated on the official card, with additional branch-manager requirements where the manager differs.",
+                "Three written trade names indicating the activity in Arabic, translated into English.",
+                "Power of attorney if the relevant person is absent.",
+                "Printed requested activities and the licence-related email and telephone number.",
+                "Confirm whether the licence follows the Sheikh Saud Youth Projects programme."
+              ],
+              "fees": "The card publishes no fixed amount and states “on demand”. Confirm the amount with the department before payment.",
+              "duration": "No completion time is published on the card. Confirm it with Umm Al Quwain DED.",
+              "eligibility": "Documents vary by nationality, director and branch status, and representation by power of attorney. Review the official card's applicable cases. Reserving a trade name is not licence issuance. The fee field says “on demand” without an amount, and no completion time is published; confirm both with the department.",
+              "sourceUrl": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html"
+            }
+          }
         },
         {
           "id": "uaq:mainland-licensing-official-path",
