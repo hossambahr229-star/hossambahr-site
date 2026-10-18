@@ -2,7 +2,7 @@
   "auditedServices": 202,
   "fullyVerifiedServices": 0,
   "servicesWithMissingFields": 202,
-  "missingFieldCount": 907,
+  "missingFieldCount": 909,
   "status": "PARTIAL PASS",
   "scope": "Public route/source identity, canonical, locale, internal href/referrer and scoped CTA checks. This does not verify external government availability, authenticated execution, documents, eligibility correctness or human visual acceptance.",
   "records": [
@@ -6003,8 +6003,8 @@
     {
       "id": "uaq:trade-name-official-path",
       "slug": "umm-al-quwain-trade-name-official-path",
-      "source": "https://u.ae/en/information-and-services/business/important-digital-services/inquire-about-licences-names-and-activities",
-      "lastRecordedReview": "2026-08-11",
+      "source": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html",
+      "lastRecordedReview": "2026-10-18",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -6021,8 +6021,8 @@
         "requirements": "VERIFIED",
         "documents": "VERIFIED",
         "steps": "NOT_VERIFIED",
-        "fees": "VERIFIED",
-        "duration": "VERIFIED",
+        "fees": "MISSING",
+        "duration": "MISSING",
         "official_source": "VERIFIED",
         "official_url": "VERIFIED",
         "verification_state": "NOT_VERIFIED",
@@ -6042,6 +6042,8 @@
         "aliases",
         "synonyms",
         "goal",
+        "fees",
+        "duration",
         "ai_discoverability"
       ],
       "verificationBoundary": "VERIFIED government fields describe the existing recorded source review, not a new independent official-source verification. Publication and HTTP success do not prove customer acceptance."
