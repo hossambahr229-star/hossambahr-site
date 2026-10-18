@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-18T12:34:58.745Z",
+  "sourcePR": 501,
+  "merge": "8567304e09b1a63a8c7786832415b903507e3a9b",
+  "generatedMain": "471cb0985a8381bd2e8a312d69abb473c59b99a8",
+  "source": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html",
+  "policyVersion": 2,
+  "workflowVersion": 2,
+  "documentSteps": 7,
+  "preservedApprovalSteps": 2,
+  "edge": {
+    "version": 150,
+    "sha256": "ac364aa4e2fd3f56e7e853bcd330dad60986ada56520ab73fd896365194e04e3",
+    "all10FilesMatched": true
+  },
+  "live": {
+    "englishPage": "PASS: seven documents, direct official card, international WhatsApp public context, unknown fee/time guidance",
+    "arabicPage": "Documents and official/assisted paths PASS; raw unknown marker display defect found",
+    "englishAI": "FAIL: generic clarification for explicit UAQ booking documents request"
+  },
+  "followup": {
+    "pr": 502,
+    "scope": "Arabic unknown-label generator and guarded UAQ name-booking retrieval",
+    "status": "CI pending"
+  },
+  "acceptance": "Not FINAL PASS; external model, authorized private execution, human visual and wider novice comparison remain open"
+}
