@@ -471,6 +471,9 @@ function specialBoost(goal: string, slug: string, jurisdictionCode: string | nul
     if (slug === "umm-al-quwain-mainland-licensing-official-path") score += 16000;
     else if (/employment-contract|work-permit/.test(slug)) score -= 12000;
   }
+  const tradeNameBooking = has(goal, ["trade name","اسم تجاري"]) && has(goal, ["book","reserve","reservation","حجز","احجز"]);
+  const otherNameOperation = renew || amend || wantsCancel || transfer || has(goal, ["availability","available","inquiry","enquiry","check name","توفر","متاح","استعلام"]);
+  if (emirate === "AE-UQ" && tradeNameBooking && !otherNameOperation && slug === "umm-al-quwain-trade-name-official-path") score += 9000;
   const rtaNoc = has(goal,["noc","no objection","عدم ممانعه","عدم ممانعة"]) && has(goal,["rta","طرق","الطرق","transport"]);
   if (rtaNoc && slug.startsWith("rta-") && /trade-license-noc/.test(slug)) {
     if (renew && slug==="rta-renew-trade-license-noc-dubai") return 100000;
