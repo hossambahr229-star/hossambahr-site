@@ -11,8 +11,9 @@ try{for(const lang of ['en','ar']){
  await page.getByRole('button',{name:lang==='en'?'Send your question to HOSSAM BAHR AI':'إرسال السؤال إلى HOSSAM BAHR AI',exact:true}).click();
  const facts=page.locator('.hb-chat-facts').last();await facts.waitFor({timeout:90000});
  const info=await facts.evaluate(el=>({content:getComputedStyle(el,'::before').content,width:innerWidth,scrollWidth:document.documentElement.scrollWidth,text:el.innerText}));
- const pass=info.width===390&&info.scrollWidth<=391&&(lang==='en'?info.content.includes('Verified service context')&&!/[\u0600-\u06ff]/.test(info.content):info.content.includes('موثق رسميًا'));
- await page.screenshot({path:out+'/'+lang+'-390.png',fullPage:true});results.push({lang,...info,pass});await context.close();
+ const actions=[];for(const action of await page.locator('.hb-chat-actions a').all()){const href=await action.getAttribute('href');try{await action.click({trial:true,timeout:5000});actions.push({href,clickable:true});}catch(error){actions.push({href,clickable:false,error:String(error).slice(0,350)});}}
+ const pass=actions.length>=3&&actions.every(a=>a.clickable)&&info.width===390&&info.scrollWidth<=391&&(lang==='en'?info.content.includes('Verified service context')&&!/[\u0600-\u06ff]/.test(info.content):info.content.includes('موثق رسميًا'));
+ await page.screenshot({path:out+'/'+lang+'-390.png',fullPage:true});results.push({lang,...info,actions,pass});await context.close();
 }}finally{await browser.close();}
 const report={scope:'LIVE_PRODUCTION UI localization only; no external-model or human visual acceptance',at:new Date().toISOString(),results,pass:results.every(x=>x.pass)};
 await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(!report.pass)process.exitCode=1;
