@@ -1,0 +1,25 @@
+name: Current external AI status
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/provider-current-check.mjs','.github/workflows/provider-current-check.yml']
+permissions:
+  contents: write
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/provider-current-check.mjs
+      - name: Preserve actual provider status
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/provider-current-2026-10-19
+          git diff --cached --quiet || git commit -m "Record current external-provider status [skip ci]"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push
