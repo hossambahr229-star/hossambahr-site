@@ -1,6 +1,6 @@
 {
   "scope": "LIVE_PRODUCTION UI localization only; no external-model or human visual acceptance",
-  "at": "2026-10-18T22:02:29.003Z",
+  "at": "2026-10-18T22:05:44.989Z",
   "results": [
     {
       "lang": "en",
@@ -8,6 +8,24 @@
       "width": 390,
       "scrollWidth": 390,
       "text": "Matching service\n\nIssuance of a Real Estate Professional Practice Card\n\nResponsible authority\n\nDubai Land Department / RERA\n\nEmirate / jurisdiction\n\nDubai",
+      "actions": [
+        {
+          "href": "/en/services/real-estate-professional-practice-card-dubai/",
+          "clickable": true
+        },
+        {
+          "href": "/en/contact/?handoff=1&service=real-estate-professional-practice-card-dubai",
+          "clickable": true
+        },
+        {
+          "href": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/",
+          "clickable": true
+        },
+        {
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake",
+          "clickable": true
+        }
+      ],
       "pass": true
     },
     {
@@ -16,6 +34,24 @@
       "width": 390,
       "scrollWidth": 390,
       "text": "الخدمة المطابقة\n\nتسجيل أو تجديد عقد إيجاري في دبي\n\nالجهة المختصة\n\nدائرة الأراضي والأملاك / RERA\n\nالإمارة / الاختصاص\n\nدبي",
+      "actions": [
+        {
+          "href": "/services/register-renew-ejari-contract-dubai/",
+          "clickable": true
+        },
+        {
+          "href": "/contact/?handoff=1&service=register-renew-ejari-contract-dubai",
+          "clickable": true
+        },
+        {
+          "href": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+          "clickable": true
+        },
+        {
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake",
+          "clickable": true
+        }
+      ],
       "pass": true
     }
   ],
