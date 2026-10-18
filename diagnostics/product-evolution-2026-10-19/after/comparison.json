@@ -1,0 +1,35 @@
+{
+  "scope": "ACTUAL_BEFORE_AFTER_CHANGE",
+  "humanAcceptance": "NOT_DECLARED",
+  "note": "Difference measures intentional evolution, not reference fidelity or quality.",
+  "views": [
+    {
+      "lang": "ar",
+      "width": 390,
+      "height": 900,
+      "changedPixelsOver20Percent": 0.443019943019943,
+      "meanAbsoluteChannelDelta": 0.5303570750237417
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "height": 900,
+      "changedPixelsOver20Percent": 9.949074074074074,
+      "meanAbsoluteChannelDelta": 8.877488683127572
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "height": 900,
+      "changedPixelsOver20Percent": 0,
+      "meanAbsoluteChannelDelta": 0.011601139601139602
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "height": 900,
+      "changedPixelsOver20Percent": 10.952006172839507,
+      "meanAbsoluteChannelDelta": 10.019226594650206
+    }
+  ]
+}
