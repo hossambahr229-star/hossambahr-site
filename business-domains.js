@@ -21,7 +21,7 @@ export function serviceBusinessDomain(s) {
  if(['real-estate-services','property-rentals'].includes(category))return 'property';
  if(['contracts-notarization','legal-notary'].includes(category))return 'documents';
  if(['customs-trade','vehicles-transport'].includes(category))return 'transport-customs';
- if(['economic-initial','external-approval','noc','security-system'].includes(approvalType(s)))return 'approvals';
+ if(['economic-initial','external-approval','noc','security-system','sector-permit','specialist-licence'].includes(approvalType(s)))return 'approvals';
  if(category==='government-approvals')return 'approvals';
  if(['residency-visas','identity-citizenship','family-sponsorship'].includes(category)||slug==='تقرير-تفاصيل-الإقامة-عبر-icp')return 'residence';
  if(category==='work-employees')return 'work';
