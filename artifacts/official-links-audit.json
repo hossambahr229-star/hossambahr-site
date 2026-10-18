@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-18T07:27:50.271Z",
+  "generatedAt": "2026-10-18T12:16:27.278Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 155,
+    "REACHABLE": 149,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 1,
-    "NETWORK_UNVERIFIED": 84,
+    "NETWORK_UNVERIFIED": 90,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -923,9 +923,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7e",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
@@ -937,9 +936,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/584?administrativeRegionId=1",
@@ -949,9 +947,8 @@
       "kinds": [
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/573?administrativeRegionId=1",
@@ -961,9 +958,8 @@
       "kinds": [
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/498?administrativeRegionId=1",
@@ -987,9 +983,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e76",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e79",
@@ -1001,9 +996,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e79",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
