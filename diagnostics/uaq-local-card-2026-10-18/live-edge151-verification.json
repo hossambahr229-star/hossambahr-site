@@ -1,0 +1,43 @@
+{
+  "at": "2026-10-18T12:42:20.783Z",
+  "pr502Merge": "fcb6cd9565ef90b5fc9877b879e0d30c45aa2c48",
+  "checks": {
+    "architecture": 39127814162,
+    "database": 39127814048,
+    "english": 39127814091,
+    "geometry": 39127814082,
+    "all": "PASS"
+  },
+  "edge151": {
+    "sha256": "531f85541c94f1d88bacf490e6237d5f9a9d59ae035b89b58e47e1c470210d40",
+    "allDeployedFilesMatchMergedSource": true
+  },
+  "liveAI": [
+    {
+      "q": "What documents do I need to book a trade name in Umm Al Quwain?",
+      "result": "PASS: correct service and new English requirements; local official and English assisted paths"
+    },
+    {
+      "q": "And the fees?",
+      "result": "PASS: retains UAQ name-booking context and explicitly declines an unverified amount"
+    },
+    {
+      "q": "عايز احجز اسم تجاري في أم القيوين",
+      "result": "PASS: correct UAQ service, applicant-dependent conditions and unknown amount/duration preserved"
+    }
+  ],
+  "sourceMonitor": {
+    "enabled": true,
+    "failures": 0,
+    "previousDirectoryHashArchived": true,
+    "newResourceBaselinePendingNextMonitorFetch": true
+  },
+  "arabicRawMarkerRepair": "merged; live publication still pending verification",
+  "governmentComparator": "Ajman EN 390 information page recovered in a fresh tab through service directory. Different recovery start/tool delays invalidate speed comparison. Not a full novice benchmark.",
+  "limits": [
+    "external-model PASS not claimed",
+    "private authenticated execution not completed",
+    "human visual acceptance not completed",
+    "32 historical partial details not declared complete"
+  ]
+}
