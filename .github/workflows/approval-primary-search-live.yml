@@ -1,0 +1,31 @@
+name: Approval primary search live after
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/approval-primary-search-live.mjs','.github/workflows/approval-primary-search-live.yml']
+permissions: {contents: write}
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0 sharp@0.35.4
+      - run: HB_BROWSER_PATH="$(which chrome)" HB_BASE_URL=https://hossambahr.com HB_OUTPUT_DIR=diagnostics/product-evolution-2026-10-19/after node scripts/approval-primary-search-live.mjs
+      - name: Compare actual before and after
+        run: node scripts/approval-before-after-diff.mjs
+      - name: Preserve actual after and differences
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/product-evolution-2026-10-19/after
+          git diff --cached --quiet || git commit -m "Preserve actual approval evolution after and comparison [skip ci]"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: approval-primary-search-live, path: diagnostics/product-evolution-2026-10-19/after}
