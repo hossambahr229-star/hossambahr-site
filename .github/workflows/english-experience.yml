@@ -2,6 +2,7 @@ name: English experience browser checks
 on:
   pull_request:
     paths:
+      - 'ai/hb-ai.css'
       - 'a-plus-plus.css'
       - 'scripts/service-aside-contrast.mjs'
       - 'src/publication/generate-dubai-coverage-pages.mjs'
