@@ -95,3 +95,12 @@ html.hb-phase8 body[data-home-geometry] .home-domain-gateway .home-domain-conten
 @media(max-width:600px){html.hb-phase8 body[data-home-geometry] .home-domain-card>summary>.home-line-icon{width:18px!important;height:18px!important}}
 
 @media(max-width:359px){.home-domain-card>summary small{display:none}.home-domain-card>summary{min-height:72px}}
+
+/* Keep the primary approval search direct; expert filters remain one disclosure away. */
+.discovery-form[data-discovery-scope="approvals"]{grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1.5fr) auto}
+.discovery-advanced{grid-column:1/-1;border-top:1px solid #b8c9c0;padding-top:8px;min-width:0}
+.discovery-advanced summary{cursor:pointer;min-height:44px;display:list-item;align-content:center;font-weight:700;color:var(--hb-green)}
+.discovery-advanced>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding-top:12px}
+.discovery-advanced:not([open])>div{display:none}
+@media(max-width:900px){.discovery-form[data-discovery-scope="approvals"]{grid-template-columns:1fr 1fr}.discovery-advanced>div{grid-template-columns:1fr}}
+@media(max-width:600px){.discovery-form[data-discovery-scope="approvals"]{grid-template-columns:minmax(0,1fr)}}
