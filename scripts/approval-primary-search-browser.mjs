@@ -40,6 +40,7 @@ try{
   const alternate=await page.locator('[data-discovery-language]').getAttribute('href');
   assert.match(alternate,/authority=sira-dubai/);
   await page.locator('[data-discovery-language]').click();
+  await page.waitForFunction(()=>/matching services|خدمة مطابقة/.test(document.querySelector('[data-discovery-status]')?.textContent||''));
   assert.equal(await page.locator('.discovery-advanced').getAttribute('open'),'');
   assert.equal(await page.locator('[name=authority]').inputValue(),'sira-dubai');
   assert.ok(await page.locator('[data-canonical-service]:visible').count()>0);
@@ -50,5 +51,5 @@ try{
   await page.close();
  }
  report.status='PASS';
-}catch(error){report.status='FAIL';report.error=String(error.stack);process.exitCode=1;}
+}catch(error){report.status='FAIL';report.error=String(error.stack);console.error(report.error);process.exitCode=1;}
 finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2));await browser.close();if(server)await new Promise(r=>server.close(r));}
