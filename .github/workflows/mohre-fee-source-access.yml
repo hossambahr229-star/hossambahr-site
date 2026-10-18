@@ -1,0 +1,24 @@
+name: Official MOHRE partial-fee source access
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/mohre-fee-source-access.mjs','.github/workflows/mohre-fee-source-access.yml']
+permissions:
+  contents: write
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/mohre-fee-source-access.mjs
+      - name: Preserve source access observations
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/mohre-fee-source-access-2026-10-19
+          git diff --cached --quiet || git commit -m "Record official MOHRE fee-source access [skip ci]"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push
