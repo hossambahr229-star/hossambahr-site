@@ -1,0 +1,295 @@
+{
+  "status": "PASS",
+  "scope": "Targeted live grounding after actual official-source review, independent of external-model acceptance",
+  "testedAt": "2026-10-18T07:19:52.218Z",
+  "results": [
+    {
+      "name": "abu-dhabi-business-establishment-guide",
+      "http": 200,
+      "expected": "abu-dhabi-business-establishment-guide",
+      "slug": "abu-dhabi-business-establishment-guide",
+      "answer": "المسار المناسب لطلبك هو «دليل تأسيس الأعمال في أبوظبي» لدى دائرة التنمية الاقتصادية – أبوظبي. هذا دليل لرحلة التأسيس والموافقة المبدئية؛ العقود والموقع والموافقات تعتمد على النشاط والشكل القانوني. الرابط لا يرسل طلب تنفيذ.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "abu-dhabi-economic-initial-approval-guide",
+      "http": 200,
+      "expected": "abu-dhabi-economic-initial-approval-guide",
+      "slug": "abu-dhabi-economic-initial-approval-guide",
+      "answer": "Additional approvals for regulated activities, where applicable.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "abu-dhabi-economic-license-amendment",
+      "http": 200,
+      "expected": "abu-dhabi-economic-license-amendment",
+      "slug": "abu-dhabi-economic-license-amendment",
+      "answer": "المسار المناسب لطلبك هو «تعديل رخصة اقتصادية في أبوظبي» لدى دائرة التنمية الاقتصادية – أبوظبي. يذكر دليل ADDED هذه المعاملة ضمن خدمات الترخيص. الرابط للإرشاد؛ تؤكد شروط الحالة والمستندات في خدمة TAMM المطابقة.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "abu-dhabi-economic-license-cancellation",
+      "http": 200,
+      "expected": "abu-dhabi-economic-license-cancellation",
+      "slug": "abu-dhabi-economic-license-cancellation",
+      "answer": "A possible pathway is Cancelling an Economic Licence through Abu Dhabi Department of Economic Development. The ADDED guide lists this licensing transaction. The link provides guidance; confirm case conditions and documents in the matching TAMM service.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "abu-dhabi-economic-license-mortgage-guide",
+      "http": 200,
+      "expected": "abu-dhabi-economic-license-mortgage-guide",
+      "slug": "abu-dhabi-economic-license-mortgage-guide",
+      "answer": "المسار المناسب لطلبك هو «رهن رخصة اقتصادية في أبوظبي» لدى دائرة التنمية الاقتصادية – أبوظبي. يذكر دليل ADDED هذه المعاملة ضمن خدمات الترخيص. الرابط للإرشاد؛ تؤكد شروط الحالة والمستندات في خدمة TAMM المطابقة.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "abu-dhabi-economic-license-renewal",
+      "http": 200,
+      "expected": "abu-dhabi-economic-license-renewal",
+      "slug": "abu-dhabi-economic-license-renewal",
+      "answer": "A possible pathway is Renewing an Economic Licence through Abu Dhabi Department of Economic Development. The ADDED guide lists this licensing transaction. The link provides guidance; confirm case conditions and documents in the matching TAMM service.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "abu-dhabi-economic-licensing-requirements",
+      "http": 200,
+      "expected": "abu-dhabi-economic-licensing-requirements",
+      "slug": "abu-dhabi-economic-licensing-requirements",
+      "answer": "المسار المناسب لطلبك هو «متطلبات الرخص الاقتصادية في أبوظبي» لدى دائرة التنمية الاقتصادية – أبوظبي. يذكر دليل ADDED هذه المعاملة ضمن خدمات الترخيص. الرابط للإرشاد؛ تؤكد شروط الحالة والمستندات في خدمة TAMM المطابقة.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "abu-dhabi-trade-name-reservation",
+      "http": 200,
+      "expected": "abu-dhabi-trade-name-reservation",
+      "slug": "abu-dhabi-trade-name-reservation",
+      "answer": "A possible pathway is Reserving a Trade Name through Abu Dhabi Department of Economic Development. The ADDED guide lists this licensing transaction. The link provides guidance; confirm case conditions and documents in the matching TAMM service.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "renew-driving-license-dubai",
+      "http": 200,
+      "expected": "renew-driving-license-dubai",
+      "slug": "renew-driving-license-dubai",
+      "answer": "المسار المناسب لطلبك هو «تجديد رخصة القيادة في دبي» لدى هيئة الطرق والمواصلات في دبي. لا يمكن تجديد رخصة صادرة من إمارة أخرى عبر هذا المسار، ويجب تسوية المخالفات واستيفاء اختبار التقييم إذا انتهت منذ أكثر من 10 سنوات.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "sharjah-business-licensing-guide",
+      "http": 200,
+      "expected": "sharjah-business-licensing-guide",
+      "slug": "sharjah-business-licensing-guide",
+      "answer": "The matching service is Sharjah Economic Licensing Services through Sharjah DED. This SEDD guide helps choose a pathway; it is not one execution card. Requirements vary by service, activity and case.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "attestation-of-commercial-invoices-via-edas-2-0",
+      "http": 200,
+      "expected": "attestation-of-commercial-invoices-via-edas-2-0",
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "answer": "المسار المناسب لطلبك هو «تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0» لدى وزارة الخارجية في الإمارات العربية المتحدة. راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "fujairah-economic-initial-approval",
+      "http": 200,
+      "expected": "fujairah-economic-initial-approval",
+      "slug": "fujairah-economic-initial-approval",
+      "answer": "Initial approval is not a final licence. Complete the required authority approvals before issuance.",
+      "grounding": {
+        "status": "VERIFIED_FACT",
+        "source_backed": true,
+        "no_invention": true,
+        "ambiguity_detected": false
+      },
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 429,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "result": "PASS"
+    }
+  ]
+}
