@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-10-18T12:13:34.462Z",
+  "sourcePR": 499,
+  "sourceMerge": "3b9c72209ebe8c2195fd443664327a166c383235",
+  "edge": {
+    "version": 149,
+    "sha256": "5552acd63882c04ac3aa227a76faa91e6ef88128bed5cd27a83f85dfa1495093",
+    "all10FilesMatchedMergedSource": true,
+    "verify_jwt": false
+  },
+  "database": {
+    "policy": "service:dld-real-estate-ad-permit-dubai",
+    "activeVersion": 3,
+    "reviewer": "dld-ad-verified-eligibility-2026-10-18",
+    "sourceReviewRequired": false
+  },
+  "liveBrowser": [
+    {
+      "query": "I need a real estate professional practice card in Dubai",
+      "result": "correct service, official and assisted paths displayed",
+      "service": "real-estate-professional-practice-card-dubai"
+    },
+    {
+      "query": "ما شروط تصريح إعلان عقاري في دبي؟",
+      "result": "three official conditional rules, unsupported blanket company restriction absent, both paths displayed"
+    },
+    {
+      "query": "What are the conditions for a real estate ad permit in Dubai?",
+      "result": "exact English conditional rules, English service/contact/auth URLs and official DLD path displayed"
+    }
+  ],
+  "externalAI": "not claimed; latest provider evidence QUOTA_BILLING 429 credit_balance_exhausted",
+  "remaining": "human visual acceptance, 32 partial records, authorized private account execution, diverse paired portal comparisons"
+}
