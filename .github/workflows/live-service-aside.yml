@@ -2,7 +2,7 @@ name: Live service sidebar contrast
 on:
   push:
     branches: [agent/dld-source-review-evidence]
-    paths: ['scripts/service-aside-contrast.mjs','.github/workflows/live-service-aside.yml']
+    paths: ['scripts/service-aside-contrast.mjs','scripts/wait-service-aside-release.mjs','.github/workflows/live-service-aside.yml']
 permissions:
   contents: write
 jobs:
@@ -15,6 +15,8 @@ jobs:
         with: {node-version: '24'}
       - uses: browser-actions/setup-chrome@v1
       - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - name: Wait for the merged CSS on actual Production
+        run: node scripts/wait-service-aside-release.mjs
       - name: Measure actual live service fields
         run: HB_BROWSER_PATH="$(which chrome)" HB_BASE_URL=https://hossambahr.com HB_ASIDE_OUTPUT=diagnostics/service-aside-live-2026-10-19 node scripts/service-aside-contrast.mjs
       - name: Preserve actual live evidence
@@ -24,6 +26,7 @@ jobs:
           git config user.email github-actions[bot]@users.noreply.github.com
           git add diagnostics/service-aside-live-2026-10-19
           git diff --cached --quiet || git commit -m "Record live service-sidebar contrast [skip ci]"
+          git pull --rebase origin agent/dld-source-review-evidence
           git push
       - uses: actions/upload-artifact@v4
         if: always()
