@@ -1,0 +1,16 @@
+name: DLD Ad Eligibility Source Regression
+on:
+  push:
+    branches: [agent/dld-ad-verified-eligibility]
+    paths: ['src/registry/registry.json','scripts/dld-ad-eligibility.test.mjs','.github/workflows/dld-ad-eligibility.yml']
+permissions: {contents: read}
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node --test scripts/dld-ad-eligibility.test.mjs
+      - run: npm run build
+      - run: npm run typecheck

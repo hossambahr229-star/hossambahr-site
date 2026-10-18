@@ -345,8 +345,8 @@
       },
       "audiences": [
         {
-          "ar": "الشركات والوسطاء والجهات المرخصة لممارسة نشاط عقاري في دبي",
-          "en": "Companies, brokers and entities licensed to conduct real estate activity in Dubai"
+          "ar": "طالبو تصاريح الإعلانات العقارية بحسب نوع الإعلان ومتطلبات الجهة",
+          "en": "Real estate advertising permit applicants, subject to the relevant permit requirements"
         }
       ],
       "requestType": {
@@ -508,12 +508,7 @@
           "en": "Exhibitions from the same country need a 30-day gap. Dubai off-plan properties must be registered with the Escrow Account Department before display."
         }
       ],
-      "eligibility": [
-        {
-          "ar": "شركة أو جهة تحمل ترخيص نشاط عقاري مناسب في دبي.",
-          "en": "A company or entity holding the appropriate real estate activity licence in Dubai."
-        }
-      ],
+      "eligibility": [],
       "exceptions": [
         {
           "ar": "لا يجوز عرض عقارات على الخارطة في دبي غير مسجلة لدى إدارة حساب الضمان خلال المعارض.",
@@ -623,7 +618,7 @@
           }
         }
       ],
-      "lastUpdated": "2026-10-08",
+      "lastUpdated": "2026-10-18",
       "lastReviewedAt": "2026-08-08T18:25:00+04:00",
       "verification": {
         "status": "verified",
