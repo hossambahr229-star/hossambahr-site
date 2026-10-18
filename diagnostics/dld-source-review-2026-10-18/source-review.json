@@ -1,7 +1,6 @@
 {
   "reviewedAt": "2026-10-18",
-  "sourceOfFailure": "review_required remained true beyond the seven-day temporary acceptance period; source excluded from AI retrieval",
-  "sourceReviews": [
+  "sources": [
     {
       "slug": "register-renew-ejari-contract-dubai",
       "id": "c7be65e8-8cf5-4679-8b50-0bde15cf4b3c",
@@ -21,19 +20,51 @@
       "slug": "title-transfer-dubai",
       "id": "7e737189-e352-427e-9367-0101b300221c",
       "status": "REVERIFIED_PENDING_TARGETED_AI"
+    },
+    {
+      "slugs": [
+        "abu-dhabi-business-establishment-guide",
+        "abu-dhabi-economic-initial-approval-guide",
+        "abu-dhabi-economic-license-amendment",
+        "abu-dhabi-economic-license-cancellation",
+        "abu-dhabi-economic-license-mortgage-guide",
+        "abu-dhabi-economic-license-renewal",
+        "abu-dhabi-economic-licensing-requirements",
+        "abu-dhabi-trade-name-reservation"
+      ],
+      "ids": [
+        "f3cc66df-6efe-4749-8d0d-2e8db6df4498",
+        "70623092-6ce5-4f6d-80a2-f674cdb7bbef",
+        "dc8f32cf-0f07-4b2f-8ce1-6fe05acfe9ae"
+      ],
+      "status": "GUIDANCE_SCOPE_REVERIFIED_PENDING_TARGETED_AI"
+    },
+    {
+      "slug": "renew-driving-license-dubai",
+      "id": "68779e3a-dc1d-4faa-a26c-cecbd165e0d1",
+      "status": "RECORDED_REQUIREMENTS_AND_CONDITIONS_REVERIFIED_PENDING_TARGETED_AI",
+      "newSourceObservation": "Professional drivers also require medical fitness; not inferred for all applicants."
+    },
+    {
+      "slug": "sharjah-business-licensing-guide",
+      "id": "aa06f3db-c703-429c-9db3-ce00994bb43f",
+      "status": "GUIDANCE_SCOPE_REVERIFIED_PENDING_TARGETED_AI"
+    },
+    {
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "id": "17196f91-48ff-45f6-9981-e8759de993ee",
+      "status": "RECORDED_POLICY_REVERIFIED_PENDING_TARGETED_AI",
+      "supplementarySource": "https://www.mofa.gov.ae/ar-AE/MediaHub/News/2026/6/8/uae-mofa"
+    },
+    {
+      "slug": "fujairah-economic-initial-approval",
+      "id": "26564865-95c2-41c9-ace5-56569ffcb21f",
+      "status": "RECORDED_REQUIREMENTS_AND_SCOPE_REVERIFIED_PENDING_TARGETED_AI"
     }
   ],
-  "scope": "Actual official service tabs compared to the active policy. Only source review metadata updated; no schema, RLS, credentials, policy facts or Edge code changed.",
-  "checks": [
-    "Ejari source documents, channel totals, time and conditions; native matching restored",
-    "Valuation source type-dependent documents, fees and time match policy",
-    "Practice card documents, type-dependent fees, 5-minute duration and conditions match policy",
-    "Title transfer scope, documents, fees, main-building process and time match policy"
-  ],
-  "notApproved": [
-    "Real-estate ad permit still under review",
-    "Other expired sources require individual evidence",
-    "External-model AI acceptance",
-    "Private accounts and document execution"
+  "scope": "Individual live official-source comparisons; monitoring retained. Private execution and external-model acceptance not asserted.",
+  "pending": [
+    "dld-real-estate-ad-permit-dubai: PR499 and versioned alignment pending",
+    "umm-al-quwain-trade-name-official-path: source requirements linkage review pending"
   ]
 }
