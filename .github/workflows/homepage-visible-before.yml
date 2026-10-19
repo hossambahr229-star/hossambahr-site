@@ -1,0 +1,25 @@
+name: Homepage visible evolution before
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/homepage-visible-before.mjs','.github/workflows/homepage-visible-before.yml']
+permissions: {contents: write}
+jobs:
+  before:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/homepage-visible-before.mjs
+      - name: Preserve actual homepage baseline
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/homepage-visible-evolution-2026-10-19/before
+          git diff --cached --quiet || git commit -m "Preserve homepage baseline before visible evolution [skip ci]"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push
