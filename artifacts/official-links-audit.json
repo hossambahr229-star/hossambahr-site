@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-19T11:16:17.950Z",
+  "generatedAt": "2026-10-19T11:22:58.073Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 154,
-    "ACCESS_RESTRICTED": 9,
+    "REACHABLE": 155,
+    "ACCESS_RESTRICTED": 8,
     "TEMPORARILY_UNAVAILABLE": 0,
     "NETWORK_UNVERIFIED": 86,
     "BROKEN": 0
@@ -298,10 +298,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 403,
-      "finalUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
-      "result": "ACCESS_RESTRICTED",
-      "reason": "official server rejected automated audit traffic"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7f",
@@ -777,8 +775,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://freezone.fujairah.ae/ar/registration-process",
+      "result": "REACHABLE"
     },
     {
       "url": "https://fujairah.ae/en/Pages/settingupbusinessinfujairah.aspx",
