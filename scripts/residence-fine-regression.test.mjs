@@ -9,3 +9,5 @@ assert.ok(rankServices('موافقة سيرا',d).every(s=>s.i==='sira-dubai'));
 assert.equal(rankServices('تجديد الهوية الإماراتية',d)[0].s,'renew-emirates-id-uae');
 assert.notDeepEqual(rankServices('إلغاء إقامة مع غرامة دبي',d).map(s=>s.s),allowed);
 console.log('PASS: residence/visa fines stay within real fines pathways and jurisdiction; operations and neighbouring intents preserved');
+
+for(const service of d)for(const title of [service.a,service.e]){const found=rankServices(title,d);assert.ok(found.some(s=>s.s===service.s),'exact canonical name '+title);if(d.filter(s=>s.a===title||s.e===title).length===1)assert.equal(found[0]?.s,service.s,'unique exact canonical name '+title);}
