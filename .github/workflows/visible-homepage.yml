@@ -1,0 +1,30 @@
+name: Visible homepage evolution
+on:
+  push:
+    branches: [agent/visible-homepage-evolution]
+    paths-ignore: ['artifacts/**']
+permissions: {contents: write}
+jobs:
+  homepage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - run: npm run build
+      - run: node --test scripts/home-business-domains.test.mjs scripts/capability-generator-integration.test.mjs scripts/capability-discovery-regression.test.mjs scripts/approval-operation-regression.test.mjs
+      - run: HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=artifacts/visible-homepage node scripts/home-business-domains-browser.mjs
+      - name: Preserve concrete homepage preview
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add artifacts/visible-homepage
+          git diff --cached --quiet || git commit -m "Preserve actual generated homepage preview [skip ci]"
+          git push origin HEAD:agent/visible-homepage-evolution
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: visible-homepage, path: artifacts/visible-homepage}

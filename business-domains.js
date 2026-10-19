@@ -25,6 +25,8 @@ export function serviceBusinessDomain(s) {
  if(category==='government-approvals')return 'approvals';
  if(['residency-visas','identity-citizenship','family-sponsorship'].includes(category)||slug==='تقرير-تفاصيل-الإقامة-عبر-icp')return 'residence';
  if(category==='work-employees')return 'work';
+ if(category==='justice-police'&&authority==='mohre')return 'work';
+ if(category==='justice-police'&&['icp','gdrfa-dubai'].includes(authority)&&!/fine|غرام|مخالف/i.test([slug,s.name?.ar||s.a,s.name?.en||s.e].join(' ')))return 'residence';
  if(['financial-business','justice-police'].includes(category))return 'fines-tax';
  if(['business-licensing','companies-establishments'].includes(category))return 'business';
  throw Error('Unmapped published business domain: '+slug+' '+category);
