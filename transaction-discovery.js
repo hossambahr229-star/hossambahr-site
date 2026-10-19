@@ -1,5 +1,5 @@
 import {serviceBusinessDomain} from './business-domains.js';
-import {rankServices,normalizeIntent} from './intent-search.js';
+import {rankServices,normalizeIntent,reraApprovalIntent} from './intent-search.js';
 import {compatibleEmirate} from './customer-jurisdiction.js';
 
 export function entryMode(query){
@@ -11,8 +11,10 @@ export function entryDestination(query){
  const q=normalizeIntent(query);
  const changing=/(?:تجديد|جدد|الغاء|الغي|تعديل|اضافه|اضيف|renew|cancel|amend|add activity)/i.test(q);
  const starting=/(?:افتح|فتح|ابدا|تاسيس|انشاء|open|start|set up|setup)/i.test(q);
+ const specificIdea=/(?:كافتيريا|كافيتريا|مواد غذاييه|مواد غذائيه|foodstuff)/i.test(q);
+ const approval=/(?:موافق|تصريح|ترخيص نشاط|approval|permit)/i.test(q);
  const idea=/(?:كافتيريا|كافيتريا|مطعم|مقهي|كافيه|صالون|بقاله|متجر|محل|تجاره الكترونيه|cafeteria|cafe|coffee shop|restaurant|salon|grocery|shop|store|ecommerce|e commerce)/i.test(q);
- if(starting&&idea&&!changing)return 'business-activities';
+ if(((starting&&idea)||specificIdea)&&!changing&&!approval)return 'business-activities';
  return entryMode(query)==='describe'?'ai':'services';
 }
 
@@ -51,6 +53,7 @@ if(typeof document!=='undefined'){
     const bySlug=new Map(cards.map(card=>[card.dataset.canonicalService,card]));
     for(const record of found){const card=bySlug.get(record.s);if(card)card.parentElement.append(card);}
     status.textContent=en?`${found.length} matching services`:`${found.length} خدمة مطابقة`;
+    if(reraApprovalIntent(selection.query)&&found.length>1)status.textContent+=en?' — Which approval do you need: a real estate advertisement permit or a professional practice card?':' — أي موافقة تقصد: تصريح إعلان عقاري أم بطاقة مزاولة مهنة عقارية؟';
     empty.hidden=!!found.length;
     const url=new URL(location.href);for(const [key,value] of Object.entries({q:selection.query,emirate:selection.emirate,authority:selection.authority,category:selection.category,domain:selection.domain,approval:selection.approval})){if(value)url.searchParams.set(key,value);else url.searchParams.delete(key);}history.replaceState(null,'',url);const language=document.querySelector('[data-discovery-language]');if(language){const target=new URL(language.href,location.origin);target.search=url.search;language.href=target.pathname+target.search;}
    }catch{status.textContent=en?'Filtering is unavailable. All service links remain available below.':'تعذر التصفية الآن. روابط الخدمات متاحة أدناه.';for(const card of cards)card.hidden=false;}

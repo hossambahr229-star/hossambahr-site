@@ -2,6 +2,12 @@ import {findActivities,activityEmirate,activityHandoff,ACTIVITY_EMIRATES} from '
 import {compatibleEmirate} from './customer-jurisdiction.js';
 import {normalizeIntent} from './intent-search.js';
 
+export function localActivityPathways(records,emirate){
+ const local=records.filter(s=>compatibleEmirate(s.m,emirate)&&s.m===emirate);
+ const inquiry=local.filter(s=>s.s==='ajman-business-activity-inquiry'&&s.dv===true);
+ const licensing=local.filter(s=>['business-licensing','companies-establishments'].includes(s.c)&&/issuance|setup|initial approval|اصدار|تاسيس|موافقه مبدئيه/.test(normalizeIntent(s.a+' '+s.e+' '+s.s))&&!/renew|cancel|amend|تجديد|الغاء|تعديل/.test(normalizeIntent(s.a+' '+s.e)));
+ return [...inquiry,...licensing.filter(s=>!inquiry.some(i=>i.s===s.s))].slice(0,4);
+}
 const form=typeof document!=='undefined'&&document.querySelector('[data-activity-discovery]');
 if(form){
  const en=document.documentElement.lang==='en',prefix=en?'/en':'',t=(ar,english)=>en?english:ar;
@@ -31,7 +37,7 @@ if(form){
     found=findActivities(activities,{query,emirate});visible=12;renderActivities();
     if(!found.length){const online=/تجاره الكترونيه|e commerce|ecommerce/.test(normalizeIntent(query));status.textContent=online?t('ما المنتجات أو الخدمات التي ستبيعها عبر الإنترنت؟ لا يثبت وصف التجارة الإلكترونية وحده كود نشاط في سجلنا الحالي.','What products or services will you sell online? E-commerce alone does not establish an activity code in the current register.'):t('لم نجد نشاطًا مطابقًا موثوقًا في سجل دبي. غيّر وصف المشروع أو اطلب المساعدة لتحديده.','No matching activity was found in the recorded Dubai register. Refine your idea or ask for help identifying it.');grid.innerHTML=requestLinks();}
    }else{
-    found=[];const records=await catalog();if(currentRequest!==requestId)return;const candidates=records.filter(s=>compatibleEmirate(s.m,emirate)&&s.m===emirate&&['business-licensing','companies-establishments'].includes(s.c)&&/issuance|setup|initial approval|اصدار|تاسيس|موافقه مبدئيه/.test(normalizeIntent(s.a+' '+s.e+' '+s.s))&&!/renew|cancel|amend|تجديد|الغاء|تعديل/.test(normalizeIntent(s.a+' '+s.e))).slice(0,4);
+    found=[];const records=await catalog();if(currentRequest!==requestId)return;const candidates=localActivityPathways(records,emirate);
     status.textContent=t(`لا نملك هنا سجل أكواد أنشطة موثقًا لـ${emirate}. لا نعرض أكواد دبي؛ هذه مسارات الترخيص المحلية التالية لتأكيد نشاطك.`,`A verified activity-code register for ${emirateLabel(emirate)} is not available here. Dubai codes are not shown. These local licensing pathways can help confirm your activity.`);
     grid.innerHTML=candidates.map(s=>`<article data-local-licensing-service="${escape(s.s)}"><p>${escape(en?s.n:s.r)} · ${escape(emirateLabel(emirate))}</p><h2><a href="${prefix+s.u}">${escape(en?s.e:s.a)}</a></h2><p>${t('مسار ترخيص محلي؛ لا يثبت كود النشاط أو موافقاته. راجع نطاق الخدمة والمصدر الرسمي.','Local licensing pathway; it does not establish an activity code or required approvals. Check the service scope and official source.')}</p><a href="${prefix+s.u}">${t('راجع الجهة والخطوات والرسوم الموثقة','Review the authority, steps and recorded fees')}</a></article>`).join('');
     grid.insertAdjacentHTML('beforeend',`<article><h2>${t('تأكيد نشاط المشروع والخطوة التالية','Confirm the business activity and next step')}</h2>${requestLinks()}</article>`);
