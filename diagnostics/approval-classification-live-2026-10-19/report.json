@@ -1,7 +1,8 @@
 {
   "scope": "LIVE_PRODUCTION",
-  "at": "2026-10-18T22:31:45.521Z",
+  "at": "2026-10-19T05:35:06.180Z",
   "views": [],
+  "records": 202,
   "status": "FAIL",
-  "error": "Error: Published classification is still stale"
+  "error": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded."
 }
