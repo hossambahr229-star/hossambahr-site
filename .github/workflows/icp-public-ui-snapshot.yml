@@ -1,0 +1,22 @@
+name: Official ICP public browser snapshot
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/icp-public-ui-snapshot.mjs']
+permissions: {contents: write}
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/icp-public-ui-snapshot.mjs
+      - run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/icp-public-ui-2026-10-19
+          git diff --cached --quiet || git commit -m "Preserve actual public ICP browser snapshot [skip ci]"
+          git push origin HEAD:agent/dld-source-review-evidence
