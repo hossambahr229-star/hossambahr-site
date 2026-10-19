@@ -1,0 +1,831 @@
+{
+  "checkedAt": "2026-10-19T16:49:13.063Z",
+  "source": "REAL_PUBLIC_EDGE_ENDPOINT",
+  "checks": [
+    {
+      "name": "Arabic mother uses parents-specific service",
+      "result": {
+        "understood_intent": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+        "confidence": "low",
+        "answer": {
+          "text": "بالنسبة إلى والدتك: المسار المناسب لطلبك هو «إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي» لدى الإدارة العامة للإقامة وشؤون الأجانب في دبي. طلبات الحالات الإنسانية، ومنها كفالة الوالدين في دبي، تخضع للمراجعة والتقييم من اللجنة المختصة حالةً بحالة.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "policy_version": 1,
+            "workflow_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "source_title": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+            "source_url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+            "last_verified_at": "2026-10-02T07:35:41.435491+00:00",
+            "supporting_rule": {
+              "value": "طلبات الحالات الإنسانية، ومنها كفالة الوالدين في دبي، تخضع للمراجعة والتقييم من اللجنة المختصة حالةً بحالة.",
+              "source_refs": [
+                "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": "GDRFA Dubai",
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "service_name": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+            "service_name_en": "Issue Residence for Parents under Humanitarian Cases in Dubai",
+            "service_url": "/services/%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%84%D9%84%D9%88%D8%A7%D9%84%D8%AF%D9%8A%D9%86-%D8%B6%D9%85%D9%86-%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A5%D9%86%D8%B3%D8%A7%D9%86%D9%8A%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "gdrfa-dubai",
+              "name_ar": "الإدارة العامة للإقامة وشؤون الأجانب في دبي",
+              "name_en": "GDRFA Dubai",
+              "public_url": "/authorities/gdrfa-dubai/"
+            },
+            "requirements": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة.",
+              "كشف حساب بنكي لآخر ثلاثة أشهر."
+            ],
+            "general_documents": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "طلبات الحالات الإنسانية، ومنها كفالة الوالدين في دبي، تخضع للمراجعة والتقييم من اللجنة المختصة حالةً بحالة."
+            ],
+            "official_source": {
+              "title": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+              "url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+              "last_verified_at": "2026-10-02T07:35:41.435491+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": "mother",
+        "relationship_group": "parent",
+        "family_members": [
+          "mother"
+        ],
+        "subject_role": null,
+        "entity": {
+          "kind": "person",
+          "relationship": "mother",
+          "relationship_group": "parent"
+        },
+        "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+        "authority_key": "gdrfa-dubai",
+        "action": "sponsor",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "عايز أكفل والدتي في دبي"
+      }
+    },
+    {
+      "name": "Mother follow-up والأوراق؟",
+      "result": {
+        "understood_intent": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+        "confidence": "low",
+        "answer": {
+          "text": "المتطلبات المسجلة لهذه الخدمة: نسخة من جواز سفر الوالد أو الوالدة المكفول.، شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.، عقد إيجار مصدق مناسب لعدد أفراد الأسرة.، كشف حساب بنكي لآخر ثلاثة أشهر..",
+          "focus": "documents",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "policy_version": 1,
+            "workflow_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "source_title": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+            "source_url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+            "last_verified_at": "2026-10-02T07:35:41.435491+00:00",
+            "supporting_rule": null,
+            "document_requirements": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة.",
+              "كشف حساب بنكي لآخر ثلاثة أشهر."
+            ],
+            "special_case": "GDRFA Dubai",
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "service_name": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+            "service_name_en": "Issue Residence for Parents under Humanitarian Cases in Dubai",
+            "service_url": "/services/%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%84%D9%84%D9%88%D8%A7%D9%84%D8%AF%D9%8A%D9%86-%D8%B6%D9%85%D9%86-%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A5%D9%86%D8%B3%D8%A7%D9%86%D9%8A%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "gdrfa-dubai",
+              "name_ar": "الإدارة العامة للإقامة وشؤون الأجانب في دبي",
+              "name_en": "GDRFA Dubai",
+              "public_url": "/authorities/gdrfa-dubai/"
+            },
+            "requirements": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة.",
+              "كشف حساب بنكي لآخر ثلاثة أشهر."
+            ],
+            "general_documents": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "طلبات الحالات الإنسانية، ومنها كفالة الوالدين في دبي، تخضع للمراجعة والتقييم من اللجنة المختصة حالةً بحالة."
+            ],
+            "official_source": {
+              "title": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+              "url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+              "last_verified_at": "2026-10-02T07:35:41.435491+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+        "last_answer_topic": "documents",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": "mother",
+        "relationship_group": "parent",
+        "family_members": [
+          "mother"
+        ],
+        "subject_role": null,
+        "entity": {
+          "kind": "person",
+          "relationship": "mother",
+          "relationship_group": "parent"
+        },
+        "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+        "authority_key": "gdrfa-dubai",
+        "action": "sponsor",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "عايز أكفل والدتي في دبي. والأوراق؟"
+      }
+    },
+    {
+      "name": "Mother follow-up والرسوم؟",
+      "result": {
+        "understood_intent": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+        "confidence": "low",
+        "answer": {
+          "text": "رسم تصريح الإقامة: 200 درهم، و10 دراهم درهم معرفة، و10 دراهم درهم ابتكار، و500 درهم رسم داخل الدولة عند انطباقه، و20 درهم توصيل. وعند الموافقة يلزم ضمان مالي 5,000 درهم لكل طلب، بحد إجمالي 15,000 درهم.",
+          "focus": "fees",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "policy_version": 1,
+            "workflow_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "source_title": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+            "source_url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+            "last_verified_at": "2026-10-02T07:35:41.435491+00:00",
+            "supporting_rule": {
+              "value": "رسم تصريح الإقامة: 200 درهم، و10 دراهم درهم معرفة، و10 دراهم درهم ابتكار، و500 درهم رسم داخل الدولة عند انطباقه، و20 درهم توصيل. وعند الموافقة يلزم ضمان مالي 5,000 درهم لكل طلب، بحد إجمالي 15,000 درهم.",
+              "source_refs": [
+                "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": "GDRFA Dubai",
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "service_name": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+            "service_name_en": "Issue Residence for Parents under Humanitarian Cases in Dubai",
+            "service_url": "/services/%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%84%D9%84%D9%88%D8%A7%D9%84%D8%AF%D9%8A%D9%86-%D8%B6%D9%85%D9%86-%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A5%D9%86%D8%B3%D8%A7%D9%86%D9%8A%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "gdrfa-dubai",
+              "name_ar": "الإدارة العامة للإقامة وشؤون الأجانب في دبي",
+              "name_en": "GDRFA Dubai",
+              "public_url": "/authorities/gdrfa-dubai/"
+            },
+            "requirements": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة.",
+              "كشف حساب بنكي لآخر ثلاثة أشهر."
+            ],
+            "general_documents": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "طلبات الحالات الإنسانية، ومنها كفالة الوالدين في دبي، تخضع للمراجعة والتقييم من اللجنة المختصة حالةً بحالة."
+            ],
+            "official_source": {
+              "title": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+              "url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+              "last_verified_at": "2026-10-02T07:35:41.435491+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+        "last_answer_topic": "fees",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": "mother",
+        "relationship_group": "parent",
+        "family_members": [
+          "mother"
+        ],
+        "subject_role": null,
+        "entity": {
+          "kind": "person",
+          "relationship": "mother",
+          "relationship_group": "parent"
+        },
+        "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+        "authority_key": "gdrfa-dubai",
+        "action": "sponsor",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "عايز أكفل والدتي في دبي. والرسوم؟"
+      }
+    },
+    {
+      "name": "English father",
+      "result": {
+        "understood_intent": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+        "confidence": "low",
+        "answer": {
+          "text": "A possible pathway is Issue Residence for Parents under Humanitarian Cases in Dubai through GDRFA Dubai.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "policy_version": 1,
+            "workflow_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "source_title": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+            "source_url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+            "last_verified_at": "2026-10-02T07:35:41.435491+00:00",
+            "supporting_rule": {
+              "value": "طلبات الحالات الإنسانية، ومنها كفالة الوالدين في دبي، تخضع للمراجعة والتقييم من اللجنة المختصة حالةً بحالة.",
+              "source_refs": [
+                "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": "GDRFA Dubai",
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "service_name": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+            "service_name_en": "Issue Residence for Parents under Humanitarian Cases in Dubai",
+            "service_url": "/services/%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%84%D9%84%D9%88%D8%A7%D9%84%D8%AF%D9%8A%D9%86-%D8%B6%D9%85%D9%86-%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A5%D9%86%D8%B3%D8%A7%D9%86%D9%8A%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "gdrfa-dubai",
+              "name_ar": "الإدارة العامة للإقامة وشؤون الأجانب في دبي",
+              "name_en": "GDRFA Dubai",
+              "public_url": "/authorities/gdrfa-dubai/"
+            },
+            "requirements": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة.",
+              "كشف حساب بنكي لآخر ثلاثة أشهر."
+            ],
+            "general_documents": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "طلبات الحالات الإنسانية، ومنها كفالة الوالدين في دبي، تخضع للمراجعة والتقييم من اللجنة المختصة حالةً بحالة."
+            ],
+            "official_source": {
+              "title": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+              "url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+              "last_verified_at": "2026-10-02T07:35:41.435491+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": "father",
+        "relationship_group": "parent",
+        "family_members": [
+          "father"
+        ],
+        "subject_role": "sponsor",
+        "entity": {
+          "kind": "person",
+          "relationship": "father",
+          "relationship_group": "parent"
+        },
+        "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+        "authority_key": "gdrfa-dubai",
+        "action": "sponsor",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "I want to sponsor my father in Dubai"
+      }
+    },
+    {
+      "name": "English parents",
+      "result": {
+        "understood_intent": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+        "confidence": "low",
+        "answer": {
+          "text": "A possible pathway is Issue Residence for Parents under Humanitarian Cases in Dubai through GDRFA Dubai.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "policy_version": 1,
+            "workflow_key": "service:إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "source_title": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+            "source_url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+            "last_verified_at": "2026-10-02T07:35:41.435491+00:00",
+            "supporting_rule": {
+              "value": "طلبات الحالات الإنسانية، ومنها كفالة الوالدين في دبي، تخضع للمراجعة والتقييم من اللجنة المختصة حالةً بحالة.",
+              "source_refs": [
+                "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": "GDRFA Dubai",
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+            "service_name": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي",
+            "service_name_en": "Issue Residence for Parents under Humanitarian Cases in Dubai",
+            "service_url": "/services/%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%84%D9%84%D9%88%D8%A7%D9%84%D8%AF%D9%8A%D9%86-%D8%B6%D9%85%D9%86-%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A5%D9%86%D8%B3%D8%A7%D9%86%D9%8A%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "gdrfa-dubai",
+              "name_ar": "الإدارة العامة للإقامة وشؤون الأجانب في دبي",
+              "name_en": "GDRFA Dubai",
+              "public_url": "/authorities/gdrfa-dubai/"
+            },
+            "requirements": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة.",
+              "كشف حساب بنكي لآخر ثلاثة أشهر."
+            ],
+            "general_documents": [
+              "نسخة من جواز سفر الوالد أو الوالدة المكفول.",
+              "شهادة راتب للقطاع الحكومي أو عقد عمل للقطاع الخاص بحد أدنى 10,000 درهم؛ وللشريك/المستثمر مستندات الشراكة والرخصة وملحق الشركاء.",
+              "عقد إيجار مصدق مناسب لعدد أفراد الأسرة."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "طلبات الحالات الإنسانية، ومنها كفالة الوالدين في دبي، تخضع للمراجعة والتقييم من اللجنة المختصة حالةً بحالة."
+            ],
+            "official_source": {
+              "title": "إصدار إقامة للوالدين ضمن الحالات الإنسانية في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+              "url": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936",
+              "last_verified_at": "2026-10-02T07:35:41.435491+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": "parents",
+        "relationship_group": "parent",
+        "family_members": [
+          "parents"
+        ],
+        "subject_role": "sponsor",
+        "entity": {
+          "kind": "person",
+          "relationship": "parents",
+          "relationship_group": "parent"
+        },
+        "service_slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+        "authority_key": "gdrfa-dubai",
+        "action": "sponsor",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "I want to sponsor my parents in Dubai"
+      }
+    },
+    {
+      "name": "Spouse issuance remains on family service",
+      "result": {
+        "understood_intent": "إصدار إقامة لأفراد الأسرة في دبي",
+        "confidence": "high",
+        "answer": {
+          "text": "بالنسبة إلى زوجتك: المسار المناسب لطلبك هو «إصدار إقامة لأفراد الأسرة في دبي» لدى الإدارة العامة للإقامة وشؤون الأجانب في دبي. هذه الخدمة مخصصة لإصدار إقامة أفراد الأسرة عندما يكون ملف الكفيل في دبي؛ لا تستخدمها لمسارات ICP في الإمارات الأخرى.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:family-residency-uae",
+            "policy_version": 1,
+            "workflow_key": "service:family-residency-uae",
+            "source_title": "إصدار إقامة لأفراد الأسرة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+            "source_url": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+            "last_verified_at": "2026-10-02T07:34:29.987715+00:00",
+            "supporting_rule": {
+              "value": "هذه الخدمة مخصصة لإصدار إقامة أفراد الأسرة عندما يكون ملف الكفيل في دبي؛ لا تستخدمها لمسارات ICP في الإمارات الأخرى.",
+              "source_refs": [
+                "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": "استخدام مستند قرابة غير مصدق أو اختيار مسار دبي مع ملف كفيل صادر من ICP يؤدي إلى رفض أو تأخير.",
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "family-residency-uae",
+            "service_name": "إصدار إقامة لأفراد الأسرة في دبي",
+            "service_name_en": "Issuance of a residence permit for foreign family members",
+            "service_url": "/services/family-residency-uae/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "gdrfa-dubai",
+              "name_ar": "الإدارة العامة للإقامة وشؤون الأجانب في دبي",
+              "name_en": "GDRFA Dubai",
+              "public_url": "/authorities/gdrfa-dubai/"
+            },
+            "requirements": [
+              "جوازات المكفولين",
+              "إقامة وهوية الكفيل",
+              "إثبات صلة القرابة المصدق عند الحاجة",
+              "إثبات السكن والدخل والتأمين بحسب الطلب"
+            ],
+            "general_documents": [
+              "جوازات المكفولين"
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "هذه الخدمة مخصصة لإصدار إقامة أفراد الأسرة عندما يكون ملف الكفيل في دبي؛ لا تستخدمها لمسارات ICP في الإمارات الأخرى."
+            ],
+            "official_source": {
+              "title": "إصدار إقامة لأفراد الأسرة في دبي — الإدارة العامة للإقامة وشؤون الأجانب في دبي (GDRFA Dubai)",
+              "url": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
+              "last_verified_at": "2026-10-02T07:34:29.987715+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": "family-residency-uae",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": "wife",
+        "relationship_group": "spouse",
+        "family_members": [
+          "wife"
+        ],
+        "subject_role": null,
+        "entity": {
+          "kind": "person",
+          "relationship": "wife",
+          "relationship_group": "spouse"
+        },
+        "service_slug": "family-residency-uae",
+        "authority_key": "gdrfa-dubai",
+        "action": "issue",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "عايز أعمل إقامة لزوجتي في دبي"
+      }
+    },
+    {
+      "name": "Mother without emirate still asks jurisdiction",
+      "result": {
+        "understood_intent": "كفالة فرد من الأسرة على الإقامة",
+        "confidence": "low",
+        "answer": {
+          "text": "حدّد الإمارة المرتبطة بإقامة الكفيل حتى أحدد خدمة كفالة الأسرة والجهة المختصة بدقة.",
+          "focus": "clarification",
+          "fact_status": "NEEDS_CLARIFICATION",
+          "grounded": false,
+          "evidence": {}
+        },
+        "grounding": {
+          "status": "NEEDS_CLARIFICATION",
+          "source_backed": false,
+          "no_invention": true,
+          "ambiguity_detected": true
+        },
+        "matches": [],
+        "missing_information": [
+          "الإمارة المرتبطة بإقامة الكفيل"
+        ],
+        "follow_up_questions": [
+          "في أي إمارة صادرة إقامة الكفيل؟"
+        ],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": null,
+        "last_answer_topic": "clarification",
+        "pending_clarification": "في أي إمارة صادرة إقامة الكفيل؟",
+        "known_facts": {},
+        "jurisdiction_hint": null,
+        "relationship": "mother",
+        "relationship_group": "parent",
+        "family_members": [
+          "mother"
+        ],
+        "subject_role": null,
+        "entity": {
+          "kind": "person",
+          "relationship": "mother",
+          "relationship_group": "parent"
+        },
+        "service_slug": null,
+        "authority_key": null,
+        "action": "sponsor",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "عايز أكفل والدتي"
+      }
+    }
+  ],
+  "externalModelAcceptance": "NOT_DECLARED",
+  "status": "PASS"
+}
