@@ -1,0 +1,386 @@
+{
+  "checkedAt": "2026-10-19T11:18:44.945Z",
+  "source": "REAL_PUBLIC_EDGE_ENDPOINT",
+  "checks": [
+    {
+      "name": "Ordinary Ejari remains outside approval guard ar",
+      "elapsedMs": 2528.8636370000004,
+      "result": {
+        "understood_intent": "تسجيل أو تجديد عقد إيجاري في دبي",
+        "confidence": "high",
+        "answer": {
+          "text": "المسار المناسب لطلبك هو «تسجيل أو تجديد عقد إيجاري في دبي» لدى دائرة الأراضي والأملاك / RERA. التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:register-renew-ejari-contract-dubai",
+            "policy_version": 2,
+            "workflow_key": "service:register-renew-ejari-contract-dubai",
+            "source_title": "تسجيل أو تجديد عقد إيجاري في دبي",
+            "source_url": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+            "last_verified_at": "2026-10-18T07:02:49.928689+00:00",
+            "supporting_rule": {
+              "value": "التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام.",
+              "source_refs": [
+                "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": null,
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "register-renew-ejari-contract-dubai",
+            "service_name": "تسجيل أو تجديد عقد إيجاري في دبي",
+            "service_name_en": "Register / Renew Tenancy Contract",
+            "service_url": "/services/register-renew-ejari-contract-dubai/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "dld-rera",
+              "name_ar": "دائرة الأراضي والأملاك / RERA",
+              "name_en": "Dubai Land Department / RERA",
+              "public_url": "/authorities/dld-rera/"
+            },
+            "requirements": [
+              "نسخة العقد الموحد عبر التطبيق، وأصله عبر مركز أمين الخدمات.",
+              "إبراز هوية مقدم الطلب في المركز.",
+              "للممثل وكالة؛ يكفي رقم وكالة دبي، وترفق وكالة الإمارة الأخرى."
+            ],
+            "general_documents": [
+              "نسخة العقد الموحد عبر التطبيق، وأصله عبر مركز أمين الخدمات."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام."
+            ],
+            "official_source": {
+              "title": "تسجيل أو تجديد عقد إيجاري في دبي",
+              "url": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+              "last_verified_at": "2026-10-18T07:02:49.928689+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": "register-renew-ejari-contract-dubai",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "register-renew-ejari-contract-dubai",
+        "authority_key": "dld-rera",
+        "action": "renew",
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "تجديد عقد إيجاري RERA دبي"
+      }
+    },
+    {
+      "name": "Ordinary Ejari remains outside approval guard en",
+      "elapsedMs": 3876.308892,
+      "result": {
+        "understood_intent": "تسجيل أو تجديد عقد إيجاري في دبي",
+        "confidence": "high",
+        "answer": {
+          "text": "The matching service is Register / Renew Tenancy Contract through Dubai Land Department / RERA. App: individual tenant and landlord, with current owner data. Centers: property not managed by a company or an owner using Ejari. Check the card for system-user eligibility.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:register-renew-ejari-contract-dubai",
+            "policy_version": 2,
+            "workflow_key": "service:register-renew-ejari-contract-dubai",
+            "source_title": "تسجيل أو تجديد عقد إيجاري في دبي",
+            "source_url": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+            "last_verified_at": "2026-10-18T07:02:49.928689+00:00",
+            "supporting_rule": {
+              "value": "التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام.",
+              "source_refs": [
+                "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": null,
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "register-renew-ejari-contract-dubai",
+            "service_name": "تسجيل أو تجديد عقد إيجاري في دبي",
+            "service_name_en": "Register / Renew Tenancy Contract",
+            "service_url": "/services/register-renew-ejari-contract-dubai/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "dld-rera",
+              "name_ar": "دائرة الأراضي والأملاك / RERA",
+              "name_en": "Dubai Land Department / RERA",
+              "public_url": "/authorities/dld-rera/"
+            },
+            "requirements": [
+              "نسخة العقد الموحد عبر التطبيق، وأصله عبر مركز أمين الخدمات.",
+              "إبراز هوية مقدم الطلب في المركز.",
+              "للممثل وكالة؛ يكفي رقم وكالة دبي، وترفق وكالة الإمارة الأخرى."
+            ],
+            "general_documents": [
+              "نسخة العقد الموحد عبر التطبيق، وأصله عبر مركز أمين الخدمات."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "التطبيق للمالك والمستأجر كأفراد مع تحديث بيانات المالك. للمراكز يشترط ألا تدير العقار شركة أو مالك يستخدم إيجاري. راجع البطاقة لصلاحيات مستخدمي النظام."
+            ],
+            "official_source": {
+              "title": "تسجيل أو تجديد عقد إيجاري في دبي",
+              "url": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+              "last_verified_at": "2026-10-18T07:02:49.928689+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": "register-renew-ejari-contract-dubai",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "register-renew-ejari-contract-dubai",
+        "authority_key": "dld-rera",
+        "action": "renew",
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "renew Ejari contract with RERA Dubai"
+      }
+    },
+    {
+      "name": "English approval clarification preserved",
+      "elapsedMs": 924.3742810000003,
+      "result": {
+        "understood_intent": "موافقات RERA",
+        "confidence": "low",
+        "answer": {
+          "text": "The recorded Dubai real-estate pathways include an advertisement permit and a professional practice card. These are different transactions. Do you mean a real estate advertisement permit or a real estate professional practice card?",
+          "focus": "clarification",
+          "fact_status": "NEEDS_CLARIFICATION",
+          "grounded": false,
+          "evidence": {}
+        },
+        "grounding": {
+          "status": "NEEDS_CLARIFICATION",
+          "source_backed": false,
+          "no_invention": true,
+          "ambiguity_detected": true
+        },
+        "matches": [],
+        "missing_information": [
+          "نوع موافقة RERA"
+        ],
+        "follow_up_questions": [
+          "Do you mean a real estate advertisement permit or a real estate professional practice card?"
+        ],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": null,
+        "last_answer_topic": "clarification",
+        "pending_clarification": "Do you mean a real estate advertisement permit or a real estate professional practice card?",
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": null,
+        "authority_key": null,
+        "action": null,
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "RERA approval in Dubai"
+      }
+    },
+    {
+      "name": "Unverified approval cancellation remains closed",
+      "elapsedMs": 1999.7621120000003,
+      "result": {
+        "understood_intent": "مسار RERA غير متحقق لهذه الحالة",
+        "confidence": "low",
+        "answer": {
+          "text": "المسارات المتحققة المتاحة هنا تخص تصريح الإعلان العقاري وبطاقة مزاولة المهنة في دبي. لا أملك مسارًا متحققًا للعملية أو الإمارة التي طلبتها، ولن أعرض معاملة بديلة أو رسومًا غير مؤكدة.",
+          "focus": "clarification",
+          "fact_status": "MISSING_INFORMATION",
+          "grounded": false,
+          "evidence": {}
+        },
+        "grounding": {
+          "status": "NEEDS_CLARIFICATION",
+          "source_backed": false,
+          "no_invention": true,
+          "ambiguity_detected": true
+        },
+        "matches": [],
+        "missing_information": [
+          "مسار موثق لهذه العملية أو الإمارة"
+        ],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": null,
+        "last_answer_topic": "clarification",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": null,
+        "authority_key": null,
+        "action": "cancel",
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "إلغاء تصريح إعلان RERA دبي"
+      }
+    }
+  ],
+  "externalModelAcceptance": "NOT_DECLARED",
+  "status": "PASS"
+}
