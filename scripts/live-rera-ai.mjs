@@ -1,0 +1,4 @@
+import{mkdir,writeFile}from'node:fs/promises';
+const out='diagnostics/rera-ai-production-2026-10-19';await mkdir(out,{recursive:true});
+const prompt='موافقة ريرا دبي',response=await fetch('https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge',{method:'POST',headers:{'content-type':'application/json',origin:'https://hossambahr.com','x-hb-qa-run':'rera-grounding-'+Date.now()},body:JSON.stringify({goal:prompt,latest_turn:prompt,history:[],context:{},stream:false})});const p=await response.json();
+const report={checkedAt:new Date().toISOString(),scope:'One real public RERA grounding request; not a full external-model acceptance',httpStatus:response.status,ok:p.ok,external_model_used:p.external_model_used??p.engine?.external_model_used??p.result?.engine?.external_model_used??null,engine:p.engine??p.result?.engine??null,result:p.result??null};await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));

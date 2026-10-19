@@ -1,0 +1,20 @@
+name: Live RERA assistant grounding
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/live-rera-ai.mjs']
+permissions: {contents: write}
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-rera-ai.mjs
+      - run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/rera-ai-production-2026-10-19
+          git diff --cached --quiet || git commit -m "Preserve actual RERA AI grounding evidence [skip ci]"
+          git push origin HEAD:agent/dld-source-review-evidence
