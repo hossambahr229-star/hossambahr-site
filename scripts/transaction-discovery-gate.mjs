@@ -45,7 +45,7 @@ try{
   await page.goto(base+prefix+'/',{waitUntil:'networkidle'});
   assert.equal(await page.locator('.managed-path-action').getAttribute('href'),prefix+'/contact/?handoff=1');
   assert.ok(await page.getByRole('link',{name:en?'I know my transaction':'أعرف معاملتي',exact:true}).isVisible());
-  const explore=page.locator('.discovery-entry>a').nth(2);
+  const explore=page.locator('.discovery-entry>a[href$="#service-areas"]');
   assert.equal(await explore.innerText(),en?'Explore our services':'تصفح خدماتنا');
   assert.equal(await explore.getAttribute('href'),prefix+'/#service-areas');
   await explore.click();assert.equal(new URL(page.url()).hash,'#service-areas');
