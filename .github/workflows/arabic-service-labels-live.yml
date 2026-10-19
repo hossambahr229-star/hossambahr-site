@@ -1,0 +1,29 @@
+name: Arabic service labels live
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/arabic-service-labels-live.mjs','.github/workflows/arabic-service-labels-live.yml']
+permissions: {contents: write}
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/arabic-service-labels-live.mjs
+      - name: Preserve actual live label evidence
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/arabic-service-labels-live-2026-10-19
+          git diff --cached --quiet || git commit -m "Preserve actual Arabic service label evidence [skip ci]"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: arabic-service-labels-live, path: diagnostics/arabic-service-labels-live-2026-10-19}
