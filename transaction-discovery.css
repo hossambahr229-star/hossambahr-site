@@ -94,3 +94,7 @@ html[lang="en"] .home-simple-arrow{rotate:180deg}
 .home-simple-discovery .home-simple-footnote{margin-top:14px}
 .home-simple-footnote a{color:#103e36;font-weight:700;text-underline-offset:3px}
 @media(max-width:820px){.home-simple-discovery .home-domain-grid{grid-template-columns:repeat(2,minmax(0,1fr))}html.hb-phase8 body[data-home-geometry] .premium-category-grid.home-simple-discovery{padding:12px!important}.home-simple-discovery .home-domain-heading h2{font-size:23px!important}html.hb-phase8 body[data-home-geometry] .home-simple-discovery a.home-simple-card{grid-template-columns:minmax(0,1fr) 12px;gap:6px;min-height:116px!important;padding:12px!important}.home-simple-card>.home-line-icon{display:none}.home-simple-discovery .home-simple-card b{font-size:14px!important}.home-simple-discovery .home-simple-card small{font-size:11px!important}}
+
+html.hb-phase8 body[data-home-geometry] .home-simple-discovery .home-simple-card b{color:#103e36!important}
+html.hb-phase8 body[data-home-geometry] .home-simple-discovery .home-discovery-eyebrow{width:auto!important;max-width:none!important;height:auto!important}
+html.hb-phase8 body[data-home-geometry] .home-simple-discovery .home-simple-footnote a{display:inline!important;min-height:0!important;width:auto!important;height:auto!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;aspect-ratio:auto!important;font-size:inherit!important;text-decoration:underline!important}
