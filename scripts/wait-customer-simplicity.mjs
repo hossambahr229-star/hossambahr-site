@@ -1,0 +1,1 @@
+for(let i=0;i<100;i++){let r=await fetch('https://hossambahr.com/?simplicity='+Date.now()),s=await r.text();if(r.ok&&s.includes('home-simple-discovery')){console.log('Published simplicity renderer found');process.exit(0);}await new Promise(r=>setTimeout(r,10000));}throw Error('New homepage not yet published');
