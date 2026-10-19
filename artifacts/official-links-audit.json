@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-19T11:22:58.073Z",
+  "generatedAt": "2026-10-19T16:53:22.032Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 155,
-    "ACCESS_RESTRICTED": 8,
+    "REACHABLE": 153,
+    "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 86,
+    "NETWORK_UNVERIFIED": 87,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -298,8 +298,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 403,
+      "finalUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+      "result": "ACCESS_RESTRICTED",
+      "reason": "official server rejected automated audit traffic"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7f",
@@ -1166,9 +1168,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_SOCKET"
     },
     {
       "url": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
@@ -1994,9 +1995,8 @@
       "kinds": [
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/38?administrativeRegionId=1",
