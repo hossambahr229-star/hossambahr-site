@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';import{mkdir,writeFile}from'node:fs/promises';
+const out='diagnostics/parents-identity-production-2026-10-19';await mkdir(out,{recursive:true});const report={checkedAt:new Date().toISOString(),source:'REAL_PUBLIC_EDGE_ENDPOINT',checks:[],externalModelAcceptance:'NOT_DECLARED'};
+const parent='إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي';
+async function ask(name,latest,context={},goal=latest,locale='ar'){const response=await fetch('https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge',{method:'POST',headers:{'content-type':'application/json',origin:'https://hossambahr.com','x-hb-qa-run':'parent-identity-'+Date.now()},body:JSON.stringify({goal,latest_turn:latest,context,history:[],locale,stream:false})});const p=await response.json();assert.equal(response.status,200,name);assert.equal(p.ok,true,name);report.checks.push({name,result:p.result,context:p.goal_context});return p;}
+try{
+const mother=await ask('Arabic mother uses parents-specific service','عايز أكفل والدتي في دبي');assert.equal(mother.result.matches[0]?.service_slug,parent);assert.equal(mother.goal_context.relationship,'mother');
+for(const q of ['والأوراق؟','والرسوم؟']){const p=await ask('Mother follow-up '+q,q,mother.goal_context,'عايز أكفل والدتي في دبي. '+q);assert.equal(p.result.matches[0]?.service_slug,parent);assert.equal(p.goal_context.relationship,'mother');}
+for(const [q,relation]of [['I want to sponsor my father in Dubai','father'],['I want to sponsor my parents in Dubai','parents']]){const p=await ask('English '+relation,q,{},undefined,'en');assert.equal(p.result.matches[0]?.service_slug,parent);assert.equal(p.goal_context.relationship,relation);}
+const wife=await ask('Spouse issuance remains on family service','عايز أعمل إقامة لزوجتي في دبي');assert.equal(wife.result.matches[0]?.service_slug,'family-residency-uae');
+const unknown=await ask('Mother without emirate still asks jurisdiction','عايز أكفل والدتي');assert.equal(unknown.result.matches.length,0);assert.equal(unknown.result.answer.fact_status,'NEEDS_CLARIFICATION');
+report.status='PASS';
+}catch(e){report.status='FAIL';report.error=String(e.stack);process.exitCode=1;}finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify({status:report.status,checks:report.checks.map(c=>({name:c.name,slug:c.result?.matches?.[0]?.service_slug,relationship:c.context?.relationship})),error:report.error},null,2));}

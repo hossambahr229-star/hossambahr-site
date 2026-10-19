@@ -1,0 +1,25 @@
+name: Live parents sponsorship identity acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/live-parents-identity.mjs']
+permissions: {contents: write}
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-parents-identity.mjs
+      - name: Preserve actual semantic outcomes
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/parents-identity-production-2026-10-19
+          git diff --cached --quiet || git commit -m "Preserve real parent sponsorship identity acceptance [skip ci]"
+          git push origin HEAD:agent/dld-source-review-evidence
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: live-parents-identity, path: diagnostics/parents-identity-production-2026-10-19}
