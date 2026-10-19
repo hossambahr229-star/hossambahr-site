@@ -103,6 +103,13 @@ export function rankServices(query, services = []) {
       (ad?service.s==='dld-real-estate-ad-permit-dubai':practice?service.s==='real-estate-professional-practice-card-dubai':
       ['dld-real-estate-ad-permit-dubai','real-estate-professional-practice-card-dubai'].includes(service.s))).map(service=>({...service,score:12000}));
   }
+  const residenceFine=includesAny(normalized,['إقامة','تأشيرة','residence','residency','visa','overstay'])&&includesAny(normalized,['غرام','مخالف','fine','penalty','penalties']);
+  const otherResidenceOperation=includesAny(normalized,['إلغاء','تجديد','إصدار','renew','cancel','issuance','issue','waiver','appeal','إعفاء','تخفيض']);
+  if(residenceFine&&!otherResidenceOperation){
+    const emirate=queryEmirate(query),inquiry=includesAny(normalized,['استعلام','اعرف','check','inquiry','enquiry']);
+    const fineSlugs=['الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي','سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي','سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي'];
+    return services.filter(service=>fineSlugs.includes(service.s)&&(!emirate||matchesEmirate(service.m,emirate))).map(service=>({...service,score:12000+(inquiry&&service.s===fineSlugs[0]?100:0)})).sort((a,b)=>b.score-a.score);
+  }
   const exactCodeMatches = services.filter((service) =>
     (service.x || []).some((code) => normalizeIntent(code) === normalized)
   );
