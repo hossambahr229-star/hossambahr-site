@@ -991,7 +991,8 @@ export default {
         : null;
       const inheritedServiceId = String(context?.active_service_id || context?.service_slug || "");
       const inherited = contextualFollowUp && inheritedServiceId ? catalog.find((row:any)=>row.binding.service_slug===inheritedServiceId) : null;
-      const reraKind=reraApprovalKind(latestTurn)||reraApprovalKind(semanticGoal);
+      const pendingReraChoice=/تصريح إعلان عقاري أم بطاقة|advertisement permit or a real estate professional practice card/.test(String(context?.pending_clarification||''))?reraApprovalKind('RERA '+latestTurn):null;
+      const reraKind=reraApprovalKind(latestTurn)||(['advertisement','practice'].includes(pendingReraChoice||'')?pendingReraChoice:null)||reraApprovalKind(semanticGoal);
       const reraJurisdiction=detectJurisdiction(latestTurn)||semantic.jurisdiction||detectJurisdiction(semanticGoal);
       const siraLatest=siraIntent(latestTurn);
       const inheritedSira=contextualFollowUp && Object.values(SIRA_SLUGS).includes(inheritedServiceId);
