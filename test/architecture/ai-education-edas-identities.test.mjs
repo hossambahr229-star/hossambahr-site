@@ -1,3 +1,4 @@
+import {reraApprovalKind} from '../../supabase/functions/public-ai-concierge/rera-approval.ts';
 import {siraIntent} from '../../sira-intent.js';
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {stripTypeScriptTypes} from 'node:module';
 import {detectJurisdiction,detectRelationship,relationshipGroup,mergeSemanticContext,relationshipCompatibility,semanticDomainCompatibility} from '../../supabase/functions/public-ai-concierge/semantic-context.ts';
@@ -30,16 +31,16 @@ test('Named reviewed services reset stale family context while short follow-ups 
  const start=source.indexOf('async function resolveSemanticState(');
  const resolve=source.slice(start,source.indexOf('\nfunction isContextualFollowUp',start));
  const compile=stripTypeScriptTypes(utilities+ranking+resolve,{mode:'strip'});
- const run=Function('detectJurisdiction','detectRelationship','relationshipGroup','mergeSemanticContext','relationshipCompatibility','semanticDomainCompatibility','familyCandidate','providerConfig','siraIntent',compile+'return resolveSemanticState;')(detectJurisdiction,detectRelationship,relationshipGroup,mergeSemanticContext,relationshipCompatibility,semanticDomainCompatibility,familyCandidate,()=>null,siraIntent);
+ const run=Function('detectJurisdiction','detectRelationship','relationshipGroup','mergeSemanticContext','relationshipCompatibility','semanticDomainCompatibility','familyCandidate','providerConfig','siraIntent','reraApprovalKind',compile+'return resolveSemanticState;')(detectJurisdiction,detectRelationship,relationshipGroup,mergeSemanticContext,relationshipCompatibility,semanticDomainCompatibility,familyCandidate,()=>null,siraIntent,reraApprovalKind);
  const context={active_service_id:'family-residency-uae',service_slug:'family-residency-uae',relationship:'wife',jurisdiction_code:'AE-DU',action:'sponsor',authority_key:'gdrfa'};
- for(const name of ['موافقة سيرا','Security system certification Dubai','تسجيل مهني صحي في دبي لدى هيئة الصحة بدبي','Health professional registration with DHA Dubai',"تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0","Attestation of commercial invoices via eDAS 2.0 with MOFA","معادلة شهادة الثانوية من خارج الإمارات","Equivalency of a general education certificate from abroad Grade 12 with the UAE Ministry of Education","معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات","Equivalency of a general education certificate in the UAE Grade 12 with the UAE Ministry of Education","التحقق من صحة المعادلة أو التصديق","Confirming the authenticity of an equivalency certificate with the UAE Ministry of Education"]){
+ for(const name of ['موافقة ريرا','RERA approval','RERA advertisement permit','موافقة سيرا','Security system certification Dubai','تسجيل مهني صحي في دبي لدى هيئة الصحة بدبي','Health professional registration with DHA Dubai',"تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0","Attestation of commercial invoices via eDAS 2.0 with MOFA","معادلة شهادة الثانوية من خارج الإمارات","Equivalency of a general education certificate from abroad Grade 12 with the UAE Ministry of Education","معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات","Equivalency of a general education certificate in the UAE Grade 12 with the UAE Ministry of Education","التحقق من صحة المعادلة أو التصديق","Confirming the authenticity of an equivalency certificate with the UAE Ministry of Education"]){
   const latest=name+'. What are the government fees?';
   const state=await run(latest,[],context,'إقامة زوجتي في دبي');
   assert.equal(state.turn_type,'new_topic',latest);
   assert.equal(state.relationship,null,latest);
   assert.equal(state.service_slug,null,latest);
   assert.equal(state.resolved_query,latest);
-  if(siraIntent(latest)){assert.equal(state.active_service_id,null);assert.equal(state.jurisdiction,'AE-DU');}
+  if(siraIntent(latest)||reraApprovalKind(latest)){assert.equal(state.active_service_id,null);assert.equal(state.jurisdiction,'AE-DU');}
  }
  for(const latest of ['ما الرسوم؟','What are the fees?']){
   const state=await run(latest,[],context,'إقامة زوجتي في دبي. '+latest);
