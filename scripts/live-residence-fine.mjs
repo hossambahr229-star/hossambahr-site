@@ -8,4 +8,12 @@ await page.goto(base+prefix+'/discover/?q='+encodeURIComponent(query),{waitUntil
 await page.waitForFunction(n=>document.querySelector('[data-discovery-status]')?.textContent.startsWith(String(n)),count);
 const slugs=await page.locator('[data-canonical-service]:visible').evaluateAll(nodes=>nodes.map(n=>n.dataset.canonicalService));assert.equal(slugs.length,count);assert.ok(slugs.every(s=>/غرام/.test(s)));assert.ok(!slugs.some(s=>/family|parents/.test(s)));assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
 await page.locator('[data-discovery-status]').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/'+lang+'-'+width+'-'+count+'.png'});
-report.views.push({lang,width,query,slugs,status:'PASS'});await page.close();}report.status='PASS';}catch(e){report.status='FAIL';report.error=String(e.stack);process.exitCode=1;}finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2));await browser.close();if(server)await new Promise(r=>server.close(r));}
+report.views.push({lang,width,query,slugs,status:'PASS'});
+if(count===3){
+const title=await page.evaluate(async en=>{const data=await(await fetch('/transaction-discovery-data.json')).json();const s=data.find(s=>s.s==='سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي');return en?s.e:s.a;},lang==='en');
+await page.locator('[data-discovery-form] [name=q]').fill(title);await page.locator('[data-discovery-form] button[type=submit]').click();
+await page.waitForFunction(()=>document.querySelector('[data-discovery-status]')?.textContent.startsWith('1'));
+assert.equal(await page.locator('[data-canonical-service]:visible').first().getAttribute('data-canonical-service'),'سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي');
+await page.locator('[data-discovery-status]').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/'+lang+'-'+width+'-exact-identity.png'});
+report.views.push({lang,width,query:title,scope:'ACTUAL_UI_EXACT_CANONICAL_NAME',status:'PASS'});
+}await page.close();}report.status='PASS';}catch(e){report.status='FAIL';report.error=String(e.stack);process.exitCode=1;}finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2));await browser.close();if(server)await new Promise(r=>server.close(r));}

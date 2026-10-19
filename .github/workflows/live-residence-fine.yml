@@ -15,7 +15,7 @@ jobs:
       - run: npm install --no-save --ignore-scripts playwright@1.55.0
       - name: Wait for published resolver
         run: |
-          node --input-type=module -e "for(let n=0;n<30;n++){const t=await (await fetch('https://hossambahr.com/intent-search.js?fine512='+Date.now())).text();if(t.includes('const residenceFine='))process.exit(0);await new Promise(r=>setTimeout(r,15000));}throw Error('Latest fine source not published');"
+          node --input-type=module -e "for(let n=0;n<30;n++){const t=await (await fetch('https://hossambahr.com/intent-search.js?fine512='+Date.now())).text();if(t.includes('const residenceFine=')&&t.indexOf('if (exactNames?.length)')<t.indexOf('const residenceFine='))process.exit(0);await new Promise(r=>setTimeout(r,15000));}throw Error('Latest fine source not published');"
       - run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=diagnostics/residence-fine-production-2026-10-19 node scripts/live-residence-fine.mjs
       - if: always()
         run: |
