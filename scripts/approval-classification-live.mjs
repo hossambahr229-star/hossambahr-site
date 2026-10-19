@@ -47,3 +47,5 @@ try{
  report.status='PASS';
 } catch(error){report.status='FAIL';report.error=String(error);process.exitCode=1;}
 finally{await writeFile(dir+'/report.json',JSON.stringify(report,null,2));await browser.close();}
+
+// Recheck after confirmed publication of #505 and #506.
