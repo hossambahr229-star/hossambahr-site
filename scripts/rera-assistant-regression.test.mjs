@@ -5,7 +5,7 @@ for(const q of ['موافقة ريرا','موافقة RERA دبي','RERA approva
 for(const q of ['تصريح إعلان عقاري ريرا','RERA advertisement permit'])assert.equal(kind(q),'advertisement');
 for(const q of ['بطاقة مزاولة مهنة ريرا','RERA professional practice approval'])assert.equal(kind(q),'practice');
 for(const q of ['تجديد موافقة ريرا','cancel RERA permit'])assert.equal(kind(q),'unsupported');
-for(const q of ['موافقة سيرا','RERA Ejari renewal','تجديد إقامة زوجتي'])if(!/RERA/.test(q))assert.equal(kind(q),null);
+for(const q of ['موافقة سيرا','RERA Ejari renewal','renew Ejari contract with RERA Dubai','RERA property valuation','تجديد إقامة زوجتي'])assert.equal(kind(q),null);
 const p=englishResult({understood_intent:'موافقات RERA',answer:{fact_status:'NEEDS_CLARIFICATION'},follow_up_questions:['هل تقصد تصريح إعلان عقاري أم بطاقة مزاولة مهنة عقارية؟'],matches:[]});
 assert.match(p.answer.text,/advertisement permit/);assert.match(p.answer.text,/professional practice card/);assert.ok(p.follow_up_questions.every(q=>!/[\u0600-\u06ff]/.test(q)));
 console.log('PASS: RERA disambiguation, operation guard, unrelated topics and English clarification');
