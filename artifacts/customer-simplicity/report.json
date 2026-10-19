@@ -1,0 +1,54 @@
+{
+  "base": "http://127.0.0.1:4181",
+  "humanUsability": "NOT_VERIFIED",
+  "views": [
+    {
+      "lang": "ar",
+      "width": 320,
+      "geometry": {
+        "top": 753.671875,
+        "height": 1149.828125,
+        "links": 12
+      },
+      "status": "PASS"
+    },
+    {
+      "lang": "ar",
+      "width": 360,
+      "geometry": {
+        "top": 695.78125,
+        "height": 1110.328125,
+        "links": 12
+      },
+      "status": "PASS"
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "geometry": {
+        "top": 695.78125,
+        "height": 1100.453125,
+        "links": 12
+      },
+      "status": "PASS"
+    }
+  ],
+  "navigation": [
+    {
+      "lang": "ar",
+      "id": "business",
+      "href": "/discover/?domain=business",
+      "status": "PASS",
+      "interactions": 1
+    },
+    {
+      "lang": "ar",
+      "id": "activities",
+      "href": "/business-activities/",
+      "status": "PASS",
+      "interactions": 1
+    }
+  ],
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ '?approval=business'\n- ''\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/customer-simplicity-browser.mjs:7:441"
+}
