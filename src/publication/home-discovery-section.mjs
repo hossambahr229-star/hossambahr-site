@@ -1,5 +1,7 @@
 export function renderHomepageDiscovery({domainGroups,services,locale,p,en,t,esc,serviceReadiness}){
- const examples=d=>d.id==='approvals'?d.services.filter(s=>s.slug.includes('sira')).slice(0,2):d.id==='fines-tax'?d.services.filter(s=>s.classification.main==='financial-business'||/غرام|مخالف/.test(s.name.ar)).slice(0,3):d.services.slice(0,3);
+ const preferred={business:['issue-trade-license-dubai','add-business-activity-dubai'],residence:['family-residency-uae','issue-emirates-id-uae'],work:['new-work-permit-overseas-uae','transfer-work-permit-uae'],property:['register-renew-ejari-contract-dubai','title-transfer-dubai']};
+ const representative=d=>[...(preferred[d.id]||[]).map(slug=>d.services.find(s=>s.slug===slug)).filter(Boolean),...d.services.filter(s=>!(preferred[d.id]||[]).includes(s.slug))].slice(0,3);
+ const examples=d=>d.id==='approvals'?d.services.filter(s=>s.slug.includes('sira')).slice(0,2):d.id==='fines-tax'?d.services.filter(s=>s.classification.main==='financial-business'||/غرام|مخالف/.test(s.name.ar)).slice(0,3):representative(d);
  const href=d=>p+(d.id==='activities'?'/business-activities/':d.id==='approvals'?'/approvals/':'/discover/?domain='+d.id);
  const links=d=>examples(d).map(s=>`<li><a href="${p+s.internalRoute}">${esc(s.name[locale])}</a><small>${serviceReadiness(s)==='PARTIAL'?t('تفاصيل جزئية','Partial details'):serviceReadiness(s)==='OFFICIAL_GUIDANCE'?t('دليل رسمي','Official guidance'):t('معلومات ومسار رسمي','Information and official route')}</small></li>`).join('');
  const ordered=[...domainGroups.filter(d=>['activities','approvals'].includes(d.id)),...domainGroups.filter(d=>!['activities','approvals'].includes(d.id))];
