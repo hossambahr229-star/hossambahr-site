@@ -13,6 +13,7 @@ function recordedEnglish(value: unknown): string | null {
 }
 export function englishQuestion(value: string) {
  const text=String(value||'');
+ if (/تصريح إعلان عقاري أم بطاقة/.test(text)) return 'Do you mean a real estate advertisement permit or a real estate professional practice card?';
  if (/ترخيص نشاط أمني أم اعتماد/.test(text)) return 'Do you need a security activity licence or security system certification for an establishment or building?';
  if (/هل الموظف من خارج/.test(text)) return 'Is the employee arriving from outside the UAE, transferring within the UAE, or on a family residence?';
  if (/هل الموظف داخل/.test(text)) return 'Is the employee currently inside or outside the UAE?';
@@ -31,7 +32,9 @@ export function englishResult(result: any) {
   ?answer.evidence.document_requirements.map((item:unknown)=>recordedEnglish(item)):null;
  const documentText=documentItems&&documentItems.every(Boolean)?'Recorded requirements for this service:\n'+documentItems.join('\n'):null;
  const recorded=verified?(documentText||recordedEnglish(answer.text)):null;
- if(result.understood_intent==='موافقات SIRA') text='SIRA is the Security Industry Regulatory Agency in Dubai. Security activity licensing and establishment security system certification are different transactions. '+englishQuestion(result.follow_up_questions?.[0]||'');
+ if(result.understood_intent==='موافقات RERA') text='The recorded Dubai real-estate pathways include an advertisement permit and a professional practice card. These are different transactions. '+englishQuestion(result.follow_up_questions?.[0]||'');
+ else if(result.understood_intent==='مسار RERA غير متحقق لهذه الحالة') text='The verified pathways available here cover the Dubai real estate advertisement permit and professional practice card. I do not have a verified pathway for the requested operation or emirate, and will not substitute another transaction or invent fees.';
+ else if(result.understood_intent==='موافقات SIRA') text='SIRA is the Security Industry Regulatory Agency in Dubai. Security activity licensing and establishment security system certification are different transactions. '+englishQuestion(result.follow_up_questions?.[0]||'');
  else if(result.understood_intent==='مسار SIRA غير متحقق لهذه الحالة') text='The verified SIRA pathways currently cover Dubai and new security activity licensing or security system certification. I do not have a verified pathway for the requested operation or emirate, and will not substitute another service or invent fees.';
  else if(answer.fact_status==='NEEDS_CLARIFICATION' && /إقامة عامل\/عاملة مساعدة/.test(result.understood_intent||'')) text='For the domestic worker’s residence, which emirate issued it? This is a residence transaction, separate from employment contracts and work permits.';
  else if(answer.evidence?.review_pending && missing) text='The official source is available, but its changed details are awaiting review. I cannot confirm earlier fees, times, documents or conditions until that review is complete.';

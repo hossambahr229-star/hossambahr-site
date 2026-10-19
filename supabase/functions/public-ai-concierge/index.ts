@@ -1,3 +1,4 @@
+import {reraApprovalKind,RERA_APPROVAL_SLUGS} from './rera-approval.ts';
 import {siraIntent,SIRA_SLUGS} from '../../../sira-intent.js';
 import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole, mergeSemanticContext, relationshipCompatibility, relationshipGroup, semanticDomainCompatibility, type FamilyRelationship, type SemanticEntity, type SubjectRole } from "./semantic-context.ts";
 import { withSupabase } from "npm:@supabase/server@1.8.0";
@@ -108,12 +109,13 @@ async function resolveSemanticState(latestTurn:string, history:any[], context:an
     "equivalency-of-general-education-certificate-in-the-uae-grade-12","confirming-the-authenticity-of-equivalency"
   ].some(slug=>specialBoost(latestNorm,slug,detectJurisdiction(latestNorm))>=90000);
   const explicitSiraTopic=Boolean(siraIntent(latestTurn));
-  const explicitNonFamilyTopic=(explicitSiraTopic || explicitReviewedServiceTopic || has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"])) && !detectRelationship(latestTurn);
+  const explicitReraTopic=Boolean(reraApprovalKind(latestTurn));
+  const explicitNonFamilyTopic=(explicitSiraTopic || explicitReraTopic || explicitReviewedServiceTopic || has(latestNorm,["شركه","شركة","رخصه","رخصة","تجاره","تجارة","نشاط تجاري","company","business","trade license","اجير","إيجاري","ejari","wps","ضريبه","ضريبة","tax","جمارك","customs","كاتب العدل","notary","عقار","property"])) && !detectRelationship(latestTurn);
   const priorSemantic={relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null),family_members:Array.isArray(context?.family_members)?context.family_members:[],subject_role:context?.subject_role??null,entity:context?.entity??{kind:"unknown",relationship:context?.relationship??null,relationship_group:relationshipGroup(context?.relationship??null)},service_slug:context?.service_slug??null,authority_key:context?.authority_key??null,jurisdiction:context?.jurisdiction_code??null,intent:context?.intent??null,service_family:context?.service_family??null,action:context?.action??null};
   const merged=mergeSemanticContext(latestTurn,priorSemantic,fallbackGoal,{newTopic:explicitNonFamilyTopic});
-  if(explicitSiraTopic) merged.jurisdiction=detectJurisdiction(latestTurn)||'AE-DU';
-  const fallback:SemanticState={active_service_id:explicitSiraTopic?null:(context?.active_service_id??context?.service_slug??null),last_answer_topic:context?.last_answer_topic??null,pending_clarification:context?.pending_clarification??null,known_facts:(context?.known_facts&&typeof context.known_facts==="object")?context.known_facts:{},turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,family_members:merged.family_members,subject_role:merged.subject_role,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,action:merged.action,business_activity:null,confidence:"low"};
-  if(explicitSiraTopic) return fallback;
+  if(explicitSiraTopic||explicitReraTopic) merged.jurisdiction=detectJurisdiction(latestTurn)||'AE-DU';
+  const fallback:SemanticState={active_service_id:(explicitSiraTopic||explicitReraTopic)?null:(context?.active_service_id??context?.service_slug??null),last_answer_topic:context?.last_answer_topic??null,pending_clarification:context?.pending_clarification??null,known_facts:(context?.known_facts&&typeof context.known_facts==="object")?context.known_facts:{},turn_type:explicitNonFamilyTopic?"new_topic":(detectJurisdiction(latestTurn)&&context?.jurisdiction_code&&detectJurisdiction(latestTurn)!==context.jurisdiction_code?"jurisdiction_switch":"follow_up"),resolved_query:explicitNonFamilyTopic?latestTurn:fallbackGoal,topic:null,intent:merged.intent,service_family:merged.service_family,jurisdiction:merged.jurisdiction,relationship:merged.relationship,relationship_group:merged.relationship_group,family_members:merged.family_members,subject_role:merged.subject_role,entity:merged.entity,service_slug:merged.service_slug,authority_key:merged.authority_key,action:merged.action,business_activity:null,confidence:"low"};
+  if(explicitSiraTopic||explicitReraTopic) return fallback;
   const cfg=providerConfig(); if(!cfg || cfg.provider!=="openai" || providerCreditBlocked()) return fallback;
   const recent=safeHistoryForModel(history);
   const input=[...recent,{role:"user",content:latestTurn}];
@@ -989,6 +991,9 @@ export default {
         : null;
       const inheritedServiceId = String(context?.active_service_id || context?.service_slug || "");
       const inherited = contextualFollowUp && inheritedServiceId ? catalog.find((row:any)=>row.binding.service_slug===inheritedServiceId) : null;
+      const pendingReraChoice=/تصريح إعلان عقاري أم بطاقة|advertisement permit or a real estate professional practice card/.test(String(context?.pending_clarification||''))?reraApprovalKind('RERA '+latestTurn):null;
+      const reraKind=reraApprovalKind(latestTurn)||(['advertisement','practice'].includes(pendingReraChoice||'')?pendingReraChoice:null)||reraApprovalKind(semanticGoal);
+      const reraJurisdiction=detectJurisdiction(latestTurn)||semantic.jurisdiction||detectJurisdiction(semanticGoal);
       const siraLatest=siraIntent(latestTurn);
       const inheritedSira=contextualFollowUp && Object.values(SIRA_SLUGS).includes(inheritedServiceId);
       const siraKind=siraLatest || (inheritedSira ? (inheritedServiceId===SIRA_SLUGS.system?'system':'activity') : siraIntent(semanticGoal));
@@ -999,6 +1004,8 @@ export default {
         ranked=[];
       } else if(siraKind){
         ranked=(siraKind==='unsupported'||(siraJurisdiction&&siraJurisdiction!=='AE-DU'))?[]:catalog.filter((row:any)=>row.authority?.authority_key==='sira-dubai'&&(siraKind==='general'||row.binding.service_slug===(siraKind==='system'?SIRA_SLUGS.system:SIRA_SLUGS.activity))).map((row:any)=>({...row,score:12000}));
+      } else if(reraKind){
+        ranked=(reraKind==='unsupported'||(reraJurisdiction&&reraJurisdiction!=='AE-DU')||reraKind==='general')?[]:catalog.filter((row:any)=>row.authority?.authority_key==='dld-rera'&&row.binding.service_slug===RERA_APPROVAL_SLUGS[reraKind]).map((row:any)=>({...row,score:12000}));
       } else if(exactDubaiFamilySponsorship){
         ranked=[exactDubaiFamilySponsorship];
       } else if(inherited){
@@ -1017,6 +1024,11 @@ export default {
         deterministic={...publicResult(semanticGoal,[],latestTurn),understood_intent:"موافقات SIRA",answer:{text:"SIRA هي مؤسسة تنظيم الصناعة الأمنية في دبي. ترخيص النشاط الأمني واعتماد النظام الأمني للمنشأة معاملتان مختلفتان. هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",focus:"clarification",fact_status:"NEEDS_CLARIFICATION",grounded:false,evidence:{}},missing_information:["نوع موافقة SIRA"],follow_up_questions:["هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟"]};
       } else if(siraKind && !ranked.length){
         deterministic={...publicResult(semanticGoal,[],latestTurn),understood_intent:"مسار SIRA غير متحقق لهذه الحالة",answer:{text:"المسارات المتحققة المتاحة لدى SIRA تخص دبي وإصدار ترخيص نشاط أمني جديد أو شهادة اعتماد نظام أمني. لا أملك مسارًا متحققًا للعملية أو الإمارة التي طلبتها، ولن أحولك إلى معاملة أخرى أو أعرض رسومًا غير مؤكدة.",focus:answerFocus(latestTurn),fact_status:"MISSING_INFORMATION",grounded:false,evidence:{}},missing_information:["مسار موثق لهذه الإمارة أو العملية"],follow_up_questions:[]};
+      }
+      if(reraKind==='general'&&(!reraJurisdiction||reraJurisdiction==='AE-DU')){
+        deterministic={...publicResult(semanticGoal,[],latestTurn),understood_intent:"موافقات RERA",answer:{text:"المسارات العقارية الموثقة لدينا في دبي تشمل تصريح إعلان عقاري وبطاقة مزاولة مهنة عقارية، وهما معاملتان مختلفتان. أيهما تقصد؟",focus:"clarification",fact_status:"NEEDS_CLARIFICATION",grounded:false,evidence:{}},missing_information:["نوع موافقة RERA"],follow_up_questions:["هل تقصد تصريح إعلان عقاري أم بطاقة مزاولة مهنة عقارية؟"]};
+      }else if(reraKind&&!ranked.length){
+        deterministic={...publicResult(semanticGoal,[],latestTurn),understood_intent:"مسار RERA غير متحقق لهذه الحالة",answer:{text:"المسارات المتحققة المتاحة هنا تخص تصريح الإعلان العقاري وبطاقة مزاولة المهنة في دبي. لا أملك مسارًا متحققًا للعملية أو الإمارة التي طلبتها، ولن أعرض معاملة بديلة أو رسومًا غير مؤكدة.",focus:"clarification",fact_status:"MISSING_INFORMATION",grounded:false,evidence:{}},missing_information:["مسار موثق لهذه العملية أو الإمارة"],follow_up_questions:[]};
       }
       const currentFocus = answerFocus(latestTurn);
       const selectedIdentity = normalize((deterministic?.matches?.[0]?.service_slug || "")+" "+(deterministic?.matches?.[0]?.service_name || ""));
