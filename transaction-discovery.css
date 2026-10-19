@@ -141,3 +141,12 @@ html.hb-phase8 body[data-home-geometry] .premium-category-grid.home-discovery-pr
 @media(max-width:600px){.discovery-form[data-discovery-scope="approvals"]{grid-template-columns:minmax(0,1fr)}}
 
 .home-discovery-premium .home-domain-feature h3 a{display:flex;align-items:center;min-height:44px}
+
+/* Legacy category-link styling must not turn nested discovery links into cards. */
+html.hb-phase8 body[data-home-geometry] .home-discovery-premium .home-domain-card a{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;width:auto!important;height:auto!important;min-height:44px!important;padding:4px 0!important;display:flex!important;flex-direction:row!important;justify-content:flex-start!important;align-items:center!important;transform:none!important;color:#103e36!important}
+html.hb-phase8 body[data-home-geometry] .home-discovery-premium .home-domain-feature[data-business-domain="approvals"] a{color:#fff!important}
+html.hb-phase8 body[data-home-geometry] .home-discovery-premium .home-domain-feature[data-business-domain="approvals"] .home-domain-all{color:#f1d48d!important}
+html.hb-phase8 body[data-home-geometry] .home-discovery-premium .home-domain-feature[data-business-domain="approvals"] small{color:#d8e6de!important}
+html.hb-phase8 body[data-home-geometry] .home-discovery-premium .home-domain-feature[data-business-domain="approvals"] .home-feature-kicker{color:#f1d48d!important}
+html.hb-phase8 body[data-home-geometry] .home-discovery-premium .home-domain-feature[data-business-domain="activities"] .home-feature-kicker{color:#765617!important}
+html.hb-phase8 body[data-home-geometry] .home-discovery-premium .home-discovery-scope a{width:auto!important;height:auto!important;min-height:44px!important;padding:6px 12px!important;display:inline-flex!important;flex-direction:row!important;align-items:center!important;border:1px solid #c2d4c9!important;box-shadow:none!important;transform:none!important;color:#103e36!important}
