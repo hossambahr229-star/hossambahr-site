@@ -22,7 +22,7 @@ try{
   const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1});
   const prefix=lang==='en'?'/en':'';
   await page.goto('https://hossambahr.com'+prefix+'/approvals/',{waitUntil:'networkidle'});
-  await page.waitForFunction(()=>/\d/.test(document.querySelector('[data-discovery-status]')?.textContent||''));
+  await page.waitForFunction(()=>/matching services|خدمة مطابقة/.test(document.querySelector('[data-discovery-status]')?.textContent||''));
   const form=page.locator('[data-discovery-form]');
   await form.locator('[name=approval]').selectOption('');
   const slugs=await page.locator('[data-canonical-service]:visible').evaluateAll(nodes=>nodes.map(n=>n.dataset.canonicalService));
@@ -38,14 +38,12 @@ try{
   assert.equal(await page.evaluate(()=>innerWidth),width);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.screenshot({path:dir+'/'+lang+'-'+width+'-approvals.png',fullPage:false});
-  await page.goto('https://hossambahr.com'+prefix+'/services/',{waitUntil:'networkidle'});
-  await page.waitForFunction(()=>/\d/.test(document.querySelector('[data-discovery-status]')?.textContent||''));
+  await page.goto('https://hossambahr.com'+prefix+'/discover/',{waitUntil:'networkidle'});
+  await page.waitForFunction(()=>/matching services|خدمة مطابقة/.test(document.querySelector('[data-discovery-status]')?.textContent||''));
   for(const slug of removed)assert.equal(await page.locator('[data-canonical-service]').filter({has:page.locator('a')}).evaluateAll((nodes,slug)=>nodes.filter(n=>n.dataset.canonicalService===slug).length,slug),1,slug);
   report.views.push({lang,width,approvalExclusions:3,retainedDirectoryServices:3,permitDomainCorrections:5,typedFilters:3,status:'PASS'});
   await page.close();
  }
  report.status='PASS';
-} catch(error){report.status='FAIL';report.error=String(error);process.exitCode=1;}
+} catch(error){report.status='FAIL';report.error=String(error.stack);console.error(report.error);process.exitCode=1;}
 finally{await writeFile(dir+'/report.json',JSON.stringify(report,null,2));await browser.close();}
-
-// Recheck after confirmed publication of #505 and #506.
