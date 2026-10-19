@@ -82,6 +82,11 @@ function matchesEmirate(serviceEmirate, requestedEmirate) {
   return aliases.some(alias => normalized === normalizeIntent(alias));
 }
 
+export function reraApprovalIntent(query) {
+ const q=normalizeIntent(query);
+ return /(?:ريرا|\brera\b)/.test(q)&&/(?:موافق|تصريح|approval|permit|certification)/.test(q);
+}
+
 export function rankServices(query, services = []) {
   const normalized = normalizeIntent(query);
   const sira = siraIntent(query);
@@ -89,6 +94,14 @@ export function rankServices(query, services = []) {
     const emirate = queryEmirate(query);
     if (sira === 'unsupported' || (emirate && emirate !== 'دبي')) return [];
     return services.filter(service => service.i === 'sira-dubai' && (sira === 'general' || service.s === SIRA_SLUGS[sira])).map(service => ({...service,score:12000}));
+  }
+  if (reraApprovalIntent(query)) {
+    const emirate=queryEmirate(query);
+    if(emirate&&emirate!=='دبي')return [];
+    const q=normalizeIntent(query),ad=/(?:اعلان|advertis)/.test(q),practice=/(?:مزاول|مهن|professional|practice)/.test(q);
+    return services.filter(service=>service.i==='dld-rera'&&
+      (ad?service.s==='dld-real-estate-ad-permit-dubai':practice?service.s==='real-estate-professional-practice-card-dubai':
+      ['dld-real-estate-ad-permit-dubai','real-estate-professional-practice-card-dubai'].includes(service.s))).map(service=>({...service,score:12000}));
   }
   const exactCodeMatches = services.filter((service) =>
     (service.x || []).some((code) => normalizeIntent(code) === normalized)
