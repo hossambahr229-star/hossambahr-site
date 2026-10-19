@@ -1,0 +1,592 @@
+{
+  "checkedAt": "2026-10-19T11:00:23.327Z",
+  "source": "REAL_PUBLIC_EDGE_ENDPOINT",
+  "checks": [
+    {
+      "name": "Arabic RERA clarification",
+      "elapsedMs": 2544.6382350000003,
+      "result": {
+        "understood_intent": "موافقات RERA",
+        "confidence": "low",
+        "answer": {
+          "text": "المسارات العقارية الموثقة لدينا في دبي تشمل تصريح إعلان عقاري وبطاقة مزاولة مهنة عقارية، وهما معاملتان مختلفتان. أيهما تقصد؟",
+          "focus": "clarification",
+          "fact_status": "NEEDS_CLARIFICATION",
+          "grounded": false,
+          "evidence": {}
+        },
+        "grounding": {
+          "status": "NEEDS_CLARIFICATION",
+          "source_backed": false,
+          "no_invention": true,
+          "ambiguity_detected": true
+        },
+        "matches": [],
+        "missing_information": [
+          "نوع موافقة RERA"
+        ],
+        "follow_up_questions": [
+          "هل تقصد تصريح إعلان عقاري أم بطاقة مزاولة مهنة عقارية؟"
+        ],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": null,
+        "last_answer_topic": "clarification",
+        "pending_clarification": "هل تقصد تصريح إعلان عقاري أم بطاقة مزاولة مهنة عقارية؟",
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": null,
+        "authority_key": null,
+        "action": null,
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "موافقة ريرا دبي"
+      }
+    },
+    {
+      "name": "Real pending-clarification answer without repeating RERA",
+      "elapsedMs": 3213.621431,
+      "result": {
+        "understood_intent": "تصريح إعلان عقاري",
+        "confidence": "medium",
+        "answer": {
+          "text": "المسار المناسب لطلبك هو «تصريح إعلان عقاري» لدى دائرة الأراضي والأملاك / RERA في دبي. إذا كان مقدم الطلب وسيطًا عقاريًا، يلزم عقد تسويق مع مالك العقار لأنواع الإعلان المحددة في بطاقة الخدمة.; يجب تقديم مستندات المعرض قبل موعده بشهر على الأقل، ولا يسمح بالبيع أثناء المعرض بل بالحجوزات المبدئية فقط.; يلزم فاصل 30 يومًا بين معارض الدولة نفسها، ولا تُعرض عقارات دبي على الخارطة غير المسجلة لدى إدارة حسابات الضمان.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:dld-real-estate-ad-permit-dubai",
+            "policy_version": 3,
+            "workflow_key": "service:dld-real-estate-ad-permit-dubai",
+            "source_title": "تصريح إعلان عقاري — دائرة الأراضي والأملاك في دبي / مؤسسة التنظيم العقاري",
+            "source_url": "https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/",
+            "last_verified_at": "2026-10-18T12:11:02.760768+00:00",
+            "supporting_rule": {
+              "value": "إذا كان مقدم الطلب وسيطًا عقاريًا، يلزم عقد تسويق مع مالك العقار لأنواع الإعلان المحددة في بطاقة الخدمة.; يجب تقديم مستندات المعرض قبل موعده بشهر على الأقل، ولا يسمح بالبيع أثناء المعرض بل بالحجوزات المبدئية فقط.; يلزم فاصل 30 يومًا بين معارض الدولة نفسها، ولا تُعرض عقارات دبي على الخارطة غير المسجلة لدى إدارة حسابات الضمان.",
+              "source_refs": [
+                "https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": null,
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "dld-real-estate-ad-permit-dubai",
+            "service_name": "تصريح إعلان عقاري",
+            "service_name_en": "Real Estate Ad Permit",
+            "service_url": "/services/dld-real-estate-ad-permit-dubai/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "dld-rera",
+              "name_ar": "دائرة الأراضي والأملاك / RERA",
+              "name_en": "Dubai Land Department / RERA",
+              "public_url": "/authorities/dld-rera/"
+            },
+            "requirements": [
+              "نسخة من نموذج الإعلان — للإعلانات واللوحات والحملات الترويجية.",
+              "مستند موقع الفعالية عند انطباقه — عقد إيجار موقع المعرض أو إطلاق المشروع، أو خطاب عدم ممانعة من الفندق، بحسب نوع التصريح.",
+              "تصميم المنصة أو مستندات الندوة عند انطباقها — للمنصة: تصميم يوضح المقاسات وعقد الموقع. للندوة: حجز القاعة وخطاب الموضوعات.",
+              "قائمة الشركات العقارية المشاركة في المعرض — لتصريح تنظيم المعارض العقارية فقط.",
+              "تختلف المستندات باختلاف نوع الإعلان؛ تعرض بطاقة DLD الرسمية القائمة الدقيقة لكل نوع."
+            ],
+            "general_documents": [
+              "نسخة من نموذج الإعلان — للإعلانات واللوحات والحملات الترويجية.",
+              "مستند موقع الفعالية عند انطباقه — عقد إيجار موقع المعرض أو إطلاق المشروع، أو خطاب عدم ممانعة من الفندق، بحسب نوع التصريح.",
+              "تصميم المنصة أو مستندات الندوة عند انطباقها — للمنصة: تصميم يوضح المقاسات وعقد الموقع. للندوة: حجز القاعة وخطاب الموضوعات.",
+              "تختلف المستندات باختلاف نوع الإعلان؛ تعرض بطاقة DLD الرسمية القائمة الدقيقة لكل نوع."
+            ],
+            "main_steps": [
+              "تأكيد المعاملة والإمارة وصفة مقدم الطلب",
+              "مراجعة المتطلبات الحالية لدى المصدر الرسمي",
+              "اعتماد الانتقال إلى المسار الحكومي الرسمي",
+              "متابعة الطلب عبر القناة الحكومية الرسمية",
+              "توثيق النتيجة"
+            ],
+            "conditions": [
+              "إذا كان مقدم الطلب وسيطًا عقاريًا، يلزم عقد تسويق مع مالك العقار لأنواع الإعلان المحددة في بطاقة الخدمة.; يجب تقديم مستندات المعرض قبل موعده بشهر على الأقل، ولا يسمح بالبيع أثناء المعرض بل بالحجوزات المبدئية فقط.; يلزم فاصل 30 يومًا بين معارض الدولة نفسها، ولا تُعرض عقارات دبي على الخارطة غير المسجلة لدى إدارة حسابات الضمان."
+            ],
+            "official_source": {
+              "title": "تصريح إعلان عقاري — دائرة الأراضي والأملاك في دبي / مؤسسة التنظيم العقاري",
+              "url": "https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/",
+              "last_verified_at": "2026-10-18T12:11:02.760768+00:00"
+            }
+          }
+        ],
+        "missing_information": [
+          "ما الإمارة المرتبطة بهذه المعاملة؟"
+        ],
+        "follow_up_questions": [
+          "ما الإمارة المرتبطة بهذه المعاملة؟"
+        ],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": "dld-real-estate-ad-permit-dubai",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "dld-real-estate-ad-permit-dubai",
+        "authority_key": "dld-rera",
+        "action": null,
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "تصريح إعلان عقاري"
+      }
+    },
+    {
+      "name": "English RERA clarification",
+      "elapsedMs": 2476.8997419999996,
+      "result": {
+        "understood_intent": "موافقات RERA",
+        "confidence": "low",
+        "answer": {
+          "text": "The recorded Dubai real-estate pathways include an advertisement permit and a professional practice card. These are different transactions. Do you mean a real estate advertisement permit or a real estate professional practice card?",
+          "focus": "clarification",
+          "fact_status": "NEEDS_CLARIFICATION",
+          "grounded": false,
+          "evidence": {}
+        },
+        "grounding": {
+          "status": "NEEDS_CLARIFICATION",
+          "source_backed": false,
+          "no_invention": true,
+          "ambiguity_detected": true
+        },
+        "matches": [],
+        "missing_information": [
+          "نوع موافقة RERA"
+        ],
+        "follow_up_questions": [
+          "Do you mean a real estate advertisement permit or a real estate professional practice card?"
+        ],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": null,
+        "last_answer_topic": "clarification",
+        "pending_clarification": "Do you mean a real estate advertisement permit or a real estate professional practice card?",
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": null,
+        "authority_key": null,
+        "action": null,
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "RERA approval in Dubai"
+      }
+    },
+    {
+      "name": "English specific professional practice card",
+      "elapsedMs": 2706.6511869999995,
+      "result": {
+        "understood_intent": "إصدار بطاقة مزاولة مهنة لنشاط عقاري",
+        "confidence": "high",
+        "answer": {
+          "text": "Dubai Police good-conduct certificate and annual brokerage test, subject to official exemptions. Card validity follows the licence; valuer and trainee conditions also apply.",
+          "focus": "approvals",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:real-estate-professional-practice-card-dubai",
+            "policy_version": 2,
+            "workflow_key": "service:real-estate-professional-practice-card-dubai",
+            "source_title": "إصدار بطاقة مزاولة مهنة لنشاط عقاري",
+            "source_url": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/",
+            "last_verified_at": "2026-10-18T07:05:25.891495+00:00",
+            "supporting_rule": null,
+            "document_requirements": null,
+            "special_case": null,
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "real-estate-professional-practice-card-dubai",
+            "service_name": "إصدار بطاقة مزاولة مهنة لنشاط عقاري",
+            "service_name_en": "Issuance of a Real Estate Professional Practice Card",
+            "service_url": "/services/real-estate-professional-practice-card-dubai/",
+            "jurisdiction": {
+              "code": "AE-DU",
+              "name_ar": "دبي",
+              "name_en": "Dubai"
+            },
+            "authority": {
+              "key": "dld-rera",
+              "name_ar": "دائرة الأراضي والأملاك / RERA",
+              "name_en": "Dubai Land Department / RERA",
+              "public_url": "/authorities/dld-rera/"
+            },
+            "requirements": [
+              "صورة شخصية.",
+              "نسخة الهوية الإماراتية.",
+              "لبطاقة مُقيّم العقارات: شهادة خبرة سنتين للمواطن وخمس سنوات للوافد."
+            ],
+            "general_documents": [],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "حسن سيرة من شرطة دبي واختبار الوساطة السنوي مع الاستثناءات الرسمية. صلاحية البطاقة مرتبطة بالرخصة؛ توجد شروط إضافية للمُقيّم والمتدرب في البطاقة."
+            ],
+            "official_source": {
+              "title": "إصدار بطاقة مزاولة مهنة لنشاط عقاري",
+              "url": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/",
+              "last_verified_at": "2026-10-18T07:05:25.891495+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": "real-estate-professional-practice-card-dubai",
+        "last_answer_topic": "approvals",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "real-estate-professional-practice-card-dubai",
+        "authority_key": "dld-rera",
+        "action": null,
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "RERA professional practice approval Dubai"
+      }
+    },
+    {
+      "name": "No Dubai substitution for Sharjah",
+      "elapsedMs": 1782.3868170000005,
+      "result": {
+        "understood_intent": "مسار RERA غير متحقق لهذه الحالة",
+        "confidence": "low",
+        "answer": {
+          "text": "المسارات المتحققة المتاحة هنا تخص تصريح الإعلان العقاري وبطاقة مزاولة المهنة في دبي. لا أملك مسارًا متحققًا للعملية أو الإمارة التي طلبتها، ولن أعرض معاملة بديلة أو رسومًا غير مؤكدة.",
+          "focus": "clarification",
+          "fact_status": "MISSING_INFORMATION",
+          "grounded": false,
+          "evidence": {}
+        },
+        "grounding": {
+          "status": "NEEDS_CLARIFICATION",
+          "source_backed": false,
+          "no_invention": true,
+          "ambiguity_detected": true
+        },
+        "matches": [],
+        "missing_information": [
+          "مسار موثق لهذه العملية أو الإمارة"
+        ],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": null,
+        "last_answer_topic": "clarification",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-SH",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": null,
+        "authority_key": null,
+        "action": null,
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "موافقة ريرا الشارقة"
+      }
+    },
+    {
+      "name": "Explicit RERA resets synthetic prior family context",
+      "elapsedMs": 1767.6672659999986,
+      "result": {
+        "understood_intent": "موافقات RERA",
+        "confidence": "low",
+        "answer": {
+          "text": "المسارات العقارية الموثقة لدينا في دبي تشمل تصريح إعلان عقاري وبطاقة مزاولة مهنة عقارية، وهما معاملتان مختلفتان. أيهما تقصد؟",
+          "focus": "clarification",
+          "fact_status": "NEEDS_CLARIFICATION",
+          "grounded": false,
+          "evidence": {}
+        },
+        "grounding": {
+          "status": "NEEDS_CLARIFICATION",
+          "source_backed": false,
+          "no_invention": true,
+          "ambiguity_detected": true
+        },
+        "matches": [],
+        "missing_information": [
+          "نوع موافقة RERA"
+        ],
+        "follow_up_questions": [
+          "هل تقصد تصريح إعلان عقاري أم بطاقة مزاولة مهنة عقارية؟"
+        ],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": null,
+        "last_answer_topic": "clarification",
+        "pending_clarification": "هل تقصد تصريح إعلان عقاري أم بطاقة مزاولة مهنة عقارية؟",
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": null,
+        "authority_key": null,
+        "action": null,
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "موافقة ريرا دبي"
+      }
+    },
+    {
+      "name": "Affected neighbouring SIRA clarification remains separate",
+      "elapsedMs": 1756.7226019999998,
+      "result": {
+        "understood_intent": "موافقات SIRA",
+        "confidence": "low",
+        "answer": {
+          "text": "SIRA هي مؤسسة تنظيم الصناعة الأمنية في دبي. ترخيص النشاط الأمني واعتماد النظام الأمني للمنشأة معاملتان مختلفتان. هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",
+          "focus": "clarification",
+          "fact_status": "NEEDS_CLARIFICATION",
+          "grounded": false,
+          "evidence": {}
+        },
+        "grounding": {
+          "status": "NEEDS_CLARIFICATION",
+          "source_backed": false,
+          "no_invention": true,
+          "ambiguity_detected": true
+        },
+        "matches": [],
+        "missing_information": [
+          "نوع موافقة SIRA"
+        ],
+        "follow_up_questions": [
+          "هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟"
+        ],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      },
+      "context": {
+        "active_service_id": null,
+        "last_answer_topic": "clarification",
+        "pending_clarification": "هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",
+        "known_facts": {},
+        "jurisdiction_hint": "AE-DU",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": null,
+        "authority_key": null,
+        "action": null,
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "موافقة سيرا دبي"
+      }
+    }
+  ],
+  "externalModelAcceptance": "NOT_DECLARED",
+  "status": "PASS"
+}
