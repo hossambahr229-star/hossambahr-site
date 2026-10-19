@@ -6,7 +6,7 @@ import { providerFailure, completedProviderText } from "./provider-status.ts";
 import { responseContext, jurisdictionCandidates, withoutJurisdictionExclusions, jurisdictionExcludesService } from "./response-context.ts";
 import { englishResult } from "./english-response.ts";
 import { documentedRule, hasDocumentedValue, serviceIntroduction } from "./grounded-facts.ts";
-import { familyCandidate } from "./family-candidates.ts";
+import { familyCandidate, dubaiSponsorshipCandidate } from "./family-candidates.ts";
 
 const ALLOWED_ORIGINS = new Set([
   "https://hossambahr.com",
@@ -986,9 +986,8 @@ export default {
       const catalog = withoutJurisdictionExclusions(completeCatalog, currentJurisdiction);
       const catalogMs = performance.now() - catalogStarted;
       let ranked:any[];
-      const exactDubaiFamilySponsorship = relationship && semantic.action === "sponsor" && semantic.jurisdiction === "AE-DU"
-        ? catalog.find((row:any) => row.binding.service_slug === "family-residency-uae" && row.jurisdiction?.code === "AE-DU" && row.authority?.authority_key === "gdrfa-dubai")
-        : null;
+      const exactDubaiFamilySponsorship=dubaiSponsorshipCandidate(catalog,relationship,semantic.action,semantic.jurisdiction);
+      const missingDubaiParentPath=['mother','father','parents'].includes(String(relationship))&&semantic.action==='sponsor'&&semantic.jurisdiction==='AE-DU'&&!exactDubaiFamilySponsorship;
       const inheritedServiceId = String(context?.active_service_id || context?.service_slug || "");
       const inherited = contextualFollowUp && inheritedServiceId ? catalog.find((row:any)=>row.binding.service_slug===inheritedServiceId) : null;
       const pendingReraChoice=/تصريح إعلان عقاري أم بطاقة|advertisement permit or a real estate professional practice card/.test(String(context?.pending_clarification||''))?reraApprovalKind('RERA '+latestTurn):null;
@@ -999,7 +998,7 @@ export default {
       const siraKind=siraLatest || (inheritedSira ? (inheritedServiceId===SIRA_SLUGS.system?'system':'activity') : siraIntent(semanticGoal));
       const siraJurisdiction=detectJurisdiction(latestTurn)||semantic.jurisdiction||detectJurisdiction(semanticGoal);
       const inheritedJurisdictionConflict = contextualFollowUp && jurisdictionExcludesService(completeCatalog.find((row:any)=>row.binding.service_slug===inheritedServiceId), currentJurisdiction);
-      if(inheritedJurisdictionConflict){
+      if(inheritedJurisdictionConflict||missingDubaiParentPath){
         // Never replace an excluded inherited transaction with a neighbouring service.
         ranked=[];
       } else if(siraKind){
