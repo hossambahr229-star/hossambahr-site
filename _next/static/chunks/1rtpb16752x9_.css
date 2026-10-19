@@ -169,4 +169,6 @@ html a{text-underline-offset:4px}
 @media(max-width:340px){.site-header .theme-toggle,.site-header .header-search-action{display:none!important}}
 @media(prefers-reduced-motion:reduce){ *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
+html[lang="ar"].hb-page-service .service-aside:before{content:"الخطوة التالية";font-family:inherit;font-size:14px;letter-spacing:normal}
+
 /* HOSSAMBAHR A++ END */
