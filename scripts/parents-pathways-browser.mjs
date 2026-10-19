@@ -5,7 +5,7 @@ const prefix=lang==='en'?'/en':'',query=lang==='en'?'I want to sponsor my father
 await page.goto(base+prefix+'/ai/?hb_qa=1',{waitUntil:'domcontentloaded'});await page.locator('.hb-chat-send').waitFor({state:'visible'});
 await page.locator('#government-search').fill(query);await page.locator('.hb-chat-send').click();
 await page.waitForFunction(({prefix,slug})=>[...document.querySelectorAll('.hb-chat-actions a.hb-chat-secondary')].some(a=>decodeURIComponent(a.getAttribute('href')||'')===prefix+'/services/'+slug+'/'),{prefix,slug},{timeout:45000});
-const link=page.locator('.hb-chat-actions a.hb-chat-secondary[href*="/services/"]').last();const href=await link.getAttribute('href');assert.equal(decodeURIComponent(href),prefix+'/services/'+slug+'/');
+const link=page.locator('.hb-chat-actions a.hb-chat-secondary[href^="'+prefix+'/services/"]').last();const href=await link.getAttribute('href');assert.equal(decodeURIComponent(href),prefix+'/services/'+slug+'/');
 await page.screenshot({path:out+'/'+lang+'-'+width+'-assistant.png',fullPage:true});await link.click();await page.waitForURL(url=>decodeURIComponent(url.pathname)===prefix+'/services/'+slug+'/');
 const official=page.locator('[data-government-cta="verified"]').first(),assisted=page.locator('[data-commercial-cta="verified"]').first();await official.waitFor({state:'visible'});await assisted.waitFor({state:'visible'});await official.click({trial:true});await assisted.click({trial:true});
 const officialHref=await official.getAttribute('href'),assistedHref=await assisted.getAttribute('href');assert.ok(new URL(officialHref).hostname.endsWith('gdrfad.gov.ae'));assert.equal(new URL(assistedHref,base).searchParams.get('service'),slug);
