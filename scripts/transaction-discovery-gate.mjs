@@ -45,7 +45,11 @@ try{
   await page.goto(base+prefix+'/',{waitUntil:'networkidle'});
   assert.equal(await page.locator('.managed-path-action').getAttribute('href'),prefix+'/contact/?handoff=1');
   assert.ok(await page.getByRole('link',{name:en?'I know my transaction':'أعرف معاملتي',exact:true}).isVisible());
-  assert.ok(await page.getByRole('link',{name:en?'Browse authorities':'تصفح الجهات',exact:true}).isVisible());
+  const explore=page.locator('.discovery-entry>a').nth(2);
+  assert.equal(await explore.innerText(),en?'Explore our services':'تصفح خدماتنا');
+  assert.equal(await explore.getAttribute('href'),prefix+'/#service-areas');
+  await explore.click();assert.equal(new URL(page.url()).hash,'#service-areas');
+  assert.ok(await page.locator('.home-discovery-scope a[href="'+prefix+'/authorities/"]').isVisible());
   await page.getByRole('button',{name:en?'Ask about any transaction':'اسأل عن أي معاملة',exact:true}).click();
   assert.equal(await page.locator('#premium-ai-panel').getAttribute('aria-hidden'),'false');
   if(en){const text=await page.locator('#premium-ai-panel').innerText();assert.match(text,/Describe your request naturally/);assert.doesNotMatch(text,/اكتب سؤالك|أريد أجدد|إرفاق/);}
