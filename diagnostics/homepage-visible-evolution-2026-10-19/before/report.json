@@ -1,11 +1,32 @@
 {
   "source": "LIVE_PRODUCTION_BEFORE",
-  "at": "2026-10-19T06:25:08.030Z",
+  "at": "2026-10-19T06:28:24.819Z",
   "views": [
     {
       "lang": "ar",
       "width": 360,
       "status": 200,
+      "performance": {
+        "navigation": [
+          {
+            "domContentLoaded": 757.8999999999942,
+            "load": 761.6999999999971,
+            "encodedBodySize": 10853,
+            "transferSize": 11153
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 664
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 664
+          }
+        ],
+        "resourceEncodedBytes": 1085562
+      },
       "geometry": {
         "top": 257.921875,
         "height": 641.59375,
@@ -17,6 +38,27 @@
       "lang": "ar",
       "width": 390,
       "status": 200,
+      "performance": {
+        "navigation": [
+          {
+            "domContentLoaded": 395.09999999999127,
+            "load": 402,
+            "encodedBodySize": 10853,
+            "transferSize": 11153
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 296
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 296
+          }
+        ],
+        "resourceEncodedBytes": 1085562
+      },
       "geometry": {
         "top": 258.78125,
         "height": 641.59375,
@@ -28,6 +70,27 @@
       "lang": "ar",
       "width": 430,
       "status": 200,
+      "performance": {
+        "navigation": [
+          {
+            "domContentLoaded": 405.8000000000029,
+            "load": 410.6999999999971,
+            "encodedBodySize": 10853,
+            "transferSize": 11153
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 292
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 292
+          }
+        ],
+        "resourceEncodedBytes": 1085562
+      },
       "geometry": {
         "top": 258.78125,
         "height": 641.59375,
@@ -39,6 +102,27 @@
       "lang": "ar",
       "width": 1366,
       "status": 200,
+      "performance": {
+        "navigation": [
+          {
+            "domContentLoaded": 458,
+            "load": 546.3999999999942,
+            "encodedBodySize": 10853,
+            "transferSize": 11153
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 380
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 380
+          }
+        ],
+        "resourceEncodedBytes": 1584039
+      },
       "geometry": {
         "top": 367,
         "height": 253.5,
@@ -50,6 +134,27 @@
       "lang": "ar",
       "width": 1440,
       "status": 200,
+      "performance": {
+        "navigation": [
+          {
+            "domContentLoaded": 476,
+            "load": 481.09999999999127,
+            "encodedBodySize": 10853,
+            "transferSize": 11153
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 380
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 380
+          }
+        ],
+        "resourceEncodedBytes": 1584039
+      },
       "geometry": {
         "top": 367,
         "height": 253.5,
@@ -61,6 +166,27 @@
       "lang": "en",
       "width": 360,
       "status": 200,
+      "performance": {
+        "navigation": [
+          {
+            "domContentLoaded": 314.3999999999942,
+            "load": 318.1999999999971,
+            "encodedBodySize": 8505,
+            "transferSize": 8805
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 332
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 332
+          }
+        ],
+        "resourceEncodedBytes": 942215
+      },
       "geometry": {
         "top": 238.78125,
         "height": 661.59375,
@@ -72,6 +198,27 @@
       "lang": "en",
       "width": 390,
       "status": 200,
+      "performance": {
+        "navigation": [
+          {
+            "domContentLoaded": 307.70000000001164,
+            "load": 313.90000000000873,
+            "encodedBodySize": 8505,
+            "transferSize": 8805
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 296
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 296
+          }
+        ],
+        "resourceEncodedBytes": 942215
+      },
       "geometry": {
         "top": 238.78125,
         "height": 661.59375,
@@ -83,6 +230,27 @@
       "lang": "en",
       "width": 430,
       "status": 200,
+      "performance": {
+        "navigation": [
+          {
+            "domContentLoaded": 284.3000000000029,
+            "load": 288.1000000000058,
+            "encodedBodySize": 8505,
+            "transferSize": 8805
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 300
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 300
+          }
+        ],
+        "resourceEncodedBytes": 942215
+      },
       "geometry": {
         "top": 251.78125,
         "height": 648,
@@ -94,6 +262,27 @@
       "lang": "en",
       "width": 1366,
       "status": 200,
+      "performance": {
+        "navigation": [
+          {
+            "domContentLoaded": 336.1000000000058,
+            "load": 343.6000000000058,
+            "encodedBodySize": 8505,
+            "transferSize": 8805
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 256
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 256
+          }
+        ],
+        "resourceEncodedBytes": 975335
+      },
       "geometry": {
         "top": 370,
         "height": 263.09375,
@@ -105,6 +294,27 @@
       "lang": "en",
       "width": 1440,
       "status": 200,
+      "performance": {
+        "navigation": [
+          {
+            "domContentLoaded": 298.8000000000029,
+            "load": 302.3999999999942,
+            "encodedBodySize": 8505,
+            "transferSize": 8805
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 320
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 320
+          }
+        ],
+        "resourceEncodedBytes": 975335
+      },
       "geometry": {
         "top": 370,
         "height": 253.5,
