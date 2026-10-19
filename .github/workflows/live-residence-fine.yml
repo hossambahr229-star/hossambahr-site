@@ -1,0 +1,29 @@
+name: Live residence fine discovery
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/live-residence-fine.mjs']
+permissions: {contents: write}
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - name: Wait for published resolver
+        run: |
+          node --input-type=module -e "for(let n=0;n<30;n++){const t=await (await fetch('https://hossambahr.com/intent-search.js?fine512='+Date.now())).text();if(t.includes('const residenceFine='))process.exit(0);await new Promise(r=>setTimeout(r,15000));}throw Error('Latest fine source not published');"
+      - run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=diagnostics/residence-fine-production-2026-10-19 node scripts/live-residence-fine.mjs
+      - if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/residence-fine-production-2026-10-19
+          git diff --cached --quiet || git commit -m "Preserve live residence fine discovery [skip ci]"
+          git push origin HEAD:agent/dld-source-review-evidence
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: live-residence-fine, path: diagnostics/residence-fine-production-2026-10-19}
