@@ -64,7 +64,7 @@ html.hb-phase8 body[data-home-geometry] .mobile-menu .capability-grid{position:s
 
 
 /* Homepage discovery: brand-preserving visual evolution from the canonical catalog. */
-html.hb-phase8 body[data-home-geometry] .premium-category-grid.home-discovery-premium{display:block!important;background:linear-gradient(145deg,#f4f8f5,#fff)!important;border:1px solid #d3e0d8;border-radius:22px;padding:24px!important;margin:18px 30px!important;min-width:0;direction:inherit}
+html.hb-phase8 body[data-home-geometry] .premium-category-grid.home-discovery-premium{display:block!important;background:linear-gradient(145deg,#f4f8f5,#fff)!important;border:1px solid #d3e0d8;border-radius:22px;padding:24px!important;margin:18px 0!important;min-width:0;direction:inherit}
 .home-discovery-premium .home-domain-heading{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:16px}
 .home-discovery-eyebrow{display:block;color:#81601f;font-size:12px;font-weight:700;line-height:1.6;margin-bottom:5px}
 .home-discovery-premium .home-domain-heading h2{font-size:30px!important;line-height:1.4;margin:0;color:#103e36}
@@ -108,7 +108,7 @@ html.hb-phase8 body[data-home-geometry] .premium-category-grid.home-discovery-pr
 .home-discovery-premium :is(a,summary):focus-visible{outline:3px solid #b78d35;outline-offset:4px;border-radius:6px}
 @media(max-width:1100px){.home-discovery-premium .home-domain-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-discovery-premium .home-domain-card,.home-discovery-premium .home-domain-feature{grid-column:span 1}.home-discovery-premium .home-domain-card:last-child{grid-column:1/-1}}
 @media(max-width:600px){
- html.hb-phase8 body[data-home-geometry] .premium-category-grid.home-discovery-premium{margin:12px!important;padding:16px!important;border-radius:18px}
+ html.hb-phase8 body[data-home-geometry] .premium-category-grid.home-discovery-premium{margin:12px 0!important;padding:16px!important;border-radius:18px}
  .home-discovery-premium .home-domain-heading{display:block;margin-bottom:12px}
  .home-discovery-premium .home-domain-heading h2{font-size:24px!important}
  .home-discovery-premium .home-domain-heading p{font-size:13px}
