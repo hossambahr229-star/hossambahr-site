@@ -28,7 +28,7 @@ async function turn(message,s,qa){
 for(let i=0;i<100;i++){
  const s={goal:"",users:[],history:[],context:{}};const qa="continuity-"+Date.now()+"-"+i;
  const seed=seeds[i%seeds.length]; const a=await turn(seed,s,qa); const active=a.match?.service_slug;
- const expectedSeed = /أجدد رخصة شركتي في دبي/.test(seed) ? /renew-business-license-dubai/ : /إلغاء رخصة في دبي/.test(seed) ? /cancel-business-license-dubai/ : /إصدار رخصة في أم القيوين/.test(seed) ? /umm-al-quwain-mainland-licensing-official-path/ : null;
+ const expectedSeed = /والدتي/.test(seed) ? /إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/ : /أجدد رخصة شركتي في دبي/.test(seed) ? /renew-business-license-dubai/ : /إلغاء رخصة في دبي/.test(seed) ? /cancel-business-license-dubai/ : /إصدار رخصة في أم القيوين/.test(seed) ? /umm-al-quwain-mainland-licensing-official-path/ : null;
  if(expectedSeed && !expectedSeed.test(active||"")) wrong_route++;
  if(/إقامة العاملة المنزلية في أبوظبي/.test(seed) && /complaint|شكوى|عقد-عمل|تصريح-عمل/.test(active||"")) wrong_route++;
  const f=followups[i%followups.length]; const b=await turn(f,s,qa);
