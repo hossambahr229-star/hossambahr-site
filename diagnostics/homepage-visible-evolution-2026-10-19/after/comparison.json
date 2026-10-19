@@ -1,0 +1,467 @@
+{
+  "scope": "ACTUAL_BEFORE_AFTER_VISIBLE_EVOLUTION",
+  "qualityAcceptance": "NOT_DECLARED",
+  "note": "Pixel changes are evidence of changed composition, not quality or reference fidelity. Raw load timing is environment-dependent and is not a superiority benchmark.",
+  "views": [
+    {
+      "lang": "ar",
+      "width": 360,
+      "height": 900,
+      "changedPixelsPercent": 1.612962962962963,
+      "meanChannelDifference": 1.6061975308641976
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "height": 900,
+      "changedPixelsPercent": 2.2951566951566953,
+      "meanChannelDifference": 2.6316001899335233
+    },
+    {
+      "lang": "ar",
+      "width": 430,
+      "height": 900,
+      "changedPixelsPercent": 2.1098191214470283,
+      "meanChannelDifference": 2.4323574504737295
+    },
+    {
+      "lang": "ar",
+      "width": 1366,
+      "height": 900,
+      "changedPixelsPercent": 31.58809175207418,
+      "meanChannelDifference": 38.513747898703976
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "height": 900,
+      "changedPixelsPercent": 31.438734567901236,
+      "meanChannelDifference": 38.542816100823046
+    },
+    {
+      "lang": "en",
+      "width": 360,
+      "height": 900,
+      "changedPixelsPercent": 1.2799382716049383,
+      "meanChannelDifference": 1.4989948559670783
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "height": 900,
+      "changedPixelsPercent": 1.1877492877492877,
+      "meanChannelDifference": 1.3904045584045583
+    },
+    {
+      "lang": "en",
+      "width": 430,
+      "height": 900,
+      "changedPixelsPercent": 1.720671834625323,
+      "meanChannelDifference": 1.9084969853574505
+    },
+    {
+      "lang": "en",
+      "width": 1366,
+      "height": 900,
+      "changedPixelsPercent": 30.944444444444443,
+      "meanChannelDifference": 38.52195813676048
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "height": 900,
+      "changedPixelsPercent": 30.83101851851852,
+      "meanChannelDifference": 38.2860591563786
+    }
+  ],
+  "performance": [
+    {
+      "lang": "ar",
+      "width": 360,
+      "before": {
+        "navigation": [
+          {
+            "domContentLoaded": 757.8999999999942,
+            "load": 761.6999999999971,
+            "encodedBodySize": 10853,
+            "transferSize": 11153
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 664
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 664
+          }
+        ],
+        "resourceEncodedBytes": 1085562
+      },
+      "after": {
+        "navigation": [
+          {
+            "domContentLoaded": 563.4000000000233,
+            "load": 566,
+            "encodedBodySize": 11076,
+            "transferSize": 11376
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 460
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 460
+          }
+        ],
+        "resourceEncodedBytes": 1008575
+      }
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "before": {
+        "navigation": [
+          {
+            "domContentLoaded": 395.09999999999127,
+            "load": 402,
+            "encodedBodySize": 10853,
+            "transferSize": 11153
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 296
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 296
+          }
+        ],
+        "resourceEncodedBytes": 1085562
+      },
+      "after": {
+        "navigation": [
+          {
+            "domContentLoaded": 187.5,
+            "load": 192.09999999997672,
+            "encodedBodySize": 56501,
+            "transferSize": 0
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 188
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 188
+          }
+        ],
+        "resourceEncodedBytes": 1737429
+      }
+    },
+    {
+      "lang": "ar",
+      "width": 430,
+      "before": {
+        "navigation": [
+          {
+            "domContentLoaded": 405.8000000000029,
+            "load": 410.6999999999971,
+            "encodedBodySize": 10853,
+            "transferSize": 11153
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 292
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 292
+          }
+        ],
+        "resourceEncodedBytes": 1085562
+      },
+      "after": {
+        "navigation": [
+          {
+            "domContentLoaded": 74.59999999997672,
+            "load": 78.29999999998836,
+            "encodedBodySize": 56501,
+            "transferSize": 0
+          }
+        ],
+        "paint": [],
+        "resourceEncodedBytes": 1737429
+      }
+    },
+    {
+      "lang": "ar",
+      "width": 1366,
+      "before": {
+        "navigation": [
+          {
+            "domContentLoaded": 458,
+            "load": 546.3999999999942,
+            "encodedBodySize": 10853,
+            "transferSize": 11153
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 380
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 380
+          }
+        ],
+        "resourceEncodedBytes": 1584039
+      },
+      "after": {
+        "navigation": [
+          {
+            "domContentLoaded": 120.20000000001164,
+            "load": 129.59999999997672,
+            "encodedBodySize": 56501,
+            "transferSize": 0
+          }
+        ],
+        "paint": [],
+        "resourceEncodedBytes": 2385146
+      }
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "before": {
+        "navigation": [
+          {
+            "domContentLoaded": 476,
+            "load": 481.09999999999127,
+            "encodedBodySize": 10853,
+            "transferSize": 11153
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 380
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 380
+          }
+        ],
+        "resourceEncodedBytes": 1584039
+      },
+      "after": {
+        "navigation": [
+          {
+            "domContentLoaded": 78.20000000001164,
+            "load": 82,
+            "encodedBodySize": 56501,
+            "transferSize": 0
+          }
+        ],
+        "paint": [],
+        "resourceEncodedBytes": 2385146
+      }
+    },
+    {
+      "lang": "en",
+      "width": 360,
+      "before": {
+        "navigation": [
+          {
+            "domContentLoaded": 314.3999999999942,
+            "load": 318.1999999999971,
+            "encodedBodySize": 8505,
+            "transferSize": 8805
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 332
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 332
+          }
+        ],
+        "resourceEncodedBytes": 942215
+      },
+      "after": {
+        "navigation": [
+          {
+            "domContentLoaded": 247,
+            "load": 255.5,
+            "encodedBodySize": 38858,
+            "transferSize": 39158
+          }
+        ],
+        "paint": [],
+        "resourceEncodedBytes": 1711100
+      }
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "before": {
+        "navigation": [
+          {
+            "domContentLoaded": 307.70000000001164,
+            "load": 313.90000000000873,
+            "encodedBodySize": 8505,
+            "transferSize": 8805
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 296
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 296
+          }
+        ],
+        "resourceEncodedBytes": 942215
+      },
+      "after": {
+        "navigation": [
+          {
+            "domContentLoaded": 47.29999999998836,
+            "load": 60.5,
+            "encodedBodySize": 38858,
+            "transferSize": 0
+          }
+        ],
+        "paint": [],
+        "resourceEncodedBytes": 1711100
+      }
+    },
+    {
+      "lang": "en",
+      "width": 430,
+      "before": {
+        "navigation": [
+          {
+            "domContentLoaded": 284.3000000000029,
+            "load": 288.1000000000058,
+            "encodedBodySize": 8505,
+            "transferSize": 8805
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 300
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 300
+          }
+        ],
+        "resourceEncodedBytes": 942215
+      },
+      "after": {
+        "navigation": [
+          {
+            "domContentLoaded": 46.59999999997672,
+            "load": 61.20000000001164,
+            "encodedBodySize": 38858,
+            "transferSize": 0
+          }
+        ],
+        "paint": [],
+        "resourceEncodedBytes": 1711100
+      }
+    },
+    {
+      "lang": "en",
+      "width": 1366,
+      "before": {
+        "navigation": [
+          {
+            "domContentLoaded": 336.1000000000058,
+            "load": 343.6000000000058,
+            "encodedBodySize": 8505,
+            "transferSize": 8805
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 256
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 256
+          }
+        ],
+        "resourceEncodedBytes": 975335
+      },
+      "after": {
+        "navigation": [
+          {
+            "domContentLoaded": 56.5,
+            "load": 65.79999999998836,
+            "encodedBodySize": 38858,
+            "transferSize": 0
+          }
+        ],
+        "paint": [],
+        "resourceEncodedBytes": 1744220
+      }
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "before": {
+        "navigation": [
+          {
+            "domContentLoaded": 298.8000000000029,
+            "load": 302.3999999999942,
+            "encodedBodySize": 8505,
+            "transferSize": 8805
+          }
+        ],
+        "paint": [
+          {
+            "name": "first-paint",
+            "startTime": 320
+          },
+          {
+            "name": "first-contentful-paint",
+            "startTime": 320
+          }
+        ],
+        "resourceEncodedBytes": 975335
+      },
+      "after": {
+        "navigation": [
+          {
+            "domContentLoaded": 58,
+            "load": 68.79999999998836,
+            "encodedBodySize": 38858,
+            "transferSize": 0
+          }
+        ],
+        "paint": [],
+        "resourceEncodedBytes": 1744220
+      }
+    }
+  ]
+}
