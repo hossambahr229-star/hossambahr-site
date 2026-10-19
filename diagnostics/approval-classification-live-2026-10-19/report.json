@@ -1,8 +1,44 @@
 {
   "scope": "LIVE_PRODUCTION",
-  "at": "2026-10-19T05:35:06.180Z",
-  "views": [],
+  "at": "2026-10-19T05:36:36.995Z",
+  "views": [
+    {
+      "lang": "ar",
+      "width": 390,
+      "approvalExclusions": 3,
+      "retainedDirectoryServices": 3,
+      "permitDomainCorrections": 5,
+      "typedFilters": 3,
+      "status": "PASS"
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "approvalExclusions": 3,
+      "retainedDirectoryServices": 3,
+      "permitDomainCorrections": 5,
+      "typedFilters": 3,
+      "status": "PASS"
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "approvalExclusions": 3,
+      "retainedDirectoryServices": 3,
+      "permitDomainCorrections": 5,
+      "typedFilters": 3,
+      "status": "PASS"
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "approvalExclusions": 3,
+      "retainedDirectoryServices": 3,
+      "permitDomainCorrections": 5,
+      "typedFilters": 3,
+      "status": "PASS"
+    }
+  ],
   "records": 202,
-  "status": "FAIL",
-  "error": "TimeoutError: page.waitForFunction: Timeout 30000ms exceeded."
+  "status": "PASS"
 }
