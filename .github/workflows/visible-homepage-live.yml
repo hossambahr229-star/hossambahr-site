@@ -1,0 +1,30 @@
+name: Visible homepage live production
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/visible-homepage-live.mjs','.github/workflows/visible-homepage-live.yml','scripts/visible-homepage-diff.mjs']
+permissions: {contents: write}
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0 sharp@0.35.4
+      - run: HB_BROWSER_PATH="$(which chrome)" HB_BASE_URL=https://hossambahr.com HB_OUTPUT_DIR=diagnostics/homepage-visible-evolution-2026-10-19/after node scripts/visible-homepage-live.mjs
+      - run: node scripts/visible-homepage-diff.mjs
+      - name: Preserve real homepage release evidence
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/homepage-visible-evolution-2026-10-19/after
+          git diff --cached --quiet || git commit -m "Preserve actual visible homepage release and comparisons [skip ci]"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: visible-homepage-live, path: diagnostics/homepage-visible-evolution-2026-10-19/after}
