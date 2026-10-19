@@ -1,0 +1,44 @@
+{
+  "base": "http://127.0.0.1:4174",
+  "source": "REBUILT_PREVIEW",
+  "views": [
+    {
+      "locale": "ar",
+      "width": 360,
+      "height": 800,
+      "overflow": false,
+      "labels": [
+        "الأنشطة الاقتصادية والأكواد",
+        "الموافقات والتصاريح والأمن",
+        "الشركات والرخص",
+        "الإقامة والتأشيرات والهوية",
+        "العمل والموارد البشرية",
+        "المستثمرون والمناطق الحرة",
+        "العقارات والإيجاري وRERA",
+        "العقود والتوكيلات والتصديقات",
+        "الصحة والتعليم والشهادات",
+        "النقل والجمارك",
+        "المخالفات والضرائب"
+      ],
+      "count": 11,
+      "first": 1239.078125,
+      "last": 3239.65625,
+      "heroBottom": 829.921875,
+      "computed": {
+        "heading": 169.78125,
+        "gridColumns": "130px 130px",
+        "cardHeight": 647.671875,
+        "summaryHeight": 110.90625,
+        "iconHeight": 34,
+        "summaryPadding": "0px"
+      },
+      "status": "MEASURED_BEFORE_ASSERTIONS"
+    }
+  ],
+  "journeys": [],
+  "fiveSecondAssessment": "STRUCTURED_SIMULATION_NOT_HUMAN_ACCEPTANCE",
+  "governmentComparison": "NOT_YET_MEASURED; no superiority claim",
+  "humanVisualAcceptance": "NOT_DECLARED",
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Readable discovery text contrast\n+ actual - expected\n\n+ [\n+   {\n+     ratio: 1,\n+     text: 'أنجزها مع حسام بحر · واتساب'\n+   },\n+   {\n+     ratio: 2.4004156611133154,\n+     text: 'اعرف نوع الموافقة أولًا'\n+   },\n+   {\n+     ratio: 1,\n+     text: 'الموافقات والتصاريح والأمن'\n+   },\n+   {\n+     ratio: 1,\n+     text: 'إصدار ترخيص نشاط أمني جديد في دبي'\n+   },\n+   {\n+     ratio: 1.2888735782305811,\n+     text: 'معلومات ومسار رسمي'\n+   },\n+   {\n+     ratio: 1,\n+     text: 'إصدار شهادة اعتماد نظام أمني للمنشأة في دبي'\n+   },\n+   {\n+     ratio: 1.2888735782305811,\n+     text: 'معلومات ومسار رسمي'\n+   },\n+   {\n+     ratio: 1.4440765560358944,\n+     text: 'اكتشف الموافقات والتصاريح ←'\n+   }\n+ ]\n- []\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/home-business-domains-browser.mjs:16:12"
+}
