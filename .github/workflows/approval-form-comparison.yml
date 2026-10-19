@@ -1,0 +1,25 @@
+name: Approval full form before after
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/approval-form-comparison.mjs','.github/workflows/approval-form-comparison.yml']
+permissions: {contents: write}
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0 sharp@0.35.4
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/approval-form-comparison.mjs
+      - name: Preserve full form comparisons
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/product-evolution-2026-10-19/form-comparison
+          git diff --cached --quiet || git commit -m "Preserve full approval form comparison [skip ci]"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push
