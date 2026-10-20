@@ -1,0 +1,7 @@
+{
+  "base": "https://hossambahr.com",
+  "humanUsability": "NOT_VERIFIED",
+  "checks": [],
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(new URL(whats).searchParams.get('text').includes(q))\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/live-described-business.mjs:4:1733"
+}
