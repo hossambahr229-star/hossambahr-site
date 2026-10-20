@@ -11,7 +11,8 @@ declare
  item jsonb := $facts${"requirements":["خطاب من وزارة الموارد البشرية والتوطين يثبت إلغاء بطاقة المنشأة.","أخذ بصمة المستثمر أو ممثله القانوني في مركز تقديم الخدمة."],"fees":"رسوم منشورة ومشروطة: إعلان الإلغاء 350 درهمًا؛ إلغاء الرخصة من 150 إلى 3000 درهم. محو السجل: 500 درهم إذا انتهت الرخصة لأقل من سنة، و1000 من سنة إلى سنتين، و1500 لسنتين فأكثر. لا تمثل البنود إجماليًا ثابتًا؛ تؤكد SEDD المبلغ بحسب الحالة.","duration":"7 أيام وفق بطاقة إلغاء الرخصة؛ تخضع النتيجة لاستكمال الإجراءات وانقضاء مدة الإعلان القانونية، وليست ضمانًا لإغلاق الشركة والعمالة خلال هذه المدة.","conditions":"لإلغاء الرخصة نهائيًا بعد الإجراءات القانونية والإعلان، وليس تجميدها. يجب مراجعة متطلبات العمالة وبطاقة المنشأة مع وزارة الموارد البشرية والتوطين؛ إلغاء الرخصة لا يعني أن المنصة ألغت تصاريح العمل. زر البدء الظاهر في البطاقة يشير إلى مسار إصدار رخصة؛ نربط ببطاقة المعلومات ونطلب تأكيد مسار الإلغاء من SEDD.","sourceUrl":"https://sedd.ae/ar/w/license-issuance-copy-"}$facts$::jsonb;
  review_tag text := 'sedd-cancellation-card-2026-10-20';
 begin
- select * into strict b from public.hb_service_bindings where service_slug='sharjah-economic-license-cancellation' and active for update;
+ select * into b from public.hb_service_bindings where service_slug='sharjah-economic-license-cancellation' and active for update;
+ if not found then raise notice 'SEDD cancellation data review deferred: binding absent from this catalog'; return;end if;
  if exists(select 1 from public.hb_policy_versions where policy_key=b.policy_key and jurisdiction_id is not distinct from b.jurisdiction_id and status='active' and reviewed_by=review_tag) then return;end if;
  select * into strict p from public.hb_policy_versions where policy_key=b.policy_key and jurisdiction_id is not distinct from b.jurisdiction_id and status='active' for update;
  if p.version<>1 then raise exception 'Unexpected SEDD cancellation policy version: %',p.version;end if;
