@@ -1,0 +1,26 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "live": false,
+  "journeys": [
+    {
+      "locale": "ar",
+      "q": "مواد غذائية في دبي",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "q": "cafeteria in Dubai",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "q": "translation office in Dubai",
+      "result": "PASS"
+    }
+  ],
+  "responsive": [],
+  "humanVisualAcceptance": "NOT_DECLARED",
+  "officialBenchmark": "NOT_MEASURED; no superiority claim",
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n12 !== 0\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/capability-discovery-browser.mjs:15:590"
+}
