@@ -307,6 +307,7 @@
 
   function quickRepliesFor(question, payload) {
     const q = String(question || "");
+    if (/تصريح إعلان عقاري أم بطاقة|advertisement permit or (?:a )?(?:real estate )?professional practice card/i.test(q)) return english ? ["Real estate advertisement permit in Dubai", "Real estate professional practice card in Dubai"] : ["تصريح إعلان عقاري في دبي", "بطاقة مزاولة مهنة عقارية في دبي"];
     if (/ترخيص نشاط أمني أم اعتماد|security activity licence or security system certification/i.test(q)) return english ? ["New security activity licence in Dubai", "Security system certification in Dubai"] : ["ترخيص نشاط أمني جديد في دبي", "اعتماد نظام أمني لمنشأة في دبي"];
     if (/نوع المشكلة|النتيجة التي تريدها|problem or outcome|transaction or outcome/i.test(q)) return ["تجديد", "إصدار جديد", "إلغاء", "رفض أو تأخير"];
     if (/إمارة|الامارة|الإماره|اماره|emirate|jurisdiction/i.test(q)) return ["دبي", "أبوظبي", "الشارقة", "إمارة أخرى"];

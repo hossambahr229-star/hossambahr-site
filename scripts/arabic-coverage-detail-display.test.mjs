@@ -8,7 +8,7 @@ test('Arabic coverage generator renders honest missing-detail labels and preserv
  const root=await mkdtemp(join(tmpdir(),'hb-coverage-display-'));
  try{
   for(const dir of ['src/publication','src/registry','content','services'])await mkdir(join(root,dir),{recursive:true});
-  for(const file of ['src/publication/generate-dubai-coverage-pages.mjs','src/registry/recorded-fact-state.mjs'])await copyFile(new URL('../'+file,import.meta.url),join(root,file));
+  for(const file of ['src/publication/generate-dubai-coverage-pages.mjs','src/registry/recorded-fact-state.mjs','service-capabilities.js','intent-search.js','sira-intent.js'])await copyFile(new URL('../'+file,import.meta.url),join(root,file));
   const coverage=JSON.parse(await readFile(new URL('../content/government-coverage-expansion.json',import.meta.url),'utf8'));
   const original=coverage.authorities.find(x=>x.id==='uaq-business');
   const service=original.newVerifiedServices.find(x=>x.slug==='umm-al-quwain-trade-name-official-path');
