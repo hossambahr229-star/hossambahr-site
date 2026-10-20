@@ -6,7 +6,7 @@ for(const lang of ['ar','en'])for(const width of [390,1440])for(const kind of ['
  const p=await browser.newPage({viewport:{width,height:900}}),pre=lang==='en'?'/en':'',q=kind==='cafeteria'?(lang==='en'?'I want to open a cafeteria in Ajman':'عايز أفتح كافتيريا في عجمان'):(lang==='en'?'I want to open a foodstuff company in Dubai':'عايز أفتح شركة مواد غذائية في دبي');
  let modelRequests=0;p.on('request',r=>{if(r.url().includes('/functions/v1/public-ai-concierge'))modelRequests++;});
  await p.goto(base+pre+'/ai/?q='+encodeURIComponent(q),{waitUntil:'networkidle'});
- const link=p.locator('[data-activity-discovery]').last();await link.waitFor();assert.equal(new URL(await link.getAttribute('href'),base).searchParams.get('q'),q);
+ const link=p.locator('[data-activity-discovery]').last();await link.waitFor();assert.ok((await link.boundingBox()).height>=44,'Activity action keeps a touch-sized target');assert.equal(new URL(await link.getAttribute('href'),base).searchParams.get('q'),q);
  assert.equal(modelRequests,0,'Local catalog navigation does not claim model execution');
  await p.locator('#government-search').fill(lang==='en'?'fees':'والرسوم؟');await p.locator('.hb-chat-send').click();
  await p.waitForFunction(()=>document.querySelectorAll('[data-activity-discovery]').length===2);

@@ -564,10 +564,11 @@
     const body = create("div", "hb-chat-answer");
     body.dataset.activityGuidance = "true";
     body.append(create("p", "hb-chat-answer-intro", text));
-    const link = create("a", "hb-chat-context-chip", english ? "Find my business activity" : "حدد نشاط مشروعي");
+    const actions = create("div", "hb-chat-actions");
+    const link = create("a", "hb-chat-primary", english ? "Find my business activity" : "حدد نشاط مشروعي");
     link.dataset.activityDiscovery = "true";
     link.href = (english ? "/en" : "") + "/business-activities/?q=" + encodeURIComponent(state.original_goal);
-    body.append(link);
+    actions.append(link); body.append(actions);
     removePending(pending);
     state.history.push({role:"user",content:displayed},{role:"assistant",content:text});
     state.history = state.history.slice(-8);
