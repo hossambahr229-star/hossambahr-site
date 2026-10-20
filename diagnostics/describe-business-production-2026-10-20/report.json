@@ -1,7 +1,105 @@
 {
   "base": "https://hossambahr.com",
   "humanUsability": "NOT_VERIFIED",
-  "checks": [],
-  "status": "FAIL",
-  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(new URL(whats).searchParams.get('text').includes(q))\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/live-described-business.mjs:4:1733"
+  "checks": [
+    {
+      "lang": "ar",
+      "width": 390,
+      "kind": "cafeteria",
+      "query": "عايز أفتح كافتيريا في عجمان",
+      "status": "PASS",
+      "submitInteractionsToActivity": 1,
+      "interactionsToContact": 2,
+      "elapsedMs": 358,
+      "contextPreserved": true
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "kind": "foodstuff",
+      "query": "عايز أفتح شركة مواد غذائية في دبي",
+      "status": "PASS",
+      "submitInteractionsToActivity": 1,
+      "interactionsToContact": 2,
+      "elapsedMs": 396,
+      "contextPreserved": true
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "kind": "cafeteria",
+      "query": "عايز أفتح كافتيريا في عجمان",
+      "status": "PASS",
+      "submitInteractionsToActivity": 1,
+      "interactionsToContact": 2,
+      "elapsedMs": 273,
+      "contextPreserved": true
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "kind": "foodstuff",
+      "query": "عايز أفتح شركة مواد غذائية في دبي",
+      "status": "PASS",
+      "submitInteractionsToActivity": 1,
+      "interactionsToContact": 2,
+      "elapsedMs": 389,
+      "contextPreserved": true
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "kind": "cafeteria",
+      "query": "I want to open a cafeteria in Ajman",
+      "status": "PASS",
+      "submitInteractionsToActivity": 1,
+      "interactionsToContact": 2,
+      "elapsedMs": 274,
+      "contextPreserved": true
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "kind": "foodstuff",
+      "query": "I want to open a foodstuff company in Dubai",
+      "status": "PASS",
+      "submitInteractionsToActivity": 1,
+      "interactionsToContact": 2,
+      "elapsedMs": 369,
+      "contextPreserved": true
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "kind": "cafeteria",
+      "query": "I want to open a cafeteria in Ajman",
+      "status": "PASS",
+      "submitInteractionsToActivity": 1,
+      "interactionsToContact": 2,
+      "elapsedMs": 272,
+      "contextPreserved": true
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "kind": "foodstuff",
+      "query": "I want to open a foodstuff company in Dubai",
+      "status": "PASS",
+      "submitInteractionsToActivity": 1,
+      "interactionsToContact": 2,
+      "elapsedMs": 383,
+      "contextPreserved": true
+    },
+    {
+      "lang": "ar",
+      "case": "Non-business need still enters assistant",
+      "status": "PASS"
+    },
+    {
+      "lang": "en",
+      "case": "Non-business need still enters assistant",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
 }
