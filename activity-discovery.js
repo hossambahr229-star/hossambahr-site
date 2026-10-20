@@ -4,7 +4,7 @@ export const ACTIVITY_EMIRATES=[
  ['دبي','Dubai'],['أبوظبي','Abu Dhabi'],['الشارقة','Sharjah'],['عجمان','Ajman'],
  ['رأس الخيمة','Ras Al Khaimah'],['الفجيرة','Fujairah'],['أم القيوين','Umm Al Quwain']
 ];
-const aliases=[['كافتيريا','كافيتريا','cafeteria'],['مواد غذائيه','اغذيه','foodstuff','foodstuffs','groceries'],['ترجمه','translation'],['تجاره الكترونيه','التجاره الالكترونيه','e commerce','ecommerce','online trading'],['مطعم','restaurant']].map(g=>g.map(normalizeIntent));
+const aliases=[['كافتيريا','كافيتريا','cafeteria'],['مواد غذائيه','المواد الغذائيه','اغذيه','foodstuff','foodstuffs','groceries','food'],['ترجمه','translation'],['تجاره الكترونيه','التجاره الالكترونيه','e commerce','ecommerce','online trading'],['مطعم','restaurant']].map(g=>g.map(normalizeIntent));
 const stop=new Set(normalizeIntent('عايز عاوز عاوزه اريد ابغي ابي احتاج محتاج افتح فتح تاسيس شركه مشروع نشاط مكتب في دبي ابوظبي ابو ظبي الشارقه عجمان راس الخيمه الفجيره ام القيوين i want need open start set up setup a an the company business in dubai abu dhabi sharjah ajman ras al khaimah fujairah umm quwain').split(' '));
 
 export function activityEmirate(query){
@@ -13,16 +13,49 @@ export function activityEmirate(query){
  return found.length===1?found[0][0]:null;
 }
 
+
+const foodTerms=new Set(normalizeIntent('مواد المواد غذائية الغذائية اغذية الأغذية غذاء تجارة التجارية تجاره تصنيع صناعة الصناعة مصنع توريد تموين food foodstuff foodstuffs groceries trading trade wholesale retail supply services manufacture manufacturing factory products product to').split(' '));
+export function foodActivityMode(query){
+ const q=normalizeIntent(query);
+ if(/تصنيع|صناع|مصنع|manufactur|factory/.test(q))return 'manufacture';
+ if(/تموين|توريد|supply|catering/.test(q))return 'supply';
+ if(/تجاره|تجاريه|trading|wholesale|retail/.test(q))return 'trade';
+ return null;
+}
+export function foodActivityQuestion(query,records=[],emirate='دبي'){
+ if(emirate!=='دبي')return null;
+ const q=normalizeIntent(query);
+ if(/^\d+$/.test(q)||!aliases[1].some(term=>q.includes(term)))return null;
+ const mode=foodActivityMode(query);
+ if(!mode)return 'operation';
+ if(mode==='manufacture'){
+  const words=q.split(' ').filter(w=>w.length>2&&!stop.has(w)&&!foodTerms.has(w));
+  const productNamed=words.some(w=>records.some(r=>normalizeIntent(r.a+' '+r.e).includes(w)&&/manufactur/i.test(r.ke+' '+r.e)));
+  if(!productNamed)return 'product';
+ }
+ return null;
+}
+
 export function findActivities(records,{query='',emirate='',category=''}={}){
  // This source is explicitly a Dubai activity register. Never relabel its
 // codes or licensing conditions as belonging to another emirate.
  if(emirate!=='دبي')return [];
  const q=normalizeIntent(query),terms=q.split(' ').filter(t=>t.length>1&&!stop.has(t));
  const concepts=aliases.filter(group=>group.some(term=>q.includes(term)));
- return records.filter(r=>!category||r.k===category).map(record=>{
+ const mode=foodActivityMode(query),food=aliases[1].some(term=>q.includes(term)),animals=/animal|fodder|feed|pet |اعلاف|حيوان/.test(q);
+ return records.filter(r=>!category||r.k===category).filter(r=>{
+  if(!food)return true;
+  const name=normalizeIntent(r.a+' '+r.e);
+  if(!animals&&/fodder|animal feed|اعلاف|الاعلاف/.test(name))return false;
+  if(mode==='trade')return /trading/i.test(r.e);
+  if(mode==='manufacture')return /manufactur/i.test(r.ke+' '+r.e);
+  if(mode==='supply')return /supply|catering|تموين|توريد/.test(name);
+  return true;
+ }).map(record=>{
   const name=normalizeIntent(record.a+' '+record.e),body=normalizeIntent(name+' '+(record.d||'')+' '+(record.q||'')+' '+(record.g||'')+' '+(record.ge||''));
   let score=q===String(record.c)?10000:0;
   if(concepts.length){for(const group of concepts){const matches=group.filter(term=>name.includes(term));if(matches.length)score+=matches.some(term=>term!=='اغذيه')?100:10;for(const term of matches)if(q.includes(term))score+=200;}}
+  if(concepts.length)for(const term of terms.filter(t=>!foodTerms.has(t))){if(name.includes(term))score+=120;}
   else for(const term of terms){if(name.includes(term))score+=20;else if(body.includes(term))score+=2;}
   return {record,score};
  }).filter(r=>!q||r.score>0).sort((a,b)=>b.score-a.score||String(a.record.c).localeCompare(String(b.record.c))).map(r=>r.record);
