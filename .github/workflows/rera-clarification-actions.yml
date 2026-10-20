@@ -1,0 +1,13 @@
+name: RERA clarification action regression
+on:
+  push:
+    branches: [agent/rera-clarification-actions]
+permissions: {contents: read}
+jobs:
+  choices:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/rera-clarification-actions.test.mjs
