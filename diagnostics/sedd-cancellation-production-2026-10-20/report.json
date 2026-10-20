@@ -1,0 +1,33 @@
+{
+  "base": "https://hossambahr.com",
+  "humanUsability": "NOT_VERIFIED",
+  "privateExecution": "NOT_TESTED",
+  "checks": [
+    {
+      "lang": "ar",
+      "width": 390,
+      "case": "Service facts, scoped official information and assisted route",
+      "status": "PASS"
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "case": "Service facts, scoped official information and assisted route",
+      "status": "PASS"
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "case": "Service facts, scoped official information and assisted route",
+      "status": "PASS"
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "case": "Service facts, scoped official information and assisted route",
+      "status": "PASS"
+    }
+  ],
+  "status": "FAIL",
+  "error": "page.waitForFunction: Timeout 60000ms exceeded.\n    at /home/runner/work/hossambahr-site/hossambahr-site/scripts/live-sedd-cancellation.mjs:20:10"
+}
