@@ -1,0 +1,89 @@
+{
+  "base": "http://127.0.0.1:4181",
+  "humanUsability": "NOT_VERIFIED",
+  "checks": [
+    {
+      "lang": "ar",
+      "width": 390,
+      "kind": "cafeteria",
+      "query": "عايز أفتح كافتيريا في عجمان",
+      "status": "PASS",
+      "submitInteractions": 1,
+      "elapsedMs": 268
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "kind": "foodstuff",
+      "query": "عايز أفتح شركة مواد غذائية في دبي",
+      "status": "PASS",
+      "submitInteractions": 1,
+      "elapsedMs": 361
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "kind": "cafeteria",
+      "query": "عايز أفتح كافتيريا في عجمان",
+      "status": "PASS",
+      "submitInteractions": 1,
+      "elapsedMs": 254
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "kind": "foodstuff",
+      "query": "عايز أفتح شركة مواد غذائية في دبي",
+      "status": "PASS",
+      "submitInteractions": 1,
+      "elapsedMs": 390
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "kind": "cafeteria",
+      "query": "I want to open a cafeteria in Ajman",
+      "status": "PASS",
+      "submitInteractions": 1,
+      "elapsedMs": 263
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "kind": "foodstuff",
+      "query": "I want to open a foodstuff company in Dubai",
+      "status": "PASS",
+      "submitInteractions": 1,
+      "elapsedMs": 354
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "kind": "cafeteria",
+      "query": "I want to open a cafeteria in Ajman",
+      "status": "PASS",
+      "submitInteractions": 1,
+      "elapsedMs": 266
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "kind": "foodstuff",
+      "query": "I want to open a foodstuff company in Dubai",
+      "status": "PASS",
+      "submitInteractions": 1,
+      "elapsedMs": 378
+    },
+    {
+      "lang": "ar",
+      "case": "Non-business need still enters assistant",
+      "status": "PASS"
+    },
+    {
+      "lang": "en",
+      "case": "Non-business need still enters assistant",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

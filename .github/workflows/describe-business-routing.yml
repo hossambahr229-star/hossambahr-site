@@ -1,0 +1,26 @@
+name: Describe business idea routing
+on:
+  push:
+    branches: [agent/describe-business-routing]
+permissions: {contents: write}
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - run: npm run build
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/describe-business-browser.mjs
+      - if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add artifacts/describe-business
+          git diff --cached --quiet || git commit -m "Preserve describe business routing preview [skip ci]"
+          git push origin HEAD:agent/describe-business-routing
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: describe-business-routing, path: artifacts/describe-business}
