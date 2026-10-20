@@ -1,0 +1,17 @@
+name: SEDD cancellation source card
+on:
+  push:
+    branches: [agent/sedd-cancellation-card]
+permissions: {contents: write}
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - run: npm run build
+      - run: node --test test/architecture/sedd-cancellation-card.test.mjs
+
