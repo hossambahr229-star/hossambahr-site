@@ -1,0 +1,359 @@
+{
+  "source": "REAL_PRODUCTION_BROWSER",
+  "humanUsability": "NOT_VERIFIED",
+  "semanticAcceptance": "REQUIRES_REVIEW",
+  "cases": [
+    {
+      "id": "sira",
+      "query": "محتاج موافقة سيرا في دبي",
+      "elapsedMs": 3998,
+      "submitInteractions": 1,
+      "state": {
+        "service_slug": null,
+        "jurisdiction_code": "AE-DU",
+        "relationship": null,
+        "pending_clarification": "هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",
+        "history": [
+          {
+            "role": "user",
+            "content": "محتاج موافقة سيرا في دبي"
+          },
+          {
+            "role": "assistant",
+            "content": "SIRA هي مؤسسة تنظيم الصناعة الأمنية في دبي. ترخيص النشاط الأمني واعتماد النظام الأمني للمنشأة معاملتان مختلفتان. هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟"
+          }
+        ],
+        "known_facts": {}
+      },
+      "actions": [
+        {
+          "text": "اطلب مراجعة معاملتك مع حسام بحر",
+          "href": "/contact/?handoff=1"
+        }
+      ],
+      "body": "محتاج موافقة سيرا في دبي\n\nHB AI\n\nSIRA هي مؤسسة تنظيم الصناعة الأمنية في دبي. ترخيص النشاط الأمني واعتماد النظام الأمني للمنشأة معاملتان مختلفتان. هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟\n\nهل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟\nترخيص نشاط أمني جديد في دبياعتماد نظام أمني لمنشأة في دبي\nاطلب مراجعة معاملتك مع حسام بحر",
+      "status": "CAPTURED"
+    },
+    {
+      "id": "rera",
+      "query": "محتاج موافقة ريرا في دبي",
+      "elapsedMs": 2873,
+      "submitInteractions": 1,
+      "state": {
+        "service_slug": null,
+        "jurisdiction_code": "AE-DU",
+        "relationship": null,
+        "pending_clarification": "هل تقصد تصريح إعلان عقاري أم بطاقة مزاولة مهنة عقارية؟",
+        "history": [
+          {
+            "role": "user",
+            "content": "محتاج موافقة ريرا في دبي"
+          },
+          {
+            "role": "assistant",
+            "content": "المسارات العقارية الموثقة لدينا في دبي تشمل تصريح إعلان عقاري وبطاقة مزاولة مهنة عقارية، وهما معاملتان مختلفتان. أيهما تقصد؟"
+          }
+        ],
+        "known_facts": {}
+      },
+      "actions": [
+        {
+          "text": "اطلب مراجعة معاملتك مع حسام بحر",
+          "href": "/contact/?handoff=1"
+        }
+      ],
+      "body": "محتاج موافقة ريرا في دبي\n\nHB AI\n\nالمسارات العقارية الموثقة لدينا في دبي تشمل تصريح إعلان عقاري وبطاقة مزاولة مهنة عقارية، وهما معاملتان مختلفتان. أيهما تقصد؟\n\nهل تقصد تصريح إعلان عقاري أم بطاقة مزاولة مهنة عقارية؟\nتجديدإصدار جديدإلغاءرفض أو تأخير\nاطلب مراجعة معاملتك مع حسام بحر",
+      "status": "CAPTURED"
+    },
+    {
+      "id": "cafeteria",
+      "query": "عايز أفتح كافتيريا في عجمان",
+      "elapsedMs": 3775,
+      "submitInteractions": 1,
+      "state": {
+        "service_slug": null,
+        "jurisdiction_code": "AE-AJ",
+        "relationship": null,
+        "pending_clarification": "ما النتيجة التي تريد الوصول إليها تحديدًا؟",
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز أفتح كافتيريا في عجمان"
+          },
+          {
+            "role": "assistant",
+            "content": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم."
+          }
+        ],
+        "known_facts": {}
+      },
+      "actions": [
+        {
+          "text": "اطلب مراجعة معاملتك مع حسام بحر",
+          "href": "/contact/?handoff=1"
+        }
+      ],
+      "body": "عايز أفتح كافتيريا في عجمان\n\nHB AI\n\nلم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.\n\nما النتيجة التي تريد الوصول إليها تحديدًا؟\nتجديدإصدار جديدإلغاءرفض أو تأخير\nاطلب مراجعة معاملتك مع حسام بحر",
+      "status": "CAPTURED"
+    },
+    {
+      "id": "foodstuff",
+      "query": "عايز أفتح شركة مواد غذائية في دبي",
+      "elapsedMs": 4054,
+      "submitInteractions": 1,
+      "state": {
+        "service_slug": "issue-trade-license-dubai",
+        "jurisdiction_code": "AE-DU",
+        "relationship": null,
+        "pending_clarification": null,
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز أفتح شركة مواد غذائية في دبي"
+          },
+          {
+            "role": "assistant",
+            "content": "المسار المناسب لطلبك هو «إصدار رخصة تجارية في دبي» لدى دائرة الاقتصاد والسياحة في دبي. تختلف المتطلبات النهائية حسب نوع الرخصة والنشاط والشكل القانوني، وتعرضها البوابة الرسمية قبل الإرسال."
+          }
+        ],
+        "known_facts": {}
+      },
+      "actions": [
+        {
+          "text": "تفاصيل الخدمة",
+          "href": "/services/issue-trade-license-dubai/"
+        },
+        {
+          "text": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=issue-trade-license-dubai"
+        },
+        {
+          "text": "أنجزها بنفسي رسميًا",
+          "href": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence"
+        },
+        {
+          "text": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ],
+      "body": "عايز أفتح شركة مواد غذائية في دبي\n\nHB AI\n\nالمسار المناسب لطلبك هو «إصدار رخصة تجارية في دبي» لدى دائرة الاقتصاد والسياحة في دبي. تختلف المتطلبات النهائية حسب نوع الرخصة والنشاط والشكل القانوني، وتعرضها البوابة الرسمية قبل الإرسال.\n\nالخدمة المطابقة\n\nإصدار رخصة تجارية في دبي\n\nالجهة المختصة\n\nدائرة الاقتصاد والسياحة في دبي\n\nالإمارة / الاختصاص\n\nدبي\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "status": "CAPTURED"
+    },
+    {
+      "id": "company-workers",
+      "query": "عايز ألغي شركة عليها عمال في الشارقة",
+      "elapsedMs": 3807,
+      "submitInteractions": 1,
+      "state": {
+        "service_slug": "sharjah-economic-license-cancellation",
+        "jurisdiction_code": "AE-SH",
+        "relationship": null,
+        "pending_clarification": null,
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز ألغي شركة عليها عمال في الشارقة"
+          },
+          {
+            "role": "assistant",
+            "content": "المسار المناسب لطلبك هو «إلغاء رخصة اقتصادية في الشارقة» لدى دائرة التنمية الاقتصادية في الشارقة. هذه صفحة إرشاد رسمية لخدمات الإلغاء؛ يجب اختيار إلغاء الرخصة تحديدًا وعدم الخلط بينه وبين التجميد أو إلغاء عقد منفصل."
+          }
+        ],
+        "known_facts": {}
+      },
+      "actions": [
+        {
+          "text": "تفاصيل الخدمة",
+          "href": "/services/sharjah-economic-license-cancellation/"
+        },
+        {
+          "text": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=sharjah-economic-license-cancellation"
+        },
+        {
+          "text": "أنجزها بنفسي رسميًا",
+          "href": "https://sedd.ae/ar/other-services"
+        },
+        {
+          "text": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ],
+      "body": "عايز ألغي شركة عليها عمال في الشارقة\n\nHB AI\n\nالمسار المناسب لطلبك هو «إلغاء رخصة اقتصادية في الشارقة» لدى دائرة التنمية الاقتصادية في الشارقة. هذه صفحة إرشاد رسمية لخدمات الإلغاء؛ يجب اختيار إلغاء الرخصة تحديدًا وعدم الخلط بينه وبين التجميد أو إلغاء عقد منفصل.\n\nالخدمة المطابقة\n\nإلغاء رخصة اقتصادية في الشارقة\n\nالجهة المختصة\n\nدائرة التنمية الاقتصادية في الشارقة\n\nالإمارة / الاختصاص\n\nالشارقة\n\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "status": "CAPTURED"
+    },
+    {
+      "id": "mother",
+      "query": "عايز أجيب أمي تقيم معايا في أبوظبي",
+      "elapsedMs": 3598,
+      "submitInteractions": 1,
+      "state": {
+        "service_slug": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+        "jurisdiction_code": "AE-AZ",
+        "relationship": "mother",
+        "pending_clarification": null,
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز أجيب أمي تقيم معايا في أبوظبي"
+          },
+          {
+            "role": "assistant",
+            "content": "بالنسبة إلى والدتك: المسار المناسب لطلبك هو «إصدار إقامة للوالدين عبر ICP (خارج دبي)» لدى الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ في الإمارات العربية المتحدة."
+          }
+        ],
+        "known_facts": {}
+      },
+      "actions": [
+        {
+          "text": "تفاصيل الخدمة",
+          "href": "/services/%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%84%D9%84%D9%88%D8%A7%D9%84%D8%AF%D9%8A%D9%86-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "text": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D9%84%D9%84%D9%88%D8%A7%D9%84%D8%AF%D9%8A%D9%86-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "text": "أنجزها بنفسي رسميًا",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64"
+        },
+        {
+          "text": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ],
+      "body": "عايز أجيب أمي تقيم معايا في أبوظبي\n\nHB AI\n\nبالنسبة إلى والدتك: المسار المناسب لطلبك هو «إصدار إقامة للوالدين عبر ICP (خارج دبي)» لدى الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ في الإمارات العربية المتحدة.\n\nالخدمة المطابقة\n\nإصدار إقامة للوالدين عبر ICP (خارج دبي)\n\nالجهة المختصة\n\nالهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ\n\nالإمارة / الاختصاص\n\nالإمارات العربية المتحدة\n\nالخطوات\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "status": "CAPTURED"
+    },
+    {
+      "id": "rak-renew",
+      "query": "عايز أجدد رخصة شركتي في رأس الخيمة",
+      "elapsedMs": 3788,
+      "submitInteractions": 1,
+      "state": {
+        "service_slug": "ras-al-khaimah-license-renewal",
+        "jurisdiction_code": "AE-RK",
+        "relationship": null,
+        "pending_clarification": null,
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز أجدد رخصة شركتي في رأس الخيمة"
+          },
+          {
+            "role": "assistant",
+            "content": "المسار المناسب لطلبك هو «تجديد رخصة اقتصادية في رأس الخيمة» لدى دائرة التنمية الاقتصادية – رأس الخيمة. يجب استكمال المستندات وسداد الرسوم واستيفاء موافقات الجهات المنظمة للنشاط."
+          }
+        ],
+        "known_facts": {}
+      },
+      "actions": [
+        {
+          "text": "تفاصيل الخدمة",
+          "href": "/services/ras-al-khaimah-license-renewal/"
+        },
+        {
+          "text": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=ras-al-khaimah-license-renewal"
+        },
+        {
+          "text": "أنجزها بنفسي رسميًا",
+          "href": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-renewal"
+        },
+        {
+          "text": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ],
+      "body": "عايز أجدد رخصة شركتي في رأس الخيمة\n\nHB AI\n\nالمسار المناسب لطلبك هو «تجديد رخصة اقتصادية في رأس الخيمة» لدى دائرة التنمية الاقتصادية – رأس الخيمة. يجب استكمال المستندات وسداد الرسوم واستيفاء موافقات الجهات المنظمة للنشاط.\n\nالخدمة المطابقة\n\nتجديد رخصة اقتصادية في رأس الخيمة\n\nالجهة المختصة\n\nدائرة التنمية الاقتصادية – رأس الخيمة\n\nالإمارة / الاختصاص\n\nرأس الخيمة\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "status": "CAPTURED"
+    },
+    {
+      "id": "uaq-business",
+      "query": "عايز أفتح شركة في أم القيوين",
+      "elapsedMs": 3676,
+      "submitInteractions": 1,
+      "state": {
+        "service_slug": "umm-al-quwain-mainland-licensing-official-path",
+        "jurisdiction_code": "AE-UQ",
+        "relationship": null,
+        "pending_clarification": null,
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز أفتح شركة في أم القيوين"
+          },
+          {
+            "role": "assistant",
+            "content": "المسار المناسب لطلبك هو «مسار تأسيس وترخيص منشأة البر الرئيسي في أم القيوين» لدى خدمات الأعمال – أم القيوين. الرابط يشرح الرحلة الحكومية ويربط الجهة المحلية؛ لا يمثل CTA تنفيذ مباشرًا لمعاملة واحدة."
+          }
+        ],
+        "known_facts": {}
+      },
+      "actions": [
+        {
+          "text": "تفاصيل الخدمة",
+          "href": "/services/umm-al-quwain-mainland-licensing-official-path/"
+        },
+        {
+          "text": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=umm-al-quwain-mainland-licensing-official-path"
+        },
+        {
+          "text": "أنجزها بنفسي رسميًا",
+          "href": "https://portal.uaq.ae/"
+        },
+        {
+          "text": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ],
+      "body": "عايز أفتح شركة في أم القيوين\n\nHB AI\n\nالمسار المناسب لطلبك هو «مسار تأسيس وترخيص منشأة البر الرئيسي في أم القيوين» لدى خدمات الأعمال – أم القيوين. الرابط يشرح الرحلة الحكومية ويربط الجهة المحلية؛ لا يمثل CTA تنفيذ مباشرًا لمعاملة واحدة.\n\nالخدمة المطابقة\n\nمسار تأسيس وترخيص منشأة البر الرئيسي في أم القيوين\n\nالجهة المختصة\n\nخدمات الأعمال – أم القيوين\n\nالإمارة / الاختصاص\n\nأم القيوين\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "status": "CAPTURED"
+    },
+    {
+      "id": "fujairah-family",
+      "query": "عايز أجدد إقامة زوجتي في الفجيرة",
+      "elapsedMs": 2845,
+      "submitInteractions": 1,
+      "state": {
+        "service_slug": "تجديد-إقامة-أفراد-الأسرة-في-دبي",
+        "jurisdiction_code": "AE-FU",
+        "relationship": "wife",
+        "pending_clarification": null,
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز أجدد إقامة زوجتي في الفجيرة"
+          },
+          {
+            "role": "assistant",
+            "content": "بالنسبة إلى زوجتك: المسار المناسب لطلبك هو «تجديد إقامة أفراد الأسرة في دبي» لدى الإدارة العامة للإقامة وشؤون الأجانب في دبي."
+          }
+        ],
+        "known_facts": {}
+      },
+      "actions": [
+        {
+          "text": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D8%A3%D9%81%D8%B1%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "text": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D8%A3%D9%81%D8%B1%D8%A7%D8%AF-%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%D8%A9-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "text": "أنجزها بنفسي رسميًا",
+          "href": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8"
+        },
+        {
+          "text": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ],
+      "body": "عايز أجدد إقامة زوجتي في الفجيرة\n\nHB AI\n\nبالنسبة إلى زوجتك: المسار المناسب لطلبك هو «تجديد إقامة أفراد الأسرة في دبي» لدى الإدارة العامة للإقامة وشؤون الأجانب في دبي.\n\nالخدمة المطابقة\n\nتجديد إقامة أفراد الأسرة في دبي\n\nالجهة المختصة\n\nالإدارة العامة للإقامة وشؤون الأجانب في دبي\n\nالإمارة / الاختصاص\n\nدبي\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "status": "CAPTURED"
+    }
+  ],
+  "status": "CAPTURED"
+}
