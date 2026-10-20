@@ -1,0 +1,563 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "live": false,
+  "journeys": [
+    {
+      "locale": "ar",
+      "q": "مواد غذائية في دبي",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "q": "cafeteria in Dubai",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "q": "translation office in Dubai",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "q": "تجارة إلكترونية في دبي",
+      "result": "PASS",
+      "clarification": "products-or-services-required"
+    },
+    {
+      "locale": "ar",
+      "emirate": "دبي",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "emirate": "أبوظبي",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "emirate": "الشارقة",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "emirate": "عجمان",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "emirate": "رأس الخيمة",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "emirate": "الفجيرة",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "emirate": "أم القيوين",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "q": "موافقة سيرا",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "q": "Security Industry Regulatory Agency",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "category": "work-employees",
+      "languageContext": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "type": "work-permit",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "q": "مواد غذائية في دبي",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "q": "cafeteria in Dubai",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "q": "translation office in Dubai",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "q": "تجارة إلكترونية في دبي",
+      "result": "PASS",
+      "clarification": "products-or-services-required"
+    },
+    {
+      "locale": "en",
+      "emirate": "دبي",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "emirate": "أبوظبي",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "emirate": "الشارقة",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "emirate": "عجمان",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "emirate": "رأس الخيمة",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "emirate": "الفجيرة",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "emirate": "أم القيوين",
+      "handoff": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "q": "موافقة سيرا",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "q": "Security Industry Regulatory Agency",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "category": "work-employees",
+      "languageContext": true,
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "type": "work-permit",
+      "result": "PASS"
+    }
+  ],
+  "responsive": [
+    {
+      "locale": "ar",
+      "width": 320,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 320,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 320,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 320,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 360,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 360,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 360,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 360,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 430,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 430,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 430,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 430,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 768,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 768,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 768,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 768,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1366,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1366,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1366,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1366,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1920,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1920,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1920,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1920,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 360,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 360,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 360,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 360,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 430,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 430,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 430,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 430,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1366,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1366,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1366,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1366,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "route": "/approvals/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1920,
+      "route": "/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1920,
+      "route": "/discover/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1920,
+      "route": "/business-activities/",
+      "result": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1920,
+      "route": "/approvals/",
+      "result": "PASS"
+    }
+  ],
+  "humanVisualAcceptance": "NOT_DECLARED",
+  "officialBenchmark": "NOT_MEASURED; no superiority claim",
+  "status": "PASS"
+}
