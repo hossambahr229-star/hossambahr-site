@@ -544,6 +544,37 @@
     return [state.original_goal, ...(state.answers || [])].filter(Boolean).join(" — ");
   }
 
+
+  async function showActivityDiscovery(displayed, options, pending) {
+    if (options.fromDocument) return false;
+    const {entryDestination} = await import("/transaction-discovery.js");
+    const newIdea = entryDestination(displayed) === "business-activities";
+    const continuation = state.pending_clarification === "activity_selection" &&
+      /^(?:و)?(?:الأوراق|الاوراق|المستندات|الرسوم|التكلفة|الخطوات|documents|fees|cost|steps|what documents|what are the fees)[\s؟?!.,]*$/i.test(displayed);
+    if (!newIdea && !continuation) return false;
+    if (newIdea) {
+      state.original_goal = displayed; state.resolved_query = displayed; state.answers = [];
+      for (const key of ["service_slug","active_service_id","jurisdiction_code","authority_key","relationship","entity","intent","service_family","action","subject_role","last_answer_topic"]) state[key] = null;
+      state.family_members = []; state.known_facts = {}; state.last_payload = null;
+    }
+    state.pending_clarification = "activity_selection";
+    const text = english
+      ? "Start by identifying the economic activity for your project and emirate. Open the activity guide with your description already filled in. Requirements, fees and approvals depend on the selected activity; I will not infer them from the project name."
+      : "نبدأ بتحديد النشاط الاقتصادي المناسب لفكرة مشروعك والإمارة. افتح دليل الأنشطة وستجد وصفك محفوظًا. المستندات والرسوم والموافقات تعتمد على النشاط المحدد؛ لا أستنتجها من اسم المشروع.";
+    const body = create("div", "hb-chat-answer");
+    body.dataset.activityGuidance = "true";
+    body.append(create("p", "hb-chat-answer-intro", text));
+    const link = create("a", "hb-chat-context-chip", english ? "Find my business activity" : "حدد نشاط مشروعي");
+    link.dataset.activityDiscovery = "true";
+    link.href = (english ? "/en" : "") + "/business-activities/?q=" + encodeURIComponent(state.original_goal);
+    body.append(link);
+    removePending(pending);
+    state.history.push({role:"user",content:displayed},{role:"assistant",content:text});
+    state.history = state.history.slice(-8);
+    saveState(); addBubble("assistant",body);
+    return true;
+  }
+
   async function analyze(userMessage, options = {}) {
     const displayed=scrubLocal(userMessage); if (displayed.length < 2 || analysisInFlight) return;
     analysisInFlight=true; const perfStart=performance.now(); document.body.classList.add("hb-chat-engaged");
@@ -553,6 +584,7 @@
     const query=buildResolvedQuery(); state.resolved_query=query; saveState();
     let streamBubble = null;
     try{
+      if (await showActivityDiscovery(displayed, options, pending).catch(() => false)) return;
       const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn: displayed,locale:english ? "en" : "ar",history:state.history.slice(-8),stream:true,context:{active_service_id:state.active_service_id||state.service_slug,service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key,relationship:state.relationship,family_members:state.family_members,entity:state.entity,intent:state.intent,service_family:state.service_family,action:state.action,subject_role:state.subject_role,last_answer_topic:state.last_answer_topic,pending_clarification:state.pending_clarification,known_facts:state.known_facts}}),credentials:"omit"});
       if(response.status===429){removePending(pending);addBubble("assistant","وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");return;}
       let streamP=null,ttft=null;
