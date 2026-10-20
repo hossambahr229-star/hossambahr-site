@@ -1,4 +1,4 @@
-import {findActivities,foodActivityQuestion,foodActivityMode,activityEmirate,activityHandoff,ACTIVITY_EMIRATES} from './activity-discovery.js';
+const {findActivities,foodActivityQuestion,foodActivityMode,activityEmirate,activityHandoff,ACTIVITY_EMIRATES}=await import(new URL('./activity-discovery.js'+new URL(import.meta.url).search,import.meta.url));
 import {compatibleEmirate} from './customer-jurisdiction.js';
 import {normalizeIntent} from './intent-search.js';
 
