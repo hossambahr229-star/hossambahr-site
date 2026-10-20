@@ -983,7 +983,7 @@ export default {
       const catalogStarted = performance.now();
       const completeCatalog = await loadCatalog(ctx.supabaseAdmin);
       const currentJurisdiction = detectJurisdiction(latestTurn) || semantic.jurisdiction || detectJurisdiction(semanticGoal);
-      const catalog = withoutJurisdictionExclusions(completeCatalog, currentJurisdiction);
+      const catalog = jurisdictionCandidates(withoutJurisdictionExclusions(completeCatalog, currentJurisdiction), currentJurisdiction);
       const catalogMs = performance.now() - catalogStarted;
       let ranked:any[];
       const exactDubaiFamilySponsorship=dubaiSponsorshipCandidate(catalog,relationship,semantic.action,semantic.jurisdiction);
