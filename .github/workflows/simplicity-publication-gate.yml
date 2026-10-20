@@ -1,0 +1,20 @@
+name: Simplicity publication contrast gate
+on:
+  push:
+    branches: [agent/simplicity-publication-gate]
+permissions: {contents: read}
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - run: npm run build
+      - run: HB_BROWSER_PATH="$(which chrome)" npm run test:phase9-1-visual
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: simplicity-publication-contrast, path: artifacts/phase9-1-visual-quality}
