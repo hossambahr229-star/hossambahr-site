@@ -1,0 +1,1 @@
+for(let i=0;i<100;i++){const r=await fetch('https://hossambahr.com/en/services/sharjah-economic-license-cancellation/?check='+Date.now());if((await r.text()).includes('not a fixed total')){console.log('Reviewed cancellation facts published');process.exit(0);}await new Promise(r=>setTimeout(r,15000));}throw Error('Reviewed SEDD facts did not publish');
