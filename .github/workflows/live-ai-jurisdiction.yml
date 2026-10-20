@@ -1,0 +1,26 @@
+name: Live AI jurisdiction acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/live-ai-jurisdiction.mjs','.github/workflows/live-ai-jurisdiction.yml']
+permissions: {contents: write}
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/live-ai-jurisdiction.mjs
+      - if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add diagnostics/ai-jurisdiction-2026-10-20
+          git diff --cached --quiet || git commit -m "Record actual AI jurisdiction acceptance [skip ci]"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: live-ai-jurisdiction, path: diagnostics/ai-jurisdiction-2026-10-20}
