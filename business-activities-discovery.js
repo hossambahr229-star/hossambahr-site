@@ -1,4 +1,4 @@
-import {findActivities,foodActivityQuestion,activityEmirate,activityHandoff,ACTIVITY_EMIRATES} from './activity-discovery.js';
+import {findActivities,foodActivityQuestion,foodActivityMode,activityEmirate,activityHandoff,ACTIVITY_EMIRATES} from './activity-discovery.js';
 import {compatibleEmirate} from './customer-jurisdiction.js';
 import {normalizeIntent} from './intent-search.js';
 
@@ -38,7 +38,7 @@ if(form){
     if(question){found=[];more.hidden=true;status.textContent=t('نحتاج تحديد النشاط قبل اختيار كود أو مسار.','Choose the activity scope before selecting a code or pathway.');
      grid.innerHTML='<article data-food-clarification="'+question+'"><h2>'+t(question==='operation'?'هل تقصد تجارة المواد الغذائية أم تصنيعها أم التموين؟':'ما المنتج الغذائي الذي ستصنعه؟',question==='operation'?'Do you mean food trading, manufacturing or supply services?':'Which food product will you manufacture?')+'</h2>'+ (question==='operation'?'<nav class="activity-examples">'+[['trade',t('تجارة المواد الغذائية','Food trading')],['manufacture',t('تصنيع المواد الغذائية','Food manufacturing')],['supply',t('خدمات تموين المواد الغذائية','Foodstuff supply services')]].map(([id,label])=>'<button type="button" data-food-mode="'+id+'">'+label+'</button>').join('')+'</nav>':'<p>'+t('أضف اسم المنتج إلى وصفك بالأعلى. لن نختار نشاط تصنيع لمجرد وجود كلمة أغذية.','Add the product name to your description above. Food alone does not identify a manufacturing activity.')+'</p>')+'</article>';return;
     }
-    found=findActivities(activities,{query,emirate});visible=12;renderActivities();
+    found=findActivities(activities,{query,emirate});visible=foodActivityMode(query)?1:12;renderActivities();
     if(!found.length){const online=/تجاره الكترونيه|e commerce|ecommerce/.test(normalizeIntent(query));status.textContent=online?t('ما المنتجات أو الخدمات التي ستبيعها عبر الإنترنت؟ لا يثبت وصف التجارة الإلكترونية وحده كود نشاط في سجلنا الحالي.','What products or services will you sell online? E-commerce alone does not establish an activity code in the current register.'):t('لم نجد نشاطًا مطابقًا موثوقًا في سجل دبي. غيّر وصف المشروع أو اطلب المساعدة لتحديده.','No matching activity was found in the recorded Dubai register. Refine your idea or ask for help identifying it.');grid.innerHTML=requestLinks();}
    }else{
     found=[];const records=await catalog();if(currentRequest!==requestId)return;const candidates=localActivityPathways(records,emirate);

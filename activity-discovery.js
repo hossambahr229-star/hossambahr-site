@@ -17,6 +17,7 @@ export function activityEmirate(query){
 const foodTerms=new Set(normalizeIntent('مواد المواد غذائية الغذائية اغذية الأغذية غذاء تجارة التجارية تجاره تصنيع صناعة الصناعة مصنع توريد تموين food foodstuff foodstuffs groceries trading trade wholesale retail supply services manufacture manufacturing factory products product to').split(' '));
 export function foodActivityMode(query){
  const q=normalizeIntent(query);
+ if(!aliases[1].some(term=>q.includes(term)))return null;
  if(/تصنيع|صناع|مصنع|manufactur|factory/.test(q))return 'manufacture';
  if(/تموين|توريد|supply|catering/.test(q))return 'supply';
  if(/تجاره|تجاريه|trading|wholesale|retail/.test(q))return 'trade';
@@ -46,7 +47,7 @@ export function findActivities(records,{query='',emirate='',category=''}={}){
  return records.filter(r=>!category||r.k===category).filter(r=>{
   if(!food)return true;
   const name=normalizeIntent(r.a+' '+r.e);
-  if(!animals&&/fodder|animal feed|اعلاف|الاعلاف/.test(name))return false;
+  if(!animals&&/fodder|feed|animal|pet |اعلاف|حيوان|طيور/.test(name))return false;
   if(mode==='trade')return /trading/i.test(r.e);
   if(mode==='manufacture')return /manufactur/i.test(r.ke+' '+r.e);
   if(mode==='supply')return /supply|catering|تموين|توريد/.test(name);

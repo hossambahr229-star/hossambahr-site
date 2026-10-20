@@ -6,3 +6,5 @@ test('supply is distinct from trading and exact codes bypass broad clarification
 test('outside Dubai codes remain unavailable and do not get a Dubai scope question',()=>{assert.equal(foodActivityQuestion('مواد غذائية في عجمان',records,'عجمان'),null);assert.deepEqual(findActivities(records,{query:'Food trading',emirate:'عجمان'}),[]);});
 
 test('food-specific product scoring does not invent a general e-commerce code',()=>{assert.deepEqual(findActivities(records,{query:'تجارة إلكترونية في دبي',emirate:'دبي'}),[]);});
+
+test('ordinary food trading cannot include animal or bird feed',()=>{const found=findActivities(records,{query:'Food trading in Dubai',emirate:'دبي'});assert.ok(!found.some(r=>/animal|fodder|feed|حيوان|طيور|اعلاف/i.test(r.a+' '+r.e)));assert.equal(foodActivityMode('Translation trading in Dubai'),null);});
