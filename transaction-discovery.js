@@ -33,7 +33,8 @@ if(typeof document!=='undefined'){
  document.querySelector('.discovery-entry>a[href*="/ai/"]')?.addEventListener('click',event=>{
   const draft=home?.querySelector('input')?.value.trim().slice(0,800);
   if(!draft)return;
-  event.preventDefault();location.assign(prefix+'/ai/?q='+encodeURIComponent(draft)+'#government-search');
+  const destination=entryDestination(draft)==='business-activities'?'business-activities':'ai';
+  event.preventDefault();location.assign(prefix+'/'+destination+'/?q='+encodeURIComponent(draft)+(destination==='ai'?'#government-search':''));
  });
  const form=document.querySelector('[data-discovery-form]');
  if(form){
