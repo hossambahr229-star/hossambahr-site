@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-20T07:31:00.635Z",
+  "generatedAt": "2026-10-20T07:48:40.502Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 146,
+    "REACHABLE": 155,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 94,
+    "NETWORK_UNVERIFIED": 85,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -22,8 +22,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "EAI_AGAIN"
+      "status": 200,
+      "finalUrl": "https://added.gov.ae/en/set-up/establish-your-business",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
@@ -67,8 +68,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://added.gov.ae/en/set-up/establish-your-business/licensing-requirements",
+      "result": "REACHABLE"
     },
     {
       "url": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
@@ -80,8 +82,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
@@ -123,8 +126,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://ajded.gov.ae/eservice/inquiries/activities-inquiry?lang=ar",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures",
@@ -201,8 +205,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e77",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
@@ -214,8 +219,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67",
+      "result": "REACHABLE"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/default.html#/serviceCards/401?administrativeRegionId=1",
@@ -225,8 +231,9 @@
       "kinds": [
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/default.html",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61",
@@ -700,8 +707,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=201",
+      "result": "REACHABLE"
     },
     {
       "url": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=166",
@@ -769,8 +777,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://freezone.fujairah.ae/ar/registration-process",
+      "result": "REACHABLE"
     },
     {
       "url": "https://fujairah.ae/en/Pages/settingupbusinessinfujairah.aspx",
