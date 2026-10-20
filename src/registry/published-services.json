@@ -16351,18 +16351,29 @@
         "Department",
         "business-licensing"
       ],
-      "description": "الوصول إلى خدمة إلغاء الرخصة الاقتصادية ضمن قائمة خدمات الإلغاء الرسمية لدائرة التنمية الاقتصادية بالشارقة.",
+      "description": "إلغاء الرخصة التجارية لدى SEDD وشطب السجل بعد استكمال الإجراءات وانقضاء مدة الإعلان القانونية؛ تتطلب البطاقة ارتباطًا بإلغاء بطاقة المنشأة لدى وزارة الموارد البشرية والتوطين.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "A MOHRE letter confirming cancellation of the establishment card.",
+            "Investor or legally authorised representative fingerprint at the service centre."
+          ],
+          "fees": "Published conditional items: AED 350 cancellation advertisement; AED 150–3,000 licence cancellation. Commercial-register removal: AED 500 if expired under one year, AED 1,000 for one to two years, AED 1,500 for two years or more. These are not a fixed total; confirm applicable charges with SEDD.",
+          "duration": "The licence cancellation card states 7 days, subject to completing legal procedures and the legal advertisement period. This is not a promise to close the company and all employee matters within 7 days.",
+          "eligibility": "Permanent licence cancellation after legal procedures and advertisement, not temporary suspension. Confirm employee and establishment-card requirements with MOHRE; licence cancellation does not mean this platform has cancelled work permits. The card's start button points to a licence issuance route; we link to the information card and ask SEDD to confirm the cancellation route.",
+          "sourceUrl": "https://sedd.ae/ar/w/license-issuance-copy-"
+        }
+      },
       "documents": {
         "status": "PUBLISHED",
         "items": [
-          "بيانات الرخصة والمنشأة",
-          "إلغاء بطاقة المنشأة من وزارة الموارد البشرية عند انطباقه",
-          "متطلبات الإعلان أو التصفية بحسب الشكل القانوني"
+          "خطاب من وزارة الموارد البشرية والتوطين يثبت إلغاء بطاقة المنشأة.",
+          "أخذ بصمة المستثمر أو ممثله القانوني في مركز تقديم الخدمة."
         ]
       },
       "governmentFees": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "تحدد SEDD رسوم الإلغاء ومحو السجل والغرامات بحسب حالة الرخصة والشكل القانوني."
+        "text": "رسوم منشورة ومشروطة: إعلان الإلغاء 350 درهمًا؛ إلغاء الرخصة من 150 إلى 3000 درهم. محو السجل: 500 درهم إذا انتهت الرخصة لأقل من سنة، و1000 من سنة إلى سنتين، و1500 لسنتين فأكثر. لا تمثل البنود إجماليًا ثابتًا؛ تؤكد SEDD المبلغ بحسب الحالة."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -16370,9 +16381,9 @@
       },
       "processingTime": {
         "status": "PUBLISHED_OR_CONDITIONAL",
-        "text": "بحسب متطلبات الإعلان أو التصفية وحالة الرخصة"
+        "text": "7 أيام وفق بطاقة إلغاء الرخصة؛ تخضع النتيجة لاستكمال الإجراءات وانقضاء مدة الإعلان القانونية، وليست ضمانًا لإغلاق الشركة والعمالة خلال هذه المدة."
       },
-      "conditions": "هذه صفحة إرشاد رسمية لخدمات الإلغاء؛ يجب اختيار إلغاء الرخصة تحديدًا وعدم الخلط بينه وبين التجميد أو إلغاء عقد منفصل.",
+      "conditions": "لإلغاء الرخصة نهائيًا بعد الإجراءات القانونية والإعلان، وليس تجميدها. يجب مراجعة متطلبات العمالة وبطاقة المنشأة مع وزارة الموارد البشرية والتوطين؛ إلغاء الرخصة لا يعني أن المنصة ألغت تصاريح العمل. زر البدء الظاهر في البطاقة يشير إلى مسار إصدار رخصة؛ نربط ببطاقة المعلومات ونطلب تأكيد مسار الإلغاء من SEDD.",
       "steps": [
         {
           "order": 1,
@@ -16419,8 +16430,8 @@
         "added:cancel-economic-license",
         "rak:license-cancellation"
       ],
-      "officialInformationUrl": "https://sedd.ae/ar/other-services",
-      "officialCtaUrl": "https://sedd.ae/ar/other-services",
+      "officialInformationUrl": "https://sedd.ae/ar/w/license-issuance-copy-",
+      "officialCtaUrl": "https://sedd.ae/ar/w/license-issuance-copy-",
       "destinationKind": "OFFICIAL_GUIDANCE",
       "verificationStatus": "VERIFIED",
       "verification": {
@@ -16434,13 +16445,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-08-11",
+        "dataLastReviewedAt": "2026-10-20",
         "sourceAuthority": "sedd-sharjah",
-        "sourceUrl": "https://sedd.ae/ar/other-services"
+        "sourceUrl": "https://sedd.ae/ar/w/license-issuance-copy-"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-08-11",
-      "lastReviewedAt": "2026-08-11",
+      "lastUpdated": "2026-10-20",
+      "lastReviewedAt": "2026-10-20",
       "internalRoute": "/services/sharjah-economic-license-cancellation/",
       "sourceRegistry": "government-coverage-expansion"
     },
