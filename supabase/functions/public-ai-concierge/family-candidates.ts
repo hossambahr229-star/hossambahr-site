@@ -16,9 +16,10 @@ export function familyCandidate(row:any, relationship:FamilyRelationship|null, a
  return {domain,relation,allowed:!relationship || (domain>=0 && relation>=0 && !wrongAction && !wrongNewborn)};
 }
 
-export function dubaiSponsorshipCandidate(rows:any[],relationship:FamilyRelationship|null,action:SemanticAction,jurisdiction:string|null){
- if(!relationship||action!=='sponsor'||jurisdiction!=='AE-DU')return null;
- const parent=['mother','father','parents'].includes(relationship);
+export function dubaiSponsorshipCandidate(rows:any[],relationship:FamilyRelationship|null,action:SemanticAction,jurisdiction:string|null,goal:unknown=""){
+ const parent=['mother','father','parents'].includes(String(relationship));
+ const literalParentResidence=parent&&action==='issue'&&/(?:اقام|residen)/.test(normalize(goal));
+ if(!relationship||jurisdiction!=='AE-DU'||(action!=='sponsor'&&!literalParentResidence))return null;
  const slug=parent?'إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي':'family-residency-uae';
  return rows.find(row=>row.binding?.service_slug===slug&&row.jurisdiction?.code==='AE-DU'&&row.authority?.authority_key==='gdrfa-dubai')||null;
 }

@@ -9,3 +9,10 @@ assert.equal(dubaiSponsorshipCandidate(rows,'mother','renew','AE-DU'),null);
 assert.equal(dubaiSponsorshipCandidate(rows,'mother','sponsor','AE-SH'),null);
 assert.equal(dubaiSponsorshipCandidate(rows.filter(r=>r.binding.service_slug!==parent),'mother','sponsor','AE-DU'),null);
 console.log('PASS: parent-specific Dubai issuance, preserved spouse/children, no issuance substitute for renewal, scope or missing record');
+
+for(const relation of ['mother','father','parents'])for(const goal of ['أريد إقامة لوالدتي في دبي','Issue a residence permit for my mother in Dubai'])assert.equal(dubaiSponsorshipCandidate(rows,relation,'issue','AE-DU',goal)?.binding.service_slug,parent);
+assert.equal(dubaiSponsorshipCandidate(rows,'mother','issue','AE-DU','Issue a visit visa for my mother in Dubai'),null);
+assert.equal(dubaiSponsorshipCandidate(rows,'children','issue','AE-DU','Issue newborn residence in Dubai'),null);
+assert.equal(dubaiSponsorshipCandidate(rows,'mother','renew','AE-DU','Renew my mother residence in Dubai'),null);
+assert.equal(dubaiSponsorshipCandidate(rows.filter(r=>r.binding.service_slug!==parent),'mother','issue','AE-DU','أريد إقامة لوالدتي في دبي'),null);
+console.log('PASS: literal parent residence issuance maps to parents, not generic family; visits, newborns and renewals are not coerced');

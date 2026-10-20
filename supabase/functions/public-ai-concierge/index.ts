@@ -986,8 +986,8 @@ export default {
       const catalog = jurisdictionCandidates(withoutJurisdictionExclusions(completeCatalog, currentJurisdiction), currentJurisdiction);
       const catalogMs = performance.now() - catalogStarted;
       let ranked:any[];
-      const exactDubaiFamilySponsorship=dubaiSponsorshipCandidate(catalog,relationship,semantic.action,semantic.jurisdiction);
-      const missingDubaiParentPath=['mother','father','parents'].includes(String(relationship))&&semantic.action==='sponsor'&&semantic.jurisdiction==='AE-DU'&&!exactDubaiFamilySponsorship;
+      const exactDubaiFamilySponsorship=dubaiSponsorshipCandidate(catalog,relationship,semantic.action,semantic.jurisdiction,semanticGoal);
+      const missingDubaiParentPath=['mother','father','parents'].includes(String(relationship))&&(semantic.action==='sponsor'||semantic.action==='issue'&&/(?:اقام|residen)/.test(normalize(semanticGoal)))&&semantic.jurisdiction==='AE-DU'&&!exactDubaiFamilySponsorship;
       const inheritedServiceId = String(context?.active_service_id || context?.service_slug || "");
       const inherited = contextualFollowUp && inheritedServiceId ? catalog.find((row:any)=>row.binding.service_slug===inheritedServiceId) : null;
       const pendingReraChoice=/تصريح إعلان عقاري أم بطاقة|advertisement permit or a real estate professional practice card/.test(String(context?.pending_clarification||''))?reraApprovalKind('RERA '+latestTurn):null;
