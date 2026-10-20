@@ -1,0 +1,26 @@
+name: Mobile discovery labels
+on:
+  push:
+    branches: [agent/discovery-mobile-labels]
+permissions: {contents: write}
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts playwright@1.55.0
+      - run: npm run build
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/discovery-mobile-labels-browser.mjs
+      - if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add artifacts/discovery-mobile-labels
+          git diff --cached --quiet || git commit -m "Record chat activity navigation preview [skip ci]"
+          git push origin HEAD:agent/discovery-mobile-labels
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: discovery-mobile-labels, path: artifacts/discovery-mobile-labels}
