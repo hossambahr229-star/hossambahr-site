@@ -1,0 +1,492 @@
+{
+  "source": "ACTUAL_PUBLIC_API",
+  "status": "CAPTURED_NOT_ACCEPTANCE",
+  "cases": [
+    {
+      "locale": "ar",
+      "goal": "عايز ألغي شركة وعندي عمال في الشارقة",
+      "httpStatus": 200,
+      "context": {
+        "active_service_id": "employment-agency-license-cancellation-mohre",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-SH",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": "company",
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "employment-agency-license-cancellation-mohre",
+        "authority_key": "mohre",
+        "action": "cancel",
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "عايز ألغي شركة وعندي عمال في الشارقة"
+      },
+      "result": {
+        "understood_intent": "إلغاء ترخيص وكالة التوظيف المؤقت والتعهيد أو التوسط",
+        "confidence": "high",
+        "answer": {
+          "text": "المسار المناسب لطلبك هو «إلغاء ترخيص وكالة التوظيف المؤقت والتعهيد أو التوسط» لدى وزارة الموارد البشرية والتوطين في الإمارات العربية المتحدة. لا يعتمد الإلغاء قبل تسوية الالتزامات القائمة على الوكالة.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:employment-agency-license-cancellation-mohre",
+            "policy_version": 1,
+            "workflow_key": "service:employment-agency-license-cancellation-mohre",
+            "source_title": "إلغاء ترخيص وكالة التوظيف المؤقت والتعهيد أو التوسط",
+            "source_url": "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022",
+            "last_verified_at": "2026-09-30T08:27:00.269264+00:00",
+            "supporting_rule": {
+              "value": "لا يعتمد الإلغاء قبل تسوية الالتزامات القائمة على الوكالة.",
+              "source_refs": [
+                "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": null,
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "employment-agency-license-cancellation-mohre",
+            "service_name": "إلغاء ترخيص وكالة التوظيف المؤقت والتعهيد أو التوسط",
+            "service_name_en": "Cancellation of Recruitment/Temporary Employment and Mediation Agency License",
+            "service_url": "/services/employment-agency-license-cancellation-mohre/",
+            "jurisdiction": {
+              "code": "AE",
+              "name_ar": "الإمارات العربية المتحدة",
+              "name_en": "United Arab Emirates"
+            },
+            "authority": {
+              "key": "mohre",
+              "name_ar": "وزارة الموارد البشرية والتوطين",
+              "name_en": "MOHRE",
+              "public_url": "/authorities/mohre/"
+            },
+            "requirements": [
+              "استيفاء متطلبات الإلغاء وتسوية الالتزامات المبينة في بطاقة الخدمة"
+            ],
+            "general_documents": [],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "لا يعتمد الإلغاء قبل تسوية الالتزامات القائمة على الوكالة."
+            ],
+            "official_source": {
+              "title": "إلغاء ترخيص وكالة التوظيف المؤقت والتعهيد أو التوسط",
+              "url": "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022",
+              "last_verified_at": "2026-09-30T08:27:00.269264+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      }
+    },
+    {
+      "locale": "ar",
+      "goal": "إلغاء رخصة اقتصادية في الشارقة",
+      "httpStatus": 200,
+      "context": {
+        "active_service_id": "sharjah-economic-license-cancellation",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-SH",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": null,
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "sharjah-economic-license-cancellation",
+        "authority_key": "sharjah-ded",
+        "action": "cancel",
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "إلغاء رخصة اقتصادية في الشارقة"
+      },
+      "result": {
+        "understood_intent": "إلغاء رخصة اقتصادية في الشارقة",
+        "confidence": "high",
+        "answer": {
+          "text": "المسار المناسب لطلبك هو «إلغاء رخصة اقتصادية في الشارقة» لدى دائرة التنمية الاقتصادية في الشارقة. لإلغاء الرخصة نهائيًا بعد الإجراءات القانونية والإعلان، وليس تجميدها. يجب مراجعة متطلبات العمالة وبطاقة المنشأة مع وزارة الموارد البشرية والتوطين؛ إلغاء الرخصة لا يعني أن المنصة ألغت تصاريح العمل. زر البدء الظاهر في البطاقة يشير إلى مسار إصدار رخصة؛ نربط ببطاقة المعلومات ونطلب تأكيد مسار الإلغاء من SEDD.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:sharjah-economic-license-cancellation",
+            "policy_version": 2,
+            "workflow_key": "service:sharjah-economic-license-cancellation",
+            "source_title": "إلغاء رخصة — بطاقة SEDD الرسمية",
+            "source_url": "https://sedd.ae/ar/w/license-issuance-copy-",
+            "last_verified_at": "2026-10-20T14:51:13.343774+00:00",
+            "supporting_rule": {
+              "value": "لإلغاء الرخصة نهائيًا بعد الإجراءات القانونية والإعلان، وليس تجميدها. يجب مراجعة متطلبات العمالة وبطاقة المنشأة مع وزارة الموارد البشرية والتوطين؛ إلغاء الرخصة لا يعني أن المنصة ألغت تصاريح العمل. زر البدء الظاهر في البطاقة يشير إلى مسار إصدار رخصة؛ نربط ببطاقة المعلومات ونطلب تأكيد مسار الإلغاء من SEDD.",
+              "source_refs": [
+                "https://sedd.ae/ar/w/license-issuance-copy-"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": null,
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "sharjah-economic-license-cancellation",
+            "service_name": "إلغاء رخصة اقتصادية في الشارقة",
+            "service_name_en": "Economic Licence Cancellation",
+            "service_url": "/services/sharjah-economic-license-cancellation/",
+            "jurisdiction": {
+              "code": "AE-SH",
+              "name_ar": "الشارقة",
+              "name_en": "Sharjah"
+            },
+            "authority": {
+              "key": "sharjah-ded",
+              "name_ar": "دائرة التنمية الاقتصادية في الشارقة",
+              "name_en": "Sharjah DED",
+              "public_url": "/authorities/sharjah-ded/"
+            },
+            "requirements": [
+              "بيانات الرخصة والمنشأة",
+              "إلغاء بطاقة المنشأة من وزارة الموارد البشرية عند انطباقه",
+              "متطلبات الإعلان أو التصفية بحسب الشكل القانوني",
+              "خطاب من وزارة الموارد البشرية والتوطين يثبت إلغاء بطاقة المنشأة.",
+              "أخذ بصمة المستثمر أو ممثله القانوني في مركز تقديم الخدمة."
+            ],
+            "general_documents": [
+              "خطاب من وزارة الموارد البشرية والتوطين يثبت إلغاء بطاقة المنشأة."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "لإلغاء الرخصة نهائيًا بعد الإجراءات القانونية والإعلان، وليس تجميدها. يجب مراجعة متطلبات العمالة وبطاقة المنشأة مع وزارة الموارد البشرية والتوطين؛ إلغاء الرخصة لا يعني أن المنصة ألغت تصاريح العمل. زر البدء الظاهر في البطاقة يشير إلى مسار إصدار رخصة؛ نربط ببطاقة المعلومات ونطلب تأكيد مسار الإلغاء من SEDD."
+            ],
+            "official_source": {
+              "title": "إلغاء رخصة — بطاقة SEDD الرسمية",
+              "url": "https://sedd.ae/ar/w/license-issuance-copy-",
+              "last_verified_at": "2026-10-20T14:51:13.343774+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "goal": "I want to cancel a company with workers in Sharjah",
+      "httpStatus": 200,
+      "context": {
+        "active_service_id": "cancel-work-permit-uae",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-SH",
+        "relationship": null,
+        "relationship_group": null,
+        "family_members": [],
+        "subject_role": "company",
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "service_slug": "cancel-work-permit-uae",
+        "authority_key": "mohre",
+        "action": "cancel",
+        "turn_type": "new_topic",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "I want to cancel a company with workers in Sharjah"
+      },
+      "result": {
+        "understood_intent": "إلغاء تصريح وعقد عمل في الإمارات",
+        "confidence": "high",
+        "answer": {
+          "text": "The matching service is Cancellation of Work Permits and Employment Contracts through MOHRE. Ending employment without official cancellation leaves the permit and associated files incomplete and may hinder the worker's transfer or the establishment's closure.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:cancel-work-permit-uae",
+            "policy_version": 1,
+            "workflow_key": "service:cancel-work-permit-uae",
+            "source_title": "إلغاء تصريح وعقد عمل في الإمارات — وزارة الموارد البشرية والتوطين (MOHRE)",
+            "source_url": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022",
+            "last_verified_at": "2026-07-27T00:00:00+00:00",
+            "supporting_rule": {
+              "value": "إنهاء العمل دون إلغاء رسمي يترك التصريح والملفات غير مكتملة وقد يعرقل انتقال العامل أو إغلاق المنشأة.",
+              "source_refs": [
+                "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022"
+              ]
+            },
+            "document_requirements": null,
+            "special_case": "إلغاء تصريح العمل لا يلغي الإقامة تلقائياً؛ ترك ملف الهجرة مفتوحاً يسبب مشاكل لاحقة.",
+            "source_scope_unresolved": false,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "cancel-work-permit-uae",
+            "service_name": "إلغاء تصريح وعقد عمل في الإمارات",
+            "service_name_en": "Cancellation of Work Permits and Employment Contracts",
+            "service_url": "/services/cancel-work-permit-uae/",
+            "jurisdiction": {
+              "code": "AE",
+              "name_ar": "الإمارات العربية المتحدة",
+              "name_en": "United Arab Emirates"
+            },
+            "authority": {
+              "key": "mohre",
+              "name_ar": "وزارة الموارد البشرية والتوطين",
+              "name_en": "MOHRE",
+              "public_url": "/authorities/mohre/"
+            },
+            "requirements": [
+              "بيانات التصريح والعقد",
+              "طلب الإلغاء وتوقيع الأطراف بحسب الحالة",
+              "إقرار أو إثبات تسوية المستحقات",
+              "ترتيب الخطوة التالية للإقامة والهوية"
+            ],
+            "general_documents": [
+              "بيانات التصريح والعقد"
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [
+              "إنهاء العمل دون إلغاء رسمي يترك التصريح والملفات غير مكتملة وقد يعرقل انتقال العامل أو إغلاق المنشأة."
+            ],
+            "official_source": {
+              "title": "إلغاء تصريح وعقد عمل في الإمارات — وزارة الموارد البشرية والتوطين (MOHRE)",
+              "url": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022",
+              "last_verified_at": "2026-07-27T00:00:00+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      }
+    },
+    {
+      "locale": "ar",
+      "goal": "أجدد إقامة زوجتي في الفجيرة",
+      "httpStatus": 200,
+      "context": {
+        "active_service_id": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "jurisdiction_hint": "AE-FU",
+        "relationship": "wife",
+        "relationship_group": "spouse",
+        "family_members": [
+          "wife"
+        ],
+        "subject_role": null,
+        "entity": {
+          "kind": "person",
+          "relationship": "wife",
+          "relationship_group": "spouse"
+        },
+        "service_slug": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+        "authority_key": "icp",
+        "action": "renew",
+        "turn_type": "follow_up",
+        "topic": null,
+        "intent": null,
+        "service_family": null,
+        "business_activity": null,
+        "semantic_confidence": "low",
+        "safe_goal": "أجدد إقامة زوجتي في الفجيرة"
+      },
+      "result": {
+        "understood_intent": "تجديد تصريح إقامة عبر ICP (خارج دبي)",
+        "confidence": "high",
+        "answer": {
+          "text": "بالنسبة إلى زوجتك: المسار المناسب لطلبك هو «تجديد تصريح إقامة عبر ICP (خارج دبي)» لدى الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ في الإمارات العربية المتحدة.\nتنبيه حدود المصدر: لم يُستكمل توثيق شروط كل فئة. مدد السماح تختلف باختلاف الإقامة، ولا تعني مدة الإنجاز مهلة البقاء القانونية.",
+          "focus": "overview",
+          "fact_status": "VERIFIED_FACT",
+          "grounded": true,
+          "evidence": {
+            "policy_key": "service:تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+            "policy_version": 2,
+            "workflow_key": "service:تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+            "source_title": "تجديد تصريح إقامة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+            "source_url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+            "last_verified_at": "2026-10-01T22:19:32.894064+00:00",
+            "supporting_rule": null,
+            "document_requirements": null,
+            "special_case": "لم يُستكمل توثيق شروط كل فئة. مدد السماح تختلف باختلاف الإقامة، ولا تعني مدة الإنجاز مهلة البقاء القانونية.",
+            "source_scope_unresolved": true,
+            "review_pending": false
+          }
+        },
+        "grounding": {
+          "status": "VERIFIED_FACT",
+          "source_backed": true,
+          "no_invention": true,
+          "ambiguity_detected": false
+        },
+        "matches": [
+          {
+            "service_slug": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+            "service_name": "تجديد تصريح إقامة عبر ICP (خارج دبي)",
+            "service_name_en": "Renew a Residence Permit through ICP outside Dubai",
+            "service_url": "/services/%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD-%D8%A5%D9%82%D8%A7%D9%85%D8%A9-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/",
+            "jurisdiction": {
+              "code": "AE",
+              "name_ar": "الإمارات العربية المتحدة",
+              "name_en": "United Arab Emirates"
+            },
+            "authority": {
+              "key": "icp",
+              "name_ar": "الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ",
+              "name_en": "ICP",
+              "public_url": "/authorities/icp/"
+            },
+            "requirements": [
+              "المستندات المشتركة: جواز السفر وصورة شخصية.",
+              "بحسب الفئة: التأمين والسكن والقرابة أو المستندات المهنية؛ طابق قائمة الفئة الرسمية قبل الإرسال."
+            ],
+            "general_documents": [
+              "المستندات المشتركة: جواز السفر وصورة شخصية.",
+              "بحسب الفئة: التأمين والسكن والقرابة أو المستندات المهنية؛ طابق قائمة الفئة الرسمية قبل الإرسال."
+            ],
+            "main_steps": [
+              "تأكيد بيانات الطلب والحالة",
+              "مراجعة اكتمال المستندات والمتطلبات",
+              "اعتماد الانتقال إلى مسار التنفيذ",
+              "تنفيذ أو متابعة الإجراء لدى الجهة المختصة",
+              "توثيق النتيجة وإغلاق المعاملة"
+            ],
+            "conditions": [],
+            "official_source": {
+              "title": "تجديد تصريح إقامة عبر ICP (خارج دبي) — الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (ICP)",
+              "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+              "last_verified_at": "2026-10-01T22:19:32.894064+00:00"
+            }
+          }
+        ],
+        "missing_information": [],
+        "follow_up_questions": [],
+        "engine": {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 429,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        "privacy": {
+          "case_created": false,
+          "personal_data_persisted": false
+        }
+      }
+    }
+  ]
+}
