@@ -61,10 +61,10 @@ for(const viewport of viewports){
     if(audit.brokenInteractive)failures.push(`${surface.name}/${viewport.name}: ${audit.brokenInteractive} visible zero-size critical controls`);
     if(runtime.length)failures.push(`${surface.name}/${viewport.name}: runtime errors ${runtime.join(' | ')}`);
     if(surface.name==='homepage'){
-      const card=page.locator('.home-domain-card>summary,.target-discovery .premium-category-grid>a,.action-start-grid>a').first();
+      const card=page.locator('.home-simple-card,.home-domain-card>summary,.target-discovery .premium-category-grid>a,.action-start-grid>a').first();
       await card.waitFor({state:'visible'});
       const check=await card.evaluate(el=>{
-        const title=el.querySelector('b'),cta=el.querySelector('small,span');
+        const title=el.querySelector('b'),cta=el.querySelector('small')||el.querySelector('span');
         const surface=el.matches('summary')?el.parentElement:el,bg=getComputedStyle(surface).backgroundColor;
         return {bg,title:getComputedStyle(title).color,cta:getComputedStyle(cta).color,titleText:title.textContent.trim(),ctaText:cta.textContent.trim(),ctaVisible:cta.checkVisibility({checkVisibilityCSS:true})};
       });
