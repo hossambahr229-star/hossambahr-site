@@ -1,0 +1,21 @@
+{
+  "source": "LIVE_PRODUCTION_BROWSER",
+  "scope": "Unauthenticated image attachment gating only; not authenticated upload, storage isolation or document analysis acceptance",
+  "checks": [
+    {
+      "en": false,
+      "reply": "تحليل PDF والصور قد يتضمن بيانات حساسة، لذلك يتطلب تسجيل الدخول. لن أرفع الملف أو أحلله قبل تسجيل الدخول.",
+      "requests": [],
+      "privateUploadAcceptance": "NOT_TESTED",
+      "status": "PASS"
+    },
+    {
+      "en": true,
+      "reply": "PDF and image analysis may contain sensitive data and requires sign-in. The file will not be uploaded or analysed before you sign in.",
+      "requests": [],
+      "privateUploadAcceptance": "NOT_TESTED",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}
