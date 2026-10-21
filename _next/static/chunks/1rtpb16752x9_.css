@@ -20,6 +20,8 @@ html body>a.skip-link:focus{z-index:1000}
 html :focus-visible{outline:3px solid var(--hb-gold-600)!important;outline-offset:3px}
 html h1,html h2,html h3{color:var(--hb-ink);letter-spacing:-.035em;line-height:1.16;text-wrap:balance}
 html p{color:var(--hb-muted)}
+/* Official source guidance sits on the existing dark green panel. */
+html .official-source-panel p{color:#fff}
 html a{text-underline-offset:4px}
 
 /* Institutional frame */
