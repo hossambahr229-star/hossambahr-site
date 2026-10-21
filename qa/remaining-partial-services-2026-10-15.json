@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-21",
+  "updatedAt": "2026-10-22",
   "sourceCheckpoint": "869b7eb106795319495a527805e7d801774a5cab",
   "sourceReviewMerge": "f1fb679a53acfd5f94f7f9b43d7540389f0389bb",
   "originalPartial": 56,
@@ -384,9 +384,12 @@
       "newCommonFacts": true,
       "officialCapture": {
         "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
-        "status": 500,
-        "at": "2026-10-15T06:19:21.377Z"
-      }
+        "at": "2026-10-22",
+        "method": "OFFICIAL_SERVICE_CARD_WEB_READ",
+        "note": "Passport validity and maintenance of issuance requirements verified for the general renewal card. Category-specific eligibility still requires verification; service remains partial."
+      },
+      "verifiedCommonConditions": true,
+      "categorySpecificEligibilityVerified": false
     },
     {
       "slug": "تحديث-بيانات-الهوية",

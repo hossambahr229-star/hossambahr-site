@@ -5156,9 +5156,9 @@
       ],
       "fees": "100 درهم للطلب، و100 لكل سنة تجديد، و100 للخدمات الذكية وفق البطاقة؛ الغرامات والمبالغ الأخرى لا تدخل في هذه البنود.",
       "duration": "يومان وفق بطاقة تجديد الإقامة العامة؛ لا يمثل ضمان قبول.",
-      "conditions": "غير موثق بعد",
+      "conditions": "الشروط العامة الموثقة: صلاحية جواز السفر لا تقل عن 6 أشهر، واستمرار استيفاء متطلبات إصدار الإقامة عند التجديد. لا تثبت هذه الشروط العامة أهلية فئة بعينها؛ اختر الفئة في بطاقة ICP وطابق متطلباتها قبل التقديم.",
       "specialCases": "لم يُستكمل توثيق شروط كل فئة. مدد السماح تختلف باختلاف الإقامة، ولا تعني مدة الإنجاز مهلة البقاء القانونية.",
-      "lastReviewed": "2026-10-15",
+      "lastReviewed": "2026-10-22",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -5200,9 +5200,11 @@
           ],
           "fees": "AED 100 application, 100 per renewal year and 100 smart services. Fines/other amounts are separate.",
           "duration": "2 days on the general residence renewal card; not approval assurance.",
-          "notes": "Category eligibility remains unverified. Grace periods vary by residence type; processing time is not permission to stay."
+          "notes": "Category eligibility remains unverified. Grace periods vary by residence type; processing time is not permission to stay.",
+          "conditions": "Verified common conditions: the passport must be valid for at least 6 months, and residence issuance requirements must continue to be met at renewal. These common conditions do not establish eligibility for a particular category; select the category on the ICP card and check its requirements before applying."
         }
-      }
+      },
+      "eligibilityScope": "common-only"
     },
     {
       "id": "directory:residency:11",
