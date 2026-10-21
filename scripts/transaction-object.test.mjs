@@ -3,6 +3,9 @@ const rows=JSON.parse(await readFile('transaction-discovery-data.json','utf8'));
 const cases=[
 ['عايز ألغي شركة وعندي عمال في الشارقة','sharjah-economic-license-cancellation'],
 ['I want to cancel a company with workers in Sharjah','sharjah-economic-license-cancellation'],
+['عايز أقفل شركتي وعندي عمال في الشارقة','sharjah-economic-license-cancellation'],
+['I want to close my company with employees in Sharjah','sharjah-economic-license-cancellation'],
+['عايز أقفل شركتي وعندي ملفات توظيف في الشارقة','sharjah-economic-license-cancellation'],
 ['عايز أجدد رخصة القيادة في دبي','renew-driving-license-dubai'],
 ['أريد موافقة مبدئية لإصدار رخصة اقتصادية في الفجيرة','fujairah-economic-initial-approval'],
 ['عايز أسجل منشأتي في جمارك دبي','dubai-customs-business-registration'],

@@ -19,8 +19,8 @@ export function transactionObject(q:string):TransactionObject|null {
  if(permit&&/جزئي|part time|part-time/.test(q))return{kind:'part-time-work',action:cancel?'cancel':renew?'renew':'issue'};
  if(/شكوي|شكوه|complaint/.test(q)&&/عمالي|labour|labor/.test(q)&&!/مساعد|منزلي|domestic/.test(q))return{kind:'labour-complaint',action:'submit'};
  if(/بطاقه/.test(q)&&/مندوب علاقات عامه/.test(q)||/public relations officer card|\bpro card\b/.test(q))return{kind:'pro-card',action:cancel?'cancel':renew?'renew':'issue'};
- const agency=/وكاله.*توظيف|وكاله.*توسط|شركه.*توظيف|recruitment company|staffing agency|temporary employment|recruitment agency|employment agency|mediation agency/.test(q);
- const directCompany=/الغي (?:ال)?شركه|الغاء (?:ال)?شركه|اغلق (?:ال)?شركه|اقفل (?:ال)?شركه|تصفيه (?:ال)?شركه|(?:cancel|close|liquidate|dissolve) (?:a |the |my )?(?:company|business)|(?:الغاء|الغي|اغلاق|تصفيه).*رخصه (?:تجاريه|اقتصاديه)/.test(q);
+ const agency=/وكاله (?:ال)?(?:توظيف|توسط)|شرك(?:ه|تي|تنا|تك) (?:ال)?توظيف|recruitment company|staffing agency|temporary employment agency|recruitment agency|employment agency|mediation agency/.test(q);
+ const directCompany=/الغي (?:ال)?شرك(?:ه|تي|تنا|تك)|الغاء (?:ال)?شرك(?:ه|تي|تنا|تك)|اغلق (?:ال)?شرك(?:ه|تي|تنا|تك)|اقفل (?:ال)?شرك(?:ه|تي|تنا|تك)|تصفيه (?:ال)?شرك(?:ه|تي|تنا|تك)|(?:cancel|close|liquidate|dissolve) (?:a |the |my )?(?:company|business)|(?:الغاء|الغي|اغلاق|تصفيه).*رخصه (?:تجاريه|اقتصاديه)/.test(q);
  const companyPermits=/(?:company s|company) work permits|تصاريح عمل.*شرك/.test(q);
  if(cancel&&directCompany&&!agency&&!companyPermits)return{kind:'company-closure',action:'cancel'};
  return null;
