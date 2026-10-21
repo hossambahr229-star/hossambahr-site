@@ -1,0 +1,15 @@
+name: Single clarification rendering checks
+on:
+  push:
+    branches: [agent/single-clarification-question]
+permissions: {contents: read}
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node --check public-ai-concierge.js
+      - run: node scripts/rera-clarification-actions.test.mjs
+      - run: node --test test/architecture/client-conversation-state.test.mjs
