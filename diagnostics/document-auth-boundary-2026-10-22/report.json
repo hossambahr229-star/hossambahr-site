@@ -1,0 +1,21 @@
+{
+  "observedAt": "2026-10-21T21:08:05.318Z",
+  "scope": "Unauthenticated gateway rejection only. Not private uploads, ownership/IDOR, saved requests or full document execution acceptance.",
+  "syntheticFile": true,
+  "authenticatedAccountUsed": false,
+  "checks": [
+    {
+      "case": "no-bearer",
+      "status": 401,
+      "body": "{\"code\":\"UNAUTHORIZED_NO_AUTH_HEADER\",\"message\":\"Missing authorization header\"}",
+      "result": "PASS"
+    },
+    {
+      "case": "invalid-bearer",
+      "status": 401,
+      "body": "{\"code\":\"UNAUTHORIZED_INVALID_JWT_FORMAT\",\"message\":\"Invalid JWT\"}",
+      "result": "PASS"
+    }
+  ],
+  "result": "SCOPED_AUTH_BOUNDARY_PASS"
+}
