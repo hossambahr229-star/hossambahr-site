@@ -14,10 +14,10 @@ for(const record of review.records){
  if(service.officialRouteMode==='official-guidance'){
   const replaceOne=(pattern,value,label)=>{let count=0;html=html.replace(pattern,()=>{count++;return value;});if(count!==1)throw Error(service.slug+': expected one '+label);};
   replaceOne(/data-official-route-mode="[^"]*"/,'data-official-route-mode="official-guidance"','route mode');
-  replaceOne(/<p class="verification-note">[\\s\\S]*?<\\/p>/,'<p class="verification-note">'+esc(service.officialRouteNote)+'</p>','guidance note');
-  replaceOne(/<dt>حالة المسار<\\/dt><dd>[\\s\\S]*?<\\/dd>/,'<dt>حالة المسار</dt><dd>دليل حكومي رسمي</dd>','route label');
-  replaceOne(/<section id="official-route"[^>]*>[\\s\\S]*?<\\/section>/,'<section id="official-route" class="official-source-panel"><h2>المسار الرسمي الصحيح</h2><div class="route-note"><b>دليل حكومي رسمي، وليس نموذج تنفيذ مباشر.</b><p>'+esc(service.officialRouteNote)+'</p></div><a class="route-primary" href="'+esc(service.officialCardUrl)+'" rel="noopener noreferrer">فتح الدليل الحكومي الرسمي ↗</a></section>','guidance section');
-  html=html.replace(/<section\\b[^>]*\\bdata-registry-steps[^>]*>[\\s\\S]*?<\\/section>/g,'');
+  replaceOne(/<p class="verification-note">[\s\S]*?<\/p>/,'<p class="verification-note">'+esc(service.officialRouteNote)+'</p>','guidance note');
+  replaceOne(/<dt>حالة المسار<\/dt><dd>[\s\S]*?<\/dd>/,'<dt>حالة المسار</dt><dd>دليل حكومي رسمي</dd>','route label');
+  replaceOne(/<section id="official-route"[^>]*>[\s\S]*?<\/section>/,'<section id="official-route" class="official-source-panel"><h2>المسار الرسمي الصحيح</h2><div class="route-note"><b>دليل حكومي رسمي، وليس نموذج تنفيذ مباشر.</b><p>'+esc(service.officialRouteNote)+'</p></div><a class="route-primary" href="'+esc(service.officialCardUrl)+'" rel="noopener noreferrer">فتح الدليل الحكومي الرسمي ↗</a></section>','guidance section');
+  html=html.replace(/<section\b[^>]*\bdata-registry-steps[^>]*>[\s\S]*?<\/section>/g,'');
  }
  const reviewedFields=new Set([...(record.fields||[]),...(record.remaining||[]).map(field=>field==='government_fee_amount'?'fees':field)]);
  if(service.emirate==='الإمارات عدا دبي'){
