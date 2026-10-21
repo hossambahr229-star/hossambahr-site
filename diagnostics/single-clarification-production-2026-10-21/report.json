@@ -1,0 +1,136 @@
+{
+  "source": "LIVE_PRODUCTION_BROWSER",
+  "humanVisualAcceptance": "NOT_VERIFIED",
+  "checks": [
+    {
+      "en": false,
+      "width": 320,
+      "bounds": [
+        {
+          "text": "دبي",
+          "x": 207.578125,
+          "y": 309.65625,
+          "width": 46.421875,
+          "height": 44
+        },
+        {
+          "text": "أبوظبي",
+          "x": 134.1875,
+          "y": 309.65625,
+          "width": 65.390625,
+          "height": 44
+        },
+        {
+          "text": "الشارقة",
+          "x": 57.234375,
+          "y": 309.65625,
+          "width": 68.953125,
+          "height": 44
+        },
+        {
+          "text": "إمارة أخرى",
+          "x": 167.25,
+          "y": 361.65625,
+          "width": 86.75,
+          "height": 44
+        }
+      ],
+      "clickResolvedCanonical": true,
+      "question": "في أي إمارة تتم هذه المعاملة؟",
+      "status": "PASS"
+    },
+    {
+      "en": false,
+      "width": 390,
+      "bounds": [
+        {
+          "text": "دبي",
+          "x": 277.578125,
+          "y": 309.65625,
+          "width": 46.421875,
+          "height": 44
+        },
+        {
+          "text": "أبوظبي",
+          "x": 204.1875,
+          "y": 309.65625,
+          "width": 65.390625,
+          "height": 44
+        },
+        {
+          "text": "الشارقة",
+          "x": 127.234375,
+          "y": 309.65625,
+          "width": 68.953125,
+          "height": 44
+        },
+        {
+          "text": "إمارة أخرى",
+          "x": 32.484375,
+          "y": 309.65625,
+          "width": 86.75,
+          "height": 44
+        }
+      ],
+      "clickResolvedCanonical": true,
+      "question": "في أي إمارة تتم هذه المعاملة؟",
+      "status": "PASS"
+    },
+    {
+      "en": false,
+      "width": 1440,
+      "bounds": [
+        {
+          "text": "دبي",
+          "x": 1015.578125,
+          "y": 338.21875,
+          "width": 46.421875,
+          "height": 44
+        },
+        {
+          "text": "أبوظبي",
+          "x": 942.1875,
+          "y": 338.21875,
+          "width": 65.390625,
+          "height": 44
+        },
+        {
+          "text": "الشارقة",
+          "x": 865.234375,
+          "y": 338.21875,
+          "width": 68.953125,
+          "height": 44
+        },
+        {
+          "text": "إمارة أخرى",
+          "x": 770.484375,
+          "y": 338.21875,
+          "width": 86.75,
+          "height": 44
+        }
+      ],
+      "clickResolvedCanonical": true,
+      "question": "في أي إمارة تتم هذه المعاملة؟",
+      "status": "PASS"
+    },
+    {
+      "en": true,
+      "width": 320,
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Identical question shown once\n\n1 !== 0\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/live-single-clarification.mjs:4:667"
+    },
+    {
+      "en": true,
+      "width": 390,
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Identical question shown once\n\n1 !== 0\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/live-single-clarification.mjs:4:667"
+    },
+    {
+      "en": true,
+      "width": 1440,
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Identical question shown once\n\n1 !== 0\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/live-single-clarification.mjs:4:667"
+    }
+  ],
+  "status": "FAIL"
+}
