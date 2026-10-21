@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-21",
   "sourceCheckpoint": "869b7eb106795319495a527805e7d801774a5cab",
   "sourceReviewMerge": "f1fb679a53acfd5f94f7f9b43d7540389f0389bb",
   "originalPartial": 56,
@@ -264,15 +264,30 @@
       "unverifiedFields": [
         "documents",
         "fees",
-        "duration",
-        "eligibility"
+        "duration"
       ],
       "newCommonFacts": false,
       "officialCapture": {
         "url": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
         "status": null,
         "at": "2026-10-15T06:19:08.004Z",
-        "error": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system"
+        "error": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
+        "supplementaryReview": {
+          "at": "2026-10-21",
+          "sources": [
+            "https://www.dubai.ae/wages-protection-system",
+            "https://centralbank.ae/en/our-operations/payments-and-settlements/uae-wages-protection-system-uaewps/"
+          ],
+          "verifiedFields": [
+            "eligibility"
+          ],
+          "unverifiedFields": [
+            "documents",
+            "fees",
+            "duration"
+          ],
+          "note": "Official guidance scope only. No document checklist, government amount or activation time inferred."
+        }
       }
     },
     {
