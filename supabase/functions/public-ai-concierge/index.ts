@@ -987,8 +987,9 @@ export default {
       const catalog = jurisdictionCandidates(withoutJurisdictionExclusions(completeCatalog, currentJurisdiction), currentJurisdiction);
       const jurisdictionAnswer = normalize(latestTurn).replace(/^(?:في\s*|in\s+|ب)/,"").replace(/\s+/g,"");
       const jurisdictionOnly = Boolean(currentJurisdiction && completeCatalog.some((row:any)=>row.jurisdiction?.code===currentJurisdiction && [row.jurisdiction?.name_ar,row.jurisdiction?.name_en].some((name:any)=>normalize(name).replace(/\s+/g,"")===jurisdictionAnswer)));
-      const resolvingObjectJurisdiction = jurisdictionOnly && /في أي إمارة تتم هذه المعاملة|Which emirate is this transaction in/.test(String(context?.pending_clarification||""));
-      const explicitObject = (!contextualFollowUp || resolvingObjectJurisdiction) ? transactionObject(normalize(resolvingObjectJurisdiction ? semanticGoal : latestTurn)) : null;
+      const pendingObject = jurisdictionOnly && /في أي إمارة تتم هذه المعاملة|Which emirate is this transaction in/.test(String(context?.pending_clarification||"")) ? transactionObject(normalize(goal+" "+semanticGoal)) : null;
+      const resolvingObjectJurisdiction = Boolean(pendingObject);
+      const explicitObject = pendingObject || (!contextualFollowUp ? transactionObject(normalize(latestTurn)) : null);
       const missingObjectJurisdiction = explicitObject && transactionObjectNeedsEmirate(explicitObject) && (!currentJurisdiction || currentJurisdiction==="AE");
       const explicitRows = explicitObject && !missingObjectJurisdiction ? catalog.filter((row:any)=>transactionObjectMatches(explicitObject,normalize(row.title+" "+(row.binding.metadata?.name_en||"")),row.binding.authority_key)) : [];
       const catalogMs = performance.now() - catalogStarted;
