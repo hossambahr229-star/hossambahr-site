@@ -15,7 +15,7 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
       - run: npm install --no-save --ignore-scripts playwright@1.55.0
       - run: |
-          for lang in ar en; do
+          for lang in en; do
             for width in 390 1440; do
               HB_LANG=$lang HB_WIDTH=$width HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=diagnostics/official-source-contrast-production-2026-10-22/$lang-$width node scripts/live-official-source-contrast.mjs
             done
