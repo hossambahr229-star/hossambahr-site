@@ -23,3 +23,5 @@ for(const q of ['I want to cancel a recruitment agency licence','عايز ألغ
 test('unsupported operation does not select neighbouring issuance',()=>{const i=transactionObject(normalizeIntent('I need to cancel a part time work permit'));assert.ok(i);assert.equal(transactionObjectMatches(i,'issuance of a new work permit part time work permit','mohre'),false);});
 
 test('local objects ask for jurisdiction while federal objects do not invent one',()=>{assert.equal(transactionObjectNeedsEmirate(transactionObject(normalizeIntent('I want to close a company'))),true);assert.equal(transactionObjectNeedsEmirate(transactionObject(normalizeIntent('I need a part time work permit'))),false);});
+
+test('free-zone operations do not acquire a mainland licence pathway from the emirate alone',()=>{for(const q of ['I want to close my company in a free zone in Sharjah','عايز ألغي شركتي في المنطقة الحرة في الشارقة','I need to add a partner to my DMCC company in Dubai']){const intent=transactionObject(normalizeIntent(q));assert.ok(intent);for(const r of rows)assert.equal(transactionObjectMatches(intent,normalizeIntent(r.a+' '+r.e),r.i),false);}});
