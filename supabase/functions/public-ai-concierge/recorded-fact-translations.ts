@@ -1,5 +1,7 @@
 // Generated from src/publication/recorded-detail-translations.mjs. Platform explanatory wording; not official English text.
 export const recordedFactTranslations: Readonly<Record<string,string>> = Object.freeze({
+  "للمنشآت المسجلة لدى وزارة الموارد البشرية والتوطين؛ تُدفع الأجور عبر بنوك ومؤسسات مالية معتمدة من مصرف الإمارات العربية المتحدة المركزي.": "For establishments registered with MOHRE. Wages are paid through banks and financial institutions approved by the Central Bank of the UAE.",
+  "هذا مسار إرشادي لنظام حماية الأجور، وليس نموذج تسجيل حكوميًا مباشرًا. لا توثق هذه المراجعة مستندات التسجيل أو الرسوم أو مدة التفعيل؛ أكدها مع الوزارة ووكيل الدفع المعتمد.": "This is official WPS guidance, not a direct government registration form. This review does not verify registration documents, fees or activation time; confirm them with MOHRE and an approved payment agent.",
   "بيانات التصريح والعقد": "Permit and employment contract details",
   "طلب الإلغاء وتوقيع الأطراف بحسب الحالة": "Cancellation application and the parties' signatures, depending on the case",
   "إقرار أو إثبات تسوية المستحقات": "Declaration or evidence of settlement of entitlements",

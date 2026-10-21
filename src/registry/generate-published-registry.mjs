@@ -179,7 +179,7 @@ for (const service of matrix.services.filter((item) => !normalizedSourceIds.has(
     conditions: service.conditions,
     officialInformationUrl: service.officialCardUrl,
     officialCtaUrl: service.executionUrl || service.officialCardUrl,
-    destinationKind: service.officialRouteMode === 'direct-execution' ? 'DIRECT_EXECUTION' : 'DIRECT_SERVICE',
+    destinationKind: service.officialRouteMode === 'direct-execution' ? 'DIRECT_EXECUTION' : service.officialRouteMode === 'official-guidance' ? 'OFFICIAL_GUIDANCE' : 'DIRECT_SERVICE',
     sourceRegistry: 'service-matrix',
     relatedServiceIds: (service.relatedServices || []).map((item) => item.internalUrl?.split('/').filter(Boolean).at(-1)).filter(Boolean),
     faq: service.faq || [],
