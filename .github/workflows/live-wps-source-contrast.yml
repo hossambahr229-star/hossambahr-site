@@ -14,15 +14,15 @@ jobs:
         with: {node-version: '24'}
       - uses: browser-actions/setup-chrome@v1
       - run: npm install --no-save --ignore-scripts playwright@1.55.0
-      - run: HB_BROWSER_PATH="$(which chrome)" HB_BASE_URL=https://hossambahr.com HB_OUTPUT_DIR=diagnostics/wps-source-contrast-2026-10-21 node scripts/live-wps-source-contrast.mjs
+      - run: HB_BROWSER_PATH="$(which chrome)" HB_BASE_URL=https://hossambahr.com HB_OUTPUT_DIR=diagnostics/wps-source-contrast-composited-2026-10-22 node scripts/live-wps-source-contrast.mjs
       - if: always()
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-          git add diagnostics/wps-source-contrast-2026-10-21
+          git add diagnostics/wps-source-contrast-composited-2026-10-22
           git diff --cached --quiet || git commit -m "Record live described activity and contact context [skip ci]"
           git pull --rebase origin agent/dld-source-review-evidence
           git push
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: wps-source-contrast, path: diagnostics/wps-source-contrast-2026-10-21}
+        with: {name: wps-source-contrast, path: diagnostics/wps-source-contrast-composited-2026-10-22}
