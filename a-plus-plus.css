@@ -18,6 +18,8 @@ html.hb-a-plus-plus body>a.skip-link:focus{z-index:1000}
 html.hb-a-plus-plus :focus-visible{outline:3px solid var(--hb-gold-600)!important;outline-offset:3px}
 html.hb-a-plus-plus h1,html.hb-a-plus-plus h2,html.hb-a-plus-plus h3{color:var(--hb-ink);letter-spacing:-.035em;line-height:1.16;text-wrap:balance}
 html.hb-a-plus-plus p{color:var(--hb-muted)}
+/* Official source guidance sits on the existing dark green panel. */
+html.hb-a-plus-plus .official-source-panel p{color:#fff}
 html.hb-a-plus-plus a{text-underline-offset:4px}
 
 /* Institutional frame */
