@@ -1,0 +1,56 @@
+{
+  "reviewedAt": "2026-10-21",
+  "serviceSlug": "التسجيل-والمتابعة-في-wps",
+  "canonicalId": "directory:mohre:24",
+  "scope": "Eligibility and truthful information-path classification only. Not full service completion.",
+  "sources": [
+    {
+      "url": "https://www.dubai.ae/wages-protection-system",
+      "method": "OFFICIAL_PAGE_READ",
+      "observedUpdatedAt": "03-04-2026 (as displayed)",
+      "verifiedClaims": [
+        "MOHRE-registered businesses participate in WPS",
+        "Wages paid through CBUAE-approved banks/financial institutions"
+      ]
+    },
+    {
+      "url": "https://centralbank.ae/en/our-operations/payments-and-settlements/uae-wages-protection-system-uaewps/",
+      "method": "OFFICIAL_PAGE_READ",
+      "observedUpdatedAt": "2026-02-24",
+      "verifiedClaims": [
+        "Employer contracts with wage-payment agents",
+        "Wage information and fund flow are monitored through UAEWPS"
+      ]
+    }
+  ],
+  "remainingUnverified": [
+    "registration_documents",
+    "government_fees",
+    "activation_time"
+  ],
+  "excludedClaims": [
+    "No automatic financial transaction",
+    "No government submission",
+    "No generic free-zone eligibility inference",
+    "No wage deadline or penalty amount inferred from historic rules"
+  ],
+  "originalMohrePage": {
+    "url": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
+    "currentRead": "TIMEOUT; not evidence of unpublished fields"
+  },
+  "records": [
+    {
+      "slug": "التسجيل-والمتابعة-في-wps",
+      "reviewedAt": "2026-10-21",
+      "fields": [
+        "conditions",
+        "specialCases"
+      ],
+      "remaining": [
+        "requirements",
+        "fees",
+        "duration"
+      ]
+    }
+  ]
+}
