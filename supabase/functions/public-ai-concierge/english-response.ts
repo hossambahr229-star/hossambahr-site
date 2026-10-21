@@ -58,5 +58,6 @@ export function englishResult(result: any) {
  else text='Verified source record, in its original language:\n'+String(answer.text||'');
  if(answer.evidence?.source_scope_unresolved&&!answer.evidence?.review_pending){const note=recordedEnglish(answer.evidence.special_case);if(note&&!text.includes(note))text+="\nOfficial source limits: "+note;}
  if(verified && /\/ar\//.test(String(answer.evidence?.source_url||'')))text+='\nOfficial source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.';
- return {...result,answer:{...answer,text},follow_up_questions:(result.follow_up_questions||[]).map(englishQuestion)};
+ const matches=(result.matches||[]).map((item:any)=>({...item,...(Array.isArray(item.conditions)?{conditions:item.conditions.map((value:unknown)=>recordedEnglish(value)||value)}:{})}));
+ return {...result,matches,answer:{...answer,text},follow_up_questions:(result.follow_up_questions||[]).map(englishQuestion)};
 }

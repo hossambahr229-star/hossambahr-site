@@ -1,0 +1,14 @@
+name: Expanded conditions and honest missing facts
+on:
+  push:
+    branches: [agent/expanded-english-conditions]
+permissions: {contents: read}
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: npm run build
+      - run: node --test test/architecture/ai-expanded-conditions-english.test.mjs test/architecture/phase6-master-experience.test.mjs
