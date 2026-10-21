@@ -1,0 +1,436 @@
+{
+  "source": "LIVE_PRODUCTION_BROWSER",
+  "humanAcceptance": "NOT_VERIFIED",
+  "checks": [
+    {
+      "q": "عايز أدخل شريك في الرخصة",
+      "city": "دبي",
+      "id": "add-remove-partner-dubai",
+      "initial": {
+        "expires_at": 1792565858524,
+        "original_goal": "عايز أدخل شريك في الرخصة",
+        "resolved_query": "عايز أدخل شريك في الرخصة",
+        "answers": [],
+        "service_slug": null,
+        "jurisdiction_code": null,
+        "authority_key": null,
+        "active_service_id": null,
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": null,
+        "subject_role": "partner",
+        "last_answer_topic": "clarification",
+        "pending_clarification": "في أي إمارة تتم هذه المعاملة؟",
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز أدخل شريك في الرخصة"
+          },
+          {
+            "role": "assistant",
+            "content": "في أي إمارة تتم هذه المعاملة؟"
+          }
+        ]
+      },
+      "question": "في أي إمارة تتم هذه المعاملة؟\n\nفي أي إمارة تتم هذه المعاملة؟\nدبيأبوظبيالشارقةإمارة أخرى\nاطلب مراجعة معاملتك مع حسام بحر",
+      "final": {
+        "expires_at": 1792565861712,
+        "original_goal": "عايز أدخل شريك في الرخصة",
+        "resolved_query": "عايز أدخل شريك في الرخصة — دبي",
+        "answers": [
+          "دبي"
+        ],
+        "service_slug": "add-remove-partner-dubai",
+        "jurisdiction_code": "AE-DU",
+        "authority_key": "det-dubai",
+        "active_service_id": "add-remove-partner-dubai",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": null,
+        "subject_role": "partner",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز أدخل شريك في الرخصة"
+          },
+          {
+            "role": "assistant",
+            "content": "في أي إمارة تتم هذه المعاملة؟"
+          },
+          {
+            "role": "user",
+            "content": "دبي"
+          },
+          {
+            "role": "assistant",
+            "content": "المسار المناسب لطلبك هو «إضافة أو انسحاب شريك في شركة بدبي» لدى دائرة الاقتصاد والسياحة في دبي. يتغير الهيكل القانوني والاقتصادي للشركة عند دخول أو خروج شريك، لذلك لا يكفي تعديل اسم في الرخصة فقط."
+          }
+        ]
+      },
+      "reply": "المسار المناسب لطلبك هو «إضافة أو انسحاب شريك في شركة بدبي» لدى دائرة الاقتصاد والسياحة في دبي. يتغير الهيكل القانوني والاقتصادي للشركة عند دخول أو خروج شريك، لذلك لا يكفي تعديل اسم في الرخصة فقط.\n\nالخدمة المطابقة\n\nإضافة أو انسحاب شريك في شركة بدبي\n\nالجهة المختصة\n\nدائرة الاقتصاد والسياحة في دبي\n\nالإمارة / الاختصاص\n\nدبي\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "privateContextPreserved": true,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "q": "اضافة شريك بالرخصة",
+      "city": "رأس الخيمة",
+      "id": "ras-al-khaimah-add-remove-partner",
+      "initial": {
+        "expires_at": 1792565865897,
+        "original_goal": "اضافة شريك بالرخصة",
+        "resolved_query": "اضافة شريك بالرخصة",
+        "answers": [],
+        "service_slug": null,
+        "jurisdiction_code": null,
+        "authority_key": null,
+        "active_service_id": null,
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": null,
+        "subject_role": "partner",
+        "last_answer_topic": "clarification",
+        "pending_clarification": "في أي إمارة تتم هذه المعاملة؟",
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "اضافة شريك بالرخصة"
+          },
+          {
+            "role": "assistant",
+            "content": "في أي إمارة تتم هذه المعاملة؟"
+          }
+        ]
+      },
+      "question": "في أي إمارة تتم هذه المعاملة؟\n\nفي أي إمارة تتم هذه المعاملة؟\nدبيأبوظبيالشارقةإمارة أخرى\nاطلب مراجعة معاملتك مع حسام بحر",
+      "final": {
+        "expires_at": 1792565868658,
+        "original_goal": "اضافة شريك بالرخصة",
+        "resolved_query": "اضافة شريك بالرخصة — رأس الخيمة",
+        "answers": [
+          "رأس الخيمة"
+        ],
+        "service_slug": "ras-al-khaimah-add-remove-partner",
+        "jurisdiction_code": "AE-RK",
+        "authority_key": "rak-ded",
+        "active_service_id": "ras-al-khaimah-add-remove-partner",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": null,
+        "subject_role": "partner",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "اضافة شريك بالرخصة"
+          },
+          {
+            "role": "assistant",
+            "content": "في أي إمارة تتم هذه المعاملة؟"
+          },
+          {
+            "role": "user",
+            "content": "رأس الخيمة"
+          },
+          {
+            "role": "assistant",
+            "content": "المسار المناسب لطلبك هو «إضافة أو حذف شريك في رخصة رأس الخيمة» لدى دائرة التنمية الاقتصادية – رأس الخيمة. يتطلب إعلانًا ليوم واحد عبر الدائرة، وقد يلزم عدم ممانعة موثقة للشريك الوافد."
+          }
+        ]
+      },
+      "reply": "المسار المناسب لطلبك هو «إضافة أو حذف شريك في رخصة رأس الخيمة» لدى دائرة التنمية الاقتصادية – رأس الخيمة. يتطلب إعلانًا ليوم واحد عبر الدائرة، وقد يلزم عدم ممانعة موثقة للشريك الوافد.\n\nالخدمة المطابقة\n\nإضافة أو حذف شريك في رخصة رأس الخيمة\n\nالجهة المختصة\n\nدائرة التنمية الاقتصادية – رأس الخيمة\n\nالإمارة / الاختصاص\n\nرأس الخيمة\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "privateContextPreserved": true,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "q": "محتاج أضيف شريك",
+      "city": "دبي",
+      "id": "add-remove-partner-dubai",
+      "initial": {
+        "expires_at": 1792565872182,
+        "original_goal": "محتاج أضيف شريك",
+        "resolved_query": "محتاج أضيف شريك",
+        "answers": [],
+        "service_slug": null,
+        "jurisdiction_code": null,
+        "authority_key": null,
+        "active_service_id": null,
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": null,
+        "subject_role": "partner",
+        "last_answer_topic": "clarification",
+        "pending_clarification": "في أي إمارة تتم هذه المعاملة؟",
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "محتاج أضيف شريك"
+          },
+          {
+            "role": "assistant",
+            "content": "في أي إمارة تتم هذه المعاملة؟"
+          }
+        ]
+      },
+      "question": "في أي إمارة تتم هذه المعاملة؟\n\nفي أي إمارة تتم هذه المعاملة؟\nدبيأبوظبيالشارقةإمارة أخرى\nاطلب مراجعة معاملتك مع حسام بحر",
+      "final": {
+        "expires_at": 1792565875493,
+        "original_goal": "محتاج أضيف شريك",
+        "resolved_query": "محتاج أضيف شريك — دبي",
+        "answers": [
+          "دبي"
+        ],
+        "service_slug": "add-remove-partner-dubai",
+        "jurisdiction_code": "AE-DU",
+        "authority_key": "det-dubai",
+        "active_service_id": "add-remove-partner-dubai",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": null,
+        "subject_role": "partner",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "محتاج أضيف شريك"
+          },
+          {
+            "role": "assistant",
+            "content": "في أي إمارة تتم هذه المعاملة؟"
+          },
+          {
+            "role": "user",
+            "content": "دبي"
+          },
+          {
+            "role": "assistant",
+            "content": "المسار المناسب لطلبك هو «إضافة أو انسحاب شريك في شركة بدبي» لدى دائرة الاقتصاد والسياحة في دبي. يتغير الهيكل القانوني والاقتصادي للشركة عند دخول أو خروج شريك، لذلك لا يكفي تعديل اسم في الرخصة فقط."
+          }
+        ]
+      },
+      "reply": "المسار المناسب لطلبك هو «إضافة أو انسحاب شريك في شركة بدبي» لدى دائرة الاقتصاد والسياحة في دبي. يتغير الهيكل القانوني والاقتصادي للشركة عند دخول أو خروج شريك، لذلك لا يكفي تعديل اسم في الرخصة فقط.\n\nالخدمة المطابقة\n\nإضافة أو انسحاب شريك في شركة بدبي\n\nالجهة المختصة\n\nدائرة الاقتصاد والسياحة في دبي\n\nالإمارة / الاختصاص\n\nدبي\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "privateContextPreserved": true,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "q": "عايز ألغي شركة وعندي عمال",
+      "city": "الشارقة",
+      "id": "sharjah-economic-license-cancellation",
+      "initial": {
+        "expires_at": 1792565879014,
+        "original_goal": "عايز ألغي شركة وعندي عمال",
+        "resolved_query": "عايز ألغي شركة وعندي عمال",
+        "answers": [],
+        "service_slug": null,
+        "jurisdiction_code": null,
+        "authority_key": null,
+        "active_service_id": null,
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": "cancel",
+        "subject_role": "company",
+        "last_answer_topic": "clarification",
+        "pending_clarification": "في أي إمارة تتم هذه المعاملة؟",
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز ألغي شركة وعندي عمال"
+          },
+          {
+            "role": "assistant",
+            "content": "في أي إمارة تتم هذه المعاملة؟"
+          }
+        ]
+      },
+      "question": "في أي إمارة تتم هذه المعاملة؟\n\nفي أي إمارة تتم هذه المعاملة؟\nدبيأبوظبيالشارقةإمارة أخرى\nاطلب مراجعة معاملتك مع حسام بحر",
+      "final": {
+        "expires_at": 1792565882251,
+        "original_goal": "عايز ألغي شركة وعندي عمال",
+        "resolved_query": "عايز ألغي شركة وعندي عمال — الشارقة",
+        "answers": [
+          "الشارقة"
+        ],
+        "service_slug": "sharjah-economic-license-cancellation",
+        "jurisdiction_code": "AE-SH",
+        "authority_key": "sharjah-ded",
+        "active_service_id": "sharjah-economic-license-cancellation",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": "cancel",
+        "subject_role": "company",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "عايز ألغي شركة وعندي عمال"
+          },
+          {
+            "role": "assistant",
+            "content": "في أي إمارة تتم هذه المعاملة؟"
+          },
+          {
+            "role": "user",
+            "content": "الشارقة"
+          },
+          {
+            "role": "assistant",
+            "content": "المسار المناسب لطلبك هو «إلغاء رخصة اقتصادية في الشارقة» لدى دائرة التنمية الاقتصادية في الشارقة. لإلغاء الرخصة نهائيًا بعد الإجراءات القانونية والإعلان، وليس تجميدها. يجب مراجعة متطلبات العمالة وبطاقة المنشأة مع وزارة الموارد البشرية والتوطين؛ إلغاء الرخصة لا يعني أن المنصة ألغت تصاريح العمل. زر البدء الظاهر في البطاقة يشير إلى مسار إصدار رخصة؛ نربط ببطاقة المعلومات ونطلب تأكيد مسار الإلغاء من SEDD."
+          }
+        ]
+      },
+      "reply": "المسار المناسب لطلبك هو «إلغاء رخصة اقتصادية في الشارقة» لدى دائرة التنمية الاقتصادية في الشارقة. لإلغاء الرخصة نهائيًا بعد الإجراءات القانونية والإعلان، وليس تجميدها. يجب مراجعة متطلبات العمالة وبطاقة المنشأة مع وزارة الموارد البشرية والتوطين؛ إلغاء الرخصة لا يعني أن المنصة ألغت تصاريح العمل. زر البدء الظاهر في البطاقة يشير إلى مسار إصدار رخصة؛ نربط ببطاقة المعلومات ونطلب تأكيد مسار الإلغاء من SEDD.\n\nالخدمة المطابقة\n\nإلغاء رخصة اقتصادية في الشارقة\n\nالجهة المختصة\n\nدائرة التنمية الاقتصادية في الشارقة\n\nالإمارة / الاختصاص\n\nالشارقة\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "privateContextPreserved": true,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "q": "I need to add a partner to my licence in Ras Al Khaimah",
+      "id": "ras-al-khaimah-add-remove-partner",
+      "en": true,
+      "initial": {
+        "expires_at": 1792565886888,
+        "original_goal": "I need to add a partner to my licence in Ras Al Khaimah",
+        "resolved_query": "I need to add a partner to my licence in Ras Al Khaimah",
+        "answers": [],
+        "service_slug": "ras-al-khaimah-add-remove-partner",
+        "jurisdiction_code": "AE-RK",
+        "authority_key": "rak-ded",
+        "active_service_id": "ras-al-khaimah-add-remove-partner",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": null,
+        "subject_role": "partner",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "I need to add a partner to my licence in Ras Al Khaimah"
+          },
+          {
+            "role": "assistant",
+            "content": "The matching service is Adding or Removing a Partner through Ras Al Khaimah Department of Economic Development. Requires a one-day announcement through the department. An attested no-objection certificate may be required for an expatriate partner."
+          }
+        ]
+      },
+      "final": {
+        "expires_at": 1792565886888,
+        "original_goal": "I need to add a partner to my licence in Ras Al Khaimah",
+        "resolved_query": "I need to add a partner to my licence in Ras Al Khaimah",
+        "answers": [],
+        "service_slug": "ras-al-khaimah-add-remove-partner",
+        "jurisdiction_code": "AE-RK",
+        "authority_key": "rak-ded",
+        "active_service_id": "ras-al-khaimah-add-remove-partner",
+        "relationship": null,
+        "family_members": [],
+        "entity": {
+          "kind": "unknown",
+          "relationship": null,
+          "relationship_group": null
+        },
+        "intent": null,
+        "service_family": null,
+        "action": null,
+        "subject_role": "partner",
+        "last_answer_topic": "overview",
+        "pending_clarification": null,
+        "known_facts": {},
+        "history": [
+          {
+            "role": "user",
+            "content": "I need to add a partner to my licence in Ras Al Khaimah"
+          },
+          {
+            "role": "assistant",
+            "content": "The matching service is Adding or Removing a Partner through Ras Al Khaimah Department of Economic Development. Requires a one-day announcement through the department. An attested no-objection certificate may be required for an expatriate partner."
+          }
+        ]
+      },
+      "reply": "The matching service is Adding or Removing a Partner through Ras Al Khaimah Department of Economic Development. Requires a one-day announcement through the department. An attested no-objection certificate may be required for an expatriate partner.\n\nMatching service\n\nAdding or Removing a Partner\n\nResponsible authority\n\nRas Al Khaimah Department of Economic Development\n\nEmirate / jurisdiction\n\nRas Al Khaimah\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "privateContextPreserved": true,
+      "noMessageSent": true,
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}
