@@ -1,4 +1,4 @@
-import {transactionObject,transactionObjectMatches} from './transaction-object.ts';
+import {transactionObject,transactionObjectMatches,transactionObjectNeedsEmirate} from './transaction-object.ts';
 import {reraApprovalKind,RERA_APPROVAL_SLUGS} from './rera-approval.ts';
 import {siraIntent,SIRA_SLUGS} from '../../../sira-intent.js';
 import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole, mergeSemanticContext, relationshipCompatibility, relationshipGroup, semanticDomainCompatibility, type FamilyRelationship, type SemanticEntity, type SubjectRole } from "./semantic-context.ts";
@@ -986,7 +986,8 @@ export default {
       const currentJurisdiction = detectJurisdiction(latestTurn) || semantic.jurisdiction || detectJurisdiction(semanticGoal);
       const catalog = jurisdictionCandidates(withoutJurisdictionExclusions(completeCatalog, currentJurisdiction), currentJurisdiction);
       const explicitObject = !contextualFollowUp ? transactionObject(normalize(latestTurn)) : null;
-      const explicitRows = explicitObject ? catalog.filter((row:any)=>transactionObjectMatches(explicitObject,normalize(row.title+" "+(row.binding.metadata?.name_en||"")),row.binding.authority_key)) : [];
+      const missingObjectJurisdiction = explicitObject && transactionObjectNeedsEmirate(explicitObject) && (!currentJurisdiction || currentJurisdiction==="AE");
+      const explicitRows = explicitObject && !missingObjectJurisdiction ? catalog.filter((row:any)=>transactionObjectMatches(explicitObject,normalize(row.title+" "+(row.binding.metadata?.name_en||"")),row.binding.authority_key)) : [];
       const catalogMs = performance.now() - catalogStarted;
       let ranked:any[];
       const exactDubaiFamilySponsorship=dubaiSponsorshipCandidate(catalog,relationship,semantic.action,semantic.jurisdiction,semanticGoal);
@@ -1024,6 +1025,8 @@ export default {
         ranked = await selectSemanticCandidate(semantic, lexicalRanked, catalog);
       }
       let deterministic:any = publicResult(semanticGoal, ranked, latestTurn);
+      if(missingObjectJurisdiction){deterministic={...publicResult(semanticGoal,[],latestTurn),understood_intent:"تحديد إمارة المعاملة",answer:{text:"في أي إمارة تتم هذه المعاملة؟",focus:"clarification",fact_status:"NEEDS_CLARIFICATION",grounded:false,evidence:{}},missing_information:["إمارة المعاملة"],follow_up_questions:["في أي إمارة تتم هذه المعاملة؟"]};}
+      else if(explicitObject&&!ranked.length){deterministic={...publicResult(semanticGoal,[],latestTurn),understood_intent:"مسار المعاملة غير متحقق لهذه العملية والإمارة",answer:{text:"المعاملة والإمارة مفهومتان، لكن لا يتوفر مسار موثق لهذه العملية في السجل الحالي. لن أحولك إلى نوع معاملة آخر.",focus:answerFocus(latestTurn),fact_status:"MISSING_INFORMATION",grounded:false,evidence:{}},missing_information:["مسار موثق للعملية في الإمارة المحددة"],follow_up_questions:[]};}
       if(siraKind==='general' && (!siraJurisdiction||siraJurisdiction==='AE-DU')){
         deterministic={...publicResult(semanticGoal,[],latestTurn),understood_intent:"موافقات SIRA",answer:{text:"SIRA هي مؤسسة تنظيم الصناعة الأمنية في دبي. ترخيص النشاط الأمني واعتماد النظام الأمني للمنشأة معاملتان مختلفتان. هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟",focus:"clarification",fact_status:"NEEDS_CLARIFICATION",grounded:false,evidence:{}},missing_information:["نوع موافقة SIRA"],follow_up_questions:["هل تريد ترخيص نشاط أمني أم اعتماد نظام أمني لمنشأة أو مبنى؟"]};
       } else if(siraKind && !ranked.length){
