@@ -1,0 +1,89 @@
+{
+  "source": "LIVE_PRODUCTION_BROWSER",
+  "scope": "Existing WPS eligibility and guidance only; documents/fees/activation remain unverified",
+  "humanAcceptance": "NOT_VERIFIED",
+  "privateExecution": "NOT_TESTED",
+  "checks": [
+    {
+      "case": "service-and-assisted-review",
+      "en": false,
+      "width": 390,
+      "contextPreserved": true,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "service-and-assisted-review",
+      "en": false,
+      "width": 1440,
+      "contextPreserved": true,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "service-and-assisted-review",
+      "en": true,
+      "width": 390,
+      "contextPreserved": true,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "service-and-assisted-review",
+      "en": true,
+      "width": 1440,
+      "contextPreserved": true,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "actual-assistant-conditions-and-unknown-fees",
+      "en": false,
+      "responseEngines": [
+        {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 200,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        },
+        {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 200,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        }
+      ],
+      "conditions": "HB AI\n\nالمسار المناسب لطلبك هو «التسجيل والمتابعة في WPS» لدى وزارة الموارد البشرية والتوطين في الإمارات العربية المتحدة. للمنشآت المسجلة لدى وزارة الموارد البشرية والتوطين؛ تُدفع الأجور عبر بنوك ومؤسسات مالية معتمدة من مصرف الإمارات العربية المتحدة المركزي.\n\nالخدمة المطابقة\n\nالتسجيل والمتابعة في WPS\n\nالجهة المختصة\n\nوزارة الموارد البشرية والتوطين\n\nالإمارة / الاختصاص\n\nالإمارات العربية المتحدة\n\nالخطوات\nالشروط\nللمنشآت المسجلة لدى وزارة الموارد البشرية والتوطين؛ تُدفع الأجور عبر بنوك ومؤسسات مالية معتمدة من مصرف الإمارات العربية المتحدة المركزي.\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "fees": "HB AI\n\nلا توجد في المعرفة الموثقة الحالية قيمة رسوم محددة يمكنني تأكيدها لهذه الحالة. لن أضع رقمًا تقديريًا؛ راجع المصدر الرسمي أو ابدأ المعاملة للتحقق من الرسوم الحالية.\n\nالخدمة المطابقة\n\nالتسجيل والمتابعة في WPS\n\nالجهة المختصة\n\nوزارة الموارد البشرية والتوطين\n\nالإمارة / الاختصاص\n\nالإمارات العربية المتحدة\n\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "status": "PASS"
+    },
+    {
+      "case": "actual-assistant-conditions-and-unknown-fees",
+      "en": true,
+      "responseEngines": [
+        {
+          "mode": "deterministic-policy-resolver",
+          "external_model_used": false,
+          "provider_failure": {
+            "category": "QUOTA_BILLING",
+            "status": 200,
+            "code": "credit_balance_exhausted",
+            "type": "insufficient_quota"
+          }
+        }
+      ],
+      "conditions": "HB AI\n\nThe matching service is Register and Monitor Wage Protection System (WPS) Compliance through MOHRE. For establishments registered with MOHRE. Wages are paid through banks and financial institutions approved by the Central Bank of the UAE.\n\nMatching service\n\nRegister and Monitor Wage Protection System (WPS) Compliance\n\nResponsible authority\n\nMOHRE\n\nEmirate / jurisdiction\n\nUnited Arab Emirates\n\nSteps\nConditions\nFor establishments registered with MOHRE. Wages are paid through banks and financial institutions approved by the Central Bank of the UAE.\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "feeFollowUp": "Previously accepted in 39624437356; not repeated",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}
