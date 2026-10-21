@@ -1,0 +1,641 @@
+{
+  "base": "https://hossambahr.com",
+  "source": "LIVE_PRODUCTION_BROWSER",
+  "humanUsability": "NOT_VERIFIED",
+  "externalModelAcceptance": "NOT_ASSERTED",
+  "pairedGovernmentBenchmark": "NOT_PERFORMED",
+  "checks": [
+    {
+      "expected": "corporate-tax-registration-uae",
+      "query": "أريد تسجيل شركتي في ضريبة الشركات في أبوظبي",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "corporate-tax-registration-uae",
+      "jurisdiction": "AE-AZ",
+      "reply": "المسار المناسب لطلبك هو «التسجيل في ضريبة الشركات بالإمارات» لدى الهيئة الاتحادية للضرائب في الإمارات العربية المتحدة. ينشئ التسجيل رقم ضريبة الشركات للشخص الخاضع، ويجب أن تتطابق بياناته مع الرخص والوثائق القانونية.\n\nالخدمة المطابقة\n\nالتسجيل في ضريبة الشركات بالإمارات\n\nالجهة المختصة\n\nالهيئة الاتحادية للضرائب\n\nالإمارة / الاختصاص\n\nالإمارات العربية المتحدة\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3674,
+      "officialLinks": [
+        "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx",
+        "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "vat-registration-uae",
+      "query": "I need VAT registration for my company in Sharjah",
+      "lang": "en",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "vat-registration-uae",
+      "jurisdiction": "AE-SH",
+      "reply": "The matching service is Register for VAT in the UAE through Federal Tax Authority. Registration is mandatory or voluntary according to the rules and thresholds. Support the figures with clear documents for the required period. Official source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.\n\nMatching service\n\nRegister for VAT in the UAE\n\nResponsible authority\n\nFederal Tax Authority\n\nEmirate / jurisdiction\n\nUnited Arab Emirates\n\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 4613,
+      "officialLinks": [
+        "https://tax.gov.ae/ar/services/vat.registration.aspx",
+        "https://tax.gov.ae/ar/services/vat.registration.aspx"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "dubai-customs-business-registration",
+      "query": "عايز أسجل منشأتي في جمارك دبي",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "dubai-customs-business-registration",
+      "jurisdiction": "AE-DU",
+      "reply": "المسار المناسب لطلبك هو «تسجيل منشأة لدى جمارك دبي» لدى جمارك دبي. تقدم المنشأة بياناتها عبر القنوات المتاحة وتتلقى رمز الشركة الجمركي بالبريد الإلكتروني بعد الاعتماد.\n\nالخدمة المطابقة\n\nتسجيل منشأة لدى جمارك دبي\n\nالجهة المختصة\n\nجمارك دبي\n\nالإمارة / الاختصاص\n\nدبي\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3773,
+      "officialLinks": [
+        "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17",
+        "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "submit-customs-declaration-dubai",
+      "query": "I need to submit a customs declaration in Dubai",
+      "lang": "en",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "submit-customs-declaration-dubai",
+      "jurisdiction": "AE-DU",
+      "reply": "The matching service is Submit Customs Declaration through Dubai Customs. Documents, fees and restrictions vary by declaration type, goods and port. Some amendments or cancellations are not allowed after certain inspection or release stages.\n\nMatching service\n\nSubmit Customs Declaration\n\nResponsible authority\n\nDubai Customs\n\nEmirate / jurisdiction\n\nDubai\n\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3789,
+      "officialLinks": [
+        "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
+        "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "vehicle-clearance-certificate-dubai-customs",
+      "query": "أريد شهادة تخليص سيارة من جمارك دبي",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "vehicle-clearance-certificate-dubai-customs",
+      "jurisdiction": "AE-DU",
+      "reply": "المسار المناسب لطلبك هو «شهادة تخليص مركبة من جمارك دبي» لدى جمارك دبي. عند إلغاء البيان الجمركي يجب إلغاء شهادة تخليص المركبة المرتبطة به.\n\nالخدمة المطابقة\n\nشهادة تخليص مركبة من جمارك دبي\n\nالجهة المختصة\n\nجمارك دبي\n\nالإمارة / الاختصاص\n\nدبي\n\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 4822,
+      "officialLinks": [
+        "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54",
+        "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "register-renew-ejari-contract-dubai",
+      "query": "I need to register my tenancy contract with Ejari in Dubai",
+      "lang": "en",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "register-renew-ejari-contract-dubai",
+      "jurisdiction": "AE-DU",
+      "reply": "The matching service is Register / Renew Tenancy Contract through Dubai Land Department / RERA. App: individual tenant and landlord, with current owner data. Centers: property not managed by a company or an owner using Ejari. Check the card for system-user eligibility.\n\nMatching service\n\nRegister / Renew Tenancy Contract\n\nResponsible authority\n\nDubai Land Department / RERA\n\nEmirate / jurisdiction\n\nDubai\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 4784,
+      "officialLinks": [
+        "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/",
+        "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "change-company-manager-dubai",
+      "query": "عايز أغير مدير الشركة في دبي",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "change-company-manager-dubai",
+      "jurisdiction": "AE-DU",
+      "reply": "المسار المناسب لطلبك هو «تعديل مدير شركة في دبي» لدى دائرة الاقتصاد والسياحة في دبي. يجب أن تتطابق صلاحيات الإدارة والتوقيع مع وثائق الشركة والرخصة حتى لا تتعطل المعاملات والبنك والجهات الأخرى.\n\nالخدمة المطابقة\n\nتعديل مدير شركة في دبي\n\nالجهة المختصة\n\nدائرة الاقتصاد والسياحة في دبي\n\nالإمارة / الاختصاص\n\nدبي\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3635,
+      "officialLinks": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "ras-al-khaimah-add-remove-partner",
+      "query": "I need to add a partner to my licence in Ras Al Khaimah",
+      "lang": "en",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "ras-al-khaimah-add-remove-partner",
+      "jurisdiction": "AE-RK",
+      "reply": "The matching service is Adding or Removing a Partner through Ras Al Khaimah Department of Economic Development. Requires a one-day announcement through the department. An attested no-objection certificate may be required for an expatriate partner.\n\nMatching service\n\nAdding or Removing a Partner\n\nResponsible authority\n\nRas Al Khaimah Department of Economic Development\n\nEmirate / jurisdiction\n\nRas Al Khaimah\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3729,
+      "officialLinks": [
+        "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/adding-or-removing-a-partner",
+        "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/adding-or-removing-a-partner"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "power-of-attorney-ratification-dubai",
+      "query": "عايز أصدق وكالة في محاكم دبي",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "power-of-attorney-ratification-dubai",
+      "jurisdiction": "AE-DU",
+      "reply": "المسار المناسب لطلبك هو «تصديق الوكالات في دبي» لدى محاكم دبي / الكاتب العدل. يشترط تسجيل الدخول؛ وللتصديق عن بعد يجب أن يحمل الأطراف هوية إماراتية سارية، مع حضور حامل الجواز فقط أمام الكاتب العدل.\n\nالخدمة المطابقة\n\nتصديق الوكالات في دبي\n\nالجهة المختصة\n\nمحاكم دبي / الكاتب العدل\n\nالإمارة / الاختصاص\n\nدبي\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3440,
+      "officialLinks": [
+        "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=G4&lang=en",
+        "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=G4&lang=en"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "query": "I need Ministry of Foreign Affairs attestation for a personal document in Abu Dhabi",
+      "lang": "en",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "jurisdiction": "AE-AZ",
+      "reply": "The matching service is Attest a Personal Document in the UAE through Ministry of Foreign Affairs. Review the approved official service card before starting the application.\n\nMatching service\n\nAttest a Personal Document in the UAE\n\nResponsible authority\n\nMinistry of Foreign Affairs\n\nEmirate / jurisdiction\n\nUnited Arab Emirates\n\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 2782,
+      "officialLinks": [
+        "https://www.mofa.gov.ae/services/attestation",
+        "https://www.mofa.gov.ae/services/attestation"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "renew-driving-license-dubai",
+      "query": "عايز أجدد رخصة القيادة في دبي",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "renew-driving-license-dubai",
+      "jurisdiction": "AE-DU",
+      "reply": "المسار المناسب لطلبك هو «تجديد رخصة القيادة في دبي» لدى هيئة الطرق والمواصلات في دبي. لا يمكن تجديد رخصة صادرة من إمارة أخرى عبر هذا المسار، ويجب تسوية المخالفات واستيفاء اختبار التقييم إذا انتهت منذ أكثر من 10 سنوات.\n\nالخدمة المطابقة\n\nتجديد رخصة القيادة في دبي\n\nالجهة المختصة\n\nهيئة الطرق والمواصلات في دبي\n\nالإمارة / الاختصاص\n\nدبي\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3455,
+      "officialLinks": [
+        "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=618",
+        "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=618"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "ras-al-khaimah-license-renewal",
+      "query": "I need to renew my economic licence in Ras Al Khaimah",
+      "lang": "en",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "ras-al-khaimah-license-renewal",
+      "jurisdiction": "AE-RK",
+      "reply": "The matching service is License Renewal through Ras Al Khaimah Department of Economic Development. Complete the documents, pay the fees and obtain approvals from the activity's regulators.\n\nMatching service\n\nLicense Renewal\n\nResponsible authority\n\nRas Al Khaimah Department of Economic Development\n\nEmirate / jurisdiction\n\nRas Al Khaimah\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 2900,
+      "officialLinks": [
+        "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-renewal",
+        "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-renewal"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "umm-al-quwain-trade-name-official-path",
+      "query": "أريد أحجز اسم تجاري في أم القيوين",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "umm-al-quwain-trade-name-official-path",
+      "jurisdiction": "AE-UQ",
+      "reply": "المسار المناسب لطلبك هو «المسار الرسمي لحجز اسم تجاري في أم القيوين» لدى خدمات الأعمال – أم القيوين. تختلف المستندات بحسب الجنسية وصفة المدير والفرع والتمثيل بوكالة؛ راجع الحالات المحددة في بطاقة الدائرة. حجز الاسم التجاري لا يمثل إصدار الرخصة. تذكر خانة الرسوم «حسب الطلب» دون مبلغ، ولا تُنشر مدة إنجاز محددة؛ أكد المبلغ والمدة مع الدائرة.\n\nالخدمة المطابقة\n\nالمسار الرسمي لحجز اسم تجاري في أم القيوين\n\nالجهة المختصة\n\nخدمات الأعمال – أم القيوين\n\nالإمارة / الاختصاص\n\nأم القيوين\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 4236,
+      "officialLinks": [
+        "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html",
+        "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "ajman-commercial-license-cancellation",
+      "query": "I need to cancel my commercial licence in Ajman",
+      "lang": "en",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "ajman-commercial-license-cancellation",
+      "jurisdiction": "AE-AJ",
+      "reply": "The matching service is Commercial License Cancellation Service through Ajman DED. The notice period is 15 days for some establishments and 45 days for the specified companies. Complete liquidation documents according to the legal form.\n\nMatching service\n\nCommercial License Cancellation Service\n\nResponsible authority\n\nAjman DED\n\nEmirate / jurisdiction\n\nAjman\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3880,
+      "officialLinks": [
+        "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license",
+        "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "family-sponsored-work-permit-uae",
+      "query": "أريد تصريح عمل لمقيم على كفالة أسرته في الفجيرة",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "family-sponsored-work-permit-uae",
+      "jurisdiction": "AE-FU",
+      "reply": "المسار المناسب لطلبك هو «تصريح عمل لمقيم على كفالة ذويه» لدى وزارة الموارد البشرية والتوطين في الإمارات العربية المتحدة. الإقامة الأسرية لا تمنح وحدها تصريح العمل؛ تحتاج المنشأة إلى التصريح المناسب قبل التشغيل.\n\nالخدمة المطابقة\n\nتصريح عمل لمقيم على كفالة ذويه\n\nالجهة المختصة\n\nوزارة الموارد البشرية والتوطين\n\nالإمارة / الاختصاص\n\nالإمارات العربية المتحدة\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3198,
+      "officialLinks": [
+        "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
+        "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "part-time-work-permit-uae",
+      "query": "I need a part time work permit in Sharjah",
+      "lang": "en",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "part-time-work-permit-uae",
+      "jurisdiction": "AE-SH",
+      "reply": "The matching service is Issuance of a New Work Permit - Part Time Work Permit through MOHRE. The permit regulates part-time work legally under its conditions, instead of undertaking additional work without a permit.\n\nMatching service\n\nIssuance of a New Work Permit - Part Time Work Permit\n\nResponsible authority\n\nMOHRE\n\nEmirate / jurisdiction\n\nUnited Arab Emirates\n\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3569,
+      "officialLinks": [
+        "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022",
+        "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "transfer-work-permit-uae",
+      "query": "عايز أنقل تصريح عمل موظف لمنشأة جديدة في أبوظبي",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "transfer-work-permit-uae",
+      "jurisdiction": "AE-AZ",
+      "reply": "المسار المناسب لطلبك هو «نقل تصريح عمل موظف إلى منشأة جديدة» لدى وزارة الموارد البشرية والتوطين في الإمارات العربية المتحدة. تحتاجه المنشأة الجديدة لتشغيل عامل موجود داخل الدولة وفق العلاقة الجديدة، مع فصل واضح بين ملف العمل وملف الإقامة.\n\nالخدمة المطابقة\n\nنقل تصريح عمل موظف إلى منشأة جديدة\n\nالجهة المختصة\n\nوزارة الموارد البشرية والتوطين\n\nالإمارة / الاختصاص\n\nالإمارات العربية المتحدة\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3031,
+      "officialLinks": [
+        "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",
+        "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "register-labour-complaints-private-sector-employees",
+      "query": "I need to file a private sector labour complaint in Ajman",
+      "lang": "en",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "register-labour-complaints-private-sector-employees",
+      "jurisdiction": "AE-AJ",
+      "reply": "The matching service is Register Labour Complaints - Private Sector Employees through MOHRE. The worker must be registered in the ministry database. An existing complaint or court dispute prevents another complaint, subject to the service-card exceptions for an ongoing employment relationship or a request to cancel the work permit.\n\nMatching service\n\nRegister Labour Complaints - Private Sector Employees\n\nResponsible authority\n\nMOHRE\n\nEmirate / jurisdiction\n\nUnited Arab Emirates\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3677,
+      "officialLinks": [
+        "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022",
+        "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
+      "query": "أريد أطلع بطاقة مندوب علاقات عامة للشركة في دبي",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
+      "jurisdiction": "AE-DU",
+      "reply": "المسار المناسب لطلبك هو «إصدار بطاقة مندوب علاقات عامة PRO» لدى وزارة الموارد البشرية والتوطين في الإمارات العربية المتحدة. ملف بالوزارة وتصريح عمل سارٍ، وحسن السيرة والسلوك. المندوب المواطن: حتى ثلاثة ملاك مختلفين؛ الأول لديه 100 عامل فأكثر، والثاني والثالث أقل من 100 لكل منهما. المندوب الأجنبي: مالك واحد لديه أقل من 100 عامل. يجب أن يقدم الطلب مالك المنشأة المخول بالتوقيع، مع سداد رسوم الطباعة وإصدار البطاقة.\n\nالخدمة المطابقة\n\nإصدار بطاقة مندوب علاقات عامة PRO\n\nالجهة المختصة\n\nوزارة الموارد البشرية والتوطين\n\nالإمارة / الاختصاص\n\nالإمارات العربية المتحدة\n\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 3522,
+      "officialLinks": [
+        "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
+        "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "golden-residency-uae",
+      "query": "I want golden residence as an investor in Dubai",
+      "lang": "en",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "golden-residency-uae",
+      "jurisdiction": "AE-DU",
+      "reply": "The matching service is Issuing a golden residence permit (investors) through GDRFA Dubai. This service record is for investors in Dubai only. It is not the pathway for talented individuals, scientists, entrepreneurs or other Golden Residence categories.\n\nMatching service\n\nIssuing a golden residence permit (investors)\n\nResponsible authority\n\nGDRFA Dubai\n\nEmirate / jurisdiction\n\nDubai\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 4181,
+      "officialLinks": [
+        "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
+        "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "expected": "fujairah-economic-initial-approval",
+      "query": "أريد موافقة مبدئية لإصدار رخصة اقتصادية في الفجيرة",
+      "lang": "ar",
+      "responseStatus": 200,
+      "responseEngine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "fujairah-economic-initial-approval",
+      "jurisdiction": "AE-FU",
+      "reply": "لا تمثل الموافقة المبدئية رخصة نهائية، وتلزم متابعة الجهات والموافقات المطلوبة قبل الإصدار.\n\nالخدمة المطابقة\n\nإصدار موافقة مبدئية اقتصادية في الفجيرة\n\nالجهة المختصة\n\nخدمات الأعمال – الفجيرة\n\nالإمارة / الاختصاص\n\nالفجيرة\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة",
+      "pendingClarification": null,
+      "elapsedToAnswerMs": 8401,
+      "officialLinks": [
+        "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=201",
+        "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=201"
+      ],
+      "interactionsToAssistedReview": 2,
+      "whatsappPublicServiceOnly": true,
+      "noMessageSent": true,
+      "contextPreserved": true,
+      "status": "PASS"
+    }
+  ],
+  "failed": 0,
+  "status": "SCOPED_AUTOMATED_PASS"
+}
