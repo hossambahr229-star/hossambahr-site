@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-21T06:42:25.586Z",
+  "generatedAt": "2026-10-21T15:22:01.856Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 155,
+    "REACHABLE": 156,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 85,
+    "NETWORK_UNVERIFIED": 84,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -2483,7 +2483,7 @@
       "result": "REACHABLE"
     },
     {
-      "url": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
+      "url": "https://www.dubai.ae/wages-protection-system",
       "services": [
         "التسجيل-والمتابعة-في-wps"
       ],
@@ -2492,8 +2492,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.dubai.ae/wages-protection-system",
+      "result": "REACHABLE"
     },
     {
       "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b",

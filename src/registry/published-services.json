@@ -23006,12 +23006,12 @@
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "غير موثق بعد"
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "للمنشآت المسجلة لدى وزارة الموارد البشرية والتوطين؛ تُدفع الأجور عبر بنوك ومؤسسات مالية معتمدة من مصرف الإمارات العربية المتحدة المركزي.",
       "steps": [
         {
           "order": 1,
           "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "description": "افتح الدليل الحكومي الرسمي المرتبط بالخدمة."
         },
         {
           "order": 2,
@@ -23057,28 +23057,28 @@
         "guide:cancel-work-permit-uae",
         "guide:part-time-work-permit-uae"
       ],
-      "officialInformationUrl": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
-      "officialCtaUrl": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
-      "destinationKind": "DIRECT_SERVICE",
+      "officialInformationUrl": "https://www.dubai.ae/wages-protection-system",
+      "officialCtaUrl": "https://www.dubai.ae/wages-protection-system",
+      "destinationKind": "OFFICIAL_GUIDANCE",
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
         "requirementsVerified": false,
         "feesVerified": false,
         "durationVerified": false,
-        "eligibilityVerified": false,
+        "eligibilityVerified": true,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 1,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
-        "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "officialLinkLastCheckedAt": "2026-10-21",
+        "dataLastReviewedAt": "2026-10-21",
         "sourceAuthority": "mohre",
-        "sourceUrl": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system"
+        "sourceUrl": "https://www.dubai.ae/wages-protection-system"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-21",
+      "lastReviewedAt": "2026-10-21",
       "internalRoute": "/services/التسجيل-والمتابعة-في-wps/",
       "sourceRegistry": "service-matrix"
     },
