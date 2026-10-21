@@ -1,0 +1,16 @@
+{
+  "scope": "One current provider-status observation; no retry and no overall semantic acceptance",
+  "observedAt": "2026-10-21T20:56:43.389Z",
+  "publicEndpointStatus": 200,
+  "engine": {
+    "mode": "deterministic-policy-resolver",
+    "external_model_used": false,
+    "provider_failure": {
+      "category": "QUOTA_BILLING",
+      "status": 200,
+      "code": "credit_balance_exhausted",
+      "type": "insufficient_quota"
+    }
+  },
+  "externalModelStatus": "NOT_PROVEN"
+}
