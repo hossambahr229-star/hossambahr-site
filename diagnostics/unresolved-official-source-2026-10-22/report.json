@@ -1,0 +1,20 @@
+{
+  "source": "LIVE_OFFICIAL_READ_ONLY_BROWSER",
+  "notFactAcceptance": true,
+  "rows": [
+    {
+      "id": "det-amend",
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "observedAt": "2026-10-21T20:57:41.324Z",
+      "status": 403,
+      "finalUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "body": "Access Denied\nYou don't have permission to access \"http://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence\" on this server.\n\nReference #18.716d3e17.1792616261.ff06360d\n\nhttps://errors.edgesuite.net/18.716d3e17.1792616261.ff06360d"
+    },
+    {
+      "id": "mohre-quota",
+      "url": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
+      "observedAt": "2026-10-21T20:57:49.707Z",
+      "error": "page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022\", waiting until \"domcontentloaded\"\n"
+    }
+  ]
+}
