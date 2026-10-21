@@ -143,6 +143,7 @@ const services = approved.map((record, index) => {
     officialSelectorLabel: route.selectorLabel || normalize(record.platformTitle || record.serviceName),
     officialRouteNote: route.note,
     evidenceUrl: record.evidenceUrl || record.officialUrl,
+    ...(record.officialLinkCheckedAt ? { officialLinkCheckedAt: record.officialLinkCheckedAt } : {}),
     status: "verified",
     description: normalize(record.description),
     requirements: Array.isArray(record.requirements) ? record.requirements.map(normalize).filter(Boolean) : [],

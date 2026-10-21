@@ -184,6 +184,7 @@ for (const service of matrix.services.filter((item) => !normalizedSourceIds.has(
     relatedServiceIds: (service.relatedServices || []).map((item) => item.internalUrl?.split('/').filter(Boolean).at(-1)).filter(Boolean),
     faq: service.faq || [],
     lastReviewedAt: service.lastReviewed,
+    officialLinkCheckedAt: service.officialLinkCheckedAt || officialLinkAuditAt,
   }));
 }
 

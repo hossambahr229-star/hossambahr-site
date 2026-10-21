@@ -39,7 +39,7 @@ function executionPaths(service) {
           label: 'افتح صفحة الخدمة الحكومية ↗',
         };
   const trust = service.verification || {};
-  const trustLabel = trust.detailsVerified ? 'الرابط والتفاصيل المعروضة موثقة' : 'رابط التنفيذ الرسمي موثق — بعض التفاصيل قيد التحقق';
+  const trustLabel = trust.detailsVerified ? 'الرابط والتفاصيل المعروضة موثقة' : destinationKind === 'official-guidance' ? 'الدليل الحكومي موثق — بعض التفاصيل قيد التحقق' : 'رابط التنفيذ الرسمي موثق — بعض التفاصيل قيد التحقق';
   const trustDetail = trust.detailsVerified
     ? 'تمت مراجعة الرابط والمتطلبات والرسوم والمدة والشروط المنشورة.'
     : 'لا نعرض أي رسم أو مدة أو مستند غير منشور رسميًا باعتباره معلومة مؤكدة.';
