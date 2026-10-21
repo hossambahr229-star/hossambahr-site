@@ -4,7 +4,7 @@ export type TransactionObject = {kind:string; action:string; freeZone?:boolean};
 export function transactionObject(q:string):TransactionObject|null {
  const cancel=/الغاء|الغي|اغلاق|اغلق|اقفل|تصفيه|cancel|clos(?:e|ing)|liquidat|dissolv/.test(q);
  const renew=/تجديد|اجدد|جدد|renew/.test(q);
- const amend=/تعديل|اغير|غير|اضافه|اضيف|add|chang|amend/.test(q);
+ const amend=/تعديل|اغير|غير|اضافه|اضيف|ادخل|ادخال|حذف|انسحاب|new partner|new shareholder|add|chang|amend/.test(q);
  const permit=/تصريح|permit/.test(q);
  const freeZone=/free ?zone|منطقه (?:ال)?حره|\bdmcc\b|\bshams\b|\bdifc\b|\badgm\b|\bjafza\b/.test(q);
  if(/قياد|driving/.test(q)&&/رخص|licen/.test(q))return{kind:'driving',action:renew?'renew':cancel?'cancel':'other'};
@@ -14,7 +14,7 @@ export function transactionObject(q:string):TransactionObject|null {
   if(/سجل|تسجيل|register|registration/.test(q)&&/منشا|شرك|business|company|establishment/.test(q))return{kind:'customs-business',action:'register'};
  }
  if(/مدير|manager/.test(q)&&/شرك|company/.test(q)&&amend)return{kind:'company-manager',freeZone,action:'amend'};
- if(/شريك|partner|shareholder/.test(q)&&/رخص|شرك|licen|company/.test(q)&&amend)return{kind:'company-partner',freeZone,action:'amend'};
+ if(/شريك|partner|shareholder/.test(q)&&amend&&!/اقام|تاشير|كفال|residen|visa|spouse|family/.test(q))return{kind:'company-partner',freeZone,action:'amend'};
  if(/وكاله|power of attorney/.test(q)&&/اصدق|تصديق|توثيق|ratif|attest|notari/.test(q)&&!/توظيف|recruit|employment agency/.test(q))return{kind:'legal-poa',action:'attest'};
  if(/خارجيه|foreign affairs|mofa/.test(q)&&/شخصي|personal/.test(q)&&/مستند|وثيق|document/.test(q)&&/تصديق|اصدق|attest/.test(q))return{kind:'personal-attestation',action:'attest'};
  if(permit&&/جز[يئ]ي|part time|part-time/.test(q))return{kind:'part-time-work',action:cancel?'cancel':renew?'renew':'issue'};

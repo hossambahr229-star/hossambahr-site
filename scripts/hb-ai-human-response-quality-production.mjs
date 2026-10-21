@@ -22,7 +22,9 @@ async function runCase(c,i){
  const t=performance.now();const r=await fetch(endpoint,{method:"POST",signal:AbortSignal.timeout(20000),headers:{"content-type":"application/json","origin":"https://hossambahr.com","x-hb-qa-run":run},body:JSON.stringify({goal:c.prompt,latest_turn:c.prompt,history:[],context:{},stream:false})});latencies.push(performance.now()-t);
  assert.equal(r.status,200,"HTTP "+i);const p=await r.json();const slug=p.result?.matches?.[0]?.service_slug||"";const ans=p.result?.answer?.text||"";
  if(!slug)fallback++;if(!ans||/لم أتمكن من مطابقة طلبك/.test(ans))dead++;
- if(c.expected){if(!c.expected.test(slug)){wrong++;console.error("WRONG",i,c.prompt,slug)}}
+ const partnerWithoutEmirate=c.expected?.source==='add-remove-partner-dubai'&&!/دبي|dubai/i.test(c.prompt);
+ if(partnerWithoutEmirate){if(slug||p.result?.answer?.fact_status!=='NEEDS_CLARIFICATION'||!/إمارة|emirate/i.test(ans)){wrong++;console.error('BAD_JURISDICTION_CLARIFICATION',i,c.prompt,slug,ans)}}
+ else if(c.expected){if(!c.expected.test(slug)){wrong++;console.error("WRONG",i,c.prompt,slug)}}
  else {if(!domesticResidenceClarification(ans)){wrong++;console.error("BAD_CLARIFY",i,c.prompt,ans)}}
  if(p.result?.grounding?.no_invention!==true)unsupported++;answers[i]=ans.replace(/\\s+/g," ").trim();
 }

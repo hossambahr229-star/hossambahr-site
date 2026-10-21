@@ -985,7 +985,11 @@ export default {
       const completeCatalog = await loadCatalog(ctx.supabaseAdmin);
       const currentJurisdiction = detectJurisdiction(latestTurn) || semantic.jurisdiction || detectJurisdiction(semanticGoal);
       const catalog = jurisdictionCandidates(withoutJurisdictionExclusions(completeCatalog, currentJurisdiction), currentJurisdiction);
-      const explicitObject = !contextualFollowUp ? transactionObject(normalize(latestTurn)) : null;
+      const jurisdictionAnswer = normalize(latestTurn).replace(/^(?:في\s*|in\s+|ب)/,"").replace(/\s+/g,"");
+      const jurisdictionOnly = Boolean(currentJurisdiction && completeCatalog.some((row:any)=>row.jurisdiction?.code===currentJurisdiction && [row.jurisdiction?.name_ar,row.jurisdiction?.name_en].some((name:any)=>normalize(name).replace(/\s+/g,"")===jurisdictionAnswer)));
+      const pendingObject = jurisdictionOnly && /في أي إمارة تتم هذه المعاملة|Which emirate is this transaction in/.test(String(context?.pending_clarification||"")) ? transactionObject(normalize(goal+" "+semanticGoal)) : null;
+      const resolvingObjectJurisdiction = Boolean(pendingObject);
+      const explicitObject = pendingObject || (!contextualFollowUp ? transactionObject(normalize(latestTurn)) : null);
       const missingObjectJurisdiction = explicitObject && transactionObjectNeedsEmirate(explicitObject) && (!currentJurisdiction || currentJurisdiction==="AE");
       const explicitRows = explicitObject && !missingObjectJurisdiction ? catalog.filter((row:any)=>transactionObjectMatches(explicitObject,normalize(row.title+" "+(row.binding.metadata?.name_en||"")),row.binding.authority_key)) : [];
       const catalogMs = performance.now() - catalogStarted;
@@ -1002,7 +1006,7 @@ export default {
       const siraKind=siraLatest || (inheritedSira ? (inheritedServiceId===SIRA_SLUGS.system?'system':'activity') : siraIntent(semanticGoal));
       const siraJurisdiction=detectJurisdiction(latestTurn)||semantic.jurisdiction||detectJurisdiction(semanticGoal);
       const inheritedJurisdictionConflict = contextualFollowUp && jurisdictionExcludesService(completeCatalog.find((row:any)=>row.binding.service_slug===inheritedServiceId), currentJurisdiction);
-      if(inheritedJurisdictionConflict||missingDubaiParentPath){
+      if((inheritedJurisdictionConflict&&!resolvingObjectJurisdiction)||missingDubaiParentPath){
         // Never replace an excluded inherited transaction with a neighbouring service.
         ranked=[];
       } else if(siraKind){
