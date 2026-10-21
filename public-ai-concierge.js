@@ -485,7 +485,7 @@
     if (question) {
       const q = create("section", "hb-chat-followup");
       const shownIntro = body.querySelector(".hb-chat-answer-intro")?.textContent?.trim();
-      if (shownIntro !== tr(question).trim()) q.append(create("strong", "", question));
+      if (!shownIntro?.endsWith(tr(question).trim())) q.append(create("strong", "", question));
       const replies = quickRepliesFor(question, payload);
       if (replies.length) {
         const row = create("div", "hb-chat-quick-replies");
