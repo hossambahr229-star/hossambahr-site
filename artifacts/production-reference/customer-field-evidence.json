@@ -2,7 +2,7 @@
   "auditedServices": 202,
   "fullyVerifiedServices": 0,
   "servicesWithMissingFields": 202,
-  "missingFieldCount": 909,
+  "missingFieldCount": 908,
   "status": "PARTIAL PASS",
   "scope": "Public route/source identity, canonical, locale, internal href/referrer and scoped CTA checks. This does not verify external government availability, authenticated execution, documents, eligibility correctness or human visual acceptance.",
   "records": [
@@ -7365,8 +7365,8 @@
     {
       "id": "directory:mohre:24",
       "slug": "التسجيل-والمتابعة-في-wps",
-      "source": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
-      "lastRecordedReview": "2026-07-27",
+      "source": "https://www.dubai.ae/wages-protection-system",
+      "lastRecordedReview": "2026-10-21",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -7379,7 +7379,7 @@
         "emirate": "NOT_VERIFIED",
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
-        "eligibility": "MISSING",
+        "eligibility": "VERIFIED",
         "requirements": "MISSING",
         "documents": "MISSING",
         "steps": "NOT_VERIFIED",
@@ -7404,7 +7404,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "eligibility",
         "requirements",
         "documents",
         "fees",
