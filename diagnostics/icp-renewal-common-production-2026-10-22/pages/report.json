@@ -1,0 +1,34 @@
+{
+  "scope": "General renewal common conditions only. Category eligibility remains partial; external-model and human acceptance not asserted.",
+  "checks": [
+    {
+      "case": "published-service-common-conditions",
+      "en": false,
+      "width": 390,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "published-service-common-conditions",
+      "en": false,
+      "width": 1440,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "published-service-common-conditions",
+      "en": true,
+      "width": 390,
+      "noMessageSent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "published-service-common-conditions",
+      "en": true,
+      "width": 1440,
+      "noMessageSent": true,
+      "status": "PASS"
+    }
+  ],
+  "status": "SCOPED_PASS"
+}
