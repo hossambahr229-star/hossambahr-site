@@ -2,7 +2,7 @@ name: Service Launchpad UX Evidence
 on:
   push:
     branches: [agent/home-service-launchpad]
-    paths: ['src/publication/home-discovery-section.mjs','transaction-discovery.css','scripts/service-launchpad-browser.mjs','.github/workflows/service-launchpad-ux.yml']
+    paths: ['src/publication/home-discovery-section.mjs','transaction-discovery.css','transaction-discovery.js','scripts/runtime-import-cache.test.mjs','scripts/capability-generator-integration.test.mjs','scripts/service-launchpad-browser.mjs','.github/workflows/service-launchpad-ux.yml']
 permissions:
   contents: write
 jobs:
