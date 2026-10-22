@@ -17,6 +17,15 @@ const authorities=[...new Map(services.map(s=>[s.authority.id,s.authority])).val
 const emirates=['دبي','أبوظبي','الشارقة','عجمان','رأس الخيمة','الفجيرة','أم القيوين'];
 const categories=[...new Set(services.map(s=>s.classification.main))];
 const categoryLabels=CATEGORY_LABELS;
+// Refresh imported modules as well as the entry script for returning visitors.
+const runtimeFile=join(root,'transaction-discovery.js');
+let runtimeSource=await readFile(runtimeFile,'utf8');
+for(const dependency of ['business-domains.js','intent-search.js','customer-jurisdiction.js']){
+ const hash=createHash('sha256').update(await readFile(join(root,dependency))).digest('hex').slice(0,12);
+ const escaped=dependency.replaceAll('.','\\.');
+ runtimeSource=runtimeSource.replace(new RegExp("(from\\s+['\"])\\./"+escaped+"(?:\\?v=[^'\"]*)?(['\"])","g"),(_,open,close)=>open+'./'+dependency+'?v='+hash+close);
+}
+await writeFile(runtimeFile,runtimeSource);
 const version=createHash('sha256').update(await readFile(join(root,'transaction-discovery.js'))) .update(await readFile(join(root,'transaction-discovery.css'))).update(await readFile(join(root,'service-capabilities.js'))).update(await readFile(join(root,'activity-discovery.js'))).update(await readFile(join(root,'business-activities-discovery.js'))).digest('hex').slice(0,12);
 const save=async(route,html)=>{const dir=join(root,route);await mkdir(dir,{recursive:true});await writeFile(join(dir,'index.html'),html);};
 for(const locale of ['ar','en']){
