@@ -22,7 +22,20 @@ const p=locale==='en'?'/en':'';
 await page.setViewportSize({width:390,height:844});await page.goto(base+p+'/');const ids=await page.locator('[data-home-service]').evaluateAll(es=>es.map(e=>e.dataset.homeService));
 for(const slug of ids){await page.goto(base+p+'/');const link=page.locator('[data-home-service="'+slug+'"]');const expected=await link.getAttribute('href');assert.ok(expected.startsWith(p+'/services/'));await link.click();await page.waitForURL('**'+expected);await page.locator('.hb-path-official').first().waitFor();assert.match(await page.locator('.hb-path-assisted').first().getAttribute('href'),/^https:\/\/wa.me\/971503780460\?text=/);report.journeys.push({locale,slug,interactions:1,official:true,assisted:true,status:'PASS'});}
 await page.goto(base+p+'/');const domains=await page.locator('[data-business-domain]').evaluateAll(es=>es.map(e=>({id:e.dataset.businessDomain,href:e.getAttribute('href')})));
-for(const domain of domains){await page.goto(base+p+'/');await page.locator('[data-business-domain="'+domain.id+'"]').click();await page.waitForURL('**'+domain.href);if(domain.id==='activities')await page.locator('[data-activity-discovery]').waitFor();else{await page.locator('[data-canonical-service]:visible').first().waitFor();if(domain.id!=='approvals')assert.equal(new URL(page.url()).searchParams.get('domain'),domain.id);}report.journeys.push({locale,domain:domain.id,kind:'DOMAIN',interactions:1,status:'PASS'});}
+for(const domain of domains){await page.goto(base+p+'/');await page.locator('[data-business-domain="'+domain.id+'"]').click();await page.waitForURL('**'+domain.href);if(domain.id==='activities')await page.locator('[data-activity-discovery]').waitFor();else{await page.locator('[data-canonical-service]:visible').first().waitFor();if(domain.id!=='approvals'){assert.equal(new URL(page.url()).searchParams.get('domain'),domain.id);assert.equal(await page.locator('.discovery-advanced').evaluate(e=>e.open),false);assert.equal(await page.locator('[data-discovery-selection]').isVisible(),true);const first=await page.locator('[data-canonical-service]:visible').first().boundingBox();assert.ok(first.y<900,'First service must appear without navigating several screens of filters');}}report.journeys.push({locale,domain:domain.id,kind:'DOMAIN',interactions:1,status:'PASS'});}
+}
+for(const locale of ['ar','en']){
+const p=locale==='en'?'/en':'';
+await page.goto(base+p+'/discover/?domain=business&emirate='+encodeURIComponent('دبي'));
+await page.locator('[data-discovery-status]').filter({hasText:/matching services|خدمة مطابقة/}).waitFor();
+await page.locator('.discovery-advanced>summary').click();
+await page.locator('select[name="authority"]').selectOption('det-dubai');
+await page.waitForURL('**authority=det-dubai');
+assert.equal(await page.locator('select[name="domain"]').inputValue(),'business');
+assert.equal(await page.locator('select[name="emirate"]').inputValue(),'دبي');
+const languageHref=await page.locator('[data-discovery-language]').getAttribute('href');
+assert.equal(new URL(languageHref,base).searchParams.get('authority'),'det-dubai');
+report.journeys.push({locale,kind:'ADVANCED_FILTERS_AND_LANGUAGE_CONTEXT',status:'PASS'});
 }
 report.status='PASS';
 }catch(e){report.status='FAIL';report.error=e.stack;process.exitCode=1;}finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));await browser.close();if(server)await new Promise(r=>server.close(r));}

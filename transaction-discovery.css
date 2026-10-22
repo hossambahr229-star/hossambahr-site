@@ -122,3 +122,13 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-se
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>.home-example-label{font-size:12px!important;color:#4e6559!important}
 .home-service-launchpad .home-domain-count{font-size:12px!important;line-height:1.6!important;color:#456054}
 @media(max-width:820px){html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>span{font-size:13px!important}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>.home-example-label{font-size:11px!important}}
+
+/* Directory starts with the requested transaction, rather than competing menus. */
+.discovery-directory-help{font-size:15px;line-height:1.8;color:#365548;max-width:850px}
+.discovery-directory-help a{color:#103e36;font-weight:700;text-underline-offset:3px}
+.discovery-selection{background:#edf3ef;border-inline-start:3px solid #b58b39;padding:8px 12px;font-weight:700;color:#103e36;font-size:14px;line-height:1.6}
+.discovery-form.discovery-compact-form{grid-template-columns:minmax(0,2fr) minmax(0,1fr) auto;margin-block:16px}
+.discovery-compact-form .discovery-advanced{font-size:14px}
+.discovery-other-ways{margin-block:24px;padding:12px;border:1px solid #cbd8d3;border-radius:12px}
+.discovery-other-ways>summary{cursor:pointer;min-height:44px;align-content:center;color:#103e36;font-weight:700}
+@media(max-width:600px){.discovery-form.discovery-compact-form{grid-template-columns:minmax(0,1fr) auto;padding:12px;gap:10px}.discovery-compact-form>label:first-child{grid-column:1/-1}.discovery-compact-form>label{font-size:14px;gap:6px}.discovery-compact-form .discovery-advanced{font-size:13px}.discovery-directory-help{font-size:14px;line-height:1.6}main:has(>.discovery-directory-help)>h1{font-size:28px;margin-block:16px}.discovery-selection{font-size:13px;margin-block:8px}}
