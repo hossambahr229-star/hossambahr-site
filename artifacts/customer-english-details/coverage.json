@@ -1,7 +1,7 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 202,
-  "fullyTranslatedRecordedSections": 169,
+  "fullyTranslatedRecordedSections": 170,
   "fieldCounts": {
     "documents": {
       "PLATFORM_TRANSLATION": 145,
@@ -9,9 +9,9 @@
       "MISSING_INFORMATION": 17
     },
     "eligibility": {
-      "PLATFORM_TRANSLATION": 148,
+      "PLATFORM_TRANSLATION": 149,
       "RECORDED_ENGLISH": 38,
-      "MISSING_INFORMATION": 16
+      "MISSING_INFORMATION": 15
     },
     "fees": {
       "PLATFORM_TRANSLATION": 140,
@@ -1979,7 +1979,7 @@
       "route": "/en/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
       "fields": {
         "documents": "RECORDED_ENGLISH",
-        "eligibility": "MISSING_INFORMATION",
+        "eligibility": "PLATFORM_TRANSLATION",
         "fees": "RECORDED_ENGLISH",
         "duration": "RECORDED_ENGLISH"
       }

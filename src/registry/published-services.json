@@ -25622,7 +25622,8 @@
           ],
           "fees": "AED 100 application, 100 per renewal year and 100 smart services. Fines/other amounts are separate.",
           "duration": "2 days on the general residence renewal card; not approval assurance.",
-          "notes": "Category eligibility remains unverified. Grace periods vary by residence type; processing time is not permission to stay."
+          "notes": "Category eligibility remains unverified. Grace periods vary by residence type; processing time is not permission to stay.",
+          "conditions": "Verified common conditions: the passport must be valid for at least 6 months, and residence issuance requirements must continue to be met at renewal. These common conditions do not establish eligibility for a particular category; select the category on the ICP card and check its requirements before applying."
         }
       },
       "documents": {
@@ -25644,7 +25645,8 @@
         "status": "PUBLISHED_OR_CONDITIONAL",
         "text": "يومان وفق بطاقة تجديد الإقامة العامة؛ لا يمثل ضمان قبول."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "الشروط العامة الموثقة: صلاحية جواز السفر لا تقل عن 6 أشهر، واستمرار استيفاء متطلبات إصدار الإقامة عند التجديد. لا تثبت هذه الشروط العامة أهلية فئة بعينها؛ اختر الفئة في بطاقة ICP وطابق متطلباتها قبل التقديم.",
+      "eligibilityScope": "common-only",
       "steps": [
         {
           "order": 1,
@@ -25710,13 +25712,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-10-15",
+        "dataLastReviewedAt": "2026-10-22",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-10-15",
-      "lastReviewedAt": "2026-10-15",
+      "lastUpdated": "2026-10-22",
+      "lastReviewedAt": "2026-10-22",
       "internalRoute": "/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
