@@ -768,5 +768,6 @@
   ],
   "humanAcceptance": "NOT_DECLARED",
   "governmentSuperiority": "NOT_CLAIMED",
-  "status": "PASS"
+  "status": "FAIL",
+  "error": "page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**authority=det-dubai\" until \"load\"\n============================================================\n    at /home/runner/work/hossambahr-site/hossambahr-site/scripts/service-launchpad-browser.mjs:33:12"
 }
