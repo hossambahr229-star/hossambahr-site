@@ -32,6 +32,8 @@ try{
   const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});page.setDefaultTimeout(15000);
   await page.goto(base+prefix+'/discover/',{waitUntil:'networkidle'});
   assert.equal(await page.locator('[data-canonical-service]').count(),records.length);
+  assert.equal(await page.locator('.discovery-advanced').evaluate(e=>e.open),false);
+  await page.locator('.discovery-advanced>summary').click();
   await page.locator('[name=authority]').selectOption('mohre');
   await page.waitForFunction(()=>new URL(location.href).searchParams.get('authority')==='mohre');
   const shown=await page.locator('[data-canonical-service]:visible').evaluateAll(nodes=>nodes.map(n=>n.dataset.canonicalService));
