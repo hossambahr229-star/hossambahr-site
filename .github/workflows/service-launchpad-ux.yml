@@ -1,0 +1,36 @@
+name: Service Launchpad UX Evidence
+on:
+  push:
+    branches: [agent/home-service-launchpad]
+    paths: ['src/publication/home-discovery-section.mjs','transaction-discovery.css','scripts/service-launchpad-browser.mjs','.github/workflows/service-launchpad-ux.yml']
+permissions:
+  contents: write
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - run: npm run build
+      - run: node --test scripts/home-business-domains.test.mjs scripts/capability-generator-integration.test.mjs
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/service-launchpad-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: service-launchpad-preview
+          path: diagnostics/service-launchpad-preview
+      - name: Retain review evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Preview Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/service-launchpad-preview
+          if ! git diff --cached --quiet; then
+            git commit -m "Record launchpad preview evidence [skip ci]"
+            git pull --rebase origin agent/home-service-launchpad
+            git push origin HEAD:agent/home-service-launchpad
+          fi

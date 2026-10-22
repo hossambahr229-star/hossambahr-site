@@ -75,7 +75,7 @@ html.hb-phase8 body[data-home-geometry] .mobile-menu .capability-grid{position:s
 .home-discovery-premium .home-domain-feature h3 a{display:flex;align-items:center;min-height:44px}
 
 
-/* One direct destination per service area; the canonical registry owns coverage. */
+/* Direct domain and transaction entries share the existing canonical registry. */
 html.hb-phase8 body[data-home-geometry] .premium-category-grid.home-simple-discovery{display:block!important;direction:inherit;margin:14px 0!important;padding:20px!important;border:1px solid #d3e0d8;border-radius:18px;background:#f7faf8!important}
 .home-simple-discovery .home-domain-heading{margin-bottom:16px}
 .home-simple-discovery .home-discovery-eyebrow{display:block;color:#795919;font-size:12px;line-height:1.6}
@@ -98,3 +98,20 @@ html[lang="en"] .home-simple-arrow{rotate:180deg}
 html.hb-phase8 body[data-home-geometry] .home-simple-discovery .home-simple-card b{color:#103e36!important}
 html.hb-phase8 body[data-home-geometry] .home-simple-discovery .home-discovery-eyebrow{width:auto!important;max-width:none!important;height:auto!important}
 html.hb-phase8 body[data-home-geometry] .home-simple-discovery .home-simple-footnote a{display:inline!important;min-height:0!important;width:auto!important;height:auto!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;aspect-ratio:auto!important;font-size:inherit!important;text-decoration:underline!important}
+
+/* Service launchpad: separate links, visible jurisdiction, no nested controls. */
+.home-service-launchpad .home-domain-heading{display:flex;align-items:start;justify-content:space-between;gap:24px}
+.home-service-launchpad .home-domain-heading>div{max-width:780px}
+html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{display:flex!important;flex-direction:column;align-items:start;justify-content:center;gap:2px;flex:none;width:auto!important;height:auto!important;min-height:84px;padding:12px 18px!important;border:1px solid #b68b36!important;border-radius:12px!important;background:#103e36!important;color:#fff!important;text-decoration:none!important;box-shadow:none!important;aspect-ratio:auto!important}
+.home-directory-entry strong{font-size:28px;line-height:1.2;color:#fff}
+.home-directory-entry span{font-size:12px;line-height:1.6}
+.home-pathway-promise{padding:10px 14px;border-inline-start:3px solid #b68b36;background:#edf3ef;color:#244b3f;font-size:13px;line-height:1.7;margin:0 0 16px}
+.home-domain-tile{min-width:0;overflow:hidden;border:1px solid #cbdcd1;border-radius:12px;background:#fff}
+html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{border:0!important;border-radius:0!important;min-height:112px!important}
+.home-domain-count{display:block;font-size:11px;line-height:1.7;color:#596c63;margin-top:6px}
+html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{display:flex!important;flex-direction:column;justify-content:center;gap:3px;width:auto!important;height:auto!important;min-height:74px!important;margin:0 12px 10px!important;padding:10px 12px!important;border:0!important;border-radius:8px!important;background:#eff5f1!important;color:#103e36!important;text-decoration:none!important;box-shadow:none!important;aspect-ratio:auto!important;text-align:start!important;font-size:13px!important;line-height:1.6!important;white-space:normal!important}
+.home-direct-service>span{display:block;width:auto!important;height:auto!important;white-space:normal!important}
+.home-direct-service .home-example-label{font-size:11px;color:#4e6559}
+.home-service-launchpad a:hover{outline:1px solid #b68b36;outline-offset:-1px}
+@media(max-width:820px){.home-service-launchpad .home-domain-heading{display:block}.home-service-launchpad .home-domain-heading>div{max-width:none}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:start;gap:8px;min-height:52px;margin-top:12px;padding:10px 12px!important}.home-directory-entry strong{font-size:22px}.home-directory-entry span:last-child{margin-inline-start:auto}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{margin:0 8px 8px!important;padding:8px!important;min-height:96px!important;font-size:12px!important}}
+@media(max-width:360px){.home-service-launchpad .home-domain-grid{grid-template-columns:1fr}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{min-height:94px!important}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:64px!important}}
