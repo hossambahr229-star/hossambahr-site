@@ -150,6 +150,7 @@ const services = approved.map((record, index) => {
     fees: normalize(record.fees || "تعرض الرسوم في القناة الحكومية الرسمية قبل السداد."),
     duration: normalize(record.duration || "تحدد الجهة الرسمية المدة بعد اكتمال الطلب."),
     conditions: normalize(record.conditions),
+    ...(record.eligibilityScope === 'common-only' ? {eligibilityScope: 'common-only'} : {}),
     specialCases: normalize(record.specialCases),
     lastReviewed: record.lastReviewed || source.generatedAt?.slice(0, 10) || "2026-07-27",
     reviewResult: record.reviewResult,
