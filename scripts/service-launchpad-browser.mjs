@@ -30,7 +30,7 @@ await page.goto(base+p+'/discover/?domain=business&emirate='+encodeURIComponent(
 await page.locator('[data-discovery-status]').filter({hasText:/matching services|خدمة مطابقة/}).waitFor();
 await page.locator('.discovery-advanced>summary').click();
 await page.locator('select[name="authority"]').selectOption('det-dubai');
-await page.waitForURL('**authority=det-dubai');
+await page.waitForURL(url=>url.searchParams.get('authority')==='det-dubai');
 assert.equal(await page.locator('select[name="domain"]').inputValue(),'business');
 assert.equal(await page.locator('select[name="emirate"]').inputValue(),'دبي');
 const languageHref=await page.locator('[data-discovery-language]').getAttribute('href');
