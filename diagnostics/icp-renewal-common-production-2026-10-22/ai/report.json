@@ -1,0 +1,42 @@
+{
+  "scope": "General renewal common conditions only. Category eligibility remains partial; external-model and human acceptance not asserted.",
+  "checks": [
+    {
+      "case": "actual-grounded-assistant-common-conditions",
+      "en": false,
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "shownConditions": "الشروط\nالمستندات المشتركة: جواز السفر وصورة شخصية.\nبحسب الفئة: التأمين والسكن والقرابة أو المستندات المهنية؛ طابق قائمة الفئة الرسمية قبل الإرسال.\nالشروط العامة الموثقة: صلاحية جواز السفر لا تقل عن 6 أشهر، واستمرار استيفاء متطلبات إصدار الإقامة عند التجديد. لا تثبت هذه الشروط العامة أهلية فئة بعينها؛ اختر الفئة في بطاقة ICP وطابق متطلباتها قبل التقديم.",
+      "status": "PASS"
+    },
+    {
+      "case": "actual-grounded-assistant-common-conditions",
+      "en": true,
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "shownConditions": "Conditions\nالمستندات المشتركة: جواز السفر وصورة شخصية.\nبحسب الفئة: التأمين والسكن والقرابة أو المستندات المهنية؛ طابق قائمة الفئة الرسمية قبل الإرسال.\nVerified common conditions: the passport must be valid for at least 6 months, and residence issuance requirements must continue to be met at renewal. These common conditions do not establish eligibility for a particular category; select the category on the ICP card and check its requirements before applying.",
+      "status": "FAIL",
+      "error": "The input was expected to not match the regular expression /[\\u0600-\\u06ff]/. Input:\n\n'Conditions\\n' +\n  'المستندات المشتركة: جواز السفر وصورة شخصية.\\n' +\n  'بحسب الفئة: التأمين والسكن والقرابة أو المستندات المهنية؛ طابق قائمة الفئة الرسمية قبل الإرسال.\\n' +\n  'Verified common conditions: the passport must be valid for at least 6 months, and residence issuance requirements must continue to be met at renewal. These common conditions do not establish eligibility for a particular category; select the category on the ICP card and check its requirements before applying.'\n",
+      "body": "HOSSAM BAHR AI\nBack to the platform\nHOSSAM BAHR AI\n\nYour UAE transactions assistant\n\nHow can I help you today?\nAsk HOSSAM BAHR AI\nDescribe your request naturally — you do not need to choose a service or authority first\n➤\n＋ Attach\nNew conversation\n\nRenew a Residence Permit through ICP outside Dubai in Abu Dhabi\n\nHB AI\n\nThe matching service is Renew a Residence Permit through ICP outside Dubai through ICP. Verified common conditions: the passport must be valid for at least 6 months, and residence issuance requirements must continue to be met at renewal. These common conditions do not establish eligibility for a particular category; select the category on the ICP card and check its requirements before applying. Official source limits: Category eligibility remains unverified. Grace periods vary by residence type; processing time is not permission to stay.\n\nMatching service\n\nRenew a Residence Permit through ICP outside Dubai\n\nResponsible authority\n\nICP\n\nEmirate / jurisdiction\n\nUnited Arab Emirates\n\nDocuments\nSteps\nConditions\nالمستندات المشتركة: جواز السفر وصورة شخصية.\nبحسب الفئة: التأمين والسكن والقرابة أو المستندات المهنية؛ طابق قائمة الفئة الرسمية قبل الإرسال.\nVerified common conditions: the passport must be valid for at least 6 months, and residence issuance requirements must continue to be met at renewal. These common conditions do not establish eligibility for a particular category; select the category on the ICP card and check its requirements before applying.\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan"
+    }
+  ],
+  "status": "FAIL"
+}
