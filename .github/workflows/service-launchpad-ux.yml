@@ -1,7 +1,7 @@
 name: Service Launchpad UX Evidence
 on:
   push:
-    branches: [agent/home-service-launchpad]
+    branches: [agent/clear-service-grid]
     paths: ['src/publication/home-discovery-section.mjs','transaction-discovery.css','transaction-discovery.js','scripts/runtime-import-cache.test.mjs','scripts/capability-generator-integration.test.mjs','scripts/service-launchpad-browser.mjs','.github/workflows/service-launchpad-ux.yml']
 permissions:
   contents: write
@@ -21,16 +21,16 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: service-launchpad-preview
-          path: diagnostics/service-launchpad-preview
+          name: clear-service-grid-preview
+          path: diagnostics/clear-service-grid-preview
       - name: Retain review evidence
         if: always()
         run: |
           git config user.name "HossamBahr Preview Evidence"
           git config user.email "production-evidence@users.noreply.github.com"
-          git add diagnostics/service-launchpad-preview
+          git add diagnostics/clear-service-grid-preview
           if ! git diff --cached --quiet; then
             git commit -m "Record launchpad preview evidence [skip ci]"
-            git pull --rebase --autostash origin agent/home-service-launchpad
-            git push origin HEAD:agent/home-service-launchpad
+            git pull --rebase --autostash origin agent/clear-service-grid
+            git push origin HEAD:agent/clear-service-grid
           fi
