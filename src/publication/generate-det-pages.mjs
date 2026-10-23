@@ -15,7 +15,10 @@ const activeRecords = publication.services.filter((record) => !record.normalizat
 const normalizedGdrfaIds = new Set(gdrfaAudit.normalizations.map((record) => record.sourceId));
 
 const esc = (value) => String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
-const list = (items) => `<ul>${(items ?? []).map((item) => `<li>${esc(item)}</li>`).join('')}</ul>`;
+const list = (items) => {
+  const documents = (items ?? []).filter(Boolean);
+  return documents.length ? `<ul>${documents.map((item) => `<li>${esc(item)}</li>`).join('')}</ul>` : `<p class="unverified-documents">لم نتحقق بعد من قائمة المستندات المطلوبة لهذه الخدمة؛ راجع بطاقة الجهة الرسمية لتأكيدها. عدم عرض مستندات هنا لا يعني أن الخدمة لا تتطلب مستندات.</p>`;
+};
 const statusLabel = (state) => state === 'VERIFIED' ? 'الرابط الحكومي الرسمي متحقق' : state === 'BROKEN' ? 'الرابط السابق معطّل ومحجوب' : 'الرابط الحكومي الرسمي قيد التحقق';
 
 function shell(title, body) {
