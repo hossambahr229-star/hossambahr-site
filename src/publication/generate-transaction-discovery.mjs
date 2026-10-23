@@ -61,6 +61,10 @@ for(const locale of ['ar','en']){
   for(const a of authorities)await save('en/authorities/'+a.id,page(a.en,'/en/authorities/'+a.id+'/',`<div class="discovery-grid">${services.filter(s=>s.authority.id===a.id).map(s=>`<article><h2><a href="/en${s.internalRoute}">${esc(s.name.en)}</a></h2><p>${esc(emirateEnglish(s.emirate))}</p></article>`).join('')}</div>`));
  }
  const homeFile=join(root,en?'en/index.html':'index.html');let home=await readFile(homeFile,'utf8');
+ // The homepage's exact-search fallback uses the same canonical directory as domain browsing.
+ home=home.replace(/<form\b[^>]*class="premium-intent-search"[^>]*>/,tag=>/\baction="/.test(tag)?tag.replace(/\baction="[^"]*"/,'action="'+p+'/discover/"'):tag.replace('<form','<form action="'+p+'/discover/"'));
+ home=home.replace(/<a\b[^>]*class="header-search-icon"[^>]*>/,tag=>tag.replace(/href="[^"]*"/,'href="'+p+'/discover/"'));
+
  const compactExplorer=capabilityExplorer.replace('class="capability-explorer"','class="capability-explorer home-capability-explorer"').replace(t('استكشف جميع مجالات الخدمات','Explore all service areas'),t('الخدمات','Services'));
  const markedHome='<!-- hb-home-discovery:start -->'+homeDomainGateway+'<!-- hb-home-discovery:end -->';
  if(home.includes('<!-- hb-home-discovery:start -->'))home=home.replace(/<!-- hb-home-discovery:start -->[\s\S]*?<!-- hb-home-discovery:end -->/,()=>markedHome);
