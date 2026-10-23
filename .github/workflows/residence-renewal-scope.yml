@@ -1,0 +1,38 @@
+name: Residence Renewal Search Scope Acceptance
+on:
+  push:
+    branches: [agent/residence-renewal-search-scope]
+    paths: ['transaction-discovery.js','scripts/residence-renewal-scope*','.github/workflows/residence-renewal-scope.yml']
+permissions:
+  contents: write
+jobs:
+  scope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - run: npm run build
+      - run: node --test scripts/residence-renewal-scope.test.mjs
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/residence-renewal-scope-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: residence-renewal-scope-preview
+          path: diagnostics/residence-renewal-scope-preview
+      - name: Retain semantic preview evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Preview Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          if [ -d diagnostics/residence-renewal-scope-preview ]; then
+            git add diagnostics/residence-renewal-scope-preview
+            if ! git diff --cached --quiet; then
+              git commit -m "Record scoped renewal preview evidence [skip ci]"
+              git pull --rebase --autostash origin agent/residence-renewal-search-scope
+              git push origin HEAD:agent/residence-renewal-search-scope
+            fi
+          fi

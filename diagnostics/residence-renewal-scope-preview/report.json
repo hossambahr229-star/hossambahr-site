@@ -1,0 +1,68 @@
+{
+  "base": "http://127.0.0.1:4177",
+  "captureSource": "REBUILT_PREVIEW",
+  "journeys": [
+    {
+      "locale": "ar",
+      "query": "تجديد إقامة",
+      "emirate": "",
+      "slugs": [
+        "تجديد-إقامة-أفراد-الأسرة-في-دبي",
+        "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+        "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي"
+      ],
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "query": "تجديد إقامة",
+      "emirate": "دبي",
+      "slugs": [
+        "تجديد-إقامة-أفراد-الأسرة-في-دبي",
+        "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي"
+      ],
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "query": "تجديد إقامة",
+      "emirate": "الشارقة",
+      "slugs": [
+        "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي"
+      ],
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "query": "residence renewal",
+      "emirate": "",
+      "slugs": [
+        "تجديد-إقامة-أفراد-الأسرة-في-دبي",
+        "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي",
+        "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي"
+      ],
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "query": "residence renewal",
+      "emirate": "دبي",
+      "slugs": [
+        "تجديد-إقامة-أفراد-الأسرة-في-دبي",
+        "تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي"
+      ],
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "query": "residence renewal",
+      "emirate": "الشارقة",
+      "slugs": [
+        "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "humanAcceptance": "NOT_DECLARED",
+  "status": "PASS"
+}
