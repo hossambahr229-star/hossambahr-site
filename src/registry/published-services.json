@@ -10347,16 +10347,16 @@
         "items": []
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "الرسوم المنشورة حسب نوع التصريح، بالدرهم: الحملات الترويجية 500–20000 بحسب منطقة المتجر؛ التنزيلات 2500–13500 بحسب نوعها؛ العروض الخاصة والتصفية 2500؛ المعارض 500–1000 بحسب المدة؛ المؤتمرات 250–1000 بحسب النوع؛ الخيام التجارية 5000–15000 بحسب المساحة؛ اللافتات تبدأ من 250 بحسب الحجم. ليست إجماليًا موحدًا ولا تجمع البنود، ولا تتضمن هذه المراجعة رسوم حسام بحر أو موافقة خارجية."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تذكر بطاقة Invest in Dubai إنجاز طلب التصريح التجاري خلال 5 دقائق عبر مراكز الخدمة أو البوابة. ليست ضمانًا لإصدار موافقة خارجية أو لكل نوع تصريح؛ أكد نوع الطلب ومتطلباته لدى DET."
       },
       "conditions": "غير موثق بعد",
       "steps": [
@@ -10412,21 +10412,21 @@
       "verification": {
         "officialLinkVerified": true,
         "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
+        "feesVerified": true,
+        "durationVerified": true,
         "eligibilityVerified": false,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-08-08",
+        "dataLastReviewedAt": "2026-10-23",
         "sourceAuthority": "det-dubai",
         "sourceUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-commercial-permit"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-08-08",
-      "lastReviewedAt": "2026-08-08",
+      "lastUpdated": "2026-10-23",
+      "lastReviewedAt": "2026-10-23",
       "internalRoute": "/services/legacy-service-85a10469d8/",
       "sourceRegistry": "det-progressive-publication"
     },
