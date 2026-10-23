@@ -1,7 +1,7 @@
 name: Homepage Business Domain Acceptance
 on:
   push:
-    branches: [agent/home-business-domains]
+    branches: [agent/home-activity-breadth]
     paths: ['business-domains.js','transaction-discovery.*','service-capabilities.js','src/publication/**','scripts/home-business-domains*','scripts/capability-generator-integration.test.mjs','content/backend-public-catalog-snapshot-2026-10-16.json','.github/workflows/home-business-domains.yml']
   workflow_dispatch:
 permissions:
@@ -25,7 +25,7 @@ jobs:
           name: homepage-business-domains
           path: artifacts/home-business-domains
       - name: Preserve selected review screenshots on the implementation branch
-        if: always() && github.ref_name == 'agent/home-business-domains'
+        if: always() && github.ref_name == 'agent/home-activity-breadth'
         run: |
           git config user.name "HossamBahr Preview Evidence"
           git config user.email "production-evidence@users.noreply.github.com"
@@ -34,6 +34,6 @@ jobs:
             if [ -f "$file" ]; then git add -- "$file"; fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "Record actual domain preview evidence"
-            git push origin HEAD:agent/home-business-domains || echo "Branch advanced; the uploaded workflow artifact remains available."
+            git commit -m "Record actual activity breadth preview evidence [skip ci]"
+            git push origin HEAD:agent/home-activity-breadth || echo "Branch advanced; the uploaded workflow artifact remains available."
           fi
