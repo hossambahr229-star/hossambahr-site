@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-23T17:40:24.803Z",
+  "generatedAt": "2026-10-23T17:54:04.189Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 157,
+    "REACHABLE": 153,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 83,
+    "NETWORK_UNVERIFIED": 87,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -681,9 +681,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://hub.dm.gov.ae/index.html",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=2975",
@@ -874,9 +873,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://hub.dm.gov.ae/index.html",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
@@ -1865,9 +1863,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://uaqftz.gov.ae/ar",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "TimeoutError"
     },
     {
       "url": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html",
@@ -2569,9 +2566,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "TimeoutError"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
