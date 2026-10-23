@@ -17,7 +17,7 @@ jobs:
       - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
       - run: npm run build
       - run: node --test scripts/home-business-domains.test.mjs scripts/capability-generator-integration.test.mjs scripts/runtime-import-cache.test.mjs
-      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/service-launchpad-browser.mjs
+      - run: HB_OUTPUT_DIR=diagnostics/clear-service-grid-preview HB_BROWSER_PATH="$(which chrome)" node scripts/service-launchpad-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
