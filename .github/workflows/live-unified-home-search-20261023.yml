@@ -1,0 +1,59 @@
+name: Live Unified Homepage Search Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/live-unified-home-search-20261023.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 57f53cee402805c2062d57a5b4314c4ed2a9c43e
+          path: site
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+        working-directory: site
+      - name: Wait for canonical native search in both languages
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let i=0;i<45;i++){
+            try{
+              const ar=await fetch('https://hossambahr.com/',{cache:'no-store'}).then(r=>r.text());
+              const en=await fetch('https://hossambahr.com/en/',{cache:'no-store'}).then(r=>r.text());
+              if(ar.includes('action="/discover/"')&&en.includes('action="/en/discover/"')){ready=true;break;}
+            }catch{}
+            await new Promise(r=>setTimeout(r,20000));
+          }
+          if(!ready)throw Error('The canonical native homepage search action is not published in both languages yet');
+          NODE
+      - name: Submit actual native homepage searches
+        working-directory: site
+        run: HB_BROWSER_PATH="$(which chrome)" HB_BASE_URL=https://hossambahr.com HB_OUTPUT_DIR=diagnostics/unified-home-search-production-2026-10-23 node scripts/unified-home-search-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unified-home-search-production-2026-10-23
+          path: site/diagnostics/unified-home-search-production-2026-10-23
+      - name: Retain actual live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          if [ -d site/diagnostics/unified-home-search-production-2026-10-23 ]; then
+            mkdir -p diagnostics
+            cp -R site/diagnostics/unified-home-search-production-2026-10-23 diagnostics/
+            git add diagnostics/unified-home-search-production-2026-10-23
+            if ! git diff --cached --quiet; then
+              git commit -m "Record real unified homepage search evidence [skip ci]"
+              git pull --rebase --autostash origin agent/dld-source-review-evidence
+              git push origin HEAD:agent/dld-source-review-evidence
+            fi
+          fi
