@@ -7,7 +7,7 @@ const root=resolve('.'),output=process.env.HB_OUTPUT_DIR||'artifacts/capability-
 let server;
 if(!process.env.HB_BASE_URL){server=createServer(async(req,res)=>{try{let pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(pathname.endsWith('/'))pathname+='index.html';const path=resolve(root,'.'+pathname);if(!path.startsWith(root+sep))throw Error('path');const data=await readFile(path);res.setHeader('Content-Type',({'.js':'text/javascript','.json':'application/json','.css':'text/css','.html':'text/html','.svg':'image/svg+xml'})[extname(path)]||'application/octet-stream');res.end(data);}catch{res.writeHead(404);res.end();}});await new Promise(r=>server.listen(4173,'127.0.0.1',r));}
 const base=process.env.HB_BASE_URL||'http://127.0.0.1:4173',browser=await chromium.launch({executablePath:process.env.HB_BROWSER_PATH||undefined,headless:true});
-const report={base,live:!!process.env.HB_BASE_URL,journeys:[],responsive:[],humanVisualAcceptance:'NOT_DECLARED',officialBenchmark:'NOT_MEASURED; no superiority claim'};
+const report={base,live:!!process.env.HB_BASE_URL,journeys:[],responsive:[],navigation:[],humanVisualAcceptance:'NOT_DECLARED',officialBenchmark:'NOT_MEASURED; no superiority claim'};
 try{
  const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
  if(!process.env.HB_DISCOVERY_VIEWS_ONLY)for(const locale of ['ar','en']){const p=locale==='en'?'/en':'';
@@ -22,6 +22,28 @@ try{
   await page.goto(base+p+'/discover/?category=work-employees');await page.waitForFunction(()=>/matching services|خدمة مطابقة/.test(document.querySelector('[data-discovery-status]').textContent));assert.equal(await page.locator('[data-canonical-service]:visible').count()>0,true);const alternate=await page.locator('[data-discovery-language]').getAttribute('href');assert.match(alternate,/category=work-employees/);await page.locator('[data-discovery-language]').click();assert.match(page.url(),/category=work-employees/);report.journeys.push({locale,category:'work-employees',languageContext:true,result:'PASS'});
   await page.goto(base+p+'/approvals/');await page.locator('[name=approval]').selectOption('work-permit');await page.waitForFunction(()=>[...document.querySelectorAll('[data-canonical-service]')].filter(x=>!x.hidden).every(x=>x.dataset.approvalType==='work-permit'));assert.equal(await page.locator('[data-approval-type="work-permit"]:visible').count()>0,true);report.journeys.push({locale,type:'work-permit',result:'PASS'});
  }
- for(const locale of ['ar','en'])for(const width of [320,360,390,430,768,1366,1440,1920]){const p=locale==='en'?'/en':'';await page.setViewportSize({width,height:1000});for(const route of ['/','/discover/','/business-activities/','/approvals/']){await page.goto(base+p+route);await page.evaluate(()=>document.fonts.ready);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,locale+width+route);if(route==='/'){await page.screenshot({path:output+'/'+locale+'-'+width+'-home-closed.png',fullPage:false});const menu=page.locator((locale==='en'?'.premium-en-header ':width<=1100?'.mobile-menu ':'.desktop-nav ')+'.home-capability-explorer');if(locale==='ar'&&width<=1100)await page.locator('.mobile-menu>summary').click();assert.equal(await menu.count(),1);await menu.locator('summary').click();assert.equal(await menu.locator('a[href*="category="]').count(),16);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);}await page.screenshot({path:output+'/'+locale+'-'+width+'-'+(route==='/'?'home':route.replaceAll('/',''))+'.png',fullPage:false});report.responsive.push({locale,width,route,result:'PASS'});}}
+ for(const locale of ['ar','en'])for(const width of [320,360,390,430,768,1366,1440,1920]){const p=locale==='en'?'/en':'';await page.setViewportSize({width,height:1000});for(const route of ['/','/discover/','/business-activities/','/approvals/']){await page.goto(base+p+route);await page.evaluate(()=>document.fonts.ready);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,locale+width+route);if(route==='/'){await page.screenshot({path:output+'/'+locale+'-'+width+'-home-closed.png',fullPage:false});const englishMobile=locale==='en'&&width<=820;
+const bounds=async selector=>{const b=await page.locator(selector).boundingBox();assert.ok(b&&b.x>=-1&&b.x+b.width<=width+1,'Open navigation must stay inside the viewport');const clipped=await page.locator(selector).evaluate(e=>[...e.querySelectorAll('a')].filter(a=>a.checkVisibility()).filter(a=>{const r=a.getBoundingClientRect();return r.left<0||r.right>innerWidth+1||a.scrollWidth>a.clientWidth+2}).map(a=>a.textContent.trim()));assert.deepEqual(clipped,[],'Visible navigation links must not be clipped');return b;};
+let navigationBounds;
+if(englishMobile){
+ await page.locator('.home-en-mobile-menu>summary').click();
+ assert.ok(await page.locator('.home-en-mobile-menu a[href="/en/account/"]').isVisible());
+ assert.ok(await page.locator('.home-en-mobile-menu a[lang="ar"]').isVisible());
+ navigationBounds=await bounds('.home-en-mobile-menu>nav');
+ await page.screenshot({path:output+'/'+locale+'-'+width+'-mobile-menu.png'});
+ await page.locator('.home-en-mobile-menu a[href="/en/discover/"]').click();
+ await page.locator('.discovery-advanced>summary').click();
+ assert.equal(await page.locator('select[name="category"] option:not([value=""])').count(),16,'All sixteen categories remain accessible through the mobile directory');
+ await page.screenshot({path:output+'/'+locale+'-'+width+'-directory-categories.png'});
+ await page.goto(base+p+'/');await page.locator('.home-en-mobile-menu>summary').click();
+}else{
+ const menu=page.locator((locale==='en'?'.premium-en-header ':width<=1100?'.mobile-menu ':'.desktop-nav ')+'.home-capability-explorer');
+ if(locale==='ar'&&width<=1100){await page.locator('.mobile-menu>summary').click();assert.ok(await page.locator('.mobile-menu .home-account-entry').isVisible());navigationBounds=await bounds('.mobile-menu>nav');}
+ assert.equal(await menu.count(),1);await menu.locator('summary').click();assert.equal(await menu.locator('a[href*="category="]').count(),16);
+ if(locale==='ar'&&width<=1100)navigationBounds=await bounds('.mobile-menu>nav');
+}
+assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
+report.navigation.push({locale,width,kind:englishMobile?'MOBILE_DIRECTORY_FILTERS':'CATEGORY_MENU',categoryCount:16,bounds:navigationBounds||null,result:'PASS'});
+}await page.screenshot({path:output+'/'+locale+'-'+width+'-'+(route==='/'?'home':route.replaceAll('/',''))+'.png',fullPage:false});report.responsive.push({locale,width,route,result:'PASS'});}}
  assert.deepEqual(errors,[]);report.status='PASS';
 }catch(error){report.status='FAIL';report.error=error.stack;process.exitCode=1;}finally{await writeFile(output+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));await browser.close();if(server)await new Promise(r=>server.close(r));}
