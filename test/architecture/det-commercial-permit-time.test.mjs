@@ -27,3 +27,23 @@ test('DET commercial-permit time survives AR/EN generators without verifying mis
  }
  assert.deepEqual(review.completed,[]);
 });
+
+test('Empty DET document lists explicitly state uncertainty without changing verification',()=>{
+ const publication=read('src/publication/det-publication-registry.json');
+ const tree=read('content/government-service-tree.json');
+ const registry=read('src/registry/published-services.json');
+ const ids=new Map(tree.services.map(x=>[x.id,x]));
+ let checked=0;
+ for(const entry of publication.services.filter(x=>!x.normalization?.excludeFromRealTotal)){
+  const source=ids.get(entry.sourceId) ?? entry.serviceData;
+  if(!source || source.requirements?.filter(Boolean).length)continue;
+  const record=registry.services.find(x=>x.slug===entry.slug);
+  if(!record) continue;
+  assert.equal(record.verification.requirementsVerified,false);
+  const html=fs.readFileSync('services/'+entry.slug+'/index.html','utf8');
+  assert.ok(html.includes("لم نتحقق بعد من قائمة المستندات المطلوبة لهذه الخدمة؛ راجع بطاقة الجهة الرسمية لتأكيدها. عدم عرض مستندات هنا لا يعني أن الخدمة لا تتطلب مستندات."),entry.slug);
+  assert.ok(!html.includes('<h2>المستندات والمتطلبات</h2><ul></ul>'),entry.slug);
+  checked++;
+ }
+ assert.ok(checked>0);
+});
