@@ -21,7 +21,7 @@ const server=createServer(async(req,res)=>{
   }catch{res.writeHead(404).end()}
 });
 await new Promise(done=>server.listen(0,'127.0.0.1',done));
-const base=process.env.HB_BASE_URL||`http://127.0.0.1:${server.address().port}`;
+const base=(process.env.HB_BASE_URL||`http://127.0.0.1:${server.address().port}`).replace(/\/+$/,'');
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||undefined});
 const expected={
  '.site-header':[0,0,1440,61],'.visual-target-hero':[0,61,1440,302],
@@ -109,9 +109,12 @@ try{
  for(const [width,height] of [[1440,960],[1366,768],[430,932],[390,844],[360,800]]){
   const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(base+'/en/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+  await page.goto(base+'/en/',{waitUntil:'networkidle'});
+  await page.locator('.visual-target-hero').waitFor({state:'visible'});
+  await page.locator('.premium-ai-showcase').waitFor({state:'visible'});
+  await page.evaluate(()=>document.fonts.ready);
   const layout=await page.evaluate(()=>{
-   const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,bottom:r.bottom}};
+   const rect=s=>{const node=document.querySelector(s);if(!node)throw Error('Missing geometry selector '+s+' at '+location.href);const r=node.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,bottom:r.bottom}};
    return {scrollWidth:document.documentElement.scrollWidth,phase:document.documentElement.classList.contains('hb-phase8'),hero:rect('.visual-target-hero'),photo:rect('.premium-hero-main'),assistant:rect('.premium-ai-showcase'),headline:rect('.premium-hero-copy h1'),support:rect('.premium-hero-copy>p'),search:rect('.premium-intent-search'),chips:rect('.premium-popular')};
   });
   const failures=[];
