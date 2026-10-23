@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T12:10:56.303Z",
+  "generatedAt": "2026-10-23T12:20:49.468Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
@@ -271,9 +271,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.mofa.gov.ae/services/edas-attestation-v2",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "TimeoutError"
     },
     {
       "url": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=4191",
@@ -1788,8 +1787,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
