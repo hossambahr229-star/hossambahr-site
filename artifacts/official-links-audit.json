@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-23T18:17:23.433Z",
+  "generatedAt": "2026-10-23T18:30:11.167Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 152,
+    "REACHABLE": 153,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 3,
-    "NETWORK_UNVERIFIED": 85,
+    "NETWORK_UNVERIFIED": 84,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -2570,8 +2570,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
