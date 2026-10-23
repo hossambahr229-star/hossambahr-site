@@ -77,7 +77,7 @@ html.hb-phase8 body[data-home-geometry] .mobile-menu .capability-grid{position:s
 
 /* One measured discovery grid, shared by both languages and all screen sizes. */
 .home-service-launchpad{--hb-discovery-gap:12px;--hb-discovery-padding:20px;--hb-discovery-radius:14px}
-html.hb-phase8 body[data-home-geometry] .home-service-launchpad{display:block!important;direction:inherit;margin:16px 0!important;padding:var(--hb-discovery-padding)!important;border:1px solid #d3e0d8;border-radius:var(--hb-discovery-radius);background:#f7faf8!important}
+html.hb-phase8 body[data-home-geometry] .home-service-launchpad{display:block!important;direction:inherit;margin:14px 0!important;padding:var(--hb-discovery-padding)!important;border:1px solid #d3e0d8;border-radius:var(--hb-discovery-radius);background:#f7faf8!important}
 .home-service-launchpad .home-domain-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:18px}
 .home-service-launchpad .home-domain-heading>div{max-width:780px;min-width:0}
 .home-service-launchpad .home-discovery-eyebrow{display:block;width:auto!important;max-width:none!important;height:auto!important;color:#795919;font-size:12px;line-height:1.6}
