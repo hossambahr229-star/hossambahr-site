@@ -18,9 +18,15 @@ export function entryDestination(query){
  return entryMode(query)==='describe'?'ai':'services';
 }
 
+// A clear residence-renewal request must not expand into every kind of renewal.
+export function residenceRenewalIntent(query){
+ const q=normalizeIntent(query);
+ return /(?:اقام|\bresiden(?:ce|cy|t)\b)/i.test(q)&&/(?:تجديد|جدد|renew)/i.test(q)&&!/(?:رخص|licen[cs]e|driving|قياده|مركب|vehicle|passport|جواز|تصريح عمل|work permit|هويه|emirates id|الغاء|cancel)/i.test(q);
+}
 export function discoverServices(records,{query='',emirate='',authority='',category='',domain='',approval=''}={}){
  const candidates=records.filter(s=>(!emirate||compatibleEmirate(s.m,emirate))&&(!authority||s.i===authority)&&(!category||s.c===category)&&(!domain||(s.bd||serviceBusinessDomain(s))===domain)&&(!approval||(approval==='business'?s.ap&&!['work-permit','residence-permit'].includes(s.ap):s.ap===approval)));
- return query.trim()?rankServices(query,candidates):candidates;
+ const relevant=residenceRenewalIntent(query)?candidates.filter(s=>residenceRenewalIntent([s.a||s.name?.ar||'',s.e||s.name?.en||''].join(' '))):candidates;
+ return query.trim()?rankServices(query,relevant):relevant;
 }
 
 if(typeof document!=='undefined'){

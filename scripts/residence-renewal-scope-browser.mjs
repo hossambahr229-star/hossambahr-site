@@ -1,0 +1,16 @@
+import {chromium} from 'playwright';import {createServer} from 'node:http';import {readFile,mkdir,writeFile} from 'node:fs/promises';import {resolve,extname,sep} from 'node:path';import assert from 'node:assert/strict';
+const root=resolve('.'),out=process.env.HB_OUTPUT_DIR||'diagnostics/residence-renewal-scope-preview';await mkdir(out,{recursive:true});let server;
+if(!process.env.HB_BASE_URL){server=createServer(async(req,res)=>{try{let route=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(route.endsWith('/'))route+='index.html';const file=resolve(root,'.'+route);if(!file.startsWith(root+sep))throw Error('path');res.setHeader('content-type',({'.html':'text/html','.js':'text/javascript','.json':'application/json','.css':'text/css','.svg':'image/svg+xml','.webp':'image/webp','.ttf':'font/ttf'})[extname(file)]||'application/octet-stream');res.end(await readFile(file));}catch{res.writeHead(404).end();}});await new Promise(r=>server.listen(4177,'127.0.0.1',r));}
+const base=(process.env.HB_BASE_URL||'http://127.0.0.1:4177').replace(/\/+$/,''),browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||'/usr/bin/google-chrome'});
+const expected=['تجديد-إقامة-أفراد-الأسرة-في-دبي','تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي','تجديد-تصريح-إقامة-عبر-icp-خارج-دبي'];
+const report={base,captureSource:process.env.HB_BASE_URL?'LIVE_PRODUCTION':'REBUILT_PREVIEW',journeys:[],humanAcceptance:'NOT_DECLARED'};
+try{const page=await browser.newPage({viewport:{width:390,height:844}});
+for(const locale of ['ar','en']){
+const p=locale==='en'?'/en':'',query=locale==='en'?'residence renewal':'تجديد إقامة';await page.goto(base+p+'/',{waitUntil:'domcontentloaded'});const form=page.locator('.premium-intent-search');await form.locator('input').fill(query);await form.locator('button').click();await page.waitForURL(url=>url.pathname===p+'/discover/');await page.locator('[data-discovery-status]').filter({hasText:/matching services|خدمة مطابقة/}).waitFor();
+for(const [emirate,slugs] of [['',expected],['دبي',expected.slice(0,2)],['الشارقة',expected.slice(2)]]){
+ if(emirate){await page.locator('select[name="emirate"]').selectOption(emirate);await page.waitForURL(url=>url.searchParams.get('emirate')===emirate);}
+ const actual=await page.locator('[data-canonical-service]:visible').evaluateAll(es=>es.map(e=>e.dataset.canonicalService));assert.deepEqual(actual.sort(),[...slugs].sort());assert.equal(new URL(page.url()).searchParams.get('q'),query);
+ const cards=page.locator('[data-canonical-service]:visible');for(let i=0;i<await cards.count();i++){assert.match(await cards.nth(i).locator('.hb-path-official').getAttribute('href'),/^https:\/\//);assert.match(await cards.nth(i).locator('.hb-path-assisted').getAttribute('href'),/^https:\/\/wa.me\/971503780460\?text=/);}
+ await page.screenshot({path:out+'/'+locale+'-'+(emirate==='دبي'?'dubai':emirate?'sharjah':'all')+'.png'});report.journeys.push({locale,query,emirate,slugs:actual,status:'PASS'});
+}
+}report.status='PASS';}catch(e){report.status='FAIL';report.error=e.stack;process.exitCode=1;}finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));await browser.close();if(server)await new Promise(r=>server.close(r));}
