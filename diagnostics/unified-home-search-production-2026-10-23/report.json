@@ -1,0 +1,8 @@
+{
+  "base": "https://hossambahr.com",
+  "captureSource": "LIVE_PRODUCTION",
+  "journeys": [],
+  "humanAcceptance": "NOT_DECLARED",
+  "status": "FAIL",
+  "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[data-discovery-status]').filter({ hasText: /matching services|خدمة مطابقة/ }) to be visible\n\n    at /home/runner/work/hossambahr-site/hossambahr-site/site/scripts/unified-home-search-browser.mjs:11:267"
+}
