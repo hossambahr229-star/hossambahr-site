@@ -986,7 +986,7 @@
       const panels = [...main.querySelectorAll('.content-panel, .detail-section')];
       const findPanel = (pattern) => panels.find((panel) => pattern.test(panel.querySelector('h2')?.textContent || ''));
       const fees = findPanel(/الرسوم/);
-      const duration = findPanel(/المدة/);
+      const duration = findPanel(/المدة|مدة الإنجاز/);
       const bar = document.createElement('div');
       bar.className = 'service-facts-bar';
       const authority = hero.querySelector('.eyebrow')?.textContent?.split('·') || [];
@@ -994,7 +994,18 @@
         if (!value) return;
         const item = document.createElement('div');
         const term = document.createElement('span'); term.textContent = label;
-        const detail = document.createElement('b'); detail.textContent = value.trim();
+        const detail = document.createElement('b');
+        const panel = label === "الرسوم" ? fees : label === "المدة" ? duration : null;
+        if (panel && value.trim().length > 100) {
+          panel.id ||= label === "الرسوم" ? "service-fees-details" : "service-duration-details";
+          const link = document.createElement('a');
+          link.className = 'service-fact-detail-link';
+          link.href = '#' + panel.id;
+          link.textContent = label === "الرسوم" ? "عرض تفاصيل الرسوم" : "عرض تفاصيل مدة الإنجاز";
+          detail.append(link);
+        } else {
+          detail.textContent = value.trim();
+        }
         item.append(term, detail); bar.append(item);
       });
       hero.append(bar);

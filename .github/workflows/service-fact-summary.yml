@@ -1,0 +1,28 @@
+name: Service Fact Summary Clipping Regression
+on:
+  push:
+    branches: [agent/service-fact-summary-links]
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm run build
+      - name: Check service runtime and related architecture contracts
+        run: |
+          node --check zero-defect-routing.js
+          node --test test/architecture/premium-ux.test.mjs test/architecture/phase8-product-engineering.test.mjs test/architecture/service-pathways.test.mjs test/architecture/runtime-version-stability.test.mjs
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - name: Verify complete fact summaries and real detail navigation
+        run: HB_BROWSER_PATH="$(which chrome)" node scripts/service-fact-summary-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: service-fact-summary-preview
+          path: diagnostics/service-fact-summary-preview
