@@ -117,7 +117,7 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{grid-template-columns:minmax(0,1fr) 10px;gap:4px;padding:10px!important;min-height:104px!important}
 .home-service-launchpad .home-simple-card>.home-line-icon{display:none}
 .home-service-launchpad .home-simple-card b{font-size:14px!important}
-.home-service-launchpad .home-simple-card small{font-size:11px!important}
+.home-service-launchpad .home-simple-card small{display:none}
 .home-service-launchpad .home-domain-count{font-size:11px!important}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:88px!important;margin:0 6px 6px!important;padding:8px!important}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>span{font-size:12px!important}
