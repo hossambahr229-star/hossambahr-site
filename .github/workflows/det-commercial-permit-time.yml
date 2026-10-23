@@ -1,0 +1,17 @@
+name: DET Commercial Permit Scoped Time
+on:
+  push:
+    branches: [agent/det-commercial-permit-time]
+permissions:
+  contents: read
+jobs:
+  reviewed-field:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm run build
+      - run: node --test test/architecture/det-commercial-permit-time.test.mjs test/architecture/canonical-details.test.mjs test/architecture/published-registry.test.mjs
