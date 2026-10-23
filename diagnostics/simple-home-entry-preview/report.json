@@ -5,13 +5,13 @@
       "locale": "ar",
       "width": 320,
       "overflow": false,
-      "height": 2140,
+      "height": 2134,
       "columns": 1,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 828.765625,
+      "firstServiceBottom": 822.765625,
       "heroActions": [
         "بحث",
         "جميع الخدمات",
@@ -52,13 +52,13 @@
       "locale": "ar",
       "width": 360,
       "overflow": false,
-      "height": 2107,
+      "height": 2101,
       "columns": 1,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 795.59375,
+      "firstServiceBottom": 789.59375,
       "heroActions": [
         "بحث",
         "جميع الخدمات",
@@ -99,13 +99,13 @@
       "locale": "ar",
       "width": 390,
       "overflow": false,
-      "height": 1537,
+      "height": 1531,
       "columns": 2,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 839.59375,
+      "firstServiceBottom": 833.59375,
       "heroActions": [
         "بحث",
         "جميع الخدمات",
@@ -146,13 +146,13 @@
       "locale": "ar",
       "width": 430,
       "overflow": false,
-      "height": 1531,
+      "height": 1525,
       "columns": 2,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 839.59375,
+      "firstServiceBottom": 833.59375,
       "heroActions": [
         "بحث",
         "جميع الخدمات",
@@ -287,13 +287,13 @@
       "locale": "en",
       "width": 320,
       "overflow": false,
-      "height": 2151,
+      "height": 2145,
       "columns": 1,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 828.765625,
+      "firstServiceBottom": 822.765625,
       "heroActions": [
         "Search",
         "All services",
@@ -334,13 +334,13 @@
       "locale": "en",
       "width": 360,
       "overflow": false,
-      "height": 2140,
+      "height": 2134,
       "columns": 1,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 795.59375,
+      "firstServiceBottom": 789.59375,
       "heroActions": [
         "Search",
         "All services",
@@ -381,13 +381,13 @@
       "locale": "en",
       "width": 390,
       "overflow": false,
-      "height": 1580,
+      "height": 1574,
       "columns": 2,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 845.75,
+      "firstServiceBottom": 839.75,
       "heroActions": [
         "Search",
         "All services",
@@ -422,19 +422,19 @@
         104,
         88
       ],
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "locale": "en",
       "width": 430,
       "overflow": false,
-      "height": 1537,
+      "height": 1531,
       "columns": 2,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 845.75,
+      "firstServiceBottom": 839.75,
       "heroActions": [
         "Search",
         "All services",
@@ -469,7 +469,7 @@
         104,
         88
       ],
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "locale": "en",
@@ -566,9 +566,349 @@
       "status": "PASS"
     }
   ],
-  "journeys": [],
+  "journeys": [
+    {
+      "locale": "ar",
+      "slug": "issue-trade-license-dubai",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "slug": "family-residency-uae",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "slug": "new-work-permit-overseas-uae",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "slug": "ajman-business-activity-inquiry",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "slug": "sira-new-security-activity-license-dubai",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "slug": "register-renew-ejari-contract-dubai",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "slug": "fujairah-free-zone-company-registration",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "slug": "activate-healthcare-facility-license-dubai",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "slug": "dubai-customs-business-registration",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "slug": "corporate-tax-registration-uae",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "business",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "residence",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "work",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "activities",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "approvals",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "property",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "investors",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "documents",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "health-education",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "transport-customs",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "domain": "fines-tax",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "issue-trade-license-dubai",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "family-residency-uae",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "new-work-permit-overseas-uae",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "ajman-business-activity-inquiry",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "sira-new-security-activity-license-dubai",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "register-renew-ejari-contract-dubai",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "fujairah-free-zone-company-registration",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "attestation-of-commercial-invoices-via-edas-2-0",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "activate-healthcare-facility-license-dubai",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "dubai-customs-business-registration",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "slug": "corporate-tax-registration-uae",
+      "interactions": 1,
+      "official": true,
+      "assisted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "business",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "residence",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "work",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "activities",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "approvals",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "property",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "investors",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "documents",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "health-education",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "transport-customs",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "domain": "fines-tax",
+      "kind": "DOMAIN",
+      "interactions": 1,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "ADVANCED_FILTERS_AND_LANGUAGE_CONTEXT",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "ADVANCED_FILTERS_AND_LANGUAGE_CONTEXT",
+      "status": "PASS"
+    }
+  ],
   "humanAcceptance": "NOT_DECLARED",
   "governmentSuperiority": "NOT_CLAIMED",
-  "status": "FAIL",
-  "error": "AssertionError [ERR_ASSERTION]: First direct service must fit the opening phone viewport: [{\"locale\":\"en\",\"width\":390,\"bottom\":845.75},{\"locale\":\"en\",\"width\":430,\"bottom\":845.75}]\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/service-launchpad-browser.mjs:22:8"
+  "status": "PASS"
 }
