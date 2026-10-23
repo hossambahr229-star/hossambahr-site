@@ -28,6 +28,7 @@ jobs:
         run: |
           git config user.name "HossamBahr Preview Evidence"
           git config user.email "production-evidence@users.noreply.github.com"
+          if [ ! -d diagnostics/simple-home-entry-preview ]; then exit 0; fi
           git add diagnostics/simple-home-entry-preview
           if ! git diff --cached --quiet; then
             git commit -m "Record launchpad preview evidence [skip ci]"

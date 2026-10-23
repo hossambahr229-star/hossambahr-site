@@ -13,5 +13,7 @@ export function simplifyHomepageEntry(home,{p,t}){
  // Tracking remains reachable in the mobile menu after removing the duplicate hero action.
  home=home.replace(/<a class="home-account-entry"[^>]*>[\s\S]*?<\/a>/g,'');
  home=home.replace(/(<details class="mobile-menu"[\s\S]*?<nav[^>]*>)/,'$1<a class="home-account-entry" href="'+p+'/account/">'+t('حسابي ومتابعة طلباتي','My account and requests')+'</a>');
+
+ if(p==='/en')home=home.replace(/(<header class="premium-en-header"[\s\S]*?<nav[^>]*>)/,'$1<a class="home-account-entry" href="/en/account/" aria-label="My account and requests">Account</a>');
  return home;
 }
