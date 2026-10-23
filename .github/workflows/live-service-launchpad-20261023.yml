@@ -1,0 +1,52 @@
+name: Live Service Launchpad Production Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['scripts/live-service-launchpad-20261023.mjs','.github/workflows/live-service-launchpad-20261023.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - name: Wait for actual published discovery
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let i=0;i<45;i++){
+            try{
+              const home=await fetch('https://hossambahr.com/',{cache:'no-store'}).then(r=>r.text());
+              const directory=await fetch('https://hossambahr.com/en/discover/',{cache:'no-store'}).then(r=>r.text());
+              const runtime=await fetch('https://hossambahr.com/transaction-discovery.js',{cache:'no-store'}).then(r=>r.text());
+              if(home.includes('home-service-launchpad')&&directory.includes('data-discovery-compact')&&/intent-search\.js\?v=[a-f0-9]{12}/.test(runtime)){ready=true;break;}
+            }catch{}
+            await new Promise(r=>setTimeout(r,20000));
+          }
+          if(!ready)throw Error('New homepage, compact directory and versioned dependency are not yet published together');
+          NODE
+      - name: Exercise actual Production
+        run: HB_BROWSER_PATH="$(which chrome)" HB_BASE_URL=https://hossambahr.com HB_OUTPUT_DIR=diagnostics/service-launchpad-production-2026-10-23 node scripts/live-service-launchpad-20261023.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: service-launchpad-production-2026-10-23
+          path: diagnostics/service-launchpad-production-2026-10-23
+      - name: Preserve live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          if [ -d diagnostics/service-launchpad-production-2026-10-23 ]; then
+            git add diagnostics/service-launchpad-production-2026-10-23
+            if ! git diff --cached --quiet; then
+              git commit -m "Record real service launchpad Production evidence [skip ci]"
+              git pull --rebase --autostash origin agent/dld-source-review-evidence
+              git push origin HEAD:agent/dld-source-review-evidence
+            fi
+          fi
