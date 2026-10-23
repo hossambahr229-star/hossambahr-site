@@ -49,7 +49,7 @@ try{
    legacyMarks:[...document.querySelectorAll('.brand b,.hb-master-mark')].filter(e=>e.textContent.trim()==='ح').length,
    images:[...document.querySelectorAll('img')].filter(e=>!e.complete||!e.naturalWidth).map(e=>e.getAttribute('src')),
    domainGateway:!!document.querySelector('[data-home-domains]'),evolvedGateway:!!document.querySelector('.home-discovery-premium'),directGateways:document.querySelectorAll('[data-home-domains] [data-business-domain="activities"],[data-home-domains] [data-business-domain="approvals"]').length,domainCards:document.querySelectorAll('.home-domain-card').length,categoryWidths:[...document.querySelectorAll('[data-home-domains]>a')].map(e=>e.getBoundingClientRect().width),howTitle:(()=>{const r=document.querySelector('.premium-how .section-heading').getBoundingClientRect();return {center:r.x+r.width/2}})(),
-   content:(()=>{const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,w:r.width,h:r.height}};return {headline:rect('.premium-hero-copy h1'),accent:rect('.premium-hero-copy h1 em'),accentFont:parseFloat(getComputedStyle(document.querySelector('.premium-hero-copy h1 em')).fontSize),support:rect('.premium-hero-copy>p'),welcome:rect('.ai-showcase-welcome'),actionDecorations:[...document.querySelectorAll('.premium-ai-showcase .home-ai-action-icon')].map(e=>e.getAttribute('aria-hidden')),search:rect('.premium-intent-search'),chips:rect('.premium-popular'),hero:rect('.visual-target-hero'),categories:rect('[data-home-domains]'),aiActions:[...document.querySelectorAll('.ai-showcase-actions a')].map(e=>({scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}))}})(),
+   content:(()=>{const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,w:r.width,h:r.height}};return {headline:rect('.premium-hero-copy h1'),accent:rect('.premium-hero-copy h1 em'),accentFont:parseFloat(getComputedStyle(document.querySelector('.premium-hero-copy h1 em')).fontSize),support:rect('.premium-hero-copy>p'),welcome:rect('.ai-showcase-welcome'),actionDecorations:[...document.querySelectorAll('.premium-ai-showcase .home-ai-action-icon')].map(e=>e.getAttribute('aria-hidden')),search:rect('.premium-intent-search'),chips:rect('.premium-popular'),hero:rect('.visual-target-hero'),categories:rect('[data-home-domains]'),firstService:rect('[data-home-service]'),aiActions:[...document.querySelectorAll('.ai-showcase-actions a')].map(e=>({scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}))}})(),
    boxes:Object.fromEntries(selectors.map(s=>{const r=document.querySelector(s).getBoundingClientRect();return[s,[r.x,r.y,r.width,r.height]]}))
   }),Object.keys(expected));
   await page.screenshot({path:join(output,`${width}-${height}-full.png`),fullPage:true});
@@ -88,7 +88,7 @@ try{
    if(new URL(page.url()).searchParams.get('q')!=='إقامة')failures.push('Search query not preserved');
   }
   const c=layout.content;
-  if(c.actionDecorations.length!==3||c.actionDecorations.some(v=>v!=='true'))failures.push('AI controls need one decorative icon per native action');
+  if(c.actionDecorations.length!==1||c.actionDecorations.some(v=>v!=='true'))failures.push('The single assistant action needs one decorative icon');
   if(width===1440){
    if(Math.abs(c.support.w-359)>12)failures.push('Desktop support copy differs from reference width');
    if(Math.abs(c.welcome.y-92)>5||Math.abs(c.welcome.h-62)>5)failures.push('AI welcome panel differs from reference bounds');
@@ -100,6 +100,7 @@ try{
   if(c.support.bottom>c.search.y+1)failures.push('Supporting copy overlaps search');
   if(c.search.bottom>c.chips.y+1)failures.push('Search overlaps popular searches');
   if(c.chips.bottom>c.hero.bottom+1)failures.push('Hero content escapes its container');
+  if(width<=430&&c.firstService.bottom>height)failures.push('First direct service is below the opening phone viewport');
   if(c.categories.y<c.hero.bottom-1||c.categories.y-c.hero.bottom>30)failures.push('Hero-to-category alignment is broken');
   if(c.aiActions.some(a=>a.scrollHeight>a.clientHeight+2||a.scrollWidth>a.clientWidth+2))failures.push('AI action text is clipped');
   const stable=lifecycle.slice(2);if(stable.some(s=>Object.entries(s.boxes).some(([key,box])=>box.some((n,i)=>Math.abs(n-stable[0].boxes[key][i])>2))))failures.push('Layout moves after fonts and images are ready');
@@ -115,15 +116,16 @@ try{
   await page.evaluate(()=>document.fonts.ready);
   const layout=await page.evaluate(()=>{
    const rect=s=>{const node=document.querySelector(s);if(!node)throw Error('Missing geometry selector '+s+' at '+location.href);const r=node.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,bottom:r.bottom}};
-   return {scrollWidth:document.documentElement.scrollWidth,phase:document.documentElement.classList.contains('hb-phase8'),hero:rect('.visual-target-hero'),photo:rect('.premium-hero-main'),assistant:rect('.premium-ai-showcase'),headline:rect('.premium-hero-copy h1'),support:rect('.premium-hero-copy>p'),search:rect('.premium-intent-search'),chips:rect('.premium-popular')};
+   return {scrollWidth:document.documentElement.scrollWidth,phase:document.documentElement.classList.contains('hb-phase8'),hero:rect('.visual-target-hero'),photo:rect('.premium-hero-main'),assistant:rect('.premium-ai-showcase'),headline:rect('.premium-hero-copy h1'),support:rect('.premium-hero-copy>p'),search:rect('.premium-intent-search'),chips:rect('.premium-popular'),firstService:rect('[data-home-service]')};
   });
   const failures=[];
+  if(width<=430&&layout.firstService.bottom>height)failures.push('English first direct service is below the opening phone viewport');
   if(!layout.phase)failures.push('English shared geometry scope is absent');
   if(layout.scrollWidth>width)failures.push('English horizontal overflow');
   if(width>820&&(Math.abs(layout.photo.w/width-.742)>.01||Math.abs(layout.assistant.w/width-.258)>.01||Math.abs(layout.assistant.x-layout.photo.w)>2))failures.push('English hero column proportions/order');
   if(layout.headline.bottom>layout.support.y+1||layout.support.bottom>layout.search.y+1||layout.search.bottom>layout.chips.y+1||layout.chips.bottom>layout.hero.bottom+1)failures.push('English hero content overlap');
   await page.screenshot({path:join(output,`en-${width}-${height}-full.png`),fullPage:true});
-  await page.getByRole('button',{name:'Ask about any transaction',exact:true}).click();
+  await page.getByRole('button',{name:'Describe what you need',exact:true}).click();
   const ai=await page.locator('#premium-ai-panel').evaluate(e=>e.classList.contains('is-open')&&getComputedStyle(e).visibility==='visible');
   if(!ai)failures.push('English native AI control did not open');
   await page.keyboard.press('Escape');
