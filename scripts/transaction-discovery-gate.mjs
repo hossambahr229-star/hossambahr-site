@@ -47,14 +47,14 @@ try{
   await page.goto(base+prefix+'/',{waitUntil:'networkidle'});
   assert.equal(await page.locator('.managed-path-action').getAttribute('href'),prefix+'/contact/?handoff=1');
   assert.ok(await page.locator('.premium-intent-search input').isVisible());
-  assert.equal(await page.locator('.discovery-entry>a').count(),2);
+  assert.equal(await page.locator('.discovery-entry>a').count(),1);
   const explore=page.locator('.discovery-entry>a[href$="#service-areas"]');
-  assert.equal(await explore.innerText(),en?'Browse services':'تصفح الخدمات');
+  assert.equal(await explore.innerText(),en?'All services':'جميع الخدمات');
   assert.equal(await explore.getAttribute('href'),prefix+'/#service-areas');
   await explore.click();assert.equal(new URL(page.url()).hash,'#service-areas');
   assert.ok(await page.locator('[data-home-domains] a[href="'+prefix+'/approvals/"]').isVisible());
   assert.ok(await page.locator('[data-home-domains] a[href="'+prefix+'/business-activities/"]').isVisible());
-  await page.getByRole('button',{name:en?'Ask about any transaction':'اسأل عن أي معاملة',exact:true}).click();
+  await page.getByRole('button',{name:en?'Describe what you need':'اشرح ما تحتاجه',exact:true}).click();
   assert.equal(await page.locator('#premium-ai-panel').getAttribute('aria-hidden'),'false');
   if(en){const text=await page.locator('#premium-ai-panel').innerText();assert.match(text,/Describe your request naturally/);assert.doesNotMatch(text,/اكتب سؤالك|أريد أجدد|إرفاق/);}
   await page.keyboard.press('Escape');

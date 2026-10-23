@@ -1,3 +1,4 @@
+import {simplifyHomepageEntry} from './home-simple-entry.mjs';
 import {renderHomepageDiscovery} from './home-discovery-section.mjs';
 import {BUSINESS_DOMAINS,businessDomainGroups,serviceBusinessDomain,serviceReadiness} from '../../business-domains.js';
 import {pathwayMarkup} from '../../service-pathways.js';
@@ -80,6 +81,7 @@ for(const locale of ['ar','en']){
  home=home.replace(/<link[^>]*href="\/transaction-discovery\.css[^\"]*"[^>]*>/g,'').replace(/<script[^>]*src="\/transaction-discovery\.js[^\"]*"[^>]*><\/script>/g,'').replace('</head>',`<link rel="stylesheet" href="/transaction-discovery.css?v=${version}"><script type="module" src="/transaction-discovery.js?v=${version}"></script></head>`);
  if(en)home=home.replace('href="/en/services/">Authorities','href="/en/authorities/">Authorities').replace('href="/en/services/">View all authorities','href="/en/authorities/">View all authorities');
  if(en)home=home.replace(/href="\/authorities\/([^"/]*)\/?"/g,(_,id)=>`href="/en/authorities/${authorities.some(a=>a.id===id)?id+'/':''}"`);
+ home=simplifyHomepageEntry(home,{p,t});
  await writeFile(homeFile,home);
 }
 console.log(JSON.stringify({transactionDiscovery:'CANONICAL',services:records.length,authorities:authorities.length,emirates:emirates.length}));

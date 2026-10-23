@@ -88,7 +88,7 @@ try{
    if(new URL(page.url()).searchParams.get('q')!=='إقامة')failures.push('Search query not preserved');
   }
   const c=layout.content;
-  if(c.actionDecorations.length!==3||c.actionDecorations.some(v=>v!=='true'))failures.push('AI controls need one decorative icon per native action');
+  if(c.actionDecorations.length!==1||c.actionDecorations.some(v=>v!=='true'))failures.push('The single assistant action needs one decorative icon');
   if(width===1440){
    if(Math.abs(c.support.w-359)>12)failures.push('Desktop support copy differs from reference width');
    if(Math.abs(c.welcome.y-92)>5||Math.abs(c.welcome.h-62)>5)failures.push('AI welcome panel differs from reference bounds');
@@ -123,7 +123,7 @@ try{
   if(width>820&&(Math.abs(layout.photo.w/width-.742)>.01||Math.abs(layout.assistant.w/width-.258)>.01||Math.abs(layout.assistant.x-layout.photo.w)>2))failures.push('English hero column proportions/order');
   if(layout.headline.bottom>layout.support.y+1||layout.support.bottom>layout.search.y+1||layout.search.bottom>layout.chips.y+1||layout.chips.bottom>layout.hero.bottom+1)failures.push('English hero content overlap');
   await page.screenshot({path:join(output,`en-${width}-${height}-full.png`),fullPage:true});
-  await page.getByRole('button',{name:'Ask about any transaction',exact:true}).click();
+  await page.getByRole('button',{name:'Describe what you need',exact:true}).click();
   const ai=await page.locator('#premium-ai-panel').evaluate(e=>e.classList.contains('is-open')&&getComputedStyle(e).visibility==='visible');
   if(!ai)failures.push('English native AI control did not open');
   await page.keyboard.press('Escape');
