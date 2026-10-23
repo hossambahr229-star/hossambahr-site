@@ -446,7 +446,7 @@ html.hb-phase8 .footer-group-links { display: grid; gap: .45rem; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar { grid-template-columns: 1fr 1fr !important; gap: .4rem !important; margin-top: .55rem !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar > div { min-height: 58px !important; padding: .48rem !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar span { font-size: .66rem !important; }
-  html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar b { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: .73rem !important; line-height: 1.4 !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar b { display: block; overflow: visible; font-size: .73rem !important; line-height: 1.4 !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-secondary-actions { margin-top: .45rem !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .phase2-execution-paths { padding: .75rem !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-heading { gap: .25rem !important; }
@@ -1675,3 +1675,6 @@ html.hb-phase8 body[data-ux-page="home"] .service-card[data-phase9-card="compact
   .os-value-strip{grid-template-columns:1fr}
   .os-value-strip span{min-height:52px}
 }
+
+/* Long financial and timing policies remain complete in their detail section. */
+.service-facts-bar .service-fact-detail-link { display:flex;align-items:center;min-height:44px;color:inherit;font-size:.875rem;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere; }
