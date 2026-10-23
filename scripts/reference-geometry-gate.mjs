@@ -84,7 +84,7 @@ try{
     for(const [s,original] of Object.entries(expected)){const target=[...original];if(layout.domainGateway&&s==='[data-home-domains]')target[3]+=gatewayDelta;else if(layout.domainGateway&&original[1]>367)target[1]+=gatewayDelta;if(layout.boxes[s].some((n,i)=>Math.abs(n-target[i])>5))failures.push(`Historical section geometry outside 5px tolerance: ${s}`);}
    }
    await page.locator('#premium-government-search').fill('إقامة');
-   await Promise.all([page.waitForURL('**/services/?q=*'),page.locator('#premium-government-search').press('Enter')]);
+   await Promise.all([page.waitForURL('**/discover/?q=*'),page.locator('#premium-government-search').press('Enter')]);
    if(new URL(page.url()).searchParams.get('q')!=='إقامة')failures.push('Search query not preserved');
   }
   const c=layout.content;
@@ -128,7 +128,7 @@ try{
   if(!ai)failures.push('English native AI control did not open');
   await page.keyboard.press('Escape');
   await page.locator('#premium-government-search').fill('residence');
-  await Promise.all([page.waitForURL(/\/en\/services\/\?q=residence/,{timeout:15000}),page.getByRole('button',{name:'Search',exact:true}).click()]);
+  await Promise.all([page.waitForURL(/\/en\/discover\/\?q=residence/,{timeout:15000}),page.getByRole('button',{name:'Search',exact:true}).click()]);
   if(errors.length)failures.push('English JavaScript errors');
   englishResults.push({width,height,layout,ai,errors,failures});await page.close();
  }
