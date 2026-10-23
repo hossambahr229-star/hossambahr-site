@@ -12,3 +12,12 @@ test('homepage visibly exposes the actual diversity without changing the approve
  for(const locale of ['ar','en']){const html=fs.readFileSync(locale==='en'?'en/index.html':'index.html','utf8');assert.equal((html.match(/data-home-domains/g)||[]).length,1);assert.equal((html.match(/data-business-domain=/g)||[]).length,11);assert.ok(html.indexOf('data-home-domains')>html.indexOf('premium-ai-showcase'));assert.ok(html.indexOf('data-home-domains')<html.indexOf('premium-featured'));assert.match(html,/service-areas/);assert.match(html,/data-premium-ai-open/);}
  const coverage=JSON.parse(fs.readFileSync('service-capability-coverage.json','utf8'));assert.equal(coverage.summary.structuralOrphans,0);assert.equal(coverage.businessDomains.length,11);assert.ok(coverage.services.every(s=>s.customerFacingEntry==='/#service-areas'&&s.readiness&&s.discoveryRoute.includes('domain=')));
 });
+
+test('homepage activity breadth uses the existing Dubai source without claiming verified requirements',()=>{
+ const coverage=JSON.parse(fs.readFileSync('service-capability-coverage.json','utf8'));
+ assert.ok(coverage.summary.activities>0);
+ for(const locale of ['ar','en']){
+  const html=fs.readFileSync(locale==='en'?'en/index.html':'index.html','utf8');
+  assert.ok(html.includes(coverage.summary.activities+(locale==='en'?' recorded activities · Dubai':' نشاط مسجل · دبي')));
+ }
+});

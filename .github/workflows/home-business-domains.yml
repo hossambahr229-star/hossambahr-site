@@ -1,7 +1,7 @@
 name: Homepage Business Domain Acceptance
 on:
   push:
-    branches: [agent/home-business-domains]
+    branches: [agent/home-activity-breadth]
     paths: ['business-domains.js','transaction-discovery.*','service-capabilities.js','src/publication/**','scripts/home-business-domains*','scripts/capability-generator-integration.test.mjs','content/backend-public-catalog-snapshot-2026-10-16.json','.github/workflows/home-business-domains.yml']
   workflow_dispatch:
 permissions:
@@ -17,7 +17,7 @@ jobs:
       - run: npm install --no-save --no-package-lock playwright@1.55.0
       - run: npm run build
       - run: node --test scripts/home-business-domains.test.mjs scripts/capability-generator-integration.test.mjs scripts/capability-discovery-regression.test.mjs
-      - run: node scripts/home-business-domains-browser.mjs
+      - run: HB_OUTPUT_DIR=artifacts/home-business-domains node scripts/service-launchpad-browser.mjs
         env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
       - uses: actions/upload-artifact@v4
         if: always()
@@ -25,15 +25,15 @@ jobs:
           name: homepage-business-domains
           path: artifacts/home-business-domains
       - name: Preserve selected review screenshots on the implementation branch
-        if: always() && github.ref_name == 'agent/home-business-domains'
+        if: always() && github.ref_name == 'agent/home-activity-breadth'
         run: |
           git config user.name "HossamBahr Preview Evidence"
           git config user.email "production-evidence@users.noreply.github.com"
-          for name in ar-320-areas.png ar-1440-areas.png en-390-areas.png report.json; do
+          for name in ar-320-services.png ar-1440-services.png en-390-services.png report.json; do
             file="artifacts/home-business-domains/$name"
             if [ -f "$file" ]; then git add -- "$file"; fi
           done
           if ! git diff --cached --quiet; then
-            git commit -m "Record actual domain preview evidence"
-            git push origin HEAD:agent/home-business-domains || echo "Branch advanced; the uploaded workflow artifact remains available."
+            git commit -m "Record actual activity breadth preview evidence [skip ci]"
+            git push origin HEAD:agent/home-activity-breadth || echo "Branch advanced; the uploaded workflow artifact remains available."
           fi
