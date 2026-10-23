@@ -513,3 +513,14 @@ html[lang="en"].hb-phase8 body[data-home-geometry] .premium-intent-search input{
 
 /* Owner feedback: a single, readable assistant action at the start. */
 @media(min-width:821px){html.hb-phase8 body[data-home-entry="simple"] .ai-showcase-cta{width:62%!important;margin-left:12px!important;min-height:44px!important;height:44px!important;font-size:12px!important;padding:7px 28px!important}}
+
+/* English mobile navigation keeps account, language and help reachable without crowding the header. */
+html.hb-phase8 body[data-home-entry="simple"] .home-en-mobile-menu{display:none}
+@media(max-width:820px){
+ html.hb-phase8 body[data-home-entry="simple"] .premium-en-header>nav{display:none!important}
+ html.hb-phase8 body[data-home-entry="simple"] .home-en-mobile-menu{display:block;position:static}
+ html.hb-phase8 body[data-home-entry="simple"] .home-en-mobile-menu>summary{min-height:44px;min-width:58px;padding:10px;border:1px solid #cbdcd1;border-radius:8px;font-size:13px;cursor:pointer}
+ html.hb-phase8 body[data-home-entry="simple"] .home-en-mobile-menu>nav{position:absolute;top:100%;right:16px;z-index:100;width:min(320px,calc(100vw - 32px));padding:12px;border:1px solid #cbdcd1;border-radius:10px;background:#fff;box-shadow:0 8px 28px #103e3626;display:grid!important;gap:4px}
+ html.hb-phase8 body[data-home-entry="simple"] .home-en-mobile-menu:not([open])>nav{display:none!important}
+ html.hb-phase8 body[data-home-entry="simple"] .home-en-mobile-menu a{display:flex!important;min-height:44px;align-items:center;padding:8px 10px;font-size:14px;color:#103e36}
+}

@@ -10,10 +10,12 @@ export function simplifyHomepageEntry(home,{p,t}){
   body=body.replace(/(<h2[^>]*>)[\s\S]*?(<\/h2>)/,(_,h,c)=>h+t('نساعدك في اختيار معاملتك','Find the right transaction')+c);
   return open+body+close;
  });
+ home=home.replace(/<details class="home-en-mobile-menu"[^>]*>[\s\S]*?<\/details>/g,'');
  // Tracking remains reachable in the mobile menu after removing the duplicate hero action.
  home=home.replace(/<a class="home-account-entry"[^>]*>[\s\S]*?<\/a>/g,'');
  home=home.replace(/(<details class="mobile-menu"[\s\S]*?<nav[^>]*>)/,'$1<a class="home-account-entry" href="'+p+'/account/">'+t('حسابي ومتابعة طلباتي','My account and requests')+'</a>');
 
  if(p==='/en')home=home.replace(/(<header class="premium-en-header"[\s\S]*?<nav[^>]*>)/,'$1<a class="home-account-entry" href="/en/account/" aria-label="My account and requests">Account</a>');
+ if(p==='/en')home=home.replace(/(<header class="premium-en-header"[^>]*>)([\s\S]*?)(<\/header>)/,(_,open,body,close)=>open+body+'<details class="home-en-mobile-menu"><summary>Menu</summary><nav aria-label="Mobile navigation"><a href="/en/discover/">All services</a><a href="/en/ai/">HB AI</a><a class="home-account-entry" href="/en/account/">My account and requests</a><a href="/en/authorities/">Authorities</a><a href="/en/contact/">Contact</a><a href="/" lang="ar" dir="rtl">العربية</a></nav></details>'+close);
  return home;
 }
