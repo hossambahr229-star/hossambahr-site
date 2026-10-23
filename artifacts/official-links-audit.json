@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-23T17:54:04.189Z",
+  "generatedAt": "2026-10-23T18:17:23.433Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 153,
+    "REACHABLE": 152,
     "ACCESS_RESTRICTED": 9,
-    "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 87,
+    "TEMPORARILY_UNAVAILABLE": 3,
+    "NETWORK_UNVERIFIED": 85,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -644,9 +644,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
-      "result": "REACHABLE"
+      "status": 503,
+      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=14aefa78-624c-4f8a-aee9-c6876fcc8b1a&Lang=ar-AE",
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 503"
     },
     {
       "url": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
@@ -831,9 +832,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
-      "result": "REACHABLE"
+      "status": 503,
+      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=256a91d9-23d7-469f-a054-ffee6c0fc4c7&Lang=ar-AE",
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 503"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
@@ -1788,8 +1790,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
@@ -1863,8 +1866,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://uaqftz.gov.ae/ar",
+      "result": "REACHABLE"
     },
     {
       "url": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html",
@@ -2567,7 +2571,7 @@
         "page-official-route"
       ],
       "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
@@ -3269,9 +3273,10 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
+      "status": 503,
       "finalUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
-      "result": "REACHABLE"
+      "result": "TEMPORARILY_UNAVAILABLE",
+      "reason": "HTTP 503"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
