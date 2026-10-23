@@ -1,9 +1,57 @@
 {
   "base": "http://127.0.0.1:4174",
-  "views": [],
+  "views": [
+    {
+      "locale": "ar",
+      "width": 320,
+      "overflow": false,
+      "height": 2140,
+      "columns": 1,
+      "domains": 11,
+      "direct": 11,
+      "unwantedPathways": 0,
+      "clipped": [],
+      "firstServiceBottom": 868.765625,
+      "heroActions": [
+        "بحث",
+        "جميع الخدمات",
+        "←اشرح ما تحتاجه"
+      ],
+      "assistantActions": 1,
+      "searchTarget": 44,
+      "assistantTarget": 44,
+      "trackingHref": "/account/",
+      "targets": [
+        48,
+        84,
+        64,
+        84,
+        64,
+        84,
+        64,
+        84,
+        64,
+        84,
+        64,
+        84,
+        64,
+        84,
+        64,
+        84,
+        75,
+        84,
+        64,
+        84,
+        64,
+        84,
+        64
+      ],
+      "status": "MEASURED_BEFORE_ASSERTIONS"
+    }
+  ],
   "journeys": [],
   "humanAcceptance": "NOT_DECLARED",
   "governmentSuperiority": "NOT_CLAIMED",
   "status": "FAIL",
-  "error": "AssertionError [ERR_ASSERTION]: First direct service must be fully visible in the opening phone viewport\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/service-launchpad-browser.mjs:16:356\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:541:9)"
+  "error": "AssertionError [ERR_ASSERTION]: First direct service must be fully visible in the opening phone viewport\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/service-launchpad-browser.mjs:17:356"
 }
