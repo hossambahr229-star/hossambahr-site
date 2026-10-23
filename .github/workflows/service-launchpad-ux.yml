@@ -1,7 +1,7 @@
 name: Service Launchpad UX Evidence
 on:
   push:
-    branches: [agent/clear-service-grid]
+    branches: [agent/clear-service-grid-small]
     paths: ['src/publication/home-discovery-section.mjs','transaction-discovery.css','transaction-discovery.js','scripts/runtime-import-cache.test.mjs','scripts/capability-generator-integration.test.mjs','scripts/service-launchpad-browser.mjs','.github/workflows/service-launchpad-ux.yml']
 permissions:
   contents: write
@@ -17,20 +17,20 @@ jobs:
       - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
       - run: npm run build
       - run: node --test scripts/home-business-domains.test.mjs scripts/capability-generator-integration.test.mjs scripts/runtime-import-cache.test.mjs
-      - run: HB_OUTPUT_DIR=diagnostics/clear-service-grid-preview HB_BROWSER_PATH="$(which chrome)" node scripts/service-launchpad-browser.mjs
+      - run: HB_OUTPUT_DIR=diagnostics/clear-service-grid-small-preview HB_BROWSER_PATH="$(which chrome)" node scripts/service-launchpad-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: clear-service-grid-preview
-          path: diagnostics/clear-service-grid-preview
+          name: clear-service-grid-small-preview
+          path: diagnostics/clear-service-grid-small-preview
       - name: Retain review evidence
         if: always()
         run: |
           git config user.name "HossamBahr Preview Evidence"
           git config user.email "production-evidence@users.noreply.github.com"
-          git add diagnostics/clear-service-grid-preview
+          git add diagnostics/clear-service-grid-small-preview
           if ! git diff --cached --quiet; then
             git commit -m "Record launchpad preview evidence [skip ci]"
-            git pull --rebase --autostash origin agent/clear-service-grid
-            git push origin HEAD:agent/clear-service-grid
+            git pull --rebase --autostash origin agent/clear-service-grid-small
+            git push origin HEAD:agent/clear-service-grid-small
           fi

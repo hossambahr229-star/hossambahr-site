@@ -123,6 +123,7 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-se
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>span{font-size:12px!important}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>.home-example-label{font-size:11px!important}
 }
+@media(max-width:360px){.home-service-launchpad .home-domain-grid{grid-template-columns:minmax(0,1fr)}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{min-height:84px!important}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:64px!important}}
 @media(prefers-reduced-motion:no-preference){.home-domain-tile{transition:border-color .15s ease,box-shadow .15s ease}.home-domain-tile:focus-within,.home-domain-tile:hover{border-color:#b68b36;box-shadow:0 4px 14px #103e3610}}
 
 /* Directory starts with the requested transaction, rather than competing menus. */
