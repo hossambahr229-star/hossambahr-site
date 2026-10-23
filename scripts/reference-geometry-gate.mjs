@@ -26,7 +26,7 @@ const browser=await chromium.launch({headless:true,executablePath:process.env.HB
 const expected={
  '.site-header':[0,0,1440,61],'.visual-target-hero':[0,61,1440,302],
  '.premium-hero-main':[0,61,1068.5,302],'.premium-ai-showcase':[1068.5,61,371.5,302],
- '.premium-intent-search':[435,248,597,47],'.premium-category-grid':[31,367,1378,116],
+ '.premium-intent-search':[435,248,597,47],'[data-home-domains]':[31,367,1378,116],
  '.premium-story':[31,497,1378,127],'.target-proof':[31,643,1378,66],
  '.premium-how ol':[31,749,1054,44],'.premium-authorities':[0,803,1440,85],
  '.premium-final-cta':[0,888,1440,85]
@@ -39,7 +39,7 @@ try{
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base,{waitUntil:'domcontentloaded'});
   const lifecycle=[];
-  async function sample(stage){lifecycle.push({stage,boxes:await page.evaluate(()=>Object.fromEntries(['.visual-target-hero','.premium-hero-main','.premium-hero-copy h1','.premium-intent-search','.premium-ai-showcase','.premium-category-grid'].map(s=>{const r=document.querySelector(s).getBoundingClientRect();return [s,[r.x,r.y,r.width,r.height]]})))})}
+  async function sample(stage){lifecycle.push({stage,boxes:await page.evaluate(()=>Object.fromEntries(['.visual-target-hero','.premium-hero-main','.premium-hero-copy h1','.premium-intent-search','.premium-ai-showcase','[data-home-domains]'].map(s=>{const r=document.querySelector(s).getBoundingClientRect();return [s,[r.x,r.y,r.width,r.height]]})))})}
   await sample('DOMContentLoaded');await page.evaluate(()=>document.fonts.ready);await sample('fonts.ready');
   await page.evaluate(()=>Promise.all([...document.images].filter(img=>img.loading!=='lazy').map(img=>img.decode().catch(()=>{}))));await sample('images.ready');
   await page.waitForTimeout(1000);await sample('+1s');await page.waitForTimeout(2000);await sample('+3s');
@@ -48,8 +48,8 @@ try{
    fontLoaded:document.fonts.check('16px Cairo'),
    legacyMarks:[...document.querySelectorAll('.brand b,.hb-master-mark')].filter(e=>e.textContent.trim()==='ح').length,
    images:[...document.querySelectorAll('img')].filter(e=>!e.complete||!e.naturalWidth).map(e=>e.getAttribute('src')),
-   domainGateway:!!document.querySelector('[data-home-domains]'),evolvedGateway:!!document.querySelector('.home-discovery-premium'),directGateways:document.querySelectorAll('[data-home-domains] [data-business-domain="activities"],[data-home-domains] [data-business-domain="approvals"]').length,domainCards:document.querySelectorAll('.home-domain-card').length,categoryWidths:[...document.querySelectorAll('.premium-category-grid>a')].map(e=>e.getBoundingClientRect().width),howTitle:(()=>{const r=document.querySelector('.premium-how .section-heading').getBoundingClientRect();return {center:r.x+r.width/2}})(),
-   content:(()=>{const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,w:r.width,h:r.height}};return {headline:rect('.premium-hero-copy h1'),accent:rect('.premium-hero-copy h1 em'),accentFont:parseFloat(getComputedStyle(document.querySelector('.premium-hero-copy h1 em')).fontSize),support:rect('.premium-hero-copy>p'),welcome:rect('.ai-showcase-welcome'),actionDecorations:[...document.querySelectorAll('.premium-ai-showcase .home-ai-action-icon')].map(e=>e.getAttribute('aria-hidden')),search:rect('.premium-intent-search'),chips:rect('.premium-popular'),hero:rect('.visual-target-hero'),categories:rect('.premium-category-grid'),aiActions:[...document.querySelectorAll('.ai-showcase-actions a')].map(e=>({scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}))}})(),
+   domainGateway:!!document.querySelector('[data-home-domains]'),evolvedGateway:!!document.querySelector('.home-discovery-premium'),directGateways:document.querySelectorAll('[data-home-domains] [data-business-domain="activities"],[data-home-domains] [data-business-domain="approvals"]').length,domainCards:document.querySelectorAll('.home-domain-card').length,categoryWidths:[...document.querySelectorAll('[data-home-domains]>a')].map(e=>e.getBoundingClientRect().width),howTitle:(()=>{const r=document.querySelector('.premium-how .section-heading').getBoundingClientRect();return {center:r.x+r.width/2}})(),
+   content:(()=>{const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,w:r.width,h:r.height}};return {headline:rect('.premium-hero-copy h1'),accent:rect('.premium-hero-copy h1 em'),accentFont:parseFloat(getComputedStyle(document.querySelector('.premium-hero-copy h1 em')).fontSize),support:rect('.premium-hero-copy>p'),welcome:rect('.ai-showcase-welcome'),actionDecorations:[...document.querySelectorAll('.premium-ai-showcase .home-ai-action-icon')].map(e=>e.getAttribute('aria-hidden')),search:rect('.premium-intent-search'),chips:rect('.premium-popular'),hero:rect('.visual-target-hero'),categories:rect('[data-home-domains]'),aiActions:[...document.querySelectorAll('.ai-showcase-actions a')].map(e=>({scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}))}})(),
    boxes:Object.fromEntries(selectors.map(s=>{const r=document.querySelector(s).getBoundingClientRect();return[s,[r.x,r.y,r.width,r.height]]}))
   }),Object.keys(expected));
   await page.screenshot({path:join(output,`${width}-${height}-full.png`),fullPage:true});
@@ -81,7 +81,7 @@ try{
     }
    }else{
     if(layout.domainGateway&&(layout.domainCards!==11||layout.content.categories.h>340))failures.push('Visible service gateway is incomplete or crowds the desktop fold');
-    for(const [s,original] of Object.entries(expected)){const target=[...original];if(layout.domainGateway&&s==='.premium-category-grid')target[3]+=gatewayDelta;else if(layout.domainGateway&&original[1]>367)target[1]+=gatewayDelta;if(layout.boxes[s].some((n,i)=>Math.abs(n-target[i])>5))failures.push(`Historical section geometry outside 5px tolerance: ${s}`);}
+    for(const [s,original] of Object.entries(expected)){const target=[...original];if(layout.domainGateway&&s==='[data-home-domains]')target[3]+=gatewayDelta;else if(layout.domainGateway&&original[1]>367)target[1]+=gatewayDelta;if(layout.boxes[s].some((n,i)=>Math.abs(n-target[i])>5))failures.push(`Historical section geometry outside 5px tolerance: ${s}`);}
    }
    await page.locator('#premium-government-search').fill('إقامة');
    await Promise.all([page.waitForURL('**/services/?q=*'),page.locator('#premium-government-search').press('Enter')]);

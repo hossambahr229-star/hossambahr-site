@@ -42,13 +42,19 @@ if(typeof document!=='undefined'){
   const params=new URLSearchParams(location.search);
   for(const key of ['q','emirate','authority','category','domain','approval'])if(form.elements[key]){if(params.has(key)||key!=='approval')form.elements[key].value=params.get(key)||'';}
   const advanced=form.querySelector('.discovery-advanced');
-  if(advanced&&['authority','domain','category'].some(key=>params.get(key)))advanced.open=true;
+  if(advanced&&!form.hasAttribute('data-discovery-compact')&&['authority','domain','category'].some(key=>params.get(key)))advanced.open=true;
   let records;
   async function render(event){
    event?.preventDefault();
    try{
     if(!records){const response=await fetch('/transaction-discovery-data.json');if(!response.ok)throw Error('catalog');records=await response.json();if(form.dataset.discoveryScope==='approvals')records=records.filter(s=>s.ap);}
     const selection={query:form.elements.q.value,emirate:form.elements.emirate.value,authority:form.elements.authority.value,category:form.elements.category.value,domain:form.elements.domain?.value||'',approval:form.elements.approval?.value||''};
+    const selectedStatus=document.querySelector('[data-discovery-selection]');
+    if(selectedStatus){
+     const labels=['domain','authority','category'].filter(key=>selection[key]).map(key=>form.elements[key].selectedOptions[0]?.textContent).filter(Boolean);
+     selectedStatus.textContent=labels.length?(en?'Showing: ':'يعرض الآن: ')+labels.join(' · '):'';
+     selectedStatus.hidden=!labels.length;
+    }
     const found=discoverServices(records,selection),order=new Map(found.map((s,i)=>[s.s,i]));
     for(const card of cards)card.hidden=!order.has(card.dataset.canonicalService);
     const bySlug=new Map(cards.map(card=>[card.dataset.canonicalService,card]));
