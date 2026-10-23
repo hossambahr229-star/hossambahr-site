@@ -1,7 +1,7 @@
 name: Service Fact Summary Clipping Regression
 on:
   push:
-    branches: [agent/service-fact-summary-links]
+    branches: [agent/service-fact-summary-links, agent/service-fact-styles-cache]
 permissions:
   contents: read
 jobs:

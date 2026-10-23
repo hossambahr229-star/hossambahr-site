@@ -1,4 +1,5 @@
 (() => {
+  const intentStyleVersion = document.currentScript?.src ? new URL(document.currentScript.src, location.href).searchParams.get('v') : null;
   const isHomepagePath = () => location.pathname === "/" || location.pathname === "/index.html";
   function reviewedExecutionHref() {
     const prefix = document.documentElement.lang === "en" ? "/en" : "";
@@ -33,10 +34,15 @@
   loadAuthenticationRuntime();
 
   function loadIntentFirstStyles() {
-    if (document.querySelector('link[href^="/intent-first.css"]')) return;
+    const href = "/intent-first.css" + (intentStyleVersion ? "?v=" + encodeURIComponent(intentStyleVersion) : "");
+    const existing = document.querySelector('link[href^="/intent-first.css"]');
+    if (existing) {
+      if (existing.getAttribute("href") !== href) existing.setAttribute("href", href);
+      return;
+    }
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "/intent-first.css";
+    link.href = href;
     document.head.append(link);
   }
 

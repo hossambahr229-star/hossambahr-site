@@ -15,6 +15,10 @@ try{
   await page.goto(base+'/services/legacy-service-85a10469d8/',{waitUntil:'networkidle'});
   const bar=page.locator('.service-facts-bar');await bar.waitFor();await page.evaluate(()=>document.fonts.ready);
   assert.equal(await bar.locator('.service-fact-detail-link').count(),2,'Fees and duration point to complete details');
+  const cacheKey=await page.evaluate(()=>({runtime:document.querySelector('script[src*="/zero-defect-routing.js"]').getAttribute('src'),style:document.querySelector('link[href^="/intent-first.css"]').getAttribute('href')}));
+  const runtimeVersion=new URL(cacheKey.runtime,base).searchParams.get('v');
+  assert.ok(runtimeVersion,'Published runtime is versioned');
+  assert.equal(new URL(cacheKey.style,base).searchParams.get('v'),runtimeVersion,'Returning browsers must receive the matching stylesheet');
   const metrics=await bar.evaluate(bar=>{
    const hero=bar.closest('.page-hero,.service-hero').getBoundingClientRect(),r=bar.getBoundingClientRect();
    return {overflow:document.documentElement.scrollWidth>innerWidth+1,bar:{top:r.top,bottom:r.bottom},hero:{top:hero.top,bottom:hero.bottom},facts:[...bar.querySelectorAll('b')].map(el=>({text:el.textContent.trim(),height:el.clientHeight,scrollHeight:el.scrollHeight,clamp:getComputedStyle(el).webkitLineClamp})),links:[...bar.querySelectorAll('a')].map(el=>({href:el.getAttribute('href'),height:el.getBoundingClientRect().height}))};
@@ -32,7 +36,7 @@ try{
    const clipped=await panel.locator('p').evaluate(el=>el.scrollHeight>el.clientHeight+1);assert.equal(clipped,false,'Full detail must remain readable');
    if(width===320)await page.screenshot({path:out+'/ar-320-'+id+'.png',fullPage:false});
   }
-  report.views.push({width,status:'PASS',...metrics});
+  report.views.push({width,status:'PASS',cacheKey,...metrics});
  }
  report.status='PASS';
 } catch(error){report.status='FAIL';report.error=String(error);throw error;}
