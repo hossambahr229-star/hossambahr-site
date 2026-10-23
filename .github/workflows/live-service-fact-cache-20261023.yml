@@ -1,0 +1,68 @@
+name: Live Returning Service Styles Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/live-service-fact-cache-20261023.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      OUTPUT_DIR: diagnostics/service-fact-cache-production-2026-10-23-attempt-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 2d3268f37c2c3a420a2493859f29d4fdbac7ef93
+          path: site
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+        working-directory: site
+      - name: Wait for the exact published runtime and fact stylesheet
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          import {createHash} from 'node:crypto';
+          const names=['public-ai-concierge','auth-client','ui-i18n','os-client','os-i18n','english-catalog','intent-search','activities','zero-defect-routing','a-plus-plus'];
+          const hash=createHash('sha256');for(const name of names)hash.update(await readFile('site/'+name+'.js'));
+          hash.update(await readFile('site/intent-first.css'));
+          const expected=hash.digest('hex').slice(0,12);
+          const css=await readFile('site/intent-first.css','utf8');
+          let ready=false;
+          for(let i=0;i<45;i++){
+           try{
+            const html=await fetch('https://hossambahr.com/services/legacy-service-85a10469d8/',{cache:'no-store'}).then(r=>r.text());
+            const actualCSS=await fetch('https://hossambahr.com/intent-first.css',{cache:'no-store'}).then(r=>r.text());
+            if(html.includes('/zero-defect-routing.js?v='+expected)&&actualCSS===css){ready=true;break;}
+           }catch{}
+           await new Promise(r=>setTimeout(r,20000));
+          }
+          if(!ready)throw Error('Expected service runtime and stylesheet not published: '+expected);
+          NODE
+      - name: Exercise actual unclipped facts and native detail links
+        working-directory: site
+        run: HB_BROWSER_PATH="$(which chrome)" HB_BASE_URL=https://hossambahr.com HB_OUTPUT_DIR="$OUTPUT_DIR" node scripts/service-fact-summary-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: service-fact-cache-live-${{ github.run_attempt }}
+          path: site/${{ env.OUTPUT_DIR }}
+      - name: Preserve exact live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          if [ -d "site/$OUTPUT_DIR" ]; then
+            mkdir -p diagnostics
+            cp -R "site/$OUTPUT_DIR" diagnostics/
+            git add "$OUTPUT_DIR"
+            if ! git diff --cached --quiet; then
+              git commit -m "Record service fact summary Production evidence [skip ci]"
+              git pull --rebase --autostash origin agent/dld-source-review-evidence
+              git push origin HEAD:agent/dld-source-review-evidence
+            fi
+          fi
