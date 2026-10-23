@@ -1,0 +1,80 @@
+name: Live DET Reviewed Facts and Document Uncertainty
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/live-det-facts-documents-20261023.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OUTPUT_DIR: diagnostics/det-facts-documents-production-2026-10-23-attempt-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - name: Verify affected real service and preserve screenshots
+        run: |
+          HB_BROWSER_PATH="$(which chrome)" node --input-type=module <<'NODE'
+          import {chromium} from 'playwright';
+          import {mkdir,writeFile} from 'node:fs/promises';
+          import assert from 'node:assert/strict';
+          const out=process.env.OUTPUT_DIR;await mkdir(out,{recursive:true});
+          const origin='https://hossambahr.com',slug='legacy-service-85a10469d8';
+          let ready=false;
+          for(let i=0;i<30;i++){const text=await fetch(origin+'/services/'+slug+'/',{cache:'no-store'}).then(r=>r.text());if(text.includes('unverified-documents')){ready=true;break;}await new Promise(r=>setTimeout(r,20000));}
+          assert.ok(ready,'Published document-uncertainty fix must be present');
+          const browser=await chromium.launch({executablePath:process.env.HB_BROWSER_PATH,headless:true,args:['--no-sandbox']});
+          const views=[];
+          try{
+           for(const locale of ['ar','en'])for(const width of [320,390,1440]){
+           const page=await browser.newPage({viewport:{width,height:1000},deviceScaleFactor:1});
+           const route=(locale==='en'?'/en':'')+'/services/'+slug+'/';
+           await page.goto(origin+route,{waitUntil:'networkidle',timeout:60000});
+           const content=await page.locator('body').innerText();
+           const unknown=locale==='ar'?"لم نتحقق بعد من قائمة المستندات المطلوبة لهذه الخدمة؛ راجع بطاقة الجهة الرسمية لتأكيدها. عدم عرض مستندات هنا لا يعني أن الخدمة لا تتطلب مستندات.":'A verified detail is not available in the platform record. Check the official source before applying.';
+           assert.ok(content.includes(unknown),locale+' document uncertainty');
+           assert.ok(content.includes(locale==='ar'?'5 دقائق':'5 minutes'),'published processing time');
+           assert.ok(content.includes(locale==='ar'?'500–20000':'500–20,000'),'conditional promotional fee range');
+           assert.ok(content.includes(locale==='ar'?'ليست إجماليًا موحدًا':'alternatives, not one total'),'do not sum fees');
+           const evidence=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,links:Array.from(document.querySelectorAll('a[href]'),a=>({text:a.innerText,href:a.href})),unverifiedDocuments:document.querySelector('.unverified-documents')?.textContent||null}));
+           assert.ok(evidence.scrollWidth<=width+1,'horizontal overflow at '+locale+width);
+           assert.ok(evidence.links.some(x=>x.href.includes('investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-commercial-permit')),'official route');
+           const wap=evidence.links.find(x=>x.href.startsWith('https://wa.me/971503780460'));
+           assert.ok(wap,'assisted WhatsApp route');
+           const message=new URL(wap.href).searchParams.get('text')||'';
+           assert.ok(message.includes('directory:approvals:2'),'service identity in WhatsApp context');
+           assert.ok(message.includes(locale==='ar'?'دبي':'Dubai'),'emirate context');
+           const contact=evidence.links.find(x=>x.href.includes('/contact/?service='+slug));
+           assert.ok(contact,'preparation route');
+           assert.equal(new URL(contact.href).pathname,locale==='en'?'/en/contact/':'/contact/','preserve language');
+           await page.screenshot({path:out+'/'+locale+'-'+width+'-permit.png',fullPage:true});
+           views.push({locale,width,status:'PASS',route,...evidence,whatsAppMessageContext:message});
+           await page.close();
+           }
+           await writeFile(out+'/report.json',JSON.stringify({status:'PASS',live:true,checkedAt:new Date().toISOString(),sourceMerge:'e456573b19b9add720f814786cc25e74518262d2',views,scope:'Six real Production views of the changed DET service. No real transaction, message, payment or authenticated operation. Does not establish full human/visual or external-model acceptance.'},null,2));
+           console.log(JSON.stringify({status:'PASS',live:true,views:views.length}));
+          }finally{await browser.close();}
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: det-facts-documents-live-${{ github.run_attempt }}
+          path: ${{ env.OUTPUT_DIR }}
+      - name: Preserve evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          if [ -d "$OUTPUT_DIR" ]; then
+            git add "$OUTPUT_DIR"
+            if ! git diff --cached --quiet; then
+              git commit -m "Record scoped DET Production facts evidence [skip ci]"
+              git pull --rebase --autostash origin agent/dld-source-review-evidence
+              git push origin HEAD:agent/dld-source-review-evidence
+            fi
+          fi
