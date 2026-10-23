@@ -287,13 +287,13 @@
       "locale": "en",
       "width": 320,
       "overflow": false,
-      "height": 2185,
+      "height": 2151,
       "columns": 1,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 862.359375,
+      "firstServiceBottom": 828.765625,
       "heroActions": [
         "Search",
         "All services",
@@ -328,19 +328,19 @@
         84,
         64
       ],
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "locale": "en",
       "width": 360,
       "overflow": false,
-      "height": 2174,
+      "height": 2140,
       "columns": 1,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 829.1875,
+      "firstServiceBottom": 795.59375,
       "heroActions": [
         "Search",
         "All services",
@@ -381,13 +381,13 @@
       "locale": "en",
       "width": 390,
       "overflow": false,
-      "height": 1714,
+      "height": 1680,
       "columns": 2,
       "domains": 11,
       "direct": 11,
       "unwantedPathways": 0,
       "clipped": [],
-      "firstServiceBottom": 890.96875,
+      "firstServiceBottom": 857.375,
       "heroActions": [
         "Search",
         "All services",
@@ -570,5 +570,5 @@
   "humanAcceptance": "NOT_DECLARED",
   "governmentSuperiority": "NOT_CLAIMED",
   "status": "FAIL",
-  "error": "AssertionError [ERR_ASSERTION]: First direct service must fit the opening phone viewport: [{\"locale\":\"en\",\"width\":320,\"bottom\":862.359375},{\"locale\":\"en\",\"width\":390,\"bottom\":890.96875},{\"locale\":\"en\",\"width\":430,\"bottom\":845.9375}]\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/service-launchpad-browser.mjs:21:8"
+  "error": "AssertionError [ERR_ASSERTION]: First direct service must fit the opening phone viewport: [{\"locale\":\"en\",\"width\":390,\"bottom\":857.375},{\"locale\":\"en\",\"width\":430,\"bottom\":845.9375}]\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/scripts/service-launchpad-browser.mjs:22:8"
 }
