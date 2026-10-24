@@ -14,7 +14,9 @@ jobs:
         with: {node-version: '24'}
       - uses: browser-actions/setup-chrome@v1
       - run: npm run build
-      - run: node --test test/architecture/related-service-discovery.test.mjs
+      - name: Audit every generated internal link
+        run: HB_OUTPUT_DIR=diagnostics/related-service-preview/internal-links node src/publication/audit-customer-links.mjs
+      - run: node --test test/architecture/related-service-discovery.test.mjs test/architecture/partial-service-checklist.test.mjs
       - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
       - run: HB_BROWSER_PATH="$(which chrome)" node scripts/related-service-discovery-browser.mjs
       - uses: actions/upload-artifact@v4
