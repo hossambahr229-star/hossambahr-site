@@ -445,8 +445,8 @@ html.hb-phase8 .footer-group-links { display: grid; gap: .45rem; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-hero > .verification-note { display: none; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar { grid-template-columns: 1fr 1fr !important; gap: .4rem !important; margin-top: .55rem !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar > div { min-height: 58px !important; padding: .48rem !important; }
-  html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar span { font-size: .66rem !important; }
-  html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar b { display: block; overflow: visible; font-size: .73rem !important; line-height: 1.4 !important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar span { font-size:12px!important; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-facts-bar b { display:block;overflow:visible;font-size:14px!important;line-height:1.5!important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-secondary-actions { margin-top: .45rem !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .phase2-execution-paths { padding: .75rem !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .phase2-path-heading { gap: .25rem !important; }
