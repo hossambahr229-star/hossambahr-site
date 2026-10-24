@@ -4,8 +4,8 @@
   "sourceReviewMerge": "f1fb679a53acfd5f94f7f9b43d7540389f0389bb",
   "originalPartial": 56,
   "completedRecordedDetailFields": 24,
-  "remaining": 32,
-  "scope": "Missing recorded fields remain explicit. Capture failures are not evidence that a field is unpublished. Parent-category facts do not verify subtype eligibility. This is a continuation checklist, not a blanket external-blocker or final acceptance claim.",
+  "remaining": 33,
+  "scope": "Missing recorded fields remain explicit. Capture failures are not evidence that a field is unpublished. Parent-category facts do not verify subtype eligibility. This is a continuation checklist, not a blanket external-blocker or final acceptance claim. Reconciled with the 202-service registry on 2026-10-24: 32 remaining records from the historical 56-service checklist plus one later UAQ trade-name service. This is inventory reconciliation, not a newly failed service.",
   "sourceAccessEvidence": {
     "readOnlyBrowserRun": 38691429951,
     "supplementaryMohreAccess": "2026-10-15 official web access also timed out for golden-visa work permits, private-sector labour complaints and PRO cards. No facts were inferred."
@@ -543,6 +543,22 @@
         "status": 500,
         "at": "2026-10-15T06:20:48.571Z"
       }
+    },
+    {
+      "slug": "umm-al-quwain-trade-name-official-path",
+      "authority": "uaq-business",
+      "sourceUrl": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html",
+      "unverifiedFields": [
+        "fees",
+        "duration"
+      ],
+      "newCommonFacts": false,
+      "officialCapture": {
+        "at": "2026-10-24",
+        "method": "EXISTING_CANONICAL_REGISTRY_RECONCILIATION",
+        "note": "Existing registry flags mark fees and processing time unverified; content review remains 2026-10-18. No new official source capture, fee, duration or requirement is asserted."
+      }
     }
-  ]
+  ],
+  "additionalPartialServicesSinceCheckpoint": 1
 }
