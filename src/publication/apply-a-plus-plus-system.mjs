@@ -27,7 +27,7 @@ async function visit(directory) {
        markup/data and the supported progressive runtime while making the
        static architecture deterministic. */
     html = html.replace(/<script[^>]+src=["']\/_next\/static\/chunks\/[^"']+\.js["'][^>]*><\/script>/gi, '');
-    for (const match of html.matchAll(/href=["'](\/_next\/static\/chunks\/[^"']+\.css)["']/gi)) nextStyles.add(match[1]);
+    for (const match of html.matchAll(/href=["'](\/_next\/static\/chunks\/[^"'?]+\.css)(?:\?[^"']*)?["']/gi)) nextStyles.add(match[1]);
     if (html !== before) { await writeFile(target, html, 'utf8'); updated += 1; }
     const rel = relative(root, target).replaceAll('\\','/');
     routes.push(rel === 'index.html' ? '/' : rel.endsWith('/index.html') ? `/${rel.replace(/index\.html$/, '')}` : `/${rel}`);
