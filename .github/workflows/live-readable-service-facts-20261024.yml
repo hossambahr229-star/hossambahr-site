@@ -1,0 +1,57 @@
+name: Live Readable Service Facts And Current Views
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/live-readable-service-facts-20261024.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: f8d8a5d30d79bb1f04546ef64c5908dfcc825d8e
+          path: site
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - name: Wait for the readable-fact stylesheet and new published cache key
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let i=0;i<45;i++){
+            try{
+              const css=await fetch('https://hossambahr.com/intent-first.css',{cache:'no-store'}).then(r=>r.text());
+              const html=await fetch('https://hossambahr.com/services/issuance-of-a-new-work-permit-golden-visa-holders/',{cache:'no-store'}).then(r=>r.text());
+              const version=html.match(/zero-defect-routing\.js\?v=([^"']+)/)?.[1];
+              if(css.includes('font-size:14px!important;line-height:1.5!important;')&&html.includes('data-canonical-related-services')&&version&&version!=='610c25d19368'){ready=true;break;}
+            }catch{}
+            await new Promise(r=>setTimeout(r,20000));
+          }
+          if(!ready)throw Error('Readable fact release has not reached Production');
+          NODE
+      - name: Verify complete facts, real detail navigation and paired cache versions
+        working-directory: site
+        run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=../diagnostics/readable-service-facts-live-20261024-attempt-${{ github.run_attempt }} node scripts/service-fact-summary-browser.mjs
+      - name: Capture actual first viewport and readable mobile facts
+        run: HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=diagnostics/readable-service-facts-live-20261024-attempt-${{ github.run_attempt }}/current-views node scripts/capture-current-service-facts.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: readable-service-facts-live-${{ github.run_attempt }}
+          path: diagnostics/readable-service-facts-live-20261024-attempt-${{ github.run_attempt }}
+      - name: Retain live proof
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/readable-service-facts-live-20261024-attempt-${{ github.run_attempt }}
+          if ! git diff --cached --quiet; then
+            git commit -m "Record readable service facts and actual current views [skip ci]"
+            git pull --rebase --autostash origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
