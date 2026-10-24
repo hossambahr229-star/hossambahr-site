@@ -293,16 +293,18 @@
       "authority": "ajman-ded",
       "sourceUrl": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
       "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration"
+        "eligibility"
       ],
-      "newCommonFacts": false,
+      "newCommonFacts": true,
       "officialCapture": {
-        "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
-        "status": 200,
-        "at": "2026-10-15T06:19:13.426Z"
-      }
+        "url": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+        "at": "2026-10-24",
+        "method": "OFFICIAL_BILINGUAL_WEB_READ",
+        "supplementaryUrl": "https://media.ajman.ae/en/servicecatalog/services/2862",
+        "note": "Documents, itemised conditional fees and licence issuance time reviewed; activity/legal-form eligibility remains unverified. Exact newestablishment execution route retained."
+      },
+      "verifiedCommonConditions": true,
+      "categorySpecificEligibilityVerified": false
     },
     {
       "slug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
