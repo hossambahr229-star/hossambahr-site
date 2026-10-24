@@ -3810,7 +3810,7 @@
       ],
       "alternativeServiceIds": [
         "guide:cancel-residency-permit-uae",
-        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+        "directory:residency:11"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e68",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e68",
@@ -6996,8 +6996,8 @@
         "directory:residency:19"
       ],
       "alternativeServiceIds": [
-        "guide:family-sponsored-work-permit-uae",
-        "directory:residency:20"
+        "directory:residency:20",
+        "directory:residency:22"
       ],
       "officialInformationUrl": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8",
       "officialCtaUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=14aefa78-624c-4f8a-aee9-c6876fcc8b1a&Lang=ar-AE",
@@ -7038,7 +7038,7 @@
         "en": "Ministry of Human Resources and Emiratisation"
       },
       "classification": {
-        "main": "family-sponsorship",
+        "main": "work-employees",
         "sub": "إصدار تصريح تابع على كفالة الأسرة"
       },
       "economicActivity": null,
@@ -7070,7 +7070,7 @@
         "والتوطين",
         "MOHRE",
         "اتحادي",
-        "family-sponsorship",
+        "work-employees",
         "إصدار",
         "تابع",
         "الأسرة"
@@ -7145,8 +7145,8 @@
         "guide:new-work-permit-overseas-uae"
       ],
       "alternativeServiceIds": [
-        "guide:family-residency-uae",
-        "directory:residency:19"
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "catalog:تصريح عمل لمهمة"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/186",
@@ -8653,7 +8653,7 @@
       ],
       "alternativeServiceIds": [
         "directory:residency:7",
-        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+        "directory:residency:9"
       ],
       "officialInformationUrl": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8",
       "officialCtaUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=256a91d9-23d7-469f-a054-ffee6c0fc4c7&Lang=ar-AE",
@@ -9110,7 +9110,7 @@
         "en": "Ministry of Human Resources and Emiratisation"
       },
       "classification": {
-        "main": "residency-visas",
+        "main": "work-employees",
         "sub": "إصدار تصريح"
       },
       "economicActivity": null,
@@ -9139,7 +9139,7 @@
         "والتوطين",
         "MOHRE",
         "اتحادي",
-        "residency-visas",
+        "work-employees",
         "إصدار"
       ],
       "description": "تصريح عمل لحامل الإقامة الذهبية دون نقل كفالة الإقامة.",
@@ -9232,8 +9232,8 @@
         "guide:family-sponsored-work-permit-uae"
       ],
       "alternativeServiceIds": [
-        "guide:golden-residency-uae",
-        "catalog:تعديل بيانات تصريح الإقامة"
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لمهمة"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
       "officialCtaUrl": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022",
@@ -9392,8 +9392,8 @@
         "guide:mohre-uae-national-trainee-work-permit"
       ],
       "alternativeServiceIds": [
-        "guide:new-work-permit-overseas-uae",
-        "guide:part-time-work-permit-uae"
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/54",
@@ -9676,8 +9676,8 @@
         "directory:residency:4"
       ],
       "alternativeServiceIds": [
-        "guide:family-sponsored-work-permit-uae",
-        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+        "guide:family-residency-uae",
+        "guide:golden-residency-uae"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a",
@@ -10972,8 +10972,8 @@
         "guide:transfer-work-permit-uae"
       ],
       "alternativeServiceIds": [
-        "catalog:تصريح عمل لمهمة",
-        "guide:mohre-uae-national-trainee-work-permit"
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/private-tutor-licensing",
       "officialCtaUrl": "https://publicservices.mohre.gov.ae/UserNotifications/MohrePrivateTeacherWorkPermit",
@@ -11115,7 +11115,7 @@
       ],
       "alternativeServiceIds": [
         "guide:mohre-uae-nationals-gcc-work-permit",
-        "catalog:تصريح عمل لمهمة"
+        "guide:family-sponsored-work-permit-uae"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/232",
@@ -14616,8 +14616,8 @@
         "directory:residency:4"
       ],
       "alternativeServiceIds": [
-        "guide:family-sponsored-work-permit-uae",
-        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+        "directory:residency:18",
+        "directory:residency:43"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d",
@@ -14906,7 +14906,7 @@
       ],
       "alternativeServiceIds": [
         "guide:family-residency-uae",
-        "guide:family-sponsored-work-permit-uae"
+        "directory:residency:19"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7a",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7a",
@@ -15185,7 +15185,7 @@
       ],
       "alternativeServiceIds": [
         "guide:family-residency-uae",
-        "guide:family-sponsored-work-permit-uae"
+        "directory:residency:19"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7c",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7c",
@@ -15331,7 +15331,7 @@
       ],
       "alternativeServiceIds": [
         "guide:family-residency-uae",
-        "guide:family-sponsored-work-permit-uae"
+        "guide:cancel-residency-permit-uae"
       ],
       "officialInformationUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7b",
       "officialCtaUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7b",
@@ -18155,8 +18155,8 @@
         "guide:mohre-uae-national-trainee-work-permit"
       ],
       "alternativeServiceIds": [
-        "catalog:تصريح عمل لمهمة",
-        "guide:new-work-permit-overseas-uae"
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية"
       ],
       "officialInformationUrl": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/309",
@@ -26778,7 +26778,7 @@
       ],
       "alternativeServiceIds": [
         "directory:mohre:16",
-        "catalog:تصريح عمل لمهمة"
+        "guide:family-sponsored-work-permit-uae"
       ],
       "officialInformationUrl": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022",
       "officialCtaUrl": "https://eservices.mohre.gov.ae/TasheelWeb/services/transactionentry/185",
