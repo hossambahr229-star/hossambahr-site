@@ -10204,8 +10204,12 @@
       ],
       "description": "تحويل الشكل القانوني وتحديد ما يلزم من موافقات وعقود وتحديثات مرتبطة. أوقف الرابط العام مؤقتًا حتى اعتماد مسار المعاملة الدقيق.",
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "ملحق عقد التأسيس للتعديلات المرتبطة بالأشكال القانونية التي تحددها بطاقة DET، ومنها المدنية والتضامنية والتوصية البسيطة والمساهمة العامة والخاصة.",
+          "للشركة المساهمة العامة أو الخاصة: أصل ملحق عقد التأسيس مصدق حسب الأصول عند انطباق هذه الحالة.",
+          "قرار مجلس الإدارة أو الجمعية العمومية بالموافقة على الشراكة عند انطباق هذا التعديل؛ تؤكد الجهة المستندات النهائية بحسب الحالة."
+        ]
       },
       "governmentFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -10216,8 +10220,8 @@
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق في سجل الكتالوج"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "تذكر بطاقة تعديل الرخصة لدى Invest in Dubai إنجاز الخدمة خلال 10 دقائق عبر مراكز الخدمة. هذه مدة التعديل المنشورة وليست ضمانًا لاكتمال تحويل الشكل القانوني أو إجراءاته وموافقاته المرتبطة."
       },
       "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
       "steps": [
@@ -10272,22 +10276,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": false,
-        "durationVerified": false,
+        "durationVerified": true,
         "eligibilityVerified": true,
         "detailsVerified": false,
-        "verifiedDetailCount": 1,
+        "verifiedDetailCount": 3,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-08-10",
+        "dataLastReviewedAt": "2026-10-24",
         "sourceAuthority": "det-dubai",
         "sourceUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-08-10",
-      "lastReviewedAt": "2026-08-10",
+      "lastUpdated": "2026-10-24",
+      "lastReviewedAt": "2026-10-24",
       "internalRoute": "/services/legacy-service-67abe5ccf3/",
       "sourceRegistry": "det-progressive-publication"
     },
