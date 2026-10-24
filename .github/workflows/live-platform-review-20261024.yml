@@ -1,0 +1,38 @@
+name: Live Complete Customer Platform Review
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/live-platform-review-20261024.yml','scripts/platform-customer-review.mjs']
+permissions:
+  contents: write
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 9497fe32522cb71a0a17efa11a3fe18d355823b4
+          path: site
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - run: HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=diagnostics/customer-platform-review-20261024-attempt-${{ github.run_attempt }} node scripts/platform-customer-review.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: customer-platform-review-${{ github.run_attempt }}
+          path: diagnostics/customer-platform-review-20261024-attempt-${{ github.run_attempt }}
+      - name: Preserve real review evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/customer-platform-review-20261024-attempt-${{ github.run_attempt }}
+          if ! git diff --cached --quiet; then
+            git commit -m "Record complete customer review evidence [skip ci]"
+            git pull --rebase --autostash origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
