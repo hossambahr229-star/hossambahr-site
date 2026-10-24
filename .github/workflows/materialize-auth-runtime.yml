@@ -1,4 +1,4 @@
-name: Materialize Auth Runtime
+name: Validate Auth Runtime Publication
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: materialize-auth-runtime-main
@@ -43,14 +43,8 @@ jobs:
           fi
           grep -q 'ngcrkuykfqmiqhsnpcrc' auth/index.html
           grep -q '/auth-client.js' os/index.html
-      - name: Commit synchronized runtime
+      - name: Use the verified full-site publisher
         run: |
-          git config user.name "HossamBahr Auth Runtime"
-          git config user.email "auth-runtime@users.noreply.github.com"
-          git add auth account owner os services
-          if git diff --cached --quiet; then
-            echo "Auth runtime is already synchronized."
-          else
-            git commit -m "Synchronize Supabase auth runtime [auth runtime sync] [skip ci]"
-            git push origin HEAD:main
-          fi
+          echo "Auth runtime validation completed."
+          echo "The full npm run build and Final Production Correction Gate publish these files."
+          echo "This validation workflow never writes a partial generated site to main."
