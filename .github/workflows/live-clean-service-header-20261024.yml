@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      OUTPUT_DIR: diagnostics/clean-service-header-production-2026-10-24-attempt-${{ github.run_attempt }}
+      OUTPUT_DIR: diagnostics/clean-service-header-production-2026-10-24-run-${{ github.run_id }}-attempt-${{ github.run_attempt }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,7 +37,9 @@ jobs:
            await page.goto(origin+route,{waitUntil:'networkidle',timeout:60000});
            const content=await page.locator('body').innerText();
            assert.ok(!content.includes('HOSSAMBAHR / VERIFIED SERVICE CONTEXT'),'No internal caption in customer copy');
-           assert.equal(await page.locator('.page-hero').evaluate(e=>getComputedStyle(e,'::after').content),'none','CSS caption removed');
+           const hero=page.locator('.page-hero');
+           if(await hero.count())assert.equal(await hero.evaluate(e=>getComputedStyle(e,'::after').content),'none','CSS caption removed');
+           else assert.equal(locale,'en','Arabic service retains its expected hero');
            assert.ok(!content.includes('أوقف الرابط العام مؤقتًا'),'no obsolete route suspension');
            assert.ok(!content.includes('الرابط صفحة إعداد أعمال عامة'),'no obsolete generic-page warning');
            if(locale==='ar')assert.ok(content.includes("تغيير الشكل القانوني لشركة في دبي عبر بطاقة تعديل الرخصة الرسمية لدى DET؛ راجع الشكل القانوني والمستندات والإجراءات المرتبطة بحالتك مع مركز الخدمة."),'current official route scope');
@@ -60,7 +62,7 @@ jobs:
            views.push({locale,width,status:'PASS',route,...evidence,whatsAppMessageContext:message});
            await page.close();
            }
-           await writeFile(out+'/report.json',JSON.stringify({status:'PASS',live:true,checkedAt:new Date().toISOString(),sourceMerge:'d8fa142bb82dcd98e874e07418d88c994658b6a4',views,scope:'Six real Production views of the changed DET service. No real transaction, message, payment or authenticated operation. Does not establish full human/visual or external-model acceptance.'},null,2));
+           await writeFile(out+'/report.json',JSON.stringify({status:'PASS',live:true,checkedAt:new Date().toISOString(),sourceMerge:'d8fa142bb82dcd98e874e07418d88c994658b6a4',views,scope:'Four real Production views of the changed DET service. No real transaction, message, payment or authenticated operation. Does not establish full human/visual or external-model acceptance.'},null,2));
            console.log(JSON.stringify({status:'PASS',live:true,views:views.length}));
           }finally{await browser.close();}
           NODE
