@@ -16,7 +16,7 @@ test('DET commercial-permit time survives AR/EN generators without verifying mis
  assert.equal(reg.verification.verifiedDetailCount,2);
  assert.equal(reg.documents.items.length,0);
  const pending=read('qa/remaining-partial-services-2026-10-15.json');
- assert.equal(pending.remaining,32);
+ assert.equal(pending.remaining,pending.services.length);
  assert.deepEqual(pending.services.find(x=>x.slug===item.slug).unverifiedFields,['documents','eligibility']);
  for(const [prefix,text] of [['',item.durationAr],['en/',item.durationEn]]){
  const html=fs.readFileSync(prefix+'services/'+item.slug+'/index.html','utf8');

@@ -1,0 +1,38 @@
+name: Related Service Discovery Acceptance
+on:
+  push:
+    branches: [agent/canonical-related-discovery]
+permissions:
+  contents: write
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm run build
+      - name: Audit every generated internal link
+        run: HB_OUTPUT_DIR=diagnostics/related-service-preview/internal-links node src/publication/audit-customer-links.mjs
+      - run: node --test test/architecture/related-service-discovery.test.mjs test/architecture/partial-service-checklist.test.mjs
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/related-service-discovery-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: related-service-discovery-preview
+          path: diagnostics/related-service-preview
+      - name: Preserve preview evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Preview Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          if [ ! -d diagnostics/related-service-preview ]; then exit 0; fi
+          git add diagnostics/related-service-preview
+          if ! git diff --cached --quiet; then
+            git commit -m "Record related-service browser evidence [skip ci]"
+            git pull --rebase --autostash origin agent/canonical-related-discovery
+            git push origin HEAD:agent/canonical-related-discovery
+          fi
