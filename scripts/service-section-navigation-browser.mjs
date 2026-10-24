@@ -22,7 +22,12 @@ try{
   assert.equal(await official.count(),1);assert.equal(await assisted.count(),1);
   assert.ok((await official.getAttribute('href')).includes('mohre.gov.ae'));
   const wa=new URL(await assisted.getAttribute('href'));assert.equal(wa.pathname,'/971503780460');assert.ok(wa.searchParams.get('text').includes(slug));
-  if(locale==='ar')assert.ok((await page.locator('.breadcrumbs').innerHTML()).includes('/categories/work-employees/'));
+  if(locale==='ar'){
+   assert.ok((await page.locator('.breadcrumbs').innerHTML()).includes('/categories/work-employees/'));
+   assert.ok(await page.locator('.save-service-action').evaluate(el=>el.getBoundingClientRect().height>=44),'Saved transaction entry is a touch target');
+   const notes=page.locator('.service-secondary-actions');assert.equal(await notes.getAttribute('open'),null);
+   await notes.locator('summary').click();assert.ok(await notes.locator('.verification-note').isVisible(),'Official scope stays available on demand');await notes.locator('summary').click();
+  }
   if(slug.startsWith('issuance'))await page.screenshot({path:out+'/'+locale+'-'+width+'-service.png',fullPage:false});
   const clicks=[];
   for(const a of geometry.links){

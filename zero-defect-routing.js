@@ -1019,10 +1019,13 @@
       const secondary = actions
         ? [...actions.querySelectorAll('a')].filter((link) => link !== primary && !link.matches('[data-commercial-cta="verified"]'))
         : [];
-      if (secondary.length) {
+      const sourceNotes = [...hero.querySelectorAll(':scope > .official-name, :scope > .verification-note')];
+      if (secondary.length || sourceNotes.length) {
         const details = document.createElement('details'); details.className = 'service-secondary-actions';
-        const summary = document.createElement('summary'); summary.textContent = 'المعلومات والمصادر الإضافية';
-        const content = document.createElement('div'); secondary.forEach((link) => content.append(link));
+        const summary = document.createElement('summary'); summary.textContent = sourceNotes.length ? 'المسمى الرسمي والمصادر الإضافية' : 'المعلومات والمصادر الإضافية';
+        const content = document.createElement('div');
+        sourceNotes.forEach((note) => content.append(note));
+        secondary.forEach((link) => content.append(link));
         details.append(summary, content); hero.append(details);
       }
       const conditions = findPanel(/الشروط|الأهلية/);
