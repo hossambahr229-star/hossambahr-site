@@ -126,6 +126,24 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-se
 @media(max-width:360px){.home-service-launchpad .home-domain-grid{grid-template-columns:minmax(0,1fr)}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{min-height:84px!important}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:64px!important}}
 @media(prefers-reduced-motion:no-preference){.home-domain-tile{transition:border-color .15s ease,box-shadow .15s ease}.home-domain-tile:focus-within,.home-domain-tile:hover{border-color:#b68b36;box-shadow:0 4px 14px #103e3610}}
 
+/* Desktop discovery uses the same compact rhythm as the photographic hero.
+   Keep all eleven domains and their direct service; phone geometry is unchanged. */
+@media(min-width:1101px){
+ .home-service-launchpad{--hb-discovery-gap:10px;--hb-discovery-padding:16px}
+ .home-service-launchpad .home-domain-heading{margin-bottom:12px;gap:16px}
+ .home-service-launchpad .home-discovery-eyebrow{display:none}
+ .home-service-launchpad .home-domain-heading h2{font-size:26px!important;margin:0}
+ .home-service-launchpad .home-domain-heading p{margin:4px 0;font-size:13px}
+ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{min-height:64px;padding:10px 14px!important}
+ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{min-height:80px!important;padding:12px!important;gap:8px}
+ .home-service-launchpad .home-simple-card b{font-size:15px!important;line-height:1.4!important}
+ .home-service-launchpad .home-simple-card small{display:none}
+ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:56px!important;margin:0 8px 8px!important;padding:6px 8px!important}
+ .home-service-launchpad .home-pathway-promise{margin-top:12px;padding:8px 10px}
+ html.hb-phase8 body[data-home-entry="simple"] .premium-popular.discovery-entry{justify-content:flex-start!important}
+ html.hb-phase8 body[data-home-entry="simple"] .discovery-entry>a{position:static!important;inset:auto!important;width:auto!important;min-height:44px!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:9px 18px!important;font-size:13px!important;border-radius:8px!important}
+}
+
 /* Directory starts with the requested transaction, rather than competing menus. */
 .discovery-directory-help{font-size:15px;line-height:1.8;color:#365548;max-width:850px}
 .discovery-directory-help a{color:#103e36;font-weight:700;text-underline-offset:3px}
