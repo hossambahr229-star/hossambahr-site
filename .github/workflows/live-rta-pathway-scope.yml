@@ -1,0 +1,36 @@
+name: Live RTA Current And Related Pathway Scope
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/live-rta-pathway-scope.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: {ref: 25ba778a7c9181c972fdbfabfec65376e8f9eb4f, path: site}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/rta-related-pathway-scope.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rta-pathway-scope-${{ github.run_attempt }}
+          path: diagnostics/rta-pathway-scope-20261024-${{ github.run_attempt }}
+      - name: Preserve scope evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/rta-pathway-scope-20261024-${{ github.run_attempt }}
+          if ! git diff --cached --quiet; then
+            git commit -m "Record RTA current and related pathway scope [skip ci]"
+            git pull --rebase --autostash origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
