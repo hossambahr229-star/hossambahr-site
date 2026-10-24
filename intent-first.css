@@ -1096,7 +1096,7 @@ body[data-ux-page="service-detail"] .service-hero {
   padding: clamp(1.4rem, 3vw, 2.4rem);
   background: linear-gradient(135deg,#fff 0%,#f5f8f6 100%);
 }
-body[data-ux-page="service-detail"] .service-hero h1 { max-width: 24ch; }
+body[data-ux-page="service-detail"] .service-hero h1 { max-width:28ch;font-size:clamp(30px,2.8vw,40px);line-height:1.3; }
 body[data-ux-page="service-detail"] .dual-execution-paths {
   padding: .8rem;
   border: 1px solid #d4dfdb;

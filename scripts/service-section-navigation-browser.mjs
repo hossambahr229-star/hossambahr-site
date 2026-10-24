@@ -15,6 +15,7 @@ try{
   await page.setViewportSize({width,height:width<600?844:1000});await page.goto(base+route,{waitUntil:'networkidle'});
   const nav=page.locator('.service-decision-nav');await nav.waitFor();await page.evaluate(()=>document.fonts.ready);
   const geometry=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+1,links:[...document.querySelectorAll('.service-decision-nav a')].map(a=>({href:a.getAttribute('href'),height:a.getBoundingClientRect().height,left:a.getBoundingClientRect().left,right:a.getBoundingClientRect().right,font:parseFloat(getComputedStyle(a).fontSize)}))}));
+  if(locale==='ar'&&width>=1101)assert.ok(await page.locator('h1').evaluate(el=>parseFloat(getComputedStyle(el).fontSize)<=40),'Desktop service title must not overwhelm the transaction');
   assert.equal(geometry.overflow,false,route);assert.equal(geometry.links.length,6,route);
   for(const a of geometry.links){assert.ok(a.height>=44,a.href+' touch target');assert.ok(a.left>=-1&&a.right<=width+1,a.href+' visible without horizontal scrolling');assert.ok(a.font>=14,a.href+' readable label');}
   const official=page.locator('[data-hb-pathways] .hb-path-official'),assisted=page.locator('[data-hb-pathways] .hb-path-assisted');
