@@ -21,11 +21,11 @@ try{
   assert.equal(new URL(cacheKey.style,base).searchParams.get('v'),runtimeVersion,'Returning browsers must receive the matching stylesheet');
   const metrics=await bar.evaluate(bar=>{
    const hero=bar.closest('.page-hero,.service-hero').getBoundingClientRect(),r=bar.getBoundingClientRect();
-   return {overflow:document.documentElement.scrollWidth>innerWidth+1,bar:{top:r.top,bottom:r.bottom},hero:{top:hero.top,bottom:hero.bottom},facts:[...bar.querySelectorAll('b')].map(el=>({text:el.textContent.trim(),height:el.clientHeight,scrollHeight:el.scrollHeight,clamp:getComputedStyle(el).webkitLineClamp})),links:[...bar.querySelectorAll('a')].map(el=>({href:el.getAttribute('href'),height:el.getBoundingClientRect().height}))};
+   return {overflow:document.documentElement.scrollWidth>innerWidth+1,bar:{top:r.top,bottom:r.bottom},hero:{top:hero.top,bottom:hero.bottom},facts:[...bar.querySelectorAll('b')].map(el=>({text:el.textContent.trim(),height:el.clientHeight,scrollHeight:el.scrollHeight,font:parseFloat(getComputedStyle(el).fontSize),clamp:getComputedStyle(el).webkitLineClamp})),links:[...bar.querySelectorAll('a')].map(el=>({href:el.getAttribute('href'),height:el.getBoundingClientRect().height}))};
   });
   assert.equal(metrics.overflow,false);
   assert.ok(metrics.bar.bottom<=metrics.hero.bottom+1,'Hero must contain the summary');
-  for(const fact of metrics.facts){assert.ok(fact.scrollHeight<=fact.height+1,'No vertically clipped fact: '+fact.text);assert.notEqual(fact.clamp,'2');}
+  for(const fact of metrics.facts){assert.ok(fact.scrollHeight<=fact.height+1,'No vertically clipped fact: '+fact.text);assert.notEqual(fact.clamp,'2');assert.ok(fact.font>=14,'Fact text remains readable at every tested width');}
   for(const link of metrics.links)assert.ok(link.height>=44,'Summary link is a touch target');
   await page.screenshot({path:out+'/ar-'+width+'-summary.png',fullPage:false});
   for(const [id,expected] of [['service-fees-details','500–20000'],['service-duration-details','5 دقائق']]){
