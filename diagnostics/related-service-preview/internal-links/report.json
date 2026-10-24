@@ -1,0 +1,2866 @@
+{
+  "status": "PASS",
+  "scope": "Published internal anchor/file integrity, not live HTTP, redirect, content or customer journey acceptance.",
+  "pages": 571,
+  "references": 14394,
+  "missingRoutes": 0,
+  "brokenReferences": 0,
+  "broken": [],
+  "canonicals": [
+    {
+      "route": "/404/",
+      "canonical": null,
+      "locale": "ar"
+    },
+    {
+      "route": "/404.html",
+      "canonical": null,
+      "locale": "ar"
+    },
+    {
+      "route": "/_not-found/",
+      "canonical": "https://hossambahr.com/",
+      "locale": "ar"
+    },
+    {
+      "route": "/accessibility/",
+      "canonical": "https://hossambahr.com/accessibility/",
+      "locale": "ar"
+    },
+    {
+      "route": "/account/",
+      "canonical": "https://hossambahr.com/account/",
+      "locale": "ar"
+    },
+    {
+      "route": "/ai/",
+      "canonical": "https://hossambahr.com/ai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/approvals/",
+      "canonical": "https://hossambahr.com/approvals/",
+      "locale": "ar"
+    },
+    {
+      "route": "/auth/callback/",
+      "canonical": "https://hossambahr.com/auth/callback/",
+      "locale": "ar"
+    },
+    {
+      "route": "/auth/",
+      "canonical": "https://hossambahr.com/auth/",
+      "locale": "ar"
+    },
+    {
+      "route": "/auth/reset/",
+      "canonical": "https://hossambahr.com/auth/reset/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/abu-dhabi-police/",
+      "canonical": "https://hossambahr.com/authorities/abu-dhabi-police/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/added-abu-dhabi/",
+      "canonical": "https://hossambahr.com/authorities/added-abu-dhabi/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/ajman-ded/",
+      "canonical": "https://hossambahr.com/authorities/ajman-ded/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/det-dubai/",
+      "canonical": "https://hossambahr.com/authorities/det-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/dha-dubai/",
+      "canonical": "https://hossambahr.com/authorities/dha-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/dld-rera/",
+      "canonical": "https://hossambahr.com/authorities/dld-rera/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/dubai-courts/",
+      "canonical": "https://hossambahr.com/authorities/dubai-courts/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/dubai-courts-notary/",
+      "canonical": "https://hossambahr.com/authorities/dubai-courts-notary/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/dubai-customs/",
+      "canonical": "https://hossambahr.com/authorities/dubai-customs/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/dubai-municipality/",
+      "canonical": "https://hossambahr.com/authorities/dubai-municipality/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/dubai-police/",
+      "canonical": "https://hossambahr.com/authorities/dubai-police/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/fta/",
+      "canonical": "https://hossambahr.com/authorities/fta/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/fujairah-business/",
+      "canonical": "https://hossambahr.com/authorities/fujairah-business/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/fujairah-free-zone/",
+      "canonical": "https://hossambahr.com/authorities/fujairah-free-zone/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/fujairah-municipality/",
+      "canonical": "https://hossambahr.com/authorities/fujairah-municipality/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/gdrfa-dubai/",
+      "canonical": "https://hossambahr.com/authorities/gdrfa-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/icp/",
+      "canonical": "https://hossambahr.com/authorities/icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/",
+      "canonical": "https://hossambahr.com/authorities/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/khda/",
+      "canonical": "https://hossambahr.com/authorities/khda/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/moe/",
+      "canonical": "https://hossambahr.com/authorities/moe/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/mofa/",
+      "canonical": "https://hossambahr.com/authorities/mofa/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/mohap/",
+      "canonical": "https://hossambahr.com/authorities/mohap/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/mohre/",
+      "canonical": "https://hossambahr.com/authorities/mohre/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/moj/",
+      "canonical": "https://hossambahr.com/authorities/moj/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/rak-ded/",
+      "canonical": "https://hossambahr.com/authorities/rak-ded/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/rakez/",
+      "canonical": "https://hossambahr.com/authorities/rakez/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/rta-dubai/",
+      "canonical": "https://hossambahr.com/authorities/rta-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/sca/",
+      "canonical": "https://hossambahr.com/authorities/sca/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/sedd-sharjah/",
+      "canonical": "https://hossambahr.com/authorities/sedd-sharjah/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/sharjah-ded/",
+      "canonical": "https://hossambahr.com/authorities/sharjah-ded/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/sira-dubai/",
+      "canonical": "https://hossambahr.com/authorities/sira-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/uaq-business/",
+      "canonical": "https://hossambahr.com/authorities/uaq-business/",
+      "locale": "ar"
+    },
+    {
+      "route": "/authorities/uaq-ded/",
+      "canonical": "https://hossambahr.com/authorities/uaq-ded/",
+      "locale": "ar"
+    },
+    {
+      "route": "/business-activities/",
+      "canonical": "https://hossambahr.com/business-activities/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/companies-establishments/",
+      "canonical": "https://hossambahr.com/categories/companies-establishments/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/contracts-notarization/",
+      "canonical": "https://hossambahr.com/categories/contracts-notarization/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/customs-trade/",
+      "canonical": "https://hossambahr.com/categories/customs-trade/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/education-certificates/",
+      "canonical": "https://hossambahr.com/categories/education-certificates/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/family-sponsorship/",
+      "canonical": "https://hossambahr.com/categories/family-sponsorship/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/financial-business/",
+      "canonical": "https://hossambahr.com/categories/financial-business/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/health-insurance/",
+      "canonical": "https://hossambahr.com/categories/health-insurance/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/identity-citizenship/",
+      "canonical": "https://hossambahr.com/categories/identity-citizenship/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/justice-police/",
+      "canonical": "https://hossambahr.com/categories/justice-police/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/municipalities-local-licensing/",
+      "canonical": "https://hossambahr.com/categories/municipalities-local-licensing/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/other-government/",
+      "canonical": "https://hossambahr.com/categories/other-government/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/property-rentals/",
+      "canonical": "https://hossambahr.com/categories/property-rentals/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/residency-visas/",
+      "canonical": "https://hossambahr.com/categories/residency-visas/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/vehicles-transport/",
+      "canonical": "https://hossambahr.com/categories/vehicles-transport/",
+      "locale": "ar"
+    },
+    {
+      "route": "/categories/work-employees/",
+      "canonical": "https://hossambahr.com/categories/work-employees/",
+      "locale": "ar"
+    },
+    {
+      "route": "/command-center/",
+      "canonical": "https://hossambahr.com/command-center/",
+      "locale": "ar"
+    },
+    {
+      "route": "/command-center.html",
+      "canonical": "https://hossambahr.com/command-center/",
+      "locale": "ar"
+    },
+    {
+      "route": "/contact/",
+      "canonical": "https://hossambahr.com/contact/",
+      "locale": "ar"
+    },
+    {
+      "route": "/dashboard/business/",
+      "canonical": "https://hossambahr.com/dashboard/business/",
+      "locale": "ar"
+    },
+    {
+      "route": "/dashboard/emirates/",
+      "canonical": "https://hossambahr.com/dashboard/emirates/",
+      "locale": "ar"
+    },
+    {
+      "route": "/dashboard/project/",
+      "canonical": "https://hossambahr.com/dashboard/project/",
+      "locale": "ar"
+    },
+    {
+      "route": "/discover/",
+      "canonical": "https://hossambahr.com/discover/",
+      "locale": "ar"
+    },
+    {
+      "route": "/dubai-business-activities.html",
+      "canonical": "https://hossambahr.com/dubai-business-activities.html",
+      "locale": "ar"
+    },
+    {
+      "route": "/en/account/",
+      "canonical": "https://hossambahr.com/en/account/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/ai/",
+      "canonical": "https://hossambahr.com/en/ai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/approvals/",
+      "canonical": "https://hossambahr.com/en/approvals/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/auth/callback/",
+      "canonical": "https://hossambahr.com/en/auth/callback/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/auth/",
+      "canonical": "https://hossambahr.com/en/auth/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/auth/reset/",
+      "canonical": "https://hossambahr.com/en/auth/reset/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/added-abu-dhabi/",
+      "canonical": "https://hossambahr.com/en/authorities/added-abu-dhabi/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/ajman-ded/",
+      "canonical": "https://hossambahr.com/en/authorities/ajman-ded/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/det-dubai/",
+      "canonical": "https://hossambahr.com/en/authorities/det-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/dha-dubai/",
+      "canonical": "https://hossambahr.com/en/authorities/dha-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/dld-rera/",
+      "canonical": "https://hossambahr.com/en/authorities/dld-rera/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/dubai-courts-notary/",
+      "canonical": "https://hossambahr.com/en/authorities/dubai-courts-notary/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/dubai-customs/",
+      "canonical": "https://hossambahr.com/en/authorities/dubai-customs/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/dubai-municipality/",
+      "canonical": "https://hossambahr.com/en/authorities/dubai-municipality/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/fta/",
+      "canonical": "https://hossambahr.com/en/authorities/fta/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/fujairah-business/",
+      "canonical": "https://hossambahr.com/en/authorities/fujairah-business/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/fujairah-free-zone/",
+      "canonical": "https://hossambahr.com/en/authorities/fujairah-free-zone/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/gdrfa-dubai/",
+      "canonical": "https://hossambahr.com/en/authorities/gdrfa-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/icp/",
+      "canonical": "https://hossambahr.com/en/authorities/icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/",
+      "canonical": "https://hossambahr.com/en/authorities/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/moe/",
+      "canonical": "https://hossambahr.com/en/authorities/moe/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/mofa/",
+      "canonical": "https://hossambahr.com/en/authorities/mofa/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/mohre/",
+      "canonical": "https://hossambahr.com/en/authorities/mohre/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/rak-ded/",
+      "canonical": "https://hossambahr.com/en/authorities/rak-ded/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/rta-dubai/",
+      "canonical": "https://hossambahr.com/en/authorities/rta-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/sedd-sharjah/",
+      "canonical": "https://hossambahr.com/en/authorities/sedd-sharjah/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/sira-dubai/",
+      "canonical": "https://hossambahr.com/en/authorities/sira-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/authorities/uaq-business/",
+      "canonical": "https://hossambahr.com/en/authorities/uaq-business/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/business-activities/",
+      "canonical": "https://hossambahr.com/en/business-activities/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/contact/",
+      "canonical": "https://hossambahr.com/en/contact/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/discover/",
+      "canonical": "https://hossambahr.com/en/discover/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/",
+      "canonical": "https://hossambahr.com/en/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/os/",
+      "canonical": "https://hossambahr.com/en/os/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/pricing/",
+      "canonical": "https://hossambahr.com/en/pricing/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/abu-dhabi-business-establishment-guide/",
+      "canonical": "https://hossambahr.com/en/services/abu-dhabi-business-establishment-guide/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/abu-dhabi-economic-initial-approval-guide/",
+      "canonical": "https://hossambahr.com/en/services/abu-dhabi-economic-initial-approval-guide/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/abu-dhabi-economic-license-amendment/",
+      "canonical": "https://hossambahr.com/en/services/abu-dhabi-economic-license-amendment/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/abu-dhabi-economic-license-cancellation/",
+      "canonical": "https://hossambahr.com/en/services/abu-dhabi-economic-license-cancellation/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/abu-dhabi-economic-license-issuance/",
+      "canonical": "https://hossambahr.com/en/services/abu-dhabi-economic-license-issuance/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/abu-dhabi-economic-license-mortgage-guide/",
+      "canonical": "https://hossambahr.com/en/services/abu-dhabi-economic-license-mortgage-guide/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/abu-dhabi-economic-license-renewal/",
+      "canonical": "https://hossambahr.com/en/services/abu-dhabi-economic-license-renewal/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/abu-dhabi-economic-licensing-requirements/",
+      "canonical": "https://hossambahr.com/en/services/abu-dhabi-economic-licensing-requirements/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/abu-dhabi-trade-name-reservation/",
+      "canonical": "https://hossambahr.com/en/services/abu-dhabi-trade-name-reservation/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/activate-healthcare-facility-license-dubai/",
+      "canonical": "https://hossambahr.com/en/services/activate-healthcare-facility-license-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/add-business-activity-dubai/",
+      "canonical": "https://hossambahr.com/en/services/add-business-activity-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/add-remove-partner-dubai/",
+      "canonical": "https://hossambahr.com/en/services/add-remove-partner-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ajman-business-activity-inquiry/",
+      "canonical": "https://hossambahr.com/en/services/ajman-business-activity-inquiry/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ajman-commercial-license-amendment/",
+      "canonical": "https://hossambahr.com/en/services/ajman-commercial-license-amendment/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ajman-commercial-license-cancellation/",
+      "canonical": "https://hossambahr.com/en/services/ajman-commercial-license-cancellation/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ajman-commercial-license-issuance/",
+      "canonical": "https://hossambahr.com/en/services/ajman-commercial-license-issuance/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ajman-commercial-license-renewal/",
+      "canonical": "https://hossambahr.com/en/services/ajman-commercial-license-renewal/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ajman-trade-name-reservation/",
+      "canonical": "https://hossambahr.com/en/services/ajman-trade-name-reservation/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/amend-business-license-dubai/",
+      "canonical": "https://hossambahr.com/en/services/amend-business-license-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/amend-family-data-icp/",
+      "canonical": "https://hossambahr.com/en/services/amend-family-data-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/amendment-of-residency-permit-data/",
+      "canonical": "https://hossambahr.com/en/services/amendment-of-residency-permit-data/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/amendment-of-visa-data/",
+      "canonical": "https://hossambahr.com/en/services/amendment-of-visa-data/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/attestation-of-commercial-invoices-via-edas-2-0/",
+      "canonical": "https://hossambahr.com/en/services/attestation-of-commercial-invoices-via-edas-2-0/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/building-completion-certificate-dubai/",
+      "canonical": "https://hossambahr.com/en/services/building-completion-certificate-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/cancel-business-license-dubai/",
+      "canonical": "https://hossambahr.com/en/services/cancel-business-license-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/cancel-departure-permit-icp/",
+      "canonical": "https://hossambahr.com/en/services/cancel-departure-permit-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/cancel-residency-permit-icp/",
+      "canonical": "https://hossambahr.com/en/services/cancel-residency-permit-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/cancel-residency-permit-uae/",
+      "canonical": "https://hossambahr.com/en/services/cancel-residency-permit-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/cancel-work-permit-uae/",
+      "canonical": "https://hossambahr.com/en/services/cancel-work-permit-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/change-company-manager-dubai/",
+      "canonical": "https://hossambahr.com/en/services/change-company-manager-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/confirming-the-authenticity-of-equivalency/",
+      "canonical": "https://hossambahr.com/en/services/confirming-the-authenticity-of-equivalency/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/corporate-tax-registration-uae/",
+      "canonical": "https://hossambahr.com/en/services/corporate-tax-registration-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/det-event-permit-dubai/",
+      "canonical": "https://hossambahr.com/en/services/det-event-permit-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/det-tour-guide-licence-dubai/",
+      "canonical": "https://hossambahr.com/en/services/det-tour-guide-licence-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/dld-real-estate-ad-permit-dubai/",
+      "canonical": "https://hossambahr.com/en/services/dld-real-estate-ad-permit-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/domestic-worker-labour-complaint-mohre/",
+      "canonical": "https://hossambahr.com/en/services/domestic-worker-labour-complaint-mohre/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/dubai-customs-business-registration/",
+      "canonical": "https://hossambahr.com/en/services/dubai-customs-business-registration/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/employment-agency-bank-guarantee-payment-mohre/",
+      "canonical": "https://hossambahr.com/en/services/employment-agency-bank-guarantee-payment-mohre/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/employment-agency-bank-guarantee-refund-mohre/",
+      "canonical": "https://hossambahr.com/en/services/employment-agency-bank-guarantee-refund-mohre/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/employment-agency-branch-mohre/",
+      "canonical": "https://hossambahr.com/en/services/employment-agency-branch-mohre/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/employment-agency-license-amendment-mohre/",
+      "canonical": "https://hossambahr.com/en/services/employment-agency-license-amendment-mohre/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/employment-agency-license-cancellation-mohre/",
+      "canonical": "https://hossambahr.com/en/services/employment-agency-license-cancellation-mohre/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/employment-agency-license-new-mohre/",
+      "canonical": "https://hossambahr.com/en/services/employment-agency-license-new-mohre/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/employment-agency-license-renewal-mohre/",
+      "canonical": "https://hossambahr.com/en/services/employment-agency-license-renewal-mohre/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/employment-contract-uae/",
+      "canonical": "https://hossambahr.com/en/services/employment-contract-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/equivalency-of-general-education-certificate-from-abroad-grade-12/",
+      "canonical": "https://hossambahr.com/en/services/equivalency-of-general-education-certificate-from-abroad-grade-12/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/",
+      "canonical": "https://hossambahr.com/en/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/establishment-card-mohre-uae/",
+      "canonical": "https://hossambahr.com/en/services/establishment-card-mohre-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/family-residency-uae/",
+      "canonical": "https://hossambahr.com/en/services/family-residency-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/family-sponsored-work-permit-uae/",
+      "canonical": "https://hossambahr.com/en/services/family-sponsored-work-permit-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/food-establishment-layout-approval-dubai/",
+      "canonical": "https://hossambahr.com/en/services/food-establishment-layout-approval-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/food-related-activity-permit-dubai/",
+      "canonical": "https://hossambahr.com/en/services/food-related-activity-permit-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/fujairah-economic-initial-approval/",
+      "canonical": "https://hossambahr.com/en/services/fujairah-economic-initial-approval/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/fujairah-economic-license-amendment/",
+      "canonical": "https://hossambahr.com/en/services/fujairah-economic-license-amendment/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/fujairah-economic-license-cancellation/",
+      "canonical": "https://hossambahr.com/en/services/fujairah-economic-license-cancellation/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/fujairah-economic-license-issuance/",
+      "canonical": "https://hossambahr.com/en/services/fujairah-economic-license-issuance/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/fujairah-economic-license-renewal/",
+      "canonical": "https://hossambahr.com/en/services/fujairah-economic-license-renewal/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/fujairah-free-zone-company-registration/",
+      "canonical": "https://hossambahr.com/en/services/fujairah-free-zone-company-registration/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/fujairah-mainland-business-setup-guide/",
+      "canonical": "https://hossambahr.com/en/services/fujairah-mainland-business-setup-guide/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/fujairah-trade-name-reservation/",
+      "canonical": "https://hossambahr.com/en/services/fujairah-trade-name-reservation/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/golden-residency-uae/",
+      "canonical": "https://hossambahr.com/en/services/golden-residency-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/green-residence-partner-investor-dubai/",
+      "canonical": "https://hossambahr.com/en/services/green-residence-partner-investor-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/health-professional-registration-dubai/",
+      "canonical": "https://hossambahr.com/en/services/health-professional-registration-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/",
+      "canonical": "https://hossambahr.com/en/services/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/industrial-environmental-clearance-dubai/",
+      "canonical": "https://hossambahr.com/en/services/industrial-environmental-clearance-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "canonical": "https://hossambahr.com/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/issuance-of-a-new-work-permit-mission-work-permit/",
+      "canonical": "https://hossambahr.com/en/services/issuance-of-a-new-work-permit-mission-work-permit/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/issue-departure-permit-icp/",
+      "canonical": "https://hossambahr.com/en/services/issue-departure-permit-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/issue-emirates-id-uae/",
+      "canonical": "https://hossambahr.com/en/services/issue-emirates-id-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/issue-family-data-icp/",
+      "canonical": "https://hossambahr.com/en/services/issue-family-data-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/issue-new-uae-passport-icp/",
+      "canonical": "https://hossambahr.com/en/services/issue-new-uae-passport-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/issue-trade-license-dubai/",
+      "canonical": "https://hossambahr.com/en/services/issue-trade-license-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/legacy-service-67abe5ccf3/",
+      "canonical": "https://hossambahr.com/en/services/legacy-service-67abe5ccf3/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/legacy-service-85a10469d8/",
+      "canonical": "https://hossambahr.com/en/services/legacy-service-85a10469d8/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/legacy-service-e7f35a06d9/",
+      "canonical": "https://hossambahr.com/en/services/legacy-service-e7f35a06d9/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/legal-notice-notarization-dubai/",
+      "canonical": "https://hossambahr.com/en/services/legal-notice-notarization-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/marriage-contract-dubai-courts/",
+      "canonical": "https://hossambahr.com/en/services/marriage-contract-dubai-courts/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/mohre-private-tutor-permit/",
+      "canonical": "https://hossambahr.com/en/services/mohre-private-tutor-permit/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/mohre-uae-national-trainee-work-permit/",
+      "canonical": "https://hossambahr.com/en/services/mohre-uae-national-trainee-work-permit/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/mohre-uae-nationals-gcc-work-permit/",
+      "canonical": "https://hossambahr.com/en/services/mohre-uae-nationals-gcc-work-permit/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/new-building-permit-dubai/",
+      "canonical": "https://hossambahr.com/en/services/new-building-permit-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/new-healthcare-facility-license-dubai/",
+      "canonical": "https://hossambahr.com/en/services/new-healthcare-facility-license-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/new-work-permit-overseas-uae/",
+      "canonical": "https://hossambahr.com/en/services/new-work-permit-overseas-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/open-farm-ranch-file-mohre/",
+      "canonical": "https://hossambahr.com/en/services/open-farm-ranch-file-mohre/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/part-time-work-permit-uae/",
+      "canonical": "https://hossambahr.com/en/services/part-time-work-permit-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/pay-public-parking-fines-dubai/",
+      "canonical": "https://hossambahr.com/en/services/pay-public-parking-fines-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/power-of-attorney-ratification-dubai/",
+      "canonical": "https://hossambahr.com/en/services/power-of-attorney-ratification-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/property-valuation-dubai/",
+      "canonical": "https://hossambahr.com/en/services/property-valuation-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ras-al-khaimah-add-remove-partner/",
+      "canonical": "https://hossambahr.com/en/services/ras-al-khaimah-add-remove-partner/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ras-al-khaimah-change-license-activities/",
+      "canonical": "https://hossambahr.com/en/services/ras-al-khaimah-change-license-activities/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ras-al-khaimah-economic-initial-approval/",
+      "canonical": "https://hossambahr.com/en/services/ras-al-khaimah-economic-initial-approval/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ras-al-khaimah-economic-licensing-fees/",
+      "canonical": "https://hossambahr.com/en/services/ras-al-khaimah-economic-licensing-fees/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ras-al-khaimah-license-cancellation/",
+      "canonical": "https://hossambahr.com/en/services/ras-al-khaimah-license-cancellation/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ras-al-khaimah-license-issuance/",
+      "canonical": "https://hossambahr.com/en/services/ras-al-khaimah-license-issuance/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ras-al-khaimah-license-renewal/",
+      "canonical": "https://hossambahr.com/en/services/ras-al-khaimah-license-renewal/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/ras-al-khaimah-trade-name-reservation/",
+      "canonical": "https://hossambahr.com/en/services/ras-al-khaimah-trade-name-reservation/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/real-estate-professional-practice-card-dubai/",
+      "canonical": "https://hossambahr.com/en/services/real-estate-professional-practice-card-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/register-labour-complaints-private-sector-employees/",
+      "canonical": "https://hossambahr.com/en/services/register-labour-complaints-private-sector-employees/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/register-renew-ejari-contract-dubai/",
+      "canonical": "https://hossambahr.com/en/services/register-renew-ejari-contract-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/renew-business-license-ajman/",
+      "canonical": "https://hossambahr.com/en/services/renew-business-license-ajman/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/renew-business-license-dubai/",
+      "canonical": "https://hossambahr.com/en/services/renew-business-license-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/renew-business-license-sharjah/",
+      "canonical": "https://hossambahr.com/en/services/renew-business-license-sharjah/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/renew-driving-license-dubai/",
+      "canonical": "https://hossambahr.com/en/services/renew-driving-license-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/renew-emirates-id-uae/",
+      "canonical": "https://hossambahr.com/en/services/renew-emirates-id-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/renew-uae-passport-abroad-icp/",
+      "canonical": "https://hossambahr.com/en/services/renew-uae-passport-abroad-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/renew-uae-passport-icp/",
+      "canonical": "https://hossambahr.com/en/services/renew-uae-passport-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/renew-vehicle-ownership-dubai/",
+      "canonical": "https://hossambahr.com/en/services/renew-vehicle-ownership-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/replace-lost-damaged-uae-passport-icp/",
+      "canonical": "https://hossambahr.com/en/services/replace-lost-damaged-uae-passport-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/replace-uae-passport-data-or-pages-icp/",
+      "canonical": "https://hossambahr.com/en/services/replace-uae-passport-data-or-pages-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/reserve-trade-name-dubai/",
+      "canonical": "https://hossambahr.com/en/services/reserve-trade-name-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/rta-modify-trade-license-noc-dubai/",
+      "canonical": "https://hossambahr.com/en/services/rta-modify-trade-license-noc-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/rta-new-trade-license-noc-dubai/",
+      "canonical": "https://hossambahr.com/en/services/rta-new-trade-license-noc-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/rta-renew-trade-license-noc-dubai/",
+      "canonical": "https://hossambahr.com/en/services/rta-renew-trade-license-noc-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/sharjah-business-licensing-guide/",
+      "canonical": "https://hossambahr.com/en/services/sharjah-business-licensing-guide/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/sharjah-economic-license-amendment/",
+      "canonical": "https://hossambahr.com/en/services/sharjah-economic-license-amendment/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/sharjah-economic-license-cancellation/",
+      "canonical": "https://hossambahr.com/en/services/sharjah-economic-license-cancellation/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/sharjah-economic-license-issuance/",
+      "canonical": "https://hossambahr.com/en/services/sharjah-economic-license-issuance/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/sharjah-economic-license-renewal/",
+      "canonical": "https://hossambahr.com/en/services/sharjah-economic-license-renewal/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/sharjah-issue-trade-name/",
+      "canonical": "https://hossambahr.com/en/services/sharjah-issue-trade-name/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/sharjah-trade-name-availability-inquiry/",
+      "canonical": "https://hossambahr.com/en/services/sharjah-trade-name-availability-inquiry/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/sharjah-trade-name-renewal/",
+      "canonical": "https://hossambahr.com/en/services/sharjah-trade-name-renewal/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/sira-new-security-activity-license-dubai/",
+      "canonical": "https://hossambahr.com/en/services/sira-new-security-activity-license-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/sira-security-system-certification-dubai/",
+      "canonical": "https://hossambahr.com/en/services/sira-security-system-certification-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/submit-customs-declaration-dubai/",
+      "canonical": "https://hossambahr.com/en/services/submit-customs-declaration-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/temporary-work-permit-uae/",
+      "canonical": "https://hossambahr.com/en/services/temporary-work-permit-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/title-transfer-dubai/",
+      "canonical": "https://hossambahr.com/en/services/title-transfer-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/transfer-company-ownership-dubai/",
+      "canonical": "https://hossambahr.com/en/services/transfer-company-ownership-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/transfer-work-permit-uae/",
+      "canonical": "https://hossambahr.com/en/services/transfer-work-permit-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/umm-al-quwain-business-services-portal/",
+      "canonical": "https://hossambahr.com/en/services/umm-al-quwain-business-services-portal/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/umm-al-quwain-free-zone-licensing-guide/",
+      "canonical": "https://hossambahr.com/en/services/umm-al-quwain-free-zone-licensing-guide/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/umm-al-quwain-mainland-licensing-official-path/",
+      "canonical": "https://hossambahr.com/en/services/umm-al-quwain-mainland-licensing-official-path/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/umm-al-quwain-trade-name-official-path/",
+      "canonical": "https://hossambahr.com/en/services/umm-al-quwain-trade-name-official-path/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/update-establishment-file-mohre-uae/",
+      "canonical": "https://hossambahr.com/en/services/update-establishment-file-mohre-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/vat-registration-uae/",
+      "canonical": "https://hossambahr.com/en/services/vat-registration-uae/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/vehicle-clearance-certificate-dubai-customs/",
+      "canonical": "https://hossambahr.com/en/services/vehicle-clearance-certificate-dubai-customs/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/veterinary-activity-noc-dubai/",
+      "canonical": "https://hossambahr.com/en/services/veterinary-activity-noc-dubai/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-بطاقة-مندوب-علاقات-عامة-pro/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-بطاقة-مندوب-علاقات-عامة-pro/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-تأشيرة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-تأشيرة-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-تصريح-عمل-جديد-لعامل-مساعد/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-تصريح-عمل-جديد-لعامل-مساعد/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إصدار-عقد-عمل-جديد-لعامل-مساعد/",
+      "canonical": "https://hossambahr.com/en/services/إصدار-عقد-عمل-جديد-لعامل-مساعد/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "canonical": "https://hossambahr.com/en/services/إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إلغاء-بلاغ-انقطاع-عن-العمل/",
+      "canonical": "https://hossambahr.com/en/services/إلغاء-بلاغ-انقطاع-عن-العمل/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إلغاء-تأشيرة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/إلغاء-تأشيرة-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إلغاء-تصريح-عمل-عامل-مساعد/",
+      "canonical": "https://hossambahr.com/en/services/إلغاء-تصريح-عمل-عامل-مساعد/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إلغاء-تصريح-لعامل-لديه-قضية-عمالية/",
+      "canonical": "https://hossambahr.com/en/services/إلغاء-تصريح-لعامل-لديه-قضية-عمالية/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إلغاء-عقد-عمل-عامل-مساعد/",
+      "canonical": "https://hossambahr.com/en/services/إلغاء-عقد-عمل-عامل-مساعد/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/إلغاء-ملف-أو-بطاقة-المنشأة/",
+      "canonical": "https://hossambahr.com/en/services/إلغاء-ملف-أو-بطاقة-المنشأة/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/استرداد-رسوم-إصدار-الهوية-غير-المكتمل/",
+      "canonical": "https://hossambahr.com/en/services/استرداد-رسوم-إصدار-الهوية-غير-المكتمل/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/الإعفاء-من-غرامة-تأخير-الهوية/",
+      "canonical": "https://hossambahr.com/en/services/الإعفاء-من-غرامة-تأخير-الهوية/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/التسجيل-والمتابعة-في-wps/",
+      "canonical": "https://hossambahr.com/en/services/التسجيل-والمتابعة-في-wps/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/بدل-فاقد-أو-تالف-للهوية/",
+      "canonical": "https://hossambahr.com/en/services/بدل-فاقد-أو-تالف-للهوية/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/بلاغ-انقطاع-عامل-مساعد/",
+      "canonical": "https://hossambahr.com/en/services/بلاغ-انقطاع-عامل-مساعد/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/بلاغ-انقطاع-عن-العمل/",
+      "canonical": "https://hossambahr.com/en/services/بلاغ-انقطاع-عن-العمل/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة/",
+      "canonical": "https://hossambahr.com/en/services/تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تأسيس-منشأة-جديدة-في-عجمان/",
+      "canonical": "https://hossambahr.com/en/services/تأسيس-منشأة-جديدة-في-عجمان/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تأشيرة-استكشاف-فرص-عمل-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تأشيرة-استكشاف-فرص-عمل-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تأشيرة-سياحية-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تأشيرة-سياحية-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تأشيرة-سياحية-لدخول-واحد-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تأشيرة-سياحية-لدخول-واحد-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "canonical": "https://hossambahr.com/en/services/تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تجديد-عقد-عمل-عامل-مساعد/",
+      "canonical": "https://hossambahr.com/en/services/تجديد-عقد-عمل-عامل-مساعد/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تحديث-بيانات-الهوية/",
+      "canonical": "https://hossambahr.com/en/services/تحديث-بيانات-الهوية/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ/",
+      "canonical": "https://hossambahr.com/en/services/تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تصديق-مستند-شخصي-داخل-الإمارات/",
+      "canonical": "https://hossambahr.com/en/services/تصديق-مستند-شخصي-داخل-الإمارات/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp/",
+      "canonical": "https://hossambahr.com/en/services/تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تصريح-تدريب-وعمل-طالب/",
+      "canonical": "https://hossambahr.com/en/services/تصريح-تدريب-وعمل-طالب/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تصريح-عمل-حدث/",
+      "canonical": "https://hossambahr.com/en/services/تصريح-عمل-حدث/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تعديل-الوضع-داخل-الدولة-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تعديل-الوضع-داخل-الدولة-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "canonical": "https://hossambahr.com/en/services/تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تعديل-تصاريح-وعقود-العمل/",
+      "canonical": "https://hossambahr.com/en/services/تعديل-تصاريح-وعقود-العمل/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تعديل-عقد-وتصريح-عمل-عامل-مساعد/",
+      "canonical": "https://hossambahr.com/en/services/تعديل-عقد-وتصريح-عمل-عامل-مساعد/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تقرير-تفاصيل-الإقامة-عبر-icp/",
+      "canonical": "https://hossambahr.com/en/services/تقرير-تفاصيل-الإقامة-عبر-icp/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تقرير-تقييم-المنشأة/",
+      "canonical": "https://hossambahr.com/en/services/تقرير-تقييم-المنشأة/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/تمديد-التأشيرة-أو-إذن-الدخول/",
+      "canonical": "https://hossambahr.com/en/services/تمديد-التأشيرة-أو-إذن-الدخول/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/حصة-تصاريح-العمل-للمنشأة/",
+      "canonical": "https://hossambahr.com/en/services/حصة-تصاريح-العمل-للمنشأة/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/سحب-بلاغ-انقطاع-بطلب-العامل-المساعد/",
+      "canonical": "https://hossambahr.com/en/services/سحب-بلاغ-انقطاع-بطلب-العامل-المساعد/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل/",
+      "canonical": "https://hossambahr.com/en/services/سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي/",
+      "canonical": "https://hossambahr.com/en/services/سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
+      "canonical": "https://hossambahr.com/en/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/en/services/متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/en/services/متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي/",
+      "locale": "en"
+    },
+    {
+      "route": "/faq/",
+      "canonical": "https://hossambahr.com/faq/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/business-owner/",
+      "canonical": "https://hossambahr.com/for/business-owner/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/citizen/",
+      "canonical": "https://hossambahr.com/for/citizen/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/employee/",
+      "canonical": "https://hossambahr.com/for/employee/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/establishment-representative/",
+      "canonical": "https://hossambahr.com/for/establishment-representative/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/family/",
+      "canonical": "https://hossambahr.com/for/family/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/individual/",
+      "canonical": "https://hossambahr.com/for/individual/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/investor/",
+      "canonical": "https://hossambahr.com/for/investor/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/job-seeker/",
+      "canonical": "https://hossambahr.com/for/job-seeker/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/property-owner/",
+      "canonical": "https://hossambahr.com/for/property-owner/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/resident/",
+      "canonical": "https://hossambahr.com/for/resident/",
+      "locale": "ar"
+    },
+    {
+      "route": "/for/visitor/",
+      "canonical": "https://hossambahr.com/for/visitor/",
+      "locale": "ar"
+    },
+    {
+      "route": "/goals/company-amendment/",
+      "canonical": "https://hossambahr.com/goals/company-amendment/",
+      "locale": "ar"
+    },
+    {
+      "route": "/goals/company-liquidation/",
+      "canonical": "https://hossambahr.com/goals/company-liquidation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/goals/employment-contract/",
+      "canonical": "https://hossambahr.com/goals/employment-contract/",
+      "locale": "ar"
+    },
+    {
+      "route": "/goals/family-residence/",
+      "canonical": "https://hossambahr.com/goals/family-residence/",
+      "locale": "ar"
+    },
+    {
+      "route": "/goals/hire-worker/",
+      "canonical": "https://hossambahr.com/goals/hire-worker/",
+      "locale": "ar"
+    },
+    {
+      "route": "/goals/manage-establishment/",
+      "canonical": "https://hossambahr.com/goals/manage-establishment/",
+      "locale": "ar"
+    },
+    {
+      "route": "/goals/renew-residence/",
+      "canonical": "https://hossambahr.com/goals/renew-residence/",
+      "locale": "ar"
+    },
+    {
+      "route": "/goals/solve-rejection/",
+      "canonical": "https://hossambahr.com/goals/solve-rejection/",
+      "locale": "ar"
+    },
+    {
+      "route": "/goals/temporary-work/",
+      "canonical": "https://hossambahr.com/goals/temporary-work/",
+      "locale": "ar"
+    },
+    {
+      "route": "/",
+      "canonical": "https://hossambahr.com/",
+      "locale": "ar"
+    },
+    {
+      "route": "/methodology/",
+      "canonical": "https://hossambahr.com/methodology/",
+      "locale": "ar"
+    },
+    {
+      "route": "/os/automation/",
+      "canonical": "https://hossambahr.com/os/automation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/os/",
+      "canonical": "https://hossambahr.com/os/",
+      "locale": "ar"
+    },
+    {
+      "route": "/owner/",
+      "canonical": "https://hossambahr.com/owner/",
+      "locale": "ar"
+    },
+    {
+      "route": "/pricing/",
+      "canonical": "https://hossambahr.com/pricing/",
+      "locale": "ar"
+    },
+    {
+      "route": "/privacy/",
+      "canonical": "https://hossambahr.com/privacy/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/abu-dhabi-business-establishment-guide/",
+      "canonical": "https://hossambahr.com/services/abu-dhabi-business-establishment-guide/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/abu-dhabi-economic-initial-approval-guide/",
+      "canonical": "https://hossambahr.com/services/abu-dhabi-economic-initial-approval-guide/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/abu-dhabi-economic-license-amendment/",
+      "canonical": "https://hossambahr.com/services/abu-dhabi-economic-license-amendment/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/abu-dhabi-economic-license-cancellation/",
+      "canonical": "https://hossambahr.com/services/abu-dhabi-economic-license-cancellation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/abu-dhabi-economic-license-issuance/",
+      "canonical": "https://hossambahr.com/services/abu-dhabi-economic-license-issuance/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/abu-dhabi-economic-license-mortgage-guide/",
+      "canonical": "https://hossambahr.com/services/abu-dhabi-economic-license-mortgage-guide/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/abu-dhabi-economic-license-renewal/",
+      "canonical": "https://hossambahr.com/services/abu-dhabi-economic-license-renewal/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/abu-dhabi-economic-licensing-requirements/",
+      "canonical": "https://hossambahr.com/services/abu-dhabi-economic-licensing-requirements/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/abu-dhabi-trade-name-reservation/",
+      "canonical": "https://hossambahr.com/services/abu-dhabi-trade-name-reservation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/activate-healthcare-facility-license-dubai/",
+      "canonical": "https://hossambahr.com/services/activate-healthcare-facility-license-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/add-business-activity-dubai/",
+      "canonical": "https://hossambahr.com/services/add-business-activity-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/add-remove-partner-dubai/",
+      "canonical": "https://hossambahr.com/services/add-remove-partner-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ajman-business-activity-inquiry/",
+      "canonical": "https://hossambahr.com/services/ajman-business-activity-inquiry/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ajman-commercial-license-amendment/",
+      "canonical": "https://hossambahr.com/services/ajman-commercial-license-amendment/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ajman-commercial-license-cancellation/",
+      "canonical": "https://hossambahr.com/services/ajman-commercial-license-cancellation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ajman-commercial-license-issuance/",
+      "canonical": "https://hossambahr.com/services/ajman-commercial-license-issuance/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ajman-commercial-license-renewal/",
+      "canonical": "https://hossambahr.com/services/ajman-commercial-license-renewal/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ajman-trade-name-reservation/",
+      "canonical": "https://hossambahr.com/services/ajman-trade-name-reservation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/amend-business-license-dubai/",
+      "canonical": "https://hossambahr.com/services/amend-business-license-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/amend-family-data-icp/",
+      "canonical": "https://hossambahr.com/services/amend-family-data-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/amendment-of-residency-permit-data/",
+      "canonical": "https://hossambahr.com/services/amendment-of-residency-permit-data/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/amendment-of-visa-data/",
+      "canonical": "https://hossambahr.com/services/amendment-of-visa-data/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/attestation-of-commercial-invoices-via-edas-2-0/",
+      "canonical": "https://hossambahr.com/services/attestation-of-commercial-invoices-via-edas-2-0/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/building-completion-certificate-dubai/",
+      "canonical": "https://hossambahr.com/services/building-completion-certificate-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/cancel-business-license-dubai/",
+      "canonical": "https://hossambahr.com/services/cancel-business-license-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/cancel-departure-permit-icp/",
+      "canonical": "https://hossambahr.com/services/cancel-departure-permit-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/cancel-residency-permit-icp/",
+      "canonical": "https://hossambahr.com/services/cancel-residency-permit-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/cancel-residency-permit-uae/",
+      "canonical": "https://hossambahr.com/services/cancel-residency-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/cancel-work-permit-uae/",
+      "canonical": "https://hossambahr.com/services/cancel-work-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/change-company-manager-dubai/",
+      "canonical": "https://hossambahr.com/services/change-company-manager-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/confirming-the-authenticity-of-equivalency/",
+      "canonical": "https://hossambahr.com/services/confirming-the-authenticity-of-equivalency/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/corporate-tax-registration-uae/",
+      "canonical": "https://hossambahr.com/services/corporate-tax-registration-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/det-event-permit-dubai/",
+      "canonical": "https://hossambahr.com/services/det-event-permit-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/det-tour-guide-licence-dubai/",
+      "canonical": "https://hossambahr.com/services/det-tour-guide-licence-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/dld-real-estate-ad-permit-dubai/",
+      "canonical": "https://hossambahr.com/services/dld-real-estate-ad-permit-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/domestic-worker-labour-complaint-mohre/",
+      "canonical": "https://hossambahr.com/services/domestic-worker-labour-complaint-mohre/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/dubai-customs-business-registration/",
+      "canonical": "https://hossambahr.com/services/dubai-customs-business-registration/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/employment-agency-bank-guarantee-payment-mohre/",
+      "canonical": "https://hossambahr.com/services/employment-agency-bank-guarantee-payment-mohre/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/employment-agency-bank-guarantee-refund-mohre/",
+      "canonical": "https://hossambahr.com/services/employment-agency-bank-guarantee-refund-mohre/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/employment-agency-branch-mohre/",
+      "canonical": "https://hossambahr.com/services/employment-agency-branch-mohre/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/employment-agency-license-amendment-mohre/",
+      "canonical": "https://hossambahr.com/services/employment-agency-license-amendment-mohre/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/employment-agency-license-cancellation-mohre/",
+      "canonical": "https://hossambahr.com/services/employment-agency-license-cancellation-mohre/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/employment-agency-license-new-mohre/",
+      "canonical": "https://hossambahr.com/services/employment-agency-license-new-mohre/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/employment-agency-license-renewal-mohre/",
+      "canonical": "https://hossambahr.com/services/employment-agency-license-renewal-mohre/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/employment-contract-uae/",
+      "canonical": "https://hossambahr.com/services/employment-contract-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/equivalency-of-general-education-certificate-from-abroad-grade-12/",
+      "canonical": "https://hossambahr.com/services/equivalency-of-general-education-certificate-from-abroad-grade-12/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/",
+      "canonical": "https://hossambahr.com/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/establishment-card-mohre-uae/",
+      "canonical": "https://hossambahr.com/services/establishment-card-mohre-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/family-residency-uae/",
+      "canonical": "https://hossambahr.com/services/family-residency-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/family-sponsored-work-permit-uae/",
+      "canonical": "https://hossambahr.com/services/family-sponsored-work-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/food-establishment-layout-approval-dubai/",
+      "canonical": "https://hossambahr.com/services/food-establishment-layout-approval-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/food-related-activity-permit-dubai/",
+      "canonical": "https://hossambahr.com/services/food-related-activity-permit-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/fujairah-economic-initial-approval/",
+      "canonical": "https://hossambahr.com/services/fujairah-economic-initial-approval/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/fujairah-economic-license-amendment/",
+      "canonical": "https://hossambahr.com/services/fujairah-economic-license-amendment/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/fujairah-economic-license-cancellation/",
+      "canonical": "https://hossambahr.com/services/fujairah-economic-license-cancellation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/fujairah-economic-license-issuance/",
+      "canonical": "https://hossambahr.com/services/fujairah-economic-license-issuance/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/fujairah-economic-license-renewal/",
+      "canonical": "https://hossambahr.com/services/fujairah-economic-license-renewal/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/fujairah-free-zone-company-registration/",
+      "canonical": "https://hossambahr.com/services/fujairah-free-zone-company-registration/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/fujairah-mainland-business-setup-guide/",
+      "canonical": "https://hossambahr.com/services/fujairah-mainland-business-setup-guide/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/fujairah-trade-name-reservation/",
+      "canonical": "https://hossambahr.com/services/fujairah-trade-name-reservation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/gdrfa-family-residence-renew/",
+      "canonical": "https://hossambahr.com/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/golden-residency-uae/",
+      "canonical": "https://hossambahr.com/services/golden-residency-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/green-residence-partner-investor-dubai/",
+      "canonical": "https://hossambahr.com/services/green-residence-partner-investor-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/health-professional-registration-dubai/",
+      "canonical": "https://hossambahr.com/services/health-professional-registration-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/icp-emirates-id-renew/",
+      "canonical": "https://hossambahr.com/services/renew-emirates-id-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/icp-family-entry-permit/",
+      "canonical": "https://hossambahr.com/goals/family-residence/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/icp-family-residence-issue/",
+      "canonical": "https://hossambahr.com/services/إصدار-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/icp-family-residence-renew/",
+      "canonical": "https://hossambahr.com/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/",
+      "canonical": "https://hossambahr.com/services/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/industrial-environmental-clearance-dubai/",
+      "canonical": "https://hossambahr.com/services/industrial-environmental-clearance-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/initial-approval-dubai/",
+      "canonical": "https://hossambahr.com/services/initial-approval-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "canonical": "https://hossambahr.com/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/issuance-of-a-new-work-permit-mission-work-permit/",
+      "canonical": "https://hossambahr.com/services/issuance-of-a-new-work-permit-mission-work-permit/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/issue-departure-permit-icp/",
+      "canonical": "https://hossambahr.com/services/issue-departure-permit-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/issue-emirates-id-uae/",
+      "canonical": "https://hossambahr.com/services/issue-emirates-id-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/issue-family-data-icp/",
+      "canonical": "https://hossambahr.com/services/issue-family-data-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/issue-new-uae-passport-icp/",
+      "canonical": "https://hossambahr.com/services/issue-new-uae-passport-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/issue-trade-license-dubai/",
+      "canonical": "https://hossambahr.com/services/issue-trade-license-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/legacy-service-67abe5ccf3/",
+      "canonical": "https://hossambahr.com/services/legacy-service-67abe5ccf3/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/legacy-service-6f3bee6661/",
+      "canonical": "https://hossambahr.com/services/legacy-service-6f3bee6661/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/legacy-service-85a10469d8/",
+      "canonical": "https://hossambahr.com/services/legacy-service-85a10469d8/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/legacy-service-e619a9e547/",
+      "canonical": "https://hossambahr.com/services/legacy-service-e619a9e547/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/legacy-service-e7f35a06d9/",
+      "canonical": "https://hossambahr.com/services/legacy-service-e7f35a06d9/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/legacy-service-f6481e594b/",
+      "canonical": "https://hossambahr.com/services/legacy-service-f6481e594b/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/legal-notice-notarization-dubai/",
+      "canonical": "https://hossambahr.com/services/legal-notice-notarization-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/marriage-contract-dubai-courts/",
+      "canonical": "https://hossambahr.com/services/marriage-contract-dubai-courts/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-employment-contract-issue-renew/",
+      "canonical": "https://hossambahr.com/services/employment-contract-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-establishment-file-open/",
+      "canonical": "https://hossambahr.com/services/establishment-card-mohre-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-issuance-of-a-public-relations-officer-card-pro/",
+      "canonical": "https://hossambahr.com/services/إصدار-بطاقة-مندوب-علاقات-عامة-pro/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-juvenile-work-permit/",
+      "canonical": "https://hossambahr.com/services/تصريح-عمل-حدث/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-mission-work-permit/",
+      "canonical": "https://hossambahr.com/services/issuance-of-a-new-work-permit-mission-work-permit/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-modification-of-work-permits-employment-contracts/",
+      "canonical": "https://hossambahr.com/services/تعديل-تصاريح-وعقود-العمل/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-overseas-work-permit/",
+      "canonical": "https://hossambahr.com/services/new-work-permit-overseas-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-part-time-work-permit/",
+      "canonical": "https://hossambahr.com/services/part-time-work-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-private-tutor-permit/",
+      "canonical": "https://hossambahr.com/services/mohre-private-tutor-permit/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-register-labor-complaints-private-sector-employees/",
+      "canonical": "https://hossambahr.com/services/register-labour-complaints-private-sector-employees/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-temporary-work-permit/",
+      "canonical": "https://hossambahr.com/services/temporary-work-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-training-and-work-permit-for-students/",
+      "canonical": "https://hossambahr.com/services/تصريح-تدريب-وعمل-طالب/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-transfer-work-permit/",
+      "canonical": "https://hossambahr.com/services/transfer-work-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-uae-national-trainee-work-permit/",
+      "canonical": "https://hossambahr.com/services/mohre-uae-national-trainee-work-permit/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-uae-nationals-gcc-work-permit/",
+      "canonical": "https://hossambahr.com/services/mohre-uae-nationals-gcc-work-permit/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-uae-nationalsgcc-citizens-work-permit/",
+      "canonical": "https://hossambahr.com/services/mohre-uae-nationalsgcc-citizens-work-permit/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-updating-the-establishment-file/",
+      "canonical": "https://hossambahr.com/services/update-establishment-file-mohre-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-work-permit-contract-cancel/",
+      "canonical": "https://hossambahr.com/services/cancel-work-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-work-permit-for-uae-national-trainees/",
+      "canonical": "https://hossambahr.com/services/mohre-work-permit-for-uae-national-trainees/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-work-permit-quotas-for-establishments/",
+      "canonical": "https://hossambahr.com/services/حصة-تصاريح-العمل-للمنشأة/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/mohre-work-permits-for-dependents-sponsored-by-family-members/",
+      "canonical": "https://hossambahr.com/services/family-sponsored-work-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/new-building-permit-dubai/",
+      "canonical": "https://hossambahr.com/services/new-building-permit-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/new-healthcare-facility-license-dubai/",
+      "canonical": "https://hossambahr.com/services/new-healthcare-facility-license-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/new-work-permit-overseas-uae/",
+      "canonical": "https://hossambahr.com/services/new-work-permit-overseas-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/open-farm-ranch-file-mohre/",
+      "canonical": "https://hossambahr.com/services/open-farm-ranch-file-mohre/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/part-time-work-permit-uae/",
+      "canonical": "https://hossambahr.com/services/part-time-work-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/pay-public-parking-fines-dubai/",
+      "canonical": "https://hossambahr.com/services/pay-public-parking-fines-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/power-of-attorney-ratification-dubai/",
+      "canonical": "https://hossambahr.com/services/power-of-attorney-ratification-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/property-valuation-dubai/",
+      "canonical": "https://hossambahr.com/services/property-valuation-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ras-al-khaimah-add-remove-partner/",
+      "canonical": "https://hossambahr.com/services/ras-al-khaimah-add-remove-partner/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ras-al-khaimah-change-license-activities/",
+      "canonical": "https://hossambahr.com/services/ras-al-khaimah-change-license-activities/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ras-al-khaimah-economic-initial-approval/",
+      "canonical": "https://hossambahr.com/services/ras-al-khaimah-economic-initial-approval/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ras-al-khaimah-economic-licensing-fees/",
+      "canonical": "https://hossambahr.com/services/ras-al-khaimah-economic-licensing-fees/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ras-al-khaimah-license-cancellation/",
+      "canonical": "https://hossambahr.com/services/ras-al-khaimah-license-cancellation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ras-al-khaimah-license-issuance/",
+      "canonical": "https://hossambahr.com/services/ras-al-khaimah-license-issuance/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ras-al-khaimah-license-renewal/",
+      "canonical": "https://hossambahr.com/services/ras-al-khaimah-license-renewal/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ras-al-khaimah-trade-name-reservation/",
+      "canonical": "https://hossambahr.com/services/ras-al-khaimah-trade-name-reservation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/real-estate-professional-practice-card-dubai/",
+      "canonical": "https://hossambahr.com/services/real-estate-professional-practice-card-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/register-labour-complaints-private-sector-employees/",
+      "canonical": "https://hossambahr.com/services/register-labour-complaints-private-sector-employees/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/register-renew-ejari-contract-dubai/",
+      "canonical": "https://hossambahr.com/services/register-renew-ejari-contract-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/renew-business-license-ajman/",
+      "canonical": "https://hossambahr.com/services/ajman-commercial-license-renewal/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/renew-business-license-dubai/",
+      "canonical": "https://hossambahr.com/services/renew-business-license-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/renew-business-license-sharjah/",
+      "canonical": "https://hossambahr.com/services/renew-business-license-sharjah/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/renew-driving-license-dubai/",
+      "canonical": "https://hossambahr.com/services/renew-driving-license-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/renew-emirates-id-uae/",
+      "canonical": "https://hossambahr.com/services/renew-emirates-id-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/renew-uae-passport-abroad-icp/",
+      "canonical": "https://hossambahr.com/services/renew-uae-passport-abroad-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/renew-uae-passport-icp/",
+      "canonical": "https://hossambahr.com/services/renew-uae-passport-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/renew-vehicle-ownership-dubai/",
+      "canonical": "https://hossambahr.com/services/renew-vehicle-ownership-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/replace-lost-damaged-uae-passport-icp/",
+      "canonical": "https://hossambahr.com/services/replace-lost-damaged-uae-passport-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/replace-uae-passport-data-or-pages-icp/",
+      "canonical": "https://hossambahr.com/services/replace-uae-passport-data-or-pages-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/reserve-trade-name-dubai/",
+      "canonical": "https://hossambahr.com/services/reserve-trade-name-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/rta-modify-trade-license-noc-dubai/",
+      "canonical": "https://hossambahr.com/services/rta-modify-trade-license-noc-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/rta-new-trade-license-noc-dubai/",
+      "canonical": "https://hossambahr.com/services/rta-new-trade-license-noc-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/rta-renew-trade-license-noc-dubai/",
+      "canonical": "https://hossambahr.com/services/rta-renew-trade-license-noc-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/sharjah-business-licensing-guide/",
+      "canonical": "https://hossambahr.com/services/sharjah-business-licensing-guide/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/sharjah-economic-license-amendment/",
+      "canonical": "https://hossambahr.com/services/sharjah-economic-license-amendment/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/sharjah-economic-license-cancellation/",
+      "canonical": "https://hossambahr.com/services/sharjah-economic-license-cancellation/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/sharjah-economic-license-issuance/",
+      "canonical": "https://hossambahr.com/services/sharjah-economic-license-issuance/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/sharjah-economic-license-renewal/",
+      "canonical": "https://hossambahr.com/services/sharjah-economic-license-renewal/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/sharjah-issue-trade-name/",
+      "canonical": "https://hossambahr.com/services/sharjah-issue-trade-name/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/sharjah-trade-name-availability-inquiry/",
+      "canonical": "https://hossambahr.com/services/sharjah-trade-name-availability-inquiry/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/sharjah-trade-name-renewal/",
+      "canonical": "https://hossambahr.com/services/sharjah-trade-name-renewal/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/sira-new-security-activity-license-dubai/",
+      "canonical": "https://hossambahr.com/services/sira-new-security-activity-license-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/sira-security-system-certification-dubai/",
+      "canonical": "https://hossambahr.com/services/sira-security-system-certification-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/submit-customs-declaration-dubai/",
+      "canonical": "https://hossambahr.com/services/submit-customs-declaration-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/temporary-work-permit-uae/",
+      "canonical": "https://hossambahr.com/services/temporary-work-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/title-transfer-dubai/",
+      "canonical": "https://hossambahr.com/services/title-transfer-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/transfer-company-ownership-dubai/",
+      "canonical": "https://hossambahr.com/services/transfer-company-ownership-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/transfer-work-permit-uae/",
+      "canonical": "https://hossambahr.com/services/transfer-work-permit-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/umm-al-quwain-business-services-portal/",
+      "canonical": "https://hossambahr.com/services/umm-al-quwain-business-services-portal/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/umm-al-quwain-free-zone-licensing-guide/",
+      "canonical": "https://hossambahr.com/services/umm-al-quwain-free-zone-licensing-guide/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/umm-al-quwain-mainland-licensing-official-path/",
+      "canonical": "https://hossambahr.com/services/umm-al-quwain-mainland-licensing-official-path/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/umm-al-quwain-trade-name-official-path/",
+      "canonical": "https://hossambahr.com/services/umm-al-quwain-trade-name-official-path/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/update-establishment-file-mohre-uae/",
+      "canonical": "https://hossambahr.com/services/update-establishment-file-mohre-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/vat-registration-uae/",
+      "canonical": "https://hossambahr.com/services/vat-registration-uae/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/vehicle-clearance-certificate-dubai-customs/",
+      "canonical": "https://hossambahr.com/services/vehicle-clearance-certificate-dubai-customs/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/veterinary-activity-noc-dubai/",
+      "canonical": "https://hossambahr.com/services/veterinary-activity-noc-dubai/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/",
+      "canonical": "https://hossambahr.com/services/إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-إقامة-لمولود-جديد-في-دبي/",
+      "canonical": "https://hossambahr.com/services/إصدار-إقامة-لمولود-جديد-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "canonical": "https://hossambahr.com/services/إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-بطاقة-مندوب-علاقات-عامة-pro/",
+      "canonical": "https://hossambahr.com/services/إصدار-بطاقة-مندوب-علاقات-عامة-pro/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي/",
+      "canonical": "https://hossambahr.com/services/إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp/",
+      "canonical": "https://hossambahr.com/services/إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-تأشيرة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/إصدار-تأشيرة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/إصدار-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-تصريح-عمل-جديد-لعامل-مساعد/",
+      "canonical": "https://hossambahr.com/services/إصدار-تصريح-عمل-جديد-لعامل-مساعد/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل/",
+      "canonical": "https://hossambahr.com/services/إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إصدار-عقد-عمل-جديد-لعامل-مساعد/",
+      "canonical": "https://hossambahr.com/services/إصدار-عقد-عمل-جديد-لعامل-مساعد/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي/",
+      "canonical": "https://hossambahr.com/services/إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "canonical": "https://hossambahr.com/services/إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إلغاء-بلاغ-انقطاع-عن-العمل/",
+      "canonical": "https://hossambahr.com/services/إلغاء-بلاغ-انقطاع-عن-العمل/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إلغاء-تأشيرة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/إلغاء-تأشيرة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إلغاء-تصريح-عمل-عامل-مساعد/",
+      "canonical": "https://hossambahr.com/services/إلغاء-تصريح-عمل-عامل-مساعد/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إلغاء-تصريح-لعامل-لديه-قضية-عمالية/",
+      "canonical": "https://hossambahr.com/services/إلغاء-تصريح-لعامل-لديه-قضية-عمالية/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إلغاء-عقد-عمل-عامل-مساعد/",
+      "canonical": "https://hossambahr.com/services/إلغاء-عقد-عمل-عامل-مساعد/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/إلغاء-ملف-أو-بطاقة-المنشأة/",
+      "canonical": "https://hossambahr.com/services/إلغاء-ملف-أو-بطاقة-المنشأة/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/استرداد-رسوم-إصدار-الهوية-غير-المكتمل/",
+      "canonical": "https://hossambahr.com/services/استرداد-رسوم-إصدار-الهوية-غير-المكتمل/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/الإعفاء-من-غرامة-تأخير-الهوية/",
+      "canonical": "https://hossambahr.com/services/الإعفاء-من-غرامة-تأخير-الهوية/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
+      "canonical": "https://hossambahr.com/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/التسجيل-والمتابعة-في-wps/",
+      "canonical": "https://hossambahr.com/services/التسجيل-والمتابعة-في-wps/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني/",
+      "canonical": "https://hossambahr.com/services/التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/بدل-فاقد-أو-تالف-للهوية/",
+      "canonical": "https://hossambahr.com/services/بدل-فاقد-أو-تالف-للهوية/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/بلاغ-انقطاع-عامل-مساعد/",
+      "canonical": "https://hossambahr.com/services/بلاغ-انقطاع-عامل-مساعد/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/بلاغ-انقطاع-عن-العمل/",
+      "canonical": "https://hossambahr.com/services/بلاغ-انقطاع-عن-العمل/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة/",
+      "canonical": "https://hossambahr.com/services/تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تأسيس-منشأة-جديدة-في-عجمان/",
+      "canonical": "https://hossambahr.com/services/تأسيس-منشأة-جديدة-في-عجمان/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي/",
+      "canonical": "https://hossambahr.com/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تأشيرة-استكشاف-فرص-عمل-في-دبي/",
+      "canonical": "https://hossambahr.com/services/تأشيرة-استكشاف-فرص-عمل-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي/",
+      "canonical": "https://hossambahr.com/services/تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تأشيرة-سياحية-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/تأشيرة-سياحية-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تأشيرة-سياحية-لدخول-واحد-في-دبي/",
+      "canonical": "https://hossambahr.com/services/تأشيرة-سياحية-لدخول-واحد-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/",
+      "canonical": "https://hossambahr.com/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "canonical": "https://hossambahr.com/services/تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "canonical": "https://hossambahr.com/services/تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تجديد-تصريح-العمل/",
+      "canonical": "https://hossambahr.com/services/تجديد-تصريح-العمل/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تجديد-عقد-عمل-عامل-مساعد/",
+      "canonical": "https://hossambahr.com/services/تجديد-عقد-عمل-عامل-مساعد/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تحديث-بيانات-الهوية/",
+      "canonical": "https://hossambahr.com/services/تحديث-بيانات-الهوية/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ/",
+      "canonical": "https://hossambahr.com/services/تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تصديق-مستند-شخصي-داخل-الإمارات/",
+      "canonical": "https://hossambahr.com/services/تصديق-مستند-شخصي-داخل-الإمارات/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp/",
+      "canonical": "https://hossambahr.com/services/تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تصريح-تدريب-وعمل-طالب/",
+      "canonical": "https://hossambahr.com/services/تصريح-تدريب-وعمل-طالب/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تصريح-عمل-جزئي/",
+      "canonical": "https://hossambahr.com/services/تصريح-عمل-جزئي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تصريح-عمل-حدث/",
+      "canonical": "https://hossambahr.com/services/تصريح-عمل-حدث/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تصنيف-المنشأة/",
+      "canonical": "https://hossambahr.com/services/تصنيف-المنشأة/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تعديل-الوضع-داخل-الدولة-في-دبي/",
+      "canonical": "https://hossambahr.com/services/تعديل-الوضع-داخل-الدولة-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "canonical": "https://hossambahr.com/services/تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/",
+      "canonical": "https://hossambahr.com/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تعديل-تصاريح-وعقود-العمل/",
+      "canonical": "https://hossambahr.com/services/تعديل-تصاريح-وعقود-العمل/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تعديل-عقد-وتصريح-عمل-عامل-مساعد/",
+      "canonical": "https://hossambahr.com/services/تعديل-عقد-وتصريح-عمل-عامل-مساعد/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تقرير-تفاصيل-الإقامة-عبر-icp/",
+      "canonical": "https://hossambahr.com/services/تقرير-تفاصيل-الإقامة-عبر-icp/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تقرير-تقييم-المنشأة/",
+      "canonical": "https://hossambahr.com/services/تقرير-تقييم-المنشأة/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/تمديد-التأشيرة-أو-إذن-الدخول/",
+      "canonical": "https://hossambahr.com/services/تمديد-التأشيرة-أو-إذن-الدخول/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/حصة-تصاريح-العمل-للمنشأة/",
+      "canonical": "https://hossambahr.com/services/حصة-تصاريح-العمل-للمنشأة/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/خدمات-نافس-للمنشآت/",
+      "canonical": "https://hossambahr.com/services/خدمات-نافس-للمنشآت/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/سحب-بلاغ-انقطاع-بطلب-العامل-المساعد/",
+      "canonical": "https://hossambahr.com/services/سحب-بلاغ-انقطاع-بطلب-العامل-المساعد/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل/",
+      "canonical": "https://hossambahr.com/services/سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي/",
+      "canonical": "https://hossambahr.com/services/سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/ضمان-أو-تأمين-العامل/",
+      "canonical": "https://hossambahr.com/services/ضمان-أو-تأمين-العامل/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
+      "canonical": "https://hossambahr.com/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/services/متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي/",
+      "canonical": "https://hossambahr.com/services/متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي/",
+      "locale": "ar"
+    },
+    {
+      "route": "/updates/",
+      "canonical": "https://hossambahr.com/updates/",
+      "locale": "ar"
+    }
+  ]
+}
