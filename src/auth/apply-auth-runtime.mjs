@@ -87,6 +87,10 @@ for (const file of files) {
       globalOsAdded += 1;
     }
     const route = relative(root, file).replaceAll("\\", "/");
+    if (route === "auth/index.html") {
+      html = html.replaceAll("تسجيل الدخول إلى مركز التشغيل", "تسجيل الدخول إلى حسابك")
+        .replaceAll("ادخل إلى حسابك للوصول إلى معاملاتك وشركاتك ومستنداتك ولوحة التشغيل من مكان واحد.", "احفظ معاملاتك وتابع طلباتك ومستنداتك من مكان واحد.");
+    }
     if (route === "os/index.html") {
       html = html
         .replace(/<section\b([^>]*\bclass=["'][^"']*\bhb-os-hero\b[^"']*["'][^>]*)>/i, (match, attrs) => /\bid=/.test(match) ? match : `<section${attrs} id="ai-intake">`)
