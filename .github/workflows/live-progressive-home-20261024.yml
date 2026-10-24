@@ -1,0 +1,67 @@
+name: Live Progressive Homepage Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/live-progressive-home-20261024.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      OUTPUT_DIR: diagnostics/progressive-home-production-2026-10-24-attempt-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 7af6906327d1413f34f9cabfb69963d5235bce4b
+          path: site
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+        working-directory: site
+      - name: Wait for the exact published discovery runtime fingerprint
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          import {createHash} from 'node:crypto';
+          const hash=createHash('sha256');
+          for(const file of ['transaction-discovery.js','transaction-discovery.css','service-capabilities.js','activity-discovery.js','business-activities-discovery.js'])hash.update(await readFile('site/'+file));
+          const expected=hash.digest('hex').slice(0,12);
+          const geometryExpected=createHash('sha256').update(await readFile('site/home-geometry.css')).digest('hex').slice(0,12);
+          let ready=false;
+          for(let i=0;i<45;i++){
+            try{
+              const ar=await fetch('https://hossambahr.com/',{cache:'no-store'}).then(r=>r.text());
+              const en=await fetch('https://hossambahr.com/en/',{cache:'no-store'}).then(r=>r.text());
+              if(ar.includes('/transaction-discovery.js?v='+expected)&&en.includes('/transaction-discovery.js?v='+expected)&&ar.includes('/home-geometry.css?v='+geometryExpected)&&en.includes('/home-geometry.css?v='+geometryExpected)&&ar.includes('data-home-entry="simple"')&&en.includes('data-home-entry="simple"')&&ar.includes('class="home-more-domains"')&&en.includes('class="home-more-domains"')){ready=true;break;}
+            }catch{}
+            await new Promise(r=>setTimeout(r,20000));
+          }
+          if(!ready)throw Error('The expected scoped discovery runtime is not published in both locales: '+expected);
+          NODE
+      - name: Exercise real bilingual discovery, service links and responsive controls
+        working-directory: site
+        run: HB_BROWSER_PATH="$(which chrome)" HB_BASE_URL=https://hossambahr.com HB_OUTPUT_DIR="$OUTPUT_DIR" node scripts/service-launchpad-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: progressive-home-production-2026-10-24-${{ github.run_attempt }}
+          path: site/${{ env.OUTPUT_DIR }}
+      - name: Retain live evidence without overwriting prior attempts
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          if [ -d "site/$OUTPUT_DIR" ]; then
+            mkdir -p diagnostics
+            cp -R "site/$OUTPUT_DIR" diagnostics/
+            git add "$OUTPUT_DIR"
+            if ! git diff --cached --quiet; then
+              git commit -m "Record compact discovery Production evidence [skip ci]"
+              git pull --rebase --autostash origin agent/dld-source-review-evidence
+              git push origin HEAD:agent/dld-source-review-evidence
+            fi
+          fi
