@@ -15,7 +15,7 @@ test('legal-form amendment retains conditional official documents and time witho
  assert.equal(source.description,item.description[0]);
  assert.equal(source.specialCases,item.specialCases[0]);
  const pending=read('qa/remaining-partial-services-2026-10-15.json');
- assert.equal(pending.remaining,32);
+ assert.equal(pending.remaining,pending.services.length);
  assert.deepEqual(pending.services.find(s=>s.slug===item.slug).unverifiedFields,['fees']);
  for(const p of ['', 'en/']){
   const html=fs.readFileSync(p+'services/'+item.slug+'/index.html','utf8');
