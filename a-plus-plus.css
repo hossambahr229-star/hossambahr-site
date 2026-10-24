@@ -46,7 +46,7 @@ html.hb-a-plus-plus a{text-underline-offset:4px}
 .hb-a-plus-plus .page-shell{padding:0!important;background:var(--hb-surface);border-inline:1px solid var(--hb-line)}
 .hb-a-plus-plus .breadcrumbs{margin:0!important;padding:10px 28px!important;border-bottom:1px solid var(--hb-line);background:var(--hb-surface-2);font-size:12px}
 .hb-a-plus-plus .page-hero{position:relative;min-height:0!important;margin:0!important;padding:26px clamp(24px,3vw,52px)!important;border:0!important;border-inline-start:5px solid var(--hb-gold-600)!important;border-radius:0!important;background:linear-gradient(90deg,var(--hb-green-900),var(--hb-green-800))!important;color:#fff!important;box-shadow:none!important}
-.hb-a-plus-plus .page-hero:after{content:"HOSSAMBAHR / VERIFIED SERVICE CONTEXT";position:absolute;bottom:13px;inset-inline-end:25px;color:var(--hb-gold-400);font:700 9px monospace;letter-spacing:.12em}
+.hb-a-plus-plus .page-hero:after{content:none;position:absolute;bottom:13px;inset-inline-end:25px;color:var(--hb-gold-400);font:700 9px monospace;letter-spacing:.12em}
 .hb-a-plus-plus .page-hero h1,.hb-a-plus-plus .page-hero h2,.hb-a-plus-plus .page-hero p{max-width:980px;color:#fff!important}
 .hb-a-plus-plus .page-hero h1{margin:.15em 0;font-size:clamp(31px,2.45vw,48px)}
 .hb-a-plus-plus .page-hero p{margin:.4em 0 1.2em;color:#e4eeea!important}
