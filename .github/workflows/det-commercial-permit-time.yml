@@ -1,7 +1,7 @@
 name: DET Commercial Permit Scoped Time
 on:
   push:
-    branches: [agent/det-commercial-permit-time, agent/det-documents-uncertainty, agent/det-legal-form-details]
+    branches: [agent/det-commercial-permit-time, agent/det-documents-uncertainty, agent/det-legal-form-details, agent/det-legal-form-wording]
 permissions:
   contents: read
 jobs:

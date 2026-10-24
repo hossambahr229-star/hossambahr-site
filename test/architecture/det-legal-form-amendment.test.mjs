@@ -12,6 +12,8 @@ test('legal-form amendment retains conditional official documents and time witho
  assert.equal(record.verification.feesVerified,false);
  assert.equal(record.verification.detailsVerified,false);
  assert.equal(record.lastReviewedAt,'2026-10-24');
+ assert.equal(source.description,item.description[0]);
+ assert.equal(source.specialCases,item.specialCases[0]);
  const pending=read('qa/remaining-partial-services-2026-10-15.json');
  assert.equal(pending.remaining,32);
  assert.deepEqual(pending.services.find(s=>s.slug===item.slug).unverifiedFields,['fees']);
@@ -19,6 +21,9 @@ test('legal-form amendment retains conditional official documents and time witho
   const html=fs.readFileSync(p+'services/'+item.slug+'/index.html','utf8');
   for(const pair of item.documents)assert.ok(html.includes(pair[p?1:0]),'conditional document in '+p);
   assert.ok(html.includes(p?item.durationEn:item.durationAr));
+  assert.ok(!html.includes('أوقف الرابط العام مؤقتًا'));
+  assert.ok(!html.includes('الرابط صفحة إعداد أعمال عامة'));
+  if(!p){assert.ok(html.includes(item.description[0]));assert.ok(html.includes(item.specialCases[0]));}
   assert.ok(html.includes('971503780460'));
   assert.ok(html.includes('request-to-amend-trade-licence'));
  }
