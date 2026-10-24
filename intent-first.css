@@ -439,7 +439,7 @@ html.hb-phase8 .footer-group-links { display: grid; gap: .45rem; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-hero { padding: .85rem .8rem !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-hero h1 { margin-block: .55rem !important; font-size: clamp(1.75rem,8.2vw,2.2rem) !important; line-height: 1.18 !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-decision-nav { margin-block: .2rem .4rem; }
-  html.hb-phase8 body[data-ux-page="service-detail"] .service-decision-nav a { padding: .38rem .58rem; font-size: .72rem; }
+  html.hb-phase8 body[data-ux-page="service-detail"] .service-decision-nav a { min-height:44px;padding:.5rem .65rem;font-size:14px; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-hero > .official-name,
   html.hb-phase8 body[data-ux-page="service-detail"] .service-hero > p:not(.verification-note) { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; margin-block: .45rem !important; font-size: .82rem !important; line-height: 1.55 !important; }
   html.hb-phase8 body[data-ux-page="service-detail"] .service-hero > .verification-note { display: none; }
@@ -1310,13 +1310,16 @@ body[data-ux-page="services"] [data-directory-card] .actions > a:first-child { w
   margin-block: .35rem .65rem;
 }
 .service-decision-nav a {
-  padding: .45rem .7rem;
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:.5rem .75rem;
   border: 1px solid #cfddd8;
   border-radius: 999px;
   background: #fff;
   color: #315149;
-  font-size: .82rem;
-  font-weight: 750;
+  font-size:14px;
+  font-weight:750;
 }
 body[data-ux-page="service-detail"] .dual-execution-paths {
   display: grid;
@@ -1345,8 +1348,8 @@ body[data-ux-page="service-detail"] .official-handoff-note { grid-column: 2; mar
   .category-mode-switch button { flex: 1; }
   body[data-ux-page="service-detail"] .dual-execution-paths { grid-template-columns: 1fr; }
   body[data-ux-page="service-detail"] :is(.commercial-path-label,.execute-with-us-cta,.official-path-label,.primary-government-cta,.official-handoff-note) { grid-column: 1; grid-row: auto; }
-  .service-decision-nav { flex-wrap: nowrap; overflow-x: auto; padding-bottom: .25rem; }
-  .service-decision-nav a { flex: 0 0 auto; }
+  .service-decision-nav { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;padding-bottom:.25rem; }
+  .service-decision-nav a { min-width:0;justify-content:center;text-align:center; }
 }
 
 @media (max-width: 380px) {

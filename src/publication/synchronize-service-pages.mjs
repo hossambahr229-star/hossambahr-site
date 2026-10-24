@@ -11,6 +11,10 @@ const escapeHtml = (value) => String(value ?? '')
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#39;');
 
+const matrix = JSON.parse(await readFile(resolve(root, 'service-matrix.json'), 'utf8'));
+const matrixBySlug = new Map(matrix.services.map(service => [service.slug, service]));
+const categoryBySlug = new Map(matrix.categories.map(category => [category.slug, category]));
+
 let updated = 0;
 let injectedStepSections = 0;
 let injectedExecutionPaths = 0;
@@ -50,6 +54,9 @@ for (const service of registry.services) {
   const file = resolve(root, `.${service.internalRoute}`, 'index.html');
   let html = await readFile(file, 'utf8');
   const original = html;
+  // Matrix classification owns the breadcrumb as well as directory membership.
+  const category = categoryBySlug.get(matrixBySlug.get(service.slug)?.category);
+  if (category) html = html.replace(/<nav\b[^>]*class="breadcrumbs"[^>]*>[\s\S]*?<\/nav>/, nav => nav.replace(/<a\b[^>]*href="\/categories\/[^"/]+\/"[^>]*>[\s\S]*?<\/a>/, `<a href="/categories/${escapeHtml(category.slug)}/">${escapeHtml(category.title)}</a>`));
   // Refresh only source-reviewed native steps; keep all existing generic sections otherwise.
   if (service.stepsReviewedAt) html=html.replace(/<section\b[^>]*\bdata-registry-steps[^>]*>[\s\S]*?<\/section>/g,'');
   const hasSteps = /<h2[^>]*>[^<]*(?:خطوات التنفيذ|خطوات الخدمة|الإجراءات)[^<]*<\/h2>/i.test(html);

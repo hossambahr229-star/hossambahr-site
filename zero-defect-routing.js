@@ -1029,13 +1029,14 @@
       const conditionsHeading = conditions?.querySelector('h2');
       if (conditionsHeading) conditionsHeading.textContent = 'هل هذه الخدمة مناسبة لي؟ — الشروط';
       const documents = findPanel(/المستندات/);
-      const steps = findPanel(/الخطوات|طريقة التقديم/);
+      const steps = findPanel(/الخطوات|خطوات التنفيذ|خطوات الخدمة|الإجراءات|طريقة التقديم/);
+      const executionTarget = hero.querySelector('[data-hb-pathways]') || actions;
       const decision = document.createElement("nav");
       decision.className = "service-decision-nav";
       decision.setAttribute("aria-label", "خطوات فهم وتنفيذ المعاملة");
-      [[conditions, "هل تناسب حالتي؟"], [documents, "المستندات المطلوبة"], [steps, "خطوات التنفيذ"], [actions, "خيارات التنفيذ"]].forEach(([target, label], index) => {
+      [[conditions, "الشروط", "service-decision-1"], [documents, "المستندات", "requirements"], [fees, "الرسوم", "service-fees-details"], [duration, "المدة", "service-duration-details"], [steps, "الخطوات", "service-decision-3"], [executionTarget, "التنفيذ", "service-decision-4"]].forEach(([target, label, id]) => {
         if (!target) return;
-        target.id ||= `service-decision-${index + 1}`;
+        target.id ||= id;
         const link = document.createElement("a");
         link.href = `#${target.id}`;
         link.textContent = label;
