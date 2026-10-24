@@ -1686,3 +1686,6 @@ html.hb-phase8 body[data-ux-page="home"] .service-card[data-phase9-card="compact
 
 /* Long financial and timing policies remain complete in their detail section. */
 .service-facts-bar .service-fact-detail-link { display:flex;align-items:center;min-height:44px;color:inherit;font-size:.875rem;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere; }
+
+/* Same-authority discovery retains full titles and touch-sized links. */
+[data-canonical-related-services] a{display:flex;align-items:center;min-height:44px;padding:8px 0;line-height:1.6;overflow-wrap:anywhere}

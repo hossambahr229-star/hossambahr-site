@@ -14,6 +14,7 @@ const escapeHtml = (value) => String(value ?? '')
 const matrix = JSON.parse(await readFile(resolve(root, 'service-matrix.json'), 'utf8'));
 const matrixBySlug = new Map(matrix.services.map(service => [service.slug, service]));
 const categoryBySlug = new Map(matrix.categories.map(category => [category.slug, category]));
+const serviceById = new Map(registry.services.map(service => [service.id, service]));
 
 let updated = 0;
 let injectedStepSections = 0;
@@ -57,6 +58,15 @@ for (const service of registry.services) {
   // Matrix classification owns the breadcrumb as well as directory membership.
   const category = categoryBySlug.get(matrixBySlug.get(service.slug)?.category);
   if (category) html = html.replace(/<nav\b[^>]*class="breadcrumbs"[^>]*>[\s\S]*?<\/nav>/, nav => nav.replace(/<a\b[^>]*href="\/categories\/[^"/]+\/"[^>]*>[\s\S]*?<\/a>/, `<a href="/categories/${escapeHtml(category.slug)}/">${escapeHtml(category.title)}</a>`));
+  // Refresh owned lists on later builds; preserve curated lists and sequence navigation.
+  const sameAuthority = (service.relatedServiceIds || []).map(id => serviceById.get(id))
+    .filter(candidate => candidate && candidate.id !== service.id && candidate.authority.id === service.authority.id);
+  html = html.replace(/<section\b[^>]*>\s*<h2>خدمات (?:مرتبطة|أخرى) من الجهة نفسها<\/h2>[\s\S]*?<\/section>/g, section => {
+    if (!section.includes('data-canonical-related-services') && !section.includes('لا توجد خدمة مرتبطة معتمدة ضمن الجهة نفسها حالياً.')) return section;
+    const links = sameAuthority.map(candidate => `<li><a data-related-service-id="${escapeHtml(candidate.id)}" href="${escapeHtml(candidate.internalRoute)}">${escapeHtml(candidate.name.ar)}</a></li>`).join('');
+    return section.replace(/<h2>خدمات (?:مرتبطة|أخرى) من الجهة نفسها<\/h2>/, '<h2>خدمات أخرى من الجهة نفسها</h2>')
+      .replace(/<ul class="related-list"[^>]*>[\s\S]*?<\/ul>/, '<ul class="related-list" data-canonical-related-services>' + (links || '<li>لا تتوفر روابط أخرى مسجلة من هذه الجهة حاليًا.</li>') + '</ul>');
+  });
   // Refresh only source-reviewed native steps; keep all existing generic sections otherwise.
   if (service.stepsReviewedAt) html=html.replace(/<section\b[^>]*\bdata-registry-steps[^>]*>[\s\S]*?<\/section>/g,'');
   const hasSteps = /<h2[^>]*>[^<]*(?:خطوات التنفيذ|خطوات الخدمة|الإجراءات)[^<]*<\/h2>/i.test(html);
