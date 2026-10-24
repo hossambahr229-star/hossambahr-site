@@ -36,6 +36,9 @@ try{
    clicks.push({href:a.href,status:'PASS'});
   }
   assert.deepEqual(errors,[]);
+  const signIn=locale==='ar'?page.locator('.save-service-action'):page.locator('header a[href^="/en/auth/"]');
+  await signIn.click();await page.waitForURL(url=>url.pathname===(locale==='en'?'/en/auth/':'/auth/'));
+  assert.equal(new URL(page.url()).searchParams.get('return'),route,'Sign-in preserves the exact service and language');
   report.views.push({locale,width,slug,...geometry,clicks,status:'PASS'});
  }
  report.status='PASS';
