@@ -1,0 +1,63 @@
+name: Live Platform Acceptance After Service Improvements
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/live-platform-after-560.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 2069af9152c6d10022c63705178679acd915f4aa
+          path: site
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - name: Wait for the actual corrected service release
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let i=0;i<45;i++){
+            try{
+              const ar=await fetch('https://hossambahr.com/services/issuance-of-a-new-work-permit-golden-visa-holders/',{cache:'no-store'}).then(r=>r.text());
+              const en=await fetch('https://hossambahr.com/en/services/issuance-of-a-new-work-permit-golden-visa-holders/',{cache:'no-store'}).then(r=>r.text());
+              const auth=await fetch('https://hossambahr.com/auth/',{cache:'no-store'}).then(r=>r.text());
+              const js=await fetch('https://hossambahr.com/zero-defect-routing.js',{cache:'no-store'}).then(r=>r.text());
+              const crumbs=ar.match(/<nav\b[^>]*class="breadcrumbs"[^>]*>[\s\S]*?<\/nav>/)?.[0]||'';
+              if(crumbs.includes('/categories/work-employees/')&&en.includes('id="service-steps"')&&en.includes('/en/auth/?return=%2Fen%2Fservices%2Fissuance-of-a-new-work-permit-golden-visa-holders%2F')&&auth.includes('تسجيل الدخول إلى حسابك')&&js.includes('const sourceNotes =')){ready=true;break;}
+            }catch{}
+            await new Promise(r=>setTimeout(r,20000));
+          }
+          if(!ready)throw Error('Corrected bilingual service release is not published yet');
+          NODE
+      - name: Exercise sections, source disclosure, both pathways and sign-in context
+        working-directory: site
+        run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=../diagnostics/service-navigation-live-20261024-attempt-${{ github.run_attempt }} node scripts/service-section-navigation-browser.mjs
+      - name: Review all published routes and canonical bilingual service identities
+        run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=diagnostics/platform-review-after-560-20261024-attempt-${{ github.run_attempt }} node scripts/platform-customer-review-after-560.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-platform-after-560-${{ github.run_attempt }}
+          path: |
+            diagnostics/platform-review-after-560-20261024-attempt-${{ github.run_attempt }}
+            diagnostics/service-navigation-live-20261024-attempt-${{ github.run_attempt }}
+      - name: Preserve immutable attempt evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          for evidence in diagnostics/platform-review-after-560-20261024-attempt-${{ github.run_attempt }} diagnostics/service-navigation-live-20261024-attempt-${{ github.run_attempt }}; do
+            if [ -d "$evidence" ]; then git add "$evidence"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "Record live platform acceptance after service improvements [skip ci]"
+            git pull --rebase --autostash origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
