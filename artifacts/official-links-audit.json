@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-23T18:30:11.167Z",
+  "generatedAt": "2026-10-24T06:01:53.873Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 153,
+    "REACHABLE": 155,
     "ACCESS_RESTRICTED": 9,
-    "TEMPORARILY_UNAVAILABLE": 3,
-    "NETWORK_UNVERIFIED": 84,
+    "TEMPORARILY_UNAVAILABLE": 0,
+    "NETWORK_UNVERIFIED": 85,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -644,10 +644,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 503,
-      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=14aefa78-624c-4f8a-aee9-c6876fcc8b1a&Lang=ar-AE",
-      "result": "TEMPORARILY_UNAVAILABLE",
-      "reason": "HTTP 503"
+      "status": 200,
+      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
+      "result": "REACHABLE"
     },
     {
       "url": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
@@ -832,10 +831,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 503,
-      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Individual/Dashboard.aspx?Service=256a91d9-23d7-469f-a054-ffee6c0fc4c7&Lang=ar-AE",
-      "result": "TEMPORARILY_UNAVAILABLE",
-      "reason": "HTTP 503"
+      "status": 200,
+      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
@@ -1790,9 +1788,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
@@ -3274,10 +3271,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 503,
+      "status": 200,
       "finalUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
-      "result": "TEMPORARILY_UNAVAILABLE",
-      "reason": "HTTP 503"
+      "result": "REACHABLE"
     },
     {
       "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
