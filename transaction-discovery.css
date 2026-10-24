@@ -86,7 +86,7 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad{display:block!im
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{display:flex!important;flex-direction:column;align-items:start;justify-content:center;gap:2px;flex:none;width:auto!important;height:auto!important;min-height:76px;padding:12px 18px!important;border:1px solid #b68b36!important;border-radius:10px!important;background:#103e36!important;color:#fff!important;text-decoration:none!important;box-shadow:none!important;aspect-ratio:auto!important}
 .home-directory-entry strong{font-size:26px;line-height:1.2;color:#fff}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry>span{color:#fff!important;font-size:12px!important;line-height:1.6!important;max-width:none!important;height:auto!important}
-.home-service-launchpad .home-domain-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--hb-discovery-gap)}
+.home-service-launchpad .home-domain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--hb-discovery-gap)}
 .home-domain-tile{min-width:0;overflow:hidden;border:1px solid #cbdcd1;border-radius:10px;background:#fff;display:flex;flex-direction:column}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{display:grid!important;grid-template-columns:28px minmax(0,1fr) 12px;align-items:start;gap:10px;width:auto!important;height:auto!important;min-height:108px!important;margin:0!important;padding:14px!important;background:#fff!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;aspect-ratio:auto!important;text-align:start!important;text-decoration:none!important;color:#103e36!important;flex:1}
 .home-service-launchpad .home-simple-card b{display:block;font-size:16px!important;line-height:1.5!important;white-space:normal!important;overflow-wrap:anywhere;color:#103e36!important}
@@ -102,9 +102,20 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-se
 .home-pathway-promise{padding:10px 12px;border-inline-start:3px solid #b68b36;background:#edf3ef;color:#244b3f;font-size:13px;line-height:1.7;margin:16px 0 0}
 .home-service-launchpad .home-simple-footnote{margin-top:10px;font-size:12px}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-simple-footnote a{display:inline!important;min-height:0!important;width:auto!important;height:auto!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;aspect-ratio:auto!important;font-size:inherit!important;text-decoration:underline!important;color:#103e36;font-weight:700;text-underline-offset:3px}
+/* Native disclosure keeps the first choice short and all recorded domains reachable. */
+.home-more-domains{margin-top:var(--hb-discovery-gap);padding:0 12px;border:1px solid #cbdcd1;border-radius:10px;background:#fff}
+.home-more-domains>summary{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-height:64px;padding:10px 24px 10px 0;padding-inline:0 24px;list-style:none;cursor:pointer;color:#103e36;font-size:15px;font-weight:700;line-height:1.5}
+.home-more-domains>summary::-webkit-details-marker{display:none}
+.home-more-domains>summary::after{content:'⌄';position:absolute;inset-inline-end:0;top:16px;font-size:20px}
+.home-more-domains[open]>summary::after{content:'⌃'}
+.home-more-domains>summary small{font-size:12px;font-weight:400;line-height:1.6;color:#456054}
+.home-more-domains>summary b{display:inline-block;min-width:24px;padding:0 6px;margin-inline-start:6px;border-radius:99px;background:#f2e5c7;color:#103e36;text-align:center;font-size:12px}
+.home-more-domains[open]>summary{border-bottom:1px solid #d3e0d8;margin-bottom:12px}
+.home-more-domains>.home-more-domain-grid{padding-bottom:12px}
+.home-more-domains:not([open])>.home-more-domain-grid{display:none}
+
 .home-service-launchpad a:hover{outline:1px solid #b68b36;outline-offset:-1px}
 .home-service-launchpad a:focus-visible{outline:3px solid #b78d35;outline-offset:3px}
-@media(max-width:1100px){.home-service-launchpad .home-domain-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:720px){
 .home-service-launchpad{--hb-discovery-gap:8px;--hb-discovery-padding:12px}
 .home-service-launchpad .home-domain-heading{display:block;margin-bottom:var(--hb-discovery-gap)}
