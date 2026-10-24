@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-24T06:46:07.447Z",
+  "generatedAt": "2026-10-24T07:09:47.934Z",
   "services": 202,
   "uniqueOfficialUrls": 249,
   "counts": {
-    "REACHABLE": 152,
+    "REACHABLE": 153,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 88,
+    "NETWORK_UNVERIFIED": 87,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1861,8 +1861,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://uaqftz.gov.ae/ar",
+      "result": "REACHABLE"
     },
     {
       "url": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html",
