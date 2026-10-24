@@ -1,7 +1,7 @@
 name: DET Commercial Permit Scoped Time
 on:
   push:
-    branches: [agent/det-commercial-permit-time, agent/det-documents-uncertainty]
+    branches: [agent/det-commercial-permit-time, agent/det-documents-uncertainty, agent/det-legal-form-details]
 permissions:
   contents: read
 jobs:
@@ -14,4 +14,4 @@ jobs:
         with:
           node-version: '24'
       - run: npm run build
-      - run: node --test test/architecture/det-commercial-permit-time.test.mjs test/architecture/canonical-details.test.mjs test/architecture/published-registry.test.mjs
+      - run: node --test test/architecture/det-legal-form-amendment.test.mjs test/architecture/det-commercial-permit-time.test.mjs test/architecture/canonical-details.test.mjs test/architecture/published-registry.test.mjs
