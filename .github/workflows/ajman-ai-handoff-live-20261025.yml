@@ -17,13 +17,13 @@ jobs:
       - run: HB_BROWSER_PATH="$(which chrome)" node scripts/ajman-ai-handoff-live-20261025.mjs
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: ajman-ai-handoff-live-20261025, path: diagnostics/ajman-ai-handoff-live-20261025}
+        with: {name: ajman-ai-handoff-live-20261025, path: diagnostics/ajman-ai-handoff-live-20261025-attempt2}
       - name: Retain actual live evidence
         if: always()
         run: |
           git config user.name "HossamBahr Production Evidence"
           git config user.email "production-evidence@users.noreply.github.com"
-          git add diagnostics/ajman-ai-handoff-live-20261025
+          git add diagnostics/ajman-ai-handoff-live-20261025-attempt2
           if ! git diff --cached --quiet; then
             git commit -m "Record actual bilingual service-to-AI handoff acceptance [skip ci]"
             git pull --rebase --autostash origin agent/dld-source-review-evidence
