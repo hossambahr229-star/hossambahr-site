@@ -1,3 +1,4 @@
+import {reviewedCatalogSource} from '../../service-handoff.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -7,7 +8,7 @@ const source=readFileSync(new URL('../../supabase/functions/public-ai-concierge/
 const start=source.indexOf('function groundedAnswer(');
 const end=source.indexOf('\nfunction docLike',start);
 assert.ok(start>=0&&end>start);
-const answer=new Function('documentedRule','serviceIntroduction',stripTypeScriptTypes(source.slice(start,end))+';return groundedAnswer;')(documentedRule,serviceIntroduction);
+const answer=new Function('documentedRule','serviceIntroduction','reviewedCatalogSource',stripTypeScriptTypes(source.slice(start,end))+';return groundedAnswer;')(documentedRule,serviceIntroduction,reviewedCatalogSource);
 const card='https://www.mofa.gov.ae/services/attestation';
 const guide="https://www.mofa.gov.ae/en/services/forms/attestations-guide";
 const fee="يعرض دليل الوزارة رسمًا قدره 2000 درهم للفئات التجارية المدرجة الصادرة داخل الإمارات أو خارجها، باستثناء فئة «مستند مصدق في الخارج» ضمن الصادر من الإمارات ورسومها 150 درهمًا. راجع فئة المستند والإجمالي قبل الدفع. الفواتير التجارية وشهادات المنشأ خارج نطاق هذه الخدمة.";
