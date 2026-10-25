@@ -1,0 +1,52 @@
+name: October 25 Live Mobile Directory Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/live-mobile-directory-20261025.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 55e712f44e75087d24bbd8ef6f212d25aa0d375c
+          path: site
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - name: Wait for actual combined generated release
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let i=0;i<50;i++){
+            try{
+              const [en,ar]=await Promise.all([fetch('https://hossambahr.com/en/services/',{cache:'no-store'}).then(r=>r.text()),fetch('https://hossambahr.com/services/'+encodeURIComponent('تأسيس-منشأة-جديدة-في-عجمان')+'/',{cache:'no-store'}).then(r=>r.text())]);
+              if(en.includes('en-directory-filter-panel')&&en.includes('Filter services')){ready=true;break;}
+            }catch{}
+            await new Promise(r=>setTimeout(r,20000));
+          }
+          if(!ready)throw Error('Combined generated release did not reach Production');
+          NODE
+      - name: Actual English discovery, filters, reset and service return
+        working-directory: site
+        run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=../diagnostics/mobile-directory-live-20261025/english node scripts/english-directory-filters-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: mobile-directory-live-20261025, path: diagnostics/mobile-directory-live-20261025}
+      - name: Retain live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          if [ ! -d diagnostics/mobile-directory-live-20261025 ]; then exit 0; fi
+          git add diagnostics/mobile-directory-live-20261025
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual English directory and Ajman acceptance [skip ci]"
+            git pull --rebase --autostash origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
