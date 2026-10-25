@@ -1,0 +1,12 @@
+// Resolve only the exact query shapes emitted by existing service-page AI links.
+// Rows already passed jurisdiction/source checks; duplicate identities stay unresolved.
+export function exactServiceHandoff(query,rows,normalize){
+ const value=normalize(query),prefix=normalize('أريد أن أسأل عن')+' ';
+ const arabic=value.startsWith(prefix)?value.slice(prefix.length):null;
+ const candidates=rows.filter(row=>{
+  if(arabic!==null)return [row.title,row.binding?.metadata?.name_en].filter(Boolean).some(title=>normalize(title)===arabic);
+  const title=row.binding?.metadata?.name_en;
+  return title&&[row.jurisdiction?.name_en,row.jurisdiction?.name_ar].filter(Boolean).some(region=>value===normalize(title+' in '+region));
+ });
+ return candidates.length===1?candidates[0]:null;
+}

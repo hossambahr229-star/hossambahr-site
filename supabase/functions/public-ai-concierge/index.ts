@@ -1,3 +1,4 @@
+import { exactServiceHandoff } from "../../../service-handoff.js";
 import {transactionObject,transactionObjectMatches,transactionObjectNeedsEmirate} from './transaction-object.ts';
 import {reraApprovalKind,RERA_APPROVAL_SLUGS} from './rera-approval.ts';
 import {siraIntent,SIRA_SLUGS} from '../../../sira-intent.js';
@@ -992,6 +993,7 @@ export default {
       const explicitObject = pendingObject || (!contextualFollowUp ? transactionObject(normalize(latestTurn)) : null);
       const missingObjectJurisdiction = explicitObject && transactionObjectNeedsEmirate(explicitObject) && (!currentJurisdiction || currentJurisdiction==="AE");
       const explicitRows = explicitObject && !missingObjectJurisdiction ? catalog.filter((row:any)=>transactionObjectMatches(explicitObject,normalize(row.title+" "+(row.binding.metadata?.name_en||"")),row.binding.authority_key)) : [];
+      const exactHandoff = exactServiceHandoff(latestTurn, catalog, normalize);
       const catalogMs = performance.now() - catalogStarted;
       let ranked:any[];
       const exactDubaiFamilySponsorship=dubaiSponsorshipCandidate(catalog,relationship,semantic.action,semantic.jurisdiction,semanticGoal);
@@ -1013,6 +1015,8 @@ export default {
         ranked=(siraKind==='unsupported'||(siraJurisdiction&&siraJurisdiction!=='AE-DU'))?[]:catalog.filter((row:any)=>row.authority?.authority_key==='sira-dubai'&&(siraKind==='general'||row.binding.service_slug===(siraKind==='system'?SIRA_SLUGS.system:SIRA_SLUGS.activity))).map((row:any)=>({...row,score:12000}));
       } else if(reraKind){
         ranked=(reraKind==='unsupported'||(reraJurisdiction&&reraJurisdiction!=='AE-DU')||reraKind==='general')?[]:catalog.filter((row:any)=>row.authority?.authority_key==='dld-rera'&&row.binding.service_slug===RERA_APPROVAL_SLUGS[reraKind]).map((row:any)=>({...row,score:12000}));
+      } else if(exactHandoff){
+        ranked=[{...exactHandoff,score:100000}];
       } else if(explicitObject){
         ranked=explicitRows.map((row:any)=>({...row,score:14000}));
       } else if(exactDubaiFamilySponsorship){
