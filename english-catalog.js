@@ -1,27 +1,31 @@
 import {rankServices} from './intent-search.js';
+import {filterDirectoryServices} from './english-directory-filters.js';
 const form=document.querySelector('[data-en-search]');
 if(form){
  const input=form.querySelector('input'),status=document.querySelector('[data-en-search-status]'),empty=document.querySelector('[data-en-search-empty]');
- const cards=[...document.querySelectorAll('[data-service-slug]')];
- let services;
+ const controls=Object.fromEntries(['emirate','authority','category'].map(key=>[key,form.elements.namedItem(key)]));
+ const cards=[...document.querySelectorAll('[data-service-slug]')],bySlug=new Map(cards.map(card=>[card.dataset.serviceSlug,card]));
+ let catalogPromise,revision=0;
+ function restore(){const params=new URLSearchParams(location.search);input.value=params.get('q')||'';for(const [key,select]of Object.entries(controls)){const value=params.get(key)||'';select.value=[...select.options].some(o=>o.value===value)?value:'';}}
  async function search(event){
-  event?.preventDefault();
+  event?.preventDefault();const request=++revision;
   try{
-   if(!services){const response=await fetch('/english-catalog-data.json');if(!response.ok)throw Error('catalog');services=await response.json();}
-   const query=input.value.trim(),results=query?rankServices(query,services):services;
-   const order=new Map(results.map((item,index)=>[item.s,index]));
+   catalogPromise??=fetch('/english-catalog-data.json').then(response=>{if(!response.ok)throw Error('catalog');return response.json();});
+   const services=await catalogPromise;if(request!==revision)return;
+   const query=input.value.trim(),filters=Object.fromEntries(Object.entries(controls).map(([key,select])=>[key,select.value]));
+   const results=filterDirectoryServices(query?rankServices(query,services):services,filters),order=new Set(results.map(item=>item.s));
    for(const card of cards)card.hidden=!order.has(card.dataset.serviceSlug);
-   const bySlug=new Map(cards.map(card=>[card.dataset.serviceSlug,card]));
    for(const result of results){const card=bySlug.get(result.s);if(card)card.parentElement.append(card);}
    status.textContent=results.length+' matching services';empty.hidden=results.length>0;
-   const url=new URL(location.href);if(query)url.searchParams.set('q',query);else url.searchParams.delete('q');history.replaceState(null,'',url);
-  }catch{status.textContent='Search is temporarily unavailable. You can still browse the service directory below.';for(const card of cards)card.hidden=false;empty.hidden=true;}
+   const url=new URL(location.href);for(const [key,value]of Object.entries({q:query,...filters})){if(value)url.searchParams.set(key,value);else url.searchParams.delete(key);}history.replaceState(null,'',url);
+  }catch{if(request!==revision)return;catalogPromise=null;status.textContent='Search is temporarily unavailable. You can still browse the service directory below.';for(const card of cards)card.hidden=false;empty.hidden=true;}
  }
  form.addEventListener('submit',search);
- const query=new URLSearchParams(location.search).get('q');if(query){input.value=query;search();}
+ for(const select of Object.values(controls))select.addEventListener('change',search);
+ form.addEventListener('reset',event=>{event.preventDefault();input.value='';for(const select of Object.values(controls))select.value='';search();});
+ window.addEventListener('popstate',()=>{restore();search();});restore();
+ if(input.value||Object.values(controls).some(select=>select.value))search();
 }
-
-
 // Normalize English service pages without waiting for full catalog rematerialization.
 const executionSection=document.querySelector('[data-customer-execution]');
 if(executionSection){
