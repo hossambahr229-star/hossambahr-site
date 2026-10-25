@@ -1,7 +1,7 @@
 name: English Directory Filter Acceptance
 on:
   push:
-    branches: [agent/english-directory-filters]
+    branches: [agent/english-directory-filters, agent/mobile-directory-disclosure]
 permissions:
   contents: write
 jobs:
@@ -32,6 +32,6 @@ jobs:
           git add diagnostics/english-directory-filters
           if ! git diff --cached --quiet; then
             git commit -m "Record English filter acceptance evidence [skip ci]"
-            git pull --rebase --autostash origin agent/english-directory-filters
-            git push origin HEAD:agent/english-directory-filters
+            git pull --rebase --autostash origin "${{ github.ref_name }}"
+            git push origin HEAD:"${{ github.ref_name }}"
           fi

@@ -3,10 +3,12 @@ import {filterDirectoryServices} from './english-directory-filters.js';
 const form=document.querySelector('[data-en-search]');
 if(form){
  const input=form.querySelector('input'),status=document.querySelector('[data-en-search-status]'),empty=document.querySelector('[data-en-search-empty]');
- const controls=Object.fromEntries(['emirate','authority','category'].map(key=>[key,form.elements.namedItem(key)]));
+ const controls=Object.fromEntries(['emirate','authority','category'].map(key=>[key,form.elements.namedItem(key)]).filter(([,select])=>select));
+ const panel=form.querySelector('.en-directory-filter-panel');
+ const wide=()=>window.matchMedia('(min-width: 801px)').matches;
  const cards=[...document.querySelectorAll('[data-service-slug]')],bySlug=new Map(cards.map(card=>[card.dataset.serviceSlug,card]));
  let catalogPromise,revision=0;
- function restore(){const params=new URLSearchParams(location.search);input.value=params.get('q')||'';for(const [key,select]of Object.entries(controls)){const value=params.get(key)||'';select.value=[...select.options].some(o=>o.value===value)?value:'';}}
+ function restore(){const params=new URLSearchParams(location.search);input.value=params.get('q')||'';for(const [key,select]of Object.entries(controls)){const value=params.get(key)||'';select.value=[...select.options].some(o=>o.value===value)?value:'';}if(panel)panel.open=wide()||Object.values(controls).some(select=>select.value);}
  async function search(event){
   event?.preventDefault();const request=++revision;
   try{
@@ -22,7 +24,7 @@ if(form){
  }
  form.addEventListener('submit',search);
  for(const select of Object.values(controls))select.addEventListener('change',search);
- form.addEventListener('reset',event=>{event.preventDefault();input.value='';for(const select of Object.values(controls))select.value='';search();});
+ form.addEventListener('reset',event=>{event.preventDefault();input.value='';for(const select of Object.values(controls))select.value='';if(panel)panel.open=wide();search();});
  window.addEventListener('popstate',()=>{restore();search();});restore();
  if(input.value||Object.values(controls).some(select=>select.value))search();
 }
