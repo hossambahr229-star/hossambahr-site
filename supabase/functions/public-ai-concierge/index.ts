@@ -1,4 +1,4 @@
-import { exactServiceHandoff } from "../../../service-handoff.js";
+import { exactServiceHandoff, reviewedCatalogSource } from "../../../service-handoff.js";
 import {transactionObject,transactionObjectMatches,transactionObjectNeedsEmirate} from './transaction-object.ts';
 import {reraApprovalKind,RERA_APPROVAL_SLUGS} from './rera-approval.ts';
 import {siraIntent,SIRA_SLUGS} from '../../../sira-intent.js';
@@ -174,7 +174,7 @@ function answerFocus(text: string) {
 }
 
 function groundedAnswer(goal: string, row: any, focus: string) {
-  const source = row.safeSources?.[0] || null;
+  const source = reviewedCatalogSource(row);
   const rules = Array.isArray(row.policy?.rules) ? row.policy.rules : [];
   const fees = documentedRule(rules, "fees", row.safeSources || []);
   const duration = documentedRule(rules, "duration", row.safeSources || []);
@@ -723,7 +723,7 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
     const processSteps = row.steps
       .filter((s:any) => ["intake","review","approval","external","completion"].includes(String(s.taskType || "")))
       .map((s:any) => String(s.title || "")).filter(Boolean).slice(0,6);
-    const source = row.safeSources[0];
+    const source = reviewedCatalogSource(row);
     return {
       service_slug: row.binding.service_slug,
       service_name: row.title,

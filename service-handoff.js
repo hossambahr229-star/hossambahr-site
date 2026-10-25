@@ -10,3 +10,7 @@ export function exactServiceHandoff(query,rows,normalize){
  });
  return candidates.length===1?candidates[0]:null;
 }
+
+// Prefer the approved source attached to the current recorded review, keeping
+// historical references intact. A source still under review never gains priority.
+export function reviewedCatalogSource(row){const sources=row.safeSources||[],tag=row.binding?.metadata?.recorded_detail_review;return (tag?sources.find(source=>!source.review_required&&source.metadata?.review_tag===tag):null)||sources[0]||null;}
