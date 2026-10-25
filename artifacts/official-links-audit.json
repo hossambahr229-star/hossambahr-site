@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T19:00:10.089Z",
+  "generatedAt": "2026-10-25T19:11:01.234Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
@@ -1787,9 +1787,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
@@ -2566,8 +2565,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "result": "REACHABLE"
     },
     {
       "url": "https://media.ajman.ae/ar/servicecatalog/services/2862",
