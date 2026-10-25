@@ -1,0 +1,50 @@
+name: Live AI Answer Visibility
+on:
+  push:
+    branches: [main]
+    paths: ['public-ai-concierge.js','scripts/ai-answer-visibility-browser.mjs','.github/workflows/ai-answer-visibility.yml']
+  pull_request:
+    paths: ['public-ai-concierge.js','scripts/ai-answer-visibility-browser.mjs','.github/workflows/ai-answer-visibility.yml']
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node --check public-ai-concierge.js
+      - run: node --check scripts/ai-answer-visibility-browser.mjs
+  live:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - name: Wait for this runtime and HTML to reach Production
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          import {createHash} from 'node:crypto';
+          const expected=await readFile('public-ai-concierge.js','utf8');
+          const names=['public-ai-concierge','auth-client','ui-i18n','os-client','os-i18n','english-catalog','intent-search','activities','zero-defect-routing','a-plus-plus'];
+          const intent=createHash('sha256').update(await readFile('intent-search.js')).digest('hex').slice(0,12),digest=createHash('sha256');
+          for(const name of names){let content=await readFile(name+'.js','utf8');if(name==='os-client')content=content.replace(/\/intent-search\.js\?v=[^'"]+/g,'/intent-search.js?v='+intent);digest.update(content);}
+          digest.update(await readFile('intent-first.css'));
+          const hash=digest.digest('hex').slice(0,12);
+          for(let i=0;i<60;i++){
+            const [runtime,html]=await Promise.all(['https://hossambahr.com/public-ai-concierge.js','https://hossambahr.com/ai/'].map(async u=>(await fetch(u,{cache:'no-store'})).text()));
+            if(runtime===expected&&html.includes('public-ai-concierge.js?v='+hash)){console.log('Exact runtime and paired HTML published',hash);process.exit(0);}
+            await new Promise(r=>setTimeout(r,20000));
+          }
+          throw new Error('Current runtime not published; no live acceptance declared');
+          NODE
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/ai-answer-visibility-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: ai-answer-visibility, path: diagnostics/ai-answer-visibility}

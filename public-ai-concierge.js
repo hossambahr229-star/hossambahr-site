@@ -227,7 +227,15 @@
     wrap.append(avatar, stack);
     if (options.pending) wrap.dataset.pending = "true";
     thread.append(wrap);
-    requestAnimationFrame(() => wrap.scrollIntoView({ behavior: options.instant ? "auto" : "smooth", block: "nearest" }));
+    requestAnimationFrame(() => {
+      const finalProductAnswer = document.body.dataset.hbAiProduct === "true" && role === "assistant" && !options.pending;
+      if (finalProductAnswer) {
+        const topbar = document.querySelector(".hb-ai-topbar")?.getBoundingClientRect();
+        wrap.style.scrollMarginTop = Math.max(12, (topbar?.bottom || 0) + 12) + "px";
+        wrap.style.scrollMarginBottom = Math.ceil(form?.getBoundingClientRect().height || 0) + 24 + "px";
+      }
+      wrap.scrollIntoView({ behavior: options.instant ? "auto" : "smooth", block: finalProductAnswer ? "start" : "nearest" });
+    });
     return wrap;
   }
 
@@ -610,7 +618,7 @@
       addBubble("assistant",buildAssistantMessage(payload));
     }catch{streamBubble?.remove();removePending(pending);addBubble("assistant","تعذر إكمال التحليل الآن. لم يتم إنشاء معاملة أو حفظ بياناتك في حساب.");}
     finally {
-      analysisInFlight = false;if(sendButton)sendButton.disabled=false;composer?.focus();}
+      analysisInFlight = false;if(sendButton)sendButton.disabled=false;composer?.focus({preventScroll:true});}
   }
 
   function rememberHandoff(payload = state.last_payload, unresolved = false) {
@@ -752,6 +760,12 @@
     thread.setAttribute("aria-label", tr("محادثة HOSSAM BAHR AI"));
     shell.append(thread);
     form.insertAdjacentElement("afterend", shell);
+    // Reserve the actual composer height so the final answer and its actions remain reachable.
+    if (isAIProduct) {
+      const reserveComposerSpace = () => { thread.style.paddingBottom = Math.ceil(form.getBoundingClientRect().height) + 32 + "px"; };
+      reserveComposerSpace();
+      if (typeof ResizeObserver === "function") new ResizeObserver(reserveComposerSpace).observe(form);
+    }
 
     if (isAIProduct && state.original_goal && state.history?.length) document.body.classList.add("hb-chat-engaged");
     if (!isAIProduct) addBubble("assistant", "مرحبًا، أنا HOSSAM BAHR AI. أخبرني ماذا تريد إنجازه في الإمارات، وسأحدد لك الخدمة والجهة والمتطلبات من المصادر الرسمية الموثقة.", { instant: true });
