@@ -1,0 +1,25 @@
+-- Synchronize one reviewed service into HB AI. No account, RLS, storage or execution-route change.
+begin;
+do $review$
+declare b public.hb_service_bindings%rowtype;p public.hb_policy_versions%rowtype;old_source public.hb_policy_sources%rowtype;new_source uuid;new_rules jsonb;field_key text;
+item jsonb := $facts${"slug":"تأسيس-منشأة-جديدة-في-عجمان","sourceUrl":"https://media.ajman.ae/ar/servicecatalog/services/2862","sourceUrlEn":"https://media.ajman.ae/en/servicecatalog/services/2862","requirements":["للمقيمين: الموافقة الأمنية.","شهادة حجز الاسم التجاري وطلب الترخيص.","جواز سفر وهوية ساريان للمالك وجميع الشركاء بحسب الحالة."],"fees":"بنود البطاقة الرسمية بالدرهم: إصدار الرخصة 600؛ الطلب الإداري 50؛ تصريح اللافتة 350؛ القيد التجاري 200؛ سجل الأنشطة الموحد 200؛ اعتماد مواصفات اللافتة 100؛ شهادة السجل التجاري 200؛ المساهمة المجتمعية 1500؛ نشر محرر الشركة ذات المسؤولية المحدودة 3000. تعرض البطاقة توثيق العقد 50–50000 بحسب رأس المال، وترجمة الإنجليزية 50 للصفحة، وعضوية الغرفة 500–5000. هذه بنود مشروطة وليست مجموعًا موحدًا أو عرض سعر؛ تؤكد الجهة ما ينطبق قبل السداد. لا تشمل رسوم حسام بحر.","duration":"10 دقائق لخدمة إصدار الرخصة حسب بطاقة حكومة عجمان، وليست مدة تأسيس الشركة كاملة أو استكمال الموافقات السابقة.","conditions":"البطاقة موجهة للأفراد وقطاع الأعمال، وتذكر موافقة أمنية للمقيمين. لا تحسم هذه البطاقة وحدها أهلية كل نشاط أو شكل قانوني أو الموافقات الخارجية الخاصة به؛ تؤكدها دائرة عجمان.","specialCases":"مدة الإصدار لا تشمل حجز الاسم أو الموافقات السابقة. رسوم التوثيق والغرفة وبقية البنود تعتمد على الحالة؛ لا تجمعها تلقائيًا. رابط التنفيذ محفوظ إلى newestablishment.","officialSteps":"سجل الدخول باستخدام الهوية الرقمية. ← قدم الطلب وأرفق المستندات المطلوبة. ← سدد الرسوم المطبقة على طلبك. ← استلم الرخصة التجارية."}$facts$::jsonb;
+review_tag text := 'ajman-issuance-official-fields-2026-10-25';
+begin
+ select * into strict b from public.hb_service_bindings where service_slug=item->>'slug' and active for update;
+ if exists(select 1 from public.hb_policy_versions where policy_key=b.policy_key and jurisdiction_id is not distinct from b.jurisdiction_id and status='active' and reviewed_by=review_tag) then return;end if;
+ select * into strict p from public.hb_policy_versions where policy_key=b.policy_key and jurisdiction_id is not distinct from b.jurisdiction_id and status='active' for update;
+ if p.version<>1 then raise exception 'Unexpected Ajman policy version: %',p.version;end if;
+ select * into strict old_source from public.hb_policy_sources where id=any(p.source_ids) and active and authority_key=b.authority_key and source_url='https://eservices.ajmanded.ae/en/';
+ insert into public.hb_policy_sources(jurisdiction_id,authority_key,title,source_url,source_type,last_verified_at,active,review_required,metadata,country_pack_id,authority_id)
+ values(b.jurisdiction_id,b.authority_key,'إصدار رخصة تجارية — بطاقة حكومة عجمان',item->>'sourceUrl','official',now(),true,false,jsonb_build_object('service_slug',b.service_slug,'review_tag',review_tag,'supporting_official_url',item->>'sourceUrlEn','verification_state','OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL','eligibility_scope','common-only'),old_source.country_pack_id,old_source.authority_id) returning id into new_source;
+ select coalesce(jsonb_agg(value),'[]'::jsonb) into new_rules from jsonb_array_elements(p.rules) where value->>'id' not in ('fees','duration','conditions','special-cases','official-steps') and (value->>'id') not like 'requirement%';
+ select new_rules||coalesce(jsonb_agg(jsonb_build_object('id','requirement-reviewed-'||ordinality,'when','[]'::jsonb,'effect','review','reason',value#>>'{}','actions',jsonb_build_array('review_documents'),'sourceRefs',jsonb_build_array(item->>'sourceUrl'))),'[]'::jsonb) into new_rules from jsonb_array_elements(item->'requirements') with ordinality;
+ for field_key in select unnest(array['fees','duration','conditions','specialCases','officialSteps']) loop
+  new_rules:=new_rules||jsonb_build_array(jsonb_build_object('id',case field_key when 'specialCases' then 'special-cases' when 'officialSteps' then 'official-steps' else field_key end,'when','[]'::jsonb,'effect','review','reason',item->>field_key,'actions',jsonb_build_array(case field_key when 'specialCases' then 'review_special_cases' when 'officialSteps' then 'review_official_steps' else 'review_'||field_key end),'sourceRefs',jsonb_build_array(item->>'sourceUrl')));
+ end loop;
+ update public.hb_policy_versions set status='retired',effective_until=now() where id=p.id;
+ insert into public.hb_policy_versions(policy_key,jurisdiction_id,version,effective_from,status,rules,source_ids,reviewed_by,reviewed_at,country_pack_id)
+ values(p.policy_key,p.jurisdiction_id,2,now(),'active',new_rules,p.source_ids||array[new_source],review_tag,now(),p.country_pack_id);
+ update public.hb_service_bindings set metadata=metadata||jsonb_build_object('fees',item->>'fees','duration',item->>'duration','lastReviewed','2026-10-24','source_scope_unresolved',true,'eligibility_scope','common-only','recorded_detail_review',review_tag) where id=b.id;
+end $review$;
+commit;

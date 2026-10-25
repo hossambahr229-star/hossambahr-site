@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+test('AI migration and translations preserve the exact reviewed Ajman fields and partial eligibility',()=>{
+const files=fs.readdirSync('supabase/migrations').filter(f=>f.endsWith('_ajman_issuance_official_fields.sql'));assert.equal(files.length,1);const sql=fs.readFileSync('supabase/migrations/'+files[0],'utf8'),facts=JSON.parse(sql.split('$facts$')[1]),matrix=JSON.parse(fs.readFileSync('service-matrix.json','utf8')).services.find(s=>s.slug===facts.slug);
+assert.deepEqual(facts.requirements,matrix.requirements);for(const key of ['fees','duration','conditions','specialCases'])assert.equal(facts[key],matrix[key]);assert.equal(facts.sourceUrl,matrix.officialCardUrl);assert.equal(matrix.eligibilityScope,'common-only');assert.equal(facts.officialSteps,matrix.recordedSteps.map(s=>s.title).join(' ← '));
+const generated=fs.readFileSync('supabase/functions/public-ai-concierge/recorded-fact-translations.ts','utf8'),map=JSON.parse(generated.slice(generated.indexOf('{'),generated.lastIndexOf('}')+1));for(const value of [...facts.requirements,facts.fees,facts.duration,facts.conditions,facts.specialCases,facts.officialSteps])assert.ok(map[value],'English answer for reviewed fact');assert.equal(map[facts.fees],matrix.localizedDetails.en.fees);
+});
