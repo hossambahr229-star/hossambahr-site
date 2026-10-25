@@ -1,0 +1,245 @@
+{
+  "status": "SCOPED_LIVE_PASS",
+  "scope": "Actual service-page click and live AI followups. No injected history, intercepted requests or mock acceptance. Category eligibility remains partial.",
+  "externalModelAcceptance": "NOT_DECLARED",
+  "views": [
+    {
+      "locale": "ar",
+      "width": 390,
+      "responses": [
+        {
+          "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+          "focus": "overview",
+          "policyVersion": 2,
+          "source": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+          "answer": "المسار المناسب لطلبك هو «تأسيس منشأة جديدة في عجمان» لدى دائرة التنمية الاقتصادية في عجمان. البطاقة موجهة للأفراد وقطاع الأعمال، وتذكر موافقة أمنية للمقيمين. لا تحسم هذه البطاقة وحدها أهلية كل نشاط أو شكل قانوني أو الموافقات الخارجية الخاصة به؛ تؤكدها دائرة عجمان.\nتنبيه حدود المصدر: مدة الإصدار لا تشمل حجز الاسم أو الموافقات السابقة. رسوم التوثيق والغرفة وبقية البنود تعتمد على الحالة؛ لا تجمعها تلقائيًا. رابط التنفيذ محفوظ إلى newestablishment.",
+          "engine": {
+            "mode": "deterministic-policy-resolver",
+            "external_model_used": false,
+            "provider_failure": {
+              "category": "QUOTA_BILLING",
+              "status": 200,
+              "code": "credit_balance_exhausted",
+              "type": "insufficient_quota"
+            }
+          }
+        },
+        {
+          "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+          "focus": "documents",
+          "policyVersion": 2,
+          "source": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+          "answer": "المتطلبات المسجلة لهذه الخدمة: للمقيمين: الموافقة الأمنية.، شهادة حجز الاسم التجاري وطلب الترخيص.، جواز سفر وهوية ساريان للمالك وجميع الشركاء بحسب الحالة..\nتنبيه حدود المصدر: مدة الإصدار لا تشمل حجز الاسم أو الموافقات السابقة. رسوم التوثيق والغرفة وبقية البنود تعتمد على الحالة؛ لا تجمعها تلقائيًا. رابط التنفيذ محفوظ إلى newestablishment.",
+          "engine": {
+            "mode": "deterministic-policy-resolver",
+            "external_model_used": false,
+            "provider_failure": {
+              "category": "QUOTA_BILLING",
+              "status": 200,
+              "code": "credit_balance_exhausted",
+              "type": "insufficient_quota"
+            }
+          }
+        },
+        {
+          "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+          "focus": "fees",
+          "policyVersion": 2,
+          "source": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+          "answer": "بنود البطاقة الرسمية بالدرهم: إصدار الرخصة 600؛ الطلب الإداري 50؛ تصريح اللافتة 350؛ القيد التجاري 200؛ سجل الأنشطة الموحد 200؛ اعتماد مواصفات اللافتة 100؛ شهادة السجل التجاري 200؛ المساهمة المجتمعية 1500؛ نشر محرر الشركة ذات المسؤولية المحدودة 3000. تعرض البطاقة توثيق العقد 50–50000 بحسب رأس المال، وترجمة الإنجليزية 50 للصفحة، وعضوية الغرفة 500–5000. هذه بنود مشروطة وليست مجموعًا موحدًا أو عرض سعر؛ تؤكد الجهة ما ينطبق قبل السداد. لا تشمل رسوم حسام بحر.\nتنبيه حدود المصدر: مدة الإصدار لا تشمل حجز الاسم أو الموافقات السابقة. رسوم التوثيق والغرفة وبقية البنود تعتمد على الحالة؛ لا تجمعها تلقائيًا. رابط التنفيذ محفوظ إلى newestablishment.",
+          "engine": {
+            "mode": "deterministic-policy-resolver",
+            "external_model_used": false,
+            "provider_failure": {
+              "category": "QUOTA_BILLING",
+              "status": 200,
+              "code": "credit_balance_exhausted",
+              "type": "insufficient_quota"
+            }
+          }
+        },
+        {
+          "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+          "focus": "duration",
+          "policyVersion": 2,
+          "source": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+          "answer": "10 دقائق لخدمة إصدار الرخصة حسب بطاقة حكومة عجمان، وليست مدة تأسيس الشركة كاملة أو استكمال الموافقات السابقة.\nتنبيه حدود المصدر: مدة الإصدار لا تشمل حجز الاسم أو الموافقات السابقة. رسوم التوثيق والغرفة وبقية البنود تعتمد على الحالة؛ لا تجمعها تلقائيًا. رابط التنفيذ محفوظ إلى newestablishment.",
+          "engine": {
+            "mode": "deterministic-policy-resolver",
+            "external_model_used": false,
+            "provider_failure": {
+              "category": "QUOTA_BILLING",
+              "status": 200,
+              "code": "credit_balance_exhausted",
+              "type": "insufficient_quota"
+            }
+          }
+        },
+        {
+          "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+          "focus": "conditions",
+          "policyVersion": 2,
+          "source": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+          "answer": "البطاقة موجهة للأفراد وقطاع الأعمال، وتذكر موافقة أمنية للمقيمين. لا تحسم هذه البطاقة وحدها أهلية كل نشاط أو شكل قانوني أو الموافقات الخارجية الخاصة به؛ تؤكدها دائرة عجمان.\nتنبيه حدود المصدر: مدة الإصدار لا تشمل حجز الاسم أو الموافقات السابقة. رسوم التوثيق والغرفة وبقية البنود تعتمد على الحالة؛ لا تجمعها تلقائيًا. رابط التنفيذ محفوظ إلى newestablishment.",
+          "engine": {
+            "mode": "deterministic-policy-resolver",
+            "external_model_used": false,
+            "provider_failure": {
+              "category": "QUOTA_BILLING",
+              "status": 200,
+              "code": "credit_balance_exhausted",
+              "type": "insufficient_quota"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "focus": "actual-service-handoff",
+          "status": "PASS"
+        },
+        {
+          "focus": "documents",
+          "status": "PASS",
+          "shownText": "HB AI\n\nالمتطلبات المسجلة لهذه الخدمة: للمقيمين: الموافقة الأمنية.، شهادة حجز الاسم التجاري وطلب الترخيص.، جواز سفر وهوية ساريان للمالك وجميع الشركاء بحسب الحالة.. تنبيه حدود المصدر: مدة الإصدار لا تشمل حجز الاسم أو الموافقات السابقة. رسوم التوثيق والغرفة وبقية البنود تعتمد على الحالة؛ لا تجمعها تلقائيًا. رابط التنفيذ محفوظ إلى newestablishment.\n\nالخدمة المطابقة\n\nتأسيس منشأة جديدة في عجمان\n\nالجهة المختصة\n\nدائرة التنمية الاقتصادية في عجمان\n\nالإمارة / الاختصاص\n\nعجمان\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة"
+        },
+        {
+          "focus": "fees",
+          "status": "PASS",
+          "shownText": "HB AI\n\nبنود البطاقة الرسمية بالدرهم: إصدار الرخصة 600؛ الطلب الإداري 50؛ تصريح اللافتة 350؛ القيد التجاري 200؛ سجل الأنشطة الموحد 200؛ اعتماد مواصفات اللافتة 100؛ شهادة السجل التجاري 200؛ المساهمة المجتمعية 1500؛ نشر محرر الشركة ذات المسؤولية المحدودة 3000. تعرض البطاقة توثيق العقد 50–50000 بحسب رأس المال، وترجمة الإنجليزية 50 للصفحة، وعضوية الغرفة 500–5000. هذه بنود مشروطة وليست مجموعًا موحدًا أو عرض سعر؛ تؤكد الجهة ما ينطبق قبل السداد. لا تشمل رسوم حسام بحر. تنبيه حدود المصدر: مدة الإصدار لا تشمل حجز الاسم أو الموافقات السابقة. رسوم التوثيق والغرفة وبقية البنود تعتمد على الحالة؛ لا تجمعها تلقائيًا. رابط التنفيذ محفوظ إلى newestablishment.\n\nالخدمة المطابقة\n\nتأسيس منشأة جديدة في عجمان\n\nالجهة المختصة\n\nدائرة التنمية الاقتصادية في عجمان\n\nالإمارة / الاختصاص\n\nعجمان\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة"
+        },
+        {
+          "focus": "duration",
+          "status": "PASS",
+          "shownText": "HB AI\n\n10 دقائق لخدمة إصدار الرخصة حسب بطاقة حكومة عجمان، وليست مدة تأسيس الشركة كاملة أو استكمال الموافقات السابقة. تنبيه حدود المصدر: مدة الإصدار لا تشمل حجز الاسم أو الموافقات السابقة. رسوم التوثيق والغرفة وبقية البنود تعتمد على الحالة؛ لا تجمعها تلقائيًا. رابط التنفيذ محفوظ إلى newestablishment.\n\nالخدمة المطابقة\n\nتأسيس منشأة جديدة في عجمان\n\nالجهة المختصة\n\nدائرة التنمية الاقتصادية في عجمان\n\nالإمارة / الاختصاص\n\nعجمان\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة"
+        },
+        {
+          "focus": "conditions",
+          "status": "PASS",
+          "shownText": "HB AI\n\nالبطاقة موجهة للأفراد وقطاع الأعمال، وتذكر موافقة أمنية للمقيمين. لا تحسم هذه البطاقة وحدها أهلية كل نشاط أو شكل قانوني أو الموافقات الخارجية الخاصة به؛ تؤكدها دائرة عجمان. تنبيه حدود المصدر: مدة الإصدار لا تشمل حجز الاسم أو الموافقات السابقة. رسوم التوثيق والغرفة وبقية البنود تعتمد على الحالة؛ لا تجمعها تلقائيًا. رابط التنفيذ محفوظ إلى newestablishment.\n\nالخدمة المطابقة\n\nتأسيس منشأة جديدة في عجمان\n\nالجهة المختصة\n\nدائرة التنمية الاقتصادية في عجمان\n\nالإمارة / الاختصاص\n\nعجمان\n\nالمستندات\nالخطوات\nالشروط\nالرسوم\n✓ مستند إلى مصدر رسمي\n✓ مصدر رسمي\nتفاصيل الخدمة\nدع HOSSAM BAHR ينجزها لي\nأنجزها بنفسي رسميًا\nاحفظ الخطة"
+        }
+      ],
+      "lastActualService": "تأسيس-منشأة-جديدة-في-عجمان",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "responses": [
+        {
+          "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+          "focus": "overview",
+          "policyVersion": 2,
+          "source": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+          "answer": "The matching service is New Establishment through Ajman DED. The card addresses individuals and businesses and lists security clearance for residents. Activity-specific and legal-form eligibility and external approvals still require confirmation with Ajman DED.\nOfficial source limits: The issuance time excludes trade-name reservation and prior approvals. Notarisation, chamber and other charges depend on the case; do not add them automatically. The exact newestablishment execution route is retained.\nOfficial source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.",
+          "engine": {
+            "mode": "deterministic-policy-resolver",
+            "external_model_used": false,
+            "provider_failure": {
+              "category": "QUOTA_BILLING",
+              "status": 200,
+              "code": "credit_balance_exhausted",
+              "type": "insufficient_quota"
+            }
+          }
+        },
+        {
+          "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+          "focus": "documents",
+          "policyVersion": 2,
+          "source": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+          "answer": "Recorded requirements for this service:\nResidents: security clearance.\nTrade-name reservation certificate and licence application.\nValid passport and ID for the owner and all partners, as applicable.\nOfficial source limits: The issuance time excludes trade-name reservation and prior approvals. Notarisation, chamber and other charges depend on the case; do not add them automatically. The exact newestablishment execution route is retained.\nOfficial source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.",
+          "engine": {
+            "mode": "deterministic-policy-resolver",
+            "external_model_used": false,
+            "provider_failure": {
+              "category": "QUOTA_BILLING",
+              "status": 200,
+              "code": "credit_balance_exhausted",
+              "type": "insufficient_quota"
+            }
+          }
+        },
+        {
+          "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+          "focus": "fees",
+          "policyVersion": 2,
+          "source": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+          "answer": "Official card items in AED: licence 600; administrative application 50; signboard permit 350; commercial registration 200; unified activities registration 200; signboard specification approval 100; register certificate 200; community contribution 1500; LLC instrument publication 3000. Contract notarisation is shown as 50–50000 depending on capital; English translation 50 per page; chamber membership 500–5000. These are conditional items, not a combined total or quotation. Confirm applicable charges with Ajman DED before payment. No HOSSAM BAHR fee is included.\nOfficial source limits: The issuance time excludes trade-name reservation and prior approvals. Notarisation, chamber and other charges depend on the case; do not add them automatically. The exact newestablishment execution route is retained.\nOfficial source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.",
+          "engine": {
+            "mode": "deterministic-policy-resolver",
+            "external_model_used": false,
+            "provider_failure": {
+              "category": "QUOTA_BILLING",
+              "status": 200,
+              "code": "credit_balance_exhausted",
+              "type": "insufficient_quota"
+            }
+          }
+        },
+        {
+          "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+          "focus": "duration",
+          "policyVersion": 2,
+          "source": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+          "answer": "10 minutes for licence issuance according to the Ajman government card; not total company setup or completion of prior approvals.\nOfficial source limits: The issuance time excludes trade-name reservation and prior approvals. Notarisation, chamber and other charges depend on the case; do not add them automatically. The exact newestablishment execution route is retained.\nOfficial source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.",
+          "engine": {
+            "mode": "deterministic-policy-resolver",
+            "external_model_used": false,
+            "provider_failure": {
+              "category": "QUOTA_BILLING",
+              "status": 200,
+              "code": "credit_balance_exhausted",
+              "type": "insufficient_quota"
+            }
+          }
+        },
+        {
+          "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+          "focus": "conditions",
+          "policyVersion": 2,
+          "source": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+          "answer": "The card addresses individuals and businesses and lists security clearance for residents. Activity-specific and legal-form eligibility and external approvals still require confirmation with Ajman DED.\nOfficial source limits: The issuance time excludes trade-name reservation and prior approvals. Notarisation, chamber and other charges depend on the case; do not add them automatically. The exact newestablishment execution route is retained.\nOfficial source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.",
+          "engine": {
+            "mode": "deterministic-policy-resolver",
+            "external_model_used": false,
+            "provider_failure": {
+              "category": "QUOTA_BILLING",
+              "status": 200,
+              "code": "credit_balance_exhausted",
+              "type": "insufficient_quota"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "focus": "actual-service-handoff",
+          "status": "PASS"
+        },
+        {
+          "focus": "documents",
+          "status": "PASS",
+          "shownText": "HB AI\n\nRecorded requirements for this service: Residents: security clearance. Trade-name reservation certificate and licence application. Valid passport and ID for the owner and all partners, as applicable. Official source limits: The issuance time excludes trade-name reservation and prior approvals. Notarisation, chamber and other charges depend on the case; do not add them automatically. The exact newestablishment execution route is retained. Official source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.\n\nMatching service\n\nNew Establishment\n\nResponsible authority\n\nAjman DED\n\nEmirate / jurisdiction\n\nAjman\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan"
+        },
+        {
+          "focus": "fees",
+          "status": "PASS",
+          "shownText": "HB AI\n\nOfficial card items in AED: licence 600; administrative application 50; signboard permit 350; commercial registration 200; unified activities registration 200; signboard specification approval 100; register certificate 200; community contribution 1500; LLC instrument publication 3000. Contract notarisation is shown as 50–50000 depending on capital; English translation 50 per page; chamber membership 500–5000. These are conditional items, not a combined total or quotation. Confirm applicable charges with Ajman DED before payment. No HOSSAM BAHR fee is included. Official source limits: The issuance time excludes trade-name reservation and prior approvals. Notarisation, chamber and other charges depend on the case; do not add them automatically. The exact newestablishment execution route is retained. Official source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.\n\nMatching service\n\nNew Establishment\n\nResponsible authority\n\nAjman DED\n\nEmirate / jurisdiction\n\nAjman\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan"
+        },
+        {
+          "focus": "duration",
+          "status": "PASS",
+          "shownText": "HB AI\n\n10 minutes for licence issuance according to the Ajman government card; not total company setup or completion of prior approvals. Official source limits: The issuance time excludes trade-name reservation and prior approvals. Notarisation, chamber and other charges depend on the case; do not add them automatically. The exact newestablishment execution route is retained. Official source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.\n\nMatching service\n\nNew Establishment\n\nResponsible authority\n\nAjman DED\n\nEmirate / jurisdiction\n\nAjman\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan"
+        },
+        {
+          "focus": "conditions",
+          "status": "PASS",
+          "shownText": "HB AI\n\nThe card addresses individuals and businesses and lists security clearance for residents. Activity-specific and legal-form eligibility and external approvals still require confirmation with Ajman DED. Official source limits: The issuance time excludes trade-name reservation and prior approvals. Notarisation, chamber and other charges depend on the case; do not add them automatically. The exact newestablishment execution route is retained. Official source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation.\n\nMatching service\n\nNew Establishment\n\nResponsible authority\n\nAjman DED\n\nEmirate / jurisdiction\n\nAjman\n\nDocuments\nSteps\nConditions\nFees\n✓ Based on an official source\n✓ Official source\nService details\nLet HOSSAM BAHR handle it\nGovernment self-service\nSave the plan"
+        }
+      ],
+      "lastActualService": "تأسيس-منشأة-جديدة-في-عجمان",
+      "status": "PASS"
+    }
+  ]
+}
