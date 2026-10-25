@@ -1,0 +1,60 @@
+name: October 25 Live Directory And Ajman Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/live-directory-ajman-20261025.yml']
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 6be4f5d4dc6948e5c2738f8e131ab674edc7902e
+          path: site
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --ignore-scripts --no-package-lock playwright@1.55.0
+      - name: Wait for actual combined generated release
+        run: |
+          node --input-type=module <<'NODE'
+          let ready=false;
+          for(let i=0;i<50;i++){
+            try{
+              const [en,ar]=await Promise.all([fetch('https://hossambahr.com/en/services/',{cache:'no-store'}).then(r=>r.text()),fetch('https://hossambahr.com/services/'+encodeURIComponent('تأسيس-منشأة-جديدة-في-عجمان')+'/',{cache:'no-store'}).then(r=>r.text())]);
+              if(en.includes('select name="emirate"')&&en.includes('select name="authority"')&&ar.includes('ليست مجموعًا')){ready=true;break;}
+            }catch{}
+            await new Promise(r=>setTimeout(r,20000));
+          }
+          if(!ready)throw Error('Combined generated release did not reach Production');
+          NODE
+      - name: Actual English discovery, filters, reset and service return
+        working-directory: site
+        run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" HB_OUTPUT_DIR=../diagnostics/directory-ajman-live-20261025/english node scripts/english-directory-filters-browser.mjs
+      - name: Actual bilingual Ajman fields and execution contexts
+        working-directory: site
+        run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" node scripts/ajman-issuance-facts-browser.mjs
+      - name: Collect Ajman proof
+        if: always()
+        run: |
+          mkdir -p diagnostics/directory-ajman-live-20261025
+          if [ -d site/diagnostics/ajman-issuance-facts ]; then cp -r site/diagnostics/ajman-issuance-facts diagnostics/directory-ajman-live-20261025/ajman; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: directory-ajman-live-20261025, path: diagnostics/directory-ajman-live-20261025}
+      - name: Retain live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          if [ ! -d diagnostics/directory-ajman-live-20261025 ]; then exit 0; fi
+          git add diagnostics/directory-ajman-live-20261025
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual English directory and Ajman acceptance [skip ci]"
+            git pull --rebase --autostash origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
