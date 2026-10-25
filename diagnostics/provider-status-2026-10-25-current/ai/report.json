@@ -1,0 +1,23 @@
+{
+  "scope": "General renewal common conditions only. Category eligibility remains partial; external-model and human acceptance not asserted.",
+  "checks": [
+    {
+      "case": "actual-grounded-assistant-common-conditions",
+      "en": true,
+      "engine": {
+        "mode": "deterministic-policy-resolver",
+        "external_model_used": false,
+        "provider_failure": {
+          "category": "QUOTA_BILLING",
+          "status": 200,
+          "code": "credit_balance_exhausted",
+          "type": "insufficient_quota"
+        }
+      },
+      "actualService": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "shownConditions": "Conditions\nCommon: passport and photo.\nCategory-specific insurance, housing, kinship or professional evidence; match the official checklist.\nVerified common conditions: the passport must be valid for at least 6 months, and residence issuance requirements must continue to be met at renewal. These common conditions do not establish eligibility for a particular category; select the category on the ICP card and check its requirements before applying.",
+      "status": "PASS"
+    }
+  ],
+  "status": "SCOPED_PASS"
+}
