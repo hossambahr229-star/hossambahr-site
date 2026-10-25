@@ -1,0 +1,31 @@
+name: Prepare Reviewed Ajman AI Migration
+on:
+  push:
+    branches: [agent/ajman-ai-fact-sync]
+    paths: ['scripts/prepare-ajman-ai-field-review.sql','.github/workflows/prepare-ajman-ai-migration.yml']
+permissions: {contents: write}
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with: {version: latest}
+      - name: Discover CLI migration interface
+        run: |
+          supabase --version
+          supabase --help
+          supabase migration --help
+          supabase migration new --help
+      - name: Create migration with official CLI
+        run: |
+          supabase migration new ajman_issuance_official_fields
+          target=$(find supabase/migrations -name '*_ajman_issuance_official_fields.sql')
+          test -n "$target"
+          cp scripts/prepare-ajman-ai-field-review.sql "$target"
+          git config user.name "HossamBahr Migration Preparation"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add "$target"
+          git rm scripts/prepare-ajman-ai-field-review.sql .github/workflows/prepare-ajman-ai-migration.yml
+          git commit -m "Generate reviewed Ajman AI field migration with Supabase CLI"
+          git push origin HEAD:agent/ajman-ai-fact-sync
