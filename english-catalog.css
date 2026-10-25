@@ -7,3 +7,6 @@ section[id],.hb-service-pathways[id]{scroll-margin-top:20px}
 @media(max-width:720px){.service-decision-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.service-decision-nav a{min-width:0;text-align:center}}
 
 [data-canonical-related-services] a{display:flex;align-items:center;min-height:44px;padding:8px 0;line-height:1.6;overflow-wrap:anywhere}
+
+/* Directory-only controls share the existing green-and-white interface. */
+.en-directory-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:12px;align-items:end;margin-top:16px}.en-directory-filters label{display:grid;gap:6px;min-width:0;font-size:14px}.en-directory-filters select{font:inherit;width:100%;min-width:0;min-height:48px;padding:10px;border:1px solid #cbd7d2;border-radius:12px;background:#fff;color:#10243d}.en-directory-filters button{background:#fff;color:#0b5a48}.en-filter-note{font-size:14px;color:#526274}@media(max-width:800px){.en-directory-filters{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:420px){.en-directory-filters{grid-template-columns:1fr}}
