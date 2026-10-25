@@ -1,0 +1,25 @@
+name: Retain Production Answer Visibility Evidence
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/retain-569-visibility-evidence.yml']
+permissions: {contents: write, actions: read}
+jobs:
+  retain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Await and retain existing live run artifacts without rerunning tests
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          gh run watch 40223539376 --interval 20 || true
+          gh run download 40223539376 --name ai-answer-visibility --dir diagnostics/production-569-answer-visibility
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/production-569-answer-visibility
+          if ! git diff --cached --quiet; then
+            git commit -m "Retain actual Production answer visibility evidence from run40223539376 [skip ci]"
+            git pull --rebase --autostash origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
