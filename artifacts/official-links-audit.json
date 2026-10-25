@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-24T18:56:21.278Z",
+  "generatedAt": "2026-10-25T08:26:21.739Z",
   "services": 202,
-  "uniqueOfficialUrls": 249,
+  "uniqueOfficialUrls": 250,
   "counts": {
-    "REACHABLE": 156,
+    "REACHABLE": 157,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
     "NETWORK_UNVERIFIED": 84,
@@ -2573,12 +2573,23 @@
       "result": "REACHABLE"
     },
     {
+      "url": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+      "services": [
+        "تأسيس-منشأة-جديدة-في-عجمان"
+      ],
+      "kinds": [
+        "official-information"
+      ],
+      "status": 200,
+      "finalUrl": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+      "result": "REACHABLE"
+    },
+    {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
       "services": [
         "تأسيس-منشأة-جديدة-في-عجمان"
       ],
       "kinds": [
-        "official-information",
         "official-cta",
         "page-official-route"
       ],
