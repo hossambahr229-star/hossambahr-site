@@ -13,4 +13,4 @@ export function exactServiceHandoff(query,rows,normalize){
 
 // Prefer the approved source attached to the current recorded review, keeping
 // historical references intact. A source still under review never gains priority.
-export function reviewedCatalogSource(row){const sources=row.safeSources||[],tag=row.binding?.metadata?.recorded_detail_review;return (tag?sources.find(source=>!source.review_required&&source.metadata?.review_tag===tag):null)||sources[0]||null;}
+export function reviewedCatalogSource(row){const sources=row.safeSources||[],tag=row.binding?.metadata?.recorded_detail_review;if(sources[0]?.review_required)return sources[0];return (tag?sources.find(source=>!source.review_required&&source.metadata?.review_tag===tag):null)||sources[0]||null;}
