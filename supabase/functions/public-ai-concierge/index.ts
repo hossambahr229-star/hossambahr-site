@@ -1,3 +1,4 @@
+import { exactServiceHandoff, reviewedCatalogSource } from "../../../service-handoff.js";
 import {transactionObject,transactionObjectMatches,transactionObjectNeedsEmirate} from './transaction-object.ts';
 import {reraApprovalKind,RERA_APPROVAL_SLUGS} from './rera-approval.ts';
 import {siraIntent,SIRA_SLUGS} from '../../../sira-intent.js';
@@ -173,7 +174,7 @@ function answerFocus(text: string) {
 }
 
 function groundedAnswer(goal: string, row: any, focus: string) {
-  const source = row.safeSources?.[0] || null;
+  const source = reviewedCatalogSource(row);
   const rules = Array.isArray(row.policy?.rules) ? row.policy.rules : [];
   const fees = documentedRule(rules, "fees", row.safeSources || []);
   const duration = documentedRule(rules, "duration", row.safeSources || []);
@@ -722,7 +723,7 @@ function publicResult(goal: string, ranked: any[], latestTurn = goal) {
     const processSteps = row.steps
       .filter((s:any) => ["intake","review","approval","external","completion"].includes(String(s.taskType || "")))
       .map((s:any) => String(s.title || "")).filter(Boolean).slice(0,6);
-    const source = row.safeSources[0];
+    const source = reviewedCatalogSource(row);
     return {
       service_slug: row.binding.service_slug,
       service_name: row.title,
@@ -992,6 +993,7 @@ export default {
       const explicitObject = pendingObject || (!contextualFollowUp ? transactionObject(normalize(latestTurn)) : null);
       const missingObjectJurisdiction = explicitObject && transactionObjectNeedsEmirate(explicitObject) && (!currentJurisdiction || currentJurisdiction==="AE");
       const explicitRows = explicitObject && !missingObjectJurisdiction ? catalog.filter((row:any)=>transactionObjectMatches(explicitObject,normalize(row.title+" "+(row.binding.metadata?.name_en||"")),row.binding.authority_key)) : [];
+      const exactHandoff = exactServiceHandoff(latestTurn, catalog, normalize);
       const catalogMs = performance.now() - catalogStarted;
       let ranked:any[];
       const exactDubaiFamilySponsorship=dubaiSponsorshipCandidate(catalog,relationship,semantic.action,semantic.jurisdiction,semanticGoal);
@@ -1013,6 +1015,8 @@ export default {
         ranked=(siraKind==='unsupported'||(siraJurisdiction&&siraJurisdiction!=='AE-DU'))?[]:catalog.filter((row:any)=>row.authority?.authority_key==='sira-dubai'&&(siraKind==='general'||row.binding.service_slug===(siraKind==='system'?SIRA_SLUGS.system:SIRA_SLUGS.activity))).map((row:any)=>({...row,score:12000}));
       } else if(reraKind){
         ranked=(reraKind==='unsupported'||(reraJurisdiction&&reraJurisdiction!=='AE-DU')||reraKind==='general')?[]:catalog.filter((row:any)=>row.authority?.authority_key==='dld-rera'&&row.binding.service_slug===RERA_APPROVAL_SLUGS[reraKind]).map((row:any)=>({...row,score:12000}));
+      } else if(exactHandoff){
+        ranked=[{...exactHandoff,score:100000}];
       } else if(explicitObject){
         ranked=explicitRows.map((row:any)=>({...row,score:14000}));
       } else if(exactDubaiFamilySponsorship){
