@@ -19,16 +19,16 @@
   function safeReturnPath(value) {
     const visited = new Set();
     for (let depth=0; depth<5; depth++) {
-      if (typeof value!=="string" || !value.startsWith("/") || value.startsWith("//") || /[\\\u0000-\u001f\u007f]/.test(value) || visited.has(value)) return "/account/";
+      if (typeof value!=="string" || !value.startsWith("/") || value.startsWith("//") || /[\\\u0000-\u001f\u007f]/.test(value) || visited.has(value)) return accountPath;
       visited.add(value);
       try {
         const url=new URL(value,"https://hossambahr.com");
-        if(url.origin!=="https://hossambahr.com") return "/account/";
+        if(url.origin!=="https://hossambahr.com") return accountPath;
         if(/^\/(?:en\/)?auth(?:\/|$)/.test(url.pathname)) {value=url.searchParams.get("return");continue;}
         return url.pathname+url.search+url.hash;
-      } catch {return "/account/";}
+      } catch {return accountPath;}
     }
-    return "/account/";
+    return accountPath;
   }
   function navigationReturnPath(location) {
     return safeReturnPath(/^\/(?:en\/)?auth(?:\/|$)/.test(location.pathname)
