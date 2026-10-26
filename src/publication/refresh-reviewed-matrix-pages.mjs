@@ -26,7 +26,7 @@ for(const record of review.records){
   html=html.replace(/(<dt>الإمارة<\/dt><dd>)[\s\S]*?(<\/dd>)/,(_,open,close)=>{facts++;return open+esc(service.emirate)+close;});
   if(headings!==1||facts!==1)throw Error(service.slug+': cannot refresh reviewed jurisdiction labels');
  }
- const sections=[['requirements','(?:المتطلبات والمستندات|المستندات والمتطلبات)',service.noDocumentsRequired?'<p>لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية.</p>':'<ul>'+service.requirements.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>'],['fees','الرسوم','<p>'+esc(service.fees)+'</p>'],['duration','(?:المدة المتوقعة|مدة الإنجاز)','<p>'+esc(service.duration)+'</p>'],['conditions','الشروط','<p>'+esc(service.conditions)+'</p>'],['specialCases','الحالات الخاصة وأسباب التعطل','<p>'+esc(service.specialCases)+'</p>']];
+ const sections=[['requirements','(?:المتطلبات والمستندات|المستندات والمتطلبات)',service.noDocumentsRequired?'<p>لا توجد مستندات مطلوبة وفق بطاقة الخدمة الرسمية.</p>':'<ul>'+service.requirements.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>'],['fees','الرسوم','<p>'+esc(service.fees)+'</p>'],['duration','(?:المدة المتوقعة|مدة الإنجاز)','<p>'+esc(service.duration)+'</p>'],['conditions','الشروط','<p>'+esc(service.conditions)+'</p>'],['specialCases','الحالات الخاصة وأسباب التعطل','<p>'+esc(service.specialCases.replace(' رابط التنفيذ محفوظ إلى newestablishment.',''))+'</p>']];
  for(const [field,heading,body] of sections){
   if(!reviewedFields.has(field))continue;
   let matches=0;
