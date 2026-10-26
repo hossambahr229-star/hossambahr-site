@@ -17,15 +17,17 @@ jobs:
       - name: Wait for duration-card release
         run: |
           node --input-type=module <<'NODE'
-          for(let i=0;i<60;i++){const s=await(await fetch('https://hossambahr.com/services/'+"تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي"+'/',{cache:'no-store'})).text();if(s.includes('data-official-variant-days="120"'))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Duration cards not published');
+          import{createHash}from'node:crypto';
+          for(let i=0;i<60;i++){const s=await(await fetch('https://hossambahr.com/services/'+"تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي"+'/',{cache:'no-store'})).text();const contact=await(await fetch('https://hossambahr.com/contact/',{cache:'no-store'})).text();if(s.includes('data-official-variant-days="120"')&&/customer-intake\.js\?v=[a-f0-9]{12}"/.test(contact))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Duration cards and versioned intake not published');
           NODE
       - name: Actual desktop and phone browser journeys
         env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
         run: |
           node --input-type=module <<'NODE'
-          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          import{createHash}from'node:crypto';import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
           const out='diagnostics/icp-job-duration-live';await mkdir(out,{recursive:true});const base='https://hossambahr.com',slug="تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي";
           const rows=await(await fetch(base+'/customer-execution-data.json')).json(),job=rows.find(s=>s.service_slug===slug);assert.equal(job.official_variant_cards.length,3);
+          const expectedVersion=createHash('sha256').update(await(await fetch(base+'/customer-intake.js')).text()).update(await(await fetch(base+'/customer-jurisdiction.js')).text()).digest('hex').slice(0,12);
           const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH});const journeys=[];
           try{for(const width of[1440,1366,390,320])for(const locale of['ar','en']){
            const p=locale==='en'?'/en':'',route=p+'/services/'+slug+'/',page=await browser.newPage({viewport:{width,height:960},deviceScaleFactor:1}),errors=[];page.setDefaultTimeout(20000);page.on('pageerror',e=>errors.push(e.message));
@@ -36,6 +38,7 @@ jobs:
            const direct=await page.locator('#service-execution-options [data-hb-direct-whatsapp]').getAttribute('href');assert.equal(new URL(direct).pathname,'/971503780460');assert.ok(new URL(direct).searchParams.get('text').includes('directory:residency:34'));
            await page.screenshot({path:out+'/'+locale+'-cards-'+width+'.png'});
            await page.locator('#service-execution-options .hb-path-track').click();await page.waitForLoadState('networkidle');await page.waitForFunction(s=>document.querySelector('[name=service]').value===s,slug);
+           assert.equal(await page.locator('script[src*="customer-intake.js"]').getAttribute('src'),'/customer-intake.js?v='+expectedVersion);
            await page.locator('[name=emirate]').selectOption('الشارقة');await page.locator('[data-customer-intake] button[type=submit]').click();assert.ok(await page.locator('[data-intake-review]').isVisible());assert.equal(await page.locator('[data-intake-official]').getAttribute('href'),route+'#official-variant-options');
            const wa=new URL(await page.locator('[data-intake-whatsapp]').getAttribute('href'));assert.equal(wa.pathname,'/971503780460');assert.ok(wa.searchParams.get('text').includes(locale==='en'?'Sharjah':'الشارقة'));
            await page.locator('[data-intake-official]').click();await page.waitForLoadState('networkidle');assert.equal(decodeURI(new URL(page.url()).pathname),route);assert.equal(new URL(page.url()).hash,'#official-variant-options');
