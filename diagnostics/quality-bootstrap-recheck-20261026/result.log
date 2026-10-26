@@ -1,0 +1,21 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: HTTP 5
+
+503 !== 200
+
+    at runCase (file:///home/runner/work/hossambahr-site/hossambahr-site/source/scripts/hb-ai-human-response-quality-production.mjs:23:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Promise.all (index 5)
+    at async file:///home/runner/work/hossambahr-site/hossambahr-site/source/scripts/hb-ai-human-response-quality-production.mjs:31:34 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 503,
+  expected: 200,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.21.0
