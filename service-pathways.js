@@ -2,7 +2,7 @@ const escape=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&l
 export const WHATSAPP_NUMBER='971503780460';
 export function pathwayRecord(service,locale='ar'){
  const emirates={'دبي':'Dubai','أبوظبي':'Abu Dhabi','الشارقة':'Sharjah','عجمان':'Ajman','رأس الخيمة':'Ras Al Khaimah','الفجيرة':'Fujairah','أم القيوين':'Umm Al Quwain','اتحادي':'Federal'};
- return {...((service.destinationKind||service.destination_kind)==='OFFICIAL_GUIDANCE'?{kind:'OFFICIAL_GUIDANCE'}:{}),slug:service.service_slug||service.slug,id:service.service_id||service.id,name:service.service_name||service.name,emirate:service.emirate,emirate_en:service.emirate_en||emirates[service.emirate]||'See service jurisdiction',authority:service.authority,route:service.source_page||service.internalRoute,official:(locale==='en'&&(service.official_execution_url_en||service.officialCtaUrlEn))||service.official_execution_url||service.officialCtaUrl||service.official_url};
+ return {...((service.destinationKind||service.destination_kind)==='OFFICIAL_GUIDANCE'?{kind:'OFFICIAL_GUIDANCE'}:{}),slug:service.service_slug||service.slug,id:service.service_id||service.id,name:service.service_name||service.name,emirate:service.emirate,emirate_en:service.emirate_en||emirates[service.emirate]||'See service jurisdiction',authority:service.authority,route:service.source_page||service.internalRoute,variantCards:service.officialVariantCards||service.official_variant_cards||[],official:(locale==='en'&&(service.official_execution_url_en||service.officialCtaUrlEn))||service.official_execution_url||service.officialCtaUrl||service.official_url};
 }
 export function whatsappHref(service,locale='ar',summary=''){
  const s=pathwayRecord(service,locale),en=locale==='en';
@@ -18,9 +18,18 @@ export function whatsappHref(service,locale='ar',summary=''){
 }
 export function pathwayMarkup(service,locale='ar'){
  const s=pathwayRecord(service,locale),en=locale==='en',p=en?'/en':'';
+ const chooseDuration=s.variantCards.length>1,officialHref=chooseDuration?p+s.route+'#official-variant-options':s.official;
  const review=p+'/contact/?service='+encodeURIComponent(s.slug)+'&source='+encodeURIComponent(p+s.route)+'&handoff=1';
- return `<div class="hb-service-pathways" data-hb-pathways="${escape(s.slug)}" aria-label="${en?'Choose how to proceed':'اختر طريقة إنجاز المعاملة'}"><a class="hb-path-official"${s.kind==='OFFICIAL_GUIDANCE'?' data-destination-kind="official-guidance"':''} href="${escape(s.official)}" target="_blank" rel="noopener noreferrer">${s.kind==='OFFICIAL_GUIDANCE'?(en?'Official guidance ↗':'الدليل الحكومي الرسمي ↗'):(en?'Government self-service ↗':'أنجزها بنفسي رسميًا ↗')}</a><a class="hb-path-assisted" data-hb-direct-whatsapp href="${escape(whatsappHref(service,locale))}" target="_blank" rel="noopener noreferrer">${en?'With HOSSAM BAHR · WhatsApp':'أنجزها مع حسام بحر · واتساب'}</a><a class="hb-path-track" href="${escape(review)}">${en?'Or prepare a request and track it in the platform →':'أو جهّز طلبًا وتابعه داخل المنصة ←'}</a></div>`;
+ return `<div class="hb-service-pathways" data-hb-pathways="${escape(s.slug)}" aria-label="${en?'Choose how to proceed':'اختر طريقة إنجاز المعاملة'}"><a class="hb-path-official"${s.kind==='OFFICIAL_GUIDANCE'?' data-destination-kind="official-guidance"':''} href="${escape(officialHref)}"${chooseDuration?' data-government-duration-selection':' target="_blank" rel="noopener noreferrer"'}>${chooseDuration?(en?'Choose visa duration →':'اختر مدة التأشيرة ←'):s.kind==='OFFICIAL_GUIDANCE'?(en?'Official guidance ↗':'الدليل الحكومي الرسمي ↗'):(en?'Government self-service ↗':'أنجزها بنفسي رسميًا ↗')}</a><a class="hb-path-assisted" data-hb-direct-whatsapp href="${escape(whatsappHref(service,locale))}" target="_blank" rel="noopener noreferrer">${en?'With HOSSAM BAHR · WhatsApp':'أنجزها مع حسام بحر · واتساب'}</a><a class="hb-path-track" href="${escape(review)}">${en?'Or prepare a request and track it in the platform →':'أو جهّز طلبًا وتابعه داخل المنصة ←'}</a></div>`;
 }
+
+export function officialVariantMarkup(service,locale='ar'){
+ const cards=service.officialVariantCards||service.official_variant_cards||[];if(cards.length<2)return '';
+ const en=locale==='en';const durations=new Set();
+ for(const card of cards){const url=new URL(card.informationUrl);if(!Number.isInteger(card.durationDays)||card.durationDays<=0||durations.has(card.durationDays)||url.protocol!=='https:'||url.hostname!=='icp.gov.ae'||url.pathname!=='/en/services-details/'||!url.searchParams.get('serviceid')||!card.reviewedAt)throw Error('Invalid reviewed ICP duration card');durations.add(card.durationDays);}
+ return '<section id="official-variant-options" class="hb-official-variants" data-hb-official-variants><h2>'+(en?'Choose your visa duration':'اختر مدة التأشيرة')+'</h2><p>'+(en?'Open the ICP information card for the duration you need, then use the application channel shown by the authority. Check each card separately; missing fees or conditions are not an exemption.':'افتح بطاقة ICP الخاصة بالمدة المطلوبة، ثم اتبع قناة التقديم التي تعرضها الجهة. راجع كل بطاقة على حدة؛ غياب رسم أو شرط من إحدى البطاقات لا يعني الإعفاء منه.')+'</p><div>'+cards.map(card=>'<a data-official-variant-days="'+card.durationDays+'" href="'+escape(card.informationUrl)+'" target="_blank" rel="noopener noreferrer">'+(en?'Official '+card.durationDays+'-day visa card ↗':'بطاقة التأشيرة الرسمية — '+card.durationDays+' يومًا ↗')+'</a>').join('')+'</div></section>';
+}
+
 if(typeof document!=='undefined'){
  const locale=document.documentElement.lang==='en'?'en':'ar';
  fetch('/customer-execution-data.json').then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(rows=>{

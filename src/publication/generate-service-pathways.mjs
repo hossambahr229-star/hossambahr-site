@@ -1,7 +1,7 @@
 import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {createHash} from 'node:crypto';
-import {pathwayMarkup} from '../../service-pathways.js';
+import {pathwayMarkup,officialVariantMarkup} from '../../service-pathways.js';
 import {escapeHtml as esc,emirateEnglish} from './english-catalog.mjs';
 const root=resolve(import.meta.dirname,'../..');
 const {services}=JSON.parse(await readFile(join(root,'src/registry/published-services.json'),'utf8'));
@@ -30,6 +30,23 @@ async function walk(dir){for(const entry of await readdir(dir,{withFileTypes:tru
  const locale=/<html\b[^>]*lang="en"/.test(html)?'en':'ar';
  const relative='.'+dir.slice(root.length).replaceAll('\\','/')+'/';const service=routes.get(relative);
  if(service){
+  if(service.officialVariantCards?.length>1){
+   html=html.replace(/<section\b[^>]*data-hb-official-variants[^>]*>[\s\S]*?<\/section>/g,'');
+   const variantBlock=officialVariantMarkup(service,locale);
+   const insertion=locale==='en'?'<section id="service-documents">':'<section id="official-route"';
+   if(!html.includes(insertion))throw Error('Missing official variant placement: '+service.slug);
+   html=html.replace(insertion,variantBlock+insertion);
+   const chooser=(locale==='en'?'/en':'')+service.internalRoute+'#official-variant-options';
+   html=html.replace(/<a\b[^>]*>[\s\S]*?<\/a>/g,link=>{
+    const parent=link.includes(service.officialCtaUrl.replaceAll('&','&amp;'))||link.includes(service.officialCtaUrl);
+    if(!parent)return link;
+    if(link.includes('primary-government-cta')||/Open the government service/.test(link))return link.replace(/href="[^"]*"/,'href="'+chooser+'"').replace(/\s+target="_blank"/,'').replace('data-government-cta="verified"','data-government-duration-selection').replace(/>[^<]*<\/a>$/, '>'+(locale==='en'?'Choose visa duration →':'اختر مدة التأشيرة ←')+'</a>');
+    if(link.includes('official-card-reference'))return link.replace(/>[^<]*<\/a>$/,'>مرجع التأشيرات العام لدى ICP ↗</a>');
+    if(/Read the official source/.test(link))return link.replace('Read the official source','Read the general visa source');
+    return link;
+   });
+  }
+
   // Existing Arabic pages survive builds, so always refresh their canonical pathway block.
   html=html.replace(/<div\b[^>]*data-hb-pathways="[^"]*"[^>]*>[\s\S]*?<\/div>/g,'');
   html=html.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/,'$1'+pathwayMarkup(service,locale).replace('<div class=', '<div id="service-execution-options" class='));

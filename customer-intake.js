@@ -40,6 +40,6 @@ import {compatibleEmirate,jurisdictionCode} from './customer-jurisdiction.js?v=2
   review.querySelector('[data-intake-workspace]').href=prefix+'/auth/?return='+encodeURIComponent(prefix+'/os/?handoff=1#ai-intake');
   const message=[en?'Please help me handle this transaction:':'أريد مساعدة في إنجاز هذه المعاملة:',goal,emirateLabel,row?.authority?.[en?'en':'ar'],row?'https://hossambahr.com'+prefix+row.source_page:''].filter(Boolean).join('\n');
   review.querySelector('[data-intake-whatsapp]').href='https://wa.me/971503780460?text='+encodeURIComponent(message);
-  const official=review.querySelector('[data-intake-official]');official.hidden=!row?.official_url;if(row)official.href=row.official_url;
+  const official=review.querySelector('[data-intake-official]');official.hidden=!row?.official_url;if(row){const variants=row.official_variant_cards?.length>1;official.href=variants?(en?'/en':'')+row.source_page+'#official-variant-options':row.official_url;official.textContent=variants?(en?'Choose visa duration':'اختر مدة التأشيرة'):(en?'Government self-service':'التنفيذ الحكومي بنفسي');if(variants)official.removeAttribute('target');else official.target='_blank';}
  });
 })();
