@@ -52,7 +52,7 @@ export async function synchronizeCustomerNotices(publicationRoot=root){
  for(const route of ['privacy','faq'])if(!sitemap.includes('<loc>https://hossambahr.com/en/'+route+'/</loc>'))sitemap=sitemap.replace('</urlset>','<url><loc>https://hossambahr.com/en/'+route+'/</loc></url></urlset>');
  await writeFile(join(root,'sitemap.xml'),sitemap);
  // Keep existing English journeys on the newly published native notices.
- async function linkNotices(dir){for(const entry of await readdir(dir,{withFileTypes:true})){const file=join(dir,entry.name);if(entry.isDirectory())await linkNotices(file);else if(entry.name.endsWith('.html')){const before=await readFile(file,'utf8');const after=before.replaceAll('href="/privacy/"','href="/en/privacy/"').replaceAll('href="/faq/"','href="/en/faq/"').replaceAll('Help (Arabic)','Help');if(after!==before)await writeFile(file,after);}}}
+ async function linkNotices(dir){for(const entry of await readdir(dir,{withFileTypes:true})){const file=join(dir,entry.name);if(entry.isDirectory())await linkNotices(file);else if(entry.name.endsWith('.html')){const before=await readFile(file,'utf8');const after=before.replace(/<a\b[^>]*>/g,anchor=>/\blang=["']ar["']/.test(anchor)?anchor:anchor.replaceAll('href="/privacy/"','href="/en/privacy/"').replaceAll('href="/faq/"','href="/en/faq/"')).replaceAll('Help (Arabic)','Help');if(after!==before)await writeFile(file,after);}}}
  await linkNotices(join(root,'en'));
 }
 if(process.argv[1]&&resolve(process.argv[1])===resolve(import.meta.filename))await synchronizeCustomerNotices();

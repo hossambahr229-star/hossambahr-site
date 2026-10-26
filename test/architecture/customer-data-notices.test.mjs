@@ -19,7 +19,7 @@ test('notices preserve analytics, publish both languages and remain idempotent',
  assert.equal(await readFile(join(root,'privacy/index.html'),'utf8'),once);
  assert.ok(once.includes(analytics));assert.doesNotMatch(once,/<p>الإصدار الحالي لا يطلب إنشاء حساب/);
  for(const locale of ['', 'en/']){
-  const privacy=await readFile(join(root,locale,'privacy/index.html'),'utf8');assert.match(privacy,/data-customer-data-notice="account-documents-v1"/);assert.match(privacy,/data-hb-analytics-disclosure/);
+  const privacy=await readFile(join(root,locale,'privacy/index.html'),'utf8');assert.match(privacy,/data-customer-data-notice="account-documents-v1"/);assert.match(privacy,/data-hb-analytics-disclosure/);if(locale)assert.ok(privacy.includes('<a href="/privacy/" lang="ar">'));
   const faq=await readFile(join(root,locale,'faq/index.html'),'utf8');assert.ok(faq.includes(dataAnswer(Boolean(locale))));
  }
  const auth=await readFile(join(root,'en/auth/index.html'),'utf8');assert.match(auth,/href="\/en\/privacy\/"/);assert.match(auth,/href="\/en\/faq\/"/);assert.doesNotMatch(auth,/Help \(Arabic\)/);
