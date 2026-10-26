@@ -112,14 +112,15 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-simple-foo
 .authority-initials{display:flex;align-items:center;justify-content:center;min-height:42px;min-width:42px;color:#103e36;font-size:11px}
 @media(max-width:900px){.home-service-launchpad .home-domain-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){
+.home-discovery-desktop-title{display:none}.home-discovery-mobile-title{display:inline}
 .home-service-launchpad{--hb-discovery-gap:10px;--hb-discovery-padding:12px;--hb-discovery-radius:12px}
 .home-service-launchpad .home-domain-heading{display:block;margin-bottom:14px}.home-service-launchpad .home-domain-heading h2{font-size:24px!important}
 .home-service-launchpad .home-discovery-eyebrow,.home-service-launchpad .home-domain-heading p{display:none}.home-service-launchpad .home-domain-heading h2{font-size:21px!important;line-height:1.35}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{flex-direction:row;align-items:center;gap:10px;min-height:48px;margin-top:12px;padding:8px 12px!important}
 .home-directory-entry strong{font-size:21px}
-html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{grid-template-columns:minmax(0,1fr) 12px;gap:5px;padding:12px 10px!important;min-height:78px!important}
-.home-service-launchpad .home-simple-card>.home-line-icon{display:none}.home-service-launchpad .home-simple-card b{font-size:14px!important}.home-service-launchpad .home-simple-card small{font-size:11px!important}
-.home-service-launchpad .home-domain-count{font-size:11px!important}.home-domain-shortcuts{margin:0 10px 8px}
+html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{grid-template-columns:minmax(0,1fr) 12px;gap:5px;padding:10px!important;min-height:78px!important}
+.home-service-launchpad .home-simple-card>.home-line-icon{display:none}.home-service-launchpad .home-simple-card b{font-size:13px!important;line-height:1.4!important}.home-service-launchpad .home-simple-card small{font-size:10.5px!important;line-height:1.4!important;margin-top:2px}
+.home-service-launchpad .home-domain-count{font-size:10.5px!important;margin-top:2px}.home-domain-shortcuts{margin:0 10px 8px}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:60px!important;padding:7px 0!important}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>span{font-size:12px!important}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-domain-shortcuts>a:nth-child(n+2){display:none!important}
@@ -130,7 +131,6 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-domain-sho
 
 .home-discovery-mobile-title{display:none}
 @media(min-width:1101px){html.hb-phase8 body[data-home-entry="simple"] .premium-popular.discovery-entry{justify-content:flex-start!important}html.hb-phase8 body[data-home-entry="simple"] .discovery-entry>a{position:static!important;inset:auto!important;width:auto!important;min-height:44px!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:9px 18px!important;font-size:13px!important;border-radius:8px!important}}
-@media(max-width:720px){.home-discovery-desktop-title{display:none}.home-discovery-mobile-title{display:inline}.home-service-launchpad .home-simple-card b{font-size:13px!important;line-height:1.4!important}.home-service-launchpad .home-simple-card small{font-size:10.5px!important;line-height:1.4!important;margin-top:2px}.home-service-launchpad .home-domain-count{font-size:10.5px!important;margin-top:2px}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{padding:10px!important}}
 
 /* Directory starts with the requested transaction, rather than competing menus. */
 .discovery-directory-help{font-size:15px;line-height:1.8;color:#365548;max-width:850px}
