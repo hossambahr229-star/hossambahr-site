@@ -36,11 +36,12 @@ async function walk(dir){for(const entry of await readdir(dir,{withFileTypes:tru
    const insertion=locale==='en'?'<section id="service-documents">':'<section id="official-route"';
    if(!html.includes(insertion))throw Error('Missing official variant placement: '+service.slug);
    html=html.replace(insertion,variantBlock+insertion);
+   html=html.replace(/<p class="verification-note">[\s\S]*?<\/p>/g,'<p class="verification-note">'+(locale==='en'?'Choose the visa duration below and review its specific ICP information card. Requirements can differ by duration.':'اختر مدة التأشيرة أدناه وراجع بطاقة ICP الخاصة بها. قد تختلف المتطلبات حسب المدة.')+'</p>');
    const chooser=(locale==='en'?'/en':'')+service.internalRoute+'#official-variant-options';
    html=html.replace(/<a\b[^>]*>[\s\S]*?<\/a>/g,link=>{
     const parent=link.includes(service.officialCtaUrl.replaceAll('&','&amp;'))||link.includes(service.officialCtaUrl);
     if(!parent)return link;
-    if(link.includes('primary-government-cta')||/Open the government service/.test(link))return link.replace(/href="[^"]*"/,'href="'+chooser+'"').replace(/\s+target="_blank"/,'').replace('data-government-cta="verified"','data-government-duration-selection').replace(/>[^<]*<\/a>$/, '>'+(locale==='en'?'Choose visa duration →':'اختر مدة التأشيرة ←')+'</a>');
+    if(link.includes('primary-government-cta')||/Open the government service|بطاقة المعلومات الرسمية/.test(link))return link.replace(/href="[^"]*"/,'href="'+chooser+'"').replace(/\s+target="_blank"/,'').replace('data-government-cta="verified"','data-government-duration-selection').replace(/>[^<]*<\/a>$/, '>'+(locale==='en'?'Choose visa duration →':'اختر مدة التأشيرة ←')+'</a>');
     if(link.includes('official-card-reference'))return link.replace(/>[^<]*<\/a>$/,'>مرجع التأشيرات العام لدى ICP ↗</a>');
     if(/Read the official source/.test(link))return link.replace('Read the official source','Read the general visa source');
     return link;

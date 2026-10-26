@@ -89,7 +89,12 @@ test('all published services preserve distinct official and assistance paths', a
   for (const service of registry.services) {
     const route = service.internalRoute.replace(/^\//, '').replace(/\/$/, '');
     const html = await read(`${route}/index.html`);
-    assert.match(html, /data-government-cta="verified"|data-official-execution="true"|phase2-government-path/, service.internalRoute);
+    if(service.officialVariantCards?.length>1){
+      assert.match(html,/data-government-duration-selection/,service.internalRoute);
+      assert.ok(html.includes(service.internalRoute+'#official-variant-options'),service.internalRoute);
+      assert.equal((html.match(/data-official-variant-days=/g)||[]).length,service.officialVariantCards.length);
+      for(const card of service.officialVariantCards) assert.ok(html.includes(card.informationUrl),card.informationUrl);
+    }else assert.match(html, /data-government-cta="verified"|data-official-execution="true"|phase2-government-path/, service.internalRoute);
     assert.match(html, /data-commercial-cta="verified"|phase2-commercial-path/, service.internalRoute);
     checked += 1;
   }
