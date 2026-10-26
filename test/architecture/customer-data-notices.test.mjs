@@ -13,6 +13,7 @@ test('notices preserve analytics, publish both languages and remain idempotent',
  await writeFile(join(root,'faq/index.html'),'<details><summary>هل تخزن المنصة بياناتي الشخصية؟</summary><p>Old answer</p></details>');
  await writeFile(join(root,'en/auth/index.html'),'<a href="/privacy/">Privacy</a><a href="/faq/">Help (Arabic)</a>');
  await writeFile(join(root,'sitemap.xml'),'<urlset></urlset>');
+ await writeFile(join(root,'customer-notices.css'),'.notice{padding:16px}');
  await synchronizeCustomerNotices(root);
  const once=await readFile(join(root,'privacy/index.html'),'utf8');
  await synchronizeCustomerNotices(root);
@@ -23,6 +24,9 @@ test('notices preserve analytics, publish both languages and remain idempotent',
   const faq=await readFile(join(root,locale,'faq/index.html'),'utf8');assert.ok(faq.includes(dataAnswer(Boolean(locale))));
  }
  const auth=await readFile(join(root,'en/auth/index.html'),'utf8');assert.match(auth,/href="\/en\/privacy\/"/);assert.match(auth,/href="\/en\/faq\/"/);assert.doesNotMatch(auth,/Help \(Arabic\)/);
+ const enBefore=await readFile(join(root,'en/privacy/index.html'),'utf8');const oldStyle=enBefore.match(/href="(\/customer-notices\.css\?v=[a-f0-9]+)"/)?.[1];assert.ok(oldStyle);
+ await writeFile(join(root,'customer-notices.css'),'.notice{padding:24px}');await synchronizeCustomerNotices(root);
+ const enAfter=await readFile(join(root,'en/privacy/index.html'),'utf8');assert.ok(!enAfter.includes(oldStyle));
  const sitemap=await readFile(join(root,'sitemap.xml'),'utf8');assert.equal((sitemap.match(/en\/privacy/g)||[]).length,1);assert.equal((sitemap.match(/en\/faq/g)||[]).length,1);
 });
 test('both notices cover public AI, stored accounts, documents and external handoff',()=>{for(const en of [false,true])assert.equal(privacyCopy(en).length,5);assert.match(privacyCopy(true).flat().join(' '),/private document storage/);});
