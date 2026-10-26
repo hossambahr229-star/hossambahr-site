@@ -5,7 +5,7 @@ import {pathwayMarkup,officialVariantMarkup} from '../../service-pathways.js';
 import {escapeHtml as esc,emirateEnglish} from './english-catalog.mjs';
 const root=resolve(import.meta.dirname,'../..');
 const {services}=JSON.parse(await readFile(join(root,'src/registry/published-services.json'),'utf8'));
-const version=createHash('sha256').update(await readFile(join(root,'service-pathways.js'))).update(await readFile(join(root,'service-pathways.css'))).digest('hex').slice(0,12);
+const version=createHash('sha256').update(await readFile(join(root,'service-pathways.js'))).update(await readFile(join(root,'service-pathways.css'))).update(await readFile(join(root,'customer-execution-data.json'))).digest('hex').slice(0,12);
 const routes=new Map(services.flatMap(s=>[['.'+s.internalRoute,s],['./en'+s.internalRoute,s]]));
 const emirates=['دبي','أبوظبي','الشارقة','عجمان','رأس الخيمة','الفجيرة','أم القيوين'];
 const featured=['family-residency-uae','issue-trade-license-dubai','transfer-work-permit-uae','renew-business-license-sharjah','ajman-commercial-license-issuance','abu-dhabi-economic-license-issuance'].map(slug=>services.find(s=>s.slug===slug));

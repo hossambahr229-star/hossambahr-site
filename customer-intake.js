@@ -17,7 +17,7 @@ import {compatibleEmirate,jurisdictionCode} from './customer-jurisdiction.js?v=2
  form.elements.emirate.addEventListener('change',validateJurisdiction);
  form.addEventListener('input',()=>{document.querySelector('[data-intake-review]').hidden=true;});
  service.addEventListener('change',()=>{carry=null;choose();});
- fetch('/customer-execution-data.json').then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(rows=>{
+ fetch('/customer-execution-data.json'+(new URL(import.meta.url).search||''),{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(rows=>{
   catalog=rows;for(const row of rows){const o=document.createElement('option');o.value=row.service_slug;o.textContent=row.service_name[en?'en':'ar'];service.append(o);}
   service.value=params.get('service')||carry?.service_slug||'';choose();
   if(carry&&(!selected()||carry.service_slug===selected().service_slug)){

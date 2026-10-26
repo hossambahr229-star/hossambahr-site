@@ -32,7 +32,7 @@ export function officialVariantMarkup(service,locale='ar'){
 
 if(typeof document!=='undefined'){
  const locale=document.documentElement.lang==='en'?'en':'ar';
- fetch('/customer-execution-data.json').then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(rows=>{
+ fetch('/customer-execution-data.json'+(new URL(import.meta.url).search||''),{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(rows=>{
   const byRoute=new Map(rows.map(row=>[new URL(row.source_page,location.origin).pathname,row]));
   const stage=document.querySelector('.hero-search-stage');
   if(stage&&document.querySelector('.hb-chat-shell')){
