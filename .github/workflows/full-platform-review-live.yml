@@ -1,0 +1,64 @@
+name: Full Platform Review Live Evidence
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/full-platform-review-live.yml']
+permissions: {contents: write}
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for corrected native notice release
+        run: |
+          node --input-type=module <<'NODE'
+          for(let i=0;i<60;i++){const s=await(await fetch('https://hossambahr.com/en/privacy/',{cache:'no-store'})).text();if(s.includes('account-documents-v1')&&s.includes('href="/privacy/" lang="ar"'))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Correct notice language switch not published');
+          NODE
+      - name: Actual desktop and phone browser journeys
+        env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
+        run: |
+          node --input-type=module <<'NODE'
+          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/full-platform-review-live';await mkdir(out,{recursive:true});
+          const base='https://hossambahr.com';const records=await(await fetch(base+'/transaction-discovery-data.json')).json();
+          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH});const views=[],journeys=[];
+          try{for(const width of[1440,390,320]){
+           const page=await browser.newPage({viewport:{width,height:width===1440?960:844},deviceScaleFactor:1});page.setDefaultTimeout(20000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+           for(const id of['mohre','icp','gdrfa-dubai']){
+            await page.goto(base+'/authorities/'+id+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+            assert.equal(await page.evaluate(()=>innerWidth),width);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+            assert.ok(await page.locator('.authority-directory-hero').isVisible());assert.doesNotMatch(await page.locator('main').innerText(),/CTA|سجلات تاريخية مطبّعة|تدقيق عميق مكتمل/);
+            await page.screenshot({path:out+'/'+id+'-'+width+'.png'});
+            await page.getByRole('link',{name:'ابحث وصفِّ خدمات هذه الجهة ←',exact:true}).click();await page.waitForLoadState('networkidle');
+            assert.equal(new URL(page.url()).searchParams.get('authority'),id);assert.equal(await page.locator('[data-canonical-service]:visible').count(),records.filter(s=>s.i===id).length);
+            journeys.push({width,authority:id,count:records.filter(s=>s.i===id).length,status:'PASS'});
+           }
+           for(const locale of['ar','en'])for(const route of['privacy','faq']){
+            const prefix=locale==='en'?'/en':'';await page.goto(base+prefix+'/'+route+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+            assert.equal(await page.evaluate(()=>innerWidth),width);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+            if(route==='privacy'){assert.ok(await page.locator('[data-customer-data-notice]').isVisible());assert.ok(await page.locator('[data-hb-analytics-disclosure]').isVisible());assert.doesNotMatch(await page.locator('main').innerText(),/الإصدار الحالي لا يطلب إنشاء حساب/);}
+            if(locale==='en'){assert.equal(await page.locator('html').getAttribute('lang'),'en');assert.equal(await page.locator('html').getAttribute('dir'),'ltr');assert.doesNotMatch(await page.locator('main').innerText(),/[\u0600-\u06ff]/);}
+            await page.screenshot({path:out+'/'+locale+'-'+route+'-'+width+'.png'});views.push({width,locale,route,status:'PASS'});
+           }
+           await page.goto(base+'/en/privacy/',{waitUntil:'networkidle'});await page.getByRole('link',{name:'العربية',exact:true}).click();await page.waitForLoadState('networkidle');assert.equal(new URL(page.url()).pathname,'/privacy/');journeys.push({width,kind:'native-privacy-language-switch',status:'PASS'});
+           await page.goto(base+'/en/auth/',{waitUntil:'networkidle'});await page.waitForFunction(()=>document.querySelector('[data-account-link]'));const href=await page.locator('[data-account-link]').getAttribute('href');assert.equal(new URL(href,base).searchParams.get('return'),'/en/account/');journeys.push({width,kind:'english-auth-default-return',status:'PASS'});
+           assert.deepEqual(errors,[]);await page.close();
+          }}finally{await browser.close();}
+          await writeFile(out+'/report.json',JSON.stringify({status:'SCOPED_PASS',captureSource:'LIVE_PRODUCTION',views,journeys,protectedAccountExecution:'NOT_TESTED_NO_AUTHORIZED_CREDENTIALS',externalModel:'NOT_TESTED',humanVisualAcceptance:'NOT_DECLARED'},null,2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: full-platform-review-live, path: diagnostics/full-platform-review-live}
+      - name: Retain successful live evidence
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/full-platform-review-live
+          git commit -m "Retain actual authority and notice review evidence [skip ci]"
+          git pull --rebase --autostash origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
