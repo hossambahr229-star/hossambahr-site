@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-26T23:32:00.625Z",
+  "generatedAt": "2026-10-26T23:38:42.863Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
-    "REACHABLE": 156,
+    "REACHABLE": 155,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 85,
+    "NETWORK_UNVERIFIED": 86,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1788,9 +1788,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
