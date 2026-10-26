@@ -80,3 +80,9 @@ if(typeof document!=='undefined'){
  document.addEventListener('keydown',event=>{if(event.key==='Escape')for(const menu of document.querySelectorAll('.capability-explorer[open]')){menu.open=false;menu.querySelector('summary')?.focus();}});
  document.addEventListener('click',event=>{for(const menu of document.querySelectorAll('.home-capability-explorer[open]'))if(!menu.contains(event.target))menu.open=false;});
 }
+
+// Show the full platform on desktop; keep the initial phone choice concise.
+if(typeof document!=='undefined'){
+ const more=document.querySelector('#home-more-domains');
+ if(more){const desktop=matchMedia('(min-width:1101px)');const sync=()=>{more.open=desktop.matches;};sync();desktop.addEventListener('change',sync);}
+}

@@ -1,0 +1,45 @@
+name: Homepage Service Depth and Correct Destinations
+on:
+  pull_request:
+    paths: ['src/publication/**','transaction-discovery.*','premium-platform.js','scripts/homepage-depth-browser.mjs','.github/workflows/homepage-depth.yml']
+  push:
+    branches: [main]
+    paths: ['src/publication/**','transaction-discovery.*','premium-platform.js','scripts/homepage-depth-browser.mjs','.github/workflows/homepage-depth.yml']
+permissions: {contents: read}
+jobs:
+  preview:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - run: npm run build
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/homepage-depth-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: homepage-depth-preview, path: artifacts/homepage-depth}
+  live:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for paired homepage and discovery CSS publication
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';
+          const css=await readFile('transaction-discovery.css','utf8');
+          for(let i=0;i<60;i++){const [ar,en,liveCss]=await Promise.all(['https://hossambahr.com/','https://hossambahr.com/en/','https://hossambahr.com/transaction-discovery.css'].map(async u=>(await fetch(u,{cache:'no-store'})).text()));if(ar.includes('data-home-discovery="task-shortcuts"')&&en.includes('data-home-discovery="task-shortcuts"')&&css===liveCss)process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Current homepage release not published');
+          NODE
+      - run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" node scripts/homepage-depth-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: homepage-depth-live, path: artifacts/homepage-depth}
