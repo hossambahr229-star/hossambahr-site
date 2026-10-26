@@ -1,5 +1,6 @@
 import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
+import {createHash} from 'node:crypto';
 import {escapeHtml as esc} from './english-catalog.mjs';
 const root=resolve(import.meta.dirname,'../..');
 export function privacyCopy(en=false){
@@ -26,6 +27,7 @@ function enPage(title,route,body){
 }
 export async function synchronizeCustomerNotices(publicationRoot=root){
  const root=publicationRoot;
+ const styleHref='/customer-notices.css?v='+createHash('sha256').update(await readFile(join(root,'customer-notices.css'))).digest('hex').slice(0,12);
  const path=join(root,'privacy/index.html');let html=await readFile(path,'utf8');
  const analytics=html.match(/<section\b[^>]*data-hb-analytics-disclosure[^>]*>[\s\S]*?<\/section>/)?.[0];
  if(!analytics)throw Error('Existing analytics disclosure missing; preserve and review before changing privacy copy');
@@ -33,12 +35,14 @@ export async function synchronizeCustomerNotices(publicationRoot=root){
  '<article class="prose" data-customer-data-notice="account-documents-v1">'+render(privacyCopy())+'<p><a href="/contact/">تواصل بشأن بياناتك</a></p>'+analytics+'</article>');
  if(!html.includes('data-customer-data-page='))html=html.replace('<main id="main-content"','<main data-customer-data-page="privacy" id="main-content"');
  if(!html.includes('data-customer-notice-style'))html=html.replace('</head>','<link rel="stylesheet" href="/customer-notices.css" data-customer-notice-style></head>');
+ html=html.replace(/href="\/customer-notices\.css(?:\?[^\"]*)?"/g,'href="'+styleHref+'"');
  await writeFile(path,html);
  const faqPath=join(root,'faq/index.html');let faq=await readFile(faqPath,'utf8');
  faq=faq.replace(/(<summary>هل تخزن المنصة بياناتي الشخصية\؟<\/summary>)[\s\S]*?(<\/details>)/,
  '$1<p data-customer-data-notice="account-documents-v1">'+esc(dataAnswer(false))+' <a href="/privacy/">سياسة الخصوصية</a></p>$2');
  if(!faq.includes('data-customer-data-page='))faq=faq.replace('<main id="main-content"','<main data-customer-data-page="faq" id="main-content"');
  if(!faq.includes('data-customer-notice-style'))faq=faq.replace('</head>','<link rel="stylesheet" href="/customer-notices.css" data-customer-notice-style></head>');
+ faq=faq.replace(/href="\/customer-notices\.css(?:\?[^\"]*)?"/g,'href="'+styleHref+'"');
  await writeFile(faqPath,faq);
  const enAnalytics='<section data-hb-analytics-disclosure="v3"><h2>Platform usage measurement</h2><p>Internal usage measurement may record the page path, a temporary browser session identifier, an external referring site, UTM campaign tags and the general type of service, search or contact interaction. The analytics record does not include contact destinations, phone numbers, email addresses, WhatsApp URLs, message text, identity or passport numbers, search text or IP addresses. Owner and authentication pages are excluded from this measurement.</p></section>';
  const privacy=enPage('Privacy','privacy',render(privacyCopy(true))+'<p><a href="/en/contact/">Contact us about your data</a></p>'+enAnalytics);
@@ -51,7 +55,7 @@ export async function synchronizeCustomerNotices(publicationRoot=root){
  ['How do I check service information?','Open the service details and linked official source. Review the displayed verification status and any missing information before applying.']
  ];
  const help=enPage('Help and frequently asked questions','faq',questions.map(([q,a])=>'<details><summary>'+esc(q)+'</summary><p>'+esc(a)+'</p></details>').join('')+'<p><a href="/en/privacy/">Read the privacy notice</a></p>');
- for(const [route,content]of [['privacy',privacy],['faq',help]]){await mkdir(join(root,'en',route),{recursive:true});await writeFile(join(root,'en',route,'index.html'),content);}
+ for(const [route,content]of [['privacy',privacy],['faq',help]]){await mkdir(join(root,'en',route),{recursive:true});await writeFile(join(root,'en',route,'index.html'),content.replace('href="/customer-notices.css"','href="'+styleHref+'"'));}
  let sitemap=await readFile(join(root,'sitemap.xml'),'utf8');
  for(const route of ['privacy','faq'])if(!sitemap.includes('<loc>https://hossambahr.com/en/'+route+'/</loc>'))sitemap=sitemap.replace('</urlset>','<url><loc>https://hossambahr.com/en/'+route+'/</loc></url></urlset>');
  await writeFile(join(root,'sitemap.xml'),sitemap);
