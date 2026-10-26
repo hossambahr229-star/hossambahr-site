@@ -24,7 +24,8 @@ const render=items=>items.map(([title,text])=>'<section><h2>'+esc(title)+'</h2><
 function enPage(title,route,body){
  return '<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+title+' | HOSSAM BAHR</title><meta name="referrer" content="strict-origin-when-cross-origin"><link rel="canonical" href="https://hossambahr.com/en/'+route+'/"><link rel="alternate" hreflang="ar" href="https://hossambahr.com/'+route+'/"><link rel="alternate" hreflang="en" href="https://hossambahr.com/en/'+route+'/"><link rel="icon" href="/icon.svg"><link rel="stylesheet" href="/english-catalog.css"></head><body><a class="skip-link" href="#main-content">Skip to content</a><header><a class="en-brand" href="/en/"><img src="/icon.svg" width="48" height="48" alt=""><b>HOSSAM BAHR</b></a><nav aria-label="Main navigation"><a href="/en/discover/">Services</a><a href="/en/ai/">HB AI</a><a href="/en/contact/">Contact</a><a href="/en/privacy/">Privacy</a><a href="/en/faq/">Help</a><a href="/'+route+'/" lang="ar">العربية</a></nav></header><main id="main-content" data-customer-data-notice="account-documents-v1"><h1>'+title+'</h1>'+body+'</main><footer>HOSSAM BAHR is an independent platform. Government decisions remain with the responsible authority.</footer></body></html>';
 }
-export async function synchronizeCustomerNotices(){
+export async function synchronizeCustomerNotices(publicationRoot=root){
+ const root=publicationRoot;
  const path=join(root,'privacy/index.html');let html=await readFile(path,'utf8');
  const analytics=html.match(/<section\b[^>]*data-hb-analytics-disclosure[^>]*>[\s\S]*?<\/section>/)?.[0];
  if(!analytics)throw Error('Existing analytics disclosure missing; preserve and review before changing privacy copy');
