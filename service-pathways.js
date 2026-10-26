@@ -66,7 +66,7 @@ if(typeof document!=='undefined'){
   let queued=false;
   function decorate(){queued=false;
    for(let card of document.querySelectorAll('main article,main .card,main .service-card,main .service-row,main .service-list li,[data-canonical-service],[data-service-slug],.intent-result-card')){
-    if(card.closest('.hb-service-pathways,.hb-pathway-card,.hb-chat-thread')||card.querySelector('[data-hb-pathways]'))continue;
+    if(card.closest('.hb-service-pathways,.hb-pathway-card,.hb-chat-thread,.phase2-execution-paths,[data-customer-execution]')||card.querySelector('[data-hb-pathways]'))continue;
     const links=[...(card.matches('a[href]')?[card]:[]),...card.querySelectorAll('a[href]')];
     const matches=[...new Map(links.map(rowFor).filter(Boolean).map(s=>[s.service_slug,s])).values()];
     if(matches.length!==1)continue;
