@@ -1,0 +1,35 @@
+name: Targeted Quality Recheck After Regional Boot Error
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/recheck-quality-after-bootstrap-20261026.yml']
+permissions: {contents: write}
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: {ref: '67d39c43ae21f9a05d31d5d080230231643aa1ea', path: source}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Run unchanged 100-prompt and continuity assertions once
+        run: |
+          mkdir -p diagnostics/quality-bootstrap-recheck-20261026
+          set -o pipefail
+          (cd source && node scripts/hb-ai-human-response-quality-production.mjs) 2>&1 | tee diagnostics/quality-bootstrap-recheck-20261026/result.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: quality-bootstrap-recheck-20261026, path: diagnostics/quality-bootstrap-recheck-20261026}
+      - name: Preserve original recheck outcome without retries
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/quality-bootstrap-recheck-20261026
+          if ! git diff --cached --quiet; then
+            git commit -m "Record one unchanged Production quality recheck after regional BOOT_ERROR [skip ci]"
+            git pull --rebase --autostash origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
