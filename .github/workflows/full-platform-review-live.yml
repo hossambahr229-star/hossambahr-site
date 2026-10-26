@@ -1,4 +1,4 @@
-name: Full Platform Review Live Evidence
+name: Full Platform Review Touch Evidence
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -17,14 +17,14 @@ jobs:
       - name: Wait for corrected native notice release
         run: |
           node --input-type=module <<'NODE'
-          for(let i=0;i<60;i++){const s=await(await fetch('https://hossambahr.com/en/privacy/',{cache:'no-store'})).text();if(s.includes('account-documents-v1')&&s.includes('href="/privacy/" lang="ar"'))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Correct notice language switch not published');
+          for(let i=0;i<60;i++){const s=await(await fetch('https://hossambahr.com/en/privacy/',{cache:'no-store'})).text();if(s.includes('data-customer-data-page=')&&s.includes('href="/privacy/" lang="ar"')&&s.includes('/customer-notices.css'))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Correct notice language switch not published');
           NODE
       - name: Actual desktop and phone browser journeys
         env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
         run: |
           node --input-type=module <<'NODE'
           import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
-          const out='diagnostics/full-platform-review-live';await mkdir(out,{recursive:true});
+          const out='diagnostics/full-platform-review-touch-live';await mkdir(out,{recursive:true});
           const base='https://hossambahr.com';const records=await(await fetch(base+'/transaction-discovery-data.json')).json();
           const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH});const views=[],journeys=[];
           try{for(const width of[1440,390,320]){
@@ -42,8 +42,9 @@ jobs:
             const prefix=locale==='en'?'/en':'';await page.goto(base+prefix+'/'+route+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
             assert.equal(await page.evaluate(()=>innerWidth),width);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
             if(route==='privacy'){assert.ok(await page.locator('[data-customer-data-notice]').isVisible());assert.ok(await page.locator('[data-hb-analytics-disclosure]').isVisible());assert.doesNotMatch(await page.locator('main').innerText(),/الإصدار الحالي لا يطلب إنشاء حساب/);}
+            if(route==='faq'){const summaries=page.locator('main details>summary');for(let i=0;i<await summaries.count();i++){assert.ok((await summaries.nth(i).boundingBox()).height>=44);await summaries.nth(i).click();assert.equal(await page.locator('main details').nth(i).evaluate(e=>e.open),true);await summaries.nth(i).click();assert.equal(await page.locator('main details').nth(i).evaluate(e=>e.open),false);}await summaries.first().click();}
             if(locale==='en'){assert.equal(await page.locator('html').getAttribute('lang'),'en');assert.equal(await page.locator('html').getAttribute('dir'),'ltr');assert.doesNotMatch(await page.locator('main').innerText(),/[\u0600-\u06ff]/);}
-            await page.screenshot({path:out+'/'+locale+'-'+route+'-'+width+'.png'});views.push({width,locale,route,status:'PASS'});
+            await page.screenshot({path:out+'/'+locale+'-'+route+'-'+width+'.png'});views.push({width,locale,route,status:'PASS',accordionTargets:route==='faq'?'ALL_AT_LEAST_44PX_AND_CLICK_TESTED':null});
            }
            await page.goto(base+'/en/privacy/',{waitUntil:'networkidle'});await page.getByRole('link',{name:'العربية',exact:true}).click();await page.waitForLoadState('networkidle');assert.equal(new URL(page.url()).pathname,'/privacy/');journeys.push({width,kind:'native-privacy-language-switch',status:'PASS'});
            await page.goto(base+'/en/auth/',{waitUntil:'networkidle'});await page.waitForFunction(()=>document.querySelector('[data-account-link]'));const href=await page.locator('[data-account-link]').getAttribute('href');assert.equal(new URL(href,base).searchParams.get('return'),'/en/account/');journeys.push({width,kind:'english-auth-default-return',status:'PASS'});
@@ -53,12 +54,12 @@ jobs:
           NODE
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: full-platform-review-live, path: diagnostics/full-platform-review-live}
+        with: {name: full-platform-review-touch-live, path: diagnostics/full-platform-review-touch-live}
       - name: Retain successful live evidence
         run: |
           git config user.name "HossamBahr Production Evidence"
           git config user.email "production-evidence@users.noreply.github.com"
-          git add diagnostics/full-platform-review-live
+          git add diagnostics/full-platform-review-touch-live
           git commit -m "Retain actual authority and notice review evidence [skip ci]"
           git pull --rebase --autostash origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
