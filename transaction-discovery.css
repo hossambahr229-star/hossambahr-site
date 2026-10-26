@@ -83,6 +83,7 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad{display:block!im
 .home-service-launchpad .home-domain-heading>div{max-width:760px;min-width:0}
 .home-service-launchpad .home-discovery-eyebrow{display:block;color:#896624;font-size:12px;line-height:1.7}
 .home-service-launchpad .home-domain-heading h2{font-size:30px!important;line-height:1.4;margin:4px 0;color:var(--hb-discovery-ink)}
+html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-domain-heading h2>span{font-size:inherit!important;line-height:inherit!important;color:inherit!important}
 .home-service-launchpad .home-domain-heading p,.home-simple-footnote{font-size:14px;line-height:1.8;color:var(--hb-discovery-muted);margin:6px 0}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{display:flex!important;flex-direction:column;align-items:start;justify-content:center;gap:4px;flex:none;width:auto!important;height:auto!important;min-height:76px;padding:14px 20px!important;border:1px solid #b68b36!important;border-radius:12px!important;background:#103e36!important;color:#fff!important;text-decoration:none!important;box-shadow:none!important;aspect-ratio:auto!important}
 .home-directory-entry strong{font-size:26px;line-height:1.2;color:#fff}
@@ -116,7 +117,7 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-simple-foo
 .home-discovery-desktop-title{display:none}.home-discovery-mobile-title{display:inline}
 .home-service-launchpad{--hb-discovery-gap:10px;--hb-discovery-padding:12px;--hb-discovery-radius:12px}
 .home-service-launchpad .home-domain-heading{display:block;margin-bottom:14px}.home-service-launchpad .home-domain-heading h2{font-size:24px!important}
-.home-service-launchpad .home-discovery-eyebrow,.home-service-launchpad .home-domain-heading p{display:none}.home-service-launchpad .home-domain-heading h2{font-size:21px!important;line-height:1.35}
+.home-service-launchpad .home-discovery-eyebrow,.home-service-launchpad .home-domain-heading p{display:none}.home-service-launchpad .home-domain-heading h2{font-size:18px!important;line-height:1.35}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{flex-direction:row;align-items:center;gap:10px;min-height:48px;margin-top:12px;padding:8px 12px!important}
 .home-directory-entry strong{font-size:21px}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{grid-template-columns:minmax(0,1fr) 12px;gap:5px;padding:10px!important;min-height:78px!important}
