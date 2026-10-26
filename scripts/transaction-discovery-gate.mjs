@@ -48,10 +48,12 @@ try{
   assert.equal(await page.locator('.managed-path-action').getAttribute('href'),prefix+'/contact/?handoff=1');
   assert.ok(await page.locator('.premium-intent-search input').isVisible());
   assert.equal(await page.locator('.discovery-entry>a').count(),1);
-  const explore=page.locator('.discovery-entry>a[href$="#service-areas"]');
+  const explore=page.locator('.discovery-entry>a[href="'+prefix+'/discover/"]');
   assert.equal(await explore.innerText(),en?'All services':'جميع الخدمات');
-  assert.equal(await explore.getAttribute('href'),prefix+'/#service-areas');
-  await explore.click();assert.equal(new URL(page.url()).hash,'#service-areas');
+  await explore.click();await page.waitForLoadState('networkidle');
+  assert.equal(new URL(page.url()).pathname,prefix+'/discover/');
+  assert.equal(await page.locator('[data-canonical-service]:visible').count(),records.length);
+  await page.goto(base+prefix+'/',{waitUntil:'networkidle'});
   assert.ok(await page.locator('[data-home-domains] a[href="'+prefix+'/approvals/"]').isVisible());
   assert.ok(await page.locator('[data-home-domains] a[href="'+prefix+'/business-activities/"]').isVisible());
   await page.getByRole('button',{name:en?'Describe what you need':'اشرح ما تحتاجه',exact:true}).click();

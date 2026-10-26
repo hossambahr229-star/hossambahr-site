@@ -115,10 +115,10 @@ for (const route of ['index.html', 'en/index.html']) {
     ['dld.png','DLD','/authorities/dld-rera/'],
     ['municipality.svg','Dubai Municipality','/authorities/dubai-municipality/'],
     ['fta.webp','Federal Tax Authority','/authorities/fta/'],
-    ['police.ico','Dubai Police','/authorities/']
+    [null,'GDRFA Dubai','/authorities/gdrfa-dubai/']
   ];
   html = html.replace(/<div class="authority-pills">[\s\S]*?<\/div>/,
-    `<div class="authority-pills">${authorityAssets.map(([image,label,href])=>`<a href="${route==='index.html'?href:'/en'+href}"><img src="/assets/authorities/${image}" alt="" width="42" height="42"/><span>${label}</span></a>`).join('')}</div>`);
+    `<div class="authority-pills">${authorityAssets.map(([image,label,href])=>`<a href="${route==='index.html'?href:'/en'+href}">${image?`<img src="/assets/authorities/${image}" alt="" width="42" height="42"/>`:'<b class="authority-initials" aria-hidden="true">GDRFA</b>'}<span>${label}</span></a>`).join('')}</div>`);
   const categoryIcons = ['people','buildings','document','work','government','plane','house','grid'];
   let category = 0;
   html = html.replace(/(<div class="premium-category-grid">)([\s\S]*?)(<\/div>)/,
@@ -145,6 +145,18 @@ for (const route of ['index.html', 'en/index.html']) {
     const summaries = [["من الفكرة إلى تحديد الرخصة والجهة والمسار المناسب.","دليلك للرخصة والجهة والمسار المناسب."],["خدمات الإقامة والزيارة والتجديد والإلغاء عبر المسارات الفعلية.","خدمات الإقامة والزيارة والتجديد والإلغاء."],["التوكيلات والتصديقات ومسارات العقود لدى الجهات المختصة.","التوكيلات والتصديقات لدى الجهات المختصة."],["مسارات الشركات والإقامة والخدمات الحكومية المرتبطة بأعمالك.","مسارات الشركات والإقامة لأعمالك."]];
     for (const [previous, current] of summaries) html = html.replace('<p>'+previous+'</p>', '<p>'+current+'</p>');
   }
+
+  // Match the destination to the promise: these cards browse services, not submit requests.
+  const prefix = route === 'index.html' ? '' : '/en';
+  const featuredAreas=['business','residence','documents','investors','work'];
+  const featuredLabels=route==='index.html'?['خدمات الشركات والرخص ←','خدمات الإقامة والتأشيرات ←','خدمات التوثيق والتصديق ←','خدمات المستثمرين ←','خدمات العمل والتصاريح ←']:['Company and licence services →','Residence and visa services →','Document and attestation services →','Investor services →','Employment and permit services →'];
+  html=html.replace(/<article\b[^>]*class="premium-slide[^"]*"[^>]*>[\s\S]*?<\/article>/g,article=>{
+    const i=Number(article.match(/data-slide="([0-4])"/)?.[1]);
+    if(!Number.isInteger(i)||!featuredAreas[i])return article;
+    return article.replace(/(<a\b[^>]*href=")[^"]*("[^>]*>)[\s\S]*?<\/a>/,(_,open,close)=>open+prefix+'/discover/?domain='+featuredAreas[i]+close+featuredLabels[i]+'</a>');
+  });
+  html=html.replace(/(<header\b[\s\S]*?<\/header>)/g,header=>header.replace(/(<a\b[^>]*href=")[^"]*("[^>]*>)(الشركات|Companies)(<\/a>)/g,(_,open,close,label,end)=>open+prefix+'/discover/?domain=business'+close+label+end));
+
   await writeFile(file, html);
 }
 
