@@ -18,7 +18,14 @@ jobs:
         run: |
           node --input-type=module <<'NODE'
           import{createHash}from'node:crypto';
-          for(let i=0;i<60;i++){const s=await(await fetch('https://hossambahr.com/services/'+"تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي"+'/',{cache:'no-store'})).text();const contact=await(await fetch('https://hossambahr.com/contact/',{cache:'no-store'})).text();if(s.includes('data-official-variant-days="120"')&&/customer-intake\.js\?v=[a-f0-9]{12}"/.test(contact))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Duration cards and versioned intake not published');
+          const base='https://hossambahr.com',slug="تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي";
+          const get=async p=>(await fetch(base+p,{cache:'no-store'})).text();
+          for(let i=0;i<60;i++){
+           const [html,contact,pj,pc,data,ij,jj]=await Promise.all(['/services/'+slug+'/','/contact/','/service-pathways.js','/service-pathways.css','/customer-execution-data.json','/customer-intake.js','/customer-jurisdiction.js'].map(get));
+           const pv=createHash('sha256').update(pj).update(pc).update(data).digest('hex').slice(0,12),iv=createHash('sha256').update(ij).update(jj).digest('hex').slice(0,12);
+           if(html.includes('data-official-variant-days="120"')&&pj.includes("cache:'no-cache'")&&html.includes('/service-pathways.js?v='+pv)&&contact.includes('/customer-intake.js?v='+iv))process.exit(0);
+           await new Promise(r=>setTimeout(r,20000));
+          }throw Error('Final catalog and intake versions not published');
           NODE
       - name: Actual desktop and phone browser journeys
         env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
@@ -30,8 +37,10 @@ jobs:
           const expectedVersion=createHash('sha256').update(await(await fetch(base+'/customer-intake.js')).text()).update(await(await fetch(base+'/customer-jurisdiction.js')).text()).digest('hex').slice(0,12);
           const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH});const journeys=[];
           try{for(const width of[1440,1366,390,320])for(const locale of['ar','en']){
-           const p=locale==='en'?'/en':'',route=p+'/services/'+slug+'/',page=await browser.newPage({viewport:{width,height:960},deviceScaleFactor:1}),errors=[];page.setDefaultTimeout(20000);page.on('pageerror',e=>errors.push(e.message));
+           const p=locale==='en'?'/en':'',route=p+'/services/'+slug+'/',page=await browser.newPage({viewport:{width,height:960},deviceScaleFactor:1}),errors=[];page.setDefaultTimeout(20000);page.on('pageerror',e=>errors.push(e.message));const catalogRequests=[];page.on('request',r=>{if(new URL(r.url()).pathname==='/customer-execution-data.json')catalogRequests.push(r.url());});
            await page.goto(base+route,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);assert.equal(await page.evaluate(()=>innerWidth),width);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+           const runtime=new URL(await page.locator('script[src*="service-pathways.js"]').getAttribute('src'),base);assert.ok(catalogRequests.some(u=>new URL(u).search===runtime.search),'catalog request must carry its runtime version');
+           for(const href of await page.locator('[data-hb-pathways="'+slug+'"] .hb-path-official').evaluateAll(es=>es.map(e=>e.getAttribute('href'))))assert.equal(href,route+'#official-variant-options');
            assert.equal(await page.locator('[data-hb-official-variants]').count(),1);assert.equal(await page.locator('[data-official-variant-days]').count(),3);
            const chooser=page.locator('#service-execution-options [data-government-duration-selection]');await chooser.click();assert.equal(new URL(page.url()).hash,'#official-variant-options');assert.ok(await page.locator('#official-variant-options').isVisible());
            for(const c of job.official_variant_cards){const link=page.locator('[data-official-variant-days="'+c.durationDays+'"]');assert.equal(await link.getAttribute('href'),c.informationUrl);assert.ok((await link.boundingBox()).height>=44);assert.ok(await link.isVisible());}
