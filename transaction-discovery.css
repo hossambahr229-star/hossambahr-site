@@ -77,7 +77,7 @@ html.hb-phase8 body[data-home-geometry] .mobile-menu .capability-grid{position:s
 
 /* One source-owned discovery system for both languages and viewport sizes. */
 .home-service-launchpad{--hb-discovery-gap:16px;--hb-discovery-padding:24px;--hb-discovery-radius:18px;--hb-discovery-ink:#103e36;--hb-discovery-muted:#52675e}
-html.hb-phase8 body[data-home-geometry] .home-service-launchpad{display:block!important;direction:inherit;margin:20px 0!important;padding:var(--hb-discovery-padding)!important;border:1px solid #d6e2db;border-radius:var(--hb-discovery-radius);background:#f5f8f5!important}
+html.hb-phase8 body[data-home-geometry] .home-service-launchpad{display:block!important;direction:inherit;margin:14px 0!important;padding:var(--hb-discovery-padding)!important;border:1px solid #d6e2db;border-radius:var(--hb-discovery-radius);background:#f5f8f5!important}
 .home-service-launchpad .home-domain-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:22px}
 .home-service-launchpad .home-domain-heading>div{max-width:760px;min-width:0}
 .home-service-launchpad .home-discovery-eyebrow{display:block;color:#896624;font-size:12px;line-height:1.7}
@@ -114,18 +114,18 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-simple-foo
 @media(max-width:720px){
 .home-service-launchpad{--hb-discovery-gap:10px;--hb-discovery-padding:12px;--hb-discovery-radius:12px}
 .home-service-launchpad .home-domain-heading{display:block;margin-bottom:14px}.home-service-launchpad .home-domain-heading h2{font-size:24px!important}
-.home-service-launchpad .home-discovery-eyebrow{font-size:11px}.home-service-launchpad .home-domain-heading p{font-size:13px}
+.home-service-launchpad .home-discovery-eyebrow,.home-service-launchpad .home-domain-heading p{display:none}.home-service-launchpad .home-domain-heading h2{font-size:21px!important;line-height:1.35}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{flex-direction:row;align-items:center;gap:10px;min-height:48px;margin-top:12px;padding:8px 12px!important}
 .home-directory-entry strong{font-size:21px}
-html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{grid-template-columns:minmax(0,1fr) 12px;gap:5px;padding:12px 10px!important;min-height:110px!important}
+html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{grid-template-columns:minmax(0,1fr) 12px;gap:5px;padding:12px 10px!important;min-height:78px!important}
 .home-service-launchpad .home-simple-card>.home-line-icon{display:none}.home-service-launchpad .home-simple-card b{font-size:14px!important}.home-service-launchpad .home-simple-card small{font-size:11px!important}
 .home-service-launchpad .home-domain-count{font-size:11px!important}.home-domain-shortcuts{margin:0 10px 8px}
-html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:70px!important;padding:8px 0!important}
+html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:60px!important;padding:7px 0!important}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>span{font-size:12px!important}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-domain-shortcuts>a:nth-child(n+2){display:none!important}
 .home-more-domains>summary{font-size:15px}
 }
-@media(max-width:360px){.home-service-launchpad .home-domain-grid{grid-template-columns:minmax(0,1fr)}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{min-height:88px!important}}
+@media(max-width:360px){.home-service-launchpad .home-domain-grid{grid-template-columns:minmax(0,1fr)}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{min-height:76px!important}}
 @media(prefers-reduced-motion:no-preference){.home-domain-tile{transition:border-color .15s ease,box-shadow .15s ease}.home-domain-tile:focus-within,.home-domain-tile:hover{border-color:#b68b36;box-shadow:0 5px 18px #103e3610}}
 
 /* Directory starts with the requested transaction, rather than competing menus. */
@@ -137,3 +137,6 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-domain-sho
 .discovery-other-ways{margin-block:24px;padding:12px;border:1px solid #cbd8d3;border-radius:12px}
 .discovery-other-ways>summary{cursor:pointer;min-height:44px;align-content:center;color:#103e36;font-weight:700}
 @media(max-width:600px){.discovery-form.discovery-compact-form{grid-template-columns:minmax(0,1fr) auto;padding:12px;gap:10px}.discovery-compact-form>label:first-child{grid-column:1/-1}.discovery-compact-form>label{font-size:14px;gap:6px}.discovery-compact-form .discovery-advanced{font-size:13px}.discovery-directory-help{font-size:14px;line-height:1.6}main:has(>.discovery-directory-help)>h1{font-size:28px;margin-block:16px}.discovery-selection{font-size:13px;margin-block:8px}}
+
+/* Featured areas are a static desktop grid and native swipe list on phones. */
+[data-featured-mode="catalog-links"] .premium-slider-controls{display:none!important}

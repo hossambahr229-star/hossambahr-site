@@ -58,7 +58,7 @@ for (const service of registry.services) {
   // Matrix classification owns the breadcrumb as well as directory membership.
   const category = categoryBySlug.get(matrixBySlug.get(service.slug)?.category);
   if (category) html = html.replace(/<nav\b[^>]*class="breadcrumbs"[^>]*>[\s\S]*?<\/nav>/, nav => nav.replace(/<a\b[^>]*href="\/categories\/[^"/]+\/"[^>]*>[\s\S]*?<\/a>/, `<a href="/categories/${escapeHtml(category.slug)}/">${escapeHtml(category.title)}</a>`));
-  // Refresh owned lists on later builds; preserve curated lists and sequence navigation.
+  // Refresh owned lists and replace arbitrary previous/next catalog ordering with a contextual return.
   const sameAuthority = (service.relatedServiceIds || []).map(id => serviceById.get(id))
     .filter(candidate => candidate && candidate.id !== service.id && candidate.authority.id === service.authority.id);
   html = html.replace(/<section\b[^>]*>\s*<h2>خدمات (?:مرتبطة|أخرى) من الجهة نفسها<\/h2>[\s\S]*?<\/section>/g, section => {
@@ -67,6 +67,7 @@ for (const service of registry.services) {
     return section.replace(/<h2>خدمات (?:مرتبطة|أخرى) من الجهة نفسها<\/h2>/, '<h2>خدمات أخرى من الجهة نفسها</h2>')
       .replace(/<ul class="related-list"[^>]*>[\s\S]*?<\/ul>/, '<ul class="related-list" data-canonical-related-services>' + (links || '<li>لا تتوفر روابط أخرى مسجلة من هذه الجهة حاليًا.</li>') + '</ul>');
   });
+  html=html.replace(/<div class="sequence-actions"[^>]*>[\\s\\S]*?<\\/div>/g, '<nav class="sequence-actions" data-contextual-service-return aria-label="متابعة الاستكشاف"><a href="/authorities/'+escapeHtml(service.authority.id)+'/">جميع خدمات '+escapeHtml(service.authority.ar)+'</a><a href="/discover/">دليل الخدمات الكامل</a></nav>');
   // Refresh only source-reviewed native steps; keep all existing generic sections otherwise.
   if (service.stepsReviewedAt) html=html.replace(/<section\b[^>]*\bdata-registry-steps[^>]*>[\s\S]*?<\/section>/g,'');
   const hasSteps = /<h2[^>]*>[^<]*(?:خطوات التنفيذ|خطوات الخدمة|الإجراءات)[^<]*<\/h2>/i.test(html);

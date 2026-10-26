@@ -148,11 +148,13 @@ for (const route of ['index.html', 'en/index.html']) {
 
   // Match the destination to the promise: these cards browse services, not submit requests.
   const prefix = route === 'index.html' ? '' : '/en';
+  html=html.replace(/\\sdata-featured-mode="[^"]*"/g,'').replace(/\\bdata-premium-slider(?:="[^"]*")?/,'data-premium-slider data-featured-mode="catalog-links"').replace(/\\saria-roledescription="carousel"/g,'');
   const featuredAreas=['business','residence','documents','investors','work'];
   const featuredLabels=route==='index.html'?['خدمات الشركات والرخص ←','خدمات الإقامة والتأشيرات ←','خدمات التوثيق والتصديق ←','خدمات المستثمرين ←','خدمات العمل والتصاريح ←']:['Company and licence services →','Residence and visa services →','Document and attestation services →','Investor services →','Employment and permit services →'];
   html=html.replace(/<article\b[^>]*class="premium-slide[^"]*"[^>]*>[\s\S]*?<\/article>/g,article=>{
     const i=Number(article.match(/data-slide="([0-4])"/)?.[1]);
     if(!Number.isInteger(i)||!featuredAreas[i])return article;
+    article=article.replace(/^(<article\\b[^>]*?)\\s+hidden(?=[\\s>])/,'$1');
     return article.replace(/(<a\b[^>]*href=")[^"]*("[^>]*>)[\s\S]*?<\/a>/,(_,open,close)=>open+prefix+'/discover/?domain='+featuredAreas[i]+close+featuredLabels[i]+'</a>');
   });
   html=html.replace(/(<header\b[\s\S]*?<\/header>)/g,header=>header.replace(/(<a\b[^>]*href=")[^"]*("[^>]*>)(الشركات|Companies)(<\/a>)/g,(_,open,close,label,end)=>open+prefix+'/discover/?domain=business'+close+label+end));
