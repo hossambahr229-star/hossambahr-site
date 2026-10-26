@@ -67,7 +67,7 @@ for (const service of registry.services) {
     return section.replace(/<h2>خدمات (?:مرتبطة|أخرى) من الجهة نفسها<\/h2>/, '<h2>خدمات أخرى من الجهة نفسها</h2>')
       .replace(/<ul class="related-list"[^>]*>[\s\S]*?<\/ul>/, '<ul class="related-list" data-canonical-related-services>' + (links || '<li>لا تتوفر روابط أخرى مسجلة من هذه الجهة حاليًا.</li>') + '</ul>');
   });
-  html=html.replace(/<div class="sequence-actions"[^>]*>[\\s\\S]*?<\\/div>/g, '<nav class="sequence-actions" data-contextual-service-return aria-label="متابعة الاستكشاف"><a href="/authorities/'+escapeHtml(service.authority.id)+'/">جميع خدمات '+escapeHtml(service.authority.ar)+'</a><a href="/discover/">دليل الخدمات الكامل</a></nav>');
+  html=html.replace(/<div class="sequence-actions"[^>]*>[\s\S]*?<\/div>/g, '<nav class="sequence-actions" data-contextual-service-return aria-label="متابعة الاستكشاف"><a href="/authorities/'+escapeHtml(service.authority.id)+'/">جميع خدمات '+escapeHtml(service.authority.ar)+'</a><a href="/discover/">دليل الخدمات الكامل</a></nav>');
   // Refresh only source-reviewed native steps; keep all existing generic sections otherwise.
   if (service.stepsReviewedAt) html=html.replace(/<section\b[^>]*\bdata-registry-steps[^>]*>[\s\S]*?<\/section>/g,'');
   const hasSteps = /<h2[^>]*>[^<]*(?:خطوات التنفيذ|خطوات الخدمة|الإجراءات)[^<]*<\/h2>/i.test(html);
