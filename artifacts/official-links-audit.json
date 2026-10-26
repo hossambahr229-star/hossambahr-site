@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-26T23:38:42.863Z",
+  "generatedAt": "2026-10-26T23:45:32.211Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
-    "REACHABLE": 155,
+    "REACHABLE": 157,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 86,
+    "NETWORK_UNVERIFIED": 84,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1788,8 +1788,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022",
@@ -2567,8 +2568,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "result": "REACHABLE"
     },
     {
       "url": "https://media.ajman.ae/ar/servicecatalog/services/2862",
@@ -2580,9 +2582,7 @@
       ],
       "status": 200,
       "finalUrl": "https://media.ajman.ae/ar/servicecatalog/services/2862",
-      "title": "Request Rejected",
-      "result": "REACHABLE",
-      "verifiedBy": "browser-fallback"
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
