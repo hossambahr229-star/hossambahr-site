@@ -1,0 +1,167 @@
+{
+  "status": "SCOPED_PASS",
+  "captureSource": "LIVE_PRODUCTION",
+  "views": [
+    {
+      "width": 1440,
+      "locale": "ar",
+      "route": "privacy",
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "route": "faq",
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "privacy",
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "faq",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "route": "privacy",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "route": "faq",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "privacy",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "faq",
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "locale": "ar",
+      "route": "privacy",
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "locale": "ar",
+      "route": "faq",
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "route": "privacy",
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "route": "faq",
+      "status": "PASS"
+    }
+  ],
+  "journeys": [
+    {
+      "width": 1440,
+      "authority": "mohre",
+      "count": 44,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "authority": "icp",
+      "count": 39,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "authority": "gdrfa-dubai",
+      "count": 22,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "kind": "native-privacy-language-switch",
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "kind": "english-auth-default-return",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "authority": "mohre",
+      "count": 44,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "authority": "icp",
+      "count": 39,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "authority": "gdrfa-dubai",
+      "count": 22,
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "kind": "native-privacy-language-switch",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "kind": "english-auth-default-return",
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "authority": "mohre",
+      "count": 44,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "authority": "icp",
+      "count": 39,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "authority": "gdrfa-dubai",
+      "count": 22,
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "kind": "native-privacy-language-switch",
+      "status": "PASS"
+    },
+    {
+      "width": 320,
+      "kind": "english-auth-default-return",
+      "status": "PASS"
+    }
+  ],
+  "protectedAccountExecution": "NOT_TESTED_NO_AUTHORIZED_CREDENTIALS",
+  "externalModel": "NOT_TESTED",
+  "humanVisualAcceptance": "NOT_DECLARED"
+}
