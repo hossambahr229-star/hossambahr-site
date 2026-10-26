@@ -11,7 +11,10 @@ export function documentedRule(rules: any[], id: string, sources: any[]) {
   const approved = new Set(sources.filter(source => !source.review_required).map(source => source.source_url));
   const refs = Array.isArray(rule.sourceRefs) ? rule.sourceRefs.filter((ref: string) => approved.has(ref)) : [];
   if (!refs.length) return null;
-  return { value: String(rule.reason).trim(), source_refs: refs };
+  // Operational review notes stay in the record, outside customer-facing source limits.
+  const value = id === 'special-cases' ? String(rule.reason).replace(' رابط التنفيذ محفوظ إلى newestablishment.', '').trim() : String(rule.reason).trim();
+  if (!hasDocumentedValue(value)) return null;
+  return { value, source_refs: refs };
 }
 
 export function serviceIntroduction(title: string, authority: string | null, jurisdiction: string | null) {

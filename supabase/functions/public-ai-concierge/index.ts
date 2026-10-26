@@ -785,12 +785,28 @@ function providerConfig() {
 }
 
 function compactGrounding(result:any) {
+  const answer = result?.answer || {};
+  const evidence = answer.evidence || {};
+  const reviewPending = Boolean(evidence.review_pending);
+  const ambiguous = Boolean(result?.grounding?.ambiguity_detected);
+  const verified = answer.grounded === true && answer.fact_status === "VERIFIED_FACT" &&
+    Boolean(evidence.source_url) && !reviewPending && !ambiguous;
+  // The provider receives the current reviewed answer, not unscoped catalog/workflow details.
   return (result?.matches || []).slice(0,3).map((m:any) => ({
     service:m.service_name, service_slug:m.service_slug,
     jurisdiction:m.jurisdiction, authority:m.authority,
-    requirements:m.requirements, documents:m.general_documents,
-    steps:m.main_steps, conditions:m.conditions,
-    official_source:m.official_source
+    official_source:m.official_source,
+    answer_focus:answer.focus || null,
+    fact_status:ambiguous ? "NEEDS_CLARIFICATION" : verified ? "VERIFIED_FACT" : "MISSING_INFORMATION",
+    review_pending:reviewPending, ambiguity_detected:ambiguous,
+    missing_information:result?.missing_information || [],
+    verified_answer:verified ? {
+      text:answer.text,
+      source_url:evidence.source_url,
+      policy_version:evidence.policy_version || null,
+      source_scope_unresolved:Boolean(evidence.source_scope_unresolved),
+      source_limits:evidence.special_case || null
+    } : null
   }));
 }
 
@@ -798,6 +814,7 @@ const AI_INSTRUCTIONS = `You are HOSSAM BAHR AI, a specialist conversational ass
 Preserve explicit entities across turns. A location-only follow-up changes location only; it must never change a spouse into parents, a child into a spouse, or any other relationship. An explicit correction in the newest user turn overrides only the corrected entity.
 Speak naturally in the user's language and dialect (Arabic fusha, Egyptian/Gulf colloquial Arabic, or English). Be concise, practical, warm and professional.
 Use conversation context. Resolve short follow-ups such as "طيب الرسوم؟", "والأوراق؟", "ولو في أبوظبي؟" from prior turns.
+The current grounding review status overrides previous answers: if review_pending, ambiguity or missing information blocks a field, never reuse an older answer as evidence for it.
 The supplied HOSSAM BAHR grounding is authoritative for specific government facts. NEVER invent fees, durations, documents, approvals, eligibility, authority or jurisdiction.
 If a specific factual field is absent from grounding, say it is not verified in the available official knowledge. Do not add government-process facts from general model knowledge. If a fact is absent from grounding, explicitly say it is not verified in the available official knowledge. You may ask one neutral clarification question without inventing factual steps.
 Ask at most ONE clarification question, and only when a missing fact is essential.
