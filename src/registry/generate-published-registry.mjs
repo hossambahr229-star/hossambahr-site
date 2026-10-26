@@ -90,7 +90,7 @@ function safeFaq(destinationKind) {
   ];
 }
 
-function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null, officialCtaUrlEn = null, noDocumentsRequired = false, officialLinkCheckedAt = officialLinkAuditAt, recordedSteps = null, stepsReviewedAt = null, eligibilityScope = 'complete' }) {
+function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null, officialCtaUrlEn = null, noDocumentsRequired = false, officialLinkCheckedAt = officialLinkAuditAt, recordedSteps = null, stepsReviewedAt = null, eligibilityScope = 'complete', officialVariantCards = null }) {
   const normalizedDestinationKind = verificationStatus === 'VERIFIED' ? destinationKind : 'CTA_DISABLED';
   const documentsPublished = hasRecordedFact(requirements) || (sourceRegistry === 'service-matrix' && noDocumentsRequired);
   const feesPublished = hasRecordedFact(fees);
@@ -117,6 +117,7 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
     keywords: terms(nameAr, englishTitles[slug] || nameEn, authorityAr, authorityEn, emirate, mainCategory, subCategory, keywords),
     description: text(description),
     ...(localizedDetails ? {localizedDetails} : {}),
+    ...(Array.isArray(officialVariantCards) && officialVariantCards.length > 1 ? {officialVariantCards} : {}),
     documents: { status: documentsPublished ? 'PUBLISHED' : unavailable, items: requirements || [], ...(noDocumentsRequired ? {noDocumentsRequired:true} : {}) },
     governmentFees: { status: feesPublished ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(fees) },
     serviceFees: { status: unavailable, text: unavailable },
@@ -172,6 +173,7 @@ for (const service of matrix.services.filter((item) => !normalizedSourceIds.has(
     description: service.description,
     requirements: service.requirements,
     localizedDetails: service.localizedDetails || null,
+    officialVariantCards: service.officialVariantCards || null,
     noDocumentsRequired: service.noDocumentsRequired === true,
     recordedSteps: service.recordedSteps || null,
     stepsReviewedAt: service.stepsReviewedAt || null,
