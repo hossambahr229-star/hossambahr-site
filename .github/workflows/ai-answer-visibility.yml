@@ -39,7 +39,9 @@ jobs:
           const hash=digest.digest('hex').slice(0,12);
           for(let i=0;i<60;i++){
             const [runtime,html]=await Promise.all(['https://hossambahr.com/public-ai-concierge.js','https://hossambahr.com/ai/'].map(async u=>(await fetch(u,{cache:'no-store'})).text()));
-            if(runtime===expected&&html.includes('public-ai-concierge.js?v='+hash)){console.log('Exact runtime and paired HTML published',hash);process.exit(0);}
+            const card=await(await fetch('https://hossambahr.com/services/'+encodeURIComponent('تأسيس-منشأة-جديدة-في-عجمان')+'/',{cache:'no-store'})).text();
+            const copyPublished=!card.includes('رابط التنفيذ محفوظ إلى newestablishment.')&&card.includes('ReturnUrl=%2Fen%2Fnewestablishment');
+            if(copyPublished&&runtime===expected&&html.includes('public-ai-concierge.js?v='+hash)){console.log('Exact runtime and paired HTML published',hash);process.exit(0);}
             await new Promise(r=>setTimeout(r,20000));
           }
           throw new Error('Current runtime not published; no live acceptance declared');
