@@ -1,4 +1,4 @@
-name: Full Platform Review Touch Evidence
+name: Full Platform Review Final Evidence
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -17,14 +17,14 @@ jobs:
       - name: Wait for corrected native notice release
         run: |
           node --input-type=module <<'NODE'
-          for(let i=0;i<60;i++){const s=await(await fetch('https://hossambahr.com/en/privacy/',{cache:'no-store'})).text();if(s.includes('data-customer-data-page=')&&s.includes('href="/privacy/" lang="ar"')&&s.includes('/customer-notices.css'))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Correct notice language switch not published');
+          for(let i=0;i<60;i++){const s=await(await fetch('https://hossambahr.com/en/privacy/',{cache:'no-store'})).text();if(s.includes('data-customer-data-page=')&&s.includes('href="/privacy/" lang="ar"')&&s.includes('/customer-notices.css?v='))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Correct notice language switch not published');
           NODE
       - name: Actual desktop and phone browser journeys
         env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
         run: |
           node --input-type=module <<'NODE'
           import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
-          const out='diagnostics/full-platform-review-touch-live';await mkdir(out,{recursive:true});
+          const out='diagnostics/full-platform-review-final-live';await mkdir(out,{recursive:true});
           const base='https://hossambahr.com';const records=await(await fetch(base+'/transaction-discovery-data.json')).json();
           const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH});const views=[],journeys=[];
           try{for(const width of[1440,390,320]){
@@ -41,6 +41,7 @@ jobs:
            for(const locale of['ar','en'])for(const route of['privacy','faq']){
             const prefix=locale==='en'?'/en':'';await page.goto(base+prefix+'/'+route+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
             assert.equal(await page.evaluate(()=>innerWidth),width);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+            if(locale==='ar'&&route==='privacy'&&width<=390){const b=await page.locator('main article.prose p').first().boundingBox();assert.ok(b.x>=12&&b.x+b.width<=width-12,'Arabic privacy needs readable horizontal gutters');}
             if(route==='privacy'){assert.ok(await page.locator('[data-customer-data-notice]').isVisible());assert.ok(await page.locator('[data-hb-analytics-disclosure]').isVisible());assert.doesNotMatch(await page.locator('main').innerText(),/الإصدار الحالي لا يطلب إنشاء حساب/);}
             if(route==='faq'){const summaries=page.locator('main details>summary');for(let i=0;i<await summaries.count();i++){assert.ok((await summaries.nth(i).boundingBox()).height>=44);await summaries.nth(i).click();assert.equal(await page.locator('main details').nth(i).evaluate(e=>e.open),true);await summaries.nth(i).click();assert.equal(await page.locator('main details').nth(i).evaluate(e=>e.open),false);}await summaries.first().click();}
             if(locale==='en'){assert.equal(await page.locator('html').getAttribute('lang'),'en');assert.equal(await page.locator('html').getAttribute('dir'),'ltr');assert.doesNotMatch(await page.locator('main').innerText(),/[\u0600-\u06ff]/);}
@@ -54,12 +55,12 @@ jobs:
           NODE
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: full-platform-review-touch-live, path: diagnostics/full-platform-review-touch-live}
+        with: {name: full-platform-review-final-live, path: diagnostics/full-platform-review-final-live}
       - name: Retain successful live evidence
         run: |
           git config user.name "HossamBahr Production Evidence"
           git config user.email "production-evidence@users.noreply.github.com"
-          git add diagnostics/full-platform-review-touch-live
+          git add diagnostics/full-platform-review-final-live
           git commit -m "Retain actual authority and notice review evidence [skip ci]"
           git pull --rebase --autostash origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
