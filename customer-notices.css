@@ -7,3 +7,6 @@
 [data-customer-data-page] p{overflow-wrap:anywhere}
 [data-customer-data-page]>p>a{display:inline-flex;align-items:center;min-height:44px}
 body:has([data-customer-data-page]) header nav a{display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box}
+
+/* Keep Arabic privacy text inside readable page gutters. */
+[data-customer-data-page="privacy"]>.prose{box-sizing:border-box;width:min(100%,800px);padding:24px clamp(16px,3vw,32px)}
