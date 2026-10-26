@@ -76,6 +76,7 @@ html.hb-phase8 body[data-home-geometry] .mobile-menu .capability-grid{position:s
 
 
 /* One source-owned discovery system for both languages and viewport sizes. */
+.home-discovery-mobile-title{display:none}
 .home-service-launchpad{--hb-discovery-gap:16px;--hb-discovery-padding:24px;--hb-discovery-radius:18px;--hb-discovery-ink:#103e36;--hb-discovery-muted:#52675e}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad{display:block!important;direction:inherit;margin:14px 0!important;padding:var(--hb-discovery-padding)!important;border:1px solid #d6e2db;border-radius:var(--hb-discovery-radius);background:#f5f8f5!important}
 .home-service-launchpad .home-domain-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:22px}
@@ -129,7 +130,6 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-domain-sho
 @media(max-width:360px){.home-service-launchpad .home-domain-grid{grid-template-columns:minmax(0,1fr)}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{min-height:76px!important}}
 @media(prefers-reduced-motion:no-preference){.home-domain-tile{transition:border-color .15s ease,box-shadow .15s ease}.home-domain-tile:focus-within,.home-domain-tile:hover{border-color:#b68b36;box-shadow:0 5px 18px #103e3610}}
 
-.home-discovery-mobile-title{display:none}
 @media(min-width:1101px){html.hb-phase8 body[data-home-entry="simple"] .premium-popular.discovery-entry{justify-content:flex-start!important}html.hb-phase8 body[data-home-entry="simple"] .discovery-entry>a{position:static!important;inset:auto!important;width:auto!important;min-height:44px!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:9px 18px!important;font-size:13px!important;border-radius:8px!important}}
 
 /* Directory starts with the requested transaction, rather than competing menus. */
