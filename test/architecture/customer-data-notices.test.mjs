@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {privacyCopy,dataAnswer,synchronizeCustomerNotices} from '../../src/publication/synchronize-customer-notices.mjs';
 test('privacy publication is idempotent and retains the analytics disclosure',async()=>{
- const path=new URL('../../privacy/index.html',import.meta.url);const before=await readFile(path,'utf8');const analytics=before.match(/<section\\b[^>]*data-hb-analytics-disclosure[^>]*>[\\s\\S]*?<\\/section>/)?.[0];
+ const path=new URL('../../privacy/index.html',import.meta.url);const before=await readFile(path,'utf8');const analytics=before.match(/<section\b[^>]*data-hb-analytics-disclosure[^>]*>[\s\S]*?<\/section>/)?.[0];
  await synchronizeCustomerNotices();const once=await readFile(path,'utf8');await synchronizeCustomerNotices();assert.equal(await readFile(path,'utf8'),once);assert.ok(once.includes(analytics));assert.doesNotMatch(once,/<p>الإصدار الحالي لا يطلب إنشاء حساب/);
  for(const locale of ['', 'en/']){const privacy=await readFile(new URL('../../'+locale+'privacy/index.html',import.meta.url),'utf8');assert.match(privacy,/data-customer-data-notice="account-documents-v1"/);assert.match(privacy,/data-hb-analytics-disclosure/);const faq=await readFile(new URL('../../'+locale+'faq/index.html',import.meta.url),'utf8');assert.ok(faq.includes(dataAnswer(Boolean(locale))));}
 });
