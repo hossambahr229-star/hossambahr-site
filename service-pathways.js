@@ -32,7 +32,7 @@ export function officialVariantMarkup(service,locale='ar'){
 
 if(typeof document!=='undefined'){
  const locale=document.documentElement.lang==='en'?'en':'ar';
- fetch('/customer-execution-data.json').then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(rows=>{
+ fetch('/customer-execution-data.json'+(new URL(import.meta.url).search||''),{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(rows=>{
   const byRoute=new Map(rows.map(row=>[new URL(row.source_page,location.origin).pathname,row]));
   const stage=document.querySelector('.hero-search-stage');
   if(stage&&document.querySelector('.hb-chat-shell')){
@@ -66,7 +66,7 @@ if(typeof document!=='undefined'){
   let queued=false;
   function decorate(){queued=false;
    for(let card of document.querySelectorAll('main article,main .card,main .service-card,main .service-row,main .service-list li,[data-canonical-service],[data-service-slug],.intent-result-card')){
-    if(card.closest('.hb-service-pathways,.hb-pathway-card,.hb-chat-thread')||card.querySelector('[data-hb-pathways]'))continue;
+    if(card.closest('.hb-service-pathways,.hb-pathway-card,.hb-chat-thread,.phase2-execution-paths,[data-customer-execution]')||card.querySelector('[data-hb-pathways]'))continue;
     const links=[...(card.matches('a[href]')?[card]:[]),...card.querySelectorAll('a[href]')];
     const matches=[...new Map(links.map(rowFor).filter(Boolean).map(s=>[s.service_slug,s])).values()];
     if(matches.length!==1)continue;
