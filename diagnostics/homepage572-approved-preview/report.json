@@ -1,0 +1,306 @@
+{
+  "status": "SCOPED_PASS",
+  "captureSource": "LOCAL_BUILD",
+  "base": "http://127.0.0.1:36111",
+  "views": [
+    {
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1366,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 430,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 360,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 320,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1366,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 430,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 360,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "status": "PASS"
+    }
+  ],
+  "journeys": [
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "business",
+      "href": "/discover/?domain=business",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "residence",
+      "href": "/discover/?domain=residence",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "work",
+      "href": "/discover/?domain=work",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "activities",
+      "href": "/business-activities/",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "approvals",
+      "href": "/approvals/",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "property",
+      "href": "/discover/?domain=property",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "investors",
+      "href": "/discover/?domain=investors",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "documents",
+      "href": "/discover/?domain=documents",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "health-education",
+      "href": "/discover/?domain=health-education",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "transport-customs",
+      "href": "/discover/?domain=transport-customs",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "fines-tax",
+      "href": "/discover/?domain=fines-tax",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "featured",
+      "domain": "business",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "featured",
+      "domain": "residence",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "featured",
+      "domain": "documents",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "featured",
+      "domain": "investors",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "all-services",
+      "count": 202,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "exact-authority",
+      "authority": "gdrfa-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "phone-featured-work",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "business",
+      "href": "/en/discover/?domain=business",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "residence",
+      "href": "/en/discover/?domain=residence",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "work",
+      "href": "/en/discover/?domain=work",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "activities",
+      "href": "/en/business-activities/",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "approvals",
+      "href": "/en/approvals/",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "property",
+      "href": "/en/discover/?domain=property",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "investors",
+      "href": "/en/discover/?domain=investors",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "documents",
+      "href": "/en/discover/?domain=documents",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "health-education",
+      "href": "/en/discover/?domain=health-education",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "transport-customs",
+      "href": "/en/discover/?domain=transport-customs",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "fines-tax",
+      "href": "/en/discover/?domain=fines-tax",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "featured",
+      "domain": "business",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "featured",
+      "domain": "residence",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "featured",
+      "domain": "documents",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "featured",
+      "domain": "investors",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "all-services",
+      "count": 202,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "exact-authority",
+      "authority": "gdrfa-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "phone-featured-work",
+      "status": "PASS"
+    }
+  ],
+  "humanAcceptance": "NOT_DECLARED"
+}
