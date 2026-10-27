@@ -1,0 +1,163 @@
+{
+  "capturedAt": "2026-10-27T05:08:13.246Z",
+  "source": "LIVE_PRODUCTION_UI_REAL_HISTORY",
+  "status": "LIVE_FAIL",
+  "edgeVersionVerifiedSeparately": 167,
+  "turns": [
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "أريد تأشيرة لاستكشاف فرص تأسيس الأعمال في الشارقة لمدة90 يوماً. ما المسار الرسمي؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "لا توجد مدة تنفيذ محددة وموثقة في البيانات الحالية لهذه الحالة، لذلك لن أذكر مدة تقديرية."
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "والأوراق إيه؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "لا توجد قائمة مستندات مكتملة وموثقة في البيانات الحالية لهذه الحالة."
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "ولو في دبي؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 4,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "المسار المناسب لطلبك هو «تأشيرة استكشاف فرص تأسيس الأعمال في دبي» لدى الإدارة العامة للإقامة وشؤون الأجانب في دبي.",
+      "visibleLinks": [
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "أنجزها بنفسي رسميًا",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "أنجزها بنفسي رسميًا",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "أنجزها بنفسي رسميًا",
+          "href": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "I need a job seeker visa in Dubai.",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "The matching service is Job Exploration Visa in Dubai through GDRFA Dubai."
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "And the documents?",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "answer": "A complete verified document list is not available for this case. Check the official source."
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "What if it is in Sharjah?",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "issuance-of-a-new-work-permit-golden-visa-holders",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 4,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "answer": "A possible pathway is Issuance of a New Work Permit - Golden Visa Holders through MOHRE. Age 18 or older; valid Golden Residence and no active work permit. The occupation must match the establishment activity. Its licence must be valid without violations suspending operations; the authorised signatory submits. No bank guarantee, insurance or electronic quota is required for this permit. Regulated professions retain their licensing requirements.\nOfficial source: Arabic government card. The English wording is a HOSSAM BAHR explanatory translation."
+    }
+  ],
+  "externalModelAcceptance": "NOT_DECLARED",
+  "protectedAccountExecution": "NOT_TESTED",
+  "error": "AssertionError [ERR_ASSERTION]: What if it is in Sharjah?\n+ actual - expected\n\n+ 'issuance-of-a-new-work-permit-golden-visa-holders'\n- 'تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي'\n"
+}
