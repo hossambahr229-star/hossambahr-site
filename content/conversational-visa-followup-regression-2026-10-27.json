@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-10-27T05:08:13.246Z",
+  "liveWorkflow": 40453541431,
+  "status": "LIVE_FAIL_NOT_ACCEPTED",
+  "passedBeforeFailure": [
+    "Arabic business Sharjah identity",
+    "Arabic documents follow-up with real history",
+    "Arabic switch to Dubai",
+    "English job Dubai identity",
+    "English documents follow-up"
+  ],
+  "failure": {
+    "latestTurn": "What if it is in Sharjah?",
+    "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+    "actual": "issuance-of-a-new-work-permit-golden-visa-holders"
+  },
+  "roots": [
+    "Actual contextual-follow-up predicate rejected the seven-word English geography-only question.",
+    "A90-day selected period was treated as a processing-time question despite asking for the official route.",
+    "Chat government execution buttons did not yet use the canonical duration metadata already available to service cards."
+  ],
+  "scope": "CONTEXT_GATE_FOCUS_AND_CANONICAL_GOVERNMENT_ACTION",
+  "notChanged": [
+    "global rank threshold",
+    "provider configuration",
+    "government facts and verification flags",
+    "source citations",
+    "private authentication and permissions"
+  ]
+}
