@@ -1,0 +1,28 @@
+{
+  "capturedAt": "2026-10-27T04:43:41.193Z",
+  "source": "LIVE_PRODUCTION_UI_ONE_REAL_REQUEST",
+  "externalModel": "EXTERNAL_MODEL_NOT_USED",
+  "fullSemanticAcceptance": false,
+  "protectedAccountExecution": "NOT_TESTED",
+  "httpStatus": 200,
+  "metadata": [
+    {
+      "path": "root.result.engine.external_model_used",
+      "value": false
+    },
+    {
+      "path": "root.result.engine.external_model_used",
+      "value": false
+    },
+    {
+      "path": "root.result.engine.provider_failure.category",
+      "value": "QUOTA_BILLING"
+    },
+    {
+      "path": "root.result.engine.provider_failure.code",
+      "value": "credit_balance_exhausted"
+    }
+  ],
+  "terminalFrame": "fallback",
+  "customerVisibleAnswer": "HB AI\n\nلم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم.\n\nما النتيجة التي تريد الوصول إليها تحديدًا؟\nتجديد\nإصدار جديد\nإلغاء\nرفض أو تأخير\nاطلب مراجعة معاملتك مع حسام بحر"
+}
