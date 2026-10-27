@@ -1,0 +1,45 @@
+{
+  "capturedAt": "2026-10-27T11:05:24.448Z",
+  "source": "LIVE_PRODUCTION_UI_REAL_HISTORY",
+  "status": "LIVE_FAIL",
+  "edgeVersionVerifiedSeparately": 169,
+  "turns": [
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "أريد تأشيرة لاستكشاف فرص تأسيس الأعمال في الشارقة. ما المستندات المطلوبة؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "المتطلبات المسجلة لهذه الخدمة: جواز السفر.، الصورة الشخصية.، موافقة مبدئية من الجهات المعنية لتأسيس الأعمال وفق قائمة بطاقة ICP.، كشف حساب مختوم يغطي ستة أشهر على الأقل.، صورة الهوية الشخصية للمتقدمين من أفغانستان أو إيران أو العراق وفق البطاقة.، شهادة البكالوريوس أو ما يعادلها من المؤهلات العلمية وفق بطاقة ICP..",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "كم تستغرق المعاملة؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "لم أتمكن من مطابقة طلبك مع خدمة رسمية موثقة بثقة كافية الآن. حدّد نوع المعاملة أو الإمارة بدقة قبل أن أعرض مستندات أو جهة أو رسوم."
+    }
+  ],
+  "pathways": [],
+  "externalModelAcceptance": "NOT_DECLARED",
+  "protectedAccountExecution": "NOT_TESTED",
+  "error": "AssertionError [ERR_ASSERTION]: كم تستغرق المعاملة؟\n+ actual - expected\n\n+ undefined\n- 'تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي'\n"
+}
