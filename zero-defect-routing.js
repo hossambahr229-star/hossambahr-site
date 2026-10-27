@@ -1064,6 +1064,8 @@
   function enhanceVerifiedGovernmentHandoff() {
     if (location.pathname === "/") return;
     for (const anchor of document.querySelectorAll('[data-government-cta="verified"]')) {
+      // Preserve the duration or applicant category of exact transaction choices.
+      if (anchor.closest('.exact-route-choices')) continue;
       if (anchor.dataset.handoffReady === "true") continue;
       anchor.dataset.handoffReady = "true";
       const destinationKind = anchor.closest("main")?.dataset.destinationKind || anchor.dataset.destinationKind || "DIRECT_SERVICE";
