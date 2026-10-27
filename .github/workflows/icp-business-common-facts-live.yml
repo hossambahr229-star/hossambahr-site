@@ -1,0 +1,53 @@
+name: ICP Business Common Facts Live Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/icp-business-common-facts-live.yml']
+permissions: {contents: write}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for reviewed detail publication
+        run: |
+          node --input-type=module <<'NODE'
+          const base='https://hossambahr.com',slug="تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي";
+          for(let i=0;i<60;i++){const h=await(await fetch(base+'/en/services/'+slug+'/',{cache:'no-store'})).text();if(h.includes('2 days according to all three ICP duration cards')&&h.includes('Stamped bank statement covering at least six months.'))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Reviewed details not published');
+          NODE
+      - name: Verify real bilingual desktop and mobile pages
+        run: |
+          node --input-type=module <<'NODE'
+          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/icp-business-common-facts-live',base='https://hossambahr.com',slug="تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",expected={"ar":["جواز السفر.","الصورة الشخصية.","موافقة مبدئية من الجهات المعنية لتأسيس الأعمال وفق قائمة بطاقة ICP.","كشف حساب مختوم يغطي ستة أشهر على الأقل.","صورة الهوية الشخصية للمتقدمين من أفغانستان أو إيران أو العراق وفق البطاقة.","شهادة البكالوريوس أو ما يعادلها من المؤهلات العلمية وفق بطاقة ICP."],"en":["Passport.","Personal photograph.","Preliminary business-establishment approval from the relevant authorities, as listed by ICP.","Stamped bank statement covering at least six months.","Personal identification copy for applicants from Afghanistan, Iran or Iraq, as specified on the card.","Bachelor’s degree or an equivalent academic qualification, as listed by ICP."],"arTime":"يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء.","enTime":"2 days according to all three ICP duration cards; working days are not specified. This is processing time, not the selected period of stay."};
+          await mkdir(out,{recursive:true});const report={capturedAt:new Date().toISOString(),source:'LIVE_PRODUCTION',status:'RUNNING',views:[],externalModel:'NOT_TESTED',protectedAccounts:'NOT_TESTED',humanVisualAcceptance:'NOT_DECLARED'};
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});let failure;
+          try{for(const width of[1440,1366,390,320])for(const locale of['ar','en']){
+           const page=await browser.newPage({viewport:{width,height:width<500?844:960}});page.setDefaultTimeout(30000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+           const route=(locale==='en'?'/en':'')+'/services/'+slug+'/';await page.goto(base+route,{waitUntil:'networkidle'});
+           const main=await page.locator('main').innerText();for(const doc of expected[locale])assert.ok(main.includes(doc),'Published document: '+doc);
+           assert.ok(main.includes(locale==='en'?expected.enTime:expected.arTime));if(locale==='en'){assert.ok(main.includes('Common conditions'));assert.ok(main.includes('incompletely verified'));}
+           assert.equal(await page.locator('[data-official-variant-days]').count(),3);const days=await page.locator('[data-official-variant-days]').evaluateAll(es=>es.map(e=>Number(e.getAttribute('data-official-variant-days'))));assert.deepEqual(days,[60,90,120]);
+           assert.equal(await page.evaluate(()=>innerWidth),width);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'No horizontal overflow');
+           const documents=locale==='en'?page.locator('#service-documents'):page.locator('main section').filter({has:page.getByRole('heading',{name:/المتطلبات والمستندات|المستندات والمتطلبات/})}).first();
+           await documents.scrollIntoViewIfNeeded();await page.screenshot({path:out+'/'+locale+'-'+width+'.png'});
+           const gov=page.locator('#service-execution-options .hb-path-official');assert.equal(await gov.getAttribute('href'),route+'#official-variant-options');assert.ok((await page.locator('#service-execution-options .hb-path-assisted').getAttribute('href')).includes('971503780460'));
+           assert.deepEqual(errors,[]);report.views.push({width,locale,documents:6,processingTime:'2_DAYS_NOT_WORKING_DAYS',eligibility:'COMMON_ONLY',fees:'UNVERIFIED',variants:days,status:'PASS'});await page.close();
+           }report.status='SCOPED_CONTENT_PUBLICATION_PASS';}catch(e){failure=e;report.status='FAIL';report.error=e.stack;}finally{await browser.close();await writeFile(out+'/report.json',JSON.stringify(report,null,2));}if(failure)throw failure;
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: icp-business-common-facts-live, path: diagnostics/icp-business-common-facts-live}
+      - name: Retain successful live evidence
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/icp-business-common-facts-live
+          git commit -m "Retain ICP common facts live evidence [skip ci]"
+          git pull --rebase --autostash origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
