@@ -23913,6 +23913,21 @@
         "الدخول"
       ],
       "description": "إصدار تأشيرة لاستكشاف فرص تأسيس الأعمال عبر ICP مع اختيار الفئة داخل المعاملة.",
+      "localizedDetails": {
+        "en": {
+          "documents": [
+            "Passport.",
+            "Personal photograph.",
+            "Preliminary business-establishment approval from the relevant authorities, as listed by ICP.",
+            "Stamped bank statement covering at least six months.",
+            "Personal identification copy for applicants from Afghanistan, Iran or Iraq, as specified on the card.",
+            "Bachelor’s degree or an equivalent academic qualification, as listed by ICP."
+          ],
+          "duration": "2 days according to all three ICP duration cards; working days are not specified. This is processing time, not the selected period of stay.",
+          "eligibility": "Published common conditions: a passport valid for at least six months and valid UAE health insurance. Enter within 60 days of issuance; this entry window differs from the selected 60-, 90- or 120-day stay. A financial-guarantee refund requires a request after cancellation or departure, cancellation after departure and no residency violations, as stated by ICP. These common conditions do not establish complete activity- or applicant-specific eligibility.",
+          "notes": "Common documents, conditions and processing time were reviewed across the three ICP duration cards on 27 October 2026. Confirm how preliminary approval and the qualification requirement apply to your case. Fees remain incompletely verified: some fee items differ between cards, so no combined total or exemption is asserted. Use the duration-specific official cards below."
+        }
+      },
       "officialVariantCards": [
         {
           "durationDays": 60,
@@ -23931,8 +23946,15 @@
         }
       ],
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "جواز السفر.",
+          "الصورة الشخصية.",
+          "موافقة مبدئية من الجهات المعنية لتأسيس الأعمال وفق قائمة بطاقة ICP.",
+          "كشف حساب مختوم يغطي ستة أشهر على الأقل.",
+          "صورة الهوية الشخصية للمتقدمين من أفغانستان أو إيران أو العراق وفق البطاقة.",
+          "شهادة البكالوريوس أو ما يعادلها من المؤهلات العلمية وفق بطاقة ICP."
+        ]
       },
       "governmentFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -23943,10 +23965,11 @@
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "الشروط المشتركة المنشورة: جواز صالح لستة أشهر على الأقل وتأمين صحي ساري داخل الدولة. الدخول خلال 60 يوماً من الإصدار؛ هذه مهلة دخول وليست مدة البقاء المختارة (60 أو 90 أو 120 يوماً). استرداد الضمان بطلب بعد الإلغاء أو المغادرة، مع إلغاء التأشيرة بعد المغادرة وعدم وجود مخالفات إقامة، وفق البطاقة. هذه شروط مشتركة وليست تأكيداً كاملاً للأهلية بحسب النشاط أو الحالة.",
+      "eligibilityScope": "common-only",
       "steps": [
         {
           "order": 1,
@@ -23981,7 +24004,7 @@
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -24003,22 +24026,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": false,
-        "durationVerified": false,
+        "durationVerified": true,
         "eligibilityVerified": false,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-27",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-27",
+      "lastReviewedAt": "2026-10-27",
       "internalRoute": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
