@@ -112,6 +112,34 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-simple-foo
 .home-more-domains>.home-more-domain-grid{padding:8px 0}.home-more-domains:not([open])>.home-more-domain-grid{display:none}
 .home-service-launchpad a:hover{background:#f4f8f4!important}.home-service-launchpad a:focus-visible,.home-more-domains>summary:focus-visible{outline:3px solid #b68b36;outline-offset:-3px}
 .authority-initials{display:flex;align-items:center;justify-content:center;min-height:42px;min-width:42px;color:#103e36;font-size:11px}
+
+/* Compact desktop discovery keeps every domain and transaction link available.
+   Shared tokens control the spacing; tablet and phone grids remain unchanged. */
+@media(min-width:1101px){
+ .home-service-launchpad{--hb-discovery-gap:12px;--hb-discovery-padding:16px}
+ .home-service-launchpad .home-domain-heading{gap:16px;margin-bottom:12px}
+ .home-service-launchpad .home-discovery-eyebrow{display:none}
+ .home-service-launchpad .home-domain-heading h2{font-size:24px!important}
+ .home-service-launchpad .home-domain-heading p{font-size:13px;margin:4px 0}
+ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{flex-direction:row;align-items:center;gap:10px;min-height:48px;padding:10px 14px!important}
+ .home-service-launchpad .home-directory-entry strong{font-size:22px}
+ .home-service-launchpad .home-domain-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{grid-template-columns:26px minmax(0,1fr);gap:8px;min-height:112px!important;padding:12px!important}
+ .home-service-launchpad .home-simple-card b{font-size:15px!important;line-height:1.4!important}
+ .home-service-launchpad .home-simple-card small{font-size:11px!important;line-height:1.5!important}
+ .home-service-launchpad .home-line-icon{width:26px!important;height:26px!important}
+ .home-service-launchpad .home-simple-arrow{display:none}
+ .home-service-launchpad .home-domain-count{font-size:11px!important}
+ .home-service-launchpad .home-domain-shortcuts{margin:0 12px 8px}
+ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:56px!important;padding:6px 0!important}
+ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>span{font-size:12px!important;line-height:1.5!important}
+ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>.home-example-label{font-size:10px!important}
+ .home-service-launchpad .home-more-domains{margin-top:8px}
+ .home-service-launchpad .home-more-domains>summary{min-height:48px;padding:6px 0;font-size:15px}
+ .home-service-launchpad .home-pathway-promise{margin-top:8px;padding:8px 12px}
+ .home-service-launchpad .home-simple-footnote{margin-top:8px}
+}
+
 @media(max-width:900px){.home-service-launchpad .home-domain-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){
 .home-discovery-desktop-title{display:none}.home-discovery-mobile-title{display:inline}

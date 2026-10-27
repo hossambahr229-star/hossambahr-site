@@ -1,0 +1,55 @@
+name: Compact Homepage Domains Preview
+on:
+  push:
+    branches: [agent/home-domain-compact-preview]
+    paths: [transaction-discovery.css, .github/workflows/compact-home-domains-preview.yml]
+permissions: {contents: write}
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - run: npm run build
+      - name: Start candidate server
+        run: python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/hb-compact-home-preview.log 2>&1 &
+      - name: Compare candidate geometry and routes with real Production
+        run: |
+          node --input-type=module <<'NODE'
+          import{chromium}from'playwright';import sharp from'sharp';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/compact-home-domains-preview';await mkdir(out,{recursive:true});const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'}),report={capturedAt:new Date().toISOString(),source:'BUILT_CANDIDATE_COMPARED_WITH_LIVE_PRODUCTION',acceptance:'PREVIEW_ONLY_NOT_PRODUCTION_OR_HUMAN_PASS',views:[]};
+          try{for(const width of[1440,1366,390,320])for(const locale of['ar','en']){
+           const results={};for(const[type,base]of[['production','https://hossambahr.com'],['candidate','http://127.0.0.1:8765']]){
+           const page=await browser.newPage({viewport:{width,height:width<500?844:960},deviceScaleFactor:1,reducedMotion:'reduce'});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+           await page.goto(base+(locale==='en'?'/en/':'/'),{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+           const shape=await page.evaluate(()=>{const section=document.querySelector('.home-service-launchpad'),rect=section.getBoundingClientRect(),cards=[...section.querySelectorAll(':scope>.home-domain-grid>.home-domain-tile>.home-domain-card')];return{viewport:innerWidth,overflow:document.documentElement.scrollWidth-innerWidth,section:{top:rect.top,height:rect.height},cards:cards.map(e=>{const r=e.getBoundingClientRect();return{domain:e.dataset.businessDomain,href:e.getAttribute('href'),top:r.top,bottom:r.bottom,width:r.width}}),directLinks:[...section.querySelectorAll('a[data-home-service]')].map(e=>({slug:e.dataset.homeService,href:e.getAttribute('href')})),more:!!section.querySelector('#home-more-domains>summary')};});
+           assert.equal(shape.viewport,width);assert.ok(shape.overflow<=1);assert.equal(shape.cards.length,6);assert.ok(shape.more);assert.deepEqual(errors,[]);
+           await page.screenshot({path:out+'/'+type+'-'+locale+'-'+width+'.png'});results[type]=shape;await page.close();
+           }
+           assert.deepEqual(results.candidate.cards.map(c=>c.href),results.production.cards.map(c=>c.href),'Keep all domain routes');
+           assert.deepEqual(results.candidate.directLinks,results.production.directLinks,'Keep every direct transaction link');
+           if(width>=1101){assert.equal(new Set(results.candidate.cards.map(c=>Math.round(c.top))).size,1,'Six domains on one desktop row');assert.ok(results.candidate.cards.every(c=>c.bottom<960),'All primary domains visible');assert.ok(results.candidate.section.height<results.production.section.height*.8,'Materially shorter discovery area');}
+           else assert.ok(Math.abs(results.candidate.section.height-results.production.section.height)<5,'Phone layout preserved');
+           report.views.push({width,locale,...results,reductionPercent:100*(1-results.candidate.section.height/results.production.section.height)});
+           }
+           const ref=await sharp('qa/reference/approved-desktop.jpeg').resize(1440,960).removeAlpha().raw().toBuffer();
+           for(const kind of['production','candidate']){const img=await sharp(out+'/'+kind+'-ar-1440.png').removeAlpha().raw().toBuffer();let changed=0;const overlay=Buffer.alloc(ref.length);for(let i=0;i<ref.length;i+=3){let delta=0;for(let c=0;c<3;c++){delta+=Math.abs(ref[i+c]-img[i+c]);overlay[i+c]=Math.round((ref[i+c]+img[i+c])/2);}if(delta/3>32)changed++;}await sharp(overlay,{raw:{width:1440,height:960,channels:3}}).png().toFile(out+'/'+kind+'-reference-overlay.png');report[kind+'ReferenceChangedPixelPercent']=changed/(1440*960)*100;}
+           report.status='PREVIEW_CHECKS_PASS';}catch(e){report.status='PREVIEW_FAIL';report.error=e.stack;throw e;}finally{await browser.close();await writeFile(out+'/report.json',JSON.stringify(report,null,2));}
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: compact-home-domains-preview, path: diagnostics/compact-home-domains-preview}
+      - name: Preserve candidate evidence only
+        if: always()
+        run: |
+          git config user.name "HossamBahr Preview Evidence"
+          git config user.email "preview-evidence@users.noreply.github.com"
+          git add diagnostics/compact-home-domains-preview
+          if ! git diff --cached --quiet; then
+            git commit -m "Retain compact homepage preview evidence [skip ci]"
+            git push origin HEAD:agent/home-domain-compact-preview
+          fi
