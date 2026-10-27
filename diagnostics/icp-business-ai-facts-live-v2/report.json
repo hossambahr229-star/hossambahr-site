@@ -1,0 +1,681 @@
+{
+  "capturedAt": "2026-10-27T18:35:31.765Z",
+  "source": "LIVE_PRODUCTION_UI_REAL_HISTORY",
+  "status": "SCOPED_GROUNDED_COMMON_FACTS_AND_PATH_PASS",
+  "edgeVersionVerifiedSeparately": 170,
+  "turns": [
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "أريد تأشيرة لاستكشاف فرص تأسيس الأعمال في الشارقة. ما المستندات المطلوبة؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "المتطلبات المسجلة لهذه الخدمة: جواز السفر.، الصورة الشخصية.، موافقة مبدئية من الجهات المعنية لتأسيس الأعمال وفق قائمة بطاقة ICP.، كشف حساب مختوم يغطي ستة أشهر على الأقل.، صورة الهوية الشخصية للمتقدمين من أفغانستان أو إيران أو العراق وفق البطاقة.، شهادة البكالوريوس أو ما يعادلها من المؤهلات العلمية وفق بطاقة ICP..",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "كم تستغرق المعاملة؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "والرسوم؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 4,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "لا توجد في المعرفة الموثقة الحالية قيمة رسوم محددة يمكنني تأكيدها لهذه الحالة. لن أضع رقمًا تقديريًا؛ راجع المصدر الرسمي أو ابدأ المعاملة للتحقق من الرسوم الحالية.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "والشروط؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 6,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "الشروط المشتركة المنشورة: جواز صالح لستة أشهر على الأقل وتأمين صحي ساري داخل الدولة. الدخول خلال 60 يوماً من الإصدار؛ هذه مهلة دخول وليست مدة البقاء المختارة (60 أو 90 أو 120 يوماً). استرداد الضمان بطلب بعد الإلغاء أو المغادرة، مع إلغاء التأشيرة بعد المغادرة وعدم وجود مخالفات إقامة، وفق البطاقة. هذه شروط مشتركة وليست تأكيداً كاملاً للأهلية بحسب النشاط أو الحالة.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      },
+      "visibleLinks": [
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "I need a business opportunities exploration visa in Sharjah. What documents are required?",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "Recorded requirements for this service:\nPassport.\nPersonal photograph.\nPreliminary business-establishment approval from the relevant authorities, as listed by ICP.\nStamped bank statement covering at least six months.\nPersonal identification copy for applicants from Afghanistan, Iran or Iraq, as specified on the card.\nBachelor’s degree or an equivalent academic qualification, as listed by ICP.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "What is the processing time?",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "2 days according to all three ICP duration cards; working days are not specified. This is processing time, not the selected period of stay.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "And the fees?",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 4,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "I cannot confirm a government fee for this case from the current verified record. I will not estimate a figure. Check the official source before applying or paying.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "And the conditions?",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 6,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "Published common conditions: a passport valid for at least six months and valid UAE health insurance. Enter within 60 days of issuance; this entry window differs from the selected 60-, 90- or 120-day stay. A financial-guarantee refund requires a request after cancellation or departure, cancellation after departure and no residency violations, as stated by ICP. These common conditions do not establish complete activity- or applicant-specific eligibility.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      },
+      "visibleLinks": [
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "question": "أريد تأشيرة لاستكشاف فرص تأسيس الأعمال في الشارقة. ما المستندات المطلوبة؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "المتطلبات المسجلة لهذه الخدمة: جواز السفر.، الصورة الشخصية.، موافقة مبدئية من الجهات المعنية لتأسيس الأعمال وفق قائمة بطاقة ICP.، كشف حساب مختوم يغطي ستة أشهر على الأقل.، صورة الهوية الشخصية للمتقدمين من أفغانستان أو إيران أو العراق وفق البطاقة.، شهادة البكالوريوس أو ما يعادلها من المؤهلات العلمية وفق بطاقة ICP..",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "question": "كم تستغرق المعاملة؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "question": "والرسوم؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 4,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "لا توجد في المعرفة الموثقة الحالية قيمة رسوم محددة يمكنني تأكيدها لهذه الحالة. لن أضع رقمًا تقديريًا؛ راجع المصدر الرسمي أو ابدأ المعاملة للتحقق من الرسوم الحالية.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "question": "والشروط؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 6,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "الشروط المشتركة المنشورة: جواز صالح لستة أشهر على الأقل وتأمين صحي ساري داخل الدولة. الدخول خلال 60 يوماً من الإصدار؛ هذه مهلة دخول وليست مدة البقاء المختارة (60 أو 90 أو 120 يوماً). استرداد الضمان بطلب بعد الإلغاء أو المغادرة، مع إلغاء التأشيرة بعد المغادرة وعدم وجود مخالفات إقامة، وفق البطاقة. هذه شروط مشتركة وليست تأكيداً كاملاً للأهلية بحسب النشاط أو الحالة.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      },
+      "visibleLinks": [
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "question": "I need a business opportunities exploration visa in Sharjah. What documents are required?",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "Recorded requirements for this service:\nPassport.\nPersonal photograph.\nPreliminary business-establishment approval from the relevant authorities, as listed by ICP.\nStamped bank statement covering at least six months.\nPersonal identification copy for applicants from Afghanistan, Iran or Iraq, as specified on the card.\nBachelor’s degree or an equivalent academic qualification, as listed by ICP.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      }
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "question": "What is the processing time?",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "2 days according to all three ICP duration cards; working days are not specified. This is processing time, not the selected period of stay.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      }
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "question": "And the fees?",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 4,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "I cannot confirm a government fee for this case from the current verified record. I will not estimate a figure. Check the official source before applying or paying.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      }
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "question": "And the conditions?",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 6,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "Published common conditions: a passport valid for at least six months and valid UAE health insurance. Enter within 60 days of issuance; this entry window differs from the selected 60-, 90- or 120-day stay. A financial-guarantee refund requires a request after cancellation or departure, cancellation after departure and no residency violations, as stated by ICP. These common conditions do not establish complete activity- or applicant-specific eligibility.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      },
+      "visibleLinks": [
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc018c587a0011cb16c1"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    }
+  ],
+  "pathways": [
+    {
+      "width": 1440,
+      "locale": "ar",
+      "kind": "business",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "kind": "business",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "kind": "business",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "kind": "business",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    }
+  ],
+  "externalModelAcceptance": "NOT_DECLARED",
+  "protectedAccountExecution": "NOT_TESTED",
+  "externalDependency": "BLOCKED_QUOTA_BILLING"
+}
