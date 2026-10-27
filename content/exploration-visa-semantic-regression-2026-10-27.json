@@ -1,0 +1,35 @@
+{
+  "observedAt": "2026-10-27T04:43:41.193Z",
+  "scope": "EXPLORATION_VISA_IDENTITY_AND_JURISDICTION_NOT_EXTERNAL_MODEL_ACCEPTANCE",
+  "liveBefore": {
+    "workflow": 40451271404,
+    "httpStatus": 200,
+    "external_model_used": false,
+    "providerFailure": "QUOTA_BILLING/credit_balance_exhausted",
+    "query": "أريد تأشيرة لاستكشاف فرص تأسيس الأعمال في الشارقة لمدة90 يوماً. ما المسار الرسمي؟",
+    "result": "NO_MATCH_GENERIC_CLARIFICATION"
+  },
+  "sourceAudit": {
+    "edgeVersion": 166,
+    "files": 13,
+    "verify_jwt": false,
+    "bindings": "Existing active/public/source-backed business and job exploration services; no binding or source-expiry defect."
+  },
+  "offlineBefore": {
+    "kind": "LOCAL_SOURCE_DIAGNOSTIC_NOT_LIVE_ACCEPTANCE",
+    "arabicTopScore": 142,
+    "englishBusinessTopScore": 7638,
+    "englishBusinessTopKind": "unrelated trade-licence candidates"
+  },
+  "fix": "Resolve explicit exploration visa objects and carry only already identified exploration objects through detail/emirate followups. Respect explicit authority, jurisdiction and supported action.",
+  "notChanged": [
+    "global ranking confidence threshold",
+    "government facts and verification flags",
+    "provider configuration",
+    "rate limits",
+    "authentication",
+    "RLS",
+    "storage",
+    "service catalog identities"
+  ]
+}

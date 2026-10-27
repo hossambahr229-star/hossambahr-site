@@ -1,12 +1,16 @@
 // Resolve explicit transaction objects before general lexical ranking.
 // Candidates still come exclusively from the source-backed published catalog.
-export type TransactionObject = {kind:string; action:string; freeZone?:boolean};
-export function transactionObject(q:string):TransactionObject|null {
+export type TransactionObject = {kind:string; action:string; freeZone?:boolean; jurisdiction?:string|null; authority?:string|null};
+export function transactionObject(q:string,jurisdiction:string|null=null):TransactionObject|null {
  const cancel=/الغاء|الغي|اغلاق|اغلق|اقفل|تصفيه|cancel|clos(?:e|ing)|liquidat|dissolv/.test(q);
  const renew=/تجديد|اجدد|جدد|renew/.test(q);
  const amend=/تعديل|اغير|غير|اضافه|اضيف|ادخل|ادخال|حذف|انسحاب|new partner|new shareholder|add|chang|amend/.test(q);
  const permit=/تصريح|permit/.test(q);
  const freeZone=/free ?zone|منطقه (?:ال)?حره|\bdmcc\b|\bshams\b|\bdifc\b|\badgm\b|\bjafza\b/.test(q);
+ const visa=/تاشير|فيزا|\bvisa\b/.test(q);
+ const businessExploration=/استكشاف\s+(?:فرص\s+)?(?:تاسيس\s+)?(?:ال)?(?:اعمال|استثمار)|\b(?:business|investment)(?:[\s-]+(?:establishment|opportunit(?:y|ies)))*[\s-]+explor(?:ation|ing)?\b|\bexplor(?:e|ing|ation)(?:[\s-]+(?:of|for))?[\s-]+(?:business|investment)\b|\bbusiness[\s-]+opportunit(?:y|ies)[\s-]+visa\b/.test(q);
+ const jobExploration=/استكشاف\s+(?:فرص\s+)?(?:ال)?(?:عمل|وظيف|شغل)|(?:ابحث|بحث|ادور|بدور|الاقي)\s+(?:(?:عن|علي|على)\s+)?(?:ال)?(?:عمل|وظيف|شغل)|\bjob[\s-]*seek(?:er|ing)?\b|\b(?:job|work|employment)[\s-]+(?:explor(?:ation|ing)?|search)\b|\b(?:search|look(?:ing)?|seek(?:ing)?)(?:[\s-]+for)?[\s-]+(?:a[\s-]+)?(?:job|work|employment)\b/.test(q);
+ if(visa&&(businessExploration||jobExploration))return {kind:businessExploration&&jobExploration?'exploration-visa-ambiguous':businessExploration?'business-exploration-visa':'job-exploration-visa',action:explorationOperation(q)||'issue',jurisdiction,authority:explorationAuthority(q)};
  if(/قياد|driving/.test(q)&&/رخص|licen/.test(q))return{kind:'driving',action:renew?'renew':cancel?'cancel':'other'};
  if(/موافقه (?:ال)?مبد[يئ]يه|initial approval/.test(q)&&/رخص|اقتصاد|business|licen|economic/.test(q))return{kind:'initial-approval',freeZone,action:cancel?'cancel':renew?'renew':'issue'};
  if(/جمارك|customs/.test(q)){
@@ -30,6 +34,14 @@ export function transactionObjectMatches(intent:TransactionObject,title:string,a
  const t=title.toLowerCase(),a=authority.toLowerCase();
  if(intent.freeZone&&['initial-approval','company-manager','company-partner','company-closure'].includes(intent.kind))return false;
  switch(intent.kind){
+ case 'business-exploration-visa':
+ case 'job-exploration-visa':{
+  if(intent.action!=='issue'||!intent.jurisdiction||intent.jurisdiction==='AE')return false;
+  const expected=intent.jurisdiction==='AE-DU'?'gdrfa-dubai':intent.jurisdiction.startsWith('AE-')?'icp':null;
+  if(!expected||a!==expected||(intent.authority&&a!==intent.authority))return false;
+  if(!/تاشير|فيزا|visa/.test(t))return false;
+  return intent.kind==='business-exploration-visa'?/استكشاف.*(?:تاسيس|اعمال)|business.*(?:explor|opportunit)|(?:explor|opportunit).*business/.test(t):/استكشاف.*عمل|job.*explor|job[\s-]*seek/.test(t);
+ }
  case 'company-closure':return !/mohre/.test(a)&&/الغاء|تصفيه|cancel|liquidat/.test(t)&&/رخص|شرك|licen|company/.test(t);
  case 'driving':return intent.action==='renew'&&/قياد|driv/.test(t)&&/تجديد|renew/.test(t);
  case 'initial-approval':return intent.action==='issue'&&/موافقه (?:ال)?مبد[يئ]يه|initial approval/.test(t);
@@ -47,3 +59,28 @@ export function transactionObjectMatches(intent:TransactionObject,title:string,a
 }
 
 export function transactionObjectNeedsEmirate(intent:TransactionObject):boolean {return !['personal-attestation','part-time-work','labour-complaint','pro-card'].includes(intent.kind);}
+
+function explorationOperation(q:string):string|null {
+ if(/الغاء|الغي|cancel/.test(q))return 'cancel';
+ if(/تجديد|اجدد|جدد|renew/.test(q))return 'renew';
+ if(/تعديل|تمديد|نقل|تحويل|\b(?:amend|modify|extend|extension|transfer)\b/.test(q))return 'amend';
+ return null;
+}
+function explorationAuthority(q:string):string|null {
+ const icp=/\bicp\b|الهي[يئ]ه الاتحاديه|الاتحاديه للهويه/.test(q),dubai=/\bgdrfa\b|الاداره العامه للاقامه|دبي للاقامه|اقامه دبي/.test(q);
+ return icp&&dubai?'__CONFLICT__':icp?'icp':dubai?'gdrfa-dubai':null;
+}
+// Carry only an already identified exploration-visa object, never arbitrary prior topics.
+export function explorationVisaFollowUp(serviceSlug:string,jurisdiction:string|null,action:string|null,q:string):TransactionObject|null {
+ const kinds:Record<string,string>={
+  'تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي':'business-exploration-visa',
+  'تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي':'business-exploration-visa',
+  'تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي':'job-exploration-visa',
+  'تأشيرة-استكشاف-فرص-عمل-في-دبي':'job-exploration-visa'
+ };
+ const kind=kinds[serviceSlug];if(!kind)return null;
+ const explicit=transactionObject(q,jurisdiction);
+ if(explicit)return /exploration-visa/.test(explicit.kind)?explicit:null;
+ if(/تاشير|فيزا|\bvisa\b/.test(q))return null;
+ return{kind,jurisdiction,authority:explorationAuthority(q),action:explorationOperation(q)||(action&&['issue','renew','cancel','amend','transfer'].includes(action)?action:'issue')};
+}
