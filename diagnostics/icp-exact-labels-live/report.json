@@ -1,0 +1,42 @@
+{
+  "status": "SCOPED_PASS",
+  "captureSource": "LIVE_PRODUCTION",
+  "views": [
+    {
+      "width": 1440,
+      "status": "PASS",
+      "exactApplicationLabels": [
+        60,
+        90,
+        120
+      ],
+      "actualTransactions": [
+        939,
+        941,
+        942
+      ],
+      "durationCardsInViewport": true,
+      "duplicateExecutionPanels": 0
+    },
+    {
+      "width": 390,
+      "status": "PASS",
+      "exactApplicationLabels": [
+        60,
+        90,
+        120
+      ],
+      "actualTransactions": [
+        939,
+        941,
+        942
+      ],
+      "durationCardsInViewport": true,
+      "duplicateExecutionPanels": 0
+    }
+  ],
+  "previousEightLocaleJourneys": "PRESERVED_40420807027",
+  "externalModel": "NOT_TESTED",
+  "protectedAccounts": "NOT_TESTED",
+  "humanReferenceAcceptance": "NOT_DECLARED"
+}
