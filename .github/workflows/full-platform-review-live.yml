@@ -1,4 +1,4 @@
-name: ICP Job Visa Duration Live Evidence
+name: Exact Government Choice Labels Live
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -14,57 +14,34 @@ jobs:
         with: {node-version: '24'}
       - uses: browser-actions/setup-chrome@v1
       - run: npm install --no-save --no-package-lock playwright@1.55.0
-      - name: Wait for duration-card release
-        run: |
-          node --input-type=module <<'NODE'
-          import{createHash}from'node:crypto';
-          const base='https://hossambahr.com',slug="تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي";
-          const get=async p=>(await fetch(base+p,{cache:'no-store'})).text();
-          for(let i=0;i<60;i++){
-           const [html,contact,pj,pc,data,ij,jj]=await Promise.all(['/services/'+slug+'/','/contact/','/service-pathways.js','/service-pathways.css','/customer-execution-data.json','/customer-intake.js','/customer-jurisdiction.js'].map(get));
-           const pv=createHash('sha256').update(pj).update(pc).update(data).digest('hex').slice(0,12),iv=createHash('sha256').update(ij).update(jj).digest('hex').slice(0,12);
-           if(html.includes('data-official-variant-days="120"')&&pj.includes("cache:'no-cache'")&&html.includes('/service-pathways.js?v='+pv)&&contact.includes('/customer-intake.js?v='+iv))process.exit(0);
-           await new Promise(r=>setTimeout(r,20000));
-          }throw Error('Final catalog and intake versions not published');
-          NODE
       - name: Actual desktop and phone browser journeys
         env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
         run: |
           node --input-type=module <<'NODE'
-          import{createHash}from'node:crypto';import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
-          const out='diagnostics/icp-job-duration-live';await mkdir(out,{recursive:true});const base='https://hossambahr.com',slug="تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي";
-          const rows=await(await fetch(base+'/customer-execution-data.json')).json(),job=rows.find(s=>s.service_slug===slug);assert.equal(job.official_variant_cards.length,3);
-          const expectedVersion=createHash('sha256').update(await(await fetch(base+'/customer-intake.js')).text()).update(await(await fetch(base+'/customer-jurisdiction.js')).text()).digest('hex').slice(0,12);
-          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH});const journeys=[];
-          try{for(const width of[1440,1366,390,320])for(const locale of['ar','en']){
-           const p=locale==='en'?'/en':'',route=p+'/services/'+slug+'/',page=await browser.newPage({viewport:{width,height:960},deviceScaleFactor:1}),errors=[];page.setDefaultTimeout(20000);page.on('pageerror',e=>errors.push(e.message));const catalogRequests=[];page.on('request',r=>{if(new URL(r.url()).pathname==='/customer-execution-data.json')catalogRequests.push(r.url());});
-           await page.goto(base+route,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);assert.equal(await page.evaluate(()=>innerWidth),width);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
-           const runtime=new URL(await page.locator('script[src*="service-pathways.js"]').getAttribute('src'),base);assert.ok(catalogRequests.some(u=>new URL(u).search===runtime.search),'catalog request must carry its runtime version');
-           for(const href of await page.locator('[data-hb-pathways="'+slug+'"] .hb-path-official').evaluateAll(es=>es.map(e=>e.getAttribute('href'))))assert.equal(href,route+'#official-variant-options');
-           assert.equal(await page.locator('[data-hb-official-variants]').count(),1);assert.equal(await page.locator('[data-official-variant-days]').count(),3);
-           const chooser=page.locator('#service-execution-options [data-government-duration-selection]');await chooser.click();assert.equal(new URL(page.url()).hash,'#official-variant-options');assert.ok(await page.locator('#official-variant-options').isVisible());
-           for(const c of job.official_variant_cards){const link=page.locator('[data-official-variant-days="'+c.durationDays+'"]');assert.equal(await link.getAttribute('href'),c.informationUrl);assert.ok((await link.boundingBox()).height>=44);assert.ok(await link.isVisible());}
-           const direct=await page.locator('#service-execution-options [data-hb-direct-whatsapp]').getAttribute('href');assert.equal(new URL(direct).pathname,'/971503780460');assert.ok(new URL(direct).searchParams.get('text').includes('directory:residency:34'));
-           await page.screenshot({path:out+'/'+locale+'-cards-'+width+'.png'});
-           await page.locator('#service-execution-options .hb-path-track').click();await page.waitForLoadState('networkidle');await page.waitForFunction(s=>document.querySelector('[name=service]').value===s,slug);
-           assert.equal(await page.locator('script[src*="customer-intake.js"]').getAttribute('src'),'/customer-intake.js?v='+expectedVersion);
-           await page.locator('[name=emirate]').selectOption('الشارقة');await page.locator('[data-customer-intake] button[type=submit]').click();assert.ok(await page.locator('[data-intake-review]').isVisible());assert.equal(await page.locator('[data-intake-official]').getAttribute('href'),route+'#official-variant-options');
-           const wa=new URL(await page.locator('[data-intake-whatsapp]').getAttribute('href'));assert.equal(wa.pathname,'/971503780460');assert.ok(wa.searchParams.get('text').includes(locale==='en'?'Sharjah':'الشارقة'));
-           await page.locator('[data-intake-official]').click();await page.waitForLoadState('networkidle');assert.equal(decodeURI(new URL(page.url()).pathname),route);assert.equal(new URL(page.url()).hash,'#official-variant-options');
-           await page.goto(base+p+'/discover/?authority=icp',{waitUntil:'networkidle'});const entry=page.locator('main a[href="'+route+'"]:visible').first();await entry.click();await page.waitForLoadState('networkidle');assert.equal(decodeURI(new URL(page.url()).pathname),route);assert.equal(await page.locator('[data-official-variant-days]').count(),3);
-           await page.goto(base+p+'/services/family-residency-uae/',{waitUntil:'networkidle'});assert.equal(await page.locator('[data-hb-official-variants]').count(),0);const other=page.locator('#service-execution-options .hb-path-official');assert.ok((await other.getAttribute('href')).startsWith('https://'));assert.ok(await page.locator('#service-execution-options .hb-path-assisted').isVisible());
-           assert.deepEqual(errors,[]);journeys.push({width,locale,status:'PASS',government:'DURATION_SPECIFIC_INFORMATION_CARDS',assisted:'PUBLIC_DRAFT_AND_WHATSAPP_CONTEXT_NO_SEND',discovery:'ICP_DIRECTORY_TO_CANONICAL_SERVICE',otherService:'EXISTING_EXTERNAL_GOVERNMENT_PATH'});await page.close();
+          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/icp-exact-labels-live',base='https://hossambahr.com',slug="تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي";await mkdir(out,{recursive:true});const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH}),views=[];
+          try{for(const width of[1440,390]){
+           const page=await browser.newPage({viewport:{width,height:width===390?844:960},deviceScaleFactor:1});page.setDefaultTimeout(30000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+           await page.goto(base+'/services/'+slug+'/',{waitUntil:'networkidle'});await page.waitForFunction(()=>document.querySelector('.service-decision-nav'));
+           assert.equal(await page.evaluate(()=>innerWidth),width);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+           const choices=page.locator('#official-route .exact-route-choices a[href*="/issueVisa/request/"]');assert.equal(await choices.count(),3);
+           for(const [i,days]of[60,90,120].entries()){assert.ok((await choices.nth(i).innerText()).includes(String(days)));assert.ok((await choices.nth(i).getAttribute('href')).includes('/request/'+[939,941,942][i]+'/'));}
+           assert.equal(await page.locator('.phase2-execution-paths [data-hb-pathways]').count(),0);
+           await page.locator('#service-execution-options [data-government-duration-selection]').click();
+           await page.waitForFunction(()=>{const section=document.querySelector('#official-variant-options'),last=section?.querySelector('[data-official-variant-days="120"]');if(!last)return false;return section.getBoundingClientRect().top>=0&&last.getBoundingClientRect().bottom<=innerHeight;});
+           assert.equal(new URL(page.url()).hash,'#official-variant-options');await page.screenshot({path:out+'/ar-duration-cards-'+width+'.png'});assert.deepEqual(errors,[]);
+           views.push({width,status:'PASS',exactApplicationLabels:[60,90,120],actualTransactions:[939,941,942],durationCardsInViewport:true,duplicateExecutionPanels:0});await page.close();
           }}finally{await browser.close();}
-          await writeFile(out+'/report.json',JSON.stringify({status:'SCOPED_PASS',captureSource:'LIVE_PRODUCTION',journeys,externalModel:'NOT_TESTED',protectedAccounts:'NOT_TESTED',humanVisualAcceptance:'NOT_DECLARED',partialServiceFacts:'UNCHANGED'},null,2));
+          await writeFile(out+'/report.json',JSON.stringify({status:'SCOPED_PASS',captureSource:'LIVE_PRODUCTION',views,previousEightLocaleJourneys:'PRESERVED_40420807027',externalModel:'NOT_TESTED',protectedAccounts:'NOT_TESTED',humanReferenceAcceptance:'NOT_DECLARED'},null,2));
           NODE
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: icp-job-duration-live, path: diagnostics/icp-job-duration-live}
+        with: {name: icp-exact-labels-live, path: diagnostics/icp-exact-labels-live}
       - name: Retain successful live evidence
         run: |
           git config user.name "HossamBahr Production Evidence"
           git config user.email "production-evidence@users.noreply.github.com"
-          git add diagnostics/icp-job-duration-live
-          git commit -m "Retain actual ICP duration pathway evidence [skip ci]"
+          git add diagnostics/icp-exact-labels-live
+          git commit -m "Retain exact ICP choice labels and visible duration cards [skip ci]"
           git pull --rebase --autostash origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
