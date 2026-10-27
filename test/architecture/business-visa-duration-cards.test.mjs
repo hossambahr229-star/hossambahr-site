@@ -5,8 +5,9 @@ test('business exploration uses distinct official duration cards without borrowi
  const ids=['68f5bc018c587a0011cb16c1','68e350315ae59b00117383e7','68f5bc368c587a0011cb16c5'];
  assert.deepEqual(business.officialVariantCards.map(c=>new URL(c.informationUrl).searchParams.get('serviceid')),ids);
  assert.ok(business.officialVariantCards.every(c=>!job.officialVariantCards.some(j=>j.informationUrl===c.informationUrl)));
- for(const field of['requirementsVerified','feesVerified','durationVerified','eligibilityVerified','detailsVerified'])assert.equal(business.verification[field],false,field);
- assert.deepEqual(business.documents.items,[]);
+ for(const field of['feesVerified','eligibilityVerified','detailsVerified'])assert.equal(business.verification[field],false,field);
+ for(const field of['requirementsVerified','durationVerified'])assert.equal(business.verification[field],true,field);
+ assert.equal(business.documents.items.length,6);assert.equal(business.eligibilityScope,'common-only');
  for(const locale of['ar','en']){
   const prefix=locale==='en'?'/en':'',markup=officialVariantMarkup(business,locale);
   assert.equal((markup.match(/data-official-variant-days=/g)||[]).length,3);assert.doesNotMatch(markup,/1000|درهم|AED/);
