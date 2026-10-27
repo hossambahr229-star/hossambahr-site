@@ -19,6 +19,13 @@ export function whatsappHref(service,locale='ar',summary=''){
 export function governmentPathHref(service,locale='ar'){
  const s=pathwayRecord(service,locale);return s.variantCards.length>1?(locale==='en'?'/en':'')+s.route+'#official-variant-options':s.official;
 }
+
+export function governmentActionHref(service,incomingHref,locale='ar'){
+ const record=pathwayRecord(service,locale);
+ if(record.variantCards.length<2)return null;
+ return incomingHref===record.official||record.variantCards.some(card=>card.informationUrl===incomingHref)?governmentPathHref(service,locale):null;
+}
+
 export function pathwayMarkup(service,locale='ar'){
  const s=pathwayRecord(service,locale),en=locale==='en',p=en?'/en':'';
  const chooseDuration=s.variantCards.length>1,officialHref=governmentPathHref(service,locale);
@@ -72,9 +79,9 @@ if(typeof document!=='undefined'){
    for(const actions of document.querySelectorAll('.hb-chat-actions')){
     const links=[...actions.querySelectorAll('a.hb-chat-secondary')],matches=[...new Map(links.map(rowFor).filter(Boolean).map(s=>[s.service_slug,s])).values()];
     if(matches.length!==1||matches[0].official_variant_cards?.length<2||!matches[0].official_variant_cards)continue;
-    const row=matches[0],record=pathwayRecord(row,locale),href=governmentPathHref(row,locale),label=locale==='en'?'Choose visa duration':'اختر مدة التأشيرة';
+    const row=matches[0],href=governmentPathHref(row,locale),label=locale==='en'?'Choose visa duration':'اختر مدة التأشيرة';
     for(const link of links){
-     if(link.getAttribute('href')!==record.official)continue;
+     if(!governmentActionHref(row,link.getAttribute('href'),locale))continue;
      if(link.getAttribute('href')!==href)link.setAttribute('href',href);
      if(link.textContent!==label)link.textContent=label;
      if(link.hasAttribute('target'))link.removeAttribute('target');
