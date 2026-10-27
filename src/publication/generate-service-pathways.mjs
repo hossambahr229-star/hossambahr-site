@@ -32,7 +32,7 @@ async function walk(dir){for(const entry of await readdir(dir,{withFileTypes:tru
  if(service){
   if(service.officialVariantCards?.length>1){
    html=html.replace(/<section\b[^>]*data-hb-official-variants[^>]*>[\s\S]*?<\/section>/g,'');
-   html=html.replaceAll('فئة محددة داخل خدمة أم','بطاقات رسمية بحسب المدة').replaceAll('إصدار تأشيرة لاستكشاف فرص العمل عبر ICP مع اختيار الفئة داخل المعاملة.','إصدار تأشيرة لاستكشاف فرص العمل عبر ICP؛ اختر المدة وراجع بطاقتها الرسمية.');
+   html=html.replaceAll('فئة محددة داخل خدمة أم','بطاقات رسمية بحسب المدة').replaceAll(' مع اختيار الفئة داخل المعاملة.','؛ اختر المدة وراجع بطاقتها الرسمية.');
    const variantBlock=officialVariantMarkup(service,locale);
    const insertion=locale==='en'?'<section id="service-documents">':'<section id="official-route"';
    if(!html.includes(insertion))throw Error('Missing official variant placement: '+service.slug);
