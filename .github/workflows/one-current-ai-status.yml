@@ -1,0 +1,44 @@
+name: One Current External AI Status
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/one-current-ai-status.yml']
+permissions: {contents: write}
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: One real UI conversation without mocks or injected history
+        env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
+        run: |
+          node --input-type=module <<'NODE'
+          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';
+          const out='diagnostics/current-ai-status-20261027';await mkdir(out,{recursive:true});const report={capturedAt:new Date().toISOString(),source:'LIVE_PRODUCTION_UI_ONE_REAL_REQUEST',externalModel:'NOT_VERIFIED',fullSemanticAcceptance:false,protectedAccountExecution:'NOT_TESTED'};
+          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH});
+          try{const page=await browser.newPage({viewport:{width:1440,height:960}});page.setDefaultTimeout(30000);await page.goto('https://hossambahr.com/ai/',{waitUntil:'networkidle'});
+           const responsePromise=page.waitForResponse(r=>r.request().method()==='POST'&&r.url().includes('/public-ai-concierge'),{timeout:90000});
+           await page.locator('textarea[name=goal]').fill('أريد تأشيرة لاستكشاف فرص تأسيس الأعمال في الشارقة لمدة90 يوماً. ما المسار الرسمي؟');await page.locator('.hb-chat-send').click();const response=await responsePromise;report.httpStatus=response.status();const body=await response.text(),payloads=[];
+           try{payloads.push(JSON.parse(body));}catch{for(const line of body.split('\n').filter(s=>s.trim()))try{payloads.push(JSON.parse(line.startsWith('data:')?line.slice(5).trim():line.trim()));}catch{}}
+           const metadata=[];function scan(v,path='root'){if(!v||typeof v!=='object')return;for(const[k,x]of Object.entries(v)){if(['external_model_used','fallback_reason','category','reason','code','http_status'].includes(k)&&(x===null||['string','number','boolean'].includes(typeof x)))metadata.push({path:path+'.'+k,value:x});if(x&&typeof x==='object')scan(x,path+'.'+k);}}payloads.forEach(v=>scan(v));report.metadata=metadata;
+           const terminal=payloads.filter(v=>['done','fallback'].includes(v.type)).at(-1),engine=terminal?.engine||terminal?.result?.engine||payloads.at(-1)?.result?.engine;report.externalModel=engine?.external_model_used===true?'EXTERNAL_MODEL_OBSERVED':engine?.external_model_used===false?'EXTERNAL_MODEL_NOT_USED':'NOT_VERIFIED';report.terminalFrame=terminal?.type||null;
+           await page.locator('.hb-chat-message--assistant:not([data-pending])').last().waitFor({timeout:90000});report.customerVisibleAnswer=(await page.locator('.hb-chat-message--assistant:not([data-pending])').last().innerText()).slice(0,12000);await page.screenshot({path:out+'/real-ai-answer.png',fullPage:true});
+          }catch(e){report.captureError=String(e);}finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify({httpStatus:report.httpStatus,externalModel:report.externalModel,metadata:report.metadata,captureError:report.captureError}));await browser.close();}
+          
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: current-ai-status-20261027, path: diagnostics/current-ai-status-20261027}
+      - name: Retain status evidence without claiming model acceptance
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/current-ai-status-20261027
+          git commit -m "Observe one current real external-model status [skip ci]"
+          git pull --rebase --autostash origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
