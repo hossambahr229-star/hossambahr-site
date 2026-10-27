@@ -1,0 +1,501 @@
+{
+  "capturedAt": "2026-10-27T10:28:58.783Z",
+  "source": "LIVE_PRODUCTION_UI_REAL_HISTORY",
+  "status": "SCOPED_SEMANTIC_AND_PATH_PASS",
+  "edgeVersionVerifiedSeparately": 168,
+  "turns": [
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "أريد تأشيرة لاستكشاف فرص تأسيس الأعمال في الشارقة لمدة90 يوماً. ما المسار الرسمي؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "المسار المناسب لطلبك هو «تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)» لدى الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ في الإمارات العربية المتحدة.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "والأوراق إيه؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "لا توجد قائمة مستندات مكتملة وموثقة في البيانات الحالية لهذه الحالة.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "ولو في دبي؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 4,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "المسار المناسب لطلبك هو «تأشيرة استكشاف فرص تأسيس الأعمال في دبي» لدى الإدارة العامة للإقامة وشؤون الأجانب في دبي.",
+      "visibleLinks": [
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "أنجزها بنفسي رسميًا",
+          "href": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "I need a job seeker visa in Dubai.",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "The matching service is Job Exploration Visa in Dubai through GDRFA Dubai."
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "And the documents?",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "answer": "A complete verified document list is not available for this case. Check the official source."
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "What if it is in Sharjah?",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 4,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "answer": "The matching service is Job Exploration Visa through ICP outside Dubai through ICP.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      },
+      "visibleLinks": [
+        {
+          "label": "Open source",
+          "href": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Government self-service",
+          "href": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Government self-service",
+          "href": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "question": "أريد تأشيرة لاستكشاف فرص تأسيس الأعمال في الشارقة لمدة90 يوماً. ما المسار الرسمي؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "المسار المناسب لطلبك هو «تأشيرة استكشاف فرص تأسيس الأعمال عبر ICP (خارج دبي)» لدى الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ في الإمارات العربية المتحدة.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "question": "والأوراق إيه؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "لا توجد قائمة مستندات مكتملة وموثقة في البيانات الحالية لهذه الحالة.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "question": "ولو في دبي؟",
+      "expected": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 4,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "answer": "المسار المناسب لطلبك هو «تأشيرة استكشاف فرص تأسيس الأعمال في دبي» لدى الإدارة العامة للإقامة وشؤون الأجانب في دبي.",
+      "visibleLinks": [
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "أنجزها بنفسي رسميًا",
+          "href": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "question": "I need a job seeker visa in Dubai.",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "The matching service is Job Exploration Visa in Dubai through GDRFA Dubai."
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "question": "And the documents?",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "answer": "A complete verified document list is not available for this case. Check the official source."
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "question": "What if it is in Sharjah?",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 4,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-عمل-في-دبي",
+      "answer": "The matching service is Job Exploration Visa through ICP outside Dubai through ICP.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      },
+      "visibleLinks": [
+        {
+          "label": "Open source",
+          "href": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Government self-service",
+          "href": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D9%81%D9%8A-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Government self-service",
+          "href": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    }
+  ],
+  "pathways": [
+    {
+      "width": 1440,
+      "locale": "ar",
+      "kind": "business",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "kind": "job",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "kind": "business",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "kind": "job",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    }
+  ],
+  "externalModelAcceptance": "NOT_DECLARED",
+  "protectedAccountExecution": "NOT_TESTED",
+  "externalDependency": "BLOCKED_QUOTA_BILLING"
+}
