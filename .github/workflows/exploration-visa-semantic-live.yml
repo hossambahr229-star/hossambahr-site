@@ -1,0 +1,56 @@
+name: Real Exploration Visa Semantic Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/exploration-visa-semantic-live.yml']
+permissions: {contents: write}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Real conversations without injected history or mocked responses
+        env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
+        run: |
+          node --input-type=module <<'NODE'
+          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/exploration-visa-semantic-live';await mkdir(out,{recursive:true});const report={capturedAt:new Date().toISOString(),source:'LIVE_PRODUCTION_UI_REAL_HISTORY',status:'RUNNING',edgeVersionVerifiedSeparately:167,turns:[],externalModelAcceptance:'NOT_DECLARED',protectedAccountExecution:'NOT_TESTED'};
+          const cases=[
+           {locale:'ar',name:'business',turns:[['أريد تأشيرة لاستكشاف فرص تأسيس الأعمال في الشارقة لمدة90 يوماً. ما المسار الرسمي؟','تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي'],['والأوراق إيه؟','تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي'],['ولو في دبي؟','تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي']]},
+           {locale:'en',name:'job',turns:[['I need a job seeker visa in Dubai.','تأشيرة-استكشاف-فرص-عمل-في-دبي'],['And the documents?','تأشيرة-استكشاف-فرص-عمل-في-دبي'],['What if it is in Sharjah?','تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي']]}
+          ];
+          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH});let failure;
+          try{for(const width of[1440,390])for(const c of cases){
+           const page=await browser.newPage({viewport:{width,height:width===390?844:960}});page.setDefaultTimeout(30000);await page.goto('https://hossambahr.com'+(c.locale==='en'?'/en':'')+'/ai/',{waitUntil:'networkidle'});
+           for(const[question,expected]of c.turns){
+            const previous=await page.locator('.hb-chat-message--assistant:not([data-pending])').count(),responsePromise=page.waitForResponse(r=>r.request().method()==='POST'&&r.url().includes('/public-ai-concierge'),{timeout:90000});
+            await page.locator('textarea[name=goal]').fill(question);await page.locator('.hb-chat-send').click();const response=await responsePromise;assert.equal(response.status(),200);const request=response.request().postDataJSON(),body=await response.text(),payloads=[];
+            try{payloads.push(JSON.parse(body));}catch{for(const line of body.split('\n').filter(s=>s.trim()))try{payloads.push(JSON.parse(line.startsWith('data:')?line.slice(5).trim():line.trim()));}catch{}}
+            const terminal=payloads.filter(v=>['done','fallback'].includes(v.type)).at(-1),result=terminal?.result||payloads.at(-1)?.result||payloads.at(-1),actual=result?.matches?.[0]?.service_slug;
+            report.turns.push({width,locale:c.locale,question,expected,actual,external_model_used:result?.engine?.external_model_used,provider_failure:result?.engine?.provider_failure?{category:result.engine.provider_failure.category,code:result.engine.provider_failure.code}:null,requestHistoryTurns:Array.isArray(request.history)?request.history.length:0,inheritedServiceId:request.context?.active_service_id||request.context?.service_slug||null,answer:result?.answer?.text||null});
+            assert.equal(actual,expected,question);assert.equal(result.privacy?.case_created,false);assert.equal(result.privacy?.personal_data_persisted,false);
+            await page.waitForFunction(n=>document.querySelectorAll('.hb-chat-message--assistant:not([data-pending])').length>n,previous,{timeout:90000});assert.ok((await page.locator('.hb-chat-message--assistant:not([data-pending])').last().innerText()).trim().length>10);
+           }
+           const links=await page.locator('.hb-chat-thread a[href]').evaluateAll(es=>es.map(e=>({label:e.textContent.trim(),href:e.getAttribute('href')})));report.turns.at(-1).visibleLinks=links;
+           await page.screenshot({path:out+'/'+c.locale+'-'+c.name+'-'+width+'.png',fullPage:true});await page.close();
+          }report.status='SCOPED_SEMANTIC_PASS';report.externalDependency=report.turns.some(t=>t.provider_failure?.category==='QUOTA_BILLING')?'BLOCKED_QUOTA_BILLING':report.turns.every(t=>t.external_model_used===true)?'EXTERNAL_MODEL_OBSERVED_NOT_FULL_QUALITY_ACCEPTANCE':'EXTERNAL_MODEL_NOT_FULLY_VERIFIED';}
+          catch(e){report.status='LIVE_FAIL';report.error=String(e);failure=e;}finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2));await browser.close();}if(failure)throw failure;
+          
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: exploration-visa-semantic-live, path: diagnostics/exploration-visa-semantic-live}
+      - name: Retain real semantic acceptance evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/exploration-visa-semantic-live
+          git commit -m "Retain real exploration visa semantic evidence [skip ci]"
+          git pull --rebase --autostash origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
