@@ -16,9 +16,12 @@ export function whatsappHref(service,locale='ar',summary=''){
   en?'Please help me confirm the scope and next steps.':'أرجو مساعدتي في تأكيد نطاق الخدمة والخطوات التالية.'].filter(Boolean).join('\n');
  return 'https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(text);
 }
+export function governmentPathHref(service,locale='ar'){
+ const s=pathwayRecord(service,locale);return s.variantCards.length>1?(locale==='en'?'/en':'')+s.route+'#official-variant-options':s.official;
+}
 export function pathwayMarkup(service,locale='ar'){
  const s=pathwayRecord(service,locale),en=locale==='en',p=en?'/en':'';
- const chooseDuration=s.variantCards.length>1,officialHref=chooseDuration?p+s.route+'#official-variant-options':s.official;
+ const chooseDuration=s.variantCards.length>1,officialHref=governmentPathHref(service,locale);
  const review=p+'/contact/?service='+encodeURIComponent(s.slug)+'&source='+encodeURIComponent(p+s.route)+'&handoff=1';
  return `<div class="hb-service-pathways" data-hb-pathways="${escape(s.slug)}" aria-label="${en?'Choose how to proceed':'اختر طريقة إنجاز المعاملة'}"><a class="hb-path-official"${s.kind==='OFFICIAL_GUIDANCE'?' data-destination-kind="official-guidance"':''} href="${escape(officialHref)}"${chooseDuration?' data-government-duration-selection':' target="_blank" rel="noopener noreferrer"'}>${chooseDuration?(en?'Choose visa duration →':'اختر مدة التأشيرة ←'):s.kind==='OFFICIAL_GUIDANCE'?(en?'Official guidance ↗':'الدليل الحكومي الرسمي ↗'):(en?'Government self-service ↗':'أنجزها بنفسي رسميًا ↗')}</a><a class="hb-path-assisted" data-hb-direct-whatsapp href="${escape(whatsappHref(service,locale))}" target="_blank" rel="noopener noreferrer">${en?'With HOSSAM BAHR · WhatsApp':'أنجزها مع حسام بحر · واتساب'}</a><a class="hb-path-track" href="${escape(review)}">${en?'Or prepare a request and track it in the platform →':'أو جهّز طلبًا وتابعه داخل المنصة ←'}</a></div>`;
 }
@@ -65,6 +68,20 @@ if(typeof document!=='undefined'){
   const rowFor=a=>{try{const u=new URL(a.getAttribute('href'),location.origin);if(u.origin!==location.origin)return;return byRoute.get(u.pathname.replace(/^\/en\//,'/'));}catch{}};
   let queued=false;
   function decorate(){queued=false;
+   // Existing chat cards retain their source citation; only the execution action chooses a duration.
+   for(const actions of document.querySelectorAll('.hb-chat-actions')){
+    const links=[...actions.querySelectorAll('a.hb-chat-secondary')],matches=[...new Map(links.map(rowFor).filter(Boolean).map(s=>[s.service_slug,s])).values()];
+    if(matches.length!==1||matches[0].official_variant_cards?.length<2||!matches[0].official_variant_cards)continue;
+    const row=matches[0],record=pathwayRecord(row,locale),href=governmentPathHref(row,locale),label=locale==='en'?'Choose visa duration':'اختر مدة التأشيرة';
+    for(const link of links){
+     if(link.getAttribute('href')!==record.official)continue;
+     if(link.getAttribute('href')!==href)link.setAttribute('href',href);
+     if(link.textContent!==label)link.textContent=label;
+     if(link.hasAttribute('target'))link.removeAttribute('target');
+     link.dataset.governmentDurationSelection='true';
+    }
+   }
+
    for(let card of document.querySelectorAll('main article,main .card,main .service-card,main .service-row,main .service-list li,[data-canonical-service],[data-service-slug],.intent-result-card')){
     if(card.closest('.hb-service-pathways,.hb-pathway-card,.hb-chat-thread,.phase2-execution-paths,[data-customer-execution]')||card.querySelector('[data-hb-pathways]'))continue;
     const links=[...(card.matches('a[href]')?[card]:[]),...card.querySelectorAll('a[href]')];
