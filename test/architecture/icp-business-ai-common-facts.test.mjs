@@ -11,7 +11,7 @@ test('new reviewed common facts have complete explanatory English without invent
  assert.match(englishResult({matches:[match],answer:{focus:'fees',fact_status:'MISSING_INFORMATION'}}).answer.text,/cannot confirm a government fee/);
 });
 test('only canonical and reviewed duration government actions go to the chooser',()=>{
- const data={service_slug:s.slug,name:s.name,official_url:s.officialCardUrl,official_variant_cards:s.officialVariantCards,service_url:s.internalUrl};
+ const data={service_slug:s.slug,name:s.name,official_url:s.officialCardUrl,official_variant_cards:s.officialVariantCards,source_page:s.internalUrl};
  for(const lang of['ar','en'])for(const url of[s.officialCardUrl,...s.officialVariantCards.map(c=>c.informationUrl)])assert.equal(governmentActionHref(data,url,lang),(lang==='en'?'/en':'')+s.internalUrl+'#official-variant-options');
  assert.equal(governmentActionHref(data,'https://icp.gov.ae/en/services-details/?serviceid=unreviewed'),null);
  assert.equal(governmentActionHref(data,'https://example.com/'),null);
