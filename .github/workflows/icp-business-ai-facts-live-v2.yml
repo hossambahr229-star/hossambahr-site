@@ -1,0 +1,77 @@
+name: ICP Business AI Common Facts Acceptance V2
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/icp-business-ai-facts-live-v2.yml']
+permissions: {contents: write}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the current chat government-action publication
+        run: |
+          node --input-type=module <<'NODE'
+          import{createHash}from'node:crypto';const base='https://hossambahr.com',get=async p=>(await fetch(base+p,{cache:'no-store'})).text();
+          for(let i=0;i<60;i++){const[h,js,css,data]=await Promise.all(['/ai/','/service-pathways.js','/service-pathways.css','/customer-execution-data.json'].map(get));const version=createHash('sha256').update(js).update(css).update(data).digest('hex').slice(0,12);if(js.includes("governmentActionHref(row,link.getAttribute")&&h.includes('/service-pathways.js?v='+version))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Current chat government-action runtime not published');
+          NODE
+      - name: Real conversations without injected history or mocked responses
+        env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
+        run: |
+          node --input-type=module <<'NODE'
+          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/icp-business-ai-facts-live-v2';await mkdir(out,{recursive:true});const report={capturedAt:new Date().toISOString(),source:'LIVE_PRODUCTION_UI_REAL_HISTORY',status:'RUNNING',edgeVersionVerifiedSeparately:170,turns:[],pathways:[],externalModelAcceptance:'NOT_DECLARED',protectedAccountExecution:'NOT_TESTED'};
+          const cases=[{"locale":"ar","name":"business","turns":[["أريد تأشيرة لاستكشاف فرص تأسيس الأعمال في الشارقة. ما المستندات المطلوبة؟","تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي"],["كم تستغرق المعاملة؟","تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي"],["والرسوم؟","تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي"],["والشروط؟","تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي"]]},{"locale":"en","name":"business","turns":[["I need a business opportunities exploration visa in Sharjah. What documents are required?","تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي"],["What is the processing time?","تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي"],["And the fees?","تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي"],["And the conditions?","تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي"]]}];
+          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH});let failure;
+          try{for(const width of[1440,390])for(const c of cases){
+           const page=await browser.newPage({viewport:{width,height:width===390?844:960}});page.setDefaultTimeout(30000);await page.goto('https://hossambahr.com'+(c.locale==='en'?'/en':'')+'/ai/',{waitUntil:'networkidle'});
+           for(const[question,expected]of c.turns){
+            const previous=await page.locator('.hb-chat-message--assistant:not([data-pending])').count(),responsePromise=page.waitForResponse(r=>r.request().method()==='POST'&&r.url().includes('/public-ai-concierge'),{timeout:90000});
+            await page.locator('textarea[name=goal]').fill(question);await page.locator('.hb-chat-send').click();const response=await responsePromise;assert.equal(response.status(),200);const request=response.request().postDataJSON(),body=await response.text(),payloads=[];
+            try{payloads.push(JSON.parse(body));}catch{for(const line of body.split('\n').filter(s=>s.trim()))try{payloads.push(JSON.parse(line.startsWith('data:')?line.slice(5).trim():line.trim()));}catch{}}
+            const terminal=payloads.filter(v=>['done','fallback'].includes(v.type)).at(-1),result=terminal?.result||payloads.at(-1)?.result||payloads.at(-1),actual=result?.matches?.[0]?.service_slug;
+            report.turns.push({width,locale:c.locale,question,expected,actual,external_model_used:result?.engine?.external_model_used,provider_failure:result?.engine?.provider_failure?{category:result.engine.provider_failure.category,code:result.engine.provider_failure.code}:null,requestHistoryTurns:Array.isArray(request.history)?request.history.length:0,inheritedServiceId:request.context?.active_service_id||request.context?.service_slug||null,answer:result?.answer?.text||null});
+            assert.equal(actual,expected,question);assert.equal(result.answer?.evidence?.policy_version,2,'Reviewed policy is active');
+            if(question===c.turns[0][0]){assert.equal(result.answer?.focus,'documents');assert.equal(result.answer?.evidence?.document_requirements?.length,6);assert.equal(result.answer?.fact_status,'VERIFIED_FACT');assert.match(result.answer.text,c.locale==='en'?/bank statement/i:/كشف حساب/);}
+            if(question===c.turns[1][0]){assert.equal(result.answer?.focus,'duration');assert.equal(result.answer?.fact_status,'VERIFIED_FACT');assert.match(result.answer.text,c.locale==='en'?/working days are not specified/:/لم تحدد البطاقات أنهما يوما عمل/);}
+            if(question===c.turns[2][0]){assert.equal(result.answer?.focus,'fees');assert.equal(result.answer?.fact_status,'MISSING_INFORMATION');}
+            if(question===c.turns[3][0]){assert.equal(result.answer?.focus,'conditions');assert.match(result.answer.text,c.locale==='en'?/common conditions do not establish complete/:/ليست تأكيداً كاملاً/);}
+            assert.ok(result.matches[0].official_source.url.includes('68f5bc018c587a0011cb16c1'),'Common facts cite reviewed duration card');assert.equal(result.privacy?.case_created,false);assert.equal(result.privacy?.personal_data_persisted,false);
+            await page.waitForFunction(n=>document.querySelectorAll('.hb-chat-message--assistant:not([data-pending])').length>n,previous,{timeout:90000});assert.ok((await page.locator('.hb-chat-message--assistant:not([data-pending])').last().innerText()).trim().length>10);
+            const message=page.locator('.hb-chat-message--assistant:not([data-pending])').last();
+            if(result.matches[0].official_source?.url)assert.equal(await message.locator('.hb-chat-source-copy a').getAttribute('href'),result.matches[0].official_source.url,'source citation remains a separate reference');
+            if(expected.includes('-عبر-icp-خارج-دبي')){
+             const official=message.locator('.hb-chat-actions [data-government-duration-selection]');await official.waitFor({state:'visible'});
+             const href=(c.locale==='en'?'/en':'')+'/services/'+expected+'/#official-variant-options';assert.equal(await official.getAttribute('href'),href);assert.equal(await official.getAttribute('target'),null);
+             report.turns.at(-1).officialAction={href,label:await official.innerText()};
+            }
+          
+           }
+           const links=await page.locator('.hb-chat-thread a[href]').evaluateAll(es=>es.map(e=>({label:e.textContent.trim(),href:e.getAttribute('href')})));report.turns.at(-1).visibleLinks=links;
+           await page.screenshot({path:out+'/'+c.locale+'-'+c.name+'-'+width+'.png',fullPage:true});
+           const official=page.locator('.hb-chat-actions [data-government-duration-selection]').first();await official.click();await page.waitForLoadState('networkidle');
+           const expectedIcp=c.name==='business'?'تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي':'تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي',prefix=c.locale==='en'?'/en':'';
+           assert.equal(decodeURI(new URL(page.url()).pathname),prefix+'/services/'+expectedIcp+'/');assert.equal(new URL(page.url()).hash,'#official-variant-options');assert.equal(await page.locator('[data-official-variant-days]').count(),3);
+           assert.equal(new URL(await page.locator('[data-official-variant-days="90"]').getAttribute('href')).searchParams.get('serviceid'),c.name==='business'?'68e350315ae59b00117383e7':'68e350ab5ae59b00117383ed');
+           report.pathways.push({width,locale:c.locale,kind:c.name,status:'PASS',governmentAction:'CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY',officialCards:3,exact90DaySourceVerified:true});
+           await page.screenshot({path:out+'/'+c.locale+'-'+c.name+'-government-'+width+'.png',fullPage:true});await page.close();
+          }report.status='SCOPED_GROUNDED_COMMON_FACTS_AND_PATH_PASS';report.externalDependency=report.turns.some(t=>t.provider_failure?.category==='QUOTA_BILLING')?'BLOCKED_QUOTA_BILLING':report.turns.every(t=>t.external_model_used===true)?'EXTERNAL_MODEL_OBSERVED_NOT_FULL_QUALITY_ACCEPTANCE':'EXTERNAL_MODEL_NOT_FULLY_VERIFIED';}
+          catch(e){report.status='LIVE_FAIL';report.error=String(e);failure=e;}finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2));await browser.close();}if(failure)throw failure;
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: icp-business-ai-facts-live-v2, path: diagnostics/icp-business-ai-facts-live-v2}
+      - name: Retain real semantic acceptance evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/icp-business-ai-facts-live-v2
+          git commit -m "Retain real exploration visa semantic evidence [skip ci]"
+          git pull --rebase --autostash origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
