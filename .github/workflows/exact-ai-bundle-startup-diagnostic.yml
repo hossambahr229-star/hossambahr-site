@@ -1,0 +1,60 @@
+name: Exact HB AI Bundle Startup Diagnostic
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/exact-ai-bundle-startup-diagnostic.yml']
+permissions: {contents: write}
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with: {deno-version: '2.1.4'}
+      - name: Materialize the exact main source already matched against all thirteen deployed files
+        run: |
+          git fetch origin db344927c80ba2bd332e3c9aedc048c755b36bc5
+          git restore --source=db344927c80ba2bd332e3c9aedc048c755b36bc5 -- supabase/functions/public-ai-concierge service-handoff.js sira-intent.js
+          mkdir -p diagnostics/exact-ai-bundle-startup
+          deno --version > diagnostics/exact-ai-bundle-startup/runtime.txt
+      - name: Resolve pinned imports without any live function request
+        id: imports
+        shell: bash
+        run: |
+          set -euo pipefail
+          deno cache --config supabase/functions/public-ai-concierge/deno.json supabase/functions/public-ai-concierge/index.ts 2>&1 | tee diagnostics/exact-ai-bundle-startup/imports.txt
+      - name: Check exact source types without weakening compiler options
+        id: types
+        shell: bash
+        run: |
+          set -euo pipefail
+          deno check --config supabase/functions/public-ai-concierge/deno.json supabase/functions/public-ai-concierge/index.ts 2>&1 | tee diagnostics/exact-ai-bundle-startup/typecheck.txt
+      - name: Import the resolved module with outgoing network disabled
+        if: always() && steps.imports.outcome == 'success'
+        run: |
+          cat > diagnostics/exact-ai-bundle-startup/import-check.ts <<'TS'
+          const report:Record<string,unknown>={source:'EXACT_MERGED_MODULE_ISOLATED_DIAGNOSTIC',main:'db344927c80ba2bd332e3c9aedc048c755b36bc5',deployedVersion:170,deno:Deno.version.deno,productionRequests:0,externalModelAcceptance:'NOT_TESTED',hostedBootRootCause:'UNRESOLVED',status:'RUNNING'};
+          let failure:unknown;
+          try{
+            const module=await import('../../supabase/functions/public-ai-concierge/index.ts');
+            if(typeof module.default?.fetch!=='function')throw Error('Expected exported function handler');
+            report.status='ISOLATED_MODULE_IMPORT_PASS';
+          }catch(error){report.status='ISOLATED_MODULE_IMPORT_FAIL';report.error=error instanceof Error?{name:error.name,message:error.message.slice(0,500)}:String(error);failure=error;}
+          await Deno.writeTextFile('diagnostics/exact-ai-bundle-startup/import-report.json',JSON.stringify(report,null,2));
+          if(failure)throw failure;
+          TS
+          deno run --config supabase/functions/public-ai-concierge/deno.json --allow-read --allow-env --allow-write=diagnostics/exact-ai-bundle-startup --deny-net diagnostics/exact-ai-bundle-startup/import-check.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: exact-ai-bundle-startup, path: diagnostics/exact-ai-bundle-startup}
+      - name: Preserve diagnostics only and keep successful release source untouched
+        if: always()
+        run: |
+          git restore --source=HEAD --staged --worktree -- supabase/functions/public-ai-concierge service-handoff.js sira-intent.js
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/exact-ai-bundle-startup
+          git commit -m "Retain isolated exact AI bundle startup diagnostic [skip ci]"
+          git pull --rebase --autostash origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
