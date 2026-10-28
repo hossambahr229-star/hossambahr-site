@@ -585,6 +585,22 @@
     return true;
   }
 
+  // Only a rejected public AI boot is safe to retry; never replay protected actions.
+  async function fetchPublicAI(requestBody) {
+    const options = {method:"POST", headers:{"Content-Type":"application/json"}, body:requestBody, credentials:"omit"};
+    const response = await fetch(ENDPOINT, options);
+    if (response.status !== 503) return response;
+    let bootError = response.headers.get("sb-error-code") === "BOOT_ERROR";
+    if (!bootError) {
+      const failure = await response.clone().json().catch(() => null);
+      bootError = failure?.code === "BOOT_ERROR";
+    }
+    if (!bootError) return response;
+    window.dispatchEvent(new CustomEvent("hb:ai-boot-retry", {detail:{status:503, code:"BOOT_ERROR", attempt:1}}));
+    await new Promise(resolve => setTimeout(resolve, 400));
+    return fetch(ENDPOINT, options);
+  }
+
   async function analyze(userMessage, options = {}) {
     const displayed=scrubLocal(userMessage); if (displayed.length < 2 || analysisInFlight) return;
     analysisInFlight=true; const perfStart=performance.now(); document.body.classList.add("hb-chat-engaged");
@@ -595,7 +611,7 @@
     let streamBubble = null;
     try{
       if (await showActivityDiscovery(displayed, options, pending).catch(() => false)) return;
-      const response=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({goal:query,latest_turn: displayed,locale:english ? "en" : "ar",history:state.history.slice(-8),stream:true,context:{active_service_id:state.active_service_id||state.service_slug,service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key,relationship:state.relationship,family_members:state.family_members,entity:state.entity,intent:state.intent,service_family:state.service_family,action:state.action,subject_role:state.subject_role,last_answer_topic:state.last_answer_topic,pending_clarification:state.pending_clarification,known_facts:state.known_facts}}),credentials:"omit"});
+      const response=await fetchPublicAI(JSON.stringify({goal:query,latest_turn: displayed,locale:english ? "en" : "ar",history:state.history.slice(-8),stream:true,context:{active_service_id:state.active_service_id||state.service_slug,service_slug:state.service_slug,jurisdiction_code:state.jurisdiction_code,authority_key:state.authority_key,relationship:state.relationship,family_members:state.family_members,entity:state.entity,intent:state.intent,service_family:state.service_family,action:state.action,subject_role:state.subject_role,last_answer_topic:state.last_answer_topic,pending_clarification:state.pending_clarification,known_facts:state.known_facts}}));
       if(response.status===429){removePending(pending);addBubble("assistant","وصلنا إلى حد الاستخدام المؤقت لهذه الساعة. يمكنك المحاولة لاحقًا.");return;}
       let streamP=null,ttft=null;
       const {readAIResponse}=await import("/ai-response-protocol.mjs");
