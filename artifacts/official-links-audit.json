@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T08:50:42.501Z",
+  "generatedAt": "2026-10-28T10:11:33.451Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
@@ -777,9 +777,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://freezone.fujairah.ae/ar/registration-process",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://fujairah.ae/en/Pages/settingupbusinessinfujairah.aspx",
@@ -831,8 +830,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
@@ -2581,7 +2581,9 @@
       ],
       "status": 200,
       "finalUrl": "https://media.ajman.ae/ar/servicecatalog/services/2862",
-      "result": "REACHABLE"
+      "title": "Request Rejected",
+      "result": "REACHABLE",
+      "verifiedBy": "browser-fallback"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
