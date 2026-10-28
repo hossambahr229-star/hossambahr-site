@@ -1,0 +1,369 @@
+{
+  "capturedAt": "2026-10-28T14:38:20.353Z",
+  "source": "LIVE_PRODUCTION_UI_REAL_HISTORY",
+  "status": "SCOPED_GROUNDED_COMMON_FACTS_AND_PATH_PASS",
+  "edgeVersionVerifiedSeparately": 170,
+  "turns": [
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "أريد تأشيرة لاستكشاف فرص عمل في الشارقة. كم تستغرق المعاملة؟",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "question": "والرسوم؟",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "answer": "لا توجد في المعرفة الموثقة الحالية قيمة رسوم محددة يمكنني تأكيدها لهذه الحالة. لن أضع رقمًا تقديريًا؛ راجع المصدر الرسمي أو ابدأ المعاملة للتحقق من الرسوم الحالية.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      },
+      "visibleLinks": [
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "I need a job exploration visa in Sharjah. What is the processing time?",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "2 days according to all three ICP duration cards; working days are not specified. This is processing time, not the selected period of stay.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "question": "And the fees?",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "answer": "I cannot confirm a government fee for this case from the current verified record. I will not estimate a figure. Check the official source before applying or paying.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      },
+      "visibleLinks": [
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "question": "أريد تأشيرة لاستكشاف فرص عمل في الشارقة. كم تستغرق المعاملة؟",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      }
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "question": "والرسوم؟",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "answer": "لا توجد في المعرفة الموثقة الحالية قيمة رسوم محددة يمكنني تأكيدها لهذه الحالة. لن أضع رقمًا تقديريًا؛ راجع المصدر الرسمي أو ابدأ المعاملة للتحقق من الرسوم الحالية.",
+      "officialAction": {
+        "href": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "اختر مدة التأشيرة"
+      },
+      "visibleLinks": [
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "فتح المصدر",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea"
+        },
+        {
+          "label": "تفاصيل الخدمة",
+          "href": "/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "دع HOSSAM BAHR ينجزها لي",
+          "href": "/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "اختر مدة التأشيرة",
+          "href": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "احفظ الخطة",
+          "href": "/auth/?return=%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "question": "I need a job exploration visa in Sharjah. What is the processing time?",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 0,
+      "inheritedServiceId": null,
+      "answer": "2 days according to all three ICP duration cards; working days are not specified. This is processing time, not the selected period of stay.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      }
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "question": "And the fees?",
+      "expected": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "actual": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "requestHistoryTurns": 2,
+      "inheritedServiceId": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "answer": "I cannot confirm a government fee for this case from the current verified record. I will not estimate a figure. Check the official source before applying or paying.",
+      "officialAction": {
+        "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options",
+        "label": "Choose visa duration"
+      },
+      "visibleLinks": [
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        },
+        {
+          "label": "Open source",
+          "href": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea"
+        },
+        {
+          "label": "Service details",
+          "href": "/en/services/%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A/"
+        },
+        {
+          "label": "Let HOSSAM BAHR handle it",
+          "href": "/en/contact/?handoff=1&service=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9-%D8%A7%D8%B3%D8%AA%D9%83%D8%B4%D8%A7%D9%81-%D9%81%D8%B1%D8%B5-%D8%B9%D9%85%D9%84-%D8%B9%D8%A8%D8%B1-icp-%D8%AE%D8%A7%D8%B1%D8%AC-%D8%AF%D8%A8%D9%8A"
+        },
+        {
+          "label": "Choose visa duration",
+          "href": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/#official-variant-options"
+        },
+        {
+          "label": "Save the plan",
+          "href": "/en/auth/?return=%2Fen%2Fos%2F%3Fhandoff%3D1%26start%3D1%23ai-intake"
+        }
+      ]
+    }
+  ],
+  "pathways": [
+    {
+      "width": 1440,
+      "locale": "ar",
+      "kind": "job",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "kind": "job",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "kind": "job",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "kind": "job",
+      "status": "PASS",
+      "governmentAction": "CLICKED_TO_LOCALIZED_CANONICAL_DURATION_GATEWAY",
+      "officialCards": 3,
+      "exact90DaySourceVerified": true
+    }
+  ],
+  "externalModelAcceptance": "NOT_DECLARED",
+  "protectedAccountExecution": "NOT_TESTED",
+  "externalDependency": "BLOCKED_QUOTA_BILLING"
+}
