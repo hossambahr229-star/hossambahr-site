@@ -1,0 +1,48 @@
+name: Mobile AI Source Access Screenshot Proof
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/mobile-ai-source-proof.yml']
+permissions: {contents: write}
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for coherent bilingual toolbar, stylesheet and English guide
+        run: |
+          node --input-type=module <<'NODE'
+          import{createHash}from'node:crypto';
+          const get=async p=>(await fetch('https://hossambahr.com'+p,{cache:'no-store'})).text();
+          for(let i=0;i<90;i++){
+            const css=await get('/ai/hb-ai.css'),version=createHash('sha256').update(css).digest('hex').slice(0,12);
+            const pages=await Promise.all(['/ai/','/en/ai/'].map(get)),guide=await get('/en/methodology/');
+            if(css.includes('.hb-ai-nav a.hb-ai-methodology{display:inline-flex')&&pages.every(h=>h.includes('class="hb-ai-methodology"')&&h.includes('/ai/hb-ai.css?v='+version))&&guide.includes('data-methodology="en-v1"'))process.exit(0);
+            await new Promise(r=>setTimeout(r,10000));
+          }throw Error('Current bilingual toolbar and versioned stylesheet not published');
+          NODE
+      - name: Capture real mobile toolbar without sending AI requests
+        run: |
+          node --input-type=module <<'NODE'
+          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/mobile-ai-source-proof';await mkdir(out,{recursive:true});const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});const views=[];
+          try{for(const locale of['ar','en']){const page=await browser.newPage({viewport:{width:390,height:844}});await page.goto('https://hossambahr.com'+(locale==='en'?'/en':'')+'/ai/',{waitUntil:'networkidle'});const link=page.locator('.hb-ai-methodology');assert.equal(await link.isVisible(),true);assert.equal(await link.getAttribute('href'),(locale==='en'?'/en':'')+'/methodology/');await page.screenshot({path:out+'/'+locale+'-ai-390.png'});views.push({locale,width:390,visibleMethodologyControl:true,href:await link.getAttribute('href')});await page.close();}await writeFile(out+'/report.json',JSON.stringify({source:'LIVE_PRODUCTION_SCREENSHOT',views,aiRequests:0},null,2));}finally{await browser.close();}
+          
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: mobile-ai-source-proof, path: diagnostics/mobile-ai-source-proof}
+      - name: Preserve actual mobile proof
+        if: success()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/mobile-ai-source-proof
+          git commit -m "Retain actual mobile AI source-control screenshot [skip ci]"
+          git pull --rebase --autostash origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
