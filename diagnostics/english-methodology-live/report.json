@@ -1,0 +1,29 @@
+{
+  "capturedAt": "2026-10-28T14:42:54.098Z",
+  "source": "LIVE_PRODUCTION_REAL_NAVIGATION",
+  "status": "LIVE_FAIL",
+  "views": [
+    {
+      "width": 1440,
+      "status": "PASS",
+      "englishFooterClicked": true,
+      "englishMethodology": true,
+      "explicitArabicSwitch": true,
+      "noOverflow": true,
+      "pageErrors": []
+    },
+    {
+      "width": 1366,
+      "status": "PASS",
+      "englishFooterClicked": true,
+      "englishMethodology": true,
+      "explicitArabicSwitch": true,
+      "noOverflow": true,
+      "pageErrors": []
+    }
+  ],
+  "aiRequests": 0,
+  "protectedAccountExecution": "NOT_TESTED",
+  "pixelFidelity": "NOT_DECLARED",
+  "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('link', { name: 'Verification methodology', exact: true })\n"
+}
