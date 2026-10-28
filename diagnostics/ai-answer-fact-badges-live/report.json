@@ -1,0 +1,218 @@
+{
+  "capturedAt": "2026-10-28T20:50:31.701Z",
+  "source": "LIVE_PRODUCTION_REAL_API_AND_RENDERED_UI",
+  "status": "SCOPED_ANSWER_FACT_VERIFICATION_UI_PASS",
+  "views": [
+    {
+      "width": 1440,
+      "locale": "ar",
+      "kind": "missing",
+      "question": "أريد إصدار إقامة للوالدين في الشارقة. ما شروط الكفالة؟",
+      "service": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+      "factStatus": "MISSING_INFORMATION",
+      "answer": "الشروط التفصيلية لهذه الجزئية غير موثقة في المعرفة الرسمية الحالية؛ ما زلت محتفظًا بنفس الخدمة ولن أعيد تحديد المعاملة.",
+      "httpAttempts": [
+        {
+          "status": 200,
+          "startupCode": null
+        }
+      ],
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "renderedFactBadges": 0,
+      "factPseudoContent": [
+        "none"
+      ],
+      "sourceHref": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "kind": "missing",
+      "question": "I want residence permits for my parents in Sharjah. What are the conditions?",
+      "service": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+      "factStatus": "MISSING_INFORMATION",
+      "answer": "Detailed conditions are not verified in the current record. I have kept the same service in this conversation.",
+      "httpAttempts": [
+        {
+          "status": 200,
+          "startupCode": null
+        }
+      ],
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "renderedFactBadges": 0,
+      "factPseudoContent": [
+        "none"
+      ],
+      "sourceHref": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "locale": "ar",
+      "kind": "verified",
+      "question": "أريد تأشيرة لاستكشاف فرص عمل في الشارقة. كم تستغرق المعاملة؟",
+      "service": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "factStatus": "VERIFIED_FACT",
+      "answer": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء.",
+      "httpAttempts": [
+        {
+          "status": 200,
+          "startupCode": null
+        }
+      ],
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "renderedFactBadges": 1,
+      "factPseudoContent": [
+        "none"
+      ],
+      "sourceHref": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea",
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "kind": "verified",
+      "question": "I need a job exploration visa in Sharjah. What is the processing time?",
+      "service": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "factStatus": "VERIFIED_FACT",
+      "answer": "2 days according to all three ICP duration cards; working days are not specified. This is processing time, not the selected period of stay.",
+      "httpAttempts": [
+        {
+          "status": 200,
+          "startupCode": null
+        }
+      ],
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "renderedFactBadges": 1,
+      "factPseudoContent": [
+        "none"
+      ],
+      "sourceHref": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "kind": "missing",
+      "question": "أريد إصدار إقامة للوالدين في الشارقة. ما شروط الكفالة؟",
+      "service": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+      "factStatus": "MISSING_INFORMATION",
+      "answer": "الشروط التفصيلية لهذه الجزئية غير موثقة في المعرفة الرسمية الحالية؛ ما زلت محتفظًا بنفس الخدمة ولن أعيد تحديد المعاملة.",
+      "httpAttempts": [
+        {
+          "status": 200,
+          "startupCode": null
+        }
+      ],
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "renderedFactBadges": 0,
+      "factPseudoContent": [
+        "none"
+      ],
+      "sourceHref": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "kind": "missing",
+      "question": "I want residence permits for my parents in Sharjah. What are the conditions?",
+      "service": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+      "factStatus": "MISSING_INFORMATION",
+      "answer": "Detailed conditions are not verified in the current record. I have kept the same service in this conversation.",
+      "httpAttempts": [
+        {
+          "status": 200,
+          "startupCode": null
+        }
+      ],
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "renderedFactBadges": 0,
+      "factPseudoContent": [
+        "none"
+      ],
+      "sourceHref": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "locale": "ar",
+      "kind": "verified",
+      "question": "أريد تأشيرة لاستكشاف فرص عمل في الشارقة. كم تستغرق المعاملة؟",
+      "service": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "factStatus": "VERIFIED_FACT",
+      "answer": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء.",
+      "httpAttempts": [
+        {
+          "status": 200,
+          "startupCode": null
+        }
+      ],
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "renderedFactBadges": 1,
+      "factPseudoContent": [
+        "none"
+      ],
+      "sourceHref": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "kind": "verified",
+      "question": "I need a job exploration visa in Sharjah. What is the processing time?",
+      "service": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "factStatus": "VERIFIED_FACT",
+      "answer": "2 days according to all three ICP duration cards; working days are not specified. This is processing time, not the selected period of stay.",
+      "httpAttempts": [
+        {
+          "status": 200,
+          "startupCode": null
+        }
+      ],
+      "external_model_used": false,
+      "provider_failure": {
+        "category": "QUOTA_BILLING",
+        "code": "credit_balance_exhausted"
+      },
+      "renderedFactBadges": 1,
+      "factPseudoContent": [
+        "none"
+      ],
+      "sourceHref": "https://icp.gov.ae/en/services-details/?serviceid=68e3509b5ae59b00117383ea",
+      "status": "PASS"
+    }
+  ],
+  "protectedAccounts": "NOT_TESTED",
+  "humanVisualAcceptance": "NOT_DECLARED",
+  "externalDependency": "BLOCKED_QUOTA_BILLING"
+}
