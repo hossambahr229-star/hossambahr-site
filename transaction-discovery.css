@@ -119,6 +119,7 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-simple-foo
 .home-discovery-options>.home-more-domains[open]{grid-column:1/-1}
 .home-discovery-options>.home-more-domains>summary{min-height:48px;flex-direction:row;align-items:center;justify-content:flex-start;padding:10px 0}
 .home-discovery-options>.home-more-domains>summary:after{top:12px;line-height:1}
+html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-discovery-options summary>span{font-size:inherit!important;font-weight:inherit!important;line-height:inherit!important;color:inherit!important;max-width:none!important;height:auto!important}
 .home-common-transactions-grid>.home-directory-entry{grid-column:1/-1;justify-self:start}
 .home-common-transactions-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--hb-discovery-gap);padding-block:12px}
 .home-common-transactions:not([open])>.home-common-transactions-grid{display:none}

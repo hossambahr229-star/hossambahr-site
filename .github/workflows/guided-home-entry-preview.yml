@@ -1,4 +1,4 @@
-name: Guided Homepage Entry Preview V2
+name: Guided Homepage Entry Preview V3
 on:
   push:
     branches: [agent/home-guided-entry-preview]
@@ -21,7 +21,7 @@ jobs:
         run: |
           node --input-type=module <<'NODE'
           import{chromium}from'playwright';import sharp from'sharp';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
-          const out='diagnostics/guided-home-entry-preview-v2';await mkdir(out,{recursive:true});const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'}),report={capturedAt:new Date().toISOString(),source:'BUILT_CANDIDATE_COMPARED_WITH_LIVE_PRODUCTION',acceptance:'PREVIEW_ONLY_NOT_PRODUCTION_OR_HUMAN_PASS',views:[]};
+          const out='diagnostics/guided-home-entry-preview-v3';await mkdir(out,{recursive:true});const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'}),report={capturedAt:new Date().toISOString(),source:'BUILT_CANDIDATE_COMPARED_WITH_LIVE_PRODUCTION',acceptance:'PREVIEW_ONLY_NOT_PRODUCTION_OR_HUMAN_PASS',views:[]};
           try{for(const width of[1440,1366,390,320])for(const locale of['ar','en']){
            const results={};for(const[type,base]of[['production','https://hossambahr.com'],['candidate','http://127.0.0.1:8765']]){
            const page=await browser.newPage({viewport:{width,height:width<500?844:960},deviceScaleFactor:1,reducedMotion:'reduce'});const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -34,7 +34,7 @@ jobs:
             assert.ok(shape.cards.every(c=>c.bottom-c.top>=44),'Primary areas keep accessible target size');
             for(const id of['home-common-transactions','home-more-domains']){
              const details=page.locator('#'+id),summary=details.locator('summary');
-             assert.equal(await details.getAttribute('open'),null);
+             assert.equal(await details.getAttribute('open'),null);assert.ok(await summary.locator('span').first().evaluate(e=>parseFloat(getComputedStyle(e).fontSize)>=14),'Disclosure labels remain readable');
              await summary.press('Enter');assert.equal(await details.evaluate(e=>e.open),true);
              if(id==='home-common-transactions')assert.equal(await details.locator('[data-home-service]:visible').count(),shape.directLinks.length,'Every transaction is accessible on demand');
              else assert.equal(await page.locator('[data-home-domains] [data-business-domain]:visible').count(),11);
@@ -58,13 +58,13 @@ jobs:
           NODE
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: guided-home-entry-preview-v2, path: diagnostics/guided-home-entry-preview-v2}
+        with: {name: guided-home-entry-preview-v3, path: diagnostics/guided-home-entry-preview-v3}
       - name: Preserve candidate evidence only
         if: always()
         run: |
           git config user.name "HossamBahr Preview Evidence"
           git config user.email "preview-evidence@users.noreply.github.com"
-          git add diagnostics/guided-home-entry-preview-v2
+          git add diagnostics/guided-home-entry-preview-v3
           if ! git diff --cached --quiet; then
             git commit -m "Retain compact homepage preview evidence [skip ci]"
             git push origin HEAD:agent/home-guided-entry-preview
