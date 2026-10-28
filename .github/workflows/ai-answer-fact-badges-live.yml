@@ -1,0 +1,75 @@
+name: HB AI Answer Fact Verification Live Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/ai-answer-fact-badges-live.yml']
+permissions: {contents: write}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the actual changed client and content-versioned stylesheet
+        run: |
+          node --input-type=module <<'NODE'
+          import{createHash}from'node:crypto';const get=async p=>(await fetch('https://hossambahr.com'+p,{cache:'no-store'})).text();
+          for(let i=0;i<90;i++){
+            const css=await get('/ai/hb-ai.css'),version=createHash('sha256').update(css).digest('hex').slice(0,12);let ready=!css.includes('.hb-chat-facts:before');
+            for(const prefix of['','/en']){const html=await get(prefix+'/ai/'),href=html.match(/src="([^"]*public-ai-concierge[.]js[?]v=[^"]+)"/)?.[1];if(!href||!html.includes('/ai/hb-ai.css?v='+version)){ready=false;continue;}const client=await get(href);if(!client.includes('function hasVerifiedAnswerFact(')||!client.includes('Source last reviewed: '))ready=false;}
+            if(ready)process.exit(0);await new Promise(r=>setTimeout(r,10000));
+          }throw Error('Changed fact-verification runtime not published coherently');
+          NODE
+      - name: Verify missing and verified facts with real responses and visible citations
+        run: |
+          node --input-type=module <<'NODE'
+          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/ai-answer-fact-badges-live';await mkdir(out,{recursive:true});const report={capturedAt:new Date().toISOString(),source:'LIVE_PRODUCTION_REAL_API_AND_RENDERED_UI',status:'RUNNING',views:[],protectedAccounts:'NOT_TESTED',humanVisualAcceptance:'NOT_DECLARED'};
+          const cases=[
+           {name:'missing',locale:'ar',question:'أريد إصدار إقامة للوالدين في الشارقة. ما شروط الكفالة؟',slug:'إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي',fact:'MISSING_INFORMATION',badges:0},
+           {name:'missing',locale:'en',question:'I want residence permits for my parents in Sharjah. What are the conditions?',slug:'إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي',fact:'MISSING_INFORMATION',badges:0},
+           {name:'verified',locale:'ar',question:'أريد تأشيرة لاستكشاف فرص عمل في الشارقة. كم تستغرق المعاملة؟',slug:'تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي',fact:'VERIFIED_FACT',badges:1},
+           {name:'verified',locale:'en',question:'I need a job exploration visa in Sharjah. What is the processing time?',slug:'تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي',fact:'VERIFIED_FACT',badges:1}
+          ];
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});let failure;
+          try{for(const width of[1440,390])for(const c of cases){
+           const page=await browser.newPage({viewport:{width,height:width===390?844:960}});page.setDefaultTimeout(30000);const attempts=[],errors=[];page.on('pageerror',e=>errors.push(e.message));
+           page.on('response',r=>{if(r.request().method()==='POST'&&r.url().includes('/public-ai-concierge'))attempts.push({status:r.status(),startupCode:r.headers()['sb-error-code']||null});});
+           await page.goto('https://hossambahr.com'+(c.locale==='en'?'/en':'')+'/ai/',{waitUntil:'networkidle'});
+           const responsePromise=page.waitForResponse(r=>r.request().method()==='POST'&&r.url().includes('/public-ai-concierge')&&r.status()===200,{timeout:90000});
+           await page.locator('textarea[name=goal]').fill(c.question);await page.locator('.hb-chat-send').click();const response=await responsePromise;
+           const body=await response.text(),payloads=[];try{payloads.push(JSON.parse(body));}catch{for(const line of body.split('\n').filter(s=>s.trim()))try{payloads.push(JSON.parse(line.startsWith('data:')?line.slice(5).trim():line.trim()));}catch{}}
+           const terminal=payloads.filter(v=>['done','fallback'].includes(v.type)).at(-1),result=terminal?.result||payloads.at(-1)?.result||payloads.at(-1);
+           const row={width,locale:c.locale,kind:c.name,question:c.question,service:result?.matches?.[0]?.service_slug,factStatus:result?.answer?.fact_status,answer:result?.answer?.text,httpAttempts:attempts,external_model_used:result?.engine?.external_model_used,provider_failure:result?.engine?.provider_failure?{category:result.engine.provider_failure.category,code:result.engine.provider_failure.code}:null};report.views.push(row);
+           assert.equal(row.service,c.slug);assert.equal(row.factStatus,c.fact);assert.equal(result.privacy?.case_created,false);assert.equal(result.privacy?.personal_data_persisted,false);
+           assert.ok(attempts.length>=1&&attempts.length<=2,'Public request replay stays bounded');
+           await page.waitForFunction(()=>document.querySelectorAll('.hb-chat-message--assistant:not([data-pending]) .hb-chat-answer').length>0,null,{timeout:90000});
+           const message=page.locator('.hb-chat-message--assistant:not([data-pending])').last();await message.locator('.hb-chat-answer-intro').waitFor({state:'visible'});
+           row.renderedFactBadges=await message.locator('.hb-ai-trust-badge').count();assert.equal(row.renderedFactBadges,c.badges);
+           const pseudos=await message.locator('.hb-chat-facts').evaluateAll(es=>es.map(e=>getComputedStyle(e,'::before').content));row.factPseudoContent=pseudos;assert.ok(pseudos.every(v=>['none','normal','""'].includes(v)),'CSS cannot synthesize verification claims');
+           await message.locator('.hb-ai-source-badge').click();const copy=message.locator('.hb-chat-source-copy');await copy.waitFor({state:'visible'});const sourceText=await copy.innerText();
+           assert.ok(!sourceText.includes('تم التحقق من المعلومة'));if(result.matches[0].official_source.last_verified_at)assert.ok(sourceText.includes(c.locale==='en'?'Source last reviewed:':'آخر مراجعة للمصدر:'));
+           row.sourceHref=await copy.locator('a').getAttribute('href');assert.equal(row.sourceHref,result.matches[0].official_source.url);
+           assert.ok(await message.locator('.hb-chat-actions a').count()>=3,'Both execution paths and details remain');
+           assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.deepEqual(errors,[]);row.status='PASS';
+           await message.scrollIntoViewIfNeeded();await page.screenshot({path:out+'/'+c.locale+'-'+c.name+'-'+width+'.png',fullPage:true});await page.close();
+          }report.status='SCOPED_ANSWER_FACT_VERIFICATION_UI_PASS';report.externalDependency=report.views.some(v=>v.provider_failure?.category==='QUOTA_BILLING')?'BLOCKED_QUOTA_BILLING':'EXTERNAL_MODEL_NOT_FULLY_VERIFIED';}
+          catch(e){failure=e;report.status='LIVE_FAIL';report.error=String(e);}finally{await browser.close();await writeFile(out+'/report.json',JSON.stringify(report,null,2));}if(failure)throw failure;
+          
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: ai-answer-fact-badges-live, path: diagnostics/ai-answer-fact-badges-live}
+      - name: Retain true UI acceptance without changing release source
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/ai-answer-fact-badges-live
+          git commit -m "Retain real answer verification badge evidence [skip ci]"
+          git pull --rebase --autostash origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
