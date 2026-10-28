@@ -1,0 +1,61 @@
+name: Refresh Explicit Test Account Presence
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/test-account-presence-refresh.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Check presence of explicit test-account names only
+        env:
+          SECRET_HB_E2E_EMAIL: ${{ secrets.HB_E2E_EMAIL != '' }}
+          VARIABLE_HB_E2E_EMAIL: ${{ vars.HB_E2E_EMAIL != '' }}
+          SECRET_HB_E2E_PASSWORD: ${{ secrets.HB_E2E_PASSWORD != '' }}
+          VARIABLE_HB_E2E_PASSWORD: ${{ vars.HB_E2E_PASSWORD != '' }}
+          SECRET_E2E_USER_EMAIL: ${{ secrets.E2E_USER_EMAIL != '' }}
+          VARIABLE_E2E_USER_EMAIL: ${{ vars.E2E_USER_EMAIL != '' }}
+          SECRET_E2E_USER_PASSWORD: ${{ secrets.E2E_USER_PASSWORD != '' }}
+          VARIABLE_E2E_USER_PASSWORD: ${{ vars.E2E_USER_PASSWORD != '' }}
+          SECRET_TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL != '' }}
+          VARIABLE_TEST_USER_EMAIL: ${{ vars.TEST_USER_EMAIL != '' }}
+          SECRET_TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD != '' }}
+          VARIABLE_TEST_USER_PASSWORD: ${{ vars.TEST_USER_PASSWORD != '' }}
+          SECRET_HB_TEST_EMAIL: ${{ secrets.HB_TEST_EMAIL != '' }}
+          VARIABLE_HB_TEST_EMAIL: ${{ vars.HB_TEST_EMAIL != '' }}
+          SECRET_HB_TEST_PASSWORD: ${{ secrets.HB_TEST_PASSWORD != '' }}
+          VARIABLE_HB_TEST_PASSWORD: ${{ vars.HB_TEST_PASSWORD != '' }}
+          SECRET_QA_USER_EMAIL: ${{ secrets.QA_USER_EMAIL != '' }}
+          VARIABLE_QA_USER_EMAIL: ${{ vars.QA_USER_EMAIL != '' }}
+          SECRET_QA_USER_PASSWORD: ${{ secrets.QA_USER_PASSWORD != '' }}
+          VARIABLE_QA_USER_PASSWORD: ${{ vars.QA_USER_PASSWORD != '' }}
+          SECRET_TEST_EMAIL: ${{ secrets.TEST_EMAIL != '' }}
+          VARIABLE_TEST_EMAIL: ${{ vars.TEST_EMAIL != '' }}
+          SECRET_TEST_PASSWORD: ${{ secrets.TEST_PASSWORD != '' }}
+          VARIABLE_TEST_PASSWORD: ${{ vars.TEST_PASSWORD != '' }}
+          SECRET_E2E_EMAIL: ${{ secrets.E2E_EMAIL != '' }}
+          VARIABLE_E2E_EMAIL: ${{ vars.E2E_EMAIL != '' }}
+          SECRET_E2E_PASSWORD: ${{ secrets.E2E_PASSWORD != '' }}
+          VARIABLE_E2E_PASSWORD: ${{ vars.E2E_PASSWORD != '' }}
+          SECRET_PLAYWRIGHT_TEST_EMAIL: ${{ secrets.PLAYWRIGHT_TEST_EMAIL != '' }}
+          VARIABLE_PLAYWRIGHT_TEST_EMAIL: ${{ vars.PLAYWRIGHT_TEST_EMAIL != '' }}
+          SECRET_PLAYWRIGHT_TEST_PASSWORD: ${{ secrets.PLAYWRIGHT_TEST_PASSWORD != '' }}
+          VARIABLE_PLAYWRIGHT_TEST_PASSWORD: ${{ vars.PLAYWRIGHT_TEST_PASSWORD != '' }}
+        run: |
+          node --input-type=module <<'NODE'
+          import {mkdir,writeFile} from 'node:fs/promises';
+          const candidates=["HB_E2E_EMAIL","HB_E2E_PASSWORD","E2E_USER_EMAIL","E2E_USER_PASSWORD","TEST_USER_EMAIL","TEST_USER_PASSWORD","HB_TEST_EMAIL","HB_TEST_PASSWORD","QA_USER_EMAIL","QA_USER_PASSWORD","TEST_EMAIL","TEST_PASSWORD","E2E_EMAIL","E2E_PASSWORD","PLAYWRIGHT_TEST_EMAIL","PLAYWRIGHT_TEST_PASSWORD"];
+          const report={capturedAt:new Date().toISOString(),secretNames:candidates.filter(name=>process.env['SECRET_'+name]==='true'),variableNames:candidates.filter(name=>process.env['VARIABLE_'+name]==='true'),candidateNames:candidates,valuesRead:false,valuesIncluded:false,scope:'Presence checks for explicit test-account candidate names only. No all-secrets context, authentication or private user data.'};
+          await mkdir('artifacts/test-account-setting-names',{recursive:true});
+          await writeFile('artifacts/test-account-setting-names/report.json',JSON.stringify(report,null,2));
+          console.log(JSON.stringify(report));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: explicit-test-account-setting-presence
+          path: artifacts/test-account-setting-names/report.json
