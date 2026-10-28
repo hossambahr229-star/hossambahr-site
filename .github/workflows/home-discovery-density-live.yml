@@ -1,0 +1,68 @@
+name: Homepage Discovery Density Live Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/home-discovery-density-live.yml']
+permissions: {contents: write}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - name: Wait for coherent homepage runtime publication
+        run: |
+          node --input-type=module <<'NODE'
+          import{createHash}from'node:crypto';const base='https://hossambahr.com',get=async p=>(await fetch(base+p,{cache:'no-store'})).text();
+          for(let i=0;i<60;i++){const[h,en,js,css,cap,activity,business]=await Promise.all(['/','/en/','/transaction-discovery.js','/transaction-discovery.css','/service-capabilities.js','/activity-discovery.js','/business-activities-discovery.js'].map(get));const v=createHash('sha256').update(js).update(css).update(cap).update(activity).update(business).digest('hex').slice(0,12);if(!js.includes('more.open=desktop.matches')&&css.includes('Compact desktop discovery')&&h.includes('/transaction-discovery.js?v='+v)&&en.includes('/transaction-discovery.js?v='+v))process.exit(0);await new Promise(r=>setTimeout(r,20000));}throw Error('Homepage runtime publication is incomplete');
+          NODE
+      - name: Real bilingual service discovery and keyboard journeys
+        env: {HB_BASE_URL: 'https://hossambahr.com', HB_BROWSER_PATH: /usr/bin/google-chrome}
+        run: |
+          node --input-type=module <<'NODE'
+          import{chromium}from'playwright';import{createServer}from'node:http';import{readFile,mkdir,writeFile}from'node:fs/promises';import{resolve,extname,relative,isAbsolute}from'node:path';import assert from'node:assert/strict';
+          const root=resolve('.'),out='diagnostics/home-discovery-density-live';await mkdir(out,{recursive:true});let server;let base=process.env.HB_BASE_URL;
+          if(!base){server=createServer(async(req,res)=>{try{let u=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(u.endsWith('/'))u+='index.html';const path=resolve(root,'.'+u),rel=relative(root,path);assert.ok(!rel.startsWith('..')&&!isAbsolute(rel));res.setHeader('Content-Type',({'.html':'text/html;charset=utf-8','.css':'text/css','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml','.webp':'image/webp','.woff2':'font/woff2'})[extname(path)]||'application/octet-stream');res.end(await readFile(path));}catch{res.writeHead(404).end();}});await new Promise(r=>server.listen(0,'127.0.0.1',r));base='http://127.0.0.1:'+server.address().port;}
+          const records=await(await fetch(base+'/transaction-discovery-data.json',{cache:'no-store'})).json(),browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||'/usr/bin/google-chrome'}),report={status:'RUNNING',captureSource:process.env.HB_BASE_URL?'LIVE_PRODUCTION':'LOCAL_BUILD',base,views:[],journeys:[],humanAcceptance:'NOT_DECLARED',sourceCommit:'3e06dcc19a4ca76471f0faa6229601124109cb83',externalModel:'NOT_RETESTED_IN_THIS_VISUAL_SCOPE'};
+          try{for(const locale of ['ar','en'])for(const width of [1440,1366,430,390,360,320]){const prefix=locale==='en'?'/en':'',page=await browser.newPage({viewport:{width,height:width>=1101?960:844},deviceScaleFactor:1,reducedMotion:'reduce'}),errors=[];page.on('pageerror',e=>errors.push(e.message));const home=async()=>{const response=await page.goto(base+prefix+'/',{waitUntil:'networkidle'});assert.equal(response.status(),200);await page.evaluate(()=>document.fonts.ready);};await home();const scope=page.locator('[data-home-discovery="task-shortcuts"]');assert.equal(await scope.count(),1);assert.equal(await scope.locator('[data-business-domain]').count(),11);const more=page.locator('#home-more-domains'),summary=more.locator('summary');assert.equal(await more.evaluate(e=>e.open),false,'Extra areas start collapsed at every width');assert.equal(await scope.locator('[data-business-domain]:visible').count(),6);
+          await summary.press('Enter');assert.equal(await more.evaluate(e=>e.open),true);assert.equal(await scope.locator('[data-business-domain]:visible').count(),11);
+          await page.setViewportSize({width:width>=1101?390:1440,height:width>=1101?960:844});assert.equal(await more.evaluate(e=>e.open),true,'Resize preserves an explicit expansion');await summary.press('Enter');assert.equal(await more.evaluate(e=>e.open),false);await page.setViewportSize({width,height:width>=1101?960:844});assert.equal(await more.evaluate(e=>e.open),false,'Resize preserves an explicit collapse');
+          if(width>=1101){const tops=await scope.locator(':scope>.home-domain-grid>[role="group"]>.home-domain-card').evaluateAll(ns=>ns.map(n=>Math.round(n.getBoundingClientRect().top)));assert.equal(tops.length,6);assert.equal(new Set(tops).size,1,'Six primary domains share the desktop row');}assert.ok(await scope.locator('.home-simple-card small').first().isVisible());assert.equal(await page.locator('.discovery-entry>a').getAttribute('href'),prefix+'/discover/');
+          for(const item of await scope.locator('[data-home-service]').evaluateAll(ns=>ns.map(n=>({slug:n.dataset.homeService,href:n.getAttribute('href')})))){const record=records.find(r=>r.s===item.slug);assert.ok(record);assert.equal(decodeURIComponent(new URL(item.href,base).pathname),prefix+decodeURIComponent(record.u));}
+          assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));assert.equal(await page.evaluate(()=>innerWidth),width);await page.screenshot({path:out+'/'+locale+'-'+width+'-home.png'});await scope.scrollIntoViewIfNeeded();await page.screenshot({path:out+'/'+locale+'-'+width+'-discovery.png'});report.views.push({locale,width,status:'PASS',discoveryHeight:await scope.evaluate(e=>e.getBoundingClientRect().height),directServiceLinks:await scope.locator('[data-home-service]').count(),extraAreas:'NATIVE_USER_CONTROLLED'});
+          if(width===1440){const links=await scope.locator('[data-business-domain]').evaluateAll(ns=>ns.map(n=>({id:n.dataset.businessDomain,href:n.getAttribute('href')})));for(const d of links){await home();const domainLink=page.locator('[data-business-domain="'+d.id+'"]');if(!await domainLink.isVisible())await page.locator('#home-more-domains>summary').click();assert.ok(await domainLink.isVisible());await domainLink.click();await page.waitForLoadState('networkidle');assert.equal(new URL(page.url()).pathname,new URL(d.href,base).pathname);for(const [k,v]of new URL(d.href,base).searchParams)assert.equal(new URL(page.url()).searchParams.get(k),v);assert.ok(await page.locator('h1').isVisible());if(!['activities','approvals'].includes(d.id)){const shown=await page.locator('[data-canonical-service]:visible').evaluateAll(ns=>ns.map(n=>n.dataset.canonicalService));assert.ok(shown.length);assert.ok(shown.every(slug=>records.find(r=>r.s===slug).bd===d.id));}report.journeys.push({locale,kind:'domain',...d,status:'PASS'});}
+          for(const [i,domain]of ['business','residence','documents','investors'].entries()){await home();const a=page.locator('.premium-slide[data-slide="'+i+'"] a');assert.equal(await a.getAttribute('href'),prefix+'/discover/?domain='+domain);await a.click();await page.waitForLoadState('networkidle');assert.equal(new URL(page.url()).searchParams.get('domain'),domain);assert.ok(await page.locator('[data-canonical-service]:visible').count());report.journeys.push({locale,kind:'featured',domain,status:'PASS'});}
+          await home();const company=page.locator('header').getByRole('link',{name:locale==='ar'?'الشركات':'Companies',exact:true});if(await company.count())assert.equal(await company.first().getAttribute('href'),prefix+'/discover/?domain=business');await page.locator('.discovery-entry>a').click();await page.waitForLoadState('networkidle');assert.equal(await page.locator('[data-canonical-service]:visible').count(),records.length);report.journeys.push({locale,kind:'all-services',count:records.length,status:'PASS'});
+          await home();const agency=page.locator('.authority-pills a[href="'+prefix+'/authorities/gdrfa-dubai/"]');await agency.click();await page.waitForLoadState('networkidle');assert.ok(await page.locator('h1').isVisible());assert.ok(await page.locator('a[href*="/services/"]').count()>1);report.journeys.push({locale,kind:'exact-authority',authority:'gdrfa-dubai',status:'PASS'});
+          }
+          if(width===390){await home();const work=page.locator('.premium-slide[data-slide="4"] a');await work.scrollIntoViewIfNeeded();await work.click();await page.waitForLoadState('networkidle');assert.equal(new URL(page.url()).searchParams.get('domain'),'work');report.journeys.push({locale,kind:'phone-featured-work',status:'PASS'});}assert.deepEqual(errors,[]);await page.close();}report.status='SCOPED_PASS';}catch(e){report.status='FAIL';report.error=String(e.stack);throw e;}finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2));await browser.close();if(server)await new Promise(r=>server.close(r));}console.log(JSON.stringify(report));
+          NODE
+      - name: Compare real 1440px Production with approved reference
+        run: |
+          node --input-type=module <<'NODE'
+          import sharp from'sharp';import{readFile,writeFile}from'node:fs/promises';import{createHash}from'node:crypto';import assert from'node:assert/strict';
+          const out='diagnostics/home-discovery-density-live',master=await readFile('qa/reference/approved-desktop.jpeg'),sha=createHash('sha256').update(master).digest('hex');assert.equal(sha,'97dc3758fb786a116109381f05d272a2891af014935ec00b181db02b9d5012d7');
+          const ref=await sharp(master).resize(1440,960).removeAlpha().raw().toBuffer(),file=out+'/ar-1440-home.png',metadata=await sharp(file).metadata();assert.equal(metadata.width,1440);assert.equal(metadata.height,960);
+          const actual=await sharp(file).removeAlpha().raw().toBuffer(),overlay=Buffer.alloc(ref.length),diff=Buffer.alloc(ref.length);let changed=0,absolute=0;
+          for(let i=0;i<ref.length;i+=3){let delta=0;for(let c=0;c<3;c++){const d=Math.abs(ref[i+c]-actual[i+c]);delta+=d;absolute+=d;diff[i+c]=d;overlay[i+c]=Math.round((ref[i+c]+actual[i+c])/2);}if(delta/3>32)changed++;}
+          await sharp(overlay,{raw:{width:1440,height:960,channels:3}}).png().toFile(out+'/reference-production-overlay-1440.png');await sharp(diff,{raw:{width:1440,height:960,channels:3}}).png().toFile(out+'/reference-production-diff-1440.png');
+          const report=JSON.parse(await readFile(out+'/report.json','utf8'));report.visualComparison={source:'LIVE_PRODUCTION_1440x960',referenceSha256:sha,changedPixelPercent:changed/(1440*960)*100,meanAbsoluteDifference:absolute/ref.length,acceptance:'DIAGNOSTIC_ONLY_HUMAN_VISUAL_ACCEPTANCE_OPEN'};await writeFile(out+'/report.json',JSON.stringify(report,null,2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: home-discovery-density-live, path: diagnostics/home-discovery-density-live}
+      - name: Retain live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/home-discovery-density-live
+          if ! git diff --cached --quiet; then
+            git commit -m "Retain homepage density live acceptance evidence [skip ci]"
+            git pull --rebase --autostash origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
