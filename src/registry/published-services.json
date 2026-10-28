@@ -24242,6 +24242,12 @@
         "الدخول"
       ],
       "description": "إصدار تأشيرة لاستكشاف فرص العمل عبر ICP مع اختيار الفئة داخل المعاملة.",
+      "localizedDetails": {
+        "en": {
+          "duration": "2 days according to all three ICP duration cards; working days are not specified. This is processing time, not the selected period of stay.",
+          "notes": "Only processing time was verified across the three ICP duration cards on 28 October 2026. Document lists, conditions and some fee items differ between the cards. A missing item does not establish an exemption. Complete requirements, fees and eligibility remain unverified in the platform record; confirm them with the authority for the selected stay."
+        }
+      },
       "officialVariantCards": [
         {
           "durationDays": 60,
@@ -24272,8 +24278,8 @@
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء."
       },
       "conditions": "غير موثق بعد",
       "steps": [
@@ -24310,7 +24316,7 @@
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -24334,20 +24340,20 @@
         "officialLinkVerified": true,
         "requirementsVerified": false,
         "feesVerified": false,
-        "durationVerified": false,
+        "durationVerified": true,
         "eligibilityVerified": false,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 1,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-28",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-28",
+      "lastReviewedAt": "2026-10-28",
       "internalRoute": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
