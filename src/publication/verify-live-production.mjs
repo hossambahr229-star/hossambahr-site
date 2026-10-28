@@ -5,7 +5,7 @@ import { resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '../..');
 const baseUrl = (process.env.HB_BASE_URL || 'https://hossambahr.com').replace(/\/$/, '');
 const report = JSON.parse(await readFile(resolve(root, 'artifacts/a-plus-plus-global/route-audit.json'), 'utf8'));
-const routes = report.matrix.map((entry) => entry.route);
+const routes = [...new Set([...report.matrix.map((entry) => entry.route), '/ai/', '/en/ai/', '/en/methodology/'])];
 const release = process.env.GITHUB_SHA || Date.now().toString();
 const digest = (value) => createHash('sha256').update(value).digest('hex');
 const comparableDigest = (value, route) => {
