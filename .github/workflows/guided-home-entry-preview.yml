@@ -1,4 +1,4 @@
-name: Guided Homepage Entry Preview
+name: Guided Homepage Entry Preview V2
 on:
   push:
     branches: [agent/home-guided-entry-preview]
@@ -21,12 +21,12 @@ jobs:
         run: |
           node --input-type=module <<'NODE'
           import{chromium}from'playwright';import sharp from'sharp';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
-          const out='diagnostics/guided-home-entry-preview';await mkdir(out,{recursive:true});const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'}),report={capturedAt:new Date().toISOString(),source:'BUILT_CANDIDATE_COMPARED_WITH_LIVE_PRODUCTION',acceptance:'PREVIEW_ONLY_NOT_PRODUCTION_OR_HUMAN_PASS',views:[]};
+          const out='diagnostics/guided-home-entry-preview-v2';await mkdir(out,{recursive:true});const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'}),report={capturedAt:new Date().toISOString(),source:'BUILT_CANDIDATE_COMPARED_WITH_LIVE_PRODUCTION',acceptance:'PREVIEW_ONLY_NOT_PRODUCTION_OR_HUMAN_PASS',views:[]};
           try{for(const width of[1440,1366,390,320])for(const locale of['ar','en']){
            const results={};for(const[type,base]of[['production','https://hossambahr.com'],['candidate','http://127.0.0.1:8765']]){
            const page=await browser.newPage({viewport:{width,height:width<500?844:960},deviceScaleFactor:1,reducedMotion:'reduce'});const errors=[];page.on('pageerror',e=>errors.push(e.message));
            await page.goto(base+(locale==='en'?'/en/':'/'),{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
-           const shape=await page.evaluate(()=>{const section=document.querySelector('.home-service-launchpad'),rect=section.getBoundingClientRect(),cards=[...section.querySelectorAll(':scope>.home-domain-grid>.home-domain-tile>.home-domain-card')];return{viewport:innerWidth,overflow:document.documentElement.scrollWidth-innerWidth,section:{top:rect.top,height:rect.height},cards:cards.map(e=>{const r=e.getBoundingClientRect();return{domain:e.dataset.businessDomain,href:e.getAttribute('href'),top:r.top,bottom:r.bottom,width:r.width}}),directLinks:[...section.querySelectorAll('a[data-home-service]')].map(e=>({slug:e.dataset.homeService,href:e.getAttribute('href')})),more:!!section.querySelector('#home-more-domains>summary'),moreOpen:section.querySelector('#home-more-domains').open,visibleDirectLinks:[...section.querySelectorAll('[data-home-service]')].filter(e=>e.getClientRects().length).length};});
+           const shape=await page.evaluate(()=>{const section=document.querySelector('.home-service-launchpad'),rect=section.getBoundingClientRect(),cards=[...section.querySelectorAll(':scope>.home-domain-grid>.home-domain-tile>.home-domain-card')];return{viewport:innerWidth,overflow:document.documentElement.scrollWidth-innerWidth,section:{top:rect.top,height:rect.height},cards:cards.map(e=>{const r=e.getBoundingClientRect();return{domain:e.dataset.businessDomain,href:e.getAttribute('href'),top:r.top,bottom:r.bottom,width:r.width}}),directLinks:[...section.querySelectorAll('a[data-home-service]')].map(e=>({slug:e.dataset.homeService,href:e.getAttribute('href')})),macro:Object.fromEntries(Object.entries({header:'.site-header',hero:'.visual-target-hero',categories:'#service-areas>.home-domain-grid',featured:'.premium-story',metrics:'.target-proof',how:'.premium-how',authorities:'.premium-authorities',cta:'.premium-final-cta'}).map(([k,sel])=>{const e=document.querySelector(sel);if(!e)return[k,null];const b=e.getBoundingClientRect();return[k,{top:b.top,left:b.left,width:b.width,height:b.height}];})),more:!!section.querySelector('#home-more-domains>summary'),moreOpen:section.querySelector('#home-more-domains').open,visibleDirectLinks:[...section.querySelectorAll('[data-home-service]')].filter(e=>e.getClientRects().length).length};});
            assert.equal(shape.viewport,width);assert.ok(shape.overflow<=1);assert.equal(shape.cards.length,6);assert.ok(shape.more);assert.deepEqual(errors,[]);
            await page.screenshot({path:out+'/'+type+'-'+locale+'-'+width+'.png'});results[type]=shape;
            if(type==='candidate'){
@@ -58,13 +58,13 @@ jobs:
           NODE
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: guided-home-entry-preview, path: diagnostics/guided-home-entry-preview}
+        with: {name: guided-home-entry-preview-v2, path: diagnostics/guided-home-entry-preview-v2}
       - name: Preserve candidate evidence only
         if: always()
         run: |
           git config user.name "HossamBahr Preview Evidence"
           git config user.email "preview-evidence@users.noreply.github.com"
-          git add diagnostics/guided-home-entry-preview
+          git add diagnostics/guided-home-entry-preview-v2
           if ! git diff --cached --quiet; then
             git commit -m "Retain compact homepage preview evidence [skip ci]"
             git push origin HEAD:agent/home-guided-entry-preview
