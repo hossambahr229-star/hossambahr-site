@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-28T08:01:25.570Z",
+  "generatedAt": "2026-10-28T08:50:42.501Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
-    "REACHABLE": 157,
+    "REACHABLE": 156,
     "ACCESS_RESTRICTED": 9,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 84,
+    "NETWORK_UNVERIFIED": 85,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -831,9 +831,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "TimeoutError"
     },
     {
       "url": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936",
@@ -2582,9 +2581,7 @@
       ],
       "status": 200,
       "finalUrl": "https://media.ajman.ae/ar/servicecatalog/services/2862",
-      "title": "Request Rejected",
-      "result": "REACHABLE",
-      "verifiedBy": "browser-fallback"
+      "result": "REACHABLE"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
