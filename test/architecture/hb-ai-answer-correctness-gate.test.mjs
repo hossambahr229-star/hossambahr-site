@@ -50,10 +50,15 @@ test("follow-up focus uses latest turn while full goal retains conversation cont
   assert.match(ui, /authority_key: state\.authority_key/);
 });
 
-test("official-source trust badge is conditional on source grounding", () => {
+test("verified-answer badge requires fact grounding and the review date names its source", () => {
   assert.match(ui, /grounding\?\.source_backed/);
   assert.match(ui, /مستند إلى مصدر رسمي/);
-  assert.match(ui, /آخر تحقق/);
+  assert.match(ui, /hasVerifiedAnswerFact\(payload\)/);
+  assert.match(ui, /fact_status === "VERIFIED_FACT"/);
+  assert.match(ui, /answer\?\.grounded === true/);
+  assert.match(ui, /آخر مراجعة للمصدر/);
+  assert.match(ui, /Source last reviewed/);
+  assert.doesNotMatch(ui, /تم التحقق من المعلومة • آخر تحقق/);
 });
 
 test("premium AI gate removes dashboard chrome and keeps mobile composer sticky", () => {

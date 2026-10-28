@@ -425,6 +425,16 @@
     return payload?.result?.confidence !== "high";
   }
 
+  function hasVerifiedAnswerFact(payload) {
+    const result = payload?.result;
+    const answer = result?.answer;
+    return result?.grounding?.source_backed === true &&
+      answer?.grounded === true &&
+      answer?.fact_status === "VERIFIED_FACT" &&
+      typeof answer?.evidence?.source_url === "string" &&
+      /^https:\/\//.test(answer.evidence.source_url);
+  }
+
   function buildAssistantMessage(payload) {
     const match = selectPresentationMatch(payload);
     const uncertain = needsClarification(payload);
@@ -463,7 +473,7 @@
 
       if (match.official_source?.url) {
         const trust = create("div", "hb-chat-trust-row");
-        if (payload?.result?.grounding?.source_backed) {
+        if (hasVerifiedAnswerFact(payload)) {
           const verified = create("span", "hb-ai-trust-badge", "✓ مستند إلى مصدر رسمي");
           trust.append(verified);
         }
@@ -476,7 +486,7 @@
         copy.append(create("strong", "", (english ? match.authority?.name_en : match.authority?.name_ar) || "الجهة الحكومية المختصة"));
         if (match.official_source.last_verified_at) {
           const verifiedAt = new Date(match.official_source.last_verified_at);
-          if (!Number.isNaN(verifiedAt.getTime())) copy.append(create("small", "", tr("تم التحقق من المعلومة • آخر تحقق: ") + verifiedAt.toLocaleDateString(english ? "en-AE" : "ar-AE")));
+          if (!Number.isNaN(verifiedAt.getTime())) copy.append(create("small", "", (english ? "Source last reviewed: " : "آخر مراجعة للمصدر: ") + verifiedAt.toLocaleDateString(english ? "en-AE" : "ar-AE")));
         }
         const link = document.createElement("a");
         link.href = match.official_source.url;
