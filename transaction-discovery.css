@@ -113,13 +113,26 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-simple-foo
 .home-service-launchpad a:hover{background:#f4f8f4!important}.home-service-launchpad a:focus-visible,.home-more-domains>summary:focus-visible{outline:3px solid #b68b36;outline-offset:-3px}
 .authority-initials{display:flex;align-items:center;justify-content:center;min-height:42px;min-width:42px;color:#103e36;font-size:11px}
 
+/* A single initial choice; transaction examples stay available on demand. */
+.home-discovery-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:var(--hb-discovery-gap);margin-top:12px}
+.home-discovery-options>.home-more-domains{margin:0;padding:0 12px;border:1px solid #d3dfd7;border-radius:12px;background:#fff}
+.home-discovery-options>.home-more-domains[open]{grid-column:1/-1}
+.home-common-transactions-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--hb-discovery-gap);padding-block:12px}
+.home-common-transactions:not([open])>.home-common-transactions-grid{display:none}
+.home-shortcut-group{min-width:0;padding:12px;border:1px solid #e0e8e3;border-radius:12px;background:#fff}
+.home-shortcut-group h3{margin:0 0 8px;font-size:15px;line-height:1.5;color:var(--hb-discovery-ink)}
+.home-shortcut-group .home-domain-shortcuts{margin:0;padding:0;border-top:0}
+@media(max-width:900px){.home-common-transactions-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.home-discovery-options,.home-common-transactions-grid{grid-template-columns:minmax(0,1fr)}}
+
+
 /* Compact desktop discovery keeps every domain and transaction link available.
    Shared tokens control the spacing; tablet and phone grids remain unchanged. */
 @media(min-width:1101px){
  .home-service-launchpad{--hb-discovery-gap:12px;--hb-discovery-padding:16px}
  .home-service-launchpad .home-domain-heading{gap:16px;margin-bottom:12px}
  .home-service-launchpad .home-discovery-eyebrow{display:none}
- .home-service-launchpad .home-domain-heading h2{font-size:24px!important}
+ .home-service-launchpad .home-domain-heading h2{font-size:20px!important}
  .home-service-launchpad .home-domain-heading p{font-size:13px;margin:4px 0}
  html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{flex-direction:row;align-items:center;gap:10px;min-height:48px;padding:10px 14px!important}
  .home-service-launchpad .home-directory-entry strong{font-size:22px}
@@ -153,7 +166,7 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-ca
 .home-service-launchpad .home-domain-count{font-size:10.5px!important;margin-top:2px}.home-domain-shortcuts{margin:0 10px 8px}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:60px!important;padding:7px 0!important}
 html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>span{font-size:12px!important}
-html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-domain-shortcuts>a:nth-child(n+2){display:none!important}
+
 .home-more-domains>summary{font-size:15px}
 }
 @media(max-width:360px){.home-service-launchpad .home-domain-grid{grid-template-columns:minmax(0,1fr)}html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{min-height:76px!important}}
