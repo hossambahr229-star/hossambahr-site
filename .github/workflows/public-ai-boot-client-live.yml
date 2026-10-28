@@ -18,7 +18,7 @@ jobs:
         run: |
           node --input-type=module <<'NODE'
           import{createHash}from'node:crypto';
-          const base='https://hossambahr.com',expected='f3db874a6e07008bf82888492ff384264941395bbcd679e68f973a6ec3e3463e';
+          const base='https://hossambahr.com',expected='94c305c8de46309d55c609c6f4470e1635fc53014b8ec9e0e096ebd716a23a90';
           for(let i=0;i<60;i++){
             let ready=true;for(const prefix of['','/en']){
               const html=await(await fetch(base+prefix+'/ai/',{cache:'no-store'})).text();
