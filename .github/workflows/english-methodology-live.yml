@@ -1,0 +1,59 @@
+name: English Methodology Live Navigation
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: ['.github/workflows/english-methodology-live.yml']
+permissions: {contents: write}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for both published English pages
+        run: |
+          node --input-type=module <<'NODE'
+          for(let i=0;i<90;i++){const[a,m]=await Promise.all(['/en/ai/','/en/methodology/'].map(async p=>(await fetch('https://hossambahr.com'+p,{cache:'no-store'})).text()));if(a.includes('href="/en/methodology/"')&&m.includes('data-methodology="en-v1"'))process.exit(0);await new Promise(r=>setTimeout(r,10000));}throw Error('English methodology not published');
+          NODE
+      - name: Actual desktop and phone footer clicks and language switch
+        run: |
+          node --input-type=module <<'NODE'
+          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/english-methodology-live';await mkdir(out,{recursive:true});
+          const report={capturedAt:new Date().toISOString(),source:'LIVE_PRODUCTION_REAL_NAVIGATION',status:'RUNNING',views:[],aiRequests:0,protectedAccountExecution:'NOT_TESTED',pixelFidelity:'NOT_DECLARED'};
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});let failure;
+          try{for(const width of[1440,1366,430,390,360,320]){
+           const page=await browser.newPage({viewport:{width,height:width<500?844:960}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+           page.on('request',r=>{if(r.method()==='POST'&&r.url().includes('/public-ai-concierge'))report.aiRequests++;});
+           await page.goto('https://hossambahr.com/en/ai/',{waitUntil:'networkidle'});
+           await page.getByRole('link',{name:'Verification methodology',exact:true}).click();await page.waitForLoadState('networkidle');
+           assert.equal(new URL(page.url()).pathname,'/en/methodology/');
+           assert.equal(await page.locator('html').getAttribute('lang'),'en');assert.equal(await page.locator('html').getAttribute('dir'),'ltr');
+           assert.equal(await page.locator('h1').innerText(),'Verification methodology');
+           assert.ok((await page.locator('main').innerText()).includes('An unknown fee is not a zero fee.'));
+           assert.equal(await page.locator('.hb-master-mark').innerText(),'HB');
+           assert.equal(await page.evaluate(()=>innerWidth),width);assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'No horizontal overflow');
+           const mainLinks=await page.locator('main a[href]').evaluateAll(es=>es.map(e=>e.getAttribute('href')));assert.ok(mainLinks.every(h=>h.startsWith('/en/')));
+           await page.screenshot({path:out+'/en-'+width+'.png',fullPage:true});
+           const ar=page.locator('a[hreflang=ar]');assert.equal(await ar.getAttribute('href'),'/methodology/');await ar.click();await page.waitForLoadState('networkidle');
+           assert.equal(new URL(page.url()).pathname,'/methodology/');assert.equal(await page.locator('html').getAttribute('lang'),'ar');
+           assert.deepEqual(errors,[]);report.views.push({width,status:'PASS',englishFooterClicked:true,englishMethodology:true,explicitArabicSwitch:true,noOverflow:true,pageErrors:errors});await page.close();
+          }assert.equal(report.aiRequests,0);report.status='ENGLISH_METHODOLOGY_NAVIGATION_PASS';}catch(e){failure=e;report.status='LIVE_FAIL';report.error=String(e);}finally{await browser.close();await writeFile(out+'/report.json',JSON.stringify(report,null,2));}if(failure)throw failure;
+          
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: english-methodology-live, path: diagnostics/english-methodology-live}
+      - name: Preserve actual navigation evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Production Evidence"
+          git config user.email "production-evidence@users.noreply.github.com"
+          git add diagnostics/english-methodology-live
+          git commit -m "Retain actual English methodology navigation evidence [skip ci]"
+          git pull --rebase --autostash origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
