@@ -21,3 +21,12 @@ test('generated registry and both language pages retain partial status and revie
  assert.ok(ar.includes(source.duration));assert.ok(en.includes(source.localizedDetails.en.duration));assert.ok(en.includes('remain unverified'));
  assert.deepEqual(row.officialVariantCards,source.officialVariantCards);
 });
+
+test('AI policy publication uses the same duration without adding eligibility, document or fee rules',()=>{
+ const sql=read('scripts/sync-reviewed-icp-job-processing-time-2026-10-28.sql'),facts=JSON.parse(sql.split('$facts$')[1]),row=matrix.find(s=>s.slug===slug);
+ assert.equal(facts.duration,row.duration);assert.deepEqual(facts.cards,row.officialVariantCards);
+ assert.match(sql,/Unexpected job exploration policy checkpoint/);assert.match(sql,/p\.rules\|\|jsonb_build_array/);
+ assert.doesNotMatch(sql,/review_requirement|review_fee|update public\.hb_workflow/);
+ const translations=read('supabase/functions/public-ai-concierge/recorded-fact-translations.ts');
+ assert.ok(translations.includes(JSON.stringify(row.duration)),'existing deployed English fact mapping is reused');
+});
