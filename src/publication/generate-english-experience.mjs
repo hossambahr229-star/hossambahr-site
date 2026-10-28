@@ -1,3 +1,4 @@
+import {renderEnglishMethodology} from './methodology-page.mjs';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import vm from 'node:vm';
@@ -27,6 +28,7 @@ for(const route of ['ai','auth','auth/callback','auth/reset','account','os']){
  if(route==='os')html=html.replace(/<script src="\/os-client\.js(?:\?[^\"]*)?"/,match=>'<script src="/os-i18n.js" defer></script>'+match);
  html=html.replace(/(<a\b[^>]*href="\/os\/automation\/"[^>]*>)([\s\S]*?)(<\/a>)/,(_,open,label,close)=>open+label+' (Arabic)'+close);
  html=html.replace('</head>','<link rel="stylesheet" href="/english-experience.css"></head>');
+ html=html.replace(/href="\/methodology\//g,'href="/en/methodology/');
  const dir=join(root,'en',route);await mkdir(dir,{recursive:true});await writeFile(join(dir,'index.html'),html);
 }
 let home=await readFile(join(root,'en/index.html'),'utf8');
@@ -34,3 +36,6 @@ home=home.replace(/href="\/ai\//g,'href="/en/ai/').replace(/href="\/auth\//g,'hr
 if(!home.includes('/ui-i18n.js')) home=home.replace('<head>','<head><script src="/ui-i18n.js" defer></script>');
 await writeFile(join(root,'en/index.html'),home);
 console.log('Native English AI and authentication routes generated.');
+
+await mkdir(join(root,'en/methodology'),{recursive:true});
+await writeFile(join(root,'en/methodology/index.html'),renderEnglishMethodology());
