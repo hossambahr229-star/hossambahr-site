@@ -18,7 +18,8 @@ test('shared CSS gets content versions and still refreshes through the next comp
   const href='/_next/static/chunks/site.css',css=join(root,href.slice(1));
   await mkdir(join(root,'_next/static/chunks'),{recursive:true});await writeFile(css,'body{color:#103e36}');
   await mkdir(join(root,'en'),{recursive:true});
-  const page=q=>'<html><head><link rel="stylesheet" href='+q+href+'?v=old'+q+'><link rel="stylesheet" href="/global-os.css?v=separate"><script src="/os-client.js?v=old"></script></head><body><main>Service</main></body></html>';
+  await mkdir(join(root,'ai'),{recursive:true});await writeFile(join(root,'ai/hb-ai.css'),'.hb-ai-nav{gap:5px}');
+  const page=q=>'<html><head><link rel="stylesheet" href='+q+href+'?v=old'+q+'><link rel="stylesheet" href="/ai/hb-ai.css?v=old"><link rel="stylesheet" href="/global-os.css?v=separate"><script src="/os-client.js?v=old"></script></head><body><main>Service</main></body></html>';
   await writeFile(join(root,'index.html'),page('"'));await writeFile(join(root,'en/index.html'),page("'"));
   const publish=async()=>{await run(process.execPath,[join(dir,'apply-a-plus-plus-system.mjs')]);await run(process.execPath,[join(dir,'update-ai-runtime-version.mjs')]);};
   const expected=async()=>createHash('sha256').update(await readFile(css)).digest('hex').slice(0,12);
@@ -38,5 +39,12 @@ test('shared CSS gets content versions and still refreshes through the next comp
   assert.ok(secondCss.includes('content:none;color:#103e36'),'The owner must refresh an already versioned shared stylesheet');
   assert.equal((secondCss.match(/HOSSAMBAHR A\+\+ START/g)||[]).length,1);
   await publish();assert.equal(await readFile(join(root,'index.html'),'utf8'),second);assert.equal(await readFile(css,'utf8'),secondCss);
+  const aiBefore=createHash('sha256').update(await readFile(join(root,'ai/hb-ai.css'))).digest('hex').slice(0,12);
+  for(const file of ['index.html','en/index.html'])assert.ok((await readFile(join(root,file),'utf8')).includes('/ai/hb-ai.css?v='+aiBefore));
+  await writeFile(join(root,'ai/hb-ai.css'),'.hb-ai-nav{gap:6px}');
+  await publish();
+  const aiAfter=createHash('sha256').update(await readFile(join(root,'ai/hb-ai.css'))).digest('hex').slice(0,12);assert.notEqual(aiAfter,aiBefore);
+  for(const file of ['index.html','en/index.html']){const html=await readFile(join(root,file),'utf8');assert.ok(html.includes('/ai/hb-ai.css?v='+aiAfter));assert.equal(html.match(/os-client[.]js[?]v=([a-f0-9]+)/)[1],first.match(/os-client[.]js[?]v=([a-f0-9]+)/)[1]);}
+
  }finally{await rm(root,{recursive:true,force:true});}
 });

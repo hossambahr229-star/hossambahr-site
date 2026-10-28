@@ -3,7 +3,7 @@ const root=resolve(import.meta.dirname,'../..');const excluded=new Set(['.git','
 const runtimeNames=['public-ai-concierge','auth-client','ui-i18n','os-client','os-i18n','english-catalog','intent-search','activities','zero-defect-routing','a-plus-plus'];
 const sharedStyleVersions=new Map();
 async function versionSharedStyles(html){
- const matches=[...html.matchAll(/href=(["'])(\/_next\/static\/chunks\/[A-Za-z0-9._-]+\.css)(?:\?[^"'<>]*)?\1/g)];
+ const matches=[...html.matchAll(/href=(["'])((?:\/_next\/static\/chunks\/[A-Za-z0-9._-]+\.css|\/ai\/hb-ai\.css))(?:\?[^"'<>]*)?\1/g)];
  for(const match of matches){
   const href=match[2];
   if(!sharedStyleVersions.has(href))sharedStyleVersions.set(href,createHash('sha256').update(await readFile(join(root,href.slice(1)))).digest('hex').slice(0,12));

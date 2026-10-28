@@ -22,3 +22,7 @@ body.hb-chat-engaged[data-hb-ai-product]{background:#fff}body.hb-chat-engaged[da
 
 /* Final HB AI orb system */
 .hb-ai-product-mark,.hb-ai-topbrand img,.hb-chat-avatar{border-radius:50%}.hb-ai-topbrand img{filter:drop-shadow(0 4px 9px rgba(0,122,58,.12))}body[data-hb-ai-product] .hb-ai-symbol{border-radius:50%;filter:drop-shadow(0 5px 12px rgba(0,122,58,.10))}body[data-hb-ai-product] .hb-chat-thinking .hb-ai-symbol{animation:hbOrbThink 1.35s ease-in-out infinite}body[data-hb-ai-product] .hb-ai-trust-badge:before{content:"";display:inline-block;width:7px;height:7px;margin-inline-end:6px;border-radius:50%;background:#009A49;box-shadow:0 0 0 4px rgba(0,154,73,.09)}@keyframes hbOrbThink{50%{transform:scale(1.035);filter:drop-shadow(0 6px 15px rgba(0,154,73,.20))}}@media(max-width:600px){.hb-ai-product-mark{width:94px;height:94px}}
+
+/* Keep source methodology reachable when the mobile conversation footer is hidden. */
+.hb-ai-nav a.hb-ai-methodology{display:none}
+@media(max-width:600px){.hb-ai-nav a.hb-ai-methodology{display:inline-flex;align-items:center;justify-content:center;min-width:38px;min-height:38px;padding:0;color:inherit}.hb-ai-methodology svg{display:block;flex:none}}
