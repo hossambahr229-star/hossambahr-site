@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T14:59:47.150Z",
+  "generatedAt": "2026-10-28T20:49:04.160Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
@@ -1620,8 +1620,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "UND_ERR_CONNECT_TIMEOUT"
+      "status": 200,
+      "finalUrl": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438",
@@ -2567,9 +2568,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "TimeoutError"
     },
     {
       "url": "https://media.ajman.ae/ar/servicecatalog/services/2862",
