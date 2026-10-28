@@ -1,0 +1,351 @@
+{
+  "status": "SCOPED_PASS",
+  "captureSource": "LIVE_PRODUCTION",
+  "base": "https://hossambahr.com",
+  "views": [
+    {
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS",
+      "discoveryHeight": 572.875,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "ar",
+      "width": 1366,
+      "status": "PASS",
+      "discoveryHeight": 581.875,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "ar",
+      "width": 430,
+      "status": "PASS",
+      "discoveryHeight": 911.1875,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "status": "PASS",
+      "discoveryHeight": 938.953125,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "ar",
+      "width": 360,
+      "status": "PASS",
+      "discoveryHeight": 1330.171875,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "ar",
+      "width": 320,
+      "status": "PASS",
+      "discoveryHeight": 1353.5625,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "status": "PASS",
+      "discoveryHeight": 581.875,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "en",
+      "width": 1366,
+      "status": "PASS",
+      "discoveryHeight": 599.875,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "en",
+      "width": 430,
+      "status": "PASS",
+      "discoveryHeight": 925.09375,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "status": "PASS",
+      "discoveryHeight": 1028.3125,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "en",
+      "width": 360,
+      "status": "PASS",
+      "discoveryHeight": 1368.296875,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "status": "PASS",
+      "discoveryHeight": 1368.296875,
+      "directServiceLinks": 31,
+      "extraAreas": "NATIVE_USER_CONTROLLED"
+    }
+  ],
+  "journeys": [
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "business",
+      "href": "/discover/?domain=business",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "residence",
+      "href": "/discover/?domain=residence",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "work",
+      "href": "/discover/?domain=work",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "activities",
+      "href": "/business-activities/",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "approvals",
+      "href": "/approvals/",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "property",
+      "href": "/discover/?domain=property",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "investors",
+      "href": "/discover/?domain=investors",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "documents",
+      "href": "/discover/?domain=documents",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "health-education",
+      "href": "/discover/?domain=health-education",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "transport-customs",
+      "href": "/discover/?domain=transport-customs",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "domain",
+      "id": "fines-tax",
+      "href": "/discover/?domain=fines-tax",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "featured",
+      "domain": "business",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "featured",
+      "domain": "residence",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "featured",
+      "domain": "documents",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "featured",
+      "domain": "investors",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "all-services",
+      "count": 202,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "exact-authority",
+      "authority": "gdrfa-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "kind": "phone-featured-work",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "business",
+      "href": "/en/discover/?domain=business",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "residence",
+      "href": "/en/discover/?domain=residence",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "work",
+      "href": "/en/discover/?domain=work",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "activities",
+      "href": "/en/business-activities/",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "approvals",
+      "href": "/en/approvals/",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "property",
+      "href": "/en/discover/?domain=property",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "investors",
+      "href": "/en/discover/?domain=investors",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "documents",
+      "href": "/en/discover/?domain=documents",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "health-education",
+      "href": "/en/discover/?domain=health-education",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "transport-customs",
+      "href": "/en/discover/?domain=transport-customs",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "domain",
+      "id": "fines-tax",
+      "href": "/en/discover/?domain=fines-tax",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "featured",
+      "domain": "business",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "featured",
+      "domain": "residence",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "featured",
+      "domain": "documents",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "featured",
+      "domain": "investors",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "all-services",
+      "count": 202,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "exact-authority",
+      "authority": "gdrfa-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "kind": "phone-featured-work",
+      "status": "PASS"
+    }
+  ],
+  "humanAcceptance": "NOT_DECLARED",
+  "sourceCommit": "3e06dcc19a4ca76471f0faa6229601124109cb83",
+  "externalModel": "NOT_RETESTED_IN_THIS_VISUAL_SCOPE",
+  "visualComparison": {
+    "source": "LIVE_PRODUCTION_1440x960",
+    "referenceSha256": "97dc3758fb786a116109381f05d272a2891af014935ec00b181db02b9d5012d7",
+    "changedPixelPercent": 34.732711226851855,
+    "meanAbsoluteDifference": 56.89882523148148,
+    "acceptance": "DIAGNOSTIC_ONLY_HUMAN_VISUAL_ACCEPTANCE_OPEN"
+  }
+}
