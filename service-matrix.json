@@ -6712,10 +6712,10 @@
       "description": "إصدار تأشيرة لاستكشاف فرص العمل عبر ICP مع اختيار الفئة داخل المعاملة.",
       "requirements": [],
       "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
+      "duration": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء.",
       "conditions": "غير موثق بعد",
-      "specialCases": "ICP",
-      "lastReviewed": "2026-07-27",
+      "specialCases": "مدة إتمام الخدمة فقط مراجعة في بطاقات ICP الثلاث بتاريخ 2026-10-28: يومان دون تحديد أيام عمل. تختلف قوائم المستندات والشروط وبعض بنود الرسوم بين بطاقات مدد البقاء؛ لا يعني غياب بند في بطاقة إعفاءً منه. المستندات والرسوم والأهلية الكاملة ما زالت غير موثقة في سجل المنصة؛ راجع البطاقة الخاصة بمدة البقاء مع الجهة.",
+      "lastReviewed": "2026-10-28",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -6742,7 +6742,7 @@
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان (2) وفق بطاقات ICP لمدد 60 و90 و120 يوماً؛ لم تحدد البطاقات أنهما يوما عمل. هذه مدة إتمام الخدمة وليست مدة البقاء."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -6765,7 +6765,13 @@
           "informationUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e356135ae59b001173842d",
           "reviewedAt": "2026-10-27"
         }
-      ]
+      ],
+      "localizedDetails": {
+        "en": {
+          "duration": "2 days according to all three ICP duration cards; working days are not specified. This is processing time, not the selected period of stay.",
+          "notes": "Only processing time was verified across the three ICP duration cards on 28 October 2026. Document lists, conditions and some fee items differ between the cards. A missing item does not establish an exemption. Complete requirements, fees and eligibility remain unverified in the platform record; confirm them with the authority for the selected stay."
+        }
+      }
     },
     {
       "id": "directory:residency:35",
