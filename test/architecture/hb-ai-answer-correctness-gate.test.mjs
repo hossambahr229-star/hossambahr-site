@@ -86,9 +86,11 @@ test("parent residence issuance cannot fall through to cancellation identity", (
   assert.match(edge, /\(wantsRenew \|\| wantsIssue\).*cancel/);
 });
 
-test("public conversational budget supports multi-turn QA without disabling rate protection", () => {
+test("public conversational budget has no caller-selected QA quota exemption", () => {
   assert.match(edge, /p_limit: 120/);
-  assert.match(edge, /req\.headers\.get\("x-hb-qa-run"\)/);
+  const start = edge.indexOf("async function fingerprint("), end = edge.indexOf("\n}", start) + 2;
+  assert.ok(start >= 0 && end > start);
+  assert.doesNotMatch(edge.slice(start, end), /x-hb-qa-run|user-agent/);
   assert.match(edge, /rate_limited/);
 });
 
