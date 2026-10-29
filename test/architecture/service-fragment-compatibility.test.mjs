@@ -1,6 +1,13 @@
-import test from'node:test';import assert from'node:assert/strict';import{withOfficialRouteBookmark}from'../../service-pathways.js';
+import test from'node:test';import assert from'node:assert/strict';import{withOfficialRouteBookmark,withNormalizedRouteBookmark}from'../../service-pathways.js';
 const panel='<div id="service-execution-options" class="hb-service-pathways"><a class="hb-path-official" href="https://example.gov/service">Government</a><a href="/contact/">Assistance</a></div>';
 test('old and current bookmarks target the same existing execution panel',()=>{const html=withOfficialRouteBookmark(panel,'<h1>Service</h1>');assert.ok(html.startsWith('<div id="service-execution-options"'));assert.equal((html.match(/id="official-route"/g)||[]).length,1);assert.ok(html.includes('<a id="official-route" class="hb-path-official"'));assert.equal((html.match(/<span/g)||[]).length,0);assert.equal((html.match(/<a /g)||[]).length,2);assert.ok(html.includes('href="https://example.gov/service"'));assert.ok(html.includes('href="/contact/"'));});
 test('native official section retains its original target without duplicate IDs',()=>{for(const quote of ['"',"'"]){const html='<section id='+quote+'official-route'+quote+'>Official variants and requirements</section>';assert.equal(withOfficialRouteBookmark(panel,html),panel);}});
 test('regeneration after removing the old pathway block creates exactly one compatibility target',()=>{const first=withOfficialRouteBookmark(panel,'<h1>Service</h1>'),document='<h1>Service</h1>'+first,clean=document.replace(/<div\b[^>]*>[\s\S]*?<\/div>/,'');assert.equal(withOfficialRouteBookmark(panel,clean),first);});
 test('missing execution container cannot silently publish a broken bookmark',()=>assert.throws(()=>withOfficialRouteBookmark('<p>No panel</p>',''),/container missing/));
+
+test('retained normalized pages bookmark their existing real guidance without adding transaction actions',()=>{
+ for(const href of ['https://nafis.gov.ae/employer','/authorities/mohre/','/services/family-residency-uae/']){
+ const page='<main data-publication-state="NORMALIZED"><h1>Guidance</h1><a class="normalized-link" href="'+href+'">Next action</a></main>',out=withNormalizedRouteBookmark(page);
+ assert.ok(out.includes('<a id="official-route" class="normalized-link"'));assert.ok(out.includes('href="'+href+'"'));assert.equal((out.match(/<a /g)||[]).length,1);assert.ok(!out.includes('hb-service-pathways'));assert.equal(withNormalizedRouteBookmark(out),out);
+ }});
+test('normalized bookmark leaves real catalog pages and native official targets alone',()=>{for(const page of ['<main><h1>Catalog page</h1></main>','<main data-publication-state="NORMALIZED"><section id="official-route">Native guidance</section></main>'])assert.equal(withNormalizedRouteBookmark(page),page);assert.throws(()=>withNormalizedRouteBookmark('<main data-publication-state="NORMALIZED"></main>'),/action missing/);});

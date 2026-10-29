@@ -113,3 +113,11 @@ export function withOfficialRouteBookmark(pathways,existingHtml){
  if(!target)throw Error('Government execution link missing');
  return pathways.replace(target,target.replace('<a ','<a id="official-route" '));
 }
+
+// Retained guidance pages keep their real next action; they are not catalog transactions.
+export function withNormalizedRouteBookmark(html){
+ if(!/<main\b[^>]*data-publication-state="NORMALIZED"/.test(html)||/\bid=["']official-route["']/.test(html))return html;
+ const target=html.match(/<a\b[^>]*class="normalized-link"[^>]*>/)?.[0];
+ if(!target)throw Error('Normalized guidance action missing');
+ return html.replace(target,target.replace('<a ','<a id="official-route" '));
+}
