@@ -103,3 +103,11 @@ if(typeof document!=='undefined'){
  }).catch(()=>{/* Static server-rendered pathways remain available. */});
 }
 
+
+// Keep bookmarks from older service cards valid alongside the current execution target.
+export function withOfficialRouteBookmark(pathways,existingHtml){
+ if(/\bid=["']official-route["']/.test(existingHtml))return pathways;
+ const opening=pathways.match(/^<div\b[^>]*>/)?.[0];
+ if(!opening)throw Error('Service execution container missing');
+ return opening+'<span id="official-route" aria-hidden="true"></span>'+pathways.slice(opening.length);
+}

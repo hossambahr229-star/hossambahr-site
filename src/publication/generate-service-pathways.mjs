@@ -1,7 +1,7 @@
 import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {createHash} from 'node:crypto';
-import {pathwayMarkup,officialVariantMarkup} from '../../service-pathways.js';
+import {pathwayMarkup,officialVariantMarkup,withOfficialRouteBookmark} from '../../service-pathways.js';
 import {escapeHtml as esc,emirateEnglish} from './english-catalog.mjs';
 const root=resolve(import.meta.dirname,'../..');
 const {services}=JSON.parse(await readFile(join(root,'src/registry/published-services.json'),'utf8'));
@@ -51,7 +51,8 @@ async function walk(dir){for(const entry of await readdir(dir,{withFileTypes:tru
 
   // Existing Arabic pages survive builds, so always refresh their canonical pathway block.
   html=html.replace(/<div\b[^>]*data-hb-pathways="[^"]*"[^>]*>[\s\S]*?<\/div>/g,'');
-  html=html.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/,'$1'+pathwayMarkup(service,locale).replace('<div class=', '<div id="service-execution-options" class='));
+  const detailPathways=withOfficialRouteBookmark(pathwayMarkup(service,locale).replace('<div class=', '<div id="service-execution-options" class='),html);
+  html=html.replace(/(<h1\b[^>]*>[\s\S]*?<\/h1>)/,'$1'+detailPathways);
  }
  html=html.replace(/<link\b[^>]*href="\/service-pathways\.css[^>]*>/g,'').replace(/<script\b[^>]*src="\/service-pathways\.js[^>]*><\/script>/g,'');
  html=html.replace('</head>',`<link rel="stylesheet" href="/service-pathways.css?v=${version}"><script type="module" src="/service-pathways.js?v=${version}"></script></head>`);
