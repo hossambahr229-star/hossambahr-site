@@ -1,0 +1,60 @@
+name: Desktop discovery reference preview
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/discovery-rhythm-preview.yml]
+permissions: {contents: read}
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.34.4
+      - name: Materialize candidate source in an isolated local checkout
+        run: |
+          git fetch origin 25bf844f7e179d5b926ed59bf99524865dba3806
+          git worktree add --detach /tmp/hb-rhythm-preview 25bf844f7e179d5b926ed59bf99524865dba3806
+          cd /tmp/hb-rhythm-preview
+          node src/publication/generate-transaction-discovery.mjs
+          node src/publication/apply-home-geometry.mjs
+          python3 -m http.server 8765 > /tmp/hb-rhythm-preview.log 2>&1 &
+      - name: Capture geometry and compare actual render against approved reference
+        run: |
+          node --input-type=module <<'JS'
+          import{chromium}from'playwright';import sharp from'sharp';import assert from'node:assert/strict';import{mkdir,writeFile}from'node:fs/promises';
+          const out='diagnostics/discovery-rhythm-preview';await mkdir(out,{recursive:true});const report={status:'RUNNING',candidate:'25bf844f7e179d5b926ed59bf99524865dba3806',views:[],comparisons:[],humanVisualAcceptance:'NOT_DECLARED'};const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});let failure;
+          const rects=page=>page.evaluate(()=>Object.fromEntries(['.site-header','.visual-target-hero','.home-service-launchpad','.premium-featured','.premium-stats','.premium-how','.premium-authorities','.premium-bottom-cta'].map(selector=>{const e=document.querySelector(selector),r=e?.getBoundingClientRect();return[selector,r?{x:r.x,y:r.y+scrollY,width:r.width,height:r.height}:null]})));
+          try{for(const width of[1440,1366,430,390,360,320])for(const locale of['ar','en']){
+           const page=await browser.newPage({viewport:{width,height:width>1000?960:844}});page.setDefaultTimeout(30000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+           await page.goto('http://127.0.0.1:8765'+(locale==='en'?'/en':'')+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+           const view={width,locale,rects:await rects(page)};report.views.push(view);
+           assert.equal(await page.locator('.home-service-launchpad>.home-domain-grid [data-business-domain]:visible').count(),6);assert.equal(await page.locator('[data-home-service]:visible').count(),0);
+           assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);assert.deepEqual(errors,[]);
+           await page.screenshot({path:out+'/'+locale+'-'+width+'.png',animations:'disabled'});
+           for(const selector of['#home-common-transactions','#home-more-domains']){
+            const summary=page.locator(selector+'>summary');await summary.focus();await summary.press('Enter');assert.equal(await page.locator(selector).getAttribute('open'),'');
+            if(selector==='#home-common-transactions')assert.equal(await page.locator('[data-home-service]:visible').count(),31);else assert.equal(await page.locator('#home-more-domains [data-business-domain]:visible').count(),5);
+            assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);await summary.press('Enter');assert.equal(await page.locator(selector).getAttribute('open'),null);
+           }
+           if(locale==='ar'&&width===1440){
+            await page.goto('https://hossambahr.com/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);view.productionBefore=await rects(page);await page.screenshot({path:out+'/production-before-1440.png',animations:'disabled'});
+           }
+           await page.close();
+          }
+          const reference=await sharp('/tmp/hb-rhythm-preview/qa/reference/approved-desktop.jpeg').resize(1440,960).removeAlpha().raw().toBuffer();await sharp(reference,{raw:{width:1440,height:960,channels:3}}).png().toFile(out+'/reference-1440.png');
+          for(const name of['production-before-1440','ar-1440']){
+           const pixels=await sharp(out+'/'+name+'.png').removeAlpha().raw().toBuffer();let changed=0,sum=0;const diff=Buffer.alloc(pixels.length);
+           for(let i=0;i<pixels.length;i+=3){let max=0;for(let c=0;c<3;c++){const d=Math.abs(pixels[i+c]-reference[i+c]);sum+=d;max=Math.max(max,d);diff[i+c]=d;}if(max>30)changed++;}
+           report.comparisons.push({name,pixelChangedOver30Percent:100*changed/(1440*960),meanAbsoluteChannelDifference:sum/pixels.length,interpretation:'DIAGNOSTIC_ONLY'});
+           await sharp(diff,{raw:{width:1440,height:960,channels:3}}).png().toFile(out+'/'+name+'-diff.png');
+           const overlay=Buffer.from(pixels.map((v,i)=>Math.round((v+reference[i])/2)));await sharp(overlay,{raw:{width:1440,height:960,channels:3}}).png().toFile(out+'/'+name+'-overlay.png');
+          }
+          report.status='PASS';}catch(e){failure=e;report.status='FAIL';report.error=String(e.stack||e);}finally{await browser.close();await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}if(failure)throw failure;
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: discovery-rhythm-preview, path: diagnostics/discovery-rhythm-preview}
