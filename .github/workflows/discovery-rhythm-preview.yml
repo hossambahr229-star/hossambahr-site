@@ -16,8 +16,8 @@ jobs:
       - run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.34.4
       - name: Materialize candidate source in an isolated local checkout
         run: |
-          git fetch origin 25bf844f7e179d5b926ed59bf99524865dba3806
-          git worktree add --detach /tmp/hb-rhythm-preview 25bf844f7e179d5b926ed59bf99524865dba3806
+          git fetch origin fa837a583458b728b93ed4a39fcb7a38c6c592ef
+          git worktree add --detach /tmp/hb-rhythm-preview fa837a583458b728b93ed4a39fcb7a38c6c592ef
           cd /tmp/hb-rhythm-preview
           node src/publication/generate-transaction-discovery.mjs
           node src/publication/apply-home-geometry.mjs
@@ -26,8 +26,8 @@ jobs:
         run: |
           node --input-type=module <<'JS'
           import{chromium}from'playwright';import sharp from'sharp';import assert from'node:assert/strict';import{mkdir,writeFile}from'node:fs/promises';
-          const out='diagnostics/discovery-rhythm-preview';await mkdir(out,{recursive:true});const report={status:'RUNNING',candidate:'25bf844f7e179d5b926ed59bf99524865dba3806',views:[],comparisons:[],humanVisualAcceptance:'NOT_DECLARED'};const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});let failure;
-          const rects=page=>page.evaluate(()=>Object.fromEntries(['.site-header','.visual-target-hero','.home-service-launchpad','.premium-featured','.premium-stats','.premium-how','.premium-authorities','.premium-bottom-cta'].map(selector=>{const e=document.querySelector(selector),r=e?.getBoundingClientRect();return[selector,r?{x:r.x,y:r.y+scrollY,width:r.width,height:r.height}:null]})));
+          const out='diagnostics/discovery-rhythm-preview';await mkdir(out,{recursive:true});const report={status:'RUNNING',candidate:'fa837a583458b728b93ed4a39fcb7a38c6c592ef',views:[],comparisons:[],humanVisualAcceptance:'NOT_DECLARED'};const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});let failure;
+          const rects=page=>page.evaluate(()=>Object.fromEntries(['.site-header','.visual-target-hero','.home-service-launchpad','.premium-featured','.target-proof','.premium-how','.premium-authorities','.premium-final-cta'].map(selector=>{const e=document.querySelector(selector),r=e?.getBoundingClientRect();return[selector,r?{x:r.x,y:r.y+scrollY,width:r.width,height:r.height}:null]})));
           try{for(const width of[1440,1366,430,390,360,320])for(const locale of['ar','en']){
            const page=await browser.newPage({viewport:{width,height:width>1000?960:844}});page.setDefaultTimeout(30000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
            await page.goto('http://127.0.0.1:8765'+(locale==='en'?'/en':'')+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
