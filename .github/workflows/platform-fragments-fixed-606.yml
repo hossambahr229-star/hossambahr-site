@@ -1,0 +1,34 @@
+name: Accept layout-preserving repaired bookmarks on Production
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/platform-fragments-fixed-606.yml]
+permissions: {contents: write}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the real repaired generated pages
+        run: |
+          node --input-type=module <<'JS'
+          for(let i=0;i<90;i++){const js=await(await fetch('https://hossambahr.com/service-pathways.js',{cache:'no-store'})).text(),ar=await(await fetch('https://hossambahr.com/services/employment-agency-bank-guarantee-refund-mohre/',{cache:'no-store'})).text(),en=await(await fetch('https://hossambahr.com/en/services/',{cache:'no-store'})).text();if(js.includes('Government execution link missing')&&ar.includes('<a id="official-route" class="hb-path-official"')&&en.includes('id="directory-search"'))process.exit(0);await new Promise(r=>setTimeout(r,10000));}throw Error('PR606 generated bookmark targets not published yet');
+          JS
+      - name: Verify every previously broken destination and mobile hash scrolling
+        run: |
+          node --input-type=module <<'JS'
+          import{chromium}from'playwright';import fs from'node:fs/promises';import assert from'node:assert/strict';const out='diagnostics/platform-fragments-fixed-606';await fs.mkdir(out,{recursive:true});const before=JSON.parse(await fs.readFile('diagnostics/platform-fragments-live-20261029/report.json','utf8'));await fs.writeFile(out+'/before.json',JSON.stringify(before,null,2));const urls=before.missing.map(r=>r.href),tasks=urls.map(href=>({href,width:1440}));for(const href of[urls[0],urls.find(u=>u.includes('family-residency')),urls.find(u=>u.includes('sira-new')),urls.find(u=>u.startsWith('/en/'))])if(href)tasks.push({href,width:390});const report={status:'RUNNING',source:'ACTUAL_PRODUCTION_BROWSER_AFTER_PR606',priorMissing:urls.length,results:[],errors:[]};const browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true});let index=0;await Promise.all(Array.from({length:4},async()=>{const page=await browser.newPage();while(index<tasks.length){const {href,width}=tasks[index++];try{await page.setViewportSize({width,height:width===390?844:960});const response=await page.goto(new URL(href,'https://hossambahr.com').href,{waitUntil:'networkidle',timeout:40000});const id=decodeURIComponent(new URL(href,'https://hossambahr.com').hash.slice(1));const state=await page.evaluate(id=>{const target=document.getElementById(id),panel=id==='official-route'?document.getElementById('service-execution-options'):target,rect=panel?.getBoundingClientRect();return{count:document.querySelectorAll('[id="'+id+'"]').length,currentTargetCount:id==='official-route'?document.querySelectorAll('#service-execution-options').length:1,visible:!!rect&&rect.bottom>0&&rect.top<innerHeight,overflow:document.documentElement.scrollWidth>innerWidth+1,extraGridSpans:panel?.querySelectorAll(':scope > span').length||0,official:panel?.querySelector('a.hb-path-official')?.href||null,whatsapp:panel?.querySelector('a.hb-path-assisted')?.href||null};},id);assert.equal(response.status(),200);assert.equal(state.count,1,'one target '+href);assert.equal(state.currentTargetCount,1);assert.equal(state.visible,true,'native hash scroll reaches panel '+href);assert.equal(state.overflow,false);if(id==='official-route'){assert.equal(state.extraGridSpans,0,'bookmark adds no grid child');assert.ok(state.official);assert.equal(new URL(state.whatsapp).hostname,'wa.me');assert.equal(new URL(state.whatsapp).pathname,'/971503780460');}else{const input=page.locator('#directory-search input[name=q]');await input.click();assert.equal(await input.evaluate(e=>document.activeElement===e),true);}report.results.push({href,width,status:'PASS',...state});if(width===390)await page.screenshot({path:out+'/mobile-'+report.results.length+'.png'});}catch(e){report.errors.push({href,width,error:String(e.stack||e)});}}await page.close();}));await browser.close();report.checked=report.results.length;report.status=report.errors.length?'FAIL':'PASS';await fs.writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));assert.equal(report.status,'PASS');
+          JS
+      - name: Preserve live acceptance evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/platform-fragments-fixed-606
+          git commit -m "Preserve post-deploy acceptance for all repaired service bookmarks"
+          git push origin HEAD:agent/dld-source-review-evidence
