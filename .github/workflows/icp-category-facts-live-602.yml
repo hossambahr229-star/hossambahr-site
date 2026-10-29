@@ -1,0 +1,76 @@
+name: ICP category facts Production acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/icp-category-facts-live-602.yml]
+permissions: {contents: read}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: 'ea439d563655040f73e5d6fb72080589e6ea0286'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the actual updated matrix and both language service pages
+        run: |
+          node --input-type=module <<'JS'
+          import{readFile}from'node:fs/promises';const matrix=JSON.parse(await readFile('service-matrix.json','utf8')),slugs=['تأشيرة-سياحية-عبر-icp-خارج-دبي','تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي'];
+          for(let i=0;i<90;i++){let ready=true;
+           const live=await(await fetch('https://hossambahr.com/service-matrix.json',{cache:'no-store'})).json();
+           for(const slug of slugs){const expected=matrix.services.find(s=>s.slug===slug),row=live.services.find(s=>s.slug===slug);if(row?.lastReviewed!=='2026-10-29'||row.duration!==expected.duration||row.fees!==expected.fees)ready=false;
+            for(const locale of['ar','en']){const response=await fetch('https://hossambahr.com'+(locale==='en'?'/en':'')+'/services/'+encodeURIComponent(slug)+'/',{cache:'no-store'}),html=await response.text();if(!response.ok||!html.includes(locale==='en'?expected.localizedDetails.en.duration:expected.duration))ready=false;}
+           }if(ready)process.exit(0);await new Promise(r=>setTimeout(r,10000));
+          }throw Error('Updated facts not yet published in all four pages');
+          JS
+      - name: Verify real service journeys and conversational grounding
+        run: |
+          node --input-type=module <<'JS'
+          import{chromium}from'playwright';import assert from'node:assert/strict';import{mkdir,writeFile}from'node:fs/promises';
+          const out='diagnostics/icp-category-facts-live-602';await mkdir(out,{recursive:true});const report={status:'RUNNING',source:'LIVE_PRODUCTION_REAL_API_AND_UI',serviceViews:[],conversations:[],protectedExecution:'NOT_TESTED',externalModelAcceptance:'NOT_DECLARED'};
+          const tourism='تأشيرة-سياحية-عبر-icp-خارج-دبي',visitor='تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي',source='https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60';const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});let failure;
+          try{
+           const registry=await(await fetch('https://hossambahr.com/src/registry/published-services.json')).json();const rt=registry.services.find(s=>s.slug===tourism),rv=registry.services.find(s=>s.slug===visitor);
+           assert.equal(rt.verification.detailsVerified,true);assert.equal(rv.verification.detailsVerified,false);assert.equal(rv.verification.feesVerified,true);assert.equal(rv.verification.durationVerified,true);assert.equal(rv.verification.requirementsVerified,false);assert.equal(rv.verification.eligibilityVerified,false);
+           report.partialServices=registry.services.filter(s=>!s.verification.detailsVerified).length;assert.equal(report.partialServices,32);
+           for(const width of[1440,390])for(const locale of['ar','en']){
+            const page=await browser.newPage({viewport:{width,height:width===390?844:960}});page.setDefaultTimeout(30000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+            for(const [kind,slug] of[['tourism',tourism],['visitor',visitor]]){
+             await page.goto('https://hossambahr.com'+(locale==='en'?'/en':'')+'/services/'+encodeURIComponent(slug)+'/',{waitUntil:'networkidle'});
+             const text=await page.locator('main').innerText();assert.match(text,locale==='en'?/2 days/:/يومان \(2\)/);assert.match(text,locale==='en'?/1,000/:/1000/);
+             if(kind==='tourism')assert.match(text,locale==='en'?/tour.program/i:/بيان البرنامج السياحي/);
+             const official=page.locator('[data-government-cta="verified"]');assert.ok(await official.count()>=1);const officialHref=await official.first().getAttribute('href');assert.ok(officialHref.startsWith('https://'));const expectedRecord=kind==='tourism'?rt:rv;assert.equal(officialHref,locale==='en'?(expectedRecord.officialCtaUrlEn||expectedRecord.officialCtaUrl):expectedRecord.officialCtaUrl);
+             const assisted=page.locator('[data-commercial-cta="verified"]');assert.ok(await assisted.count()>=1);const assistedHref=await assisted.first().getAttribute('href');const assistedURL=new URL(assistedHref,'https://hossambahr.com');assert.equal(assistedURL.pathname,locale==='en'?'/en/contact/':'/contact/');assert.equal(assistedURL.searchParams.get('service'),slug);
+             assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);assert.deepEqual(errors,[]);report.serviceViews.push({kind,width,locale,officialHref,assistedHref,status:'PASS'});await page.screenshot({path:out+'/service-'+kind+'-'+locale+'-'+width+'.png'});
+            }
+            for(const [kind,slug] of[['tourism',tourism],['visitor',visitor]]){
+             await page.goto('https://hossambahr.com'+(locale==='en'?'/en':'')+'/ai/',{waitUntil:'networkidle'});await page.evaluate(()=>sessionStorage.clear());await page.reload({waitUntil:'networkidle'});
+             const qs=kind==='tourism'?(locale==='ar'?['أريد تأشيرة سياحية في الشارقة، ما المستندات؟','والرسوم؟','وكم تستغرق المعاملة؟']:['I need a tourist visa in Sharjah. What documents are required?','And the fees?','What is the processing time?']):(locale==='ar'?['أريد تأشيرة زيارة صديق في الشارقة. كم الرسوم؟','وكم تستغرق المعاملة؟','ما الشروط؟']:['I need a visit visa for a friend in Sharjah. What are the fees?','What is the processing time?','What are the eligibility conditions?']);
+             const convo={kind,width,locale,turns:[],httpAttempts:[]};report.conversations.push(convo);const handler=r=>{if(r.request().method()==='POST'&&r.url().includes('/public-ai-concierge'))convo.httpAttempts.push({status:r.status(),startupCode:r.headers()['sb-error-code']||null});};page.on('response',handler);
+             for(let i=0;i<qs.length;i++){
+              const waiting=page.waitForResponse(r=>r.request().method()==='POST'&&r.url().includes('/public-ai-concierge')&&r.status()===200,{timeout:90000});
+              await page.locator('textarea[name=goal]').fill(qs[i]);await page.locator('.hb-chat-send').click();const response=await waiting,raw=await response.text(),events=[];
+              try{events.push(JSON.parse(raw));}catch{for(const line of raw.split('\n').filter(s=>s.trim()))try{events.push(JSON.parse(line.startsWith('data:')?line.slice(5).trim():line.trim()));}catch{}}
+              const terminal=events.filter(v=>['done','fallback'].includes(v.type)).at(-1)||events.at(-1),result=terminal.result,context=terminal.goal_context||events.find(v=>v.type==='meta')?.goal_context;
+              const row={question:qs[i],service:result?.matches?.[0]?.service_slug,factStatus:result?.answer?.fact_status,answer:result?.answer?.text,jurisdiction:context?.jurisdiction_hint,external_model_used:result?.engine?.external_model_used};convo.turns.push(row);assert.equal(row.service,slug);assert.equal(row.jurisdiction,'AE-SH');assert.equal(result?.privacy?.case_created,false);assert.equal(result?.privacy?.personal_data_persisted,false);assert.equal(result?.matches?.[0]?.official_source?.url,source);
+              assert.equal(row.factStatus,kind==='visitor'&&i===2?'MISSING_INFORMATION':'VERIFIED_FACT');
+              if(kind==='tourism'&&i===0){assert.match(row.answer,locale==='en'?/tour.program/i:/بيان البرنامج السياحي/);assert.doesNotMatch(row.answer,locale==='en'?/medical|retire|property owner/i:/تقرير طبي|تقاعد|ملكية عقار/);}
+              if((kind==='tourism'&&i===1)||(kind==='visitor'&&i===0)){assert.match(row.answer,/100/);assert.match(row.answer,locale==='en'?/1,000/:/1000/);}
+              if((kind==='tourism'&&i===2)||(kind==='visitor'&&i===1))assert.match(row.answer,/2/);
+              if(locale==='en')assert.doesNotMatch(row.answer,/[\u0600-\u06ff]/);
+              await page.waitForFunction(()=>!document.querySelector('.hb-chat-send')?.disabled);const message=page.locator('.hb-chat-message--assistant:not([data-pending])').last();assert.ok(await message.locator('.hb-chat-actions a').count()>=3);
+              assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);assert.deepEqual(errors,[]);
+             }
+             await page.screenshot({path:out+'/ai-'+kind+'-'+locale+'-'+width+'.png'});page.off('response',handler);
+            }
+            await page.close();
+           }
+           report.status='PASS';
+          }catch(e){failure=e;report.status='FAIL';report.error=String(e.stack||e);}finally{await browser.close();await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}if(failure)throw failure;
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: icp-category-facts-live-602, path: diagnostics/icp-category-facts-live-602}
