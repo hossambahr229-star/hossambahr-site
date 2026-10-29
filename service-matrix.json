@@ -6348,11 +6348,11 @@
       "status": "verified",
       "description": "إصدار تأشيرة زيارة لقريب أو صديق عبر مسار ICP مع اختيار فئة الزيارة ومدة الإقامة داخل المعاملة.",
       "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
+      "fees": "بنود بطاقة ICP بالدرهم: طلب 100؛ إصدار دخول واحد 100 عن كل شهر أو دخول متعدد 200 عن كل شهر؛ خدمات ذكية 100. الضمان المالي: 1000 للدخول الواحد أو 2000 للمتعدد، ورسم إيداع الضمان 20. الضمان منفصل عن الرسوم، ولا تجمع البدائل تلقائيًا. يحدد الطلب الرسمي البنود المطبقة؛ لا تشمل رسوم حسام بحر.",
+      "duration": "يومان (2) وفق مدة إنجاز خدمة إصدار التأشيرة في بطاقة ICP؛ لا تحدد البطاقة أنها أيام عمل، وليست مدة الإقامة أو ضمانًا للموافقة.",
       "conditions": "غير موثق بعد",
-      "specialCases": "ICP",
-      "lastReviewed": "2026-07-27",
+      "specialCases": "رُوجعت الرسوم ومدة الإنجاز ضمن فئة زيارة الأقارب والأصدقاء المختارة في بطاقة ICP. المستندات وأهلية كل حالة ما زالت تحتاج مراجعة؛ لا تنقل مستندات السياحة أو العلاج إلى هذه الخدمة.",
+      "lastReviewed": "2026-10-29",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -6375,17 +6375,41 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "بنود بطاقة ICP بالدرهم: طلب 100؛ إصدار دخول واحد 100 عن كل شهر أو دخول متعدد 200 عن كل شهر؛ خدمات ذكية 100. الضمان المالي: 1000 للدخول الواحد أو 2000 للمتعدد، ورسم إيداع الضمان 20. الضمان منفصل عن الرسوم، ولا تجمع البدائل تلقائيًا. يحدد الطلب الرسمي البنود المطبقة؛ لا تشمل رسوم حسام بحر."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان (2) وفق مدة إنجاز خدمة إصدار التأشيرة في بطاقة ICP؛ لا تحدد البطاقة أنها أيام عمل، وليست مدة الإقامة أو ضمانًا للموافقة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "recordedSteps": [
+        "افتح بطاقة ICP واختر فئة المتعامل المطابقة للطلب.",
+        "قدم الطلب عبر القناة الرسمية المناسبة وراجع البيانات.",
+        "أرفق مستندات الفئة إذا تعذر استرجاعها آليًا.",
+        "سدد البنود المستحقة التي يعرضها الطلب الرسمي.",
+        "استلم نتيجة المعاملة."
+      ],
+      "stepsReviewedAt": "2026-10-29",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+          "sourceLanguage": "en",
+          "fees": "ICP lists AED 100 application, AED 100 per month for single entry or AED 200 per month for multiple entry, and AED 100 smart services. Financial security is AED 1,000 for single or AED 2,000 for multiple entry, with an AED 20 deposit fee. Security is separate from fees; alternatives are not added together. The official application confirms applicable items. No HOSSAM BAHR charge is included.",
+          "duration": "2 days is the ICP visa-issuance processing time. The card does not specify working days; this is neither permitted stay nor guaranteed approval.",
+          "steps": [
+            "Open the ICP card and select the relevant applicant category.",
+            "Apply through the appropriate official channel and review the data.",
+            "Attach category documents if automatic retrieval is unavailable.",
+            "Pay applicable items shown in the official application.",
+            "Receive the transaction outcome."
+          ],
+          "notes": "Fees and processing time were reviewed with the relatives/friends category selected. Complete documents and case-specific eligibility remain under review; tourism or treatment documents are not transferred to this service."
+        }
+      }
     },
     {
       "id": "directory:residency:30",
@@ -6487,12 +6511,16 @@
       "evidenceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
       "status": "verified",
       "description": "إصدار تأشيرة سياحية عبر مسار ICP مع اختيار فئة السياحة والمدة داخل المعاملة.",
-      "requirements": [],
-      "fees": "غير موثق بعد",
-      "duration": "غير موثق بعد",
-      "conditions": "غير موثق بعد",
-      "specialCases": "ICP",
-      "lastReviewed": "2026-07-27",
+      "requirements": [
+        "جواز سفر.",
+        "صورة شخصية.",
+        "بيان البرنامج السياحي."
+      ],
+      "fees": "بنود بطاقة ICP بالدرهم: طلب 100؛ إصدار دخول واحد 100 عن كل شهر أو دخول متعدد 200 عن كل شهر؛ خدمات ذكية 100. الضمان المالي: 1000 للدخول الواحد أو 2000 للمتعدد، ورسم إيداع الضمان 20. الضمان منفصل عن الرسوم، ولا تجمع البدائل تلقائيًا. يحدد الطلب الرسمي البنود المطبقة؛ لا تشمل رسوم حسام بحر.",
+      "duration": "يومان (2) وفق مدة إنجاز خدمة إصدار التأشيرة في بطاقة ICP؛ لا تحدد البطاقة أنها أيام عمل، وليست مدة الإقامة أو ضمانًا للموافقة.",
+      "conditions": "هذه التفاصيل لفئة المنشآت السياحية المخولة بإصدار تأشيرات السياحة، ويجب أن تكون المنشأة قائمة وتمارس نشاطها. للزائر: تأمين صحي ساري داخل الإمارات، جواز صالح 6 أشهر على الأقل، وتذكرة عودة. البقاء 30 أو 60 أو 90 يومًا حسب الخيار؛ التمديد بقرار الهيئة ضمن إجمالي 120 يومًا. الدخول الأول خلال 60 يومًا من الإصدار، مع إمكان تمديد الصلاحية وفق القواعد. استرداد الضمان يتطلب طلبًا وإلغاء التأشيرة أو مغادرة المستفيد دون مخالفات إقامة.",
+      "specialCases": "تمت مراجعة فئة المنشآت السياحية بالاختيار المباشر في بطاقة ICP، وليس النص المجمّع للفئات. لا تشمل تأشيرة السياحة متعددة الدخول لمدة 5 سنوات. تتعارض أرقام غرامة المنشأة غير النشطة بين موضعين بالبطاقة، لذلك لا نؤكد مبلغ هذه الغرامة. لا يفيد مسار البطاقة أن كل فرد مؤهل للتقديم المباشر بنفسه.",
+      "lastReviewed": "2026-10-29",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": false,
@@ -6515,17 +6543,47 @@
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "بنود بطاقة ICP بالدرهم: طلب 100؛ إصدار دخول واحد 100 عن كل شهر أو دخول متعدد 200 عن كل شهر؛ خدمات ذكية 100. الضمان المالي: 1000 للدخول الواحد أو 2000 للمتعدد، ورسم إيداع الضمان 20. الضمان منفصل عن الرسوم، ولا تجمع البدائل تلقائيًا. يحدد الطلب الرسمي البنود المطبقة؛ لا تشمل رسوم حسام بحر."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان (2) وفق مدة إنجاز خدمة إصدار التأشيرة في بطاقة ICP؛ لا تحدد البطاقة أنها أيام عمل، وليست مدة الإقامة أو ضمانًا للموافقة."
         },
         {
           "question": "ما القناة الرسمية؟",
           "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
         }
-      ]
+      ],
+      "recordedSteps": [
+        "افتح بطاقة ICP واختر فئة المتعامل المطابقة للطلب.",
+        "قدم الطلب عبر القناة الرسمية المناسبة وراجع البيانات.",
+        "أرفق مستندات الفئة إذا تعذر استرجاعها آليًا.",
+        "سدد البنود المستحقة التي يعرضها الطلب الرسمي.",
+        "استلم نتيجة المعاملة."
+      ],
+      "stepsReviewedAt": "2026-10-29",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+          "sourceLanguage": "en",
+          "fees": "ICP lists AED 100 application, AED 100 per month for single entry or AED 200 per month for multiple entry, and AED 100 smart services. Financial security is AED 1,000 for single or AED 2,000 for multiple entry, with an AED 20 deposit fee. Security is separate from fees; alternatives are not added together. The official application confirms applicable items. No HOSSAM BAHR charge is included.",
+          "duration": "2 days is the ICP visa-issuance processing time. The card does not specify working days; this is neither permitted stay nor guaranteed approval.",
+          "steps": [
+            "Open the ICP card and select the relevant applicant category.",
+            "Apply through the appropriate official channel and review the data.",
+            "Attach category documents if automatic retrieval is unavailable.",
+            "Pay applicable items shown in the official application.",
+            "Receive the transaction outcome."
+          ],
+          "documents": [
+            "Passport.",
+            "Personal photo.",
+            "Tour-program statement."
+          ],
+          "eligibility": "These facts cover authorised tourism establishments, which must actively operate. Visitors need UAE-valid health insurance, a passport valid for at least 6 months, and a return ticket. Stay options are 30, 60 or 90 days; ICP extensions cannot exceed 120 days in total. First entry is within 60 days of issuance, subject to permitted validity extensions. Security refunds require a request and visa cancellation or departure without residence violations.",
+          "notes": "Verified against the selected tourism-establishment category, not combined text from other categories. This is separate from the 5-year tourist visa. The card gives conflicting inactive-establishment fine amounts, so that fine is not confirmed here. The information card is not proof that every individual can apply directly."
+        }
+      }
     },
     {
       "id": "directory:residency:32",
