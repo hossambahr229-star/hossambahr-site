@@ -1,6 +1,6 @@
 // Resolve explicit transaction objects before general lexical ranking.
 // Candidates still come exclusively from the source-backed published catalog.
-export type TransactionObject = {kind:string; action:string; freeZone?:boolean; jurisdiction?:string|null; authority?:string|null};
+export type TransactionObject = {kind:string; action:string; freeZone?:boolean; jurisdiction?:string|null; authority?:string|null; entry?:string};
 export function transactionObject(q:string,jurisdiction:string|null=null):TransactionObject|null {
  const cancel=/الغاء|الغي|اغلاق|اغلق|اقفل|تصفيه|cancel|clos(?:e|ing)|liquidat|dissolv/.test(q);
  const renew=/تجديد|اجدد|جدد|renew/.test(q);
@@ -11,6 +11,7 @@ export function transactionObject(q:string,jurisdiction:string|null=null):Transa
  const businessExploration=/استكشاف\s+(?:فرص\s+)?(?:تاسيس\s+)?(?:ال)?(?:اعمال|استثمار)|\b(?:business|investment)(?:[\s-]+(?:establishment|opportunit(?:y|ies)))*[\s-]+explor(?:ation|ing)?\b|\bexplor(?:e|ing|ation)(?:[\s-]+(?:of|for))?[\s-]+(?:business|investment)\b|\bbusiness[\s-]+opportunit(?:y|ies)[\s-]+visa\b/.test(q);
  const jobExploration=/استكشاف\s+(?:فرص\s+)?(?:ال)?(?:عمل|وظيف|شغل)|(?:ابحث|بحث|ادور|بدور|الاقي)\s+(?:(?:عن|علي|على)\s+)?(?:ال)?(?:عمل|وظيف|شغل)|\bjob[\s-]*seek(?:er|ing)?\b|\b(?:job|work|employment)[\s-]+(?:explor(?:ation|ing)?|search)\b|\b(?:search|look(?:ing)?|seek(?:ing)?)(?:[\s-]+for)?[\s-]+(?:a[\s-]+)?(?:job|work|employment)\b/.test(q);
  if(visa&&(businessExploration||jobExploration))return {kind:businessExploration&&jobExploration?'exploration-visa-ambiguous':businessExploration?'business-exploration-visa':'job-exploration-visa',action:explorationOperation(q)||'issue',jurisdiction,authority:explorationAuthority(q)};
+ const visit=visitVisaObject(q,jurisdiction);if(visit)return visit;
  if(/قياد|driving/.test(q)&&/رخص|licen/.test(q))return{kind:'driving',action:renew?'renew':cancel?'cancel':'other'};
  if(/موافقه (?:ال)?مبد[يئ]يه|initial approval/.test(q)&&/رخص|اقتصاد|business|licen|economic/.test(q))return{kind:'initial-approval',freeZone,action:cancel?'cancel':renew?'renew':'issue'};
  if(/جمارك|customs/.test(q)){
@@ -34,6 +35,15 @@ export function transactionObjectMatches(intent:TransactionObject,title:string,a
  const t=title.toLowerCase(),a=authority.toLowerCase();
  if(intent.freeZone&&['initial-approval','company-manager','company-partner','company-closure'].includes(intent.kind))return false;
  switch(intent.kind){
+ case 'tourism-visa':
+ case 'friend-relative-visit-visa':{
+  if(intent.action!=='issue'||!intent.jurisdiction||intent.jurisdiction==='AE')return false;
+  const dubai=intent.jurisdiction==='AE-DU',expected=dubai?'gdrfa-dubai':'icp';
+  if(a!==expected||(intent.authority&&intent.authority!==a)||!(/تاشير|visa/.test(t)))return false;
+  if(/(?:5|خمس|five)[ -]?(?:سنوات|سنه|years?)|استكشاف|explor|residen|اقامه/.test(t))return false;
+  if(dubai&&(intent.entry!=='single'||!(/دخول واحد|single[ -]entry/.test(t))))return false;
+  return intent.kind==='tourism-visa'?/سياحي|touris/.test(t):/زياره.*(?:قريب|صديق)|visit.*(?:friend|relative)/.test(t);
+ }
  case 'business-exploration-visa':
  case 'job-exploration-visa':{
   if(intent.action!=='issue'||!intent.jurisdiction||intent.jurisdiction==='AE')return false;
@@ -83,4 +93,24 @@ export function explorationVisaFollowUp(serviceSlug:string,jurisdiction:string|n
  if(explicit)return /exploration-visa/.test(explicit.kind)?explicit:null;
  if(/تاشير|فيزا|\bvisa\b/.test(q))return null;
  return{kind,jurisdiction,authority:explorationAuthority(q),action:explorationOperation(q)||(action&&['issue','renew','cancel','amend','transfer'].includes(action)?action:'issue')};
+}
+
+// A visit visa is distinct from residence sponsorship, exploration and employment.
+function visitVisaObject(q:string,jurisdiction:string|null):TransactionObject|null {
+ if(!/تاشير|فيزا|\bvisa\b/.test(q)||/(?:5|خمس|five)[ -]?(?:سنوات|سنه|years?)|استكشاف|explor|residen|اقامه|work permit|تصريح عمل/.test(q))return null;
+ const tourism=/سياحي|touris/.test(q),visitor=/زياره.*(?:قريب|صديق)|(?:قريب|صديق).*زياره|visit.*(?:friend|relative)|(?:friend|relative).*visit/.test(q);
+ if(!tourism&&!visitor)return null;
+ return{kind:tourism&&visitor?'visit-visa-ambiguous':tourism?'tourism-visa':'friend-relative-visit-visa',action:explorationOperation(q)||'issue',jurisdiction,authority:explorationAuthority(q),entry:/متعدد|multiple|multi entry/.test(q)?'multiple':/دخول واحد|single entry|single-entry/.test(q)?'single':'unspecified'};
+}
+export function visitVisaFollowUp(serviceSlug:string,jurisdiction:string|null,action:string|null,q:string,priorGoal:string):TransactionObject|null {
+ const kinds:Record<string,string>={
+ 'تأشيرة-سياحية-عبر-icp-خارج-دبي':'tourism-visa',
+ 'تأشيرة-سياحية-لدخول-واحد-في-دبي':'tourism-visa',
+ 'تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي':'friend-relative-visit-visa',
+ 'تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي':'friend-relative-visit-visa'};
+ const kind=kinds[serviceSlug];if(!kind)return null;
+ const explicit=transactionObject(q,jurisdiction);if(explicit)return /^(?:tourism-visa|friend-relative-visit-visa|visit-visa-ambiguous)$/.test(explicit.kind)?explicit:null;
+ if(/تاشير|فيزا|\bvisa\b/.test(q))return null;
+ const entry=/متعدد|multiple|multi entry/.test(q)?'multiple':/دخول واحد|single entry|single-entry/.test(q)?'single':visitVisaObject(priorGoal,jurisdiction)?.entry||(serviceSlug.includes('لدخول-واحد')?'single':'unspecified');
+ return{kind,jurisdiction,entry,authority:explorationAuthority(q),action:explorationOperation(q)||(action&&['issue','renew','cancel','amend','transfer'].includes(action)?action:'issue')};
 }
