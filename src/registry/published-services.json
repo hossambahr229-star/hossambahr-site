@@ -6,8 +6,8 @@
     "services": 202,
     "verified": 202,
     "officialLinksVerified": 202,
-    "fullyVerifiedDetails": 169,
-    "partiallyVerifiedDetails": 33,
+    "fullyVerifiedDetails": 170,
+    "partiallyVerifiedDetails": 32,
     "pendingVerification": 0,
     "authorities": 21,
     "emirates": [
@@ -24555,58 +24555,75 @@
         "الدخول"
       ],
       "description": "إصدار تأشيرة زيارة لقريب أو صديق عبر مسار ICP مع اختيار فئة الزيارة ومدة الإقامة داخل المعاملة.",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+          "sourceLanguage": "en",
+          "fees": "ICP lists AED 100 application, AED 100 per month for single entry or AED 200 per month for multiple entry, and AED 100 smart services. Financial security is AED 1,000 for single or AED 2,000 for multiple entry, with an AED 20 deposit fee. Security is separate from fees; alternatives are not added together. The official application confirms applicable items. No HOSSAM BAHR charge is included.",
+          "duration": "2 days is the ICP visa-issuance processing time. The card does not specify working days; this is neither permitted stay nor guaranteed approval.",
+          "steps": [
+            "Open the ICP card and select the relevant applicant category.",
+            "Apply through the appropriate official channel and review the data.",
+            "Attach category documents if automatic retrieval is unavailable.",
+            "Pay applicable items shown in the official application.",
+            "Receive the transaction outcome."
+          ],
+          "notes": "Fees and processing time were reviewed with the relatives/friends category selected. Complete documents and case-specific eligibility remain under review; tourism or treatment documents are not transferred to this service."
+        }
+      },
       "documents": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "items": []
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "بنود بطاقة ICP بالدرهم: طلب 100؛ إصدار دخول واحد 100 عن كل شهر أو دخول متعدد 200 عن كل شهر؛ خدمات ذكية 100. الضمان المالي: 1000 للدخول الواحد أو 2000 للمتعدد، ورسم إيداع الضمان 20. الضمان منفصل عن الرسوم، ولا تجمع البدائل تلقائيًا. يحدد الطلب الرسمي البنود المطبقة؛ لا تشمل رسوم حسام بحر."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان (2) وفق مدة إنجاز خدمة إصدار التأشيرة في بطاقة ICP؛ لا تحدد البطاقة أنها أيام عمل، وليست مدة الإقامة أو ضمانًا للموافقة."
       },
       "conditions": "غير موثق بعد",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "افتح بطاقة ICP واختر فئة المتعامل المطابقة للطلب.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "قدم الطلب عبر القناة الرسمية المناسبة وراجع البيانات.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "أرفق مستندات الفئة إذا تعذر استرجاعها آليًا.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
+          "title": "سدد البنود المستحقة التي يعرضها الطلب الرسمي.",
+          "description": ""
         },
         {
           "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "استلم نتيجة المعاملة.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-29",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "بنود بطاقة ICP بالدرهم: طلب 100؛ إصدار دخول واحد 100 عن كل شهر أو دخول متعدد 200 عن كل شهر؛ خدمات ذكية 100. الضمان المالي: 1000 للدخول الواحد أو 2000 للمتعدد، ورسم إيداع الضمان 20. الضمان منفصل عن الرسوم، ولا تجمع البدائل تلقائيًا. يحدد الطلب الرسمي البنود المطبقة؛ لا تشمل رسوم حسام بحر."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان (2) وفق مدة إنجاز خدمة إصدار التأشيرة في بطاقة ICP؛ لا تحدد البطاقة أنها أيام عمل، وليست مدة الإقامة أو ضمانًا للموافقة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -24629,21 +24646,21 @@
       "verification": {
         "officialLinkVerified": true,
         "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
+        "feesVerified": true,
+        "durationVerified": true,
         "eligibilityVerified": false,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-29",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-29",
+      "lastReviewedAt": "2026-10-29",
       "internalRoute": "/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
@@ -24846,58 +24863,85 @@
         "الدخول"
       ],
       "description": "إصدار تأشيرة سياحية عبر مسار ICP مع اختيار فئة السياحة والمدة داخل المعاملة.",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+          "sourceLanguage": "en",
+          "fees": "ICP lists AED 100 application, AED 100 per month for single entry or AED 200 per month for multiple entry, and AED 100 smart services. Financial security is AED 1,000 for single or AED 2,000 for multiple entry, with an AED 20 deposit fee. Security is separate from fees; alternatives are not added together. The official application confirms applicable items. No HOSSAM BAHR charge is included.",
+          "duration": "2 days is the ICP visa-issuance processing time. The card does not specify working days; this is neither permitted stay nor guaranteed approval.",
+          "steps": [
+            "Open the ICP card and select the relevant applicant category.",
+            "Apply through the appropriate official channel and review the data.",
+            "Attach category documents if automatic retrieval is unavailable.",
+            "Pay applicable items shown in the official application.",
+            "Receive the transaction outcome."
+          ],
+          "documents": [
+            "Passport.",
+            "Personal photo.",
+            "Tour-program statement."
+          ],
+          "eligibility": "These facts cover authorised tourism establishments, which must actively operate. Visitors need UAE-valid health insurance, a passport valid for at least 6 months, and a return ticket. Stay options are 30, 60 or 90 days; ICP extensions cannot exceed 120 days in total. First entry is within 60 days of issuance, subject to permitted validity extensions. Security refunds require a request and visa cancellation or departure without residence violations.",
+          "notes": "Verified against the selected tourism-establishment category, not combined text from other categories. This is separate from the 5-year tourist visa. The card gives conflicting inactive-establishment fine amounts, so that fine is not confirmed here. The information card is not proof that every individual can apply directly."
+        }
+      },
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "جواز سفر.",
+          "صورة شخصية.",
+          "بيان البرنامج السياحي."
+        ]
       },
       "governmentFees": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "بنود بطاقة ICP بالدرهم: طلب 100؛ إصدار دخول واحد 100 عن كل شهر أو دخول متعدد 200 عن كل شهر؛ خدمات ذكية 100. الضمان المالي: 1000 للدخول الواحد أو 2000 للمتعدد، ورسم إيداع الضمان 20. الضمان منفصل عن الرسوم، ولا تجمع البدائل تلقائيًا. يحدد الطلب الرسمي البنود المطبقة؛ لا تشمل رسوم حسام بحر."
       },
       "serviceFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "يومان (2) وفق مدة إنجاز خدمة إصدار التأشيرة في بطاقة ICP؛ لا تحدد البطاقة أنها أيام عمل، وليست مدة الإقامة أو ضمانًا للموافقة."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "هذه التفاصيل لفئة المنشآت السياحية المخولة بإصدار تأشيرات السياحة، ويجب أن تكون المنشأة قائمة وتمارس نشاطها. للزائر: تأمين صحي ساري داخل الإمارات، جواز صالح 6 أشهر على الأقل، وتذكرة عودة. البقاء 30 أو 60 أو 90 يومًا حسب الخيار؛ التمديد بقرار الهيئة ضمن إجمالي 120 يومًا. الدخول الأول خلال 60 يومًا من الإصدار، مع إمكان تمديد الصلاحية وفق القواعد. استرداد الضمان يتطلب طلبًا وإلغاء التأشيرة أو مغادرة المستفيد دون مخالفات إقامة.",
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "افتح بطاقة ICP واختر فئة المتعامل المطابقة للطلب.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "قدم الطلب عبر القناة الرسمية المناسبة وراجع البيانات.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+          "title": "أرفق مستندات الفئة إذا تعذر استرجاعها آليًا.",
+          "description": ""
         },
         {
           "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
+          "title": "سدد البنود المستحقة التي يعرضها الطلب الرسمي.",
+          "description": ""
         },
         {
           "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "استلم نتيجة المعاملة.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-10-29",
       "faq": [
         {
           "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "answer": "بنود بطاقة ICP بالدرهم: طلب 100؛ إصدار دخول واحد 100 عن كل شهر أو دخول متعدد 200 عن كل شهر؛ خدمات ذكية 100. الضمان المالي: 1000 للدخول الواحد أو 2000 للمتعدد، ورسم إيداع الضمان 20. الضمان منفصل عن الرسوم، ولا تجمع البدائل تلقائيًا. يحدد الطلب الرسمي البنود المطبقة؛ لا تشمل رسوم حسام بحر."
         },
         {
           "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "answer": "يومان (2) وفق مدة إنجاز خدمة إصدار التأشيرة في بطاقة ICP؛ لا تحدد البطاقة أنها أيام عمل، وليست مدة الإقامة أو ضمانًا للموافقة."
         },
         {
           "question": "ما القناة الرسمية؟",
@@ -24919,22 +24963,22 @@
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
-        "feesVerified": false,
-        "durationVerified": false,
-        "eligibilityVerified": false,
-        "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "requirementsVerified": true,
+        "feesVerified": true,
+        "durationVerified": true,
+        "eligibilityVerified": true,
+        "detailsVerified": true,
+        "verifiedDetailCount": 4,
         "totalDetailFields": 4,
-        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "label": "OFFICIAL_LINK_AND_DETAILS_VERIFIED",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "dataLastReviewedAt": "2026-10-29",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-10-29",
+      "lastReviewedAt": "2026-10-29",
       "internalRoute": "/services/تأشيرة-سياحية-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
