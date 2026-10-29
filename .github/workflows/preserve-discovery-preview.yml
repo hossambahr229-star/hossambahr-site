@@ -12,13 +12,13 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: discovery-rhythm-preview
-          run-id: 40832674999
+          run-id: 40867645866
           github-token: ${{ github.token }}
-          path: diagnostics/discovery-rhythm-preview-601-v1
+          path: diagnostics/discovery-rhythm-preview-601-v2
       - name: Preserve completed evidence without rerunning tests
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/discovery-rhythm-preview-601-v1
-          git commit -m "Preserve completed discovery preview601 screenshots and reference overlay"
+          git add diagnostics/discovery-rhythm-preview-601-v2
+          git commit -m "Preserve completed discovery preview601-v2 screenshots and reference overlay"
           git push origin HEAD:agent/dld-source-review-evidence
