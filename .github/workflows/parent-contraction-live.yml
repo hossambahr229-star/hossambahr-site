@@ -1,0 +1,49 @@
+name: Parents Arabic Contraction Live Acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/parent-contraction-live.yml]
+permissions: {contents: read}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Verify contracted Arabic parents and jurisdiction changes with real responses
+        run: |
+          node --input-type=module <<'JS'
+          import{chromium}from'playwright';import{mkdir,writeFile}from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/parent-contraction-live';await mkdir(out,{recursive:true});
+          const report={status:'RUNNING',source:'REAL_PRODUCTION_UI_AND_API',views:[],externalModelAcceptance:'NOT_DECLARED'};
+          const slugs={icp:'إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي',dubai:'إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي'};
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});let failure;
+          try{for(const width of[1440,390])for(const locale of['ar','en']){
+           const page=await browser.newPage({viewport:{width,height:width===390?844:960}}),attempts=[],errors=[],view={width,locale,turns:[],attempts};report.views.push(view);page.setDefaultTimeout(30000);
+           page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.request().method()==='POST'&&r.url().includes('/public-ai-concierge'))attempts.push({status:r.status(),startupCode:r.headers()['sb-error-code']||null});});
+           await page.goto('https://hossambahr.com'+(locale==='en'?'/en':'')+'/ai/',{waitUntil:'networkidle'});
+           const questions=locale==='ar'?['أريد إصدار إقامة للوالدين في الشارقة. ما شروط الكفالة؟','والرسوم؟','ولو في دبي؟','ولو في الشارقة؟']:['I want to issue residence permits for my parents in Sharjah. What are the conditions?','And the fees?','What about Dubai?','What about Sharjah?'];
+           for(let i=0;i<questions.length;i++){
+            const waiting=page.waitForResponse(r=>r.request().method()==='POST'&&r.url().includes('/public-ai-concierge')&&r.status()===200,{timeout:90000});
+            await page.locator('textarea[name=goal]').fill(questions[i]);await page.locator('.hb-chat-send').click();const response=await waiting,body=await response.text(),payloads=[];
+            try{payloads.push(JSON.parse(body));}catch{for(const line of body.split('\n').filter(s=>s.trim()))try{payloads.push(JSON.parse(line.startsWith('data:')?line.slice(5).trim():line.trim()));}catch{}}
+            const terminal=payloads.filter(v=>['done','fallback'].includes(v.type)).at(-1)||payloads.at(-1),result=terminal?.result,context=terminal?.goal_context;
+            const row={question:questions[i],service:result?.matches?.[0]?.service_slug,context,answer:result?.answer?.text,external_model_used:result?.engine?.external_model_used};view.turns.push(row);
+            assert.equal(context?.relationship,'parents');assert.equal(context?.jurisdiction_hint,i===2?'AE-DU':'AE-SH');assert.equal(row.service,i===2?slugs.dubai:slugs.icp);
+            await page.locator('.hb-chat-send').waitFor({state:'visible'});await page.waitForFunction(()=>!document.querySelector('.hb-chat-send')?.disabled);
+            const actions=page.locator('.hb-chat-message--assistant').last().locator('.hb-chat-actions a');
+            assert.ok(await actions.count()>=3);
+            const hrefs=await actions.evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')));assert.ok(hrefs.some(h=>h&&/contact/.test(h)));assert.ok(hrefs.some(h=>h&&/gdrfad.gov.ae|icp.gov.ae/.test(h)),JSON.stringify(hrefs));
+            assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);assert.deepEqual(errors,[]);
+            if(i===2)await page.screenshot({path:out+'/'+locale+'-'+width+'.png'});
+           }
+           await page.close();
+          }report.status='PASS';}catch(e){failure=e;report.status='FAIL';report.error=String(e.stack||e);}finally{await browser.close();await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}if(failure)throw failure;
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: parent-contraction-live, path: diagnostics/parent-contraction-live}
