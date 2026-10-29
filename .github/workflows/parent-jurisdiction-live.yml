@@ -1,0 +1,31 @@
+name: Parent jurisdiction live diagnostic
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/parent-jurisdiction-live.yml]
+permissions: {contents: read}
+jobs:
+  actual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Capture three actual conversational responses
+        run: |
+          cat > /tmp/parent-switch.mjs <<'JS'
+          import {writeFile,mkdir} from 'node:fs/promises';
+          const endpoint='https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge';
+          let context={},history=[],users=[],rows=[];
+          for(const q of ['أريد إصدار إقامة للوالدين في الشارقة. ما شروط الكفالة؟','والرسوم؟','ولو في دبي؟']){
+           users.push(q);const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Origin:'https://hossambahr.com'},body:JSON.stringify({goal:users.join(' — '),latest_turn:q,locale:'ar',history,context}),signal:AbortSignal.timeout(60000)});
+           const payload=await response.json();const m=payload.result?.matches?.[0];rows.push({q,status:response.status,context:payload.goal_context,match:m?.service_slug,answer:payload.result?.answer,external_model_used:payload.result?.engine?.external_model_used});
+           if(!response.ok)throw Error(JSON.stringify(rows));
+           context={...payload.goal_context,jurisdiction_code:payload.goal_context?.jurisdiction_hint};history.push({role:'user',content:q},{role:'assistant',content:payload.result?.answer?.text||''});
+          }
+          await mkdir('qa-results',{recursive:true});await writeFile('qa-results/parent-switch.json',JSON.stringify(rows,null,2));console.log(JSON.stringify(rows,null,2));
+          JS
+          node /tmp/parent-switch.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: parent-jurisdiction-live, path: qa-results}
