@@ -1,0 +1,19 @@
+name: Protected Acceptance Server Credential Readiness
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/protected-acceptance-readiness.yml]
+permissions: {contents: read}
+jobs:
+  readiness:
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check only server credential availability for authorized temporary test users
+        env:
+          SERVICE_ROLE_PRESENT: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY != '' }}
+          SERVICE_KEY_PRESENT: ${{ secrets.SUPABASE_SERVICE_KEY != '' }}
+          ACCESS_TOKEN_PRESENT: ${{ secrets.SUPABASE_ACCESS_TOKEN != '' }}
+          HB_ADMIN_PRESENT: ${{ secrets.HB_SUPABASE_SERVICE_ROLE_KEY != '' }}
+        run: |
+          node -e "console.log(JSON.stringify({serviceRole:process.env.SERVICE_ROLE_PRESENT==='true',serviceKey:process.env.SERVICE_KEY_PRESENT==='true',managementToken:process.env.ACCESS_TOKEN_PRESENT==='true',hbAdmin:process.env.HB_ADMIN_PRESENT==='true',valuesRead:false,valuesIncluded:false,userDataRead:false}))"
