@@ -1,0 +1,62 @@
+name: Published discovery reference acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/discovery-rhythm-live.yml]
+permissions: {contents: read}
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: '01bc8c3d0941f7125f62541104890357d771a525'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.34.4
+      - name: Wait for the exact published CSS in both language journeys
+        run: |
+          node --input-type=module <<'JS'
+          import{readFile}from'node:fs/promises';
+          const expected=await readFile('transaction-discovery.css','utf8');
+          for(let i=0;i<90;i++){
+           const response=await fetch('https://hossambahr.com/transaction-discovery.css',{cache:'no-store'}),css=await response.text();
+           if(response.ok&&css===expected){let ready=true;for(const p of['','/en']){const html=await(await fetch('https://hossambahr.com'+p+'/',{cache:'no-store'})).text();const href=html.match(/href="([^"]*transaction-discovery.css[?]v=[^"]+)"/)?.[1];if(!href||(await(await fetch('https://hossambahr.com'+href,{cache:'no-store'})).text())!==expected)ready=false;}if(ready)process.exit(0);}
+           await new Promise(r=>setTimeout(r,10000));
+          }throw Error('Exact CSS not live in both journeys');
+          JS
+      - name: Verify real Production discovery geometry and interactions
+        run: |
+          node --input-type=module <<'JS'
+          import{chromium}from'playwright';import sharp from'sharp';import assert from'node:assert/strict';import{mkdir,writeFile}from'node:fs/promises';
+          const out='diagnostics/discovery-rhythm-live-601';await mkdir(out,{recursive:true});const report={status:'RUNNING',source:'LIVE_PRODUCTION',candidate:'01bc8c3d0941f7125f62541104890357d771a525',views:[],comparisons:[],humanVisualAcceptance:'NOT_DECLARED'};const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});let failure;
+          const rects=page=>page.evaluate(()=>Object.fromEntries(['.site-header','.visual-target-hero','.home-service-launchpad','.premium-featured','.target-proof','.premium-how','.premium-authorities','.premium-final-cta'].map(selector=>{const e=document.querySelector(selector),r=e?.getBoundingClientRect();return[selector,r?{x:r.x,y:r.y+scrollY,width:r.width,height:r.height}:null]})));
+          try{for(const width of[1440,1366,430,390,360,320])for(const locale of['ar','en']){
+           const page=await browser.newPage({viewport:{width,height:width>1000?960:844}});page.setDefaultTimeout(30000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+           await page.goto('https://hossambahr.com'+(locale==='en'?'/en':'')+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+           const view={width,locale,rects:await rects(page)};report.views.push(view);
+           assert.equal(await page.locator('.home-service-launchpad>.home-domain-grid [data-business-domain]:visible').count(),6);assert.equal(await page.locator('[data-home-service]:visible').count(),0);
+           assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);assert.deepEqual(errors,[]);
+           await page.screenshot({path:out+'/'+locale+'-'+width+'.png',animations:'disabled'});if(width===1440)await sharp(out+'/'+locale+'-'+width+'.png').jpeg({quality:92}).toFile(out+'/'+locale+'-'+width+'.jpg');
+           for(const selector of['#home-common-transactions','#home-more-domains']){
+            const summary=page.locator(selector+'>summary');await summary.focus();await summary.press('Enter');assert.equal(await page.locator(selector).getAttribute('open'),'');
+            if(selector==='#home-common-transactions')assert.equal(await page.locator('[data-home-service]:visible').count(),31);else assert.equal(await page.locator('#home-more-domains [data-business-domain]:visible').count(),5);
+            assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);await summary.press('Enter');assert.equal(await page.locator(selector).getAttribute('open'),null);
+           }
+          
+           await page.close();
+          }
+          const reference=await sharp('qa/reference/approved-desktop.jpeg').resize(1440,960).removeAlpha().raw().toBuffer();await sharp(reference,{raw:{width:1440,height:960,channels:3}}).png().toFile(out+'/reference-1440.png');
+          for(const name of['ar-1440']){
+           const pixels=await sharp(out+'/'+name+'.png').removeAlpha().raw().toBuffer();let changed=0,sum=0;const diff=Buffer.alloc(pixels.length);
+           for(let i=0;i<pixels.length;i+=3){let max=0;for(let c=0;c<3;c++){const d=Math.abs(pixels[i+c]-reference[i+c]);sum+=d;max=Math.max(max,d);diff[i+c]=d;}if(max>30)changed++;}
+           report.comparisons.push({name,pixelChangedOver30Percent:100*changed/(1440*960),meanAbsoluteChannelDifference:sum/pixels.length,interpretation:'DIAGNOSTIC_ONLY'});
+           await sharp(diff,{raw:{width:1440,height:960,channels:3}}).png().toFile(out+'/'+name+'-diff.png');
+           const overlay=Buffer.from(pixels.map((v,i)=>Math.round((v+reference[i])/2)));await sharp(overlay,{raw:{width:1440,height:960,channels:3}}).png().toFile(out+'/'+name+'-overlay.png');
+          }
+          report.status='PASS';}catch(e){failure=e;report.status='FAIL';report.error=String(e.stack||e);}finally{await browser.close();await writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}if(failure)throw failure;
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: discovery-rhythm-live-601, path: diagnostics/discovery-rhythm-live-601}
