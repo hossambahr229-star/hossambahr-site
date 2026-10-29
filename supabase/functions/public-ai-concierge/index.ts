@@ -287,10 +287,8 @@ async function fingerprint(req: Request) {
     || req.headers.get("x-real-ip")
     || (req.headers.get("x-forwarded-for") || "").split(",")[0].trim()
     || "unknown";
-  const ua = (req.headers.get("user-agent") || "unknown").slice(0, 180);
   const day = new Date().toISOString().slice(0, 10);
-  const qaRun = (req.headers.get("x-hb-qa-run") || "").replace(/[^a-zA-Z0-9._:-]/g,"").slice(0,80);
-  const bytes = new TextEncoder().encode("hb-public-ai|"+day+"|"+ip+"|"+ua+"|"+qaRun);
+  const bytes = new TextEncoder().encode("hb-public-ai|"+day+"|"+ip);
   const digest = await crypto.subtle.digest("SHA-256", bytes);
   return Array.from(new Uint8Array(digest)).map((v) => v.toString(16).padStart(2,"0")).join("");
 }
@@ -982,7 +980,7 @@ async function conversationalResult(latestTurn:string,history:any[],deterministi
 export default {
   fetch: withSupabase({ auth: "none" }, async (req, ctx) => {
     if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(req) });
-    if (req.method === "GET") return reply(req, { ok:true, service:"hossambahr-public-ai-concierge", version:"1.0", authenticated:false });
+    if (req.method === "GET") return reply(req, { ok:true, service:"hossambahr-public-ai-concierge", version:"1.0", authenticated:false, rate_limit_policy:"ip-hourly-120-v1" });
     if (req.method !== "POST") return reply(req, { error:"method_not_allowed" }, 405);
 
     const origin = req.headers.get("origin") || "";

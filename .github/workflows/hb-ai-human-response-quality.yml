@@ -6,18 +6,105 @@ on:
       - 'supabase/functions/public-ai-concierge/**'
       - 'scripts/hb-ai-human-response-quality-production.mjs'
       - 'scripts/hb-ai-conversational-continuity-production.mjs'
+      - 'scripts/quality-partition-evidence.mjs'
       - '.github/workflows/hb-ai-human-response-quality.yml'
   workflow_dispatch:
+permissions: {contents: read}
 concurrency:
   group: hb-ai-free-human-quality
   cancel-in-progress: true
 jobs:
-  quality:
+  ready:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Wait for the deployed rate policy without consuming AI requests
+        run: |
+          node --input-type=module <<'JS'
+          let startupErrors=0;
+          for(let i=0;i<90;i++){
+            try{
+              const response=await fetch('https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge',{signal:AbortSignal.timeout(10000)});
+              if(response.status===503)startupErrors++;
+              const health=await response.json();
+              if(response.status===200&&health.rate_limit_policy==='ip-hourly-120-v1'){console.log(JSON.stringify({status:'READY',startupErrors,aiRequests:0}));process.exit(0);}
+            }catch{}
+            await new Promise(r=>setTimeout(r,5000));
+          }throw Error('Expected public rate policy not deployed');
+          JS
+  response-quality:
+    needs: ready
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Wait for Edge deployment
-        run: sleep 20
-      - name: Run 100 unseen human prompts against Production
-        run: node scripts/hb-ai-human-response-quality-production.mjs
+        with:
+          sparse-checkout: |
+            scripts
+            src/global/ai
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Run all 100 independent human prompts
+        env:
+          HB_QUALITY_INDEPENDENT_ONLY: '1'
+          HB_QA_RESULT_FILE: qa-results/independent.json
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa-results
+          node scripts/hb-ai-human-response-quality-production.mjs | tee qa-results/independent.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: hb-human-quality-independent, path: qa-results}
+  continuity:
+    needs: ready
+    strategy:
+      fail-fast: false
+      matrix: {partition: [0, 1, 2]}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts
+            src/global/ai
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Run a complete disjoint portion of the original conversational cases
+        env:
+          HB_QA_PARTITION_COUNT: '3'
+          HB_QA_PARTITION_INDEX: ${{ matrix.partition }}
+          HB_QA_RESULT_FILE: qa-results/continuity-${{ matrix.partition }}.json
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p qa-results
+          node scripts/hb-ai-conversational-continuity-production.mjs | tee qa-results/continuity-${{ matrix.partition }}.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hb-human-quality-continuity-${{ matrix.partition }}
+          path: qa-results
+  quality:
+    needs: [response-quality, continuity]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts
+            src/global/ai
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: hb-human-quality-*
+          merge-multiple: true
+          path: qa-results
+      - name: Require all original cases and every unchanged correctness metric
+        run: node scripts/quality-partition-evidence.mjs qa-results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: hb-human-quality-complete, path: qa-results}
