@@ -1,0 +1,43 @@
+name: Preserve live discovery and verify anonymous denials
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/discovery-production-evidence-and-denials.yml]
+permissions: {contents: read}
+jobs:
+  archive:
+    permissions: {contents: write, actions: read}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: discovery-rhythm-live-601
+          run-id: 40868758165
+          github-token: ${{ github.token }}
+          path: diagnostics/discovery-rhythm-live-601
+      - run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/discovery-rhythm-live-601
+          git commit -m "Preserve actual published discovery601 reference comparison"
+          git push origin HEAD:agent/dld-source-review-evidence
+  denials:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Check anonymous access without reading private records or creating objects
+        run: |
+          node --input-type=module <<'JS'
+          import assert from'node:assert/strict';import{mkdir,writeFile}from'node:fs/promises';import{randomUUID}from'node:crypto';
+          const config=await(await fetch('https://hossambahr.com/auth-config.js')).text(),key=config.match(/publishableKey:\s*"([^"]+)"/)?.[1];assert.ok(key?.startsWith('sb_publishable_'));
+          const base='https://ngcrkuykfqmiqhsnpcrc.supabase.co',headers={apikey:key,'Content-Type':'application/json',Origin:'https://hossambahr.com'},report={source:'LIVE_PRODUCTION',accountsCreated:0,objectsCreated:0,userRecordsRead:false,ownerIsolation:'BLOCKED_NO_AUTHORIZED_TEST_ACCOUNT',checks:[]};
+          const cases=await fetch(base+'/functions/v1/global-os-api/v1/cases',{headers});report.checks.push({name:'anonymous_case_list',httpStatus:cases.status,bodyNotRead:true});await cases.body?.cancel();assert.ok([401,403].includes(cases.status));
+          const signer=await fetch(base+'/storage/v1/object/sign/hb-private-documents/'+randomUUID()+'/synthetic-not-uploaded.pdf',{method:'POST',headers,body:JSON.stringify({expiresIn:60})});const body=await signer.json().catch(()=>({})),denied=[401,403].includes(signer.status)||[401,403].includes(Number(body.statusCode));assert.ok(!body.signedURL&&!body.signedUrl,'No signed private URL may be produced anonymously');
+          report.checks.push({name:'anonymous_private_signing',httpStatus:signer.status,reportedStatus:body.statusCode??null,result:denied?'AUTHORIZATION_DENIED':'INCONCLUSIVE_NO_EXISTING_FIXTURE'});
+          report.status='ANONYMOUS_CASE_DENIAL_PASS_NOT_AUTHENTICATED_ACCEPTANCE';await mkdir('diagnostics/protected-negative-live',{recursive:true});await writeFile('diagnostics/protected-negative-live/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: protected-negative-live, path: diagnostics/protected-negative-live}
