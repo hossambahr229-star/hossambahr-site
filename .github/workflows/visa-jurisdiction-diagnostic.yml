@@ -1,0 +1,31 @@
+name: Visa jurisdiction switch live diagnostic
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/visa-jurisdiction-diagnostic.yml]
+permissions: {contents: read}
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - name: Record actual Sharjah to Dubai single-entry visa routes
+        run: |
+          node --input-type=module <<'JS'
+          import assert from'node:assert/strict';import{mkdir,writeFile}from'node:fs/promises';
+          const endpoint='https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/public-ai-concierge',report={source:'REAL_PRODUCTION_API',status:'DIAGNOSTIC_RUNNING',cases:[]};
+          for(const locale of['ar','en'])for(const kind of['tourism','visitor']){
+           const qs=locale==='ar'?[kind==='tourism'?'أريد تأشيرة سياحية لدخول واحد في الشارقة':'أريد تأشيرة زيارة صديق لدخول واحد في الشارقة','ولو في دبي؟']:[kind==='tourism'?'I need a single-entry tourist visa in Sharjah':'I need a single-entry visa to visit a friend in Sharjah','What about Dubai?'];
+           const expected=kind==='tourism'?['تأشيرة-سياحية-عبر-icp-خارج-دبي','تأشيرة-سياحية-لدخول-واحد-في-دبي']:['تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي','تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي'];
+           let context={},history=[],users=[];const c={kind,locale,turns:[]};report.cases.push(c);
+           for(let i=0;i<qs.length;i++){const q=qs[i];users.push(q);const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Origin:'https://hossambahr.com'},body:JSON.stringify({goal:users.join(' — '),latest_turn:q,locale,history,context}),signal:AbortSignal.timeout(60000)});const p=await response.json(),r=p.result;
+            c.turns.push({q,httpStatus:response.status,expected:expected[i],actual:r?.matches?.[0]?.service_slug,context:p.goal_context,answer:r?.answer?.text,pass:response.status===200&&r?.matches?.[0]?.service_slug===expected[i]});context={...p.goal_context,jurisdiction_code:p.goal_context?.jurisdiction_hint};history.push({role:'user',content:q},{role:'assistant',content:r?.answer?.text||''});
+           }
+          }
+          report.status=report.cases.every(c=>c.turns.every(t=>t.pass))?'PASS':'ROUTE_FAILURE_CONFIRMED';await mkdir('diagnostics/visa-jurisdiction-diagnostic',{recursive:true});await writeFile('diagnostics/visa-jurisdiction-diagnostic/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));assert.equal(report.status,'PASS');
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: visa-jurisdiction-diagnostic, path: diagnostics/visa-jurisdiction-diagnostic}
