@@ -1,5 +1,5 @@
 import { exactServiceHandoff, reviewedCatalogSource } from "../../../service-handoff.js";
-import {transactionObject,transactionObjectMatches,transactionObjectNeedsEmirate,explorationVisaFollowUp} from './transaction-object.ts';
+import {transactionObject,transactionObjectMatches,transactionObjectNeedsEmirate,explorationVisaFollowUp,visitVisaFollowUp} from './transaction-object.ts';
 import {reraApprovalKind,RERA_APPROVAL_SLUGS} from './rera-approval.ts';
 import {siraIntent,SIRA_SLUGS} from '../../../sira-intent.js';
 import { detectAction, detectJurisdiction, detectRelationship, detectSubjectRole, mergeSemanticContext, relationshipCompatibility, relationshipGroup, semanticDomainCompatibility, type FamilyRelationship, type SemanticEntity, type SubjectRole } from "./semantic-context.ts";
@@ -1014,9 +1014,10 @@ export default {
       const jurisdictionAnswer = normalize(latestTurn).replace(/^(?:في\s*|in\s+|ب)/,"").replace(/\s+/g,"");
       const jurisdictionOnly = Boolean(currentJurisdiction && completeCatalog.some((row:any)=>row.jurisdiction?.code===currentJurisdiction && [row.jurisdiction?.name_ar,row.jurisdiction?.name_en].some((name:any)=>normalize(name).replace(/\s+/g,"")===jurisdictionAnswer)));
       const carriedExplorationObject = contextualFollowUp ? explorationVisaFollowUp(String(context?.active_service_id||context?.service_slug||""),currentJurisdiction,semantic.action,normalize(latestTurn)) : null;
+      const carriedVisitObject = contextualFollowUp ? visitVisaFollowUp(String(context?.active_service_id||context?.service_slug||""),currentJurisdiction,semantic.action,normalize(latestTurn),normalize(goal)) : null;
       const pendingObject = jurisdictionOnly && /في أي إمارة تتم هذه المعاملة|Which emirate is this transaction in/.test(String(context?.pending_clarification||"")) ? transactionObject(normalize(goal+" "+semanticGoal),currentJurisdiction) : null;
-      const resolvingObjectJurisdiction = Boolean(pendingObject||carriedExplorationObject);
-      const explicitObject = pendingObject || carriedExplorationObject || (!contextualFollowUp ? transactionObject(normalize(latestTurn),currentJurisdiction) : null);
+      const resolvingObjectJurisdiction = Boolean(pendingObject||carriedExplorationObject||carriedVisitObject);
+      const explicitObject = pendingObject || carriedExplorationObject || carriedVisitObject || (!contextualFollowUp ? transactionObject(normalize(latestTurn),currentJurisdiction) : null);
       const missingObjectJurisdiction = explicitObject && transactionObjectNeedsEmirate(explicitObject) && (!currentJurisdiction || currentJurisdiction==="AE");
       const explicitRows = explicitObject && !missingObjectJurisdiction ? catalog.filter((row:any)=>transactionObjectMatches(explicitObject,normalize(row.title+" "+(row.binding.metadata?.name_en||"")),row.binding.authority_key)) : [];
       const exactHandoff = exactServiceHandoff(latestTurn, catalog, normalize);
