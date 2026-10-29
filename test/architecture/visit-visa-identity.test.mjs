@@ -13,7 +13,7 @@ test('unsupported operations, unknown entry in Dubai and conflicts fail closed',
  for(const q of ['Renew tourist visa in Sharjah','Cancel a visa to visit a friend in Dubai','Multiple entry tourist visa Dubai','Tourist visa Dubai','ICP single entry tourist visa Dubai','GDRFA tourist visa Sharjah','تمديد تأشيرة سياحية في الشارقة'])assert.deepEqual(resolve(transactionObject(norm(q),q.includes('Sharjah')||q.includes('الشارقة')?'AE-SH':'AE-DU')),[],q);
 });
 test('does not coerce five-year, family residence, work or exploration visas',()=>{
- for(const q of ['5 year tourist visa Sharjah','تأشيرة سياحية خمس سنوات','wife residence visa Sharjah','work permit for golden visa holder Dubai','business exploration visa Sharjah'])assert.doesNotMatch(transactionObject(norm(q),'AE-SH')?.kind||'',/^(?:tourism-visa|friend-relative-visit-visa)$/);
+ for(const q of ['5 year tourist visa Sharjah','تأشيرة سياحية خمس سنوات','عايز تأشيرة سياحية 5 سنين','تأشيرة سياحية ٥ سنين','تأشيرة سياحية خمس أعوام','wife residence visa Sharjah','work permit for golden visa holder Dubai','business exploration visa Sharjah'])assert.doesNotMatch(transactionObject(norm(q),'AE-SH')?.kind||'',/^(?:tourism-visa|friend-relative-visit-visa)$/);
  const i=transactionObject(norm('single entry tourist visa Sharjah'),'AE-SH');for(const title of ['Renew a Trade Licence in Sharjah','إقامة الأسرة','5 year tourist visa'])assert.equal(transactionObjectMatches(i,norm(title),'icp'),false);
 });
 test('generic outside-Dubai visit is valid but does not guess Dubai entry type',()=>{
