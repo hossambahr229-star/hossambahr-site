@@ -31,7 +31,7 @@ jobs:
             const waiting=page.waitForResponse(r=>r.request().method()==='POST'&&r.url().includes('/public-ai-concierge')&&r.status()===200,{timeout:90000});
             await page.locator('textarea[name=goal]').fill(questions[i]);await page.locator('.hb-chat-send').click();const response=await waiting,body=await response.text(),payloads=[];
             try{payloads.push(JSON.parse(body));}catch{for(const line of body.split('\n').filter(s=>s.trim()))try{payloads.push(JSON.parse(line.startsWith('data:')?line.slice(5).trim():line.trim()));}catch{}}
-            const terminal=payloads.filter(v=>['done','fallback'].includes(v.type)).at(-1)||payloads.at(-1),result=terminal?.result,context=terminal?.goal_context;
+            const terminal=payloads.filter(v=>['done','fallback'].includes(v.type)).at(-1)||payloads.at(-1),result=terminal?.result,context=terminal?.goal_context||payloads.find(v=>v.type==='meta')?.goal_context;
             const row={question:questions[i],service:result?.matches?.[0]?.service_slug,context,answer:result?.answer?.text,external_model_used:result?.engine?.external_model_used};view.turns.push(row);
             assert.equal(context?.relationship,'parents');assert.equal(context?.jurisdiction_hint,i===2?'AE-DU':'AE-SH');assert.equal(row.service,i===2?slugs.dubai:slugs.icp);
             await page.locator('.hb-chat-send').waitFor({state:'visible'});await page.waitForFunction(()=>!document.querySelector('.hb-chat-send')?.disabled);
