@@ -15,3 +15,12 @@ test('new facts have explanatory English translations with all numeric facts ret
   const en=recordedDetailTranslations[value];assert.ok(en,row.slug+' '+field);assert.doesNotMatch(en,/[\u0600-\u06ff]/);assert.deepEqual(en.match(/\d+(?:,\d{3})*(?:\.\d+)?/g)?.map(x=>x.replaceAll(',',''))||[],value.match(/\d+(?:,\d{3})*(?:\.\d+)?/g)?.map(x=>x.replaceAll(',',''))||[]);
  }
 });
+
+test('published flags close only the reviewed tourism dossier',()=>{
+ const registry=JSON.parse(readFileSync(new URL('../../src/registry/published-services.json',import.meta.url),'utf8'));
+ const tourism=registry.services.find(s=>s.slug===tour.slug),visitor=registry.services.find(s=>s.slug===visit.slug);
+ assert.equal(tourism.verification.detailsVerified,true);
+ assert.equal(visitor.verification.detailsVerified,false);
+ assert.equal(visitor.verification.feesVerified,true);assert.equal(visitor.verification.durationVerified,true);
+ assert.equal(visitor.verification.requirementsVerified,false);assert.equal(visitor.verification.eligibilityVerified,false);
+});
