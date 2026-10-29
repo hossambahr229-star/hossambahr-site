@@ -1,0 +1,24 @@
+name: Preserve completed discovery preview evidence
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/preserve-discovery-preview.yml]
+permissions: {contents: write, actions: read}
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: discovery-rhythm-preview
+          run-id: 40832674999
+          github-token: ${{ github.token }}
+          path: diagnostics/discovery-rhythm-preview-601-v1
+      - name: Preserve completed evidence without rerunning tests
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/discovery-rhythm-preview-601-v1
+          git commit -m "Preserve completed discovery preview601 screenshots and reference overlay"
+          git push origin HEAD:agent/dld-source-review-evidence
