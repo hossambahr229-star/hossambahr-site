@@ -133,20 +133,28 @@ html.hb-phase8 body[data-home-geometry] .home-service-launchpad .home-discovery-
 /* Compact desktop discovery keeps every domain and transaction link available.
    Shared tokens control the spacing; tablet and phone grids remain unchanged. */
 @media(min-width:1101px){
- .home-service-launchpad{--hb-discovery-gap:12px;--hb-discovery-padding:16px}
- .home-service-launchpad .home-domain-heading{gap:16px;margin-bottom:12px}
+ .home-service-launchpad{--hb-discovery-gap:10px;--hb-discovery-padding:8px;--hb-discovery-card-height:90px;--hb-discovery-control-height:32px}
+ html.hb-phase8 body[data-home-geometry] .home-service-launchpad{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(340px,38%);grid-template-areas:"title options" "domains domains";align-items:center;column-gap:16px;row-gap:4px;margin-bottom:8px!important}
+ .home-service-launchpad .home-domain-heading{grid-area:title}
+ .home-service-launchpad>.home-domain-grid{grid-area:domains}
+ .home-service-launchpad .home-discovery-options{grid-area:options;margin:0}
+ .home-service-launchpad .home-discovery-options:has(>details[open]){grid-area:auto;grid-column:1/-1;grid-row:3}
+ .home-service-launchpad .home-discovery-options>.home-more-domains{padding-inline:10px;border-radius:8px}
+ .home-service-launchpad .home-discovery-options>.home-more-domains>summary{box-sizing:border-box;min-height:var(--hb-discovery-control-height);padding:4px 0;font-size:14px}
+ .home-service-launchpad .home-discovery-options>.home-more-domains>summary:after{top:4px}
+ .home-service-launchpad .home-domain-heading{gap:12px;margin-bottom:0}
  .home-service-launchpad .home-discovery-eyebrow{display:none}
- .home-service-launchpad .home-domain-heading h2{font-size:20px!important}
+ .home-service-launchpad .home-domain-heading h2{font-size:18px!important}
  .home-service-launchpad .home-domain-heading p{font-size:13px;margin:4px 0}
  html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-directory-entry{flex-direction:row;align-items:center;gap:10px;min-height:48px;padding:10px 14px!important}
  .home-service-launchpad .home-directory-entry strong{font-size:22px}
  .home-service-launchpad .home-domain-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
- html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{grid-template-columns:26px minmax(0,1fr);gap:8px;min-height:112px!important;padding:12px!important}
- .home-service-launchpad .home-simple-card b{font-size:15px!important;line-height:1.4!important}
- .home-service-launchpad .home-simple-card small{font-size:11px!important;line-height:1.5!important}
+ html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-simple-card{grid-template-columns:26px minmax(0,1fr);gap:8px;box-sizing:border-box;min-height:var(--hb-discovery-card-height)!important;padding:8px!important}
+ .home-service-launchpad .home-simple-card b{font-size:14px!important;line-height:1.35!important}
+ .home-service-launchpad .home-simple-card small{font-size:10.5px!important;line-height:1.4!important;margin-top:2px}
  .home-service-launchpad .home-line-icon{width:26px!important;height:26px!important}
  .home-service-launchpad .home-simple-arrow{display:none}
- .home-service-launchpad .home-domain-count{font-size:11px!important}
+ .home-service-launchpad .home-domain-count{font-size:10.5px!important;line-height:1.5!important;margin-top:2px}
  .home-service-launchpad .home-domain-shortcuts{margin:0 12px 8px}
  html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service{min-height:56px!important;padding:6px 0!important}
  html.hb-phase8 body[data-home-geometry] .home-service-launchpad a.home-direct-service>span{font-size:12px!important;line-height:1.5!important}
