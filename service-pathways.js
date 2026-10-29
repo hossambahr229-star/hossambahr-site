@@ -109,5 +109,7 @@ export function withOfficialRouteBookmark(pathways,existingHtml){
  if(/\bid=["']official-route["']/.test(existingHtml))return pathways;
  const opening=pathways.match(/^<div\b[^>]*>/)?.[0];
  if(!opening)throw Error('Service execution container missing');
- return opening+'<span id="official-route" aria-hidden="true"></span>'+pathways.slice(opening.length);
+ const target=pathways.match(/<a\b[^>]*class="hb-path-official"[^>]*>/)?.[0];
+ if(!target)throw Error('Government execution link missing');
+ return pathways.replace(target,target.replace('<a ','<a id="official-route" '));
 }
