@@ -1,0 +1,35 @@
+name: Accept three retained guidance bookmarks on Production
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/normalized-bookmarks-live-607.yml]
+permissions: {contents: write}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Wait for the three actual repaired guidance pages
+        run: |
+          node --input-type=module <<'JS'
+          const slugs=['خدمات-نافس-للمنشآت','ضمان-أو-تأمين-العامل','إصدار-إقامة-لمولود-جديد-في-دبي'];for(let i=0;i<90;i++){let ready=true;for(const slug of slugs){const r=await fetch('https://hossambahr.com/services/'+encodeURIComponent(slug)+'/',{cache:'no-store'}),html=await r.text();if(!r.ok||!html.includes('<a id="official-route" class="normalized-link"'))ready=false;}if(ready)process.exit(0);await new Promise(r=>setTimeout(r,10000));}throw Error('PR607 normalized guidance targets are not live');
+          JS
+      - name: Verify only the six unfinished guidance cases
+        run: |
+          node --input-type=module <<'JS'
+          import{chromium}from'playwright';import fs from'node:fs/promises';import assert from'node:assert/strict';const out='diagnostics/normalized-bookmarks-live-607';await fs.mkdir(out,{recursive:true});const cases=[['خدمات-نافس-للمنشآت','https://nafis.gov.ae/employer'],['ضمان-أو-تأمين-العامل','https://hossambahr.com/authorities/mohre/'],['إصدار-إقامة-لمولود-جديد-في-دبي','https://hossambahr.com/services/family-residency-uae/']];const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'}),report={status:'RUNNING',source:'ACTUAL_PRODUCTION_BROWSER',priorCanonicalSuccesses:127,cases:[],errors:[]};for(const width of[1440,390]){const page=await browser.newPage({viewport:{width,height:width===390?844:960}});for(const[slug,expectedHref]of cases){try{const response=await page.goto('https://hossambahr.com/services/'+encodeURIComponent(slug)+'/#official-route',{waitUntil:'networkidle'});assert.equal(response.status(),200);assert.equal(await page.locator('#official-route').count(),1);const target=page.locator('a#official-route.normalized-link');assert.equal(await target.count(),1);assert.equal(await target.getAttribute('href').then(h=>new URL(h,page.url()).href),expectedHref);assert.equal(await page.locator('main').getAttribute('data-publication-state'),'NORMALIZED');const state=await target.evaluate(e=>{const r=e.getBoundingClientRect();return{visible:r.bottom>0&&r.top<innerHeight,overflow:document.documentElement.scrollWidth>innerWidth+1};});assert.equal(state.visible,true);assert.equal(state.overflow,false);await target.focus();assert.equal(await target.evaluate(e=>document.activeElement===e),true);report.cases.push({slug,width,expectedHref,status:'PASS',...state});await page.screenshot({path:out+'/'+cases.findIndex(c=>c[0]===slug)+'-'+width+'.png'});}catch(e){report.errors.push({slug,width,error:String(e.stack||e)});}}await page.close();}await browser.close();report.status=report.errors.length?'FAIL':'PASS';await fs.writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));assert.equal(report.status,'PASS');
+          JS
+      - name: Preserve real acceptance evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/normalized-bookmarks-live-607
+          git commit -m "Preserve actual desktop and mobile guidance bookmark acceptance"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
