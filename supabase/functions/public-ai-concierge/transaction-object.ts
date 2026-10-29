@@ -40,7 +40,7 @@ export function transactionObjectMatches(intent:TransactionObject,title:string,a
   if(intent.action!=='issue'||!intent.jurisdiction||intent.jurisdiction==='AE')return false;
   const dubai=intent.jurisdiction==='AE-DU',expected=dubai?'gdrfa-dubai':'icp';
   if(a!==expected||(intent.authority&&intent.authority!==a)||!(/تاشير|visa/.test(t)))return false;
-  if(/(?:5|خمس|five)[ -]?(?:سنوات|سنه|years?)|استكشاف|explor|residen|اقامه/.test(t))return false;
+  if(/(?:5|٥|خمس|five)[ -]?(?:سنوات|سنين|سنه|اعوام|عام|years?)|استكشاف|explor|residen|اقامه/.test(t))return false;
   if(dubai&&(intent.entry!=='single'||!(/دخول واحد|single[ -]entry/.test(t))))return false;
   return intent.kind==='tourism-visa'?/سياحي|touris/.test(t):/زياره.*(?:قريب|صديق)|visit.*(?:friend|relative)/.test(t);
  }
@@ -97,7 +97,7 @@ export function explorationVisaFollowUp(serviceSlug:string,jurisdiction:string|n
 
 // A visit visa is distinct from residence sponsorship, exploration and employment.
 function visitVisaObject(q:string,jurisdiction:string|null):TransactionObject|null {
- if(!/تاشير|فيزا|\bvisa\b/.test(q)||/(?:5|خمس|five)[ -]?(?:سنوات|سنه|years?)|استكشاف|explor|residen|اقامه|work permit|تصريح عمل/.test(q))return null;
+ if(!/تاشير|فيزا|\bvisa\b/.test(q)||/(?:5|٥|خمس|five)[ -]?(?:سنوات|سنين|سنه|اعوام|عام|years?)|استكشاف|explor|residen|اقامه|work permit|تصريح عمل/.test(q))return null;
  const tourism=/سياحي|touris/.test(q),visitor=/زياره.*(?:قريب|صديق)|(?:قريب|صديق).*زياره|visit.*(?:friend|relative)|(?:friend|relative).*visit/.test(q);
  if(!tourism&&!visitor)return null;
  return{kind:tourism&&visitor?'visit-visa-ambiguous':tourism?'tourism-visa':'friend-relative-visit-visa',action:explorationOperation(q)||'issue',jurisdiction,authority:explorationAuthority(q),entry:/متعدد|multiple|multi entry/.test(q)?'multiple':/دخول واحد|single entry|single-entry/.test(q)?'single':'unspecified'};
