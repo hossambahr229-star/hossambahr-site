@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-10-24",
+  "updatedAt": "2026-10-29",
   "sourceCheckpoint": "869b7eb106795319495a527805e7d801774a5cab",
   "sourceReviewMerge": "f1fb679a53acfd5f94f7f9b43d7540389f0389bb",
   "originalPartial": 56,
   "completedRecordedDetailFields": 24,
-  "remaining": 33,
+  "remaining": 32,
   "scope": "Missing recorded fields remain explicit. Capture failures are not evidence that a field is unpublished. Parent-category facts do not verify subtype eligibility. This is a continuation checklist, not a blanket external-blocker or final acceptance claim. Reconciled with the 202-service registry on 2026-10-24: 32 remaining records from the historical 56-service checklist plus one later UAQ trade-name service. This is inventory reconciliation, not a newly failed service.",
   "sourceAccessEvidence": {
     "readOnlyBrowserRun": 38691429951,
@@ -346,32 +346,22 @@
       "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
       "unverifiedFields": [
         "documents",
-        "fees",
-        "duration",
         "eligibility"
       ],
-      "newCommonFacts": false,
+      "newCommonFacts": true,
       "officialCapture": {
         "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
         "status": 500,
         "at": "2026-10-15T06:17:40.599Z"
-      }
-    },
-    {
-      "slug": "تأشيرة-سياحية-عبر-icp-خارج-دبي",
-      "authority": "icp",
-      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
-      "unverifiedFields": [
-        "documents",
-        "fees",
-        "duration",
-        "eligibility"
-      ],
-      "newCommonFacts": false,
-      "officialCapture": {
-        "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
-        "status": 500,
-        "at": "2026-10-15T06:17:40.599Z"
+      },
+      "newOfficialReview": {
+        "reviewedAt": "2026-10-29",
+        "fields": [
+          "fees",
+          "duration"
+        ],
+        "category": "Visitor – For visiting relatives, friends",
+        "manifest": "content/icp-tourism-visitor-field-review-2026-10-29.json"
       }
     },
     {
@@ -562,5 +552,25 @@
       }
     }
   ],
-  "additionalPartialServicesSinceCheckpoint": 1
+  "additionalPartialServicesSinceCheckpoint": 1,
+  "completedAfterCheckpoint": [
+    {
+      "slug": "تأشيرة-سياحية-عبر-icp-خارج-دبي",
+      "authority": "icp",
+      "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "unverifiedFields": [],
+      "newCommonFacts": false,
+      "officialCapture": {
+        "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+        "status": 500,
+        "at": "2026-10-15T06:17:40.599Z"
+      },
+      "completedAt": "2026-10-29",
+      "scope": "Tourism establishments category only; not five-year visa",
+      "newOfficialReview": {
+        "method": "NATIVE_CATEGORY_SELECTION",
+        "manifest": "content/icp-tourism-visitor-field-review-2026-10-29.json"
+      }
+    }
+  ]
 }
