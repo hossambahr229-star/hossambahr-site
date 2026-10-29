@@ -1,0 +1,28 @@
+name: Verify every flagged fragment on actual Production
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/platform-fragments-live-20261029.yml]
+permissions: {contents: write}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Distinguish real broken fragments from runtime-added targets
+        run: |
+          node --input-type=module <<'JS'
+          import{chromium}from'playwright';import fs from'node:fs/promises';const out='diagnostics/platform-fragments-live-20261029';await fs.mkdir(out,{recursive:true});const source=JSON.parse(await fs.readFile('diagnostics/platform-audit-20261029/report.json','utf8'));const urls=[...new Set(source.missingLocalFragments.map(x=>x.href))];const browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true});const report={source:'REAL_PRODUCTION_BROWSER',results:[],errors:[]};let index=0;await Promise.all(Array.from({length:4},async()=>{const page=await browser.newPage({viewport:{width:1440,height:960}});while(index<urls.length){const href=urls[index++];try{const response=await page.goto(new URL(href,'https://hossambahr.com').href,{waitUntil:'networkidle',timeout:40000});const id=decodeURIComponent(new URL(href,'https://hossambahr.com').hash.slice(1));const exists=await page.evaluate(id=>!!document.getElementById(id),id);const r={href,status:response.status(),exists,url:page.url()};report.results.push(r);if(!exists&&report.results.filter(x=>!x.exists).length<=3)await page.screenshot({path:out+'/missing-'+report.results.length+'.png'});}catch(e){report.errors.push({href,error:String(e)});}}await page.close();}));await browser.close();report.checked=report.results.length;report.missing=report.results.filter(r=>!r.exists);report.status=report.missing.length||report.errors.length?'FINDINGS':'PASS';await fs.writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
+          JS
+      - name: Preserve actual fragment evidence
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/platform-fragments-live-20261029
+          git commit -m "Preserve real browser verification of every source-flagged fragment"
+          git push origin HEAD:agent/dld-source-review-evidence
