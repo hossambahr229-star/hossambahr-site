@@ -1,0 +1,5 @@
+html[lang="en"] body{direction:ltr}
+html[lang="en"] .hb-ai-stage,html[lang="en"] .hb-chat-answer,html[lang="en"] .auth-panel{text-align:left}
+html[lang="en"] .hb-chat-info-block p,html[lang="en"] .hb-chat-info-block li{unicode-bidi:plaintext}
+html[lang="en"] .hb-ai-attach-control{font:inherit;color:inherit;border:0;background:transparent;cursor:pointer}
+.hb-ai-attach-control:focus-visible{outline:2px solid #00875c;outline-offset:4px}
