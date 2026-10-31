@@ -52,14 +52,14 @@ jobs:
               ".yml", ".toml", ".lock", ".jsonl"
           }
           development_pattern = re.compile(
-              r"(?:^|/)(?:package\\.json|deno\\.json|pnpm-lock\\.yaml|"
+              r"(?:^|/)(?:package\.json|deno\.json|pnpm-lock\.yaml|"
               r".*-audit.*|.*-smoke.*|.*-report.*|.*-matrix.*|"
               r".*-monitor.*|.*-test.*)$", re.I
           )
           paths = subprocess.check_output(["git", "ls-files", "-z"], cwd=source)
           accepted = 0
           excluded = 0
-          for raw in paths.split(b"\\0"):
+          for raw in paths.split(b"\0"):
               if not raw:
                   continue
               name = raw.decode("utf-8")
