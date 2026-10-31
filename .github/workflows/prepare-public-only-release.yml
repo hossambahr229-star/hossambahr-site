@@ -1,0 +1,147 @@
+name: Prepare isolated public-site release
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/prepare-public-only-release.yml"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: isolated-public-site-release
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the source repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Verify no obvious credentials were committed
+        run: node src/global/security/audit-secrets.mjs
+
+      - name: Extract only public website assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os
+          import re
+          import shutil
+          import subprocess
+          from pathlib import Path, PurePosixPath
+
+          source = Path(os.environ["GITHUB_WORKSPACE"])
+          output = Path(os.environ["RUNNER_TEMP"]) / "hossambahr-public-release"
+          output.mkdir(parents=True, exist_ok=True)
+          private_roots = {
+              ".github", "src", "supabase", "scripts", "test", "tests",
+              "docs", "content", "diagnostics", "artifacts", "reports", "qa"
+          }
+          source_extensions = {
+              ".mjs", ".ts", ".tsx", ".map", ".md", ".sql", ".yaml",
+              ".yml", ".toml", ".lock", ".jsonl"
+          }
+          development_pattern = re.compile(
+              r"(?:^|/)(?:package\\.json|deno\\.json|pnpm-lock\\.yaml|"
+              r".*-audit.*|.*-smoke.*|.*-report.*|.*-matrix.*|"
+              r".*-monitor.*|.*-test.*)$", re.I
+          )
+          paths = subprocess.check_output(["git", "ls-files", "-z"], cwd=source)
+          accepted = 0
+          excluded = 0
+          for raw in paths.split(b"\\0"):
+              if not raw:
+                  continue
+              name = raw.decode("utf-8")
+              path = PurePosixPath(name)
+              first = path.parts[0]
+              if (
+                  first in private_roots
+                  or path.suffix.lower() in source_extensions
+                  or development_pattern.search(name)
+                  or (name.startswith(".") and name != ".nojekyll")
+              ):
+                  excluded += 1
+                  continue
+              src = source.joinpath(*path.parts)
+              if src.is_symlink():
+                  raise RuntimeError(f"Unexpected symlink in public asset: {name}")
+              if not src.is_file():
+                  raise RuntimeError(f"Missing tracked asset: {name}")
+              dest = output.joinpath(*path.parts)
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(src, dest)
+              accepted += 1
+
+          critical = (
+              ".nojekyll", "CNAME", "_headers", "index.html",
+              "404.html", "sitemap.xml", "robots.txt", "ai/index.html",
+              "faq/index.html", "os/index.html", "account/index.html",
+              "methodology/index.html", "auth-config.js"
+          )
+          for name in critical:
+              if not (output / name).is_file():
+                  raise RuntimeError(f"Required production file is missing: {name}")
+
+          forbidden = [
+              str(p.relative_to(output))
+              for p in output.rglob("*") if p.is_file()
+              and (
+                  p.relative_to(output).parts[0] in private_roots
+                  or p.suffix.lower() in source_extensions
+              )
+          ]
+          if forbidden:
+              raise RuntimeError(f"Private files in release: {forbidden[:15]}")
+          if accepted < 1000:
+              raise RuntimeError(f"Unexpectedly small release: {accepted} files")
+          print(f"PUBLIC_RELEASE_FILES={accepted}; EXCLUDED_FROM_RELEASE={excluded}")
+          PY
+
+      - name: Build independent root commit without source history
+        shell: bash
+        run: |
+          set -euo pipefail
+          RELEASE_DIR="$RUNNER_TEMP/hossambahr-public-release"
+          git -C "$RELEASE_DIR" init -q -b publish
+          git -C "$RELEASE_DIR" config user.name "HOSSAM BAHR Release Automation"
+          git -C "$RELEASE_DIR" config user.email "release-gate@users.noreply.github.com"
+          git -C "$RELEASE_DIR" add -A
+          git -C "$RELEASE_DIR" commit -qm "Publish website assets only (independent history)"
+          test "$(git -C "$RELEASE_DIR" rev-list --count HEAD)" = "1"
+          echo "Public assets packaged with independent orphan history."
+
+      - name: Update detached public release branch, never main
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          RELEASE_DIR="$RUNNER_TEMP/hossambahr-public-release"
+          TARGET_REF="refs/heads/release/public-site-snapshot-20261031"
+          REMOTE="https://github.com/$GITHUB_REPOSITORY.git"
+          EXPECTED_SHA="$(git ls-remote "$REMOTE" "$TARGET_REF" | cut -f1)"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
+          if [[ -n "$EXPECTED_SHA" ]]; then
+            git -C "$RELEASE_DIR" -c "http.https://github.com/.extraheader=$AUTH_HEADER" \
+              push --force-with-lease="$TARGET_REF:$EXPECTED_SHA" "$REMOTE" "HEAD:$TARGET_REF"
+          else
+            git -C "$RELEASE_DIR" -c "http.https://github.com/.extraheader=$AUTH_HEADER" \
+              push "$REMOTE" "HEAD:$TARGET_REF"
+          fi
+          echo "Updated only the dedicated public release branch; the source branch was not modified."
+
+# This branch deliberately contains no source history. The separate original
+# repository remains public until private-source hosting is established.
+# GitHub Pages settings are not changed by this workflow.
