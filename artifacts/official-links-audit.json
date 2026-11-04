@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-04T08:15:32.801Z",
+  "generatedAt": "2026-11-04T08:30:45.094Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
-    "REACHABLE": 150,
+    "REACHABLE": 148,
     "ACCESS_RESTRICTED": 10,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 90,
+    "NETWORK_UNVERIFIED": 92,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1163,9 +1163,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022",
@@ -2563,9 +2562,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://media.ajman.ae/ar/servicecatalog/services/2862",
@@ -2577,7 +2575,9 @@
       ],
       "status": 200,
       "finalUrl": "https://media.ajman.ae/ar/servicecatalog/services/2862",
-      "result": "REACHABLE"
+      "title": "Request Rejected",
+      "result": "REACHABLE",
+      "verifiedBy": "browser-fallback"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",

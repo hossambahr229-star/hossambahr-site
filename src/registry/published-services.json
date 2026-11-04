@@ -24568,7 +24568,8 @@
             "Pay applicable items shown in the official application.",
             "Receive the transaction outcome."
           ],
-          "notes": "Fees and processing time were reviewed with the relatives/friends category selected. Complete documents and case-specific eligibility remain under review; tourism or treatment documents are not transferred to this service."
+          "notes": "Conditions were reviewed with the ICP relatives/friends category selected. Its document list also includes case-specific documents without stating that all apply to every visit, so the complete document checklist and individual eligibility remain under review. A medical report or a husband's GCC residence document is not presented as a universal visit requirement. Confirm the documents for your case in the official application before applying.",
+          "conditions": "For the ICP relatives/friends category: valid health insurance in the UAE, a passport valid for at least 6 months, and a return ticket. For a resident sponsor, the minimum monthly salary is AED 4000 for first-degree relatives, AED 8000 for second- and third-degree relatives, and AED 15000 for friends, with proof of kinship as applicable. The sponsor file must be active. Enter within 60 days of issuance; validity may be extended under the rules. Stay is 30, 60 or 90 days depending on the option, with ICP-authorised extensions within a total of 120 days. These published conditions do not confirm an individual case's eligibility."
         }
       },
       "documents": {
@@ -24587,7 +24588,8 @@
         "status": "PUBLISHED_OR_CONDITIONAL",
         "text": "يومان (2) وفق مدة إنجاز خدمة إصدار التأشيرة في بطاقة ICP؛ لا تحدد البطاقة أنها أيام عمل، وليست مدة الإقامة أو ضمانًا للموافقة."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "لفئة زيارة الأقارب والأصدقاء في مسار ICP: تأمين صحي ساري داخل الإمارات، وجواز صالح لمدة 6 أشهر على الأقل، وتذكرة عودة. عند كفالة مقيم: الحد الأدنى للراتب الشهري 4000 درهم لأقارب الدرجة الأولى، و8000 للدرجتين الثانية والثالثة، و15000 للأصدقاء، مع إثبات صلة القرابة بحسب الدرجة. يجب أن يكون ملف الكفيل نشطًا. الدخول خلال 60 يومًا من الإصدار؛ وقد تمدد الصلاحية وفق القواعد. الإقامة 30 أو 60 أو 90 يومًا بحسب الخيار، والتمديد بقرار الهيئة ضمن إجمالي 120 يومًا. هذه شروط منشورة وليست تأكيدًا لأهلية حالة بعينها.",
+      "eligibilityScope": "common-only",
       "steps": [
         {
           "order": 1,
@@ -24654,13 +24656,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-10-29",
+        "dataLastReviewedAt": "2026-11-04",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-10-29",
-      "lastReviewedAt": "2026-10-29",
+      "lastUpdated": "2026-11-04",
+      "lastReviewedAt": "2026-11-04",
       "internalRoute": "/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/",
       "sourceRegistry": "service-matrix"
     },
