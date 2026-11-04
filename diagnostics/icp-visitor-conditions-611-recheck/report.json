@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "source": "REAL_PRODUCTION_BROWSER",
+  "serviceViews": [
+    {
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS",
+      "assistedContextPreserved": true,
+      "governmentPath": true,
+      "whatsapp": true,
+      "protectedActionExecuted": false
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "status": "PASS",
+      "assistedContextPreserved": true,
+      "governmentPath": true,
+      "whatsapp": true,
+      "protectedActionExecuted": false
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "status": "PASS",
+      "assistedContextPreserved": true,
+      "governmentPath": true,
+      "whatsapp": true,
+      "protectedActionExecuted": false
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "status": "PASS",
+      "assistedContextPreserved": true,
+      "governmentPath": true,
+      "whatsapp": true,
+      "protectedActionExecuted": false
+    }
+  ],
+  "errors": [],
+  "externalModel": "NOT_RETRIED_EXPIRED_CREDENTIAL",
+  "protectedExecution": "NOT_TESTED",
+  "partialServices": 32
+}
