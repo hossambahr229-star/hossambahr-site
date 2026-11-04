@@ -946,7 +946,7 @@
     if (!location.pathname.startsWith("/services/") || /^\/services\/(?:index\.html)?$/.test(location.pathname)) return;
     document.body.classList.add("premium-service-detail");
     const main = document.querySelector("main");
-    if (!main) return;
+    if (!main || main.dataset.publicationState === "NORMALIZED") return;
     const routeMode = main.dataset.officialRouteMode;
     const primary = main.querySelector('[data-government-cta="verified"]')
       || (routeMode === "official-bundle-selector" ? main.querySelector('.exact-route-choices a[href^="https://"]') : null)

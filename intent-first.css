@@ -1044,6 +1044,16 @@ body[data-ux-page="home"] .ux-progressive-details > summary {
   font-weight: 850;
 }
 
+/* Retained guidance uses the compact inner-page scale, with one next action. */
+body[data-ux-modernized="true"] main[data-publication-state="NORMALIZED"] .page-hero {
+  padding-block: 1.5rem;
+  min-height: 0;
+}
+body[data-ux-modernized="true"] main[data-publication-state="NORMALIZED"] .page-hero h1 {
+  font-size: clamp(1.75rem, 2.45vw, 2.5rem);
+  line-height: 1.4;
+}
+
 body[data-ux-page="services"] .page-hero { padding-bottom: 1.4rem; }
 body[data-ux-page="services"] .page-hero h1 { font-size: clamp(2.6rem, 5vw, 4.6rem); }
 body[data-ux-page="services"] .search-shell {
