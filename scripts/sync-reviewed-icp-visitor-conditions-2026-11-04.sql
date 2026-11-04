@@ -23,6 +23,6 @@ begin
  update public.hb_policy_versions set status='retired',effective_until=now() where id=p.id;
  insert into public.hb_policy_versions(policy_key,jurisdiction_id,version,effective_from,status,rules,source_ids,reviewed_by,reviewed_at,country_pack_id)
  values(p.policy_key,p.jurisdiction_id,3,now(),'active',rules,p.source_ids,marker,now(),p.country_pack_id);
- update public.hb_service_bindings set metadata=coalesce(metadata,'{}'::jsonb)||jsonb_build_object('lastReviewed','2026-11-04','conditions_review',marker) where id=b.id;
+ update public.hb_service_bindings set metadata=coalesce(metadata,'{}'::jsonb)||jsonb_build_object('lastReviewed','2026-11-04','conditions_review',marker,'eligibilityScope','common-only') where id=b.id;
 end $review$;
 commit;

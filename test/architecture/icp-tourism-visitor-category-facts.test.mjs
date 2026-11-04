@@ -31,3 +31,5 @@ test('visitor scoped conditions retain category, validity and honest incomplete 
  assert.equal(visit.localizedDetails.en.notes,recordedDetailTranslations[visit.specialCases]);
  assert.deepEqual(visit.requirements,[]);
 });
+
+test('visitor common conditions cannot silently certify individual eligibility',()=>{assert.equal(visit.eligibilityScope,'common-only');});
