@@ -1,7 +1,7 @@
 const escape=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 export const WHATSAPP_NUMBER='971503780460';
 export function pathwayRecord(service,locale='ar'){
- const emirates={'دبي':'Dubai','أبوظبي':'Abu Dhabi','الشارقة':'Sharjah','عجمان':'Ajman','رأس الخيمة':'Ras Al Khaimah','الفجيرة':'Fujairah','أم القيوين':'Umm Al Quwain','اتحادي':'Federal'};
+ const emirates={'دبي':'Dubai','أبوظبي':'Abu Dhabi','الشارقة':'Sharjah','عجمان':'Ajman','رأس الخيمة':'Ras Al Khaimah','الفجيرة':'Fujairah','أم القيوين':'Umm Al Quwain','اتحادي':'Federal UAE','الإمارات عدا دبي':'UAE outside Dubai','الإمارات الخاضعة لمسار ICP (خارج دبي)':'ICP jurisdictions outside Dubai','اتحادي مع استثناءات الجهات التعليمية المحلية المنشورة':'Federal UAE; published local education exceptions apply'};
  return {...((service.destinationKind||service.destination_kind)==='OFFICIAL_GUIDANCE'?{kind:'OFFICIAL_GUIDANCE'}:{}),slug:service.service_slug||service.slug,id:service.service_id||service.id,name:service.service_name||service.name,emirate:service.emirate,emirate_en:service.emirate_en||emirates[service.emirate]||'See service jurisdiction',authority:service.authority,route:service.source_page||service.internalRoute,variantCards:service.officialVariantCards||service.official_variant_cards||[],official:(locale==='en'&&(service.official_execution_url_en||service.officialCtaUrlEn))||service.official_execution_url||service.officialCtaUrl||service.official_url};
 }
 export function whatsappHref(service,locale='ar',summary=''){
