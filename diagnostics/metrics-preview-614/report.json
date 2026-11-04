@@ -1,0 +1,45 @@
+{
+  "status": "MEASURED",
+  "source": "REAL_CHROME_LOCAL_SOURCE_PREVIEW",
+  "reference": "qa/reference/approved-desktop.jpeg",
+  "referenceCrop": {
+    "left": 31,
+    "top": 642,
+    "width": 1378,
+    "height": 66
+  },
+  "variants": [
+    {
+      "name": "baseline",
+      "background": "linear-gradient(100deg,#0a304c,#03243c)",
+      "fullRegionMAE": 25.54901335561713,
+      "backgroundMAE": 7.377199981657266,
+      "backgroundPixels": 36345,
+      "geometryUnchanged": true,
+      "overflow": false
+    },
+    {
+      "name": "subtle-photo",
+      "background": "linear-gradient(100deg,rgba(10,48,76,.96),rgba(3,36,60,.97)),url('/assets/cta-reference-panorama.webp') center 64%/cover no-repeat #03243c",
+      "fullRegionMAE": 26.503764055650848,
+      "backgroundMAE": 8.382427660842849,
+      "backgroundPixels": 36345,
+      "geometryUnchanged": true,
+      "overflow": false
+    },
+    {
+      "name": "sampled-palette",
+      "background": "linear-gradient(100deg,#083254 0%,#01233f 24%,#01223e 45%,#053052 67%,#012643 92%,#01243d 100%)",
+      "fullRegionMAE": 25.35610092213866,
+      "backgroundMAE": 6.964534323840969,
+      "backgroundPixels": 36345,
+      "geometryUnchanged": true,
+      "overflow": false
+    }
+  ],
+  "pixelFidelity": "NOT_DECLARED",
+  "humanAcceptance": "NOT_ACCEPTED",
+  "preferred": "sampled-palette",
+  "backgroundImprovement": 0.41266565781629705,
+  "publishCandidate": null
+}
