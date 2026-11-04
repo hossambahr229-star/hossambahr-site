@@ -1,0 +1,10 @@
+{
+  "status": "FAIL",
+  "source": "REAL_PRODUCTION_BROWSER",
+  "views": [],
+  "errors": [
+    "AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /See service jurisdiction|[\\u0600-\\u06ff]/. Input:\n\n'Hello HOSSAM BAHR, I would like help with this transaction:\\n' +\n  'Service: Visit a Relative or Friend Visa through ICP outside Dubai\\n' +\n  'Emirate / jurisdiction: ICP jurisdictions outside Dubai\\n' +\n  'Authority: Federal Authority for Identity, Citizenship, Customs and Port Security\\n' +\n  'Service reference: directory:residency:29\\n' +\n  'Service link: https://hossambahr.com/en/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/\\n' +\n  'Please help me confirm the scope and next steps.'\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/[eval1]:3:622"
+  ],
+  "whatsappMessagesSent": 0,
+  "protectedExecution": false
+}
