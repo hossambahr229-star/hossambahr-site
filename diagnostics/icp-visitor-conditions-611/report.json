@@ -1,0 +1,21 @@
+{
+  "status": "FAIL",
+  "source": "REAL_PRODUCTION_BROWSER",
+  "serviceViews": [
+    {
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS",
+      "assistedContextPreserved": true,
+      "governmentPath": true,
+      "whatsapp": true,
+      "protectedActionExecuted": false
+    }
+  ],
+  "errors": [
+    "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(await official.count()>=1)\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/[eval1]:6:72"
+  ],
+  "externalModel": "NOT_RETRIED_EXPIRED_CREDENTIAL",
+  "protectedExecution": "NOT_TESTED",
+  "partialServices": 32
+}
