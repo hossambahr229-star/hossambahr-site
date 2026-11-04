@@ -1,8 +1,5 @@
 name: English jurisdiction handoff Production acceptance
 on:
-  push:
-    branches: [agent/dld-source-review-evidence]
-    paths: [.github/workflows/jurisdiction-handoff-612.yml]
   workflow_dispatch:
 permissions:
   contents: write
@@ -34,10 +31,10 @@ jobs:
       - name: Preserve real handoff evidence
         if: always()
         run: |
-          if [ -d diagnostics/jurisdiction-handoff-612-recheck ]; then
+          if [ -d diagnostics/jurisdiction-handoff-612-final ]; then
             git config user.name "HossamBahr Acceptance Evidence"
             git config user.email "acceptance@users.noreply.github.com"
-            git add diagnostics/jurisdiction-handoff-612-recheck
+            git add diagnostics/jurisdiction-handoff-612-final
             git commit -m "Preserve real scoped English WhatsApp handoff acceptance"
             git pull --rebase origin agent/dld-source-review-evidence
             git push origin HEAD:agent/dld-source-review-evidence
