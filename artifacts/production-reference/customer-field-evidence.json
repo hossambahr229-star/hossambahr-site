@@ -2,7 +2,7 @@
   "auditedServices": 202,
   "fullyVerifiedServices": 0,
   "servicesWithMissingFields": 202,
-  "missingFieldCount": 886,
+  "missingFieldCount": 885,
   "status": "PARTIAL PASS",
   "scope": "Public route/source identity, canonical, locale, internal href/referrer and scoped CTA checks. This does not verify external government availability, authenticated execution, documents, eligibility correctness or human visual acceptance.",
   "records": [
@@ -7830,7 +7830,7 @@
       "id": "directory:residency:29",
       "slug": "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي",
       "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
-      "lastRecordedReview": "2026-10-29",
+      "lastRecordedReview": "2026-11-04",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -7843,7 +7843,7 @@
         "emirate": "NOT_VERIFIED",
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
-        "eligibility": "MISSING",
+        "eligibility": "NOT_VERIFIED",
         "requirements": "MISSING",
         "documents": "MISSING",
         "steps": "NOT_VERIFIED",
@@ -7868,7 +7868,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "eligibility",
         "requirements",
         "documents",
         "ai_discoverability"
