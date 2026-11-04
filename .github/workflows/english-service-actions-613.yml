@@ -1,0 +1,43 @@
+name: English service action simplicity Production acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/english-service-actions-613.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --package-lock=false playwright@1.55.0
+      - name: Wait for the simplified generated service actions
+        run: |
+          node --input-type=module <<'JS'
+          const slug='تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي';for(let i=0;i<90;i++){try{const html=await(await fetch('https://hossambahr.com/en/services/'+encodeURIComponent(slug)+'/?actions613='+i,{cache:'no-store'})).text(),actions=html.match(/<div class="en-actions">([\s\S]*?)<\/div>/)?.[1];if(actions&&(actions.match(/<a /g)||[]).length===2)process.exit(0);}catch{}await new Promise(r=>setTimeout(r,10000));}throw Error('Simplified English service actions not yet published');
+          JS
+      - name: Verify identical and distinct official destinations on desktop and mobile
+        run: |
+          node --input-type=module <<'JS'
+          import{chromium}from'playwright';import fs from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/english-service-actions-613';await fs.mkdir(out,{recursive:true});const cases=[['تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي',2,'ICP jurisdictions outside Dubai'],['issuance-of-a-new-work-permit-golden-visa-holders',3,'Federal UAE']],report={status:'RUNNING',source:'REAL_PRODUCTION_BROWSER',views:[],errors:[],whatsappMessagesSent:0,protectedExecution:false},browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});
+          try{for(const width of[1440,390,320])for(const[slug,count,scope]of cases){const page=await browser.newPage({viewport:{width,height:width===390?844:960}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('https://hossambahr.com/en/services/'+encodeURIComponent(slug)+'/',{waitUntil:'networkidle'});const actions=page.locator('.en-actions a'),hrefs=await actions.evaluateAll(nodes=>nodes.map(a=>a.getAttribute('href')));assert.equal(hrefs.length,count);assert.equal(new Set(hrefs).size,count);assert.ok(hrefs.some(h=>h.startsWith('/en/ai/')));const source=page.locator('.en-actions a').filter({hasText:'Read the official source'});assert.equal(await source.count(),1);assert.ok((await source.getAttribute('href')).startsWith('https://'));if(count===2)assert.equal(await page.getByRole('link',{name:'Open the government service ↗',exact:true}).count(),0);else assert.ok((await source.innerText()).includes('(Arabic)'));const primary=page.locator('#service-execution-options');assert.ok((await primary.locator('.hb-path-official').getAttribute('href')).startsWith('https://'));const wa=new URL(await primary.locator('.hb-path-assisted').getAttribute('href'));assert.equal(wa.pathname,'/971503780460');assert.ok(wa.searchParams.get('text').includes('Emirate / jurisdiction: '+scope));const track=new URL(await primary.locator('.hb-path-track').getAttribute('href'),'https://hossambahr.com');assert.equal(track.pathname,'/en/contact/');assert.equal(track.searchParams.get('service'),slug);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);assert.deepEqual(errors,[]);await page.screenshot({path:out+'/actions-'+cases.findIndex(c=>c[0]===slug)+'-'+width+'.png'});report.views.push({slug,width,status:'PASS',uniqueSecondaryActions:count,primaryPaths:true,sourceLabel:true,contextPreserved:true});await page.close();}
+          }catch(e){report.errors.push(String(e.stack||e));}finally{await browser.close();report.status=report.errors.length?'FAIL':'PASS';await fs.writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}assert.equal(report.status,'PASS');
+          JS
+      - name: Preserve actual Production evidence
+        if: always()
+        run: |
+          if [ -d diagnostics/english-service-actions-613 ]; then
+            git config user.name "HossamBahr Acceptance Evidence"
+            git config user.email "acceptance@users.noreply.github.com"
+            git add diagnostics/english-service-actions-613
+            git commit -m "Preserve real English service action simplicity acceptance"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
