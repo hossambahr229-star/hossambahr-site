@@ -7,8 +7,8 @@ test('tourism uses its selected category, not residence or treatment documents',
  assert.match(tour.conditions,/المنشآت السياحية/);assert.match(tour.conditions,/120/);assert.match(tour.specialCases,/تتعارض/);assert.match(tour.specialCases,/5 سنوات/);
 });
 test('fees keep per-month alternatives and security separate without a fabricated total',()=>{
- for(const row of[tour,visit]){assert.match(row.fees,/100 عن كل شهر أو دخول متعدد 200 عن كل شهر/);assert.match(row.fees,/1000.*2000.*20/);assert.match(row.fees,/الضمان منفصل عن الرسوم/);assert.match(row.fees,/لا تشمل رسوم حسام بحر/);assert.match(row.duration,/لا تحدد البطاقة أنها أيام عمل/);assert.equal(row.lastReviewed,'2026-10-29');}
- assert.deepEqual(visit.requirements,[]);assert.equal(visit.conditions,'غير موثق بعد');
+ for(const row of[tour,visit]){assert.match(row.fees,/100 عن كل شهر أو دخول متعدد 200 عن كل شهر/);assert.match(row.fees,/1000.*2000.*20/);assert.match(row.fees,/الضمان منفصل عن الرسوم/);assert.match(row.fees,/لا تشمل رسوم حسام بحر/);assert.match(row.duration,/لا تحدد البطاقة أنها أيام عمل/);assert.equal(row.lastReviewed,row===tour?'2026-10-29':'2026-11-04');}
+ assert.deepEqual(visit.requirements,[]);assert.match(visit.conditions,/عند كفالة مقيم/);assert.match(visit.conditions,/4000.*8000.*15000/);assert.match(visit.conditions,/ليست تأكيدًا لأهلية/);assert.match(visit.specialCases,/لا نعرض التقرير الطبي/);
 });
 test('new facts have explanatory English translations with all numeric facts retained',()=>{
  for(const row of[tour,visit])for(const field of ['requirements','fees','duration','conditions','specialCases'])for(const value of Array.isArray(row[field])?row[field]:[row[field]])if(value&&value!=='غير موثق بعد'){
@@ -24,3 +24,12 @@ test('published flags close only the reviewed tourism dossier',()=>{
  assert.equal(visitor.verification.feesVerified,true);assert.equal(visitor.verification.durationVerified,true);
  assert.equal(visitor.verification.requirementsVerified,false);assert.equal(visitor.verification.eligibilityVerified,false);
 });
+
+test('visitor scoped conditions retain category, validity and honest incomplete documents',()=>{
+ assert.match(visit.conditions,/6 أشهر/);assert.match(visit.conditions,/60 يومًا/);assert.match(visit.conditions,/30 أو 60 أو 90/);assert.match(visit.conditions,/120/);
+ assert.equal(visit.localizedDetails.en.conditions,recordedDetailTranslations[visit.conditions]);
+ assert.equal(visit.localizedDetails.en.notes,recordedDetailTranslations[visit.specialCases]);
+ assert.deepEqual(visit.requirements,[]);
+});
+
+test('visitor common conditions cannot silently certify individual eligibility',()=>{assert.equal(visit.eligibilityScope,'common-only');});
