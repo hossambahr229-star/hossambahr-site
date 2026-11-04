@@ -1,0 +1,44 @@
+name: English jurisdiction handoff Production acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/jurisdiction-handoff-612.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --package-lock=false playwright@1.55.0
+      - name: Wait for the corrected static English handoff and runtime
+        run: |
+          node --input-type=module <<'JS'
+          const slug='تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي';for(let i=0;i<90;i++){try{const html=await(await fetch('https://hossambahr.com/en/services/'+encodeURIComponent(slug)+'/?handoff612='+i,{cache:'no-store'})).text(),runtime=await(await fetch('https://hossambahr.com/service-pathways.js?handoff612='+i,{cache:'no-store'})).text();if(html.includes('jurisdiction%3A%20ICP%20jurisdictions%20outside%20Dubai')&&runtime.includes("'الإمارات عدا دبي':'UAE outside Dubai'"))process.exit(0);}catch{}await new Promise(r=>setTimeout(r,10000));}throw Error('Corrected scoped handoff not yet live');
+          JS
+      - name: Verify scoped English messages and Arabic preservation without sending
+        run: |
+          node --input-type=module <<'JS'
+          import{chromium}from'playwright';import fs from'node:fs/promises';import assert from'node:assert/strict';
+          const out='diagnostics/jurisdiction-handoff-612';await fs.mkdir(out,{recursive:true});const services=[['تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي','ICP jurisdictions outside Dubai'],['amendment-of-residency-permit-data','UAE outside Dubai'],['equivalency-of-general-education-certificate-in-the-uae-grade-12','Federal UAE; published local education exceptions apply']],report={status:'RUNNING',source:'REAL_PRODUCTION_BROWSER',views:[],errors:[],whatsappMessagesSent:0,protectedExecution:false},browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});
+          try{for(const width of[1440,390])for(const[slug,scope]of services){const page=await browser.newPage({viewport:{width,height:width===390?844:960}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('https://hossambahr.com/en/services/'+encodeURIComponent(slug)+'/',{waitUntil:'networkidle'});const link=page.locator('#service-execution-options .hb-path-assisted');const url=new URL(await link.getAttribute('href')),message=url.searchParams.get('text');assert.equal(url.hostname,'wa.me');assert.equal(url.pathname,'/971503780460');assert.ok(message.includes('Emirate / jurisdiction: '+scope));assert.doesNotMatch(message,/See service jurisdiction|[\u0600-\u06ff]/);assert.ok(message.includes('https://hossambahr.com/en/services/'+slug+'/'));assert.ok(message.includes('Authority: '));assert.ok(message.includes('Service reference: '));assert.ok((await page.locator('#service-execution-options .hb-path-official').getAttribute('href')).startsWith('https://'));const track=new URL(await page.locator('#service-execution-options .hb-path-track').getAttribute('href'),'https://hossambahr.com');assert.equal(track.pathname,'/en/contact/');assert.equal(track.searchParams.get('service'),slug);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);assert.deepEqual(errors,[]);report.views.push({slug,locale:'en',width,scope,status:'PASS',whatsappContext:message});await page.screenshot({path:out+'/scope-'+services.findIndex(s=>s[0]===slug)+'-'+width+'.png'});await page.close();}
+          const page=await browser.newPage({viewport:{width:390,height:844}}),slug=services[0][0];await page.goto('https://hossambahr.com/services/'+encodeURIComponent(slug)+'/',{waitUntil:'networkidle'});const url=new URL(await page.locator('.hb-service-pathways .hb-path-assisted').first().getAttribute('href'));assert.equal(url.pathname,'/971503780460');assert.ok(url.searchParams.get('text').includes('الإمارة / الاختصاص: الإمارات الخاضعة لمسار ICP (خارج دبي)'));report.views.push({slug,locale:'ar',width:390,status:'PASS'});await page.close();
+          }catch(e){report.errors.push(String(e.stack||e));}finally{await browser.close();report.status=report.errors.length?'FAIL':'PASS';await fs.writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}assert.equal(report.status,'PASS');
+          JS
+      - name: Preserve real handoff evidence
+        if: always()
+        run: |
+          if [ -d diagnostics/jurisdiction-handoff-612 ]; then
+            git config user.name "HossamBahr Acceptance Evidence"
+            git config user.email "acceptance@users.noreply.github.com"
+            git add diagnostics/jurisdiction-handoff-612
+            git commit -m "Preserve real scoped English WhatsApp handoff acceptance"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
