@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "../..");
@@ -39,8 +39,8 @@ function normalizedHttpUrl(value) {
 
 const sitemap = await readFile(sitemapPath, "utf8");
 const blocks = [...sitemap.matchAll(/<url>[\s\S]*?<\/url>/g)].map((match) => match[0]);
-const prefixEnd = sitemap.indexOf("<url>");
-const prefix = prefixEnd >= 0 ? sitemap.slice(0, prefixEnd) : '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+// Always write a clean XML header; an old sitemap header may contain literal \\n text.
+const prefix = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
 const kept = [];
 const seen = new Set();
@@ -114,6 +114,54 @@ for (const block of blocks) {
 
   if (rawLoc !== normalizedLoc) report.canonicalNormalized += 1;
   kept.push(block.replace(locMatch[0], `<loc>${xmlEscape(normalizedLoc)}</loc>`));
+}
+
+
+// Keep every self-canonical published service page discoverable, including
+// English routes generated after the original sitemap was assembled.
+// Do not publish login, redirect, noindex, alternate-canonical or missing pages.
+report.discoveredArabic = 0;
+report.discoveredEnglish = 0;
+report.discoveredOther = 0;
+async function addPublishedRoute(pathname) {
+  const url = normalizedHttpUrl(pathname);
+  if (!url || url.origin !== origin) return;
+  url.search = "";
+  url.hash = "";
+  if (seen.has(url.href)) return;
+
+  let html;
+  try {
+    html = await readFile(localFileFor(url), "utf8");
+  } catch {
+    return;
+  }
+  if (/<meta\b[^>]*\bname=["']robots["'][^>]*\bcontent=["'][^"']*noindex/i.test(html)) return;
+  if (/data-safe-legacy-redirect/i.test(html) || /<meta\b[^>]*http-equiv=["']refresh["']/i.test(html)) return;
+  const canonical = normalizedHttpUrl(canonicalFrom(html) ?? "");
+  if (!canonical || canonical.href !== url.href) return;
+
+  seen.add(url.href);
+  kept.push(`<url><loc>${xmlEscape(url.href)}</loc></url>`);
+  if (url.pathname.startsWith("/en/services/")) report.discoveredEnglish += 1;
+  else if (url.pathname.startsWith("/services/")) report.discoveredArabic += 1;
+  else report.discoveredOther += 1;
+}
+
+for (const directory of ["services", "en/services"]) {
+  let entries = [];
+  try {
+    entries = await readdir(resolve(root, directory), { withFileTypes: true });
+  } catch {
+    // An optional localized directory may not exist on older deployments.
+  }
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    await addPublishedRoute(`/${directory}/${encodeURIComponent(entry.name)}/`);
+  }
+}
+for (const route of ["/en/", "/en/services/", "/en/authorities/", "/en/contact/"]) {
+  await addPublishedRoute(route);
 }
 
 report.kept = kept.length;
