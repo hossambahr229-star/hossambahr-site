@@ -1,0 +1,62 @@
+name: Product evolution live SEO baseline
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/evolution-seo-baseline-20261105.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect real public responses before changing publication
+        shell: python
+        run: |
+          import json,re,urllib.request,urllib.error,xml.etree.ElementTree as ET
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from datetime import datetime,timezone
+          from urllib.parse import quote,urljoin
+          out=Path('diagnostics/evolution-seo-baseline-20261105');out.mkdir(parents=True,exist_ok=True)
+          base='https://hossambahr.com'
+          def fetch(path):
+            req=urllib.request.Request(urljoin(base,path),headers={'User-Agent':'HossamBahr-Public-QA','Cache-Control':'no-cache'})
+            try:
+              with urllib.request.urlopen(req,timeout=30) as r:return {'status':r.status,'type':r.headers.get('Content-Type'),'url':r.url,'body':r.read().decode('utf-8-sig')}
+            except urllib.error.HTTPError as e:return {'status':e.code,'url':e.url,'body':''}
+          class Head(HTMLParser):
+            def __init__(self):super().__init__();self.links=[];self.meta=[]
+            def handle_starttag(self,tag,attrs):
+              a=dict(attrs)
+              if tag=='link':self.links.append(a)
+              if tag=='meta':self.meta.append(a)
+          registry=json.loads(fetch('/src/registry/published-services.json')['body'])
+          services=registry['services'];xml=fetch('/sitemap.xml');xml_valid=True;xml_error=None
+          try:ET.fromstring(xml['body'])
+          except Exception as e:xml_valid=False;xml_error=str(e)
+          locs=set(re.findall(r'<loc>([^<]+)</loc>',xml['body']))
+          wanted={base+'/en'+s['internalRoute'] for s in services}
+          normalized={quote(u,safe=':/?=&%') for u in locs}
+          missing=sorted(u for u in wanted if quote(u,safe=':/?=&%') not in normalized)
+          report={'observedAtUTC':datetime.now(timezone.utc).isoformat(),'source':'REAL_PRODUCTION_HTTP','sourceCheckpoint':'1f0df7876b558732830816b12df64bcc80fe8b20','publishedServices':len(services),'sitemap':{'status':xml['status'],'xmlValid':xml_valid,'parseError':xml_error,'header':xml['body'][:180],'locations':len(locs),'missingEnglishServiceCount':len(missing),'missingEnglishServices':missing},'pages':[],'googleIndexingOrRanking':'NOT_MEASURED_GSC_SUBSCRIPTION_REQUIRED'}
+          paths=['/','/en/','/services/family-residency-uae/','/en/services/family-residency-uae/','/services/issuance-of-a-new-work-permit-golden-visa-holders/','/en/services/issuance-of-a-new-work-permit-golden-visa-holders/','/services/reserve-trade-name-dubai/','/en/services/reserve-trade-name-dubai/']
+          for path in paths:
+            r=fetch(path);h=Head();h.feed(r['body']);css=[]
+            if path in ['/','/en/']:
+              for href in dict.fromkeys(l.get('href','') for l in h.links if l.get('rel')=='stylesheet'):
+                if href.startswith('/'):
+                  v=fetch(href);css.append({'href':href,'status':v['status'],'type':v.get('type')})
+            report['pages'].append({'path':path,'status':r['status'],'canonical':[l.get('href') for l in h.links if l.get('rel')=='canonical'],'alternates':[l for l in h.links if l.get('rel')=='alternate' and l.get('hreflang')],'social':[m for m in h.meta if m.get('property','').startswith('og:') or m.get('name','').startswith('twitter:')],'stylesheets':css})
+          (out/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps({'publishedServices':len(services),'xmlValid':xml_valid,'missingEnglishServices':len(missing),'missingStylesheets':[x for p in report['pages'] for x in p['stylesheets'] if x['status']!=200]},ensure_ascii=False))
+      - name: Preserve pre-change acceptance baseline
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/evolution-seo-baseline-20261105
+          git commit -m "Record current live bilingual SEO and sharing baseline before product evolution"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
