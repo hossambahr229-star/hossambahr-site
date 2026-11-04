@@ -32,7 +32,7 @@ test("sitemap has no duplicated or foreign URL locations", () => {
 test("all published English service routes are included after catalog generation", () => {
   assert.ok(publishedEnglish.size >= 200, "English service directory unexpectedly shrank");
   for (const route of publishedEnglish) {
-    assert.ok(urlSet.has(origin + route), `Missing English service sitemap URL: ${route}`);
+    assert.ok(urlSet.has(new URL(route, origin).href), `Missing English service sitemap URL: ${route}`);
   }
   assert.ok(urlSet.has(origin + "/en/"));
   assert.ok(urlSet.has(origin + "/en/services/"));
