@@ -1,0 +1,46 @@
+name: ICP visitor conditions Production acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/icp-visitor-conditions-611.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --package-lock=false playwright
+      - name: Wait for reviewed visitor conditions in the published registry
+        run: |
+          node --input-type=module <<'JS'
+          const slug='تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي';for(let i=0;i<90;i++){try{const j=await(await fetch('https://hossambahr.com/src/registry/published-services.json?visitor611='+i,{cache:'no-store'})).json(),s=j.services.find(x=>x.slug===slug);if(s?.conditions?.includes('15000')&&s.eligibilityScope==='common-only')process.exit(0);}catch{}await new Promise(r=>setTimeout(r,10000));}throw Error('Reviewed visitor conditions not published');
+          JS
+      - name: Verify four real service views without external model requests or protected execution
+        run: |
+          node --input-type=module <<'JS'
+          import{chromium}from'playwright';import fs from'node:fs/promises';import assert from'node:assert/strict';
+          const slug='تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي',out='diagnostics/icp-visitor-conditions-611';await fs.mkdir(out,{recursive:true});const report={status:'RUNNING',source:'REAL_PRODUCTION_BROWSER',serviceViews:[],errors:[],externalModel:'NOT_RETRIED_EXPIRED_CREDENTIAL',protectedExecution:'NOT_TESTED'},browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome'});
+          try{
+          const registry=await(await fetch('https://hossambahr.com/src/registry/published-services.json')).json(),s=registry.services.find(x=>x.slug===slug);assert.equal(s.eligibilityScope,'common-only');assert.equal(s.verification.detailsVerified,false);assert.equal(s.verification.requirementsVerified,false);assert.equal(s.verification.eligibilityVerified,false);report.partialServices=registry.services.filter(s=>!s.verification.detailsVerified).length;assert.equal(report.partialServices,32);
+          for(const width of[1440,390])for(const locale of['ar','en']){const page=await browser.newPage({viewport:{width,height:width===390?844:960}});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('https://hossambahr.com'+(locale==='en'?'/en':'')+'/services/'+encodeURIComponent(slug)+'/',{waitUntil:'networkidle'});const text=await page.locator('main').innerText();assert.match(text,/4000/);assert.match(text,/8000/);assert.match(text,/15000/);assert.match(text,locale==='en'?/resident sponsor/i:/عند كفالة مقيم/);assert.match(text,locale==='en'?/remain under review/i:/قيد المراجعة/);assert.match(text,locale==='en'?/medical report/i:/التقرير الطبي/);if(locale==='en')assert.doesNotMatch(text,/[\u0600-\u06ff]/);
+          const official=page.locator('[data-government-cta="verified"]');assert.ok(await official.count()>=1);assert.ok((await official.first().getAttribute('href')).startsWith('https://'));const assisted=page.locator('[data-commercial-cta="verified"]');assert.ok(await assisted.count()>=1);const contact=new URL(await assisted.first().getAttribute('href'),'https://hossambahr.com');assert.equal(contact.pathname,locale==='en'?'/en/contact/':'/contact/');assert.equal(contact.searchParams.get('service'),slug);const wa=page.locator('.hb-service-pathways .hb-path-assisted');assert.equal(new URL(await wa.first().getAttribute('href')).pathname,'/971503780460');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);assert.deepEqual(errors,[]);await page.screenshot({path:out+'/visitor-'+locale+'-'+width+'.png'});report.serviceViews.push({locale,width,status:'PASS',assistedContextPreserved:true,governmentPath:true,whatsapp:true,protectedActionExecuted:false});await page.close();}
+          }catch(e){report.errors.push(String(e.stack||e));}finally{await browser.close();report.status=report.errors.length?'FAIL':'PASS';await fs.writeFile(out+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}assert.equal(report.status,'PASS');
+          JS
+      - name: Preserve Production evidence
+        if: always()
+        run: |
+          if [ -d diagnostics/icp-visitor-conditions-611 ]; then
+            git config user.name "HossamBahr Acceptance Evidence"
+            git config user.email "acceptance@users.noreply.github.com"
+            git add diagnostics/icp-visitor-conditions-611
+            git commit -m "Preserve real ICP visitor condition acceptance"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
