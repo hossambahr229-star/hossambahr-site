@@ -1,0 +1,19 @@
+{
+  "status": "FAIL",
+  "source": "REAL_PRODUCTION_BROWSER",
+  "views": [
+    {
+      "slug": "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي",
+      "locale": "en",
+      "width": 1440,
+      "scope": "ICP jurisdictions outside Dubai",
+      "status": "PASS",
+      "whatsappContext": "Hello HOSSAM BAHR, I would like help with this transaction:\nService: Visit a Relative or Friend Visa through ICP outside Dubai\nEmirate / jurisdiction: ICP jurisdictions outside Dubai\nAuthority: Federal Authority for Identity, Citizenship, Customs and Port Security\nService reference: directory:residency:29\nService link: https://hossambahr.com/en/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/\nPlease help me confirm the scope and next steps."
+    }
+  ],
+  "errors": [
+    "AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /[\\u0600-\\u06ff]/. Input:\n\n'Hello HOSSAM BAHR, I would like help with this transaction:\\n' +\n  'Service: Amendment of Residency Permit Data\\n' +\n  'Emirate / jurisdiction: UAE outside Dubai\\n' +\n  'Authority: Federal Authority for Identity, Citizenship, Customs and Port Security\\n' +\n  'Service reference: catalog:تعديل بيانات تصريح الإقامة\\n' +\n  'Please help me confirm the scope and next steps.'\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/[eval1]:3:678"
+  ],
+  "whatsappMessagesSent": 0,
+  "protectedExecution": false
+}
