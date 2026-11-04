@@ -1,0 +1,36 @@
+name: Measured metrics palette preview
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/metrics-preview-614.yml, diagnostics/metrics-preview-614/run.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+      - name: Build isolated current source without publishing it
+        run: |
+          git fetch origin main:refs/remotes/origin/main
+          git worktree add /tmp/hb-metrics-site origin/main
+          cd /tmp/hb-metrics-site
+          npm install --no-save --package-lock=false playwright@1.55.0 sharp@0.35.4
+          npm run build
+      - name: Compare measured palette candidates with unchanged geometry
+        run: node diagnostics/metrics-preview-614/run.mjs
+      - name: Preserve preview evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/metrics-preview-614
+          git commit -m "Measure reference metrics palette candidates without a Production change"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
