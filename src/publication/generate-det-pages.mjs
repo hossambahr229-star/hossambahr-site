@@ -28,18 +28,19 @@ function shell(title, body) {
 function page(record, service) {
   const normalized = record.normalization?.excludeFromRealTotal === true;
   const verified = record.classification === 'VERIFIED';
+  const guidance = record.destinationKind === 'OFFICIAL_GUIDANCE';
   const resolvedLinks = (record.normalization?.resolvedInto ?? []).map((slug) => slug === 'dubai-business-activities'
     ? `<a href="/dubai-business-activities.html">بحث الأنشطة والرموز</a>`
     : `<a href="/services/${esc(slug)}/">فتح المعاملة الفعلية</a>`).join('');
   const cta = normalized
     ? resolvedLinks
     : verified
-    ? `<a data-government-cta="verified" href="${esc(record.officialUrl)}" rel="noopener noreferrer">فتح صفحة الخدمة الحكومية الرسمية</a>`
+    ? `<a data-government-cta="verified" href="${esc(record.officialUrl)}" rel="noopener noreferrer">${guidance ? 'فتح الدليل الحكومي واختيار المعاملة' : 'فتح صفحة الخدمة الحكومية الرسمية'}</a>`
     : `<button data-government-cta="${record.classification.toLowerCase()}" disabled aria-disabled="true">الرابط الرسمي قيد التحقق</button>`;
   const notice = normalized
     ? `<div class="verification-pending" role="status"><b>انتقل إلى الخدمة المناسبة:</b> هذا العنوان يشمل أكثر من معاملة. اختر الخدمة المناسبة من الروابط التالية.</div>`
     : verified
-    ? `<div class="legal-service-notice">تمت مطابقة اسم الخدمة مع بطاقة DET الرسمية. راجع البيانات الحكومية النهائية قبل الإرسال.</div>`
+    ? `<div class="legal-service-notice">${guidance ? 'هذه صفحة إرشاد من DET لاختيار المعاملة؛ تختلف خطوات ومتطلبات كل فئة، ولا تمثل طلبًا موحدًا.' : 'تمت مطابقة اسم الخدمة مع بطاقة DET الرسمية. راجع البيانات الحكومية النهائية قبل الإرسال.'}</div>`
     : `<div class="verification-pending" role="status"><b>حمايةً لك:</b> صفحة الخدمة متاحة للمعلومات، لكن الانتقال الخارجي معطّل لأن الرابط المباشر لم يُثبت بعد. لا يوجد رابط عام أو تخميني قابل للنقر.</div>`;
   return shell(service.platformTitle, `<main id="main-content" class="page-shell" data-publication-state="${record.classification}"${normalized ? ` data-normalization-resolution="${esc(record.normalization.resolution)}"` : ''}><nav class="breadcrumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span>←</span><a href="/categories/companies-establishments/">تأسيس الشركات</a><span>←</span><span>${esc(service.platformTitle)}</span></nav><header class="page-hero"><span class="eyebrow">دائرة الاقتصاد والسياحة في دبي (DET)</span><h1>${esc(service.platformTitle)}</h1><p>${esc(service.description)}</p><div class="service-identity-row"><a href="/categories/companies-establishments/">خدمات تأسيس الشركات</a><a href="/services/?q=${encodeURIComponent(service.platformTitle)}">البحث عن الخدمة</a></div></header>${notice}<div class="detail-layout"><div class="detail-content"><section class="detail-section"><h2>المستندات والمتطلبات</h2>${list(service.requirements)}</section><section class="detail-section"><h2>الشروط</h2><p>${esc(service.conditions)}</p></section><section class="detail-section"><h2>الرسوم</h2><p>${esc(service.fees)}</p></section><section class="detail-section"><h2>مدة الإنجاز</h2><p>${esc(service.duration)}</p></section><section class="detail-section"><h2>حالات خاصة</h2><p>${esc(service.specialCases)}</p></section></div><aside class="service-aside"><span class="${verified ? 'status-good' : 'status-pending'}">${normalized ? 'NORMALIZED' : statusLabel(record.classification)}</span><dl><dt>الإمارة</dt><dd>دبي</dd><dt>الجهة</dt><dd>دائرة الاقتصاد والسياحة</dd><dt>نوع الطلب</dt><dd>${esc(service.requestType)}</dd><dt>حالة الرابط</dt><dd>${normalized ? esc(record.normalization.resolution) : esc(record.classification)}</dd></dl><div class="actions">${cta}<a class="secondary" href="/services/">العودة إلى دليل الخدمات</a></div></aside></div></main>`);
 }

@@ -90,7 +90,7 @@ function safeFaq(destinationKind) {
   ];
 }
 
-function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null, officialCtaUrlEn = null, noDocumentsRequired = false, officialLinkCheckedAt = officialLinkAuditAt, recordedSteps = null, stepsReviewedAt = null, eligibilityScope = 'complete', officialVariantCards = null }) {
+function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, authorityEn, mainCategory, subCategory, description, requirements, fees, duration, conditions, officialInformationUrl, officialCtaUrl, destinationKind = 'DIRECT_SERVICE', verificationStatus = 'VERIFIED', sourceRegistry, relatedServiceIds = [], faq = [], keywords = [], customerTypes = ['business', 'individual'], economicActivity = null, licenseType = null, lastReviewedAt = reviewedAt, localizedDetails = null, officialCtaUrlEn = null, noDocumentsRequired = false, officialLinkCheckedAt = officialLinkAuditAt, recordedSteps = null, stepsReviewedAt = null, eligibilityScope = 'complete', officialVariantCards = null, scopedGuidance = null }) {
   const normalizedDestinationKind = verificationStatus === 'VERIFIED' ? destinationKind : 'CTA_DISABLED';
   const documentsPublished = hasRecordedFact(requirements) || (sourceRegistry === 'service-matrix' && noDocumentsRequired);
   const feesPublished = hasRecordedFact(fees);
@@ -117,6 +117,7 @@ function base({ id, slug, nameAr, nameEn, emirate, authorityId, authorityAr, aut
     keywords: terms(nameAr, englishTitles[slug] || nameEn, authorityAr, authorityEn, emirate, mainCategory, subCategory, keywords),
     description: text(description),
     ...(localizedDetails ? {localizedDetails} : {}),
+    ...(scopedGuidance ? {scopedGuidance} : {}),
     ...(Array.isArray(officialVariantCards) && officialVariantCards.length > 1 ? {officialVariantCards} : {}),
     documents: { status: documentsPublished ? 'PUBLISHED' : unavailable, items: requirements || [], ...(noDocumentsRequired ? {noDocumentsRequired:true} : {}) },
     governmentFees: { status: feesPublished ? 'PUBLISHED_OR_CONDITIONAL' : unavailable, text: text(fees) },
@@ -249,6 +250,8 @@ for (const publication of det.services.filter((item) => !item.normalization?.exc
     officialInformationUrl: publication.officialUrl || publication.rejectedUrl || source.evidenceUrl,
     officialCtaUrl: publication.officialUrl,
     verificationStatus: publication.classification,
+    destinationKind: publication.destinationKind || 'DIRECT_SERVICE',
+    scopedGuidance: publication.scopedGuidance || null,
     sourceRegistry: 'det-progressive-publication',
     relatedServiceIds: source.relatedServices || [],
     keywords: [source.audience, source.specialCases],
