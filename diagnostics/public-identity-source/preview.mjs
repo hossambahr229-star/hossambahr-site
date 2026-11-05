@@ -1,10 +1,10 @@
 import{createServer}from'node:http';import{readFile,writeFile,mkdir}from'node:fs/promises';import{resolve,join,relative,isAbsolute,extname}from'node:path';import{execFileSync}from'node:child_process';import{createRequire}from'node:module';
-const root='/tmp/hb-public-identity',out=resolve('diagnostics/public-identity-preview-20261105');await mkdir(out,{recursive:true});
+const root='/tmp/hb-public-identity',out=resolve('diagnostics/public-identity-preview-20261105-v2');await mkdir(out,{recursive:true});
 const require=createRequire(join(root,'runtime.cjs')),{chromium}=require('playwright');
 const server=createServer(async(req,res)=>{try{let route=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(route.endsWith('/'))route+='index.html';const file=resolve(root,'.'+route),rel=relative(root,file);if(rel.startsWith('..')||isAbsolute(rel))throw Error('Outside root');const body=await readFile(file);res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml','.webp':'image/webp','.png':'image/png','.jpg':'image/jpeg','.ttf':'font/ttf','.woff2':'font/woff2'})[extname(file)]||'application/octet-stream');res.end(body);}catch{res.writeHead(404).end();}});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port,browser=await chromium.launch({executablePath:process.env.HB_BROWSER_PATH,headless:true});
-const report={scope:'ISOLATED_SOURCE_PREVIEW_ONLY_NOT_PRODUCTION',before:[],after:[],errors:[]};
-try{for(const stage of['before','after']){
+const baseline=JSON.parse(await readFile('diagnostics/public-identity-preview-20261105/report.json','utf8'));const report={scope:'ISOLATED_SOURCE_PREVIEW_ONLY_NOT_PRODUCTION',baselineReport:'diagnostics/public-identity-preview-20261105/report.json',before:baseline.before,after:[],errors:[]};
+try{for(const stage of['after']){
  if(stage==='after')execFileSync(process.execPath,['src/publication/apply-public-identity.mjs'],{cwd:root,stdio:'inherit'});
  for(const locale of['ar','en'])for(const width of[1440,390])for(const [key,path]of Object.entries({home:'/',service:'/services/issuance-of-a-new-work-permit-golden-visa-holders/',discover:'/discover/',approvals:'/approvals/',activities:'/business-activities/',authorities:'/authorities/'})){
  const route=(locale==='en'?'/en':'')+path,page=await browser.newPage({viewport:{width,height:width===1440?960:844},deviceScaleFactor:1,reducedMotion:'reduce'}),errors=[];page.on('pageerror',e=>errors.push(e.message));const response=await page.goto(base+route,{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
