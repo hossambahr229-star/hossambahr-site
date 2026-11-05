@@ -1,0 +1,649 @@
+{
+  "sourceSha": "afcde4b6331c86efe9161b52da52bbfe4435c572",
+  "scope": "ISOLATED_SOURCE_UI",
+  "cases": [
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-directory-card]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-directory-card]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-directory-card]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-directory-card]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-service-slug]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-service-slug]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-service-slug]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-service-slug]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-directory-card]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-directory-card]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-directory-card]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-directory-card]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-service-slug]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-service-slug]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-service-slug]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-service-slug]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    }
+  ],
+  "errors": [
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-directory-card]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-directory-card]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-directory-card]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-directory-card]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-service-slug]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-service-slug]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-canonical-service]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-service-slug]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: SyntaxError: Failed to execute 'querySelectorAll' on 'Document': '[data-service-slug]:visible' is not a valid selector.\n    at eval (eval at predicate (eval at evaluate (:291:30)), <anonymous>:1:20)\n    at predicate (eval at evaluate (:291:30), <anonymous>:7:23)\n    at next (eval at evaluate (:291:30), <anonymous>:29:29)\n    at eval (eval at evaluate (:291:30), <anonymous>:42:9)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-directory-card]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-directory-card]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-directory-card]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-directory-card]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-service-slug]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-service-slug]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-canonical-service]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-service-slug]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Document.querySelectorAll: '[data-service-slug]:visible' is not a valid selector\n@debugger eval code line 291 > eval line 4 > eval:1:20\npredicate@debugger eval code line 291 > eval:7:23\nnext@debugger eval code line 291 > eval:29:29\n@debugger eval code line 291 > eval:42:9\nevaluate@debugger eval code:293:16\n@debugger eval code:1:44\n"
+    }
+  ],
+  "status": "FAIL"
+}
