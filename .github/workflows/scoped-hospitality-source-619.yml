@@ -26,21 +26,21 @@ jobs:
       - name: Prepare exact proposed source
         run: |
           git fetch origin agent/scoped-hospitality-guidance-20261105
-          git worktree add /tmp/hb-scoped-source f7897e03d03ede6afedf0ae0689d3bb0a02ce099
+          git worktree add /tmp/hb-scoped-source abe17c58a763684837ce0e9999b72c54ec1bbd9f
           cd /tmp/hb-scoped-source
           npm run build
       - name: Verify scoped facts, disclosures and both pathways
         env:
           HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
-          HB_SOURCE_SHA: f7897e03d03ede6afedf0ae0689d3bb0a02ce099
+          HB_SOURCE_SHA: abe17c58a763684837ce0e9999b72c54ec1bbd9f
         run: node diagnostics/scoped-hospitality-browser-619.mjs
       - name: Preserve actual source browser evidence
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          if [ ! -d diagnostics/scoped-hospitality-source-619 ]; then exit 0; fi
-          git add diagnostics/scoped-hospitality-source-619
+          if [ ! -d diagnostics/scoped-hospitality-source-619-v2 ]; then exit 0; fi
+          git add diagnostics/scoped-hospitality-source-619-v2
           if ! git diff --cached --quiet; then
             git commit -m "Record scoped hospitality source browser pathways and fee isolation"
             git pull --rebase origin agent/dld-source-review-evidence
