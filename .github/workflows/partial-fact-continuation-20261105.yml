@@ -1,0 +1,32 @@
+name: Remaining partial fact continuation checkpoint
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/partial-fact-continuation-20261105.yml, diagnostics/partial-fact-continuation-20261105.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Read only the current remaining partial records
+        run: |
+          git fetch origin main
+          git show origin/main:src/registry/published-services.json > /tmp/hb-current-published-registry.json
+          export HB_SOURCE_SHA="$(git rev-parse origin/main)"
+          node diagnostics/partial-fact-continuation-20261105.mjs
+      - name: Preserve the continuation checkpoint
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/partial-fact-continuation-20261105
+          if ! git diff --cached --quiet; then
+            git commit -m "Record only remaining partial service fields from current published registry"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
