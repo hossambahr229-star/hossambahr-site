@@ -32,7 +32,8 @@
     "test:sitemap": "node --test scripts/sitemap-integrity.test.mjs scripts/bilingual-seo-integrity.test.mjs",
     "social:generate": "node scripts/generate-service-social-images.mjs",
     "test:social": "node scripts/verify-service-social-assets.mjs",
-    "test:public-identity": "node --test test/architecture/public-identity-publication.test.mjs"
+    "test:public-identity": "node --test test/architecture/public-identity-publication.test.mjs",
+    "search:quality": "node scripts/search-intent-quality.mjs"
   },
   "engines": {
     "node": ">=20"

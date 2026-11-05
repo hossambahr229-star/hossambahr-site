@@ -87,6 +87,22 @@ export function reraApprovalIntent(query) {
  return /(?:ريرا|\brera\b)/.test(q)&&/(?:موافق|تصريح|approval|permit|certification)/.test(q);
 }
 
+export function workQuotaIntent(query){
+ const q=normalizeIntent(query);
+ return /(?:كوته|كوتا|حصه|حصص|\bquotas?\b)/i.test(q)&&/(?:عمال|عامل|موظف|تصاريح العمل|تصريح عمل|work permit|worker|labou?r|employment)/i.test(q);
+}
+export function businessCancellationIntent(query){
+ const q=normalizeIntent(query);
+ const cancel=/(?:الغاء|الغي|اغلق|اقفل|تصفيه|\bcancel|clos(?:e|ing)|liquidat|dissolv)/i.test(q);
+ const business=/(?:شرك|موسسه|رخصه تجاريه|رخصه اقتصاديه|company|business|firm|trade licen[cs]e|commercial licen[cs]e|economic licen[cs]e|sole proprietorship|sole establishment)/i.test(q);
+ const other=/(?:اقام|تاشير|هويه|بطاقه|ملف|تصريح|عدم ممانعه|موافق|قياده|اهليه|نفع عام|visa|residen|identity|card|file|permit|\bnoc\b|approval|driving|civil organization|non profit|charit|عقد|contract|موظف|employee|worker|vehicle|مركب)/i.test(q);
+ return cancel&&business&&!other;
+}
+export function businessCancellationService(service){
+ const name=normalizeIntent((service.a||'')+' '+(service.e||''));
+ return ['companies-establishments','business-licensing'].includes(service.c)&&/(?:الغاء|تصفيه|cancel|liquidat|dissolv)/i.test(name)&&/(?:رخصه|شرك|موسسه|licen[cs]e|company|business|firm)/i.test(name);
+}
+
 export function rankServices(query, services = []) {
   const normalized = normalizeIntent(query);
   const sira = siraIntent(query);
@@ -120,6 +136,15 @@ export function rankServices(query, services = []) {
       return [service.m,service.emirate,...aliases].filter(Boolean).some(scope=>normalizeIntent(scope)===suffix);
     }));
   if (exactNames?.length) return exactNames.map(service => ({ ...service, score: 10000 }));
+  if(workQuotaIntent(query)){
+    if(/(?:الغاء|الغي|استرداد|cancel|refund|عامل مساعد|عماله مساعده|منزلي|domestic|منطقه حره|المنطقه الحره|free zone)/i.test(normalized))return [];
+    return services.filter(service=>service.i==='mohre'&&workQuotaIntent((service.a||'')+' '+(service.e||''))).map(service=>({...service,score:12000}));
+  }
+  if(businessCancellationIntent(query)){
+    const scope=queryEmirate(query);
+    return services.filter(service=>businessCancellationService(service)&&(!scope||matchesEmirate(service.m,scope))).map(service=>({...service,score:12000}));
+  }
+
   const residenceFine=includesAny(normalized,['إقامة','تأشيرة','residence','residency','visa','overstay'])&&includesAny(normalized,['غرام','مخالف','fine','penalty','penalties']);
   const otherResidenceOperation=includesAny(normalized,['إلغاء','تجديد','إصدار','renew','cancel','issuance','issue','waiver','appeal','إعفاء','تخفيض']);
   if(residenceFine&&!otherResidenceOperation){
