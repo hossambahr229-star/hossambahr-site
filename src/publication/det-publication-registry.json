@@ -4,23 +4,318 @@
   "reviewedAt": "2026-08-10T13:00:00+04:00",
   "policy": "A pending or broken government destination never becomes an active link. The internal service page remains available.",
   "services": [
-    {"sourceId":"guide:reserve-trade-name-dubai","slug":"reserve-trade-name-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name","evidence":"Official DET service card: Request to book a trade name; reviewed 2026-08-08."},
-    {"sourceId":"guide:initial-approval-dubai","slug":"initial-approval-dubai","classification":"PENDING_VERIFICATION","officialUrl":null,"rejectedUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-initial-approval","evidence":"The former deep link redirects to the generic directory. The current official DET business-setup catalogue lists trade-name booking and trade-licence issuance, while the issuance journey absorbs the preliminary approval stage instead of publishing it as an independent service card; reviewed 2026-08-11.","normalization":{"resolution":"SUB_SERVICE","excludeFromRealTotal":true,"resolvedInto":["issue-trade-license-dubai"],"reviewedAt":"2026-08-11"}},
-    {"sourceId":"guide:amend-business-license-dubai","slug":"amend-business-license-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence","evidence":"Official DET service card: Request to amend a trade licence; reviewed 2026-08-08."},
-    {"sourceId":"guide:add-business-activity-dubai","slug":"add-business-activity-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence","evidence":"Current official DET amendment service explicitly includes modifying business activities; reviewed 2026-08-08."},
-    {"sourceId":"guide:add-remove-partner-dubai","slug":"add-remove-partner-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence","evidence":"Current official DET amendment service explicitly includes amending partners or parties involved; reviewed 2026-08-08."},
-    {"sourceId":"guide:transfer-company-ownership-dubai","slug":"transfer-company-ownership-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence","evidence":"Current official DET amendment service documents sale-of-shop and partnership amendment evidence within licence amendments; reviewed 2026-08-08."},
-    {"sourceId":"guide:cancel-business-license-dubai","slug":"cancel-business-license-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence","evidence":"Official DET service card: Request for cancellation of trade licence; reviewed 2026-08-08."},
-    {"sourceId":"guide:renew-business-license-dubai","slug":"renew-business-license-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence","evidence":"Official DET service card: Request to renew trade licence; reviewed 2026-08-08."},
-    {"sourceId":"guide:change-company-manager-dubai","slug":"change-company-manager-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence","evidence":"Current official DET amendment service explicitly includes changing manager details; reviewed 2026-08-08."},
-    {"sourceId":"catalog:تغيير الشكل القانوني لشركة في دبي","slug":"legacy-service-67abe5ccf3","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence","evidence":"Official Arabic and English Invest in Dubai amendment cards reviewed 2026-10-24. Record applicable legal-form addenda and conditional partnership resolution; retain case-specific documents. Published 10-minute amendment time is not a legal-conversion completion guarantee. No numerical fee is published."},
-    {"sourceId":"directory:approvals:1","slug":"legacy-service-e619a9e547","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"Historical composite combines a trade-name request with the licensing journey and is excluded from the real-service denominator without deleting its audit trail.","normalization":{"resolution":"SPLIT","excludeFromRealTotal":true,"resolvedInto":["reserve-trade-name-dubai","issue-trade-license-dubai"],"reviewedAt":"2026-08-11"}},
-    {"sourceId":"directory:approvals:2","slug":"legacy-service-85a10469d8","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-commercial-permit","evidence":"Official DET service card: Request to issue commercial permit; fee schedule and processing-time fields reviewed 2026-10-23. Other missing fields remain unverified."},
-    {"sourceId":"directory:approvals:30","slug":"legacy-service-e7f35a06d9","classification":"VERIFIED","officialUrl":"https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits","evidence":"Current official DET hospitality-services page explicitly covers hotel and holiday-home setup, classification and management; reviewed 2026-08-08."},
-    {"sourceId":"directory:approvals:31","slug":"legacy-service-f6481e594b","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"Historical title describes regulated economic activities, not one government transaction. It is retained as guidance and resolved to activity search plus licence issuance.","normalization":{"resolution":"RECLASSIFIED_GUIDANCE","excludeFromRealTotal":true,"resolvedInto":["dubai-business-activities","issue-trade-license-dubai"],"reviewedAt":"2026-08-10"}},
-    {"sourceId":"directory:approvals:32","slug":"legacy-service-6f3bee6661","classification":"PENDING_VERIFICATION","officialUrl":null,"evidence":"Historical title combines two unrelated official services and is split without deleting the original audit record.","normalization":{"resolution":"SPLIT","excludeFromRealTotal":true,"resolvedInto":["det-event-permit-dubai","det-tour-guide-licence-dubai"],"reviewedAt":"2026-08-10"}},
-    {"sourceId":"official:det:issue-trade-license","slug":"issue-trade-license-dubai","classification":"VERIFIED","officialUrl":"https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence","evidence":"Official DET service card: Request to issue a trade licence; reviewed 2026-08-10.","serviceData":{"platformTitle":"إصدار رخصة تجارية في دبي","serviceName":"طلب إصدار رخصة تجارية","description":"إصدار الوثيقة الرسمية التي تتيح مزاولة الأنشطة الاقتصادية قانونيًا في دبي، وفق نوع الرخصة والنشاط والشكل القانوني.","requirements":["الموافقات الخارجية عند اشتراطها للنشاط","عقد التأسيس وعقد الموقع للرخصة العادية عند انطباقهما","الرقم الموحد أو رقم الهوية للرخصة الفورية","رقم الهوية لرخصة تاجر إلكتروني"],"conditions":"تختلف المتطلبات النهائية حسب نوع الرخصة والنشاط والشكل القانوني، وتعرضها البوابة الرسمية قبل الإرسال.","fees":"تحددها البوابة حسب نوع الرخصة والنشاط؛ توثق البطاقة الرسمية 1,070 درهمًا إضافة إلى 300 درهم لعضوية غرفة دبي لرخصة تاجر إلكتروني.","duration":"10 دقائق للرخصة العادية، و5 دقائق للرخصة الفورية أو رخصة تاجر إلكتروني وفق البطاقة الرسمية.","specialCases":"الرخصة الفورية متاحة لمجموعة أنشطة لا تحتاج موافقات خارجية، وتشمل مزايا إضافية للأشكال القانونية المؤهلة.","requestType":"إصدار جديد","authority":"دائرة الاقتصاد والسياحة في دبي (DET)","emirate":"دبي","sector":"التراخيص الاقتصادية"}},
-    {"sourceId":"official:det:event-permit","slug":"det-event-permit-dubai","classification":"VERIFIED","officialUrl":"https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-an-event-permit","evidence":"Official DET service page: Apply for an event permit; reviewed 2026-08-10.","serviceData":{"platformTitle":"طلب تصريح فعالية في دبي","serviceName":"التقديم للحصول على تصريح فعالية","description":"تصريح إلزامي للمنشأة أو منظم الفعالية لتنظيم فعاليات ترفيهية أو رياضية أو خيرية أو دينية أو تجارية في دبي.","requirements":["نسخة جواز سفر منظم الفعالية","خطاب عدم ممانعة من موقع الفعالية","متطلبات إضافية تختلف حسب نوع الفعالية","بيانات المشاركين أو المؤدين عند انطباقها"],"conditions":"مخصص لمنظمي الفعاليات أو الشركات المسجلة في دبي، ولا يُنظر في الطلب قبل سداد الرسوم كاملة.","fees":"تعتمد على نوع الفعالية وفئتها وتظهر في بوابة e-Permit الرسمية.","duration":"تحددها البوابة الرسمية حسب نوع الفعالية واكتمال الطلب.","specialCases":"الفعاليات ذات التذاكر تحتاج أيضًا تصريح تذاكر مستقل لكل فعالية.","requestType":"تصريح","authority":"دائرة الاقتصاد والسياحة في دبي (DET)","emirate":"دبي","sector":"الفعاليات والتصاريح"}},
-    {"sourceId":"official:det:tour-guide","slug":"det-tour-guide-licence-dubai","classification":"VERIFIED","officialUrl":"https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-tour-guide-training","evidence":"Official DET service page: Apply to become a licensed tour guide in Dubai; reviewed 2026-08-10.","serviceData":{"platformTitle":"التأهيل للحصول على ترخيص مرشد سياحي في دبي","serviceName":"التقديم لبرنامج المرشد السياحي المرخص","description":"إكمال برنامج المرشد السياحي الإلكتروني المعتمد للتأهل للعمل كمرشد سياحي مرخص في دبي.","requirements":["إقامة سارية في دولة الإمارات","عمر 18 سنة أو أكثر","استكمال التسجيل ومتطلبات البرنامج الإلكتروني","اجتياز البرنامج والتقييمات المطلوبة"],"conditions":"التأهيل الرسمي متاح للمقيمين والمواطنين المؤهلين، ويصدر الترخيص وفق إتمام البرنامج ومتطلبات DET النهائية.","fees":"تعرضها منصة البرنامج الرسمية أثناء التسجيل حسب فئة المتقدم.","duration":"تعتمد على سرعة إكمال المتقدم للبرنامج الإلكتروني والتقييمات.","specialCases":"الصفحة تخص تأهيل وترخيص الفرد كمرشد سياحي، وليست تصريح تنظيم فعالية أو ترخيص شركة سياحية.","requestType":"تأهيل وترخيص مهني","authority":"دائرة الاقتصاد والسياحة في دبي (DET)","emirate":"دبي","sector":"السياحة والتدريب"}}
+    {
+      "sourceId": "guide:reserve-trade-name-dubai",
+      "slug": "reserve-trade-name-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name",
+      "evidence": "Official DET service card: Request to book a trade name; reviewed 2026-08-08."
+    },
+    {
+      "sourceId": "guide:initial-approval-dubai",
+      "slug": "initial-approval-dubai",
+      "classification": "PENDING_VERIFICATION",
+      "officialUrl": null,
+      "rejectedUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-initial-approval",
+      "evidence": "The former deep link redirects to the generic directory. The current official DET business-setup catalogue lists trade-name booking and trade-licence issuance, while the issuance journey absorbs the preliminary approval stage instead of publishing it as an independent service card; reviewed 2026-08-11.",
+      "normalization": {
+        "resolution": "SUB_SERVICE",
+        "excludeFromRealTotal": true,
+        "resolvedInto": [
+          "issue-trade-license-dubai"
+        ],
+        "reviewedAt": "2026-08-11"
+      }
+    },
+    {
+      "sourceId": "guide:amend-business-license-dubai",
+      "slug": "amend-business-license-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "evidence": "Official DET service card: Request to amend a trade licence; reviewed 2026-08-08."
+    },
+    {
+      "sourceId": "guide:add-business-activity-dubai",
+      "slug": "add-business-activity-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "evidence": "Current official DET amendment service explicitly includes modifying business activities; reviewed 2026-08-08."
+    },
+    {
+      "sourceId": "guide:add-remove-partner-dubai",
+      "slug": "add-remove-partner-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "evidence": "Current official DET amendment service explicitly includes amending partners or parties involved; reviewed 2026-08-08."
+    },
+    {
+      "sourceId": "guide:transfer-company-ownership-dubai",
+      "slug": "transfer-company-ownership-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "evidence": "Current official DET amendment service documents sale-of-shop and partnership amendment evidence within licence amendments; reviewed 2026-08-08."
+    },
+    {
+      "sourceId": "guide:cancel-business-license-dubai",
+      "slug": "cancel-business-license-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+      "evidence": "Official DET service card: Request for cancellation of trade licence; reviewed 2026-08-08."
+    },
+    {
+      "sourceId": "guide:renew-business-license-dubai",
+      "slug": "renew-business-license-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+      "evidence": "Official DET service card: Request to renew trade licence; reviewed 2026-08-08."
+    },
+    {
+      "sourceId": "guide:change-company-manager-dubai",
+      "slug": "change-company-manager-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "evidence": "Current official DET amendment service explicitly includes changing manager details; reviewed 2026-08-08."
+    },
+    {
+      "sourceId": "catalog:تغيير الشكل القانوني لشركة في دبي",
+      "slug": "legacy-service-67abe5ccf3",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "evidence": "Official Arabic and English Invest in Dubai amendment cards reviewed 2026-10-24. Record applicable legal-form addenda and conditional partnership resolution; retain case-specific documents. Published 10-minute amendment time is not a legal-conversion completion guarantee. No numerical fee is published."
+    },
+    {
+      "sourceId": "directory:approvals:1",
+      "slug": "legacy-service-e619a9e547",
+      "classification": "PENDING_VERIFICATION",
+      "officialUrl": null,
+      "evidence": "Historical composite combines a trade-name request with the licensing journey and is excluded from the real-service denominator without deleting its audit trail.",
+      "normalization": {
+        "resolution": "SPLIT",
+        "excludeFromRealTotal": true,
+        "resolvedInto": [
+          "reserve-trade-name-dubai",
+          "issue-trade-license-dubai"
+        ],
+        "reviewedAt": "2026-08-11"
+      }
+    },
+    {
+      "sourceId": "directory:approvals:2",
+      "slug": "legacy-service-85a10469d8",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-commercial-permit",
+      "evidence": "Official DET service card: Request to issue commercial permit; fee schedule and processing-time fields reviewed 2026-10-23. Other missing fields remain unverified."
+    },
+    {
+      "sourceId": "directory:approvals:30",
+      "slug": "legacy-service-e7f35a06d9",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits",
+      "evidence": "Official DET hospitality overview is a pathway-selection guide, not one execution card. Hotel-classification and holiday-home unit-permit cards were reviewed in the real browser, including lazy-loaded requirements and expanded permit steps, on 2026-11-05. Registration is linked as a separate stage; its unreviewed facts are not borrowed from the unit permit.",
+      "destinationKind": "OFFICIAL_GUIDANCE",
+      "scopedGuidance": {
+        "reviewedAt": "2026-11-05",
+        "notice": {
+          "ar": "اختر نوع المعاملة أولًا. تصنيف الفندق، وتسجيل المشغّل، وتصريح وحدة بيت العطلات مراحل مختلفة؛ تفاصيل الوحدة لا تنطبق على الفندق.",
+          "en": "Choose the transaction first. Hotel classification, operator registration and a holiday-home unit permit are different stages; unit-permit facts do not apply to hotels."
+        },
+        "options": [
+          {
+            "key": "hotel-classification",
+            "title": {
+              "ar": "تصنيف منشأة فندقية",
+              "en": "Classify a hotel establishment"
+            },
+            "informationUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/classify-a-hotel-establishment",
+            "applicationUrl": "https://classification.dubaitourism.ae/",
+            "documents": {
+              "ar": [
+                "موافقة DET المبدئية، وجواز صاحب الرخصة، وخريطة الأرض، وشهادات إتمام المبنى من البلدية، وشهادة الاسم التجاري."
+              ],
+              "en": [
+                "DET initial approval, licence-holder passport, land map, municipality building-completion certificates and trade-name certificate."
+              ]
+            },
+            "fees": {
+              "ar": "متغيرة بحسب فئة الفندق وتصنيفه وعدد وحداته؛ لا تعرض البطاقة مبلغًا موحدًا.",
+              "en": "Variable by hotel category, star rating and number of units; the card gives no universal amount."
+            },
+            "duration": {
+              "ar": "مراجعة الطلب خلال يوم عمل، مع زيارة تصنيف. هذه ليست مدة إنهاء جميع تراخيص تشغيل الفندق.",
+              "en": "Application processing within one business day, with a classification visit; this is not a deadline for all hotel operating licences."
+            },
+            "steps": {
+              "ar": [
+                "تجهيز بيانات العقار، والدخول إلى بوابة التصنيف، وإكمال الطلب والتقييم الذاتي الاختياري، والاستعداد لزيارة DET."
+              ],
+              "en": [
+                "Prepare property details, sign in to the classification portal, complete the application and optional self-assessment, and prepare for the DET visit."
+              ]
+            }
+          },
+          {
+            "key": "holiday-home-operator-registration",
+            "title": {
+              "ar": "تسجيل مشغّل أو مالك بيت عطلات",
+              "en": "Register a holiday-home operator or owner"
+            },
+            "informationUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/register-as-a-holiday-home-operator",
+            "note": {
+              "ar": "التسجيل لدى DET مرحلة منفصلة عن إصدار تصريح الوحدة. راجع بطاقة التسجيل لمتطلباتها؛ لا تُطبّق عليها رسوم تصريح الوحدة.",
+              "en": "DET registration is separate from a unit permit. Check the registration card for its requirements; unit-permit fees do not apply to this stage."
+            }
+          },
+          {
+            "key": "holiday-home-unit-permit",
+            "title": {
+              "ar": "إصدار تصريح جديد لوحدة بيت عطلات",
+              "en": "Issue a new holiday-home unit permit"
+            },
+            "informationUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/issue-a-new-holiday-homes-permit",
+            "applicationUrl": "https://hhpermits.det.gov.ae/holidayhomes/Welcome.aspx",
+            "documents": {
+              "ar": [
+                "سند الملكية أو عقد البيع المعتمد من DLD، وموافقة المطور عند اللزوم، وهوية/جواز المالك والمفوّض، ورخصة المالك إن كان شركة، وخطاب إدارة العقار وفاتورة DEWA.",
+                "عند توقيع ممثل: توكيل وجواز الممثل. قد تُطلب مستندات للوحدات عند كون السند للمبنى كاملًا."
+              ],
+              "en": [
+                "Title deed or DLD-approved sale agreement; developer NOC where applicable; landlord and signatory identity/passport; company-landlord licence; management letter; current DEWA bill.",
+                "A representative signing the management letter needs a power of attorney and passport. Whole-building deeds may require unit-specific evidence."
+              ]
+            },
+            "conditions": {
+              "ar": "أدخل رقم العقار في DEWA بدل رقم الحساب. للمشغّل، تتوافق تواريخ التصريح مع خطاب الإدارة؛ يُعرض التصريح داخل الوحدة.",
+              "en": "Enter the DEWA premise number rather than the account number. Operator permit dates match the management letter; display the permit inside the unit."
+            },
+            "fees": {
+              "ar": "300 درهم لكل غرفة نوم +50 لشهادة التصنيف +10 معرفة +10 ابتكار. تعرض البطاقة أيضًا 370 درهمًا؛ لا نعممه على جميع الوحدات. تذكر سقفًا سنويًا 1200 درهم؛ أكّد تطبيقه والإجمالي المستحق في البوابة.",
+              "en": "AED 300 per bedroom, plus AED 50 classification certificate, AED 10 knowledge and AED 10 innovation. The card also shows AED 370; do not treat it as every unit's total. A yearly AED 1,200 cap is stated; confirm its application and the payable total in the portal."
+            },
+            "duration": {
+              "ar": "مراجعة الطلب خلال يوم عمل؛ يلي القبول التصنيف الذاتي وسداد الرسوم.",
+              "en": "Application review within one business day, followed by self-classification and payment after approval."
+            },
+            "steps": {
+              "ar": [
+                "ادخل بوابة بيوت العطلات، وأضف الوحدة، وأكمل بياناتها ومستنداتها، وراجع الإقرار. بعد الموافقة أكمل التصنيف الذاتي ثم السداد."
+              ],
+              "en": [
+                "Sign in, add the unit, provide its details and documents, and review the declaration. After approval, complete self-classification and pay."
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "directory:approvals:31",
+      "slug": "legacy-service-f6481e594b",
+      "classification": "PENDING_VERIFICATION",
+      "officialUrl": null,
+      "evidence": "Historical title describes regulated economic activities, not one government transaction. It is retained as guidance and resolved to activity search plus licence issuance.",
+      "normalization": {
+        "resolution": "RECLASSIFIED_GUIDANCE",
+        "excludeFromRealTotal": true,
+        "resolvedInto": [
+          "dubai-business-activities",
+          "issue-trade-license-dubai"
+        ],
+        "reviewedAt": "2026-08-10"
+      }
+    },
+    {
+      "sourceId": "directory:approvals:32",
+      "slug": "legacy-service-6f3bee6661",
+      "classification": "PENDING_VERIFICATION",
+      "officialUrl": null,
+      "evidence": "Historical title combines two unrelated official services and is split without deleting the original audit record.",
+      "normalization": {
+        "resolution": "SPLIT",
+        "excludeFromRealTotal": true,
+        "resolvedInto": [
+          "det-event-permit-dubai",
+          "det-tour-guide-licence-dubai"
+        ],
+        "reviewedAt": "2026-08-10"
+      }
+    },
+    {
+      "sourceId": "official:det:issue-trade-license",
+      "slug": "issue-trade-license-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence",
+      "evidence": "Official DET service card: Request to issue a trade licence; reviewed 2026-08-10.",
+      "serviceData": {
+        "platformTitle": "إصدار رخصة تجارية في دبي",
+        "serviceName": "طلب إصدار رخصة تجارية",
+        "description": "إصدار الوثيقة الرسمية التي تتيح مزاولة الأنشطة الاقتصادية قانونيًا في دبي، وفق نوع الرخصة والنشاط والشكل القانوني.",
+        "requirements": [
+          "الموافقات الخارجية عند اشتراطها للنشاط",
+          "عقد التأسيس وعقد الموقع للرخصة العادية عند انطباقهما",
+          "الرقم الموحد أو رقم الهوية للرخصة الفورية",
+          "رقم الهوية لرخصة تاجر إلكتروني"
+        ],
+        "conditions": "تختلف المتطلبات النهائية حسب نوع الرخصة والنشاط والشكل القانوني، وتعرضها البوابة الرسمية قبل الإرسال.",
+        "fees": "تحددها البوابة حسب نوع الرخصة والنشاط؛ توثق البطاقة الرسمية 1,070 درهمًا إضافة إلى 300 درهم لعضوية غرفة دبي لرخصة تاجر إلكتروني.",
+        "duration": "10 دقائق للرخصة العادية، و5 دقائق للرخصة الفورية أو رخصة تاجر إلكتروني وفق البطاقة الرسمية.",
+        "specialCases": "الرخصة الفورية متاحة لمجموعة أنشطة لا تحتاج موافقات خارجية، وتشمل مزايا إضافية للأشكال القانونية المؤهلة.",
+        "requestType": "إصدار جديد",
+        "authority": "دائرة الاقتصاد والسياحة في دبي (DET)",
+        "emirate": "دبي",
+        "sector": "التراخيص الاقتصادية"
+      }
+    },
+    {
+      "sourceId": "official:det:event-permit",
+      "slug": "det-event-permit-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-an-event-permit",
+      "evidence": "Official DET service page: Apply for an event permit; reviewed 2026-08-10.",
+      "serviceData": {
+        "platformTitle": "طلب تصريح فعالية في دبي",
+        "serviceName": "التقديم للحصول على تصريح فعالية",
+        "description": "تصريح إلزامي للمنشأة أو منظم الفعالية لتنظيم فعاليات ترفيهية أو رياضية أو خيرية أو دينية أو تجارية في دبي.",
+        "requirements": [
+          "نسخة جواز سفر منظم الفعالية",
+          "خطاب عدم ممانعة من موقع الفعالية",
+          "متطلبات إضافية تختلف حسب نوع الفعالية",
+          "بيانات المشاركين أو المؤدين عند انطباقها"
+        ],
+        "conditions": "مخصص لمنظمي الفعاليات أو الشركات المسجلة في دبي، ولا يُنظر في الطلب قبل سداد الرسوم كاملة.",
+        "fees": "تعتمد على نوع الفعالية وفئتها وتظهر في بوابة e-Permit الرسمية.",
+        "duration": "تحددها البوابة الرسمية حسب نوع الفعالية واكتمال الطلب.",
+        "specialCases": "الفعاليات ذات التذاكر تحتاج أيضًا تصريح تذاكر مستقل لكل فعالية.",
+        "requestType": "تصريح",
+        "authority": "دائرة الاقتصاد والسياحة في دبي (DET)",
+        "emirate": "دبي",
+        "sector": "الفعاليات والتصاريح"
+      }
+    },
+    {
+      "sourceId": "official:det:tour-guide",
+      "slug": "det-tour-guide-licence-dubai",
+      "classification": "VERIFIED",
+      "officialUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-tour-guide-training",
+      "evidence": "Official DET service page: Apply to become a licensed tour guide in Dubai; reviewed 2026-08-10.",
+      "serviceData": {
+        "platformTitle": "التأهيل للحصول على ترخيص مرشد سياحي في دبي",
+        "serviceName": "التقديم لبرنامج المرشد السياحي المرخص",
+        "description": "إكمال برنامج المرشد السياحي الإلكتروني المعتمد للتأهل للعمل كمرشد سياحي مرخص في دبي.",
+        "requirements": [
+          "إقامة سارية في دولة الإمارات",
+          "عمر 18 سنة أو أكثر",
+          "استكمال التسجيل ومتطلبات البرنامج الإلكتروني",
+          "اجتياز البرنامج والتقييمات المطلوبة"
+        ],
+        "conditions": "التأهيل الرسمي متاح للمقيمين والمواطنين المؤهلين، ويصدر الترخيص وفق إتمام البرنامج ومتطلبات DET النهائية.",
+        "fees": "تعرضها منصة البرنامج الرسمية أثناء التسجيل حسب فئة المتقدم.",
+        "duration": "تعتمد على سرعة إكمال المتقدم للبرنامج الإلكتروني والتقييمات.",
+        "specialCases": "الصفحة تخص تأهيل وترخيص الفرد كمرشد سياحي، وليست تصريح تنظيم فعالية أو ترخيص شركة سياحية.",
+        "requestType": "تأهيل وترخيص مهني",
+        "authority": "دائرة الاقتصاد والسياحة في دبي (DET)",
+        "emirate": "دبي",
+        "sector": "السياحة والتدريب"
+      }
+    }
   ]
 }
