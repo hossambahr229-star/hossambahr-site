@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-11-05",
+  "scope": "Owner-supplied customer phrases mapped to existing canonical service records; not a second service catalog.",
+  "provenance": {
+    "customerPhrases": "Latest owner master directive and observed Production queries",
+    "officialTerminologySources": [
+      "https://www.investindubai.gov.ae/ar/business-setup",
+      "https://www.dubai.ae/ar/investing/closing-your-business",
+      "https://gdrfad.gov.ae/ar/services/95222a46-56f2-11ea-0320-0050569629e8",
+      "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022"
+    ],
+    "publicSearchReviewedAt": "2026-11-05",
+    "measuredSearchVolumes": null,
+    "googleSearchConsolePerformance": "NOT_MEASURED; paid connected access unavailable at the verified checkpoint"
+  },
+  "scenarios": [
+    {
+      "id": "formation-dubai",
+      "query": "عاوز أفتح شركة خدمات فنية في دبي",
+      "expected": [
+        "issue-trade-license-dubai"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "formation-sharjah-en",
+      "query": "Start a technical services company in Sharjah",
+      "expected": [
+        "sharjah-economic-license-issuance"
+      ],
+      "mode": "top_expected"
+    },
+    {
+      "id": "family-renewal-dubai",
+      "query": "تجديد إقامة مراتي في دبي",
+      "expected": [
+        "تجديد-إقامة-أفراد-الأسرة-في-دبي"
+      ],
+      "mode": "top_expected"
+    },
+    {
+      "id": "quota-colloquial",
+      "query": "محتاج كوته عمال",
+      "expected": [
+        "حصة-تصاريح-العمل-للمنشأة"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "quota-colloquial-dubai",
+      "query": "عايز كوتا عمال دبي",
+      "expected": [
+        "حصة-تصاريح-العمل-للمنشأة"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "quota-english",
+      "query": "work permit quotas Sharjah",
+      "expected": [
+        "حصة-تصاريح-العمل-للمنشأة"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "cancel-sole-dubai",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "expected": [
+        "cancel-business-license-dubai"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "cancel-license-dubai",
+      "query": "إلغاء رخصة تجارية دبي",
+      "expected": [
+        "cancel-business-license-dubai"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "cancel-sharjah-en",
+      "query": "cancel a sole proprietorship in Sharjah",
+      "expected": [
+        "sharjah-economic-license-cancellation"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "cancel-ajman",
+      "query": "إلغاء مؤسسة فردية في عجمان",
+      "expected": [
+        "ajman-commercial-license-cancellation"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "cancel-abu-dhabi",
+      "query": "تصفية شركة في أبوظبي",
+      "expected": [
+        "abu-dhabi-economic-license-cancellation"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "cancel-rak",
+      "query": "إلغاء رخصة اقتصادية في رأس الخيمة",
+      "expected": [
+        "ras-al-khaimah-license-cancellation"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "cancel-fujairah",
+      "query": "إلغاء رخصة اقتصادية في الفجيرة",
+      "expected": [
+        "fujairah-economic-license-cancellation"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "sira-security",
+      "query": "موافقة سيرا للأنشطة الأمنية",
+      "expected": [
+        "sira-new-security-activity-license-dubai",
+        "sira-security-system-certification-dubai"
+      ],
+      "mode": "only_expected"
+    }
+  ]
+}
