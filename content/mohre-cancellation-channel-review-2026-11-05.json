@@ -1,6 +1,6 @@
 {
   "reviewedAt": "2026-11-05",
-  "scope": "ATLP / AD Ports channel for MOHRE establishment-card cancellation; not a universal Ministry channel",
+  "scope": "ATLP / AD Ports channel for MOHRE establishment-card cancellation; not a universal Ministry channel; Taqyeem programme guidance route review",
   "records": [
     {
       "slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
@@ -33,6 +33,30 @@
         }
       ],
       "finding": "The previous Ministry article describes obtaining a cancellation statement, not filing card cancellation. ATLP publishes the matching request via AD Ports, with five channel-specific documents and a displayed 20-minute channel duration. Government/provider charge components and complete eligibility remain unverified; no nationwide fee or timing promise is made."
+    },
+    {
+      "slug": "تقرير-تقييم-المنشأة",
+      "reviewedAt": "2026-11-05",
+      "fields": [
+        "description",
+        "sourceRoute",
+        "specialCases"
+      ],
+      "remaining": [],
+      "previousOfficialUrls": [
+        "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1"
+      ],
+      "sources": [
+        {
+          "url": "https://mohre.gov.ae/ar/services/taqyeem.aspx",
+          "language": "ar"
+        },
+        {
+          "url": "https://mohre.gov.ae/en/services/taqyeem.aspx",
+          "language": "en"
+        }
+      ],
+      "finding": "Both language sources are Taqyeem programme guides with Tasheel-to-provider referral; neither is a direct application card or publishes complete transaction documents, fees, timing or eligibility."
     }
   ]
 }
