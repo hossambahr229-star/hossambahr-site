@@ -1,0 +1,54 @@
+name: Public sitemap application-route exclusion acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/protected-sitemap-live-615.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the deployed sitemap policy without repeating accepted service crawls
+        shell: python
+        run: |
+          import json,re,time,urllib.request,xml.etree.ElementTree as ET
+          from pathlib import Path
+          from datetime import datetime,timezone
+          base='https://hossambahr.com'
+          def fetch(p):
+            with urllib.request.urlopen(urllib.request.Request(base+p,headers={'Cache-Control':'no-cache','User-Agent':'HossamBahr-Public-QA'}),timeout=25) as r:return r.status,r.read().decode('utf-8-sig')
+          for i in range(90):
+            try:
+              status,xml=fetch('/sitemap.xml?protected615='+str(i))
+              if '/en/services/ajman-commercial-license-renewal/' in xml and '/command-center/' not in xml:break
+            except Exception:pass
+            time.sleep(10)
+          else:raise RuntimeError('Protected-route sitemap correction not yet live')
+          ET.fromstring(xml);urls=re.findall(r'<loc>([^<]+)</loc>',xml);assert len(urls)==len(set(urls))
+          private=[u for u in urls if re.search(r'hossambahr.com/(?:en/)?(?:auth|account|os|command-center|owner|dashboard)(?:/|$)',u)];assert not private
+          previous=json.loads(Path('diagnostics/bilingual-seo-live-614/report.json').read_text())
+          assert previous['status']=='PASS_FOR_SCOPED_BILINGUAL_PUBLICATION'
+          canonical={p['enCanonical'] for p in previous['servicePairs']}
+          assert canonical.issubset(set(urls));assert len(canonical)==201
+          aliases={base+'/en/services/'+p['slug']+'/' for p in previous['servicePairs'] if p['alias']}
+          assert not aliases.intersection(urls)
+          canaries=[]
+          for route in ['/command-center/','/services/renew-business-license-ajman/','/en/services/ajman-commercial-license-renewal/']:
+            code,html=fetch(route);assert code==200;canaries.append({'route':route,'status':code})
+          report={'observedAtUTC':datetime.now(timezone.utc).isoformat(),'source':'REAL_PRODUCTION_HTTP','status':'PASS','sitemapLocations':len(urls),'protectedEntries':private,'acceptedCanonicalEnglishServicesPreserved':len(canonical),'previousFullServiceCrawlRun':41988596067,'repeatedFullServiceCrawl':False,'canaries':canaries,'authenticationOrPermissionsChanged':False,'googleIndexingOrRanking':'NOT_CLAIMED'}
+          out=Path('diagnostics/protected-sitemap-live-615');out.mkdir(parents=True,exist_ok=True);(out/'report.json').write_text(json.dumps(report,indent=2),encoding='utf-8');print(json.dumps(report,indent=2))
+      - name: Preserve actual live sitemap acceptance
+        if: always()
+        run: |
+          if [ -d diagnostics/protected-sitemap-live-615 ]; then
+            git config user.name "HossamBahr Acceptance Evidence"
+            git config user.email "acceptance@users.noreply.github.com"
+            git add diagnostics/protected-sitemap-live-615
+            git commit -m "Preserve live protected-route sitemap exclusion and accepted public canonical coverage"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
