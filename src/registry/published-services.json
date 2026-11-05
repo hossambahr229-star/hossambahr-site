@@ -22479,8 +22479,8 @@
       "id": "directory:mohre:8",
       "slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
       "name": {
-        "ar": "إلغاء ملف أو بطاقة المنشأة",
-        "en": "Cancel an Establishment File or Card"
+        "ar": "طلب إلغاء بطاقة منشأة لدى MOHRE عبر أطلب",
+        "en": "Request Establishment Card Cancellation via ATLP (MOHRE)"
       },
       "emirate": "اتحادي",
       "authority": {
@@ -22499,31 +22499,66 @@
         "individual"
       ],
       "keywords": [
+        "طلب",
         "إلغاء",
-        "ملف",
-        "أو",
         "بطاقة",
-        "المنشأة",
-        "Cancel",
-        "an",
+        "منشأة",
+        "لدى",
+        "MOHRE",
+        "عبر",
+        "أطلب",
+        "Request",
         "Establishment",
-        "File",
-        "or",
         "Card",
+        "Cancellation",
+        "via",
+        "ATLP",
         "وزارة",
         "الموارد",
         "البشرية",
         "والتوطين",
-        "MOHRE",
         "اتحادي",
         "companies-establishments",
         "ملفات",
-        "المنشآت"
+        "المنشآت",
+        "ملف",
+        "أو",
+        "المنشأة",
+        "Cancel",
+        "an",
+        "establishment",
+        "file",
+        "or",
+        "card",
+        "AD",
+        "Ports"
       ],
-      "description": "بعد إلغاء تصاريح وعقود العمال وتسوية الالتزامات وإلغاء الرخصة الاقتصادية، يُطلب بيان إلغاء نشاط المنشأة عبر مركز MOHRE على 600590000 لاستكمال إغلاق الملف.",
+      "description": "طلب عبر قناة أطلب / AD Ports للحصول على موافقة إلغاء بطاقة المنشأة لدى وزارة الموارد البشرية والتوطين. هذا نطاق قناة محددة، وليس وعدًا بإتاحة القناة لجميع المنشآت أو الإمارات. إلغاء ملف العمل يختلف عن إلغاء بطاقة المنشأة لدى ICP أو GDRFA.",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://www.atlp.ae/en/services-landing/value-added-services/establishment-cancelation-request",
+          "sourceLanguage": "en",
+          "documents": [
+            "For the ATLP / AD Ports channel: request letter for cancellation of the MOHRE establishment card.",
+            "Establishment-details copy.",
+            "Relevant-authority cancellation confirmation.",
+            "Approved-signature copy.",
+            "ICP establishment-card cancellation copy."
+          ],
+          "duration": "20 minutes as displayed for this ATLP request; not a universal or guaranteed end-to-end Ministry closure time.",
+          "eligibility": "The card lists the owner or public relations officer and describes submitting the request via AD Ports. Confirm that the channel is available for your establishment; it does not establish eligibility for every company, emirate or channel.",
+          "notes": "The ATLP card quotes AED 68.53 without separating government and provider components. It is not published as a government fee or a HOSSAM BAHR charge. MOHRE labour-file cancellation differs from ICP/GDRFA immigration establishment-card cancellation. The former Ministry news link described obtaining a cancellation statement, not submitting the cancellation itself."
+        }
+      },
       "documents": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "items": []
+        "status": "PUBLISHED",
+        "items": [
+          "لقناة أطلب / AD Ports وفق بطاقتها: خطاب طلب إلغاء بطاقة المنشأة في نظام MOHRE.",
+          "صورة بيانات المنشأة.",
+          "خطاب من الجهة المعنية يثبت الإلغاء.",
+          "صورة اعتماد التوقيع.",
+          "صورة إلغاء بطاقة المنشأة لدى ICP."
+        ]
       },
       "governmentFees": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
@@ -22534,10 +22569,11 @@
         "text": "NOT_OFFICIALLY_PUBLISHED"
       },
       "processingTime": {
-        "status": "NOT_OFFICIALLY_PUBLISHED",
-        "text": "غير موثق بعد"
+        "status": "PUBLISHED_OR_CONDITIONAL",
+        "text": "20 دقيقة وفق بطاقة قناة أطلب لهذا الطلب؛ ليست مدة شاملة أو مضمونة لإغلاق ملف المنشأة لدى الوزارة بكل القنوات."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "تذكر البطاقة المالك أو مندوب المنشأة، وتصف تقديم الطلب عبر AD Ports. يجب التأكد من إتاحة القناة للمنشأة؛ لا تثبت البطاقة وحدها أهلية كل منشأة أو إمارة أو قناة أخرى.",
+      "eligibilityScope": "common-only",
       "steps": [
         {
           "order": 1,
@@ -22567,16 +22603,16 @@
       ],
       "faq": [
         {
-          "question": "ما الرسوم؟",
-          "answer": "غير موثق بعد"
+          "question": "هل المبلغ المعروض رسم حكومي موحد؟",
+          "answer": "لا؛ مبلغ قناة أطلب غير مفصل حكوميًا/مزودًا، ولا نعممه على الوزارة أو نعدّه رسوم حسام بحر."
         },
         {
-          "question": "كم تستغرق المعاملة؟",
-          "answer": "غير موثق بعد"
+          "question": "هل يشمل إلغاء بطاقة الإقامة للمنشأة؟",
+          "answer": "لا؛ بطاقة MOHRE الخاصة بملف العمل تختلف عن بطاقة ICP أو GDRFA. اختر المعاملة والجهة الصحيحة."
         },
         {
-          "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "question": "هل يمكن لكل منشأة استخدام القناة؟",
+          "answer": "يجب تأكيد إتاحة قناة أطلب / AD Ports للمنشأة قبل بدء الطلب؛ لا تؤكد البطاقة أهلية جميع المنشآت."
         }
       ],
       "relatedServiceIds": [
@@ -22586,30 +22622,31 @@
       ],
       "alternativeServiceIds": [
         "directory:residency:51",
-        "directory:residency:50"
+        "directory:residency:49"
       ],
-      "officialInformationUrl": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers",
-      "officialCtaUrl": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers",
+      "officialInformationUrl": "https://www.atlp.ae/ar/services-landing/value-added-services/establishment-cancelation-request",
+      "officialCtaUrl": "https://www.atlp.ae/ar/services-landing/value-added-services/establishment-cancelation-request",
+      "officialCtaUrlEn": "https://www.atlp.ae/en/services-landing/value-added-services/establishment-cancelation-request",
       "destinationKind": "DIRECT_SERVICE",
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
-        "requirementsVerified": false,
+        "requirementsVerified": true,
         "feesVerified": false,
-        "durationVerified": false,
+        "durationVerified": true,
         "eligibilityVerified": false,
         "detailsVerified": false,
-        "verifiedDetailCount": 0,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
-        "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "officialLinkLastCheckedAt": "2026-11-05",
+        "dataLastReviewedAt": "2026-11-05",
         "sourceAuthority": "mohre",
-        "sourceUrl": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers"
+        "sourceUrl": "https://www.atlp.ae/ar/services-landing/value-added-services/establishment-cancelation-request"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-11-05",
+      "lastReviewedAt": "2026-11-05",
       "internalRoute": "/services/إلغاء-ملف-أو-بطاقة-المنشأة/",
       "sourceRegistry": "service-matrix"
     },

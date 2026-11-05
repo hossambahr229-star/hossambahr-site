@@ -5,13 +5,13 @@
   "fieldCounts": {
     "documents": {
       "PLATFORM_TRANSLATION": 146,
-      "RECORDED_ENGLISH": 43,
-      "MISSING_INFORMATION": 13
+      "RECORDED_ENGLISH": 44,
+      "MISSING_INFORMATION": 12
     },
     "eligibility": {
       "PLATFORM_TRANSLATION": 149,
-      "RECORDED_ENGLISH": 41,
-      "MISSING_INFORMATION": 12
+      "RECORDED_ENGLISH": 42,
+      "MISSING_INFORMATION": 11
     },
     "fees": {
       "PLATFORM_TRANSLATION": 141,
@@ -20,8 +20,8 @@
     },
     "duration": {
       "PLATFORM_TRANSLATION": 142,
-      "RECORDED_ENGLISH": 44,
-      "MISSING_INFORMATION": 16
+      "RECORDED_ENGLISH": 45,
+      "MISSING_INFORMATION": 15
     }
   },
   "scope": "Translation coverage of recorded verified sections only. This does not reverify government facts, fill missing information or grant overall English acceptance.",
@@ -1736,10 +1736,10 @@
       "slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
       "route": "/en/services/إلغاء-ملف-أو-بطاقة-المنشأة/",
       "fields": {
-        "documents": "MISSING_INFORMATION",
-        "eligibility": "MISSING_INFORMATION",
+        "documents": "RECORDED_ENGLISH",
+        "eligibility": "RECORDED_ENGLISH",
         "fees": "MISSING_INFORMATION",
-        "duration": "MISSING_INFORMATION"
+        "duration": "RECORDED_ENGLISH"
       }
     },
     {
