@@ -1,6 +1,6 @@
 /** Shared HOSSAM BAHR identity. These tokens describe presentation, never government eligibility. */
 export const HB_IDENTITY = Object.freeze({
-  version: '2026.11-next-1',
+  version: '2026.11-next-2',
   brand: 'HOSSAM BAHR',
   colors: Object.freeze({
     evergreen: '#073f35', green: '#0b5c48', greenSoft: '#e7f1eb',
@@ -34,6 +34,7 @@ export const SERVICE_VISUAL_FAMILIES = Object.freeze({
   legal: family('العقود والخدمات القانونية', 'Contracts and legal services', 'balance', 'document'),
   identity: family('الهوية والخدمات الشخصية', 'Identity and personal services', 'identity', 'people'),
   mobility: family('النقل والتجارة', 'Transport and trade', 'mobility', 'architecture'),
+  health: family('تراخيص وخدمات صحية', 'Healthcare services', 'health', 'document'),
   government: family('دليل معاملات الإمارات', 'UAE transaction guide', 'network', 'orbit'),
 });
 
@@ -43,6 +44,7 @@ const normalize = value => String(value || '').normalize('NFKD')
 export function socialPresentation(service) {
   const text = normalize([service.name?.ar, service.name?.en, service.slug].join(' '));
   const category = service.classification?.main || '';
+  const authority = normalize([service.authority?.id, service.authority?.ar, service.authority?.en].join(' '));
   const intent = /الغاء|تصفيه|cancel|liquidat|closur/.test(text) ? 'cancel'
     : /تجديد|renew/.test(text) ? 'renew'
     : /تعديل|تحديث|amend|updat/.test(text) ? 'amend'
@@ -54,7 +56,8 @@ export function socialPresentation(service) {
     key = /ذهبي|golden/.test(text) ? 'golden'
       : /مستثمر|شريك|investor|partner/.test(text) ? 'investor'
       : /اسره|زوجه|والد|مولود|family|spouse|parent|newborn/.test(text) ? 'family' : /اقامه|residen/.test(text) && !/تاشير|visa/.test(text) ? 'residence' : 'visas';
-  } else if (category === 'government-approvals' || /سيرا|sira|موافق|approval/.test(text)) key = 'approvals';
+  } else if (category === 'government-approvals' || /سيرا|sira|موافق|approval/.test(text) || /sira|الصناعه الامنيه/.test(authority)) key = 'approvals';
+  else if (/صحي|طبي|healthcare|medical facility|clinic|hospital/.test(text)) key = 'health';
   else if (category === 'education-certificates' || /شهاد|certificate|attestation/.test(text)) key = 'certificates';
   else if (category === 'property-rentals' || category === 'real-estate-services') key = 'property';
   else if (category === 'financial-business') key = 'finance';
@@ -65,5 +68,6 @@ export function socialPresentation(service) {
     key = /بطاقه منش|ملف منش|سجل منش|establishment (?:card|file|record)|company file/.test(text) ? 'establishment'
       : intent === 'cancel' ? 'closure' : intent === 'renew' && /رخص|licen/.test(text) ? 'renewal' : 'business';
   }
-  return { key, intent, ...SERVICE_VISUAL_FAMILIES[key] };
+  const variant = [...String(service.id || service.slug)].reduce((value,char)=>(value*31+char.charCodeAt(0))>>>0,0)%3;
+  return { key, intent, variant, guidance: service.destinationKind === 'OFFICIAL_GUIDANCE', ...SERVICE_VISUAL_FAMILIES[key] };
 }

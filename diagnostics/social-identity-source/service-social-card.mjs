@@ -16,7 +16,7 @@ const path = (d,color='#0b5c48',width=7) => '<path d="'+d+'" fill="none" stroke=
 const circle = (x,y,r,fill='#e7f1eb') => '<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+fill+'"/>';
 const paper = () => rect(93,60,214,280,22)+path('M132 119H250M132 153H264M132 187H238M132 221H220','#b8cfc3',9);
 
-export function serviceIllustration(symbol, accent) {
+export function serviceIllustration(symbol, accent, intent = 'guide', variant = 0) {
   const green=HB_IDENTITY.colors.evergreen;
   const motifs = {
     skyline: rect(44,188,78,147,10)+rect(148,103,86,232,10)+rect(260,153,90,182,10)
@@ -60,13 +60,18 @@ export function serviceIllustration(symbol, accent) {
       +circle(200,67,22,'#f1e5c8')+path('M66 232Q102 265 138 232M262 232Q298 265 334 232',accent,9),
     identity: rect(48,103,304,208,25)+circle(130,177,34,'#e7f1eb')
       +path('M88 254A44 44 0 0 1 173 254',green,12)+path('M213 157H309M213 195H309M213 233H279',accent,9),
+    health: rect(75,102,250,240,25)+rect(144,56,112,69,14,'#f1e5c8')
+      +path('M179 89H221M200 69V109',green,9)+path('M119 170H153M119 210H153M247 170H281M247 210H281',green,8)+rect(173,242,54,100,7,'#e7f1eb'),
     mobility: rect(46,138,223,150,20)+path('M269 184H319L358 234V288H269',green,9)
       +circle(112,300,31,'#f1e5c8')+circle(303,300,31,'#f1e5c8')
       +path('M86 95H239M115 59H269',accent,9),
   };
+  const emblems = {cancel:'M310 302L342 334M342 302L310 334',renew:'M309 318A17 17 0 1 1 320 335M308 303V319H324',amend:'M309 335L314 319L336 297L346 307L324 329L309 335',extend:'M309 318H343M332 306L344 318L332 330',start:'M309 318H343M326 301V335'};
+  const emblem = emblems[intent] ? circle(326,318,35,accent)+path(emblems[intent],'#fff',5) : '';
+  const variation = variant===1 ? path('M38 79H83M61 56V102','#ffffff20',5) : variant===2 ? circle(330,66,20,'#f1e5c830')+path('M45 329H85','#ffffff30',6) : '';
   return '<svg viewBox="0 0 400 400" role="presentation" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">'
     +circle(200,200,181,'#ffffff10')+circle(200,200,149,'#ffffff08')
-    +(motifs[symbol] || motifs.network)+'</svg>';
+    +(motifs[symbol] || motifs.network)+variation+emblem+'</svg>';
 }
 
 export function renderServiceSocialCard(service, locale, assets) {
@@ -75,7 +80,7 @@ export function renderServiceSocialCard(service, locale, assets) {
   const title=service.name?.[locale] || service.name?.en || service.name?.ar;
   if (!title) throw Error('A published service title is required');
   const scope=en?emirateEnglish(service.emirate):service.emirate;
-  const intent=operation[p.intent][locale];
+  const intent=operation[p.guidance?'guide':p.intent][locale];
   const dark=p.layout==='document'||p.layout==='orbit';
   const background=dark?c.evergreen:c.pearl,ink=dark?c.pearl:c.ink;
   const fontFace='@font-face{font-family:HBCard;src:url('+assets.font600+') format("truetype");font-weight:600}'
@@ -102,13 +107,14 @@ export function renderServiceSocialCard(service, locale, assets) {
     +'.layout-people:lang(ar):before{inset:118px auto auto 44px}'
     +'.layout-orbit:before{content:"";position:absolute;z-index:-1;width:610px;height:610px;border:52px solid #ffffff08;border-radius:50%;inset:42px -60px auto auto}'
     +'.layout-orbit:lang(ar):before{inset:42px auto auto -60px}'
+    +'.variant-1.layout-architecture .art{border-radius:44px 14px 44px 14px}.variant-2.layout-architecture .art{border-radius:78px 78px 20px 20px}'
     +'.layout-document:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(125deg,transparent 52%,#ffffff08 52%)}';
   return '<!doctype html><html lang="'+locale+'" dir="'+(en?'ltr':'rtl')+'"><head><meta charset="utf-8">'
-    +'<meta name="viewport" content="width=1200"><style>'+css+'</style></head><body><article class="card layout-'+p.layout+'">'
+    +'<meta name="viewport" content="width=1200"><style>'+css+'</style></head><body><article class="card layout-'+p.layout+' variant-'+p.variant+'">'
     +'<header class="brand"><img src="'+escape(assets.logo)+'" alt=""><div><strong>HOSSAM BAHR</strong><small>'
     +(en?'UAE TRANSACTIONS GUIDE':'دليل معاملات الإمارات')+'</small></div></header>'
     +'<div class="content"><div class="copy"><p class="family">'+escape(p.label[locale])+'</p><h1>'+escape(title)+'</h1>'
-    +'<div class="intent">'+escape(intent)+'</div></div><div class="art">'+serviceIllustration(p.symbol,p.accent)+'</div></div>'
+    +'<div class="intent">'+escape(intent)+'</div></div><div class="art">'+serviceIllustration(p.symbol,p.accent,p.intent,p.variant)+'</div></div>'
     +'<footer class="footer"><div class="scope">'+escape(scope)+'</div><div class="independent">'
     +(en?'Independent service platform':'منصة خدمات مستقلة')+'</div></footer></article></body></html>';
 }

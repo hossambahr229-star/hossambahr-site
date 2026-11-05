@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/social-identity-preview-20261105-v2
+          git add diagnostics/social-identity-preview-20261105-v3
           git commit -m "Render original service-specific social identity previews from the current catalog"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
