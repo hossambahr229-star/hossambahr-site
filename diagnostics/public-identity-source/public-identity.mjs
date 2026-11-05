@@ -38,6 +38,7 @@ html.hb-phase8 body[data-home-geometry] .home-domain-card{border-color:${c.line}
 html.hb-phase8 body[data-home-geometry] .home-domain-card small{color:${c.muted}!important}
 html body :focus-visible{outline:3px solid ${c.gold};outline-offset:4px}
 @media(min-width:1101px){
+ html[lang].hb-phase8 body[data-home-geometry] .site-header .desktop-nav{gap:12px!important;padding-inline:0!important}
  html body .site-header .brand span{font-size:20px}
  html body .site-header .brand small{font-size:11px}
  html body .desktop-nav a{font-size:13px}
