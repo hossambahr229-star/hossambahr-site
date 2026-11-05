@@ -30,6 +30,12 @@ jobs:
           node-version: '24'
       - name: Install browser audit runtime
         run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+      - name: Refresh service-specific public social images
+        env:
+          HB_BROWSER_PATH: /usr/bin/google-chrome
+        run: |
+          node src/registry/generate-published-registry.mjs
+          npm run social:generate
       - name: Build from the central registry
         run: npm run build
       - name: Type and architecture gates

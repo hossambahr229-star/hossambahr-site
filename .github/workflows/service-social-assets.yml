@@ -1,0 +1,57 @@
+name: Generate service-specific social cards
+on:
+  push:
+    branches: [agent/service-social-cards-20261105]
+    paths: ['src/design/**', 'src/publication/service-social-catalog.mjs', 'scripts/generate-service-social-images.mjs', '.github/workflows/service-social-assets.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: service-social-assets-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  generate:
+    if: github.ref_name == 'agent/service-social-cards-20261105'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned artwork renderer
+        run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Generate images from the existing published catalog
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          node src/registry/generate-published-registry.mjs
+          npm run social:generate
+      - name: Verify full source publication and social metadata
+        run: |
+          npm run build
+          npm run typecheck
+          npm run test:social
+      - name: Commit generated assets only to the source branch
+        run: |
+          git config user.name "HossamBahr Social Asset Builder"
+          git config user.email "social-assets@users.noreply.github.com"
+          git fetch origin "${{ github.ref_name }}"
+          test "$(git rev-parse origin/${{ github.ref_name }})" = "${{ github.sha }}"
+          git add assets/social/services
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate bilingual service-specific social images from the approved catalog"
+            git push origin HEAD:"${{ github.ref_name }}"
+          fi
+      - name: Preserve rendering diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: service-social-publication
+          path: |
+            assets/social/services/manifest.json
+            artifacts/service-social
