@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-05T13:45:05.141Z",
+  "generatedAt": "2026-11-05T13:56:20.822Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
-    "REACHABLE": 151,
+    "REACHABLE": 150,
     "ACCESS_RESTRICTED": 10,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 89,
+    "NETWORK_UNVERIFIED": 90,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1820,9 +1820,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "TimeoutError"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",

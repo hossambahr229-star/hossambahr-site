@@ -10238,7 +10238,8 @@
         "status": "PUBLISHED_OR_CONDITIONAL",
         "text": "تذكر بطاقة تعديل الرخصة لدى Invest in Dubai إنجاز الخدمة خلال 10 دقائق عبر مراكز الخدمة. هذه مدة التعديل المنشورة وليست ضمانًا لاكتمال تحويل الشكل القانوني أو إجراءاته وموافقاته المرتبطة."
       },
-      "conditions": "راجع بطاقة الخدمة الرسمية المعتمدة قبل بدء الطلب.",
+      "conditions": "توضح البطاقة الرسمية تعديلات الرخصة ومستنداتها المشروطة، ولا تنشر شروط أهلية كاملة لتحويل الشكل القانوني. أكد إمكانية التحويل والموافقات المطلوبة لحالتك مع مركز خدمة DET قبل التقديم.",
+      "eligibilityScope": "common-only",
       "steps": [
         {
           "order": 1,
@@ -10294,9 +10295,9 @@
         "requirementsVerified": true,
         "feesVerified": false,
         "durationVerified": true,
-        "eligibilityVerified": true,
+        "eligibilityVerified": false,
         "detailsVerified": false,
-        "verifiedDetailCount": 3,
+        "verifiedDetailCount": 2,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
