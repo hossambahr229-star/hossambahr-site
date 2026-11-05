@@ -2996,9 +2996,20 @@
         "en": {
           "sourceUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx",
           "sourceLanguage": "en",
-          "notes": "This MOHRE source is a Taqyeem programme guide, not a direct application or a complete transaction card. It describes starting the assessment visit through a Tasheel centre, which forwards the request electronically to a Taqyeem provider. Case-specific documents, government charges and completion time are not published on this page."
+          "notes": "This MOHRE source is a Taqyeem programme guide, not a direct application or a complete transaction card. It describes starting the assessment visit through a Tasheel centre, which forwards the request electronically to a Taqyeem provider. Case-specific documents, government charges and completion time are not published on this page.",
+          "steps": [
+            "Confirm the required assessment type with a Tasheel service centre.",
+            "Start the Taqyeem request through a Tasheel centre; the guide describes electronic referral to a Taqyeem provider.",
+            "The assessment team visits the establishment following referral. Confirm your case-specific documents, charges and timing with the channel before applying."
+          ]
         }
-      }
+      },
+      "recordedSteps": [
+        "حدد نوع التقييم المطلوب مع مركز خدمة تسهيل.",
+        "قدّم طلب خدمة التقييم عبر مركز تسهيل؛ يوضح الدليل إحالة الطلب إلكترونيًا إلى مزود تقييم.",
+        "يتولى فريق المقيمين زيارة المنشأة وفق الإحالة؛ أكد المستندات والرسوم والمدة الخاصة بحالتك مع القناة قبل التقديم."
+      ],
+      "stepsReviewedAt": "2026-11-05"
     },
     {
       "id": "directory:mohre:7",
