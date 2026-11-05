@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-05T13:56:20.822Z",
+  "generatedAt": "2026-11-05T14:06:33.832Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
-    "REACHABLE": 150,
+    "REACHABLE": 151,
     "ACCESS_RESTRICTED": 10,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 90,
+    "NETWORK_UNVERIFIED": 89,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1820,8 +1820,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022",
@@ -2577,7 +2578,9 @@
       ],
       "status": 200,
       "finalUrl": "https://media.ajman.ae/ar/servicecatalog/services/2862",
-      "result": "REACHABLE"
+      "title": "Request Rejected",
+      "result": "REACHABLE",
+      "verifiedBy": "browser-fallback"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
@@ -3093,7 +3096,7 @@
       "result": "REACHABLE"
     },
     {
-      "url": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
+      "url": "https://mohre.gov.ae/ar/services/taqyeem.aspx",
       "services": [
         "تقرير-تقييم-المنشأة"
       ],

@@ -28307,7 +28307,19 @@
         "ملفات",
         "المنشآت"
       ],
-      "description": "طلب زيارة تقييم لإثبات حجم العمل أو بيانات المنشأة؛ يبدأ عبر تسهيل أو تطبيق MOHRE ثم يُحال إلكترونياً إلى مزود تقييم المعتمد.",
+      "description": "دليل رسمي لخدمات تقييم المنشأة مثل تقدير حجم العمل وفاعلية الرخصة والسكن العمالي. يوضح المصدر تقديم طلب زيارة التقييم عبر مركز تسهيل وإحالته إلكترونيًا إلى مزود تقييم؛ لا تنشر الصفحة مستندات أو رسومًا أو مدة إنجاز محددة.",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx",
+          "sourceLanguage": "en",
+          "notes": "This MOHRE source is a Taqyeem programme guide, not a direct application or a complete transaction card. It describes starting the assessment visit through a Tasheel centre, which forwards the request electronically to a Taqyeem provider. Case-specific documents, government charges and completion time are not published on this page.",
+          "steps": [
+            "Confirm the required assessment type with a Tasheel service centre.",
+            "Start the Taqyeem request through a Tasheel centre; the guide describes electronic referral to a Taqyeem provider.",
+            "The assessment team visits the establishment following referral. Confirm your case-specific documents, charges and timing with the channel before applying."
+          ]
+        }
+      },
       "documents": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "items": []
@@ -28328,30 +28340,21 @@
       "steps": [
         {
           "order": 1,
-          "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "title": "حدد نوع التقييم المطلوب مع مركز خدمة تسهيل.",
+          "description": ""
         },
         {
           "order": 2,
-          "title": "تأكيد نطاق المعاملة",
-          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+          "title": "قدّم طلب خدمة التقييم عبر مركز تسهيل؛ يوضح الدليل إحالة الطلب إلكترونيًا إلى مزود تقييم.",
+          "description": ""
         },
         {
           "order": 3,
-          "title": "مراجعة المتطلبات الحالية",
-          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
-        },
-        {
-          "order": 4,
-          "title": "تقديم الطلب رسميًا",
-          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
-        },
-        {
-          "order": 5,
-          "title": "السداد والمتابعة",
-          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+          "title": "يتولى فريق المقيمين زيارة المنشأة وفق الإحالة؛ أكد المستندات والرسوم والمدة الخاصة بحالتك مع القناة قبل التقديم.",
+          "description": ""
         }
       ],
+      "stepsReviewedAt": "2026-11-05",
       "faq": [
         {
           "question": "ما الرسوم؟",
@@ -28363,7 +28366,7 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "دليل تقييم الرسمي؛ يوضح بدء طلب الزيارة من مركز تسهيل، وليس نموذج تقديم مباشرًا."
         }
       ],
       "relatedServiceIds": [
@@ -28375,9 +28378,10 @@
         "directory:residency:51",
         "directory:residency:50"
       ],
-      "officialInformationUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
-      "officialCtaUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
-      "destinationKind": "DIRECT_SERVICE",
+      "officialInformationUrl": "https://mohre.gov.ae/ar/services/taqyeem.aspx",
+      "officialCtaUrl": "https://mohre.gov.ae/ar/services/taqyeem.aspx",
+      "officialCtaUrlEn": "https://mohre.gov.ae/en/services/taqyeem.aspx",
+      "destinationKind": "OFFICIAL_GUIDANCE",
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
@@ -28389,14 +28393,14 @@
         "verifiedDetailCount": 0,
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
-        "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-07-27",
+        "officialLinkLastCheckedAt": "2026-11-05",
+        "dataLastReviewedAt": "2026-11-05",
         "sourceAuthority": "mohre",
-        "sourceUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1"
+        "sourceUrl": "https://mohre.gov.ae/ar/services/taqyeem.aspx"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-07-27",
-      "lastReviewedAt": "2026-07-27",
+      "lastUpdated": "2026-11-05",
+      "lastReviewedAt": "2026-11-05",
       "internalRoute": "/services/تقرير-تقييم-المنشأة/",
       "sourceRegistry": "service-matrix"
     },
