@@ -1,0 +1,48 @@
+name: MOHRE cancellation scoped source acceptance 620
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/mohre-cancellation-source-620.yml, diagnostics/mohre-cancellation-browser-620.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned browser runtime and Firefox
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Prepare exact proposed source
+        run: |
+          git fetch origin agent/mohre-cancellation-source-20261105
+          git worktree add /tmp/hb-cancel-source 0519a65cc3113500c2a00b6e2d80a24ded9635c6
+          cd /tmp/hb-cancel-source
+          npm run build
+      - name: Verify scoped facts, disclosures and both pathways
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_SOURCE_SHA: 0519a65cc3113500c2a00b6e2d80a24ded9635c6
+        run: node diagnostics/mohre-cancellation-browser-620.mjs
+      - name: Preserve actual source browser evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          if [ ! -d diagnostics/mohre-cancellation-source-620 ]; then exit 0; fi
+          git add diagnostics/mohre-cancellation-source-620
+          if ! git diff --cached --quiet; then
+            git commit -m "Record scoped hospitality source browser pathways and fee isolation"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
