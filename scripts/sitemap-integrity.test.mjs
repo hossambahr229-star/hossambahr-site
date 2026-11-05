@@ -29,10 +29,13 @@ test("sitemap has no duplicated or foreign URL locations", () => {
   }
 });
 
-test("all published English service routes are included after catalog generation", () => {
+test("all published English services resolve to included canonical routes without indexing aliases", async () => {
   assert.ok(publishedEnglish.size >= 200, "English service directory unexpectedly shrank");
   for (const route of publishedEnglish) {
-    assert.ok(urlSet.has(new URL(route, origin).href), `Missing English service sitemap URL: ${route}`);
+    const html = await readFile(resolve(root, decodeURIComponent(route).slice(1), "index.html"), "utf8");
+    const canonical = new URL(html.match(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"/)?.[1] ?? route, origin).href;
+    assert.ok(urlSet.has(canonical), `Missing canonical English service sitemap URL: ${canonical}`);
+    if(canonical!==new URL(route,origin).href)assert.ok(!urlSet.has(new URL(route,origin).href),`Duplicate English alias indexed: ${route}`);
   }
   assert.ok(urlSet.has(origin + "/en/"));
   assert.ok(urlSet.has(origin + "/en/services/"));
