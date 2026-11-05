@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-05T12:40:53.950Z",
+  "generatedAt": "2026-11-05T12:50:24.701Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
-    "REACHABLE": 150,
+    "REACHABLE": 149,
     "ACCESS_RESTRICTED": 10,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 90,
+    "NETWORK_UNVERIFIED": 91,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -2575,11 +2575,8 @@
       "kinds": [
         "official-information"
       ],
-      "status": 200,
-      "finalUrl": "https://media.ajman.ae/ar/servicecatalog/services/2862",
-      "title": "Request Rejected",
-      "result": "REACHABLE",
-      "verifiedBy": "browser-fallback"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
