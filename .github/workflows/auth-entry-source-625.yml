@@ -1,0 +1,48 @@
+name: Public auth entry source presentation acceptance 625
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/auth-entry-source-625.yml, diagnostics/auth-entry-browser-625.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned browser runtime and Firefox
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Prepare exact proposed source
+        run: |
+          git fetch origin agent/public-auth-identity-20261105
+          git worktree add /tmp/hb-auth-entry-source 6924048c3bca06326166dd71eef247aef4c301c4
+          cd /tmp/hb-auth-entry-source
+          npm run build
+      - name: Verify scoped facts, disclosures and both pathways
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_SOURCE_SHA: 6924048c3bca06326166dd71eef247aef4c301c4
+        run: node diagnostics/auth-entry-browser-625.mjs
+      - name: Preserve actual source browser evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          if [ ! -d diagnostics/auth-entry-source-625 ]; then exit 0; fi
+          git add diagnostics/auth-entry-source-625
+          if ! git diff --cached --quiet; then
+            git commit -m "Record scoped hospitality source browser pathways and fee isolation"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
