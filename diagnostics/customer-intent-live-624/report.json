@@ -1,0 +1,917 @@
+{
+  "sourceSha": "8300e12bea6b64cf3ba17762beceb07029822917",
+  "scope": "ACTUAL_PRODUCTION_UI",
+  "cases": [
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "screenshot": "ar-1440-quota.jpg",
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "results": [
+        {
+          "title": "إلغاء رخصة أو تصفية شركة في دبي",
+          "href": "/services/cancel-business-license-dubai/"
+        }
+      ],
+      "screenshot": "ar-1440-sole-cancellation.jpg",
+      "destination": "https://hossambahr.com/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20HOSSAM%20BAHR%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%86%D8%AC%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9%3A%0A%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A3%D9%88%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9%20%2F%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%3A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%AC%D9%87%D8%A9%3A%20%D8%AF%D8%A7%D8%A6%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%20%D9%88%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%20(DET)%0A%D9%85%D8%B1%D8%AC%D8%B9%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20guide%3Acancel-business-license-dubai%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fcancel-business-license-dubai%2F%0A%D8%A3%D8%B1%D8%AC%D9%88%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D9%86%D8%B7%D8%A7%D9%82%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9.",
+        "https://hossambahr.com/contact/?service=cancel-business-license-dubai&source=%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "results": [
+        {
+          "title": "إلغاء رخصة أو تصفية شركة في دبي",
+          "href": "/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20HOSSAM%20BAHR%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%86%D8%AC%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9%3A%0A%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A3%D9%88%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9%20%2F%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%3A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%AC%D9%87%D8%A9%3A%20%D8%AF%D8%A7%D8%A6%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%20%D9%88%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%20(DET)%0A%D9%85%D8%B1%D8%AC%D8%B9%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20guide%3Acancel-business-license-dubai%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fcancel-business-license-dubai%2F%0A%D8%A3%D8%B1%D8%AC%D9%88%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D9%86%D8%B7%D8%A7%D9%82%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9.",
+        "https://hossambahr.com/contact/?service=cancel-business-license-dubai&source=%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "screenshot": "ar-390-quota.jpg",
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "results": [
+        {
+          "title": "إلغاء رخصة أو تصفية شركة في دبي",
+          "href": "/services/cancel-business-license-dubai/"
+        }
+      ],
+      "screenshot": "ar-390-sole-cancellation.jpg",
+      "destination": "https://hossambahr.com/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20HOSSAM%20BAHR%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%86%D8%AC%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9%3A%0A%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A3%D9%88%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9%20%2F%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%3A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%AC%D9%87%D8%A9%3A%20%D8%AF%D8%A7%D8%A6%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%20%D9%88%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%20(DET)%0A%D9%85%D8%B1%D8%AC%D8%B9%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20guide%3Acancel-business-license-dubai%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fcancel-business-license-dubai%2F%0A%D8%A3%D8%B1%D8%AC%D9%88%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D9%86%D8%B7%D8%A7%D9%82%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9.",
+        "https://hossambahr.com/contact/?service=cancel-business-license-dubai&source=%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "results": [
+        {
+          "title": "إلغاء رخصة أو تصفية شركة في دبي",
+          "href": "/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20HOSSAM%20BAHR%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%86%D8%AC%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9%3A%0A%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A3%D9%88%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9%20%2F%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%3A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%AC%D9%87%D8%A9%3A%20%D8%AF%D8%A7%D8%A6%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%20%D9%88%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%20(DET)%0A%D9%85%D8%B1%D8%AC%D8%B9%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20guide%3Acancel-business-license-dubai%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fcancel-business-license-dubai%2F%0A%D8%A3%D8%B1%D8%AC%D9%88%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D9%86%D8%B7%D8%A7%D9%82%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9.",
+        "https://hossambahr.com/contact/?service=cancel-business-license-dubai&source=%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "screenshot": "en-1440-quota.jpg",
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "results": [
+        {
+          "title": "Cancel a Trade Licence or Liquidate a Company in Dubai",
+          "href": "/en/services/cancel-business-license-dubai/"
+        }
+      ],
+      "screenshot": "en-1440-sole-cancellation.jpg",
+      "destination": "https://hossambahr.com/en/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=Hello%20HOSSAM%20BAHR%2C%20I%20would%20like%20help%20with%20this%20transaction%3A%0AService%3A%20Cancel%20a%20Trade%20Licence%20or%20Liquidate%20a%20Company%20in%20Dubai%0AEmirate%20%2F%20jurisdiction%3A%20Dubai%0AAuthority%3A%20Dubai%20Department%20of%20Economy%20and%20Tourism%20(DET)%0AService%20reference%3A%20guide%3Acancel-business-license-dubai%0AService%20link%3A%20https%3A%2F%2Fhossambahr.com%2Fen%2Fservices%2Fcancel-business-license-dubai%2F%0APlease%20help%20me%20confirm%20the%20scope%20and%20next%20steps.",
+        "https://hossambahr.com/en/contact/?service=cancel-business-license-dubai&source=%2Fen%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "results": [
+        {
+          "title": "Cancel a Trade Licence or Liquidate a Company in Dubai",
+          "href": "/en/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=Hello%20HOSSAM%20BAHR%2C%20I%20would%20like%20help%20with%20this%20transaction%3A%0AService%3A%20Cancel%20a%20Trade%20Licence%20or%20Liquidate%20a%20Company%20in%20Dubai%0AEmirate%20%2F%20jurisdiction%3A%20Dubai%0AAuthority%3A%20Dubai%20Department%20of%20Economy%20and%20Tourism%20(DET)%0AService%20reference%3A%20guide%3Acancel-business-license-dubai%0AService%20link%3A%20https%3A%2F%2Fhossambahr.com%2Fen%2Fservices%2Fcancel-business-license-dubai%2F%0APlease%20help%20me%20confirm%20the%20scope%20and%20next%20steps.",
+        "https://hossambahr.com/en/contact/?service=cancel-business-license-dubai&source=%2Fen%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "screenshot": "en-390-quota.jpg",
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "results": [
+        {
+          "title": "Cancel a Trade Licence or Liquidate a Company in Dubai",
+          "href": "/en/services/cancel-business-license-dubai/"
+        }
+      ],
+      "screenshot": "en-390-sole-cancellation.jpg",
+      "destination": "https://hossambahr.com/en/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=Hello%20HOSSAM%20BAHR%2C%20I%20would%20like%20help%20with%20this%20transaction%3A%0AService%3A%20Cancel%20a%20Trade%20Licence%20or%20Liquidate%20a%20Company%20in%20Dubai%0AEmirate%20%2F%20jurisdiction%3A%20Dubai%0AAuthority%3A%20Dubai%20Department%20of%20Economy%20and%20Tourism%20(DET)%0AService%20reference%3A%20guide%3Acancel-business-license-dubai%0AService%20link%3A%20https%3A%2F%2Fhossambahr.com%2Fen%2Fservices%2Fcancel-business-license-dubai%2F%0APlease%20help%20me%20confirm%20the%20scope%20and%20next%20steps.",
+        "https://hossambahr.com/en/contact/?service=cancel-business-license-dubai&source=%2Fen%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "results": [
+        {
+          "title": "Cancel a Trade Licence or Liquidate a Company in Dubai",
+          "href": "/en/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=Hello%20HOSSAM%20BAHR%2C%20I%20would%20like%20help%20with%20this%20transaction%3A%0AService%3A%20Cancel%20a%20Trade%20Licence%20or%20Liquidate%20a%20Company%20in%20Dubai%0AEmirate%20%2F%20jurisdiction%3A%20Dubai%0AAuthority%3A%20Dubai%20Department%20of%20Economy%20and%20Tourism%20(DET)%0AService%20reference%3A%20guide%3Acancel-business-license-dubai%0AService%20link%3A%20https%3A%2F%2Fhossambahr.com%2Fen%2Fservices%2Fcancel-business-license-dubai%2F%0APlease%20help%20me%20confirm%20the%20scope%20and%20next%20steps.",
+        "https://hossambahr.com/en/contact/?service=cancel-business-license-dubai&source=%2Fen%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "results": [
+        {
+          "title": "إلغاء رخصة أو تصفية شركة في دبي",
+          "href": "/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20HOSSAM%20BAHR%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%86%D8%AC%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9%3A%0A%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A3%D9%88%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9%20%2F%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%3A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%AC%D9%87%D8%A9%3A%20%D8%AF%D8%A7%D8%A6%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%20%D9%88%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%20(DET)%0A%D9%85%D8%B1%D8%AC%D8%B9%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20guide%3Acancel-business-license-dubai%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fcancel-business-license-dubai%2F%0A%D8%A3%D8%B1%D8%AC%D9%88%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D9%86%D8%B7%D8%A7%D9%82%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9.",
+        "https://hossambahr.com/contact/?service=cancel-business-license-dubai&source=%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "results": [
+        {
+          "title": "إلغاء رخصة أو تصفية شركة في دبي",
+          "href": "/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20HOSSAM%20BAHR%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%86%D8%AC%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9%3A%0A%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A3%D9%88%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9%20%2F%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%3A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%AC%D9%87%D8%A9%3A%20%D8%AF%D8%A7%D8%A6%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%20%D9%88%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%20(DET)%0A%D9%85%D8%B1%D8%AC%D8%B9%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20guide%3Acancel-business-license-dubai%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fcancel-business-license-dubai%2F%0A%D8%A3%D8%B1%D8%AC%D9%88%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D9%86%D8%B7%D8%A7%D9%82%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9.",
+        "https://hossambahr.com/contact/?service=cancel-business-license-dubai&source=%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "results": [
+        {
+          "title": "إلغاء رخصة أو تصفية شركة في دبي",
+          "href": "/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20HOSSAM%20BAHR%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%86%D8%AC%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9%3A%0A%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A3%D9%88%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9%20%2F%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%3A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%AC%D9%87%D8%A9%3A%20%D8%AF%D8%A7%D8%A6%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%20%D9%88%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%20(DET)%0A%D9%85%D8%B1%D8%AC%D8%B9%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20guide%3Acancel-business-license-dubai%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fcancel-business-license-dubai%2F%0A%D8%A3%D8%B1%D8%AC%D9%88%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D9%86%D8%B7%D8%A7%D9%82%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9.",
+        "https://hossambahr.com/contact/?service=cancel-business-license-dubai&source=%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "results": [
+        {
+          "title": "إلغاء رخصة أو تصفية شركة في دبي",
+          "href": "/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20HOSSAM%20BAHR%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%86%D8%AC%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9%3A%0A%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D9%84%D8%BA%D8%A7%D8%A1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A3%D9%88%20%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9%20%2F%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%3A%20%D8%AF%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%AC%D9%87%D8%A9%3A%20%D8%AF%D8%A7%D8%A6%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%20%D9%88%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%AD%D8%A9%20%D9%81%D9%8A%20%D8%AF%D8%A8%D9%8A%20(DET)%0A%D9%85%D8%B1%D8%AC%D8%B9%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20guide%3Acancel-business-license-dubai%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fcancel-business-license-dubai%2F%0A%D8%A3%D8%B1%D8%AC%D9%88%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D9%86%D8%B7%D8%A7%D9%82%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9.",
+        "https://hossambahr.com/contact/?service=cancel-business-license-dubai&source=%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "results": [
+        {
+          "title": "Cancel a Trade Licence or Liquidate a Company in Dubai",
+          "href": "/en/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=Hello%20HOSSAM%20BAHR%2C%20I%20would%20like%20help%20with%20this%20transaction%3A%0AService%3A%20Cancel%20a%20Trade%20Licence%20or%20Liquidate%20a%20Company%20in%20Dubai%0AEmirate%20%2F%20jurisdiction%3A%20Dubai%0AAuthority%3A%20Dubai%20Department%20of%20Economy%20and%20Tourism%20(DET)%0AService%20reference%3A%20guide%3Acancel-business-license-dubai%0AService%20link%3A%20https%3A%2F%2Fhossambahr.com%2Fen%2Fservices%2Fcancel-business-license-dubai%2F%0APlease%20help%20me%20confirm%20the%20scope%20and%20next%20steps.",
+        "https://hossambahr.com/en/contact/?service=cancel-business-license-dubai&source=%2Fen%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "results": [
+        {
+          "title": "Cancel a Trade Licence or Liquidate a Company in Dubai",
+          "href": "/en/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=Hello%20HOSSAM%20BAHR%2C%20I%20would%20like%20help%20with%20this%20transaction%3A%0AService%3A%20Cancel%20a%20Trade%20Licence%20or%20Liquidate%20a%20Company%20in%20Dubai%0AEmirate%20%2F%20jurisdiction%3A%20Dubai%0AAuthority%3A%20Dubai%20Department%20of%20Economy%20and%20Tourism%20(DET)%0AService%20reference%3A%20guide%3Acancel-business-license-dubai%0AService%20link%3A%20https%3A%2F%2Fhossambahr.com%2Fen%2Fservices%2Fcancel-business-license-dubai%2F%0APlease%20help%20me%20confirm%20the%20scope%20and%20next%20steps.",
+        "https://hossambahr.com/en/contact/?service=cancel-business-license-dubai&source=%2Fen%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "results": [
+        {
+          "title": "Cancel a Trade Licence or Liquidate a Company in Dubai",
+          "href": "/en/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=Hello%20HOSSAM%20BAHR%2C%20I%20would%20like%20help%20with%20this%20transaction%3A%0AService%3A%20Cancel%20a%20Trade%20Licence%20or%20Liquidate%20a%20Company%20in%20Dubai%0AEmirate%20%2F%20jurisdiction%3A%20Dubai%0AAuthority%3A%20Dubai%20Department%20of%20Economy%20and%20Tourism%20(DET)%0AService%20reference%3A%20guide%3Acancel-business-license-dubai%0AService%20link%3A%20https%3A%2F%2Fhossambahr.com%2Fen%2Fservices%2Fcancel-business-license-dubai%2F%0APlease%20help%20me%20confirm%20the%20scope%20and%20next%20steps.",
+        "https://hossambahr.com/en/contact/?service=cancel-business-license-dubai&source=%2Fen%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "sole-cancellation",
+      "query": "cancel a sole proprietorship in Dubai",
+      "results": [
+        {
+          "title": "Cancel a Trade Licence or Liquidate a Company in Dubai",
+          "href": "/en/services/cancel-business-license-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/cancel-business-license-dubai/",
+      "pathways": [
+        "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence",
+        "https://wa.me/971503780460?text=Hello%20HOSSAM%20BAHR%2C%20I%20would%20like%20help%20with%20this%20transaction%3A%0AService%3A%20Cancel%20a%20Trade%20Licence%20or%20Liquidate%20a%20Company%20in%20Dubai%0AEmirate%20%2F%20jurisdiction%3A%20Dubai%0AAuthority%3A%20Dubai%20Department%20of%20Economy%20and%20Tourism%20(DET)%0AService%20reference%3A%20guide%3Acancel-business-license-dubai%0AService%20link%3A%20https%3A%2F%2Fhossambahr.com%2Fen%2Fservices%2Fcancel-business-license-dubai%2F%0APlease%20help%20me%20confirm%20the%20scope%20and%20next%20steps.",
+        "https://hossambahr.com/en/contact/?service=cancel-business-license-dubai&source=%2Fen%2Fservices%2Fcancel-business-license-dubai%2F&handoff=1"
+      ],
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    }
+  ],
+  "errors": [
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "screenshot": "ar-1440-quota.jpg",
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "screenshot": "ar-390-quota.jpg",
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "screenshot": "en-1440-quota.jpg",
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "screenshot": "en-390-quota.jpg",
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "محتاج كوته عمال",
+      "results": [
+        {
+          "title": "حصة تصاريح العمل للمنشأة",
+          "href": "/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "quota",
+      "query": "work permit quotas for workers",
+      "results": [
+        {
+          "title": "Establishment Work Permit Quota",
+          "href": "/en/services/حصة-تصاريح-العمل-للمنشأة/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/%D8%AD%D8%B5%D8%A9-%D8%AA%D8%B5%D8%A7%D8%B1%D9%8A%D8%AD-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D9%84%D9%85%D9%86%D8%B4%D8%A3%D8%A9/",
+      "status": "FAIL",
+      "error": "Execution paths or assisted context missing"
+    }
+  ],
+  "status": "FAIL"
+}
