@@ -32,7 +32,7 @@ html body :is(.service-detail h2,.discovery-grid h2){line-height:1.55}
 html body .service-detail :is(.source-note,.document-note){color:${c.muted}}
 html.hb-phase8 body[data-home-geometry]{background:${c.pearl}!important;color:${c.ink}}
 html.hb-phase8 body[data-home-geometry] :is(.target-proof,.premium-final-cta .primary){background:${c.evergreen}!important}
-html.hb-phase8 body[data-home-geometry] .site-header .brand :is(span,small,strong),html.hb-phase8 body[data-home-geometry] .site-header .desktop-nav a,html.hb-phase8 body[data-home-geometry] .premium-hero-copy :is(h1,h1 em){font-family:var(--hb-ui-font)!important}
+html[lang].hb-phase8 body[data-home-geometry] .site-header .brand :is(span,small,strong),html[lang].hb-phase8 body[data-home-geometry] .site-header .desktop-nav a{font-family:var(--hb-ui-font)!important}
 html.hb-phase8 body[data-home-geometry] .premium-hero-copy h1{color:${c.evergreen}!important}
 html.hb-phase8 body[data-home-geometry] .home-domain-card{border-color:${c.line}!important;background:${c.paper}!important;color:${c.ink}!important}
 html.hb-phase8 body[data-home-geometry] .home-domain-card small{color:${c.muted}!important}
