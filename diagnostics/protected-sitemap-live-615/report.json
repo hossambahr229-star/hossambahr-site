@@ -1,0 +1,26 @@
+{
+  "observedAtUTC": "2026-11-05T07:50:53.274691+00:00",
+  "source": "REAL_PRODUCTION_HTTP",
+  "status": "PASS",
+  "sitemapLocations": 499,
+  "protectedEntries": [],
+  "acceptedCanonicalEnglishServicesPreserved": 201,
+  "previousFullServiceCrawlRun": 41988596067,
+  "repeatedFullServiceCrawl": false,
+  "canaries": [
+    {
+      "route": "/command-center/",
+      "status": 200
+    },
+    {
+      "route": "/services/renew-business-license-ajman/",
+      "status": 200
+    },
+    {
+      "route": "/en/services/ajman-commercial-license-renewal/",
+      "status": 200
+    }
+  ],
+  "authenticationOrPermissionsChanged": false,
+  "googleIndexingOrRanking": "NOT_CLAIMED"
+}
