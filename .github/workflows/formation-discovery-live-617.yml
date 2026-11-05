@@ -8,7 +8,7 @@ permissions:
   contents: write
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
@@ -30,6 +30,7 @@ jobs:
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
+          if [ ! -d diagnostics/formation-discovery-live-617 ]; then exit 0; fi
           git add diagnostics/formation-discovery-live-617
           if ! git diff --cached --quiet; then
             git commit -m "Record actual Chrome and Firefox bilingual formation and preserved-pathway acceptance"
