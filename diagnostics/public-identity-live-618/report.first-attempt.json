@@ -1,0 +1,6394 @@
+{
+  "scope": "ACTUAL_PRODUCTION_PUBLIC_IDENTITY_CHROME_FIREFOX; human acceptance remains separate",
+  "startedAt": "2026-11-05T12:48:00.100Z",
+  "sourceSha": "b4080ad7c4c6220a396144d7b5b2f5f11fff42bc",
+  "expectedCssSha256": "5f5949ba1010f58eae64d1dadb1cbfdaa26538e2421330698cab87b077840e4a",
+  "cases": [
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "screenshot": "chrome-ar-1440-home.jpg",
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "screenshot": "chrome-ar-1440-service.jpg",
+      "pathwaysVisible": true,
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "pathwaysVisible": true,
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "pathwaysVisible": true,
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "screenshot": "chrome-ar-390-home.jpg",
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "screenshot": "chrome-ar-320-home.jpg",
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "screenshot": "chrome-en-1440-home.jpg",
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "screenshot": "chrome-en-390-home.jpg",
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "screenshot": "chrome-en-320-home.jpg",
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "screenshot": "firefox-ar-1440-home.jpg",
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "screenshot": "firefox-ar-1440-service.jpg",
+      "pathwaysVisible": true,
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "pathwaysVisible": true,
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "pathwaysVisible": true,
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "screenshot": "firefox-en-1440-home.jpg",
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": true,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    }
+  ],
+  "errors": [
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "home",
+      "route": "/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "معاملاتك في الإماراتتبدأ من هنا",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "service",
+      "route": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "تصريح عمل لحامل الإقامة الذهبية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "discover",
+      "route": "/discover/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "اعثر على معاملتك",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "approvals",
+      "route": "/approvals/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الموافقات الحكومية والتصاريح",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "activities",
+      "route": "/business-activities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الأنشطة الاقتصادية والتجارية",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "key": "authorities",
+      "route": "/authorities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "الجهات الحكومية المغطاة",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 1440,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 1366,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 768,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 430,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 390,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 360,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "home",
+      "route": "/en/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Your UAE transactionstarts here",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "service",
+      "route": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Issuance of a New Work Permit - Golden Visa Holders",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "discover",
+      "route": "/en/discover/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Find your transaction",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "approvals",
+      "route": "/en/approvals/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government approvals and permits",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "activities",
+      "route": "/en/business-activities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Economic and business activities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "key": "authorities",
+      "route": "/en/authorities/",
+      "layout": {
+        "scrollWidth": 320,
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "fontLoaded": false,
+        "h1": "Government authorities",
+        "theme": [
+          "/public-identity.css?v=5f5949ba1010"
+        ],
+        "legacyMarks": 0,
+        "headerOverlap": []
+      },
+      "status": "FAIL",
+      "error": "Public identity/font/width/heading/header integrity failed",
+      "pageErrors": []
+    }
+  ],
+  "finishedAt": "2026-11-05T12:54:36.691Z",
+  "status": "FAIL"
+}
