@@ -70,7 +70,7 @@ function includesAny(text, candidates) {
   return candidates.some(candidate => text.includes(normalizeIntent(candidate)));
 }
 
-function queryEmirate(query) {
+export function queryEmirate(query) {
   const normalized = normalizeIntent(query);
   return EMIRATES.find(([, aliases]) => includesAny(normalized, aliases))?.[0] || '';
 }

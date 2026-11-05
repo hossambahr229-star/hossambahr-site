@@ -1,5 +1,5 @@
 import {serviceBusinessDomain} from './business-domains.js?v=ead34bcfece9';
-import {rankServices,normalizeIntent,reraApprovalIntent} from './intent-search.js?v=0aee704a1223';
+import {rankServices,normalizeIntent,reraApprovalIntent,queryEmirate} from './intent-search.js?v=business-formation-20261105';
 import {compatibleEmirate} from './customer-jurisdiction.js?v=7be21562672e';
 
 export function entryMode(query){
@@ -23,9 +23,25 @@ export function residenceRenewalIntent(query){
  const q=normalizeIntent(query);
  return /(?:اقام|\bresiden(?:ce|cy|t)\b)/i.test(q)&&/(?:تجديد|جدد|renew)/i.test(q)&&!/(?:رخص|licen[cs]e|driving|قياده|مركب|vehicle|passport|جواز|تصريح عمل|work permit|هويه|emirates id|الغاء|cancel)/i.test(q);
 }
+// Formation queries describe an operation, not every service that mentions a city or company.
+export function businessFormationIntent(query){
+ const q=normalizeIntent(query);
+ const business=/(?:شرك|مشروع|موسسه|رخصه تجاريه|رخصه اقتصاديه|company|business|trade licen[cs]e|commercial licen[cs]e|economic licen[cs]e)/i.test(q);
+ const starting=/(?:افتح|فتح|تاسيس|انشاء|ابدا|اصدار|جديد|open|start|establish|formation|set up|setup|new|issue)/i.test(q);
+ const anotherOperation=/(?:تجديد|اجدد|الغاء|الغي|تصفيه|تعديل|اضافه|اضيف|موافق|سيرا|تصريح|ملف|بطاقه منش|حصه|كوته|renew|cancel|liquidat|amend|modify|add |approval|sira|permit|file|establishment card|quota)/i.test(q);
+ return business&&starting&&!anotherOperation;
+}
+export function formationService(service){
+ if(!['companies-establishments','business-licensing'].includes(service.c))return false;
+ const name=normalizeIntent((service.a||'')+' '+(service.e||''));
+ if(/(?:تجديد|الغاء|تصفيه|تعديل|اضافه|renew|cancel|liquidat|amend|modify)/i.test(name))return false;
+ return /(?:اصدار رخصه|اصدار ترخيص اقتصادي|تاسيس.{0,24}(?:اعمال|شرك|منش)|تسجيل شرك|business (?:establishment|setup|set up)|company (?:formation|establishment|registration)|licen[cs](?:e|es).{0,24}issuance|issu(?:e|ing).{0,30}(?:trade|economic|commercial).{0,20}licen[cs]e|مسار تاسيس.{0,30}ترخيص)/i.test(name);
+}
 export function discoverServices(records,{query='',emirate='',authority='',category='',domain='',approval=''}={}){
  const candidates=records.filter(s=>(!emirate||compatibleEmirate(s.m,emirate))&&(!authority||s.i===authority)&&(!category||s.c===category)&&(!domain||(s.bd||serviceBusinessDomain(s))===domain)&&(!approval||(approval==='business'?s.ap&&!['work-permit','residence-permit'].includes(s.ap):s.ap===approval)));
- const relevant=residenceRenewalIntent(query)?candidates.filter(s=>residenceRenewalIntent([s.a||s.name?.ar||'',s.e||s.name?.en||''].join(' '))):candidates;
+ const formation=businessFormationIntent(query),scope=emirate||queryEmirate(query),freeZone=/(?:منطقه حره|المنطقه الحره|free zone)/i.test(normalizeIntent(query));
+ const operationCandidates=formation?candidates.filter(s=>formationService(s)&&(!scope||compatibleEmirate(s.m,scope))&&(!freeZone||/(?:منطقه.{0,8}حره|free zone)/i.test(normalizeIntent((s.a||'')+' '+(s.e||''))))):candidates;
+ const relevant=residenceRenewalIntent(query)?operationCandidates.filter(s=>residenceRenewalIntent([s.a||s.name?.ar||'',s.e||s.name?.en||''].join(' '))):operationCandidates;
  return query.trim()?rankServices(query,relevant):relevant;
 }
 
