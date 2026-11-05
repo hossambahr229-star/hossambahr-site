@@ -1,0 +1,42 @@
+name: Live service-specific social publication acceptance 616
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/service-social-live-616.yml, diagnostics/service-social-live-616.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Prepare expected source publication
+        run: |
+          git fetch origin main:refs/remotes/origin/main
+          git worktree add /tmp/hb-social-live origin/main
+          cd /tmp/hb-social-live
+          npm run build
+      - name: Verify every real public service page and image
+        env:
+          HB_SOURCE_ROOT: /tmp/hb-social-live
+          HB_SOURCE_SHA: e0b8e803341a93692fbbc4f2d8142f3106254e58
+          HB_OUTPUT_DIR: diagnostics/service-social-live-616
+        run: node diagnostics/service-social-live-616.mjs
+      - name: Preserve actual HTTP evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/service-social-live-616
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual bilingual service social metadata and image HTTP acceptance"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi

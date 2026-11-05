@@ -1,0 +1,27 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {resolve,join} from 'node:path';
+import {createHash} from 'node:crypto';
+const root=resolve(process.env.HB_SOURCE_ROOT||'.'),out=resolve(process.env.HB_OUTPUT_DIR||'diagnostics/service-social-live-616'),origin='https://hossambahr.com';
+const manifest=JSON.parse(await readFile(join(root,'assets/social/services/manifest.json'),'utf8'));
+const {services}=JSON.parse(await readFile(join(root,'src/registry/published-services.json'),'utf8'));
+const report={startedAt:new Date().toISOString(),scope:'REAL_PUBLIC_HTTP_METADATA_AND_JPEG_EXTRACTION; not social-platform cache or account acceptance',sourceSha:process.env.HB_SOURCE_SHA,designSignature:manifest.designSignature,pages:[],images:[],crawlerSamples:[],errors:[]};
+const attrs=tag=>Object.fromEntries([...tag.matchAll(/([^\s=/>]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g)].map(m=>[m[1].toLowerCase(),(m[2]??m[3]??m[4]).replaceAll('&amp;','&').replaceAll('&quot;','"')]));
+const metadata=html=>[...html.split('</head>')[0].matchAll(/<meta\b[^>]*>/gi)].map(m=>attrs(m[0]));
+const values=html=>Object.fromEntries(metadata(html).map(a=>[a.property||a.name,a.content]));
+const hash=b=>createHash('sha256').update(b).digest('hex');
+const jpeg=b=>{if(b[0]!==255||b[1]!==216)throw Error('Not JPEG');let p=2;while(p+8<b.length){if(b[p++]!==255)continue;while(b[p]===255)p++;const m=b[p++];if(m===217||m===218)break;if(m===216||(m>=208&&m<=215))continue;const n=b.readUInt16BE(p);if(n<2||p+n>b.length)break;if([192,193,194,195,197,198,199,201,202,203,205,206,207].includes(m))return{width:b.readUInt16BE(p+5),height:b.readUInt16BE(p+3)};p+=n;}throw Error('No JPEG size');};
+async function get(url,headers={}){let error;for(let i=0;i<3;i++){try{const r=await fetch(url,{headers:{'Cache-Control':'no-cache',...headers},signal:AbortSignal.timeout(25000)});if(r.status!==200)throw Error('HTTP '+r.status+' '+url);return{response:r,buffer:Buffer.from(await r.arrayBuffer())};}catch(e){error=e;if(i<2)await new Promise(r=>setTimeout(r,1500));}}throw error;}
+async function pool(items,fn){let i=0;await Promise.all(Array.from({length:8},async()=>{while(i<items.length){const item=items[i++];try{await fn(item);}catch(e){report.errors.push({item:typeof item==='string'?item:item.path||item.slug,error:String(e.message)});}}}));}
+const deadline=Date.now()+8*60e3;let ready=false;while(Date.now()<deadline){try{const r=await get(origin+'/assets/social/services/manifest.json');const current=JSON.parse(r.buffer);if(current.designSignature===manifest.designSignature&&current.records.length===manifest.records.length){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,15000));}
+if(!ready)report.errors.push({item:'deployment',error:'Expected public social manifest did not become live'});
+if(ready){
+ const routes=services.flatMap(s=>[s.internalRoute,'/en'+s.internalRoute]);
+ await pool(routes,async route=>{const source=await readFile(join(root,decodeURIComponent(route).slice(1),'index.html'),'utf8'),expected=values(source),{response,buffer}=await get(origin+route),html=buffer.toString('utf8'),actual=values(html);
+ for(const key of['og:title','og:description','og:type','og:url','og:locale','og:image','og:image:type','og:image:width','og:image:height','og:image:alt','twitter:card','twitter:title','twitter:description','twitter:image','twitter:image:alt'])if(actual[key]!==expected[key]||!actual[key])throw Error('Static metadata mismatch: '+key);
+ for(const key of['og:image','twitter:image'])if(metadata(html).filter(a=>(a.property||a.name)===key).length!==1)throw Error('Duplicate '+key);
+ report.pages.push({route,status:response.status,canonical:actual['og:url'],image:actual['og:image'],locale:actual['og:locale'],staticExtraction:true});});
+ await pool(manifest.records,async record=>{const {response,buffer}=await get(record.imageUrl);const type=response.headers.get('content-type')||'';if(!type.startsWith('image/jpeg'))throw Error('Wrong image MIME '+type);const size=jpeg(buffer);if(size.width!==1200||size.height!==630||hash(buffer)!==record.sha256)throw Error('Image size/hash mismatch');report.images.push({path:record.path,status:200,type,bytes:buffer.length,...size,byteVerified:true});});
+ for(const agent of['facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)','Twitterbot/1.0'])for(const route of routes.slice(0,4)){try{const {buffer,response}=await get(origin+route,{'User-Agent':agent});const v=values(buffer.toString('utf8'));if(!manifest.records.some(r=>r.imageUrl===v['og:image']))throw Error('Crawler image missing');report.crawlerSamples.push({route,agent,status:response.status,staticImage:v['og:image']});}catch(e){report.errors.push({item:route+' '+agent,error:e.message});}}
+}
+report.finishedAt=new Date().toISOString();report.status=report.errors.length?'FAIL':'LIVE_HTTP_PASS';report.counts={pages:report.pages.length,images:report.images.length,crawlerSamples:report.crawlerSamples.length,errors:report.errors.length};
+await mkdir(out,{recursive:true});await writeFile(join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,pages:undefined,images:undefined,crawlerSamples:undefined}));if(report.errors.length)process.exitCode=1;
