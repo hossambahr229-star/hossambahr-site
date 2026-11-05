@@ -2,7 +2,7 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 const root=resolve(import.meta.dirname,'../..');
 const matrix=JSON.parse(await readFile(resolve(root,'service-matrix.json'),'utf8'));
-const reviews=await Promise.all(['content/moe-edas-field-review-2026-10-08.json','content/partial-service-field-review-2026-10-15.json','content/mohre-live-field-review-2026-10-16.json','content/mohre-remaining-field-review-2026-10-16.json','content/icp-reports-fines-field-review-2026-10-16.json','content/wps-guidance-source-review-2026-10-21.json','content/ajman-issuance-field-review-2026-10-24.json','content/icp-business-exploration-field-review-2026-10-27.json','content/icp-job-exploration-field-review-2026-10-28.json','content/icp-tourism-visitor-field-review-2026-10-29.json'].map(async path=>JSON.parse(await readFile(resolve(root,path),'utf8'))));
+const reviews=await Promise.all(['content/moe-edas-field-review-2026-10-08.json','content/partial-service-field-review-2026-10-15.json','content/mohre-live-field-review-2026-10-16.json','content/mohre-remaining-field-review-2026-10-16.json','content/icp-reports-fines-field-review-2026-10-16.json','content/wps-guidance-source-review-2026-10-21.json','content/ajman-issuance-field-review-2026-10-24.json','content/icp-business-exploration-field-review-2026-10-27.json','content/icp-job-exploration-field-review-2026-10-28.json','content/icp-tourism-visitor-field-review-2026-10-29.json','content/mohre-cancellation-channel-review-2026-11-05.json'].map(async path=>JSON.parse(await readFile(resolve(root,path),'utf8'))));
 const latestReviewBySlug=new Map();
 for(const source of reviews)for(const record of source.records){const dated={...record,reviewedAt:record.reviewedAt??source.reviewedAt};const previous=latestReviewBySlug.get(record.slug);if(!previous||dated.reviewedAt>=previous.reviewedAt)latestReviewBySlug.set(record.slug,dated);}
 const review={records:[...latestReviewBySlug.values()]};
@@ -20,6 +20,17 @@ for(const record of review.records){
   html=html.replace(/<section\b[^>]*\bdata-registry-steps[^>]*>[\s\S]*?<\/section>/g,'');
  }
  const reviewedFields=new Set([...(record.fields||[]),...(record.remaining||[]).map(field=>field==='government_fee_amount'?'fees':field)]);
+
+ if(reviewedFields.has('name')){
+  let count=0;html=html.replace(/(<h1\b[^>]*>)[\s\S]*?(<\/h1>)/,(_,open,close)=>{count++;return open+esc(service.name)+close;});if(count!==1)throw Error(service.slug+': expected one reviewed service title');
+  html=html.replace(/<title>[\s\S]*?<\/title>/,'<title>'+esc(service.name)+' | HossamBahr</title>');
+ }
+ if(reviewedFields.has('description'))html=html.replace(/(<header\b[^>]*class="[^"]*\bpage-hero\b[^"]*"[^>]*>[\s\S]*?<h1\b[^>]*>[\s\S]*?<\/h1>\s*<p>)[\s\S]*?(<\/p>)/,(_,open,close)=>open+esc(service.description)+close);
+ if(reviewedFields.has('sourceRoute')){
+  for(const previous of record.previousOfficialUrls||[])html=html.replaceAll(previous,esc(service.officialCardUrl));
+  let notes=0;html=html.replace(/(<p class="verification-note">)[\s\S]*?(<\/p>)/,(_,open,close)=>{notes++;return open+esc(service.officialRouteNote)+close;});if(notes!==1)throw Error(service.slug+': expected one reviewed official-route note');
+ }
+
  if(service.emirate==='الإمارات عدا دبي'){
   let headings=0,facts=0;
   html=html.replace(/(<header class="page-hero service-hero"><span class="eyebrow">)[^<]*(<\/span>)/,(_,open,close)=>{headings++;return open+esc(service.authority.name)+' · '+esc(service.emirate)+close;});

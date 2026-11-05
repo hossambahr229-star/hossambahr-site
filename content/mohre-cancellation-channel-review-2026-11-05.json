@@ -1,0 +1,38 @@
+{
+  "reviewedAt": "2026-11-05",
+  "scope": "ATLP / AD Ports channel for MOHRE establishment-card cancellation; not a universal Ministry channel",
+  "records": [
+    {
+      "slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
+      "reviewedAt": "2026-11-05",
+      "fields": [
+        "name",
+        "description",
+        "sourceRoute",
+        "requirements",
+        "duration",
+        "conditions",
+        "specialCases",
+        "fees"
+      ],
+      "remaining": [
+        "fees",
+        "conditions"
+      ],
+      "previousOfficialUrls": [
+        "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers"
+      ],
+      "sources": [
+        {
+          "url": "https://www.atlp.ae/ar/services-landing/value-added-services/establishment-cancelation-request",
+          "language": "ar"
+        },
+        {
+          "url": "https://www.atlp.ae/en/services-landing/value-added-services/establishment-cancelation-request",
+          "language": "en"
+        }
+      ],
+      "finding": "The previous Ministry article describes obtaining a cancellation statement, not filing card cancellation. ATLP publishes the matching request via AD Ports, with five channel-specific documents and a displayed 20-minute channel duration. Government/provider charge components and complete eligibility remain unverified; no nationwide fee or timing promise is made."
+    }
+  ]
+}
