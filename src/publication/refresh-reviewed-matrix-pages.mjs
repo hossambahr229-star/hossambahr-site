@@ -28,6 +28,7 @@ for(const record of review.records){
  }
  if(reviewedFields.has('description')){
   let descriptions=0;html=html.replace(/<header\b[^>]*class="[^"]*\bpage-hero\b[^"]*"[^>]*>[\s\S]*?<\/header>/,hero=>hero.replace(/<p>[\s\S]*?<\/p>/,()=>{descriptions++;return '<p>'+esc(service.description)+'</p>';}));if(descriptions!==1)throw Error(service.slug+': expected one reviewed service description');
+  let metaDescriptions=0;html=html.replace(/(<meta\s+name="description"\s+content=")[^"]*("[^>]*>)/,(_,open,close)=>{metaDescriptions++;return open+esc(service.description)+close;});if(metaDescriptions!==1)throw Error(service.slug+': expected one reviewed meta description');
  }
 
  if(reviewedFields.has('sourceRoute')){
