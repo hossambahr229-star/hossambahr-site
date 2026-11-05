@@ -2941,24 +2941,24 @@
       },
       "category": "companies-establishments",
       "internalUrl": "/services/تقرير-تقييم-المنشأة/",
-      "officialUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
-      "officialCardUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
+      "officialUrl": "https://mohre.gov.ae/ar/services/taqyeem.aspx",
+      "officialCardUrl": "https://mohre.gov.ae/ar/services/taqyeem.aspx",
       "executionUrl": null,
       "executionChoices": [],
-      "officialRouteMode": "official-service-card",
+      "officialRouteMode": "official-guidance",
       "officialSelectorLabel": "تقرير تقييم المنشأة",
-      "officialRouteNote": "تفتح بطاقة الخدمة الرسمية الدقيقة؛ يبدأ التنفيذ من زر الجهة داخل البطاقة وقد يتطلب تسجيل الدخول.",
-      "evidenceUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
+      "officialRouteNote": "يفتح الرابط دليل تقييم التعريفي لدى MOHRE، وليس نموذج تقديم إلكترونيًا أو بطاقة رسوم مكتملة. يوضح الدليل بدء طلب زيارة التقييم من مركز تسهيل وإحالته إلى مزود تقييم.",
+      "evidenceUrl": "https://mohre.gov.ae/ar/services/taqyeem.aspx",
       "status": "verified",
-      "description": "طلب زيارة تقييم لإثبات حجم العمل أو بيانات المنشأة؛ يبدأ عبر تسهيل أو تطبيق MOHRE ثم يُحال إلكترونياً إلى مزود تقييم المعتمد.",
+      "description": "دليل رسمي لخدمات تقييم المنشأة مثل تقدير حجم العمل وفاعلية الرخصة والسكن العمالي. يوضح المصدر تقديم طلب زيارة التقييم عبر مركز تسهيل وإحالته إلكترونيًا إلى مزود تقييم؛ لا تنشر الصفحة مستندات أو رسومًا أو مدة إنجاز محددة.",
       "requirements": [],
       "fees": "غير موثق بعد",
       "duration": "غير موثق بعد",
       "conditions": "غير موثق بعد",
-      "specialCases": "تسهيل / تطبيق MOHRE / تقييم",
-      "lastReviewed": "2026-07-27",
+      "specialCases": "حدد نوع التقييم المطلوب مع مركز تسهيل؛ معلومات البرنامج لا تثبت متطلبات كل حالة. لا يُفترض أن رسم تقرير تقييم الوارد في خدمة أخرى هو رسم حكومي منشور لهذا السجل.",
+      "lastReviewed": "2026-11-05",
       "reviewResult": "approved_for_user_navigation",
-      "functionalFinding": "exact_service_card",
+      "functionalFinding": "official_guidance_not_transaction_card",
       "loginRequired": false,
       "previousService": "/services/حصة-تصاريح-العمل-للمنشأة/",
       "nextService": "/services/تصنيف-المنشأة/",
@@ -2987,9 +2987,29 @@
         },
         {
           "question": "ما القناة الرسمية؟",
-          "answer": "يفتح الرابط صفحة الخدمة أو مسارها الرسمي لدى الجهة المختصة."
+          "answer": "دليل تقييم الرسمي؛ يوضح بدء طلب الزيارة من مركز تسهيل، وليس نموذج تقديم مباشرًا."
         }
-      ]
+      ],
+      "officialCardUrlEn": "https://mohre.gov.ae/en/services/taqyeem.aspx",
+      "officialLinkCheckedAt": "2026-11-05",
+      "localizedDetails": {
+        "en": {
+          "sourceUrl": "https://mohre.gov.ae/en/services/taqyeem.aspx",
+          "sourceLanguage": "en",
+          "notes": "This MOHRE source is a Taqyeem programme guide, not a direct application or a complete transaction card. It describes starting the assessment visit through a Tasheel centre, which forwards the request electronically to a Taqyeem provider. Case-specific documents, government charges and completion time are not published on this page.",
+          "steps": [
+            "Confirm the required assessment type with a Tasheel service centre.",
+            "Start the Taqyeem request through a Tasheel centre; the guide describes electronic referral to a Taqyeem provider.",
+            "The assessment team visits the establishment following referral. Confirm your case-specific documents, charges and timing with the channel before applying."
+          ]
+        }
+      },
+      "recordedSteps": [
+        "حدد نوع التقييم المطلوب مع مركز خدمة تسهيل.",
+        "قدّم طلب خدمة التقييم عبر مركز تسهيل؛ يوضح الدليل إحالة الطلب إلكترونيًا إلى مزود تقييم.",
+        "يتولى فريق المقيمين زيارة المنشأة وفق الإحالة؛ أكد المستندات والرسوم والمدة الخاصة بحالتك مع القناة قبل التقديم."
+      ],
+      "stepsReviewedAt": "2026-11-05"
     },
     {
       "id": "directory:mohre:7",
