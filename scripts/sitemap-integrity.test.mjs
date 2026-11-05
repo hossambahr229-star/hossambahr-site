@@ -40,3 +40,7 @@ test("all published English services resolve to included canonical routes withou
   assert.ok(urlSet.has(origin + "/en/"));
   assert.ok(urlSet.has(origin + "/en/services/"));
 });
+
+test('protected application entry routes are not sitemap landing pages',()=>{
+ for(const url of urls)assert.doesNotMatch(new URL(url).pathname,/^\/(?:en\/)?(?:auth|account|os|command-center|owner|dashboard)(?:\/|$)/,url);
+});
