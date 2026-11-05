@@ -26,13 +26,13 @@ jobs:
       - name: Prepare exact proposed source
         run: |
           git fetch origin agent/compact-guidance-facts-20261105
-          git worktree add /tmp/hb-compact-source 7fd1439c5d11c7637e1b02dc6dec071130f20462
+          git worktree add /tmp/hb-compact-source cd4bbd50ca948ce96cd79a7af5956ea777caecdc
           cd /tmp/hb-compact-source
           npm run build
       - name: Verify scoped facts, disclosures and both pathways
         env:
           HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
-          HB_SOURCE_SHA: 7fd1439c5d11c7637e1b02dc6dec071130f20462
+          HB_SOURCE_SHA: cd4bbd50ca948ce96cd79a7af5956ea777caecdc
         run: node diagnostics/compact-guidance-browser-623.mjs
       - name: Preserve actual source browser evidence
         if: always()
