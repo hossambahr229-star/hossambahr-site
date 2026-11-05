@@ -4,6 +4,8 @@ import { resolve } from "node:path";
 const root = resolve(import.meta.dirname, "../..");
 const sitemapPath = resolve(root, "sitemap.xml");
 const origin = "https://hossambahr.com";
+// Application entry routes remain reachable but are not public search landing pages.
+const protectedAppPath = /^\/(?:en\/)?(?:auth|account|os|command-center|owner|dashboard)(?:\/|$)/;
 
 const xmlEscape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 
@@ -46,6 +48,7 @@ const kept = [];
 const seen = new Set();
 const report = {
   input: blocks.length,
+  protectedApp: 0,
   kept: 0,
   duplicate: 0,
   missingFile: 0,
@@ -75,6 +78,8 @@ for (const block of blocks) {
     report.external += 1;
     continue;
   }
+
+  if (protectedAppPath.test(locUrl.pathname)) { report.protectedApp += 1; continue; }
 
   let html;
   try {
@@ -125,7 +130,7 @@ report.discoveredEnglish = 0;
 report.discoveredOther = 0;
 async function addPublishedRoute(pathname) {
   const url = normalizedHttpUrl(pathname);
-  if (!url || url.origin !== origin) return;
+  if (!url || url.origin !== origin || protectedAppPath.test(url.pathname)) return;
   url.search = "";
   url.hash = "";
   if (seen.has(url.href)) return;
