@@ -1,0 +1,42 @@
+name: Live scoped hospitality pathways acceptance 619
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/scoped-hospitality-live-619.yml, diagnostics/scoped-hospitality-live-619.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned browsers
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Verify actual scoped guidance, disclosures and contextual pathways
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_BASE_URL: https://hossambahr.com
+          HB_OUTPUT_DIR: diagnostics/scoped-hospitality-live-619
+          HB_SOURCE_SHA: c46a719c7c4e976489e24427bac0cadebe0ca6c8
+        run: node diagnostics/scoped-hospitality-live-619.mjs
+      - name: Preserve actual Production evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          if [ ! -d diagnostics/scoped-hospitality-live-619 ]; then exit 0; fi
+          git add diagnostics/scoped-hospitality-live-619
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual scoped hospitality stage pathways and updated social image evidence"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
