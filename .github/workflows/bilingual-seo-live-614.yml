@@ -1,0 +1,97 @@
+name: Bilingual SEO real Production acceptance
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/bilingual-seo-live-614.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for the new sitemap and durable homepage language metadata
+        shell: python
+        run: |
+          import urllib.request,time
+          def get(p):
+            req=urllib.request.Request('https://hossambahr.com'+p,headers={'Cache-Control':'no-cache','User-Agent':'HossamBahr-Public-QA'})
+            with urllib.request.urlopen(req,timeout=25) as r:return r.read().decode('utf-8-sig')
+          for i in range(90):
+            try:
+              s=get('/sitemap.xml?seo614='+str(i));h=get('/en/?seo614='+str(i))
+              if '/en/services/ajman-commercial-license-renewal/' in s and 'hreflang="x-default"' in h and '/site-global.css' not in h:break
+            except Exception:pass
+            time.sleep(10)
+          else:raise RuntimeError('Bilingual SEO release not yet live')
+      - name: Verify all published service canonical pairs and actual XML/CSS responses
+        shell: python
+        run: |
+          import json,re,urllib.request,urllib.error,xml.etree.ElementTree as ET
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import quote,urljoin,urlsplit
+          from concurrent.futures import ThreadPoolExecutor
+          from datetime import datetime,timezone
+          base='https://hossambahr.com';out=Path('diagnostics/bilingual-seo-live-614');out.mkdir(parents=True,exist_ok=True)
+          def norm(u):return quote(urljoin(base,u),safe=':/?=&%')
+          def get(p):
+            try:
+              with urllib.request.urlopen(urllib.request.Request(norm(p),headers={'User-Agent':'HossamBahr-Public-QA','Cache-Control':'no-cache'}),timeout=30) as r:return {'status':r.status,'type':r.headers.get('Content-Type',''),'body':r.read().decode('utf-8-sig')}
+            except urllib.error.HTTPError as e:return {'status':e.code,'body':'','type':e.headers.get('Content-Type','')}
+            except Exception as e:return {'status':0,'body':'','type':'','error':str(e)}
+          class Head(HTMLParser):
+            def __init__(self):super().__init__();self.links=[]
+            def handle_starttag(self,t,a):
+              if t=='link':self.links.append(dict(a))
+          def head(body):h=Head();h.feed(body);return h
+          services=json.loads(get('/src/registry/published-services.json')['body'])['services']
+          xml=get('/sitemap.xml');report={'observedAtUTC':datetime.now(timezone.utc).isoformat(),'source':'REAL_PRODUCTION_HTTP','scope':'CANONICAL_BILINGUAL_PUBLICATION','errors':[],'servicePairs':[],'homes':[],'googleIndexingOrRanking':'NOT_CLAIMED'}
+          ET.fromstring(xml['body']);assert '\\n' not in xml['body'].split('<url>',1)[0]
+          locs={norm(x) for x in re.findall(r'<loc>([^<]+)</loc>',xml['body'])}
+          paths=list(dict.fromkeys([s['internalRoute'] for s in services]+['/en'+s['internalRoute'] for s in services]))
+          with ThreadPoolExecutor(max_workers=3) as pool:responses=dict(zip(paths,pool.map(get,paths)))
+          def canonical(h):return norm(next((x['href'] for x in h.links if x.get('rel')=='canonical'),''))
+          for s in services:
+            ar=s['internalRoute'];en='/en'+ar;a=responses[ar];e=responses[en]
+            try:
+              assert a['status']==200 and e['status']==200,(a['status'],e['status'])
+              ah=head(a['body']);eh=head(e['body']);ac=canonical(ah);ec=canonical(eh);alias=ac!=norm(ar)
+              assert ec==norm('/en'+urlsplit(ac).path),(ec,ac)
+              assert ac in locs and ec in locs,'Canonical destination missing from sitemap'
+              if alias:
+                assert norm(en) not in locs,'Duplicate alias still indexed'
+              else:
+                expected={'ar':ac,'en':ec,'x-default':ac}
+                for h in[ah,eh]:
+                  alts=[x for x in h.links if x.get('rel')=='alternate' and x.get('hreflang')]
+                  assert len(alts)==3
+                  assert {x['hreflang']:norm(x['href']) for x in alts}==expected
+              report['servicePairs'].append({'slug':s['slug'],'arCanonical':ac,'enCanonical':ec,'alias':alias,'status':'PASS'})
+            except Exception as err:report['errors'].append({'slug':s['slug'],'error':str(err)})
+          for path in['/','/en/']:
+            r=get(path);h=head(r['body']);assert r['status']==200;css=[]
+            assert {x.get('hreflang') for x in h.links if x.get('rel')=='alternate'}=={'ar','en','x-default'}
+            for href in dict.fromkeys(x['href'] for x in h.links if x.get('rel')=='stylesheet' and x.get('href','').startswith('/')):
+              v=get(href);css.append({'href':href,'status':v['status']})
+              if v['status']!=200:report['errors'].append({'path':path,'stylesheet':href,'status':v['status']})
+            assert '/site-global.css' not in r['body']
+            report['homes'].append({'path':path,'status':'PASS','stylesheets':css})
+          report['protectedSitemapFindings']=[u for u in locs if re.search(r'hossambahr.com/(?:en/)?(?:auth|account|os|command-center|owner|dashboard)(?:/|$)',u)]
+          report['sitemapLocations']=len(locs);report['publishedServiceRecords']=len(services);report['canonicalEnglishServiceCount']=len({p['enCanonical'] for p in report['servicePairs']})
+          report['status']='PASS_FOR_SCOPED_BILINGUAL_PUBLICATION' if not report['errors'] else 'FAIL'
+          (out/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps({k:v for k,v in report.items() if k not in ['servicePairs','homes']},ensure_ascii=False));assert not report['errors']
+      - name: Preserve live bilingual publication evidence
+        if: always()
+        run: |
+          if [ -d diagnostics/bilingual-seo-live-614 ]; then
+            git config user.name "HossamBahr Acceptance Evidence"
+            git config user.email "acceptance@users.noreply.github.com"
+            git add diagnostics/bilingual-seo-live-614
+            git commit -m "Preserve real canonical sitemap and reciprocal language acceptance"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
