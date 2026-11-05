@@ -1,0 +1,38 @@
+name: Live formation discovery and preserved intent acceptance 617
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/formation-discovery-live-617.yml, diagnostics/formation-discovery-live-617.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned browser runtime and Firefox
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Verify actual Production interactions
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: node diagnostics/formation-discovery-live-617.mjs
+      - name: Preserve actual browser evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/formation-discovery-live-617
+          if ! git diff --cached --quiet; then
+            git commit -m "Record actual Chrome and Firefox bilingual formation and preserved-pathway acceptance"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
