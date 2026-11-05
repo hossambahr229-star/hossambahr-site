@@ -1,8 +1,8 @@
 name: Generate service-specific social cards
 on:
   push:
-    branches: [agent/service-social-cards-20261105, agent/scoped-hospitality-guidance-20261105]
-    paths: ['src/design/**', 'src/publication/service-social-catalog.mjs', 'scripts/generate-service-social-images.mjs', 'src/publication/det-publication-registry.json', '.github/workflows/service-social-assets.yml']
+    branches: [agent/service-social-cards-20261105, agent/scoped-hospitality-guidance-20261105, agent/mohre-cancellation-source-20261105]
+    paths: ['src/design/**', 'src/publication/service-social-catalog.mjs', 'scripts/generate-service-social-images.mjs', 'src/publication/det-publication-registry.json', 'service-matrix.json', 'src/registry/service-title-translations.json', '.github/workflows/service-social-assets.yml']
   workflow_dispatch:
 permissions:
   contents: write
@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   generate:
-    if: github.ref_name == 'agent/service-social-cards-20261105' || github.ref_name == 'agent/scoped-hospitality-guidance-20261105'
+    if: github.ref_name == 'agent/service-social-cards-20261105' || github.ref_name == 'agent/scoped-hospitality-guidance-20261105' || github.ref_name == 'agent/mohre-cancellation-source-20261105'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
