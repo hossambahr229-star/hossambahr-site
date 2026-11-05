@@ -5,6 +5,7 @@ for(const service of services.filter(s=>s.scopedGuidance))for(const locale of['a
  for(const option of service.scopedGuidance.options){const url=new URL(option.informationUrl);if(url.protocol!=='https:'||url.hostname!=='www.dubaidet.gov.ae'||!url.pathname.startsWith('/en/our-services/'))throw Error('Unverified scoped-service card: '+option.key);if(option.applicationUrl){const portal=new URL(option.applicationUrl);if(portal.protocol!=='https:'||!['classification.dubaitourism.ae','hhpermits.det.gov.ae'].includes(portal.hostname))throw Error('Unverified scoped application portal: '+option.key);}}
  const file=join(root,locale==='en'?'en':'',decodeURIComponent(service.internalRoute.slice(1)),'index.html');let html=await readFile(file,'utf8');
  html=html.replace(/<section\b[^>]*id="scoped-service-guidance"[^>]*>[\s\S]*?<\/section>/gi,'').replace(/<link\b[^>]*href=["']\/scoped-service-guidance\.css(?:\?[^"']*)?["'][^>]*>/gi,'');
+ html=html.replace(/<main\b([^>]*)>/i,(tag,attrs)=>/\bdata-destination-kind=/.test(attrs)?tag.replace(/data-destination-kind=["'][^"']*["']/,'data-destination-kind="OFFICIAL_GUIDANCE"'):'<main'+attrs+' data-destination-kind="OFFICIAL_GUIDANCE">');
  const main=html.indexOf('<main');if(main<0)throw Error('No service main');
  const hero=html.slice(main).match(/<header\b[^>]*class="[^"]*\bpage-hero\b[^"]*"[^>]*>/i);let at=hero?html.indexOf('</header>',main+hero.index)+9:html.indexOf('<section',main);
  if(at<main)at=html.indexOf('</main>',main);if(at<0)throw Error('No scoped panel insertion point');

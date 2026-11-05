@@ -228,7 +228,7 @@
   async function addStartCaseActions(session) {
     if (!location.pathname.startsWith("/services/") || location.pathname === "/services/") return;
     const main = document.querySelector("main");
-    if (main?.dataset.publicationState === "NORMALIZED") return;
+    if (main?.dataset.publicationState === "NORMALIZED" || /^official[-_]guidance$/i.test(main?.dataset.destinationKind || "")) return;
     const hero = main?.querySelector(".service-hero,.page-hero");
     const title = main?.querySelector("h1")?.textContent?.trim();
     const slug = location.pathname.split("/").filter(Boolean)[1];
