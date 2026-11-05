@@ -1,5 +1,5 @@
 import {serviceBusinessDomain} from './business-domains.js?v=ead34bcfece9';
-import {rankServices,normalizeIntent,reraApprovalIntent,queryEmirate} from './intent-search.js?v=business-formation-20261105';
+import {rankServices,normalizeIntent,reraApprovalIntent,queryEmirate} from './intent-search.js?v=383631fca3d3';
 import {compatibleEmirate} from './customer-jurisdiction.js?v=7be21562672e';
 
 export function entryMode(query){
