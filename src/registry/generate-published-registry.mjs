@@ -249,6 +249,7 @@ for (const publication of det.services.filter((item) => !item.normalization?.exc
     fees: source.fees,
     duration: source.duration,
     conditions: source.conditions,
+    eligibilityScope: source.eligibilityScope || 'complete',
     officialInformationUrl: publication.officialUrl || publication.rejectedUrl || source.evidenceUrl,
     officialCtaUrl: publication.officialUrl,
     verificationStatus: publication.classification,
