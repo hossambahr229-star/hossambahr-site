@@ -10505,6 +10505,99 @@
         "بعد"
       ],
       "description": "التصنيف والترخيص والتجديد للمنشآت الفندقية وبيوت العطلات.",
+      "scopedGuidance": {
+        "reviewedAt": "2026-11-05",
+        "notice": {
+          "ar": "اختر نوع المعاملة أولًا. تصنيف الفندق، وتسجيل المشغّل، وتصريح وحدة بيت العطلات مراحل مختلفة؛ تفاصيل الوحدة لا تنطبق على الفندق.",
+          "en": "Choose the transaction first. Hotel classification, operator registration and a holiday-home unit permit are different stages; unit-permit facts do not apply to hotels."
+        },
+        "options": [
+          {
+            "key": "hotel-classification",
+            "title": {
+              "ar": "تصنيف منشأة فندقية",
+              "en": "Classify a hotel establishment"
+            },
+            "informationUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/classify-a-hotel-establishment",
+            "applicationUrl": "https://classification.dubaitourism.ae/",
+            "documents": {
+              "ar": [
+                "موافقة DET المبدئية، وجواز صاحب الرخصة، وخريطة الأرض، وشهادات إتمام المبنى من البلدية، وشهادة الاسم التجاري."
+              ],
+              "en": [
+                "DET initial approval, licence-holder passport, land map, municipality building-completion certificates and trade-name certificate."
+              ]
+            },
+            "fees": {
+              "ar": "متغيرة بحسب فئة الفندق وتصنيفه وعدد وحداته؛ لا تعرض البطاقة مبلغًا موحدًا.",
+              "en": "Variable by hotel category, star rating and number of units; the card gives no universal amount."
+            },
+            "duration": {
+              "ar": "مراجعة الطلب خلال يوم عمل، مع زيارة تصنيف. هذه ليست مدة إنهاء جميع تراخيص تشغيل الفندق.",
+              "en": "Application processing within one business day, with a classification visit; this is not a deadline for all hotel operating licences."
+            },
+            "steps": {
+              "ar": [
+                "تجهيز بيانات العقار، والدخول إلى بوابة التصنيف، وإكمال الطلب والتقييم الذاتي الاختياري، والاستعداد لزيارة DET."
+              ],
+              "en": [
+                "Prepare property details, sign in to the classification portal, complete the application and optional self-assessment, and prepare for the DET visit."
+              ]
+            }
+          },
+          {
+            "key": "holiday-home-operator-registration",
+            "title": {
+              "ar": "تسجيل مشغّل أو مالك بيت عطلات",
+              "en": "Register a holiday-home operator or owner"
+            },
+            "informationUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/register-as-a-holiday-home-operator",
+            "note": {
+              "ar": "التسجيل لدى DET مرحلة منفصلة عن إصدار تصريح الوحدة. راجع بطاقة التسجيل لمتطلباتها؛ لا تُطبّق عليها رسوم تصريح الوحدة.",
+              "en": "DET registration is separate from a unit permit. Check the registration card for its requirements; unit-permit fees do not apply to this stage."
+            }
+          },
+          {
+            "key": "holiday-home-unit-permit",
+            "title": {
+              "ar": "إصدار تصريح جديد لوحدة بيت عطلات",
+              "en": "Issue a new holiday-home unit permit"
+            },
+            "informationUrl": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/issue-a-new-holiday-homes-permit",
+            "applicationUrl": "https://hhpermits.det.gov.ae/holidayhomes/Welcome.aspx",
+            "documents": {
+              "ar": [
+                "سند الملكية أو عقد البيع المعتمد من DLD، وموافقة المطور عند اللزوم، وهوية/جواز المالك والمفوّض، ورخصة المالك إن كان شركة، وخطاب إدارة العقار وفاتورة DEWA.",
+                "عند توقيع ممثل: توكيل وجواز الممثل. قد تُطلب مستندات للوحدات عند كون السند للمبنى كاملًا."
+              ],
+              "en": [
+                "Title deed or DLD-approved sale agreement; developer NOC where applicable; landlord and signatory identity/passport; company-landlord licence; management letter; current DEWA bill.",
+                "A representative signing the management letter needs a power of attorney and passport. Whole-building deeds may require unit-specific evidence."
+              ]
+            },
+            "conditions": {
+              "ar": "أدخل رقم العقار في DEWA بدل رقم الحساب. للمشغّل، تتوافق تواريخ التصريح مع خطاب الإدارة؛ يُعرض التصريح داخل الوحدة.",
+              "en": "Enter the DEWA premise number rather than the account number. Operator permit dates match the management letter; display the permit inside the unit."
+            },
+            "fees": {
+              "ar": "300 درهم لكل غرفة نوم +50 لشهادة التصنيف +10 معرفة +10 ابتكار. تعرض البطاقة أيضًا 370 درهمًا؛ لا نعممه على جميع الوحدات. تذكر سقفًا سنويًا 1200 درهم؛ أكّد تطبيقه والإجمالي المستحق في البوابة.",
+              "en": "AED 300 per bedroom, plus AED 50 classification certificate, AED 10 knowledge and AED 10 innovation. The card also shows AED 370; do not treat it as every unit's total. A yearly AED 1,200 cap is stated; confirm its application and the payable total in the portal."
+            },
+            "duration": {
+              "ar": "مراجعة الطلب خلال يوم عمل؛ يلي القبول التصنيف الذاتي وسداد الرسوم.",
+              "en": "Application review within one business day, followed by self-classification and payment after approval."
+            },
+            "steps": {
+              "ar": [
+                "ادخل بوابة بيوت العطلات، وأضف الوحدة، وأكمل بياناتها ومستنداتها، وراجع الإقرار. بعد الموافقة أكمل التصنيف الذاتي ثم السداد."
+              ],
+              "en": [
+                "Sign in, add the unit, provide its details and documents, and review the declaration. After approval, complete self-classification and pay."
+              ]
+            }
+          }
+        ]
+      },
       "documents": {
         "status": "NOT_OFFICIALLY_PUBLISHED",
         "items": []
@@ -10526,7 +10619,7 @@
         {
           "order": 1,
           "title": "فتح المصدر الرسمي",
-          "description": "افتح بطاقة الخدمة الحكومية الرسمية المرتبطة بهذه المعاملة."
+          "description": "افتح الدليل الحكومي الرسمي المرتبط بالخدمة."
         },
         {
           "order": 2,
@@ -10552,7 +10645,7 @@
       "faq": [
         {
           "question": "هل ينقلني الرابط إلى المعاملة الصحيحة؟",
-          "answer": "نعم، تمت مطابقة الرابط مع بطاقة الخدمة الرسمية، وليس مع صفحة رئيسية أو خدمة مشابهة."
+          "answer": "الرابط يفتح أقرب دليل حكومي رسمي موثق يذكر المسار؛ لا تعرض المنصة رابط تنفيذ عميقًا غير منشور."
         },
         {
           "question": "هل الرسوم والمدة نهائيتان؟",
@@ -10570,7 +10663,7 @@
       ],
       "officialInformationUrl": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits",
       "officialCtaUrl": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits",
-      "destinationKind": "DIRECT_SERVICE",
+      "destinationKind": "OFFICIAL_GUIDANCE",
       "verificationStatus": "VERIFIED",
       "verification": {
         "officialLinkVerified": true,
@@ -10583,13 +10676,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-08-08",
+        "dataLastReviewedAt": "2026-11-05",
         "sourceAuthority": "det-dubai",
         "sourceUrl": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-08-08",
-      "lastReviewedAt": "2026-08-08",
+      "lastUpdated": "2026-11-05",
+      "lastReviewedAt": "2026-11-05",
       "internalRoute": "/services/legacy-service-e7f35a06d9/",
       "sourceRegistry": "det-progressive-publication"
     },
