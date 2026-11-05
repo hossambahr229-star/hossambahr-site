@@ -28,7 +28,7 @@ export function businessFormationIntent(query){
  const q=normalizeIntent(query);
  const business=/(?:شرك|مشروع|موسسه|رخصه تجاريه|رخصه اقتصاديه|company|business|trade licen[cs]e|commercial licen[cs]e|economic licen[cs]e)/i.test(q);
  const starting=/(?:افتح|فتح|تاسيس|انشاء|ابدا|اصدار|جديد|open|start|establish|formation|set up|setup|new|issue)/i.test(q);
- const anotherOperation=/(?:تجديد|اجدد|الغاء|الغي|تصفيه|تعديل|اضافه|اضيف|موافق|سيرا|تصريح|ملف|بطاقه منش|حصه|كوته|renew|cancel|liquidat|amend|modify|add |approval|sira|permit|file|establishment card|quota)/i.test(q);
+ const anotherOperation=/(?:تجديد|اجدد|الغاء|الغي|تصفيه|تعديل|اضافه|اضيف|موافق|سيرا|تصريح|ملف|بطاقه منش|حصه|كوته|renew|cancel|liquidat|amend|modify|add |approval|sira|permit|file|establishment card|quota|عدم ممانعه|\bnoc\b)/i.test(q);
  return business&&starting&&!anotherOperation;
 }
 export function formationService(service){

@@ -14,6 +14,8 @@ test('English activity idea respects Sharjah and explicit free-zone choice',()=>
  const zone=discoverServices(records,{query:'تأسيس شركة في المنطقة الحرة بالفجيرة'});assert.ok(zone.length);assert.ok(zone.every(s=>/free zone/i.test(s.e)||/الحرة/.test(s.a)));
 });
 test('Renewal, cancellation, SIRA, quota and establishment-file requests keep their existing intent',()=>{
- for(const query of['إلغاء مؤسسة فردية في دبي','تجديد إقامة مراتي','محتاج كوته عمال','موافقة سيرا للأنشطة الأمنية','عايز أفتح ملف شركة','Open an establishment file for my company'])assert.equal(businessFormationIntent(query),false,query);
+ for(const query of['إلغاء مؤسسة فردية في دبي','تجديد إقامة مراتي','محتاج كوته عمال','موافقة سيرا للأنشطة الأمنية','عايز أفتح ملف شركة','Open an establishment file for my company','Apply for an NOC for a New Trade Licence','طلب شهادة عدم ممانعة لرخصة تجارية جديدة من RTA'])assert.equal(businessFormationIntent(query),false,query);
  const sira=discoverServices(records,{query:'موافقة سيرا للأنشطة الأمنية'});assert.ok(sira.length);assert.ok(sira.every(s=>s.i==='sira-dubai'));
 });
+
+test('An exact NOC service name remains discoverable under its authority',()=>{const result=discoverServices(records,{query:'Apply for an NOC for a New Trade Licence',authority:'rta-dubai'});assert.ok(result.some(s=>s.s==='rta-new-trade-license-noc-dubai'));});
