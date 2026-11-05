@@ -23,9 +23,13 @@ for(const record of review.records){
 
  if(reviewedFields.has('name')){
   let count=0;html=html.replace(/(<h1\b[^>]*>)[\s\S]*?(<\/h1>)/,(_,open,close)=>{count++;return open+esc(service.name)+close;});if(count!==1)throw Error(service.slug+': expected one reviewed service title');
+  html=html.replace(/<p class="official-name">[\s\S]*?<\/p>/,'<p class="official-name">قناة المعاملة: أطلب / AD Ports — تحقق من إتاحتها لمنشأتك.</p>');
   html=html.replace(/<title>[\s\S]*?<\/title>/,'<title>'+esc(service.name)+' | HossamBahr</title>');
  }
- if(reviewedFields.has('description'))html=html.replace(/(<header\b[^>]*class="[^"]*\bpage-hero\b[^"]*"[^>]*>[\s\S]*?<h1\b[^>]*>[\s\S]*?<\/h1>\s*<p>)[\s\S]*?(<\/p>)/,(_,open,close)=>open+esc(service.description)+close);
+ if(reviewedFields.has('description')){
+  let descriptions=0;html=html.replace(/<header\b[^>]*class="[^"]*\bpage-hero\b[^"]*"[^>]*>[\s\S]*?<\/header>/,hero=>hero.replace(/<p>[\s\S]*?<\/p>/,()=>{descriptions++;return '<p>'+esc(service.description)+'</p>';}));if(descriptions!==1)throw Error(service.slug+': expected one reviewed service description');
+ }
+
  if(reviewedFields.has('sourceRoute')){
   for(const previous of record.previousOfficialUrls||[])html=html.replaceAll(previous,esc(service.officialCardUrl));
   let notes=0;html=html.replace(/(<p class="verification-note">)[\s\S]*?(<\/p>)/,(_,open,close)=>{notes++;return open+esc(service.officialRouteNote)+close;});if(notes!==1)throw Error(service.slug+': expected one reviewed official-route note');
