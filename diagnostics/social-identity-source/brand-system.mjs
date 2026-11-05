@@ -27,6 +27,7 @@ export const SERVICE_VISUAL_FAMILIES = Object.freeze({
   establishment: family('ملفات المنشآت', 'Establishment services', 'registry', 'architecture'),
   approvals: family('الموافقات والتصاريح', 'Approvals and permits', 'network', 'orbit'),
   certificates: family('الشهادات والتصديقات', 'Certificates and attestation', 'certificate', 'document'),
+  residence: family('الإقامة وشؤون المقيمين', 'Residence services', 'identity', 'document'),
   visas: family('التأشيرات والزيارة', 'Visas and visits', 'travel', 'orbit'),
   property: family('العقار والإيجارات', 'Property and rentals', 'property', 'architecture'),
   finance: family('الخدمات المالية والضريبية', 'Tax and business finance', 'ledger', 'document'),
@@ -52,7 +53,7 @@ export function socialPresentation(service) {
   else if (category === 'residency-visas' || category === 'family-sponsorship') {
     key = /ذهبي|golden/.test(text) ? 'golden'
       : /مستثمر|شريك|investor|partner/.test(text) ? 'investor'
-      : /اسره|زوجه|والد|مولود|family|spouse|parent|newborn/.test(text) ? 'family' : 'visas';
+      : /اسره|زوجه|والد|مولود|family|spouse|parent|newborn/.test(text) ? 'family' : /اقامه|residen/.test(text) && !/تاشير|visa/.test(text) ? 'residence' : 'visas';
   } else if (category === 'government-approvals' || /سيرا|sira|موافق|approval/.test(text)) key = 'approvals';
   else if (category === 'education-certificates' || /شهاد|certificate|attestation/.test(text)) key = 'certificates';
   else if (category === 'property-rentals' || category === 'real-estate-services') key = 'property';

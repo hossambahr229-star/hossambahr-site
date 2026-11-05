@@ -88,7 +88,7 @@ export function renderServiceSocialCard(service, locale, assets) {
     +'.brand small{display:block;font-size:14px;letter-spacing:.4px;opacity:.76}'
     +'.content{height:404px;display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:32px;align-items:center;direction:'+(en?'ltr':'rtl')+'}'
     +'.copy{min-width:0;position:relative;z-index:2}.family{font-size:21px;font-weight:600;color:'+(dark?c.goldSoft:c.green)+';margin:0 0 15px}'
-    +'h1{margin:0;font-size:'+(en?52:57)+'px;font-weight:800;line-height:'+(en?1.32:1.48)+';max-height:285px;overflow-wrap:break-word}'
+    +'h1{margin:0;font-size:'+(en?52:57)+'px;font-weight:800;line-height:'+(en?1.32:1.48)+';overflow-wrap:break-word}'
     +'.intent{display:inline-flex;align-items:center;gap:10px;font-size:19px;margin-top:20px}'
     +'.intent:before{content:"";width:26px;height:3px;background:'+p.accent+'}'
     +'.art{width:100%;max-width:390px;position:relative;z-index:1}.art svg{display:block;width:100%;height:auto}'
