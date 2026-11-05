@@ -1,0 +1,48 @@
+name: Customer-intent source browser acceptance 624
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/customer-intent-source-624.yml, diagnostics/customer-intent-browser-624.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned browser runtime and Firefox
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Prepare exact proposed source
+        run: |
+          git fetch origin agent/customer-intent-map-20261105
+          git worktree add /tmp/hb-customer-intent-source afcde4b6331c86efe9161b52da52bbfe4435c572
+          cd /tmp/hb-customer-intent-source
+          npm run build
+      - name: Verify scoped facts, disclosures and both pathways
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_SOURCE_SHA: afcde4b6331c86efe9161b52da52bbfe4435c572
+        run: node diagnostics/customer-intent-browser-624.mjs
+      - name: Preserve actual source browser evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          if [ ! -d diagnostics/customer-intent-source-624 ]; then exit 0; fi
+          git add diagnostics/customer-intent-source-624
+          if ! git diff --cached --quiet; then
+            git commit -m "Record scoped hospitality source browser pathways and fee isolation"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
