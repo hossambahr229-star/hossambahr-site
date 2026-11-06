@@ -1,0 +1,42 @@
+name: Live specialised search guidance acceptance 631
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/specialised-search-live-631.yml, diagnostics/specialised-search-live-631.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned browsers
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Verify mobile homepage-to-guidance journeys
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_BASE_URL: https://hossambahr.com
+          HB_OUTPUT_DIR: diagnostics/specialised-search-live-631
+          HB_SOURCE_SHA: 842bab1c840b2f494baa27b61fbf529bb59aea08
+        run: node diagnostics/specialised-search-live-631.mjs
+      - name: Preserve actual Production evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          if [ ! -d diagnostics/specialised-search-live-631 ]; then exit 0; fi
+          git add diagnostics/specialised-search-live-631
+          if ! git diff --cached --quiet; then
+            git commit -m "Record exact certificate attestation Production pathways"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
