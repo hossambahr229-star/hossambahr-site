@@ -136,6 +136,52 @@ export function rankServices(query, services = []) {
       return [service.m,service.emirate,...aliases].filter(Boolean).some(scope=>normalizeIntent(scope)===suffix);
     }));
   if (exactNames?.length) return exactNames.map(service => ({ ...service, score: 10000 }));
+  const emirateScope = queryEmirate(query);
+  const scopedResults = (slugs) => slugs.flatMap(slug =>
+    services.filter(service => service.s === slug).map(service => ({ ...service, score: 12000 }))
+  );
+  if (/(?:ايجاري|\bejari\b)/i.test(normalized) &&
+      /(?:تجديد|اجدد|تسجيل|اسجل|\brenew|\bregister)/i.test(normalized) &&
+      !/(?:الغاء|الغي|cancel|terminat)/i.test(normalized)) {
+    return scopedResults(!emirateScope || emirateScope === 'دبي' ? ['register-renew-ejari-contract-dubai'] : []);
+  }
+  if (emirateScope === 'الشارقة' &&
+      /(?:تجديد|اجدد|\brenew)/i.test(normalized) &&
+      /(?:رخصه|licen[cs]e)/i.test(normalized) &&
+      !/(?:عمل|قياده|مركب|مهن|سياح|اسم تجاري|وكاله|driv|vehicle|work|profession|touris|agency|trade name)/i.test(normalized)) {
+    return scopedResults(['sharjah-economic-license-renewal','renew-business-license-sharjah']);
+  }
+  if (emirateScope === 'الشارقة' &&
+      /(?:خروج|انسحاب|حذف|تنازل|withdraw|remov)/i.test(normalized) &&
+      /(?:شريك|partner)/i.test(normalized) &&
+      !/(?:اقام|تاشير|تصفيه|الغاء|residen|visa|liquidat|cancel)/i.test(normalized)) {
+    return scopedResults(['sharjah-economic-license-amendment']);
+  }
+  if (/(?:الغاء|الغي|\bcancel)/i.test(normalized) &&
+      /(?:بطاقه\s+(?:ال)?منشا|establishment card)/i.test(normalized)) {
+    const labour = /(?:mohre|الموارد البشريه|وزاره العمل)/i.test(normalized);
+    const icp = /(?:\bicp\b|الهويه والجنسيه|خارج دبي)/i.test(normalized);
+    const gdrfa = /(?:gdrfa|الاقامه وشوون الاجانب|امر)/i.test(normalized);
+    const slugs = [];
+    if (!icp && !gdrfa) slugs.push('إلغاء-ملف-أو-بطاقة-المنشأة');
+    if (!labour && !gdrfa && (icp || emirateScope !== 'دبي')) slugs.push('إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي');
+    if (!labour && !icp && (!emirateScope || emirateScope === 'دبي')) slugs.push('إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات');
+    return scopedResults(slugs);
+  }
+  if (emirateScope === 'دبي' && /(?:اقامه|residen|sponsor)/i.test(normalized) &&
+      /(?:زوجت|زوجي|اولادي|ابناي|اطفال|spouse|wife|husband|child)/i.test(normalized) &&
+      !/(?:تجديد|اجدد|الغاء|الغي|تاشير|والدت|والدي|ابوي|امي|renew|cancel|visa|parent|mother|father)/i.test(normalized)) {
+    return scopedResults(['family-residency-uae']);
+  }
+  // A specialised approval with no matched catalog entry must not suggest an unrelated transaction.
+  if (/(?:موافق|تصريح|عدم ممانع|approval|permit|\bnoc\b)/i.test(normalized) &&
+      /(?:موان[يئ]|dubai ports|dp world|pcfc)/i.test(normalized)) {
+    return [];
+  }
+  if (/(?:تاسيس|انشاء|افتح|فتح|start|establish|set up|form)/i.test(normalized) &&
+      /(?:استشارات قانونيه|استشاره قانونيه|legal consultancy)/i.test(normalized)) {
+    return [];
+  }
   const foodItem = /(?:منتج(?:ات)?\s+غذاي|\bfood\s+(?:items?|products?)\b)/i.test(normalized);
   const registerFoodItem = /(?:تسجيل|اسجل|تقييم|\bregist(?:er|ering|ration)\b|\bassess(?:ment|ing)?\b)/i.test(normalized);
   const otherFoodOperation = /(?:مخطط|تصميم|شحن|افراج|اغذيه حيوانيه|اعلاف|حيوانات اليفه|\blayout\b|\bconsignment\b|\bpet\b|\banimal feed\b|\bcosmetics?\b|\bmontaji\b|(?:تسجيل|فتح|تاسيس)\s+(?:شركه|موسسه|منشاه)|\b(?:register|start|open)\s+(?:a\s+)?(?:company|business|establishment)\b)/i.test(normalized);
