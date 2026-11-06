@@ -1,0 +1,42 @@
+name: Live certificate attestation acceptance 626
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/certificate-attestation-live-626.yml, diagnostics/certificate-attestation-live-626.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned browsers
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Verify exact personal attestation and both pathways on Production
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_BASE_URL: https://hossambahr.com
+          HB_OUTPUT_DIR: diagnostics/certificate-attestation-live-626
+          HB_SOURCE_SHA: 6f80f8db1dcd189b72000a8b0622149ae63755ed
+        run: node diagnostics/certificate-attestation-live-626.mjs
+      - name: Preserve actual Production evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          if [ ! -d diagnostics/certificate-attestation-live-626 ]; then exit 0; fi
+          git add diagnostics/certificate-attestation-live-626
+          if ! git diff --cached --quiet; then
+            git commit -m "Record exact certificate attestation Production pathways"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
