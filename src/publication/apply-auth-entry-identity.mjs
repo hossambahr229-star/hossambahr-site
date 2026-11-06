@@ -17,7 +17,7 @@ const pages = ['auth/index.html', 'en/auth/index.html'];
 for (const page of pages) {
   let html = await readFile(join(root, page), 'utf8');
   const bar = trustbar[page.startsWith('en/') ? 'en' : 'ar'];
-  const removeNotice = (value) => value.replaceAll(bar, '');
+  const removeNotice = (value) => value.replace(/<div class="hb-trustbar">(?:\s*<span>[^<]*<\/span>){2}\s*<\/div>/g, '');
   const body = removeNotice(html.slice(html.indexOf('<body')));
   html = removeNotice(html);
   html = html.replace(/<link\b[^>]*href=["']\/auth-entry-identity\.css(?:\?[^"']*)?["'][^>]*>/gi, '');
