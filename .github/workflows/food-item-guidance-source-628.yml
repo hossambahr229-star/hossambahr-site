@@ -1,0 +1,48 @@
+name: Dubai food item guidance source acceptance 628
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/food-item-guidance-source-628.yml, diagnostics/food-item-guidance-browser-628.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned browser runtime and Firefox
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Prepare exact proposed source
+        run: |
+          git fetch origin agent/dubai-food-item-guidance-20261106
+          git worktree add /tmp/hb-food-item-guidance-source 7328f564834903547887cdfe7def9a8384159bfb
+          cd /tmp/hb-food-item-guidance-source
+          npm run build
+      - name: Verify Dubai product registration and its scoped official guide
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_SOURCE_SHA: 7328f564834903547887cdfe7def9a8384159bfb
+        run: node diagnostics/food-item-guidance-browser-628.mjs
+      - name: Preserve actual source browser evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          if [ ! -d diagnostics/food-item-guidance-source-628 ]; then exit 0; fi
+          git add diagnostics/food-item-guidance-source-628
+          if ! git diff --cached --quiet; then
+            git commit -m "Record Dubai food item guidance source evidence"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
