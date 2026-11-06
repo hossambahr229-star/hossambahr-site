@@ -1,0 +1,32 @@
+name: Generate and verify product sharing cards
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/product-social-assets-630.yml]
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/product-social-preview-20261106
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Render and verify the five product previews
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          node scripts/generate-product-social-images.mjs
+          npm run build
+          git add assets/social/product
+          if ! git diff --cached --quiet; then
+            git -c user.name="HossamBahr Publication" -c user.email="acceptance@users.noreply.github.com" commit -m "Render the dedicated product sharing images"
+            git push origin HEAD:agent/product-social-preview-20261106
+          fi
