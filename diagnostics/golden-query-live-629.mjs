@@ -3,9 +3,10 @@ import{resolve,join}from'node:path';
 import{chromium,firefox}from'playwright';
 const base=process.env.HB_BASE_URL, out=resolve(process.env.HB_OUTPUT_DIR), cases=[];
 const scenarios=[{"id":"formation-dubai","query":"عاوز أفتح شركة خدمات فنية في دبي","expected":["issue-trade-license-dubai"],"mode":"only_expected"},{"id":"quota-colloquial","query":"محتاج كوته عمال","expected":["حصة-تصاريح-العمل-للمنشأة"],"mode":"only_expected"},{"id":"cancel-sole-dubai","query":"إلغاء مؤسسة فردية في دبي","expected":["cancel-business-license-dubai"],"mode":"only_expected"},{"id":"certificate-attestation-ar","query":"تصديق الشهادات","expected":["تصديق-مستند-شخصي-داخل-الإمارات"],"mode":"only_expected"},{"id":"degree-attestation-en","query":"degree attestation","expected":["تصديق-مستند-شخصي-داخل-الإمارات"],"mode":"only_expected"},{"id":"sharjah-renewal","query":"تجديد رخصة في الشارقة","expected":["sharjah-economic-license-renewal","renew-business-license-sharjah"],"mode":"only_expected"},{"id":"sharjah-partner-withdrawal","query":"خروج شريك من شركة بالشارقة","expected":["sharjah-economic-license-amendment"],"mode":"only_expected"},{"id":"dubai-food-product","query":"تسجيل منتج غذائي في بلدية دبي","expected":["register-assess-food-item-dubai"],"mode":"only_expected"},{"id":"dubai-spouse-children","query":"إقامة زوجتي وأولادي في دبي","expected":["family-residency-uae"],"mode":"only_expected"},{"id":"parent-residence","query":"إقامة والدتي في الإمارات","expected":["إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي","إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي"],"mode":"only_expected"},{"id":"establishment-card-cancel","query":"إلغاء بطاقة منشأة","expected":["إلغاء-ملف-أو-بطاقة-المنشأة","إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي","إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات"],"mode":"only_expected"},{"id":"legal-consultancy-uncovered","query":"تأسيس شركة استشارات قانونية","expected":[],"mode":"no_match"},{"id":"dubai-ports-uncovered","query":"موافقة موانئ دبي","expected":[],"mode":"no_match"},{"id":"ejari-renewal","query":"إيجاري وتجديد العقد","expected":["register-renew-ejari-contract-dubai"],"mode":"only_expected"},{"id":"golden-investor-residence","query":"إقامة مستثمر أو إقامة ذهبية","expected":["golden-residency-uae"],"mode":"only_expected"}];
-const until=Date.now()+15*60e3;
+try {
+const until=Date.now()+8*60e3;
 let ready=false;
-while(Date.now()<until){try{const r=await fetch(base+'/intent-search.js',{cache:'no-store'});if(r.ok&&(await r.text()).includes('const scopedResults')){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,15000));}
+while(Date.now()<until){try{const r=await fetch(base+'/intent-search.js?hb-live-check=629',{cache:'no-store'});if(r.ok&&(await r.text()).includes('const scopedResults')){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,15000));}
 if(!ready)throw Error('New search code not yet deployed');
 for(const [engine,type] of [['chrome',chromium],['firefox',firefox]]){
  const browser=await type.launch(engine==='chrome'?{executablePath:process.env.HB_BROWSER_PATH}:{});
@@ -32,6 +33,7 @@ for(const [engine,type] of [['chrome',chromium],['firefox',firefox]]){
   finally{cases.push(row);await page.close();}
  }}finally{await browser.close();}
 }
+} catch (error) { cases.push({status:'FAIL', phase:'setup', error:error.message}); }
 const errors=cases.filter(c=>c.status!=='PASS');
 await mkdir(out,{recursive:true});await writeFile(join(out,'report.json'),JSON.stringify({scope:'ACTUAL_PRODUCTION_DISCOVERY_UI',sourceSha:process.env.HB_SOURCE_SHA,status:errors.length?'FAIL':'PASS',cases,errors},null,2)+'\n');
 console.log(JSON.stringify({total:cases.length,passed:cases.length-errors.length,errors}));
