@@ -1,0 +1,1849 @@
+{
+  "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4",
+  "scope": "PUBLIC_AUTH_PRESENTATION_ONLY; no authenticated account/document acceptance",
+  "cases": [
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1440,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "screenshot": "ar-1440.jpg",
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 739.09375,
+          "right": 1296.609375,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 739.09375,
+          "right": 1296.609375,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 739.09375,
+          "right": 1296.609375,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 161.984375,
+          "right": 621.71875,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 161.984375,
+          "right": 621.71875,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 161.984375,
+          "right": 621.71875,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 161.984375,
+          "right": 621.71875,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1366,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 702.09375,
+          "right": 1259.609375,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 702.09375,
+          "right": 1259.609375,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 702.09375,
+          "right": 1259.609375,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 124.984375,
+          "right": 584.71875,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 124.984375,
+          "right": 584.71875,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 124.984375,
+          "right": 584.71875,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 124.984375,
+          "right": 584.71875,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 768,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 400.546875,
+          "right": 719.96875,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 400.546875,
+          "right": 719.96875,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 400.546875,
+          "right": 719.96875,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 66.640625,
+          "right": 313.890625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 66.640625,
+          "right": 313.890625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 66.640625,
+          "right": 313.890625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 66.640625,
+          "right": 313.890625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 430,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 374.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 374.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 374.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 374.40625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 390,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "screenshot": "ar-390.jpg",
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 334.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 334.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 334.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 334.40625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 360,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 360,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 304.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 304.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 304.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 304.40625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 320,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "screenshot": "ar-320.jpg",
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 264.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 264.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 264.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 264.40625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1440,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "screenshot": "en-1440.jpg",
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 143.390625,
+          "right": 700.90625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 143.390625,
+          "right": 700.90625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 143.390625,
+          "right": 700.90625,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 818.28125,
+          "right": 1278.015625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 818.28125,
+          "right": 1278.015625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 818.28125,
+          "right": 1278.015625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 818.28125,
+          "right": 1278.015625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1366,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 106.390625,
+          "right": 663.90625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 106.390625,
+          "right": 663.90625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 106.390625,
+          "right": 663.90625,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 781.28125,
+          "right": 1241.015625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 781.28125,
+          "right": 1241.015625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 781.28125,
+          "right": 1241.015625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 781.28125,
+          "right": 1241.015625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 768,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 768,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 48.03125,
+          "right": 367.453125,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 48.03125,
+          "right": 367.453125,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 48.03125,
+          "right": 367.453125,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 454.109375,
+          "right": 701.359375,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 454.109375,
+          "right": 701.359375,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 454.109375,
+          "right": 701.359375,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 454.109375,
+          "right": 701.359375,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 430,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 430,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 374.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 374.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 374.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 374.40625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 390,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "screenshot": "en-390.jpg",
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 334.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 334.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 334.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 334.40625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 360,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 360,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 304.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 304.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 304.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 304.40625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 320,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 320,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "screenshot": "en-320.jpg",
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 52.390625
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 264.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 264.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 264.40625,
+          "height": 52.390625
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.59375,
+          "right": 264.40625,
+          "height": 52.390625
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1440,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1366,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 768,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 430,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 390,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 360,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 320,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1440,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1366,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 768,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 430,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 390,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 360,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 320,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    }
+  ],
+  "errors": [
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1440,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1366,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1366,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 768,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 768,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 430,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 430,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 390,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 360,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 360,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 320,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 320,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1440,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1366,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1366,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 768,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 768,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 430,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 430,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 390,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 360,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 360,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 320,
+      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 320,
+        "robots": "noindex,follow",
+        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
+        "dir": "ltr"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": ""
+      },
+      "status": "FAIL",
+      "error": "Native required validation changed",
+      "authRequests": []
+    }
+  ],
+  "status": "FAIL"
+}
