@@ -136,9 +136,9 @@ export function rankServices(query, services = []) {
       return [service.m,service.emirate,...aliases].filter(Boolean).some(scope=>normalizeIntent(scope)===suffix);
     }));
   if (exactNames?.length) return exactNames.map(service => ({ ...service, score: 10000 }));
-  const foodItem = /(?:منتج(?:ات)?\s+غذاي|مواد\s+غذاي|\bfood\s+(?:items?|products?)\b)/i.test(normalized);
+  const foodItem = /(?:منتج(?:ات)?\s+غذاي|\bfood\s+(?:items?|products?)\b)/i.test(normalized);
   const registerFoodItem = /(?:تسجيل|اسجل|تقييم|\bregist(?:er|ering|ration)\b|\bassess(?:ment|ing)?\b)/i.test(normalized);
-  const otherFoodOperation = /(?:مخطط|تصميم|شحن|افراج|اغذيه حيوانيه|اعلاف|حيوانات اليفه|\blayout\b|\bconsignment\b|\bpet\b|\banimal feed\b|\bcosmetics?\b|\bmontaji\b)/i.test(normalized);
+  const otherFoodOperation = /(?:مخطط|تصميم|شحن|افراج|اغذيه حيوانيه|اعلاف|حيوانات اليفه|\blayout\b|\bconsignment\b|\bpet\b|\banimal feed\b|\bcosmetics?\b|\bmontaji\b|(?:تسجيل|فتح|تاسيس)\s+(?:شركه|موسسه|منشاه)|\b(?:register|start|open)\s+(?:a\s+)?(?:company|business|establishment)\b)/i.test(normalized);
   if (foodItem && registerFoodItem && !otherFoodOperation) {
     const emirate = queryEmirate(query);
     if (emirate && emirate !== 'دبي') return [];
