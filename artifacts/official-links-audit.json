@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-06T23:35:59.463Z",
+  "generatedAt": "2026-11-06T23:43:36.633Z",
   "services": 203,
   "uniqueOfficialUrls": 251,
   "counts": {
-    "REACHABLE": 151,
+    "REACHABLE": 152,
     "ACCESS_RESTRICTED": 10,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 90,
+    "NETWORK_UNVERIFIED": 89,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -1934,8 +1934,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TypeError"
+      "status": 200,
+      "finalUrl": "https://eservices.tax.gov.ae/sap/bc/ui5_ui5/sap/zmcf_fmca/index.html?saml2=disabled&sap-client=100&sap-language=AR&serviceId=6001&sCode=396-02-001-000",
+      "result": "REACHABLE"
     },
     {
       "url": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54",
@@ -2591,7 +2592,9 @@
       ],
       "status": 200,
       "finalUrl": "https://media.ajman.ae/ar/servicecatalog/services/2862",
-      "result": "REACHABLE"
+      "title": "Request Rejected",
+      "result": "REACHABLE",
+      "verifiedBy": "browser-fallback"
     },
     {
       "url": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
