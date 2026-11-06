@@ -26,13 +26,13 @@ jobs:
       - name: Prepare exact proposed source
         run: |
           git fetch origin agent/dubai-food-item-guidance-20261106
-          git worktree add /tmp/hb-food-item-guidance-source 7328f564834903547887cdfe7def9a8384159bfb
+          git worktree add /tmp/hb-food-item-guidance-source e4a603c2f7e439ed79f68ad51bdcea73ccabaf17
           cd /tmp/hb-food-item-guidance-source
           npm run build
       - name: Verify Dubai product registration and its scoped official guide
         env:
           HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
-          HB_SOURCE_SHA: 7328f564834903547887cdfe7def9a8384159bfb
+          HB_SOURCE_SHA: e4a603c2f7e439ed79f68ad51bdcea73ccabaf17
         run: node diagnostics/food-item-guidance-browser-628.mjs
       - name: Preserve actual source browser evidence
         if: always()
