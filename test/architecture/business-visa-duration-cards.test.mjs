@@ -1,7 +1,7 @@
 import test from'node:test';import assert from'node:assert/strict';import{readFile}from'node:fs/promises';import{officialVariantMarkup,pathwayMarkup}from'../../service-pathways.js';import{customerContext}from'../../src/publication/customer-execution.mjs';
 const {services}=JSON.parse(await readFile(new URL('../../src/registry/published-services.json',import.meta.url),'utf8')),business=services.find(s=>s.id==='directory:residency:36'),job=services.find(s=>s.id==='directory:residency:34');
 test('business exploration uses distinct official duration cards without borrowing job-visa facts',async()=>{
- assert.equal(services.length,202);assert.deepEqual(business.officialVariantCards.map(c=>c.durationDays),[60,90,120]);
+ assert.equal(services.length,203);assert.deepEqual(business.officialVariantCards.map(c=>c.durationDays),[60,90,120]);
  const ids=['68f5bc018c587a0011cb16c1','68e350315ae59b00117383e7','68f5bc368c587a0011cb16c5'];
  assert.deepEqual(business.officialVariantCards.map(c=>new URL(c.informationUrl).searchParams.get('serviceid')),ids);
  assert.ok(business.officialVariantCards.every(c=>!job.officialVariantCards.some(j=>j.informationUrl===c.informationUrl)));
