@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-05T18:49:59.115Z",
+  "generatedAt": "2026-11-06T08:24:48.514Z",
   "services": 202,
   "uniqueOfficialUrls": 250,
   "counts": {
-    "REACHABLE": 150,
+    "REACHABLE": 151,
     "ACCESS_RESTRICTED": 10,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 90,
+    "NETWORK_UNVERIFIED": 89,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -2564,8 +2564,9 @@
         "official-cta",
         "page-official-route"
       ],
-      "result": "NETWORK_UNVERIFIED",
-      "reason": "TimeoutError"
+      "status": 200,
+      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
+      "result": "REACHABLE"
     },
     {
       "url": "https://media.ajman.ae/ar/servicecatalog/services/2862",
