@@ -1,0 +1,302 @@
+{
+  "sourceSha": "9815372b6a33f7e4fd2f9a486d64fa38ed997fe9",
+  "scope": "ACTUAL_PRODUCTION_UI",
+  "cases": [
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "results": [
+        {
+          "title": "Register and Assess a Food Item in Dubai",
+          "href": "/en/services/register-assess-food-item-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/register-assess-food-item-dubai/",
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "results": [
+        {
+          "title": "تسجيل وتقييم منتج غذائي في دبي",
+          "href": "/services/register-assess-food-item-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/register-assess-food-item-dubai/",
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "results": [
+        {
+          "title": "تسجيل وتقييم منتج غذائي في دبي",
+          "href": "/services/register-assess-food-item-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/register-assess-food-item-dubai/",
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "results": [
+        {
+          "title": "تسجيل وتقييم منتج غذائي في دبي",
+          "href": "/services/register-assess-food-item-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/register-assess-food-item-dubai/",
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "results": [
+        {
+          "title": "تسجيل وتقييم منتج غذائي في دبي",
+          "href": "/services/register-assess-food-item-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/services/register-assess-food-item-dubai/",
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "results": [
+        {
+          "title": "Register and Assess a Food Item in Dubai",
+          "href": "/en/services/register-assess-food-item-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/register-assess-food-item-dubai/",
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "results": [
+        {
+          "title": "Register and Assess a Food Item in Dubai",
+          "href": "/en/services/register-assess-food-item-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/register-assess-food-item-dubai/",
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "results": [
+        {
+          "title": "Register and Assess a Food Item in Dubai",
+          "href": "/en/services/register-assess-food-item-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/register-assess-food-item-dubai/",
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    },
+    {
+      "engine": "firefox",
+      "locale": "en",
+      "width": 390,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "results": [
+        {
+          "title": "Register and Assess a Food Item in Dubai",
+          "href": "/en/services/register-assess-food-item-dubai/"
+        }
+      ],
+      "destination": "https://hossambahr.com/en/services/register-assess-food-item-dubai/",
+      "status": "PASS",
+      "noSubmissionOrMessageSent": true
+    }
+  ],
+  "errors": [
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "تسجيل منتج غذائي دبي",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "entry": "services",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "engine": "chrome",
+      "locale": "en",
+      "width": 390,
+      "entry": "discover",
+      "intent": "food-item-guidance",
+      "query": "Register food product in Dubai",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    }
+  ],
+  "status": "FAIL"
+}
