@@ -26,7 +26,7 @@ jobs:
           HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
           HB_BASE_URL: https://hossambahr.com
           HB_OUTPUT_DIR: diagnostics/food-item-guidance-live-628
-          HB_SOURCE_SHA: 9815372b6a33f7e4fd2f9a486d64fa38ed997fe9
+          HB_SOURCE_SHA: d27f61dbb7aa10dfe45a9565abfe6971eca38cea
         run: node diagnostics/food-item-guidance-live-628.mjs
       - name: Preserve actual Production evidence
         if: always()
