@@ -1,0 +1,672 @@
+{
+  "scope": "ACTUAL_PRODUCTION_DISCOVERY_UI",
+  "sourceSha": "a13cef8a982af4a80980c7f301c4bd1eb7fcaad3",
+  "status": "PASS",
+  "cases": [
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "formation-dubai",
+      "query": "عاوز أفتح شركة خدمات فنية في دبي",
+      "actual": [
+        "issue-trade-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "quota-colloquial",
+      "query": "محتاج كوته عمال",
+      "actual": [
+        "حصة-تصاريح-العمل-للمنشأة"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "cancel-sole-dubai",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "actual": [
+        "cancel-business-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "certificate-attestation-ar",
+      "query": "تصديق الشهادات",
+      "actual": [
+        "تصديق-مستند-شخصي-داخل-الإمارات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "en",
+      "id": "degree-attestation-en",
+      "query": "degree attestation",
+      "actual": [
+        "تصديق-مستند-شخصي-داخل-الإمارات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "sharjah-renewal",
+      "query": "تجديد رخصة في الشارقة",
+      "actual": [
+        "sharjah-economic-license-renewal",
+        "renew-business-license-sharjah"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "sharjah-partner-withdrawal",
+      "query": "خروج شريك من شركة بالشارقة",
+      "actual": [
+        "sharjah-economic-license-amendment"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "dubai-food-product",
+      "query": "تسجيل منتج غذائي في بلدية دبي",
+      "actual": [
+        "register-assess-food-item-dubai"
+      ],
+      "filter": "PASS",
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "dubai-spouse-children",
+      "query": "إقامة زوجتي وأولادي في دبي",
+      "actual": [
+        "family-residency-uae"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "parent-residence",
+      "query": "إقامة والدتي في الإمارات",
+      "actual": [
+        "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+        "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "establishment-card-cancel",
+      "query": "إلغاء بطاقة منشأة",
+      "actual": [
+        "إلغاء-ملف-أو-بطاقة-المنشأة",
+        "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "legal-consultancy-uncovered",
+      "query": "تأسيس شركة استشارات قانونية",
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "dubai-ports-uncovered",
+      "query": "موافقة موانئ دبي",
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "ejari-renewal",
+      "query": "إيجاري وتجديد العقد",
+      "actual": [
+        "register-renew-ejari-contract-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 390,
+      "locale": "ar",
+      "id": "golden-investor-residence",
+      "query": "إقامة مستثمر أو إقامة ذهبية",
+      "actual": [
+        "golden-residency-uae"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "formation-dubai",
+      "query": "عاوز أفتح شركة خدمات فنية في دبي",
+      "actual": [
+        "issue-trade-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "quota-colloquial",
+      "query": "محتاج كوته عمال",
+      "actual": [
+        "حصة-تصاريح-العمل-للمنشأة"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "cancel-sole-dubai",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "actual": [
+        "cancel-business-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "certificate-attestation-ar",
+      "query": "تصديق الشهادات",
+      "actual": [
+        "تصديق-مستند-شخصي-داخل-الإمارات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "en",
+      "id": "degree-attestation-en",
+      "query": "degree attestation",
+      "actual": [
+        "تصديق-مستند-شخصي-داخل-الإمارات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "sharjah-renewal",
+      "query": "تجديد رخصة في الشارقة",
+      "actual": [
+        "sharjah-economic-license-renewal",
+        "renew-business-license-sharjah"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "sharjah-partner-withdrawal",
+      "query": "خروج شريك من شركة بالشارقة",
+      "actual": [
+        "sharjah-economic-license-amendment"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "dubai-food-product",
+      "query": "تسجيل منتج غذائي في بلدية دبي",
+      "actual": [
+        "register-assess-food-item-dubai"
+      ],
+      "filter": "PASS",
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "dubai-spouse-children",
+      "query": "إقامة زوجتي وأولادي في دبي",
+      "actual": [
+        "family-residency-uae"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "parent-residence",
+      "query": "إقامة والدتي في الإمارات",
+      "actual": [
+        "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+        "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "establishment-card-cancel",
+      "query": "إلغاء بطاقة منشأة",
+      "actual": [
+        "إلغاء-ملف-أو-بطاقة-المنشأة",
+        "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "legal-consultancy-uncovered",
+      "query": "تأسيس شركة استشارات قانونية",
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "dubai-ports-uncovered",
+      "query": "موافقة موانئ دبي",
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "ejari-renewal",
+      "query": "إيجاري وتجديد العقد",
+      "actual": [
+        "register-renew-ejari-contract-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "chrome",
+      "width": 1440,
+      "locale": "ar",
+      "id": "golden-investor-residence",
+      "query": "إقامة مستثمر أو إقامة ذهبية",
+      "actual": [
+        "golden-residency-uae"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "formation-dubai",
+      "query": "عاوز أفتح شركة خدمات فنية في دبي",
+      "actual": [
+        "issue-trade-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "quota-colloquial",
+      "query": "محتاج كوته عمال",
+      "actual": [
+        "حصة-تصاريح-العمل-للمنشأة"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "cancel-sole-dubai",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "actual": [
+        "cancel-business-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "certificate-attestation-ar",
+      "query": "تصديق الشهادات",
+      "actual": [
+        "تصديق-مستند-شخصي-داخل-الإمارات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "en",
+      "id": "degree-attestation-en",
+      "query": "degree attestation",
+      "actual": [
+        "تصديق-مستند-شخصي-داخل-الإمارات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "sharjah-renewal",
+      "query": "تجديد رخصة في الشارقة",
+      "actual": [
+        "sharjah-economic-license-renewal",
+        "renew-business-license-sharjah"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "sharjah-partner-withdrawal",
+      "query": "خروج شريك من شركة بالشارقة",
+      "actual": [
+        "sharjah-economic-license-amendment"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "dubai-food-product",
+      "query": "تسجيل منتج غذائي في بلدية دبي",
+      "actual": [
+        "register-assess-food-item-dubai"
+      ],
+      "filter": "PASS",
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "dubai-spouse-children",
+      "query": "إقامة زوجتي وأولادي في دبي",
+      "actual": [
+        "family-residency-uae"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "parent-residence",
+      "query": "إقامة والدتي في الإمارات",
+      "actual": [
+        "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+        "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "establishment-card-cancel",
+      "query": "إلغاء بطاقة منشأة",
+      "actual": [
+        "إلغاء-ملف-أو-بطاقة-المنشأة",
+        "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "legal-consultancy-uncovered",
+      "query": "تأسيس شركة استشارات قانونية",
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "dubai-ports-uncovered",
+      "query": "موافقة موانئ دبي",
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "ejari-renewal",
+      "query": "إيجاري وتجديد العقد",
+      "actual": [
+        "register-renew-ejari-contract-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "locale": "ar",
+      "id": "golden-investor-residence",
+      "query": "إقامة مستثمر أو إقامة ذهبية",
+      "actual": [
+        "golden-residency-uae"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "formation-dubai",
+      "query": "عاوز أفتح شركة خدمات فنية في دبي",
+      "actual": [
+        "issue-trade-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "quota-colloquial",
+      "query": "محتاج كوته عمال",
+      "actual": [
+        "حصة-تصاريح-العمل-للمنشأة"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "cancel-sole-dubai",
+      "query": "إلغاء مؤسسة فردية في دبي",
+      "actual": [
+        "cancel-business-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "certificate-attestation-ar",
+      "query": "تصديق الشهادات",
+      "actual": [
+        "تصديق-مستند-شخصي-داخل-الإمارات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "en",
+      "id": "degree-attestation-en",
+      "query": "degree attestation",
+      "actual": [
+        "تصديق-مستند-شخصي-داخل-الإمارات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "sharjah-renewal",
+      "query": "تجديد رخصة في الشارقة",
+      "actual": [
+        "sharjah-economic-license-renewal",
+        "renew-business-license-sharjah"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "sharjah-partner-withdrawal",
+      "query": "خروج شريك من شركة بالشارقة",
+      "actual": [
+        "sharjah-economic-license-amendment"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "dubai-food-product",
+      "query": "تسجيل منتج غذائي في بلدية دبي",
+      "actual": [
+        "register-assess-food-item-dubai"
+      ],
+      "filter": "PASS",
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "dubai-spouse-children",
+      "query": "إقامة زوجتي وأولادي في دبي",
+      "actual": [
+        "family-residency-uae"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "parent-residence",
+      "query": "إقامة والدتي في الإمارات",
+      "actual": [
+        "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+        "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "establishment-card-cancel",
+      "query": "إلغاء بطاقة منشأة",
+      "actual": [
+        "إلغاء-ملف-أو-بطاقة-المنشأة",
+        "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "legal-consultancy-uncovered",
+      "query": "تأسيس شركة استشارات قانونية",
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "dubai-ports-uncovered",
+      "query": "موافقة موانئ دبي",
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "ejari-renewal",
+      "query": "إيجاري وتجديد العقد",
+      "actual": [
+        "register-renew-ejari-contract-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "locale": "ar",
+      "id": "golden-investor-residence",
+      "query": "إقامة مستثمر أو إقامة ذهبية",
+      "actual": [
+        "golden-residency-uae"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "errors": []
+}
