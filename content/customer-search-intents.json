@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-06",
   "scope": "Owner-supplied customer phrases mapped to existing canonical service records; not a second service catalog.",
   "provenance": {
     "customerPhrases": "Latest owner master directive and observed Production queries",
@@ -8,7 +8,9 @@
       "https://www.investindubai.gov.ae/ar/business-setup",
       "https://www.dubai.ae/ar/investing/closing-your-business",
       "https://gdrfad.gov.ae/ar/services/95222a46-56f2-11ea-0320-0050569629e8",
-      "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022"
+      "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
+      "https://www.mofa.gov.ae/en/services/attestation",
+      "https://www.mofa.gov.ae/en/FAQs"
     ],
     "publicSearchReviewedAt": "2026-11-05",
     "measuredSearchVolumes": null,
@@ -125,6 +127,22 @@
       "expected": [
         "sira-new-security-activity-license-dubai",
         "sira-security-system-certification-dubai"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "certificate-attestation-ar",
+      "query": "تصديق الشهادات",
+      "expected": [
+        "تصديق-مستند-شخصي-داخل-الإمارات"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "degree-attestation-en",
+      "query": "degree attestation",
+      "expected": [
+        "تصديق-مستند-شخصي-داخل-الإمارات"
       ],
       "mode": "only_expected"
     }
