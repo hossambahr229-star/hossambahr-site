@@ -1,0 +1,29 @@
+name: Preserve measured Production performance after PR 625
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/preserve-performance-after-625.yml]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  preserve:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: public-performance-lab
+          github-token: ${{ github.token }}
+          run-id: 42189340568
+          path: diagnostics/public-performance-after-625
+      - name: Preserve the existing after-release measurements
+        run: |
+          test -s diagnostics/public-performance-after-625/report.json
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/public-performance-after-625/report.json
+          git commit -m "Record the completed read-only performance sample after PR 625"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
