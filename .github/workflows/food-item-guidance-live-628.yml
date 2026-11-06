@@ -1,0 +1,42 @@
+name: Live Dubai food item guidance acceptance 628
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/food-item-guidance-live-628.yml, diagnostics/food-item-guidance-live-628.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned browsers
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Verify exact personal attestation and both pathways on Production
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_BASE_URL: https://hossambahr.com
+          HB_OUTPUT_DIR: diagnostics/food-item-guidance-live-628
+          HB_SOURCE_SHA: 9815372b6a33f7e4fd2f9a486d64fa38ed997fe9
+        run: node diagnostics/food-item-guidance-live-628.mjs
+      - name: Preserve actual Production evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          if [ ! -d diagnostics/food-item-guidance-live-628 ]; then exit 0; fi
+          git add diagnostics/food-item-guidance-live-628
+          if ! git diff --cached --quiet; then
+            git commit -m "Record exact certificate attestation Production pathways"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
