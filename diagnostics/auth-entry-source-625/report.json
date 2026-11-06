@@ -88,7 +88,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -175,7 +177,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -262,7 +266,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -349,7 +355,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -437,7 +445,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -524,7 +534,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -612,7 +624,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -700,7 +714,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -787,7 +803,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -874,7 +892,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -961,7 +981,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -1049,7 +1071,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -1136,7 +1160,9 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
-      "protectedAccountAcceptance": "NOT_TESTED"
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
     },
     {
       "engine": "chrome",
@@ -1224,33 +1250,100 @@
       ],
       "status": "PASS",
       "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED",
+      "carriedForwardFrom": "report.first-attempt.json",
+      "sourceSha": "6924048c3bca06326166dd71eef247aef4c301c4"
+    },
+    {
+      "engine": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "route": "/auth/?return=%2Faccount%2F",
+      "presentation": {
+        "font": "Cairo, Arial, Tahoma, sans-serif",
+        "loaded": true,
+        "width": 1440,
+        "robots": "noindex,follow",
+        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
+        "dir": "rtl"
+      },
+      "nativeValidation": {
+        "required": true,
+        "valueMissing": true,
+        "autocomplete": "email"
+      },
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 739.0999755859375,
+          "right": 1296.5999755859375,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 739.0999755859375,
+          "right": 1296.5999755859375,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 739.0999755859375,
+          "right": 1296.5999755859375,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 162,
+          "right": 621.7000122070312,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 162,
+          "right": 621.7000122070312,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 162,
+          "right": 621.7000122070312,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 162,
+          "right": 621.7000122070312,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
       "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
       "locale": "ar",
-      "width": 1440,
-      "route": "/auth/?return=%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 1440,
-        "robots": "noindex,follow",
-        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
-        "dir": "rtl"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "ar",
       "width": 1366,
       "route": "/auth/?return=%2Faccount%2F",
       "presentation": {
@@ -1264,11 +1357,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 702.0999755859375,
+          "right": 1259.5999755859375,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 702.0999755859375,
+          "right": 1259.5999755859375,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 702.0999755859375,
+          "right": 1259.5999755859375,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 125,
+          "right": 584.7000122070312,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 125,
+          "right": 584.7000122070312,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 125,
+          "right": 584.7000122070312,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 125,
+          "right": 584.7000122070312,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1286,11 +1444,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 400.5333251953125,
+          "right": 719.9666442871094,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 400.5333251953125,
+          "right": 719.9666442871094,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 400.5333251953125,
+          "right": 719.9666442871094,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 66.63333129882812,
+          "right": 313.8666687011719,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 66.63333129882812,
+          "right": 313.8666687011719,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 66.63333129882812,
+          "right": 313.8666687011719,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 66.63333129882812,
+          "right": 313.8666687011719,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1308,11 +1531,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 374.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 374.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 374.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 374.3999938964844,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1330,11 +1618,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 334.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 334.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 334.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 334.3999938964844,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1352,11 +1705,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 304.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 304.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 304.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 304.3999938964844,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1374,11 +1792,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 264.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 264.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 264.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 264.3999938964844,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1396,11 +1879,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 143.39999389648438,
+          "right": 700.8999938964844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 143.39999389648438,
+          "right": 700.8999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 143.39999389648438,
+          "right": 700.8999938964844,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 818.2999877929688,
+          "right": 1278,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 818.2999877929688,
+          "right": 1278,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 818.2999877929688,
+          "right": 1278,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 818.2999877929688,
+          "right": 1278,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1418,11 +1966,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 106.39999389648438,
+          "right": 663.8999938964844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 106.39999389648438,
+          "right": 663.8999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 106.39999389648438,
+          "right": 663.8999938964844,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 781.2999877929688,
+          "right": 1241,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 781.2999877929688,
+          "right": 1241,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 781.2999877929688,
+          "right": 1241,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 781.2999877929688,
+          "right": 1241,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1440,11 +2053,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 48.03334045410156,
+          "right": 367.46665954589844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 48.03334045410156,
+          "right": 367.46665954589844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 48.03334045410156,
+          "right": 367.46665954589844,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 454.1333312988281,
+          "right": 701.3666687011719,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 454.1333312988281,
+          "right": 701.3666687011719,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 454.1333312988281,
+          "right": 701.3666687011719,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 454.1333312988281,
+          "right": 701.3666687011719,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1462,11 +2140,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 393,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 374.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 374.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 374.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 374.3999938964844,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1484,11 +2227,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 353,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 334.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 334.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 334.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 334.3999938964844,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1506,11 +2314,76 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 323,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 304.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 304.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 304.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 304.3999938964844,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     },
     {
       "engine": "firefox",
@@ -1528,322 +2401,78 @@
       "nativeValidation": {
         "required": true,
         "valueMissing": true,
-        "autocomplete": ""
+        "autocomplete": "email"
       },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
+      "fields": [
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "current-password",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 37,
+          "right": 283,
+          "height": 56
+        },
+        {
+          "type": "text",
+          "required": false,
+          "autocomplete": "name",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 264.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 264.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "password",
+          "required": true,
+          "autocomplete": "new-password",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 264.3999938964844,
+          "height": 56
+        },
+        {
+          "type": "email",
+          "required": true,
+          "autocomplete": "email",
+          "labelled": true,
+          "left": 55.600006103515625,
+          "right": 264.3999938964844,
+          "height": 56
+        }
+      ],
+      "status": "PASS",
+      "noAuthOrEmailRequest": true,
+      "protectedAccountAcceptance": "NOT_TESTED"
     }
   ],
-  "errors": [
-    {
-      "engine": "firefox",
-      "locale": "ar",
-      "width": 1440,
-      "route": "/auth/?return=%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 1440,
-        "robots": "noindex,follow",
-        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
-        "dir": "rtl"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "ar",
-      "width": 1366,
-      "route": "/auth/?return=%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 1366,
-        "robots": "noindex,follow",
-        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
-        "dir": "rtl"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "ar",
-      "width": 768,
-      "route": "/auth/?return=%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 768,
-        "robots": "noindex,follow",
-        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
-        "dir": "rtl"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "ar",
-      "width": 430,
-      "route": "/auth/?return=%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 430,
-        "robots": "noindex,follow",
-        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
-        "dir": "rtl"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "ar",
-      "width": 390,
-      "route": "/auth/?return=%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 390,
-        "robots": "noindex,follow",
-        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
-        "dir": "rtl"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "ar",
-      "width": 360,
-      "route": "/auth/?return=%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 360,
-        "robots": "noindex,follow",
-        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
-        "dir": "rtl"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "ar",
-      "width": 320,
-      "route": "/auth/?return=%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 320,
-        "robots": "noindex,follow",
-        "description": "أنشئ حسابًا آمنًا أو سجّل الدخول إلى HossamBahr لحفظ معاملاتك.",
-        "dir": "rtl"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "en",
-      "width": 1440,
-      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 1440,
-        "robots": "noindex,follow",
-        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
-        "dir": "ltr"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "en",
-      "width": 1366,
-      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 1366,
-        "robots": "noindex,follow",
-        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
-        "dir": "ltr"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "en",
-      "width": 768,
-      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 768,
-        "robots": "noindex,follow",
-        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
-        "dir": "ltr"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "en",
-      "width": 430,
-      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 430,
-        "robots": "noindex,follow",
-        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
-        "dir": "ltr"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "en",
-      "width": 390,
-      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 390,
-        "robots": "noindex,follow",
-        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
-        "dir": "ltr"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "en",
-      "width": 360,
-      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 360,
-        "robots": "noindex,follow",
-        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
-        "dir": "ltr"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    },
-    {
-      "engine": "firefox",
-      "locale": "en",
-      "width": 320,
-      "route": "/en/auth/?return=%2Fen%2Faccount%2F",
-      "presentation": {
-        "font": "Cairo, Arial, Tahoma, sans-serif",
-        "loaded": true,
-        "width": 320,
-        "robots": "noindex,follow",
-        "description": "Create an account or sign in to HOSSAM BAHR to save and track your transactions.",
-        "dir": "ltr"
-      },
-      "nativeValidation": {
-        "required": true,
-        "valueMissing": true,
-        "autocomplete": ""
-      },
-      "status": "FAIL",
-      "error": "Native required validation changed",
-      "authRequests": []
-    }
-  ],
-  "status": "FAIL"
+  "errors": [],
+  "status": "SOURCE_PUBLIC_AUTH_UI_PASS"
 }
