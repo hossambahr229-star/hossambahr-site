@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-10-29",
+  "updatedAt": "2026-11-06",
   "sourceCheckpoint": "869b7eb106795319495a527805e7d801774a5cab",
   "sourceReviewMerge": "f1fb679a53acfd5f94f7f9b43d7540389f0389bb",
   "originalPartial": 56,
   "completedRecordedDetailFields": 25,
-  "remaining": 32,
-  "scope": "Missing recorded fields remain explicit. Capture failures are not evidence that a field is unpublished. Parent-category facts do not verify subtype eligibility. This is a continuation checklist, not a blanket external-blocker or final acceptance claim. Reconciled with the 202-service registry on 2026-10-24: 32 remaining records from the historical 56-service checklist plus one later UAQ trade-name service. This is inventory reconciliation, not a newly failed service. Updated 2026-10-29: one tourism category dossier completed; 31 records from the original 56 plus the later UAQ entry remain partial (32 total). Visitor fees and time are recorded while documents and eligibility remain open.",
+  "remaining": 33,
+  "scope": "Missing recorded fields remain explicit. Capture failures are not evidence that a field is unpublished. Parent-category facts do not verify subtype eligibility. This is a continuation checklist, not a blanket external-blocker or final acceptance claim. Reconciled with the 202-service registry on 2026-10-24: 32 remaining records from the historical 56-service checklist plus one later UAQ trade-name service. This is inventory reconciliation, not a newly failed service. Updated 2026-10-29: one tourism category dossier completed; 31 records from the original 56 plus the later UAQ entry remain partial (32 total). Visitor fees and time are recorded while documents and eligibility remain open. 2026-11-06: the separate Dubai food item registration guidance is included as a newly tracked partial record.",
   "sourceAccessEvidence": {
     "readOnlyBrowserRun": 38691429951,
     "supplementaryMohreAccess": "2026-10-15 official web access also timed out for golden-visa work permits, private-sector labour complaints and PRO cards. No facts were inferred."
@@ -549,6 +549,23 @@
         "at": "2026-10-24",
         "method": "EXISTING_CANONICAL_REGISTRY_RECONCILIATION",
         "note": "Existing registry flags mark fees and processing time unverified; content review remains 2026-10-18. No new official source capture, fee, duration or requirement is asserted."
+      }
+    },
+    {
+      "slug": "register-assess-food-item-dubai",
+      "authority": "dubai-municipality",
+      "sourceUrl": "https://www.dm.gov.ae/dubai-municipality-services/?lang=ar",
+      "unverifiedFields": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "newCommonFacts": false,
+      "officialCapture": {
+        "at": "2026-11-06",
+        "method": "OFFICIAL_GUIDANCE",
+        "note": "Dubai Municipality lists the operation; the application card timed out. No application details were inferred."
       }
     }
   ],

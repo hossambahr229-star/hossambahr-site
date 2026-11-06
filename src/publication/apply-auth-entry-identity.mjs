@@ -17,12 +17,14 @@ const pages = ['auth/index.html', 'en/auth/index.html'];
 for (const page of pages) {
   let html = await readFile(join(root, page), 'utf8');
   const bar = trustbar[page.startsWith('en/') ? 'en' : 'ar'];
-  const body = html.slice(html.indexOf('<body')).replace(bar + header, header);
+  const removeNotice = (value) => value.replace(/<div class="hb-trustbar">(?:\s*<span>[^<]*<\/span>){2}\s*<\/div>/g, '');
+  const body = removeNotice(html.slice(html.indexOf('<body')));
+  html = removeNotice(html);
   html = html.replace(/<link\b[^>]*href=["']\/auth-entry-identity\.css(?:\?[^"']*)?["'][^>]*>/gi, '');
   if (!html.includes('</head>') || !html.includes(header)) throw Error('Missing public auth shell: ' + page);
   html = html.replace('</head>', '<link rel="stylesheet" href="/auth-entry-identity.css?v=' + version + '" data-hb-auth-entry-identity="2026.11"></head>');
-  if (!html.includes(bar + header)) html = html.replace(header, bar + header);
-  if (html.slice(html.indexOf('<body')).replace(bar + header, header) !== body) throw Error('Auth publication changed form or navigation markup');
+  html = html.replace(header, bar + header);
+  if (removeNotice(html.slice(html.indexOf('<body'))) !== body) throw Error('Auth publication changed form or navigation markup');
   await writeFile(join(root, page), html);
 }
 
