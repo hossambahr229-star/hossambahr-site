@@ -28,11 +28,22 @@ jobs:
           git fetch origin agent/dubai-food-item-guidance-20261106
           git worktree add /tmp/hb-food-item-guidance-source e4a603c2f7e439ed79f68ad51bdcea73ccabaf17
           cd /tmp/hb-food-item-guidance-source
+          ln -s "$GITHUB_WORKSPACE/node_modules" node_modules
+          if ! npm run build > /tmp/hb-food-build.log 2>&1; then
+            tail -35 /tmp/hb-food-build.log
+            grep -Fq 'Missing canonical social assets for 2 published pages' /tmp/hb-food-build.log || exit 1
+          fi
+          HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" npm run social:generate
           npm run build
+          git add assets/social/services
+          if ! git diff --cached --quiet; then
+            git -c user.name="HossamBahr Publication" -c user.email="acceptance@users.noreply.github.com" commit -m "Generate Arabic and English social cards for Dubai food item registration"
+            git push origin HEAD:agent/dubai-food-item-guidance-20261106
+          fi
+          echo "HB_SOURCE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
       - name: Verify Dubai product registration and its scoped official guide
         env:
           HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
-          HB_SOURCE_SHA: e4a603c2f7e439ed79f68ad51bdcea73ccabaf17
         run: node diagnostics/food-item-guidance-browser-628.mjs
       - name: Preserve actual source browser evidence
         if: always()
