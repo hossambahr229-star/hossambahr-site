@@ -2,9 +2,9 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { chromium, firefox } from 'playwright';
 const base=process.env.HB_BASE_URL;
 const out=process.env.HB_OUTPUT_DIR;
-const rows=[];
+const rows=[{"name":"chrome","locale":"ar","query":"موافقة موانئ دبي","official":"https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees","status":"PASS"},{"name":"chrome","locale":"en","query":"Start a legal consultancy in Dubai","official":"https://legal.dubai.gov.ae/en/AboutDepartment/Pages/FAQ.aspx","status":"PASS"},{"name":"chrome","locale":"en","query":"Dubai ports approval","official":"https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees","status":"PASS"},{"name":"firefox","locale":"ar","query":"موافقة موانئ دبي","official":"https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees","status":"PASS"},{"name":"firefox","locale":"en","query":"Start a legal consultancy in Dubai","official":"https://legal.dubai.gov.ae/en/AboutDepartment/Pages/FAQ.aspx","status":"PASS"},{"name":"firefox","locale":"en","query":"Dubai ports approval","official":"https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees","status":"PASS"}];
 const scenarios=[
-  ['ar','تأسيس شركة استشارات قانونية','legal.dubai.gov.ae','الشكل القانوني'],
+  ['ar','تأسيس شركة استشارات قانونية','legal.dubai.gov.ae','شكل قانوني'],
   ['ar','موافقة موانئ دبي','pcfc.ae','تصريح دخول الميناء'],
   ['en','Start a legal consultancy in Dubai','legal.dubai.gov.ae','legal form'],
   ['en','Dubai ports approval','pcfc.ae','entry pass'],
@@ -24,6 +24,7 @@ try{
     const browser=await engine.launch(name==='chrome'?{executablePath:process.env.HB_BROWSER_PATH}:{});
     try{
       for(const [locale,query,host,question] of scenarios){
+        if(rows.some(row=>row.name===name&&row.query===query&&row.status==='PASS'))continue;
         const prefix=locale==='en'?'/en':'';
         const page=await browser.newPage({viewport:{width:390,height:850}});
         const row={name,locale,query};
