@@ -4,13 +4,6 @@
     {
       "name": "chrome",
       "locale": "ar",
-      "query": "تأسيس شركة استشارات قانونية",
-      "status": "FAIL",
-      "error": "page.waitForFunction: Timeout 30000ms exceeded."
-    },
-    {
-      "name": "chrome",
-      "locale": "ar",
       "query": "موافقة موانئ دبي",
       "official": "https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees",
       "status": "PASS"
@@ -32,13 +25,6 @@
     {
       "name": "firefox",
       "locale": "ar",
-      "query": "تأسيس شركة استشارات قانونية",
-      "status": "FAIL",
-      "error": "page.waitForFunction: Timeout 30000ms exceeded."
-    },
-    {
-      "name": "firefox",
-      "locale": "ar",
       "query": "موافقة موانئ دبي",
       "official": "https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees",
       "status": "PASS"
@@ -55,6 +41,20 @@
       "locale": "en",
       "query": "Dubai ports approval",
       "official": "https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees",
+      "status": "PASS"
+    },
+    {
+      "name": "chrome",
+      "locale": "ar",
+      "query": "تأسيس شركة استشارات قانونية",
+      "official": "https://legal.dubai.gov.ae/en/AboutDepartment/Pages/FAQ.aspx",
+      "status": "PASS"
+    },
+    {
+      "name": "firefox",
+      "locale": "ar",
+      "query": "تأسيس شركة استشارات قانونية",
+      "official": "https://legal.dubai.gov.ae/en/AboutDepartment/Pages/FAQ.aspx",
       "status": "PASS"
     }
   ]
