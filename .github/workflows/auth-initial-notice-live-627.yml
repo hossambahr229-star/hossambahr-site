@@ -1,0 +1,46 @@
+name: Live initial sign-in notice and layout shift acceptance 627
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/auth-initial-notice-live-627.yml, diagnostics/auth-initial-notice-live-627.mjs]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - name: Install pinned browsers
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Verify existing notice and form controls on live Arabic and English pages
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_BASE_URL: https://hossambahr.com
+          HB_OUTPUT_DIR: diagnostics/auth-initial-notice-live-627
+          HB_SOURCE_SHA: 81fa11578e1a739756dca6c6885aac807a8fd9b7
+        run: node diagnostics/auth-initial-notice-live-627.mjs
+      - name: Verify the observed header displacement no longer reproduces
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: node diagnostics/auth-layout-shift-after-627.mjs
+      - name: Preserve actual Production evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          if [ ! -d diagnostics/auth-initial-notice-live-627 ]; then exit 0; fi
+          git add diagnostics/auth-initial-notice-live-627
+          if ! git diff --cached --quiet; then
+            git commit -m "Record live sign-in notice and measured layout shifts"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
