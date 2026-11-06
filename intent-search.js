@@ -103,6 +103,15 @@ export function businessCancellationService(service){
  return ['companies-establishments','business-licensing'].includes(service.c)&&/(?:الغاء|تصفيه|cancel|liquidat|dissolv)/i.test(name)&&/(?:رخصه|شرك|موسسه|licen[cs]e|company|business|firm)/i.test(name);
 }
 
+export function specialisedSearchKind(query) {
+  const q = normalizeIntent(query);
+  if (/(?:موافق|تصريح|عدم ممانع|approval|permit|\bnoc\b)/i.test(q) &&
+      /(?:موان[يئ]|dubai ports|dp world|pcfc)/i.test(q)) return 'port';
+  if (/(?:تاسيس|انشاء|افتح|فتح|start|establish|set up|form)/i.test(q) &&
+      /(?:استشارات قانونيه|استشاره قانونيه|legal consultancy)/i.test(q)) return 'legal';
+  return '';
+}
+
 export function rankServices(query, services = []) {
   const normalized = normalizeIntent(query);
   const sira = siraIntent(query);
@@ -173,15 +182,7 @@ export function rankServices(query, services = []) {
       !/(?:تجديد|اجدد|الغاء|الغي|تاشير|والدت|والدي|ابوي|امي|renew|cancel|visa|parent|mother|father)/i.test(normalized)) {
     return scopedResults(['family-residency-uae']);
   }
-  // A specialised approval with no matched catalog entry must not suggest an unrelated transaction.
-  if (/(?:موافق|تصريح|عدم ممانع|approval|permit|\bnoc\b)/i.test(normalized) &&
-      /(?:موان[يئ]|dubai ports|dp world|pcfc)/i.test(normalized)) {
-    return [];
-  }
-  if (/(?:تاسيس|انشاء|افتح|فتح|start|establish|set up|form)/i.test(normalized) &&
-      /(?:استشارات قانونيه|استشاره قانونيه|legal consultancy)/i.test(normalized)) {
-    return [];
-  }
+  if (specialisedSearchKind(normalized)) return [];
   const foodItem = /(?:منتج(?:ات)?\s+غذاي|\bfood\s+(?:items?|products?)\b)/i.test(normalized);
   const registerFoodItem = /(?:تسجيل|اسجل|تقييم|\bregist(?:er|ering|ration)\b|\bassess(?:ment|ing)?\b)/i.test(normalized);
   const otherFoodOperation = /(?:مخطط|تصميم|شحن|افراج|اغذيه حيوانيه|اعلاف|حيوانات اليفه|\blayout\b|\bconsignment\b|\bpet\b|\banimal feed\b|\bcosmetics?\b|\bmontaji\b|(?:تسجيل|فتح|تاسيس)\s+(?:شركه|موسسه|منشاه)|\b(?:register|start|open)\s+(?:a\s+)?(?:company|business|establishment)\b)/i.test(normalized);
