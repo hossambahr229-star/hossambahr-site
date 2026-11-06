@@ -1,0 +1,1212 @@
+{
+  "scope": "PRODUCTION_LAB_NAVIGATION; not CrUX, field CWV, Google ranking, real-user or authenticated acceptance",
+  "startedAt": "2026-11-06T08:40:48.454Z",
+  "sourceSha": "c90078c15c20b8bda5834222137a31600c57b929",
+  "lastRecordedDeployedCommit": "ce184c4ca5344f1c1b582f7be2034aa5a059ffca",
+  "expectedAuthIdentity": "any",
+  "environment": {
+    "runner": "linux x64",
+    "viewportWidths": [
+      1440,
+      390
+    ],
+    "deviceScaleFactor": 1,
+    "repeats": 3,
+    "coldIsolatedContexts": true,
+    "serviceWorkersBlocked": true,
+    "networkOrCpuThrottle": false,
+    "settleAfterFontsMs": 600,
+    "browserVersion": "159.0.8147.0"
+  },
+  "samples": [
+    {
+      "family": "home",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 1,
+      "path": "/",
+      "metrics": {
+        "ttfbMs": 66.80000000000291,
+        "fcpMs": 764,
+        "observedLcpMs": 888,
+        "observedCls": 0.004924575789965719,
+        "observationMs": 1485.2000000000044,
+        "documentTransferBytes": 11343,
+        "sameOriginResourceTransferBytes": 1640743,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 2,
+      "path": "/",
+      "metrics": {
+        "ttfbMs": 14.200000000004366,
+        "fcpMs": 484,
+        "observedLcpMs": 684,
+        "observedCls": 0.004924575789965719,
+        "observationMs": 1244.5,
+        "documentTransferBytes": 11343,
+        "sameOriginResourceTransferBytes": 1640743,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 3,
+      "path": "/",
+      "metrics": {
+        "ttfbMs": 12,
+        "fcpMs": 384,
+        "observedLcpMs": 556,
+        "observedCls": 0.0048605686156347454,
+        "observationMs": 1093.800000000003,
+        "documentTransferBytes": 11343,
+        "sameOriginResourceTransferBytes": 1640743,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "ar",
+      "width": 390,
+      "sample": 1,
+      "path": "/",
+      "metrics": {
+        "ttfbMs": 16,
+        "fcpMs": 308,
+        "observedLcpMs": 472,
+        "observedCls": 0.006363937156709107,
+        "observationMs": 1042,
+        "documentTransferBytes": 11343,
+        "sameOriginResourceTransferBytes": 1140166,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "ar",
+      "width": 390,
+      "sample": 2,
+      "path": "/",
+      "metrics": {
+        "ttfbMs": 154.6999999999971,
+        "fcpMs": 784,
+        "observedLcpMs": 952,
+        "observedCls": 0.005622317961158059,
+        "observationMs": 1545.5,
+        "documentTransferBytes": 11343,
+        "sameOriginResourceTransferBytes": 1140166,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "ar",
+      "width": 390,
+      "sample": 3,
+      "path": "/",
+      "metrics": {
+        "ttfbMs": 145.29999999999563,
+        "fcpMs": 732,
+        "observedLcpMs": 912,
+        "observedCls": 0.005119191807496203,
+        "observationMs": 1512,
+        "documentTransferBytes": 11343,
+        "sameOriginResourceTransferBytes": 1140166,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "en",
+      "width": 1440,
+      "sample": 1,
+      "path": "/en/",
+      "metrics": {
+        "ttfbMs": 139.20000000000437,
+        "fcpMs": 336,
+        "observedLcpMs": 484,
+        "observedCls": 0.057899708712542505,
+        "observationMs": 1044.7000000000044,
+        "documentTransferBytes": 9241,
+        "sameOriginResourceTransferBytes": 1010032,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "en",
+      "width": 1440,
+      "sample": 2,
+      "path": "/en/",
+      "metrics": {
+        "ttfbMs": 133.90000000000146,
+        "fcpMs": 372,
+        "observedLcpMs": 552,
+        "observedCls": 0.057899708712542505,
+        "observationMs": 1115.5999999999985,
+        "documentTransferBytes": 9241,
+        "sameOriginResourceTransferBytes": 1010032,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "en",
+      "width": 1440,
+      "sample": 3,
+      "path": "/en/",
+      "metrics": {
+        "ttfbMs": 17.900000000001455,
+        "fcpMs": 264,
+        "observedLcpMs": 416,
+        "observedCls": 0.057899708712542505,
+        "observationMs": 960.6000000000058,
+        "documentTransferBytes": 9241,
+        "sameOriginResourceTransferBytes": 1010032,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "en",
+      "width": 390,
+      "sample": 1,
+      "path": "/en/",
+      "metrics": {
+        "ttfbMs": 19.39999999999418,
+        "fcpMs": 268,
+        "observedLcpMs": 320,
+        "observedCls": 0.026290909821294353,
+        "observationMs": 930.2999999999956,
+        "documentTransferBytes": 9241,
+        "sameOriginResourceTransferBytes": 976312,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "en",
+      "width": 390,
+      "sample": 2,
+      "path": "/en/",
+      "metrics": {
+        "ttfbMs": 17.5,
+        "fcpMs": 284,
+        "observedLcpMs": 336,
+        "observedCls": 0.026290909821294353,
+        "observationMs": 928.0999999999985,
+        "documentTransferBytes": 9241,
+        "sameOriginResourceTransferBytes": 976312,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "home",
+      "locale": "en",
+      "width": 390,
+      "sample": 3,
+      "path": "/en/",
+      "metrics": {
+        "ttfbMs": 14.900000000001455,
+        "fcpMs": 220,
+        "observedLcpMs": 328,
+        "observedCls": 0.026290909821294353,
+        "observationMs": 927.3000000000029,
+        "documentTransferBytes": 9241,
+        "sameOriginResourceTransferBytes": 976312,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 1,
+      "path": "/discover/",
+      "metrics": {
+        "ttfbMs": 126,
+        "fcpMs": 520,
+        "observedLcpMs": 520,
+        "observedCls": 0.015653237731368452,
+        "observationMs": 1376.5000000000073,
+        "documentTransferBytes": 39458,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 2,
+      "path": "/discover/",
+      "metrics": {
+        "ttfbMs": 16.89999999999418,
+        "fcpMs": 380,
+        "observedLcpMs": 380,
+        "observedCls": 0.016803940667046442,
+        "observationMs": 1203,
+        "documentTransferBytes": 39458,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 3,
+      "path": "/discover/",
+      "metrics": {
+        "ttfbMs": 15.60000000000582,
+        "fcpMs": 360,
+        "observedLcpMs": 360,
+        "observedCls": 0.015653237731368452,
+        "observationMs": 1103.800000000003,
+        "documentTransferBytes": 39458,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "ar",
+      "width": 390,
+      "sample": 1,
+      "path": "/discover/",
+      "metrics": {
+        "ttfbMs": 148.60000000000582,
+        "fcpMs": 584,
+        "observedLcpMs": 584,
+        "observedCls": 0.0038899102065922215,
+        "observationMs": 1428.5,
+        "documentTransferBytes": 39458,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "ar",
+      "width": 390,
+      "sample": 2,
+      "path": "/discover/",
+      "metrics": {
+        "ttfbMs": 14.5,
+        "fcpMs": 384,
+        "observedLcpMs": 384,
+        "observedCls": 0.0038899102065922215,
+        "observationMs": 1128.199999999997,
+        "documentTransferBytes": 39458,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "ar",
+      "width": 390,
+      "sample": 3,
+      "path": "/discover/",
+      "metrics": {
+        "ttfbMs": 16.5,
+        "fcpMs": 376,
+        "observedLcpMs": 376,
+        "observedCls": 0.0038899102065922215,
+        "observationMs": 1130,
+        "documentTransferBytes": 39458,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "en",
+      "width": 1440,
+      "sample": 1,
+      "path": "/en/discover/",
+      "metrics": {
+        "ttfbMs": 160.20000000001164,
+        "fcpMs": 372,
+        "observedLcpMs": 372,
+        "observedCls": 0.01639335107214657,
+        "observationMs": 1078,
+        "documentTransferBytes": 31467,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "en",
+      "width": 1440,
+      "sample": 2,
+      "path": "/en/discover/",
+      "metrics": {
+        "ttfbMs": 15.5,
+        "fcpMs": 280,
+        "observedLcpMs": 280,
+        "observedCls": 0.01639335107214657,
+        "observationMs": 985.0999999999913,
+        "documentTransferBytes": 31467,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "en",
+      "width": 1440,
+      "sample": 3,
+      "path": "/en/discover/",
+      "metrics": {
+        "ttfbMs": 114.10000000000582,
+        "fcpMs": 328,
+        "observedLcpMs": 328,
+        "observedCls": 0.0128940329218107,
+        "observationMs": 1082.5,
+        "documentTransferBytes": 31467,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "en",
+      "width": 390,
+      "sample": 1,
+      "path": "/en/discover/",
+      "metrics": {
+        "ttfbMs": 11.400000000008731,
+        "fcpMs": 284,
+        "observedLcpMs": 284,
+        "observedCls": 0.30406055216074207,
+        "observationMs": 1005.4000000000087,
+        "documentTransferBytes": 31467,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "en",
+      "width": 390,
+      "sample": 2,
+      "path": "/en/discover/",
+      "metrics": {
+        "ttfbMs": 12.30000000000291,
+        "fcpMs": 296,
+        "observedLcpMs": 296,
+        "observedCls": 0.3021015220678416,
+        "observationMs": 1063.6000000000058,
+        "documentTransferBytes": 31467,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "discover",
+      "locale": "en",
+      "width": 390,
+      "sample": 3,
+      "path": "/en/discover/",
+      "metrics": {
+        "ttfbMs": 13.69999999999709,
+        "fcpMs": 300,
+        "observedLcpMs": 300,
+        "observedCls": 0.30406055216074207,
+        "observationMs": 1028.8999999999942,
+        "documentTransferBytes": 31467,
+        "sameOriginResourceTransferBytes": 207174,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 1,
+      "path": "/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 100.80000000000291,
+        "fcpMs": 280,
+        "observedLcpMs": 280,
+        "observedCls": 0.6982859449504334,
+        "observationMs": 891.4000000000087,
+        "documentTransferBytes": 4835,
+        "sameOriginResourceTransferBytes": 363836,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 2,
+      "path": "/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 172.89999999999418,
+        "fcpMs": 336,
+        "observedLcpMs": 336,
+        "observedCls": 0.41462842938929423,
+        "observationMs": 983,
+        "documentTransferBytes": 4835,
+        "sameOriginResourceTransferBytes": 363836,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 3,
+      "path": "/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 12.89999999999418,
+        "fcpMs": 244,
+        "observedLcpMs": 244,
+        "observedCls": 0.7033384562598335,
+        "observationMs": 868.5999999999913,
+        "documentTransferBytes": 4835,
+        "sameOriginResourceTransferBytes": 363836,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "ar",
+      "width": 390,
+      "sample": 1,
+      "path": "/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 17.10000000000582,
+        "fcpMs": 220,
+        "observedLcpMs": 220,
+        "observedCls": 1.871566351358823,
+        "observationMs": 836.8999999999942,
+        "documentTransferBytes": 4835,
+        "sameOriginResourceTransferBytes": 315771,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "ar",
+      "width": 390,
+      "sample": 2,
+      "path": "/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 14.5,
+        "fcpMs": 212,
+        "observedLcpMs": 212,
+        "observedCls": 1.851456759961735,
+        "observationMs": 853.9000000000087,
+        "documentTransferBytes": 4835,
+        "sameOriginResourceTransferBytes": 315771,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "ar",
+      "width": 390,
+      "sample": 3,
+      "path": "/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 12.599999999991269,
+        "fcpMs": 204,
+        "observedLcpMs": 204,
+        "observedCls": 1.851456759961735,
+        "observationMs": 838.5,
+        "documentTransferBytes": 4835,
+        "sameOriginResourceTransferBytes": 315771,
+        "authIdentity": false,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "en",
+      "width": 1440,
+      "sample": 1,
+      "path": "/en/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 123.5,
+        "fcpMs": 232,
+        "observedLcpMs": 232,
+        "observedCls": 0.006966296160662616,
+        "observationMs": 1014.7000000000116,
+        "documentTransferBytes": 3591,
+        "sameOriginResourceTransferBytes": 156281,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "en",
+      "width": 1440,
+      "sample": 2,
+      "path": "/en/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 98.5,
+        "fcpMs": 272,
+        "observedLcpMs": 272,
+        "observedCls": 0.00583804773401331,
+        "observationMs": 1011,
+        "documentTransferBytes": 3591,
+        "sameOriginResourceTransferBytes": 156281,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "en",
+      "width": 1440,
+      "sample": 3,
+      "path": "/en/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 15.599999999991269,
+        "fcpMs": 192,
+        "observedLcpMs": 192,
+        "observedCls": 0.00583804773401331,
+        "observationMs": 883,
+        "documentTransferBytes": 3591,
+        "sameOriginResourceTransferBytes": 156281,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "en",
+      "width": 390,
+      "sample": 1,
+      "path": "/en/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 12.099999999991269,
+        "fcpMs": 148,
+        "observedLcpMs": 148,
+        "observedCls": 0.05760070023675085,
+        "observationMs": 775,
+        "documentTransferBytes": 3591,
+        "sameOriginResourceTransferBytes": 156281,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "en",
+      "width": 390,
+      "sample": 2,
+      "path": "/en/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 90.09999999999127,
+        "fcpMs": 272,
+        "observedLcpMs": 272,
+        "observedCls": 0.04302084599931666,
+        "observationMs": 976.3999999999942,
+        "documentTransferBytes": 3591,
+        "sameOriginResourceTransferBytes": 156281,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "service",
+      "locale": "en",
+      "width": 390,
+      "sample": 3,
+      "path": "/en/services/issue-trade-license-dubai/",
+      "metrics": {
+        "ttfbMs": 15.200000000011642,
+        "fcpMs": 132,
+        "observedLcpMs": 132,
+        "observedCls": 0.04191874448186077,
+        "observationMs": 765,
+        "documentTransferBytes": 3591,
+        "sameOriginResourceTransferBytes": 156281,
+        "authIdentity": false,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 1,
+      "path": "/auth/",
+      "metrics": {
+        "ttfbMs": 105.09999999999127,
+        "fcpMs": 348,
+        "observedLcpMs": 348,
+        "observedCls": 0.009869912834324462,
+        "observationMs": 1035.2999999999884,
+        "documentTransferBytes": 2204,
+        "sameOriginResourceTransferBytes": 326177,
+        "authIdentity": true,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 2,
+      "path": "/auth/",
+      "metrics": {
+        "ttfbMs": 98.20000000001164,
+        "fcpMs": 296,
+        "observedLcpMs": 296,
+        "observedCls": 0.08620393543478884,
+        "observationMs": 1011.8000000000029,
+        "documentTransferBytes": 2204,
+        "sameOriginResourceTransferBytes": 326177,
+        "authIdentity": true,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "ar",
+      "width": 1440,
+      "sample": 3,
+      "path": "/auth/",
+      "metrics": {
+        "ttfbMs": 19.30000000000291,
+        "fcpMs": 200,
+        "observedLcpMs": 200,
+        "observedCls": 0.09211051884403935,
+        "observationMs": 811,
+        "documentTransferBytes": 2204,
+        "sameOriginResourceTransferBytes": 326177,
+        "authIdentity": true,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "ar",
+      "width": 390,
+      "sample": 1,
+      "path": "/auth/",
+      "metrics": {
+        "ttfbMs": 9.400000000008731,
+        "fcpMs": 176,
+        "observedLcpMs": 176,
+        "observedCls": 0.22091032181442463,
+        "observationMs": 800.8000000000029,
+        "documentTransferBytes": 2204,
+        "sameOriginResourceTransferBytes": 278112,
+        "authIdentity": true,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "ar",
+      "width": 390,
+      "sample": 2,
+      "path": "/auth/",
+      "metrics": {
+        "ttfbMs": 10.5,
+        "fcpMs": 164,
+        "observedLcpMs": 164,
+        "observedCls": 0.22091032181442463,
+        "observationMs": 787.5,
+        "documentTransferBytes": 2204,
+        "sameOriginResourceTransferBytes": 278112,
+        "authIdentity": true,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "ar",
+      "width": 390,
+      "sample": 3,
+      "path": "/auth/",
+      "metrics": {
+        "ttfbMs": 12.30000000000291,
+        "fcpMs": 168,
+        "observedLcpMs": 168,
+        "observedCls": 0.03753839497118257,
+        "observationMs": 790.1000000000058,
+        "documentTransferBytes": 2204,
+        "sameOriginResourceTransferBytes": 278112,
+        "authIdentity": true,
+        "lang": "ar",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "en",
+      "width": 1440,
+      "sample": 1,
+      "path": "/en/auth/",
+      "metrics": {
+        "ttfbMs": 85.39999999999418,
+        "fcpMs": 276,
+        "observedLcpMs": 276,
+        "observedCls": 0.008572755107173213,
+        "observationMs": 884,
+        "documentTransferBytes": 2014,
+        "sameOriginResourceTransferBytes": 329556,
+        "authIdentity": true,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "en",
+      "width": 1440,
+      "sample": 2,
+      "path": "/en/auth/",
+      "metrics": {
+        "ttfbMs": 17.39999999999418,
+        "fcpMs": 168,
+        "observedLcpMs": 168,
+        "observedCls": 0.06997054488570603,
+        "observationMs": 794.8999999999942,
+        "documentTransferBytes": 2014,
+        "sameOriginResourceTransferBytes": 329556,
+        "authIdentity": true,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "en",
+      "width": 1440,
+      "sample": 3,
+      "path": "/en/auth/",
+      "metrics": {
+        "ttfbMs": 93.5,
+        "fcpMs": 292,
+        "observedLcpMs": 292,
+        "observedCls": 0.007174229186258198,
+        "observationMs": 896.6999999999971,
+        "documentTransferBytes": 2014,
+        "sameOriginResourceTransferBytes": 329556,
+        "authIdentity": true,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "en",
+      "width": 390,
+      "sample": 1,
+      "path": "/en/auth/",
+      "metrics": {
+        "ttfbMs": 16.60000000000582,
+        "fcpMs": 160,
+        "observedLcpMs": 160,
+        "observedCls": 0.17577554693290806,
+        "observationMs": 779,
+        "documentTransferBytes": 2014,
+        "sameOriginResourceTransferBytes": 281491,
+        "authIdentity": true,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "en",
+      "width": 390,
+      "sample": 2,
+      "path": "/en/auth/",
+      "metrics": {
+        "ttfbMs": 13.400000000008731,
+        "fcpMs": 152,
+        "observedLcpMs": 152,
+        "observedCls": 0.17577554693290806,
+        "observationMs": 786,
+        "documentTransferBytes": 2014,
+        "sameOriginResourceTransferBytes": 281491,
+        "authIdentity": true,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    },
+    {
+      "family": "auth",
+      "locale": "en",
+      "width": 390,
+      "sample": 3,
+      "path": "/en/auth/",
+      "metrics": {
+        "ttfbMs": 10.700000000011642,
+        "fcpMs": 148,
+        "observedLcpMs": 148,
+        "observedCls": 0.17577554693290806,
+        "observationMs": 780.1000000000058,
+        "documentTransferBytes": 2014,
+        "sameOriginResourceTransferBytes": 281491,
+        "authIdentity": true,
+        "lang": "en",
+        "heading": true
+      },
+      "status": "SAMPLED"
+    }
+  ],
+  "groups": [
+    {
+      "family": "home",
+      "locale": "ar",
+      "width": 1440,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 14.200000000004366,
+        "fcpMs": 484,
+        "observedLcpMs": 684,
+        "observedCls": 0.004924575789965719,
+        "documentTransferBytes": 11343,
+        "sameOriginResourceTransferBytes": 1640743
+      }
+    },
+    {
+      "family": "home",
+      "locale": "ar",
+      "width": 390,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 145.29999999999563,
+        "fcpMs": 732,
+        "observedLcpMs": 912,
+        "observedCls": 0.005622317961158059,
+        "documentTransferBytes": 11343,
+        "sameOriginResourceTransferBytes": 1140166
+      }
+    },
+    {
+      "family": "home",
+      "locale": "en",
+      "width": 1440,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 133.90000000000146,
+        "fcpMs": 336,
+        "observedLcpMs": 484,
+        "observedCls": 0.057899708712542505,
+        "documentTransferBytes": 9241,
+        "sameOriginResourceTransferBytes": 1010032
+      }
+    },
+    {
+      "family": "home",
+      "locale": "en",
+      "width": 390,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 17.5,
+        "fcpMs": 268,
+        "observedLcpMs": 328,
+        "observedCls": 0.026290909821294353,
+        "documentTransferBytes": 9241,
+        "sameOriginResourceTransferBytes": 976312
+      }
+    },
+    {
+      "family": "discover",
+      "locale": "ar",
+      "width": 1440,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 16.89999999999418,
+        "fcpMs": 380,
+        "observedLcpMs": 380,
+        "observedCls": 0.015653237731368452,
+        "documentTransferBytes": 39458,
+        "sameOriginResourceTransferBytes": 207174
+      }
+    },
+    {
+      "family": "discover",
+      "locale": "ar",
+      "width": 390,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 16.5,
+        "fcpMs": 384,
+        "observedLcpMs": 384,
+        "observedCls": 0.0038899102065922215,
+        "documentTransferBytes": 39458,
+        "sameOriginResourceTransferBytes": 207174
+      }
+    },
+    {
+      "family": "discover",
+      "locale": "en",
+      "width": 1440,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 114.10000000000582,
+        "fcpMs": 328,
+        "observedLcpMs": 328,
+        "observedCls": 0.01639335107214657,
+        "documentTransferBytes": 31467,
+        "sameOriginResourceTransferBytes": 207174
+      }
+    },
+    {
+      "family": "discover",
+      "locale": "en",
+      "width": 390,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 12.30000000000291,
+        "fcpMs": 296,
+        "observedLcpMs": 296,
+        "observedCls": 0.30406055216074207,
+        "documentTransferBytes": 31467,
+        "sameOriginResourceTransferBytes": 207174
+      }
+    },
+    {
+      "family": "service",
+      "locale": "ar",
+      "width": 1440,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 100.80000000000291,
+        "fcpMs": 280,
+        "observedLcpMs": 280,
+        "observedCls": 0.6982859449504334,
+        "documentTransferBytes": 4835,
+        "sameOriginResourceTransferBytes": 363836
+      }
+    },
+    {
+      "family": "service",
+      "locale": "ar",
+      "width": 390,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 14.5,
+        "fcpMs": 212,
+        "observedLcpMs": 212,
+        "observedCls": 1.851456759961735,
+        "documentTransferBytes": 4835,
+        "sameOriginResourceTransferBytes": 315771
+      }
+    },
+    {
+      "family": "service",
+      "locale": "en",
+      "width": 1440,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 98.5,
+        "fcpMs": 232,
+        "observedLcpMs": 232,
+        "observedCls": 0.00583804773401331,
+        "documentTransferBytes": 3591,
+        "sameOriginResourceTransferBytes": 156281
+      }
+    },
+    {
+      "family": "service",
+      "locale": "en",
+      "width": 390,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 15.200000000011642,
+        "fcpMs": 148,
+        "observedLcpMs": 148,
+        "observedCls": 0.04302084599931666,
+        "documentTransferBytes": 3591,
+        "sameOriginResourceTransferBytes": 156281
+      }
+    },
+    {
+      "family": "auth",
+      "locale": "ar",
+      "width": 1440,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 98.20000000001164,
+        "fcpMs": 296,
+        "observedLcpMs": 296,
+        "observedCls": 0.08620393543478884,
+        "documentTransferBytes": 2204,
+        "sameOriginResourceTransferBytes": 326177
+      }
+    },
+    {
+      "family": "auth",
+      "locale": "ar",
+      "width": 390,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 10.5,
+        "fcpMs": 168,
+        "observedLcpMs": 168,
+        "observedCls": 0.22091032181442463,
+        "documentTransferBytes": 2204,
+        "sameOriginResourceTransferBytes": 278112
+      }
+    },
+    {
+      "family": "auth",
+      "locale": "en",
+      "width": 1440,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 85.39999999999418,
+        "fcpMs": 276,
+        "observedLcpMs": 276,
+        "observedCls": 0.008572755107173213,
+        "documentTransferBytes": 2014,
+        "sameOriginResourceTransferBytes": 329556
+      }
+    },
+    {
+      "family": "auth",
+      "locale": "en",
+      "width": 390,
+      "samples": 3,
+      "median": {
+        "ttfbMs": 13.400000000008731,
+        "fcpMs": 152,
+        "observedLcpMs": 152,
+        "observedCls": 0.17577554693290806,
+        "documentTransferBytes": 2014,
+        "sameOriginResourceTransferBytes": 281491
+      }
+    }
+  ],
+  "errors": [],
+  "finishedAt": "2026-11-06T08:41:43.740Z",
+  "status": "LAB_SAMPLE_COMPLETE"
+}
