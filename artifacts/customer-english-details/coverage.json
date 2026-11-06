@@ -1,27 +1,27 @@
 {
   "status": "PARTIAL PASS",
-  "auditedServices": 202,
+  "auditedServices": 203,
   "fullyTranslatedRecordedSections": 172,
   "fieldCounts": {
     "documents": {
       "PLATFORM_TRANSLATION": 146,
       "RECORDED_ENGLISH": 44,
-      "MISSING_INFORMATION": 12
+      "MISSING_INFORMATION": 13
     },
     "eligibility": {
       "PLATFORM_TRANSLATION": 149,
       "RECORDED_ENGLISH": 42,
-      "MISSING_INFORMATION": 11
+      "MISSING_INFORMATION": 12
     },
     "fees": {
       "PLATFORM_TRANSLATION": 141,
       "RECORDED_ENGLISH": 40,
-      "MISSING_INFORMATION": 21
+      "MISSING_INFORMATION": 22
     },
     "duration": {
       "PLATFORM_TRANSLATION": 142,
       "RECORDED_ENGLISH": 45,
-      "MISSING_INFORMATION": 15
+      "MISSING_INFORMATION": 16
     }
   },
   "scope": "Translation coverage of recorded verified sections only. This does not reverify government facts, fill missing information or grant overall English acceptance.",
@@ -1080,6 +1080,17 @@
         "eligibility": "PLATFORM_TRANSLATION",
         "fees": "PLATFORM_TRANSLATION",
         "duration": "PLATFORM_TRANSLATION"
+      }
+    },
+    {
+      "id": "dm:food-item-registration",
+      "slug": "register-assess-food-item-dubai",
+      "route": "/en/services/register-assess-food-item-dubai/",
+      "fields": {
+        "documents": "MISSING_INFORMATION",
+        "eligibility": "MISSING_INFORMATION",
+        "fees": "MISSING_INFORMATION",
+        "duration": "MISSING_INFORMATION"
       }
     },
     {

@@ -3,11 +3,11 @@
   "generatedAt": "2026-08-11",
   "policy": "Single derived publication registry. Only independently approved records enter this file; normalized historical aliases remain outside the real-service denominator.",
   "summary": {
-    "services": 202,
-    "verified": 202,
-    "officialLinksVerified": 202,
+    "services": 203,
+    "verified": 203,
+    "officialLinksVerified": 203,
     "fullyVerifiedDetails": 170,
-    "partiallyVerifiedDetails": 32,
+    "partiallyVerifiedDetails": 33,
     "pendingVerification": 0,
     "authorities": 21,
     "emirates": [
@@ -7416,7 +7416,7 @@
       "relatedServiceIds": [
         "dm:new-building-permit",
         "dm:food-layout-approval",
-        "dm:industrial-environmental-clearance"
+        "dm:food-item-registration"
       ],
       "alternativeServiceIds": [
         "dha:activate-facility-license",
@@ -13748,6 +13748,143 @@
       "lastUpdated": "2026-10-09",
       "lastReviewedAt": "2026-10-09",
       "internalRoute": "/services/real-estate-professional-practice-card-dubai/",
+      "sourceRegistry": "government-coverage-expansion"
+    },
+    {
+      "id": "dm:food-item-registration",
+      "slug": "register-assess-food-item-dubai",
+      "name": {
+        "ar": "تسجيل وتقييم منتج غذائي في دبي",
+        "en": "Register and Assess a Food Item in Dubai"
+      },
+      "emirate": "دبي",
+      "authority": {
+        "id": "dubai-municipality",
+        "ar": "بلدية دبي",
+        "en": "Dubai Municipality"
+      },
+      "classification": {
+        "main": "business-licensing",
+        "sub": "دليل تسجيل منتج غذائي"
+      },
+      "economicActivity": null,
+      "licenseType": null,
+      "customerTypes": [
+        "business",
+        "individual"
+      ],
+      "keywords": [
+        "تسجيل",
+        "وتقييم",
+        "منتج",
+        "غذائي",
+        "في",
+        "دبي",
+        "Register",
+        "and",
+        "Assess",
+        "Food",
+        "Item",
+        "in",
+        "Dubai",
+        "بلدية",
+        "Municipality",
+        "business-licensing",
+        "دليل"
+      ],
+      "description": "تتيح بلدية دبي للمنشآت الغذائية تسجيل المنتج وتقييم بطاقته الغذائية. يوضح دليل البلدية اسم المعاملة وطريقة الوصول إليها. لم نتحقق من تفاصيل التقديم أو الرسوم أو المدة.",
+      "localizedDetails": {
+        "en": {
+          "description": "Dubai Municipality lists food item registration and food-label assessment for food establishments. The official guide identifies the service. Application documents, fees and processing time have not been verified."
+        }
+      },
+      "documents": {
+        "status": "NOT_OFFICIALLY_PUBLISHED",
+        "items": []
+      },
+      "governmentFees": {
+        "status": "NOT_OFFICIALLY_PUBLISHED",
+        "text": "NOT_OFFICIALLY_PUBLISHED"
+      },
+      "serviceFees": {
+        "status": "NOT_OFFICIALLY_PUBLISHED",
+        "text": "NOT_OFFICIALLY_PUBLISHED"
+      },
+      "processingTime": {
+        "status": "NOT_OFFICIALLY_PUBLISHED",
+        "text": "NOT_OFFICIALLY_PUBLISHED"
+      },
+      "conditions": "NOT_OFFICIALLY_PUBLISHED",
+      "steps": [
+        {
+          "order": 1,
+          "title": "فتح المصدر الرسمي",
+          "description": "افتح الدليل الحكومي الرسمي المرتبط بالخدمة."
+        },
+        {
+          "order": 2,
+          "title": "تأكيد نطاق المعاملة",
+          "description": "طابق اسم المعاملة والإمارة وصفة مقدم الطلب مع الحالة التي تريد إنجازها."
+        },
+        {
+          "order": 3,
+          "title": "مراجعة المتطلبات الحالية",
+          "description": "راجع المتطلبات والمستندات والرسوم المعروضة في المصدر الرسمي قبل بدء الطلب."
+        },
+        {
+          "order": 4,
+          "title": "تقديم الطلب رسميًا",
+          "description": "سجّل الدخول بالقناة التي تحددها الجهة، وأدخل البيانات وأرفق المستندات المطلوبة."
+        },
+        {
+          "order": 5,
+          "title": "السداد والمتابعة",
+          "description": "سدّد المبلغ الذي تعرضه الجهة عند انطباقه، واحتفظ برقم الطلب لمتابعة النتيجة."
+        }
+      ],
+      "faq": [
+        {
+          "question": "هل ينقلني الرابط إلى المعاملة الصحيحة؟",
+          "answer": "الرابط يفتح أقرب دليل حكومي رسمي موثق يذكر المسار؛ لا تعرض المنصة رابط تنفيذ عميقًا غير منشور."
+        },
+        {
+          "question": "هل الرسوم والمدة نهائيتان؟",
+          "answer": "المصدر الحكومي الرسمي هو المرجع النهائي؛ راجع القيمة والمدة المعروضتين فيه قبل إرسال الطلب أو السداد."
+        }
+      ],
+      "relatedServiceIds": [
+        "dm:food-activity-permit",
+        "dm:food-layout-approval",
+        "dm:building-completion"
+      ],
+      "alternativeServiceIds": [
+        "added:business-establishment-guide",
+        "dha:activate-facility-license"
+      ],
+      "officialInformationUrl": "https://www.dm.gov.ae/dubai-municipality-services/?lang=ar",
+      "officialCtaUrl": "https://www.dm.gov.ae/dubai-municipality-services/?lang=ar",
+      "officialCtaUrlEn": "https://www.dm.gov.ae/municipality-business/food-safety-department-2/important-information-to-food-establishment/",
+      "destinationKind": "OFFICIAL_GUIDANCE",
+      "verificationStatus": "VERIFIED",
+      "verification": {
+        "officialLinkVerified": true,
+        "requirementsVerified": false,
+        "feesVerified": false,
+        "durationVerified": false,
+        "eligibilityVerified": false,
+        "detailsVerified": false,
+        "verifiedDetailCount": 0,
+        "totalDetailFields": 4,
+        "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
+        "officialLinkLastCheckedAt": "2026-11-06",
+        "dataLastReviewedAt": "2026-11-06",
+        "sourceAuthority": "dubai-municipality",
+        "sourceUrl": "https://www.dm.gov.ae/dubai-municipality-services/?lang=ar"
+      },
+      "businessAcceptanceStatus": "APPROVED",
+      "lastUpdated": "2026-11-06",
+      "lastReviewedAt": "2026-11-06",
+      "internalRoute": "/services/register-assess-food-item-dubai/",
       "sourceRegistry": "government-coverage-expansion"
     },
     {
