@@ -1,0 +1,61 @@
+{
+  "sourceSha": "842bab1c840b2f494baa27b61fbf529bb59aea08",
+  "rows": [
+    {
+      "name": "chrome",
+      "locale": "ar",
+      "query": "تأسيس شركة استشارات قانونية",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "name": "chrome",
+      "locale": "ar",
+      "query": "موافقة موانئ دبي",
+      "official": "https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees",
+      "status": "PASS"
+    },
+    {
+      "name": "chrome",
+      "locale": "en",
+      "query": "Start a legal consultancy in Dubai",
+      "official": "https://legal.dubai.gov.ae/en/AboutDepartment/Pages/FAQ.aspx",
+      "status": "PASS"
+    },
+    {
+      "name": "chrome",
+      "locale": "en",
+      "query": "Dubai ports approval",
+      "official": "https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees",
+      "status": "PASS"
+    },
+    {
+      "name": "firefox",
+      "locale": "ar",
+      "query": "تأسيس شركة استشارات قانونية",
+      "status": "FAIL",
+      "error": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "name": "firefox",
+      "locale": "ar",
+      "query": "موافقة موانئ دبي",
+      "official": "https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees",
+      "status": "PASS"
+    },
+    {
+      "name": "firefox",
+      "locale": "en",
+      "query": "Start a legal consultancy in Dubai",
+      "official": "https://legal.dubai.gov.ae/en/AboutDepartment/Pages/FAQ.aspx",
+      "status": "PASS"
+    },
+    {
+      "name": "firefox",
+      "locale": "en",
+      "query": "Dubai ports approval",
+      "official": "https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees",
+      "status": "PASS"
+    }
+  ]
+}
