@@ -183,9 +183,9 @@
       ],
       "summary": {
         "canonicalServices": 0,
-        "newVerifiedServices": 6,
-        "realServices": 6,
-        "verifiedRealServices": 6,
+        "newVerifiedServices": 7,
+        "realServices": 7,
+        "verifiedRealServices": 7,
         "pendingVerification": 0,
         "brokenActiveCtas": 0
       },
@@ -297,6 +297,29 @@
           "duration": "تختلف بحسب تصنيف المنشأة واكتمال الدراسة والمستندات",
           "conditions": "تحدد مدة صلاحية التصريح ومتطلباته وفق تصنيف المنشأة وطبيعة النشاط.",
           "officialUrl": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3485"
+        },
+        {
+          "id": "dm:food-item-registration",
+          "slug": "register-assess-food-item-dubai",
+          "nameAr": "تسجيل وتقييم منتج غذائي في دبي",
+          "nameEn": "Register and Assess a Food Item in Dubai",
+          "category": "business-licensing",
+          "type": "دليل تسجيل منتج غذائي",
+          "description": "تتيح بلدية دبي للمنشآت الغذائية تسجيل المنتج وتقييم بطاقته الغذائية. يوضح دليل البلدية اسم المعاملة وطريقة الوصول إليها. لم نتحقق من تفاصيل التقديم أو الرسوم أو المدة.",
+          "requirements": [],
+          "fees": "",
+          "duration": "",
+          "conditions": "",
+          "destinationKind": "OFFICIAL_GUIDANCE",
+          "officialUrl": "https://www.dm.gov.ae/dubai-municipality-services/?lang=ar",
+          "executionUrlEn": "https://www.dm.gov.ae/municipality-business/food-safety-department-2/important-information-to-food-establishment/",
+          "officialLinkCheckedAt": "2026-11-06",
+          "lastVerified": "2026-11-06",
+          "localizedDetails": {
+            "en": {
+              "description": "Dubai Municipality lists food item registration and food-label assessment for food establishments. The official guide identifies the service. Application documents, fees and processing time have not been verified."
+            }
+          }
         }
       ]
     },

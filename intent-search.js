@@ -136,6 +136,15 @@ export function rankServices(query, services = []) {
       return [service.m,service.emirate,...aliases].filter(Boolean).some(scope=>normalizeIntent(scope)===suffix);
     }));
   if (exactNames?.length) return exactNames.map(service => ({ ...service, score: 10000 }));
+  const foodItem = /(?:منتج(?:ات)?\s+غذاي|مواد\s+غذاي|\bfood\s+(?:items?|products?)\b)/i.test(normalized);
+  const registerFoodItem = /(?:تسجيل|اسجل|تقييم|\bregist(?:er|ering|ration)\b|\bassess(?:ment|ing)?\b)/i.test(normalized);
+  const otherFoodOperation = /(?:مخطط|تصميم|شحن|افراج|اغذيه حيوانيه|اعلاف|حيوانات اليفه|\blayout\b|\bconsignment\b|\bpet\b|\banimal feed\b|\bcosmetics?\b|\bmontaji\b)/i.test(normalized);
+  if (foodItem && registerFoodItem && !otherFoodOperation) {
+    const emirate = queryEmirate(query);
+    if (emirate && emirate !== 'دبي') return [];
+    return services.filter(service => service.s === 'register-assess-food-item-dubai')
+      .map(service => ({ ...service, score: 12000 }));
+  }
   const attestation = /(?:تصديق|\battest(?:ation|ing)?\b)/i.test(normalized);
   const certificate = /(?:شهاد|\b(?:certificates?|degrees?|diplomas?|transcripts?)\b)/i.test(normalized);
   const differentOperation = /(?:معادل|اعتراف|تحقق|صحه|equivalen|recognition|verif|فاتور|تجاري|منشا|ميلاد|وفاه|زواج|طلاق|invoice|commercial|business|trade|origin|birth|death|marriage|divorce|سفار|قنصلي|embassy|consulat)/i.test(normalized);
