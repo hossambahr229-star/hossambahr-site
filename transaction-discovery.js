@@ -1,5 +1,5 @@
 import {serviceBusinessDomain} from './business-domains.js?v=ead34bcfece9';
-import {rankServices,normalizeIntent,reraApprovalIntent,queryEmirate} from './intent-search.js?v=eee6d97fccc4';
+import {rankServices,normalizeIntent,reraApprovalIntent,queryEmirate,specialisedSearchKind} from './intent-search.js?v=eee6d97fccc4';
 import {compatibleEmirate} from './customer-jurisdiction.js?v=7be21562672e';
 
 export function entryMode(query){
@@ -8,6 +8,7 @@ export function entryMode(query){
 }
 
 export function entryDestination(query){
+ if (specialisedSearchKind(query)) return 'discover';
  const q=normalizeIntent(query);
  const changing=/(?:تجديد|جدد|الغاء|الغي|تعديل|اضافه|اضيف|renew|cancel|amend|add activity)/i.test(q);
  const starting=/(?:افتح|فتح|ابدا|تاسيس|انشاء|open|start|set up|setup)/i.test(q);
@@ -61,6 +62,7 @@ if(typeof document!=='undefined'){
  const form=document.querySelector('[data-discovery-form]');
  if(form){
   const cards=[...document.querySelectorAll('[data-canonical-service]')],status=document.querySelector('[data-discovery-status]'),empty=document.querySelector('[data-discovery-empty]');
+  const defaultEmpty = [...empty.childNodes];
   const params=new URLSearchParams(location.search);
   for(const key of ['q','emirate','authority','category','domain','approval'])if(form.elements[key]){if(params.has(key)||key!=='approval')form.elements[key].value=params.get(key)||'';}
   const advanced=form.querySelector('.discovery-advanced');
@@ -83,6 +85,21 @@ if(typeof document!=='undefined'){
     for(const record of found){const card=bySlug.get(record.s);if(card)card.parentElement.append(card);}
     status.textContent=en?`${found.length} matching services`:`${found.length} خدمة مطابقة`;
     if(reraApprovalIntent(selection.query)&&found.length>1)status.textContent+=en?' — Which approval do you need: a real estate advertisement permit or a professional practice card?':' — أي موافقة تقصد: تصريح إعلان عقاري أم بطاقة مزاولة مهنة عقارية؟';
+    const kind = !found.length && specialisedSearchKind(selection.query);
+    empty.replaceChildren(...defaultEmpty);
+    if (kind) {
+      const location = selection.emirate || queryEmirate(selection.query);
+      const question = kind === 'port'
+        ? (en ? 'Which port approval do you need: an entry pass, a marine activity permit, or another approval?' : 'أي موافقة تحتاج: تصريح دخول الميناء، تصريح نشاط بحري، أم موافقة أخرى؟')
+        : (en ? 'In which emirate and under which legal form will you open the legal consultancy?' : 'في أي إمارة وبأي شكل قانوني ستؤسس مكتب الاستشارات القانونية؟');
+      empty.textContent = question;
+      if (!location || location === 'دبي' || location === 'Dubai') {
+        const guide = document.createElement('a');
+        guide.href = kind === 'port' ? 'https://pcfc.ae/en/Pages/servicelists.aspx?BU=trakhees' : 'https://legal.dubai.gov.ae/en/AboutDepartment/Pages/FAQ.aspx';
+        guide.textContent = en ? 'Dubai official guidance' : 'الإرشاد الرسمي في دبي';
+        empty.append(' ', guide);
+      }
+    }
     empty.hidden=!!found.length;
     const url=new URL(location.href);for(const [key,value] of Object.entries({q:selection.query,emirate:selection.emirate,authority:selection.authority,category:selection.category,domain:selection.domain,approval:selection.approval})){if(value)url.searchParams.set(key,value);else url.searchParams.delete(key);}history.replaceState(null,'',url);const language=document.querySelector('[data-discovery-language]');if(language){const target=new URL(language.href,location.origin);target.search=url.search;language.href=target.pathname+target.search;}
    }catch{status.textContent=en?'Filtering is unavailable. All service links remain available below.':'تعذر التصفية الآن. روابط الخدمات متاحة أدناه.';for(const card of cards)card.hidden=false;}
