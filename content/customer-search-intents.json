@@ -10,7 +10,10 @@
       "https://gdrfad.gov.ae/ar/services/95222a46-56f2-11ea-0320-0050569629e8",
       "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
       "https://www.mofa.gov.ae/en/services/attestation",
-      "https://www.mofa.gov.ae/en/FAQs"
+      "https://www.mofa.gov.ae/en/FAQs",
+      "https://sedd.ae/ar/edit-services",
+      "https://legal.dubai.gov.ae/en/AboutDepartment/Pages/FAQ.aspx",
+      "https://www.dm.gov.ae/dubai-municipality-services/?lang=ar"
     ],
     "publicSearchReviewedAt": "2026-11-05",
     "measuredSearchVolumes": null,
@@ -143,6 +146,86 @@
       "query": "degree attestation",
       "expected": [
         "تصديق-مستند-شخصي-داخل-الإمارات"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "sharjah-renewal",
+      "query": "تجديد رخصة في الشارقة",
+      "expected": [
+        "sharjah-economic-license-renewal",
+        "renew-business-license-sharjah"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "sharjah-partner-withdrawal",
+      "query": "خروج شريك من شركة بالشارقة",
+      "expected": [
+        "sharjah-economic-license-amendment"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "dubai-food-product",
+      "query": "تسجيل منتج غذائي في بلدية دبي",
+      "expected": [
+        "register-assess-food-item-dubai"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "dubai-spouse-children",
+      "query": "إقامة زوجتي وأولادي في دبي",
+      "expected": [
+        "family-residency-uae"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "parent-residence",
+      "query": "إقامة والدتي في الإمارات",
+      "expected": [
+        "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+        "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "establishment-card-cancel",
+      "query": "إلغاء بطاقة منشأة",
+      "expected": [
+        "إلغاء-ملف-أو-بطاقة-المنشأة",
+        "إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي",
+        "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "legal-consultancy-uncovered",
+      "query": "تأسيس شركة استشارات قانونية",
+      "expected": [],
+      "mode": "no_match"
+    },
+    {
+      "id": "dubai-ports-uncovered",
+      "query": "موافقة موانئ دبي",
+      "expected": [],
+      "mode": "no_match"
+    },
+    {
+      "id": "ejari-renewal",
+      "query": "إيجاري وتجديد العقد",
+      "expected": [
+        "register-renew-ejari-contract-dubai"
+      ],
+      "mode": "only_expected"
+    },
+    {
+      "id": "golden-investor-residence",
+      "query": "إقامة مستثمر أو إقامة ذهبية",
+      "expected": [
+        "golden-residency-uae"
       ],
       "mode": "only_expected"
     }
