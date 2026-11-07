@@ -2,6 +2,11 @@ import { mkdir,writeFile } from 'node:fs/promises';
 import { chromium,firefox } from 'playwright';
 const base=process.env.HB_BASE_URL,out=process.env.HB_OUTPUT_DIR,rows=[];
 await mkdir(out,{recursive:true});
+async function clickStable(page, locator) {
+ await page.evaluate(()=>document.fonts.ready);
+ await locator.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));
+ await locator.click();
+}
 const transactions=[
  ['companies-establishments','issue-trade-license-dubai'],['business-licensing','sharjah-economic-license-renewal'],
  ['business-licensing','abu-dhabi-economic-license-amendment'],['family-sponsorship','family-residency-uae'],
@@ -33,7 +38,7 @@ for(const [name,type] of [['chrome',chromium],['firefox',firefox]]){
       await page.goto(base+prefix+'/');
       await page.locator('[data-home-browse-entry]').click();
       const group=page.locator('#field-'+field);
-      await group.locator('summary').click();
+      await clickStable(page,group.locator('summary'));
       const target=prefix+'/services/'+slug+'/';
       const links=await group.locator('[data-browse-service]').all();
       let destination;
@@ -50,7 +55,7 @@ for(const [name,type] of [['chrome',chromium],['firefox',firefox]]){
     }
     if(name==='chrome'&&[390,768,1440].includes(width)){
      await page.goto(base+prefix+'/services/#browse-services');
-     await page.locator('#field-business-licensing summary').click();
+     await clickStable(page,page.locator('#field-business-licensing summary'));
      await page.screenshot({path:out+'/'+locale+'-'+width+'.jpg',type:'jpeg',quality:85});
     }
     row.status='PASS';
