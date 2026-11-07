@@ -98,8 +98,8 @@ for(const en of [false,true]){
   const home=join(root,prefix,'index.html');
   let homepage=await readFile(home,'utf8');
   const target=(en?'/en':'')+'/services/#browse-services';
-  homepage=homepage.replace(/<a[^>]*data-home-browse-entry[^>]*>[\s\S]*?<\/a>/g,'');
-  homepage=homepage.replace('<div class="premium-popular discovery-entry">', '<div class="premium-popular discovery-entry"><a data-home-browse-entry href="'+target+'">'+(en?'Browse transactions':'تصفح المعاملات')+'</a>');
+  homepage=homepage.replace(/<span data-home-browse-link>[\s\S]*?<\/span>/g,'');
+  homepage=homepage.replace('<div class="premium-popular discovery-entry">', '<div class="premium-popular discovery-entry"><span data-home-browse-link><a data-home-browse-entry href="'+target+'">'+(en?'Browse transactions':'تصفح المعاملات')+'</a></span>');
   await writeFile(home,homepage);
 }
 const coverage=services.map(r=>({
