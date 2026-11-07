@@ -1,0 +1,44 @@
+name: Verify browse-first source without JavaScript
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/service-browse-source-634.yml, diagnostics/service-browse-source-634.mjs]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: e2979619f60bd5e033a599feedea6e542358db6d
+          path: candidate
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Build and verify transaction discovery
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_BASE_URL: http://127.0.0.1:8765
+          HB_OUTPUT_DIR: diagnostics/service-browse-source-634
+        run: |
+          (cd candidate && npm run build)
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory candidate > /tmp/hb-browse-http.log 2>&1 &
+          node diagnostics/service-browse-source-634.mjs
+      - name: Preserve browse acceptance evidence
+        if: always()
+        run: |
+          test -d diagnostics/service-browse-source-634 || exit 0
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/service-browse-source-634
+          git commit -m "Record no-search transaction discovery evidence"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
