@@ -1,0 +1,38 @@
+name: Verify duplicate service redirects on Production
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/legacy-alias-live-633.yml, diagnostics/legacy-alias-live-633.mjs]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Verify alias behavior and sitemap
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: node diagnostics/legacy-alias-live-633.mjs
+      - name: Preserve acceptance and current workflow references
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p diagnostics/legacy-alias-live-633
+          gh run list --workflow production-browser-verification.yml --limit 3 --json databaseId,headSha,conclusion,status,url > diagnostics/legacy-alias-live-633/production-runs.json
+          gh run list --workflow final-production-correction.yml --limit 3 --json databaseId,headSha,conclusion,status,url > diagnostics/legacy-alias-live-633/publisher-runs.json
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/legacy-alias-live-633
+          git commit -m "Record two live aliases and active release runs"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
