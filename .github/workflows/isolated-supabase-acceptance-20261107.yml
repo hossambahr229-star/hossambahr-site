@@ -27,12 +27,15 @@ jobs:
           set -eu
           out="$GITHUB_WORKSPACE/evidence/diagnostics/isolated-supabase-acceptance-20261107"
           mkdir -p "$out"
+          config_dir="$(mktemp -d)"
+          (cd "$config_dir" && supabase init)
+          cp "$config_dir/supabase/config.toml" supabase/config.toml
           python -c 'from pathlib import Path; import re; p=Path("supabase/config.toml"); s=p.read_text(); p.write_text(re.sub(r"(\[db\.seed\]\s*(?:#[^\n]*\s*)*enabled\s*=\s*)true", r"\g<1>false", s, count=1))'
           supabase start --help >/dev/null
           supabase test db --help >/dev/null
           if ! supabase start > "$RUNNER_TEMP/local-supabase-start.log" 2>&1; then
             printf 'Local Supabase failed to start. No hosted database was used.\n' > "$out/result.txt"
-            grep -E 'ERROR:|failed to|does not exist|invalid value' "$RUNNER_TEMP/local-supabase-start.log" | tail -15 >> "$out/result.txt" || true
+            grep -A 3 -E 'ERROR:|failed to|does not exist|invalid value' "$RUNNER_TEMP/local-supabase-start.log" | tail -15 >> "$out/result.txt" || true
             exit 1
           fi
           set -o pipefail
