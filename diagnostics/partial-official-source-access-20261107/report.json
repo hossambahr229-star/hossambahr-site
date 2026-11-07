@@ -1,0 +1,407 @@
+{
+  "scope": "Official endpoint reachability only. HTTP success does not verify field content or operation identity.",
+  "sourceSha": "c84a04cc42b154e2a8d266bb0733aecf0c32511f",
+  "total": 33,
+  "rows": [
+    {
+      "slug": "legacy-service-67abe5ccf3",
+      "source": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "missing": [
+        "fees"
+      ],
+      "http": 403,
+      "finalUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "type": "text/html",
+      "elapsedMs": 299,
+      "access": "HTTP_ERROR"
+    },
+    {
+      "slug": "legacy-service-85a10469d8",
+      "source": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-commercial-permit",
+      "missing": [
+        "documents",
+        "eligibility"
+      ],
+      "http": 403,
+      "finalUrl": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-commercial-permit",
+      "type": "text/html",
+      "elapsedMs": 222,
+      "access": "HTTP_ERROR"
+    },
+    {
+      "slug": "legacy-service-e7f35a06d9",
+      "source": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits",
+      "missing": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "http": 403,
+      "finalUrl": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits",
+      "type": "text/html",
+      "elapsedMs": 237,
+      "access": "HTTP_ERROR"
+    },
+    {
+      "slug": "إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "missing": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4425,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "missing": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4425,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "إصدار-بطاقة-مندوب-علاقات-عامة-pro",
+      "source": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
+      "missing": [
+        "fees"
+      ],
+      "access": "NETWORK_ERROR"
+    },
+    {
+      "slug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+      "missing": [
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4303,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "إصدار-تأشيرة-عبر-icp-خارج-دبي",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "missing": [
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4196,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "إصدار-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "missing": [
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4425,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "إصدار-تصريح-عمل-جديد-لعامل-مساعد",
+      "source": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
+      "missing": [
+        "fees"
+      ],
+      "access": "NETWORK_ERROR"
+    },
+    {
+      "slug": "إصدار-عقد-عمل-جديد-لعامل-مساعد",
+      "source": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
+      "missing": [
+        "fees"
+      ],
+      "access": "NETWORK_ERROR"
+    },
+    {
+      "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+      "source": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "missing": [
+        "duration"
+      ],
+      "http": 200,
+      "finalUrl": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 2064,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
+      "source": "https://mohre.gov.ae/en/media-center/news/6/3/2025/18-interactive-and-informational-phone-services-for-establishments-and-domestic-workers",
+      "missing": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "access": "NETWORK_ERROR"
+    },
+    {
+      "slug": "استرداد-رسوم-إصدار-الهوية-غير-المكتمل",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
+      "missing": [
+        "fees"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 2651,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "الإعفاء-من-غرامة-تأخير-الهوية",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
+      "missing": [
+        "fees"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4358,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي",
+      "source": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+      "missing": [
+        "fees",
+        "duration"
+      ],
+      "http": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 1772,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "التسجيل-والمتابعة-في-wps",
+      "source": "https://www.mohre.gov.ae/en/guidance-and-awareness-portal-new/wages-protection-system",
+      "missing": [
+        "documents",
+        "fees",
+        "duration"
+      ],
+      "access": "NETWORK_ERROR"
+    },
+    {
+      "slug": "تأسيس-منشأة-جديدة-في-عجمان",
+      "source": "https://eservices.ajmanded.ae/en/Account/Login?ReturnUrl=%2Fen%2Fnewestablishment",
+      "missing": [
+        "eligibility"
+      ],
+      "access": "NETWORK_ERROR"
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "missing": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4196,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "missing": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4196,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "missing": [
+        "documents",
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4196,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "تجديد-تصريح-إقامة-عبر-icp-خارج-دبي",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+      "missing": [
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4153,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "تحديث-بيانات-الهوية",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
+      "missing": [
+        "fees",
+        "duration"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4160,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي",
+      "source": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+      "missing": [
+        "duration"
+      ],
+      "http": 200,
+      "finalUrl": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 2092,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "missing": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4425,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "تقرير-تفاصيل-الإقامة-عبر-icp",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "missing": [
+        "documents",
+        "duration"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 4705,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "تقرير-تقييم-المنشأة",
+      "source": "https://mohre.gov.ae/en/services/taqyeem.aspx?DisableResponsive=1",
+      "missing": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "access": "NETWORK_ERROR"
+    },
+    {
+      "slug": "حصة-تصاريح-العمل-للمنشأة",
+      "source": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
+      "missing": [
+        "fees"
+      ],
+      "access": "NETWORK_ERROR"
+    },
+    {
+      "slug": "سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي",
+      "source": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "missing": [
+        "documents",
+        "duration"
+      ],
+      "http": 200,
+      "finalUrl": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 2444,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي",
+      "source": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
+      "missing": [
+        "fees",
+        "duration"
+      ],
+      "http": 200,
+      "finalUrl": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
+      "type": "text/html; charset=utf-8",
+      "elapsedMs": 2164,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي",
+      "source": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
+      "missing": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html",
+      "type": "text/html",
+      "elapsedMs": 1491,
+      "access": "RESPONSE_AVAILABLE"
+    },
+    {
+      "slug": "umm-al-quwain-trade-name-official-path",
+      "source": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html",
+      "missing": [
+        "fees",
+        "duration"
+      ],
+      "access": "NETWORK_ERROR"
+    },
+    {
+      "slug": "register-assess-food-item-dubai",
+      "source": "https://www.dm.gov.ae/dubai-municipality-services/?lang=ar",
+      "missing": [
+        "documents",
+        "fees",
+        "duration",
+        "eligibility"
+      ],
+      "http": 200,
+      "finalUrl": "https://www.dm.gov.ae/dubai-municipality-services/?lang=ar",
+      "type": "text/html; charset=UTF-8",
+      "elapsedMs": 1268,
+      "access": "RESPONSE_AVAILABLE"
+    }
+  ]
+}
