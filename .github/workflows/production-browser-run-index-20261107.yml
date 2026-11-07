@@ -16,7 +16,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p diagnostics/production-browser-run-index-20261107
-          for w in production-browser-verification.yml final-production-correction.yml; do
+          for w in production-browser-verification.yml final-production-correction.yml service-browse-source-634.yml; do
             gh run list --workflow "$w" --limit 8 --json databaseId,headSha,conclusion,status,url > "diagnostics/production-browser-run-index-20261107/${w%.yml}.json"
           done
           git config user.name "HossamBahr Acceptance Evidence"
