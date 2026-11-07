@@ -1,0 +1,1 @@
+window.HB_GOVERNMENT_UPDATES=[];

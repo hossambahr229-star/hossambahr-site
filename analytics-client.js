@@ -1,0 +1,170 @@
+(() => {
+  "use strict";
+
+  if (navigator.webdriver || /HeadlessChrome|Playwright/i.test(navigator.userAgent || "")) return;
+
+  const query = new URLSearchParams(location.search);
+  if (query.get("hb_qa") === "1") return;
+
+  const privatePrefixes = ["/owner/", "/account/", "/auth/", "/os/", "/en/owner/", "/en/account/", "/en/auth/", "/en/os/"];
+  if (privatePrefixes.some((prefix) => location.pathname.startsWith(prefix))) return;
+
+  const endpoint = "https://ngcrkuykfqmiqhsnpcrc.supabase.co/functions/v1/web-analytics";
+  const sessionKey = "hb_analytics_session_v1";
+  const attributionKey = "hb_analytics_attribution_v1";
+
+  const getSessionToken = () => {
+    try {
+      let token = sessionStorage.getItem(sessionKey);
+      if (!token) {
+        token = (crypto && typeof crypto.randomUUID === "function")
+          ? crypto.randomUUID()
+          : `${Date.now()}-${Math.random().toString(36).slice(2, 18)}`;
+        sessionStorage.setItem(sessionKey, token);
+      }
+      return token;
+    } catch {
+      return null;
+    }
+  };
+
+  const externalReferrerHost = () => {
+    try {
+      if (!document.referrer) return null;
+      const host = new URL(document.referrer).hostname.toLowerCase();
+      const currentHost = location.hostname.toLowerCase();
+      if (
+        host === currentHost ||
+        (host === "www.hossambahr.com" && currentHost === "hossambahr.com") ||
+        (host === "hossambahr.com" && currentHost === "www.hossambahr.com")
+      ) {
+        return null;
+      }
+      return host;
+    } catch {
+      return null;
+    }
+  };
+
+  const getAttribution = () => {
+    const campaign = new URLSearchParams(location.search);
+    const inferredSource = campaign.get("utm_source")
+      || (campaign.has("fbclid") ? "facebook" : null)
+      || (campaign.has("ttclid") ? "tiktok" : null)
+      || (campaign.has("gclid") ? "google" : null)
+      || (campaign.has("msclkid") ? "bing" : null)
+      || (campaign.has("li_fat_id") ? "linkedin" : null);
+    const current = {
+      utm_source: inferredSource,
+      utm_medium: campaign.get("utm_medium"),
+      utm_campaign: campaign.get("utm_campaign"),
+      referrer_host: externalReferrerHost(),
+    };
+
+    try {
+      const storedRaw = sessionStorage.getItem(attributionKey);
+      const stored = storedRaw ? JSON.parse(storedRaw) : null;
+      if (stored && typeof stored === "object") {
+        const storedHasSource = stored.utm_source || stored.utm_medium || stored.utm_campaign || stored.referrer_host;
+        const currentHasCampaign = current.utm_source || current.utm_medium || current.utm_campaign;
+        if (!storedHasSource && currentHasCampaign) {
+          sessionStorage.setItem(attributionKey, JSON.stringify(current));
+          return current;
+        }
+        return stored;
+      }
+      sessionStorage.setItem(attributionKey, JSON.stringify(current));
+      return current;
+    } catch {
+      return current;
+    }
+  };
+
+  const attribution = getAttribution();
+  const basePayload = {
+    path: location.pathname || "/",
+    session_token: getSessionToken(),
+    referrer_host: attribution.referrer_host || null,
+    utm_source: attribution.utm_source || null,
+    utm_medium: attribution.utm_medium || null,
+    utm_campaign: attribution.utm_campaign || null,
+  };
+
+  const send = (eventName, targetKind = null, targetChannel = null) => {
+    const payload = {
+      ...basePayload,
+      event_name: eventName,
+      target_kind: targetKind,
+      target_channel: targetChannel,
+    };
+
+    fetch(endpoint, {
+      method: "POST",
+      mode: "cors",
+      keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }).catch(() => {});
+  };
+
+  const onReady = () => send("page_view");
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", onReady, { once: true });
+  } else {
+    onReady();
+  }
+
+  const classifyAnchor = (anchor) => {
+    const rawHref = anchor.getAttribute("href") || "";
+    if (/^tel:/i.test(rawHref)) return { kind: "commercial", channel: "phone" };
+    if (/^mailto:/i.test(rawHref)) return { kind: "commercial", channel: "email" };
+
+    try {
+      const url = new URL(anchor.href, location.href);
+      const host = url.hostname.toLowerCase();
+      if (host === "wa.me" || host === "api.whatsapp.com" || host === "web.whatsapp.com") {
+        return { kind: "commercial", channel: "whatsapp" };
+      }
+      if (
+        host === "u.ae" ||
+        host.endsWith(".gov.ae") ||
+        host === "tamm.abudhabi" ||
+        host.endsWith(".tamm.abudhabi") ||
+        host === "invest.dubai.ae"
+      ) return { kind: "government", channel: null };
+
+      if (url.origin === location.origin) {
+        const path = url.pathname;
+        if (
+          path.startsWith("/services/") ||
+          path.startsWith("/goals/") ||
+          path.startsWith("/categories/") ||
+          path.startsWith("/for/")
+        ) return { kind: "internal", channel: null };
+      }
+    } catch {
+      return null;
+    }
+
+    if (anchor.matches("[data-commercial-cta='verified'], .service-assist-action")) {
+      return { kind: "commercial", channel: "contact" };
+    }
+    if (anchor.matches("[data-government-cta='verified'], .service-official-action")) {
+      return { kind: "government", channel: null };
+    }
+
+    return null;
+  };
+
+  document.addEventListener("click", (event) => {
+    const anchor = event.target instanceof Element ? event.target.closest("a") : null;
+    if (!anchor) return;
+    const target = classifyAnchor(anchor);
+    if (target) send("cta_click", target.kind, target.channel);
+  }, { capture: true });
+
+  document.addEventListener("submit", (event) => {
+    const form = event.target instanceof HTMLFormElement ? event.target : null;
+    if (form?.matches("form.primary-search")) send("cta_click", "internal");
+  }, { capture: true });
+})();
