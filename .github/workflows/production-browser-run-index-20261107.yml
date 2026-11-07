@@ -1,4 +1,4 @@
-name: Identify latest production browser and publication checks
+name: Identify latest production browser and publication checks after PR 633
 on:
   push:
     branches: [agent/dld-source-review-evidence]
