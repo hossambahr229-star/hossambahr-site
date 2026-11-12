@@ -6669,9 +6669,9 @@
       ],
       "fees": "100 درهم طلب، 500 إصدار، 100 خدمات ذكية، وضمان مالي 3000 و20 رسم إيداع؛ افصل الضمان عن الرسوم.",
       "duration": "يومان وفق البطاقة الرسمية؛ لا يمثل ضمان قبول.",
-      "conditions": "غير موثق بعد",
+      "conditions": "الشروط المؤكدة في بطاقة ICP: جواز سفر صالح لستة أشهر على الأقل، وتأمين صحي صادر داخل الإمارات صالح لمدة 180 يومًا. الدخول الأول خلال 60 يومًا من إصدار التأشيرة. لم تُحسم أهلية مدة الإقامة السنوية بسبب تعارض بنود البطاقة؛ راجع ICP قبل التخطيط.",
       "specialCases": "تذكر البطاقة إقامة 90 يومًا وتمديدًا إلى 180، وتذكر أيضًا حد 90 يومًا في السنة. لم نحسم التعارض؛ أكد مدة الإقامة مع ICP قبل التخطيط.",
-      "lastReviewed": "2026-10-15",
+      "lastReviewed": "2026-11-12",
       "reviewResult": "approved_for_user_navigation",
       "functionalFinding": "exact_service_card",
       "loginRequired": true,
@@ -6713,9 +6713,11 @@
           ],
           "fees": "AED 100 application, 500 issuance, 100 smart services, financial guarantee 3000 and deposit fee 20. Guarantee is separate from fees.",
           "duration": "2 days; not approval assurance.",
-          "notes": "The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning."
+          "notes": "The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning.",
+          "eligibility": "Confirmed ICP conditions: a passport valid for at least 6 months, and UAE-issued health insurance valid for 180 days. The first entry must take place within 60 days of visa issuance. Annual permitted-stay eligibility remains unresolved because the card contains conflicting clauses; confirm it with ICP before planning."
         }
-      }
+      },
+      "eligibilityScope": "common-only"
     },
     {
       "id": "directory:residency:33",
