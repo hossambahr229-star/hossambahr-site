@@ -20,6 +20,7 @@ for(const [name,type] of [['chrome',chromium],['firefox',firefox]]){
  try{
   for(const locale of ['ar','en']) for(const width of [320,360,390,430,768,1024,1366,1440,1920]){
    const page=await browser.newPage({javaScriptEnabled:false,viewport:{width,height:850}});
+   page.setDefaultTimeout(12000);
    const prefix=locale==='en'?'/en':'',row={name,locale,width};
    try{
     await page.goto(base+prefix+'/services/#browse-services');
@@ -60,9 +61,9 @@ for(const [name,type] of [['chrome',chromium],['firefox',firefox]]){
     }
     row.status='PASS';
    }catch(error){row.status='FAIL';row.error=error.message;}
-   finally{rows.push(row);await page.close();}
+   finally{rows.push(row);await writeFile(out+'/report.json',JSON.stringify({scope:'BROWSE_ONLY_JAVASCRIPT_DISABLED',candidate:'ba418c816b2f9bb0a2fb3498ba6a517cb804ec39',complete:false,rows},null,2)+'\n');console.log(JSON.stringify(row));await page.close();}
   }
  }finally{await browser.close();}
 }
-await writeFile(out+'/report.json',JSON.stringify({scope:'BROWSE_ONLY_JAVASCRIPT_DISABLED',rows},null,2)+'\n');
+await writeFile(out+'/report.json',JSON.stringify({scope:'BROWSE_ONLY_JAVASCRIPT_DISABLED',candidate:'ba418c816b2f9bb0a2fb3498ba6a517cb804ec39',complete:true,rows},null,2)+'\n');
 if(rows.some(row=>row.status!=='PASS'))process.exitCode=1;
