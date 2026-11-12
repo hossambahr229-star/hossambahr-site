@@ -1,0 +1,33 @@
+name: Preserve homepage 637 browser preview
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/preserve-home-preview-637.yml]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  preserve:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/hossambahr229-star/hossambahr-site/actions/artifacts/13953510824/zip > /tmp/home637.zip
+          python3 - <<'PY'
+          import zipfile, pathlib
+          out=pathlib.Path('diagnostics/home-preview-637');out.mkdir(parents=True,exist_ok=True)
+          names={'ar-1440-discovery.png','ar-390-discovery.png','en-390-discovery.png','report.json'}
+          with zipfile.ZipFile('/tmp/home637.zip') as z:
+              for target in names:
+                  matches=[n for n in z.namelist() if pathlib.PurePosixPath(n).name==target]
+                  assert len(matches)==1,(target,matches)
+                  (out/target).write_bytes(z.read(matches[0]))
+          PY
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/home-preview-637
+          git commit -m "Preserve exact passing 637 source preview"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
