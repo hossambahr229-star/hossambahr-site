@@ -1,0 +1,227 @@
+{
+  "scope": "TARGETED_FIREFOX_FONT_READINESS",
+  "sourceMerge": "41b9223f1a4af2bf0168abbb9d5e151bb24f362f",
+  "complete": true,
+  "fontObservations": [
+    {
+      "url": "https://hossambahr.com/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 144
+    },
+    {
+      "url": "https://hossambahr.com/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 142
+    },
+    {
+      "url": "https://hossambahr.com/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 141
+    },
+    {
+      "url": "https://hossambahr.com/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 147
+    },
+    {
+      "url": "https://hossambahr.com/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 142
+    },
+    {
+      "url": "https://hossambahr.com/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 142
+    },
+    {
+      "url": "https://hossambahr.com/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 141
+    },
+    {
+      "url": "https://hossambahr.com/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 139
+    },
+    {
+      "url": "https://hossambahr.com/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 140
+    },
+    {
+      "url": "https://hossambahr.com/en/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 43
+    },
+    {
+      "url": "https://hossambahr.com/en/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 43
+    },
+    {
+      "url": "https://hossambahr.com/en/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 41
+    },
+    {
+      "url": "https://hossambahr.com/en/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 41
+    },
+    {
+      "url": "https://hossambahr.com/en/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 39
+    },
+    {
+      "url": "https://hossambahr.com/en/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 41
+    },
+    {
+      "url": "https://hossambahr.com/en/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 39
+    },
+    {
+      "url": "https://hossambahr.com/en/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 40
+    },
+    {
+      "url": "https://hossambahr.com/en/services/#browse-services",
+      "status": "loaded",
+      "elapsedMs": 39
+    }
+  ],
+  "rows": [
+    {
+      "name": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "http": 200,
+      "sourceHasBrowse": true,
+      "coverage": {
+        "ids": 203,
+        "authorities": 21,
+        "emirates": 7
+      },
+      "journeys": [
+        {
+          "slug": "issue-trade-license-dubai",
+          "steps": 3,
+          "elapsedMs": 896
+        },
+        {
+          "slug": "sharjah-economic-license-renewal",
+          "steps": 3,
+          "elapsedMs": 801
+        },
+        {
+          "slug": "abu-dhabi-economic-license-amendment",
+          "steps": 3,
+          "elapsedMs": 846
+        },
+        {
+          "slug": "family-residency-uae",
+          "steps": 3,
+          "elapsedMs": 588
+        },
+        {
+          "slug": "new-work-permit-overseas-uae",
+          "steps": 3,
+          "elapsedMs": 748
+        },
+        {
+          "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "steps": 3,
+          "elapsedMs": 952
+        },
+        {
+          "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+          "steps": 3,
+          "elapsedMs": 587
+        },
+        {
+          "slug": "register-renew-ejari-contract-dubai",
+          "steps": 3,
+          "elapsedMs": 578
+        },
+        {
+          "slug": "sira-new-security-activity-license-dubai",
+          "steps": 3,
+          "elapsedMs": 599
+        },
+        {
+          "slug": "business-activities",
+          "steps": 1
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "firefox",
+      "locale": "en",
+      "width": 390,
+      "http": 200,
+      "sourceHasBrowse": true,
+      "coverage": {
+        "ids": 203,
+        "authorities": 21,
+        "emirates": 7
+      },
+      "journeys": [
+        {
+          "slug": "issue-trade-license-dubai",
+          "steps": 3,
+          "elapsedMs": 838
+        },
+        {
+          "slug": "sharjah-economic-license-renewal",
+          "steps": 3,
+          "elapsedMs": 757
+        },
+        {
+          "slug": "abu-dhabi-economic-license-amendment",
+          "steps": 3,
+          "elapsedMs": 707
+        },
+        {
+          "slug": "family-residency-uae",
+          "steps": 3,
+          "elapsedMs": 511
+        },
+        {
+          "slug": "new-work-permit-overseas-uae",
+          "steps": 3,
+          "elapsedMs": 485
+        },
+        {
+          "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "steps": 3,
+          "elapsedMs": 738
+        },
+        {
+          "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+          "steps": 3,
+          "elapsedMs": 516
+        },
+        {
+          "slug": "register-renew-ejari-contract-dubai",
+          "steps": 3,
+          "elapsedMs": 485
+        },
+        {
+          "slug": "sira-new-security-activity-license-dubai",
+          "steps": 3,
+          "elapsedMs": 512
+        },
+        {
+          "slug": "business-activities",
+          "steps": 1
+        }
+      ],
+      "status": "PASS"
+    }
+  ]
+}
