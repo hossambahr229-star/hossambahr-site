@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-12T14:14:49.509Z",
+  "generatedAt": "2026-11-12T18:52:02.231Z",
   "services": 203,
   "uniqueOfficialUrls": 251,
   "counts": {
-    "REACHABLE": 152,
+    "REACHABLE": 150,
     "ACCESS_RESTRICTED": 10,
     "TEMPORARILY_UNAVAILABLE": 0,
-    "NETWORK_UNVERIFIED": 89,
+    "NETWORK_UNVERIFIED": 91,
     "BROKEN": 0
   },
   "provenBroken": [],
@@ -645,9 +645,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://smart.gdrfad.gov.ae/SmartChannels_Th/Common.LoginIndividual.aspx",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "TimeoutError"
     },
     {
       "url": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022",
@@ -2578,9 +2577,8 @@
         "official-cta",
         "page-official-route"
       ],
-      "status": 200,
-      "finalUrl": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1",
-      "result": "REACHABLE"
+      "result": "NETWORK_UNVERIFIED",
+      "reason": "UND_ERR_CONNECT_TIMEOUT"
     },
     {
       "url": "https://media.ajman.ae/ar/servicecatalog/services/2862",
