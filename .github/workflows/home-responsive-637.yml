@@ -1,0 +1,33 @@
+name: Complete missing homepage responsive browser cases 637
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/home-responsive-637.yml, diagnostics/home-responsive-637.mjs]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: node diagnostics/home-responsive-637.mjs
+      - name: Preserve actual additional phone tablet desktop evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/home-responsive-637
+          git commit -m "Record missing homepage responsive acceptance cases"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
