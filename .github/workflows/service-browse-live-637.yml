@@ -1,0 +1,61 @@
+name: Accept visible homepage transactions and full-width browsing
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/service-browse-live-637.yml, diagnostics/service-browse-live-637.mjs]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 32
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 4b8113a275832c754a6864b77f4e7bd7206516de
+          path: candidate
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - name: Build and verify transaction discovery
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+          HB_BASE_URL: https://hossambahr.com
+          HB_OUTPUT_DIR: diagnostics/service-browse-live-637
+        run: |
+          node diagnostics/service-browse-live-637.mjs
+      - name: Verify visible homepage transactions on Production
+        env:
+          HB_BASE_URL: https://hossambahr.com
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          cd candidate
+          node scripts/homepage-depth-browser.mjs
+      - name: Preserve homepage acceptance evidence
+        if: always()
+        run: |
+          if test -f candidate/artifacts/homepage-depth/report.json; then
+            mkdir -p diagnostics/service-browse-live-637
+            cp candidate/artifacts/homepage-depth/report.json diagnostics/service-browse-live-637/home-report.json
+            for name in ar-1440-discovery ar-390-discovery en-390-discovery; do
+              if test -f "candidate/artifacts/homepage-depth/$name.png"; then
+                cp "candidate/artifacts/homepage-depth/$name.png" "diagnostics/service-browse-live-637/$name.png"
+              fi
+            done
+          fi
+      - name: Preserve browse acceptance evidence
+        if: always()
+        run: |
+          test -d diagnostics/service-browse-live-637 || exit 0
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/service-browse-live-637
+          git commit -m "Record no-search transaction discovery evidence"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
