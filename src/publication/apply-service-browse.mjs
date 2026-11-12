@@ -90,7 +90,9 @@ for(const en of [false,true]){
   const file=join(root,prefix,'services/index.html');
   let html=await readFile(file,'utf8');
   html=html.replace(/<!-- hb-browse:start -->[\s\S]*?<!-- hb-browse:end -->/g,'').replace(/<link\b[^>]*data-service-browse-css[^>]*>/g,'');
-  const main=/(<main\b[^>]*\bid="main-content"[^>]*>[\s\S]*?<\/h1>)/i;
+  const main=en
+    ? /(<main\b[^>]*\bid="main-content"[^>]*>[\s\S]*?<\/h1>)/i
+    : /(<main\b[^>]*\bid="main-content"[^>]*>[\s\S]*?<header\b[^>]*\bclass="page-hero"[^>]*>[\s\S]*?<\/header>)/i;
   if(!main.test(html))throw Error('Missing service directory main: '+prefix);
   html=html.replace(main,tag=>tag+'<!-- hb-browse:start -->'+directory(en)+'<!-- hb-browse:end -->');
   html=html.replace('</head>','<link data-service-browse-css rel="stylesheet" href="/service-browse.css?v='+version+'"></head>');

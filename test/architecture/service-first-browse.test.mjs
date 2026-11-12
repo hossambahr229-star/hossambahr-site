@@ -11,6 +11,9 @@ test('Every published transaction has a static direct link in each language and 
   assert.equal(coverage.emirates, 7);
   for (const locale of ['ar','en']) {
     const html = await read((locale==='en'?'en/':'')+'services/index.html');
+    const hero = html.match(/<header\b[^>]*class="page-hero"[^>]*>[\s\S]*?<\/header>/)?.[0];
+    if (locale === 'ar') assert.ok(hero, 'Arabic directory intro header exists');
+    if (hero) assert.ok(!hero.includes('data-service-browse'), 'Browse panel must be outside the dark intro header');
     const nav = html.split('<!-- hb-browse:start -->')[1].split('<!-- hb-browse:end -->')[0];
     const ids = new Set([...nav.matchAll(/data-browse-service="([^"]+)"/g)].map(x=>x[1].replaceAll('&amp;','&')));
     assert.equal(ids.size, catalog.length);
