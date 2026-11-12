@@ -1,0 +1,34 @@
+name: Accept clearer customer transaction names on Production 639
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/home-names-live-639.yml, diagnostics/home-names-live-639.mjs]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+      - env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: node diagnostics/home-names-live-639.mjs
+      - name: Preserve naming and actual navigation evidence
+        if: always()
+        run: |
+          test -f diagnostics/home-names-live-639/report.json || exit 0
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/home-names-live-639
+          git commit -m "Record clearer live names and unchanged execution context"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
