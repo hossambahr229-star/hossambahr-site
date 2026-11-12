@@ -2,7 +2,7 @@
   "auditedServices": 203,
   "fullyVerifiedServices": 0,
   "servicesWithMissingFields": 203,
-  "missingFieldCount": 890,
+  "missingFieldCount": 889,
   "status": "PARTIAL PASS",
   "scope": "Public route/source identity, canonical, locale, internal href/referrer and scoped CTA checks. This does not verify external government availability, authenticated execution, documents, eligibility correctness or human visual acceptance.",
   "records": [
@@ -6615,7 +6615,7 @@
       "id": "directory:residency:32",
       "slug": "إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp",
       "source": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
-      "lastRecordedReview": "2026-10-15",
+      "lastRecordedReview": "2026-11-12",
       "fields": {
         "id": "VERIFIED",
         "arabic_name": "VERIFIED",
@@ -6628,7 +6628,7 @@
         "emirate": "NOT_VERIFIED",
         "authority": "NOT_VERIFIED",
         "jurisdiction": "NOT_VERIFIED",
-        "eligibility": "MISSING",
+        "eligibility": "NOT_VERIFIED",
         "requirements": "VERIFIED",
         "documents": "VERIFIED",
         "steps": "NOT_VERIFIED",
@@ -6653,7 +6653,6 @@
         "aliases",
         "synonyms",
         "goal",
-        "eligibility",
         "ai_discoverability"
       ],
       "verificationBoundary": "VERIFIED government fields describe the existing recorded source review, not a new independent official-source verification. Publication and HTTP success do not prove customer acceptance."
