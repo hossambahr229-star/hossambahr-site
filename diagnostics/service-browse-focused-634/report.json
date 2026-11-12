@@ -1,0 +1,91 @@
+{
+  "scope": "TARGETED_AR_CHROME_BROWSE_JAVASCRIPT_DISABLED",
+  "candidate": "ba418c816b2f9bb0a2fb3498ba6a517cb804ec39",
+  "complete": true,
+  "rows": [
+    {
+      "name": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "coverage": {
+        "ids": 203,
+        "authorities": 21,
+        "emirates": 7
+      },
+      "journeys": [
+        {
+          "slug": "issue-trade-license-dubai",
+          "steps": 3,
+          "elapsedMs": 614
+        },
+        {
+          "slug": "sharjah-economic-license-renewal",
+          "steps": 3,
+          "elapsedMs": 511
+        },
+        {
+          "slug": "abu-dhabi-economic-license-amendment",
+          "steps": 3,
+          "elapsedMs": 452
+        },
+        {
+          "slug": "family-residency-uae",
+          "steps": 3,
+          "elapsedMs": 396
+        },
+        {
+          "slug": "new-work-permit-overseas-uae",
+          "steps": 3,
+          "elapsedMs": 445
+        },
+        {
+          "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "steps": 3,
+          "elapsedMs": 567
+        },
+        {
+          "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+          "steps": 3,
+          "elapsedMs": 425
+        },
+        {
+          "slug": "register-renew-ejari-contract-dubai",
+          "steps": 3,
+          "elapsedMs": 428
+        },
+        {
+          "slug": "sira-new-security-activity-license-dubai",
+          "steps": 3,
+          "elapsedMs": 436
+        },
+        {
+          "slug": "business-activities",
+          "steps": 1
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "coverage": {
+        "ids": 203,
+        "authorities": 21,
+        "emirates": 7
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "coverage": {
+        "ids": 203,
+        "authorities": 21,
+        "emirates": 7
+      },
+      "status": "PASS"
+    }
+  ]
+}
