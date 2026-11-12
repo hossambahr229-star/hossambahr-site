@@ -20643,7 +20643,8 @@
           ],
           "fees": "AED 100 application, 500 issuance, 100 smart services, financial guarantee 3000 and deposit fee 20. Guarantee is separate from fees.",
           "duration": "2 days; not approval assurance.",
-          "notes": "The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning."
+          "notes": "The card mentions 90 days extendable to 180, but also a 90-day annual limit. This conflict remains unresolved: confirm the permitted stay with ICP before planning.",
+          "eligibility": "Confirmed ICP conditions: a passport valid for at least 6 months, and UAE-issued health insurance valid for 180 days. The first entry must take place within 60 days of visa issuance. Annual permitted-stay eligibility remains unresolved because the card contains conflicting clauses; confirm it with ICP before planning."
         }
       },
       "documents": {
@@ -20665,7 +20666,8 @@
         "status": "PUBLISHED_OR_CONDITIONAL",
         "text": "يومان وفق البطاقة الرسمية؛ لا يمثل ضمان قبول."
       },
-      "conditions": "غير موثق بعد",
+      "conditions": "الشروط المؤكدة في بطاقة ICP: جواز سفر صالح لستة أشهر على الأقل، وتأمين صحي صادر داخل الإمارات صالح لمدة 180 يومًا. الدخول الأول خلال 60 يومًا من إصدار التأشيرة. لم تُحسم أهلية مدة الإقامة السنوية بسبب تعارض بنود البطاقة؛ راجع ICP قبل التخطيط.",
+      "eligibilityScope": "common-only",
       "steps": [
         {
           "order": 1,
@@ -20731,13 +20733,13 @@
         "totalDetailFields": 4,
         "label": "OFFICIAL_LINK_VERIFIED_DETAILS_PARTIAL",
         "officialLinkLastCheckedAt": "2026-09-03",
-        "dataLastReviewedAt": "2026-10-15",
+        "dataLastReviewedAt": "2026-11-12",
         "sourceAuthority": "icp",
         "sourceUrl": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd"
       },
       "businessAcceptanceStatus": "APPROVED",
-      "lastUpdated": "2026-10-15",
-      "lastReviewedAt": "2026-10-15",
+      "lastUpdated": "2026-11-12",
+      "lastReviewedAt": "2026-11-12",
       "internalRoute": "/services/إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp/",
       "sourceRegistry": "service-matrix"
     },

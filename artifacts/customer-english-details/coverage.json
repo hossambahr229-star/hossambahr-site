@@ -1,7 +1,7 @@
 {
   "status": "PARTIAL PASS",
   "auditedServices": 203,
-  "fullyTranslatedRecordedSections": 172,
+  "fullyTranslatedRecordedSections": 173,
   "fieldCounts": {
     "documents": {
       "PLATFORM_TRANSLATION": 146,
@@ -10,8 +10,8 @@
     },
     "eligibility": {
       "PLATFORM_TRANSLATION": 149,
-      "RECORDED_ENGLISH": 42,
-      "MISSING_INFORMATION": 12
+      "RECORDED_ENGLISH": 43,
+      "MISSING_INFORMATION": 11
     },
     "fees": {
       "PLATFORM_TRANSLATION": 141,
@@ -1605,7 +1605,7 @@
       "route": "/en/services/إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp/",
       "fields": {
         "documents": "RECORDED_ENGLISH",
-        "eligibility": "MISSING_INFORMATION",
+        "eligibility": "RECORDED_ENGLISH",
         "fees": "RECORDED_ENGLISH",
         "duration": "RECORDED_ENGLISH"
       }
