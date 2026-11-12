@@ -1,0 +1,27 @@
+name: Record exact current Pages deployment November 12
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/pages-deployment-20261112.yml]
+permissions:
+  contents: write
+  deployments: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p diagnostics/pages-deployment-20261112
+          gh api 'repos/hossambahr229-star/hossambahr-site/deployments?environment=github-pages&per_page=5' --jq '[.[]|{id,sha,ref,environment,created_at}]' > diagnostics/pages-deployment-20261112/deployments.json
+          for id in $(jq -r '.[].id' diagnostics/pages-deployment-20261112/deployments.json); do
+            gh api "repos/hossambahr229-star/hossambahr-site/deployments/$id/statuses" --jq '.[0]|{state,environment_url,log_url,created_at}' > "diagnostics/pages-deployment-20261112/$id.json"
+          done
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/pages-deployment-20261112
+          git commit -m "Record exact current Pages release metadata"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
