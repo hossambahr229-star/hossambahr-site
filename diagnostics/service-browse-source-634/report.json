@@ -1,5 +1,7 @@
 {
   "scope": "BROWSE_ONLY_JAVASCRIPT_DISABLED",
+  "candidate": "ba418c816b2f9bb0a2fb3498ba6a517cb804ec39",
+  "complete": false,
   "rows": [
     {
       "name": "chrome",
@@ -32,154 +34,51 @@
         "authorities": 21,
         "emirates": 7
       },
-      "journeys": [],
-      "status": "FAIL",
-      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('#field-companies-establishments').locator('summary')\n    - locator resolved to <summary>…</summary>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not stable\n    - retrying click action\n    - waiting 20ms\n"
-    },
-    {
-      "name": "chrome",
-      "locale": "ar",
-      "width": 430,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "chrome",
-      "locale": "ar",
-      "width": 768,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "FAIL",
-      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('#field-business-licensing summary')\n    - locator resolved to <summary>…</summary>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not stable\n    - retrying click action\n    - waiting 20ms\n"
-    },
-    {
-      "name": "chrome",
-      "locale": "ar",
-      "width": 1024,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "chrome",
-      "locale": "ar",
-      "width": 1366,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "chrome",
-      "locale": "ar",
-      "width": 1440,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "FAIL",
-      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('#field-business-licensing summary')\n    - locator resolved to <summary>…</summary>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not stable\n    - retrying click action\n    - waiting 20ms\n"
-    },
-    {
-      "name": "chrome",
-      "locale": "ar",
-      "width": 1920,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "chrome",
-      "locale": "en",
-      "width": 320,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "chrome",
-      "locale": "en",
-      "width": 360,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "chrome",
-      "locale": "en",
-      "width": 390,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
       "journeys": [
         {
           "slug": "issue-trade-license-dubai",
           "steps": 3,
-          "elapsedMs": 463
+          "elapsedMs": 1111
         },
         {
           "slug": "sharjah-economic-license-renewal",
           "steps": 3,
-          "elapsedMs": 331
+          "elapsedMs": 580
         },
         {
           "slug": "abu-dhabi-economic-license-amendment",
           "steps": 3,
-          "elapsedMs": 317
+          "elapsedMs": 549
         },
         {
           "slug": "family-residency-uae",
           "steps": 3,
-          "elapsedMs": 275
+          "elapsedMs": 484
         },
         {
           "slug": "new-work-permit-overseas-uae",
           "steps": 3,
-          "elapsedMs": 291
+          "elapsedMs": 539
         },
         {
           "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
           "steps": 3,
-          "elapsedMs": 353
+          "elapsedMs": 677
         },
         {
           "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
           "steps": 3,
-          "elapsedMs": 279
+          "elapsedMs": 517
         },
         {
           "slug": "register-renew-ejari-contract-dubai",
           "steps": 3,
-          "elapsedMs": 282
+          "elapsedMs": 553
         },
         {
           "slug": "sira-new-security-activity-license-dubai",
           "steps": 3,
-          "elapsedMs": 286
+          "elapsedMs": 539
         },
         {
           "slug": "business-activities",
@@ -190,7 +89,7 @@
     },
     {
       "name": "chrome",
-      "locale": "en",
+      "locale": "ar",
       "width": 430,
       "coverage": {
         "ids": 203,
@@ -201,7 +100,7 @@
     },
     {
       "name": "chrome",
-      "locale": "en",
+      "locale": "ar",
       "width": 768,
       "coverage": {
         "ids": 203,
@@ -212,7 +111,7 @@
     },
     {
       "name": "chrome",
-      "locale": "en",
+      "locale": "ar",
       "width": 1024,
       "coverage": {
         "ids": 203,
@@ -223,7 +122,7 @@
     },
     {
       "name": "chrome",
-      "locale": "en",
+      "locale": "ar",
       "width": 1366,
       "coverage": {
         "ids": 203,
@@ -234,7 +133,7 @@
     },
     {
       "name": "chrome",
-      "locale": "en",
+      "locale": "ar",
       "width": 1440,
       "coverage": {
         "ids": 203,
@@ -245,7 +144,7 @@
     },
     {
       "name": "chrome",
-      "locale": "en",
+      "locale": "ar",
       "width": 1920,
       "coverage": {
         "ids": 203,
@@ -255,8 +154,8 @@
       "status": "PASS"
     },
     {
-      "name": "firefox",
-      "locale": "ar",
+      "name": "chrome",
+      "locale": "en",
       "width": 320,
       "coverage": {
         "ids": 203,
@@ -266,8 +165,8 @@
       "status": "PASS"
     },
     {
-      "name": "firefox",
-      "locale": "ar",
+      "name": "chrome",
+      "locale": "en",
       "width": 360,
       "coverage": {
         "ids": 203,
@@ -277,8 +176,8 @@
       "status": "PASS"
     },
     {
-      "name": "firefox",
-      "locale": "ar",
+      "name": "chrome",
+      "locale": "en",
       "width": 390,
       "coverage": {
         "ids": 203,
@@ -289,47 +188,47 @@
         {
           "slug": "issue-trade-license-dubai",
           "steps": 3,
-          "elapsedMs": 555
+          "elapsedMs": 506
         },
         {
           "slug": "sharjah-economic-license-renewal",
           "steps": 3,
-          "elapsedMs": 566
+          "elapsedMs": 526
         },
         {
           "slug": "abu-dhabi-economic-license-amendment",
           "steps": 3,
-          "elapsedMs": 550
+          "elapsedMs": 536
         },
         {
           "slug": "family-residency-uae",
+          "steps": 3,
+          "elapsedMs": 417
+        },
+        {
+          "slug": "new-work-permit-overseas-uae",
+          "steps": 3,
+          "elapsedMs": 437
+        },
+        {
+          "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
+          "steps": 3,
+          "elapsedMs": 590
+        },
+        {
+          "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+          "steps": 3,
+          "elapsedMs": 479
+        },
+        {
+          "slug": "register-renew-ejari-contract-dubai",
           "steps": 3,
           "elapsedMs": 414
         },
         {
-          "slug": "new-work-permit-overseas-uae",
-          "steps": 3,
-          "elapsedMs": 418
-        },
-        {
-          "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
-          "steps": 3,
-          "elapsedMs": 619
-        },
-        {
-          "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
-          "steps": 3,
-          "elapsedMs": 434
-        },
-        {
-          "slug": "register-renew-ejari-contract-dubai",
-          "steps": 3,
-          "elapsedMs": 412
-        },
-        {
           "slug": "sira-new-security-activity-license-dubai",
           "steps": 3,
-          "elapsedMs": 420
+          "elapsedMs": 412
         },
         {
           "slug": "business-activities",
@@ -339,8 +238,8 @@
       "status": "PASS"
     },
     {
-      "name": "firefox",
-      "locale": "ar",
+      "name": "chrome",
+      "locale": "en",
       "width": 430,
       "coverage": {
         "ids": 203,
@@ -350,8 +249,8 @@
       "status": "PASS"
     },
     {
-      "name": "firefox",
-      "locale": "ar",
+      "name": "chrome",
+      "locale": "en",
       "width": 768,
       "coverage": {
         "ids": 203,
@@ -361,8 +260,8 @@
       "status": "PASS"
     },
     {
-      "name": "firefox",
-      "locale": "ar",
+      "name": "chrome",
+      "locale": "en",
       "width": 1024,
       "coverage": {
         "ids": 203,
@@ -372,8 +271,8 @@
       "status": "PASS"
     },
     {
-      "name": "firefox",
-      "locale": "ar",
+      "name": "chrome",
+      "locale": "en",
       "width": 1366,
       "coverage": {
         "ids": 203,
@@ -383,8 +282,8 @@
       "status": "PASS"
     },
     {
-      "name": "firefox",
-      "locale": "ar",
+      "name": "chrome",
+      "locale": "en",
       "width": 1440,
       "coverage": {
         "ids": 203,
@@ -394,8 +293,8 @@
       "status": "PASS"
     },
     {
-      "name": "firefox",
-      "locale": "ar",
+      "name": "chrome",
+      "locale": "en",
       "width": 1920,
       "coverage": {
         "ids": 203,
@@ -406,7 +305,7 @@
     },
     {
       "name": "firefox",
-      "locale": "en",
+      "locale": "ar",
       "width": 320,
       "coverage": {
         "ids": 203,
@@ -417,136 +316,8 @@
     },
     {
       "name": "firefox",
-      "locale": "en",
+      "locale": "ar",
       "width": 360,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "firefox",
-      "locale": "en",
-      "width": 390,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "journeys": [
-        {
-          "slug": "issue-trade-license-dubai",
-          "steps": 3,
-          "elapsedMs": 471
-        },
-        {
-          "slug": "sharjah-economic-license-renewal",
-          "steps": 3,
-          "elapsedMs": 533
-        },
-        {
-          "slug": "abu-dhabi-economic-license-amendment",
-          "steps": 3,
-          "elapsedMs": 513
-        },
-        {
-          "slug": "family-residency-uae",
-          "steps": 3,
-          "elapsedMs": 349
-        },
-        {
-          "slug": "new-work-permit-overseas-uae",
-          "steps": 3,
-          "elapsedMs": 347
-        },
-        {
-          "slug": "إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات",
-          "steps": 3,
-          "elapsedMs": 577
-        },
-        {
-          "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
-          "steps": 3,
-          "elapsedMs": 365
-        },
-        {
-          "slug": "register-renew-ejari-contract-dubai",
-          "steps": 3,
-          "elapsedMs": 368
-        },
-        {
-          "slug": "sira-new-security-activity-license-dubai",
-          "steps": 3,
-          "elapsedMs": 346
-        },
-        {
-          "slug": "business-activities",
-          "steps": 1
-        }
-      ],
-      "status": "PASS"
-    },
-    {
-      "name": "firefox",
-      "locale": "en",
-      "width": 430,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "firefox",
-      "locale": "en",
-      "width": 768,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "firefox",
-      "locale": "en",
-      "width": 1024,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "firefox",
-      "locale": "en",
-      "width": 1366,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "firefox",
-      "locale": "en",
-      "width": 1440,
-      "coverage": {
-        "ids": 203,
-        "authorities": 21,
-        "emirates": 7
-      },
-      "status": "PASS"
-    },
-    {
-      "name": "firefox",
-      "locale": "en",
-      "width": 1920,
       "coverage": {
         "ids": 203,
         "authorities": 21,
