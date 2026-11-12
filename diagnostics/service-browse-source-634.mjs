@@ -3,7 +3,7 @@ import { chromium,firefox } from 'playwright';
 const base=process.env.HB_BASE_URL,out=process.env.HB_OUTPUT_DIR,rows=[];
 await mkdir(out,{recursive:true});
 async function clickStable(page, locator) {
- await page.evaluate(()=>document.fonts.ready);
+ await page.evaluate(()=>Promise.race([document.fonts.ready,new Promise((_,reject)=>setTimeout(()=>reject(Error('Fonts did not settle within 8 seconds')),8000))]));
  await locator.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));
  await locator.click();
 }
@@ -21,9 +21,10 @@ for(const [name,type] of [['chrome',chromium],['firefox',firefox]]){
   for(const locale of ['ar','en']) for(const width of [320,360,390,430,768,1024,1366,1440,1920]){
    const page=await browser.newPage({javaScriptEnabled:false,viewport:{width,height:850}});
    page.setDefaultTimeout(12000);
+   page.setDefaultNavigationTimeout(15000);
    const prefix=locale==='en'?'/en':'',row={name,locale,width};
    try{
-    await page.goto(base+prefix+'/services/#browse-services');
+    await page.goto(base+prefix+'/services/#browse-services',{waitUntil:'domcontentloaded'});
     const section=page.locator('[data-service-browse]');
     if(await section.count()!==1)throw Error('Missing browse section');
     const ids=await section.locator('#browse-areas [data-browse-service]').evaluateAll(a=>new Set(a.map(x=>x.dataset.browseService)).size);
@@ -36,7 +37,7 @@ for(const [name,type] of [['chrome',chromium],['firefox',firefox]]){
      row.journeys=[];
      for(const [field,slug] of transactions){
       const start=Date.now();
-      await page.goto(base+prefix+'/');
+      await page.goto(base+prefix+'/',{waitUntil:'domcontentloaded'});
       await page.locator('[data-home-browse-entry]').click();
       const group=page.locator('#field-'+field);
       await clickStable(page,group.locator('summary'));
@@ -49,13 +50,13 @@ for(const [name,type] of [['chrome',chromium],['firefox',firefox]]){
       await page.waitForURL(url=>decodeURIComponent(url.pathname)===target);
       row.journeys.push({slug,steps:3,elapsedMs:Date.now()-start});
      }
-     await page.goto(base+prefix+'/');
+     await page.goto(base+prefix+'/',{waitUntil:'domcontentloaded'});
      await page.locator('[data-business-domain="activities"]').click();
      await page.waitForURL(url=>url.pathname===prefix+'/business-activities/');
      row.journeys.push({slug:'business-activities',steps:1});
     }
     if(name==='chrome'&&[390,768,1440].includes(width)){
-     await page.goto(base+prefix+'/services/#browse-services');
+     await page.goto(base+prefix+'/services/#browse-services',{waitUntil:'domcontentloaded'});
      await clickStable(page,page.locator('#field-business-licensing summary'));
      await page.screenshot({path:out+'/'+locale+'-'+width+'.jpg',type:'jpeg',quality:85});
     }
