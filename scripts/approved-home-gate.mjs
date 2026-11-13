@@ -21,7 +21,7 @@ try{
    page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(15000);
    await page.addInitScript(()=>{window.hbLayoutShifts=0;window.hbLcp=0;new PerformanceObserver(list=>{for(const e of list.getEntries())if(!e.hadRecentInput)window.hbLayoutShifts+=e.value;}).observe({type:'layout-shift',buffered:true});new PerformanceObserver(list=>{for(const e of list.getEntries())window.hbLcp=e.startTime;}).observe({type:'largest-contentful-paint',buffered:true});});
    await page.goto(base+p+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
-   assert.equal(await page.locator('body[data-approved-home="2026-11-13"]').count(),1);
+   assert.equal(await page.locator('body[data-approved-home="2026-11-13"]').count(),1);assert.equal(await page.locator('link[href^="/intent-first.css"]').count(),0,'Legacy presentation must not be reinjected');
    assert.equal(await page.locator('.ah-area-card').count(),12);
    const seen=new Set(await page.locator('.ah-area-all [data-home-service]').evaluateAll(a=>a.map(n=>n.dataset.homeService)));
    assert.deepEqual([...seen].sort(),records.map(r=>r.s).sort(),'Every catalog record has a real homepage browse link');

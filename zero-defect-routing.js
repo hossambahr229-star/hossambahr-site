@@ -34,6 +34,8 @@
   loadAuthenticationRuntime();
 
   function loadIntentFirstStyles() {
+    // The approved homepage owns its presentation; retain the legacy sheet on other routes.
+    if (document.body?.dataset.approvedHome === '2026-11-13') return;
     const href = "/intent-first.css" + (intentStyleVersion ? "?v=" + encodeURIComponent(intentStyleVersion) : "");
     const existing = document.querySelector('link[href^="/intent-first.css"]');
     if (existing) {
