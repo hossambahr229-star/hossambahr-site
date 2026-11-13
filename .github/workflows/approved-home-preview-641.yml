@@ -1,4 +1,4 @@
-# Preview revision: ef01a35e9d8fa5172f79cac4d9051adcc25cf694
+# Preview revision: 07a33663ce17f9ea6613b0970a8502bcd3571bc7
 name: Review approved homepage source preview 641
 on:
   push:
@@ -33,6 +33,8 @@ jobs:
           cd site
           node scripts/approved-home-baseline.mjs
           HB_TEST_FIREFOX=1 HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node scripts/approved-home-gate.mjs
+          HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node src/publication/verify-phase9-1-visual-quality.mjs
+          HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node scripts/capability-discovery-browser.mjs
       - name: Preserve actual source preview and failures
         if: always()
         run: |
@@ -41,6 +43,8 @@ jobs:
           cp site/artifacts/approved-home/baseline-regression.json diagnostics/approved-home-preview-641/ || true
           cp site/artifacts/reference-geometry/report.json diagnostics/approved-home-preview-641/geometry.json || true
           cp site/artifacts/reference-geometry/overlay-50.png diagnostics/approved-home-preview-641/ || true
+          cp site/artifacts/phase9-1-visual-quality/phase9-1-visual-quality.json diagnostics/approved-home-preview-641/ || true
+          cp site/artifacts/capability-discovery/report.json diagnostics/approved-home-preview-641/capability.json || true
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
           git add diagnostics/approved-home-preview-641
