@@ -1,0 +1,57 @@
+name: Accept approved homepage on real Production 641
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/approved-home-live-641.yml]
+permissions: {contents: write}
+jobs:
+  live:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: |
+          cd site
+          npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+          npx playwright install --with-deps firefox
+          npm run build
+          cp ../diagnostics/approved-assistant-live-641.mjs diagnostics/approved-assistant-live-641.mjs
+      - name: Wait for coherent actual homepage and assets
+        run: |
+          cd site
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';import {createHash} from 'node:crypto';
+          const files=['index.html','en/index.html','approved-home.css','approved-assistant.css','assets/approved-home-icons.svg','transaction-discovery-data.json','zero-defect-routing.js','service-pathways.css'];
+          const hash=x=>createHash('sha256').update(x instanceof ArrayBuffer?Buffer.from(x):x).digest('hex'),expected=await Promise.all(files.map(f=>readFile(f)));
+          for(let attempt=0;attempt<60;attempt++){let ready=true;for(let i=0;i<files.length;i++){try{const path=files[i]==='index.html'?'/':files[i]==='en/index.html'?'/en/':'/'+files[i];const response=await fetch('https://hossambahr.com'+path+'?approved641=8e9ef017ad2edac9c4ff43e7d6079282ec630fc1&attempt='+attempt,{signal:AbortSignal.timeout(30000),headers:{'cache-control':'no-cache'}});if(!response.ok||hash(await response.arrayBuffer())!==hash(expected[i]))ready=false;}catch{ready=false;}}if(ready){console.log('Exact rebuilt bilingual HTML and asset bytes reached Production');process.exit(0);}await new Promise(r=>setTimeout(r,15000));}throw Error('Approved homepage release not coherently published');
+          NODE
+      - name: Verify real browser matrix and native journeys
+        run: |
+          cd site
+          HB_TEST_FIREFOX=1 HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node scripts/approved-home-gate.mjs
+          HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/approved-assistant-live-641.mjs
+      - name: Preserve actual live evidence
+        if: always()
+        run: |
+          mkdir -p diagnostics/approved-home-live-641
+          cp site/artifacts/reference-geometry/report.json diagnostics/approved-home-live-641/ || true
+          cp site/artifacts/reference-geometry/assistant-controls.json diagnostics/approved-home-live-641/ || true
+          cp site/artifacts/reference-geometry/*assistant*.jpg diagnostics/approved-home-live-641/ || true
+          cp site/artifacts/reference-geometry/*approved*.png diagnostics/approved-home-live-641/ || true
+          cp site/artifacts/reference-geometry/{overlay-50,image-diff,reference-1440}.png diagnostics/approved-home-live-641/ || true
+          cp site/artifacts/approved-home/{coverage,link-delta}.json diagnostics/approved-home-live-641/ || true
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/approved-home-live-641
+          git diff --cached --quiet && exit 0
+          git commit -m "Record real approved homepage Production acceptance for 8e9ef017ad2edac9c4ff43e7d6079282ec630fc1"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
