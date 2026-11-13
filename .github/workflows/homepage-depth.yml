@@ -1,10 +1,10 @@
 name: Homepage Service Depth and Correct Destinations
 on:
   pull_request:
-    paths: ['src/publication/**','transaction-discovery.*','premium-platform.js','scripts/homepage-depth-browser.mjs','.github/workflows/homepage-depth.yml']
+    paths: ['approved-home.css','assets/approved-home-icons.svg','src/design/approved-home.mjs','scripts/approved-home-gate.mjs','src/publication/**','transaction-discovery.*','premium-platform.js','scripts/homepage-depth-browser.mjs','.github/workflows/homepage-depth.yml']
   push:
     branches: [main]
-    paths: ['src/publication/**','transaction-discovery.*','premium-platform.js','scripts/homepage-depth-browser.mjs','.github/workflows/homepage-depth.yml']
+    paths: ['approved-home.css','assets/approved-home-icons.svg','src/design/approved-home.mjs','scripts/approved-home-gate.mjs','src/publication/**','transaction-discovery.*','premium-platform.js','scripts/homepage-depth-browser.mjs','.github/workflows/homepage-depth.yml']
 permissions: {contents: read}
 jobs:
   preview:
