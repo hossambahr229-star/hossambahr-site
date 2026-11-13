@@ -4,6 +4,9 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve, extname, join, relative, isAbsolute } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
+// The 13 November owner-approved composition supersedes the October coordinates.
+// Run the complete new geometry/coverage/interaction gate; retain the old gate for its original design.
+if((await readFile(join(root,'index.html'),'utf8')).includes('data-approved-home="2026-11-13"')){await import('./approved-home-gate.mjs');process.exit(process.exitCode||0);}
 const require = process.env.HB_NODE_MODULES ? createRequire(resolve(process.env.HB_NODE_MODULES,'runtime.cjs')) : createRequire(import.meta.url);
 const { chromium } = require('playwright');
 const sharp = require('sharp');

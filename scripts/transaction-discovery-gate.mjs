@@ -54,8 +54,8 @@ try{
   assert.equal(new URL(page.url()).pathname,prefix+'/discover/');
   assert.equal(await page.locator('[data-canonical-service]:visible').count(),records.length);
   await page.goto(base+prefix+'/',{waitUntil:'networkidle'});
-  assert.ok(await page.locator('[data-home-domains] a[href="'+prefix+'/approvals/"]').isVisible());
-  assert.ok(await page.locator('[data-home-domains] a[data-business-domain="activities"][href="'+prefix+'/business-activities/"]').isVisible());
+  assert.ok(await page.locator('a[data-home-approvals][href="'+prefix+'/approvals/"]').isVisible());
+  assert.ok(await page.locator('a[data-home-business-activities][href="'+prefix+'/business-activities/"]').isVisible());
   await page.getByRole('button',{name:en?'Describe what you need':'اشرح ما تحتاجه',exact:true}).click();
   assert.equal(await page.locator('#premium-ai-panel').getAttribute('aria-hidden'),'false');
   if(en){const text=await page.locator('#premium-ai-panel').innerText();assert.match(text,/Describe your request naturally/);assert.doesNotMatch(text,/اكتب سؤالك|أريد أجدد|إرفاق/);}
