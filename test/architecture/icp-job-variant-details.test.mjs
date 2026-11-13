@@ -4,8 +4,8 @@ test('ICP duration details retain source boundaries and do not promote the paren
  const service=registry.services.find(s=>s.slug==='تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي');
  assert.equal(service.verification.detailsVerified,false);
  const variants=service.officialVariantCards;assert.deepEqual(variants.map(v=>v.durationDays),[60,90,120]);
- assert.equal(service.officialVariantDetails['120'].documents.en.length,1);assert.doesNotMatch(variants[2].details.fees.en,/1000/);
- assert.match(variants[2].details.note.en,/Absence does not establish an exemption/);
+ assert.equal(service.officialVariantDetails['120'].documents.en.length,1);assert.doesNotMatch(service.officialVariantDetails['120'].fees.en,/1000/);
+ assert.match(service.officialVariantDetails['120'].note.en,/Absence does not establish an exemption/);
  for(const locale of ['ar','en']){
   const prefix=locale==='en'?'en/':'',html=await readFile(prefix+service.internalRoute.slice(1)+'index.html','utf8');
   assert.equal((html.match(/id="icp-variant-details"/g)||[]).length,1);
