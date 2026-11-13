@@ -1,4 +1,4 @@
-# Preview revision: 44a4636c86b568aae9dc6aed0e0802e6105573de
+# Preview revision: ef01a35e9d8fa5172f79cac4d9051adcc25cf694
 name: Review approved homepage source preview 641
 on:
   push:
@@ -23,6 +23,7 @@ jobs:
       - run: |
           cd site
           npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+          npx playwright install --with-deps firefox
           npm run build
           npm run build
           cp ../diagnostics/approved-home-preview-641.mjs diagnostics/approved-home-preview-641.mjs
@@ -31,7 +32,7 @@ jobs:
         run: |
           cd site
           node scripts/approved-home-baseline.mjs
-          HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node scripts/approved-home-gate.mjs
+          HB_TEST_FIREFOX=1 HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node scripts/approved-home-gate.mjs
       - name: Preserve actual source preview and failures
         if: always()
         run: |
