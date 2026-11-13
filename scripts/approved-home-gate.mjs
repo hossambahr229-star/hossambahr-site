@@ -12,7 +12,7 @@ const server=createServer(async(req,res)=>{try{let path=decodeURIComponent(new U
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
 const base=(process.env.HB_BASE_URL||'http://127.0.0.1:'+server.address().port).replace(/\/$/,'');
 const records=JSON.parse(await readFile(join(root,'transaction-discovery-data.json'),'utf8'));
-const model=approvedHomeModel(records),results=[],journeys=[];let browser;
+const model=approvedHomeModel(records),results=[],journeys=[],nativeNoJS=[];let browser;
 try{
  for(const name of process.env.HB_TEST_FIREFOX==='1'?['chrome','firefox']:['chrome']){
   browser=await (name==='chrome'?chromium:firefox).launch({headless:true,...(name==='chrome'&&process.env.HB_BROWSER_PATH?{executablePath:process.env.HB_BROWSER_PATH}:{})});
@@ -43,6 +43,18 @@ try{
    if(name==='chrome'&&[390,768,1440].includes(width))await page.screenshot({path:join(output,`${en?'en':'ar'}-approved-${width}.png`),fullPage:true});
    assert.deepEqual(errors,[],'No runtime exceptions');results.push({browser:name,locale:en?'en':'ar',width,status:'PASS',layout});await page.close();
   }
+  if(process.env.HB_TEST_FIREFOX==='1')for(const en of [false,true])for(const width of [390,1440]){
+   const p=en?'/en':'',page=await browser.newPage({viewport:{width,height:960},javaScriptEnabled:false});page.setDefaultTimeout(15000);
+   await page.goto(base+p+'/',{waitUntil:'networkidle'});
+   for(let k=0;k<16&&(await page.evaluate(()=>document.fonts.status))!=='loaded';k++)await new Promise(r=>setTimeout(r,500));
+   assert.equal(await page.evaluate(()=>document.fonts.status),'loaded');
+   const set=new Set(await page.locator('.ah-area-all [data-home-service]').evaluateAll(a=>a.map(n=>n.dataset.homeService)));
+   assert.deepEqual([...set].sort(),records.map(r=>r.s).sort());
+   if(width<=960){await page.locator('.ah-mobile-menu>summary').click();assert.ok(await page.locator('.ah-mobile-menu nav').isVisible());await page.locator('.ah-mobile-menu>summary').click();}
+   await page.locator('[data-home-emirate="dubai"]').click();await page.waitForLoadState('networkidle');
+   const group=page.locator('#emirate-dubai');await group.locator('summary').click();assert.ok(await group.locator('a').first().isVisible());const first=group.locator('a').first(),href=await first.getAttribute('href');await first.click();await page.waitForLoadState('networkidle');assert.equal(decodeURIComponent(new URL(page.url()).pathname),decodeURIComponent(new URL(href,base).pathname));
+   nativeNoJS.push({browser:name,locale:en?'en':'ar',width,services:set.size,emirate:'dubai',clicks:3,status:'PASS'});await page.close();
+  }
   await browser.close();browser=null;
  }
  // All mandated no-search transaction journeys, in both languages and on desktop/mobile.
@@ -60,6 +72,6 @@ try{
  const overlay=Buffer.alloc(ref.data.length),diff=Buffer.alloc(ref.data.length);let total=0,changed=0;
  for(let i=0;i<ref.data.length;i+=3){let delta=0;for(let c=0;c<3;c++){const d=Math.abs(ref.data[i+c]-actual[i+c]);total+=d;delta+=d;diff[i+c]=d;overlay[i+c]=Math.round((ref.data[i+c]+actual[i+c])/2);}if(delta/3>32)changed++;}
  const raw={width:1440,height:ref.info.height,channels:3};await sharp(overlay,{raw}).png().toFile(join(output,'overlay-50.png'));await sharp(diff,{raw}).png().toFile(join(output,'image-diff.png'));await sharp(ref.data,{raw}).png().toFile(join(output,'reference-1440.png'));
- const report={status:'PASS',captureSource:process.env.HB_BASE_URL?'LIVE_PRODUCTION':'LOCAL_BUILD',base,deployedCommit:process.env.HB_DEPLOYED_SHA||null,designReference:'OWNER_APPROVED_2026_11_13',geometryPassed:true,pixelFidelity:'NOT_DECLARED',humanVisualAcceptance:'NOT_ACCEPTED',referenceComparisonScope:'Full-width 1440px composition diagnostic. Reference is proportionally resized; actual is cropped/padded vertically, never stretched. Data, icons and counts use real published records.',meanAbsolutePixelDifference:total/ref.data.length,changedPixelPercent:changed/(1440*ref.info.height)*100,results,journeys};
+ const report={status:'PASS',captureSource:process.env.HB_BASE_URL?'LIVE_PRODUCTION':'LOCAL_BUILD',base,deployedCommit:process.env.HB_DEPLOYED_SHA||null,designReference:'OWNER_APPROVED_2026_11_13',geometryPassed:true,pixelFidelity:'NOT_DECLARED',humanVisualAcceptance:'NOT_ACCEPTED',referenceComparisonScope:'Full-width 1440px composition diagnostic. Reference is proportionally resized; actual is cropped/padded vertically, never stretched. Data, icons and counts use real published records.',meanAbsolutePixelDifference:total/ref.data.length,changedPixelPercent:changed/(1440*ref.info.height)*100,results,journeys,nativeNoJS};
  await writeFile(join(output,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:report.status,cases:results.length,journeys:journeys.length,changedPixelPercent:report.changedPixelPercent}));
 }finally{if(browser)await browser.close();server.close();}
