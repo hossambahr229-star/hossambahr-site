@@ -1,0 +1,2803 @@
+{
+  "services": 203,
+  "authorities": 21,
+  "emirates": 7,
+  "areas": [
+    {
+      "key": "business",
+      "count": 97,
+      "ids": [
+        "official:det:issue-trade-license",
+        "guide:renew-business-license-sharjah",
+        "added:amend-economic-license",
+        "added:business-establishment-guide",
+        "added:initial-approval-guide",
+        "added:cancel-economic-license",
+        "added:issue-economic-license",
+        "added:mortgage-economic-license-guide",
+        "added:renew-economic-license",
+        "added:licensing-requirements",
+        "added:reserve-trade-name",
+        "dha:activate-facility-license",
+        "guide:add-business-activity-dubai",
+        "guide:add-remove-partner-dubai",
+        "ajman:business-activity-inquiry",
+        "ajman:trade-license-amendment",
+        "ajman:trade-license-cancellation",
+        "ajman:trade-license-issuance",
+        "ajman:trade-license-renewal",
+        "ajman:trade-name-reservation",
+        "guide:amend-business-license-dubai",
+        "dm:building-completion",
+        "guide:cancel-business-license-dubai",
+        "guide:change-company-manager-dubai",
+        "official:det:event-permit",
+        "official:det:tour-guide",
+        "mohre:employment-agency-guarantee-payment",
+        "mohre:employment-agency-guarantee-refund",
+        "mohre:employment-agency-branch",
+        "mohre:employment-agency-license-amend",
+        "mohre:employment-agency-license-cancel",
+        "mohre:employment-agency-license-new",
+        "mohre:employment-agency-license-renew",
+        "guide:employment-contract-uae",
+        "guide:establishment-card-mohre-uae",
+        "dm:food-layout-approval",
+        "dm:food-activity-permit",
+        "fujairah:initial-approval",
+        "fujairah:license-amendment",
+        "fujairah:license-cancellation",
+        "fujairah:license-issuance",
+        "fujairah:license-renewal",
+        "fujairah:free-zone-registration",
+        "fujairah:mainland-business-guide",
+        "fujairah:trade-name-reservation",
+        "dha:health-professional-registration",
+        "dm:industrial-environmental-clearance",
+        "catalog:تغيير الشكل القانوني لشركة في دبي",
+        "directory:approvals:2",
+        "directory:approvals:30",
+        "dm:new-building-permit",
+        "dha:new-facility-license",
+        "mohre:open-farm-ranch-file",
+        "rak:add-remove-partner",
+        "rak:change-activities",
+        "rak:initial-license-approval",
+        "rak:economic-licensing-fees",
+        "rak:license-cancellation",
+        "rak:license-issuance",
+        "rak:license-renewal",
+        "rak:trade-name-reservation",
+        "dm:food-item-registration",
+        "guide:renew-business-license-ajman",
+        "guide:renew-business-license-dubai",
+        "guide:reserve-trade-name-dubai",
+        "rta-modify-trade-license-noc-dubai",
+        "rta-new-trade-license-noc-dubai",
+        "rta-renew-trade-license-noc-dubai",
+        "sedd:business-licensing-guide",
+        "sedd:license-amendment",
+        "sedd:license-cancellation",
+        "sedd:license-issuance",
+        "sedd:license-renewal",
+        "sedd:issue-trade-name",
+        "sedd:trade-name-inquiry",
+        "sedd:trade-name-renewal",
+        "guide:transfer-company-ownership-dubai",
+        "uaq:local-services-portal",
+        "uaq:free-zone-licensing",
+        "uaq:mainland-licensing-official-path",
+        "uaq:trade-name-official-path",
+        "guide:update-establishment-file-mohre-uae",
+        "dm:veterinary-activity-noc",
+        "directory:mohre:3",
+        "directory:residency:45",
+        "directory:residency:44",
+        "directory:residency:51",
+        "directory:residency:50",
+        "directory:mohre:8",
+        "catalog:تأسيس شركة في المنطقة الحرة بالفجيرة",
+        "catalog:تأسيس منشأة جديدة في عجمان",
+        "directory:residency:47",
+        "directory:residency:46",
+        "directory:residency:49",
+        "directory:residency:48",
+        "directory:mohre:6",
+        "directory:mohre:5"
+      ]
+    },
+    {
+      "key": "residence",
+      "count": 27,
+      "ids": [
+        "guide:golden-residency-uae",
+        "directory:residency:9",
+        "guide:cancel-residency-permit-uae",
+        "catalog:تعديل بيانات تصريح الإقامة",
+        "catalog:تعديل بيانات التأشيرة",
+        "icp:cancel-residency",
+        "gdrfa:green-residence-partner-investor-dubai",
+        "directory:residency:8",
+        "directory:residency:32",
+        "directory:residency:23",
+        "directory:residency:7",
+        "directory:residency:27",
+        "directory:residency:26",
+        "directory:residency:36",
+        "directory:residency:35",
+        "directory:residency:34",
+        "directory:residency:33",
+        "directory:residency:29",
+        "directory:residency:28",
+        "directory:residency:31",
+        "directory:residency:30",
+        "directory:residency:43",
+        "directory:residency:15",
+        "directory:residency:13",
+        "directory:residency:11",
+        "directory:residency:14",
+        "catalog:تمديد التأشيرة أو إذن الدخول"
+      ]
+    },
+    {
+      "key": "work",
+      "count": 27,
+      "ids": [
+        "guide:new-work-permit-overseas-uae",
+        "guide:cancel-work-permit-uae",
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "catalog:تصريح عمل لمهمة",
+        "guide:mohre-private-tutor-permit",
+        "guide:mohre-uae-national-trainee-work-permit",
+        "guide:mohre-uae-nationals-gcc-work-permit",
+        "guide:part-time-work-permit-uae",
+        "guide:temporary-work-permit-uae",
+        "guide:transfer-work-permit-uae",
+        "directory:mohre:34",
+        "directory:mohre:35",
+        "directory:mohre:31",
+        "directory:mohre:39",
+        "directory:mohre:32",
+        "directory:mohre:38",
+        "directory:mohre:24",
+        "directory:mohre:40",
+        "directory:mohre:30",
+        "directory:mohre:36",
+        "directory:mohre:16",
+        "directory:mohre:15",
+        "directory:mohre:19",
+        "directory:mohre:37",
+        "directory:mohre:42",
+        "directory:mohre:41"
+      ]
+    },
+    {
+      "key": "family",
+      "count": 5,
+      "ids": [
+        "guide:family-residency-uae",
+        "directory:residency:18",
+        "directory:residency:19",
+        "directory:residency:20",
+        "directory:residency:22"
+      ]
+    },
+    {
+      "key": "approvals",
+      "count": 2,
+      "ids": [
+        "sira:new-security-activity-license",
+        "sira:security-system-certification"
+      ]
+    },
+    {
+      "key": "documents",
+      "count": 9,
+      "ids": [
+        "catalog:تصديق مستند شخصي داخل الإمارات",
+        "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+        "catalog:التحقق من صحة المعادلة أو التصديق",
+        "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+        "catalog:معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات",
+        "dc:legal-notice",
+        "dc:marriage-contract",
+        "dc:poa-ratification",
+        "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)"
+      ]
+    },
+    {
+      "key": "property",
+      "count": 5,
+      "ids": [
+        "dld:ejari-register-renew",
+        "dld-real-estate-ad-permit-dubai",
+        "dld:property-valuation",
+        "dld:professional-card",
+        "dld:title-transfer"
+      ]
+    },
+    {
+      "key": "identity",
+      "count": 13,
+      "ids": [
+        "guide:renew-emirates-id-uae",
+        "icp:amend-family-data",
+        "guide:issue-emirates-id-uae",
+        "icp:issue-family-data",
+        "icp:new-passport",
+        "icp:renew-passport-abroad",
+        "icp:renew-passport",
+        "icp:replace-lost-damaged-passport",
+        "icp:replace-passport",
+        "directory:residency:6",
+        "directory:residency:5",
+        "directory:residency:3",
+        "directory:residency:4"
+      ]
+    },
+    {
+      "key": "tax",
+      "count": 2,
+      "ids": [
+        "guide:corporate-tax-registration-uae",
+        "guide:vat-registration-uae"
+      ]
+    },
+    {
+      "key": "justice",
+      "count": 10,
+      "ids": [
+        "icp:cancel-departure-permit",
+        "mohre:domestic-worker-labour-complaint",
+        "icp:departure-permit",
+        "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+        "directory:residency:52",
+        "directory:residency:16",
+        "directory:residency:53",
+        "directory:residency:54",
+        "directory:residency:55",
+        "directory:residency:56"
+      ]
+    },
+    {
+      "key": "trade",
+      "count": 3,
+      "ids": [
+        "customs:business-registration",
+        "customs:declaration",
+        "customs:vehicle-clearance"
+      ]
+    },
+    {
+      "key": "transport",
+      "count": 3,
+      "ids": [
+        "rta:pay-public-parking-fines",
+        "rta:renew-driving-license",
+        "rta:renew-vehicle-ownership"
+      ]
+    }
+  ],
+  "covered": [
+    "official:det:issue-trade-license",
+    "guide:renew-business-license-sharjah",
+    "added:amend-economic-license",
+    "added:business-establishment-guide",
+    "added:initial-approval-guide",
+    "added:cancel-economic-license",
+    "added:issue-economic-license",
+    "added:mortgage-economic-license-guide",
+    "added:renew-economic-license",
+    "added:licensing-requirements",
+    "added:reserve-trade-name",
+    "dha:activate-facility-license",
+    "guide:add-business-activity-dubai",
+    "guide:add-remove-partner-dubai",
+    "ajman:business-activity-inquiry",
+    "ajman:trade-license-amendment",
+    "ajman:trade-license-cancellation",
+    "ajman:trade-license-issuance",
+    "ajman:trade-license-renewal",
+    "ajman:trade-name-reservation",
+    "guide:amend-business-license-dubai",
+    "dm:building-completion",
+    "guide:cancel-business-license-dubai",
+    "guide:change-company-manager-dubai",
+    "official:det:event-permit",
+    "official:det:tour-guide",
+    "mohre:employment-agency-guarantee-payment",
+    "mohre:employment-agency-guarantee-refund",
+    "mohre:employment-agency-branch",
+    "mohre:employment-agency-license-amend",
+    "mohre:employment-agency-license-cancel",
+    "mohre:employment-agency-license-new",
+    "mohre:employment-agency-license-renew",
+    "guide:employment-contract-uae",
+    "guide:establishment-card-mohre-uae",
+    "dm:food-layout-approval",
+    "dm:food-activity-permit",
+    "fujairah:initial-approval",
+    "fujairah:license-amendment",
+    "fujairah:license-cancellation",
+    "fujairah:license-issuance",
+    "fujairah:license-renewal",
+    "fujairah:free-zone-registration",
+    "fujairah:mainland-business-guide",
+    "fujairah:trade-name-reservation",
+    "dha:health-professional-registration",
+    "dm:industrial-environmental-clearance",
+    "catalog:تغيير الشكل القانوني لشركة في دبي",
+    "directory:approvals:2",
+    "directory:approvals:30",
+    "dm:new-building-permit",
+    "dha:new-facility-license",
+    "mohre:open-farm-ranch-file",
+    "rak:add-remove-partner",
+    "rak:change-activities",
+    "rak:initial-license-approval",
+    "rak:economic-licensing-fees",
+    "rak:license-cancellation",
+    "rak:license-issuance",
+    "rak:license-renewal",
+    "rak:trade-name-reservation",
+    "dm:food-item-registration",
+    "guide:renew-business-license-ajman",
+    "guide:renew-business-license-dubai",
+    "guide:reserve-trade-name-dubai",
+    "rta-modify-trade-license-noc-dubai",
+    "rta-new-trade-license-noc-dubai",
+    "rta-renew-trade-license-noc-dubai",
+    "sedd:business-licensing-guide",
+    "sedd:license-amendment",
+    "sedd:license-cancellation",
+    "sedd:license-issuance",
+    "sedd:license-renewal",
+    "sedd:issue-trade-name",
+    "sedd:trade-name-inquiry",
+    "sedd:trade-name-renewal",
+    "guide:transfer-company-ownership-dubai",
+    "uaq:local-services-portal",
+    "uaq:free-zone-licensing",
+    "uaq:mainland-licensing-official-path",
+    "uaq:trade-name-official-path",
+    "guide:update-establishment-file-mohre-uae",
+    "dm:veterinary-activity-noc",
+    "directory:mohre:3",
+    "directory:residency:45",
+    "directory:residency:44",
+    "directory:residency:51",
+    "directory:residency:50",
+    "directory:mohre:8",
+    "catalog:تأسيس شركة في المنطقة الحرة بالفجيرة",
+    "catalog:تأسيس منشأة جديدة في عجمان",
+    "directory:residency:47",
+    "directory:residency:46",
+    "directory:residency:49",
+    "directory:residency:48",
+    "directory:mohre:6",
+    "directory:mohre:5",
+    "guide:golden-residency-uae",
+    "directory:residency:9",
+    "guide:cancel-residency-permit-uae",
+    "catalog:تعديل بيانات تصريح الإقامة",
+    "catalog:تعديل بيانات التأشيرة",
+    "icp:cancel-residency",
+    "gdrfa:green-residence-partner-investor-dubai",
+    "directory:residency:8",
+    "directory:residency:32",
+    "directory:residency:23",
+    "directory:residency:7",
+    "directory:residency:27",
+    "directory:residency:26",
+    "directory:residency:36",
+    "directory:residency:35",
+    "directory:residency:34",
+    "directory:residency:33",
+    "directory:residency:29",
+    "directory:residency:28",
+    "directory:residency:31",
+    "directory:residency:30",
+    "directory:residency:43",
+    "directory:residency:15",
+    "directory:residency:13",
+    "directory:residency:11",
+    "directory:residency:14",
+    "catalog:تمديد التأشيرة أو إذن الدخول",
+    "guide:new-work-permit-overseas-uae",
+    "guide:cancel-work-permit-uae",
+    "guide:family-sponsored-work-permit-uae",
+    "catalog:تصريح عمل لحامل الإقامة الذهبية",
+    "catalog:تصريح عمل لمهمة",
+    "guide:mohre-private-tutor-permit",
+    "guide:mohre-uae-national-trainee-work-permit",
+    "guide:mohre-uae-nationals-gcc-work-permit",
+    "guide:part-time-work-permit-uae",
+    "guide:temporary-work-permit-uae",
+    "guide:transfer-work-permit-uae",
+    "directory:mohre:34",
+    "directory:mohre:35",
+    "directory:mohre:31",
+    "directory:mohre:39",
+    "directory:mohre:32",
+    "directory:mohre:38",
+    "directory:mohre:24",
+    "directory:mohre:40",
+    "directory:mohre:30",
+    "directory:mohre:36",
+    "directory:mohre:16",
+    "directory:mohre:15",
+    "directory:mohre:19",
+    "directory:mohre:37",
+    "directory:mohre:42",
+    "directory:mohre:41",
+    "guide:family-residency-uae",
+    "directory:residency:18",
+    "directory:residency:19",
+    "directory:residency:20",
+    "directory:residency:22",
+    "sira:new-security-activity-license",
+    "sira:security-system-certification",
+    "catalog:تصديق مستند شخصي داخل الإمارات",
+    "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+    "catalog:التحقق من صحة المعادلة أو التصديق",
+    "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+    "catalog:معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات",
+    "dc:legal-notice",
+    "dc:marriage-contract",
+    "dc:poa-ratification",
+    "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+    "dld:ejari-register-renew",
+    "dld-real-estate-ad-permit-dubai",
+    "dld:property-valuation",
+    "dld:professional-card",
+    "dld:title-transfer",
+    "guide:renew-emirates-id-uae",
+    "icp:amend-family-data",
+    "guide:issue-emirates-id-uae",
+    "icp:issue-family-data",
+    "icp:new-passport",
+    "icp:renew-passport-abroad",
+    "icp:renew-passport",
+    "icp:replace-lost-damaged-passport",
+    "icp:replace-passport",
+    "directory:residency:6",
+    "directory:residency:5",
+    "directory:residency:3",
+    "directory:residency:4",
+    "guide:corporate-tax-registration-uae",
+    "guide:vat-registration-uae",
+    "icp:cancel-departure-permit",
+    "mohre:domestic-worker-labour-complaint",
+    "icp:departure-permit",
+    "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+    "directory:residency:52",
+    "directory:residency:16",
+    "directory:residency:53",
+    "directory:residency:54",
+    "directory:residency:55",
+    "directory:residency:56",
+    "customs:business-registration",
+    "customs:declaration",
+    "customs:vehicle-clearance",
+    "rta:pay-public-parking-fines",
+    "rta:renew-driving-license",
+    "rta:renew-vehicle-ownership"
+  ],
+  "emirateMatrix": [
+    {
+      "key": "dubai",
+      "scope": "دبي",
+      "count": 126,
+      "ids": [
+        "dha:activate-facility-license",
+        "guide:add-business-activity-dubai",
+        "guide:add-remove-partner-dubai",
+        "guide:amend-business-license-dubai",
+        "icp:amend-family-data",
+        "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+        "dm:building-completion",
+        "guide:cancel-business-license-dubai",
+        "icp:cancel-departure-permit",
+        "icp:cancel-residency",
+        "guide:cancel-residency-permit-uae",
+        "guide:cancel-work-permit-uae",
+        "guide:change-company-manager-dubai",
+        "catalog:التحقق من صحة المعادلة أو التصديق",
+        "guide:corporate-tax-registration-uae",
+        "official:det:event-permit",
+        "official:det:tour-guide",
+        "dld-real-estate-ad-permit-dubai",
+        "mohre:domestic-worker-labour-complaint",
+        "customs:business-registration",
+        "mohre:employment-agency-guarantee-payment",
+        "mohre:employment-agency-guarantee-refund",
+        "mohre:employment-agency-branch",
+        "mohre:employment-agency-license-amend",
+        "mohre:employment-agency-license-cancel",
+        "mohre:employment-agency-license-new",
+        "mohre:employment-agency-license-renew",
+        "guide:employment-contract-uae",
+        "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+        "guide:establishment-card-mohre-uae",
+        "guide:family-residency-uae",
+        "guide:family-sponsored-work-permit-uae",
+        "dm:food-layout-approval",
+        "dm:food-activity-permit",
+        "guide:golden-residency-uae",
+        "gdrfa:green-residence-partner-investor-dubai",
+        "dha:health-professional-registration",
+        "dm:industrial-environmental-clearance",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "catalog:تصريح عمل لمهمة",
+        "icp:departure-permit",
+        "guide:issue-emirates-id-uae",
+        "icp:issue-family-data",
+        "icp:new-passport",
+        "official:det:issue-trade-license",
+        "catalog:تغيير الشكل القانوني لشركة في دبي",
+        "directory:approvals:2",
+        "directory:approvals:30",
+        "dc:legal-notice",
+        "dc:marriage-contract",
+        "guide:mohre-private-tutor-permit",
+        "guide:mohre-uae-national-trainee-work-permit",
+        "guide:mohre-uae-nationals-gcc-work-permit",
+        "dm:new-building-permit",
+        "dha:new-facility-license",
+        "guide:new-work-permit-overseas-uae",
+        "mohre:open-farm-ranch-file",
+        "guide:part-time-work-permit-uae",
+        "rta:pay-public-parking-fines",
+        "dc:poa-ratification",
+        "dld:property-valuation",
+        "dld:professional-card",
+        "dm:food-item-registration",
+        "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+        "dld:ejari-register-renew",
+        "guide:renew-business-license-dubai",
+        "rta:renew-driving-license",
+        "guide:renew-emirates-id-uae",
+        "icp:renew-passport-abroad",
+        "icp:renew-passport",
+        "rta:renew-vehicle-ownership",
+        "icp:replace-lost-damaged-passport",
+        "icp:replace-passport",
+        "guide:reserve-trade-name-dubai",
+        "rta-modify-trade-license-noc-dubai",
+        "rta-new-trade-license-noc-dubai",
+        "rta-renew-trade-license-noc-dubai",
+        "sira:new-security-activity-license",
+        "sira:security-system-certification",
+        "customs:declaration",
+        "guide:temporary-work-permit-uae",
+        "dld:title-transfer",
+        "guide:transfer-company-ownership-dubai",
+        "guide:transfer-work-permit-uae",
+        "guide:update-establishment-file-mohre-uae",
+        "guide:vat-registration-uae",
+        "customs:vehicle-clearance",
+        "dm:veterinary-activity-noc",
+        "directory:residency:19",
+        "directory:residency:8",
+        "directory:mohre:3",
+        "directory:residency:44",
+        "directory:mohre:34",
+        "directory:mohre:35",
+        "directory:residency:27",
+        "directory:residency:50",
+        "directory:mohre:31",
+        "directory:mohre:39",
+        "directory:mohre:32",
+        "directory:mohre:38",
+        "directory:mohre:8",
+        "directory:residency:52",
+        "directory:mohre:24",
+        "directory:mohre:30",
+        "directory:residency:35",
+        "directory:residency:33",
+        "directory:residency:28",
+        "directory:residency:30",
+        "directory:residency:18",
+        "directory:residency:43",
+        "directory:residency:46",
+        "directory:mohre:36",
+        "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+        "catalog:تصديق مستند شخصي داخل الإمارات",
+        "directory:mohre:16",
+        "directory:mohre:15",
+        "directory:residency:13",
+        "directory:residency:48",
+        "directory:residency:11",
+        "directory:mohre:19",
+        "directory:mohre:37",
+        "directory:mohre:6",
+        "directory:mohre:5",
+        "directory:mohre:41",
+        "directory:residency:53",
+        "directory:residency:55"
+      ]
+    },
+    {
+      "key": "abu-dhabi",
+      "scope": "أبوظبي",
+      "count": 99,
+      "ids": [
+        "added:business-establishment-guide",
+        "added:initial-approval-guide",
+        "added:amend-economic-license",
+        "added:cancel-economic-license",
+        "added:issue-economic-license",
+        "added:mortgage-economic-license-guide",
+        "added:renew-economic-license",
+        "added:licensing-requirements",
+        "added:reserve-trade-name",
+        "icp:amend-family-data",
+        "catalog:تعديل بيانات تصريح الإقامة",
+        "catalog:تعديل بيانات التأشيرة",
+        "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+        "icp:cancel-departure-permit",
+        "icp:cancel-residency",
+        "guide:cancel-work-permit-uae",
+        "catalog:التحقق من صحة المعادلة أو التصديق",
+        "guide:corporate-tax-registration-uae",
+        "mohre:domestic-worker-labour-complaint",
+        "mohre:employment-agency-guarantee-payment",
+        "mohre:employment-agency-guarantee-refund",
+        "mohre:employment-agency-branch",
+        "mohre:employment-agency-license-amend",
+        "mohre:employment-agency-license-cancel",
+        "mohre:employment-agency-license-new",
+        "mohre:employment-agency-license-renew",
+        "guide:employment-contract-uae",
+        "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+        "guide:establishment-card-mohre-uae",
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "catalog:تصريح عمل لمهمة",
+        "icp:departure-permit",
+        "guide:issue-emirates-id-uae",
+        "icp:issue-family-data",
+        "icp:new-passport",
+        "guide:mohre-private-tutor-permit",
+        "guide:mohre-uae-national-trainee-work-permit",
+        "guide:mohre-uae-nationals-gcc-work-permit",
+        "guide:new-work-permit-overseas-uae",
+        "mohre:open-farm-ranch-file",
+        "guide:part-time-work-permit-uae",
+        "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+        "guide:renew-emirates-id-uae",
+        "icp:renew-passport-abroad",
+        "icp:renew-passport",
+        "icp:replace-lost-damaged-passport",
+        "icp:replace-passport",
+        "guide:temporary-work-permit-uae",
+        "guide:transfer-work-permit-uae",
+        "guide:update-establishment-file-mohre-uae",
+        "guide:vat-registration-uae",
+        "directory:residency:20",
+        "directory:residency:22",
+        "directory:mohre:3",
+        "directory:residency:45",
+        "directory:residency:32",
+        "directory:residency:23",
+        "directory:residency:7",
+        "directory:mohre:34",
+        "directory:mohre:35",
+        "directory:residency:51",
+        "directory:mohre:31",
+        "directory:residency:26",
+        "directory:mohre:39",
+        "directory:mohre:32",
+        "directory:mohre:38",
+        "directory:mohre:8",
+        "directory:residency:6",
+        "directory:residency:5",
+        "directory:mohre:24",
+        "directory:residency:3",
+        "directory:mohre:40",
+        "directory:mohre:30",
+        "directory:residency:36",
+        "directory:residency:34",
+        "directory:residency:29",
+        "directory:residency:31",
+        "directory:residency:47",
+        "directory:residency:9",
+        "directory:mohre:36",
+        "directory:residency:4",
+        "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+        "catalog:تصديق مستند شخصي داخل الإمارات",
+        "directory:residency:15",
+        "directory:mohre:16",
+        "directory:mohre:15",
+        "directory:residency:49",
+        "directory:mohre:19",
+        "directory:mohre:37",
+        "directory:residency:14",
+        "directory:residency:16",
+        "directory:mohre:6",
+        "catalog:تمديد التأشيرة أو إذن الدخول",
+        "directory:mohre:5",
+        "directory:mohre:42",
+        "directory:mohre:41",
+        "directory:residency:54",
+        "directory:residency:56"
+      ]
+    },
+    {
+      "key": "sharjah",
+      "scope": "الشارقة",
+      "count": 99,
+      "ids": [
+        "icp:amend-family-data",
+        "catalog:تعديل بيانات تصريح الإقامة",
+        "catalog:تعديل بيانات التأشيرة",
+        "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+        "icp:cancel-departure-permit",
+        "icp:cancel-residency",
+        "guide:cancel-work-permit-uae",
+        "catalog:التحقق من صحة المعادلة أو التصديق",
+        "guide:corporate-tax-registration-uae",
+        "mohre:domestic-worker-labour-complaint",
+        "mohre:employment-agency-guarantee-payment",
+        "mohre:employment-agency-guarantee-refund",
+        "mohre:employment-agency-branch",
+        "mohre:employment-agency-license-amend",
+        "mohre:employment-agency-license-cancel",
+        "mohre:employment-agency-license-new",
+        "mohre:employment-agency-license-renew",
+        "guide:employment-contract-uae",
+        "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+        "guide:establishment-card-mohre-uae",
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "catalog:تصريح عمل لمهمة",
+        "icp:departure-permit",
+        "guide:issue-emirates-id-uae",
+        "icp:issue-family-data",
+        "icp:new-passport",
+        "guide:mohre-private-tutor-permit",
+        "guide:mohre-uae-national-trainee-work-permit",
+        "guide:mohre-uae-nationals-gcc-work-permit",
+        "guide:new-work-permit-overseas-uae",
+        "mohre:open-farm-ranch-file",
+        "guide:part-time-work-permit-uae",
+        "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+        "guide:renew-business-license-sharjah",
+        "guide:renew-emirates-id-uae",
+        "icp:renew-passport-abroad",
+        "icp:renew-passport",
+        "icp:replace-lost-damaged-passport",
+        "icp:replace-passport",
+        "sedd:business-licensing-guide",
+        "sedd:license-amendment",
+        "sedd:license-cancellation",
+        "sedd:license-issuance",
+        "sedd:license-renewal",
+        "sedd:issue-trade-name",
+        "sedd:trade-name-inquiry",
+        "sedd:trade-name-renewal",
+        "guide:temporary-work-permit-uae",
+        "guide:transfer-work-permit-uae",
+        "guide:update-establishment-file-mohre-uae",
+        "guide:vat-registration-uae",
+        "directory:residency:20",
+        "directory:residency:22",
+        "directory:mohre:3",
+        "directory:residency:45",
+        "directory:residency:32",
+        "directory:residency:23",
+        "directory:residency:7",
+        "directory:mohre:34",
+        "directory:mohre:35",
+        "directory:residency:51",
+        "directory:mohre:31",
+        "directory:residency:26",
+        "directory:mohre:39",
+        "directory:mohre:32",
+        "directory:mohre:38",
+        "directory:mohre:8",
+        "directory:residency:6",
+        "directory:residency:5",
+        "directory:mohre:24",
+        "directory:residency:3",
+        "directory:mohre:40",
+        "directory:mohre:30",
+        "directory:residency:36",
+        "directory:residency:34",
+        "directory:residency:29",
+        "directory:residency:31",
+        "directory:residency:47",
+        "directory:residency:9",
+        "directory:mohre:36",
+        "directory:residency:4",
+        "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+        "catalog:تصديق مستند شخصي داخل الإمارات",
+        "directory:residency:15",
+        "directory:mohre:16",
+        "directory:mohre:15",
+        "directory:residency:49",
+        "directory:mohre:19",
+        "directory:mohre:37",
+        "directory:residency:14",
+        "directory:residency:16",
+        "directory:mohre:6",
+        "catalog:تمديد التأشيرة أو إذن الدخول",
+        "directory:mohre:5",
+        "directory:mohre:42",
+        "directory:mohre:41",
+        "directory:residency:54",
+        "directory:residency:56"
+      ]
+    },
+    {
+      "key": "ajman",
+      "scope": "عجمان",
+      "count": 98,
+      "ids": [
+        "ajman:business-activity-inquiry",
+        "ajman:trade-license-amendment",
+        "ajman:trade-license-cancellation",
+        "ajman:trade-license-issuance",
+        "ajman:trade-license-renewal",
+        "ajman:trade-name-reservation",
+        "icp:amend-family-data",
+        "catalog:تعديل بيانات تصريح الإقامة",
+        "catalog:تعديل بيانات التأشيرة",
+        "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+        "icp:cancel-departure-permit",
+        "icp:cancel-residency",
+        "guide:cancel-work-permit-uae",
+        "catalog:التحقق من صحة المعادلة أو التصديق",
+        "guide:corporate-tax-registration-uae",
+        "mohre:domestic-worker-labour-complaint",
+        "mohre:employment-agency-guarantee-payment",
+        "mohre:employment-agency-guarantee-refund",
+        "mohre:employment-agency-branch",
+        "mohre:employment-agency-license-amend",
+        "mohre:employment-agency-license-cancel",
+        "mohre:employment-agency-license-new",
+        "mohre:employment-agency-license-renew",
+        "guide:employment-contract-uae",
+        "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+        "guide:establishment-card-mohre-uae",
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "catalog:تصريح عمل لمهمة",
+        "icp:departure-permit",
+        "guide:issue-emirates-id-uae",
+        "icp:issue-family-data",
+        "icp:new-passport",
+        "guide:mohre-private-tutor-permit",
+        "guide:mohre-uae-national-trainee-work-permit",
+        "guide:mohre-uae-nationals-gcc-work-permit",
+        "guide:new-work-permit-overseas-uae",
+        "mohre:open-farm-ranch-file",
+        "guide:part-time-work-permit-uae",
+        "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+        "guide:renew-business-license-ajman",
+        "guide:renew-emirates-id-uae",
+        "icp:renew-passport-abroad",
+        "icp:renew-passport",
+        "icp:replace-lost-damaged-passport",
+        "icp:replace-passport",
+        "guide:temporary-work-permit-uae",
+        "guide:transfer-work-permit-uae",
+        "guide:update-establishment-file-mohre-uae",
+        "guide:vat-registration-uae",
+        "directory:residency:20",
+        "directory:residency:22",
+        "directory:mohre:3",
+        "directory:residency:45",
+        "directory:residency:32",
+        "directory:residency:23",
+        "directory:residency:7",
+        "directory:mohre:34",
+        "directory:mohre:35",
+        "directory:residency:51",
+        "directory:mohre:31",
+        "directory:residency:26",
+        "directory:mohre:39",
+        "directory:mohre:32",
+        "directory:mohre:38",
+        "directory:mohre:8",
+        "directory:residency:6",
+        "directory:residency:5",
+        "directory:mohre:24",
+        "directory:residency:3",
+        "directory:mohre:40",
+        "directory:mohre:30",
+        "catalog:تأسيس منشأة جديدة في عجمان",
+        "directory:residency:36",
+        "directory:residency:34",
+        "directory:residency:29",
+        "directory:residency:31",
+        "directory:residency:47",
+        "directory:residency:9",
+        "directory:mohre:36",
+        "directory:residency:4",
+        "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+        "catalog:تصديق مستند شخصي داخل الإمارات",
+        "directory:residency:15",
+        "directory:mohre:16",
+        "directory:mohre:15",
+        "directory:residency:49",
+        "directory:mohre:19",
+        "directory:mohre:37",
+        "directory:residency:14",
+        "directory:residency:16",
+        "directory:mohre:6",
+        "catalog:تمديد التأشيرة أو إذن الدخول",
+        "directory:mohre:5",
+        "directory:mohre:42",
+        "directory:mohre:41",
+        "directory:residency:54",
+        "directory:residency:56"
+      ]
+    },
+    {
+      "key": "rak",
+      "scope": "رأس الخيمة",
+      "count": 98,
+      "ids": [
+        "icp:amend-family-data",
+        "catalog:تعديل بيانات تصريح الإقامة",
+        "catalog:تعديل بيانات التأشيرة",
+        "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+        "icp:cancel-departure-permit",
+        "icp:cancel-residency",
+        "guide:cancel-work-permit-uae",
+        "catalog:التحقق من صحة المعادلة أو التصديق",
+        "guide:corporate-tax-registration-uae",
+        "mohre:domestic-worker-labour-complaint",
+        "mohre:employment-agency-guarantee-payment",
+        "mohre:employment-agency-guarantee-refund",
+        "mohre:employment-agency-branch",
+        "mohre:employment-agency-license-amend",
+        "mohre:employment-agency-license-cancel",
+        "mohre:employment-agency-license-new",
+        "mohre:employment-agency-license-renew",
+        "guide:employment-contract-uae",
+        "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+        "guide:establishment-card-mohre-uae",
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "catalog:تصريح عمل لمهمة",
+        "icp:departure-permit",
+        "guide:issue-emirates-id-uae",
+        "icp:issue-family-data",
+        "icp:new-passport",
+        "guide:mohre-private-tutor-permit",
+        "guide:mohre-uae-national-trainee-work-permit",
+        "guide:mohre-uae-nationals-gcc-work-permit",
+        "guide:new-work-permit-overseas-uae",
+        "mohre:open-farm-ranch-file",
+        "guide:part-time-work-permit-uae",
+        "rak:add-remove-partner",
+        "rak:change-activities",
+        "rak:initial-license-approval",
+        "rak:economic-licensing-fees",
+        "rak:license-cancellation",
+        "rak:license-issuance",
+        "rak:license-renewal",
+        "rak:trade-name-reservation",
+        "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+        "guide:renew-emirates-id-uae",
+        "icp:renew-passport-abroad",
+        "icp:renew-passport",
+        "icp:replace-lost-damaged-passport",
+        "icp:replace-passport",
+        "guide:temporary-work-permit-uae",
+        "guide:transfer-work-permit-uae",
+        "guide:update-establishment-file-mohre-uae",
+        "guide:vat-registration-uae",
+        "directory:residency:20",
+        "directory:residency:22",
+        "directory:mohre:3",
+        "directory:residency:45",
+        "directory:residency:32",
+        "directory:residency:23",
+        "directory:residency:7",
+        "directory:mohre:34",
+        "directory:mohre:35",
+        "directory:residency:51",
+        "directory:mohre:31",
+        "directory:residency:26",
+        "directory:mohre:39",
+        "directory:mohre:32",
+        "directory:mohre:38",
+        "directory:mohre:8",
+        "directory:residency:6",
+        "directory:residency:5",
+        "directory:mohre:24",
+        "directory:residency:3",
+        "directory:mohre:40",
+        "directory:mohre:30",
+        "directory:residency:36",
+        "directory:residency:34",
+        "directory:residency:29",
+        "directory:residency:31",
+        "directory:residency:47",
+        "directory:residency:9",
+        "directory:mohre:36",
+        "directory:residency:4",
+        "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+        "catalog:تصديق مستند شخصي داخل الإمارات",
+        "directory:residency:15",
+        "directory:mohre:16",
+        "directory:mohre:15",
+        "directory:residency:49",
+        "directory:mohre:19",
+        "directory:mohre:37",
+        "directory:residency:14",
+        "directory:residency:16",
+        "directory:mohre:6",
+        "catalog:تمديد التأشيرة أو إذن الدخول",
+        "directory:mohre:5",
+        "directory:mohre:42",
+        "directory:mohre:41",
+        "directory:residency:54",
+        "directory:residency:56"
+      ]
+    },
+    {
+      "key": "fujairah",
+      "scope": "الفجيرة",
+      "count": 99,
+      "ids": [
+        "icp:amend-family-data",
+        "catalog:تعديل بيانات تصريح الإقامة",
+        "catalog:تعديل بيانات التأشيرة",
+        "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+        "icp:cancel-departure-permit",
+        "icp:cancel-residency",
+        "guide:cancel-work-permit-uae",
+        "catalog:التحقق من صحة المعادلة أو التصديق",
+        "guide:corporate-tax-registration-uae",
+        "mohre:domestic-worker-labour-complaint",
+        "mohre:employment-agency-guarantee-payment",
+        "mohre:employment-agency-guarantee-refund",
+        "mohre:employment-agency-branch",
+        "mohre:employment-agency-license-amend",
+        "mohre:employment-agency-license-cancel",
+        "mohre:employment-agency-license-new",
+        "mohre:employment-agency-license-renew",
+        "guide:employment-contract-uae",
+        "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+        "guide:establishment-card-mohre-uae",
+        "guide:family-sponsored-work-permit-uae",
+        "fujairah:initial-approval",
+        "fujairah:license-amendment",
+        "fujairah:license-cancellation",
+        "fujairah:license-issuance",
+        "fujairah:license-renewal",
+        "fujairah:free-zone-registration",
+        "fujairah:mainland-business-guide",
+        "fujairah:trade-name-reservation",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "catalog:تصريح عمل لمهمة",
+        "icp:departure-permit",
+        "guide:issue-emirates-id-uae",
+        "icp:issue-family-data",
+        "icp:new-passport",
+        "guide:mohre-private-tutor-permit",
+        "guide:mohre-uae-national-trainee-work-permit",
+        "guide:mohre-uae-nationals-gcc-work-permit",
+        "guide:new-work-permit-overseas-uae",
+        "mohre:open-farm-ranch-file",
+        "guide:part-time-work-permit-uae",
+        "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+        "guide:renew-emirates-id-uae",
+        "icp:renew-passport-abroad",
+        "icp:renew-passport",
+        "icp:replace-lost-damaged-passport",
+        "icp:replace-passport",
+        "guide:temporary-work-permit-uae",
+        "guide:transfer-work-permit-uae",
+        "guide:update-establishment-file-mohre-uae",
+        "guide:vat-registration-uae",
+        "directory:residency:20",
+        "directory:residency:22",
+        "directory:mohre:3",
+        "directory:residency:45",
+        "directory:residency:32",
+        "directory:residency:23",
+        "directory:residency:7",
+        "directory:mohre:34",
+        "directory:mohre:35",
+        "directory:residency:51",
+        "directory:mohre:31",
+        "directory:residency:26",
+        "directory:mohre:39",
+        "directory:mohre:32",
+        "directory:mohre:38",
+        "directory:mohre:8",
+        "directory:residency:6",
+        "directory:residency:5",
+        "directory:mohre:24",
+        "directory:residency:3",
+        "directory:mohre:40",
+        "directory:mohre:30",
+        "catalog:تأسيس شركة في المنطقة الحرة بالفجيرة",
+        "directory:residency:36",
+        "directory:residency:34",
+        "directory:residency:29",
+        "directory:residency:31",
+        "directory:residency:47",
+        "directory:residency:9",
+        "directory:mohre:36",
+        "directory:residency:4",
+        "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+        "catalog:تصديق مستند شخصي داخل الإمارات",
+        "directory:residency:15",
+        "directory:mohre:16",
+        "directory:mohre:15",
+        "directory:residency:49",
+        "directory:mohre:19",
+        "directory:mohre:37",
+        "directory:residency:14",
+        "directory:residency:16",
+        "directory:mohre:6",
+        "catalog:تمديد التأشيرة أو إذن الدخول",
+        "directory:mohre:5",
+        "directory:mohre:42",
+        "directory:mohre:41",
+        "directory:residency:54",
+        "directory:residency:56"
+      ]
+    },
+    {
+      "key": "uaq",
+      "scope": "أم القيوين",
+      "count": 94,
+      "ids": [
+        "icp:amend-family-data",
+        "catalog:تعديل بيانات تصريح الإقامة",
+        "catalog:تعديل بيانات التأشيرة",
+        "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+        "icp:cancel-departure-permit",
+        "icp:cancel-residency",
+        "guide:cancel-work-permit-uae",
+        "catalog:التحقق من صحة المعادلة أو التصديق",
+        "guide:corporate-tax-registration-uae",
+        "mohre:domestic-worker-labour-complaint",
+        "mohre:employment-agency-guarantee-payment",
+        "mohre:employment-agency-guarantee-refund",
+        "mohre:employment-agency-branch",
+        "mohre:employment-agency-license-amend",
+        "mohre:employment-agency-license-cancel",
+        "mohre:employment-agency-license-new",
+        "mohre:employment-agency-license-renew",
+        "guide:employment-contract-uae",
+        "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+        "guide:establishment-card-mohre-uae",
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "catalog:تصريح عمل لمهمة",
+        "icp:departure-permit",
+        "guide:issue-emirates-id-uae",
+        "icp:issue-family-data",
+        "icp:new-passport",
+        "guide:mohre-private-tutor-permit",
+        "guide:mohre-uae-national-trainee-work-permit",
+        "guide:mohre-uae-nationals-gcc-work-permit",
+        "guide:new-work-permit-overseas-uae",
+        "mohre:open-farm-ranch-file",
+        "guide:part-time-work-permit-uae",
+        "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+        "guide:renew-emirates-id-uae",
+        "icp:renew-passport-abroad",
+        "icp:renew-passport",
+        "icp:replace-lost-damaged-passport",
+        "icp:replace-passport",
+        "guide:temporary-work-permit-uae",
+        "guide:transfer-work-permit-uae",
+        "uaq:local-services-portal",
+        "uaq:free-zone-licensing",
+        "uaq:mainland-licensing-official-path",
+        "uaq:trade-name-official-path",
+        "guide:update-establishment-file-mohre-uae",
+        "guide:vat-registration-uae",
+        "directory:residency:20",
+        "directory:residency:22",
+        "directory:mohre:3",
+        "directory:residency:45",
+        "directory:residency:32",
+        "directory:residency:23",
+        "directory:residency:7",
+        "directory:mohre:34",
+        "directory:mohre:35",
+        "directory:residency:51",
+        "directory:mohre:31",
+        "directory:residency:26",
+        "directory:mohre:39",
+        "directory:mohre:32",
+        "directory:mohre:38",
+        "directory:mohre:8",
+        "directory:residency:6",
+        "directory:residency:5",
+        "directory:mohre:24",
+        "directory:residency:3",
+        "directory:mohre:40",
+        "directory:mohre:30",
+        "directory:residency:36",
+        "directory:residency:34",
+        "directory:residency:29",
+        "directory:residency:31",
+        "directory:residency:47",
+        "directory:residency:9",
+        "directory:mohre:36",
+        "directory:residency:4",
+        "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+        "catalog:تصديق مستند شخصي داخل الإمارات",
+        "directory:residency:15",
+        "directory:mohre:16",
+        "directory:mohre:15",
+        "directory:residency:49",
+        "directory:mohre:19",
+        "directory:mohre:37",
+        "directory:residency:14",
+        "directory:residency:16",
+        "directory:mohre:6",
+        "catalog:تمديد التأشيرة أو إذن الدخول",
+        "directory:mohre:5",
+        "directory:mohre:42",
+        "directory:mohre:41",
+        "directory:residency:54",
+        "directory:residency:56"
+      ]
+    }
+  ],
+  "authorityMatrix": [
+    {
+      "key": "added-abu-dhabi",
+      "count": 9,
+      "ids": [
+        "added:business-establishment-guide",
+        "added:initial-approval-guide",
+        "added:amend-economic-license",
+        "added:cancel-economic-license",
+        "added:issue-economic-license",
+        "added:mortgage-economic-license-guide",
+        "added:renew-economic-license",
+        "added:licensing-requirements",
+        "added:reserve-trade-name"
+      ]
+    },
+    {
+      "key": "dha-dubai",
+      "count": 3,
+      "ids": [
+        "dha:activate-facility-license",
+        "dha:health-professional-registration",
+        "dha:new-facility-license"
+      ]
+    },
+    {
+      "key": "det-dubai",
+      "count": 14,
+      "ids": [
+        "guide:add-business-activity-dubai",
+        "guide:add-remove-partner-dubai",
+        "guide:amend-business-license-dubai",
+        "guide:cancel-business-license-dubai",
+        "guide:change-company-manager-dubai",
+        "official:det:event-permit",
+        "official:det:tour-guide",
+        "official:det:issue-trade-license",
+        "catalog:تغيير الشكل القانوني لشركة في دبي",
+        "directory:approvals:2",
+        "directory:approvals:30",
+        "guide:renew-business-license-dubai",
+        "guide:reserve-trade-name-dubai",
+        "guide:transfer-company-ownership-dubai"
+      ]
+    },
+    {
+      "key": "ajman-ded",
+      "count": 8,
+      "ids": [
+        "ajman:business-activity-inquiry",
+        "ajman:trade-license-amendment",
+        "ajman:trade-license-cancellation",
+        "ajman:trade-license-issuance",
+        "ajman:trade-license-renewal",
+        "ajman:trade-name-reservation",
+        "guide:renew-business-license-ajman",
+        "catalog:تأسيس منشأة جديدة في عجمان"
+      ]
+    },
+    {
+      "key": "icp",
+      "count": 39,
+      "ids": [
+        "icp:amend-family-data",
+        "catalog:تعديل بيانات تصريح الإقامة",
+        "catalog:تعديل بيانات التأشيرة",
+        "icp:cancel-departure-permit",
+        "icp:cancel-residency",
+        "icp:departure-permit",
+        "guide:issue-emirates-id-uae",
+        "icp:issue-family-data",
+        "icp:new-passport",
+        "guide:renew-emirates-id-uae",
+        "icp:renew-passport-abroad",
+        "icp:renew-passport",
+        "icp:replace-lost-damaged-passport",
+        "icp:replace-passport",
+        "directory:residency:20",
+        "directory:residency:22",
+        "directory:residency:45",
+        "directory:residency:32",
+        "directory:residency:23",
+        "directory:residency:7",
+        "directory:residency:51",
+        "directory:residency:26",
+        "directory:residency:6",
+        "directory:residency:5",
+        "directory:residency:3",
+        "directory:residency:36",
+        "directory:residency:34",
+        "directory:residency:29",
+        "directory:residency:31",
+        "directory:residency:47",
+        "directory:residency:9",
+        "directory:residency:4",
+        "directory:residency:15",
+        "directory:residency:49",
+        "directory:residency:14",
+        "directory:residency:16",
+        "catalog:تمديد التأشيرة أو إذن الدخول",
+        "directory:residency:54",
+        "directory:residency:56"
+      ]
+    },
+    {
+      "key": "mofa",
+      "count": 3,
+      "ids": [
+        "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+        "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+        "catalog:تصديق مستند شخصي داخل الإمارات"
+      ]
+    },
+    {
+      "key": "dubai-municipality",
+      "count": 7,
+      "ids": [
+        "dm:building-completion",
+        "dm:food-layout-approval",
+        "dm:food-activity-permit",
+        "dm:industrial-environmental-clearance",
+        "dm:new-building-permit",
+        "dm:food-item-registration",
+        "dm:veterinary-activity-noc"
+      ]
+    },
+    {
+      "key": "gdrfa-dubai",
+      "count": 22,
+      "ids": [
+        "guide:cancel-residency-permit-uae",
+        "guide:family-residency-uae",
+        "guide:golden-residency-uae",
+        "gdrfa:green-residence-partner-investor-dubai",
+        "directory:residency:19",
+        "directory:residency:8",
+        "directory:residency:44",
+        "directory:residency:27",
+        "directory:residency:50",
+        "directory:residency:52",
+        "directory:residency:35",
+        "directory:residency:33",
+        "directory:residency:28",
+        "directory:residency:30",
+        "directory:residency:18",
+        "directory:residency:43",
+        "directory:residency:46",
+        "directory:residency:13",
+        "directory:residency:48",
+        "directory:residency:11",
+        "directory:residency:53",
+        "directory:residency:55"
+      ]
+    },
+    {
+      "key": "mohre",
+      "count": 44,
+      "ids": [
+        "guide:cancel-work-permit-uae",
+        "mohre:domestic-worker-labour-complaint",
+        "mohre:employment-agency-guarantee-payment",
+        "mohre:employment-agency-guarantee-refund",
+        "mohre:employment-agency-branch",
+        "mohre:employment-agency-license-amend",
+        "mohre:employment-agency-license-cancel",
+        "mohre:employment-agency-license-new",
+        "mohre:employment-agency-license-renew",
+        "guide:employment-contract-uae",
+        "guide:establishment-card-mohre-uae",
+        "guide:family-sponsored-work-permit-uae",
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "catalog:تصريح عمل لمهمة",
+        "guide:mohre-private-tutor-permit",
+        "guide:mohre-uae-national-trainee-work-permit",
+        "guide:mohre-uae-nationals-gcc-work-permit",
+        "guide:new-work-permit-overseas-uae",
+        "mohre:open-farm-ranch-file",
+        "guide:part-time-work-permit-uae",
+        "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+        "guide:temporary-work-permit-uae",
+        "guide:transfer-work-permit-uae",
+        "guide:update-establishment-file-mohre-uae",
+        "directory:mohre:3",
+        "directory:mohre:34",
+        "directory:mohre:35",
+        "directory:mohre:31",
+        "directory:mohre:39",
+        "directory:mohre:32",
+        "directory:mohre:38",
+        "directory:mohre:8",
+        "directory:mohre:24",
+        "directory:mohre:40",
+        "directory:mohre:30",
+        "directory:mohre:36",
+        "directory:mohre:16",
+        "directory:mohre:15",
+        "directory:mohre:19",
+        "directory:mohre:37",
+        "directory:mohre:6",
+        "directory:mohre:5",
+        "directory:mohre:42",
+        "directory:mohre:41"
+      ]
+    },
+    {
+      "key": "moe",
+      "count": 3,
+      "ids": [
+        "catalog:التحقق من صحة المعادلة أو التصديق",
+        "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+        "catalog:معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات"
+      ]
+    },
+    {
+      "key": "fta",
+      "count": 2,
+      "ids": [
+        "guide:corporate-tax-registration-uae",
+        "guide:vat-registration-uae"
+      ]
+    },
+    {
+      "key": "dld-rera",
+      "count": 5,
+      "ids": [
+        "dld-real-estate-ad-permit-dubai",
+        "dld:property-valuation",
+        "dld:professional-card",
+        "dld:ejari-register-renew",
+        "dld:title-transfer"
+      ]
+    },
+    {
+      "key": "dubai-customs",
+      "count": 3,
+      "ids": [
+        "customs:business-registration",
+        "customs:declaration",
+        "customs:vehicle-clearance"
+      ]
+    },
+    {
+      "key": "fujairah-business",
+      "count": 8,
+      "ids": [
+        "fujairah:initial-approval",
+        "fujairah:license-amendment",
+        "fujairah:license-cancellation",
+        "fujairah:license-issuance",
+        "fujairah:license-renewal",
+        "fujairah:free-zone-registration",
+        "fujairah:mainland-business-guide",
+        "fujairah:trade-name-reservation"
+      ]
+    },
+    {
+      "key": "dubai-courts-notary",
+      "count": 3,
+      "ids": [
+        "dc:legal-notice",
+        "dc:marriage-contract",
+        "dc:poa-ratification"
+      ]
+    },
+    {
+      "key": "rta-dubai",
+      "count": 6,
+      "ids": [
+        "rta:pay-public-parking-fines",
+        "rta:renew-driving-license",
+        "rta:renew-vehicle-ownership",
+        "rta-modify-trade-license-noc-dubai",
+        "rta-new-trade-license-noc-dubai",
+        "rta-renew-trade-license-noc-dubai"
+      ]
+    },
+    {
+      "key": "rak-ded",
+      "count": 8,
+      "ids": [
+        "rak:add-remove-partner",
+        "rak:change-activities",
+        "rak:initial-license-approval",
+        "rak:economic-licensing-fees",
+        "rak:license-cancellation",
+        "rak:license-issuance",
+        "rak:license-renewal",
+        "rak:trade-name-reservation"
+      ]
+    },
+    {
+      "key": "sedd-sharjah",
+      "count": 9,
+      "ids": [
+        "guide:renew-business-license-sharjah",
+        "sedd:business-licensing-guide",
+        "sedd:license-amendment",
+        "sedd:license-cancellation",
+        "sedd:license-issuance",
+        "sedd:license-renewal",
+        "sedd:issue-trade-name",
+        "sedd:trade-name-inquiry",
+        "sedd:trade-name-renewal"
+      ]
+    },
+    {
+      "key": "sira-dubai",
+      "count": 2,
+      "ids": [
+        "sira:new-security-activity-license",
+        "sira:security-system-certification"
+      ]
+    },
+    {
+      "key": "uaq-business",
+      "count": 4,
+      "ids": [
+        "uaq:local-services-portal",
+        "uaq:free-zone-licensing",
+        "uaq:mainland-licensing-official-path",
+        "uaq:trade-name-official-path"
+      ]
+    },
+    {
+      "key": "fujairah-free-zone",
+      "count": 1,
+      "ids": [
+        "catalog:تأسيس شركة في المنطقة الحرة بالفجيرة"
+      ]
+    }
+  ],
+  "canonicalRoutes": [
+    {
+      "id": "added:business-establishment-guide",
+      "ar": "/services/abu-dhabi-business-establishment-guide/",
+      "en": "/en/services/abu-dhabi-business-establishment-guide/",
+      "official": "https://added.gov.ae/en/set-up/establish-your-business"
+    },
+    {
+      "id": "added:initial-approval-guide",
+      "ar": "/services/abu-dhabi-economic-initial-approval-guide/",
+      "en": "/en/services/abu-dhabi-economic-initial-approval-guide/",
+      "official": "https://added.gov.ae/en/set-up/establish-your-business"
+    },
+    {
+      "id": "added:amend-economic-license",
+      "ar": "/services/abu-dhabi-economic-license-amendment/",
+      "en": "/en/services/abu-dhabi-economic-license-amendment/",
+      "official": "https://www.added.gov.ae/en/set-up/establish-your-business/licensing-requirements"
+    },
+    {
+      "id": "added:cancel-economic-license",
+      "ar": "/services/abu-dhabi-economic-license-cancellation/",
+      "en": "/en/services/abu-dhabi-economic-license-cancellation/",
+      "official": "https://www.added.gov.ae/en/set-up/establish-your-business/licensing-requirements"
+    },
+    {
+      "id": "added:issue-economic-license",
+      "ar": "/services/abu-dhabi-economic-license-issuance/",
+      "en": "/en/services/abu-dhabi-economic-license-issuance/",
+      "official": "https://www.tamm.abudhabi/journeys/start-a-business?lang=ar"
+    },
+    {
+      "id": "added:mortgage-economic-license-guide",
+      "ar": "/services/abu-dhabi-economic-license-mortgage-guide/",
+      "en": "/en/services/abu-dhabi-economic-license-mortgage-guide/",
+      "official": "https://added.gov.ae/en/set-up/establish-your-business/licensing-requirements"
+    },
+    {
+      "id": "added:renew-economic-license",
+      "ar": "/services/abu-dhabi-economic-license-renewal/",
+      "en": "/en/services/abu-dhabi-economic-license-renewal/",
+      "official": "https://www.added.gov.ae/en/set-up/establish-your-business/licensing-requirements"
+    },
+    {
+      "id": "added:licensing-requirements",
+      "ar": "/services/abu-dhabi-economic-licensing-requirements/",
+      "en": "/en/services/abu-dhabi-economic-licensing-requirements/",
+      "official": "https://www.added.gov.ae/en/set-up/establish-your-business/licensing-requirements"
+    },
+    {
+      "id": "added:reserve-trade-name",
+      "ar": "/services/abu-dhabi-trade-name-reservation/",
+      "en": "/en/services/abu-dhabi-trade-name-reservation/",
+      "official": "https://www.added.gov.ae/en/set-up/establish-your-business/licensing-requirements"
+    },
+    {
+      "id": "dha:activate-facility-license",
+      "ar": "/services/activate-healthcare-facility-license-dubai/",
+      "en": "/en/services/activate-healthcare-facility-license-dubai/",
+      "official": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=TFL"
+    },
+    {
+      "id": "guide:add-business-activity-dubai",
+      "ar": "/services/add-business-activity-dubai/",
+      "en": "/en/services/add-business-activity-dubai/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence"
+    },
+    {
+      "id": "guide:add-remove-partner-dubai",
+      "ar": "/services/add-remove-partner-dubai/",
+      "en": "/en/services/add-remove-partner-dubai/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence"
+    },
+    {
+      "id": "ajman:business-activity-inquiry",
+      "ar": "/services/ajman-business-activity-inquiry/",
+      "en": "/en/services/ajman-business-activity-inquiry/",
+      "official": "https://www.ajmanded.ae/en/services/services-directory/inquiry-services/business-activity-inquiry"
+    },
+    {
+      "id": "ajman:trade-license-amendment",
+      "ar": "/services/ajman-commercial-license-amendment/",
+      "en": "/en/services/ajman-commercial-license-amendment/",
+      "official": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/license-amendment-procedures"
+    },
+    {
+      "id": "ajman:trade-license-cancellation",
+      "ar": "/services/ajman-commercial-license-cancellation/",
+      "en": "/en/services/ajman-commercial-license-cancellation/",
+      "official": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/cancel-trade-license"
+    },
+    {
+      "id": "ajman:trade-license-issuance",
+      "ar": "/services/ajman-commercial-license-issuance/",
+      "en": "/en/services/ajman-commercial-license-issuance/",
+      "official": "https://www.ajmanded.ae/en/services/services-directory/future-investor/issue-trade-license"
+    },
+    {
+      "id": "ajman:trade-license-renewal",
+      "ar": "/services/ajman-commercial-license-renewal/",
+      "en": "/en/services/ajman-commercial-license-renewal/",
+      "official": "https://www.ajmanded.ae/en/services/services-directory/existing-investor/renew-trade-license"
+    },
+    {
+      "id": "ajman:trade-name-reservation",
+      "ar": "/services/ajman-trade-name-reservation/",
+      "en": "/en/services/ajman-trade-name-reservation/",
+      "official": "https://www.ajmanded.ae/en/services/services-directory/future-investor/trade-name-reservation"
+    },
+    {
+      "id": "guide:amend-business-license-dubai",
+      "ar": "/services/amend-business-license-dubai/",
+      "en": "/en/services/amend-business-license-dubai/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence"
+    },
+    {
+      "id": "icp:amend-family-data",
+      "ar": "/services/amend-family-data-icp/",
+      "en": "/en/services/amend-family-data-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e77"
+    },
+    {
+      "id": "catalog:تعديل بيانات تصريح الإقامة",
+      "ar": "/services/amendment-of-residency-permit-data/",
+      "en": "/en/services/amendment-of-residency-permit-data/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e67"
+    },
+    {
+      "id": "catalog:تعديل بيانات التأشيرة",
+      "ar": "/services/amendment-of-visa-data/",
+      "en": "/en/services/amendment-of-visa-data/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e61"
+    },
+    {
+      "id": "catalog:تصديق فاتورة تجارية أو شهادة منشأ عبر eDAS 2.0",
+      "ar": "/services/attestation-of-commercial-invoices-via-edas-2-0/",
+      "en": "/en/services/attestation-of-commercial-invoices-via-edas-2-0/",
+      "official": "https://www.mofa.gov.ae/services/edas-attestation-v2"
+    },
+    {
+      "id": "dm:building-completion",
+      "ar": "/services/building-completion-certificate-dubai/",
+      "en": "/en/services/building-completion-certificate-dubai/",
+      "official": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=4191"
+    },
+    {
+      "id": "guide:cancel-business-license-dubai",
+      "ar": "/services/cancel-business-license-dubai/",
+      "en": "/en/services/cancel-business-license-dubai/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-for-cancellation-of-trade-licence"
+    },
+    {
+      "id": "icp:cancel-departure-permit",
+      "ar": "/services/cancel-departure-permit-icp/",
+      "en": "/en/services/cancel-departure-permit-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7f"
+    },
+    {
+      "id": "icp:cancel-residency",
+      "ar": "/services/cancel-residency-permit-icp/",
+      "en": "/en/services/cancel-residency-permit-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e68"
+    },
+    {
+      "id": "guide:cancel-residency-permit-uae",
+      "ar": "/services/cancel-residency-permit-uae/",
+      "en": "/en/services/cancel-residency-permit-uae/",
+      "official": "https://gdrfad.gov.ae/en/services/0613ab0e-5858-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "guide:cancel-work-permit-uae",
+      "ar": "/services/cancel-work-permit-uae/",
+      "en": "/en/services/cancel-work-permit-uae/",
+      "official": "https://mohre.gov.ae/en/services/cancellation-of-work-permits-and-employment-contracts-2022"
+    },
+    {
+      "id": "guide:change-company-manager-dubai",
+      "ar": "/services/change-company-manager-dubai/",
+      "en": "/en/services/change-company-manager-dubai/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence"
+    },
+    {
+      "id": "catalog:التحقق من صحة المعادلة أو التصديق",
+      "ar": "/services/confirming-the-authenticity-of-equivalency/",
+      "en": "/en/services/confirming-the-authenticity-of-equivalency/",
+      "official": "https://moe.gov.ae/ar/eservices/servicecard/pages/certificateequilizationverification.aspx"
+    },
+    {
+      "id": "guide:corporate-tax-registration-uae",
+      "ar": "/services/corporate-tax-registration-uae/",
+      "en": "/en/services/corporate-tax-registration-uae/",
+      "official": "https://tax.gov.ae/ar/services/corporate.tax.registration.aspx"
+    },
+    {
+      "id": "official:det:event-permit",
+      "ar": "/services/det-event-permit-dubai/",
+      "en": "/en/services/det-event-permit-dubai/",
+      "official": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-an-event-permit"
+    },
+    {
+      "id": "official:det:tour-guide",
+      "ar": "/services/det-tour-guide-licence-dubai/",
+      "en": "/en/services/det-tour-guide-licence-dubai/",
+      "official": "https://www.dubaidet.gov.ae/en/our-services/for-consumers-and-students/apply-for-tour-guide-training"
+    },
+    {
+      "id": "dld-real-estate-ad-permit-dubai",
+      "ar": "/services/dld-real-estate-ad-permit-dubai/",
+      "en": "/en/services/dld-real-estate-ad-permit-dubai/",
+      "official": "https://dubailand.gov.ae/en/eservices/real-estate-ad-permit/"
+    },
+    {
+      "id": "mohre:domestic-worker-labour-complaint",
+      "ar": "/services/domestic-worker-labour-complaint-mohre/",
+      "en": "/en/services/domestic-worker-labour-complaint-mohre/",
+      "official": "https://mohre.gov.ae/en/services/register-a-labor-complaint-domestic-workers"
+    },
+    {
+      "id": "customs:business-registration",
+      "ar": "/services/dubai-customs-business-registration/",
+      "en": "/en/services/dubai-customs-business-registration/",
+      "official": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=17"
+    },
+    {
+      "id": "mohre:employment-agency-guarantee-payment",
+      "ar": "/services/employment-agency-bank-guarantee-payment-mohre/",
+      "en": "/en/services/employment-agency-bank-guarantee-payment-mohre/",
+      "official": "https://mohre.gov.ae/en/services/payment-of-the-bank-guarantee-amount-of-employment-agency-2022"
+    },
+    {
+      "id": "mohre:employment-agency-guarantee-refund",
+      "ar": "/services/employment-agency-bank-guarantee-refund-mohre/",
+      "en": "/en/services/employment-agency-bank-guarantee-refund-mohre/",
+      "official": "https://www.mohre.gov.ae/en/services/employment-agencys-bank-guarantee-refund-2022"
+    },
+    {
+      "id": "mohre:employment-agency-branch",
+      "ar": "/services/employment-agency-branch-mohre/",
+      "en": "/en/services/employment-agency-branch-mohre/",
+      "official": "https://mohre.gov.ae/en/services/issuance-a-branch-of-the-recruitment-temporary-employment-and-mediation-agency-2022"
+    },
+    {
+      "id": "mohre:employment-agency-license-amend",
+      "ar": "/services/employment-agency-license-amendment-mohre/",
+      "en": "/en/services/employment-agency-license-amendment-mohre/",
+      "official": "https://mohre.gov.ae/en/services/amendments-to-a-recruitmenttemporary-employment-or-mediation-agencys-license-details-2022"
+    },
+    {
+      "id": "mohre:employment-agency-license-cancel",
+      "ar": "/services/employment-agency-license-cancellation-mohre/",
+      "en": "/en/services/employment-agency-license-cancellation-mohre/",
+      "official": "https://www.mohre.gov.ae/en/services/cancellation-of-the-recruitmenttemporary-employment-and-mediation-agency-license-2022"
+    },
+    {
+      "id": "mohre:employment-agency-license-new",
+      "ar": "/services/employment-agency-license-new-mohre/",
+      "en": "/en/services/employment-agency-license-new-mohre/",
+      "official": "https://mohre.gov.ae/en/services/issuance-of-a-new-license-for-temporary-employment-and-mediation-agency-2022"
+    },
+    {
+      "id": "mohre:employment-agency-license-renew",
+      "ar": "/services/employment-agency-license-renewal-mohre/",
+      "en": "/en/services/employment-agency-license-renewal-mohre/",
+      "official": "https://mohre.gov.ae/en/services/renewal-of-recruitmenttemporary-employment-and-mediation-agency-license-2022"
+    },
+    {
+      "id": "guide:employment-contract-uae",
+      "ar": "/services/employment-contract-uae/",
+      "en": "/en/services/employment-contract-uae/",
+      "official": "https://mohre.gov.ae/en/services/issuancerenewal-of-employment-contracts-2022"
+    },
+    {
+      "id": "catalog:معادلة شهادة الثانوية من خارج الإمارات",
+      "ar": "/services/equivalency-of-general-education-certificate-from-abroad-grade-12/",
+      "en": "/en/services/equivalency-of-general-education-certificate-from-abroad-grade-12/",
+      "official": "https://moe.gov.ae/en/eservices/servicecard/Pages/CertEquivalent-Out.aspx"
+    },
+    {
+      "id": "catalog:معادلة شهادة ثانوية منهاج أجنبي داخل الإمارات",
+      "ar": "/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/",
+      "en": "/en/services/equivalency-of-general-education-certificate-in-the-uae-grade-12/",
+      "official": "https://moe.gov.ae/en/eservices/servicecard/pages/certequivalent.aspx"
+    },
+    {
+      "id": "guide:establishment-card-mohre-uae",
+      "ar": "/services/establishment-card-mohre-uae/",
+      "en": "/en/services/establishment-card-mohre-uae/",
+      "official": "https://www.mohre.gov.ae/en/services/issuance-of-establishment-card-2022"
+    },
+    {
+      "id": "guide:family-residency-uae",
+      "ar": "/services/family-residency-uae/",
+      "en": "/en/services/family-residency-uae/",
+      "official": "https://www.gdrfad.gov.ae/en/services/bf409606-56e2-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "guide:family-sponsored-work-permit-uae",
+      "ar": "/services/family-sponsored-work-permit-uae/",
+      "en": "/en/services/family-sponsored-work-permit-uae/",
+      "official": "https://mohre.gov.ae/en/services/work-permits-for-dependents-sponsored-by-family-members-2022"
+    },
+    {
+      "id": "dm:food-layout-approval",
+      "ar": "/services/food-establishment-layout-approval-dubai/",
+      "en": "/en/services/food-establishment-layout-approval-dubai/",
+      "official": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=2976"
+    },
+    {
+      "id": "dm:food-activity-permit",
+      "ar": "/services/food-related-activity-permit-dubai/",
+      "en": "/en/services/food-related-activity-permit-dubai/",
+      "official": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=2975"
+    },
+    {
+      "id": "fujairah:initial-approval",
+      "ar": "/services/fujairah-economic-initial-approval/",
+      "en": "/en/services/fujairah-economic-initial-approval/",
+      "official": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=201"
+    },
+    {
+      "id": "fujairah:license-amendment",
+      "ar": "/services/fujairah-economic-license-amendment/",
+      "en": "/en/services/fujairah-economic-license-amendment/",
+      "official": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=166"
+    },
+    {
+      "id": "fujairah:license-cancellation",
+      "ar": "/services/fujairah-economic-license-cancellation/",
+      "en": "/en/services/fujairah-economic-license-cancellation/",
+      "official": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceId=163"
+    },
+    {
+      "id": "fujairah:license-issuance",
+      "ar": "/services/fujairah-economic-license-issuance/",
+      "en": "/en/services/fujairah-economic-license-issuance/",
+      "official": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=157"
+    },
+    {
+      "id": "fujairah:license-renewal",
+      "ar": "/services/fujairah-economic-license-renewal/",
+      "en": "/en/services/fujairah-economic-license-renewal/",
+      "official": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/services.aspx?RK=License&packid=13"
+    },
+    {
+      "id": "fujairah:free-zone-registration",
+      "ar": "/services/fujairah-free-zone-company-registration/",
+      "en": "/en/services/fujairah-free-zone-company-registration/",
+      "official": "https://freezone.fujairah.ae/ar/registration-process"
+    },
+    {
+      "id": "fujairah:mainland-business-guide",
+      "ar": "/services/fujairah-mainland-business-setup-guide/",
+      "en": "/en/services/fujairah-mainland-business-setup-guide/",
+      "official": "https://fujairah.ae/en/Pages/settingupbusinessinfujairah.aspx"
+    },
+    {
+      "id": "fujairah:trade-name-reservation",
+      "ar": "/services/fujairah-trade-name-reservation/",
+      "en": "/en/services/fujairah-trade-name-reservation/",
+      "official": "https://portal.fujmun.gov.ae/OnlineEservices/en/eService/ServicePages/service_information.aspx?serviceid=200"
+    },
+    {
+      "id": "guide:golden-residency-uae",
+      "ar": "/services/golden-residency-uae/",
+      "en": "/en/services/golden-residency-uae/",
+      "official": "https://www.gdrfad.gov.ae/en/services/8ea80da4-f43e-11eb-0320-0050569629e8"
+    },
+    {
+      "id": "gdrfa:green-residence-partner-investor-dubai",
+      "ar": "/services/green-residence-partner-investor-dubai/",
+      "en": "/en/services/green-residence-partner-investor-dubai/",
+      "official": "https://www.gdrfad.gov.ae/en/services/f52024c6-b812-11ed-5210-4cd98f768936"
+    },
+    {
+      "id": "dha:health-professional-registration",
+      "ar": "/services/health-professional-registration-dubai/",
+      "en": "/en/services/health-professional-registration-dubai/",
+      "official": "https://services.dha.gov.ae/sheryan/wps/portal/home/services-professional/service-description?CATALOGUE_TYPE=PROFESSIONAL&scode=NRG"
+    },
+    {
+      "id": "dm:industrial-environmental-clearance",
+      "ar": "/services/industrial-environmental-clearance-dubai/",
+      "en": "/en/services/industrial-environmental-clearance-dubai/",
+      "official": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3485"
+    },
+    {
+      "id": "catalog:تصريح عمل لحامل الإقامة الذهبية",
+      "ar": "/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "en": "/en/services/issuance-of-a-new-work-permit-golden-visa-holders/",
+      "official": "https://mohre.gov.ae/en/services/work-permits-of-golden-visa-holders-2022"
+    },
+    {
+      "id": "catalog:تصريح عمل لمهمة",
+      "ar": "/services/issuance-of-a-new-work-permit-mission-work-permit/",
+      "en": "/en/services/issuance-of-a-new-work-permit-mission-work-permit/",
+      "official": "https://www.mohre.gov.ae/en/services/mission-work-permit-2022"
+    },
+    {
+      "id": "icp:departure-permit",
+      "ar": "/services/issue-departure-permit-icp/",
+      "en": "/en/services/issue-departure-permit-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7e"
+    },
+    {
+      "id": "guide:issue-emirates-id-uae",
+      "ar": "/services/issue-emirates-id-uae/",
+      "en": "/en/services/issue-emirates-id-uae/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5a"
+    },
+    {
+      "id": "icp:issue-family-data",
+      "ar": "/services/issue-family-data-icp/",
+      "en": "/en/services/issue-family-data-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e76"
+    },
+    {
+      "id": "icp:new-passport",
+      "ar": "/services/issue-new-uae-passport-icp/",
+      "en": "/en/services/issue-new-uae-passport-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e79"
+    },
+    {
+      "id": "official:det:issue-trade-license",
+      "ar": "/services/issue-trade-license-dubai/",
+      "en": "/en/services/issue-trade-license-dubai/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-a-trade-licence"
+    },
+    {
+      "id": "catalog:تغيير الشكل القانوني لشركة في دبي",
+      "ar": "/services/legacy-service-67abe5ccf3/",
+      "en": "/en/services/legacy-service-67abe5ccf3/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence"
+    },
+    {
+      "id": "directory:approvals:2",
+      "ar": "/services/legacy-service-85a10469d8/",
+      "en": "/en/services/legacy-service-85a10469d8/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-commercial-permit"
+    },
+    {
+      "id": "directory:approvals:30",
+      "ar": "/services/legacy-service-e7f35a06d9/",
+      "en": "/en/services/legacy-service-e7f35a06d9/",
+      "official": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits"
+    },
+    {
+      "id": "dc:legal-notice",
+      "ar": "/services/legal-notice-notarization-dubai/",
+      "en": "/en/services/legal-notice-notarization-dubai/",
+      "official": "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=G5&lang=en"
+    },
+    {
+      "id": "dc:marriage-contract",
+      "ar": "/services/marriage-contract-dubai-courts/",
+      "en": "/en/services/marriage-contract-dubai-courts/",
+      "official": "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=H1&lang=en"
+    },
+    {
+      "id": "guide:mohre-private-tutor-permit",
+      "ar": "/services/mohre-private-tutor-permit/",
+      "en": "/en/services/mohre-private-tutor-permit/",
+      "official": "https://www.mohre.gov.ae/en/services/private-tutor-licensing"
+    },
+    {
+      "id": "guide:mohre-uae-national-trainee-work-permit",
+      "ar": "/services/mohre-uae-national-trainee-work-permit/",
+      "en": "/en/services/mohre-uae-national-trainee-work-permit/",
+      "official": "https://www.mohre.gov.ae/en/services/work-permit-for-uae-national-trainees-2022"
+    },
+    {
+      "id": "guide:mohre-uae-nationals-gcc-work-permit",
+      "ar": "/services/mohre-uae-nationals-gcc-work-permit/",
+      "en": "/en/services/mohre-uae-nationals-gcc-work-permit/",
+      "official": "https://www.mohre.gov.ae/en/services/uae-nationalsgcc-citizens-work-permit-2022"
+    },
+    {
+      "id": "dm:new-building-permit",
+      "ar": "/services/new-building-permit-dubai/",
+      "en": "/en/services/new-building-permit-dubai/",
+      "official": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3398"
+    },
+    {
+      "id": "dha:new-facility-license",
+      "ar": "/services/new-healthcare-facility-license-dubai/",
+      "en": "/en/services/new-healthcare-facility-license-dubai/",
+      "official": "https://dha.gov.ae/sheryan/wps/portal/home/services-facility/service-description?CATALOGUE_TYPE=FACILITY&scode=NFL"
+    },
+    {
+      "id": "guide:new-work-permit-overseas-uae",
+      "ar": "/services/new-work-permit-overseas-uae/",
+      "en": "/en/services/new-work-permit-overseas-uae/",
+      "official": "https://mohre.gov.ae/en/services/recruiting-a-worker-from-overseas-2022"
+    },
+    {
+      "id": "mohre:open-farm-ranch-file",
+      "ar": "/services/open-farm-ranch-file-mohre/",
+      "en": "/en/services/open-farm-ranch-file-mohre/",
+      "official": "https://www.mohre.gov.ae/en/services/open-farmestate-sponsorship-file-for-domestic-sponsor"
+    },
+    {
+      "id": "guide:part-time-work-permit-uae",
+      "ar": "/services/part-time-work-permit-uae/",
+      "en": "/en/services/part-time-work-permit-uae/",
+      "official": "https://www.mohre.gov.ae/en/services/part-time-work-permit-2022"
+    },
+    {
+      "id": "rta:pay-public-parking-fines",
+      "ar": "/services/pay-public-parking-fines-dubai/",
+      "en": "/en/services/pay-public-parking-fines-dubai/",
+      "official": "https://www.rta.ae/wps/portal/rta/ae/driver-and-carowner/parking/pay-parking-fines"
+    },
+    {
+      "id": "dc:poa-ratification",
+      "ar": "/services/power-of-attorney-ratification-dubai/",
+      "en": "/en/services/power-of-attorney-ratification-dubai/",
+      "official": "https://dc.gov.ae/PublicServices/GessServiceDetails.aspx?ServiceCode=G4&lang=en"
+    },
+    {
+      "id": "dld:property-valuation",
+      "ar": "/services/property-valuation-dubai/",
+      "en": "/en/services/property-valuation-dubai/",
+      "official": "https://dubailand.gov.ae/en/eservices/property-valuation"
+    },
+    {
+      "id": "rak:add-remove-partner",
+      "ar": "/services/ras-al-khaimah-add-remove-partner/",
+      "en": "/en/services/ras-al-khaimah-add-remove-partner/",
+      "official": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/adding-or-removing-a-partner"
+    },
+    {
+      "id": "rak:change-activities",
+      "ar": "/services/ras-al-khaimah-change-license-activities/",
+      "en": "/en/services/ras-al-khaimah-change-license-activities/",
+      "official": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/change-addition-or-removal-of-activities"
+    },
+    {
+      "id": "rak:initial-license-approval",
+      "ar": "/services/ras-al-khaimah-economic-initial-approval/",
+      "en": "/en/services/ras-al-khaimah-economic-initial-approval/",
+      "official": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees"
+    },
+    {
+      "id": "rak:economic-licensing-fees",
+      "ar": "/services/ras-al-khaimah-economic-licensing-fees/",
+      "en": "/en/services/ras-al-khaimah-economic-licensing-fees/",
+      "official": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees"
+    },
+    {
+      "id": "rak:license-cancellation",
+      "ar": "/services/ras-al-khaimah-license-cancellation/",
+      "en": "/en/services/ras-al-khaimah-license-cancellation/",
+      "official": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-cancellation"
+    },
+    {
+      "id": "rak:license-issuance",
+      "ar": "/services/ras-al-khaimah-license-issuance/",
+      "en": "/en/services/ras-al-khaimah-license-issuance/",
+      "official": "https://www.rak.ae/wps/portal/rak/e-services/govt/ded/license-issuance"
+    },
+    {
+      "id": "rak:license-renewal",
+      "ar": "/services/ras-al-khaimah-license-renewal/",
+      "en": "/en/services/ras-al-khaimah-license-renewal/",
+      "official": "https://www.rak.ae/wps/portal/rak/home/business/doing-business-in-rak/license-renewal"
+    },
+    {
+      "id": "rak:trade-name-reservation",
+      "ar": "/services/ras-al-khaimah-trade-name-reservation/",
+      "en": "/en/services/ras-al-khaimah-trade-name-reservation/",
+      "official": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/economic-licensing-fees"
+    },
+    {
+      "id": "dld:professional-card",
+      "ar": "/services/real-estate-professional-practice-card-dubai/",
+      "en": "/en/services/real-estate-professional-practice-card-dubai/",
+      "official": "https://dubailand.gov.ae/en/eservices/request-for-issuing-a-real-estate-activity-practice-card/"
+    },
+    {
+      "id": "dm:food-item-registration",
+      "ar": "/services/register-assess-food-item-dubai/",
+      "en": "/en/services/register-assess-food-item-dubai/",
+      "official": "https://www.dm.gov.ae/dubai-municipality-services/?lang=ar"
+    },
+    {
+      "id": "catalog:تسجيل شكوى عمالية للقطاع الخاص",
+      "ar": "/services/register-labour-complaints-private-sector-employees/",
+      "en": "/en/services/register-labour-complaints-private-sector-employees/",
+      "official": "https://www.mohre.gov.ae/en/services/register-labor-complaints-private-sector-employees-2022"
+    },
+    {
+      "id": "dld:ejari-register-renew",
+      "ar": "/services/register-renew-ejari-contract-dubai/",
+      "en": "/en/services/register-renew-ejari-contract-dubai/",
+      "official": "https://dubailand.gov.ae/en/eservices/register-renew-ejari-contract/"
+    },
+    {
+      "id": "guide:renew-business-license-ajman",
+      "ar": "/services/renew-business-license-ajman/",
+      "en": "/en/services/renew-business-license-ajman/",
+      "official": "https://eservices.ajmanded.ae/ar/Account/Login?ReturnUrl=%2Far%2Frenewpermit"
+    },
+    {
+      "id": "guide:renew-business-license-dubai",
+      "ar": "/services/renew-business-license-dubai/",
+      "en": "/en/services/renew-business-license-dubai/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence"
+    },
+    {
+      "id": "guide:renew-business-license-sharjah",
+      "ar": "/services/renew-business-license-sharjah/",
+      "en": "/en/services/renew-business-license-sharjah/",
+      "official": "https://digital.sedd.gov.ae/digital/license/renew-license/license-details-step"
+    },
+    {
+      "id": "rta:renew-driving-license",
+      "ar": "/services/renew-driving-license-dubai/",
+      "en": "/en/services/renew-driving-license-dubai/",
+      "official": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=618"
+    },
+    {
+      "id": "guide:renew-emirates-id-uae",
+      "ar": "/services/renew-emirates-id-uae/",
+      "en": "/en/services/renew-emirates-id-uae/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5d"
+    },
+    {
+      "id": "icp:renew-passport-abroad",
+      "ar": "/services/renew-uae-passport-abroad-icp/",
+      "en": "/en/services/renew-uae-passport-abroad-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7d"
+    },
+    {
+      "id": "icp:renew-passport",
+      "ar": "/services/renew-uae-passport-icp/",
+      "en": "/en/services/renew-uae-passport-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7a"
+    },
+    {
+      "id": "rta:renew-vehicle-ownership",
+      "ar": "/services/renew-vehicle-ownership-dubai/",
+      "en": "/en/services/renew-vehicle-ownership-dubai/",
+      "official": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=582"
+    },
+    {
+      "id": "icp:replace-lost-damaged-passport",
+      "ar": "/services/replace-lost-damaged-uae-passport-icp/",
+      "en": "/en/services/replace-lost-damaged-uae-passport-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7c"
+    },
+    {
+      "id": "icp:replace-passport",
+      "ar": "/services/replace-uae-passport-data-or-pages-icp/",
+      "en": "/en/services/replace-uae-passport-data-or-pages-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e7b"
+    },
+    {
+      "id": "guide:reserve-trade-name-dubai",
+      "ar": "/services/reserve-trade-name-dubai/",
+      "en": "/en/services/reserve-trade-name-dubai/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-book-a-trade-name"
+    },
+    {
+      "id": "rta-modify-trade-license-noc-dubai",
+      "ar": "/services/rta-modify-trade-license-noc-dubai/",
+      "en": "/en/services/rta-modify-trade-license-noc-dubai/",
+      "official": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=534"
+    },
+    {
+      "id": "rta-new-trade-license-noc-dubai",
+      "ar": "/services/rta-new-trade-license-noc-dubai/",
+      "en": "/en/services/rta-new-trade-license-noc-dubai/",
+      "official": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=496"
+    },
+    {
+      "id": "rta-renew-trade-license-noc-dubai",
+      "ar": "/services/rta-renew-trade-license-noc-dubai/",
+      "en": "/en/services/rta-renew-trade-license-noc-dubai/",
+      "official": "https://www.rta.ae/wps/portal/rta/ae/home/rta-services/service-details?serviceId=438"
+    },
+    {
+      "id": "sedd:business-licensing-guide",
+      "ar": "/services/sharjah-business-licensing-guide/",
+      "en": "/en/services/sharjah-business-licensing-guide/",
+      "official": "https://sedd.ae/en/home"
+    },
+    {
+      "id": "sedd:license-amendment",
+      "ar": "/services/sharjah-economic-license-amendment/",
+      "en": "/en/services/sharjah-economic-license-amendment/",
+      "official": "https://sedd.ae/ar/amendment-services"
+    },
+    {
+      "id": "sedd:license-cancellation",
+      "ar": "/services/sharjah-economic-license-cancellation/",
+      "en": "/en/services/sharjah-economic-license-cancellation/",
+      "official": "https://sedd.ae/ar/w/license-issuance-copy-"
+    },
+    {
+      "id": "sedd:license-issuance",
+      "ar": "/services/sharjah-economic-license-issuance/",
+      "en": "/en/services/sharjah-economic-license-issuance/",
+      "official": "https://sedd.ae/web/sedd/w/license-issuance"
+    },
+    {
+      "id": "sedd:license-renewal",
+      "ar": "/services/sharjah-economic-license-renewal/",
+      "en": "/en/services/sharjah-economic-license-renewal/",
+      "official": "https://sedd.ae/w/renew-license"
+    },
+    {
+      "id": "sedd:issue-trade-name",
+      "ar": "/services/sharjah-issue-trade-name/",
+      "en": "/en/services/sharjah-issue-trade-name/",
+      "official": "https://sedd.ae/w/issue-trade-name-1"
+    },
+    {
+      "id": "sedd:trade-name-inquiry",
+      "ar": "/services/sharjah-trade-name-availability-inquiry/",
+      "en": "/en/services/sharjah-trade-name-availability-inquiry/",
+      "official": "https://sedd.ae/w/trade-name-availability-inquiry"
+    },
+    {
+      "id": "sedd:trade-name-renewal",
+      "ar": "/services/sharjah-trade-name-renewal/",
+      "en": "/en/services/sharjah-trade-name-renewal/",
+      "official": "https://sedd.ae/w/trade-name-renewal"
+    },
+    {
+      "id": "sira:new-security-activity-license",
+      "ar": "/services/sira-new-security-activity-license-dubai/",
+      "en": "/en/services/sira-new-security-activity-license-dubai/",
+      "official": "https://www.sira.gov.ae/ar/services/noc-security-license"
+    },
+    {
+      "id": "sira:security-system-certification",
+      "ar": "/services/sira-security-system-certification-dubai/",
+      "en": "/en/services/sira-security-system-certification-dubai/",
+      "official": "https://www.sira.gov.ae/ar/services/security-system-certification"
+    },
+    {
+      "id": "customs:declaration",
+      "ar": "/services/submit-customs-declaration-dubai/",
+      "en": "/en/services/submit-customs-declaration-dubai/",
+      "official": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=18"
+    },
+    {
+      "id": "guide:temporary-work-permit-uae",
+      "ar": "/services/temporary-work-permit-uae/",
+      "en": "/en/services/temporary-work-permit-uae/",
+      "official": "https://www.mohre.gov.ae/en/services/temporary-work-permits-2022"
+    },
+    {
+      "id": "dld:title-transfer",
+      "ar": "/services/title-transfer-dubai/",
+      "en": "/en/services/title-transfer-dubai/",
+      "official": "https://backoffice.dubailand.gov.ae/en/eservices/request-for-transfer-of-ownership/"
+    },
+    {
+      "id": "guide:transfer-company-ownership-dubai",
+      "ar": "/services/transfer-company-ownership-dubai/",
+      "en": "/en/services/transfer-company-ownership-dubai/",
+      "official": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence"
+    },
+    {
+      "id": "guide:transfer-work-permit-uae",
+      "ar": "/services/transfer-work-permit-uae/",
+      "en": "/en/services/transfer-work-permit-uae/",
+      "official": "https://www.mohre.gov.ae/en/services/transfer-work-permit-2022"
+    },
+    {
+      "id": "uaq:local-services-portal",
+      "ar": "/services/umm-al-quwain-business-services-portal/",
+      "en": "/en/services/umm-al-quwain-business-services-portal/",
+      "official": "https://portal.uaq.ae/"
+    },
+    {
+      "id": "uaq:free-zone-licensing",
+      "ar": "/services/umm-al-quwain-free-zone-licensing-guide/",
+      "en": "/en/services/umm-al-quwain-free-zone-licensing-guide/",
+      "official": "https://uaqftz.gov.ae/ar"
+    },
+    {
+      "id": "uaq:mainland-licensing-official-path",
+      "ar": "/services/umm-al-quwain-mainland-licensing-official-path/",
+      "en": "/en/services/umm-al-quwain-mainland-licensing-official-path/",
+      "official": "https://portal.uaq.ae/"
+    },
+    {
+      "id": "uaq:trade-name-official-path",
+      "ar": "/services/umm-al-quwain-trade-name-official-path/",
+      "en": "/en/services/umm-al-quwain-trade-name-official-path/",
+      "official": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html"
+    },
+    {
+      "id": "guide:update-establishment-file-mohre-uae",
+      "ar": "/services/update-establishment-file-mohre-uae/",
+      "en": "/en/services/update-establishment-file-mohre-uae/",
+      "official": "https://mohre.gov.ae/en/services/updating-the-establishment-file-2022"
+    },
+    {
+      "id": "guide:vat-registration-uae",
+      "ar": "/services/vat-registration-uae/",
+      "en": "/en/services/vat-registration-uae/",
+      "official": "https://tax.gov.ae/ar/services/vat.registration.aspx"
+    },
+    {
+      "id": "customs:vehicle-clearance",
+      "ar": "/services/vehicle-clearance-certificate-dubai-customs/",
+      "en": "/en/services/vehicle-clearance-certificate-dubai-customs/",
+      "official": "https://www.dubaicustoms.gov.ae/en/mobile/Pages/ServiceDescription.aspx?serviceid=54"
+    },
+    {
+      "id": "dm:veterinary-activity-noc",
+      "ar": "/services/veterinary-activity-noc-dubai/",
+      "en": "/en/services/veterinary-activity-noc-dubai/",
+      "official": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=3170"
+    },
+    {
+      "id": "directory:residency:19",
+      "ar": "/services/إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/",
+      "en": "/en/services/إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/f52024ec-b812-11ed-5210-4cd98f768936"
+    },
+    {
+      "id": "directory:residency:20",
+      "ar": "/services/إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي/",
+      "en": "/en/services/إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64"
+    },
+    {
+      "id": "directory:residency:22",
+      "ar": "/services/إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي/",
+      "en": "/en/services/إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64"
+    },
+    {
+      "id": "directory:residency:8",
+      "ar": "/services/إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "en": "/en/services/إصدار-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "official": "https://gdrfad.gov.ae/en/services/bf4095ea-56e2-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:mohre:3",
+      "ar": "/services/إصدار-بطاقة-مندوب-علاقات-عامة-pro/",
+      "en": "/en/services/إصدار-بطاقة-مندوب-علاقات-عامة-pro/",
+      "official": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022"
+    },
+    {
+      "id": "directory:residency:45",
+      "ar": "/services/إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي/",
+      "en": "/en/services/إصدار-بطاقة-منشأة-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6d"
+    },
+    {
+      "id": "directory:residency:44",
+      "ar": "/services/إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي/",
+      "en": "/en/services/إصدار-بطاقة-منشأة-للقطاع-الخاص-أو-المنطقة-الحرة-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/0bae0953-6749-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:residency:32",
+      "ar": "/services/إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp/",
+      "en": "/en/services/إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd"
+    },
+    {
+      "id": "directory:residency:23",
+      "ar": "/services/إصدار-تأشيرة-عبر-icp-خارج-دبي/",
+      "en": "/en/services/إصدار-تأشيرة-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+    },
+    {
+      "id": "directory:residency:7",
+      "ar": "/services/إصدار-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "en": "/en/services/إصدار-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64"
+    },
+    {
+      "id": "directory:mohre:34",
+      "ar": "/services/إصدار-تصريح-عمل-جديد-لعامل-مساعد/",
+      "en": "/en/services/إصدار-تصريح-عمل-جديد-لعامل-مساعد/",
+      "official": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022"
+    },
+    {
+      "id": "directory:mohre:35",
+      "ar": "/services/إصدار-عقد-عمل-جديد-لعامل-مساعد/",
+      "en": "/en/services/إصدار-عقد-عمل-جديد-لعامل-مساعد/",
+      "official": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022"
+    },
+    {
+      "id": "directory:residency:27",
+      "ar": "/services/إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي/",
+      "en": "/en/services/إلغاء-إذن-دخول-أو-تأشيرة-صادرة-من-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/71e9f170-56c3-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:residency:51",
+      "ar": "/services/إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "en": "/en/services/إلغاء-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6f"
+    },
+    {
+      "id": "directory:residency:50",
+      "ar": "/services/إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "en": "/en/services/إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "official": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:mohre:31",
+      "ar": "/services/إلغاء-بلاغ-انقطاع-عن-العمل/",
+      "en": "/en/services/إلغاء-بلاغ-انقطاع-عن-العمل/",
+      "official": "https://www.mohre.gov.ae/en/services/cancellation-of-an-absence-from-work-complaint-absconding-report-2022"
+    },
+    {
+      "id": "directory:residency:26",
+      "ar": "/services/إلغاء-تأشيرة-عبر-icp-خارج-دبي/",
+      "en": "/en/services/إلغاء-تأشيرة-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e63"
+    },
+    {
+      "id": "directory:mohre:39",
+      "ar": "/services/إلغاء-تصريح-عمل-عامل-مساعد/",
+      "en": "/en/services/إلغاء-تصريح-عمل-عامل-مساعد/",
+      "official": "https://www.mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-work-permit-inside-or-outside-of-the-country-2022"
+    },
+    {
+      "id": "directory:mohre:32",
+      "ar": "/services/إلغاء-تصريح-لعامل-لديه-قضية-عمالية/",
+      "en": "/en/services/إلغاء-تصريح-لعامل-لديه-قضية-عمالية/",
+      "official": "https://mohre.gov.ae/en/services/cancellation-of-work-permit-for-an-employee-with-a-labour-court-case"
+    },
+    {
+      "id": "directory:mohre:38",
+      "ar": "/services/إلغاء-عقد-عمل-عامل-مساعد/",
+      "en": "/en/services/إلغاء-عقد-عمل-عامل-مساعد/",
+      "official": "https://mohre.gov.ae/en/services/cancellation-of-a-domestic-workers-employment-contract-inside-or-outside-of-the-country-2022"
+    },
+    {
+      "id": "directory:mohre:8",
+      "ar": "/services/إلغاء-ملف-أو-بطاقة-المنشأة/",
+      "en": "/en/services/إلغاء-ملف-أو-بطاقة-المنشأة/",
+      "official": "https://www.atlp.ae/ar/services-landing/value-added-services/establishment-cancelation-request"
+    },
+    {
+      "id": "directory:residency:6",
+      "ar": "/services/استرداد-رسوم-إصدار-الهوية-غير-المكتمل/",
+      "en": "/en/services/استرداد-رسوم-إصدار-الهوية-غير-المكتمل/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e"
+    },
+    {
+      "id": "directory:residency:5",
+      "ar": "/services/الإعفاء-من-غرامة-تأخير-الهوية/",
+      "en": "/en/services/الإعفاء-من-غرامة-تأخير-الهوية/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f"
+    },
+    {
+      "id": "directory:residency:52",
+      "ar": "/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
+      "en": "/en/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/fines-inquiry-service"
+    },
+    {
+      "id": "directory:mohre:24",
+      "ar": "/services/التسجيل-والمتابعة-في-wps/",
+      "en": "/en/services/التسجيل-والمتابعة-في-wps/",
+      "official": "https://www.dubai.ae/wages-protection-system"
+    },
+    {
+      "id": "directory:residency:3",
+      "ar": "/services/بدل-فاقد-أو-تالف-للهوية/",
+      "en": "/en/services/بدل-فاقد-أو-تالف-للهوية/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5b"
+    },
+    {
+      "id": "directory:mohre:40",
+      "ar": "/services/بلاغ-انقطاع-عامل-مساعد/",
+      "en": "/en/services/بلاغ-انقطاع-عامل-مساعد/",
+      "official": "https://mohre.gov.ae/en/services/absence-from-work-absconding-report-domestic-workers-2022"
+    },
+    {
+      "id": "directory:mohre:30",
+      "ar": "/services/بلاغ-انقطاع-عن-العمل/",
+      "en": "/en/services/بلاغ-انقطاع-عن-العمل/",
+      "official": "https://mohre.gov.ae/en/services/filing-a-labor-complaint-absence-from-work-2022"
+    },
+    {
+      "id": "catalog:تأسيس شركة في المنطقة الحرة بالفجيرة",
+      "ar": "/services/تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة/",
+      "en": "/en/services/تأسيس-شركة-في-المنطقة-الحرة-بالفجيرة/",
+      "official": "https://digital.fujairah.ae/public/portal/?department=/sites/FujairahFreeZone&service=1"
+    },
+    {
+      "id": "catalog:تأسيس منشأة جديدة في عجمان",
+      "ar": "/services/تأسيس-منشأة-جديدة-في-عجمان/",
+      "en": "/en/services/تأسيس-منشأة-جديدة-في-عجمان/",
+      "official": "https://media.ajman.ae/ar/servicecatalog/services/2862"
+    },
+    {
+      "id": "directory:residency:36",
+      "ar": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/",
+      "en": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+    },
+    {
+      "id": "directory:residency:35",
+      "ar": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي/",
+      "en": "/en/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/957ca221-4083-11ed-4fe5-0050569629e8"
+    },
+    {
+      "id": "directory:residency:34",
+      "ar": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/",
+      "en": "/en/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+    },
+    {
+      "id": "directory:residency:33",
+      "ar": "/services/تأشيرة-استكشاف-فرص-عمل-في-دبي/",
+      "en": "/en/services/تأشيرة-استكشاف-فرص-عمل-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/2a679791-408a-11ed-4fe5-0050569629e8"
+    },
+    {
+      "id": "directory:residency:29",
+      "ar": "/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/",
+      "en": "/en/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+    },
+    {
+      "id": "directory:residency:28",
+      "ar": "/services/تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي/",
+      "en": "/en/services/تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/d551ce89-52e8-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:residency:31",
+      "ar": "/services/تأشيرة-سياحية-عبر-icp-خارج-دبي/",
+      "en": "/en/services/تأشيرة-سياحية-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60"
+    },
+    {
+      "id": "directory:residency:30",
+      "ar": "/services/تأشيرة-سياحية-لدخول-واحد-في-دبي/",
+      "en": "/en/services/تأشيرة-سياحية-لدخول-واحد-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/f9e586fe-0642-11ec-0320-0050569629e8"
+    },
+    {
+      "id": "directory:residency:18",
+      "ar": "/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/",
+      "en": "/en/services/تجديد-إقامة-أفراد-الأسرة-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/95222a46-56f2-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:residency:43",
+      "ar": "/services/تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "en": "/en/services/تجديد-إقامة-موظف-في-القطاع-الخاص-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/95222a40-56f2-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:residency:47",
+      "ar": "/services/تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "en": "/en/services/تجديد-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e6e"
+    },
+    {
+      "id": "directory:residency:46",
+      "ar": "/services/تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "en": "/en/services/تجديد-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "official": "https://gdrfad.gov.ae/en/services/1fa970e9-5b9e-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:residency:9",
+      "ar": "/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "en": "/en/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66"
+    },
+    {
+      "id": "directory:mohre:36",
+      "ar": "/services/تجديد-عقد-عمل-عامل-مساعد/",
+      "en": "/en/services/تجديد-عقد-عمل-عامل-مساعد/",
+      "official": "https://mohre.gov.ae/en/services/renewal-of-a-domestic-workers-employment-contract-2022"
+    },
+    {
+      "id": "directory:residency:4",
+      "ar": "/services/تحديث-بيانات-الهوية/",
+      "en": "/en/services/تحديث-بيانات-الهوية/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c"
+    },
+    {
+      "id": "catalog:تصديق مستند تجاري دولي (عدا الفاتورة وشهادة المنشأ)",
+      "ar": "/services/تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ/",
+      "en": "/en/services/تصديق-مستند-تجاري-دولي-عدا-الفاتورة-وشهادة-المنشأ/",
+      "official": "https://www.mofa.gov.ae/services/attestation"
+    },
+    {
+      "id": "catalog:تصديق مستند شخصي داخل الإمارات",
+      "ar": "/services/تصديق-مستند-شخصي-داخل-الإمارات/",
+      "en": "/en/services/تصديق-مستند-شخصي-داخل-الإمارات/",
+      "official": "https://www.mofa.gov.ae/Account/Login?returnUrl=%2Far-ae%2FServices%2FForms%2Fattestation"
+    },
+    {
+      "id": "directory:residency:15",
+      "ar": "/services/تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp/",
+      "en": "/en/services/تصريح-بقاء-خارج-الدولة-لأكثر-من-6-أشهر-عبر-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=68e352d65ae59b00117383fc"
+    },
+    {
+      "id": "directory:mohre:16",
+      "ar": "/services/تصريح-تدريب-وعمل-طالب/",
+      "en": "/en/services/تصريح-تدريب-وعمل-طالب/",
+      "official": "https://mohre.gov.ae/en/services/training-and-work-permit-for-students-2022"
+    },
+    {
+      "id": "directory:mohre:15",
+      "ar": "/services/تصريح-عمل-حدث/",
+      "en": "/en/services/تصريح-عمل-حدث/",
+      "official": "https://mohre.gov.ae/en/services/juvenile-work-permit-2022"
+    },
+    {
+      "id": "directory:residency:49",
+      "ar": "/services/تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "en": "/en/services/تعديل-أو-إضافة-بيانات-بطاقة-المنشأة-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e70"
+    },
+    {
+      "id": "directory:residency:13",
+      "ar": "/services/تعديل-الوضع-داخل-الدولة-في-دبي/",
+      "en": "/en/services/تعديل-الوضع-داخل-الدولة-في-دبي/",
+      "official": "https://gdrfad.gov.ae/en/services/63c69432-585e-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:residency:48",
+      "ar": "/services/تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "en": "/en/services/تعديل-بيانات-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "official": "https://www.gdrfad.gov.ae/en/services/1fa97110-5b9e-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:residency:11",
+      "ar": "/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/",
+      "en": "/en/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936"
+    },
+    {
+      "id": "directory:mohre:19",
+      "ar": "/services/تعديل-تصاريح-وعقود-العمل/",
+      "en": "/en/services/تعديل-تصاريح-وعقود-العمل/",
+      "official": "https://mohre.gov.ae/en/services/modification-of-work-permits-employment-contracts-2022"
+    },
+    {
+      "id": "directory:mohre:37",
+      "ar": "/services/تعديل-عقد-وتصريح-عمل-عامل-مساعد/",
+      "en": "/en/services/تعديل-عقد-وتصريح-عمل-عامل-مساعد/",
+      "official": "https://mohre.gov.ae/en/services/amendments-to-a-domestic-workers-employment-contract-and-work-permit-2022"
+    },
+    {
+      "id": "directory:residency:14",
+      "ar": "/services/تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي/",
+      "en": "/en/services/تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64"
+    },
+    {
+      "id": "directory:residency:16",
+      "ar": "/services/تقرير-تفاصيل-الإقامة-عبر-icp/",
+      "en": "/en/services/تقرير-تفاصيل-الإقامة-عبر-icp/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413"
+    },
+    {
+      "id": "directory:mohre:6",
+      "ar": "/services/تقرير-تقييم-المنشأة/",
+      "en": "/en/services/تقرير-تقييم-المنشأة/",
+      "official": "https://mohre.gov.ae/ar/services/taqyeem.aspx"
+    },
+    {
+      "id": "catalog:تمديد التأشيرة أو إذن الدخول",
+      "ar": "/services/تمديد-التأشيرة-أو-إذن-الدخول/",
+      "en": "/en/services/تمديد-التأشيرة-أو-إذن-الدخول/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e62"
+    },
+    {
+      "id": "directory:mohre:5",
+      "ar": "/services/حصة-تصاريح-العمل-للمنشأة/",
+      "en": "/en/services/حصة-تصاريح-العمل-للمنشأة/",
+      "official": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022"
+    },
+    {
+      "id": "directory:mohre:42",
+      "ar": "/services/سحب-بلاغ-انقطاع-بطلب-العامل-المساعد/",
+      "en": "/en/services/سحب-بلاغ-انقطاع-بطلب-العامل-المساعد/",
+      "official": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-domestic-worker-2022"
+    },
+    {
+      "id": "directory:mohre:41",
+      "ar": "/services/سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل/",
+      "en": "/en/services/سحب-بلاغ-انقطاع-عامل-مساعد-من-صاحب-العمل/",
+      "official": "https://mohre.gov.ae/en/services/withdrawal-of-absconding-report-domestic-workers-the-employer-2022"
+    },
+    {
+      "id": "directory:residency:53",
+      "ar": "/services/سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي/",
+      "en": "/en/services/سداد-غرامات-مخالفي-قانون-الإقامة-في-دبي/",
+      "official": "https://www.gdrfad.gov.ae/en/services/a39eb4a3-5ba5-11ea-0320-0050569629e8"
+    },
+    {
+      "id": "directory:residency:54",
+      "ar": "/services/سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي/",
+      "en": "/en/services/سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي/",
+      "official": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1"
+    },
+    {
+      "id": "directory:residency:55",
+      "ar": "/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
+      "en": "/en/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
+      "official": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US"
+    },
+    {
+      "id": "directory:residency:56",
+      "ar": "/services/متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي/",
+      "en": "/en/services/متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي/",
+      "official": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking"
+    }
+  ],
+  "nonHomepageHTMLFilesUntouched": 574
+}
