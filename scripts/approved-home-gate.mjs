@@ -52,8 +52,9 @@ try{
    assert.deepEqual([...set].sort(),records.map(r=>r.s).sort());
    if(width<=960){await page.locator('.ah-mobile-menu>summary').click();assert.ok(await page.locator('.ah-mobile-menu nav').isVisible());await page.locator('.ah-mobile-menu>summary').click();}
    await page.locator('[data-home-emirate="dubai"]').click();await page.waitForLoadState('networkidle');
-   const group=page.locator('#emirate-dubai');await group.locator('summary').click();assert.ok(await group.locator('a').first().isVisible());const first=group.locator('a').first(),href=await first.getAttribute('href');await first.click();await page.waitForLoadState('networkidle');assert.equal(decodeURIComponent(new URL(page.url()).pathname),decodeURIComponent(new URL(href,base).pathname));
-   nativeNoJS.push({browser:name,locale:en?'en':'ar',width,services:set.size,emirate:'dubai',clicks:3,status:'PASS'});await page.close();
+   for(let k=0;k<16&&(await page.evaluate(()=>document.fonts.status))!=='loaded';k++)await new Promise(r=>setTimeout(r,500));assert.equal(await page.evaluate(()=>document.fonts.status),'loaded');
+   const group=page.locator('#emirate-dubai');assert.ok(await group.locator('summary').isVisible());await group.locator('summary').press('Enter');assert.equal(await group.evaluate(e=>e.open),true);assert.ok(await group.locator('a').first().isVisible());const first=group.locator('a').first(),href=await first.getAttribute('href');await first.press('Enter');await page.waitForLoadState('networkidle');assert.equal(decodeURIComponent(new URL(page.url()).pathname),decodeURIComponent(new URL(href,base).pathname));
+   nativeNoJS.push({browser:name,locale:en?'en':'ar',width,services:set.size,emirate:'dubai',actions:3,interaction:'NATIVE_KEYBOARD_DIRECTORY_WITH_JAVASCRIPT_DISABLED',status:'PASS'});await page.close();
   }
   await browser.close();browser=null;
  }
