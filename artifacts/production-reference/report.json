@@ -1,3360 +1,2388 @@
 {
-  "base": "https://hossambahr.com",
-  "deployedCommit": "21b50fe6345fcd162f214908b162308d91f3fc07",
+  "status": "PASS",
   "captureSource": "LIVE_PRODUCTION",
+  "base": "https://hossambahr.com",
+  "deployedCommit": "6c759443e61cbbda82d59ccb2c64002aa531590e",
+  "designReference": "OWNER_APPROVED_2026_11_13",
   "geometryPassed": true,
-  "englishResults": [
-    {
-      "width": 1440,
-      "height": 960,
-      "layout": {
-        "scrollWidth": 1440,
-        "phase": true,
-        "hero": {
-          "x": 0,
-          "y": 64,
-          "w": 1440,
-          "h": 302,
-          "bottom": 366
-        },
-        "photo": {
-          "x": 0,
-          "y": 64,
-          "w": 1068.46875,
-          "h": 302,
-          "bottom": 366
-        },
-        "assistant": {
-          "x": 1068.46875,
-          "y": 64,
-          "w": 371.515625,
-          "h": 302,
-          "bottom": 366
-        },
-        "headline": {
-          "x": 433.828125,
-          "y": 106,
-          "w": 598.328125,
-          "h": 81.890625,
-          "bottom": 187.890625
-        },
-        "support": {
-          "x": 433.828125,
-          "y": 196.890625,
-          "w": 598.328125,
-          "h": 22.5,
-          "bottom": 219.390625
-        },
-        "search": {
-          "x": 433.828125,
-          "y": 251,
-          "w": 598.328125,
-          "h": 47,
-          "bottom": 298
-        },
-        "chips": {
-          "x": 433.828125,
-          "y": 314,
-          "w": 598.328125,
-          "h": 44,
-          "bottom": 358
-        },
-        "firstService": {
-          "x": 43.953125,
-          "y": 498,
-          "w": 195.34375,
-          "h": 56,
-          "bottom": 554
-        }
-      },
-      "ai": true,
-      "errors": [],
-      "failures": []
-    },
-    {
-      "width": 1366,
-      "height": 768,
-      "layout": {
-        "scrollWidth": 1366,
-        "phase": true,
-        "hero": {
-          "x": 0,
-          "y": 64,
-          "w": 1366,
-          "h": 302,
-          "bottom": 366
-        },
-        "photo": {
-          "x": 0,
-          "y": 64,
-          "w": 1013.5625,
-          "h": 302,
-          "bottom": 366
-        },
-        "assistant": {
-          "x": 1013.5625,
-          "y": 64,
-          "w": 352.421875,
-          "h": 302,
-          "bottom": 366
-        },
-        "headline": {
-          "x": 381.109375,
-          "y": 106,
-          "w": 598,
-          "h": 81.890625,
-          "bottom": 187.890625
-        },
-        "support": {
-          "x": 381.109375,
-          "y": 196.890625,
-          "w": 598,
-          "h": 22.5,
-          "bottom": 219.390625
-        },
-        "search": {
-          "x": 381.109375,
-          "y": 251,
-          "w": 598,
-          "h": 47,
-          "bottom": 298
-        },
-        "chips": {
-          "x": 381.109375,
-          "y": 314,
-          "w": 598,
-          "h": 44,
-          "bottom": 358
-        },
-        "firstService": {
-          "x": 42.359375,
-          "y": 498,
-          "w": 183.546875,
-          "h": 56,
-          "bottom": 554
-        }
-      },
-      "ai": true,
-      "errors": [],
-      "failures": []
-    },
-    {
-      "width": 430,
-      "height": 932,
-      "layout": {
-        "scrollWidth": 430,
-        "phase": true,
-        "hero": {
-          "x": 0,
-          "y": 64,
-          "w": 430,
-          "h": 432,
-          "bottom": 496
-        },
-        "photo": {
-          "x": 0,
-          "y": 64,
-          "w": 430,
-          "h": 320,
-          "bottom": 384
-        },
-        "assistant": {
-          "x": 0,
-          "y": 384,
-          "w": 430,
-          "h": 112,
-          "bottom": 496
-        },
-        "headline": {
-          "x": 16,
-          "y": 112,
-          "w": 398,
-          "h": 76.78125,
-          "bottom": 188.78125
-        },
-        "support": {
-          "x": 16,
-          "y": 197.78125,
-          "w": 398,
-          "h": 39,
-          "bottom": 236.78125
-        },
-        "search": {
-          "x": 16,
-          "y": 248.78125,
-          "w": 398,
-          "h": 56,
-          "bottom": 304.78125
-        },
-        "chips": {
-          "x": 16,
-          "y": 316.78125,
-          "w": 398,
-          "h": 44,
-          "bottom": 360.78125
-        },
-        "firstService": {
-          "x": 27,
-          "y": 632.296875,
-          "w": 172,
-          "h": 60,
-          "bottom": 692.296875
-        }
-      },
-      "ai": true,
-      "errors": [],
-      "failures": []
-    },
-    {
-      "width": 390,
-      "height": 844,
-      "layout": {
-        "scrollWidth": 390,
-        "phase": true,
-        "hero": {
-          "x": 0,
-          "y": 64,
-          "w": 390,
-          "h": 432,
-          "bottom": 496
-        },
-        "photo": {
-          "x": 0,
-          "y": 64,
-          "w": 390,
-          "h": 320,
-          "bottom": 384
-        },
-        "assistant": {
-          "x": 0,
-          "y": 384,
-          "w": 390,
-          "h": 112,
-          "bottom": 496
-        },
-        "headline": {
-          "x": 16,
-          "y": 112,
-          "w": 358,
-          "h": 76.78125,
-          "bottom": 188.78125
-        },
-        "support": {
-          "x": 16,
-          "y": 197.78125,
-          "w": 358,
-          "h": 39,
-          "bottom": 236.78125
-        },
-        "search": {
-          "x": 16,
-          "y": 248.78125,
-          "w": 358,
-          "h": 56,
-          "bottom": 304.78125
-        },
-        "chips": {
-          "x": 16,
-          "y": 316.78125,
-          "w": 358,
-          "h": 44,
-          "bottom": 360.78125
-        },
-        "firstService": {
-          "x": 27,
-          "y": 632.296875,
-          "w": 152,
-          "h": 60,
-          "bottom": 692.296875
-        }
-      },
-      "ai": true,
-      "errors": [],
-      "failures": []
-    },
-    {
-      "width": 360,
-      "height": 800,
-      "layout": {
-        "scrollWidth": 360,
-        "phase": true,
-        "hero": {
-          "x": 0,
-          "y": 64,
-          "w": 360,
-          "h": 432,
-          "bottom": 496
-        },
-        "photo": {
-          "x": 0,
-          "y": 64,
-          "w": 360,
-          "h": 320,
-          "bottom": 384
-        },
-        "assistant": {
-          "x": 0,
-          "y": 384,
-          "w": 360,
-          "h": 112,
-          "bottom": 496
-        },
-        "headline": {
-          "x": 16,
-          "y": 112,
-          "w": 328,
-          "h": 76.78125,
-          "bottom": 188.78125
-        },
-        "support": {
-          "x": 16,
-          "y": 197.78125,
-          "w": 328,
-          "h": 39,
-          "bottom": 236.78125
-        },
-        "search": {
-          "x": 16,
-          "y": 248.78125,
-          "w": 328,
-          "h": 56,
-          "bottom": 304.78125
-        },
-        "chips": {
-          "x": 16,
-          "y": 316.78125,
-          "w": 328,
-          "h": 44,
-          "bottom": 360.78125
-        },
-        "firstService": {
-          "x": 27,
-          "y": 630.296875,
-          "w": 306,
-          "h": 60,
-          "bottom": 690.296875
-        }
-      },
-      "ai": true,
-      "errors": [],
-      "failures": []
-    }
-  ],
   "pixelFidelity": "NOT_DECLARED",
   "humanVisualAcceptance": "NOT_ACCEPTED",
-  "ownerApprovedGeneralIdentity": "PRESERVE_BRAND_EVOLVE_DESIGN_AUTHORIZED_2026_10_19",
-  "referenceComparisonScope": "HISTORICAL_DIAGNOSTIC; the owner-authorized visible discovery area supersedes the previous category-area composition.",
-  "scope": "Header/hero geometry remains checked; owner-authorized discovery evolution is checked for completeness, shared alignment and downstream non-overlap. Historical image difference does not establish human acceptance.",
-  "meanAbsolutePixelDifference": 65.66928096064815,
-  "changedPixelPercent": 41.84866898148148,
+  "referenceComparisonScope": "Full-width 1440px composition diagnostic. Reference is proportionally resized; actual is cropped/padded vertically, never stretched. Data, icons and counts use real published records.",
+  "meanAbsolutePixelDifference": 55.264202460562416,
+  "changedPixelPercent": 36.56703317901235,
   "results": [
     {
-      "width": 1440,
-      "height": 960,
+      "browser": "chrome",
+      "locale": "ar",
+      "width": 320,
+      "status": "PASS",
       "layout": {
-        "width": 1440,
-        "scrollWidth": 1440,
-        "fontLoaded": true,
-        "legacyMarks": 0,
-        "images": [],
-        "domainGateway": true,
-        "evolvedGateway": true,
-        "directGateways": 2,
-        "domainCards": 11,
-        "categoryWidths": [],
-        "howTitle": {
-          "center": 720
+        "scrollWidth": 320,
+        "header": {
+          "x": 0,
+          "y": -3674,
+          "w": 320,
+          "h": 66,
+          "bottom": -3608
         },
-        "content": {
-          "headline": {
-            "x": 433.828125,
-            "y": 103,
-            "right": 1032.15625,
-            "bottom": 187,
-            "w": 598.328125,
-            "h": 84
-          },
-          "accent": {
-            "x": 812.984375,
-            "y": 117.90625,
-            "right": 1028.15625,
-            "bottom": 211.90625,
-            "w": 215.171875,
-            "h": 94
-          },
-          "accentFont": 44.5,
-          "support": {
-            "x": 679.15625,
-            "y": 193,
-            "right": 1032.15625,
-            "bottom": 235,
-            "w": 353,
-            "h": 42
-          },
-          "welcome": {
-            "x": 1225.640625,
-            "y": 92,
-            "right": 1422.984375,
-            "bottom": 154,
-            "w": 197.34375,
-            "h": 62
-          },
-          "actionDecorations": [
-            "true"
-          ],
-          "search": {
-            "x": 433.828125,
-            "y": 248,
-            "right": 1032.15625,
-            "bottom": 295,
-            "w": 598.328125,
-            "h": 47
-          },
-          "chips": {
-            "x": 433.828125,
-            "y": 311,
-            "right": 1032.15625,
-            "bottom": 355,
-            "w": 598.328125,
-            "h": 44
-          },
-          "hero": {
-            "x": 0,
-            "y": 61,
-            "right": 1440,
-            "bottom": 363,
-            "w": 1440,
-            "h": 302
-          },
-          "categories": {
-            "x": 30.953125,
-            "y": 367,
-            "right": 1409.046875,
-            "bottom": 616,
-            "w": 1378.09375,
-            "h": 249
-          },
-          "firstService": {
-            "x": 1200.703125,
-            "y": 495,
-            "right": 1396.046875,
-            "bottom": 551,
-            "w": 195.34375,
-            "h": 56
-          },
-          "aiActions": []
+        "hero": {
+          "x": 0,
+          "y": -3608,
+          "w": 320,
+          "h": 541.0625,
+          "bottom": -3066.9375
         },
-        "boxes": {
-          ".site-header": [
-            0,
-            0,
-            1440,
-            61
-          ],
-          ".visual-target-hero": [
-            0,
-            61,
-            1440,
-            302
-          ],
-          ".premium-hero-main": [
-            0,
-            61,
-            1068.46875,
-            302
-          ],
-          ".premium-ai-showcase": [
-            1068.46875,
-            61,
-            371.515625,
-            302
-          ],
-          ".premium-intent-search": [
-            433.828125,
-            248,
-            598.328125,
-            47
-          ],
-          "[data-home-domains]": [
-            30.953125,
-            367,
-            1378.09375,
-            249
-          ],
-          ".premium-story": [
-            30.953125,
-            628,
-            1378.09375,
-            127
-          ],
-          ".target-proof": [
-            30.96875,
-            774,
-            1378.078125,
-            66
-          ],
-          ".premium-how ol": [
-            30.953125,
-            877,
-            1054.09375,
-            44
-          ],
-          ".premium-authorities": [
-            0,
-            934,
-            1440,
-            85
-          ],
-          ".premium-final-cta": [
-            0,
-            1019,
-            1440,
-            85
-          ]
-        }
-      },
-      "lifecycle": [
-        {
-          "stage": "DOMContentLoaded",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
+        "query": {
+          "x": 136,
+          "y": 3025.53125,
+          "w": 151,
+          "h": 52,
+          "bottom": 3077.53125
         },
-        {
-          "stage": "fonts.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
+        "submit": {
+          "x": 33,
+          "y": 3025.53125,
+          "w": 96,
+          "h": 52,
+          "bottom": 3077.53125
         },
-        {
-          "stage": "images.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
+        "quick": {
+          "x": 14,
+          "y": -3066.9375,
+          "w": 292,
+          "h": 543.734375,
+          "bottom": -2523.203125
         },
-        {
-          "stage": "+1s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
+        "areas": {
+          "x": 14,
+          "y": -2523.203125,
+          "w": 292,
+          "h": 3321.75,
+          "bottom": 798.546875
         },
-        {
-          "stage": "+3s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        }
-      ],
-      "ai": true,
-      "errors": [],
-      "failures": []
+        "emirates": {
+          "x": 14,
+          "y": 798.546875,
+          "w": 292,
+          "h": 668.15625,
+          "bottom": 1466.703125
+        },
+        "authorities": {
+          "x": 14,
+          "y": 1482.703125,
+          "w": 292,
+          "h": 653.90625,
+          "bottom": 2136.609375
+        },
+        "help": {
+          "x": 14,
+          "y": 2152.609375,
+          "w": 292,
+          "h": 773.9375,
+          "bottom": 2926.546875
+        },
+        "search": {
+          "x": 14,
+          "y": 2942.546875,
+          "w": 292,
+          "h": 205.984375,
+          "bottom": 3148.53125
+        },
+        "why": {
+          "x": 14,
+          "y": 3164.53125,
+          "w": 292,
+          "h": 169.1875,
+          "bottom": 3333.71875
+        },
+        "final": {
+          "x": 0,
+          "y": 3349.71875,
+          "w": 320,
+          "h": 213.578125,
+          "bottom": 3563.296875
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 360,
+        "fontsLoaded": true,
+        "columns": 1,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 110,
+          "h": 100.671875,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
     },
     {
-      "width": 1440,
-      "height": 900,
-      "layout": {
-        "width": 1440,
-        "scrollWidth": 1440,
-        "fontLoaded": true,
-        "legacyMarks": 0,
-        "images": [],
-        "domainGateway": true,
-        "evolvedGateway": true,
-        "directGateways": 2,
-        "domainCards": 11,
-        "categoryWidths": [],
-        "howTitle": {
-          "center": 720
-        },
-        "content": {
-          "headline": {
-            "x": 433.828125,
-            "y": 103,
-            "right": 1032.15625,
-            "bottom": 187,
-            "w": 598.328125,
-            "h": 84
-          },
-          "accent": {
-            "x": 812.984375,
-            "y": 117.90625,
-            "right": 1028.15625,
-            "bottom": 211.90625,
-            "w": 215.171875,
-            "h": 94
-          },
-          "accentFont": 44.5,
-          "support": {
-            "x": 679.15625,
-            "y": 193,
-            "right": 1032.15625,
-            "bottom": 235,
-            "w": 353,
-            "h": 42
-          },
-          "welcome": {
-            "x": 1225.640625,
-            "y": 92,
-            "right": 1422.984375,
-            "bottom": 154,
-            "w": 197.34375,
-            "h": 62
-          },
-          "actionDecorations": [
-            "true"
-          ],
-          "search": {
-            "x": 433.828125,
-            "y": 248,
-            "right": 1032.15625,
-            "bottom": 295,
-            "w": 598.328125,
-            "h": 47
-          },
-          "chips": {
-            "x": 433.828125,
-            "y": 311,
-            "right": 1032.15625,
-            "bottom": 355,
-            "w": 598.328125,
-            "h": 44
-          },
-          "hero": {
-            "x": 0,
-            "y": 61,
-            "right": 1440,
-            "bottom": 363,
-            "w": 1440,
-            "h": 302
-          },
-          "categories": {
-            "x": 30.953125,
-            "y": 367,
-            "right": 1409.046875,
-            "bottom": 616,
-            "w": 1378.09375,
-            "h": 249
-          },
-          "firstService": {
-            "x": 1200.703125,
-            "y": 495,
-            "right": 1396.046875,
-            "bottom": 551,
-            "w": 195.34375,
-            "h": 56
-          },
-          "aiActions": []
-        },
-        "boxes": {
-          ".site-header": [
-            0,
-            0,
-            1440,
-            61
-          ],
-          ".visual-target-hero": [
-            0,
-            61,
-            1440,
-            302
-          ],
-          ".premium-hero-main": [
-            0,
-            61,
-            1068.46875,
-            302
-          ],
-          ".premium-ai-showcase": [
-            1068.46875,
-            61,
-            371.515625,
-            302
-          ],
-          ".premium-intent-search": [
-            433.828125,
-            248,
-            598.328125,
-            47
-          ],
-          "[data-home-domains]": [
-            30.953125,
-            367,
-            1378.09375,
-            249
-          ],
-          ".premium-story": [
-            30.953125,
-            628,
-            1378.09375,
-            127
-          ],
-          ".target-proof": [
-            30.96875,
-            774,
-            1378.078125,
-            66
-          ],
-          ".premium-how ol": [
-            30.953125,
-            877,
-            1054.09375,
-            44
-          ],
-          ".premium-authorities": [
-            0,
-            934,
-            1440,
-            85
-          ],
-          ".premium-final-cta": [
-            0,
-            1019,
-            1440,
-            85
-          ]
-        }
-      },
-      "lifecycle": [
-        {
-          "stage": "DOMContentLoaded",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "fonts.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "images.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "+1s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "+3s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        }
-      ],
-      "ai": true,
-      "errors": [],
-      "failures": []
-    },
-    {
-      "width": 1440,
-      "height": 1000,
-      "layout": {
-        "width": 1440,
-        "scrollWidth": 1440,
-        "fontLoaded": true,
-        "legacyMarks": 0,
-        "images": [],
-        "domainGateway": true,
-        "evolvedGateway": true,
-        "directGateways": 2,
-        "domainCards": 11,
-        "categoryWidths": [],
-        "howTitle": {
-          "center": 720
-        },
-        "content": {
-          "headline": {
-            "x": 433.828125,
-            "y": 103,
-            "right": 1032.15625,
-            "bottom": 187,
-            "w": 598.328125,
-            "h": 84
-          },
-          "accent": {
-            "x": 812.984375,
-            "y": 117.90625,
-            "right": 1028.15625,
-            "bottom": 211.90625,
-            "w": 215.171875,
-            "h": 94
-          },
-          "accentFont": 44.5,
-          "support": {
-            "x": 679.15625,
-            "y": 193,
-            "right": 1032.15625,
-            "bottom": 235,
-            "w": 353,
-            "h": 42
-          },
-          "welcome": {
-            "x": 1225.640625,
-            "y": 92,
-            "right": 1422.984375,
-            "bottom": 154,
-            "w": 197.34375,
-            "h": 62
-          },
-          "actionDecorations": [
-            "true"
-          ],
-          "search": {
-            "x": 433.828125,
-            "y": 248,
-            "right": 1032.15625,
-            "bottom": 295,
-            "w": 598.328125,
-            "h": 47
-          },
-          "chips": {
-            "x": 433.828125,
-            "y": 311,
-            "right": 1032.15625,
-            "bottom": 355,
-            "w": 598.328125,
-            "h": 44
-          },
-          "hero": {
-            "x": 0,
-            "y": 61,
-            "right": 1440,
-            "bottom": 363,
-            "w": 1440,
-            "h": 302
-          },
-          "categories": {
-            "x": 30.953125,
-            "y": 367,
-            "right": 1409.046875,
-            "bottom": 616,
-            "w": 1378.09375,
-            "h": 249
-          },
-          "firstService": {
-            "x": 1200.703125,
-            "y": 495,
-            "right": 1396.046875,
-            "bottom": 551,
-            "w": 195.34375,
-            "h": 56
-          },
-          "aiActions": []
-        },
-        "boxes": {
-          ".site-header": [
-            0,
-            0,
-            1440,
-            61
-          ],
-          ".visual-target-hero": [
-            0,
-            61,
-            1440,
-            302
-          ],
-          ".premium-hero-main": [
-            0,
-            61,
-            1068.46875,
-            302
-          ],
-          ".premium-ai-showcase": [
-            1068.46875,
-            61,
-            371.515625,
-            302
-          ],
-          ".premium-intent-search": [
-            433.828125,
-            248,
-            598.328125,
-            47
-          ],
-          "[data-home-domains]": [
-            30.953125,
-            367,
-            1378.09375,
-            249
-          ],
-          ".premium-story": [
-            30.953125,
-            628,
-            1378.09375,
-            127
-          ],
-          ".target-proof": [
-            30.96875,
-            774,
-            1378.078125,
-            66
-          ],
-          ".premium-how ol": [
-            30.953125,
-            877,
-            1054.09375,
-            44
-          ],
-          ".premium-authorities": [
-            0,
-            934,
-            1440,
-            85
-          ],
-          ".premium-final-cta": [
-            0,
-            1019,
-            1440,
-            85
-          ]
-        }
-      },
-      "lifecycle": [
-        {
-          "stage": "DOMContentLoaded",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "fonts.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "images.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "+1s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "+3s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1440,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1068.46875,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              433.828125,
-              103,
-              598.328125,
-              84
-            ],
-            ".premium-intent-search": [
-              433.828125,
-              248,
-              598.328125,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1068.46875,
-              61,
-              371.515625,
-              302
-            ],
-            "[data-home-domains]": [
-              30.953125,
-              367,
-              1378.09375,
-              249
-            ]
-          }
-        }
-      ],
-      "ai": true,
-      "errors": [],
-      "failures": []
-    },
-    {
-      "width": 1366,
-      "height": 768,
-      "layout": {
-        "width": 1366,
-        "scrollWidth": 1366,
-        "fontLoaded": true,
-        "legacyMarks": 0,
-        "images": [],
-        "domainGateway": true,
-        "evolvedGateway": true,
-        "directGateways": 2,
-        "domainCards": 11,
-        "categoryWidths": [],
-        "howTitle": {
-          "center": 683
-        },
-        "content": {
-          "headline": {
-            "x": 381.109375,
-            "y": 103,
-            "right": 979.109375,
-            "bottom": 187,
-            "w": 598,
-            "h": 84
-          },
-          "accent": {
-            "x": 771.265625,
-            "y": 119.90625,
-            "right": 975.328125,
-            "bottom": 208.90625,
-            "w": 204.0625,
-            "h": 89
-          },
-          "accentFont": 42.2132,
-          "support": {
-            "x": 644.25,
-            "y": 193,
-            "right": 979.109375,
-            "bottom": 235,
-            "w": 334.859375,
-            "h": 42
-          },
-          "welcome": {
-            "x": 1163.296875,
-            "y": 92,
-            "right": 1348.984375,
-            "bottom": 154,
-            "w": 185.6875,
-            "h": 62
-          },
-          "actionDecorations": [
-            "true"
-          ],
-          "search": {
-            "x": 381.109375,
-            "y": 248,
-            "right": 979.109375,
-            "bottom": 295,
-            "w": 598,
-            "h": 47
-          },
-          "chips": {
-            "x": 381.109375,
-            "y": 311,
-            "right": 979.109375,
-            "bottom": 355,
-            "w": 598,
-            "h": 44
-          },
-          "hero": {
-            "x": 0,
-            "y": 61,
-            "right": 1366,
-            "bottom": 363,
-            "w": 1366,
-            "h": 302
-          },
-          "categories": {
-            "x": 29.359375,
-            "y": 367,
-            "right": 1336.640625,
-            "bottom": 616,
-            "w": 1307.28125,
-            "h": 249
-          },
-          "firstService": {
-            "x": 1140.09375,
-            "y": 495,
-            "right": 1323.640625,
-            "bottom": 551,
-            "w": 183.546875,
-            "h": 56
-          },
-          "aiActions": []
-        },
-        "boxes": {
-          ".site-header": [
-            0,
-            0,
-            1366,
-            61
-          ],
-          ".visual-target-hero": [
-            0,
-            61,
-            1366,
-            302
-          ],
-          ".premium-hero-main": [
-            0,
-            61,
-            1013.5625,
-            302
-          ],
-          ".premium-ai-showcase": [
-            1013.5625,
-            61,
-            352.421875,
-            302
-          ],
-          ".premium-intent-search": [
-            381.109375,
-            248,
-            598,
-            47
-          ],
-          "[data-home-domains]": [
-            29.359375,
-            367,
-            1307.28125,
-            249
-          ],
-          ".premium-story": [
-            29.359375,
-            628,
-            1307.28125,
-            127
-          ],
-          ".target-proof": [
-            29.390625,
-            774,
-            1307.25,
-            66
-          ],
-          ".premium-how ol": [
-            29.359375,
-            877,
-            983.28125,
-            44
-          ],
-          ".premium-authorities": [
-            0,
-            934,
-            1366,
-            85
-          ],
-          ".premium-final-cta": [
-            0,
-            1019,
-            1366,
-            85
-          ]
-        }
-      },
-      "lifecycle": [
-        {
-          "stage": "DOMContentLoaded",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1366,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1013.5625,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              381.109375,
-              103,
-              598,
-              84
-            ],
-            ".premium-intent-search": [
-              381.109375,
-              248,
-              598,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1013.5625,
-              61,
-              352.421875,
-              302
-            ],
-            "[data-home-domains]": [
-              29.359375,
-              367,
-              1307.28125,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "fonts.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1366,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1013.5625,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              381.109375,
-              103,
-              598,
-              84
-            ],
-            ".premium-intent-search": [
-              381.109375,
-              248,
-              598,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1013.5625,
-              61,
-              352.421875,
-              302
-            ],
-            "[data-home-domains]": [
-              29.359375,
-              367,
-              1307.28125,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "images.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1366,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1013.5625,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              381.109375,
-              103,
-              598,
-              84
-            ],
-            ".premium-intent-search": [
-              381.109375,
-              248,
-              598,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1013.5625,
-              61,
-              352.421875,
-              302
-            ],
-            "[data-home-domains]": [
-              29.359375,
-              367,
-              1307.28125,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "+1s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1366,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1013.5625,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              381.109375,
-              103,
-              598,
-              84
-            ],
-            ".premium-intent-search": [
-              381.109375,
-              248,
-              598,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1013.5625,
-              61,
-              352.421875,
-              302
-            ],
-            "[data-home-domains]": [
-              29.359375,
-              367,
-              1307.28125,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "+3s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1366,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1013.5625,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              381.109375,
-              103,
-              598,
-              84
-            ],
-            ".premium-intent-search": [
-              381.109375,
-              248,
-              598,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1013.5625,
-              61,
-              352.421875,
-              302
-            ],
-            "[data-home-domains]": [
-              29.359375,
-              367,
-              1307.28125,
-              249
-            ]
-          }
-        }
-      ],
-      "ai": true,
-      "errors": [],
-      "failures": []
-    },
-    {
-      "width": 1366,
-      "height": 900,
-      "layout": {
-        "width": 1366,
-        "scrollWidth": 1366,
-        "fontLoaded": true,
-        "legacyMarks": 0,
-        "images": [],
-        "domainGateway": true,
-        "evolvedGateway": true,
-        "directGateways": 2,
-        "domainCards": 11,
-        "categoryWidths": [],
-        "howTitle": {
-          "center": 683
-        },
-        "content": {
-          "headline": {
-            "x": 381.109375,
-            "y": 103,
-            "right": 979.109375,
-            "bottom": 187,
-            "w": 598,
-            "h": 84
-          },
-          "accent": {
-            "x": 771.265625,
-            "y": 119.90625,
-            "right": 975.328125,
-            "bottom": 208.90625,
-            "w": 204.0625,
-            "h": 89
-          },
-          "accentFont": 42.2132,
-          "support": {
-            "x": 644.25,
-            "y": 193,
-            "right": 979.109375,
-            "bottom": 235,
-            "w": 334.859375,
-            "h": 42
-          },
-          "welcome": {
-            "x": 1163.296875,
-            "y": 92,
-            "right": 1348.984375,
-            "bottom": 154,
-            "w": 185.6875,
-            "h": 62
-          },
-          "actionDecorations": [
-            "true"
-          ],
-          "search": {
-            "x": 381.109375,
-            "y": 248,
-            "right": 979.109375,
-            "bottom": 295,
-            "w": 598,
-            "h": 47
-          },
-          "chips": {
-            "x": 381.109375,
-            "y": 311,
-            "right": 979.109375,
-            "bottom": 355,
-            "w": 598,
-            "h": 44
-          },
-          "hero": {
-            "x": 0,
-            "y": 61,
-            "right": 1366,
-            "bottom": 363,
-            "w": 1366,
-            "h": 302
-          },
-          "categories": {
-            "x": 29.359375,
-            "y": 367,
-            "right": 1336.640625,
-            "bottom": 616,
-            "w": 1307.28125,
-            "h": 249
-          },
-          "firstService": {
-            "x": 1140.09375,
-            "y": 495,
-            "right": 1323.640625,
-            "bottom": 551,
-            "w": 183.546875,
-            "h": 56
-          },
-          "aiActions": []
-        },
-        "boxes": {
-          ".site-header": [
-            0,
-            0,
-            1366,
-            61
-          ],
-          ".visual-target-hero": [
-            0,
-            61,
-            1366,
-            302
-          ],
-          ".premium-hero-main": [
-            0,
-            61,
-            1013.5625,
-            302
-          ],
-          ".premium-ai-showcase": [
-            1013.5625,
-            61,
-            352.421875,
-            302
-          ],
-          ".premium-intent-search": [
-            381.109375,
-            248,
-            598,
-            47
-          ],
-          "[data-home-domains]": [
-            29.359375,
-            367,
-            1307.28125,
-            249
-          ],
-          ".premium-story": [
-            29.359375,
-            628,
-            1307.28125,
-            127
-          ],
-          ".target-proof": [
-            29.390625,
-            774,
-            1307.25,
-            66
-          ],
-          ".premium-how ol": [
-            29.359375,
-            877,
-            983.28125,
-            44
-          ],
-          ".premium-authorities": [
-            0,
-            934,
-            1366,
-            85
-          ],
-          ".premium-final-cta": [
-            0,
-            1019,
-            1366,
-            85
-          ]
-        }
-      },
-      "lifecycle": [
-        {
-          "stage": "DOMContentLoaded",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1366,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1013.5625,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              381.109375,
-              103,
-              598,
-              84
-            ],
-            ".premium-intent-search": [
-              381.109375,
-              248,
-              598,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1013.5625,
-              61,
-              352.421875,
-              302
-            ],
-            "[data-home-domains]": [
-              29.359375,
-              367,
-              1307.28125,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "fonts.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1366,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1013.5625,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              381.109375,
-              103,
-              598,
-              84
-            ],
-            ".premium-intent-search": [
-              381.109375,
-              248,
-              598,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1013.5625,
-              61,
-              352.421875,
-              302
-            ],
-            "[data-home-domains]": [
-              29.359375,
-              367,
-              1307.28125,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "images.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1366,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1013.5625,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              381.109375,
-              103,
-              598,
-              84
-            ],
-            ".premium-intent-search": [
-              381.109375,
-              248,
-              598,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1013.5625,
-              61,
-              352.421875,
-              302
-            ],
-            "[data-home-domains]": [
-              29.359375,
-              367,
-              1307.28125,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "+1s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1366,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1013.5625,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              381.109375,
-              103,
-              598,
-              84
-            ],
-            ".premium-intent-search": [
-              381.109375,
-              248,
-              598,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1013.5625,
-              61,
-              352.421875,
-              302
-            ],
-            "[data-home-domains]": [
-              29.359375,
-              367,
-              1307.28125,
-              249
-            ]
-          }
-        },
-        {
-          "stage": "+3s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              61,
-              1366,
-              302
-            ],
-            ".premium-hero-main": [
-              0,
-              61,
-              1013.5625,
-              302
-            ],
-            ".premium-hero-copy h1": [
-              381.109375,
-              103,
-              598,
-              84
-            ],
-            ".premium-intent-search": [
-              381.109375,
-              248,
-              598,
-              47
-            ],
-            ".premium-ai-showcase": [
-              1013.5625,
-              61,
-              352.421875,
-              302
-            ],
-            "[data-home-domains]": [
-              29.359375,
-              367,
-              1307.28125,
-              249
-            ]
-          }
-        }
-      ],
-      "ai": true,
-      "errors": [],
-      "failures": []
-    },
-    {
-      "width": 430,
-      "height": 932,
-      "layout": {
-        "width": 430,
-        "scrollWidth": 430,
-        "fontLoaded": true,
-        "legacyMarks": 0,
-        "images": [],
-        "domainGateway": true,
-        "evolvedGateway": true,
-        "directGateways": 2,
-        "domainCards": 11,
-        "categoryWidths": [],
-        "howTitle": {
-          "center": 215
-        },
-        "content": {
-          "headline": {
-            "x": 16,
-            "y": 112,
-            "right": 414,
-            "bottom": 188.78125,
-            "w": 398,
-            "h": 76.78125
-          },
-          "accent": {
-            "x": 253.515625,
-            "y": 139.390625,
-            "right": 414,
-            "bottom": 199.390625,
-            "w": 160.484375,
-            "h": 60
-          },
-          "accentFont": 32,
-          "support": {
-            "x": 16,
-            "y": 197.78125,
-            "right": 414,
-            "bottom": 217.28125,
-            "w": 398,
-            "h": 19.5
-          },
-          "welcome": {
-            "x": 0,
-            "y": 0,
-            "right": 0,
-            "bottom": 0,
-            "w": 0,
-            "h": 0
-          },
-          "actionDecorations": [
-            "true"
-          ],
-          "search": {
-            "x": 16,
-            "y": 229.28125,
-            "right": 414,
-            "bottom": 285.28125,
-            "w": 398,
-            "h": 56
-          },
-          "chips": {
-            "x": 16,
-            "y": 297.28125,
-            "right": 414,
-            "bottom": 341.28125,
-            "w": 398,
-            "h": 44
-          },
-          "hero": {
-            "x": 0,
-            "y": 64,
-            "right": 430,
-            "bottom": 496,
-            "w": 430,
-            "h": 432
-          },
-          "categories": {
-            "x": 16,
-            "y": 516,
-            "right": 414,
-            "bottom": 1250.875,
-            "w": 398,
-            "h": 734.875
-          },
-          "firstService": {
-            "x": 231,
-            "y": 632.296875,
-            "right": 403,
-            "bottom": 692.296875,
-            "w": 172,
-            "h": 60
-          },
-          "aiActions": []
-        },
-        "boxes": {
-          ".site-header": [
-            0,
-            0,
-            430,
-            64
-          ],
-          ".visual-target-hero": [
-            0,
-            64,
-            430,
-            432
-          ],
-          ".premium-hero-main": [
-            0,
-            64,
-            430,
-            320
-          ],
-          ".premium-ai-showcase": [
-            0,
-            384,
-            430,
-            112
-          ],
-          ".premium-intent-search": [
-            16,
-            229.28125,
-            398,
-            56
-          ],
-          "[data-home-domains]": [
-            16,
-            516,
-            398,
-            734.875
-          ],
-          ".premium-story": [
-            16,
-            1278.875,
-            398,
-            175
-          ],
-          ".target-proof": [
-            16,
-            1472.875,
-            398,
-            226.75
-          ],
-          ".premium-how ol": [
-            16,
-            1748.625,
-            398,
-            150
-          ],
-          ".premium-authorities": [
-            0,
-            2015.625,
-            430,
-            270.4375
-          ],
-          ".premium-final-cta": [
-            0,
-            2286.0625,
-            430,
-            147.75
-          ]
-        }
-      },
-      "lifecycle": [
-        {
-          "stage": "DOMContentLoaded",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              430,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              430,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              398,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              398,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              430,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              398,
-              734.875
-            ]
-          }
-        },
-        {
-          "stage": "fonts.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              430,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              430,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              398,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              398,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              430,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              398,
-              734.875
-            ]
-          }
-        },
-        {
-          "stage": "images.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              430,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              430,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              398,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              398,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              430,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              398,
-              734.875
-            ]
-          }
-        },
-        {
-          "stage": "+1s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              430,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              430,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              398,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              398,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              430,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              398,
-              734.875
-            ]
-          }
-        },
-        {
-          "stage": "+3s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              430,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              430,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              398,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              398,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              430,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              398,
-              734.875
-            ]
-          }
-        }
-      ],
-      "ai": true,
-      "errors": [],
-      "failures": []
-    },
-    {
-      "width": 390,
-      "height": 844,
-      "layout": {
-        "width": 390,
-        "scrollWidth": 390,
-        "fontLoaded": true,
-        "legacyMarks": 0,
-        "images": [],
-        "domainGateway": true,
-        "evolvedGateway": true,
-        "directGateways": 2,
-        "domainCards": 11,
-        "categoryWidths": [],
-        "howTitle": {
-          "center": 195
-        },
-        "content": {
-          "headline": {
-            "x": 16,
-            "y": 112,
-            "right": 374,
-            "bottom": 188.78125,
-            "w": 358,
-            "h": 76.78125
-          },
-          "accent": {
-            "x": 213.515625,
-            "y": 139.390625,
-            "right": 374,
-            "bottom": 199.390625,
-            "w": 160.484375,
-            "h": 60
-          },
-          "accentFont": 32,
-          "support": {
-            "x": 16,
-            "y": 197.78125,
-            "right": 374,
-            "bottom": 217.28125,
-            "w": 358,
-            "h": 19.5
-          },
-          "welcome": {
-            "x": 0,
-            "y": 0,
-            "right": 0,
-            "bottom": 0,
-            "w": 0,
-            "h": 0
-          },
-          "actionDecorations": [
-            "true"
-          ],
-          "search": {
-            "x": 16,
-            "y": 229.28125,
-            "right": 374,
-            "bottom": 285.28125,
-            "w": 358,
-            "h": 56
-          },
-          "chips": {
-            "x": 16,
-            "y": 297.28125,
-            "right": 374,
-            "bottom": 341.28125,
-            "w": 358,
-            "h": 44
-          },
-          "hero": {
-            "x": 0,
-            "y": 64,
-            "right": 390,
-            "bottom": 496,
-            "w": 390,
-            "h": 432
-          },
-          "categories": {
-            "x": 16,
-            "y": 516,
-            "right": 374,
-            "bottom": 1264.609375,
-            "w": 358,
-            "h": 748.609375
-          },
-          "firstService": {
-            "x": 211,
-            "y": 632.296875,
-            "right": 363,
-            "bottom": 692.296875,
-            "w": 152,
-            "h": 60
-          },
-          "aiActions": []
-        },
-        "boxes": {
-          ".site-header": [
-            0,
-            0,
-            390,
-            64
-          ],
-          ".visual-target-hero": [
-            0,
-            64,
-            390,
-            432
-          ],
-          ".premium-hero-main": [
-            0,
-            64,
-            390,
-            320
-          ],
-          ".premium-ai-showcase": [
-            0,
-            384,
-            390,
-            112
-          ],
-          ".premium-intent-search": [
-            16,
-            229.28125,
-            358,
-            56
-          ],
-          "[data-home-domains]": [
-            16,
-            516,
-            358,
-            748.609375
-          ],
-          ".premium-story": [
-            16,
-            1292.609375,
-            358,
-            175
-          ],
-          ".target-proof": [
-            16,
-            1486.609375,
-            358,
-            271.53125
-          ],
-          ".premium-how ol": [
-            16,
-            1807.140625,
-            358,
-            150
-          ],
-          ".premium-authorities": [
-            0,
-            2074.140625,
-            390,
-            270.4375
-          ],
-          ".premium-final-cta": [
-            0,
-            2344.578125,
-            390,
-            169.1875
-          ]
-        }
-      },
-      "lifecycle": [
-        {
-          "stage": "DOMContentLoaded",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              390,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              390,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              358,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              358,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              390,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              358,
-              748.609375
-            ]
-          }
-        },
-        {
-          "stage": "fonts.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              390,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              390,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              358,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              358,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              390,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              358,
-              748.609375
-            ]
-          }
-        },
-        {
-          "stage": "images.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              390,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              390,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              358,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              358,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              390,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              358,
-              748.609375
-            ]
-          }
-        },
-        {
-          "stage": "+1s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              390,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              390,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              358,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              358,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              390,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              358,
-              748.609375
-            ]
-          }
-        },
-        {
-          "stage": "+3s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              390,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              390,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              358,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              358,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              390,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              358,
-              748.609375
-            ]
-          }
-        }
-      ],
-      "ai": true,
-      "errors": [],
-      "failures": []
-    },
-    {
+      "browser": "chrome",
+      "locale": "ar",
       "width": 360,
-      "height": 800,
+      "status": "PASS",
       "layout": {
-        "width": 360,
         "scrollWidth": 360,
-        "fontLoaded": true,
-        "legacyMarks": 0,
-        "images": [],
-        "domainGateway": true,
-        "evolvedGateway": true,
-        "directGateways": 2,
-        "domainCards": 11,
-        "categoryWidths": [],
-        "howTitle": {
-          "center": 180
+        "header": {
+          "x": 0,
+          "y": -3505,
+          "w": 360,
+          "h": 66,
+          "bottom": -3439
         },
-        "content": {
-          "headline": {
-            "x": 16,
-            "y": 112,
-            "right": 344,
-            "bottom": 188.78125,
-            "w": 328,
-            "h": 76.78125
-          },
-          "accent": {
-            "x": 183.515625,
-            "y": 139.390625,
-            "right": 344,
-            "bottom": 199.390625,
-            "w": 160.484375,
-            "h": 60
-          },
-          "accentFont": 32,
-          "support": {
-            "x": 16,
-            "y": 197.78125,
-            "right": 344,
-            "bottom": 217.28125,
-            "w": 328,
-            "h": 19.5
-          },
-          "welcome": {
-            "x": 0,
-            "y": 0,
-            "right": 0,
-            "bottom": 0,
-            "w": 0,
-            "h": 0
-          },
-          "actionDecorations": [
-            "true"
-          ],
-          "search": {
-            "x": 16,
-            "y": 229.28125,
-            "right": 344,
-            "bottom": 285.28125,
-            "w": 328,
-            "h": 56
-          },
-          "chips": {
-            "x": 16,
-            "y": 297.28125,
-            "right": 344,
-            "bottom": 341.28125,
-            "w": 328,
-            "h": 44
-          },
-          "hero": {
-            "x": 0,
-            "y": 64,
-            "right": 360,
-            "bottom": 496,
-            "w": 360,
-            "h": 432
-          },
-          "categories": {
-            "x": 16,
-            "y": 516,
-            "right": 344,
-            "bottom": 1686.296875,
-            "w": 328,
-            "h": 1170.296875
-          },
-          "firstService": {
-            "x": 27,
-            "y": 630.296875,
-            "right": 333,
-            "bottom": 690.296875,
-            "w": 306,
-            "h": 60
-          },
-          "aiActions": []
+        "hero": {
+          "x": 0,
+          "y": -3439,
+          "w": 360,
+          "h": 464.421875,
+          "bottom": -2974.578125
         },
-        "boxes": {
-          ".site-header": [
-            0,
-            0,
-            360,
-            64
-          ],
-          ".visual-target-hero": [
-            0,
-            64,
-            360,
-            432
-          ],
-          ".premium-hero-main": [
-            0,
-            64,
-            360,
-            320
-          ],
-          ".premium-ai-showcase": [
-            0,
-            384,
-            360,
-            112
-          ],
-          ".premium-intent-search": [
-            16,
-            229.28125,
-            328,
-            56
-          ],
-          "[data-home-domains]": [
-            16,
-            516,
-            328,
-            1170.296875
-          ],
-          ".premium-story": [
-            16,
-            1714.296875,
-            328,
-            175
-          ],
-          ".target-proof": [
-            16,
-            1908.296875,
-            328,
-            289.125
-          ],
-          ".premium-how ol": [
-            16,
-            2246.421875,
-            328,
-            150
-          ],
-          ".premium-authorities": [
-            0,
-            2513.421875,
-            360,
-            270.4375
-          ],
-          ".premium-final-cta": [
-            0,
-            2783.859375,
-            360,
-            169.1875
-          ]
-        }
-      },
-      "lifecycle": [
-        {
-          "stage": "DOMContentLoaded",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              360,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              360,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              328,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              328,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              360,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              328,
-              1170.296875
-            ]
-          }
+        "query": {
+          "x": 136,
+          "y": 2889.6875,
+          "w": 191,
+          "h": 52,
+          "bottom": 2941.6875
         },
-        {
-          "stage": "fonts.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              360,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              360,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              328,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              328,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              360,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              328,
-              1170.296875
-            ]
-          }
+        "submit": {
+          "x": 33,
+          "y": 2889.6875,
+          "w": 96,
+          "h": 52,
+          "bottom": 2941.6875
         },
-        {
-          "stage": "images.ready",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              360,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              360,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              328,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              328,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              360,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              328,
-              1170.296875
-            ]
-          }
+        "quick": {
+          "x": 14,
+          "y": -2974.578125,
+          "w": 332,
+          "h": 543.734375,
+          "bottom": -2430.84375
         },
-        {
-          "stage": "+1s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              360,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              360,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              328,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              328,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              360,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              328,
-              1170.296875
-            ]
-          }
+        "areas": {
+          "x": 14,
+          "y": -2430.84375,
+          "w": 332,
+          "h": 3230.1875,
+          "bottom": 799.34375
         },
-        {
-          "stage": "+3s",
-          "boxes": {
-            ".visual-target-hero": [
-              0,
-              64,
-              360,
-              432
-            ],
-            ".premium-hero-main": [
-              0,
-              64,
-              360,
-              320
-            ],
-            ".premium-hero-copy h1": [
-              16,
-              112,
-              328,
-              76.78125
-            ],
-            ".premium-intent-search": [
-              16,
-              229.28125,
-              328,
-              56
-            ],
-            ".premium-ai-showcase": [
-              0,
-              384,
-              360,
-              112
-            ],
-            "[data-home-domains]": [
-              16,
-              516,
-              328,
-              1170.296875
-            ]
-          }
-        }
-      ],
-      "ai": true,
-      "errors": [],
-      "failures": []
+        "emirates": {
+          "x": 14,
+          "y": 799.34375,
+          "w": 332,
+          "h": 650.5625,
+          "bottom": 1449.90625
+        },
+        "authorities": {
+          "x": 14,
+          "y": 1465.90625,
+          "w": 332,
+          "h": 597.84375,
+          "bottom": 2063.75
+        },
+        "help": {
+          "x": 14,
+          "y": 2079.75,
+          "w": 332,
+          "h": 710.953125,
+          "bottom": 2790.703125
+        },
+        "search": {
+          "x": 14,
+          "y": 2806.703125,
+          "w": 332,
+          "h": 205.984375,
+          "bottom": 3012.6875
+        },
+        "why": {
+          "x": 14,
+          "y": 3028.6875,
+          "w": 332,
+          "h": 152.59375,
+          "bottom": 3181.28125
+        },
+        "final": {
+          "x": 0,
+          "y": 3197.28125,
+          "w": 360,
+          "h": 213.578125,
+          "bottom": 3410.859375
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 172,
+        "fontsLoaded": true,
+        "columns": 1,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 110,
+          "h": 100.671875,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "ar",
+      "width": 390,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 390,
+        "header": {
+          "x": 0,
+          "y": -3436,
+          "w": 390,
+          "h": 66,
+          "bottom": -3370
+        },
+        "hero": {
+          "x": 0,
+          "y": -3370,
+          "w": 390,
+          "h": 422.578125,
+          "bottom": -2947.421875
+        },
+        "query": {
+          "x": 136,
+          "y": 2889.25,
+          "w": 221,
+          "h": 52,
+          "bottom": 2941.25
+        },
+        "submit": {
+          "x": 33,
+          "y": 2889.25,
+          "w": 96,
+          "h": 52,
+          "bottom": 2941.25
+        },
+        "quick": {
+          "x": 14,
+          "y": -2947.421875,
+          "w": 362,
+          "h": 543.734375,
+          "bottom": -2403.6875
+        },
+        "areas": {
+          "x": 14,
+          "y": -2403.6875,
+          "w": 362,
+          "h": 3202.59375,
+          "bottom": 798.90625
+        },
+        "emirates": {
+          "x": 14,
+          "y": 798.90625,
+          "w": 362,
+          "h": 650.5625,
+          "bottom": 1449.46875
+        },
+        "authorities": {
+          "x": 14,
+          "y": 1465.46875,
+          "w": 362,
+          "h": 597.84375,
+          "bottom": 2063.3125
+        },
+        "help": {
+          "x": 14,
+          "y": 2079.3125,
+          "w": 362,
+          "h": 710.953125,
+          "bottom": 2790.265625
+        },
+        "search": {
+          "x": 14,
+          "y": 2806.265625,
+          "w": 362,
+          "h": 205.984375,
+          "bottom": 3012.25
+        },
+        "why": {
+          "x": 14,
+          "y": 3028.25,
+          "w": 362,
+          "h": 152.59375,
+          "bottom": 3180.84375
+        },
+        "final": {
+          "x": 0,
+          "y": 3196.84375,
+          "w": 390,
+          "h": 213.578125,
+          "bottom": 3410.421875
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 172,
+        "fontsLoaded": true,
+        "columns": 1,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 110,
+          "h": 100.671875,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "ar",
+      "width": 430,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 430,
+        "header": {
+          "x": 0,
+          "y": -3398,
+          "w": 430,
+          "h": 66,
+          "bottom": -3332
+        },
+        "hero": {
+          "x": 0,
+          "y": -3332,
+          "w": 430,
+          "h": 422.578125,
+          "bottom": -2909.421875
+        },
+        "query": {
+          "x": 136,
+          "y": 2845.171875,
+          "w": 261,
+          "h": 52,
+          "bottom": 2897.171875
+        },
+        "submit": {
+          "x": 33,
+          "y": 2845.171875,
+          "w": 96,
+          "h": 52,
+          "bottom": 2897.171875
+        },
+        "quick": {
+          "x": 14,
+          "y": -2909.421875,
+          "w": 402,
+          "h": 543.734375,
+          "bottom": -2365.6875
+        },
+        "areas": {
+          "x": 14,
+          "y": -2365.6875,
+          "w": 402,
+          "h": 3164.796875,
+          "bottom": 799.109375
+        },
+        "emirates": {
+          "x": 14,
+          "y": 799.109375,
+          "w": 402,
+          "h": 650.5625,
+          "bottom": 1449.671875
+        },
+        "authorities": {
+          "x": 14,
+          "y": 1465.671875,
+          "w": 402,
+          "h": 556.546875,
+          "bottom": 2022.21875
+        },
+        "help": {
+          "x": 14,
+          "y": 2038.21875,
+          "w": 402,
+          "h": 707.96875,
+          "bottom": 2746.1875
+        },
+        "search": {
+          "x": 14,
+          "y": 2762.1875,
+          "w": 402,
+          "h": 205.984375,
+          "bottom": 2968.171875
+        },
+        "why": {
+          "x": 14,
+          "y": 2984.171875,
+          "w": 402,
+          "h": 152.59375,
+          "bottom": 3136.765625
+        },
+        "final": {
+          "x": 0,
+          "y": 3152.765625,
+          "w": 430,
+          "h": 176.1875,
+          "bottom": 3328.953125
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 224,
+        "fontsLoaded": true,
+        "columns": 1,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 110,
+          "h": 100.671875,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "ar",
+      "width": 768,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 768,
+        "header": {
+          "x": 0,
+          "y": -1614,
+          "w": 768,
+          "h": 67,
+          "bottom": -1547
+        },
+        "hero": {
+          "x": 0,
+          "y": -1547,
+          "w": 768,
+          "h": 370,
+          "bottom": -1177
+        },
+        "query": {
+          "x": 272.671875,
+          "y": 1716.640625,
+          "w": 248.03125,
+          "h": 43,
+          "bottom": 1759.640625
+        },
+        "submit": {
+          "x": 169.671875,
+          "y": 1716.640625,
+          "w": 96,
+          "h": 43,
+          "bottom": 1759.640625
+        },
+        "quick": {
+          "x": 24,
+          "y": -1177,
+          "w": 720,
+          "h": 277.1875,
+          "bottom": -899.8125
+        },
+        "areas": {
+          "x": 24,
+          "y": -899.8125,
+          "w": 720,
+          "h": 1199.3125,
+          "bottom": 299.5
+        },
+        "emirates": {
+          "x": 24,
+          "y": 299.5,
+          "w": 720,
+          "h": 401.578125,
+          "bottom": 701.078125
+        },
+        "authorities": {
+          "x": 24,
+          "y": 717.078125,
+          "w": 720,
+          "h": 429.984375,
+          "bottom": 1147.0625
+        },
+        "help": {
+          "x": 24,
+          "y": 1167.0625,
+          "w": 720,
+          "h": 484.984375,
+          "bottom": 1652.046875
+        },
+        "search": {
+          "x": 24,
+          "y": 1672.046875,
+          "w": 720,
+          "h": 110.59375,
+          "bottom": 1782.640625
+        },
+        "why": {
+          "x": 24,
+          "y": 1802.640625,
+          "w": 720,
+          "h": 153.59375,
+          "bottom": 1956.234375
+        },
+        "final": {
+          "x": 0,
+          "y": 1976.234375,
+          "w": 768,
+          "h": 130.296875,
+          "bottom": 2106.53125
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 180,
+        "fontsLoaded": true,
+        "columns": 3,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 120,
+          "h": 109.828125,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "ar",
+      "width": 1024,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 1024,
+        "header": {
+          "x": 0,
+          "y": -1061,
+          "w": 1024,
+          "h": 72,
+          "bottom": -989
+        },
+        "hero": {
+          "x": 0,
+          "y": -989,
+          "w": 1024,
+          "h": 348,
+          "bottom": -641
+        },
+        "query": {
+          "x": 272.671875,
+          "y": 1853.234375,
+          "w": 504.03125,
+          "h": 43,
+          "bottom": 1896.234375
+        },
+        "submit": {
+          "x": 169.671875,
+          "y": 1853.234375,
+          "w": 96,
+          "h": 43,
+          "bottom": 1896.234375
+        },
+        "quick": {
+          "x": 24,
+          "y": -641,
+          "w": 976,
+          "h": 294.78125,
+          "bottom": -346.21875
+        },
+        "areas": {
+          "x": 24,
+          "y": -346.21875,
+          "w": 976,
+          "h": 920.3125,
+          "bottom": 574.09375
+        },
+        "emirates": {
+          "x": 24,
+          "y": 574.09375,
+          "w": 976,
+          "h": 263.578125,
+          "bottom": 837.671875
+        },
+        "authorities": {
+          "x": 24,
+          "y": 853.671875,
+          "w": 976,
+          "h": 429.984375,
+          "bottom": 1283.65625
+        },
+        "help": {
+          "x": 24,
+          "y": 1303.65625,
+          "w": 976,
+          "h": 484.984375,
+          "bottom": 1788.640625
+        },
+        "search": {
+          "x": 24,
+          "y": 1808.640625,
+          "w": 976,
+          "h": 110.59375,
+          "bottom": 1919.234375
+        },
+        "why": {
+          "x": 24,
+          "y": 1939.234375,
+          "w": 976,
+          "h": 113.59375,
+          "bottom": 2052.828125
+        },
+        "final": {
+          "x": 0,
+          "y": 2072.828125,
+          "w": 1024,
+          "h": 130.296875,
+          "bottom": 2203.125
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 180,
+        "fontsLoaded": true,
+        "columns": 4,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 120,
+          "h": 109.828125,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "ar",
+      "width": 1366,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 1366,
+        "header": {
+          "x": 0,
+          "y": -607,
+          "w": 1366,
+          "h": 72,
+          "bottom": -535
+        },
+        "hero": {
+          "x": 0,
+          "y": -535,
+          "w": 1366,
+          "h": 348,
+          "bottom": -187
+        },
+        "query": {
+          "x": 272.671875,
+          "y": 1666.90625,
+          "w": 846.03125,
+          "h": 43,
+          "bottom": 1709.90625
+        },
+        "submit": {
+          "x": 169.671875,
+          "y": 1666.90625,
+          "w": 96,
+          "h": 43,
+          "bottom": 1709.90625
+        },
+        "quick": {
+          "x": 24,
+          "y": -187,
+          "w": 1318,
+          "h": 140.1875,
+          "bottom": -46.8125
+        },
+        "areas": {
+          "x": 24,
+          "y": -46.8125,
+          "w": 1318,
+          "h": 806.96875,
+          "bottom": 760.15625
+        },
+        "emirates": {
+          "x": 24,
+          "y": 760.15625,
+          "w": 1318,
+          "h": 263.578125,
+          "bottom": 1023.734375
+        },
+        "authorities": {
+          "x": 24,
+          "y": 1039.734375,
+          "w": 1318,
+          "h": 291.984375,
+          "bottom": 1331.71875
+        },
+        "help": {
+          "x": 24,
+          "y": 1351.71875,
+          "w": 1318,
+          "h": 250.59375,
+          "bottom": 1602.3125
+        },
+        "search": {
+          "x": 24,
+          "y": 1622.3125,
+          "w": 1318,
+          "h": 110.59375,
+          "bottom": 1732.90625
+        },
+        "why": {
+          "x": 24,
+          "y": 1752.90625,
+          "w": 1318,
+          "h": 113.59375,
+          "bottom": 1866.5
+        },
+        "final": {
+          "x": 0,
+          "y": 1886.5,
+          "w": 1366,
+          "h": 130.296875,
+          "bottom": 2016.796875
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 224,
+        "fontsLoaded": true,
+        "columns": 4,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 143.546875,
+          "h": 131.390625,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 1440,
+        "header": {
+          "x": 0,
+          "y": -599,
+          "w": 1440,
+          "h": 72,
+          "bottom": -527
+        },
+        "hero": {
+          "x": 0,
+          "y": -527,
+          "w": 1440,
+          "h": 348.875,
+          "bottom": -178.125
+        },
+        "query": {
+          "x": 272.671875,
+          "y": 1655.8125,
+          "w": 920.03125,
+          "h": 43,
+          "bottom": 1698.8125
+        },
+        "submit": {
+          "x": 169.671875,
+          "y": 1655.8125,
+          "w": 96,
+          "h": 43,
+          "bottom": 1698.8125
+        },
+        "quick": {
+          "x": 24,
+          "y": -178.125,
+          "w": 1392,
+          "h": 140.1875,
+          "bottom": -37.9375
+        },
+        "areas": {
+          "x": 24,
+          "y": -37.9375,
+          "w": 1392,
+          "h": 797.59375,
+          "bottom": 759.65625
+        },
+        "emirates": {
+          "x": 24,
+          "y": 759.65625,
+          "w": 1392,
+          "h": 263.578125,
+          "bottom": 1023.234375
+        },
+        "authorities": {
+          "x": 24,
+          "y": 1039.234375,
+          "w": 1392,
+          "h": 291.984375,
+          "bottom": 1331.21875
+        },
+        "help": {
+          "x": 24,
+          "y": 1351.21875,
+          "w": 1392,
+          "h": 240,
+          "bottom": 1591.21875
+        },
+        "search": {
+          "x": 24,
+          "y": 1611.21875,
+          "w": 1392,
+          "h": 110.59375,
+          "bottom": 1721.8125
+        },
+        "why": {
+          "x": 24,
+          "y": 1741.8125,
+          "w": 1392,
+          "h": 113.59375,
+          "bottom": 1855.40625
+        },
+        "final": {
+          "x": 0,
+          "y": 1875.40625,
+          "w": 1440,
+          "h": 130.296875,
+          "bottom": 2005.703125
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 192,
+        "fontsLoaded": true,
+        "columns": 4,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 152.671875,
+          "h": 139.734375,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "ar",
+      "width": 1920,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 1920,
+        "header": {
+          "x": 0,
+          "y": -605,
+          "w": 1920,
+          "h": 72,
+          "bottom": -533
+        },
+        "hero": {
+          "x": 0,
+          "y": -533,
+          "w": 1920,
+          "h": 355.375,
+          "bottom": -177.625
+        },
+        "query": {
+          "x": 512.671875,
+          "y": 1656.3125,
+          "w": 920.03125,
+          "h": 43,
+          "bottom": 1699.3125
+        },
+        "submit": {
+          "x": 409.671875,
+          "y": 1656.3125,
+          "w": 96,
+          "h": 43,
+          "bottom": 1699.3125
+        },
+        "quick": {
+          "x": 264,
+          "y": -177.625,
+          "w": 1392,
+          "h": 140.1875,
+          "bottom": -37.4375
+        },
+        "areas": {
+          "x": 264,
+          "y": -37.4375,
+          "w": 1392,
+          "h": 797.59375,
+          "bottom": 760.15625
+        },
+        "emirates": {
+          "x": 264,
+          "y": 760.15625,
+          "w": 1392,
+          "h": 263.578125,
+          "bottom": 1023.734375
+        },
+        "authorities": {
+          "x": 264,
+          "y": 1039.734375,
+          "w": 1392,
+          "h": 291.984375,
+          "bottom": 1331.71875
+        },
+        "help": {
+          "x": 264,
+          "y": 1351.71875,
+          "w": 1392,
+          "h": 240,
+          "bottom": 1591.71875
+        },
+        "search": {
+          "x": 264,
+          "y": 1611.71875,
+          "w": 1392,
+          "h": 110.59375,
+          "bottom": 1722.3125
+        },
+        "why": {
+          "x": 264,
+          "y": 1742.3125,
+          "w": 1392,
+          "h": 113.59375,
+          "bottom": 1855.90625
+        },
+        "final": {
+          "x": 0,
+          "y": 1875.90625,
+          "w": 1920,
+          "h": 130.296875,
+          "bottom": 2006.203125
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 292,
+        "fontsLoaded": true,
+        "columns": 4,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 152.671875,
+          "h": 139.734375,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "en",
+      "width": 320,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 320,
+        "header": {
+          "x": 0,
+          "y": -3877,
+          "w": 320,
+          "h": 66,
+          "bottom": -3811
+        },
+        "hero": {
+          "x": 0,
+          "y": -3811,
+          "w": 320,
+          "h": 499.21875,
+          "bottom": -3311.78125
+        },
+        "query": {
+          "x": 33,
+          "y": 3191.171875,
+          "w": 151,
+          "h": 52,
+          "bottom": 3243.171875
+        },
+        "submit": {
+          "x": 191,
+          "y": 3191.171875,
+          "w": 96,
+          "h": 52,
+          "bottom": 3243.171875
+        },
+        "quick": {
+          "x": 14,
+          "y": -3311.78125,
+          "w": 292,
+          "h": 596.515625,
+          "bottom": -2715.265625
+        },
+        "areas": {
+          "x": 14,
+          "y": -2715.265625,
+          "w": 292,
+          "h": 3541.875,
+          "bottom": 826.609375
+        },
+        "emirates": {
+          "x": 14,
+          "y": 826.609375,
+          "w": 292,
+          "h": 711.953125,
+          "bottom": 1538.5625
+        },
+        "authorities": {
+          "x": 14,
+          "y": 1554.5625,
+          "w": 292,
+          "h": 685.90625,
+          "bottom": 2240.46875
+        },
+        "help": {
+          "x": 14,
+          "y": 2256.46875,
+          "w": 292,
+          "h": 835.71875,
+          "bottom": 3092.1875
+        },
+        "search": {
+          "x": 14,
+          "y": 3108.1875,
+          "w": 292,
+          "h": 205.984375,
+          "bottom": 3314.171875
+        },
+        "why": {
+          "x": 14,
+          "y": 3330.171875,
+          "w": 292,
+          "h": 188.984375,
+          "bottom": 3519.15625
+        },
+        "final": {
+          "x": 0,
+          "y": 3535.15625,
+          "w": 320,
+          "h": 234.375,
+          "bottom": 3769.53125
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 156,
+        "fontsLoaded": true,
+        "columns": 1,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 110,
+          "h": 100.671875,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "en",
+      "width": 360,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 360,
+        "header": {
+          "x": 0,
+          "y": -3686,
+          "w": 360,
+          "h": 66,
+          "bottom": -3620
+        },
+        "hero": {
+          "x": 0,
+          "y": -3620,
+          "w": 360,
+          "h": 499.21875,
+          "bottom": -3120.78125
+        },
+        "query": {
+          "x": 33,
+          "y": 2965.890625,
+          "w": 191,
+          "h": 52,
+          "bottom": 3017.890625
+        },
+        "submit": {
+          "x": 231,
+          "y": 2965.890625,
+          "w": 96,
+          "h": 52,
+          "bottom": 3017.890625
+        },
+        "quick": {
+          "x": 14,
+          "y": -3120.78125,
+          "w": 332,
+          "h": 561.328125,
+          "bottom": -2559.453125
+        },
+        "areas": {
+          "x": 14,
+          "y": -2559.453125,
+          "w": 332,
+          "h": 3358.125,
+          "bottom": 798.671875
+        },
+        "emirates": {
+          "x": 14,
+          "y": 798.671875,
+          "w": 332,
+          "h": 668.15625,
+          "bottom": 1466.828125
+        },
+        "authorities": {
+          "x": 14,
+          "y": 1482.828125,
+          "w": 332,
+          "h": 616.53125,
+          "bottom": 2099.359375
+        },
+        "help": {
+          "x": 14,
+          "y": 2115.359375,
+          "w": 332,
+          "h": 751.546875,
+          "bottom": 2866.90625
+        },
+        "search": {
+          "x": 14,
+          "y": 2882.90625,
+          "w": 332,
+          "h": 205.984375,
+          "bottom": 3088.890625
+        },
+        "why": {
+          "x": 14,
+          "y": 3104.890625,
+          "w": 332,
+          "h": 169.1875,
+          "bottom": 3274.078125
+        },
+        "final": {
+          "x": 0,
+          "y": 3290.078125,
+          "w": 360,
+          "h": 234.375,
+          "bottom": 3524.453125
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 236,
+        "fontsLoaded": true,
+        "columns": 1,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 110,
+          "h": 100.671875,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "en",
+      "width": 390,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 390,
+        "header": {
+          "x": 0,
+          "y": -3535,
+          "w": 390,
+          "h": 66,
+          "bottom": -3469
+        },
+        "hero": {
+          "x": 0,
+          "y": -3469,
+          "w": 390,
+          "h": 457.375,
+          "bottom": -3011.625
+        },
+        "query": {
+          "x": 33,
+          "y": 2926.40625,
+          "w": 221,
+          "h": 52,
+          "bottom": 2978.40625
+        },
+        "submit": {
+          "x": 261,
+          "y": 2926.40625,
+          "w": 96,
+          "h": 52,
+          "bottom": 2978.40625
+        },
+        "quick": {
+          "x": 14,
+          "y": -3011.625,
+          "w": 362,
+          "h": 543.734375,
+          "bottom": -2467.890625
+        },
+        "areas": {
+          "x": 14,
+          "y": -2467.890625,
+          "w": 362,
+          "h": 3266.5625,
+          "bottom": 798.671875
+        },
+        "emirates": {
+          "x": 14,
+          "y": 798.671875,
+          "w": 362,
+          "h": 668.15625,
+          "bottom": 1466.828125
+        },
+        "authorities": {
+          "x": 14,
+          "y": 1482.828125,
+          "w": 362,
+          "h": 597.84375,
+          "bottom": 2080.671875
+        },
+        "help": {
+          "x": 14,
+          "y": 2096.671875,
+          "w": 362,
+          "h": 730.75,
+          "bottom": 2827.421875
+        },
+        "search": {
+          "x": 14,
+          "y": 2843.421875,
+          "w": 362,
+          "h": 205.984375,
+          "bottom": 3049.40625
+        },
+        "why": {
+          "x": 14,
+          "y": 3065.40625,
+          "w": 362,
+          "h": 152.59375,
+          "bottom": 3218
+        },
+        "final": {
+          "x": 0,
+          "y": 3234,
+          "w": 390,
+          "h": 213.578125,
+          "bottom": 3447.578125
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 284,
+        "fontsLoaded": true,
+        "columns": 1,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 110,
+          "h": 100.671875,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "en",
+      "width": 430,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 430,
+        "header": {
+          "x": 0,
+          "y": -3439,
+          "w": 430,
+          "h": 66,
+          "bottom": -3373
+        },
+        "hero": {
+          "x": 0,
+          "y": -3373,
+          "w": 430,
+          "h": 445.375,
+          "bottom": -2927.625
+        },
+        "query": {
+          "x": 33,
+          "y": 2905.328125,
+          "w": 261,
+          "h": 52,
+          "bottom": 2957.328125
+        },
+        "submit": {
+          "x": 301,
+          "y": 2905.328125,
+          "w": 96,
+          "h": 52,
+          "bottom": 2957.328125
+        },
+        "quick": {
+          "x": 14,
+          "y": -2927.625,
+          "w": 402,
+          "h": 543.734375,
+          "bottom": -2383.890625
+        },
+        "areas": {
+          "x": 14,
+          "y": -2383.890625,
+          "w": 402,
+          "h": 3182.984375,
+          "bottom": 799.09375
+        },
+        "emirates": {
+          "x": 14,
+          "y": 799.09375,
+          "w": 402,
+          "h": 668.15625,
+          "bottom": 1467.25
+        },
+        "authorities": {
+          "x": 14,
+          "y": 1483.25,
+          "w": 402,
+          "h": 576.34375,
+          "bottom": 2059.59375
+        },
+        "help": {
+          "x": 14,
+          "y": 2075.59375,
+          "w": 402,
+          "h": 730.75,
+          "bottom": 2806.34375
+        },
+        "search": {
+          "x": 14,
+          "y": 2822.34375,
+          "w": 402,
+          "h": 205.984375,
+          "bottom": 3028.328125
+        },
+        "why": {
+          "x": 14,
+          "y": 3044.328125,
+          "w": 402,
+          "h": 152.59375,
+          "bottom": 3196.921875
+        },
+        "final": {
+          "x": 0,
+          "y": 3212.921875,
+          "w": 430,
+          "h": 213.578125,
+          "bottom": 3426.5
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 164,
+        "fontsLoaded": true,
+        "columns": 1,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 110,
+          "h": 100.671875,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "en",
+      "width": 768,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 768,
+        "header": {
+          "x": 0,
+          "y": -1707,
+          "w": 768,
+          "h": 67,
+          "bottom": -1640
+        },
+        "hero": {
+          "x": 0,
+          "y": -1640,
+          "w": 768,
+          "h": 395.5625,
+          "bottom": -1244.4375
+        },
+        "query": {
+          "x": 262.75,
+          "y": 1767.796875,
+          "w": 251.109375,
+          "h": 43,
+          "bottom": 1810.796875
+        },
+        "submit": {
+          "x": 520.859375,
+          "y": 1767.796875,
+          "w": 96,
+          "h": 43,
+          "bottom": 1810.796875
+        },
+        "quick": {
+          "x": 24,
+          "y": -1244.4375,
+          "w": 720,
+          "h": 277.1875,
+          "bottom": -967.25
+        },
+        "areas": {
+          "x": 24,
+          "y": -967.25,
+          "w": 720,
+          "h": 1267.453125,
+          "bottom": 300.203125
+        },
+        "emirates": {
+          "x": 24,
+          "y": 300.203125,
+          "w": 720,
+          "h": 401.578125,
+          "bottom": 701.78125
+        },
+        "authorities": {
+          "x": 24,
+          "y": 717.78125,
+          "w": 720,
+          "h": 449.84375,
+          "bottom": 1167.625
+        },
+        "help": {
+          "x": 24,
+          "y": 1187.625,
+          "w": 720,
+          "h": 515.578125,
+          "bottom": 1703.203125
+        },
+        "search": {
+          "x": 24,
+          "y": 1723.203125,
+          "w": 720,
+          "h": 110.59375,
+          "bottom": 1833.796875
+        },
+        "why": {
+          "x": 24,
+          "y": 1853.796875,
+          "w": 720,
+          "h": 153.59375,
+          "bottom": 2007.390625
+        },
+        "final": {
+          "x": 0,
+          "y": 2027.390625,
+          "w": 768,
+          "h": 172.796875,
+          "bottom": 2200.1875
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 168,
+        "fontsLoaded": true,
+        "columns": 3,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 120,
+          "h": 109.828125,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "en",
+      "width": 1024,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 1024,
+        "header": {
+          "x": 0,
+          "y": -1100,
+          "w": 1024,
+          "h": 72,
+          "bottom": -1028
+        },
+        "hero": {
+          "x": 0,
+          "y": -1028,
+          "w": 1024,
+          "h": 348,
+          "bottom": -680
+        },
+        "query": {
+          "x": 262.75,
+          "y": 1881.1875,
+          "w": 507.109375,
+          "h": 43,
+          "bottom": 1924.1875
+        },
+        "submit": {
+          "x": 776.859375,
+          "y": 1881.1875,
+          "w": 96,
+          "h": 43,
+          "bottom": 1924.1875
+        },
+        "quick": {
+          "x": 24,
+          "y": -680,
+          "w": 976,
+          "h": 294.78125,
+          "bottom": -385.21875
+        },
+        "areas": {
+          "x": 24,
+          "y": -385.21875,
+          "w": 976,
+          "h": 969.671875,
+          "bottom": 584.453125
+        },
+        "emirates": {
+          "x": 24,
+          "y": 584.453125,
+          "w": 976,
+          "h": 281.171875,
+          "bottom": 865.625
+        },
+        "authorities": {
+          "x": 24,
+          "y": 881.625,
+          "w": 976,
+          "h": 429.984375,
+          "bottom": 1311.609375
+        },
+        "help": {
+          "x": 24,
+          "y": 1331.609375,
+          "w": 976,
+          "h": 484.984375,
+          "bottom": 1816.59375
+        },
+        "search": {
+          "x": 24,
+          "y": 1836.59375,
+          "w": 976,
+          "h": 110.59375,
+          "bottom": 1947.1875
+        },
+        "why": {
+          "x": 24,
+          "y": 1967.1875,
+          "w": 976,
+          "h": 127.1875,
+          "bottom": 2094.375
+        },
+        "final": {
+          "x": 0,
+          "y": 2114.375,
+          "w": 1024,
+          "h": 130.296875,
+          "bottom": 2244.671875
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 156,
+        "fontsLoaded": true,
+        "columns": 4,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 120,
+          "h": 109.828125,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "en",
+      "width": 1366,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 1366,
+        "header": {
+          "x": 0,
+          "y": -1115,
+          "w": 1366,
+          "h": 72,
+          "bottom": -1043
+        },
+        "hero": {
+          "x": 0,
+          "y": -1043,
+          "w": 1366,
+          "h": 348,
+          "bottom": -695
+        },
+        "query": {
+          "x": 262.75,
+          "y": 1233.921875,
+          "w": 849.109375,
+          "h": 43,
+          "bottom": 1276.921875
+        },
+        "submit": {
+          "x": 1118.859375,
+          "y": 1233.921875,
+          "w": 96,
+          "h": 43,
+          "bottom": 1276.921875
+        },
+        "quick": {
+          "x": 24,
+          "y": -695,
+          "w": 1318,
+          "h": 157.78125,
+          "bottom": -537.21875
+        },
+        "areas": {
+          "x": 24,
+          "y": -537.21875,
+          "w": 1318,
+          "h": 844.53125,
+          "bottom": 307.3125
+        },
+        "emirates": {
+          "x": 24,
+          "y": 307.3125,
+          "w": 1318,
+          "h": 263.578125,
+          "bottom": 570.890625
+        },
+        "authorities": {
+          "x": 24,
+          "y": 586.890625,
+          "w": 1318,
+          "h": 311.84375,
+          "bottom": 898.734375
+        },
+        "help": {
+          "x": 24,
+          "y": 918.734375,
+          "w": 1318,
+          "h": 250.59375,
+          "bottom": 1169.328125
+        },
+        "search": {
+          "x": 24,
+          "y": 1189.328125,
+          "w": 1318,
+          "h": 110.59375,
+          "bottom": 1299.921875
+        },
+        "why": {
+          "x": 24,
+          "y": 1319.921875,
+          "w": 1318,
+          "h": 113.59375,
+          "bottom": 1433.515625
+        },
+        "final": {
+          "x": 0,
+          "y": 1453.515625,
+          "w": 1366,
+          "h": 130.296875,
+          "bottom": 1583.8125
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 176,
+        "fontsLoaded": true,
+        "columns": 4,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 143.546875,
+          "h": 131.390625,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "en",
+      "width": 1440,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 1440,
+        "header": {
+          "x": 0,
+          "y": -644,
+          "w": 1440,
+          "h": 72,
+          "bottom": -572
+        },
+        "hero": {
+          "x": 0,
+          "y": -572,
+          "w": 1440,
+          "h": 348.875,
+          "bottom": -223.125
+        },
+        "query": {
+          "x": 262.75,
+          "y": 1687.015625,
+          "w": 923.109375,
+          "h": 43,
+          "bottom": 1730.015625
+        },
+        "submit": {
+          "x": 1192.859375,
+          "y": 1687.015625,
+          "w": 96,
+          "h": 43,
+          "bottom": 1730.015625
+        },
+        "quick": {
+          "x": 24,
+          "y": -223.125,
+          "w": 1392,
+          "h": 157.78125,
+          "bottom": -65.34375
+        },
+        "areas": {
+          "x": 24,
+          "y": -65.34375,
+          "w": 1392,
+          "h": 825.75,
+          "bottom": 760.40625
+        },
+        "emirates": {
+          "x": 24,
+          "y": 760.40625,
+          "w": 1392,
+          "h": 263.578125,
+          "bottom": 1023.984375
+        },
+        "authorities": {
+          "x": 24,
+          "y": 1039.984375,
+          "w": 1392,
+          "h": 311.84375,
+          "bottom": 1351.828125
+        },
+        "help": {
+          "x": 24,
+          "y": 1371.828125,
+          "w": 1392,
+          "h": 250.59375,
+          "bottom": 1622.421875
+        },
+        "search": {
+          "x": 24,
+          "y": 1642.421875,
+          "w": 1392,
+          "h": 110.59375,
+          "bottom": 1753.015625
+        },
+        "why": {
+          "x": 24,
+          "y": 1773.015625,
+          "w": 1392,
+          "h": 113.59375,
+          "bottom": 1886.609375
+        },
+        "final": {
+          "x": 0,
+          "y": 1906.609375,
+          "w": 1440,
+          "h": 130.296875,
+          "bottom": 2036.90625
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 176,
+        "fontsLoaded": true,
+        "columns": 4,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 152.671875,
+          "h": 139.734375,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
+    },
+    {
+      "browser": "chrome",
+      "locale": "en",
+      "width": 1920,
+      "status": "PASS",
+      "layout": {
+        "scrollWidth": 1920,
+        "header": {
+          "x": 0,
+          "y": -651,
+          "w": 1920,
+          "h": 72,
+          "bottom": -579
+        },
+        "hero": {
+          "x": 0,
+          "y": -579,
+          "w": 1920,
+          "h": 355.375,
+          "bottom": -223.625
+        },
+        "query": {
+          "x": 502.75,
+          "y": 1686.515625,
+          "w": 923.109375,
+          "h": 43,
+          "bottom": 1729.515625
+        },
+        "submit": {
+          "x": 1432.859375,
+          "y": 1686.515625,
+          "w": 96,
+          "h": 43,
+          "bottom": 1729.515625
+        },
+        "quick": {
+          "x": 264,
+          "y": -223.625,
+          "w": 1392,
+          "h": 157.78125,
+          "bottom": -65.84375
+        },
+        "areas": {
+          "x": 264,
+          "y": -65.84375,
+          "w": 1392,
+          "h": 825.75,
+          "bottom": 759.90625
+        },
+        "emirates": {
+          "x": 264,
+          "y": 759.90625,
+          "w": 1392,
+          "h": 263.578125,
+          "bottom": 1023.484375
+        },
+        "authorities": {
+          "x": 264,
+          "y": 1039.484375,
+          "w": 1392,
+          "h": 311.84375,
+          "bottom": 1351.328125
+        },
+        "help": {
+          "x": 264,
+          "y": 1371.328125,
+          "w": 1392,
+          "h": 250.59375,
+          "bottom": 1621.921875
+        },
+        "search": {
+          "x": 264,
+          "y": 1641.921875,
+          "w": 1392,
+          "h": 110.59375,
+          "bottom": 1752.515625
+        },
+        "why": {
+          "x": 264,
+          "y": 1772.515625,
+          "w": 1392,
+          "h": 113.59375,
+          "bottom": 1886.109375
+        },
+        "final": {
+          "x": 0,
+          "y": 1906.109375,
+          "w": 1920,
+          "h": 130.296875,
+          "bottom": 2036.40625
+        },
+        "clipped": [],
+        "cls": 0,
+        "lcpLabMs": 188,
+        "fontsLoaded": true,
+        "columns": 4,
+        "robot": {
+          "present": true,
+          "loaded": true,
+          "w": 152.671875,
+          "h": 139.734375,
+          "display": "block"
+        },
+        "legacy": 0,
+        "brokenImages": []
+      }
     }
-  ]
+  ],
+  "journeys": [
+    {
+      "locale": "ar",
+      "width": 390,
+      "slug": "issue-trade-license-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "slug": "renew-business-license-sharjah",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "slug": "abu-dhabi-economic-license-amendment",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "slug": "family-residency-uae",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "slug": "new-work-permit-overseas-uae",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "slug": "register-renew-ejari-contract-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "emirate": "dubai",
+      "count": 126,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "emirate": "abu-dhabi",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "emirate": "sharjah",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "emirate": "ajman",
+      "count": 98,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "emirate": "rak",
+      "count": 98,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "emirate": "fujairah",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "emirate": "uaq",
+      "count": 94,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "authority": "mohre",
+      "clicks": 2,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "slug": "issue-trade-license-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "slug": "renew-business-license-sharjah",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "slug": "abu-dhabi-economic-license-amendment",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "slug": "family-residency-uae",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "slug": "new-work-permit-overseas-uae",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "slug": "register-renew-ejari-contract-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "emirate": "dubai",
+      "count": 126,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "emirate": "abu-dhabi",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "emirate": "sharjah",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "emirate": "ajman",
+      "count": 98,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "emirate": "rak",
+      "count": 98,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "emirate": "fujairah",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "emirate": "uaq",
+      "count": 94,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "authority": "mohre",
+      "clicks": 2,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "slug": "issue-trade-license-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "slug": "renew-business-license-sharjah",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "slug": "abu-dhabi-economic-license-amendment",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "slug": "family-residency-uae",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "slug": "new-work-permit-overseas-uae",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "slug": "register-renew-ejari-contract-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "emirate": "dubai",
+      "count": 126,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "emirate": "abu-dhabi",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "emirate": "sharjah",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "emirate": "ajman",
+      "count": 98,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "emirate": "rak",
+      "count": 98,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "emirate": "fujairah",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "emirate": "uaq",
+      "count": 94,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "authority": "mohre",
+      "clicks": 2,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "slug": "issue-trade-license-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "slug": "renew-business-license-sharjah",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "slug": "abu-dhabi-economic-license-amendment",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "slug": "family-residency-uae",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "slug": "new-work-permit-overseas-uae",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "slug": "إلغاء-ملف-أو-بطاقة-المنشأة",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "slug": "تصديق-مستند-شخصي-داخل-الإمارات",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "slug": "register-renew-ejari-contract-dubai",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "emirate": "dubai",
+      "count": 126,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "emirate": "abu-dhabi",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "emirate": "sharjah",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "emirate": "ajman",
+      "count": 98,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "emirate": "rak",
+      "count": 98,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "emirate": "fujairah",
+      "count": 99,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "emirate": "uaq",
+      "count": 94,
+      "clicks": 3,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "authority": "mohre",
+      "clicks": 2,
+      "status": "PASS"
+    }
+  ],
+  "nativeNoJS": []
 }
