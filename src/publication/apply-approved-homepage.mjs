@@ -25,7 +25,8 @@ for(const en of [false,true]){
  html=html.slice(0,first)+result.header+result.main+panel+backdrop+result.footer+html.slice(end+9);
  html=html.replace(/<body\b([^>]*)>/,(_,attrs)=>'<body'+attrs.replace(/\sdata-approved-home="[^"]*"/g,'')+' data-approved-home="2026-11-13">');
  // Old coordinates belong to the superseded design; keep them for historical inner-page compatibility.
- html=html.replace(/<link\b[^>]*href="\/(?:home-geometry|approved-home)\.css[^" ]*"[^>]*>/g,'');
+ // One homepage design owner; retain the existing assistant panel stylesheet only.
+ html=html.replace(/<link\b[^>]*rel="stylesheet"[^>]*>/g,tag=>/href="\/premium-platform\.css/.test(tag)?tag:'');
  html=html.replace('</head>','<link data-approved-home-css rel="stylesheet" href="/approved-home.css?v='+version+'"></head>');
  if((html.match(/<main\b/g)||[]).length!==1||(html.match(/<\/main>/g)||[]).length!==1)throw Error('Homepage requires one balanced main');
  if((html.match(/id="premium-ai-panel"/g)||[]).length!==1)throw Error('Assistant duplicated');

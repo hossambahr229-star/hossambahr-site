@@ -18,5 +18,5 @@ test('Phase 9 preserves dual execution paths while premium homepage exposes them
   assert.match(service, /المسار الحكومي/); assert.match(service, /مسار المساعدة/); assert.match(service, /تواصل معنا لإنجاز المعاملة/);
   assert.match(stabilizer, /function compactHomepageServiceCards/);
   assert.equal((home.match(/src=["']\/zero-defect-routing\.js/g) || []).length, 1);
-  assert.equal((home.match(/href=["']\/intent-first\.css/g) || []).length, 1);
+  assert.equal((home.match(home.includes('data-approved-home="2026-11-13"')?/href=["']\/approved-home\.css/g:/href=["']\/intent-first\.css/g) || []).length, 1);
 });

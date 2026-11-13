@@ -197,7 +197,7 @@ if (secondarySections.length && !/class=["'][^"']*\bphase7-secondary-home\b/.tes
 // directory homepage remains available through its dedicated routes, but must
 // not be appended after the premium composition.
 const premiumHomepage = html.includes('premium-home-hero');
-if (premiumHomepage) {
+if (premiumHomepage && !html.includes('data-approved-home="2026-11-13"')) {
   html = html.replace(/(<section id="search-results" class="result"[^>]*><\/section>)[\s\S]*?(?=<footer\b)/i, '$1');
 }
 
