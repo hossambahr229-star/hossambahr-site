@@ -2,6 +2,7 @@ import {readFile,writeFile,mkdir,readdir,access} from 'node:fs/promises';
 import {join,resolve,relative} from 'node:path';
 import {createHash} from 'node:crypto';
 import {renderApprovedHomepage} from '../design/approved-home.mjs';
+import {scopedAssistantCSS} from '../design/scoped-assistant.mjs';
 const root=resolve(import.meta.dirname,'../..');
 const records=JSON.parse(await readFile(join(root,'transaction-discovery-data.json'),'utf8'));
 const summary=JSON.parse(await readFile(join(root,'platform-summary.json'),'utf8'));
@@ -10,6 +11,8 @@ const hash=value=>createHash('sha256').update(value).digest('hex');
 const files=[];async function scan(dir){for(const e of await readdir(join(root,dir),{withFileTypes:true})){if(['.git','node_modules','artifacts','diagnostics','reports','outputs','work','src','test','supabase','_next','.github'].includes(e.name))continue;const path=dir?dir+'/'+e.name:e.name;if(e.isDirectory())await scan(path);else if(e.name.endsWith('.html'))files.push(path);}}await scan('');
 const before=new Map(await Promise.all(files.map(async file=>[file,await readFile(join(root,file),'utf8')])));
 const css=await readFile(join(root,'approved-home.css'),'utf8'),version=hash(css).slice(0,12);
+const assistantCSS=scopedAssistantCSS(await readFile(join(root,'global-os.css'),'utf8')),assistantVersion=hash(assistantCSS).slice(0,12);
+await writeFile(join(root,'approved-assistant.css'),assistantCSS);
 const decode=s=>s.replaceAll('&amp;','&').replaceAll('&quot;','"').replaceAll('&#39;',"'");
 const hrefs=s=>[...s.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(m=>decode(m[1]));
 const changed=[];let model;
@@ -28,7 +31,7 @@ for(const en of [false,true]){
  // One homepage design owner; retain the existing assistant panel stylesheet only.
  html=html.replace(/<link\b[^>]*rel="stylesheet"[^>]*>/g,tag=>/href="\/premium-platform\.css/.test(tag)?tag:'');
  html=html.replace(/<link\b[^>]*data-approved-home-font[^>]*>/g,'');
- html=html.replace('</head>','<link data-approved-home-font rel="preload" href="/assets/fonts/cairo-400.ttf" as="font" type="font/ttf" crossorigin><link data-approved-home-font rel="preload" href="/assets/fonts/cairo-800.ttf" as="font" type="font/ttf" crossorigin><link data-approved-home-css rel="stylesheet" href="/approved-home.css?v='+version+'"></head>');
+ html=html.replace('</head>','<link data-approved-assistant-css rel="stylesheet" href="/approved-assistant.css?v='+assistantVersion+'"><link data-approved-home-font rel="preload" href="/assets/fonts/cairo-400.ttf" as="font" type="font/ttf" crossorigin><link data-approved-home-font rel="preload" href="/assets/fonts/cairo-800.ttf" as="font" type="font/ttf" crossorigin><link data-approved-home-css rel="stylesheet" href="/approved-home.css?v='+version+'"></head>');
  if((html.match(/<main\b/g)||[]).length!==1||(html.match(/<\/main>/g)||[]).length!==1)throw Error('Homepage requires one balanced main');
  if((html.match(/id="premium-ai-panel"/g)||[]).length!==1)throw Error('Assistant duplicated');
  for(const href of hrefs(result.header+result.main+result.footer)){
