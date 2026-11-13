@@ -1,7 +1,7 @@
 /* Homepage-only design system. No transforms, zoom, backend or inner-page overrides. */
 @font-face{font-family:Cairo;font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/cairo-400.ttf') format('truetype')}
-@font-face{font-family:Cairo;font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/cairo-600.ttf') format('truetype')}
-@font-face{font-family:Cairo;font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/cairo-700.ttf') format('truetype')}
+@font-face{font-family:Cairo;font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/cairo-800.ttf') format('truetype')}
+@font-face{font-family:Cairo;font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/cairo-800.ttf') format('truetype')}
 @font-face{font-family:Cairo;font-style:normal;font-weight:800 900;font-display:swap;src:url('/assets/fonts/cairo-800.ttf') format('truetype')}
 body[data-approved-home] .skip-link{position:absolute;top:-80px;left:16px;background:#fff;color:#073c2c;padding:12px;z-index:200}
 body[data-approved-home] .skip-link:focus{top:10px}
@@ -140,3 +140,8 @@ body[data-approved-home] .ah-footer>nav>a{padding:8px;min-height:40px;color:#174
 @media(prefers-reduced-motion:reduce){body[data-approved-home] *,body[data-approved-home] *:before,body[data-approved-home] *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media (min-width:641px) and (max-width:1190px){body[data-approved-home] .ah-quick{display:block}body[data-approved-home] .ah-quick-grid{grid-template-columns:repeat(6,minmax(0,1fr))}body[data-approved-home] .ah-quick h2{margin-bottom:12px}}
 body[data-approved-home] .ah-activities h2{color:#fff}body[data-approved-home] .ah-approval-entry{display:block;color:#176348;font-size:12px;margin-top:7px;min-height:40px;padding-block:7px}
+
+body[data-approved-home] .ah-help>.ah-assistant{grid-column:auto!important;grid-row:auto!important;order:0!important}
+@media(min-width:641px) and (max-width:1190px){body[data-approved-home] .ah-help>.ah-assistant{grid-column:1/-1!important}}
+body[data-approved-home] .ah-area-card:has(.ah-area-all[open]){grid-column:1/-1}
+body[data-approved-home] .ah-area-all[open] ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:0 20px}
