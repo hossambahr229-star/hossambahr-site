@@ -1,0 +1,28 @@
+name: Current HB AI external provider status November 13
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/provider-current-20261113.yml, diagnostics/provider-current-20261113.mjs]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node diagnostics/provider-current-20261113.mjs
+      - name: Preserve redacted provider outcome
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/provider-current-20261113/report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record redacted current provider status November 12"
+            git pull --rebase origin agent/dld-source-review-evidence
+            git push origin HEAD:agent/dld-source-review-evidence
+          fi
