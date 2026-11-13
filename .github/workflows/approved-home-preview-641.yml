@@ -1,0 +1,47 @@
+name: Review approved homepage source preview 641
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/approved-home-preview-641.yml, diagnostics/approved-home-preview-641.mjs]
+permissions: {contents: write}
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/approved-home-design-20261113
+          path: site
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: |
+          cd site
+          npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+          npm run build
+          cp ../diagnostics/approved-home-preview-641.mjs diagnostics/approved-home-preview-641.mjs
+          HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/approved-home-preview-641.mjs
+      - name: Complete protected baseline and geometry checks
+        run: |
+          cd site
+          node scripts/approved-home-baseline.mjs
+          HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node scripts/approved-home-gate.mjs
+      - name: Preserve actual source preview and failures
+        if: always()
+        run: |
+          mkdir -p diagnostics/approved-home-preview-641
+          cp -r site/artifacts/approved-home-preview/. diagnostics/approved-home-preview-641/ || true
+          cp site/artifacts/approved-home/baseline-regression.json diagnostics/approved-home-preview-641/ || true
+          cp site/artifacts/reference-geometry/report.json diagnostics/approved-home-preview-641/geometry.json || true
+          cp site/artifacts/reference-geometry/overlay-50.png diagnostics/approved-home-preview-641/ || true
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/approved-home-preview-641
+          git diff --cached --quiet && exit 0
+          git commit -m "Preserve approved homepage source preview and baseline outcomes"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
