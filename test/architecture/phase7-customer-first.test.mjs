@@ -17,8 +17,8 @@ const services = registry.services.map((service) => ({
 test('Premium homepage keeps compact trust and dedicated AI guidance without legacy duplication', async () => {
   const [html, ai] = await Promise.all([read('index.html'), read('ai/index.html')]);
   assert.match(html, /data-phase7=["']true["']/);
-  assert.match(html, /class=["'][^"']*premium-proof/);
-  assert.match(html, /class=["'][^"']*premium-two-pathways/);
+  assert.match(html, html.includes('data-approved-home="2026-11-13"')?/class="ah-platform-stats"/:/class=["'][^"']*premium-proof/);
+  assert.match(html, html.includes('data-approved-home="2026-11-13"')?/class="ah-pathways"/:/class=["'][^"']*premium-two-pathways/);
   assert.match(html, /premium-ai-panel/);
   assert.match(html, /href=["']\/ai\//);
   assert.match(ai, /aria-label=["']محادثة مع HOSSAM BAHR AI["']/);

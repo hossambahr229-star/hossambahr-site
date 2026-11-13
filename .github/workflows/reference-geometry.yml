@@ -1,10 +1,10 @@
 name: Approved Reference Geometry
 on:
   pull_request:
-    paths: ['home-geometry.css','index.html','en/index.html','assets/**','src/publication/**','transaction-discovery.*','customer-intake.js','public-ai-concierge.js','scripts/reference-geometry-gate.mjs','scripts/transaction-discovery-gate.mjs','qa/reference/**','package.json','.github/workflows/reference-geometry.yml']
+    paths: ['approved-home.css','src/design/approved-home.mjs','scripts/approved-home-gate.mjs','scripts/approved-home-baseline.mjs','home-geometry.css','index.html','en/index.html','assets/**','src/publication/**','transaction-discovery.*','customer-intake.js','public-ai-concierge.js','scripts/reference-geometry-gate.mjs','scripts/transaction-discovery-gate.mjs','qa/reference/**','package.json','.github/workflows/reference-geometry.yml']
   push:
     branches: [main]
-    paths: ['home-geometry.css','index.html','en/index.html','assets/**','src/publication/**','transaction-discovery.*','customer-intake.js','public-ai-concierge.js','scripts/reference-geometry-gate.mjs','scripts/transaction-discovery-gate.mjs','qa/reference/**','package.json','.github/workflows/reference-geometry.yml']
+    paths: ['approved-home.css','src/design/approved-home.mjs','scripts/approved-home-gate.mjs','scripts/approved-home-baseline.mjs','home-geometry.css','index.html','en/index.html','assets/**','src/publication/**','transaction-discovery.*','customer-intake.js','public-ai-concierge.js','scripts/reference-geometry-gate.mjs','scripts/transaction-discovery-gate.mjs','qa/reference/**','package.json','.github/workflows/reference-geometry.yml']
   workflow_dispatch:
 permissions:
   contents: read

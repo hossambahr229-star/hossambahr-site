@@ -58,8 +58,7 @@ test('Phase 8 desktop search keeps the query field wider than the submit action'
   assert.match(css, /grid-template-columns: minmax\(0, 1\.65fr\) minmax\(132px, \.78fr\)/);
   assert.match(css, /body\[data-ux-page="home"\] \.search-row button \{\s*min-width: 0;/);
   assert.match(css, /white-space: nowrap;/);
-  assert.match(homepage, /intent-first\.css\?v=phase(?:8-20260916a|9-20260917a|9-1-20260917a)/);
-  assert.equal((homepage.match(/intent-first\.css/g) || []).length, 1);
+  if(homepage.includes('data-approved-home="2026-11-13"')){const approvedCSS=await read('approved-home.css');assert.match(homepage,/approved-home\.css\?v=[a-f0-9]{12}/);assert.equal((homepage.match(/approved-home\.css/g)||[]).length,1);assert.doesNotMatch(homepage,/intent-first\.css/);assert.match(approvedCSS,/\.ah-search input\{[^}]*flex:1/);}else{assert.match(homepage, /intent-first\.css\?v=phase(?:8-20260916a|9-20260917a|9-1-20260917a)/);assert.equal((homepage.match(/intent-first\.css/g) || []).length, 1);}
   assert.match(homepage, /zero-defect-routing\.js\?v=[a-f0-9]{12}/);
   assert.equal((homepage.match(/zero-defect-routing\.js/g) || []).length, 1);
 });

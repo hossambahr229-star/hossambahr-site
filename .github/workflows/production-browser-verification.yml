@@ -24,12 +24,25 @@ jobs:
         run: |
           set -euo pipefail
           expected="$(cat ux-release-marker.txt)"
+          approved_home=false
+          expected_home_css=""
+          if test -f src/publication/apply-approved-homepage.mjs && grep -q apply-approved-homepage.mjs package.json; then
+            approved_home=true
+            expected_home_css="$(sha256sum approved-home.css | cut -d' ' -f1)"
+          fi
           for attempt in {1..36}; do
             actual="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/ux-release-marker.txt?attempt=$attempt" || true)"
             os_html="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/os/?runtime-check=$attempt" || true)"
             account_html="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/account/?runtime-check=$attempt" || true)"
             service_html="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/services/mohre-establishment-file-open/?runtime-check=$attempt" || true)"
-            if [ "$actual" = "$expected" ]               && grep -q '/auth-client.js' <<<"$os_html"               && grep -q '/global-os-api-client.js' <<<"$os_html"               && grep -q '/os-client.js' <<<"$os_html"               && grep -q '/auth-client.js' <<<"$account_html"               && grep -q '/global-os-client.js' <<<"$service_html"; then
+            homepage_coherent=true
+            if [ "$approved_home" = true ]; then
+              home_html="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/?approved-home-check=$attempt" || true)"
+              en_home_html="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/en/?approved-home-check=$attempt" || true)"
+              live_home_css="$(curl -fsSL --max-time 20 -H 'Cache-Control: no-cache' "https://hossambahr.com/approved-home.css?approved-home-check=$attempt" | sha256sum | cut -d' ' -f1 || true)"
+              if ! grep -q 'data-approved-home="2026-11-13"' <<<"$home_html" || ! grep -q 'data-approved-home="2026-11-13"' <<<"$en_home_html" || [ "$live_home_css" != "$expected_home_css" ]; then homepage_coherent=false; fi
+            fi
+            if [ "$homepage_coherent" = true ] && [ "$actual" = "$expected" ]               && grep -q '/auth-client.js' <<<"$os_html"               && grep -q '/global-os-api-client.js' <<<"$os_html"               && grep -q '/os-client.js' <<<"$os_html"               && grep -q '/auth-client.js' <<<"$account_html"               && grep -q '/global-os-client.js' <<<"$service_html"; then
               exit 0
             fi
             sleep 10
