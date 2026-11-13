@@ -1,0 +1,35 @@
+name: Verify settled approved assistant controls before release 641
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/approved-home-modal-641.yml, diagnostics/approved-home-modal-641.mjs]
+permissions: {contents: write}
+jobs:
+  modal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: {ref: agent/approved-home-design-20261113, path: site}
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: |
+          cd site
+          npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+          npm run build
+          cp ../diagnostics/approved-home-modal-641.mjs diagnostics/approved-home-modal-641.mjs
+          HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/approved-home-modal-641.mjs
+      - if: always()
+        run: |
+          mkdir -p diagnostics/approved-home-modal-641
+          cp -r site/artifacts/approved-home-modal/. diagnostics/approved-home-modal-641/ || true
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/approved-home-modal-641
+          git diff --cached --quiet && exit 0
+          git commit -m "Record settled assistant geometry and real blank-submit/close controls"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
