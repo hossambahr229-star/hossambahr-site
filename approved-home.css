@@ -145,3 +145,4 @@ body[data-approved-home] .ah-help>.ah-assistant{grid-column:auto!important;grid-
 @media(min-width:641px) and (max-width:1190px){body[data-approved-home] .ah-help>.ah-assistant{grid-column:1/-1!important}}
 body[data-approved-home] .ah-area-card:has(.ah-area-all[open]){grid-column:1/-1}
 body[data-approved-home] .ah-area-all[open] ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:0 20px}
+body[data-approved-home] .ah-area-card{background-color:#fff}

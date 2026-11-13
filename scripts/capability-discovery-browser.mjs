@@ -25,7 +25,18 @@ try{
  for(const locale of ['ar','en'])for(const width of [320,360,390,430,768,1366,1440,1920]){const p=locale==='en'?'/en':'';await page.setViewportSize({width,height:1000});for(const route of ['/','/discover/','/business-activities/','/approvals/']){await page.goto(base+p+route);await page.evaluate(()=>document.fonts.ready);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,locale+width+route);if(route==='/'){await page.screenshot({path:output+'/'+locale+'-'+width+'-home-closed.png',fullPage:false});const englishMobile=locale==='en'&&width<=820;
 const bounds=async selector=>{const b=await page.locator(selector).boundingBox();assert.ok(b&&b.x>=-1&&b.x+b.width<=width+1,'Open navigation must stay inside the viewport');const clipped=await page.locator(selector).evaluate(e=>[...e.querySelectorAll('a')].filter(a=>a.checkVisibility()).filter(a=>{const r=a.getBoundingClientRect();return r.left<0||r.right>innerWidth+1||a.scrollWidth>a.clientWidth+2}).map(a=>a.textContent.trim()));assert.deepEqual(clipped,[],'Visible navigation links must not be clipped');return b;};
 let navigationBounds;
-if(englishMobile){
+const approved=await page.locator('body[data-approved-home="2026-11-13"]').count();
+if(approved){
+ assert.equal(await page.locator('.ah-area-card').count(),12);
+ const slugs=await page.locator('.ah-area-all [data-home-service]').evaluateAll(a=>[...new Set(a.map(n=>n.dataset.homeService))]);
+ const catalog=await page.evaluate(async()=>await (await fetch('/transaction-discovery-data.json')).json());
+ assert.deepEqual(slugs.sort(),catalog.map(r=>r.s).sort());
+ if(width<=960){await page.locator('.ah-mobile-menu>summary').click();assert.ok(await page.locator('.ah-mobile-menu a[href="'+p+'/account/"]').isVisible());navigationBounds=await bounds('.ah-mobile-menu>nav');await page.locator('.ah-mobile-menu a[href="'+p+'/services/"]').click();}
+ else await page.locator('.ah-desktop-nav a[href="'+p+'/services/"]').click();
+ await page.waitForLoadState('networkidle');assert.equal(new URL(page.url()).pathname,p+'/services/');
+ assert.equal(await page.locator('#browse-areas [data-browse-group]').count(),16,'All sixteen published classification groups remain available through real navigation');
+ await page.goto(base+p+'/');
+}else if(englishMobile){
  await page.locator('.home-en-mobile-menu>summary').click();
  assert.ok(await page.locator('.home-en-mobile-menu a[href="/en/account/"]').isVisible());
  assert.ok(await page.locator('.home-en-mobile-menu a[lang="ar"]').isVisible());
@@ -43,7 +54,7 @@ if(englishMobile){
  if(locale==='ar'&&width<=1100)navigationBounds=await bounds('.mobile-menu>nav');
 }
 assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
-report.navigation.push({locale,width,kind:englishMobile?'MOBILE_DIRECTORY_FILTERS':'CATEGORY_MENU',categoryCount:16,bounds:navigationBounds||null,result:'PASS'});
+report.navigation.push({locale,width,kind:approved?'APPROVED_SERVICE_FIRST_MENU':englishMobile?'MOBILE_DIRECTORY_FILTERS':'CATEGORY_MENU',categoryCount:16,bounds:navigationBounds||null,result:'PASS'});
 }await page.screenshot({path:output+'/'+locale+'-'+width+'-'+(route==='/'?'home':route.replaceAll('/',''))+'.png',fullPage:false});report.responsive.push({locale,width,route,result:'PASS'});}}
  assert.deepEqual(errors,[]);report.status='PASS';
 }catch(error){report.status='FAIL';report.error=error.stack;process.exitCode=1;}finally{await writeFile(output+'/report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));await browser.close();if(server)await new Promise(r=>server.close(r));}
