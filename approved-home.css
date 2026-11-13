@@ -102,7 +102,7 @@ body[data-approved-home] .ah-activities{display:flex;align-items:center;justify-
 body[data-approved-home] .ah-activities strong{font:800 44px Arial;color:#f0cf7c;margin:10px 0 3px}
 body[data-approved-home] .ah-activities p{font-size:13px}
 body[data-approved-home] .ah-activities>span{display:block;background:#ead293;color:#172d22;border-radius:20px;padding:7px 14px;font-size:12px;font-weight:800;margin-top:12px}
-body[data-approved-home] .ah-assistant.premium-ai-showcase{position:relative!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:8px!important;min-height:240px!important;height:auto!important;width:auto!important;max-width:none!important;overflow:hidden!important;background:linear-gradient(135deg,#07553e,#073c2c)!important;color:#fff!important;inset:auto!important;isolation:isolate}
+body[data-approved-home] .ah-assistant{position:relative!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:8px!important;min-height:240px!important;height:auto!important;width:auto!important;max-width:none!important;overflow:hidden!important;background:linear-gradient(135deg,#07553e,#073c2c)!important;color:#fff!important;inset:auto!important;isolation:isolate}
 body[data-approved-home] .ah-assistant:before,body[data-approved-home] .ah-assistant:after{display:none!important}
 body[data-approved-home] .ah-assistant>img{display:block!important;position:relative!important;inset:auto!important;object-fit:contain;width:37%!important;height:auto!important;max-height:210px!important;align-self:end;flex-shrink:0}
 body[data-approved-home] .ah-assistant>div{flex:1;min-width:0;position:relative}
@@ -146,3 +146,6 @@ body[data-approved-home] .ah-help>.ah-assistant{grid-column:auto!important;grid-
 body[data-approved-home] .ah-area-card:has(.ah-area-all[open]){grid-column:1/-1}
 body[data-approved-home] .ah-area-all[open] ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:0 20px}
 body[data-approved-home] .ah-area-card{background-color:#fff}
+
+body[data-approved-home] .ah-assistant{direction:ltr!important}body[data-approved-home] .ah-assistant>div{direction:rtl;text-align:start}html[lang=en] body[data-approved-home] .ah-assistant>div{direction:ltr}
+body[data-approved-home] .ah-area-all p>a{display:block;min-height:44px;padding-block:8px}
