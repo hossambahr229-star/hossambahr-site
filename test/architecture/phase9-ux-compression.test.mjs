@@ -14,7 +14,7 @@ test('Phase 9 preserves dual execution paths while premium homepage exposes them
     readFile(resolve(root, 'platform-summary.json'), 'utf8').then(JSON.parse),
   ]);
   assert.equal(summary.services, 203); assert.equal(summary.activities, 2610); assert.equal(summary.coveredEmirates, 7);
-  assert.match(home, /premium-two-pathways/); assert.match(home, /المسار الحكومي/); assert.match(home, /أنجزها مع HOSSAM BAHR/);
+  if(home.includes('data-approved-home="2026-11-13"')){assert.match(home,/class="ah-pathways"/);assert.match(home,/عبر الجهة الحكومية/);assert.match(home,/بمساعدة حسام بحر/);assert.match(home,/href="\/services\/#browse-services"/);assert.match(home,/href="\/contact\/\?handoff=1"/);}else{assert.match(home, /premium-two-pathways/); assert.match(home, /المسار الحكومي/); assert.match(home, /أنجزها مع HOSSAM BAHR/);}
   assert.match(service, /المسار الحكومي/); assert.match(service, /مسار المساعدة/); assert.match(service, /تواصل معنا لإنجاز المعاملة/);
   assert.match(stabilizer, /function compactHomepageServiceCards/);
   assert.equal((home.match(/src=["']\/zero-defect-routing\.js/g) || []).length, 1);
