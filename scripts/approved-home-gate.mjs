@@ -3,6 +3,7 @@ import {readFile,mkdir,writeFile} from 'node:fs/promises';
 import {resolve,join,relative,extname} from 'node:path';
 import {createRequire} from 'node:module';
 import assert from 'node:assert/strict';
+import {approvedHomeModel} from '../src/design/approved-home.mjs';
 const root=resolve(import.meta.dirname,'..'),require=createRequire(import.meta.url);
 const {chromium,firefox}=require('playwright'),sharp=require('sharp');
 const output=resolve(process.env.HB_OUTPUT_DIR||join(root,'artifacts/reference-geometry'));
@@ -11,7 +12,7 @@ const server=createServer(async(req,res)=>{try{let path=decodeURIComponent(new U
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
 const base=(process.env.HB_BASE_URL||'http://127.0.0.1:'+server.address().port).replace(/\/$/,'');
 const records=JSON.parse(await readFile(join(root,'transaction-discovery-data.json'),'utf8'));
-const results=[],journeys=[];let browser;
+const model=approvedHomeModel(records),results=[],journeys=[];let browser;
 try{
  for(const name of process.env.HB_TEST_FIREFOX==='1'?['chrome','firefox']:['chrome']){
   browser=await (name==='chrome'?chromium:firefox).launch({headless:true,...(name==='chrome'&&process.env.HB_BROWSER_PATH?{executablePath:process.env.HB_BROWSER_PATH}:{})});
@@ -50,7 +51,8 @@ try{
  for(const en of [false,true])for(const width of [390,1440]){
   const p=en?'/en':'',page=await browser.newPage({viewport:{width,height:960}});page.setDefaultTimeout(15000);
   for(const slug of journeySlugs){const r=records.find(r=>r.s===slug);assert.ok(r);await page.goto(base+p+'/',{waitUntil:'networkidle'});const link=page.locator('.ah-area-all [data-home-service="'+slug+'"]').first();await link.locator('xpath=ancestor::details').locator('summary').click();await link.click();await page.waitForLoadState('networkidle');assert.equal(decodeURIComponent(new URL(page.url()).pathname),p+r.u);assert.equal(await page.locator('link[rel=canonical]').getAttribute('href'),'https://hossambahr.com'+p+r.u);journeys.push({locale:en?'en':'ar',width,slug,status:'PASS'});}
-  for(const selector of ['[data-home-authority="mohre"]','[data-home-emirate="sharjah"]']){await page.goto(base+p+'/',{waitUntil:'networkidle'});await page.locator(selector).click();await page.waitForLoadState('networkidle');assert.ok(new URL(page.url()).pathname.startsWith(p+'/'));assert.ok(await page.locator('h1').isVisible());journeys.push({locale:en?'en':'ar',width,selector,status:'PASS'});}
+  for(const emirate of model.emirates){await page.goto(base+p+'/',{waitUntil:'networkidle'});await page.locator('[data-home-emirate="'+emirate.key+'"]').click();await page.waitForLoadState('networkidle');assert.equal(new URL(page.url()).pathname,p+'/services/');assert.equal(new URL(page.url()).hash,'#emirate-'+emirate.key);const group=page.locator('#emirate-'+emirate.key);await group.locator('summary').click();assert.deepEqual((await group.locator('[data-browse-service]').evaluateAll(a=>a.map(n=>n.dataset.browseService))).sort(),emirate.records.map(r=>r.id).sort(),'Exact local/federal emirate scope');const first=group.locator('a').first(),href=await first.getAttribute('href');await first.click();await page.waitForLoadState('networkidle');assert.equal(decodeURIComponent(new URL(page.url()).pathname),decodeURIComponent(new URL(href,base).pathname));journeys.push({locale:en?'en':'ar',width,emirate:emirate.key,count:emirate.records.length,clicks:3,status:'PASS'});}
+  await page.goto(base+p+'/',{waitUntil:'networkidle'});await page.locator('[data-home-authority="mohre"]').click();await page.waitForLoadState('networkidle');const r=records.find(r=>r.i==='mohre');await page.locator('a[href="'+p+r.u+'"]').first().click();await page.waitForLoadState('networkidle');assert.equal(decodeURIComponent(new URL(page.url()).pathname),p+r.u);journeys.push({locale:en?'en':'ar',width,authority:'mohre',clicks:2,status:'PASS'});
   await page.close();
  }
  const ref=await sharp(join(root,'qa/reference/approved-home-20261113.jpeg')).resize({width:1440}).removeAlpha().raw().toBuffer({resolveWithObject:true});
