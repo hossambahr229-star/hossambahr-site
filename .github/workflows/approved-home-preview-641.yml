@@ -1,3 +1,4 @@
+# Preview revision: 44a4636c86b568aae9dc6aed0e0802e6105573de
 name: Review approved homepage source preview 641
 on:
   push:
@@ -22,6 +23,7 @@ jobs:
       - run: |
           cd site
           npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
+          npm run build
           npm run build
           cp ../diagnostics/approved-home-preview-641.mjs diagnostics/approved-home-preview-641.mjs
           HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/approved-home-preview-641.mjs
