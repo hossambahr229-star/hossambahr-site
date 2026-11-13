@@ -31,7 +31,9 @@ const quickSpecs=[
 ];
 export function approvedHomeModel(records){
  const ids=new Set();for(const r of records){if(!r.id||ids.has(r.id))throw Error('Duplicate/missing service identity');ids.add(r.id);}
+ const preferred={business:['issue-trade-license-dubai','renew-business-license-sharjah','abu-dhabi-economic-license-amendment'],residence:['golden-residency-uae','تجديد-تصريح-إقامة-عبر-icp-خارج-دبي','cancel-residency-permit-uae'],work:['new-work-permit-overseas-uae','employment-contract-uae','cancel-work-permit-uae'],family:['family-residency-uae','تجديد-إقامة-أفراد-الأسرة-في-دبي'],documents:['تصديق-مستند-شخصي-داخل-الإمارات','attestation-of-commercial-invoices-via-edas-2-0'],property:['register-renew-ejari-contract-dubai'],identity:['renew-emirates-id-uae','تجديد-الهوية-الإماراتية-أو-إصدارها-لأول-مرة']};
  const areas=homeAreas.map(([key,ar,en,icon,categories])=>({key,ar,en,icon,categories,records:records.filter(r=>categories.includes(r.c))}));
+ for(const g of areas){const rank=r=>{const n=(preferred[g.key]||[]).indexOf(r.s);return n<0?999:n;};g.records.sort((a,b)=>rank(a)-rank(b));}
  const covered=new Set(areas.flatMap(g=>g.records.map(r=>r.id)));
  if(records.some(r=>!covered.has(r.id)))throw Error('Unmapped published service');
  const emirates=homeEmirates.map(([key,ar,en])=>({key,ar,en,records:records.filter(r=>!r.m.startsWith('اتحادي مع استثناءات')&&compatibleEmirate(r.m,ar))}));
@@ -41,7 +43,7 @@ export function approvedHomeModel(records){
 }
 export function renderApprovedHomepage({records,summary,en=false}){
  const model=approvedHomeModel(records),p=en?'/en':'',t=(ar,eng)=>en?eng:ar;
- const service=r=>p+r.u,areaHref=g=>p+'/services/#field-'+g.categories[0];
+ const service=r=>p+r.u,areaHref=g=>p+'/services/#'+(g.categories.length===1?'field-'+g.categories[0]:'browse-areas');
  const browse=p+'/services/#browse-services',ai=p+'/ai/',contact=p+'/contact/?handoff=1';
  const route=href=>en&&href==='/command-center/'?'/en/os/':en&&['/updates/','/accessibility/'].includes(href)?href:p+href;
  const nav=[['/',t('الرئيسية','Home')],['/services/',t('جميع الخدمات','All services')],['/discover/?domain=business',t('الشركات والأعمال','Business')],['/discover/?domain=residence',t('الأفراد والإقامة','Individuals')],['/authorities/',t('الجهات الحكومية','Authorities')],['/ai/','HB AI'],['/contact/',t('تواصل معنا','Contact')]];
