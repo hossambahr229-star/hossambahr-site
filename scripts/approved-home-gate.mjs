@@ -39,7 +39,7 @@ try{
    if(width<=960){await page.locator('.ah-mobile-menu>summary').click();assert.ok(await page.locator('.ah-mobile-menu nav').isVisible());await page.locator('.ah-mobile-menu>summary').press('Enter');assert.equal(await page.locator('.ah-mobile-menu').evaluate(e=>e.open),false);}
    await page.locator('.ai-showcase-cta').click();assert.equal(await page.locator('#premium-ai-panel').getAttribute('aria-hidden'),'false');await page.keyboard.press('Escape');assert.equal(await page.locator('#premium-ai-panel').getAttribute('aria-hidden'),'true');
    await page.locator('#premium-government-search').fill(en?'residence':'إقامة');await Promise.all([page.waitForURL(url=>url.pathname===p+'/discover/'&&url.searchParams.get('q')===(en?'residence':'إقامة')),page.locator('.premium-intent-search button').click()]);
-   await page.goto(base+p+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);
+   await page.goto(base+p+'/',{waitUntil:'networkidle'});await page.evaluate(()=>document.fonts.ready);await page.evaluate(()=>Promise.all([...document.images].map(img=>img.decode().catch(()=>{}))));
    if(name==='chrome'&&[390,768,1440].includes(width))await page.screenshot({path:join(output,`${en?'en':'ar'}-approved-${width}.png`),fullPage:true});
    assert.deepEqual(errors,[],'No runtime exceptions');results.push({browser:name,locale:en?'en':'ar',width,status:'PASS',layout});await page.close();
   }
