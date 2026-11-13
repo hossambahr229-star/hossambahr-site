@@ -9,7 +9,7 @@ if(!service||!source||service.authority.id!=='icp'||service.verification.details
 const approved={60:['68e3509b5ae59b00117383ea',939],90:['68e350ab5ae59b00117383ed',941],120:['68e356135ae59b001173842d',942]};
 if(service.officialVariantCards?.length!==3)throw Error('Expected three existing duration cards');
 const options=service.officialVariantCards.map(card=>{
- const tuple=approved[card.durationDays],details=card.details;
+ const tuple=approved[card.durationDays],details=service.officialVariantDetails?.[String(card.durationDays)];
  if(!tuple||card.informationUrl!=='https://icp.gov.ae/en/services-details/?serviceid='+tuple[0]||details?.scope!=='PUBLISHED_CARD_CONTENT_NOT_COMPLETE_ELIGIBILITY')throw Error('Unreviewed ICP variant');
  const choice=source.executionChoices.find(c=>c.transactionId===tuple[1]);
  const approvedApplication='https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/issueVisa/request/'+tuple[1]+'/step1?administrativeRegionId=1&withException=false';
