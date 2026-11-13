@@ -1,29 +1,43 @@
 {
-  "sourceSHA": "44a4636c86b568aae9dc6aed0e0802e6105573de",
+  "sourceSHA": "ef01a35e9d8fa5172f79cac4d9051adcc25cf694",
   "views": [
     {
       "locale": "ar",
       "width": 390,
       "errors": [],
+      "initialCLS": 0.00014855018028846155,
       "scrollWidth": 390
     },
     {
       "locale": "ar",
       "width": 1440,
       "errors": [],
+      "initialCLS": 0.049400800540123455,
       "scrollWidth": 1440
     },
     {
       "locale": "en",
       "width": 390,
       "errors": [],
+      "initialCLS": 0,
       "scrollWidth": 390
     },
     {
       "locale": "en",
       "width": 1440,
       "errors": [],
+      "initialCLS": 0,
       "scrollWidth": 1440
+    },
+    {
+      "capture": "LIVE_BEFORE_RELEASE",
+      "width": 390,
+      "approvedDesignAlreadyLive": 0
+    },
+    {
+      "capture": "LIVE_BEFORE_RELEASE",
+      "width": 1440,
+      "approvedDesignAlreadyLive": 0
     }
   ]
 }
