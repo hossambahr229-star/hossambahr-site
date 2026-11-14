@@ -1,0 +1,26 @@
+name: Verify all public contact destinations 644
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/platform-contact-path-audit-644.yml]
+permissions: {contents: write}
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: {ref: f2a6afca9ebd4a0420df408697dde2570c099bf0, path: site}
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - run: cd site && npm run build
+      - run: SOURCE_SHA=f2a6afca9ebd4a0420df408697dde2570c099bf0 node diagnostics/platform-contact-path-audit-644.mjs
+      - run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/platform-contact-path-audit-644
+          git diff --cached --quiet && exit 0
+          git commit -m "Record public contact destination consistency"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
