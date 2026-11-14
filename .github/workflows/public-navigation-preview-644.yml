@@ -1,0 +1,32 @@
+name: Targeted public navigation preview 644
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/public-navigation-preview-644.yml]
+permissions: {contents: write}
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: {ref: dd1000ded1993105c88fea4a33f699b2cc30716b, path: site}
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: cd site && npm install --no-save --no-package-lock playwright@1.55.0 && npm run build
+      - run: cd site && HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node scripts/directory-navigation-browser.mjs
+      - name: Preserve source browser evidence
+        if: always()
+        run: |
+          mkdir -p diagnostics/public-navigation-preview-644
+          cp site/artifacts/public-navigation/* diagnostics/public-navigation-preview-644/ || true
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/public-navigation-preview-644
+          git diff --cached --quiet && exit 0
+          git commit -m "Record source navigation preview for dd1000ded1993105c88fea4a33f699b2cc30716b"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
