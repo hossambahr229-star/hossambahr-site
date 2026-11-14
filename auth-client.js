@@ -10,6 +10,27 @@
   const route = location.pathname.replace(/^\/en(?=\/)/, "");
   const accountPath = english ? "/en/account/" : "/account/";
   const authPath = english ? "/en/auth/" : "/auth/";
+  // Disclosure navigation is presentation-only and must work even if Auth is unavailable.
+  function setupAuthDisclosures() {
+    const reveal = (hash, focus = false) => {
+      if (!["#signup", "#forgot"].includes(hash)) return;
+      const section = document.getElementById(hash.slice(1));
+      if (!section?.matches("details")) return;
+      section.open = true;
+      section.scrollIntoView({ block: "center" });
+      if (focus) section.querySelector("input:not([disabled])")?.focus({ preventScroll: true });
+    };
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest?.('a[href="#signup"],a[href="#forgot"]');
+      if (!link) return;
+      event.preventDefault();
+      if (location.hash !== link.hash) location.hash = link.hash;
+      reveal(link.hash, true);
+    });
+    window.addEventListener("hashchange", () => reveal(location.hash, true));
+    reveal(location.hash);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", setupAuthDisclosures, { once: true }); else setupAuthDisclosures();
   const config = window.HB_AUTH_CONFIG;
   if (!config?.url || !config?.publishableKey || !window.supabase?.createClient) return;
   const client = window.supabase.createClient(config.url, config.publishableKey, {
