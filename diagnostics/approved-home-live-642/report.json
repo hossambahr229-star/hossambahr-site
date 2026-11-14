@@ -1,0 +1,104 @@
+{
+  "sourceMerge": "ae20254448ae97a1934dcbb8ac1935dd5aedbdbd",
+  "captureSource": "LIVE_PRODUCTION",
+  "status": "PASS",
+  "humanAcceptance": "PENDING",
+  "rows": [
+    {
+      "browser": "chromium",
+      "locale": "ar",
+      "width": 390,
+      "counts": {
+        "residence": 32,
+        "work": 29,
+        "justice": 5
+      },
+      "catalogCoverage": 203,
+      "status": "PASS"
+    },
+    {
+      "browser": "chromium",
+      "locale": "ar",
+      "width": 1440,
+      "counts": {
+        "residence": 32,
+        "work": 29,
+        "justice": 5
+      },
+      "catalogCoverage": 203,
+      "status": "PASS"
+    },
+    {
+      "browser": "chromium",
+      "locale": "en",
+      "width": 390,
+      "counts": {
+        "residence": 32,
+        "work": 29,
+        "justice": 5
+      },
+      "catalogCoverage": 203,
+      "status": "PASS"
+    },
+    {
+      "browser": "chromium",
+      "locale": "en",
+      "width": 1440,
+      "counts": {
+        "residence": 32,
+        "work": 29,
+        "justice": 5
+      },
+      "catalogCoverage": 203,
+      "status": "PASS"
+    },
+    {
+      "browser": "firefox",
+      "locale": "ar",
+      "width": 390,
+      "counts": {
+        "residence": 32,
+        "work": 29,
+        "justice": 5
+      },
+      "catalogCoverage": 203,
+      "status": "PASS"
+    },
+    {
+      "browser": "firefox",
+      "locale": "ar",
+      "width": 1440,
+      "counts": {
+        "residence": 32,
+        "work": 29,
+        "justice": 5
+      },
+      "catalogCoverage": 203,
+      "status": "PASS"
+    },
+    {
+      "browser": "firefox",
+      "locale": "en",
+      "width": 390,
+      "counts": {
+        "residence": 32,
+        "work": 29,
+        "justice": 5
+      },
+      "catalogCoverage": 203,
+      "status": "PASS"
+    },
+    {
+      "browser": "firefox",
+      "locale": "en",
+      "width": 1440,
+      "counts": {
+        "residence": 32,
+        "work": 29,
+        "justice": 5
+      },
+      "catalogCoverage": 203,
+      "status": "PASS"
+    }
+  ]
+}
