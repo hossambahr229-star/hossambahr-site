@@ -28,6 +28,7 @@ for(const route of ['ai','auth','auth/callback','auth/reset','account','os']){
  html=html.replace(/href="\/os\/(?=[?#"])/g,'href="/en/os/').replaceAll('return=%2Fai%2F','return=%2Fen%2Fai%2F');
  if(route==='os')html=html.replace(/<script src="\/os-client\.js(?:\?[^\"]*)?"/,match=>'<script src="/os-i18n.js" defer></script>'+match);
  html=html.replace(/(<a\b[^>]*href="\/os\/automation\/"[^>]*>)([\s\S]*?)(<\/a>)/,(_,open,label,close)=>open+label+' (Arabic)'+close);
+ html=html.replace(/(<a\b[^>]*href="\/owner\/"[^>]*>)([\s\S]*?)(<\/a>)/,(_,open,label,close)=>open+label+' (Arabic)'+close);
  html=html.replace('</head>','<link rel="stylesheet" href="/english-experience.css"></head>');
  html=html.replace(/href="\/methodology\//g,'href="/en/methodology/');
  const dir=join(root,'en',route);await mkdir(dir,{recursive:true});await writeFile(join(dir,'index.html'),html);

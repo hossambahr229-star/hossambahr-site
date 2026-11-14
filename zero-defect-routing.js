@@ -734,6 +734,10 @@
       const hasCriteria = Boolean(query || emirate || category || authority || userType);
       const visibleLimit = assisted && !hasCriteria ? 6 : limit;
       cards.forEach((card) => { card.hidden = true; card.style.order = ""; });
+      // Keep keyboard and screen-reader order identical to the ranked visual order.
+      // Restore the original catalog order when criteria are cleared.
+      grid.append(...cards);
+      if (query) matches.forEach((card) => grid.append(card));
       matches.slice(0, visibleLimit).forEach((card, index) => {
         card.hidden = false;
         if (query) card.style.order = String(index);
