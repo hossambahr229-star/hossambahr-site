@@ -1,0 +1,44 @@
+name: Verify corrected homepage service families on Production 642
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/approved-home-live-642.yml]
+permissions: {contents: write}
+jobs:
+  live:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: ae20254448ae97a1934dcbb8ac1935dd5aedbdbd
+          path: site
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps firefox
+          cd site
+          npm run build
+      - name: Wait for exact published bilingual homepage
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFile} from 'node:fs/promises';import {createHash} from 'node:crypto';
+          const files=['index.html','en/index.html','approved-home.css','approved-assistant.css','transaction-discovery-data.json','zero-defect-routing.js'],hash=x=>createHash('sha256').update(x instanceof ArrayBuffer?Buffer.from(x):x).digest('hex'),expected=await Promise.all(files.map(f=>readFile('site/'+f)));
+          for(let attempt=0;attempt<60;attempt++){let ready=true;for(let i=0;i<files.length;i++){try{const path=files[i]==='index.html'?'/':files[i]==='en/index.html'?'/en/':'/'+files[i];const response=await fetch('https://hossambahr.com'+path+'?areas642=ae20254448ae97a1934dcbb8ac1935dd5aedbdbd&attempt='+attempt,{signal:AbortSignal.timeout(30000),headers:{'cache-control':'no-cache'}});if(!response.ok||hash(await response.arrayBuffer())!==hash(expected[i]))ready=false;}catch{ready=false;}}if(ready){console.log('Exact rebuilt bilingual HTML and assets reached Production');process.exit(0);}await new Promise(r=>setTimeout(r,15000));}throw Error('Release not coherently published');
+          NODE
+      - name: Verify actual revised native service groups and capture screenshots
+        run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/approved-home-live-642.mjs
+      - name: Preserve live evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/approved-home-live-642
+          git diff --cached --quiet && exit 0
+          git commit -m "Record actual Production service-family acceptance for ae20254448ae97a1934dcbb8ac1935dd5aedbdbd"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
