@@ -1,10 +1,10 @@
 name: Homepage Service Depth and Correct Destinations
 on:
   pull_request:
-    paths: ['approved-home.css','assets/approved-home-icons.svg','src/design/approved-home.mjs','scripts/approved-home-gate.mjs','src/publication/**','transaction-discovery.*','premium-platform.js','scripts/homepage-depth-browser.mjs','.github/workflows/homepage-depth.yml']
+    paths: ['approved-home.css','assets/approved-home-icons.svg','src/design/approved-home.mjs','scripts/approved-home-gate.mjs','scripts/directory-navigation-browser.mjs','scripts/public-navigation-integrity.test.mjs','src/publication/**','auth-client.js','transaction-discovery.*','premium-platform.js','scripts/homepage-depth-browser.mjs','.github/workflows/homepage-depth.yml']
   push:
     branches: [main]
-    paths: ['approved-home.css','assets/approved-home-icons.svg','src/design/approved-home.mjs','scripts/approved-home-gate.mjs','src/publication/**','transaction-discovery.*','premium-platform.js','scripts/homepage-depth-browser.mjs','.github/workflows/homepage-depth.yml']
+    paths: ['approved-home.css','assets/approved-home-icons.svg','src/design/approved-home.mjs','scripts/approved-home-gate.mjs','scripts/directory-navigation-browser.mjs','scripts/public-navigation-integrity.test.mjs','src/publication/**','auth-client.js','transaction-discovery.*','premium-platform.js','scripts/homepage-depth-browser.mjs','.github/workflows/homepage-depth.yml']
 permissions: {contents: read}
 jobs:
   preview:
@@ -19,9 +19,10 @@ jobs:
       - run: npm install --no-save --no-package-lock playwright@1.55.0 sharp@0.35.4
       - run: npm run build
       - run: HB_BROWSER_PATH="$(which chrome)" node scripts/homepage-depth-browser.mjs
+      - run: HB_BROWSER_PATH="$(which chrome)" node scripts/directory-navigation-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: homepage-depth-preview, path: artifacts/homepage-depth}
+        with: {name: homepage-depth-preview, path: 'artifacts/public-navigation'}
   live:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
@@ -49,6 +50,7 @@ jobs:
           }throw Error('Current bilingual homepage HTML and runtime assets are not coherently published');
           NODE
       - run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" node scripts/homepage-depth-browser.mjs
+      - run: HB_BASE_URL=https://hossambahr.com HB_BROWSER_PATH="$(which chrome)" node scripts/directory-navigation-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: homepage-depth-live, path: artifacts/homepage-depth}
+        with: {name: homepage-depth-live, path: 'artifacts/public-navigation'}

@@ -94,6 +94,11 @@ for(const en of [false,true]){
     ? /(<main\b[^>]*\bid="main-content"[^>]*>[\s\S]*?<\/h1>)/i
     : /(<main\b[^>]*\bid="main-content"[^>]*>[\s\S]*?<header\b[^>]*\bclass="page-hero"[^>]*>[\s\S]*?<\/header>)/i;
   if(!main.test(html))throw Error('Missing service directory main: '+prefix);
+  // Search deep links must resolve before progressive enhancement starts.
+  if(!/<form\b[^>]*\bid="directory-search"/i.test(html)){
+    html=html.replace(/<form\b([^>]*\bclass="search-shell"[^>]*)>/i,'<form id="directory-search"$1>');
+  }
+  if(!/<form\b[^>]*\bid="directory-search"/i.test(html))throw Error('Missing native directory search target: '+prefix);
   html=html.replace(main,tag=>tag+'<!-- hb-browse:start -->'+directory(en)+'<!-- hb-browse:end -->');
   html=html.replace('</head>','<link data-service-browse-css rel="stylesheet" href="/service-browse.css?v='+version+'"></head>');
   await writeFile(file,html);
