@@ -1,0 +1,82 @@
+{
+  "captureSource": "LIVE_PRODUCTION",
+  "rows": [
+    {
+      "locale": "ar",
+      "width": 390,
+      "query": "تجديد إقامة",
+      "keyboardRankOrder": "PASS",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "query": "renew residence",
+      "keyboardRankOrder": "existing native renderer",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "query": "تجديد إقامة",
+      "keyboardRankOrder": "PASS",
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "query": "renew residence",
+      "keyboardRankOrder": "existing native renderer",
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "javaScript": false,
+      "nativeSearchFragment": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "javaScript": false,
+      "nativeSearchFragment": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "desktopLinksOrNativeMobileSummary": true,
+      "initialSignupHash": true,
+      "repeatedActivation": true,
+      "noFormsSubmitted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "desktopLinksOrNativeMobileSummary": true,
+      "initialSignupHash": true,
+      "repeatedActivation": true,
+      "noFormsSubmitted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "desktopLinksOrNativeMobileSummary": true,
+      "initialSignupHash": true,
+      "repeatedActivation": true,
+      "noFormsSubmitted": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "desktopLinksOrNativeMobileSummary": true,
+      "initialSignupHash": true,
+      "repeatedActivation": true,
+      "noFormsSubmitted": true,
+      "status": "PASS"
+    }
+  ],
+  "sourceMerge": "f2a6afca9ebd4a0420df408697dde2570c099bf0"
+}
