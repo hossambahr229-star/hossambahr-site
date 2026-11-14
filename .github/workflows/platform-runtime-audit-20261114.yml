@@ -1,0 +1,31 @@
+name: Render every Production page on desktop and mobile 20261114
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/platform-runtime-audit-20261114.yml]
+permissions: {contents: write}
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: {ref: 6c4f3db1a1f7d63ec72d69bf157c48ff7b084c8e, path: site}
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: cd site && npm run build
+      - run: SOURCE_SHA=6c4f3db1a1f7d63ec72d69bf157c48ff7b084c8e HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/platform-runtime-audit-20261114.mjs
+      - name: Preserve actual browser findings
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/platform-runtime-audit-20261114
+          git diff --cached --quiet && exit 0
+          git commit -m "Record whole-platform real desktop and mobile browser findings"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
