@@ -1,0 +1,29 @@
+name: Full platform routes and link discovery 20261114
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/platform-link-audit-20261114.yml]
+permissions: {contents: write}
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: {ref: 6c4f3db1a1f7d63ec72d69bf157c48ff7b084c8e, path: site}
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - run: npm install --no-save --no-package-lock cheerio@1.1.2
+      - run: cd site && npm run build
+      - run: SOURCE_SHA=6c4f3db1a1f7d63ec72d69bf157c48ff7b084c8e node diagnostics/platform-link-audit-20261114.mjs
+      - name: Preserve actual findings
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/platform-link-audit-20261114
+          git diff --cached --quiet && exit 0
+          git commit -m "Record full public route and link discovery"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
