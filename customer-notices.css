@@ -1,0 +1,12 @@
+/* Shared, scoped reading and touch targets for native customer notices. */
+[data-customer-data-page] details{border:1px solid #d5dfd8;border-radius:12px;background:#fff;margin-block:10px;overflow:hidden}
+[data-customer-data-page] details>summary{box-sizing:border-box;min-height:48px;padding:12px 16px;cursor:pointer;font-weight:600;line-height:1.6;color:#103e36}
+[data-customer-data-page] details[open]>summary{border-bottom:1px solid #e5ebe7;background:#f3f7f3}
+[data-customer-data-page] details>p{margin:0;padding:14px 16px;line-height:1.8}
+[data-customer-data-page] summary:focus-visible{outline:3px solid #b68b36;outline-offset:-3px}
+[data-customer-data-page] p{overflow-wrap:anywhere}
+[data-customer-data-page]>p>a{display:inline-flex;align-items:center;min-height:44px}
+body:has([data-customer-data-page]) header nav a{display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box}
+
+/* Keep Arabic privacy text inside readable page gutters. */
+[data-customer-data-page="privacy"]>.prose{box-sizing:border-box;width:min(100%,800px);padding:24px clamp(16px,3vw,32px)}
