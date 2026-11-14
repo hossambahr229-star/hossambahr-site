@@ -12,6 +12,7 @@
   const authPath = english ? "/en/auth/" : "/auth/";
   // Disclosure navigation is presentation-only and must work even if Auth is unavailable.
   function setupAuthDisclosures() {
+    if (route !== "/auth/") return;
     const reveal = (hash, focus = false) => {
       if (!["#signup", "#forgot"].includes(hash)) return;
       const section = document.getElementById(hash.slice(1));
