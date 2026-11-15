@@ -1,0 +1,28 @@
+name: Inspect original education route after observed client redirect
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/education-original-followup-20261115.yml]
+permissions: {contents: write}
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/education-original-followup-20261115.mjs
+      - name: Preserve actual read-only review
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/education-original-followup-20261115
+          git diff --cached --quiet && exit 0
+          git commit -m "Record actual public education verification route inspection"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
