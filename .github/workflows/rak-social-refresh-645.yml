@@ -1,0 +1,41 @@
+name: Refresh only changed RAK guidance social cards 645
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/rak-social-refresh-645.yml]
+permissions: {contents: write}
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: agent/rak-official-route-recovery-20261115}
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - name: Materialize sources before refreshing existing artwork
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';import {execSync} from 'node:child_process';
+          const build=JSON.parse(readFileSync('package.json')).scripts.build;
+          const suffix=' && node scripts/verify-service-social-assets.mjs';
+          if(!build.endsWith(suffix))throw Error('Unexpected build contract');
+          execSync(build.slice(0,-suffix.length),{stdio:'inherit'});
+          NODE
+      - name: Regenerate only changed official-guidance artwork
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: npm run social:generate
+      - run: npm run build && npm run test:architecture
+      - name: Commit generated manifest and changed cards to existing PR
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add assets/social/services
+          git diff --cached --stat
+          git diff --cached --quiet && exit 0
+          git commit -m "Refresh RAK social cards to label official guidance honestly"
+          git push origin HEAD:agent/rak-official-route-recovery-20261115
