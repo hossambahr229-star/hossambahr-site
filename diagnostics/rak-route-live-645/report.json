@@ -1,0 +1,50 @@
+{
+  "sourceMerge": "bbd575fd69656235379184e541f728b6f7975e68",
+  "runUrl": "https://github.com/hossambahr229-star/hossambahr-site/actions/runs/43696657528",
+  "base": "https://hossambahr.com",
+  "exactAffectedBytes": true,
+  "cases": [
+    {
+      "locale": "ar",
+      "width": 390,
+      "status": "PASS",
+      "officialUrl": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/key-steps-to-starting-a-business-in-ras-al-khaimah/",
+      "assistedNumber": "/971503780460",
+      "contact": "https://hossambahr.com/contact/?service=ras-al-khaimah-license-issuance&source=%2Fservices%2Fras-al-khaimah-license-issuance%2F&handoff=1",
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "lang": "ar",
+        "dir": "rtl",
+        "brokenImages": []
+      },
+      "pageErrors": []
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS",
+      "officialUrl": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/key-steps-to-starting-a-business-in-ras-al-khaimah/",
+      "assistedNumber": "/971503780460",
+      "contact": "https://hossambahr.com/contact/?service=ras-al-khaimah-license-issuance&source=%2Fservices%2Fras-al-khaimah-license-issuance%2F&handoff=1",
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "lang": "ar",
+        "dir": "rtl",
+        "brokenImages": []
+      },
+      "pageErrors": []
+    }
+  ],
+  "externalDependency": [
+    {
+      "status": "RUNNER_NETWORK_UNVERIFIED",
+      "detail": "TimeoutError: page.waitForEvent: Timeout 20000ms exceeded while waiting for event \"popup\"\n=========================== logs ===========================\nwaiting for event \"popup\"\n===",
+      "priorHumanBrowserVerified": true
+    }
+  ],
+  "scope": "Actual public guest Production pathways, not authenticated government execution",
+  "status": "FAIL",
+  "error": "TimeoutError: locator.getAttribute: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('.primary-government-cta')\n"
+}
