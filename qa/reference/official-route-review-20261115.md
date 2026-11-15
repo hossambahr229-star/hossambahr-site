@@ -11,3 +11,5 @@ The real browser displayed the official title الخطوات الرئيسية ل
 The prior automated HTTP report is preserved unchanged. Its 99 restricted/unverified URLs were also inspected read-only in the real browser: 97 yielded identifiable official service, login or government-hub content after loading; the RAK endpoint yielded an explicit error; only the education certificate URL remained blocked by authentication. Fresh-tab follow-ups resolved DM4191 (Building Completion Certificate), UAQ (official digitaluaq.ae redirect), SEDD renewal (official digital login), and MOHRE contract issuance/renewal (correct service card). Successful browser reachability is not proof of an authenticated government transaction or revalidation of service fees/requirements.
 
 No universal external-link or full product FINAL PASS is declared. Internal route acceptance from PR644 remains preserved.
+
+Artwork dependency: the existing social-card generator refreshed only this service’s Arabic and English cards after OFFICIAL_GUIDANCE classification changed. The original fingerprint verification and full build remain enforced; no gate is skipped in acceptance.
