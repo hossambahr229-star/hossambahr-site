@@ -1,0 +1,47 @@
+{
+  "runUrl": "https://github.com/hossambahr229-star/hossambahr-site/actions/runs/44057235913",
+  "scope": "Actual anonymous click/navigation initiation, not government execution",
+  "cases": [
+    {
+      "locale": "ar",
+      "before": "https://hossambahr.com/services/ras-al-khaimah-license-issuance/",
+      "href": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/key-steps-to-starting-a-business-in-ras-al-khaimah/",
+      "observed": {
+        "url": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/key-steps-to-starting-a-business-in-ras-al-khaimah/",
+        "method": "GET"
+      },
+      "after": "https://hossambahr.com/services/ras-al-khaimah-license-issuance/",
+      "requests": [
+        {
+          "url": "https://hossambahr.com/services/ras-al-khaimah-license-issuance/",
+          "method": "GET"
+        },
+        {
+          "url": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/key-steps-to-starting-a-business-in-ras-al-khaimah/",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "before": "https://hossambahr.com/en/services/ras-al-khaimah-license-issuance/",
+      "href": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/key-steps-to-starting-a-business-in-ras-al-khaimah/",
+      "observed": {
+        "url": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/key-steps-to-starting-a-business-in-ras-al-khaimah/",
+        "method": "GET"
+      },
+      "after": "https://hossambahr.com/en/services/ras-al-khaimah-license-issuance/",
+      "requests": [
+        {
+          "url": "https://hossambahr.com/en/services/ras-al-khaimah-license-issuance/",
+          "method": "GET"
+        },
+        {
+          "url": "https://www.rak.ae/wps/portal/rak/home/business/starting-business-rak-economic/key-steps-to-starting-a-business-in-ras-al-khaimah/",
+          "method": "GET"
+        }
+      ]
+    }
+  ],
+  "status": "PASS"
+}
