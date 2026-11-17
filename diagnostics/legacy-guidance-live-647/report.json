@@ -1,0 +1,148 @@
+{
+  "runUrl": "https://github.com/hossambahr229-star/hossambahr-site/actions/runs/44184321366",
+  "sourceMerge": "91a6927c72875c8d5ae9370335fb3e09c8e80814",
+  "exactAffectedBytes": true,
+  "scope": "Retained Arabic guidance public routes, scope labels and indexing directives; no fabricated English translations or authenticated execution",
+  "cases": [
+    {
+      "route": "/services/التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني/",
+      "kind": "selection",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "lang": "ar"
+      },
+      "status": "PASS",
+      "actualNextPage": "https://hossambahr.com/authorities/mohre/"
+    },
+    {
+      "route": "/services/التفويض-الإلكتروني-للمنشأة-بديل-بطاقة-التوقيع-الإلكتروني/",
+      "kind": "selection",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "lang": "ar"
+      },
+      "status": "PASS",
+      "actualNextPage": "https://hossambahr.com/authorities/mohre/"
+    },
+    {
+      "route": "/services/إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل/",
+      "kind": "selection",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "lang": "ar"
+      },
+      "status": "PASS",
+      "actualNextPage": "https://hossambahr.com/authorities/mohre/"
+    },
+    {
+      "route": "/services/إصدار-عرض-العمل-ضمن-طلب-تصريح-العمل/",
+      "kind": "selection",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "lang": "ar"
+      },
+      "status": "PASS",
+      "actualNextPage": "https://hossambahr.com/authorities/mohre/"
+    },
+    {
+      "route": "/services/خدمات-نافس-للمنشآت/",
+      "kind": "nafis",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "lang": "ar"
+      },
+      "status": "PASS"
+    },
+    {
+      "route": "/services/خدمات-نافس-للمنشآت/",
+      "kind": "nafis",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "lang": "ar"
+      },
+      "status": "PASS",
+      "actualExternalRequest": "https://nafis.gov.ae/employer",
+      "externalAvailability": "NETWORK_UNVERIFIED",
+      "externalDetail": "TimeoutError: page.waitForURL: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"https://nafis.gov.ae/**\" until \"dom"
+    },
+    {
+      "route": "/services/legacy-service-6f3bee6661/",
+      "kind": "pending",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "lang": "ar"
+      },
+      "status": "PASS"
+    },
+    {
+      "route": "/services/legacy-service-6f3bee6661/",
+      "kind": "pending",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "lang": "ar"
+      },
+      "status": "PASS"
+    },
+    {
+      "route": "/services/legacy-service-e619a9e547/",
+      "kind": "pending",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "lang": "ar"
+      },
+      "status": "PASS"
+    },
+    {
+      "route": "/services/legacy-service-e619a9e547/",
+      "kind": "pending",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "lang": "ar"
+      },
+      "status": "PASS"
+    },
+    {
+      "route": "/services/legacy-service-f6481e594b/",
+      "kind": "pending",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "lang": "ar"
+      },
+      "status": "PASS"
+    },
+    {
+      "route": "/services/legacy-service-f6481e594b/",
+      "kind": "pending",
+      "width": 1440,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "lang": "ar"
+      },
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}
