@@ -1,0 +1,36 @@
+name: Verify corrected localized RAK pathway probes on actual Production
+on:
+  push:
+    branches: [agent/dld-source-review-evidence]
+    paths: [.github/workflows/rak-route-followup-20261117.yml]
+permissions: {contents: write}
+jobs:
+  live:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      SOURCE_SHA: bbd575fd69656235379184e541f728b6f7975e68
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: {ref: bbd575fd69656235379184e541f728b6f7975e68, path: site}
+      - uses: actions/setup-node@v4
+        with: {node-version: 24}
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: cd site && npm run build
+      - name: Verify exact deployed bytes and actual bilingual pathways
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: node diagnostics/rak-route-live-645-followup-20261117.mjs
+      - name: Preserve actual Production evidence
+        if: always()
+        run: |
+          git config user.name "HossamBahr Acceptance Evidence"
+          git config user.email "acceptance@users.noreply.github.com"
+          git add diagnostics/rak-route-live-645-followup-20261117
+          git diff --cached --quiet && exit 0
+          git commit -m "Record real Production RAK government route acceptance for bbd575fd69656235379184e541f728b6f7975e68"
+          git pull --rebase origin agent/dld-source-review-evidence
+          git push origin HEAD:agent/dld-source-review-evidence
