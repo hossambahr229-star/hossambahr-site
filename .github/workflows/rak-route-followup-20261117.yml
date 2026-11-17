@@ -1,4 +1,4 @@
-name: Verify actual homepage assistant government navigation after 646
+name: Verify corrected legacy guidance routes and indexing on Production 647
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -8,25 +8,25 @@ jobs:
   live:
     runs-on: ubuntu-24.04
     timeout-minutes: 35
-    env: {SOURCE_SHA: 181222534f416f1ed52cbdfcd3001f896777bbc6}
+    env: {SOURCE_SHA: 91a6927c72875c8d5ae9370335fb3e09c8e80814}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: 181222534f416f1ed52cbdfcd3001f896777bbc6, path: site}
+        with: {ref: 91a6927c72875c8d5ae9370335fb3e09c8e80814, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
       - uses: browser-actions/setup-chrome@v1
         id: chrome
       - run: npm install --no-save --no-package-lock playwright@1.55.0
       - run: cd site && npm run build
-      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/home-ai-navigation-live-646.mjs
-      - name: Preserve actual Production journey evidence
+      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/legacy-guidance-live-647.mjs
+      - name: Preserve actual Production guidance evidence
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/home-ai-navigation-live-646
+          git add diagnostics/legacy-guidance-live-647
           git diff --cached --quiet && exit 0
-          git commit -m "Record real homepage assistant government navigation after 646"
+          git commit -m "Record actual legacy guidance routes and indexing after 647"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
