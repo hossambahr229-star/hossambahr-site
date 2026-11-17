@@ -1271,11 +1271,6 @@
     linkPopularTransactionsDirectly();
     activatePhase6Experience();
   };
-  document.addEventListener('click', (event) => {
-    if (!isHomepagePath()) return;
-    const external = event.target.closest?.('a[href^="https://"], a[href^="http://"]');
-    if (external) event.preventDefault();
-  }, { capture: true });
   const boot = () => setTimeout(start, /platform-v\d+/i.test(document.body?.dataset.release || "") ? 1800 : 350);
   /* Every exported route can contain a hydrated Next shell. Waiting for the
      load boundary prevents the progressive runtime from racing hydration on
