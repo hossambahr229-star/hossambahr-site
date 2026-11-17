@@ -20,6 +20,7 @@ let structuredDataAdded = 0;
 let fujairahMunicipalityInfoAdded = 0;
 let canonicalOverridesApplied = 0;
 let legacyBrandMarksReplaced = 0;
+let pendingVerificationNoindex = 0;
 
 const stripTags = (value) => String(value || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const decodeBasicEntities = (value) => String(value || "")
@@ -165,6 +166,14 @@ async function walk(directory) {
     await writeFile(path, html, "utf8");
       notFoundFixed += 1;
       continue;
+    }
+
+    // Retained pending guidance remains reachable by bookmark, but is not an
+    // approved search landing page until its transaction scope is verified.
+    if (normalized.startsWith("services/") && /<main\b[^>]*data-publication-state=["']PENDING_VERIFICATION["']/i.test(html)) {
+      html = html.replace(/<meta\b[^>]*name=["']robots["'][^>]*>/gi, "")
+        .replace("</head>", '<meta name="robots" content="noindex, follow"></head>');
+      pendingVerificationNoindex += 1;
     }
 
     html = html.replace(
@@ -332,4 +341,5 @@ console.log(JSON.stringify({
   fujairahMunicipalityInfoAdded,
   canonicalOverridesApplied,
   legacyBrandMarksReplaced,
+  pendingVerificationNoindex,
 }));
