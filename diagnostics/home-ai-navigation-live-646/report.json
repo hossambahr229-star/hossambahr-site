@@ -1,0 +1,61 @@
+{
+  "runUrl": "https://github.com/hossambahr229-star/hossambahr-site/actions/runs/44182584464",
+  "sourceMerge": "181222534f416f1ed52cbdfcd3001f896777bbc6",
+  "exactAffectedBytes": true,
+  "scope": "Actual public assistant routing/navigation and existing assistance consent; no external-model or authenticated execution PASS",
+  "cases": [
+    {
+      "locale": "ar",
+      "width": 1440,
+      "status": "PASS",
+      "officialHref": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+      "actualNavigationRequest": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+      "clickPrevented": false,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "status": "PASS",
+      "officialHref": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+      "actualNavigationRequest": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+      "clickPrevented": false,
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390
+      },
+      "assistedConsentPreserved": true,
+      "whatsappNumber": "/971503780460"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "status": "PASS",
+      "officialHref": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+      "actualNavigationRequest": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+      "clickPrevented": false,
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440
+      }
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "status": "PASS",
+      "officialHref": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+      "actualNavigationRequest": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/renew-trade-licence",
+      "clickPrevented": false,
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390
+      },
+      "assistedConsentPreserved": true,
+      "whatsappNumber": "/971503780460"
+    }
+  ],
+  "status": "PASS"
+}
