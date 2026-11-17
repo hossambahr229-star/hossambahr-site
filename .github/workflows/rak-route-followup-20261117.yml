@@ -1,4 +1,4 @@
-name: Verify corrected localized RAK pathway probes on actual Production
+name: Verify real outgoing government button navigation
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -7,30 +7,22 @@ permissions: {contents: write}
 jobs:
   live:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
-    env:
-      SOURCE_SHA: bbd575fd69656235379184e541f728b6f7975e68
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with: {ref: bbd575fd69656235379184e541f728b6f7975e68, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
       - uses: browser-actions/setup-chrome@v1
         id: chrome
       - run: npm install --no-save --no-package-lock playwright@1.55.0
-      - run: cd site && npm run build
-      - name: Verify exact deployed bytes and actual bilingual pathways
-        env:
-          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
-        run: node diagnostics/rak-route-live-645-followup-20261117.mjs
-      - name: Preserve actual Production evidence
+      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/rak-external-click-20261117.mjs
+      - name: Preserve actual click evidence
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/rak-route-live-645-followup-20261117
+          git add diagnostics/rak-external-click-20261117
           git diff --cached --quiet && exit 0
-          git commit -m "Record real Production RAK government route acceptance for bbd575fd69656235379184e541f728b6f7975e68"
+          git commit -m "Record actual government button navigation requests"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
