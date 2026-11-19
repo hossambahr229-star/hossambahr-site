@@ -1,0 +1,94 @@
+{
+  "sourceSha": "87c39d367244eda2dc3b472eb05f98603ae09205",
+  "scope": "Historical Google email follow-up; not current Google index or ranking acceptance",
+  "htmlFiles": 576,
+  "datasetNodes": [],
+  "invalidJsonLd": [],
+  "queries": [
+    {
+      "query": "زيارة قريب او صديق دبي",
+      "evidence": "Observed query in September 2026 Search Console monthly email; one click, not query-page association",
+      "expected": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+      "actual": [
+        {
+          "slug": "تأشيرة-زيارة-قريب-أو-صديق-لدخول-واحد-في-دبي",
+          "name": "General Directorate of Residency and Foreigners Affairs Dubai"
+        },
+        {
+          "slug": "تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي",
+          "name": "Federal Authority for Identity, Citizenship, Customs and Port Security"
+        },
+        {
+          "slug": "add-business-activity-dubai",
+          "name": "Dubai Department of Economy and Tourism (DET)"
+        },
+        {
+          "slug": "reserve-trade-name-dubai",
+          "name": "Dubai Department of Economy and Tourism (DET)"
+        },
+        {
+          "slug": "green-residence-partner-investor-dubai",
+          "name": "General Directorate of Residency and Foreigners Affairs Dubai"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "query": "إلغاء تصريح مغادرة للمخالفين",
+      "evidence": "Observed query in September 2026 Search Console monthly email; one click, not query-page association",
+      "expected": "cancel-departure-permit-icp",
+      "actual": [
+        {
+          "slug": "cancel-departure-permit-icp",
+          "name": "Federal Authority for Identity, Citizenship, Customs and Port Security"
+        },
+        {
+          "slug": "cancel-residency-permit-uae",
+          "name": "General Directorate of Residency and Foreigners Affairs Dubai"
+        },
+        {
+          "slug": "cancel-residency-permit-icp",
+          "name": "Federal Authority for Identity, Citizenship, Customs and Port Security"
+        },
+        {
+          "slug": "إلغاء-تصريح-عمل-عامل-مساعد",
+          "name": "Ministry of Human Resources and Emiratisation"
+        },
+        {
+          "slug": "إلغاء-تصريح-لعامل-لديه-قضية-عمالية",
+          "name": "Ministry of Human Resources and Emiratisation"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "query": "الهيئة الاتحادية للهوية والجمارك أمن المنافذ دبي",
+      "evidence": "Observed query in September 2026 Search Console monthly email; one click, not query-page association",
+      "expected": null,
+      "actual": [
+        {
+          "slug": "sira-new-security-activity-license-dubai",
+          "name": "Security Industry Regulatory Agency (SIRA)"
+        },
+        {
+          "slug": "sira-security-system-certification-dubai",
+          "name": "Security Industry Regulatory Agency (SIRA)"
+        },
+        {
+          "slug": "amend-business-license-dubai",
+          "name": "Dubai Department of Economy and Tourism (DET)"
+        },
+        {
+          "slug": "family-residency-uae",
+          "name": "General Directorate of Residency and Foreigners Affairs Dubai"
+        },
+        {
+          "slug": "إصدار-إقامة-للوالدين-ضمن-الحالات-الإنسانية-في-دبي",
+          "name": "General Directorate of Residency and Foreigners Affairs Dubai"
+        }
+      ],
+      "status": "AUTHORITY_AND_JURISDICTION_AMBIGUOUS; NO_SINGLE_TRANSACTION_ASSERTED"
+    }
+  ],
+  "status": "PASS"
+}
