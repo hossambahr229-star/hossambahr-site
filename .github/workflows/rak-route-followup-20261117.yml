@@ -1,4 +1,4 @@
-name: Finish only corrected ICP DOM search-presentation cases 648
+name: Verify actual Production sitemap release dates 649
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -8,24 +8,23 @@ jobs:
   live:
     runs-on: ubuntu-24.04
     timeout-minutes: 12
-    env: {SOURCE_ASSET_SHA: a1da56586d6fec8e0da13cddc045d98fe61c9197}
+    env: {SOURCE_ASSET_SHA: 87c39d367244eda2dc3b472eb05f98603ae09205}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: a1da56586d6fec8e0da13cddc045d98fe61c9197, path: site}
+        with: {ref: 87c39d367244eda2dc3b472eb05f98603ae09205, path: site}
+      - uses: actions/checkout@v4
+        with: {ref: a1da56586d6fec8e0da13cddc045d98fe61c9197, path: before}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
-      - uses: browser-actions/setup-chrome@v1
-        id: chrome
-      - run: npm install --no-save --no-package-lock playwright@1.55.0
-      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/search-presentation-icp-followup-648.mjs
-      - name: Preserve targeted actual DOM follow-up
+      - run: node diagnostics/search-sitemap-live-649.mjs
+      - name: Preserve actual Production XML evidence
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/search-presentation-icp-followup-648
+          git add diagnostics/search-sitemap-live-649
           git diff --cached --quiet && exit 0
-          git commit -m "Record corrected actual ICP search-presentation DOM acceptance"
+          git commit -m "Record actual Production scoped sitemap release-date acceptance"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
