@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-19T07:56:49.307Z",
+  "status": "PASS",
+  "checks": [
+    "Actual Production HTTP 200",
+    "Exact deployed sitemap bytes",
+    "URL membership preserved",
+    "Only lastmod changed",
+    "Every affected canonical page dated",
+    "Unrelated entries unchanged"
+  ],
+  "errors": [],
+  "sourceAssetSha": "87c39d367244eda2dc3b472eb05f98603ae09205",
+  "recordedReleaseDate": "2026-11-19",
+  "urlCount": 496,
+  "affectedCanonicalPages": 404,
+  "updatedLastmod": 404,
+  "unrelatedBlocksPreserved": 92,
+  "liveSha256": "018678959af2f8f2e85f8e26899df4c34abd5b25162b59b15e34e6df653c7328"
+}
