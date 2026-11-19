@@ -1,0 +1,74 @@
+{
+  "sourceMerge": "9d4835d840eeea47b32d659577af9008b504317f",
+  "sourceAssets": "a1da56586d6fec8e0da13cddc045d98fe61c9197",
+  "runUrl": "https://github.com/hossambahr229-star/hossambahr-site/actions/runs/44481254738",
+  "baselineRun": "https://github.com/hossambahr229-star/hossambahr-site/actions/runs/44480026874",
+  "baselineHttpPassed": 404,
+  "baselineDomPassed": 8,
+  "scope": "Corrected DOM control selector for retained ICP bookmark section; previous failed report retained. No Google ranking/indexing acceptance.",
+  "cases": [
+    {
+      "locale": "ar",
+      "width": 390,
+      "route": "/services/amendment-of-residency-permit-data/",
+      "status": "PASS",
+      "title": "تعديل بيانات تصريح الإقامة — الإمارات خارج دبي | ICP | HossamBahr",
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "main": true,
+        "h1": "تعديل بيانات تصريح الإقامة",
+        "bookmarkElement": "SECTION"
+      },
+      "actualGovernmentControl": true
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "route": "/services/amendment-of-residency-permit-data/",
+      "status": "PASS",
+      "title": "تعديل بيانات تصريح الإقامة — الإمارات خارج دبي | ICP | HossamBahr",
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "main": true,
+        "h1": "تعديل بيانات تصريح الإقامة",
+        "bookmarkElement": "SECTION"
+      },
+      "actualGovernmentControl": true
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "route": "/en/services/amendment-of-residency-permit-data/",
+      "status": "PASS",
+      "title": "Amendment of Residency Permit Data — UAE outside Dubai | ICP | HOSSAM BAHR",
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "main": true,
+        "h1": "Amendment of Residency Permit Data",
+        "bookmarkElement": "A"
+      },
+      "actualGovernmentControl": true
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "route": "/en/services/amendment-of-residency-permit-data/",
+      "status": "PASS",
+      "title": "Amendment of Residency Permit Data — UAE outside Dubai | ICP | HOSSAM BAHR",
+      "layout": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "main": true,
+        "h1": "Amendment of Residency Permit Data",
+        "bookmarkElement": "A"
+      },
+      "actualGovernmentControl": true
+    }
+  ],
+  "status": "PASS",
+  "totalTechnicalHttpPassed": 404,
+  "totalDomPassed": 12
+}
