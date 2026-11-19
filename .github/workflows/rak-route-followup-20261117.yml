@@ -1,27 +1,35 @@
-name: Inspect canonical service search presentation before SEO changes
+name: Verify all canonical service search metadata on actual Production 648
 on:
   push:
     branches: [agent/dld-source-review-evidence]
     paths: [.github/workflows/rak-route-followup-20261117.yml]
 permissions: {contents: write}
 jobs:
-  inspect:
+  live:
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
-    env: {SOURCE_SHA: 88753fc1f8e0e9e1aa613afd24306e54986a1d2e}
+    timeout-minutes: 35
+    env: {SOURCE_SHA: 9d4835d840eeea47b32d659577af9008b504317f}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: 88753fc1f8e0e9e1aa613afd24306e54986a1d2e, path: site}
+        with: {ref: 9d4835d840eeea47b32d659577af9008b504317f, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
-      - run: node diagnostics/seo-service-inventory-20261119.mjs
-      - name: Preserve source search presentation inventory
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 cheerio@1.1.2
+      - run: cd site && npm run build
+      - name: Verify all404canonical HTTP pages and actual DOM samples
+        env:
+          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: node diagnostics/search-presentation-live-648.mjs
+      - name: Preserve actual Production search presentation evidence
+        if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/seo-service-inventory-20261119
+          git add diagnostics/search-presentation-live-648
           git diff --cached --quiet && exit 0
-          git commit -m "Record all service search titles descriptions and jurisdictions before SEO changes"
+          git commit -m "Record all canonical Production search presentation checks after 648"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
