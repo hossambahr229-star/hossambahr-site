@@ -1,4 +1,4 @@
-name: Verify all canonical service search metadata on actual Production 648
+name: Finish only corrected ICP DOM search-presentation cases 648
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -7,29 +7,25 @@ permissions: {contents: write}
 jobs:
   live:
     runs-on: ubuntu-24.04
-    timeout-minutes: 35
-    env: {SOURCE_SHA: 9d4835d840eeea47b32d659577af9008b504317f}
+    timeout-minutes: 12
+    env: {SOURCE_ASSET_SHA: a1da56586d6fec8e0da13cddc045d98fe61c9197}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: 9d4835d840eeea47b32d659577af9008b504317f, path: site}
+        with: {ref: a1da56586d6fec8e0da13cddc045d98fe61c9197, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
       - uses: browser-actions/setup-chrome@v1
         id: chrome
-      - run: npm install --no-save --no-package-lock playwright@1.55.0 cheerio@1.1.2
-      - run: cd site && npm run build
-      - name: Verify all404canonical HTTP pages and actual DOM samples
-        env:
-          HB_BROWSER_PATH: ${{ steps.chrome.outputs.chrome-path }}
-        run: node diagnostics/search-presentation-live-648.mjs
-      - name: Preserve actual Production search presentation evidence
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/search-presentation-icp-followup-648.mjs
+      - name: Preserve targeted actual DOM follow-up
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/search-presentation-live-648
+          git add diagnostics/search-presentation-icp-followup-648
           git diff --cached --quiet && exit 0
-          git commit -m "Record all canonical Production search presentation checks after 648"
+          git commit -m "Record corrected actual ICP search-presentation DOM acceptance"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
