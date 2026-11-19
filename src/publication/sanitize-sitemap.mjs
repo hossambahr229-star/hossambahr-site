@@ -1,5 +1,6 @@
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
+import { applySearchReleaseLastmod } from "./search-release-sitemap.mjs";
 
 const root = resolve(import.meta.dirname, "../..");
 const sitemapPath = resolve(root, "sitemap.xml");
@@ -169,8 +170,22 @@ for (const route of ["/en/", "/en/services/", "/en/authorities/", "/en/contact/"
   await addPublishedRoute(route);
 }
 
+// A versioned metadata/structured-data release is a real page modification,
+// not a daily build date or a new review of government requirements.
+let searchReview=null;
+try {
+  const release=JSON.parse(await readFile(resolve(root,'artifacts/service-search-presentation/report.json'),'utf8'));
+  const pages=JSON.parse(await readFile(resolve(root,'artifacts/service-search-presentation/pages.json'),'utf8'));
+  if(release.source!=='EXISTING_APPROVED_REGISTRY'||release.visibleBodyAndActionsPreserved!==true)throw Error('Search presentation provenance is incomplete');
+  searchReview={date:release.researchDate,routes:pages.filter(p=>p.bodyPreserved&&(p.titleChanged||p.descriptionChanged||p.breadcrumbAdded)).map(p=>p.route)};
+} catch(error) { if(error.code!=='ENOENT')throw error; }
+const searchLastmod=applySearchReleaseLastmod(kept,searchReview,origin);
+report.searchPresentationLastmodUpdated=searchLastmod.changed;
+report.searchPresentationLaterDatesPreserved=searchLastmod.preservedLater;
+report.searchPresentationReleaseDate=searchReview?.date??null;
+
 report.kept = kept.length;
-const output = `${prefix}${kept.join("\n")}\n</urlset>\n`;
+const output = `${prefix}${searchLastmod.blocks.join("\n")}\n</urlset>\n`;
 await writeFile(sitemapPath, output, "utf8");
 
 console.log(JSON.stringify({ sitemapHygiene: "PASS", ...report }));
