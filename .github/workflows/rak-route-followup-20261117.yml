@@ -1,30 +1,28 @@
-name: Verify actual Production sitemap release dates 649
+name: Check current schema and actual observed Google customer phrases
 on:
   push:
     branches: [agent/dld-source-review-evidence]
     paths: [.github/workflows/rak-route-followup-20261117.yml]
 permissions: {contents: write}
 jobs:
-  live:
+  targeted:
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
-    env: {SOURCE_ASSET_SHA: 87c39d367244eda2dc3b472eb05f98603ae09205}
+    timeout-minutes: 8
+    env: {SOURCE_SHA: 87c39d367244eda2dc3b472eb05f98603ae09205}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with: {ref: 87c39d367244eda2dc3b472eb05f98603ae09205, path: site}
-      - uses: actions/checkout@v4
-        with: {ref: a1da56586d6fec8e0da13cddc045d98fe61c9197, path: before}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
-      - run: node diagnostics/search-sitemap-live-649.mjs
-      - name: Preserve actual Production XML evidence
+      - run: node diagnostics/google-email-followup-20261119.mjs
+      - name: Preserve targeted historical-alert follow-up
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/search-sitemap-live-649
+          git add diagnostics/google-email-followup-20261119
           git diff --cached --quiet && exit 0
-          git commit -m "Record actual Production scoped sitemap release-date acceptance"
+          git commit -m "Record targeted schema and actual Google phrase follow-up"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
