@@ -1,0 +1,158 @@
+{
+  "sourceRevision": "689532f96014d8e291a360542dc81179524b2fc2",
+  "status": "PASS",
+  "scope": "Actual Production; throttled lab, not field CWV",
+  "performance": [
+    {
+      "cls": 0.028369604210113468,
+      "nodes": 7335,
+      "overflow": false,
+      "trustBars": 1,
+      "mobileMenus": 1
+    },
+    {
+      "cls": 0.02701579912015016,
+      "nodes": 7335,
+      "overflow": false,
+      "trustBars": 1,
+      "mobileMenus": 1
+    },
+    {
+      "cls": 0.027101472461281598,
+      "nodes": 7335,
+      "overflow": false,
+      "trustBars": 1,
+      "mobileMenus": 1
+    }
+  ],
+  "search": [
+    {
+      "locale": "ar",
+      "width": 390,
+      "q": "موافقة سيرا",
+      "count": 2,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 390,
+      "q": "ICP Dubai",
+      "count": 12,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "q": "موافقة سيرا",
+      "count": 2,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "width": 1440,
+      "q": "ICP Dubai",
+      "count": 12,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "q": "موافقة سيرا",
+      "count": 2,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "q": "ICP Dubai",
+      "count": 12,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "q": "موافقة سيرا",
+      "count": 2,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "q": "ICP Dubai",
+      "count": 12,
+      "status": "PASS"
+    }
+  ],
+  "activities": [
+    {
+      "q": "749301",
+      "foundCode": "749301",
+      "total": 2610,
+      "status": "PASS"
+    },
+    {
+      "q": "خدمات تنظيف المباني والمساكن",
+      "foundCode": "749301",
+      "total": 2610,
+      "status": "PASS"
+    },
+    {
+      "q": "Building Cleaning Services",
+      "foundCode": "749301",
+      "total": 2610,
+      "status": "PASS"
+    }
+  ],
+  "competitors": [
+    {
+      "url": "https://virtuzone.com/trade-license-dubai/",
+      "status": 200,
+      "title": "Trade License Dubai - Virtuzone",
+      "h1": [
+        "Trade License in Dubai: Costs, Requirements and Setup Process"
+      ],
+      "overflow": false,
+      "formCount": 1,
+      "contactLinks": 16,
+      "observation": "SELECTED_PUBLIC_PAGE_NOT_PROVEN_TOP_GOOGLE; NO_FORMS_SUBMITTED"
+    },
+    {
+      "url": "https://amer247.com/online-services",
+      "status": 200,
+      "title": "Dubai Visa Online – Apply, Renew & Track | Amer247",
+      "h1": [
+        "AMER 247's Services Fees & Payments",
+        "Seamless Online Services& Secure Payments"
+      ],
+      "overflow": false,
+      "formCount": 0,
+      "contactLinks": 5,
+      "observation": "SELECTED_PUBLIC_PAGE_NOT_PROVEN_TOP_GOOGLE; NO_FORMS_SUBMITTED"
+    },
+    {
+      "url": "https://www.alwahaagroup.com/ar",
+      "status": 200,
+      "title": "الواحة لتخليص المعاملات | تأسيس الشركات والتأشيرات في دبي",
+      "h1": [
+        "تأسيس الشركات والخدمات الحكومية،\n            من البداية إلى الاعتماد."
+      ],
+      "overflow": false,
+      "formCount": 0,
+      "contactLinks": 10,
+      "observation": "SELECTED_PUBLIC_PAGE_NOT_PROVEN_TOP_GOOGLE; NO_FORMS_SUBMITTED"
+    },
+    {
+      "url": "https://www.dubai.ae/ar/investing/closing-your-business",
+      "status": 403,
+      "title": "Access Denied",
+      "h1": [
+        "Access Denied"
+      ],
+      "overflow": true,
+      "formCount": 0,
+      "contactLinks": 0,
+      "observation": "SELECTED_PUBLIC_PAGE_NOT_PROVEN_TOP_GOOGLE; NO_FORMS_SUBMITTED"
+    }
+  ],
+  "liveDirectorySha256": "4849d60df831561d7eaf5d91b5ce88f530d54715b9c9af9a0c5ac3b354666c92"
+}
