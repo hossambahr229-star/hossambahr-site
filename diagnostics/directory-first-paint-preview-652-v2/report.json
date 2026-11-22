@@ -1,0 +1,137 @@
+{
+  "sourceRevision": "6054b5ee04f1dd3792ddc1f4dab3db17808d3a3c",
+  "status": "PASS",
+  "scope": "Throttled source preview, not field Core Web Vitals",
+  "runs": [
+    {
+      "cls": 0.02701579912015016,
+      "shifts": [
+        {
+          "value": 0.004274257783276,
+          "time": 5723.600000000006,
+          "sources": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "value": 0.0023642328972959463,
+          "time": 5749.899999999994,
+          "sources": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "value": 0.020377308439578214,
+          "time": 8016.300000000003,
+          "sources": [
+            {
+              "tag": "SECTION",
+              "id": "browse-services",
+              "class": ""
+            }
+          ]
+        }
+      ],
+      "nodes": 7335,
+      "overflow": false,
+      "trustBars": 1,
+      "mobileMenus": 1
+    },
+    {
+      "cls": 0.02701579912015016,
+      "shifts": [
+        {
+          "value": 0.004274257783276,
+          "time": 5696.300000000003,
+          "sources": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "value": 0.0023642328972959463,
+          "time": 5721.699999999997,
+          "sources": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "value": 0.020377308439578214,
+          "time": 7944.199999999997,
+          "sources": [
+            {
+              "tag": "SECTION",
+              "id": "browse-services",
+              "class": ""
+            }
+          ]
+        }
+      ],
+      "nodes": 7335,
+      "overflow": false,
+      "trustBars": 1,
+      "mobileMenus": 1
+    },
+    {
+      "cls": 0.027101472461281598,
+      "shifts": [
+        {
+          "value": 0.0021694854171382103,
+          "time": 5706.100000000006,
+          "sources": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": ""
+            }
+          ]
+        },
+        {
+          "value": 0.004554678604565174,
+          "time": 5743.199999999997,
+          "sources": [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "value": 0.020377308439578214,
+          "time": 7962.899999999994,
+          "sources": [
+            {
+              "tag": "SECTION",
+              "id": "browse-services",
+              "class": ""
+            }
+          ]
+        }
+      ],
+      "nodes": 7335,
+      "overflow": false,
+      "trustBars": 1,
+      "mobileMenus": 1
+    }
+  ]
+}
