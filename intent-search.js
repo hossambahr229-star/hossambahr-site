@@ -114,6 +114,15 @@ export function specialisedSearchKind(query) {
 
 export function rankServices(query, services = []) {
   const normalized = normalizeIntent(query);
+  // An explicit federal authority name must not degrade to generic words such
+  // as security or Dubai and recommend a different regulator's transactions.
+  const namedIcp = /(?:\bicp\b|(?:الهويه|للهويه).{0,45}(?:الجنسيه|الجمارك).{0,45}(?:المنافذ|port)|federal authority for identity)/i.test(normalized);
+  if (namedIcp) {
+    const requestedEmirate = queryEmirate(query);
+    const outsideDubai = /(?:خارج دبي|عدا دبي|outside dubai|except dubai)/i.test(normalized);
+    services = services.filter(service => service.i === 'icp' &&
+      !(requestedEmirate === 'دبي' && !outsideDubai && /(?:خارج دبي|عدا دبي)/.test(normalizeIntent(service.m))));
+  }
   const sira = siraIntent(query);
   if (sira) {
     const emirate = queryEmirate(query);
