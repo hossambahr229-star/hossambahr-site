@@ -105,6 +105,13 @@ for(const en of [false,true]){
   }
   if(!/<form\b[^>]*\bid="directory-search"/i.test(html))throw Error('Missing native directory search target: '+prefix);
   html=html.replace(main,tag=>tag+'<!-- hb-browse:start -->'+directory(en)+'<!-- hb-browse:end -->');
+  if(!en){
+    // Render the existing post-startup directory appearance before first paint.
+    // Do not set enhancement sentinels: the real controls must still initialize.
+    html=html.replace(/<body\b([^>]*)>/i,(_,attrs)=>'<body'+attrs.replace(/\sdata-(?:ux-modernized|ux-page|phase6)="[^"]*"/g,'')+' data-ux-modernized="true" data-ux-page="services" data-phase6="true">');
+    if(!html.includes('class="hb-trustbar"'))html=html.replace(/(<header\b[^>]*class="site-header"[^>]*>)/,'<div class="hb-trustbar"><span>منصة مستقلة لإرشادك إلى خدمات الإمارات</span><span>المصدر الحكومي هو المرجع النهائي</span></div>$1');
+    html=html.replace(/(<header\b[^>]*class="site-header"[^>]*>)([\s\S]*?)(<\/header>)/,(_,open,content,close)=>open+content+(content.includes('class="mobile-menu"')?'':'<details class="mobile-menu"><summary aria-label="فتح قائمة التنقل">القائمة</summary><nav aria-label="التنقل للهاتف"><a href="/">الرئيسية</a><a href="/services/">الخدمات</a><a href="/categories/companies-establishments/">الشركات والرخص</a><a href="/categories/work-employees/">العمل والموظفون</a><a href="/categories/residency-visas/">الإقامة والتأشيرات</a><a href="/dubai-business-activities.html">الأنشطة</a><a href="/updates/">التحديثات</a><a href="/auth/">تسجيل الدخول</a></nav></details>')+close);
+  }
   html=html.replace('</head>','<link data-service-browse-css rel="stylesheet" href="/service-browse.css?v='+version+'"></head>');
   await writeFile(file,html);
   const home=join(root,prefix,'index.html');
