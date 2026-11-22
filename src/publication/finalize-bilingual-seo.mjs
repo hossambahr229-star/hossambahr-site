@@ -21,6 +21,11 @@ for(const enFile of await englishFiles(join(root,'en'))){
  const enRoute='/'+relative(root,enFile).replaceAll('\\','/').replace(/index\.html$/,''),arRoute=enRoute.replace(/^\/en\//,'/');
  const arFile=join(root,arRoute.slice(1),'index.html');let en,ar;
  try{[en,ar]=await Promise.all([readFile(enFile,'utf8'),readFile(arFile,'utf8')]);}catch{report.skipped.push({enRoute,reason:'No published Arabic counterpart'});continue;}
+ const descriptions={
+  '/en/privacy/':'How HOSSAM BAHR handles public browsing, accounts, protected documents, WhatsApp handoff and platform usage measurement.',
+  '/en/faq/':'Answers about HOSSAM BAHR, government authority, emirate-specific pathways, published fees, privacy and checking official service information.'
+ };
+ if(descriptions[enRoute]&&!tags(en,'meta').some(t=>t.attrs.name?.toLowerCase()==='description'&&t.attrs.content?.trim()))en=en.replace('</head>','<meta name="description" content="'+descriptions[enRoute]+'"></head>');
  let arCanonical;try{arCanonical=new URL(canonical(ar),origin);}catch{}
  if(arCanonical?.origin===origin&&!arCanonical.search&&!arCanonical.hash&&arCanonical.href!==new URL(arRoute,origin).href){
   const targetArRoute=decodeURIComponent(arCanonical.pathname),targetEnRoute='/en'+targetArRoute;let targetAr,targetEn;

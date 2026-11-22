@@ -1,5 +1,6 @@
 import {readFile,writeFile,mkdir} from 'node:fs/promises';import {resolve,join} from 'node:path';import {createHash} from 'node:crypto';
 import {canonicalSocialCatalog,normalizedSocialRoute} from './service-social-catalog.mjs';
+import {writeServiceQueryMatrix} from '../search/service-query-matrix.mjs';
 import {serviceSearchPresentation,searchOrigin} from '../search/service-search-presentation.mjs';
 const root=resolve(import.meta.dirname,'../..'),{services,publishedRecords,aliases}=await canonicalSocialCatalog(root),hash=s=>createHash('sha256').update(s).digest('hex');
 const decode=s=>String(s??'').replaceAll('&amp;','&').replaceAll('&quot;','"').replaceAll('&#39;',"'").replaceAll('&#x27;',"'").replaceAll('&lt;','<').replaceAll('&gt;','>');
@@ -24,6 +25,7 @@ for(const service of services)for(const locale of ['ar','en']){
 }
 const byRoute=new Map(services.map(s=>[normalizedSocialRoute(s.internalRoute),s]));
 const queryPlan=publishedRecords.map(s=>{const alias=aliases.find(a=>a.slug===s.slug),owner=alias?byRoute.get(normalizedSocialRoute(alias.target)):s;if(!owner)throw Error('Canonical query owner missing: '+s.id);const ar=report.pages.find(p=>p.id===owner.id&&p.locale==='ar'),en=report.pages.find(p=>p.id===owner.id&&p.locale==='en');return {sourceRecordId:s.id,sourceName:s.name,canonicalOwnerId:owner.id,canonicalRoute:owner.internalRoute,emirate:owner.emirate,authority:owner.authority,ar:{primary:ar.primaryQuery,questions:ar.analystQueryCandidates},en:{primary:en.primaryQuery,questions:en.analystQueryCandidates},evidence:'ANALYST_DERIVED_CANDIDATES_NOT_GSC_OR_GOOGLE_VOLUME',searchVolume:null,googlePosition:null};});
+await writeServiceQueryMatrix(root,queryPlan,publishedRecords);
 const folder=join(root,'artifacts/service-search-presentation');await mkdir(folder,{recursive:true});
 await writeFile(join(folder,'pages.json'),JSON.stringify(report.pages,null,2)+'\n');await writeFile(join(folder,'query-plan.json'),JSON.stringify(queryPlan,null,2)+'\n');
 const summary={...report,pages:undefined,optimizedCanonicalPages:report.pages.length,titleChanges:report.pages.filter(p=>p.titleChanged).length,descriptionChanges:report.pages.filter(p=>p.descriptionChanged).length,queryPlanRecords:queryPlan.length,visibleBodyAndActionsPreserved:report.pages.every(p=>p.bodyPreserved)};

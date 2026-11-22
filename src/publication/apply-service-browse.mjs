@@ -1,10 +1,12 @@
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { createHash } from 'node:crypto';
+import {canonicalSocialCatalog} from './service-social-catalog.mjs';
 import { compatibleEmirate } from '../../customer-jurisdiction.js';
 
 const root = resolve(import.meta.dirname, '../..');
 const services = JSON.parse(await readFile(join(root, 'transaction-discovery-data.json'), 'utf8'));
+const {services:canonicalTransactions}=await canonicalSocialCatalog(root);
 const fields = {
   'business-licensing':['التراخيص والموافقات','Licensing and approvals'],
   'companies-establishments':['الشركات والمنشآت','Companies and establishments'],
@@ -62,8 +64,10 @@ const areaGroups = emirates.map(([key,ar,en]) => group('emirate-'+key,[ar,en],se
 areaGroups.push(group('emirate-conditional',['خدمات اتحادية بقيود محلية','Federal services with local exceptions'],services.filter(r=>r.m.startsWith('اتحادي مع استثناءات'))));
 const authorityGroups = authorities.map(([key,label]) => group('authority-'+key,label,services.filter(r=>r.i===key)));
 function item(record,en) {
-  const jurisdiction = en ? record.emirate || record.m : record.m;
-  return '<li><a data-browse-service="'+esc(record.id)+'" href="'+esc(pathFor(record,en))+'"><strong>'+esc(en?record.e:record.a)+'</strong><small>'+esc(jurisdiction)+' · '+esc(en?record.n:record.r)+'</small></a></li>';
+  const jurisdiction=en?record.emirate||record.m:record.m;
+  // The authority is already the browse-group context or the service card.
+  // Keep every static transaction link and its jurisdiction; omit repeated chrome.
+  return '<li><a data-browse-service="'+esc(record.id)+'" href="'+esc(pathFor(record,en))+'">'+esc(en?record.e:record.a)+'<small>'+esc(jurisdiction)+'</small></a></li>';
 }
 function browseGroup(g,en,field=false) {
   const i=Number(en);
@@ -78,6 +82,7 @@ function directory(en) {
   const headings=en?['Browse UAE transactions','Browse by service area','Browse by transaction type','Browse by emirate','Browse by authority']:['اختر معاملتك الحكومية','حسب مجال الخدمة','حسب نوع المعاملة','الخدمات حسب الإمارة','حسب الجهة الحكومية'];
   const sections=[['areas',fieldGroups],['actions',actionGroups],['emirates',areaGroups],['authorities',authorityGroups]];
   return '<section id="browse-services" data-service-browse aria-labelledby="browse-services-title"><h2 id="browse-services-title">'+headings[0]+'</h2><p>'+(en?'Open a group to find a service and its authority. Search is available below.':'افتح أحد الأقسام لتصل إلى المعاملة والجهة المختصة. ويمكنك استخدام البحث أدناه.')+'</p>'
+    +'<p data-catalog-definition>'+ (en?services.length+' published service records covering '+canonicalTransactions.length+' distinct transactions. An alternate record shares its canonical transaction page.':services.length+' سجل خدمة منشور يغطي '+canonicalTransactions.length+' معاملة فريدة؛ يرتبط السجل البديل بصفحة المعاملة الأساسية.')+'</p>'
     +'<nav aria-label="'+headings[0]+'">'+sections.map(([key],i)=>'<a href="#browse-'+key+'">'+headings[i+1]+'</a>').join('')+'</nav>'
     +sections.map(([key,groups],i)=>'<section id="browse-'+key+'"><h2>'+headings[i+1]+'</h2><div class="service-browse-grid">'+groups.filter(g=>g.records.length).map(g=>browseGroup(g,en,key==='areas')).join('')+'</div></section>').join('')
     +'</section>';

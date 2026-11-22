@@ -154,7 +154,7 @@ async function addPublishedRoute(pathname) {
   else report.discoveredOther += 1;
 }
 
-for (const directory of ["services", "en/services"]) {
+for (const directory of ["services", "en/services", "categories"]) {
   let entries = [];
   try {
     entries = await readdir(resolve(root, directory), { withFileTypes: true });
