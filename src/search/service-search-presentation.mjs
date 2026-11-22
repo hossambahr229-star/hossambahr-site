@@ -31,8 +31,23 @@ export function serviceSearchPresentation(service,locale,current={}){
  if(en&&/[\u0600-\u06ff]/.test(title+description))throw Error('English search presentation contains untranslated text: '+service.id);
  const primary=stripSearchBrand(title).replace(/\s*[|—]\s*/g,' ').trim();
  const queryName=name+(hasScope(name,service,locale)?'':(en?' in ':' في ')+scope);
- const questions=en
-  ?['How does '+queryName+' work?','What documents are needed for '+queryName+'?','What fee information is published for '+queryName+'?','Where is the official route for '+queryName+'?']
-  :['كيف تتم '+queryName+'؟','ما المستندات المطلوبة لخدمة '+queryName+'؟','ما الرسوم المنشورة لخدمة '+queryName+'؟','ما المسار الرسمي لخدمة '+queryName+'؟'];
+ const questions=serviceSearchQuestions(queryName,locale,guidance);
+
  return {title,description,primaryQuery:primary,scope,authority:service.authority[locale],destinationKind:service.destinationKind,analystQueryCandidates:questions,queryEvidence:'ANALYST_DERIVED_FROM_EXISTING_SERVICE_SCOPE_NOT_MEASURED_GOOGLE_QUERIES',searchVolume:null,googlePosition:null};
+}
+
+export function serviceSearchQuestions(name,locale,guidance=false){
+ const subject=String(name).trim();
+ if(locale==='en')return [
+  guidance?'What does “'+subject+'” explain?':'What are the steps for “'+subject+'”?',
+  'Where can I check the requirements for “'+subject+'”?',
+  'Where can I verify the published fees for “'+subject+'”?',
+  'What is the official route for “'+subject+'”?'
+ ];
+ return [
+  guidance?'ما الذي يوضحه «'+subject+'»؟':'ما خطوات «'+subject+'»؟',
+  'أين أجد متطلبات «'+subject+'»؟',
+  'أين أتحقق من الرسوم المنشورة المتعلقة بـ«'+subject+'»؟',
+  'ما المسار الرسمي لـ«'+subject+'»؟'
+ ];
 }

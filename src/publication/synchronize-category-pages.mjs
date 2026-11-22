@@ -84,7 +84,7 @@ for (const category of categoryRoutes) {
   const count = services.length;
   const content = count
     ? services.map(card).join('\n')
-    : '<div class="empty-state"><h2>قيد التحقق</h2><p>لا توجد خدمات موثقة في هذا التصنيف حالياً.</p><p>لن نظهر خدمة أو رابطاً عاماً قبل اعتماد صفحة المعاملة الصحيحة.</p></div>';
+    : '<div class="empty-state"><h2>قيد التحقق</h2><p>لا توجد خدمات موثقة في هذا التصنيف حالياً.</p><p>لن نظهر خدمة أو رابطاً عاماً قبل اعتماد صفحة المعاملة الصحيحة.</p><p><a href="/discover/">ابحث في الخدمات المنشورة أو اختر مجالًا آخر</a></p></div>';
   let html = await readFile(file, 'utf8');
   html = html
     .replace(/(<div class="heritage-metrics compact"><div><b>)\d+(<\/b><span>خدمة موثقة<\/span>)/, `$1${count}$2`)
@@ -93,6 +93,9 @@ for (const category of categoryRoutes) {
   if (!html.includes('data-service-grid')) {
     html = html.replace(/(<div class="cards">)[\s\S]*?(<\/div><\/section>)/, `$1${content}$2`);
   }
+  // Only this generator's temporary empty-category directive is reversible.
+  html=html.replace(/<meta\\b[^>]*data-empty-category-policy[^>]*>/gi,'');
+  if(!count)html=html.replace('</head>','<meta name="robots" content="noindex,follow" data-empty-category-policy></head>');
   const rendered = html.match(/\bdata-service-card(?:=|\s|>)/g)?.length ?? 0;
   if (rendered !== count) throw new Error(`Category page ${category} renders ${rendered} services; expected ${count}`);
   await writeFile(file, html, 'utf8');
