@@ -1,4 +1,4 @@
-name: Verify actual directory stability, search and activity SEO journeys
+name: Verify all service answer guides and actual transaction controls
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -8,24 +8,24 @@ jobs:
   live:
     runs-on: ubuntu-24.04
     timeout-minutes: 18
-    env: {SOURCE_SHA: 689532f96014d8e291a360542dc81179524b2fc2}
+    env: {SOURCE_SHA: 68ddaf7c737baccca86a3dde1a4ddf2491ae132d}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: 689532f96014d8e291a360542dc81179524b2fc2, path: site}
+        with: {ref: 68ddaf7c737baccca86a3dde1a4ddf2491ae132d, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
       - uses: browser-actions/setup-chrome@v1
         id: chrome
-      - run: npm install --no-save --no-package-lock playwright@1.55.0
-      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/seo652-live.mjs
-      - name: Preserve actual Production evidence
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 cheerio@1.1.2
+      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/seo653-live.mjs
+      - name: Preserve all-page and actual UI acceptance
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/seo652-live
+          git add diagnostics/seo653-live
           git diff --cached --quiet && exit 0
-          git commit -m "Record actual directory CLS, real search and activity queries with public competitor mobile observations"
+          git commit -m "Record all404 actual service HTML and native answer/path control acceptance"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
