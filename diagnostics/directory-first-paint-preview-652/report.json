@@ -1,0 +1,97 @@
+{
+  "sourceRevision": "aca2d030eaaa512e45fad7c1ac80b5328172e968",
+  "status": "FAIL",
+  "scope": "Throttled source preview, not field Core Web Vitals",
+  "runs": [
+    {
+      "cls": 0.2732484275777881,
+      "shifts": [
+        {
+          "value": 0.002249888989292866,
+          "time": 4805,
+          "sources": [
+            {},
+            {},
+            {},
+            {},
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": ""
+            }
+          ]
+        },
+        {
+          "value": 0.0004042531368623795,
+          "time": 4933.699999999997,
+          "sources": [
+            {
+              "tag": "A",
+              "id": "",
+              "class": "header-search-action"
+            },
+            {},
+            {
+              "tag": "DETAILS",
+              "id": "",
+              "class": "mobile-menu"
+            },
+            {}
+          ]
+        },
+        {
+          "value": 0.06481294460751091,
+          "time": 4957.100000000006,
+          "sources": [
+            {
+              "tag": "SECTION",
+              "id": "browse-areas",
+              "class": ""
+            },
+            {},
+            {},
+            {
+              "tag": "A",
+              "id": "",
+              "class": ""
+            },
+            {}
+          ]
+        },
+        {
+          "value": 0.020492727043892853,
+          "time": 7387.900000000009,
+          "sources": [
+            {
+              "tag": "SECTION",
+              "id": "browse-services",
+              "class": ""
+            }
+          ]
+        },
+        {
+          "value": 0.1852886138002291,
+          "time": 9015.699999999997,
+          "sources": [
+            {
+              "tag": "MAIN",
+              "id": "main-content",
+              "class": "page-shell"
+            },
+            {
+              "tag": "DETAILS",
+              "id": "field-companies-establishments",
+              "class": ""
+            },
+            {}
+          ]
+        }
+      ],
+      "nodes": 7335,
+      "overflow": false,
+      "trustBars": 1,
+      "mobileMenus": 1
+    }
+  ],
+  "error": "AssertionError [ERR_ASSERTION]: {\"cls\":0.2732484275777881,\"shifts\":[{\"value\":0.002249888989292866,\"time\":4805,\"sources\":[{},{},{},{},{\"tag\":\"SPAN\",\"id\":\"\",\"class\":\"\"}]},{\"value\":0.0004042531368623795,\"time\":4933.699999999997,\"sources\":[{\"tag\":\"A\",\"id\":\"\",\"class\":\"header-search-action\"},{},{\"tag\":\"DETAILS\",\"id\":\"\",\"class\":\"mobile-menu\"},{}]},{\"value\":0.06481294460751091,\"time\":4957.100000000006,\"sources\":[{\"tag\":\"SECTION\",\"id\":\"browse-areas\",\"class\":\"\"},{},{},{\"tag\":\"A\",\"id\":\"\",\"class\":\"\"},{}]},{\"value\":0.020492727043892853,\"time\":7387.900000000009,\"sources\":[{\"tag\":\"SECTION\",\"id\":\"browse-services\",\"class\":\"\"}]},{\"value\":0.1852886138002291,\"time\":9015.699999999997,\"sources\":[{\"tag\":\"MAIN\",\"id\":\"main-content\",\"class\":\"page-shell\"},{\"tag\":\"DETAILS\",\"id\":\"field-companies-establishments\",\"class\":\"\"},{}]}],\"nodes\":7335,\"overflow\":false,\"trustBars\":1,\"mobileMenus\":1}\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/diagnostics/directory-first-paint-preview-652.mjs:1:2346"
+}

@@ -1,0 +1,48 @@
+{
+  "sourceRevision": "d09c6cc73ff96d512a361eb1ef2ff1966dd6b25f",
+  "status": "PASS",
+  "checks": [],
+  "pages": [
+    {
+      "route": "/services/",
+      "bytesBefore": 642890,
+      "bytesAfter": 516144,
+      "allStaticBrowseDestinationsPreserved": true
+    },
+    {
+      "route": "/en/services/",
+      "bytesBefore": 461835,
+      "bytesAfter": 368165,
+      "allStaticBrowseDestinationsPreserved": true
+    },
+    {
+      "route": "/en/faq/",
+      "status": 200,
+      "exactSourceBytes": true
+    },
+    {
+      "route": "/en/privacy/",
+      "status": 200,
+      "exactSourceBytes": true
+    },
+    {
+      "route": "/categories/health-insurance/",
+      "status": 200,
+      "exactSourceBytes": true
+    },
+    {
+      "route": "/categories/municipalities-local-licensing/",
+      "status": 200,
+      "exactSourceBytes": true
+    }
+  ],
+  "matrix": {
+    "records": 203,
+    "canonicalTransactions": 202
+  },
+  "sitemapUrls": 494,
+  "removedSitemapUrls": [
+    "https://hossambahr.com/categories/health-insurance/",
+    "https://hossambahr.com/categories/municipalities-local-licensing/"
+  ]
+}
