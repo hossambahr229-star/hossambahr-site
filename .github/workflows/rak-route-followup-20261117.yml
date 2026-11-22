@@ -1,28 +1,31 @@
-name: Check current schema and actual observed Google customer phrases
+name: Verify actual ICP authority search controls and retained journeys 650
 on:
   push:
     branches: [agent/dld-source-review-evidence]
     paths: [.github/workflows/rak-route-followup-20261117.yml]
 permissions: {contents: write}
 jobs:
-  targeted:
+  live:
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
-    env: {SOURCE_SHA: 87c39d367244eda2dc3b472eb05f98603ae09205}
+    timeout-minutes: 12
+    env: {SOURCE_REVISION: 07f6a96c51863d8dbadeb4009d2e0296a25465d7}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: 87c39d367244eda2dc3b472eb05f98603ae09205, path: site}
+        with: {ref: 07f6a96c51863d8dbadeb4009d2e0296a25465d7, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
-      - run: node diagnostics/google-email-followup-20261119.mjs
-      - name: Preserve targeted historical-alert follow-up
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+      - run: npm install --no-save --no-package-lock playwright@1.55.0
+      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/icp-authority-live-650.mjs
+      - name: Preserve actual Production search evidence
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/google-email-followup-20261119
+          git add diagnostics/icp-authority-live-650
           git diff --cached --quiet && exit 0
-          git commit -m "Record targeted schema and actual Google phrase follow-up"
+          git commit -m "Record actual Production ICP authority search and retained journey acceptance"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
