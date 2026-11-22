@@ -1,0 +1,1249 @@
+{
+  "scope": "Causal lab trace plus correction of audit .html path; not field CWV",
+  "activity": {
+    "status": 200,
+    "exactSourceBytes": true,
+    "previousAuditIssue": "LOCAL_PATH_ENOTDIR; prior report preserved"
+  },
+  "runs": [
+    {
+      "shifts": [
+        {
+          "time": 1610.8999999999942,
+          "value": 0.11837233412322275,
+          "sources": [
+            {
+              "tag": "MAIN",
+              "id": "main-content",
+              "class": "page-shell",
+              "previous": {
+                "x": 0,
+                "y": 62,
+                "width": 390,
+                "height": 782,
+                "top": 62,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 92,
+                "width": 390,
+                "height": 752,
+                "top": 92,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              }
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "site-header",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 62,
+                "top": 0,
+                "right": 390,
+                "bottom": 62,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 30,
+                "width": 390,
+                "height": 62,
+                "top": 30,
+                "right": 390,
+                "bottom": 92,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "time": 2589.899999999994,
+          "value": 0.0016890545458524617,
+          "sources": [
+            {
+              "previous": {
+                "x": 19,
+                "y": 252.578125,
+                "width": 347.90625,
+                "height": 97.78125,
+                "top": 252.578125,
+                "right": 366.90625,
+                "bottom": 350.359375,
+                "left": 19
+              },
+              "current": {
+                "x": 19,
+                "y": 245.578125,
+                "width": 347.8125,
+                "height": 97.78125,
+                "top": 245.578125,
+                "right": 366.8125,
+                "bottom": 343.359375,
+                "left": 19
+              }
+            },
+            {
+              "previous": {
+                "x": 16,
+                "y": 509.984375,
+                "width": 358.703125,
+                "height": 56.390625,
+                "top": 509.984375,
+                "right": 374.703125,
+                "bottom": 566.375,
+                "left": 16
+              },
+              "current": {
+                "x": 16,
+                "y": 503.984375,
+                "width": 358,
+                "height": 56.390625,
+                "top": 503.984375,
+                "right": 374,
+                "bottom": 560.375,
+                "left": 16
+              }
+            },
+            {
+              "previous": {
+                "x": 162.84375,
+                "y": 6,
+                "width": 216,
+                "height": 23,
+                "top": 6,
+                "right": 378.84375,
+                "bottom": 29,
+                "left": 162.84375
+              },
+              "current": {
+                "x": 169.65625,
+                "y": 2,
+                "width": 208.34375,
+                "height": 23,
+                "top": 2,
+                "right": 378,
+                "bottom": 25,
+                "left": 169.65625
+              }
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": "",
+              "previous": {
+                "x": 263.234375,
+                "y": 100,
+                "width": 42.421875,
+                "height": 44,
+                "top": 100,
+                "right": 305.65625,
+                "bottom": 144,
+                "left": 263.234375
+              },
+              "current": {
+                "x": 268.421875,
+                "y": 98,
+                "width": 40.921875,
+                "height": 46,
+                "top": 98,
+                "right": 309.34375,
+                "bottom": 144,
+                "left": 268.421875
+              }
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": "",
+              "previous": {
+                "x": 312.65625,
+                "y": 100,
+                "width": 12,
+                "height": 44,
+                "top": 100,
+                "right": 324.65625,
+                "bottom": 144,
+                "left": 312.65625
+              },
+              "current": {
+                "x": 316.34375,
+                "y": 98,
+                "width": 12,
+                "height": 46,
+                "top": 98,
+                "right": 328.34375,
+                "bottom": 144,
+                "left": 316.34375
+              }
+            }
+          ]
+        },
+        {
+          "time": 2739.5999999999913,
+          "value": 0.08767450288557646,
+          "sources": [
+            {
+              "tag": "SECTION",
+              "id": "browse-areas",
+              "class": "",
+              "previous": {
+                "x": 16,
+                "y": 697.546875,
+                "width": 358,
+                "height": 146.453125,
+                "top": 697.546875,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              },
+              "current": {
+                "x": 16,
+                "y": 742.9375,
+                "width": 358,
+                "height": 101.0625,
+                "top": 742.9375,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              }
+            },
+            {
+              "previous": {
+                "x": 19,
+                "y": 204.890625,
+                "width": 347.859375,
+                "height": 56,
+                "top": 204.890625,
+                "right": 366.859375,
+                "bottom": 260.890625,
+                "left": 19
+              },
+              "current": {
+                "x": 19,
+                "y": 193.890625,
+                "width": 347,
+                "height": 56,
+                "top": 193.890625,
+                "right": 366,
+                "bottom": 249.890625,
+                "left": 19
+              }
+            },
+            {
+              "previous": {
+                "x": 16,
+                "y": 458.25,
+                "width": 358.25,
+                "height": 45,
+                "top": 458.25,
+                "right": 374.25,
+                "bottom": 503.25,
+                "left": 16
+              },
+              "current": {
+                "x": 16,
+                "y": 449.25,
+                "width": 358,
+                "height": 45,
+                "top": 449.25,
+                "right": 374,
+                "bottom": 494.25,
+                "left": 16
+              }
+            },
+            {
+              "tag": "A",
+              "id": "",
+              "class": "",
+              "previous": {
+                "x": 22.453125,
+                "y": 629.15625,
+                "width": 169.09375,
+                "height": 46.390625,
+                "top": 629.15625,
+                "right": 191.546875,
+                "bottom": 675.546875,
+                "left": 22.453125
+              },
+              "current": {
+                "x": 193.3125,
+                "y": 683.546875,
+                "width": 180.6875,
+                "height": 46.390625,
+                "top": 683.546875,
+                "right": 374,
+                "bottom": 729.9375,
+                "left": 193.3125
+              }
+            },
+            {
+              "previous": {
+                "x": 16,
+                "y": 815.671875,
+                "width": 358,
+                "height": 28.328125,
+                "top": 815.671875,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "time": 3436.699999999997,
+          "value": 0.1852886138002291,
+          "sources": [
+            {
+              "tag": "MAIN",
+              "id": "main-content",
+              "class": "page-shell",
+              "previous": {
+                "x": 0,
+                "y": 92,
+                "width": 390,
+                "height": 752,
+                "top": 92,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 97,
+                "width": 390,
+                "height": 747,
+                "top": 97,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              }
+            },
+            {
+              "tag": "DETAILS",
+              "id": "field-companies-establishments",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 16,
+                "y": 731.828125,
+                "width": 358,
+                "height": 44.75,
+                "top": 731.828125,
+                "right": 374,
+                "bottom": 776.578125,
+                "left": 16
+              }
+            },
+            {
+              "tag": "DETAILS",
+              "id": "field-identity-citizenship",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 16,
+                "y": 786.578125,
+                "width": 358,
+                "height": 44.75,
+                "top": 786.578125,
+                "right": 374,
+                "bottom": 831.328125,
+                "left": 16
+              }
+            },
+            {
+              "tag": "DETAILS",
+              "id": "field-residency-visas",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 16,
+                "y": 841.328125,
+                "width": 358,
+                "height": 2.671875,
+                "top": 841.328125,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              }
+            }
+          ]
+        }
+      ],
+      "cls": 0.39302450535488076,
+      "fonts": "loaded",
+      "nodes": 8657
+    },
+    {
+      "shifts": [
+        {
+          "time": 1382.4000000000087,
+          "value": 0.11837233412322275,
+          "sources": [
+            {
+              "tag": "MAIN",
+              "id": "main-content",
+              "class": "page-shell",
+              "previous": {
+                "x": 0,
+                "y": 62,
+                "width": 390,
+                "height": 782,
+                "top": 62,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 92,
+                "width": 390,
+                "height": 752,
+                "top": 92,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              }
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "site-header",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 62,
+                "top": 0,
+                "right": 390,
+                "bottom": 62,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 30,
+                "width": 390,
+                "height": 62,
+                "top": 30,
+                "right": 390,
+                "bottom": 92,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "time": 2348.5,
+          "value": 0.0016890545458524617,
+          "sources": [
+            {
+              "previous": {
+                "x": 19,
+                "y": 252.578125,
+                "width": 347.90625,
+                "height": 97.78125,
+                "top": 252.578125,
+                "right": 366.90625,
+                "bottom": 350.359375,
+                "left": 19
+              },
+              "current": {
+                "x": 19,
+                "y": 245.578125,
+                "width": 347.8125,
+                "height": 97.78125,
+                "top": 245.578125,
+                "right": 366.8125,
+                "bottom": 343.359375,
+                "left": 19
+              }
+            },
+            {
+              "previous": {
+                "x": 16,
+                "y": 509.984375,
+                "width": 358.703125,
+                "height": 56.390625,
+                "top": 509.984375,
+                "right": 374.703125,
+                "bottom": 566.375,
+                "left": 16
+              },
+              "current": {
+                "x": 16,
+                "y": 503.984375,
+                "width": 358,
+                "height": 56.390625,
+                "top": 503.984375,
+                "right": 374,
+                "bottom": 560.375,
+                "left": 16
+              }
+            },
+            {
+              "previous": {
+                "x": 162.84375,
+                "y": 6,
+                "width": 216,
+                "height": 23,
+                "top": 6,
+                "right": 378.84375,
+                "bottom": 29,
+                "left": 162.84375
+              },
+              "current": {
+                "x": 169.65625,
+                "y": 2,
+                "width": 208.34375,
+                "height": 23,
+                "top": 2,
+                "right": 378,
+                "bottom": 25,
+                "left": 169.65625
+              }
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": "",
+              "previous": {
+                "x": 263.234375,
+                "y": 100,
+                "width": 42.421875,
+                "height": 44,
+                "top": 100,
+                "right": 305.65625,
+                "bottom": 144,
+                "left": 263.234375
+              },
+              "current": {
+                "x": 268.421875,
+                "y": 98,
+                "width": 40.921875,
+                "height": 46,
+                "top": 98,
+                "right": 309.34375,
+                "bottom": 144,
+                "left": 268.421875
+              }
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": "",
+              "previous": {
+                "x": 312.65625,
+                "y": 100,
+                "width": 12,
+                "height": 44,
+                "top": 100,
+                "right": 324.65625,
+                "bottom": 144,
+                "left": 312.65625
+              },
+              "current": {
+                "x": 316.34375,
+                "y": 98,
+                "width": 12,
+                "height": 46,
+                "top": 98,
+                "right": 328.34375,
+                "bottom": 144,
+                "left": 316.34375
+              }
+            }
+          ]
+        },
+        {
+          "time": 2498.100000000006,
+          "value": 0.08767450288557646,
+          "sources": [
+            {
+              "tag": "SECTION",
+              "id": "browse-areas",
+              "class": "",
+              "previous": {
+                "x": 16,
+                "y": 697.546875,
+                "width": 358,
+                "height": 146.453125,
+                "top": 697.546875,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              },
+              "current": {
+                "x": 16,
+                "y": 742.9375,
+                "width": 358,
+                "height": 101.0625,
+                "top": 742.9375,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              }
+            },
+            {
+              "previous": {
+                "x": 19,
+                "y": 204.890625,
+                "width": 347.859375,
+                "height": 56,
+                "top": 204.890625,
+                "right": 366.859375,
+                "bottom": 260.890625,
+                "left": 19
+              },
+              "current": {
+                "x": 19,
+                "y": 193.890625,
+                "width": 347,
+                "height": 56,
+                "top": 193.890625,
+                "right": 366,
+                "bottom": 249.890625,
+                "left": 19
+              }
+            },
+            {
+              "previous": {
+                "x": 16,
+                "y": 458.25,
+                "width": 358.25,
+                "height": 45,
+                "top": 458.25,
+                "right": 374.25,
+                "bottom": 503.25,
+                "left": 16
+              },
+              "current": {
+                "x": 16,
+                "y": 449.25,
+                "width": 358,
+                "height": 45,
+                "top": 449.25,
+                "right": 374,
+                "bottom": 494.25,
+                "left": 16
+              }
+            },
+            {
+              "tag": "A",
+              "id": "",
+              "class": "",
+              "previous": {
+                "x": 22.453125,
+                "y": 629.15625,
+                "width": 169.09375,
+                "height": 46.390625,
+                "top": 629.15625,
+                "right": 191.546875,
+                "bottom": 675.546875,
+                "left": 22.453125
+              },
+              "current": {
+                "x": 193.3125,
+                "y": 683.546875,
+                "width": 180.6875,
+                "height": 46.390625,
+                "top": 683.546875,
+                "right": 374,
+                "bottom": 729.9375,
+                "left": 193.3125
+              }
+            },
+            {
+              "previous": {
+                "x": 16,
+                "y": 815.671875,
+                "width": 358,
+                "height": 28.328125,
+                "top": 815.671875,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "time": 3201.4000000000087,
+          "value": 0.1852886138002291,
+          "sources": [
+            {
+              "tag": "MAIN",
+              "id": "main-content",
+              "class": "page-shell",
+              "previous": {
+                "x": 0,
+                "y": 92,
+                "width": 390,
+                "height": 752,
+                "top": 92,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 97,
+                "width": 390,
+                "height": 747,
+                "top": 97,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              }
+            },
+            {
+              "tag": "DETAILS",
+              "id": "field-companies-establishments",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 16,
+                "y": 731.828125,
+                "width": 358,
+                "height": 44.75,
+                "top": 731.828125,
+                "right": 374,
+                "bottom": 776.578125,
+                "left": 16
+              }
+            },
+            {
+              "tag": "DETAILS",
+              "id": "field-identity-citizenship",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 16,
+                "y": 786.578125,
+                "width": 358,
+                "height": 44.75,
+                "top": 786.578125,
+                "right": 374,
+                "bottom": 831.328125,
+                "left": 16
+              }
+            },
+            {
+              "tag": "DETAILS",
+              "id": "field-residency-visas",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 16,
+                "y": 841.328125,
+                "width": 358,
+                "height": 2.671875,
+                "top": 841.328125,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              }
+            }
+          ]
+        }
+      ],
+      "cls": 0.39302450535488076,
+      "fonts": "loaded",
+      "nodes": 8657
+    },
+    {
+      "shifts": [
+        {
+          "time": 1387.300000000003,
+          "value": 0.11837233412322275,
+          "sources": [
+            {
+              "tag": "MAIN",
+              "id": "main-content",
+              "class": "page-shell",
+              "previous": {
+                "x": 0,
+                "y": 62,
+                "width": 390,
+                "height": 782,
+                "top": 62,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 92,
+                "width": 390,
+                "height": 752,
+                "top": 92,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              }
+            },
+            {
+              "tag": "HEADER",
+              "id": "",
+              "class": "site-header",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 390,
+                "height": 62,
+                "top": 0,
+                "right": 390,
+                "bottom": 62,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 30,
+                "width": 390,
+                "height": 62,
+                "top": 30,
+                "right": 390,
+                "bottom": 92,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "time": 2346.800000000003,
+          "value": 0.0016890545458524617,
+          "sources": [
+            {
+              "previous": {
+                "x": 19,
+                "y": 252.578125,
+                "width": 347.90625,
+                "height": 97.78125,
+                "top": 252.578125,
+                "right": 366.90625,
+                "bottom": 350.359375,
+                "left": 19
+              },
+              "current": {
+                "x": 19,
+                "y": 245.578125,
+                "width": 347.8125,
+                "height": 97.78125,
+                "top": 245.578125,
+                "right": 366.8125,
+                "bottom": 343.359375,
+                "left": 19
+              }
+            },
+            {
+              "previous": {
+                "x": 16,
+                "y": 509.984375,
+                "width": 358.703125,
+                "height": 56.390625,
+                "top": 509.984375,
+                "right": 374.703125,
+                "bottom": 566.375,
+                "left": 16
+              },
+              "current": {
+                "x": 16,
+                "y": 503.984375,
+                "width": 358,
+                "height": 56.390625,
+                "top": 503.984375,
+                "right": 374,
+                "bottom": 560.375,
+                "left": 16
+              }
+            },
+            {
+              "previous": {
+                "x": 162.84375,
+                "y": 6,
+                "width": 216,
+                "height": 23,
+                "top": 6,
+                "right": 378.84375,
+                "bottom": 29,
+                "left": 162.84375
+              },
+              "current": {
+                "x": 169.65625,
+                "y": 2,
+                "width": 208.34375,
+                "height": 23,
+                "top": 2,
+                "right": 378,
+                "bottom": 25,
+                "left": 169.65625
+              }
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": "",
+              "previous": {
+                "x": 263.234375,
+                "y": 100,
+                "width": 42.421875,
+                "height": 44,
+                "top": 100,
+                "right": 305.65625,
+                "bottom": 144,
+                "left": 263.234375
+              },
+              "current": {
+                "x": 268.421875,
+                "y": 98,
+                "width": 40.921875,
+                "height": 46,
+                "top": 98,
+                "right": 309.34375,
+                "bottom": 144,
+                "left": 268.421875
+              }
+            },
+            {
+              "tag": "SPAN",
+              "id": "",
+              "class": "",
+              "previous": {
+                "x": 312.65625,
+                "y": 100,
+                "width": 12,
+                "height": 44,
+                "top": 100,
+                "right": 324.65625,
+                "bottom": 144,
+                "left": 312.65625
+              },
+              "current": {
+                "x": 316.34375,
+                "y": 98,
+                "width": 12,
+                "height": 46,
+                "top": 98,
+                "right": 328.34375,
+                "bottom": 144,
+                "left": 316.34375
+              }
+            }
+          ]
+        },
+        {
+          "time": 2502.4000000000087,
+          "value": 0.08767450288557646,
+          "sources": [
+            {
+              "tag": "SECTION",
+              "id": "browse-areas",
+              "class": "",
+              "previous": {
+                "x": 16,
+                "y": 697.546875,
+                "width": 358,
+                "height": 146.453125,
+                "top": 697.546875,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              },
+              "current": {
+                "x": 16,
+                "y": 742.9375,
+                "width": 358,
+                "height": 101.0625,
+                "top": 742.9375,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              }
+            },
+            {
+              "previous": {
+                "x": 19,
+                "y": 204.890625,
+                "width": 347.859375,
+                "height": 56,
+                "top": 204.890625,
+                "right": 366.859375,
+                "bottom": 260.890625,
+                "left": 19
+              },
+              "current": {
+                "x": 19,
+                "y": 193.890625,
+                "width": 347,
+                "height": 56,
+                "top": 193.890625,
+                "right": 366,
+                "bottom": 249.890625,
+                "left": 19
+              }
+            },
+            {
+              "previous": {
+                "x": 16,
+                "y": 458.25,
+                "width": 358.25,
+                "height": 45,
+                "top": 458.25,
+                "right": 374.25,
+                "bottom": 503.25,
+                "left": 16
+              },
+              "current": {
+                "x": 16,
+                "y": 449.25,
+                "width": 358,
+                "height": 45,
+                "top": 449.25,
+                "right": 374,
+                "bottom": 494.25,
+                "left": 16
+              }
+            },
+            {
+              "tag": "A",
+              "id": "",
+              "class": "",
+              "previous": {
+                "x": 22.453125,
+                "y": 629.15625,
+                "width": 169.09375,
+                "height": 46.390625,
+                "top": 629.15625,
+                "right": 191.546875,
+                "bottom": 675.546875,
+                "left": 22.453125
+              },
+              "current": {
+                "x": 193.3125,
+                "y": 683.546875,
+                "width": 180.6875,
+                "height": 46.390625,
+                "top": 683.546875,
+                "right": 374,
+                "bottom": 729.9375,
+                "left": 193.3125
+              }
+            },
+            {
+              "previous": {
+                "x": 16,
+                "y": 815.671875,
+                "width": 358,
+                "height": 28.328125,
+                "top": 815.671875,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              },
+              "current": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              }
+            }
+          ]
+        },
+        {
+          "time": 3240.199999999997,
+          "value": 0.1852886138002291,
+          "sources": [
+            {
+              "tag": "MAIN",
+              "id": "main-content",
+              "class": "page-shell",
+              "previous": {
+                "x": 0,
+                "y": 92,
+                "width": 390,
+                "height": 752,
+                "top": 92,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              },
+              "current": {
+                "x": 0,
+                "y": 97,
+                "width": 390,
+                "height": 747,
+                "top": 97,
+                "right": 390,
+                "bottom": 844,
+                "left": 0
+              }
+            },
+            {
+              "tag": "DETAILS",
+              "id": "field-companies-establishments",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 16,
+                "y": 731.828125,
+                "width": 358,
+                "height": 44.75,
+                "top": 731.828125,
+                "right": 374,
+                "bottom": 776.578125,
+                "left": 16
+              }
+            },
+            {
+              "tag": "DETAILS",
+              "id": "field-identity-citizenship",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 16,
+                "y": 786.578125,
+                "width": 358,
+                "height": 44.75,
+                "top": 786.578125,
+                "right": 374,
+                "bottom": 831.328125,
+                "left": 16
+              }
+            },
+            {
+              "tag": "DETAILS",
+              "id": "field-residency-visas",
+              "class": "",
+              "previous": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "current": {
+                "x": 16,
+                "y": 841.328125,
+                "width": 358,
+                "height": 2.671875,
+                "top": 841.328125,
+                "right": 374,
+                "bottom": 844,
+                "left": 16
+              }
+            }
+          ]
+        }
+      ],
+      "cls": 0.39302450535488076,
+      "fonts": "loaded",
+      "nodes": 8657
+    }
+  ]
+}
