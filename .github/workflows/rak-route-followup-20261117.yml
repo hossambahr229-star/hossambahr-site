@@ -1,36 +1,31 @@
-name: Verify corrected initial stylesheet and directory first paint
+name: Verify actual directory stability, search and activity SEO journeys
 on:
   push:
     branches: [agent/dld-source-review-evidence]
     paths: [.github/workflows/rak-route-followup-20261117.yml]
 permissions: {contents: write}
 jobs:
-  targeted:
+  live:
     runs-on: ubuntu-24.04
     timeout-minutes: 18
-    env: {RELEASE_SHA: d09c6cc73ff96d512a361eb1ef2ff1966dd6b25f, PREVIEW_SHA: 6054b5ee04f1dd3792ddc1f4dab3db17808d3a3c}
+    env: {SOURCE_SHA: 689532f96014d8e291a360542dc81179524b2fc2}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: d09c6cc73ff96d512a361eb1ef2ff1966dd6b25f, path: release}
-      - uses: actions/checkout@v4
-        with: {ref: 2a38792b3e6ab362821f193b98a36425fd9e2ceb, path: before}
-      - uses: actions/checkout@v4
-        with: {ref: 6054b5ee04f1dd3792ddc1f4dab3db17808d3a3c, path: site}
+        with: {ref: 689532f96014d8e291a360542dc81179524b2fc2, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
       - uses: browser-actions/setup-chrome@v1
         id: chrome
       - run: npm install --no-save --no-package-lock playwright@1.55.0
-      - run: npm --prefix site run build
-      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/directory-first-paint-preview-652-v2.mjs
-      - name: Preserve source-preview and actual Production evidence
+      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/seo652-live.mjs
+      - name: Preserve actual Production evidence
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/directory-first-paint-preview-652-v2
+          git add diagnostics/seo652-live
           git diff --cached --quiet && exit 0
-          git commit -m "Record actual indexing release acceptance and causal layout repair preview"
+          git commit -m "Record actual directory CLS, real search and activity queries with public competitor mobile observations"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
