@@ -1051,7 +1051,7 @@
         link.textContent = label;
         decision.append(link);
       });
-      hero.querySelector("h1")?.insertAdjacentElement("afterend", decision);
+      if(!hero.querySelector(".service-decision-nav"))hero.querySelector("h1")?.insertAdjacentElement("afterend", decision);
     }
     const executionPaths = main.querySelector(".phase2-execution-paths");
     if (hero && executionPaths && hero.nextElementSibling !== executionPaths) {

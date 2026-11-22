@@ -1,0 +1,306 @@
+{
+  "version": 1,
+  "scope": "Service selection help; no new government fees, conditions, durations or FAQ rich-result claims",
+  "entries": [
+    {
+      "serviceId": "guide:renew-business-license-dubai",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل أختار تجديد الرخصة أم تعديلها؟",
+          "answer": "هذه الصفحة لتجديد الرخصة التجارية في دبي. تغيير بيانات الشركة أو نشاطها له مسار تعديل مستقل؛ اختر المعاملة التي تطابق ما تريد تغييره."
+        },
+        {
+          "question": "هل عدم الممانعة من RTA هي تجديد الرخصة نفسه؟",
+          "answer": "لا. عدم الممانعة من RTA معاملة مستقلة عن تجديد الرخصة لدى دائرة الاقتصاد والسياحة. لا تفترض أنها مطلوبة لكل نشاط؛ راجع اختصاص النشاط في المصدر الرسمي."
+        }
+      ],
+      "en": [
+        {
+          "question": "Should I renew or amend my licence?",
+          "answer": "This page covers renewing a Dubai trade licence. Changing company data or activities is a separate amendment transaction; choose the operation that matches your request."
+        },
+        {
+          "question": "Is an RTA NOC the same as renewing the licence?",
+          "answer": "No. An RTA NOC and a DET licence renewal are separate transactions. Do not assume every activity needs an NOC; check the activity and official authority requirements."
+        }
+      ]
+    },
+    {
+      "serviceId": "official:det:issue-trade-license",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل أحتاج إصدار رخصة جديدة أم تجديد رخصة قائمة؟",
+          "answer": "هذه الصفحة لإصدار رخصة لدى دائرة الاقتصاد والسياحة في دبي. إذا كانت لديك رخصة قائمة وتريد استمرارها، راجع خدمة التجديد بدل بدء طلب إصدار جديد."
+        },
+        {
+          "question": "هل أستخدم هذا المسار لأي منطقة حرة؟",
+          "answer": "طابق الجهة التي ستصدر رخصتك أولًا. لا تنقل إجراءات أو رسوم هذه الخدمة إلى رخصة منطقة حرة دون مراجعة جهة المنطقة المختصة."
+        }
+      ],
+      "en": [
+        {
+          "question": "Do I need a new licence or a renewal?",
+          "answer": "This page covers issuing a licence through Dubai DET. If you already have a licence and want to continue it, review the renewal transaction rather than starting a new issuance request."
+        },
+        {
+          "question": "Does this route cover every free zone?",
+          "answer": "First identify the authority that will issue your licence. Do not apply this service's procedures or fees to a free-zone licence without checking that zone's licensing authority."
+        }
+      ]
+    },
+    {
+      "serviceId": "guide:amend-business-license-dubai",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل تعديل الرخصة هو إضافة نشاط أم تغيير شريك؟",
+          "answer": "التعديل قد يشير إلى طلبات مختلفة. حدد التغيير المطلوب، ثم راجع صفحة إضافة النشاط أو تغيير الشركاء عند انطباقها، بدل اعتبار كل تعديل معاملة واحدة."
+        },
+        {
+          "question": "هل التجديد يغيّر بيانات الشركة تلقائيًا؟",
+          "answer": "اختر التجديد لاستمرار الرخصة، والتعديل لتغيير البيانات وفق الخدمة المختصة. راجع بيانات الطلب قبل تقديمه ولا تستخدم أحد المسارين بدل الآخر."
+        }
+      ],
+      "en": [
+        {
+          "question": "Does amending a licence mean adding an activity or changing a partner?",
+          "answer": "Amendment can refer to different requests. Identify the change and review the specific activity or partner transaction where applicable, rather than treating every amendment as the same request."
+        },
+        {
+          "question": "Does renewal automatically change company data?",
+          "answer": "Use the renewal transaction to continue a licence and the appropriate amendment transaction to change its data. Check the requested operation before applying."
+        }
+      ]
+    },
+    {
+      "serviceId": "guide:cancel-business-license-dubai",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل إلغاء المؤسسة وتصفية الشركة لهما المستندات نفسها؟",
+          "answer": "لا تعمم مستندات شكل قانوني على آخر. يفرّق الدليل الحكومي بين أنواع الشركات والفروع، لذلك ابدأ بتحديد الشكل القانوني والجهة المرخِّصة."
+        },
+        {
+          "question": "هل إلغاء الرخصة يلغي الإقامات وتصاريح العمل تلقائيًا؟",
+          "answer": "لا تعتبر انتهاء مسار الرخصة تأكيدًا على إغلاق الملفات الأخرى. راجع معاملات العمل والإقامة المرتبطة وشروط الجهة المختصة لكل ملف."
+        }
+      ],
+      "en": [
+        {
+          "question": "Do establishment cancellation and company liquidation use the same documents?",
+          "answer": "Do not apply one legal form's document list to another. The government closing-business guide distinguishes companies and branches; identify the legal form and licensing authority first."
+        },
+        {
+          "question": "Does licence cancellation automatically cancel residence and work permits?",
+          "answer": "Do not treat the licence outcome as confirmation that other files have closed. Review the related employment and residence transactions with the authority responsible for each file."
+        }
+      ]
+    },
+    {
+      "serviceId": "sedd:license-renewal",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل أستخدم إجراءات تجديد دبي لرخصة صادرة من الشارقة؟",
+          "answer": "هذه الصفحة تخص دائرة التنمية الاقتصادية في الشارقة. اختر الجهة المصدرة للرخصة، ولا تنقل رسوم أو إجراءات دبي إلى طلب الشارقة."
+        },
+        {
+          "question": "ماذا لو كان المطلوب تعديل بيانات الرخصة؟",
+          "answer": "تجديد الرخصة وتعديل بياناتها معاملتان مختلفتان. حدد هل المطلوب استمرار الرخصة أو تغيير بياناتها، ثم افتح الخدمة المناسبة."
+        }
+      ],
+      "en": [
+        {
+          "question": "Can I use Dubai renewal procedures for a Sharjah licence?",
+          "answer": "This page belongs to Sharjah Economic Development Department. Use the licence's issuing authority; do not transfer Dubai fees or procedures to a Sharjah request."
+        },
+        {
+          "question": "What if I need to change licence details?",
+          "answer": "Renewal and amendment are different transactions. Decide whether you need to continue the licence or change its details, then open the matching service."
+        }
+      ]
+    },
+    {
+      "serviceId": "ajman:trade-license-renewal",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "كيف أميّز تجديد رخصة عجمان عن تأسيس منشأة جديدة؟",
+          "answer": "التجديد يخص رخصة قائمة. إذا كنت تبدأ منشأة أو تطلب رخصة لأول مرة، افتح صفحة الإصدار لدى الجهة المختصة بدل استخدام مسار التجديد."
+        },
+        {
+          "question": "هل كل رخصة في عجمان تتبع الجهة نفسها؟",
+          "answer": "طابق اسم الجهة على رخصتك مع الجهة المعروضة في الصفحة. لا تفترض أن رخصة منطقة حرة تستخدم مسار الرخصة المحلية نفسه."
+        }
+      ],
+      "en": [
+        {
+          "question": "How do I distinguish Ajman renewal from a new establishment request?",
+          "answer": "Renewal concerns an existing licence. If you are starting an establishment or requesting a licence for the first time, review the issuing authority's new-licence service instead."
+        },
+        {
+          "question": "Does every Ajman licence use the same authority?",
+          "answer": "Match the authority named on your licence with the authority on this page. Do not assume a free-zone licence uses the same route as a local economic licence."
+        }
+      ]
+    },
+    {
+      "serviceId": "guide:family-residency-uae",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل هذه الخدمة لدبي أم لمسار ICP خارج دبي؟",
+          "answer": "هذه الصفحة لإقامة أفراد الأسرة الصادرة من دبي لدى الإدارة العامة للإقامة وشؤون الأجانب. إذا كانت المعاملة لدى ICP خارج دبي، اختر صفحة الاختصاص المناسبة."
+        },
+        {
+          "question": "هل زيارة قريب هي إصدار إقامة للأسرة؟",
+          "answer": "تأشيرة الزيارة وتصريح الإقامة معاملتان مختلفتان. حدد هل تريد زيارة مؤقتة أم إصدار إقامة، ولا تستخدم مستندات أو رسوم إحداهما بدل الأخرى."
+        }
+      ],
+      "en": [
+        {
+          "question": "Is this the Dubai family residence route or ICP outside Dubai?",
+          "answer": "This page covers Dubai family residence through GDRFA Dubai. If your transaction belongs to ICP outside Dubai, use the page for that jurisdiction."
+        },
+        {
+          "question": "Is visiting a relative the same as issuing family residence?",
+          "answer": "A visit visa and a residence permit are different transactions. Decide whether you need a visit or residence; do not substitute one transaction's documents or fees for the other."
+        }
+      ]
+    },
+    {
+      "serviceId": "directory:residency:28",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل طلب زيارة قريب أو صديق هو كفالة إقامة؟",
+          "answer": "هذه الصفحة لتأشيرة زيارة قريب أو صديق لدخول واحد في دبي. إذا كان المطلوب إقامة للأسرة، راجع خدمة الإقامة ولا تعتبر طلب الزيارة بديلًا لها."
+        },
+        {
+          "question": "هل أستخدم هذه الصفحة لطلب عبر ICP خارج دبي؟",
+          "answer": "لا. طابق الجهة والاختصاص أولًا؛ يوجد مسار مستقل لزيارة قريب أو صديق عبر ICP خارج دبي."
+        }
+      ],
+      "en": [
+        {
+          "question": "Is a relative or friend visit request the same as residence sponsorship?",
+          "answer": "This page covers a single-entry relative or friend visit visa in Dubai. For family residence, review the residence service rather than treating a visit request as its replacement."
+        },
+        {
+          "question": "Can I use this page for ICP outside Dubai?",
+          "answer": "No. Match the authority and jurisdiction first; the catalog has a separate ICP outside-Dubai relative or friend visit route."
+        }
+      ]
+    },
+    {
+      "serviceId": "guide:new-work-permit-overseas-uae",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل هذا تصريح لعامل خارج الدولة أم نقل عامل؟",
+          "answer": "هذه الصفحة لتصريح عمل جديد من خارج الدولة. نقل تصريح عمل أو تصريح مكفول على أسرته لهما معاملات مختلفة؛ حدد وضع العامل قبل اختيار المسار."
+        },
+        {
+          "question": "هل تصريح العمل نفسه تصريح الإقامة؟",
+          "answer": "تصريح العمل ومعاملة الإقامة مساران مختلفان لدى الجهات المختصة. راجع كل طلب ومرجعه ولا تعتبر نجاح أحدهما تأكيدًا على اكتمال الآخر."
+        }
+      ],
+      "en": [
+        {
+          "question": "Is this for an overseas worker or a worker transfer?",
+          "answer": "This page covers a new work permit for a worker outside the UAE. A transfer or a family-sponsored worker permit is a different transaction; identify the worker's situation first."
+        },
+        {
+          "question": "Is a work permit the same as a residence permit?",
+          "answer": "A work permit and a residence transaction are different authority processes. Check each application and reference; success in one does not confirm completion of the other."
+        }
+      ]
+    },
+    {
+      "serviceId": "catalog:تصديق مستند شخصي داخل الإمارات",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل تصديق الشهادة هو معادلتها؟",
+          "answer": "التصديق ومعادلة الشهادة أو الاعتراف بها خدمات مختلفة. اختر المعاملة المطلوبة من الجهة التي ستستقبل مستندك، ولا تستخدم التصديق بدل المعادلة."
+        },
+        {
+          "question": "هل هذا مسار التصديق التجاري عبر eDAS؟",
+          "answer": "هذه الصفحة للمستند الشخصي. الفاتورة التجارية أو شهادة المنشأ عبر eDAS لها خدمة مستقلة، لذلك حدد نوع المستند قبل المتابعة."
+        }
+      ],
+      "en": [
+        {
+          "question": "Is certificate attestation the same as equivalency?",
+          "answer": "Attestation and certificate equivalency or recognition are different services. Identify what the receiving authority requires rather than using attestation as a substitute for equivalency."
+        },
+        {
+          "question": "Is this the commercial eDAS attestation route?",
+          "answer": "This page concerns a personal document. Commercial invoices or certificates of origin through eDAS have a separate service; identify the document type before proceeding."
+        }
+      ]
+    },
+    {
+      "serviceId": "sira:new-security-activity-license",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل ترخيص النشاط الأمني هو اعتماد نظام كاميرات؟",
+          "answer": "ترخيص مزاولة نشاط أمني واعتماد نظام أمني معاملتان مختلفتان لدى SIRA. حدد هل الطلب يخص نشاط المنشأة أم النظام أو الموقع قبل اختيار الخدمة."
+        },
+        {
+          "question": "هل أعمم هذا المسار على الإمارات الأخرى؟",
+          "answer": "هذه الصفحة تخص SIRA في دبي. لا تستخدم اختصاص دبي تلقائيًا لموقع أو نشاط في إمارة أخرى."
+        }
+      ],
+      "en": [
+        {
+          "question": "Is a security activity licence the same as CCTV system certification?",
+          "answer": "A security activity licence and security system certification are different SIRA transactions. Identify whether your request concerns the business activity or the system or site."
+        },
+        {
+          "question": "Does this route apply automatically in other emirates?",
+          "answer": "This page concerns SIRA in Dubai. Do not automatically apply Dubai jurisdiction to a site or activity in another emirate."
+        }
+      ]
+    },
+    {
+      "serviceId": "sira:security-system-certification",
+      "evidence": "EDITORIAL_TRANSACTION_DISTINCTIONS_FROM_APPROVED_REGISTRY",
+      "reviewedAt": "2026-11-22",
+      "ar": [
+        {
+          "question": "هل أحتاج اعتماد نظام أمني أم ترخيص نشاط أمني؟",
+          "answer": "هذه الصفحة لاعتماد النظام الأمني لدى SIRA في دبي. إذا كان هدفك ترخيص نشاط المنشأة الأمني، راجع صفحة ترخيص النشاط بدل اعتبار المسارين متطابقين."
+        },
+        {
+          "question": "هل توجد متطلبات موحدة لكل أنظمة ومواقع الكاميرات؟",
+          "answer": "لا تفترض أن حالة موقعك تطابق كل الحالات. راجع نوع النظام والموقع والمتطلبات المنشورة في المصدر الرسمي الخاص بالخدمة."
+        }
+      ],
+      "en": [
+        {
+          "question": "Do I need system certification or a security activity licence?",
+          "answer": "This page concerns SIRA security system certification in Dubai. To license the business's security activity, review the activity licence service instead of treating the two routes as identical."
+        },
+        {
+          "question": "Are requirements identical for every CCTV system and site?",
+          "answer": "Do not assume your site matches every other case. Review the system type, site and requirements published in the service's official source."
+        }
+      ]
+    }
+  ]
+}

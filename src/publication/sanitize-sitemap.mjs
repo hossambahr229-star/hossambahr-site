@@ -183,9 +183,24 @@ const searchLastmod=applySearchReleaseLastmod(kept,searchReview,origin);
 report.searchPresentationLastmodUpdated=searchLastmod.changed;
 report.searchPresentationLaterDatesPreserved=searchLastmod.preservedLater;
 report.searchPresentationReleaseDate=searchReview?.date??null;
+let answerReview=null;
+try{
+ const release=JSON.parse(await readFile(resolve(root,'artifacts/service-answer-guides/report.json'),'utf8'));
+ if(release.source!=='APPROVED_REGISTRY_RELATIONS_AND_CURATED_TRANSACTION_DISTINCTIONS'||release.governmentFactsChanged!==false)throw Error('Missing answer-guide release provenance');
+ answerReview={date:release.releaseDate,routes:release.pages.filter(p=>p.contentChanged).map(p=>p.route)};
+}catch(error){if(error.code!=='ENOENT')throw error;}
+const answerLastmod=applySearchReleaseLastmod(searchLastmod.blocks,answerReview,origin);
+report.answerGuideLastmodUpdated=answerLastmod.changed;
+const scopedPublicRelease=new Map([['/services/','2026-11-23'],['/en/services/','2026-11-22'],['/en/privacy/','2026-11-22'],['/en/faq/','2026-11-22']]);
+const finalBlocks=answerLastmod.blocks.map(block=>{
+ const loc=block.match(/<loc>([^<]+)<\/loc>/)?.[1];if(!loc||!scopedPublicRelease.has(new URL(loc,origin).pathname))return block;
+ const date=scopedPublicRelease.get(new URL(loc,origin).pathname),prior=block.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1];if(prior&&prior.slice(0,10)>=date)return block;
+ return prior?block.replace(/<lastmod>[^<]+<\/lastmod>/,'<lastmod>'+date+'</lastmod>'):block.replace('</loc>','</loc><lastmod>'+date+'</lastmod>');
+});
+
 
 report.kept = kept.length;
-const output = `${prefix}${searchLastmod.blocks.join("\n")}\n</urlset>\n`;
+const output = `${prefix}${finalBlocks.join("\n")}\n</urlset>\n`;
 await writeFile(sitemapPath, output, "utf8");
 
 console.log(JSON.stringify({ sitemapHygiene: "PASS", ...report }));
