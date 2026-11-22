@@ -1,0 +1,409 @@
+{
+  "reviewedAt": "2026-11-22",
+  "method": "Public official source retrieval and comparison with existing field verification; no updated government fact claims",
+  "records": [
+    {
+      "id": "catalog:تغيير الشكل القانوني لشركة في دبي",
+      "route": "/services/legacy-service-67abe5ccf3/",
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-amend-trade-licence",
+      "sourceObservation": "READABLE_SHELL_TRANSACTION_DETAILS_NOT_EXTRACTED",
+      "missingFields": [
+        "fees",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:approvals:2",
+      "route": "/services/legacy-service-85a10469d8/",
+      "url": "https://www.investindubai.gov.ae/en/business-setup/business-setup-services/request-to-issue-commercial-permit",
+      "sourceObservation": "READABLE_SHELL_TRANSACTION_DETAILS_NOT_EXTRACTED",
+      "missingFields": [
+        "documents",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:approvals:30",
+      "route": "/services/legacy-service-e7f35a06d9/",
+      "url": "https://www.dubaidet.gov.ae/en/licences-and-permits/hospitality-services-and-permits",
+      "sourceObservation": "GENERAL_HOSPITALITY_GUIDANCE_NOT_A_SINGLE_TRANSACTION",
+      "missingFields": [
+        "documents",
+        "fees",
+        "time",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "dm:food-item-registration",
+      "route": "/services/register-assess-food-item-dubai/",
+      "url": "https://www.dm.gov.ae/dubai-municipality-services/?lang=ar",
+      "sourceObservation": "GENERAL_MUNICIPAL_DIRECTORY_NOT_COMPLETE_FOOD_CARD",
+      "missingFields": [
+        "documents",
+        "fees",
+        "time",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "uaq:trade-name-official-path",
+      "route": "/services/umm-al-quwain-trade-name-official-path/",
+      "url": "https://ded.uaq.ae/en/our-activities/service/bookingtradename.html",
+      "sourceObservation": "FETCH_TIMEOUT",
+      "missingFields": [
+        "fees",
+        "time"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:20",
+      "route": "/services/إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "sourceObservation": "MULTIPLE_APPLICANT_CATEGORIES_REQUIRE_SELECTION",
+      "missingFields": [
+        "documents",
+        "fees",
+        "time",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:22",
+      "route": "/services/إصدار-إقامة-لمولود-جديد-عبر-icp-خارج-دبي/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "sourceObservation": "MULTIPLE_APPLICANT_CATEGORIES_REQUIRE_SELECTION",
+      "missingFields": [
+        "documents",
+        "fees",
+        "time",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:mohre:3",
+      "route": "/services/إصدار-بطاقة-مندوب-علاقات-عامة-pro/",
+      "url": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
+      "sourceObservation": "FETCH_TIMEOUT",
+      "missingFields": [
+        "fees"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:32",
+      "route": "/services/إصدار-تأشيرة-سياحية-متعددة-الدخول-لمدة-5-سنوات-عبر-icp/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=68f5bc968c587a0011cb16cd",
+      "sourceObservation": "PUBLISHED_CONDITIONS_NEED_CLARIFICATION_90_VS_180_DAYS",
+      "missingFields": [
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:23",
+      "route": "/services/إصدار-تأشيرة-عبر-icp-خارج-دبي/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "sourceObservation": "MULTIPLE_VISA_CATEGORIES_REQUIRE_SELECTION",
+      "missingFields": [
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:7",
+      "route": "/services/إصدار-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "sourceObservation": "MULTIPLE_APPLICANT_CATEGORIES_REQUIRE_SELECTION",
+      "missingFields": [
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:mohre:34",
+      "route": "/services/إصدار-تصريح-عمل-جديد-لعامل-مساعد/",
+      "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-work-permit-domestic-workers-2022",
+      "sourceObservation": "FETCH_TIMEOUT",
+      "missingFields": [
+        "fees"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:mohre:35",
+      "route": "/services/إصدار-عقد-عمل-جديد-لعامل-مساعد/",
+      "url": "https://mohre.gov.ae/en/services/issuance-of-a-new-employment-contract-domestic-worker-2022",
+      "sourceObservation": "FETCH_TIMEOUT",
+      "missingFields": [
+        "fees"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:50",
+      "route": "/services/إلغاء-بطاقة-المنشأة-في-دبي-لجميع-الفئات/",
+      "url": "https://gdrfad.gov.ae/en/services/a58a973d-5b86-11ea-0320-0050569629e8",
+      "sourceObservation": "FETCH_TIMEOUT",
+      "missingFields": [
+        "time"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:mohre:8",
+      "route": "/services/إلغاء-ملف-أو-بطاقة-المنشأة/",
+      "url": "https://www.atlp.ae/ar/services-landing/value-added-services/establishment-cancelation-request",
+      "sourceObservation": "ATLP_ROUTE_READABLE_MISSING_FIELDS_REMAIN_UNVERIFIED",
+      "missingFields": [
+        "fees",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:6",
+      "route": "/services/استرداد-رسوم-إصدار-الهوية-غير-المكتمل/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5e",
+      "sourceObservation": "READABLE_REFUND_CARD_MISSING_FIELD_REVIEW_NOT_CLOSED",
+      "missingFields": [
+        "fees"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:5",
+      "route": "/services/الإعفاء-من-غرامة-تأخير-الهوية/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5f",
+      "sourceObservation": "READABLE_EXEMPTION_CARD_MISSING_FIELD_REVIEW_NOT_CLOSED",
+      "missingFields": [
+        "fees"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:52",
+      "route": "/services/الاستعلام-عن-غرامات-ملف-أو-مكفول-في-دبي/",
+      "url": "https://www.gdrfad.gov.ae/en/fines-inquiry-service",
+      "sourceObservation": "FETCH_TIMEOUT",
+      "missingFields": [
+        "fees",
+        "time"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:mohre:24",
+      "route": "/services/التسجيل-والمتابعة-في-wps/",
+      "url": "https://www.dubai.ae/wages-protection-system",
+      "sourceObservation": "WPS_GUIDANCE_NOT_A_COMPLETE_FEE_DOCUMENT_TIME_CARD",
+      "missingFields": [
+        "documents",
+        "fees",
+        "time"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "catalog:تأسيس منشأة جديدة في عجمان",
+      "route": "/services/تأسيس-منشأة-جديدة-في-عجمان/",
+      "url": "https://media.ajman.ae/ar/servicecatalog/services/2862",
+      "sourceObservation": "AJMAN_ISSUANCE_CARD_READABLE_ELIGIBILITY_REMAINS_UNVERIFIED",
+      "missingFields": [
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:36",
+      "route": "/services/تأشيرة-استكشاف-فرص-تأسيس-الأعمال-عبر-icp-خارج-دبي/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "sourceObservation": "MULTIPLE_VISA_CATEGORIES_REQUIRE_SELECTION",
+      "missingFields": [
+        "fees",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:34",
+      "route": "/services/تأشيرة-استكشاف-فرص-عمل-عبر-icp-خارج-دبي/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "sourceObservation": "MULTIPLE_VISA_CATEGORIES_REQUIRE_SELECTION",
+      "missingFields": [
+        "documents",
+        "fees",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:29",
+      "route": "/services/تأشيرة-زيارة-قريب-أو-صديق-عبر-icp-خارج-دبي/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e60",
+      "sourceObservation": "MULTIPLE_VISA_CATEGORIES_REQUIRE_SELECTION",
+      "missingFields": [
+        "documents",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:9",
+      "route": "/services/تجديد-تصريح-إقامة-عبر-icp-خارج-دبي/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e66",
+      "sourceObservation": "MULTIPLE_RESIDENCE_CATEGORIES_REQUIRE_SELECTION",
+      "missingFields": [
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:4",
+      "route": "/services/تحديث-بيانات-الهوية/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e5c",
+      "sourceObservation": "DATA_UPDATE_CARD_READABLE_MISSING_FEES_DURATION_NOT_CLOSED",
+      "missingFields": [
+        "fees",
+        "time"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:11",
+      "route": "/services/تعديل-بيانات-جميع-أنواع-الإقامة-في-دبي/",
+      "url": "https://www.gdrfad.gov.ae/en/services/dff87d9f-b81d-11ed-5210-4cd98f768936",
+      "sourceObservation": "FETCH_TIMEOUT",
+      "missingFields": [
+        "time"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:14",
+      "route": "/services/تغيير-الوضع-عبر-icp-ضمن-إصدار-الإقامة-خارج-دبي/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=64afe3c1035448005bd52e64",
+      "sourceObservation": "MULTIPLE_APPLICANT_CATEGORIES_REQUIRE_SELECTION",
+      "missingFields": [
+        "documents",
+        "fees",
+        "time",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:16",
+      "route": "/services/تقرير-تفاصيل-الإقامة-عبر-icp/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=68e353815ae59b0011738413",
+      "sourceObservation": "RESIDENCE_REPORT_CARD_READABLE_DOCUMENTS_DURATION_NOT_CLOSED",
+      "missingFields": [
+        "documents",
+        "time"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:mohre:6",
+      "route": "/services/تقرير-تقييم-المنشأة/",
+      "url": "https://mohre.gov.ae/ar/services/taqyeem.aspx",
+      "sourceObservation": "FETCH_TIMEOUT",
+      "missingFields": [
+        "documents",
+        "fees",
+        "time",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:mohre:5",
+      "route": "/services/حصة-تصاريح-العمل-للمنشأة/",
+      "url": "https://www.mohre.gov.ae/en/services/work-permit-quotas-for-establishments-2022",
+      "sourceObservation": "FETCH_TIMEOUT",
+      "missingFields": [
+        "fees"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:54",
+      "route": "/services/سداد-غرامة-مخالفة-تأشيرة-أو-إقامة-عبر-icp-خارج-دبي/",
+      "url": "https://icp.gov.ae/en/services-details/?serviceid=68e73faf5ae59b00117389f1",
+      "sourceObservation": "FINE_CARD_NA_DOCUMENT_LABEL_NOT_ASSUMED_NO_DOCUMENTS",
+      "missingFields": [
+        "documents",
+        "time"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:55",
+      "route": "/services/متابعة-حالة-طلب-أو-ملف-لدى-gdrfa-دبي/",
+      "url": "https://smart.gdrfad.gov.ae/Public_Th/StatusInquiry_New.aspx?GdfraLocale=en-US",
+      "sourceObservation": "PUBLIC_TRACKING_FORM_NOT_A_FEE_OR_DURATION_COMMITMENT",
+      "missingFields": [
+        "fees",
+        "time"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:residency:56",
+      "route": "/services/متابعة-حالة-طلب-تأشيرة-لدى-icp-خارج-دبي/",
+      "url": "https://smartservices.icp.gov.ae/echannels/web/client/guest/index.html#/applicationTracking",
+      "sourceObservation": "CLIENT_RENDERED_TRACKING_SHELL",
+      "missingFields": [
+        "documents",
+        "fees",
+        "time",
+        "eligibility"
+      ],
+      "result": "PARTIAL PASS",
+      "detailsPromoted": false
+    }
+  ],
+  "uniqueOfficialSources": 27,
+  "partialServices": 33,
+  "detailsPromoted": 0,
+  "limit": "A missing value, N/A, a multi-category card or a transient timeout is not proof of zero fees, no documents, universal eligibility or guaranteed time."
+}
