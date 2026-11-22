@@ -1,6 +1,8 @@
 const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 export function staticServiceNavigation(html,locale){
- if(locale==='en'||/class=["'][^"']*service-decision-nav/.test(html))return{html,anchors:[],added:false};
+ if(locale==='en')return{html,anchors:[],added:false};
+ html=html.replace(/<nav\b[^>]*data-static-service-decision[^>]*>[\s\S]*?<\/nav>/gi,'');
+ if(/class=["'][^"']*service-decision-nav/.test(html))return{html,anchors:[],added:false};
  const specs=[[/الشروط|الأهلية/,'الشروط','service-decision-1'],[/المستندات/,'المستندات','requirements'],[/^الرسوم|الرسوم الحكومية/,'الرسوم','service-fees-details'],[/مدة الإنجاز|المدة|الوقت المتوقع/,'المدة','service-duration-details'],[/الخطوات|خطوات التنفيذ|خطوات الخدمة|الإجراءات|طريقة التقديم/,'الخطوات','service-decision-3']],found=new Map();
  html=html.replace(/<(section|div)\b([^>]*)>\s*<h2\b([^>]*)>([\s\S]*?)<\/h2>/gi,(whole,tag,attrs,h2attrs,label)=>{const plain=label.replace(/<[^>]*>/g,'').trim(),match=specs.find(([pattern])=>pattern.test(plain));if(!match||found.has(match[1]))return whole;let id=attrs.match(/\bid=["']([^"']+)["']/)?.[1];if(!id){id=match[2];if(new RegExp('\\bid=["\']'+id+'["\']').test(html))return whole;attrs+=' id="'+id+'"';}found.set(match[1],id);return '<'+tag+attrs+'><h2'+h2attrs+'>'+label+'</h2>';});
  if(/\bid=["']service-execution-options["']/.test(html))found.set('التنفيذ','service-execution-options');
