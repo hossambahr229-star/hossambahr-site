@@ -1,0 +1,220 @@
+{
+  "sourceRevision": "4b8430ac9cb728ad739eb0275a74e24fa559adeb",
+  "status": "PASS",
+  "scope": "Actual public authority search using customer intent; no keyword volume/rank or protected execution claim",
+  "cases": [
+    {
+      "route": "/authorities/det-dubai/",
+      "width": 390,
+      "query": "عايز أجدد رخصة شركتي في دبي",
+      "firstThree": [
+        "guide:renew-business-license-dubai",
+        "official:det:issue-trade-license",
+        "guide:cancel-business-license-dubai"
+      ],
+      "expectedRelevantIds": [
+        "guide:renew-business-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/det-dubai/",
+      "width": 1440,
+      "query": "عايز أجدد رخصة شركتي في دبي",
+      "firstThree": [
+        "guide:renew-business-license-dubai",
+        "official:det:issue-trade-license",
+        "guide:cancel-business-license-dubai"
+      ],
+      "expectedRelevantIds": [
+        "guide:renew-business-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/det-dubai/",
+      "width": 390,
+      "query": "renew my company trade licence in Dubai",
+      "firstThree": [
+        "guide:renew-business-license-dubai",
+        "official:det:issue-trade-license",
+        "guide:cancel-business-license-dubai"
+      ],
+      "expectedRelevantIds": [
+        "guide:renew-business-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/det-dubai/",
+      "width": 1440,
+      "query": "renew my company trade licence in Dubai",
+      "firstThree": [
+        "guide:renew-business-license-dubai",
+        "official:det:issue-trade-license",
+        "guide:cancel-business-license-dubai"
+      ],
+      "expectedRelevantIds": [
+        "guide:renew-business-license-dubai"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/mohre/",
+      "width": 390,
+      "query": "تصريح عمل لحامل الإقامة الذهبية",
+      "firstThree": [
+        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+      ],
+      "expectedRelevantIds": [
+        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/mohre/",
+      "width": 1440,
+      "query": "تصريح عمل لحامل الإقامة الذهبية",
+      "firstThree": [
+        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+      ],
+      "expectedRelevantIds": [
+        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/mohre/",
+      "width": 390,
+      "query": "work permit for golden visa holder",
+      "firstThree": [
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "directory:mohre:34",
+        "directory:mohre:39"
+      ],
+      "expectedRelevantIds": [
+        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/mohre/",
+      "width": 1440,
+      "query": "work permit for golden visa holder",
+      "firstThree": [
+        "catalog:تصريح عمل لحامل الإقامة الذهبية",
+        "directory:mohre:34",
+        "directory:mohre:39"
+      ],
+      "expectedRelevantIds": [
+        "catalog:تصريح عمل لحامل الإقامة الذهبية"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/sira-dubai/",
+      "width": 390,
+      "query": "موافقة كاميرات مراقبة",
+      "firstThree": [
+        "sira:security-system-certification"
+      ],
+      "expectedRelevantIds": [
+        "sira:security-system-certification"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/sira-dubai/",
+      "width": 1440,
+      "query": "موافقة كاميرات مراقبة",
+      "firstThree": [
+        "sira:security-system-certification"
+      ],
+      "expectedRelevantIds": [
+        "sira:security-system-certification"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/sira-dubai/",
+      "width": 390,
+      "query": "security system certification Dubai",
+      "firstThree": [
+        "sira:security-system-certification"
+      ],
+      "expectedRelevantIds": [
+        "sira:security-system-certification"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/sira-dubai/",
+      "width": 1440,
+      "query": "security system certification Dubai",
+      "firstThree": [
+        "sira:security-system-certification"
+      ],
+      "expectedRelevantIds": [
+        "sira:security-system-certification"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/sedd-sharjah/",
+      "width": 390,
+      "query": "تجديد الرخصة التجارية في الشارقة",
+      "firstThree": [
+        "sedd:license-renewal",
+        "guide:renew-business-license-sharjah"
+      ],
+      "expectedRelevantIds": [
+        "guide:renew-business-license-sharjah",
+        "sedd:license-renewal"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/sedd-sharjah/",
+      "width": 1440,
+      "query": "تجديد الرخصة التجارية في الشارقة",
+      "firstThree": [
+        "sedd:license-renewal",
+        "guide:renew-business-license-sharjah"
+      ],
+      "expectedRelevantIds": [
+        "guide:renew-business-license-sharjah",
+        "sedd:license-renewal"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/sedd-sharjah/",
+      "width": 390,
+      "query": "renew trade licence Sharjah",
+      "firstThree": [
+        "sedd:license-renewal",
+        "guide:renew-business-license-sharjah"
+      ],
+      "expectedRelevantIds": [
+        "guide:renew-business-license-sharjah",
+        "sedd:license-renewal"
+      ],
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/sedd-sharjah/",
+      "width": 1440,
+      "query": "renew trade licence Sharjah",
+      "firstThree": [
+        "sedd:license-renewal",
+        "guide:renew-business-license-sharjah"
+      ],
+      "expectedRelevantIds": [
+        "guide:renew-business-license-sharjah",
+        "sedd:license-renewal"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "errors": []
+}
