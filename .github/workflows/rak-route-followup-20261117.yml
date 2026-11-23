@@ -1,4 +1,4 @@
-name: Verify current provider status and partial official sources
+name: Verify all beginner journeys on actual Production
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -7,26 +7,25 @@ permissions: {contents: write}
 jobs:
   live:
     runs-on: ubuntu-24.04
-    timeout-minutes: 18
-    env: {SOURCE_SHA: 48b91ba3a7a78f7712e56be37e780abb5585ee4a}
+    timeout-minutes: 25
+    env: {SOURCE_SHA: 56a428fd463263c1c221cde3e0492fdeee7086ee}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: 48b91ba3a7a78f7712e56be37e780abb5585ee4a, path: site}
+        with: {ref: 56a428fd463263c1c221cde3e0492fdeee7086ee, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
       - uses: browser-actions/setup-chrome@v1
         id: chrome
-      - run: npm install --no-save --no-package-lock playwright@1.55.0 cheerio@1.1.2
-      - run: HB_UX_OUTPUT=diagnostics/final-dependencies-20261123 node diagnostics/provider-state656.mjs
-      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/official-detail-probe656.mjs
-      - name: Preserve actual authority and search acceptance
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 cheerio@1.1.2 sharp@0.35.4
+      - run: HB_BASE_URL=https://hossambahr.com HB_UX_OUTPUT=diagnostics/final-ux656-live HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/final-ux656.mjs
+      - name: Preserve beginner journey preview
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/final-dependencies-20261123
+          git add diagnostics/final-ux656-live
           git diff --cached --quiet && exit 0
-          git commit -m "Record sanitized current provider and official source review"
+          git commit -m "Record 144 actual Production beginner journeys and device screenshots"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
