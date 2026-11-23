@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-11-23T17:06:32.813Z",
+  "requests": 1,
+  "status": "BLOCKED",
+  "scope": "One actual public provider-status request; not whole AI semantic acceptance",
+  "httpStatus": 200,
+  "applicationOk": true,
+  "externalModelUsed": false,
+  "answerPresent": true,
+  "engineFieldNames": [
+    "mode",
+    "external_model_used",
+    "provider_failure"
+  ],
+  "providerFailureClass": "EXPIRED_SECRET_KEY"
+}

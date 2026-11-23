@@ -1,0 +1,20 @@
+{
+  "reviewedAt": "2026-11-23T17:06:36.282Z",
+  "scope": "Read-only official pages for partial-detail recovery; no submissions and no fact promotion without complete evidence",
+  "pages": [
+    {
+      "id": "dm:food-item-registration",
+      "sourceUrl": "https://hub.dm.gov.ae/link/servicedetails?ServiceCode=2974",
+      "observation": "FETCH_OR_RENDER_BLOCKED",
+      "errorClass": "TimeoutError",
+      "detailsPromoted": false
+    },
+    {
+      "id": "directory:mohre:3",
+      "sourceUrl": "https://www.mohre.gov.ae/en/services/issuance-of-a-public-relations-officer-card-pro-2022",
+      "observation": "FETCH_OR_RENDER_BLOCKED",
+      "errorClass": "TimeoutError",
+      "detailsPromoted": false
+    }
+  ]
+}
