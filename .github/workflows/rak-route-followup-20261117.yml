@@ -1,4 +1,4 @@
-name: Verify current authority coverage and actual scoped search
+name: Verify authority coverage with complete robots policy parsing
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -24,8 +24,8 @@ jobs:
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/seo654-live
+          git add diagnostics/seo654-live-recheck
           git diff --cached --quiet && exit 0
-          git commit -m "Record actual authority coverage and scoped search acceptance"
+          git commit -m "Record complete robots policy and actual authority search acceptance"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
