@@ -4,7 +4,7 @@
     {
       "route": "index.html",
       "before": "dcc2e2b2a8468a0c684b94d20a0b7c727788109a107ad8bd379fd87148dcda61",
-      "after": "90f9e216d3e21ef7aadea74b243203c37fc7e56cbb16caf9bfcb6a4e61ca1e09",
+      "after": "d94ffd20def62c1912fb4c6b9e324a601d1183278c3e51beb4397aad493b237e",
       "retained": [
         "#main-content",
         "/",
@@ -222,7 +222,6 @@
         "/services/sira-security-system-certification-dubai/",
         "/services/sira-new-security-activity-license-dubai/",
         "/services/sira-security-system-certification-dubai/",
-        "/services/#field-government-approvals",
         "/approvals/",
         "/services/تصديق-مستند-شخصي-داخل-الإمارات/",
         "/services/attestation-of-commercial-invoices-via-edas-2-0/",
@@ -348,6 +347,7 @@
         "/command-center/"
       ],
       "removedFromHomepageOnly": [
+        "/services/#field-government-approvals",
         "/discover/?emirate=%D8%AF%D8%A8%D9%8A",
         "/discover/?emirate=%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A",
         "/discover/?emirate=%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
@@ -374,12 +374,14 @@
         "https://wa.me/971503780460?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20HOSSAM%20BAHR%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A5%D9%86%D8%AC%D8%A7%D8%B2%20%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9%3A%0A%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A9%20%2F%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%3A%20%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A%0A%D8%A7%D9%84%D8%AC%D9%87%D8%A9%3A%20%D8%AF%D8%A7%D8%A6%D8%B1%D8%A9%20%D8%A7%D9%84%D8%AA%D9%86%D9%85%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%D9%8A%D8%A9%20%E2%80%93%20%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A%0A%D9%85%D8%B1%D8%AC%D8%B9%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20added%3Aissue-economic-license%0A%D8%B1%D8%A7%D8%A8%D8%B7%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20https%3A%2F%2Fhossambahr.com%2Fservices%2Fabu-dhabi-economic-license-issuance%2F%0A%D8%A3%D8%B1%D8%AC%D9%88%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%20%D9%86%D8%B7%D8%A7%D9%82%20%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A9%20%D9%88%D8%A7%D9%84%D8%AE%D8%B7%D9%88%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AA%D8%A7%D9%84%D9%8A%D8%A9.",
         "/contact/?service=abu-dhabi-economic-license-issuance&source=%2Fservices%2Fabu-dhabi-economic-license-issuance%2F&handoff=1"
       ],
-      "added": []
+      "added": [
+        "#service-areas"
+      ]
     },
     {
       "route": "en/index.html",
       "before": "53126356a4db606d3550ca703fb600f7007a7579501fa54de2051f767fbe024d",
-      "after": "13dadd1895d4f8909f8fd98739f321469caa11400bf5a1d39cf33b9089daa290",
+      "after": "09b19ec4b018152b72d498af9763693d60eb0d7de18a0221983769e3faedd157",
       "retained": [
         "/en/",
         "/en/",
@@ -596,7 +598,6 @@
         "/en/services/sira-security-system-certification-dubai/",
         "/en/services/sira-new-security-activity-license-dubai/",
         "/en/services/sira-security-system-certification-dubai/",
-        "/en/services/#field-government-approvals",
         "/en/approvals/",
         "/en/services/تصديق-مستند-شخصي-داخل-الإمارات/",
         "/en/services/attestation-of-commercial-invoices-via-edas-2-0/",
@@ -722,6 +723,7 @@
         "/en/os/"
       ],
       "removedFromHomepageOnly": [
+        "/en/services/#field-government-approvals",
         "/en/discover/?emirate=%D8%AF%D8%A8%D9%8A",
         "/en/discover/?emirate=%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A",
         "/en/discover/?emirate=%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
@@ -748,7 +750,9 @@
         "https://wa.me/971503780460?text=Hello%20HOSSAM%20BAHR%2C%20I%20would%20like%20help%20with%20this%20transaction%3A%0AService%3A%20Issuing%20an%20Economic%20Licence%0AEmirate%20%2F%20jurisdiction%3A%20Abu%20Dhabi%0AAuthority%3A%20Abu%20Dhabi%20Department%20of%20Economic%20Development%0AService%20reference%3A%20added%3Aissue-economic-license%0AService%20link%3A%20https%3A%2F%2Fhossambahr.com%2Fen%2Fservices%2Fabu-dhabi-economic-license-issuance%2F%0APlease%20help%20me%20confirm%20the%20scope%20and%20next%20steps.",
         "/en/contact/?service=abu-dhabi-economic-license-issuance&source=%2Fen%2Fservices%2Fabu-dhabi-economic-license-issuance%2F&handoff=1"
       ],
-      "added": []
+      "added": [
+        "#service-areas"
+      ]
     }
   ]
 }
