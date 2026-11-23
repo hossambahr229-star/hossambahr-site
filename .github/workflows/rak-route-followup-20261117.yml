@@ -1,4 +1,4 @@
-name: Verify all beginner journeys on actual Production
+name: Verify exact live homepage release dates without unrelated changes
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -7,25 +7,22 @@ permissions: {contents: write}
 jobs:
   live:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
-    env: {SOURCE_SHA: 56a428fd463263c1c221cde3e0492fdeee7086ee}
+    timeout-minutes: 12
+    env: {SOURCE_SHA: b7d1cd35370ff07dbc65b8c9266052f9ce1a90ea}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: 56a428fd463263c1c221cde3e0492fdeee7086ee, path: site}
+        with: {ref: b7d1cd35370ff07dbc65b8c9266052f9ce1a90ea, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
-      - uses: browser-actions/setup-chrome@v1
-        id: chrome
-      - run: npm install --no-save --no-package-lock playwright@1.55.0 cheerio@1.1.2 sharp@0.35.4
-      - run: HB_BASE_URL=https://hossambahr.com HB_UX_OUTPUT=diagnostics/final-ux656-live HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/final-ux656.mjs
-      - name: Preserve beginner journey preview
+      - run: node diagnostics/live-sitemap657.mjs
+      - name: Preserve scoped live sitemap acceptance
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/final-ux656-live
+          git add diagnostics/home-lastmod657-live
           git diff --cached --quiet && exit 0
-          git commit -m "Record 144 actual Production beginner journeys and device screenshots"
+          git commit -m "Record two real homepage lastmod dates and unchanged sitemap scope"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
