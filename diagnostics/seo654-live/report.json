@@ -1,0 +1,384 @@
+{
+  "sourceRevision": "4b8430ac9cb728ad739eb0275a74e24fa559adeb",
+  "status": "FAIL",
+  "scope": "Actual public authority HTML, search, static anchors and execution URLs; no protected-account, model or ranking acceptance",
+  "http": [
+    {
+      "route": "/authorities/abu-dhabi-police/",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "route": "/authorities/added-abu-dhabi/",
+      "status": "PASS",
+      "services": 9,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/ajman-ded/",
+      "status": "PASS",
+      "services": 7,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dubai-courts/",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "route": "/authorities/dubai-customs/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/det-dubai/",
+      "status": "PASS",
+      "services": 14,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dubai-courts-notary/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dld-rera/",
+      "status": "PASS",
+      "services": 5,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dubai-municipality/",
+      "status": "PASS",
+      "services": 7,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dha-dubai/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dubai-police/",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "route": "/authorities/fta/",
+      "status": "PASS",
+      "services": 2,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/fujairah-business/",
+      "status": "PASS",
+      "services": 8,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/fujairah-free-zone/",
+      "status": "PASS",
+      "services": 1,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/fujairah-municipality/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/gdrfa-dubai/",
+      "status": "PASS",
+      "services": 22,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/moe/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/mofa/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/khda/",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "route": "/authorities/mohre/",
+      "status": "PASS",
+      "services": 44,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/icp/",
+      "status": "PASS",
+      "services": 39,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/rak-ded/",
+      "status": "PASS",
+      "services": 8,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/mohap/",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "route": "/authorities/moj/",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "route": "/authorities/rakez/",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "route": "/authorities/rta-dubai/",
+      "status": "PASS",
+      "services": 6,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/sca/",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "route": "/authorities/sedd-sharjah/",
+      "status": "PASS",
+      "services": 9,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/sharjah-ded/",
+      "status": "PASS",
+      "services": 9,
+      "noindex": false,
+      "aliasTarget": "/authorities/sedd-sharjah/"
+    },
+    {
+      "route": "/authorities/uaq-ded/",
+      "status": "FAIL",
+      "error": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "route": "/authorities/sira-dubai/",
+      "status": "PASS",
+      "services": 2,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/added-abu-dhabi/",
+      "status": "PASS",
+      "services": 9,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/ajman-ded/",
+      "status": "PASS",
+      "services": 7,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/uaq-business/",
+      "status": "PASS",
+      "services": 4,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/dha-dubai/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/det-dubai/",
+      "status": "PASS",
+      "services": 14,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/dubai-courts-notary/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/dld-rera/",
+      "status": "PASS",
+      "services": 5,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/dubai-customs/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/dubai-municipality/",
+      "status": "PASS",
+      "services": 7,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/fujairah-business/",
+      "status": "PASS",
+      "services": 8,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/fujairah-free-zone/",
+      "status": "PASS",
+      "services": 1,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/fta/",
+      "status": "PASS",
+      "services": 2,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/gdrfa-dubai/",
+      "status": "PASS",
+      "services": 22,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/mofa/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/moe/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/icp/",
+      "status": "PASS",
+      "services": 39,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/rak-ded/",
+      "status": "PASS",
+      "services": 8,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/mohre/",
+      "status": "PASS",
+      "services": 44,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/rta-dubai/",
+      "status": "PASS",
+      "services": 6,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/sira-dubai/",
+      "status": "PASS",
+      "services": 2,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/",
+      "status": "PASS",
+      "services": 21,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/sedd-sharjah/",
+      "status": "PASS",
+      "services": 9,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/uaq-business/",
+      "status": "PASS",
+      "services": 4,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/",
+      "status": "PASS",
+      "services": 21,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/for/property-owner/",
+      "status": "PASS",
+      "noindex": true,
+      "aliasTarget": null
+    }
+  ],
+  "browser": [],
+  "errors": [
+    "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     error: 'Expected values to be strictly equal:\\n\\nfalse !== true\\n',\n+     route: '/authorities/abu-dhabi-police/',\n+     status: 'FAIL'\n+   },\n+   {\n+     error: 'Expected values to be strictly equal:\\n\\nfalse !== true\\n',\n+     route: '/authorities/dubai-courts/',\n+     status: 'FAIL'\n+   },\n+   {\n+     error: 'Expected values to be strictly equal:\\n\\nfalse !== true\\n',\n+     route: '/authorities/dubai-police/',\n+     status: 'FAIL'\n+   },\n+   {\n+     error: 'Expected values to be strictly equal:\\n\\nfalse !== true\\n',\n+     route: '/authorities/khda/',\n+     status: 'FAIL'\n+   },\n+   {\n+     error: 'Expected values to be strictly equal:\\n\\nfalse !== true\\n',\n+     route: '/authorities/mohap/',\n+     status: 'FAIL'\n+   },\n+   {\n+     error: 'Expected values to be strictly equal:\\n\\nfalse !== true\\n',\n+     route: '/authorities/moj/',\n+     status: 'FAIL'\n+   },\n+   {\n+     error: 'Expected values to be strictly equal:\\n\\nfalse !== true\\n',\n+     route: '/authorities/rakez/',\n+     status: 'FAIL'\n+   },\n+   {\n+     error: 'Expected values to be strictly equal:\\n\\nfalse !== true\\n',\n+     route: '/authorities/sca/',\n+     status: 'FAIL'\n+   },\n+   {\n+     error: 'Expected values to be strictly equal:\\n\\nfalse !== true\\n',\n+     route: '/authorities/uaq-ded/',\n+     status: 'FAIL'\n+   }\n+ ]\n- []\n\n    at file:///home/runner/work/hossambahr-site/hossambahr-site/diagnostics/seo654-live.mjs:6:1679"
+  ]
+}
