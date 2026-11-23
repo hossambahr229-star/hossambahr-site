@@ -1,0 +1,9 @@
+import{rankServices}from'./intent-search.js';
+export function authoritySearch(records,ids,query){const scoped=records.filter(r=>ids.has(r.id));return query.trim()?rankServices(query,scoped):scoped;}
+if(typeof document!=='undefined'){
+ const form=document.querySelector('[data-authority-search]'),cards=[...document.querySelectorAll('[data-authority-service]')],status=document.querySelector('[data-authority-search-status]');
+ if(form&&status){const ids=new Set(cards.map(c=>c.dataset.authorityService)),en=document.documentElement.lang==='en',initial=new URLSearchParams(location.search).get('q')||'';form.elements.q.value=initial;let records;
+ async function render(event){event?.preventDefault();try{if(!records){const r=await fetch('/transaction-discovery-data.json');if(!r.ok)throw Error('catalog');records=await r.json();}const query=form.elements.q.value.trim().slice(0,800),found=authoritySearch(records,ids,query),order=new Map(found.map((r,i)=>[r.id,i]));for(const card of cards)card.hidden=!order.has(card.dataset.authorityService);for(const record of found){const card=cards.find(c=>c.dataset.authorityService===record.id);if(card)card.parentElement.append(card);}status.textContent=en?found.length+' matching transactions from this authority':found.length+' معاملة مطابقة لدى هذه الجهة';const u=new URL(location.href);query?u.searchParams.set('q',query):u.searchParams.delete('q');history.replaceState(null,'',u);for(const a of document.querySelectorAll('[data-authority-language],[data-discovery-language]')){const t=new URL(a.href);t.search=u.search;a.href=t.href;}}catch{for(const card of cards)card.hidden=false;status.textContent=en?'Interactive search is unavailable. All transaction links below remain available.':'تعذر البحث التفاعلي؛ جميع روابط المعاملات أدناه ما زالت متاحة.';}}
+ form.addEventListener('submit',render);form.addEventListener('reset',()=>setTimeout(()=>render(),0));if(initial)render();
+ }
+}

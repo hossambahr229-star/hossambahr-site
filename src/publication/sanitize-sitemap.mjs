@@ -1,5 +1,6 @@
 import { readFile, writeFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
+import {authorityReleaseDates} from "./authority-catalog.mjs";
 import { applySearchReleaseLastmod } from "./search-release-sitemap.mjs";
 
 const root = resolve(import.meta.dirname, "../..");
@@ -154,7 +155,7 @@ async function addPublishedRoute(pathname) {
   else report.discoveredOther += 1;
 }
 
-for (const directory of ["services", "en/services", "categories"]) {
+for (const directory of ["services", "en/services", "categories", "authorities", "en/authorities"]) {
   let entries = [];
   try {
     entries = await readdir(resolve(root, directory), { withFileTypes: true });
@@ -199,8 +200,11 @@ const finalBlocks=answerLastmod.blocks.map(block=>{
 });
 
 
+let authorityReview=null;
+try{authorityReview=JSON.parse(await readFile(resolve(root,'artifacts/authority-catalog/report.json'),'utf8'));if(authorityReview.source!=='CURRENT_PUBLISHED_CANONICAL_SERVICE_REGISTRY')throw Error('Invalid authority release source');}catch(error){if(error.code!=='ENOENT')throw error;}
+const publicationBlocks=authorityReleaseDates(finalBlocks,authorityReview,origin);
 report.kept = kept.length;
-const output = `${prefix}${finalBlocks.join("\n")}\n</urlset>\n`;
+const output = `${prefix}${publicationBlocks.join("\n")}\n</urlset>\n`;
 await writeFile(sitemapPath, output, "utf8");
 
 console.log(JSON.stringify({ sitemapHygiene: "PASS", ...report }));
