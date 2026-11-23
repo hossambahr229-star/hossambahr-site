@@ -1,4 +1,4 @@
-import{rankServices}from'./intent-search.js';
+import{rankServices}from'./intent-search.js?v=ef295cf04d4c';
 export function authoritySearch(records,ids,query){const scoped=records.filter(r=>ids.has(r.id));return query.trim()?rankServices(query,scoped):scoped;}
 if(typeof document!=='undefined'){
  const form=document.querySelector('[data-authority-search]'),cards=[...document.querySelectorAll('[data-authority-service]')],status=document.querySelector('[data-authority-search-status]');
