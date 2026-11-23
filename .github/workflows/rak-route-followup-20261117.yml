@@ -1,4 +1,4 @@
-name: Capture final service-first actual homepage baseline
+name: Preview all mandated no-search transaction journeys
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -7,25 +7,27 @@ permissions: {contents: write}
 jobs:
   live:
     runs-on: ubuntu-24.04
-    timeout-minutes: 18
-    env: {SOURCE_SHA: 48b91ba3a7a78f7712e56be37e780abb5585ee4a}
+    timeout-minutes: 25
+    env: {SOURCE_SHA: d7d15c8e1736599e3264329fc387816e809c6794}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: 48b91ba3a7a78f7712e56be37e780abb5585ee4a, path: site}
+        with: {ref: d7d15c8e1736599e3264329fc387816e809c6794, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
       - uses: browser-actions/setup-chrome@v1
         id: chrome
-      - run: npm install --no-save --no-package-lock playwright@1.55.0 cheerio@1.1.2
-      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/ux-baseline656.mjs
-      - name: Preserve actual authority and search acceptance
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 cheerio@1.1.2 sharp@0.35.4
+      - run: npm run build
+        working-directory: site
+      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/final-ux656.mjs
+      - name: Preserve beginner journey preview
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/final-ux-baseline-20261123
+          git add diagnostics/final-ux656-preview
           git diff --cached --quiet && exit 0
-          git commit -m "Record actual service-first homepage baseline and browse coverage"
+          git commit -m "Record all mandated transaction journey preview and screenshots"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
