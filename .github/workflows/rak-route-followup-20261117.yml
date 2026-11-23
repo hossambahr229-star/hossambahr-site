@@ -1,4 +1,4 @@
-name: Verify all service answer guides and actual transaction controls
+name: Verify current authority coverage and actual scoped search
 on:
   push:
     branches: [agent/dld-source-review-evidence]
@@ -8,24 +8,24 @@ jobs:
   live:
     runs-on: ubuntu-24.04
     timeout-minutes: 18
-    env: {SOURCE_SHA: 68ddaf7c737baccca86a3dde1a4ddf2491ae132d}
+    env: {SOURCE_SHA: 4b8430ac9cb728ad739eb0275a74e24fa559adeb}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
-        with: {ref: 68ddaf7c737baccca86a3dde1a4ddf2491ae132d, path: site}
+        with: {ref: 4b8430ac9cb728ad739eb0275a74e24fa559adeb, path: site}
       - uses: actions/setup-node@v4
         with: {node-version: 24}
       - uses: browser-actions/setup-chrome@v1
         id: chrome
       - run: npm install --no-save --no-package-lock playwright@1.55.0 cheerio@1.1.2
-      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/seo653-live.mjs
-      - name: Preserve all-page and actual UI acceptance
+      - run: HB_BROWSER_PATH="${{ steps.chrome.outputs.chrome-path }}" node diagnostics/seo654-live.mjs
+      - name: Preserve actual authority and search acceptance
         if: always()
         run: |
           git config user.name "HossamBahr Acceptance Evidence"
           git config user.email "acceptance@users.noreply.github.com"
-          git add diagnostics/seo653-live
+          git add diagnostics/seo654-live
           git diff --cached --quiet && exit 0
-          git commit -m "Record all404 actual service HTML and native answer/path control acceptance"
+          git commit -m "Record actual authority coverage and scoped search acceptance"
           git pull --rebase origin agent/dld-source-review-evidence
           git push origin HEAD:agent/dld-source-review-evidence
