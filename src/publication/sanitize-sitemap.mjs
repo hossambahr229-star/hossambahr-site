@@ -192,7 +192,7 @@ try{
 }catch(error){if(error.code!=='ENOENT')throw error;}
 const answerLastmod=applySearchReleaseLastmod(searchLastmod.blocks,answerReview,origin);
 report.answerGuideLastmodUpdated=answerLastmod.changed;
-const scopedPublicRelease=new Map([['/services/','2026-11-23'],['/en/services/','2026-11-22'],['/en/privacy/','2026-11-22'],['/en/faq/','2026-11-22']]);
+const scopedPublicRelease=new Map([['/','2026-11-23'],['/en/','2026-11-23'],['/services/','2026-11-23'],['/en/services/','2026-11-22'],['/en/privacy/','2026-11-22'],['/en/faq/','2026-11-22']]);
 const finalBlocks=answerLastmod.blocks.map(block=>{
  const loc=block.match(/<loc>([^<]+)<\/loc>/)?.[1];if(!loc||!scopedPublicRelease.has(new URL(loc,origin).pathname))return block;
  const date=scopedPublicRelease.get(new URL(loc,origin).pathname),prior=block.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1];if(prior&&prior.slice(0,10)>=date)return block;
