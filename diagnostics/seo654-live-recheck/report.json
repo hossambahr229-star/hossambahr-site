@@ -1,0 +1,610 @@
+{
+  "sourceRevision": "4b8430ac9cb728ad739eb0275a74e24fa559adeb",
+  "status": "PASS",
+  "scope": "Actual public authority HTML, search, static anchors and execution URLs; no protected-account, model or ranking acceptance",
+  "http": [
+    {
+      "route": "/authorities/det-dubai/",
+      "status": "PASS",
+      "services": 14,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/abu-dhabi-police/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": true,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/added-abu-dhabi/",
+      "status": "PASS",
+      "services": 9,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dha-dubai/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dubai-courts-notary/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dubai-courts/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": true,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dld-rera/",
+      "status": "PASS",
+      "services": 5,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/ajman-ded/",
+      "status": "PASS",
+      "services": 7,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dubai-customs/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dubai-municipality/",
+      "status": "PASS",
+      "services": 7,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/dubai-police/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": true,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/fta/",
+      "status": "PASS",
+      "services": 2,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/fujairah-business/",
+      "status": "PASS",
+      "services": 8,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/fujairah-free-zone/",
+      "status": "PASS",
+      "services": 1,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/fujairah-municipality/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/gdrfa-dubai/",
+      "status": "PASS",
+      "services": 22,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/khda/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": true,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/icp/",
+      "status": "PASS",
+      "services": 39,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/moe/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/mofa/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/mohap/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": true,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/mohre/",
+      "status": "PASS",
+      "services": 44,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/moj/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": true,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/rak-ded/",
+      "status": "PASS",
+      "services": 8,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/rakez/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": true,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/rta-dubai/",
+      "status": "PASS",
+      "services": 6,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/sca/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": true,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/sira-dubai/",
+      "status": "PASS",
+      "services": 2,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/sedd-sharjah/",
+      "status": "PASS",
+      "services": 9,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/sharjah-ded/",
+      "status": "PASS",
+      "services": 9,
+      "noindex": false,
+      "aliasTarget": "/authorities/sedd-sharjah/"
+    },
+    {
+      "route": "/authorities/uaq-business/",
+      "status": "PASS",
+      "services": 4,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/uaq-ded/",
+      "status": "PASS",
+      "services": 0,
+      "noindex": true,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/added-abu-dhabi/",
+      "status": "PASS",
+      "services": 9,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/ajman-ded/",
+      "status": "PASS",
+      "services": 7,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/det-dubai/",
+      "status": "PASS",
+      "services": 14,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/dha-dubai/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/dld-rera/",
+      "status": "PASS",
+      "services": 5,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/dubai-courts-notary/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/dubai-municipality/",
+      "status": "PASS",
+      "services": 7,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/fta/",
+      "status": "PASS",
+      "services": 2,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/fujairah-business/",
+      "status": "PASS",
+      "services": 8,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/gdrfa-dubai/",
+      "status": "PASS",
+      "services": 22,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/fujairah-free-zone/",
+      "status": "PASS",
+      "services": 1,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/mofa/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/moe/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/icp/",
+      "status": "PASS",
+      "services": 39,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/mohre/",
+      "status": "PASS",
+      "services": 44,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/rak-ded/",
+      "status": "PASS",
+      "services": 8,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/rta-dubai/",
+      "status": "PASS",
+      "services": 6,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/sira-dubai/",
+      "status": "PASS",
+      "services": 2,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/sedd-sharjah/",
+      "status": "PASS",
+      "services": 9,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/uaq-business/",
+      "status": "PASS",
+      "services": 4,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/authorities/",
+      "status": "PASS",
+      "services": 21,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/",
+      "status": "PASS",
+      "services": 21,
+      "noindex": false,
+      "aliasTarget": null
+    },
+    {
+      "route": "/for/property-owner/",
+      "status": "PASS",
+      "noindex": true,
+      "aliasTarget": null
+    },
+    {
+      "route": "/en/authorities/dubai-customs/",
+      "status": "PASS",
+      "services": 3,
+      "noindex": false,
+      "aliasTarget": null
+    }
+  ],
+  "browser": [
+    {
+      "route": "/authorities/det-dubai/",
+      "width": 390,
+      "searchQuery": "إضافة أو حذف نشاط تجاري في دبي",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/det-dubai/",
+      "width": 1440,
+      "searchQuery": "إضافة أو حذف نشاط تجاري في دبي",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/det-dubai/",
+      "width": 390,
+      "searchQuery": "Add or Remove a Business Activity in Dubai",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/det-dubai/",
+      "width": 1440,
+      "searchQuery": "Add or Remove a Business Activity in Dubai",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/mohre/",
+      "width": 390,
+      "searchQuery": "إلغاء تصريح وعقد عمل في الإمارات",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/mohre/",
+      "width": 1440,
+      "searchQuery": "إلغاء تصريح وعقد عمل في الإمارات",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/mohre/",
+      "width": 390,
+      "searchQuery": "Cancellation of Work Permits and Employment Contracts",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/mohre/",
+      "width": 1440,
+      "searchQuery": "Cancellation of Work Permits and Employment Contracts",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/sira-dubai/",
+      "width": 390,
+      "searchQuery": "إصدار ترخيص نشاط أمني جديد في دبي",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/sira-dubai/",
+      "width": 1440,
+      "searchQuery": "إصدار ترخيص نشاط أمني جديد في دبي",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/sira-dubai/",
+      "width": 390,
+      "searchQuery": "New Security Activity License",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/sira-dubai/",
+      "width": 1440,
+      "searchQuery": "New Security Activity License",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/sedd-sharjah/",
+      "width": 390,
+      "searchQuery": "تجديد رخصة تجارية في الشارقة",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/authorities/sedd-sharjah/",
+      "width": 1440,
+      "searchQuery": "تجديد رخصة تجارية في الشارقة",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/sedd-sharjah/",
+      "width": 390,
+      "searchQuery": "Renew a Trade Licence in Sharjah",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/en/authorities/sedd-sharjah/",
+      "width": 1440,
+      "searchQuery": "Renew a Trade Licence in Sharjah",
+      "scopedResults": true,
+      "reset": true,
+      "localeContext": true,
+      "governmentHref": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/services/renew-business-license-dubai/",
+      "width": 390,
+      "rebuiltStepsAnchor": true,
+      "status": "PASS"
+    },
+    {
+      "route": "/services/renew-business-license-dubai/",
+      "width": 1440,
+      "rebuiltStepsAnchor": true,
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "auditCorrection": "Initial audit read only the first robots meta; recheck evaluates every applicable robots meta and header. Original failed audit preserved.",
+  "serviceAnchorPages": 404,
+  "sitemapUrls": 504,
+  "noindexScopes": [
+    "/authorities/abu-dhabi-police/",
+    "/authorities/dubai-courts/",
+    "/authorities/dubai-police/",
+    "/authorities/khda/",
+    "/authorities/mohap/",
+    "/authorities/moj/",
+    "/authorities/rakez/",
+    "/authorities/sca/",
+    "/authorities/uaq-ded/",
+    "/for/property-owner/"
+  ],
+  "aliases": [
+    {
+      "route": "/authorities/sharjah-ded/",
+      "target": "/authorities/sedd-sharjah/"
+    }
+  ]
+}
