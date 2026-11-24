@@ -1,0 +1,32 @@
+name: Live homepage card acceptance
+on:
+  push:
+    branches: [agent/home-card-live-20261124]
+    paths-ignore: ['artifacts/**']
+permissions: {contents: write}
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.55.0
+      - run: node scripts/home-card-live-browser.mjs
+        env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
+      - name: Preserve actual Production evidence
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add artifacts/home-card-live/report.json
+          for f in ar-1440.jpg ar-390.jpg en-1440.jpg en-390.jpg; do
+            test ! -f "artifacts/home-card-live/$f" || git add "artifacts/home-card-live/$f"
+          done
+          git diff --cached --quiet || git commit -m "Record actual live card geometry [skip ci]"
+          git push origin HEAD:agent/home-card-live-20261124
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: home-card-live, path: artifacts/home-card-live}
