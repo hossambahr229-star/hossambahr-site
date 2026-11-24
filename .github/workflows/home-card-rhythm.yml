@@ -1,0 +1,38 @@
+name: Homepage card rhythm acceptance
+on:
+  push:
+    branches: [agent/home-card-rhythm-20261124]
+    paths-ignore: ['artifacts/**']
+permissions: {contents: write}
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.55.0
+      - run: npm run typecheck
+      - run: npm run build
+      - run: git show fe03bb5122c16d31a55091d51fc40fdbe32025aa:approved-home.css > /tmp/hb-baseline-home.css
+      - run: node scripts/home-card-density-browser.mjs
+        env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
+      - run: node scripts/home-card-rhythm-journeys.mjs
+        env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
+      - name: Preserve actual acceptance evidence
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add artifacts/home-card-rhythm/*.json
+          for f in ar-1440-before.jpg ar-1440-after.jpg en-1440-before.jpg en-1440-after.jpg; do
+            test ! -f "artifacts/home-card-rhythm/$f" || git add "artifacts/home-card-rhythm/$f"
+          done
+          git diff --cached --quiet || git commit -m "Record homepage card rhythm evidence [skip ci]"
+          git push origin HEAD:agent/home-card-rhythm-20261124
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: home-card-rhythm, path: artifacts/home-card-rhythm}
