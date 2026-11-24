@@ -1,0 +1,421 @@
+{
+  "observed": "2026-11-24",
+  "source": "Google Search Console historical 404 report, updated 2026-11-16; every observed URL confirmed HTTP 404 on current Production.",
+  "policy": "Only explicit observed aliases; existing canonical service registry and redirect owner remain authoritative. Discovery redirects do not claim a completed or uniquely identified transaction.",
+  "entries": [
+    {
+      "from": "/business-services-abu-dhabi.html",
+      "to": "/discover/?domain=business&emirate=%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A",
+      "kind": "SCOPED_DISCOVERY",
+      "reason": "Retain business scope and the named emirate instead of selecting an arbitrary transaction."
+    },
+    {
+      "from": "/business-services-ajman.html",
+      "to": "/discover/?domain=business&emirate=%D8%B9%D8%AC%D9%85%D8%A7%D9%86",
+      "kind": "SCOPED_DISCOVERY",
+      "reason": "Retain business scope and the named emirate instead of selecting an arbitrary transaction."
+    },
+    {
+      "from": "/business-services-dubai.html",
+      "to": "/discover/?domain=business&emirate=%D8%AF%D8%A8%D9%8A",
+      "kind": "SCOPED_DISCOVERY",
+      "reason": "Retain business scope and the named emirate instead of selecting an arbitrary transaction."
+    },
+    {
+      "from": "/business-services-fujairah.html",
+      "to": "/discover/?domain=business&emirate=%D8%A7%D9%84%D9%81%D8%AC%D9%8A%D8%B1%D8%A9",
+      "kind": "SCOPED_DISCOVERY",
+      "reason": "Retain business scope and the named emirate instead of selecting an arbitrary transaction."
+    },
+    {
+      "from": "/business-services-sharjah.html",
+      "to": "/discover/?domain=business&emirate=%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
+      "kind": "SCOPED_DISCOVERY",
+      "reason": "Retain business scope and the named emirate instead of selecting an arbitrary transaction."
+    },
+    {
+      "from": "/company-formation-dubai.html",
+      "to": "/services/issue-trade-license-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "reason": "The current registry contains the same transaction and jurisdiction.",
+      "serviceId": "official:det:issue-trade-license"
+    },
+    {
+      "from": "/company-liquidation-uae.html",
+      "to": "/discover/?q=%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "reason": "The legacy name is broader than a single current verified service; offer matching choices without claiming UAE-wide eligibility for a Dubai-only transaction."
+    },
+    {
+      "from": "/contact.html",
+      "to": "/contact/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/corporate-tax-registration-uae.html",
+      "to": "/services/corporate-tax-registration-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "reason": "The current registry contains the same transaction and jurisdiction.",
+      "serviceId": "guide:corporate-tax-registration-uae"
+    },
+    {
+      "from": "/emirates-id-uae.html",
+      "to": "/discover/?q=%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%D9%8A%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "reason": "The legacy name is broader than a single current verified service; offer matching choices without claiming UAE-wide eligibility for a Dubai-only transaction."
+    },
+    {
+      "from": "/family-sponsorship-uae.html",
+      "to": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%A3%D9%81%D8%B1%D8%A7%D8%AF%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "reason": "The legacy name is broader than a single current verified service; offer matching choices without claiming UAE-wide eligibility for a Dubai-only transaction."
+    },
+    {
+      "from": "/golden-residency-uae.html",
+      "to": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%B0%D9%87%D8%A8%D9%8A%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "reason": "The legacy name is broader than a single current verified service; offer matching choices without claiming UAE-wide eligibility for a Dubai-only transaction."
+    },
+    {
+      "from": "/government-approvals-dubai.html",
+      "to": "/approvals/?emirate=%D8%AF%D8%A8%D9%8A",
+      "kind": "SCOPED_DISCOVERY",
+      "reason": "Keep approval classification and Dubai jurisdiction."
+    },
+    {
+      "from": "/investor-residency-uae.html",
+      "to": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D9%85%D8%B3%D8%AA%D8%AB%D9%85%D8%B1",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "reason": "The legacy name is broader than a single current verified service; offer matching choices without claiming UAE-wide eligibility for a Dubai-only transaction."
+    },
+    {
+      "from": "/knowledge-hub.html",
+      "to": "/services/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/license-renewal-uae.html",
+      "to": "/discover/?q=%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "reason": "The legacy name is broader than a single current verified service; offer matching choices without claiming UAE-wide eligibility for a Dubai-only transaction."
+    },
+    {
+      "from": "/mohre-services-dubai.html",
+      "to": "/authorities/mohre/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/plans.html",
+      "to": "/pricing/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/privacy.html",
+      "to": "/privacy/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/residency-identity-dubai.html",
+      "to": "/services/#emirate-dubai",
+      "kind": "SCOPED_DISCOVERY",
+      "reason": "Current Dubai directory includes local and applicable federal residence and identity services; retain the stated emirate without choosing a different transaction."
+    },
+    {
+      "from": "/search-results.html",
+      "to": "/discover/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/service-guides.html",
+      "to": "/services/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/services/add-business-activity-dubai.html",
+      "to": "/services/add-business-activity-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:add-business-activity-dubai",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/add-remove-partner-dubai.html",
+      "to": "/services/add-remove-partner-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:add-remove-partner-dubai",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/amend-business-license-dubai.html",
+      "to": "/services/amend-business-license-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:amend-business-license-dubai",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/cancel-business-license-dubai.html",
+      "to": "/services/cancel-business-license-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:cancel-business-license-dubai",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/cancel-residency-permit-uae.html",
+      "to": "/services/cancel-residency-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:cancel-residency-permit-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/cancel-work-permit-uae.html",
+      "to": "/services/cancel-work-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:cancel-work-permit-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/change-company-manager-dubai.html",
+      "to": "/services/change-company-manager-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:change-company-manager-dubai",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/corporate-tax-registration-uae.html",
+      "to": "/services/corporate-tax-registration-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:corporate-tax-registration-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/employment-contract-uae.html",
+      "to": "/services/employment-contract-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:employment-contract-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/establishment-card-mohre-uae.html",
+      "to": "/services/establishment-card-mohre-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:establishment-card-mohre-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/family-residency-uae.html",
+      "to": "/services/family-residency-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:family-residency-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/family-sponsored-work-permit-uae.html",
+      "to": "/services/family-sponsored-work-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:family-sponsored-work-permit-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/golden-residency-uae.html",
+      "to": "/services/golden-residency-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:golden-residency-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/initial-approval-dubai.html",
+      "to": "/services/issue-trade-license-dubai/",
+      "kind": "EXISTING_LEGACY_POLICY",
+      "reason": "Preserve the existing initial-approval-dubai legacy mapping already defined in this redirect owner; no new government-service classification."
+    },
+    {
+      "from": "/services/investor-residency-dubai.html",
+      "to": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D9%85%D8%B3%D8%AA%D8%AB%D9%85%D8%B1&emirate=%D8%AF%D8%A8%D9%8A",
+      "kind": "NEEDS_SERVICE_SELECTION",
+      "reason": "Distinguish green and golden investor routes within Dubai instead of equating them."
+    },
+    {
+      "from": "/services/issue-emirates-id-uae.html",
+      "to": "/services/issue-emirates-id-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:issue-emirates-id-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/new-work-permit-overseas-uae.html",
+      "to": "/services/new-work-permit-overseas-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:new-work-permit-overseas-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/part-time-work-permit-uae.html",
+      "to": "/services/part-time-work-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:part-time-work-permit-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/renew-business-license-abu-dhabi.html",
+      "to": "/services/abu-dhabi-economic-license-renewal/",
+      "kind": "RENAMED_SERVICE",
+      "reason": "Same economic-license renewal and Abu Dhabi jurisdiction in the current registry.",
+      "serviceId": "added:renew-economic-license"
+    },
+    {
+      "from": "/services/renew-business-license-ajman.html",
+      "to": "/services/renew-business-license-ajman/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:renew-business-license-ajman",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/renew-business-license-dubai.html",
+      "to": "/services/renew-business-license-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:renew-business-license-dubai",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/renew-business-license-sharjah.html",
+      "to": "/services/renew-business-license-sharjah/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:renew-business-license-sharjah",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/renew-residency-permit-uae.html",
+      "to": "/discover/?q=%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%A5%D9%82%D8%A7%D9%85%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "reason": "The legacy name is broader than a single current verified service; offer matching choices without claiming UAE-wide eligibility for a Dubai-only transaction."
+    },
+    {
+      "from": "/services/reserve-trade-name-dubai.html",
+      "to": "/services/reserve-trade-name-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:reserve-trade-name-dubai",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/temporary-work-permit-uae.html",
+      "to": "/services/temporary-work-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:temporary-work-permit-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/transfer-company-ownership-dubai.html",
+      "to": "/services/transfer-company-ownership-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:transfer-company-ownership-dubai",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/transfer-work-permit-uae.html",
+      "to": "/services/transfer-work-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:transfer-work-permit-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/update-establishment-file-mohre-uae.html",
+      "to": "/services/update-establishment-file-mohre-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:update-establishment-file-mohre-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/services/vat-registration-uae.html",
+      "to": "/services/vat-registration-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "serviceId": "guide:vat-registration-uae",
+      "reason": "Observed legacy .html spelling of the current catalog route; retain current authority and jurisdiction."
+    },
+    {
+      "from": "/start-request.html",
+      "to": "/contact/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/track-request.html",
+      "to": "/account/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/uae-emirates.html",
+      "to": "/#home-emirates",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/uae-service-catalog.html",
+      "to": "/services/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "reason": "Current corresponding information, discovery, request or account entry point; no transaction or submission is claimed."
+    },
+    {
+      "from": "/vat-registration-uae.html",
+      "to": "/services/vat-registration-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "reason": "The current registry contains the same transaction and jurisdiction.",
+      "serviceId": "guide:vat-registration-uae"
+    },
+    {
+      "from": "/visit-visa-uae.html",
+      "to": "/discover/?q=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9%20%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "reason": "The legacy name is broader than a single current verified service; offer matching choices without claiming UAE-wide eligibility for a Dubai-only transaction."
+    },
+    {
+      "from": "/work-permit-uae.html",
+      "to": "/discover/?approval=work-permit",
+      "kind": "SCOPED_DISCOVERY",
+      "reason": "List existing work permit classifications, retaining transaction choice."
+    }
+  ],
+  "unmatched": [
+    {
+      "from": "/platform-tools.html",
+      "status": "RETAIN_REAL_404",
+      "reason": "No verified equivalent current content or implemented product. Do not invent a page or redirect unrelated content to the homepage."
+    },
+    {
+      "from": "/about.html",
+      "status": "RETAIN_REAL_404",
+      "reason": "No verified equivalent current content or implemented product. Do not invent a page or redirect unrelated content to the homepage."
+    },
+    {
+      "from": "/business-marketplace.html",
+      "status": "RETAIN_REAL_404",
+      "reason": "No verified equivalent current content or implemented product. Do not invent a page or redirect unrelated content to the homepage."
+    },
+    {
+      "from": "/al-dhafra-business-services.html",
+      "status": "RETAIN_REAL_404",
+      "reason": "No verified equivalent current content or implemented product. Do not invent a page or redirect unrelated content to the homepage."
+    },
+    {
+      "from": "/company-health-check.html",
+      "status": "RETAIN_REAL_404",
+      "reason": "No verified equivalent current content or implemented product. Do not invent a page or redirect unrelated content to the homepage."
+    },
+    {
+      "from": "/terms.html",
+      "status": "RETAIN_REAL_404",
+      "reason": "No verified equivalent current content or implemented product. Do not invent a page or redirect unrelated content to the homepage."
+    },
+    {
+      "from": "/emirati-minimum-wage-private-sector-2026.html",
+      "status": "RETAIN_REAL_404",
+      "reason": "No verified equivalent current content or implemented product. Do not invent a page or redirect unrelated content to the homepage."
+    }
+  ]
+}
