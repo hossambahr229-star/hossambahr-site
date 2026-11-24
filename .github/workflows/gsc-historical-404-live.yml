@@ -1,0 +1,26 @@
+name: Verify historical Google 404 URLs
+on:
+  push:
+    branches: [agent/gsc-historical-routes-20261124]
+    paths-ignore: ['artifacts/**']
+permissions: {contents: write}
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - run: node scripts/gsc-historical-404-live.mjs
+      - name: Preserve current status of every historical URL
+        if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git add artifacts/gsc-historical-404/report.json
+          git diff --cached --quiet || git commit -m "Record actual Google historical URL status [skip ci]"
+          git push origin HEAD:agent/gsc-historical-routes-20261124
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: gsc-historical-404, path: artifacts/gsc-historical-404}
