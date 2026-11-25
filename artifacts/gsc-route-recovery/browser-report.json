@@ -1,0 +1,480 @@
+{
+  "status": "PASS",
+  "capture": "REBUILT_PREVIEW",
+  "sourceRevision": "fd9ef23fc024fb7dcead54d2dda466cd54d48073",
+  "aliases": [
+    {
+      "from": "/business-services-abu-dhabi.html",
+      "target": "/discover/?domain=business&emirate=%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A",
+      "final": "/discover/?domain=business&emirate=%D8%A3%D8%A8%D9%88%D8%B8%D8%A8%D9%8A",
+      "kind": "SCOPED_DISCOVERY",
+      "status": "PASS"
+    },
+    {
+      "from": "/business-services-ajman.html",
+      "target": "/discover/?domain=business&emirate=%D8%B9%D8%AC%D9%85%D8%A7%D9%86",
+      "final": "/discover/?domain=business&emirate=%D8%B9%D8%AC%D9%85%D8%A7%D9%86",
+      "kind": "SCOPED_DISCOVERY",
+      "status": "PASS"
+    },
+    {
+      "from": "/business-services-dubai.html",
+      "target": "/discover/?domain=business&emirate=%D8%AF%D8%A8%D9%8A",
+      "final": "/discover/?domain=business&emirate=%D8%AF%D8%A8%D9%8A",
+      "kind": "SCOPED_DISCOVERY",
+      "status": "PASS"
+    },
+    {
+      "from": "/business-services-fujairah.html",
+      "target": "/discover/?domain=business&emirate=%D8%A7%D9%84%D9%81%D8%AC%D9%8A%D8%B1%D8%A9",
+      "final": "/discover/?domain=business&emirate=%D8%A7%D9%84%D9%81%D8%AC%D9%8A%D8%B1%D8%A9",
+      "kind": "SCOPED_DISCOVERY",
+      "status": "PASS"
+    },
+    {
+      "from": "/business-services-ras-al-khaimah.html",
+      "target": "/discover/?domain=business&emirate=%D8%B1%D8%A3%D8%B3%20%D8%A7%D9%84%D8%AE%D9%8A%D9%85%D8%A9",
+      "final": "/discover/?domain=business&emirate=%D8%B1%D8%A3%D8%B3+%D8%A7%D9%84%D8%AE%D9%8A%D9%85%D8%A9",
+      "kind": "SCOPED_DISCOVERY",
+      "status": "PASS"
+    },
+    {
+      "from": "/business-services-sharjah.html",
+      "target": "/discover/?domain=business&emirate=%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
+      "final": "/discover/?domain=business&emirate=%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
+      "kind": "SCOPED_DISCOVERY",
+      "status": "PASS"
+    },
+    {
+      "from": "/company-formation-dubai.html",
+      "target": "/services/issue-trade-license-dubai/",
+      "final": "/services/issue-trade-license-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/company-liquidation-uae.html",
+      "target": "/discover/?q=%D8%AA%D8%B5%D9%81%D9%8A%D8%A9%20%D8%B4%D8%B1%D9%83%D8%A9",
+      "final": "/discover/?q=%D8%AA%D8%B5%D9%81%D9%8A%D8%A9+%D8%B4%D8%B1%D9%83%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "status": "PASS"
+    },
+    {
+      "from": "/contact.html",
+      "target": "/contact/",
+      "final": "/contact/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/corporate-tax-registration-uae.html",
+      "target": "/services/corporate-tax-registration-uae/",
+      "final": "/services/corporate-tax-registration-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/emirates-id-uae.html",
+      "target": "/discover/?q=%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%D9%8A%D8%A9",
+      "final": "/discover/?q=%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9+%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%D9%8A%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "status": "PASS"
+    },
+    {
+      "from": "/family-sponsorship-uae.html",
+      "target": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%A3%D9%81%D8%B1%D8%A7%D8%AF%20%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%D8%A9",
+      "final": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9+%D8%A3%D9%81%D8%B1%D8%A7%D8%AF+%D8%A7%D9%84%D8%A3%D8%B3%D8%B1%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "status": "PASS"
+    },
+    {
+      "from": "/golden-residency-uae.html",
+      "target": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D8%B0%D9%87%D8%A8%D9%8A%D8%A9",
+      "final": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9+%D8%B0%D9%87%D8%A8%D9%8A%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "status": "PASS"
+    },
+    {
+      "from": "/government-approvals-dubai.html",
+      "target": "/approvals/?emirate=%D8%AF%D8%A8%D9%8A",
+      "final": "/approvals/?emirate=%D8%AF%D8%A8%D9%8A&approval=business",
+      "kind": "SCOPED_DISCOVERY",
+      "status": "PASS"
+    },
+    {
+      "from": "/investor-residency-uae.html",
+      "target": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D9%85%D8%B3%D8%AA%D8%AB%D9%85%D8%B1",
+      "final": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9+%D9%85%D8%B3%D8%AA%D8%AB%D9%85%D8%B1",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "status": "PASS"
+    },
+    {
+      "from": "/knowledge-hub.html",
+      "target": "/services/",
+      "final": "/services/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/license-renewal-uae.html",
+      "target": "/discover/?q=%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%B1%D8%AE%D8%B5%D8%A9%20%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9",
+      "final": "/discover/?q=%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF+%D8%B1%D8%AE%D8%B5%D8%A9+%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "status": "PASS"
+    },
+    {
+      "from": "/mohre-services-dubai.html",
+      "target": "/authorities/mohre/",
+      "final": "/authorities/mohre/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/plans.html",
+      "target": "/pricing/",
+      "final": "/pricing/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/privacy.html",
+      "target": "/privacy/",
+      "final": "/privacy/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/residency-identity-dubai.html",
+      "target": "/services/#emirate-dubai",
+      "final": "/services/#emirate-dubai",
+      "kind": "SCOPED_DISCOVERY",
+      "status": "PASS"
+    },
+    {
+      "from": "/search-results.html",
+      "target": "/discover/",
+      "final": "/discover/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/service-guides.html",
+      "target": "/services/",
+      "final": "/services/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/add-business-activity-dubai.html",
+      "target": "/services/add-business-activity-dubai/",
+      "final": "/services/add-business-activity-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/add-remove-partner-dubai.html",
+      "target": "/services/add-remove-partner-dubai/",
+      "final": "/services/add-remove-partner-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/amend-business-license-dubai.html",
+      "target": "/services/amend-business-license-dubai/",
+      "final": "/services/amend-business-license-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/cancel-business-license-dubai.html",
+      "target": "/services/cancel-business-license-dubai/",
+      "final": "/services/cancel-business-license-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/cancel-residency-permit-uae.html",
+      "target": "/services/cancel-residency-permit-uae/",
+      "final": "/services/cancel-residency-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/cancel-work-permit-uae.html",
+      "target": "/services/cancel-work-permit-uae/",
+      "final": "/services/cancel-work-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/change-company-manager-dubai.html",
+      "target": "/services/change-company-manager-dubai/",
+      "final": "/services/change-company-manager-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/corporate-tax-registration-uae.html",
+      "target": "/services/corporate-tax-registration-uae/",
+      "final": "/services/corporate-tax-registration-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/employment-contract-uae.html",
+      "target": "/services/employment-contract-uae/",
+      "final": "/services/employment-contract-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/establishment-card-mohre-uae.html",
+      "target": "/services/establishment-card-mohre-uae/",
+      "final": "/services/establishment-card-mohre-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/family-residency-uae.html",
+      "target": "/services/family-residency-uae/",
+      "final": "/services/family-residency-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/family-sponsored-work-permit-uae.html",
+      "target": "/services/family-sponsored-work-permit-uae/",
+      "final": "/services/family-sponsored-work-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/golden-residency-uae.html",
+      "target": "/services/golden-residency-uae/",
+      "final": "/services/golden-residency-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/initial-approval-dubai.html",
+      "target": "/services/issue-trade-license-dubai/",
+      "final": "/services/issue-trade-license-dubai/",
+      "kind": "EXISTING_LEGACY_POLICY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/investor-residency-dubai.html",
+      "target": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9%20%D9%85%D8%B3%D8%AA%D8%AB%D9%85%D8%B1&emirate=%D8%AF%D8%A8%D9%8A",
+      "final": "/discover/?q=%D8%A5%D9%82%D8%A7%D9%85%D8%A9+%D9%85%D8%B3%D8%AA%D8%AB%D9%85%D8%B1&emirate=%D8%AF%D8%A8%D9%8A",
+      "kind": "NEEDS_SERVICE_SELECTION",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/issue-emirates-id-uae.html",
+      "target": "/services/issue-emirates-id-uae/",
+      "final": "/services/issue-emirates-id-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/new-work-permit-overseas-uae.html",
+      "target": "/services/new-work-permit-overseas-uae/",
+      "final": "/services/new-work-permit-overseas-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/part-time-work-permit-uae.html",
+      "target": "/services/part-time-work-permit-uae/",
+      "final": "/services/part-time-work-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/renew-business-license-abu-dhabi.html",
+      "target": "/services/abu-dhabi-economic-license-renewal/",
+      "final": "/services/abu-dhabi-economic-license-renewal/",
+      "kind": "RENAMED_SERVICE",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/renew-business-license-ajman.html",
+      "target": "/services/renew-business-license-ajman/",
+      "final": "/services/renew-business-license-ajman/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/renew-business-license-dubai.html",
+      "target": "/services/renew-business-license-dubai/",
+      "final": "/services/renew-business-license-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/renew-business-license-sharjah.html",
+      "target": "/services/renew-business-license-sharjah/",
+      "final": "/services/renew-business-license-sharjah/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/renew-residency-permit-uae.html",
+      "target": "/discover/?q=%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF%20%D8%A5%D9%82%D8%A7%D9%85%D8%A9",
+      "final": "/discover/?q=%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF+%D8%A5%D9%82%D8%A7%D9%85%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/reserve-trade-name-dubai.html",
+      "target": "/services/reserve-trade-name-dubai/",
+      "final": "/services/reserve-trade-name-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/temporary-work-permit-uae.html",
+      "target": "/services/temporary-work-permit-uae/",
+      "final": "/services/temporary-work-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/transfer-company-ownership-dubai.html",
+      "target": "/services/transfer-company-ownership-dubai/",
+      "final": "/services/transfer-company-ownership-dubai/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/transfer-work-permit-uae.html",
+      "target": "/services/transfer-work-permit-uae/",
+      "final": "/services/transfer-work-permit-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/update-establishment-file-mohre-uae.html",
+      "target": "/services/update-establishment-file-mohre-uae/",
+      "final": "/services/update-establishment-file-mohre-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/services/vat-registration-uae.html",
+      "target": "/services/vat-registration-uae/",
+      "final": "/services/vat-registration-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/start-request.html",
+      "target": "/contact/",
+      "final": "/contact/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/track-request.html",
+      "target": "/account/",
+      "final": "/auth/?return=%2Faccount%2F",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/uae-emirates.html",
+      "target": "/#home-emirates",
+      "final": "/#home-emirates",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/uae-service-catalog.html",
+      "target": "/services/",
+      "final": "/services/",
+      "kind": "CURRENT_PAGE_OR_BROWSE_GATEWAY",
+      "status": "PASS"
+    },
+    {
+      "from": "/vat-registration-uae.html",
+      "target": "/services/vat-registration-uae/",
+      "final": "/services/vat-registration-uae/",
+      "kind": "EXACT_SERVICE_IDENTITY",
+      "status": "PASS"
+    },
+    {
+      "from": "/visit-visa-uae.html",
+      "target": "/discover/?q=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9%20%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9",
+      "final": "/discover/?q=%D8%AA%D8%A3%D8%B4%D9%8A%D8%B1%D8%A9+%D8%B2%D9%8A%D8%A7%D8%B1%D8%A9",
+      "kind": "NEEDS_SERVICE_OR_JURISDICTION_SELECTION",
+      "status": "PASS"
+    },
+    {
+      "from": "/work-permit-uae.html",
+      "target": "/discover/?domain=work&q=%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%B9%D9%85%D9%84",
+      "final": "/discover/?domain=work&q=%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD+%D8%B9%D9%85%D9%84",
+      "kind": "SCOPED_DISCOVERY",
+      "status": "PASS"
+    }
+  ],
+  "nativeNoJS": [
+    {
+      "from": "/services/family-residency-uae.html",
+      "target": "/services/family-residency-uae/",
+      "status": "PASS"
+    },
+    {
+      "from": "/privacy.html",
+      "target": "/privacy/",
+      "status": "PASS"
+    },
+    {
+      "from": "/uae-service-catalog.html",
+      "target": "/services/",
+      "status": "PASS"
+    },
+    {
+      "from": "/business-services-dubai.html",
+      "target": "/discover/?domain=business&emirate=%D8%AF%D8%A8%D9%8A",
+      "status": "PASS"
+    }
+  ],
+  "requestContext": [
+    {
+      "locale": "ar",
+      "freeFormGoalPreserved": true,
+      "emiratePreserved": true,
+      "noInventedService": true,
+      "governmentLinkHiddenWithoutVerifiedService": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "freeFormGoalPreserved": true,
+      "emiratePreserved": true,
+      "noInventedService": true,
+      "governmentLinkHiddenWithoutVerifiedService": true,
+      "whatsappContext": true,
+      "status": "PASS"
+    },
+    {
+      "source": "Exact Google-observed request URL",
+      "contextPreserved": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "ar",
+      "federalServiceRetainsChosenEmirate": true,
+      "conflictingJurisdictionBlocksSubmission": true,
+      "status": "PASS"
+    },
+    {
+      "locale": "en",
+      "federalServiceRetainsChosenEmirate": true,
+      "conflictingJurisdictionBlocksSubmission": true,
+      "status": "PASS"
+    }
+  ],
+  "errors": []
+}
