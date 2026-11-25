@@ -28,6 +28,12 @@
       "reason": "Retain business scope and the named emirate instead of selecting an arbitrary transaction."
     },
     {
+      "from": "/business-services-ras-al-khaimah.html",
+      "to": "/discover/?domain=business&emirate=%D8%B1%D8%A3%D8%B3%20%D8%A7%D9%84%D8%AE%D9%8A%D9%85%D8%A9",
+      "kind": "SCOPED_DISCOVERY",
+      "reason": "Additionally observed in Google's crawled-not-indexed report dated 2026-11-16; retain business scope and Ras Al Khaimah jurisdiction."
+    },
+    {
       "from": "/business-services-sharjah.html",
       "to": "/discover/?domain=business&emirate=%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D9%82%D8%A9",
       "kind": "SCOPED_DISCOVERY",
@@ -376,9 +382,9 @@
     },
     {
       "from": "/work-permit-uae.html",
-      "to": "/discover/?approval=work-permit",
+      "to": "/discover/?domain=work&q=%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%20%D8%B9%D9%85%D9%84",
       "kind": "SCOPED_DISCOVERY",
-      "reason": "List existing work permit classifications, retaining transaction choice."
+      "reason": "Use the existing work-domain and natural transaction query controls; the general directory does not expose an approval=work-permit selector."
     }
   ],
   "unmatched": [

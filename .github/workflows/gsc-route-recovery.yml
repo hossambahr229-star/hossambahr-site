@@ -16,6 +16,11 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
       - run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.55.0
       - run: npm run typecheck && node --check src/publication/historical-route-aliases.mjs && node --check customer-intake.js
+      - name: Record additional Google-observed regional URL before repair
+        run: |
+          node --input-type=module - <<'JS'
+          const response=await fetch('https://hossambahr.com/business-services-ras-al-khaimah.html');console.log({url:response.url,httpStatus:response.status});
+          JS
       - run: npm run build
       - run: node --test scripts/historical-route-aliases.test.mjs
       - name: Preserve the service registry, indexable URL set and homepage

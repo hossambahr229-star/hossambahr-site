@@ -7,12 +7,12 @@ try{
  const page=await browser.newPage({viewport:{width:1440,height:900}});
  await page.goto(base+'/',{waitUntil:'networkidle'});
  await page.waitForTimeout(1500); // Shared runtime must not restore the old directory-only identity.
- assert.equal(await page.locator('.desktop-nav').getByRole('link',{name:'الأسعار',exact:true}).getAttribute('href'),'/pricing/');
- const footer=await page.locator('.footer-legal').innerText();
+ assert.equal(await page.locator('.ah-footer nav').getByRole('link',{name:'الأسعار',exact:true}).getAttribute('href'),'/pricing/');
+ const footer=await page.locator('.ah-footer>p').innerText();
  assert.ok(footer.includes('لتجهيز وإنجاز ومتابعة المعاملات'));
  assert.ok(!footer.includes('لا تطلب المنصة بيانات شخصية'));
  assert.ok(!footer.includes('لا تنفذ المعاملة'));
- await page.locator('.desktop-nav').getByRole('link',{name:'الأسعار',exact:true}).click();
+ await page.locator('.ah-footer nav').getByRole('link',{name:'الأسعار',exact:true}).click();
  assert.equal(new URL(page.url()).pathname,'/pricing/');
  assert.equal(await page.getByRole('heading',{name:'نطاق الخدمة والأسعار',exact:true}).count(),1);
  for(const service of services)for(const locale of ['ar','en']){
