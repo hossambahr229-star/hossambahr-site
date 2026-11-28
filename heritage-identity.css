@@ -1,0 +1,648 @@
+/*
+ * HossamBahr.com legacy identity
+ * Visual source: e0596a2 (styles.css + premium.css, 2026-07-14).
+ * This file is intentionally loaded last on every page so newer features inherit
+ * the established green / gold / cream identity without losing functionality.
+ */
+:root {
+  --green: #102f27;
+  --green2: #19483b;
+  --deep: #102f27;
+  --jade: #19483b;
+  --navy: #102f27;
+  --copper: #caa55a;
+  --gold: #caa55a;
+  --cream: #f7f3ea;
+  --sand: #f7f3ea;
+  --paper: #ffffff;
+  --ink: #14241f;
+  --muted: #6d7974;
+  --line: #e2e5df;
+  --white: #ffffff;
+  --danger: #b92f2f;
+  --shadow: 0 20px 50px rgb(16 47 39 / 10%);
+  --legacy-radius: 0;
+}
+
+html {
+  color-scheme: light;
+  background: #ffffff;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: #ffffff !important;
+  color: var(--ink) !important;
+  font-family: Alexandria, Cairo, Tahoma, Arial, sans-serif !important;
+  line-height: 1.8;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: Alexandria, Cairo, Tahoma, Arial, sans-serif !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--gold) !important;
+  outline-offset: 3px;
+}
+
+/* Shared legacy header language, covering both original and later shells. */
+.topbar,
+.status-bar {
+  min-height: 34px;
+  background: #0b241e !important;
+  color: #c5d1cd !important;
+}
+
+.header,
+.site-header,
+.guide-header,
+.activity-header,
+.knowledge-header,
+.tools-header,
+.market-header,
+.request-header,
+.command-header {
+  background: rgb(255 255 255 / 97%) !important;
+  color: var(--ink) !important;
+  border-bottom: 1px solid rgb(16 47 39 / 8%) !important;
+  box-shadow: 0 5px 30px rgb(10 33 27 / 5%) !important;
+  backdrop-filter: blur(12px);
+}
+
+.brand-mark,
+.logo,
+.mini-brand {
+  border: 1px solid var(--gold) !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: var(--gold) !important;
+  box-shadow: none !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+}
+
+.brand b {
+  color: var(--ink) !important;
+}
+
+.brand small {
+  color: var(--gold) !important;
+  letter-spacing: 1.6px !important;
+}
+
+.header nav a,
+.site-header nav a {
+  color: var(--ink) !important;
+}
+
+.header nav a:hover,
+.site-header nav a:hover,
+.header nav a[aria-current="page"],
+.site-header nav a[aria-current="page"] {
+  color: var(--gold) !important;
+}
+
+.menu,
+.menu-toggle {
+  color: var(--green) !important;
+}
+
+.outline-btn,
+.header-cta {
+  border: 1px solid var(--green) !important;
+  border-radius: var(--legacy-radius) !important;
+  background: transparent !important;
+  color: var(--green) !important;
+}
+
+/* The original hero was deep green with restrained gold highlights. */
+.hero,
+.premium-hero,
+.page-hero,
+.service-hero,
+.guide-hero,
+.catalog-hero,
+.activity-hero,
+.tools-hero,
+.knowledge-hero,
+.market-hero,
+.command-hero {
+  background-color: var(--green) !important;
+  color: #ffffff !important;
+}
+
+.hero:not(.premium-hero) {
+  background-image:
+    radial-gradient(circle at 80% 40%, rgb(40 100 83 / 46%), transparent 35%),
+    linear-gradient(120deg, transparent 55%, rgb(5 27 21 / 35%)) !important;
+}
+
+.catalog-hero,
+.hero-service,
+.generated-hero,
+.directory-hero {
+  background:
+    radial-gradient(circle at 80% 35%, rgb(40 100 83 / 42%), transparent 36%),
+    linear-gradient(120deg, var(--green2), var(--green)) !important;
+  color: #ffffff !important;
+}
+
+.hero h1,
+.hero h2,
+.page-hero h1,
+.service-hero h1,
+.hero-service h1,
+.generated-hero h1,
+.guide-hero h1,
+.catalog-hero h1,
+.activity-hero h1,
+.tools-hero h1,
+.knowledge-hero h1,
+.market-hero h1,
+.command-hero h1 {
+  color: #ffffff !important;
+}
+
+.hero h1 em,
+.hero h2 em,
+.hero .eyebrow,
+.hero .pill,
+.hero .kicker,
+.page-hero .kicker,
+.service-hero .kicker {
+  color: var(--gold) !important;
+}
+
+.hero p,
+.page-hero p,
+.service-hero p,
+.hero-service p,
+.generated-hero p,
+.guide-hero p,
+.catalog-hero p,
+.activity-hero p,
+.tools-hero p,
+.knowledge-hero p,
+.market-hero p,
+.command-hero p {
+  color: #c1cec9 !important;
+}
+
+.catalog-hero em,
+.hero-service em,
+.generated-hero em,
+.catalog-hero > span,
+.hero-service > div > span,
+.generated-hero > div > span {
+  color: var(--gold) !important;
+}
+
+.command-card,
+.goal-card,
+.hero-card,
+.hero-route {
+  border: 1px solid rgb(202 165 90 / 48%) !important;
+  border-radius: var(--legacy-radius) !important;
+  background: rgb(14 48 40 / 94%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 30px 70px rgb(0 0 0 / 20%) !important;
+}
+
+.command-card h2,
+.command-card h3,
+.command-card label,
+.hero-card h2,
+.hero-route h2 {
+  color: #ffffff !important;
+}
+
+.command-card input,
+.command-card select,
+.hero-route a {
+  border-color: rgb(255 255 255 / 18%) !important;
+  background: rgb(255 255 255 / 9%) !important;
+  color: #ffffff !important;
+}
+
+.command-card option {
+  background: #ffffff;
+  color: var(--ink);
+}
+
+.official-ribbon,
+.trust-strip,
+.knowledge-access {
+  background: var(--cream) !important;
+  color: var(--muted) !important;
+  border-color: #d9ddd5 !important;
+}
+
+/* Reusable surfaces from both the legacy pages and newer functional modules. */
+.section,
+main,
+.content-shell,
+.service-main,
+.guide-main,
+.catalog-main,
+.activity-main,
+.tools-main,
+.knowledge-main,
+.market-main {
+  color: var(--ink);
+}
+
+.section:nth-of-type(even),
+.section-soft,
+.soft-section,
+.about,
+.tracking,
+.journeys,
+.vision,
+.roadmap,
+.official-updates,
+.platform-entry {
+  background-color: var(--cream) !important;
+  color: var(--ink) !important;
+}
+
+.section-heading h2,
+.section-title h2,
+.center-title h2,
+.content-shell h1,
+.content-shell h2,
+main h1,
+main h2,
+main h3 {
+  color: var(--ink);
+}
+
+.kicker,
+.eyebrow,
+.section-heading > span,
+.section-title > span,
+.center-title > span {
+  color: var(--gold) !important;
+}
+
+.card,
+.service-card,
+.service-result,
+.service-tile,
+.guide-card,
+.entity-card,
+.emirate-card,
+.tool-card,
+.knowledge-card,
+.market-card,
+.request-card,
+.panel,
+.finder-shell,
+.spotlight-panel,
+.vision-stack article,
+.roadmap-grid article,
+.platform-entry-grid a,
+.trust-grid article {
+  border: 1px solid var(--line) !important;
+  border-radius: var(--legacy-radius) !important;
+  background: #ffffff !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+}
+
+.card:hover,
+.service-card:hover,
+.service-result:hover,
+.service-tile:hover,
+.guide-card:hover,
+.entity-card:hover,
+.emirate-card:hover,
+.tool-card:hover,
+.knowledge-card:hover,
+.market-card:hover,
+.platform-entry-grid a:hover {
+  border-color: var(--gold) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.btn,
+.primary-btn,
+.btn-primary,
+.cta,
+.journey-start,
+button[type="submit"],
+input[type="submit"] {
+  border: 1px solid var(--gold) !important;
+  border-radius: var(--legacy-radius) !important;
+  background: var(--gold) !important;
+  color: var(--green) !important;
+  font-weight: 700;
+}
+
+.btn-ghost,
+.btn-secondary,
+.secondary-btn,
+.soft-cta,
+.official-shortcut,
+.team-shortcut {
+  border: 1px solid var(--green) !important;
+  border-radius: var(--legacy-radius) !important;
+  background: transparent !important;
+  color: var(--green) !important;
+}
+
+.prep-card > a,
+.route-button,
+.choice-grid article > a,
+.catalog-more,
+.big-link {
+  border: 1px solid var(--gold) !important;
+  border-radius: var(--legacy-radius) !important;
+  background: var(--gold) !important;
+  color: var(--green) !important;
+}
+
+.tools-top,
+.directory-top,
+.top {
+  background: #0b241e !important;
+  color: #c5d1cd !important;
+}
+
+.truth b {
+  border-color: rgb(202 165 90 / 42%) !important;
+  background: rgb(16 47 39 / 55%) !important;
+}
+
+.truth strong,
+.catalog-summary b,
+.national-card > span,
+.national-card > small,
+.section-label {
+  color: var(--gold) !important;
+}
+
+.cookie-banner,
+[data-cookie-banner] {
+  border-color: rgb(202 165 90 / 35%) !important;
+  background: var(--green) !important;
+  color: #ffffff !important;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--legacy-radius) !important;
+  background: #ffffff;
+  color: var(--ink);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgb(202 165 90 / 15%) !important;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+th {
+  background: var(--green) !important;
+  color: #ffffff !important;
+}
+
+th,
+td {
+  border: 1px solid var(--line) !important;
+}
+
+.badge,
+.tag,
+.type-direct,
+.status-badge {
+  border-radius: 999px !important;
+}
+
+dialog,
+.modal,
+.journey-dialog {
+  border: 1px solid var(--gold) !important;
+  border-radius: var(--legacy-radius) !important;
+  background: #ffffff !important;
+  color: var(--ink) !important;
+  box-shadow: 0 30px 80px rgb(16 47 39 / 22%) !important;
+}
+
+.emirates,
+.platform,
+.why,
+.command-spotlight,
+.contact {
+  background: var(--green) !important;
+  color: #ffffff !important;
+}
+
+.emirates h2,
+.emirates h3,
+.platform h2,
+.platform h3,
+.why h2,
+.why h3,
+.command-spotlight h2,
+.command-spotlight h3,
+.contact h2,
+.contact h3 {
+  color: #ffffff !important;
+}
+
+.emirates-grid article {
+  border-color: rgb(255 255 255 / 14%) !important;
+  border-radius: var(--legacy-radius) !important;
+  background: var(--green2) !important;
+  color: #ffffff !important;
+}
+
+.floating-wa {
+  border-radius: 999px !important;
+  background: #1aa462 !important;
+  color: #ffffff !important;
+}
+
+footer,
+.site-footer,
+.guide-footer,
+.activity-footer,
+.knowledge-footer,
+.tools-footer,
+.market-footer,
+.command-footer {
+  background: #0b241e !important;
+  color: #b7c5c0 !important;
+}
+
+footer h2,
+footer h3,
+footer b,
+.site-footer h2,
+.site-footer h3,
+.site-footer b {
+  color: #ffffff !important;
+}
+
+footer a:hover,
+.site-footer a:hover {
+  color: var(--gold) !important;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+@media (max-width: 850px) {
+  .header,
+  .site-header {
+    min-height: 68px;
+    padding-inline: 18px !important;
+  }
+
+  .site-header nav.open,
+  .header nav.open,
+  .header nav.active {
+    right: 14px !important;
+    left: 14px !important;
+    background: #ffffff !important;
+    border: 1px solid var(--line) !important;
+    box-shadow: var(--shadow) !important;
+  }
+
+  .site-header nav.open a,
+  .header nav.open a,
+  .header nav.active a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero,
+  .premium-hero,
+  .page-hero,
+  .service-hero,
+  .guide-hero,
+  .catalog-hero,
+  .activity-hero,
+  .tools-hero,
+  .knowledge-hero,
+  .market-hero,
+  .command-hero {
+    min-height: auto !important;
+    padding-inline: 20px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: 13px;
+  }
+
+  .status-bar {
+    display: none !important;
+  }
+
+  .section,
+  .content-shell,
+  .service-main,
+  .guide-main,
+  .catalog-main,
+  .activity-main,
+  .tools-main,
+  .knowledge-main,
+  .market-main {
+    padding-inline: 18px !important;
+  }
+
+  .hero h1,
+  .page-hero h1,
+  .service-hero h1,
+  .guide-hero h1,
+  .catalog-hero h1,
+  .activity-hero h1,
+  .tools-hero h1,
+  .knowledge-hero h1,
+  .market-hero h1,
+  .command-hero h1 {
+    font-size: clamp(34px, 11vw, 46px) !important;
+    line-height: 1.25 !important;
+    letter-spacing: -1.5px !important;
+  }
+
+  .hero-actions,
+  .action-row,
+  .cta-row {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hero-actions > *,
+  .action-row > *,
+  .cta-row > * {
+    width: 100%;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Current exported Next.js compatibility layer. */
+:root{--green-dark:#19483b;--mint:#f7f3ea;--mint-light:#fbfaf6;--radius:2px}
+.site-header{position:sticky!important;top:0;z-index:80;background:#fff!important;border-bottom:1px solid #102f2714!important;box-shadow:0 5px 30px #0a211b0d!important}
+.brand b{width:44px!important;height:44px!important;border:1px solid var(--gold)!important;border-radius:50%!important;background:transparent!important;color:var(--gold)!important}
+.header-search-action,.login-action{border:1px solid var(--green)!important;border-radius:0!important;background:transparent!important;color:var(--green)!important}
+.platform-hero,.heritage-hero,.universal-hero,.directory-hero,.page-hero{background:radial-gradient(circle at 78% 24%,#2864537a,transparent 32%),linear-gradient(120deg,var(--green),#0b241e)!important;color:#fff!important}
+.platform-hero h1,.platform-hero h2,.universal-hero h1,.universal-hero h2,.directory-hero h1,.directory-hero h2,.page-hero h1,.page-hero h2{color:#fff!important}
+.platform-hero h1 em,.universal-hero h1 em,.directory-hero h1 em,.page-hero h1 em,.hero-kicker,.platform-hero .eyebrow,.universal-hero .eyebrow,.directory-hero .eyebrow,.page-hero .eyebrow{color:var(--gold)!important}
+.platform-hero p,.universal-hero p,.directory-hero p,.page-hero p{color:#c1cec9!important}
+.hero-service-navigator{border:1px solid #caa55a80!important;border-radius:0!important;background:#0e3028f0!important;color:#fff!important;box-shadow:0 30px 70px #0003!important}
+.hero-service-navigator h2,.hero-service-navigator h3,.hero-service-navigator small{color:#fff!important}.hero-service-card{border-color:#ffffff29!important;border-radius:0!important;background:#ffffff0f!important}.hero-service-card:hover{border-color:var(--gold)!important;background:#ffffff1c!important}.hero-service-card>i,.hero-service-card .service-icon,.hero-service-card .service-arrow,.navigator-heading>span{color:var(--gold)!important}
+.search-shell,.primary-search{border:1px solid #caa55a8c!important;border-radius:0!important;background:#fff!important;box-shadow:0 25px 65px #0003!important}
+.platform-proof{border-color:#d9ddd5!important;background:var(--cream)!important;color:var(--ink)!important}.platform-proof svg,.heritage-metrics b{color:var(--gold)!important}
+.examples button,.hero-scope span,.heritage-metrics,.verified-badge,.live-dot,.match-badge,.confidence{border-color:#caa55a7a!important;background:var(--cream)!important;color:var(--green)!important}
+.card,.service-card,.category-card,.goal-card,.ranked-card,.capability-card,.authority-grid a,.audience-grid a,.action-start-grid a,.directory-explorer,.directory-controls,.detail-section,.service-aside,.panel,.notice,.decision-box,.problem-card,.updates-live-card,.company-advisor,.advisor-result,.legal-service-notice{border:1px solid var(--line)!important;border-radius:0!important;background:#fff!important;color:var(--ink)!important;box-shadow:none!important}
+.card:hover,.service-card:hover,.category-card:hover,.goal-card:hover,.ranked-card:hover,.capability-card:hover,.authority-grid a:hover,.audience-grid a:hover,.action-start-grid a:hover{border-color:var(--gold)!important;box-shadow:var(--shadow)!important}
+.content-section:nth-of-type(even),.subtle-section,.audience-section,.action-section{background:#fbfaf6!important}.section-heading .eyebrow,.detail-section .eyebrow,.service-identity-row,.card-meta,.metric span,.ranked-card>span{color:var(--gold)!important}
+.tags span,.subcategory-tags a,.hero-category-strip a{border-color:#d7ddd7!important;background:#fbfaf6!important;color:var(--green)!important}
+.command-promo,.legal-callout{background:var(--green)!important;color:#fff!important}.command-promo h2,.command-promo p,.legal-callout h2,.legal-callout p{color:#fff!important}.command-promo>a,.legal-callout a{border:1px solid var(--gold)!important;border-radius:0!important;background:var(--gold)!important;color:var(--green)!important}
+.site-footer{background:#0b241e!important;color:#b7c5c0!important}.site-footer h2,.site-footer b,.site-footer .brand span{color:#fff!important}.site-footer a:hover{color:var(--gold)!important}
+@media(max-width:900px){.site-header{min-height:68px;padding-inline:18px!important}.platform-hero,.universal-hero,.directory-hero,.page-hero{padding-inline:20px!important}.hero-service-navigator{width:100%}}
+@media(max-width:620px){.platform-hero,.universal-hero,.directory-hero,.page-hero{min-height:auto!important;padding-block:44px!important}.platform-hero h1,.universal-hero h1,.directory-hero h1,.page-hero h1{font-size:clamp(36px,11vw,48px)!important;line-height:1.22!important;letter-spacing:-1.4px!important}.content-section,.detail-layout,.directory-explorer,.page-shell>section{padding-inline:18px!important}.search-row{flex-direction:column}.search-row button{width:100%;min-height:46px}.hero-service-card,.service-card,.category-card,.goal-card,.ranked-card,.capability-card{min-width:0!important}}
