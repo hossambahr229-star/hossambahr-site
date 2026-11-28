@@ -39,7 +39,7 @@ jobs:
             const page=await browser.newPage({viewport:{width,height},colorScheme:'light'});
             const errors=[]; page.on('pageerror',e=>errors.push(e.message));
             await page.goto('https://hossambahr.com/?hb-ai-visual='+name,{waitUntil:'networkidle'});
-            const tile=page.locator(width<=820?'.ai-showcase-cta':'[data-premium-ai-toggle]');
+            const tile=page.locator('.ah-assistant [data-premium-ai-open]');
             const tileVisible=await tile.isVisible();
             const tileBg=await tile.evaluate(el=>getComputedStyle(el).backgroundColor);
             await tile.click();
@@ -66,7 +66,7 @@ jobs:
           }
           fs.writeFileSync('hb-ai-visual/result.json',JSON.stringify(results,null,2));
           console.log(JSON.stringify(results,null,2));
-          const fail=results.some(r=>!r.tileVisible||!r.first.panelVisible||!r.first.mark||!r.first.composer||!r.first.bodyBg.includes('rgb(255, 255, 255)')&&r.first.bodyBg.includes('rgb(17, 17, 17)')||r.first.quick.length!==4||!r.answer.answer||!r.answer.verified||!r.answer.source||!r.answer.transaction||!r.answer.reviewHref.startsWith('/contact/?handoff=1&service=')||!r.answer.selfService||r.answer.overflow||!r.attachment||r.errors.length);
+          const fail=results.some(r=>!r.tileVisible||!r.first.panelVisible||!r.first.mark||!r.first.composer||!r.first.bodyBg.includes('rgb(255, 255, 255)')&&r.first.bodyBg.includes('rgb(17, 17, 17)')||r.first.quick.length!==6||!r.answer.answer||!r.answer.verified||!r.answer.source||!r.answer.transaction||!r.answer.reviewHref.startsWith('/contact/?handoff=1&service=')||!r.answer.selfService||r.answer.overflow||!r.attachment||r.errors.length);
           await browser.close(); if(fail)process.exit(1);
           JS
           node hb-ai-visual.mjs
