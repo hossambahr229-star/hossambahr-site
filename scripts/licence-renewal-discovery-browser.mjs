@@ -6,7 +6,7 @@ try{for(const locale of['ar','en'])for(const width of[1440,390]){const en=locale
 await page.goto(base+p+'/discover/',{waitUntil:'networkidle'});assert.equal(await page.locator('[data-canonical-service]').count(),202);
 await page.locator('[name=q]').fill(en?'Renew business license Ajman':'تجديد رخصة تجارية عجمان');await page.getByRole('button',{name:en?'Search':'بحث',exact:true}).click();
 const cards=page.locator('[data-canonical-service]:visible');assert.equal(await cards.count(),1);assert.equal(await cards.getAttribute('data-canonical-service'),'ajman-commercial-license-renewal');
-const official=cards.locator('[data-government-cta]');assert.equal(await official.count(),1);assert.match(await official.getAttribute('href'),/^https:\/\//);
+const official=cards.locator('.hb-path-official');assert.equal(await official.count(),1);assert.match(await official.getAttribute('href'),/^https:\/\//);
 const wa=cards.locator('a[href^="https://wa.me/"]');assert.equal(await wa.count(),1);const href=new URL(await wa.getAttribute('href'));assert.equal(href.pathname,'/971503780460');assert.ok(href.searchParams.get('text').includes(en?'Ajman':'عجمان'));
 assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:out+'/'+locale+'-'+width+'.jpg',fullPage:false,type:'jpeg',quality:85});
 await page.locator('[name=q]').fill('');await page.getByRole('button',{name:en?'Search':'بحث',exact:true}).click();assert.equal(await cards.count(),202);assert.deepEqual(errors,[]);

@@ -13,3 +13,5 @@ test('General discovery retains the full canonical catalog',()=>{assert.equal(so
 test('NOC approval is not coerced to licence renewal',()=>{const query='طلب شهادة عدم ممانعة لتجديد رخصة تجارية من RTA';assert.equal(businessLicenceRenewalIntent(query),false);assert.ok(discoverServices(records,{query}).some(s=>s.i==='rta-dubai'));});
 test('SIRA scope and clarification remain intact',()=>{const found=discoverServices(records,{query:'موافقة سيرا'});assert.equal(found.length,2);assert.ok(found.every(s=>s.i==='sira-dubai'));assert.equal(discoverServices(records,{query:'موافقة سيرا الشارقة'}).length,0);});
 test('Named Dubai residence query cannot return outside-Dubai records',()=>{const found=discoverServices(records,{query:'تجديد إقامة دبي'});assert.ok(found.length);assert.ok(found.every(s=>s.m==='دبي'));});
+
+test('Exact English NOC title retains its RTA service',()=>assert.ok(discoverServices(records,{query:'Apply for an NOC to Renew a Trade Licence',authority:'rta-dubai'}).some(s=>s.s==='rta-renew-trade-license-noc-dubai')));

@@ -50,7 +50,7 @@ export function formationService(service){
 // A named licence renewal must not expand into ID, residence or licence issuance.
 export function businessLicenceRenewalIntent(query){
  const q=normalizeIntent(query);
- return /(?:تجديد|جدد|renew)/i.test(q)&&/(?:رخصه (?:تجاريه|اقتصاديه)|trade licen[cs]e|commercial licen[cs]e|economic licen[cs]e|business licen[cs]e)/i.test(q)&&!/(?:موافق|عدم ممانعه|\\bnoc\\b|approval|تصريح|permit|قياده|driving|مركب|vehicle)/i.test(q);
+ return /(?:تجديد|جدد|renew)/i.test(q)&&/(?:رخصه (?:تجاريه|اقتصاديه)|trade licen[cs]e|commercial licen[cs]e|economic licen[cs]e|business licen[cs]e)/i.test(q)&&!/(?:موافق|عدم ممانعه|(?:^| )noc(?: |$)|no objection|approval|تصريح|permit|قياده|driving|مركب|vehicle)/i.test(q);
 }
 export function businessLicenceRenewalService(service){
  if(!['companies-establishments','business-licensing'].includes(service.c))return false;
