@@ -57,8 +57,10 @@ export function businessLicenceRenewalService(service){
  return businessLicenceRenewalIntent([service.a||'',service.e||''].join(' '));
 }
 export function discoverServices(records,{query='',emirate='',authority='',category='',domain='',approval=''}={}){
- const requestedScope=emirate||queryEmirate(query);
- const candidates=records.filter(s=>(!requestedScope||compatibleEmirate(s.m,requestedScope))&&(!authority||s.i===authority)&&(!category||s.c===category)&&(!domain||(s.bd||serviceBusinessDomain(s))===domain)&&(!approval||(approval==='business'?s.ap&&!['work-permit','residence-permit'].includes(s.ap):s.ap===approval)));
+ const normalizedQuery=normalizeIntent(query),outsideDubai=/(?:خارج|عدا|outside|except|excluding|other than) (?:دبي|dubai)/i.test(normalizedQuery);
+ const queryWithoutExclusion=normalizedQuery.replace(/(?:خارج|عدا|outside|except|excluding|other than) (?:دبي|dubai)/gi,'');
+ const requestedScope=emirate||queryEmirate(queryWithoutExclusion);
+ const candidates=records.filter(s=>(!outsideDubai||!/(?:^دبي$|^dubai$)/i.test(s.m))&&(!requestedScope||compatibleEmirate(s.m,requestedScope))&&(!authority||s.i===authority)&&(!category||s.c===category)&&(!domain||(s.bd||serviceBusinessDomain(s))===domain)&&(!approval||(approval==='business'?s.ap&&!['work-permit','residence-permit'].includes(s.ap):s.ap===approval)));
  const formation=businessFormationIntent(query),scope=emirate||queryEmirate(query),freeZone=/(?:منطقه حره|المنطقه الحره|free zone)/i.test(normalizeIntent(query));
  const operationCandidates=formation?candidates.filter(s=>formationService(s)&&(!scope||compatibleEmirate(s.m,scope))&&(!freeZone||/(?:منطقه.{0,8}حره|free zone)/i.test(normalizeIntent((s.a||'')+' '+(s.e||''))))):candidates;
  const renewalCandidates=businessLicenceRenewalIntent(query)?operationCandidates.filter(businessLicenceRenewalService):operationCandidates;

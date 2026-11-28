@@ -15,3 +15,6 @@ test('SIRA scope and clarification remain intact',()=>{const found=discoverServi
 test('Named Dubai residence query cannot return outside-Dubai records',()=>{const found=discoverServices(records,{query:'تجديد إقامة دبي'});assert.ok(found.length);assert.ok(found.every(s=>s.m==='دبي'));});
 
 test('Exact English NOC title retains its RTA service',()=>assert.ok(discoverServices(records,{query:'Apply for an NOC to Renew a Trade Licence',authority:'rta-dubai'}).some(s=>s.s==='rta-renew-trade-license-noc-dubai')));
+
+test('Every exact published English title retains its service identity',()=>{for(const service of source)assert.ok(discoverServices(source,{query:service.e,authority:service.i}).some(s=>s.id===service.id),service.s);});
+test('Outside Dubai is an exclusion, not a request for Dubai',()=>{const found=discoverServices(records,{query:'Issue a residence permit for parents through ICP (outside Dubai)'});assert.ok(found.some(s=>s.s==='إصدار-إقامة-للوالدين-عبر-icp-خارج-دبي'));assert.ok(found.every(s=>s.m!=='دبي'));});
