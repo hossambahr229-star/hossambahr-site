@@ -48,6 +48,12 @@ jobs:
           await page.close();console.log({locale,width,canonicalCards:202,aliasQueryResolved:true});}
           }finally{await browser.close();}
           JS
+      - name: Verify precise renewal results and both execution paths
+        run: HB_BROWSER_PATH="$(command -v chrome)" HB_BASE_URL=https://hossambahr.com node scripts/licence-renewal-discovery-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
-        with: {name: recovered-routes-production, path: artifacts/gsc-route-recovery}
+        with:
+          name: recovered-routes-production
+          path: |
+            artifacts/gsc-route-recovery
+            artifacts/precise-renewal-discovery
