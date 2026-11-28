@@ -1,5 +1,7 @@
 name: HB AI Signature Visual Acceptance
 on:
+  pull_request:
+    paths: ['.github/workflows/hb-ai-signature-visual-acceptance.yml']
   push:
     branches: [main]
     paths:
