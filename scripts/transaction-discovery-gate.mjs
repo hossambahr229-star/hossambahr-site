@@ -24,14 +24,17 @@ await new Promise(done=>server.listen(0,'127.0.0.1',done));
 const base=process.env.HB_BASE_URL||`http://127.0.0.1:${server.address().port}`;
 const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH||undefined});
 const assert=(await import('node:assert/strict')).default;
+import {canonicalSocialCatalog} from '../src/publication/service-social-catalog.mjs';
 const checks=[];
 try{
  const records=JSON.parse(await readFile(join(root,'transaction-discovery-data.json'),'utf8'));
+ const {services:canonicalServices}=await canonicalSocialCatalog(root);
+ assert.equal(records.length,203);assert.equal(canonicalServices.length,202);
  for(const locale of ['ar','en'])for(const [width,height] of [[1440,960],[390,844]]){
   const prefix=locale==='en'?'/en':'',en=locale==='en';
   const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});page.setDefaultTimeout(15000);
   await page.goto(base+prefix+'/discover/',{waitUntil:'networkidle'});
-  assert.equal(await page.locator('[data-canonical-service]').count(),records.length);
+  assert.equal(await page.locator('[data-canonical-service]').count(),canonicalServices.length);
   assert.equal(await page.locator('.discovery-advanced').evaluate(e=>e.open),false);
   await page.locator('.discovery-advanced>summary').click();
   await page.locator('[name=authority]').selectOption('mohre');
@@ -52,7 +55,7 @@ try{
   assert.equal(await explore.innerText(),en?'All services':'جميع الخدمات');
   await explore.click();await page.waitForLoadState('networkidle');
   assert.equal(new URL(page.url()).pathname,prefix+'/discover/');
-  assert.equal(await page.locator('[data-canonical-service]:visible').count(),records.length);
+  assert.equal(await page.locator('[data-canonical-service]:visible').count(),canonicalServices.length);
   await page.goto(base+prefix+'/',{waitUntil:'networkidle'});
   assert.ok(await page.locator('a[data-home-approvals][href="'+prefix+'/approvals/"]').isVisible());
   assert.ok(await page.locator('a[data-home-business-activities][href="'+prefix+'/business-activities/"]').isVisible());

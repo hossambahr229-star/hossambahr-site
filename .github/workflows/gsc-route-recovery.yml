@@ -30,7 +30,7 @@ jobs:
           node --input-type=module - <<'JS'
           import {readFile} from 'node:fs/promises';import assert from 'node:assert/strict';
           import {execFileSync} from 'node:child_process';
-          const normalize=h=>h.replace(/(href|src)="\\/transaction-discovery\\.(css|js)\\?v=[^"]+"/g,'$1="/transaction-discovery.$2?v=VERSION"');
+          const normalize=h=>h.replace(/(href|src)="\/transaction-discovery\.(css|js)\?v=[^"]+"/g,'$1="/transaction-discovery.$2?v=VERSION"');
           for(const file of ['index.html','en/index.html'])assert.equal(normalize(await readFile(file,'utf8')),normalize(execFileSync('git',['show','713bbd47d2773d49a7d8c25cca3b7c26c5dc8e39:'+file],{encoding:'utf8',maxBuffer:2000000})),file+' must preserve homepage except the discovery-runtime version');
           const before=await readFile('/tmp/hb-before-alias-sitemap.xml','utf8'),after=await readFile('sitemap.xml','utf8'),urls=s=>[...s.matchAll(/<loc>(.*?)<\/loc>/g)].map(x=>x[1]).sort();
           assert.deepEqual(urls(after),urls(before));const aliases=JSON.parse(await readFile('content/gsc-historical-route-aliases.json','utf8')).entries;for(const e of aliases)assert.ok(!urls(after).includes('https://hossambahr.com'+e.from));
@@ -45,7 +45,7 @@ jobs:
           git config user.email github-actions[bot]@users.noreply.github.com
           node --input-type=module - <<'JS'
           import {readFile} from 'node:fs/promises';import {execFileSync} from 'node:child_process';
-          const m=JSON.parse(await readFile('content/gsc-historical-route-aliases.json','utf8'));execFileSync('git',['add','--',...m.entries.map(e=>e.from.slice(1)),'contact/index.html','en/contact/index.html','pricing/index.html','en/pricing/index.html','artifacts/gsc-route-recovery','discover/index.html','en/discover/index.html','approvals/index.html','en/approvals/index.html','transaction-discovery.js']);
+          const m=JSON.parse(await readFile('content/gsc-historical-route-aliases.json','utf8'));execFileSync('git',['add','--',...m.entries.map(e=>e.from.slice(1)),'contact/index.html','en/contact/index.html','pricing/index.html','en/pricing/index.html','artifacts/gsc-route-recovery','discover/index.html','en/discover/index.html','approvals/index.html','en/approvals/index.html','transaction-discovery.js','index.html','en/index.html']);
           JS
           git diff --cached --quiet || git commit -m "Publish verified legacy aliases and request-context recovery [skip ci]"
           git push origin HEAD:agent/gsc-route-recovery-20261124
