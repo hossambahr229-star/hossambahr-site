@@ -1,0 +1,53 @@
+name: Verify recovered routes on Production
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['transaction-discovery.js','customer-intake.js','content/gsc-historical-route-aliases.json','.github/workflows/gsc-route-live.yml']
+permissions: {contents: read}
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.55.0
+      - name: Verify exact published assets before browser acceptance
+        run: |
+          node --input-type=module - <<'JS'
+          import {readFile} from 'node:fs/promises';import assert from 'node:assert/strict';
+          const manifest=JSON.parse(await readFile('content/gsc-historical-route-aliases.json','utf8'));
+          const files=['transaction-discovery.js','customer-intake.js','discover/index.html','en/discover/index.html','index.html','en/index.html',...manifest.entries.map(e=>e.from.slice(1))];
+          let published=false;for(let attempt=0;attempt<48;attempt++){try{for(const file of files){const route=file==='index.html'?'/':file.endsWith('/index.html')?'/'+file.slice(0,-10):'/'+file;
+          const response=await fetch('https://hossambahr.com'+route+'?release-proof='+process.env.GITHUB_SHA,{headers:{'Cache-Control':'no-cache'}});
+          assert.equal(response.status,200,route);assert.equal(await response.text(),await readFile(file,'utf8'),route+' differs from checked-out release');}
+          published=true;break;}catch(error){console.log({attempt,message:error.message.split('\n')[0]});await new Promise(r=>setTimeout(r,15000));}}
+          assert.ok(published,'Production did not expose the checked-out release');console.log({revision:process.env.GITHUB_SHA,exactPublishedFiles:files.length});
+          JS
+      - name: Test all recovered routes and request context in a real browser
+        run: HB_BROWSER_PATH="$(command -v chrome)" HB_BASE_URL=https://hossambahr.com node scripts/historical-route-recovery-browser.mjs
+      - name: Confirm canonical discovery and alias retrieval on Production
+        run: |
+          HB_BROWSER_PATH="$(command -v chrome)" node --input-type=module - <<'JS'
+          import {chromium} from 'playwright';import assert from 'node:assert/strict';
+          const browser=await chromium.launch({headless:true,executablePath:process.env.HB_BROWSER_PATH});
+          try{for(const locale of ['ar','en'])for(const width of [1440,390]){
+          const page=await browser.newPage({viewport:{width,height:960}});
+          await page.goto('https://hossambahr.com'+(locale==='en'?'/en':'')+'/discover/',{waitUntil:'networkidle'});
+          assert.equal(await page.locator('[data-canonical-service]').count(),202);
+          assert.equal(await page.locator('[data-canonical-service="renew-business-license-ajman"]').count(),0);
+          await page.locator('[name=q]').fill(locale==='en'?'Renew business license Ajman':'تجديد رخصة تجارية عجمان');
+          await page.getByRole('button',{name:locale==='en'?'Search':'بحث',exact:true}).click();
+          await page.waitForFunction(()=>document.querySelector('[data-canonical-service="ajman-commercial-license-renewal"]')?.hidden===false);
+          assert.ok(await page.locator('[data-canonical-service="ajman-commercial-license-renewal"]').isVisible());
+          assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+          await page.screenshot({path:'artifacts/gsc-route-recovery/'+locale+'-canonical-discovery-'+width+'.jpg',fullPage:true,type:'jpeg',quality:85});
+          await page.close();console.log({locale,width,canonicalCards:202,aliasQueryResolved:true});}
+          }finally{await browser.close();}
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: recovered-routes-production, path: artifacts/gsc-route-recovery}
