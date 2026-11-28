@@ -1,0 +1,54 @@
+name: Recover observed Google legacy routes
+on:
+  push:
+    branches: [agent/gsc-route-recovery-20261124]
+    paths-ignore: ['artifacts/**','**/*.html']
+permissions: {contents: write}
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '24'}
+      - uses: browser-actions/setup-chrome@v1
+      - run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.55.0
+      - run: npm run typecheck && node --check src/publication/historical-route-aliases.mjs && node --check customer-intake.js
+      - name: Record additional Google-observed regional URL before repair
+        run: |
+          node --input-type=module - <<'JS'
+          const response=await fetch('https://hossambahr.com/business-services-ras-al-khaimah.html');console.log({url:response.url,httpStatus:response.status});
+          JS
+      - run: npm run build
+      - run: node --test scripts/historical-route-aliases.test.mjs scripts/canonical-discovery-records.test.mjs
+      - name: Preserve the service registry, indexable URL set and homepage
+        run: |
+          git diff --exit-code 713bbd47d2773d49a7d8c25cca3b7c26c5dc8e39 -- src/registry/published-services.json transaction-discovery-data.json
+          git show 713bbd47d2773d49a7d8c25cca3b7c26c5dc8e39:sitemap.xml > /tmp/hb-before-alias-sitemap.xml
+          node --input-type=module - <<'JS'
+          import {readFile} from 'node:fs/promises';import assert from 'node:assert/strict';
+          import {execFileSync} from 'node:child_process';
+          const normalize=h=>h.replace(/(href|src)="\/transaction-discovery\.(css|js)\?v=[^"]+"/g,'$1="/transaction-discovery.$2?v=VERSION"');
+          for(const file of ['index.html','en/index.html'])assert.equal(normalize(await readFile(file,'utf8')),normalize(execFileSync('git',['show','713bbd47d2773d49a7d8c25cca3b7c26c5dc8e39:'+file],{encoding:'utf8',maxBuffer:2000000})),file+' must preserve homepage except the discovery-runtime version');
+          const before=await readFile('/tmp/hb-before-alias-sitemap.xml','utf8'),after=await readFile('sitemap.xml','utf8'),urls=s=>[...s.matchAll(/<loc>(.*?)<\/loc>/g)].map(x=>x[1]).sort();
+          assert.deepEqual(urls(after),urls(before));const aliases=JSON.parse(await readFile('content/gsc-historical-route-aliases.json','utf8')).entries;for(const e of aliases)assert.ok(!urls(after).includes('https://hossambahr.com'+e.from));
+          console.log({indexableURLs:urls(after).length,aliasesExcluded:aliases.length});
+          JS
+      - run: node scripts/historical-route-recovery-browser.mjs
+        env: {HB_BROWSER_PATH: /usr/bin/google-chrome}
+      - name: Commit only generated compatibility entries and versioned intake pages
+        if: success()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          node --input-type=module - <<'JS'
+          import {readFile} from 'node:fs/promises';import {execFileSync} from 'node:child_process';
+          const m=JSON.parse(await readFile('content/gsc-historical-route-aliases.json','utf8'));execFileSync('git',['add','--',...m.entries.map(e=>e.from.slice(1)),'contact/index.html','en/contact/index.html','pricing/index.html','en/pricing/index.html','artifacts/gsc-route-recovery','discover/index.html','en/discover/index.html','approvals/index.html','en/approvals/index.html','transaction-discovery.js','index.html','en/index.html']);
+          JS
+          git diff --cached --quiet || git commit -m "Publish verified legacy aliases and request-context recovery [skip ci]"
+          git push origin HEAD:agent/gsc-route-recovery-20261124
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: gsc-route-recovery, path: artifacts/gsc-route-recovery}

@@ -20,6 +20,14 @@ import {compatibleEmirate,jurisdictionCode} from './customer-jurisdiction.js?v=2
  fetch('/customer-execution-data.json'+(new URL(import.meta.url).search||''),{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json();}).then(rows=>{
   catalog=rows;for(const row of rows){const o=document.createElement('option');o.value=row.service_slug;o.textContent=row.service_name[en?'en':'ar'];service.append(o);}
   service.value=params.get('service')||carry?.service_slug||'';choose();
+  // Historical request links may carry a free-form goal instead of a catalog slug.
+  // Preserve that request without inventing a selected service or government pathway.
+  if(!carry){
+   const incomingGoal=params.get('goal')||(!selected()?params.get('service'):'');
+   if(incomingGoal)form.elements.goal.value=incomingGoal.trim().slice(0,800);
+   const incomingEmirate=params.get('emirate');
+   if(jurisdictionCode(incomingEmirate))form.elements.emirate.value=incomingEmirate;
+  }
   if(carry&&(!selected()||carry.service_slug===selected().service_slug)){
    if(typeof carry.goal==='string')form.elements.goal.value=carry.goal.slice(0,800);
    const incomingEmirate=carry.emirate||[...form.elements.emirate.options].find(o=>jurisdictionCode(o.value)===carry.jurisdiction_code)?.value;

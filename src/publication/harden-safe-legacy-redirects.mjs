@@ -1,5 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import {publishHistoricalAliases} from './historical-route-aliases.mjs';
 
 const root = resolve(import.meta.dirname, '../..');
 const redirects = new Map([
@@ -9,7 +10,7 @@ const redirects = new Map([
 ]);
 
 let updated = 0;
-for (const [from, to] of redirects) {
+for (const [from, to] of (process.argv.includes('--observed-gsc') ? [] : redirects)) {
   const file = resolve(root, `.${from}`, 'index.html');
   const original = await readFile(file, 'utf8');
   const canonical = `<link rel="canonical" href="https://hossambahr.com${to}"/>`;
@@ -28,3 +29,11 @@ for (const [from, to] of redirects) {
 }
 
 console.log(JSON.stringify({ safeLegacyRedirects: redirects.size, updated }));
+
+// Generate observed .html compatibility entries only at the final publication stage.
+// Keeping these in the existing redirect owner prevents later exporters from rewriting them.
+if(process.argv.includes('--observed-gsc')){
+ const manifest=JSON.parse(await readFile(resolve(root,'content/gsc-historical-route-aliases.json'),'utf8'));
+ const aliases=await publishHistoricalAliases(root,manifest);
+ console.log(JSON.stringify({historicalAliases:aliases.length,unmappedRetained404:manifest.unmatched.length}));
+}
