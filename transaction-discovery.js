@@ -2,6 +2,15 @@ import {serviceBusinessDomain} from './business-domains.js?v=ead34bcfece9';
 import {rankServices,normalizeIntent,reraApprovalIntent,queryEmirate,specialisedSearchKind} from './intent-search.js?v=ef295cf04d4c';
 import {compatibleEmirate} from './customer-jurisdiction.js?v=7be21562672e';
 
+// Canonical aliases remain in the published source catalog; merge their search terms
+// into the visible transaction instead of presenting a second result card.
+export function canonicalDiscoveryRecords(records,aliases=[]){
+ const bySlug=new Map(records.map(r=>[r.s,r])),targets=new Map();
+ for(const a of aliases){const source=bySlug.get(a.slug),target=bySlug.get(a.targetSlug);if(!source||!target||a.slug===a.targetSlug||source.i!==target.i||source.m!==target.m)throw Error('Invalid canonical discovery alias');if(targets.has(a.slug)&&targets.get(a.slug)!==a.targetSlug)throw Error('Conflicting canonical discovery alias');targets.set(a.slug,a.targetSlug);}
+ for(const target of targets.values())if(targets.has(target))throw Error('Alias target must be canonical');
+ return records.filter(r=>!targets.has(r.s)).map(r=>{const extra=records.filter(a=>targets.get(a.s)===r.s);return extra.length?{...r,k:[...new Set([...(r.k||[]),...extra.flatMap(a=>[a.a,a.e,a.s,...(a.k||[])])].filter(Boolean))]}:r;});
+}
+
 export function entryMode(query){
  const q=normalizeIntent(query);
  return /(?:عايز|عاوزه|اريد|ابي|ابغي|احتاج|الرخصه انتهت|i want|i need|how do i|my licen[cs]e expired)/i.test(q)?'describe':'exact';
@@ -63,6 +72,8 @@ if(typeof document!=='undefined'){
  if(form){
   const cards=[...document.querySelectorAll('[data-canonical-service]')],status=document.querySelector('[data-discovery-status]'),empty=document.querySelector('[data-discovery-empty]');
   const defaultEmpty = [...empty.childNodes];
+  const shownSlugs=new Set(cards.map(c=>c.dataset.canonicalService));
+  const canonicalAliases=cards.flatMap(c=>JSON.parse(c.dataset.serviceAliases||'[]').map(slug=>({slug,targetSlug:c.dataset.canonicalService})));
   const params=new URLSearchParams(location.search);
   for(const key of ['q','emirate','authority','category','domain','approval'])if(form.elements[key]){if(params.has(key)||key!=='approval')form.elements[key].value=params.get(key)||'';}
   const advanced=form.querySelector('.discovery-advanced');
@@ -71,7 +82,7 @@ if(typeof document!=='undefined'){
   async function render(event){
    event?.preventDefault();
    try{
-    if(!records){const response=await fetch('/transaction-discovery-data.json');if(!response.ok)throw Error('catalog');records=await response.json();if(form.dataset.discoveryScope==='approvals')records=records.filter(s=>s.ap);}
+    if(!records){const response=await fetch('/transaction-discovery-data.json');if(!response.ok)throw Error('catalog');records=canonicalDiscoveryRecords(await response.json(),canonicalAliases).filter(r=>shownSlugs.has(r.s));if(form.dataset.discoveryScope==='approvals')records=records.filter(s=>s.ap);}
     const selection={query:form.elements.q.value,emirate:form.elements.emirate.value,authority:form.elements.authority.value,category:form.elements.category.value,domain:form.elements.domain?.value||'',approval:form.elements.approval?.value||''};
     const selectedStatus=document.querySelector('[data-discovery-selection]');
     if(selectedStatus){
