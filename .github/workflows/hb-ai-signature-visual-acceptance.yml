@@ -1,5 +1,7 @@
 name: HB AI Signature Visual Acceptance
 on:
+  pull_request:
+    paths: ['.github/workflows/hb-ai-signature-visual-acceptance.yml']
   push:
     branches: [main]
     paths:
@@ -39,7 +41,7 @@ jobs:
             const page=await browser.newPage({viewport:{width,height},colorScheme:'light'});
             const errors=[]; page.on('pageerror',e=>errors.push(e.message));
             await page.goto('https://hossambahr.com/?hb-ai-visual='+name,{waitUntil:'networkidle'});
-            const tile=page.locator(width<=820?'.ai-showcase-cta':'[data-premium-ai-toggle]');
+            const tile=page.locator('.ah-assistant [data-premium-ai-open]');
             const tileVisible=await tile.isVisible();
             const tileBg=await tile.evaluate(el=>getComputedStyle(el).backgroundColor);
             await tile.click();
